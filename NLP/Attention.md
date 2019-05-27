@@ -18,3 +18,4 @@
 		- Intermediate layer losses (deep supervision)
 		- Multiple targets
 	- 235 million parameters, dropout (0.55)
+- Dai, Z., Yang, Z., Yang, Y., Cohen, W. W., Carbonell, J., Le, Q. V., and Salakhutdinov, R. Transformer-xl: Language modeling with longer-term dependency. 2018.

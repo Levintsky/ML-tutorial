@@ -30,3 +30,9 @@
 	- Decoder:
 		- Hierarchical: conductor + output;
 - C Hawthorne, A Stasyuk, Adam Roberts, Ian Simon, Cheng-Zhi Anna Huang, Sander Dieleman, Erich Elsen, Jesse Engel, Douglas EckEnabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset. ICLR'19
+
+## DeepMind
+- Dieleman, S., van den Oord, A., and Simonyan, K. The chal- lenge of realistic music generation: modelling raw audio at scale. NIPS'18
+
+## OpenAI
+- MuseNet

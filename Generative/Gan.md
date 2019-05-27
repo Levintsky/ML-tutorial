@@ -1,5 +1,9 @@
 # General Adversarial Net
 
+## Evaluation
+- Wu, Yuhuai, Burda, Yuri, Salakhutdinov, Ruslan, and Grosse, Roger. On the quantitative analysis of decoder- based generative models. 2017.
+- Sanjeev Arora and Yi Zhang. Do gans actually learn the distribution? an empirical study. 2017
+
 ## GAN
 - Google Brain, Magenta:
 	- **GAN**: Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. Generative adversarial nets. In NIPS, 2014.
