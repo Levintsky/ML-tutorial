@@ -122,6 +122,84 @@ J(\theta')-J(\theta)&=&J(\theta')-\mathbb{E}_{s_0\sim p(s)}[V^{\pi_{\theta}}(s_0
 &=&\mathbb{E}_{\tau\sim p_{\theta'}(\tau)}[\sum_{t=1}^{\infty}\gamma^t A^{\pi_{\theta}}(s_t, a_t)]
 \end{eqnarray*}
 
+\subsection{PPO}
+Loss: let 
+\begin{equation*}
+r_t(\theta)=\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)}
+\end{equation*}
+Then,
+\begin{equation}
+L^{CLIP}(\theta)=\mathbb{E}[\min(r_t(\theta)\hat{A}_t, clip(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t)]
+\end{equation}
+\textbf{PPO system design:} same as A2C (check section 2.1 actor-critic), only difference:
+\begin{verbatim}
+step 4: agent.update()
+  ratio = exp(action_log_prob - old_action_log_prob)
+  surr1 = ratio * adv_target
+  surr2 = clamp(ratio, 1.0-eps, 1.0+eps) * adv_target
+  action_loss = -min(surr1, surr2) 
+\end{verbatim}
+
+\subsection{ACKTR}
+\begin{enumerate}
+\item Paper: Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation [NIPS 2017];
+\item Use the \textbf{K-FAC} technique to approximate Fisher Information matrix in paper [J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature.]
+\end{enumerate}
+
+Important properties of Kronecker operator $\otimes$:
+\begin{enumerate}
+\item $(P\otimes Q)^{-1}=P^{-1}\otimes Q^{-1}$;
+\item $(P\otimes Q)vec(T)=PTQ^T$
+\end{enumerate}
+
+Let $W\in \mathbb{R}^{C_{out}\times C_{in}}$ be the weight matrix of the $l^{th}$ layer, with $s=Wa$, we have K-FAC:
+\begin{eqnarray}
+F_l=\mathbb{E}[vec\{\nabla_WL\}vec\{\nabla_WL\}^T]=\mathbb{E}[aa^T\otimes \nabla_sL(\nabla_sL)^T]\\
+\approx \mathbb{E}[aa^T]\otimes \mathbb{E}[\nabla_sL(\nabla_sL)^T]=A\otimes S:=\hat{F}_l
+\end{eqnarray}
+Then, 
+\begin{equation}
+vec(\triangle W)=\hat{F}_l^{-1}vec\{\nabla_WJ\}=vec(A^{-1}\nabla_WJS^{-1})
+\end{equation}
+In actor-critic setting (two output heads-- action $a$ and critic $v$), we will try to apply $\mathbb{E}_{p(\tau}[\nabla\log p(a,v|s)\nabla\log p(a,v|s)^T]$.
+
+Step-size, following TRPO, SGD-like $\theta \leftarrow \theta-\eta F^{-1}\nabla_{\theta}L$ will result in large updates in policy and make algorithm prematurely converge to near-deterministic. Therefore, we adopt step-size as:
+\begin{equation}
+\eta=\min(\eta_{\max},\sqrt{\frac{2\delta}{\triangle\theta^T\hat{F}\triangle\theta}})
+\end{equation}
+
+System design:
+\begin{enumerate}
+\item Agent (ACKTR) initialization:
+  \begin{enumerate}
+  \item Split modules (bias)
+  \item Register forward pre-hook (save input)
+  \item Register backward hook (save gradient output)
+  \item Running stats:
+  \begin{verbatim}
+  self.m_aa = {} # save input.t() @ input
+  self.m_gg = {}
+  self.Q_a, self.Q_g = {}, {}
+  self.d_a, self.d_g = {}, {}
+  \end{verbatim}
+  \end{enumerate}
+\item Agent (ACKTR) update:
+  \begin{enumerate}
+  \item Before forward: compute running stat of $a^Ta$ and save in m-aa;
+  \item During backward: compute running stat of $g^Tg$
+  \end{enumerate}
+\item Optimizer.step() for each module:
+  \begin{enumerate}
+  \item Eig SVD of inputs: $Cov(a,a) = Q_a D_a Q_a^T$;
+  \item Eig SVD of output gradient: $Cov(g,g) = Q_g D_g Q_g^T$;
+  \item Update with normal gradient G and update each module's gradient with $\triangle\theta$: 
+  \begin{equation}
+  \triangle\theta = Q_g \frac{Q_g^T G Q_a}{d_g^Td_a+0.01} Q_g^T
+  \end{equation}
+  \item Normal SGD;
+  \end{enumerate}
+\end{enumerate}
+
 \section{Actor-Critic}
 value function, advantage:
 \begin{eqnarray*}
@@ -153,6 +231,65 @@ with $w_n \propto\lambda^{n-1}$
 \begin{equation}
 \hat{A}_{GAE}^{\pi}(s_t,a_t)=\sum_{n=1}^{\infty}(\gamma\lambda)^{t'-t}\delta_{t'}
 \end{equation}
+\end{enumerate}
+
+\subsection{System Design}
+\begin{enumerate}
+\item Batch-size = num of games (=16 running envs in our scenarios);
+\item Policy (actor-critic):
+  \begin{enumerate}
+  \item Shared CNNBase module: output a (?, n) dim feature;
+  \item (Optional) x, rnn-hxs = CNNBase.forward-gru(x, rnn-hxs, masks)
+  \item Actor head: feature -> $(?, n_{a})$
+  \item Critic head: feature -> $(?, 1)$
+  \item Actor head wraps a distribution; for sampling action $a_t$ and log-prob $\log\pi_{\theta}(a_t|s_t)$
+  \end{enumerate}
+\item Rollouts (data pool):
+  \begin{enumerate}
+  \item Observation: (T+1, ?, 4, 84, 84)
+  \item RNN hidden state: (T+1, ?, nh)
+  \item Rewards: (T, ?, 1)
+  \item Value-preds: (T+1, ?, 1)
+  \item Returns: (T+1, ?, 1)
+  \item Action-log-prob: (T, ?, 1)
+  \item Actions: (T, ?, 1)
+  \item Masks: (T+1, ?, 1); 1.0 for non-terminal, 0. for terminal;
+  \end{enumerate}
+\item Agent (A2C-ACKTR, gail, kfac, ppo)
+  \begin{enumerate}
+  \item actor-critic: policy;
+  \item Coefficients of different terms;
+  \item Optimizer (KFAC, RMSprop);
+  \item update();
+  \end{enumerate}
+\item Running Logic:
+\begin{verbatim}
+for n steps:
+  step 1: for t = 1..5 (no-gradient mode)
+    value, act, act-log-prob, rnn-h = actor_critic.act(obs[step], rnn-h, mask[step])
+    obs, reward, done, infos = envs.step(action)
+    update mask
+    rollouts update: obs, rnn-h, action, action-log-prob,
+       value, reward, masks, bad-masks
+  step 2: (no-gradient mode)
+    next_value = actor_critic.get_value(obs[-1]) # get value for T+1
+  step 3: (n-step true target value)
+    rollouts.compute_returns(next_value) # (T, ?, 1)
+    can also be GAE;
+  step 4: update parameter
+     value_loss, action_loss, dist_entropy = agent.update()
+       1. value, action-log-prob, entropy, rnn-hs = actor_critic.evaluate_actions()
+         value, action-feat, rnn-hs = CNNBase(inputs, rnn, masks) # (T * ?, 4, 84, 84)
+         dist (action distribution)
+         action-log-probs
+         dist-entropy
+       2. Advantages: A(st, at) = rollouts.returns - values
+       3.1 action-loss: -(adv * action-log-prob)
+       3.2 value-loss: adv ^ 2
+       3.3 entropy: -coeff * dist-entropy
+  step 5: rollouts.after_update()
+     reset T+1 step obs, rnn-hs, masks, bad-masks to [0]
+\end{verbatim}
 \end{enumerate}
 
 \section{Value Function}

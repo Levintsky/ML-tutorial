@@ -1,4 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Policy Gradient}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{TRPO}{section.1}% 2
-\BOOKMARK [1][-]{section.2}{Actor-Critic}{}% 3
-\BOOKMARK [1][-]{section.3}{Value Function}{}% 4
+\BOOKMARK [2][-]{subsection.1.2}{PPO}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{ACKTR}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Actor-Critic}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{System Design}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Value Function}{}% 7
