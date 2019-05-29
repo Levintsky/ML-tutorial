@@ -75,6 +75,9 @@ def forward(self, x):
 	- T Salimans, I Goodfellow, W Zaremba, V Cheung, A Radford, and X Chen. Improved techniques for training gans. NIPS 2016
 		- **Perception Score** as evaluation
 	- X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, and P Abbeel. **Infogan**: Interpretable representation learning by information maximizing generative adversarial nets. NIPS 2016
+	<img src = '/Generative/images/info-gan1.png' height = '60px'>
+	<img src = '/Generative/images/info-gan2.png' height = '200px'>
+
 		- A Q(c|x) to encode x to attributes c, Q shared base-conv with D
 		- System Design: 4 modules: G, Shared Bottom CNN, D, Q
 		- Discriminator: log(D(x)) + log(1-D(G(z))), D-only
@@ -133,6 +136,11 @@ to image generation with attentional generative adversarial networks. In CVPR, 2
 - Super-resolution:
 	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. In CVPR, 2017.
 	- C. K. Sønderby, J. Caballero, L. Theis, W. Shi, and F. Huszár. Amortised map inference for image super-resolution. In ICLR, 2017.
+- GAN + AE (Reconstruction ability):
+	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
+		- q(z|x) and p(z) adversarial loss (encoded latent)
+		- Reconstruction loss
+<img src = '/Generative/images/pixel-gan.png' height = '100px'>
 
 ## Evaluation
 - Lucas Theis, Aaron van den Oord, and Matthias Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.

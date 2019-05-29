@@ -2,7 +2,8 @@
 
 ## Legacy
 - **NADE**: Larochelle, Hugo and Murray, Iain. The neural autoregressive distribution estimator. AISTATS 2011
-- **RNADE**: Uria, Benigno, Murray, Iain, and Larochelle, Hugo. RNADE: The real-valued neural autoregressive density-estimator. In NIPS, 2013.
+- **RNADE**: Uria, Benigno, Murray, Iain, and Larochelle, Hugo. RNADE: The real-valued neural autoregressive density-estimator. NIPS'13.
+- **MADE**: Mathieu Germain, Karol Gregor, Iain Murray, and Hugo Larochelle. Made: Masked autoencoder for distribution estimation. ICML'15.
 - Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
 
 ## Google
@@ -72,6 +73,11 @@
 		- Classical music
 <img src="/Generative/images/sparse-transformer1.png" alt="drawing" width="400"/>
 <img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="400"/>
+
+## Others
+- - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
+<img src="/Generative/images/pixel-vae1.png" alt="drawing" width="400"/>
+<img src="/Generative/images/pixel-vae2.png" alt="drawing" width="400"/>
 
 ## Audio
 - **Wave-net**: Van Den Oord, A., Dieleman, S., Zen, H., Simonyan, K., Vinyals, O., Graves, A., Kalchbrenner, N., Senior, A., and Kavukcuoglu, K. Wavenet: A generative model for raw audio. 2016

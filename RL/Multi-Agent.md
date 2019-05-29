@@ -5,9 +5,9 @@
 	- **MADDPG**
 	- https://github.com/openai/multiagent-particle-envs
 	- Discrete case:
-<img src = '/RL/images/maddpg1.png' height = '150px'>
+<img src = '/RL/images/maddpg1.png' height = '120px'>
 	- Continuous case:
-<img src = '/RL/images/maddpg2.png' height = '200px'>
+<img src = '/RL/images/maddpg2.png' height = '170px'>
 
 ## Misc
 - A multi-agent reinforcement learning model of common-pool resource appropriation

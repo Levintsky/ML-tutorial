@@ -45,7 +45,9 @@
 	- Yang, Z., Hu, Z., Salakhutdinov, R., and Berg-Kirkpatrick, T. Improved variational autoencoders for text modeling using dilated convolutions. ICML'17
 
 ## Autoregressive
-- **PixelVAE**: Ishaan Gulrajani, Kundan Kumar, Faruk Ahmed, Adrien Ali Taiga, Francesco Visin, David Vazquez, and Aaron Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
+- **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
+<img src="/Generative/images/pixel-vae1.png" alt="drawing" width="500"/>
+<img src="/Generative/images/pixel-vae2.png" alt="drawing" width="300"/>
 
 ## Recurrent
 - Good summaries:
