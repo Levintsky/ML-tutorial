@@ -41,6 +41,8 @@
 - Counting:
 	- Learning to Count Objects in Natural Images for Visual Question Answering, ICLR 2018
 		- https://github.com/Cyanogenoid/vqa-counting
+- Attention:
+	- Z. Yang, X. He, J. Gao, L. Deng, and A. J. Smola. Stacked attention networks for image question answering. CVPR'16
 
 ## Reasoning
 - Kexin Yi, Jiajun Wu, Chuang Gan, Antonio Torralba, Pushmeet Kohli and Joshua B. Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NIPS 2018

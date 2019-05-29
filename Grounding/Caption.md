@@ -18,6 +18,8 @@
 	- J. Lu, J. Yang, D. Batra, and D. Parikh. Neural baby talk. CVPR 2018
 - Google:
 	- O Vinyals, A Toshev, S Bengio, D Erhan. **Show and Tell**: Lessons learned from the 2015 MSCOCO Image Captioning Challenge. 2015
+- Attention:
+	- K. Xu, J. Ba, R. Kiros, K. Cho, A. C. Courville, R. Salakhutdinov, R. S. Zemel, and Y. Bengio. Show, attend and tell: Neural image caption generation with visual attention. In ICML, 2015.
 
 ## Reasoning
 - **VCR**: Visual Commonsense Reasoning. CVPR'19

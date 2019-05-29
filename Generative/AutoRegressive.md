@@ -18,8 +18,9 @@
 
 ## DeepMind
 - **Pixel-RNN** Oord, A. v. d., Kalchbrenner, N., and Kavukcuoglu, K. Pixel recurrent neural networks. In ICML, 2016.
-- **Pixel-CNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional
-image generation with pixelcnn decoders, NIPS 2016
+- **Pixel-CNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
+	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
+<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
 - Kalchbrenner, Nal, Espeholt, Lasse, Simonyan, Karen, Oord, Aaron van den, Graves, Alex, and Kavukcuoglu, Koray. Neural machine translation in linear time. 2016
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
 - Reed, S., Oord, A., Kalchbrenner, N., Colmenarejo, S. G., Wang, Z., Chen, Y., Belov, D., and Freitas, N. Parallel multiscale autoregressive density estimation. ICML'17.
@@ -43,7 +44,7 @@ image generation with pixelcnn decoders, NIPS 2016
 	- PixelCNNLayer-up:
 		- u-list: 5 * gated-resnet
 		- ul-list: 5 * gated-resnet
-<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="400"/>
+<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
 	- code available;
 	- Use the technique **SNAIL** proposed in [Mishra, Nikhil, Rohaninejad, Mostafa, Chen, Xi, and Abbeel, Pieter. A simple neural attentive meta-learner. In NIPS 2017 Workshop on Meta-Learning, 2017.]
