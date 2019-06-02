@@ -22,6 +22,7 @@
 - **Pixel-CNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
 <img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
+
 - Kalchbrenner, Nal, Espeholt, Lasse, Simonyan, Karen, Oord, Aaron van den, Graves, Alex, and Kavukcuoglu, Koray. Neural machine translation in linear time. 2016
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
 - Reed, S., Oord, A., Kalchbrenner, N., Colmenarejo, S. G., Wang, Z., Chen, Y., Belov, D., and Freitas, N. Parallel multiscale autoregressive density estimation. ICML'17.
@@ -30,6 +31,7 @@
 	- Coarse-to-fine: 4 x 4 to 8 x 8 to 16 x 16 to ... to 256 x 256
 <img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
 <img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
+
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling

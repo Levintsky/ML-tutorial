@@ -1,10 +1,16 @@
-# Variational Inference
+# EM, Variational Inference
 
-## Basics:
+## Mixture of Experts
+- Important property:
+	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
 - p(x) = sum_z p(x,z)
 - EM:
 	- E-step: p(z)
 	- M-step: argmax_theta Q(theta, theta_old)
+- EM Theory:
+<img src="/Basic-ML/images/em1.png" alt="drawing" width="600"/>
+
+## VI Basics:
 - MCMC:
 	- Hard to do m-step, sample some z and average
 - VI, ELBO:
@@ -12,10 +18,8 @@
 	- ELBO(q) = E(log p(z, x)) - E(log q(z))
 
 ## Mean Field
+<img src="/Basic-ML/images/mean-field1.png" alt="drawing" width="200"/>
+
 - Variational Inference: A Review for Statisticians, 2018
 	- David Blei
 	- ELBO (Evidence Lower-Bound)
-
-## SVGD
-- Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS 2016
-	- https://github.com/DartML/Stein-Variational-Gradient-Descent

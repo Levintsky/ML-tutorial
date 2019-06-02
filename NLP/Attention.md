@@ -1,7 +1,10 @@
 # Attention, Transformer
 
 ## Transformer
-- Attention is all you need:
+- **Transformer**: Attention is all you need. NIPS 2017
+<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
+<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
+
 	- A very good intro: http://jalammar.github.io/illustrated-transformer/
 	- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
 	- https://github.com/Kyubyong/transformer
