@@ -18,8 +18,8 @@
 <img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
 
 ## DeepMind
-- **Pixel-RNN** Oord, A. v. d., Kalchbrenner, N., and Kavukcuoglu, K. Pixel recurrent neural networks. In ICML, 2016.
-- **Pixel-CNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
+- **PixelRNN** Oord, A. v. d., Kalchbrenner, N., and Kavukcuoglu, K. Pixel recurrent neural networks. In ICML, 2016.
+- **PixelCNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
 <img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
 
@@ -32,6 +32,7 @@
 <img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
 <img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
 
+- Flow: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling

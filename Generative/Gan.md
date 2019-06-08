@@ -3,6 +3,7 @@
 ## Evaluation
 - Wu, Yuhuai, Burda, Yuri, Salakhutdinov, Ruslan, and Grosse, Roger. On the quantitative analysis of decoder- based generative models. 2017.
 - Sanjeev Arora and Yi Zhang. Do gans actually learn the distribution? an empirical study. 2017
+- - Evaluation: GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
 
 ## GAN
 *Name* | *Paper Link* | *Value Function*

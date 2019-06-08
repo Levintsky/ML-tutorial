@@ -15,6 +15,13 @@
 - Videos:
 	- Predict video forward or backward
 		- D. Wei et al. Self-supervision using the arrow of time, CVPR 2018
+		- I. Misra, C. L. Zitnick, and M. Hebert. Shuffle and Learn: Unsupervised Learning using Temporal Order Verification. ECCV'16
+	- Predict motion/ego-motion/motion-mask:
+		- P. Agrawal, J. Carreira, and J. Malik. Learning to see by moving. ICCV'15
+		- D. Jayaraman and K. Grauman. Learning image representations tied to egomotion. ICCV'15
+		- D. Pathak, R. Girshick, P. Dollar, T. Darrell, and B. Hariharan. Learning features by watching objects move. CVPR'17
+	- Tracking:
+		- X. Wang and A. Gupta. Unsupervised learning of visual representations using videos. ICCV'15
 	- Coloring videos
 		- C. Vondrik et al. Tracking emerges from colorizing videos, ECCV 2018
 	- Predict shuffle
@@ -24,17 +31,8 @@
 	- Predict one modality from the other
 		- V. de Sa, Learning classification from unlabeled data, NIPS 1994
 		- R. Arandjelovic et al. Object that sound, ECCV 2018
-- Generative
-	- Evaluation: GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
-	- GAN
-	- Auto-regressive: A. Oord et al. Conditional image generation with PixelCNN, NIPS 2016
-	- GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML 2018
-	- Flow: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS 2017
-	- Cycle-GAN: J. Zhu et al. Unpaired image-to-image translation using cycle consistent adversarial networks, ICCV 2017
-	- J. Menick et. al. Generating High Fidelity Images with subsample pixel networks and multidimensional upscaling (2018)
-	- Kalchbrenner, N., et al. Video Pixel Networks. ICML (2017).
-	- Carter et. al., Experiments in Handwriting with a Neural Network (2016)
-	- C. Olah et. al. Feature Visualization, distill (2018)
+	- R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15
+	- Self-Supervised Video Representation Learning With Odd-One-Out Networks
 - Edwards & Storkey, Towards a Neural Statistician, (2017)
 	- one must take seriously the idea of working with datasets, rather than datapoints, as the key objects to model.
 - **Work**:
@@ -83,7 +81,3 @@
 		- Factorized-representation
 	- g(x|vq, r) = int g(x,z|vq, r)dz, z: latent variable
 	- Env: rooms with multiple objects (DML?), allow agent to act, robotic-arm;
-
-## Videos
-- Self-Supervised Video Representation Learning With Odd-One-Out Networks
-- Shuffle and Learn: Unsupervised Learning using Temporal Order Verification

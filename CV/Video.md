@@ -40,7 +40,6 @@
 - **YouCook II**: L. Zhou, C. Xu, and J. J. Corso. Towards automatic learning of procedures from web instructional videos. AAAI 2018
 - **Cooking**: David Chen, William Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL 2011
 	- 2,089 videos; 85,550 English descriptions
-- A. Rohrbach, M. Rohrbach, W. Qiu, A. Friedrich, M. Pinkal, and B. Schiele. Coherent multi-sentence video description with variable level of detail. GCPR 2014
 
 ## Classification, Action Recognition
 - FAIR:
@@ -96,6 +95,7 @@
 - R. Krishna, K. Hata, F. Ren, L. Fei-Fei, and J. C. Niebles. Dense-Captioning events in videos. ICCV 2017
 - **SOA**: L. Zhou, Y. Zhou, J. J. Corso, R. Socher, and C. Xiong. End-to-end dense video captioning with masked transformer. CVPR 2018
 	- SOA on YouCook II dataset
+- A. Rohrbach, M. Rohrbach, W. Qiu, A. Friedrich, M. Pinkal, and B. Schiele. Coherent multi-sentence video description with variable level of detail. GCPR 2014
 
 ## Video Prediction
 - Google, Berkeley:

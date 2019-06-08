@@ -1,11 +1,15 @@
 # EM, Variational Inference
 
+## Summaries and Tutorials
+- David Blei. Variational Inference: A Review for Statisticians, 2018
+	- ELBO (Evidence Lower-Bound)
+
 ## Mixture of Experts
 - Important property:
 	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
 - p(x) = sum_z p(x,z)
 - EM:
-	- E-step: p(z)
+	- E-step: p(z), (In VBEM, will be q(z))
 	- M-step: argmax_theta Q(theta, theta_old)
 - EM Theory:
 <img src="/Basic-ML/images/em1.png" alt="drawing" width="600"/>
@@ -20,6 +24,4 @@
 ## Mean Field
 <img src="/Basic-ML/images/mean-field1.png" alt="drawing" width="200"/>
 
-- Variational Inference: A Review for Statisticians, 2018
-	- David Blei
-	- ELBO (Evidence Lower-Bound)
+- LDA:
