@@ -21,6 +21,10 @@
 
 ## Multidimensional
 - Joint distribution
+- Covariance Matrix
+	- Cov(X, Y) = E[(X-EX)(Y-EY)]
+- Pearson correlation coefficient
+	- rho(X, Y) = cov(X, Y) / std(X)std(Y)
 - Marginal distribution
 - Conditional distribution
 - Distribution
@@ -29,12 +33,18 @@
 	- XY: int 1/|x| fx(x)fy(z/x) dx
 	- max(X,Y): Fz(z)=Fx(z)Fy(z)
 - Joint Gaussian distribution
+<img src="/Basic-ML/images/gaussian-2d.png" alt="drawing" width="500"/>
 <img src="/Basic-ML/images/Gaussian.png" alt="drawing" width="600"/>
 
 ## Bounds, Theory
+- Weak law of large numbers (Khinchin's law)
+	- the sample average converges in probability towards the expected value
+<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="600"/>
+
 - Chebyshev
 <img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
 
 - Central Limit:
 	- X i.i.d., with mean, std
 	- (sum(x) - n mu) / sqrt(n)std close to N(0, 1)
+<img src="/Basic-ML/images/law-central-limit.png" alt="drawing" width="600"/>
