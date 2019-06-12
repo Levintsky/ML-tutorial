@@ -2,6 +2,7 @@
 
 ## Benchmarks
 - **Glove**. J. Pennington, R. Socher, and C. Manning. Glove: Global vectors for word representation. EMNLP 2014.
+- C Allen, T Hospedales. Analogies Explained: Towards Understanding Word Embeddings. ICML'19 best paper honorable mention
 
 ## FAIR
 - FastText

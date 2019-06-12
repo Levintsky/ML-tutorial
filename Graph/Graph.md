@@ -12,6 +12,8 @@
 		- u (attributes)
 		- E (edges)
 		- Update and aggregate operator
+	- P W. Battaglia, J B. Hamrick, V Bapst, A Sanchez-Gonzalez, V Zambaldi, M Malinowski, A Tacchetti, D Raposo, A Santoro, R Faulkner, C Gulcehre, F Song, A Ballard, J Gilmer, G Dahl, A Vaswani, K Allen, C Nash, V Langston, C Dyer, N Heess, D Wierstra, P Kohli, M Botvinick,O Vinyals, Y Li, R Pascanu. Relational inductive biases, deep learning, and graph networks. 2018
+	- Y Li, C Gu, T Dullien, O Vinyals, P Kohli. Graph Matching Networks for Learning the Similarity of Graph Structured Objects. 2019
 - **GNN**:
 	- http://snap.stanford.edu/proj/embeddings-www/
 - Semi-supervised classification with graph convolutional networks. NIPS 2015

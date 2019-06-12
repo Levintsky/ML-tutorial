@@ -2,6 +2,7 @@
 
 ## 1st-Order
 - **ADAM**: D. P. Kingma and J. Ba. Adam: A method for stochastic optimization. 2014
+- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 
 ## 2nd-Order
 - Natural Gradient:

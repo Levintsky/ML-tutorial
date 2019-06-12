@@ -34,6 +34,10 @@
 		- Layer normalization: moved to the input of each sub-block
 		- additional layer normalization: after the final self attention block
 		- 48 layers of transformer
+- Amazon:
+	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
+<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
+<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
 
 ## Character Level
 - Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH 2010

@@ -23,3 +23,5 @@
 Surprise, Interestingness, Attention, Curiosity, Creativity, Art, Science, Music, Jokes, Schmidhuber, 2008
 - Klyubin et. al. Empowerment: A Universal Agent-Centric Measure of Control (2005)
 - Gregor et. al. Variational Intrinsic Control (2016)
+- Wang, J.X. et al. Evolving intrinsic motivations for altruistic behavior. 2018
+- Natasha Jaques, Angeliki Lazaridou, Edward Hughes, Caglar Gulcehre, Pedro A. Ortega, DJ Strouse, Joel Z. Leibo, Nando de Freitas. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention

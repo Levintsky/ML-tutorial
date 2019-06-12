@@ -69,8 +69,12 @@
 - One-stage detector:
 	- https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
 	- SSD:
-		- W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV 2016
-			- Improves YOLO by using default bounding boxes
+		- W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
+		<img src="/CV/images/ssd.png" alt="drawing" width="600"/>
+		<img src="/CV/images/ssd-eqn.png" alt="drawing" width="600"/>
+
+			- Improves YOLO by using default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+			- Multiscalex
 		- C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
 	- YOLO:
 		- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
@@ -129,3 +133,5 @@
 	- https://github.com/wkentaro/pytorch-fcn
 	- https://github.com/shelhamer/fcn.berkeleyvision.org
 	- Pyramid (like SSD)
+- Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
+	- No bounding-box, NMS, anchor;

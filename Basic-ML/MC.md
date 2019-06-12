@@ -1,5 +1,8 @@
 # Monte Carlo inference
 
+## Latest
+- A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
+
 ## Sampling
 - Sampling from Standard Distributions
 	- Using **cdf**, u ~ U(0,1), invF(u) ~ F

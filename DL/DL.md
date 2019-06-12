@@ -17,6 +17,7 @@
 	- https://www.zhihu.com/question/62631725
 	- https://blog.csdn.net/a358463121/article/details/80820878
 - Make sampling process differentiable;
+- Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
 
 ## Compression
 - Song Han:

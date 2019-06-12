@@ -3,7 +3,7 @@
 ## Evaluation
 - Wu, Yuhuai, Burda, Yuri, Salakhutdinov, Ruslan, and Grosse, Roger. On the quantitative analysis of decoder- based generative models. 2017.
 - Sanjeev Arora and Yi Zhang. Do gans actually learn the distribution? an empirical study. 2017
-- - Evaluation: GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
+- Evaluation: GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
 
 ## GAN
 *Name* | *Paper Link* | *Value Function*
@@ -36,9 +36,11 @@
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
 		- D-step: loss(D)=D(fake, 1) - D(real,-1) + gradient-penalty
 		- G-step: loss(G)=D(G(fake), -1)
-	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. In arXiv preprint arXiv:1805.08318, 2018.
+	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN
 		- Generator
+		- Inception score: 36.8 -> 52.52
+		- Frechet Inception distance: 27.62 -> 18.65
 ```python
 def forward(self, z):
     z = z.view(z.size(0), z.size(1), 1, 1) # (?, 100, 1, 1)

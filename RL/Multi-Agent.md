@@ -9,6 +9,12 @@
 	- Continuous case:
 <img src = '/RL/images/maddpg2.png' height = '170px'>
 
+## DeepMind
+- M Jaderberg,, W Czarnecki, I Dunning, L Marris, G Lever, A G Castañeda, C Beattie, N C. Rabinowitz, Ari S. Morcos, A Ruderman, N Sonnerat, T Green, L Deason, Joel Z. Leibo, D Silver, D Hassabis, K Kavukcuoglu, T Graepel. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
+	- For The Win (FTW): CNN from pixels;
+<img src="/RL/images/ftw.jpg" alt="drawing" width="500"/>
+<img src="/RL/images/ftw2.jpg" alt="drawing" width="500"/>
+
 ## Misc
 - A multi-agent reinforcement learning model of common-pool resource appropriation
 - S. Omidshafiei, J. Pazis, C. Amato, J. P. How, and J. Vian. Deep decentralized multi-task multi-agent reinforcement learning under partial observability. CoRR 2017

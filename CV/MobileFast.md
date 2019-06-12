@@ -13,6 +13,15 @@
 		- SSDLite, Mobile DeepLabv3
 		- Linear bottlenecks
 		- Inverted Residuals
+	- **EfficientNet**: Mingxing Tan, Quoc V. Le. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
+		- Baseline (MNAS): mobile inverted bottleneck convolution (MBConv)
+		- Width scaling
+		- Depth scaling
+		- Resolution scaling
+		- Compound scaling
+		<img src="/CV/images/efficientnet-baseline.jpg" alt="drawing" width="500"/>
+		<img src="/CV/images/efficientnet-performance.jpg" alt="drawing" width="500"/>
+
 - **ShuffleNet**: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR 2018
 	- Traditional Bottleneck: ReLU[x + (conv1x1 BN-ReLU DWconv3x3 BN-ReLU conv1x1 BN)]
 	- ShuffleNet: ReLU[x + (**Gconv**1x1 BN-ReLU **Channel-Shuffle** DWconv3x3 BN-ReLU **Gconv**1x1 BN)]

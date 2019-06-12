@@ -33,6 +33,7 @@
 - Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations
 - Deep Q-learning from Demonstrations
 - Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards
+- Yueh-Hua Wu, Nontawat Charoenphakdee, Han Bao, Voot Tangkaratt, Masashi Sugiyama. Imitation Learning from Imperfect Demonstration. ICML'19
 
 ## Adversarial
 - GAIL, Generative Adversarial Imitation Learning

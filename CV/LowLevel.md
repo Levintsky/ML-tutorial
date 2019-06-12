@@ -1,5 +1,25 @@
 # Low-Level Vision
 
+## SLAM (Simultaneous Localization And Mapping)
+- LiDAR SLAM
+	- Step 1. Map initialization
+	- Step 2. Pose Tracking: ICP (Iterative closest point), optimize for camera pose;
+	- Step 3. Map optimization: occupancy grid map;
+	- Iterate 2 and 3.
+<img src="/CV/images/icp.png" alt="drawing" width="450"/>
+
+- Visual SLAM
+	- Step 1. Initialization; (essential matrix, triangulation)
+	- Step 2. Pose estimation: (feature tracking, pose-only BA)
+	- Visual SLAM by SfM
+	- PTAM (Parallel Tracking and Mapping)
+		- Real time camera pose tracking
+		- An offline thread for map maintenance: when key frame comes, do a BA
+- Relocalization
+	- Tracking can lose due to various reasons
+- Robustness Techniques
+	- Drifting
+
 ## Depth, Stereo
 - Stereo:
 	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep- Stereo: Learning to predict new views from the world’s imagery. CVPR'16
