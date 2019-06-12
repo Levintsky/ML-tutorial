@@ -4,7 +4,8 @@
 - mAP (average of the maximum precisions at different recall values)
 
 ## Benchmarks
-- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV 2014
+- **PASCAL-VOC**: M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. IJCV'10
+- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
 
 ## Detection
 - A very good blog (Lilian Weng, OpenAI):
@@ -72,19 +73,42 @@
 			- Improves YOLO by using default bounding boxes
 		- C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
 	- YOLO:
+		- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
+			- http://pjreddie.com/darknet/
 		- **YOLO**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
+<img src="/CV/images/yolo1.png" alt="drawing" width="500"/>
+<img src="/CV/images/yolo1-2.png" alt="drawing" width="500"/>
+
+			- https://pjreddie.com/darknet/yolo/
 			- Pretrain CNN.
-			- S x S cells, each cell predict the object is the object center is in the cell.
+			- S x S cells, each cell predict the object if the object center is in the cell. (S=7, B=2, C=20 in Yolo-v1)
 			- Each cell:
-				- Location of B Bboxes;
+				- Location of B Bboxes: 5 predictions (x, y, w, h, confidence)
 				- Confidence score: p = p(object) * IoU(pred, truth)
-				- p(class = ci | contains an object)
-		- **YOLOv2**: J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
-			- Multi-scale training
-			- DarkNet-19
-		- YOLO9000: Rich Dataset Training
+				- Each grid cell makes 1 prediction: p(class = ci | contains an object). Regardless of bounding boxes number b.
+			- Final output: 7 x 7 x 30
+		- **YOLO9000**: J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
+<img src="/CV/images/yolo2.png" alt="drawing" width="500"/>
+
+			- Better:
+				- Batch normalization
+				- Multi-scale training: finetune on 448 x 448
+				- Anchor boxes: input 416 x 416, 32 downsampling, output 13 x 13
+				- Dimension Clusters
+				- Direct location prediction
+				- Multi-Scale training
+			- Faster:
+				- VGG-16, DarkNet-19
+			- Stronger
+				- Hierarchical classification
 		- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
-	- RetinaNet
+<img src="/CV/images/yolo3.png" alt="drawing" width="500"/>
+
+			- 320 x 320: 22ms
+			- Logistic regression:
+			- Class prediction:
+			- No hard negative mining;
+			- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
 - Proposals:
 	- **Selective Search**: J. R. Uijlings, K. E. van de Sande, T. Gevers, and A. W. Smeulders. Selective search for object recognition. IJCV 2013
 	- **EdgeBoxes**:  C. L. Zitnick and P. Dollar. Edge boxes: Locating object proposals from edges. ECCV 2014
