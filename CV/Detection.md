@@ -11,6 +11,9 @@
 - A very good blog (Lilian Weng, OpenAI):
 	- https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
 - FAIR, previous MSR:
+![alt text][logo]
+[logo] <img src="/CV/images/rcnn-family-summary.png" alt="drawing" width="650"/>
+
 	- **R-CNN**: R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. CVPR 2014
 		- Pretrain CNN;
 		- **Selective search**: 2000 proposals;
@@ -21,6 +24,9 @@
         - **Hard Negative Mining**;
 		- **PASCAL-VOC: 54.2% (2007), 50.2% (2010), 49.6% (2012)**
 		- **ImageNet 200: 31.4%**
+		<img src="/CV/images/RCNN.png" alt="drawing" width="600"/>
+		<img src="/CV/images/RCNN-eqn.png" alt="drawing" width="600"/>
+
 	- **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV 2014
 	- **Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV 2015
 		- **Selective search**
@@ -31,6 +37,9 @@
 		- Loss 2: L1-loss; bounding-box regression (x, y, w, h);
 		- **PASCAL-VOC: 66.9% (2007), 66.1% (2010), 65.7% (2012)**
 		- **COCO: mAP 35.9%**
+		<img src="/CV/images/fast-RCNN.png" alt="drawing" width="600"/>
+		<img src="/CV/images/fast-RCNN-eqn.png" alt="drawing" width="600"/>
+
 	- **Faster R-CNN**: S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. NIPS 2015 
 		- https://github.com/mahyarnajibi/fast-rcnn-torch
 		- https://github.com/chenyuntc/simple-faster-rcnn-pytorch
@@ -50,6 +59,9 @@
 				- Apply conv4/5 (backbone only has conv1/2/3)
 		- Iterate 1 and 2;
 		- **PASCAL-VOC mAP: 73.2% (2007), 73.2% (2012)**
+		<img src="/CV/images/faster-RCNN.png" alt="drawing" width="600"/>
+		<img src="/CV/images/faster-RCNN-eqn.png" alt="drawing" width="500"/>
+	
 	- **R-FCN**: J. Dai, Y. Li, K. He, and J. Sun. R-fcn: Object detection via region-based fully convolutional networks. NIPS 2016
 	- **FPN**: T.-Y. Lin, P. Dollar, R. Girshick, K. He, B. Hariharan, and S. Belongie. Feature pyramid networks for object detection. CVPR 2017.
 	- **Mask R-CNN**: ICCV 2017
@@ -62,10 +74,16 @@
 			- COCO instance segmentation
 			- COCO keypoint
 		- Speed: 5fps
+		<img src="/CV/images/mask-rcnn.png" alt="drawing" width="600"/>
+		<img src="/CV/images/mask-rcnn-eqn.png" alt="drawing" width="500"/>
+
 	- **Detectron**: https://github.com/facebookresearch/Detectron
 	- **RetinaNet**: Tsung-Yi Lin Priya Goyal Ross Girshick Kaiming He Piotr Dollar. Focal Loss for Dense Object Detection. ICCV 2017
 		- Reduce loss for well-classified classes; focus on harder classes;
 		- Foreground/background imbalance;
+		- gamma=1: normal Cross-Entropy, in paper, alpha=0.25, gamma=2 is used.
+		<img src="/CV/images/focal-loss.png" alt="drawing" width="500"/>
+
 - One-stage detector:
 	- https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
 	- SSD:
@@ -80,9 +98,6 @@
 		- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
 			- http://pjreddie.com/darknet/
 		- **YOLO**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
-<img src="/CV/images/yolo1.png" alt="drawing" width="500"/>
-<img src="/CV/images/yolo1-2.png" alt="drawing" width="500"/>
-
 			- https://pjreddie.com/darknet/yolo/
 			- Pretrain CNN.
 			- S x S cells, each cell predict the object if the object center is in the cell. (S=7, B=2, C=20 in Yolo-v1)
@@ -91,9 +106,10 @@
 				- Confidence score: p = p(object) * IoU(pred, truth)
 				- Each grid cell makes 1 prediction: p(class = ci | contains an object). Regardless of bounding boxes number b.
 			- Final output: 7 x 7 x 30
-		- **YOLO9000**: J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
-<img src="/CV/images/yolo2.png" alt="drawing" width="500"/>
+		<img src="/CV/images/yolo1.png" alt="drawing" width="500"/>
+		<img src="/CV/images/yolo1-2.png" alt="drawing" width="500"/>
 
+		- **YOLO9000**: J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
 			- Better:
 				- Batch normalization
 				- Multi-scale training: finetune on 448 x 448
@@ -105,14 +121,16 @@
 				- VGG-16, DarkNet-19
 			- Stronger
 				- Hierarchical classification
-		- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
-<img src="/CV/images/yolo3.png" alt="drawing" width="500"/>
+		<img src="/CV/images/yolo2.png" alt="drawing" width="400"/>
 
+		- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
 			- 320 x 320: 22ms
 			- Logistic regression:
 			- Class prediction:
 			- No hard negative mining;
 			- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
+		<img src="/CV/images/yolo3.png" alt="drawing" width="250"/>
+
 - Proposals:
 	- **Selective Search**: J. R. Uijlings, K. E. van de Sande, T. Gevers, and A. W. Smeulders. Selective search for object recognition. IJCV 2013
 	- **EdgeBoxes**:  C. L. Zitnick and P. Dollar. Edge boxes: Locating object proposals from edges. ECCV 2014
