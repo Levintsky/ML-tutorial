@@ -14,14 +14,14 @@
 	- Self-attention
 		- 1D local attention
 		- 2D local attention: raster-scan of sub-blocks, within each sub-block, raster-scan again for pixels
-<img src="/Generative/images/image-transformer1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/image-transformer1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
 
 ## DeepMind
 - **PixelRNN** Oord, A. v. d., Kalchbrenner, N., and Kavukcuoglu, K. Pixel recurrent neural networks. In ICML, 2016.
 - **PixelCNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
-<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
+	<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
 
 - Kalchbrenner, Nal, Espeholt, Lasse, Simonyan, Karen, Oord, Aaron van den, Graves, Alex, and Kavukcuoglu, Koray. Neural machine translation in linear time. 2016
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
@@ -29,15 +29,15 @@
 	- Conditional indenpendence, parallel
 	- Sample complexity reduces O(N) to O(logN)
 	- Coarse-to-fine: 4 x 4 to 8 x 8 to 16 x 16 to ... to 256 x 256
-<img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
 
 - Flow: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling
 	- 3-bit to 8-bit, most significant first
-<img src="/Generative/images/fidelity.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/fidelity.png" alt="drawing" width="400"/>
 
 ## OpenAI
 - Kingma, Diederik P and Salimans, Tim. Improving variational inference with inverse autoregressive flow. In NIPS, 2016.
@@ -48,7 +48,8 @@
 	- PixelCNNLayer-up:
 		- u-list: 5 * gated-resnet
 		- ul-list: 5 * gated-resnet
-<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
+		<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
+
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
 	- code available;
 	- Use the technique **SNAIL** proposed in [Mishra, Nikhil, Rohaninejad, Mostafa, Chen, Xi, and Abbeel, Pieter. A simple neural attentive meta-learner. In NIPS 2017 Workshop on Meta-Learning, 2017.]
@@ -58,8 +59,9 @@
 	- Key modules:
 		- Residual blocks (Causal-Conv + ResNet + ELU)
 		- Attention blocks
-<img src="/Generative/images/pixel-snail1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/pixel-snail2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/pixel-snail1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/pixel-snail2.png" alt="drawing" width="400"/>
+
 - R. Child, S. Gray, A. Radford, I. Sutskever. Generating Long Sequences with Sparse Transformers. 2019
 	- Observation: 128-layer image transformer on Cifar, very sparse attention
 		- Two variations:
@@ -74,11 +76,11 @@
 		- Text (EnWik8)
 		- ImageNet (64x64)
 		- Classical music
-<img src="/Generative/images/sparse-transformer1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/sparse-transformer1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="400"/>
 
 ## Others
-- - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
+- **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
 <img src="/Generative/images/pixel-vae1.png" alt="drawing" width="400"/>
 <img src="/Generative/images/pixel-vae2.png" alt="drawing" width="400"/>
 
