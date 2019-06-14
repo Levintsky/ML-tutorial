@@ -43,13 +43,17 @@
 
 ## Classification, Action Recognition
 - FAIR:
-	- Non-local Neural Networks, 2018
+	- X Wang, R Girshick, A Gupta, K He. Non-local Neural Networks, CVPR'18
 		- Video classification
 		- THW 512 dimension, attention with every other location
 		- Softmax sum;
-	- SlowFast Networks for Video Recognition, CVPR 2019 Submission
+		<img src="/CV/images/non-local.png" alt="drawing" width="500"/>
+
+	- C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV 2019 Submission
 		- Slow pathway: 2 fps;
 		- Fast pathway: 16 fps; lightweight computation; (same net, small hyper)
+		<img src="/CV/images/slowfast.png" alt="drawing" width="500"/>
+
 	- New attention:
 		- https://github.com/takatosp1/pytorch-CycleGAN-and-pix2pix/commit/d10e1f6b090ee5efb1fa5418c47ba16389f4d4b4#diff-ac5552fd6a3c08ad22387efbe42d137d
 - AML:
@@ -62,17 +66,26 @@
 		- Experiments:
 			- Kinetics: 71.8% (ip-CSN, res-101), 71.3% (ir-CSN, res-101), 70.6% (ResNet3D); 78.5% top1, 93.4% top5 with Sports1M pretrain
 			- Sports1M: 75.5%, 92.7% (ir-CSN res-152)
+		<img src="/CV/images/csn1.png" alt="drawing" width="450"/>
+		<img src="/CV/images/csn2.png" alt="drawing" width="450"/>
+
 - Google:
 	- **S3D**: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV 2018
 		- I3D (inflate the 2D conv in Inception)
-		- Bottom-Heavy-I3D
-		- Top-Heavy-I3D (faster, more accurate)
+		- Bottom-Heavy-I3D: 3D temporal-conv at bottom, 2D-Conv at top
+		- Top-Heavy-I3D: 2D-conv at bottom, 3D temporal-conv at top (faster, more accurate)
 		- S3D: 7x7x7 Conv -> 1x7x7 Conv + 7x1x1 Conv
 		- With optical-flow: 77.2% top-1, 93.0% top-5
-	- VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV 2019
+		<img src="/CV/images/s3d-1.png" alt="drawing" width="600"/>
+		<img src="/CV/images/s3d-2.png" alt="drawing" width="600"/>
+	
+	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV 2019
 		- Vector-quantization: S3D for feature extraction;
 		- WordPiece for text (ASR API);
 		- BLEU-4 1.42 to 5.42 on YouCook II;
+		<img src="/CV/images/videobert-1.png" alt="drawing" width="600"/>
+		<img src="/CV/images/videobert-2.png" alt="drawing" width="600"/>
+
 - MSRA:
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
