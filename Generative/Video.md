@@ -16,3 +16,4 @@
 	<img src="/Generative/images/mocogan.png" alt="drawing" width="500"/>
 
 ## Misc
+- Caroline Chan, Shiry Ginosar, Tinghui Zhou, Alexei Efros. **Everybody Dance Now**. 2018

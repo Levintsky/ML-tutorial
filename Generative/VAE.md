@@ -14,16 +14,17 @@
 	- Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013.
 		- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
 		- **BCE** (Binary Cross Entropy) for reconstruction (mnist)
-<img src="/Generative/images/vae-elbo.png" alt="drawing" width="500"/>
-<img src="/Generative/images/vae-elbo2.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/vae-elbo.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/vae-elbo2.png" alt="drawing" width="500"/>
 
 	- Conditional VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS 2014
-<img src="/Generative/images/vae-semi1.png" alt="drawing" width="350"/>
-<img src="/Generative/images/vae-semi2.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/vae-semi1.png" alt="drawing" width="350"/>
+	<img src="/Generative/images/vae-semi2.png" alt="drawing" width="500"/>
 
 	- Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
 - **DeepMind**:
 	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. **Stochastic backpropagation and approximate inference in deep generative models**. ICML 2014
+	- D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
 	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. In ICML, 2016.
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
 		- https://github.com/ericjang/draw
@@ -41,15 +42,16 @@
 - **Google-Brain**:
 	- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
 	- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
+		<img src="/Generative/images/vae-impossible.png" alt="drawing" width="500"/>
+
 		- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
 		- Inductive biases:
 			- Gaussian encoder: mean, log-variance
 			- Bernoulli decoder: 10 latent dimension 
-<img src="/Generative/images/vae-impossible.png" alt="drawing" width="500"/>
 
 - **OpenAI**:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. arXiv preprint arXiv:1611.02731, 2016.
-	- Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16
+	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16
 - **FAIR**:
 	- Bouchacourt, D., Tomioka, R., and Nowozin, S. Multi-level variational autoencoder: Learning disentangled representations from grouped observations. AAAI'18.
 	- **Non-Adversarial Mapping with VAEs**, NIPS'18

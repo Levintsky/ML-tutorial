@@ -32,6 +32,7 @@
 passing for quantum chemistry. 2017
 	- Combine GNN and Convolutional-GNN
 - Kipf, T. N. and Welling, M. Semi-supervised classification with graph convolutional networks. ICLR 2017
+- Capsule Graph Neural Network. ICLR'19
 
 ## Applications
 - Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018

@@ -21,7 +21,7 @@ reinforcement learning: introduces REINFORCE algorithm
 - SOA
 	- Levine & Koltun (2013). Guided policy search: deep RL with importance sampled policy gradient (unrelated to later discussion of guided policy search)
 	- **TRPO**: Schulman, L., Moritz, Jordan, Abbeel (2015). Trust region policy optimization: deep RL with natural policy gradient and adaptive step size
-		- Theoretical Guarantee of monotonic improvement if KL() constraint satisfied
+		- Theoretical Guarantee of monotonic improvement if KL constraint satisfied
 		- Surrogate loss
 		- Line search to make the best stepsize update;
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
@@ -29,7 +29,7 @@ reinforcement learning: introduces REINFORCE algorithm
 		<img src="/RL/images/trpo2.png" alt="drawing" width="600"/>
 		<img src="/RL/images/trpo3.png" alt="drawing" width="600"/>
 		<img src="/RL/images/trpo4.png" alt="drawing" width="600"/>
-		<img src="/RL/images/trpo5.png" alt="drawing" width="600"/>
+		<img src="/RL/images/trpo5.png" alt="drawing" width="400"/>
 
 	- **PPO** Schulman, Wolski, Dhariwal, Radford, Klimov (2017). Proximal policy optimization algorithms: deep RL with importance sampled policy gradient
 	- **GAE**: High-dimensional continuous control with generalized advantage estimation, Schulman et al. ‘16

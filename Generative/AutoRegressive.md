@@ -11,28 +11,36 @@
 	- code available in tensor2tensor
 	- Block of local attention
 	- [h, 3w, d], 3w: width + channel, d=256
+	<img src="/Generative/images/image-transformer1.png" alt="drawing" width="400"/>
+
 	- Self-attention
 		- 1D local attention
 		- 2D local attention: raster-scan of sub-blocks, within each sub-block, raster-scan again for pixels
-		<img src="/Generative/images/image-transformer1.png" alt="drawing" width="400"/>
 		<img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
 
 ## DeepMind
-- **PixelRNN** Oord, A. v. d., Kalchbrenner, N., and Kavukcuoglu, K. Pixel recurrent neural networks. In ICML, 2016.
-- **PixelCNN**, Aaron van den Oord, Nal Kalchbrenner, Lasse Espeholt, Oriol Vinyals, Alex Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
+- **PixelRNN** A. v. d. Oord, N Kalchbrenner and K Kavukcuoglu. Pixel recurrent neural networks. ICML'16.
+- **PixelCNN**, A v d Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
 	<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
 
-- Kalchbrenner, Nal, Espeholt, Lasse, Simonyan, Karen, Oord, Aaron van den, Graves, Alex, and Kavukcuoglu, Koray. Neural machine translation in linear time. 2016
+- **ByteNet**: N Kalchbrenner, L Espeholt, K Simonyan, A v d Oord, A Graves, and K Kavukcuoglu. Neural machine translation in linear time. 2016
+<img src="/Generative/images/bytenet.png" alt="drawing" width="550"/>
+
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
 - Reed, S., Oord, A., Kalchbrenner, N., Colmenarejo, S. G., Wang, Z., Chen, Y., Belov, D., and Freitas, N. Parallel multiscale autoregressive density estimation. ICML'17.
 	- Conditional indenpendence, parallel
 	- Sample complexity reduces O(N) to O(logN)
-	- Coarse-to-fine: 4 x 4 to 8 x 8 to 16 x 16 to ... to 256 x 256
+	- Coarse-to-fine: 4 x 4 first
+	- Upscale 6 times to 8 x 8 to 16 x 16 to ... to 256 x 256
 	<img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
 	<img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
 
-- Flow: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
+- **MAF**: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
+	- Order matters!
+	<img src="/Generative/images/maf1.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/maf2.png" alt="drawing" width="500"/>
+
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling
@@ -40,15 +48,61 @@
 	<img src="/Generative/images/fidelity.png" alt="drawing" width="400"/>
 
 ## OpenAI
-- Kingma, Diederik P and Salimans, Tim. Improving variational inference with inverse autoregressive flow. In NIPS, 2016.
+- **IAF**: D Kingma and T Salimans. Improving variational inference with inverse autoregressive flow. NIPS'16
 - **Pixel-CNN++**, ICLR 2017
-	- Mixture of Logistic distribution;
+	<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
+	<img src="/Generative/images/pixelcnnpp2.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/pixelcnnpp3.png" alt="drawing" width="400"/>
+
+	- Loss function design: cdf observes Mixture of Logistic distribution, with decomposed r-g-b;
     - Implementation: Blind spot;
 	- UNet shortcut;
-	- PixelCNNLayer-up:
+	- Architecture:
+		- Init 1-layer shifted Conv-2D
+		```python
+		u_list  = [self.u_init(x)]
+		ul_list = [self.ul_init[0](x) + self.ul_init[1](x)]
+		```
+		- up_layers: (PixelCNNLayer-up x 3), down-scale twice with a 1-layer conv
+		```python
+		for i in range(3):
+		    # resnet block
+		    u_out, ul_out = self.up_layers[i](u_list[-1], ul_list[-1])
+		    u_list  += u_out
+		    ul_list += ul_out
+		    if i != 2: 
+		        # downscale (only twice)
+		        u_list  += [self.downsize_u_stream[i](u_list[-1])]
+		        ul_list += [self.downsize_ul_stream[i](ul_list[-1])]
+		```
+		- u_stream: 5 * gated-resnet
+		- ul_stream: 5 * gated-resnet
+		- Two streams interleaves during forward every time
+		```python
+		u_list, ul_list = [], []
+		for i in range(self.nr_resnet):
+		    u  = self.u_stream[i](u)
+		    ul = self.ul_stream[i](ul, a=u)
+		    u_list  += [u]
+		    ul_list += [ul]
+		return u_list, ul_list
+		```
+		- down_layers: (PixelCNNLayer-down x 3), down-scale twice with a 1-layer conv
+		```python
+		u  = u_list.pop()
+		ul = ul_list.pop()
+		for i in range(3):
+		    # resnet block
+		    u, ul = self.down_layers[i](u, ul, u_list, ul_list)
+		    # upscale (only twice)
+		    if i != 2 :
+		        u  = self.upsize_u_stream[i](u)
+		        ul = self.upsize_ul_stream[i](ul)
+		x_out = self.nin_out(F.elu(ul))
+		```
 		- u-list: 5 * gated-resnet
 		- ul-list: 5 * gated-resnet
-		<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
+		- Two streams interleaves during forward every time
 
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
 	- code available;
@@ -77,7 +131,7 @@
 		- ImageNet (64x64)
 		- Classical music
 		<img src="/Generative/images/sparse-transformer1.png" alt="drawing" width="400"/>
-		<img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="300"/>
 
 ## Others
 - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
@@ -85,6 +139,7 @@
 <img src="/Generative/images/pixel-vae2.png" alt="drawing" width="400"/>
 
 ## Audio
+- B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15
 - **Wave-net**: Van Den Oord, A., Dieleman, S., Zen, H., Simonyan, K., Vinyals, O., Graves, A., Kalchbrenner, N., Senior, A., and Kavukcuoglu, K. Wavenet: A generative model for raw audio. 2016
 - Mehri, S., Kumar, K., Gulrajani, I., Kumar, R., Jain, S., Sotelo, J., Courville, A., and Bengio, Y. Samplernn: An unconditional end-to-end neural audio generation model. 2016
 - Nal Kalchbrenner, Erich Elsen, Karen Simonyan, Seb Noury, Norman Casagrande, Edward Lockhart, Florian Stimberg, Aaron van den Oord, Sander Dieleman, and Koray Kavukcuoglu. Efficient neural audio synthesis. 2018
