@@ -3,3 +3,18 @@
 ## Google Brain
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
 	- https://github.com/google-research/disentanglement_lib
+
+## DeepMind
+- **CPC**: van den Oord et al., Representation Learning with Contrastive Predictive Coding (2018)
+	- Architecture
+	<img src = '/Weak-Unsupervised/images/cpc.png' width = '500px'>
+
+	- Prediction
+	<img src = '/Weak-Unsupervised/images/cpc2.png' width = '500px'>
+
+	- Loss: InfoNCE
+	<img src = '/Weak-Unsupervised/images/cpc3.png' width = '500px'>
+
+	- Application in vision:
+		- ResNet-101: g-enc
+		<img src = '/Weak-Unsupervised/images/cpc4.png' width = '500px'>

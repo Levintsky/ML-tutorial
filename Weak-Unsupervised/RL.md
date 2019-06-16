@@ -11,6 +11,13 @@
 - **UNREAL**: M. Jaderberg et. al., Reinforcement Learning with Unsupervised Auxiliary Tasks. (2016)
 	- Pixel control: maximizse change in pixel intensity
 	- Reward prediction
+- **ToMnet**: N C. Rabinowitz, F Perbet, H. Francis Song, C Zhang, S. M. A Eslami, M Botvinick. Machine Theory of Mind. ICML'18
+	<img src = '/Weak-Unsupervised/images/tomnet.png' width = '500px'>
+
+	- Predict 1. immediate action (policy); 2. consumed object (goal); 3. trajectory (successor representation).
+	- VAE on character embedding: generate mean and variance;
+	- DVIB for penalty
+	<img src = '/Weak-Unsupervised/images/tomnet2.png' width = '500px'>
 
 ## Intrinsic Reward
 - Curious Agent

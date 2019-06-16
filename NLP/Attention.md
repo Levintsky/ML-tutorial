@@ -2,13 +2,13 @@
 
 ## Transformer
 - **Transformer**: Attention is all you need. NIPS 2017
-<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
-<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
-
 	- A very good intro: http://jalammar.github.io/illustrated-transformer/
 	- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
 	- https://github.com/Kyubyong/transformer
 	- Pytorch: https://github.com/jadore801120/attention-is-all-you-need-pytorch
+	<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
+	<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
+
 - **ELMO**: Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer. Deep contextualized word representations. NAACL 2018
 	- https://allennlp.org/elmo
 	- ELMo (Embeddings from Language Models)

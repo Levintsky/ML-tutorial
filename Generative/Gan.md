@@ -33,16 +33,16 @@
 	- **GAN**: I Goodfellow, J Pouget-Abadie, M Mirza, B Xu, D Warde-Farley, S Ozair, A Courville, and Y Bengio. Generative adversarial nets. NIPS'14.
 	- W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. In ICLR, 2018.
 	- A Odena, C Olah, and J Shlens. Conditional image synthesis with auxiliary classifier GANs. In ICML, 2017.
-	- BEGAN: Boundary Equilibrium Generative Adversarial Networks
+	- **BEGAN**: D Berthelot, T Schumm, L Metz. BEGAN: Boundary Equilibrium Generative Adversarial Networks. 2017
+		- Maintain a balance between the generator and discriminator losses
+		<img src = '/Generative/images/began.png' width = '500px'>
+
 	- Augustus Odena, Jacob Buckman, Catherine Olsson, Tom B. Brown, Christopher Olah, Colin Raffel, and Ian Goodfellow. Is generator conditioning causally related to GAN performance? ICML 2018.
 	- **WGAN-GP**: Gulrajani, I., Ahmed, F., Arjovsky, M., Dumoulin, V., and Courville, A. C. Improved training of Wasserstein gans. NIPS 2017.
 		- Code: https://github.com/igul222/improved_wgan_training
-		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
-		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
-		- W-GAN is Earth-Mover-Distance
-		- Kantorovich-Rubinstein duality
+		- **Difficulty** with weight constraint: Capacity underuse; Exploding and vanishing gradients; 
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
-		<img src = '/Generative/images/wgan-gp.png' height = '600px'>
+		<img src = '/Generative/images/wgan-gp.png' width = '600px'>
 
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN
@@ -79,14 +79,24 @@
 	- E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS 2015.
 	- **DC-GAN**: A Radford, L Metz, and S Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. In ICLR, 2016.
 	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
+	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
+		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
+		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
+		- W-GAN is Earth-Mover-Distance
+		- Kantorovich-Rubinstein duality
 	- Y. Taigman, A. Polyak, and L. Wolf. Unsupervised cross-domain image generation. In ICLR, 2017.
 - OpenAI:
 	- T Salimans, I Goodfellow, W Zaremba, V Cheung, A Radford, and X Chen. Improved techniques for training gans. NIPS 2016
 		- https://github.com/openai/improved_gan
 		- **Perception Score** as evaluation
-	- X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, and P Abbeel. **Infogan**: Interpretable representation learning by information maximizing generative adversarial nets. NIPS 2016
-	<img src = '/Generative/images/info-gan1.png' height = '60px'>
-	<img src = '/Generative/images/info-gan2.png' height = '200px'>
+		- Feature matching: immediate layer of discriminator
+		- Minibatch discrimination
+		- History averaging
+		- One-sided label smoothing: replace 0, 1 with .1, .9; smooth only on positive examples in discriminator;
+		- Virtual batch normalization: each example x is normalized based on the statistics collected on a reference batch
+	- X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, and P Abbeel. **Infogan**: Interpretable representation learning by information maximizing generative adversarial nets. NIPS'16
+		<img src = '/Generative/images/info-gan1.png' width = '400px'>
+		<img src = '/Generative/images/info-gan2.png' width = '550px'>
 
 		- A Q(c|x) to encode x to attributes c, Q shared base-conv with D
 		- System Design: 4 modules: G, Shared Bottom CNN, D, Q
@@ -115,6 +125,10 @@
 	- Marc G. Bellemare, Ivo Danihelka, Will Dabney, Shakir Mohamed, Balaji Lakshminarayanan, Stephan Hoyer, and Remi Munos. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
 - **NVIDIA**:
 	- **Progressive**: Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen. Progressive growing of GANs for improved quality, stability, and variation. ICLR 2018.
+		- https://zhuanlan.zhihu.com/p/30637133
+		<img src = '/Generative/images/pgan1.png' width = '500px'>
+		<img src = '/Generative/images/pgan2.png' width = '500px'>
+
 - Conditional-GAN:
 	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. arXiv preprint arXiv:1411.1784, 2014.
 	- Takeru Miyato and Masanori Koyama. cGANs with projection discriminator. In ICLR, 2018.
@@ -162,7 +176,6 @@ to image generation with attentional generative adversarial networks. In CVPR, 2
 - Merel, J., Tassa, Y., Srinivasan, S., Lemmon, J., Wang, Z., Wayne, G., and Heess, N. Learning human behaviors from motion capture by adversarial imitation. arXiv preprint arXiv:1707.02201, 2017.
 
 ## Misc
-- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. In NIPS, 2016.
 - Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. In ECCV, 2014.
 - Louppe, G. and Cranmer, K. Adversarial variational optimization
 of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.

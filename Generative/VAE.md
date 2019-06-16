@@ -29,6 +29,7 @@
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
 		- https://github.com/ericjang/draw
 		- https://github.com/chenzhaomin123/draw_pytorch
+	- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
 	- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR 2017
 		- Better disentangle
 		- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation

@@ -2,13 +2,19 @@
 
 ## Embedding
 - Discrete token, carries a lot of meaning (not like pixels in vision)
-- Word2Vec:
-	- T. Mikolov et al. Efficient estimation of word representations in vector space. arXiv 2013
+- P Bojanowski and E Grave and A Joulin and T Mikolov. Enriching Word Vectors with Subword Information. TACL'17
+<img src = '/Weak-Unsupervised/images/fastText.png' width = '500px'>
+
 - Joulin et al. Bag of tricks for efficient text classification, ACL 2016
 	- https://fasttext.cc/
 - Sentences:
-	- A. Vaswani et al. Attention is all you need, NIPS 2017
-	- **BERT**: J. Devlin et al. BERT: Pre-training of deep bidirectional transformers for language understanding. 2018
+	- A. Vaswani et al. Attention is all you need, NIPS'17
+	<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
+	<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
+
+	- **BERT**: J. Devlin et al. BERT: Pre-training of deep bidirectional transformers for language understanding. ACL'19
+	<img src = '/Weak-Unsupervised/images/bert.png' width = '500px'>
+
 - Generative models:
 	- Auto-regressive (RNN/CNN/Transformers) are good at generating short sentences.
 		- I. Serban et al. Building end-to-end dialogue systems using generative hierarchical neural network models. AAAI 2016
@@ -36,9 +42,13 @@
 		- Nearest neighbor for refinements
 		- Orthogonality
 	- G. Lample et al. Phrase-based and neural unsupervised machine translation, EMNLP 2018
-- R. Jozefowicz et. al. Exploring the Limits of Language Modeling (2016)
-- van den Oord, A., et al. WaveNet: A Generative Model for Raw Audio. arxiv (2016). 
-- **CPC**: van den Oord et al., Representation Learning with Contrastive Predictive Coding (2018)
+- van den Oord, A., et al. WaveNet: A Generative Model for Raw Audio. NIPS'16
+	- Dilated Conv
+	<img src = '/NLP/images/wavenet1.png' width = '500px'>
+
+	- ResNet
+	<img src = '/NLP/images/wavenet2.png' width = '500px'>
+
 - **Work**:
 	- Unsup on several applications
 	- Word embeddings

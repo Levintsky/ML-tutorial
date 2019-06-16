@@ -1,8 +1,19 @@
 # Language Modeling
 
+## Benchmark
+- https://gluebenchmark.com/leaderboard/
+
 ## Semi-supervised (SOA)
 - Google NLP:
-	- **BERT**: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+	- **GMNT**: Y. Wu, M. Schuster, Z. Chen, Q.V. Le, M. Norouzi, et al. Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. 2016
+		<img src="/NLP/images/gmnt.png" alt="drawing" width="500"/>
+
+		- WordPiece for Korean, Japanese
+		<img src="/NLP/images/gmnt2.png" alt="drawing" width="500"/>
+
+	- **BERT**: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. ACL'19
+		<img src = '/Weak-Unsupervised/images/bert.png' width = '600px'>
+
 		- **Bidirectional Transformer** as model (L=12 for Base, L=24 for Large);
 		- **Embedding**: sum of following three;
 			- **WorldPiece** (Wu et al 2016): 30,000 tokens;
@@ -25,6 +36,7 @@
 		- Iteration: 1m -> 8,599
 - OpenAI:
 	- **GPT**: Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. Improving Language Understanding by Generative Pre-Training. 2018
+		- https://github.com/openai/finetune-transformer-lm
 		- Causal Transformer;
 		- Semi-supervised fine-tuning;
 		- Pretrain: BooksCorpus dataset;
@@ -36,8 +48,8 @@
 		- 48 layers of transformer
 - Amazon:
 	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
-<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
-<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
+	<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
+	<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
 
 ## Character Level
 - Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH 2010
