@@ -13,7 +13,6 @@
 		- Alexey Dosovitskiy, Vladlen Koltun
 		- Win the 2nd Vizdoom competition
 
-
 ## Codes 
 - GA3C:
 	- https://github.com/tgangwani/GA3C-DeepNavigation

@@ -7,10 +7,10 @@
 ## DeepMind
 - **CPC**: van den Oord et al., Representation Learning with Contrastive Predictive Coding (2018)
 	- Architecture
-	<img src = '/Weak-Unsupervised/images/cpc.png' width = '500px'>
+	<img src = '/Weak-Unsupervised/images/cpc.png' width = '400px'>
 
 	- Prediction
-	<img src = '/Weak-Unsupervised/images/cpc2.png' width = '500px'>
+	<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400px'>
 
 	- Loss: InfoNCE
 	<img src = '/Weak-Unsupervised/images/cpc3.png' width = '500px'>

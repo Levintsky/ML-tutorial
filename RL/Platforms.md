@@ -1,6 +1,7 @@
 # Platforms and Systems
 
 ## Platforms
+- **ALE**: Bellemare, M. G.; Naddaf, Y.; Veness, J.; and Bowling, M. The arcade learning environment: An evaluation platform for general agents. JAIR'13'
 - **FAIR**:
 	- ELF: https://github.com/pytorch/ELF
 	- House3D: https://github.com/facebookresearch/House3D
@@ -20,11 +21,13 @@
 	- Malmo. IJCAI 2016
 
 ## Learning Engines
-- Gorilla: A. Nair, P. Srinivasan, S. Blackwell, C. Alcicek, R. Fearon, V. Alessandro
+- **Gorilla**: A. Nair, P. Srinivasan, S. Blackwell, C. Alcicek, R. Fearon, V. Alessandro
 De Maria, Panneershelvam, M. Suleyman, C. Beattie, S. Petersen, S. Legg, V. Mnih, K. Kavukcuoglu, and D. Silver. Massively parallel methods for deep reinforcement learning view publication. ICML, 2015.
-- IMPALA: https://github.com/deepmind/scalable_agent
+- **IMPALA**: L Espeholt, H Soyer, R Munos, K Simonyan, V Mnih, T Ward, Y Doron, V Firoiu, T Harley, I Dunning, S Legg, K Kavukcuoglu. IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures
+	- https://github.com/deepmind/scalable_agent
+	<img src="/RL/images/impala.png" alt="drawing" width="700"/>
+
 - Dopamine: https://github.com/google/dopamine
 
 ## Algorithms
-- Y. Li and D. Schuurmans. Mapreduce for parallel reinforcement learning. Recent
-advances in reinforcement learning, 2011.
+- Y. Li and D. Schuurmans. Mapreduce for parallel reinforcement learning. Recent advances in reinforcement learning, 2011.

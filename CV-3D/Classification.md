@@ -4,6 +4,7 @@
 - https://github.com/timzhang642/3D-Machine-Learning
 
 ## SOA
+- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 - **Chamfer distance** (a strong baseline)
 	- Sum of closest point distances
 	- Asymmetric

@@ -14,6 +14,7 @@ J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning App
 	- One-Shot Visual Imitation Learning via Meta-Learning: https://github.com/tianheyu927/mil
 - Chelsea Finn, http://rail.eecs.berkeley.edu/nips_demo.html, MAML on RL
 - Berkeley, One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning
+- D Pathak, P Mahmoudieh, G Luo, P Agrawal, D Chen, Y Shentu, E Shelhamer, J Malik, A A. Efros, T Darrell. Zero-Shot Visual Imitation. ICLR'18
 
 ## Hard Atari Games
 - Y Aytar, T Pfaff, D Budden, T L Paine, Z Wang, N Freitas. **Playing hard exploration games by watching YouTube (DeepMind)**, NIPS 2018

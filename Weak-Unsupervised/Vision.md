@@ -9,7 +9,7 @@
 		- Colorful Image Colorization, ECCV 2016
 	- Predict image rotation
 		- S. Gidaris et al. “Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
-	- M. Caron et al. “Deep clustering for unsupervised learning of visual features”, ECCV 2018
+	- M. Caron et al. Deep clustering for unsupervised learning of visual features, ECCV 2018
 		- Extract CNN and run K-means
 		- Train on cluster id;
 - Videos:
@@ -71,13 +71,14 @@
 	- Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV 2016
 
 ## DeepMind
-- Attentional ShapeContextNet for Point Cloud Recognition. NIPS 2016
-	- 
-- Neural scene representation and rendering Science 2019
+- Neural scene representation and rendering. Science 2018
+	- https://deepmind.com/blog/neural-scene-representation-and-rendering/
 	- Input: images and viewpoints; output: a query new image
 	- **Generative Query Network (GQN)**: learns an internal representation
 		- t-SNE
 		- VAE will fail
 		- Factorized-representation
+		<img src = '/Weak-Unsupervised/images/gqn.png' width = '500px'>
+
 	- g(x|vq, r) = int g(x,z|vq, r)dz, z: latent variable
 	- Env: rooms with multiple objects (DML?), allow agent to act, robotic-arm;

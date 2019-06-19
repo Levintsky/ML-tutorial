@@ -23,7 +23,7 @@
 
 	- Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
 - **DeepMind**:
-	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. **Stochastic backpropagation and approximate inference in deep generative models**. ICML 2014
+	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML 2014
 	- D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
 	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. In ICML, 2016.
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015

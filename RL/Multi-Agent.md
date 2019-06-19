@@ -5,9 +5,9 @@
 	- **MADDPG**
 	- https://github.com/openai/multiagent-particle-envs
 	- Discrete case:
-<img src = '/RL/images/maddpg1.png' height = '120px'>
+	<img src = '/RL/images/maddpg1.png' height = '120px'>
 	- Continuous case:
-<img src = '/RL/images/maddpg2.png' height = '170px'>
+	<img src = '/RL/images/maddpg2.png' height = '170px'>
 
 ## DeepMind
 - M Jaderberg,, W Czarnecki, I Dunning, L Marris, G Lever, A G Castañeda, C Beattie, N C. Rabinowitz, Ari S. Morcos, A Ruderman, N Sonnerat, T Green, L Deason, Joel Z. Leibo, D Silver, D Hassabis, K Kavukcuoglu, T Graepel. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
