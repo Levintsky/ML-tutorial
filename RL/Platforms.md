@@ -9,6 +9,10 @@
 	- Open-AI gym: https://github.com/openai/gym
 	- Robo-School: https://github.com/openai/roboschool
 	- Mujoco: https://github.com/openai/mujoco-py
+	- Retro Contest: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
+		- https://contest.openai.com/2018-1/
+		- https://github.com/openai/retro#gym-retro
+		- Classic video games to gym environment
 - **DeepMind**:
 	- DeepMind-Lab
 		- 3D, first-person
@@ -18,11 +22,11 @@
 - **VizDoom**: ViZDoom: A Doom-based AI research platform for visual reinforcement learning. CIG 2016
 	- Poland Team.
 - **Minecraft**:
-	- Malmo. IJCAI 2016
+	- **Malmo**: Johnson M., Hofmann K., Hutton T., Bignell D. The Malmo Platform for Artificial Intelligence Experimentation. IJCAI'16
+- **Retro**: N Bhonker, S Rozenberg and I Hubara. Playing SNES in the Retro Learning Environment. ICLR'17
 
 ## Learning Engines
-- **Gorilla**: A. Nair, P. Srinivasan, S. Blackwell, C. Alcicek, R. Fearon, V. Alessandro
-De Maria, Panneershelvam, M. Suleyman, C. Beattie, S. Petersen, S. Legg, V. Mnih, K. Kavukcuoglu, and D. Silver. Massively parallel methods for deep reinforcement learning view publication. ICML, 2015.
+- **Gorilla**: A. Nair, P. Srinivasan, S. Blackwell, C. Alcicek, R. Fearon, V. Alessandro De Maria, Panneershelvam, M. Suleyman, C. Beattie, S. Petersen, S. Legg, V. Mnih, K. Kavukcuoglu, and D. Silver. Massively parallel methods for deep reinforcement learning view publication. ICML, 2015.
 - **IMPALA**: L Espeholt, H Soyer, R Munos, K Simonyan, V Mnih, T Ward, Y Doron, V Firoiu, T Harley, I Dunning, S Legg, K Kavukcuoglu. IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures
 	- https://github.com/deepmind/scalable_agent
 	<img src="/RL/images/impala.png" alt="drawing" width="700"/>

@@ -7,7 +7,6 @@
 	- tanh, sigmoid gated Activation (similar to Pixel-CNN?);
 	- Residual and Skip
 
-
 ## Classical
 - Classical: Concatenate http://hts.sp.nitech.ac.jp/?Download
 - HMM-based Speech Synthesis System (HTS, code available): http://hts.sp.nitech.ac.jp/

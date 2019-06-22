@@ -20,6 +20,8 @@
 	- O Vinyals, A Toshev, S Bengio, D Erhan. **Show and Tell**: Lessons learned from the 2015 MSCOCO Image Captioning Challenge. 2015
 - Attention:
 	- K. Xu, J. Ba, R. Kiros, K. Cho, A. C. Courville, R. Salakhutdinov, R. S. Zemel, and Y. Bengio. Show, attend and tell: Neural image caption generation with visual attention. In ICML, 2015.
+- **NMN**: Jacob Andreas, Marcus Rohrbach, Trevor Darrell, and Dan Klein. Deep compositional question answering
+with neural module networks. CVPR'16.
 
 ## Reasoning
 - **VCR**: Visual Commonsense Reasoning. CVPR'19

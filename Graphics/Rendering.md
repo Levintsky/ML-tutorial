@@ -7,6 +7,7 @@
 
 - M Loper, M Black. OpenDR: An approximate differentiable renderer. ECCV'14
 - Inverse Problems in Computer Vision Using Adversarial Imagination Priors. 2016
+- **NGPM**: Neurally-Guided Procedural Models: Amortized Inference for Procedural Graphics Programs using Neural Networks. NIPS 2016
 - Tung, H.-Y. F., Harley, A. W., Seto, W., and Fragkiadaki, K. Adversarial inverse graphics networks: Learning 2d-to3d lifting and image-to-image translation from unpaired supervision. ICCV'17.
 - Differentiable Image Parameterizations. 2018
 	- https://distill.pub/2018/differentiable-parameterizations/
@@ -23,6 +24,14 @@
 <img src="/Graphics/images/dc_ign.png" alt="drawing" width="600"/>
 
 - J Wu, JB Tenenbaum, P Kohli. Neural scene de-rendering. CVPR'17
+- **Learning to Infer Graphics Programs from Hand-Drawn Images**, NIPS 2018
+	- Noisy input (data augmentation)
+	- Combining NGPM [4] and Attend-Infer-Repeat [5]
+	- Learn a loss function?
+	- DSL [11]
+	- Prefer shorter program (with explicit reward)
+	- Sketch-tool [1] to refine program
+-  3D-Aware Scene Manipulation via Inverse Graphics, NIPS 2018
 
 ## Toolbox
 - https://github.com/tensorflow/graphics

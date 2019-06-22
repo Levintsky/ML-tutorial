@@ -1,5 +1,10 @@
 # Generative Models
 
+## Benchmark
+- **Omniglot**
+	- Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic program induction. Science, 2015.
+	- Lake, B. M., Ullman, T. D., Tenenbaum, J. B., and Gershman, S. J. Building machines that learn and think like people. Behavioral and Brain Sciences, 40, 2017.
+
 ## Recurrent, Progressive
 - 3D:
 	- **3D-PRNN**:
@@ -24,7 +29,6 @@
 		- Reconstruction loss: Ls for (dx, dy)
 		- Lp for (p1, p2, p3)
 		- KL: z with zero-mean, unit-variance Gaussian
-- Ha, D. and Eck, D. Oph a neural representation of sketch drawings. ICLR'18
 - Xie, N., Hachiya, H., and Sugiyama, M. Artist agent: A reinforcement learning approach to automatic stroke generation in oriental ink painting. ICML 2012
 	- Ink Painting.
 	- Brush as an agent. Train with REINFORCE.
@@ -51,27 +55,12 @@
 - Sequential Attend, Infer, Repeat: Generative Modelling of Moving Objects, NIPS 2018
 
 ## MIT: Compositional, Inverse Graphics
-- **Learning to Infer Graphics Programs from Hand-Drawn Images**, NIPS 2018
-	- Noisy input (data augmentation)
-	- Combining NGPM [4] and Attend-Infer-Repeat [5]
-	- Learn a loss function?
-	- DSL [11]
-	- Prefer shorter program (with explicit reward)
-	- Sketch-tool [1] to refine program
 - Emilio Parisotto, Abdel rahman Mohamed, Rishabh Singh, Lihong Li, Dengyong Zhou, and Pushmeet Kohli. Neuro-symbolic program synthesis. In arXiv, 2016.
 - Wu, J., Lu, E., Kohli, P., Freeman, B., and Tenenbaum, J. Learning to see physics via visual de-animation. In NIPS, 2017a.
--  3D-Aware Scene Manipulation via Inverse Graphics, NIPS 2018
 
 ## Inverse Graphics
 - Jampani, V., Nowozin, S., Loper, M., and Gehler, P. V. The informed sampler: A discriminative approach to bayesian inference in generative computer vision models. CVIU'15.
-- **NMN**: Jacob Andreas, Marcus Rohrbach, Trevor Darrell, and Dan Klein. Deep compositional question answering
-with neural module networks. CVPR'16.
-- Tuan Anh Le, Atilim Gunes Baydin, and Frank D. Wood. Inference compilation and universal probabilistic programming. CoRR'16.
-- Stanford:
-	- **NGPM**: Neurally-Guided Procedural Models: Amortized Inference for Procedural Graphics Programs using Neural Networks. NIPS 2016
-- **Omniglot**
-	- Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic program induction. Science, 2015.
-	- Lake, B. M., Ullman, T. D., Tenenbaum, J. B., and Gershman, S. J. Building machines that learn and think like people. Behavioral and Brain Sciences, 40, 2017.
+- Tuan Anh Le, Atilim Gunes Baydin, and Frank D. Wood. Inference compilation and universal probabilistic programming. CoRR'16.	
 - Nair, V., Susskind, J., and Hinton, G. E. Analysis-by synthesis by learning to invert generative black boxes. In ICANN, 2008.
 - **Sketch**:
 	- Image-to-Markup Generation with Coarse-to-Fine Attention. ICML 2017

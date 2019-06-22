@@ -147,8 +147,6 @@
 - Attention:
 	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text
 to image generation with attentional generative adversarial networks. In CVPR, 2018.
-- Feature Learning:
-	- Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
 - Inference:
 	- Dumoulin, V., Belghazi, I., Poole, B., Lamb, A., Arjovsky, M., Mastropietro, O., and Courville, A. Adversarially learned inference.
 - Domain adaptation:
@@ -166,6 +164,11 @@ to image generation with attentional generative adversarial networks. In CVPR, 2
 		- Reconstruction loss
 		<img src = '/Generative/images/pixel-gan.png' height = '100px'>
 
+## Feature Learning
+- Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
+- Deepak: Unsupervised Feature Learning by Image Inpainting using GANs, CVPR 2016
+	- https://github.com/pathak22/context-encoder
+
 ## Variational
 - Sebastian Nowozin, Botond Cseke, and Ryota Tomioka. **f-GAN**: Training generative neural samplers using variational divergence minimization. NIPS 2016
 
@@ -182,5 +185,3 @@ of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.
 
 ## Codes
 - StarGAN: https://github.com/yunjey/StarGAN
-- Deepak: Unsupervised Feature Learning by Image Inpainting using GANs, CVPR 2016
-	- https://github.com/pathak22/context-encoder
