@@ -9,6 +9,8 @@
 	- Open-AI gym: https://github.com/openai/gym
 	- Robo-School: https://github.com/openai/roboschool
 	- Mujoco: https://github.com/openai/mujoco-py
+	- Continuous control: Y Duan, X Chen, R Houthooft, J Schulman, P Abbeel. Benchmarking Deep Reinforcement Learning for Continuous Control. ICML'16
+		- https://github.com/rll/rllab
 	- Retro Contest: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
 		- https://contest.openai.com/2018-1/
 		- https://github.com/openai/retro#gym-retro

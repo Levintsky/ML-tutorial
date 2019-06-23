@@ -19,13 +19,22 @@
 - Off-Policy
 	- Importance-Sampling
 - Legacy
-	- Williams (1992). Simple statistical gradient-following algorithms for connectionist
-reinforcement learning: introduces REINFORCE algorithm
+	- Williams (1992). Simple statistical gradient-following algorithms for connectionist reinforcement learning: introduces REINFORCE algorithm
 	- Baxter & Bartlett (2001). Infinite-horizon policy-gradient estimation: temporally decomposed policy gradient (not the first paper on this! see actor-critic section later)
 	- Peters & Schaal (2008). Reinforcement learning of motor skills with policy gradients: very accessible overview of optimal baselines and natural gradient
 - SOA
 	- Levine & Koltun (2013). Guided policy search: deep RL with importance sampled policy gradient (unrelated to later discussion of guided policy search)
-	- **TRPO**: Schulman, L., Moritz, Jordan, Abbeel (2015). Trust region policy optimization: deep RL with natural policy gradient and adaptive step size
+	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+		- SVG(0): model free
+		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
+
+		- SVG(1): one-step dynamics
+		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
+
+		- SVG(inf)
+		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+
+	- **TRPO**: Schulman, L., Moritz, Jordan, Abbeel. Trust region policy optimization: deep RL with natural policy gradient and adaptive step size. ICML'15
 		- Theoretical Guarantee of monotonic improvement if KL constraint satisfied
 		- Surrogate loss
 		- Line search to make the best stepsize update;
