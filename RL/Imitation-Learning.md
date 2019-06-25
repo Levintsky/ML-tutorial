@@ -2,11 +2,12 @@
 
 ## Behavior Cloning
 - Problem: distribution mismatch
-- A Giusti, J Guzzi, D C. Ciresan, F He, J P. Rodríguez, F Fontana, M Faessler, C Forster,
-J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
+- A Giusti, J Guzzi, D C. Ciresan, F He, J P. Rodríguez, F Fontana, M Faessler, C Forster, J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
 
 ## DAgger
 - Interactive
+- Learning Transferable Policies for Monocular Reactive MAV Control
+- X. Guo, S. Singh, H. Lee. Deep Learning for Real-Time Atari Game Play Using Offline MCTS Planning.
 
 ## Meta, One-Shot
 - Rocky Duan, One-Shot Imitation Learning, NIPS 2017
@@ -30,9 +31,10 @@ J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning App
 - Teacher-Student Curriculum Learning, NIPS 2017
 
 ## Autonomous Driving
-- End-to-end Driving via Conditional Imitation Learning
+- F Codevilla, M Muller, A Lopez, V Koltun, A Dosovitskiy. End-to-end Driving via Conditional Imitation Learning. ICRA'18
 
 ## Demonstration
+- X B Peng, P Abbeel, S Levine, M v d Panne. DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills. SIGRAPH'18
 - Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations
 - Deep Q-learning from Demonstrations
 - Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards
@@ -46,16 +48,13 @@ J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning App
 	- Update reward in rollouts with predicted reward from discrimator D as log(D(s',a'))
 	- Update policy with the fake reward
 	<img src="/RL/images/gail.png" alt="drawing" width="500"/>
-
+	
 - InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations
 - End-to-End Differentiable Adversarial Imitation Learning
 - J. Ho, J. K. Gupta, and S. Ermon. Model-free imitation learning with policy optimization.
 ICML 2016.
 
-## Papers
-- DAgger
-	- Learning Transferable Policies for Monocular Reactive MAV Control
-	- X. Guo, S. Singh, H. Lee. Deep Learning for Real-Time Atari Game Play Using Offline MCTS Planning.
+## Papers	
 - LSTM
 	- Learning real manipulation tasks from virtual demonstrations using LSTM
 	- Sim-to-Real Robot Learning from Pixels with Progressive Nets
