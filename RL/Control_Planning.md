@@ -6,7 +6,7 @@
 
 ## Monte-Carlo Tree Search
 - Approach
-<img src="/RL/images/mcts.png" alt="drawing" width="500"/>
+<img src="/RL/images/mcts.png" alt="drawing" width="400"/>
 
 - Legacy
 	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
@@ -49,21 +49,17 @@
  	- Haarnoja, Zhou, Abbeel, L. (2018). Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor.
 	- Levine. (2018). Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review
 
+## Legacy
+- Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes, 2007
+
 ## SOA
-- Memory-based control with recurrent neural networks
-- Model-Free Episodic Control
-- TREEQN AND ATREEC: DIFFERENTIABLE TREE PLANNING FOR DEEP REINFORCEMENT LEARNING
-- A Controller-Recognizer Framework: How necessary is recognition for control?
-- Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning
-
-## Planning
-- The Predictron: End-To-End Learning and Planning, ICML 2017
-
-## Physics
-- Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics
+- N Heess, J J Hunt, T P Lillicrap, D Silver. Memory-based control with recurrent neural networks. NIPS'15
+- C Blundell, B Uria, A Pritzel, Y Li, A Ruderman, J Z Leibo, J Rae, D Wierstra, D Hassabis. Model-Free Episodic Control
+- G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
+- M Moczulski, K Xu, A Courville, K Cho. A Controller-Recognizer Framework: How necessary is recognition for control? ICML'16
+- Y Chebotar, K Hausman, M Zhang, G Sukhatme, S Schaal, S Levine. Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning. ICML'17
+- D Silver, H v Hasselt, M Hessel, T Schaul, A Guez, T Harley,
+G Dulac-Arnold, D Reichert, N Rabinowitz, A Barreto, T Degris. The Predictron: End-To-End Learning and Planning, ICML'17
 
 ## Theory
 - On the Sample Complexity of the Linear Quadratic Regulator
-
-## Legacy
-- Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes, 2007

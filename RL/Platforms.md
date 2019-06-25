@@ -29,13 +29,13 @@
 
 ## Distributed RL
 - A summary:
-<img src="/RL/images/dis-rl-history.png" alt="drawing" width="600"/>
+<img src="/RL/images/dist-rl-history.png" alt="drawing" width="600"/>
 
 - 2013/2015: DQN
-<img src="/RL/images/dis-rl-dqn.png" alt="drawing" width="600"/>
+<img src="/RL/images/dist-rl-dqn.png" alt="drawing" width="600"/>
 
 - **Gorila**: A. Nair, P. Srinivasan, S. Blackwell, C. Alcicek, R. Fearon, V. Alessandro De Maria, Panneershelvam, M. Suleyman, C. Beattie, S. Petersen, S. Legg, V. Mnih, K. Kavukcuoglu, and D. Silver. Massively parallel methods for deep reinforcement learning view publication. ICML, 2015.
-<img src="/RL/images/dis-rl-gorila.png" alt="drawing" width="600"/>
+<img src="/RL/images/dist-rl-gorila.png" alt="drawing" width="600"/>
 
 - **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 <img src="/RL/images/a3c.png" alt="drawing" width="600"/>

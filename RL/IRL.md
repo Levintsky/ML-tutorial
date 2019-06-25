@@ -16,8 +16,7 @@
 <img src="/RL/images/irl7.png" alt="drawing" width="600"/>
 
 ## SOA
-- Oxford: Maximum Entropy Deep Inverse Reinforcement Learning 2015
-- Maximum Entropy Inverse Reinforcement Learning, AAAI'08
+- M Wulfmeier, P Ondruska, I Posner. Maximum Entropy Deep Inverse Reinforcement Learning. ICML'16
 - C Finn, S Levine, P Abbeel. Guided Cost Learning: Deep Inverse Optimal Control via Policy Optimization. ICML'16
 - Wulfmeier et al. Deep Maximum Entropy Inverse Reinforcement Learning. MaxEnt inverse RL using deep reward functions. arXiv'16
 - C Finn, P Christiano, P Abbeel, S Levine. A Connection Between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models. 2016

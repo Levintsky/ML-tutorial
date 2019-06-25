@@ -1,5 +1,21 @@
 # Multi-Task/Transfer Learning
 
+## Sergey Levine
+- lec-17, 18
+- **Forward** transfer: train on one task, transfer to a new task
+	- Just try it and hope for the best
+	- Architectures for transfer: progressive networks
+	- Finetune on the new task
+- Multi-task transfer: train on many tasks, transfer to a new task
+	- Generate highly randomized source domains
+	- Model-based reinforcement learning
+	- Model distillation
+	- Contextual policies
+	- Modular policy networks
+- Multi-task meta-learning: learn to learn from many tasks
+	- RNN-based meta-learning
+	- Gradient-based meta-learning
+
 ## Multi-Task
 - Berkeley, Modular Multitask Reinforcement Learning with Policy Sketches
 
@@ -20,3 +36,4 @@
 		- Nature-CNN: 3-layer, PPO
 		- IMPALA: better
 		- Improve generalization: dropout, L2 regularization, data augmentation, environment stochasticity
+- K Kansky, T Silver, D A. Mély, M Eldawy, M Lázaro-Gredilla, X Lou, N Dorfman, S Sidor, S Phoenix, D George. Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics. 2017

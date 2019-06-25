@@ -16,24 +16,12 @@
 	- Better Convergence
 	- Effective in high-dimensional or continuous action spaces
 	- Can learn **stochastic** policies
-- Off-Policy
-	- Importance-Sampling
 - Legacy
-	- Williams (1992). Simple statistical gradient-following algorithms for connectionist reinforcement learning: introduces REINFORCE algorithm
+	- **REINFORCE**: Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. 1992
 	- Baxter & Bartlett (2001). Infinite-horizon policy-gradient estimation: temporally decomposed policy gradient (not the first paper on this! see actor-critic section later)
 	- Peters & Schaal (2008). Reinforcement learning of motor skills with policy gradients: very accessible overview of optimal baselines and natural gradient
 - SOA
 	- Levine & Koltun (2013). Guided policy search: deep RL with importance sampled policy gradient (unrelated to later discussion of guided policy search)
-	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
-		- SVG(0): model free
-		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
-
-		- SVG(1): one-step dynamics
-		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
-
-		- SVG(inf)
-		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
-
 	- **TRPO**: Schulman, L., Moritz, Jordan, Abbeel. Trust region policy optimization: deep RL with natural policy gradient and adaptive step size. ICML'15
 		- Theoretical Guarantee of monotonic improvement if KL constraint satisfied
 		- Surrogate loss
@@ -66,7 +54,7 @@
 	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
-	<img src="/RL/images/gae.png" alt="drawing" width="500"/>
+	<img src="/RL/images/gae.png" alt="drawing" width="600"/>
 
 	- **Q-Prop**: sample-efficient policy- gradient with an off-policy critic: policy gradient with Q-function control variate
 	<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
@@ -121,6 +109,16 @@
 		- PCVI: Tabular (model-based MDP)
 		- PCQL: Q-learning (model-free)
 - Continuous:
+	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+		- SVG(0): model free
+		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
+
+		- SVG(1): one-step dynamics
+		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
+
+		- SVG(inf)
+		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
 		- https://github.com/ghliu/pytorch-ddpg

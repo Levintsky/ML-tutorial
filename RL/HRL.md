@@ -2,8 +2,8 @@
 
 ## HRL
 - Feudal Network https://github.com/dmakian/feudal_networks
-- A Deep Hierarchical Approach to Lifelong Learning in Minecraft, AAAI 2017
-- HIERARCHICAL AND INTERPRETABLE SKILL ACQUI- SITION IN MULTI-TASK REINFORCEMENT LEARNING
+- A Deep Hierarchical Approach to Lifelong Learning in Minecraft, AAAI'17
+- T Shu, C Xiong, R Socher. Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning. ICLR'18
 - Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation
 - Strategic Attentive Writer for Learning Macro-Actions
 

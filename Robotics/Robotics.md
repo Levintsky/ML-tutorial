@@ -29,7 +29,7 @@
 		<img src="/Robotics/images/dexterity.png" alt="drawing" width="600"/>
 		<img src="/Robotics/images/dexterity3.png" alt="drawing" width="600"/>
 
-	- Problem setup: Manipulate objects using a Shaow Dexterous Hand
+	- Problem setup: Manipulate objects using a Shadow Dexterous Hand
 	- **Hardware**: a humanoid robotic hand with 24 degrees of freedom (DoF) actuated by 20 pairs of agonist–antagonist tendons
 	<img src="/Robotics/images/dexterity2.png" alt="drawing" width="600"/>
 

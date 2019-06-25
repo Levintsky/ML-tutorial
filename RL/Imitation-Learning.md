@@ -6,8 +6,8 @@
 
 ## DAgger
 - Interactive
-- Learning Transferable Policies for Monocular Reactive MAV Control
-- X. Guo, S. Singh, H. Lee. Deep Learning for Real-Time Atari Game Play Using Offline MCTS Planning.
+- S Daftry, J. A Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
+- X. Guo, S. Singh, H. Lee. Deep Learning for Real-Time Atari Game Play Using Offline MCTS Planning. NIPS'14
 
 ## Meta, One-Shot
 - Rocky Duan, One-Shot Imitation Learning, NIPS 2017
@@ -38,7 +38,9 @@
 - Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations
 - Deep Q-learning from Demonstrations
 - Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards
-- Yueh-Hua Wu, Nontawat Charoenphakdee, Han Bao, Voot Tangkaratt, Masashi Sugiyama. Imitation Learning from Imperfect Demonstration. ICML'19
+- Reinforcement Learning from Imperfect Demonstrations. 
+- Y Gao, Huazhe(Harry) Xu, J Lin, F Yu, S Levine, T Darrell. Reinforcement Learning from Imperfect Demonstrations. Imitation Learning from Imperfect Demonstration. ICML'18 
+- Yueh-Hua Wu, Nontawat Charoenphakdee, Han Bao, Voot Tangkaratt, Masashi Sugiyama. Reinforcement Learning from Imperfect Demonstrations. ICML'19
 
 ## Adversarial
 - **GAIL**: Jonathan Ho, Stefano Ermon. Generative Adversarial Imitation Learning
@@ -51,8 +53,7 @@
 	
 - InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations
 - End-to-End Differentiable Adversarial Imitation Learning
-- J. Ho, J. K. Gupta, and S. Ermon. Model-free imitation learning with policy optimization.
-ICML 2016.
+- J. Ho, J. K. Gupta, and S. Ermon. Model-free imitation learning with policy optimization. ICML'16.
 
 ## Papers	
 - LSTM

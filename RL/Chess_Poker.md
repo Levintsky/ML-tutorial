@@ -27,20 +27,19 @@
 	- Y. Tian and Y. Zhu. Better computer go player with neural network and long- term prediction. arxiv, 2015.
 	- Y Tian, J Ma, Q Gong, S Sengupta, Z Chen, J Pinkerton, L Zitnick. ELF OpenGo: an analysis and open reimplementation of AlphaZero. ICML'19
 - Legacy:
-	- P. Baudis and J. loup Gailly. Pachi: State of the art open source go program. Advances in Computer Games, 2012.
-	- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML, 2015.
 	- M. Enzenberger. The integration of a priori knowledge into a go playing neural network. URL: http://www.markus-enzenberger.de/neurogo.html, 1996.
-	- M. Enzenberger. an open-source framework for board games and go engine based on monte carlo tree search. Computational Intelligence and AI in Games, IEEE Transactions on., 2010.
-	- C. Maddison, A. Huang, I. Sutskever, and D. Silver. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
-	- D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML, 2014.
+	- M. Enzenberger. an open-source framework for board games and go engine based on monte carlo tree search. IEEE Transactions on Computational Intelligence and AI in Games, 2010.
+	- **Pachi**: P. Baudis and J. loup Gailly. Pachi: State of the art open source go program. Advances in Computer Games, 2012.
 	- D. Silver, Temporal-Difference Search in Computer Go, 2012
+	- C. Maddison, A. Huang, I. Sutskever, and D. Silver. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
+	- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML'15.
 
 # Gammon
 - Gerald Tesauro. Temporal difference learning and td-gammon. Communications of the ACM, 38(3):58–68, 1995.
 
 # Poker (Texas Hod'em)
 - Imperfect information Game
-- CFR (Counterfactural Regret Minimization)
+- **CFR** (Counterfactural Regret Minimization)
 	- Zinkevich, M., Johanson, M., Bowling, M., & Piccione, C. Regret minimization in games with incomplete information, NIPS 2008
 	- Lanctot, M., Waugh, K., Zinkevich, M., & Bowling, M, Monte Carlo sampling for regret minimization in extensive games, NIPS 2009
 	- Johanson, M., Bard, N., Lanctot, M., Gibson, R., & Bowling, M, Efficient Nash equilibrium approximation through Monte Carlo counterfactual regret minimization, 2012
@@ -59,7 +58,7 @@
 	- Daniel Kunkle and Gene Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC ’07
 	- Silviu Radu. Rubik’s cube can be solved in 34 quarter turns. http://cubezzz.dyndns.org/drupal/?q=node/view/92, Jul 2007.
 	- Michael Reid. Superflip requires 20 face turns. http://www.math.rwth-aachen.de/~Martin.Schoenert/Cube-Lovers/michael_reid__superflip_requires_20_face_turns.html, Jan 1995.
-	- Tomas Rokicki. Twenty-two moves suffice for rubik’s cubeR . The Mathematical Intelligencer, 32(1):33–40, 2010.
+	- Tomas Rokicki. Twenty-two moves suffice for rubik’s cubeR. The Mathematical Intelligencer, 32(1):33–40, 2010.
 	- Tomas Rokicki. God’s number is 26 in the quarter-turn metric. http://www.cube20.org/qtm/, Aug 2014
 	- Tomas Rokicki, Herbert Kociemba, Morley Davidson, and John Dethridge. The diameter of the rubik’s cube group is twenty. SIAM Review, 56(4):645–670, 2014.
 	-  Morwen Thistlethwaite. Thistlethwaite’s 52-move algorithm. https://www.jaapsch.net/puzzles/thistle.htm, Jul 1981.
