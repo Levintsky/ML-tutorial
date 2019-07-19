@@ -11,8 +11,7 @@
 - A very good blog (Lilian Weng, OpenAI):
 	- https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
 - FAIR, previous MSR:
-![alt text][logo]
-[logo] <img src="/CV/images/rcnn-family-summary.png" alt="drawing" width="650"/>
+	<img src="/CV/images/rcnn-family-summary.png" alt="drawing" width="650"/>
 
 	- **R-CNN**: R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. CVPR 2014
 		- Pretrain CNN;
@@ -25,7 +24,7 @@
 		- **PASCAL-VOC: 54.2% (2007), 50.2% (2010), 49.6% (2012)**
 		- **ImageNet 200: 31.4%**
 		<img src="/CV/images/RCNN.png" alt="drawing" width="600"/>
-		<img src="/CV/images/RCNN-eqn.png" alt="drawing" width="600"/>
+		<img src="/CV/images/RCNN-eqn.png" alt="drawing" width="400"/>
 
 	- **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV 2014
 	- **Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV 2015
@@ -38,7 +37,7 @@
 		- **PASCAL-VOC: 66.9% (2007), 66.1% (2010), 65.7% (2012)**
 		- **COCO: mAP 35.9%**
 		<img src="/CV/images/fast-RCNN.png" alt="drawing" width="600"/>
-		<img src="/CV/images/fast-RCNN-eqn.png" alt="drawing" width="600"/>
+		<img src="/CV/images/fast-RCNN-eqn.png" alt="drawing" width="500"/>
 
 	- **Faster R-CNN**: S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. NIPS 2015 
 		- https://github.com/mahyarnajibi/fast-rcnn-torch
@@ -91,9 +90,9 @@
 		<img src="/CV/images/ssd.png" alt="drawing" width="600"/>
 		<img src="/CV/images/ssd-eqn.png" alt="drawing" width="600"/>
 
-			- Improves YOLO by using default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
-			- Multiscalex
-		- C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
+		- Improves YOLO by using default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+		- Multiscalex
+		- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
 	- YOLO:
 		- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
 			- http://pjreddie.com/darknet/
@@ -129,7 +128,7 @@
 			- Class prediction:
 			- No hard negative mining;
 			- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
-		<img src="/CV/images/yolo3.png" alt="drawing" width="250"/>
+		<img src="/CV/images/yolo3.png" alt="drawing" width="200"/>
 
 - Proposals:
 	- **Selective Search**: J. R. Uijlings, K. E. van de Sande, T. Gevers, and A. W. Smeulders. Selective search for object recognition. IJCV 2013
@@ -143,7 +142,14 @@
 	- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
 
 ## Pose Estimation
-- OpenPose: https://github.com/CMU-Perceptual-Computing-Lab/openpose
+- **DeepPose**: A Toshev, C Szegedy. DeepPose: Human Pose Estimation via Deep Neural Networks. CVPR'14
+- S Wei and V Ramakrishna, T Kanade and Y Sheikh. Convolutional pose machines. CVPR'16
+- Z Cao, T Simon, S Wei, Y Sheikh. Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields. CVPR'17
+	- Key idea: bottom-up, part affinity fields (PAFs)
+- T Simon and H Joo and I Matthews and Y Sheikh. Hand Keypoint Detection in Single Images using Multiview Bootstrapping. CVPR'17
+- **OpenPose**: OpenPose: realtime multi-person 2D pose estimation using Part Affinity Field. 2018
+	-  https://github.com/CMU-Perceptual-Computing-Lab/openpose
+- H Joo, T Simon, Y Sheikh. Total Capture: A 3D Deformation Model for Tracking Faces, Hands, and Bodies. CVPR'18
 
 ## Semantic Segmentation
 - **U-Net**, Olaf Ronneberger, Philipp Fischer, Thomas Brox: Convolutional Networks for Biomedical Image Segmentation, MICCAI 2015
@@ -151,5 +157,13 @@
 	- https://github.com/wkentaro/pytorch-fcn
 	- https://github.com/shelhamer/fcn.berkeleyvision.org
 	- Pyramid (like SSD)
+- **DeepLab v3**: L Chen, G Papandreou, F Schroff, H Adam. Rethinking Atrous Convolution for Semantic Image Segmentation. 2017
+	- https://github.com/tensorflow/models/tree/master/research/deeplab
+- ResNet-DUC: P Wang, P Chen, Y Yuan, D Liu, Z Huang, X Hou, G Cottrell. Understanding Convolution for Semantic Segmentation. WAVC'18
+	- **Dilated Conv**
 - Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
 	- No bounding-box, NMS, anchor;
+
+## Face Detection and Recognition
+- Y Taigman, M Yang, M Ranzato, L Wolf. DeepFace: Closing the Gap to Human-Level Performance in Face Verification. CVPR'14
+- F Schroff, D Kalenichenko, J Philbin. FaceNet: A Unified Embedding for Face Recognition and Clustering. CVPR'15

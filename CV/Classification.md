@@ -5,7 +5,7 @@
 - **VGGNet** K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition (VGGNet): arXiv:1409.1556, 2014
 - **NIN** Lin, Min, Chen, Qiang, and Yan, Shuicheng (NIN): Network in network. Arxiv, 1312.4400, 2013.
 - **FAIR**:
-	- **ResNet**: Deep Residual Learning for Image Recognition. CVPR 2016
+	- **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR 2016
 		- downample: conv1x1 (stride=2) - BN
 		- Basic block:
 			- x -> Conv3x3 - BN - ReLU - Conv3x3 - BN -> out
@@ -25,14 +25,14 @@
 			- **Initial Conv**: conv1 (stride=2, BN, ReLU) - Max-Pool -> 64 x 56 x 56
 			- Res1 (64) - Res2 (down 112 x 28 x 28) - Res3 (down 256 x 14 x 14, down) - Res4 (down 512 x 7 x 7)
 			- Average-pool (7x7) - fc1000
-	- **ResNext**: Aggregated Residual Transformations for Deep Neural Networks. CVPR 2017
+	- **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR 2017
 		- ImageNet 2nd 2016
 		- **Grouped-Convolution**
 		- i. same spatial size: same hyper-parameter;
 		- ii. down-sample by 2, width increase by 2; (each layer similar computation)
 		- Conv - Batch-Norm - ReLU;
 		- Short-cut: ReLU after adding shortcut;
-	- **DenseNet**: Densely Connected Convolutional Networks. CVPR 2018
+	- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR 2018
 		- https://github.com/bamos/densenet.pytorch.
 	- Kaiming He, Ross Girshick, Piotr Dollar. Rethinking ImageNet Pre-training. CVPR 2019
 - **Google-Vision**:

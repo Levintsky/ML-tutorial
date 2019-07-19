@@ -2,6 +2,8 @@
 
 ## Behavior Cloning
 - Problem: distribution mismatch
+- P Abbeel, A Ng. Apprenticeship Learning via Inverse Reinforcement Learning. ICML'04
+- B D. Ziebart, A Maas, J Bagnell, and A K. Dey. Maximum Entropy Inverse Reinforcement Learning. AAAI'08
 - A Giusti, J Guzzi, D C. Ciresan, F He, J P. Rodríguez, F Fontana, M Faessler, C Forster, J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
 
 ## DAgger
@@ -51,11 +53,22 @@
 	- Update policy with the fake reward
 	<img src="/RL/images/gail.png" alt="drawing" width="500"/>
 	
-- InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations
+- **InfoGAIL**: Li, Yunzhu, Song, Jiaming, and Ermon, Stefano. InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations. NIPS'17
+	- Multimodal, assign each demonstration to each expert (fixed number)
 - End-to-End Differentiable Adversarial Imitation Learning
 - J. Ho, J. K. Gupta, and S. Ermon. Model-free imitation learning with policy optimization. ICML'16.
 
-## Papers	
+## Multi-Agent
+- Legacy:
+	- Chernova, Sonia and Veloso, Manuela. Multiagent collaborative task learning through imitation.
+- H M Le, Y Yue, P Carr, and P Lucey. Coordinated multi-agent imitation learning. ICML'17
+- E Zhan, S Zheng, Y Yue, P Lucey. Generative Multi-Agent Behavioral Cloning. ICML'18
+	<img src="/RL/images/gmabc.png" alt="drawing" width="500"/>
+	
+	- Novel problem setting;
+	- Variational-RNN;
+
+## Papers
 - LSTM
 	- Learning real manipulation tasks from virtual demonstrations using LSTM
 	- Sim-to-Real Robot Learning from Pixels with Progressive Nets

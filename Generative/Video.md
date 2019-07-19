@@ -17,3 +17,5 @@
 
 ## Misc
 - Caroline Chan, Shiry Ginosar, Tinghui Zhou, Alexei Efros. **Everybody Dance Now**. 2018
+- T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
+- D. Chen, J. Liao, L. Yuan, N. Yu, and G. Hua. Coherent online video style transfer. In IEEE International Conference on Computer Vision (ICCV), 2017.

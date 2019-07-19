@@ -1,5 +1,9 @@
 # Variational Auto Encoder
 
+## Basics from Large-Scale Variational Inference
+- Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
+- Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
+
 ## VAE-Basics
 - A Very good tutorial:
 	- https://www.jianshu.com/p/bfa6b5947cd9
@@ -89,6 +93,9 @@
 - Good summaries:
 	- https://chuansongme.com/n/1628774042621
 - Fabius, O. and van Amersfoort, J. R. Variational recurrent auto-encoders. ICLR'15
+- **VRNN**: Chung, Junyoung, Kastner, Kyle, Dinh, Laurent, Goel,
+Kratarth, Courville, Aaron C., and Bengio, Yoshua. A
+recurrent latent variable model for sequential data. NIPS'15
 - Samuel R. Bowman, Luke Vilnis, Oriol Vinyals, Andrew M. Dai, Rafal Jozefowicz, Samy Bengio. Generating Sentences From a Continuous Spaces, ICLR'16
 - Neural Variational Inference for Text Processing, ICML'16
 - Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16

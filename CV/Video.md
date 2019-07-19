@@ -96,7 +96,8 @@
 - **P3D**: Z. Qiu, T. Yao, , and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
 - **ARTNet**: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
 - K. Hara, H. Kataoka, and Y. Satoh. Can spatiotemporal 3d cnns retrace the history of 2d cnns and imagenet? CVPR 2018
-- **MFNet**: Y. Chen, Y. Kalantidis, J. Li, S. Yan, and J. Feng. Multi-fiber networks for video recognition. In ECCV, 2018.
+- **MFNet**: Y. Chen, Y. Kalantidis, J. Li, S. Yan, and J. Feng. Multi-fiber networks for video recognition. ECCV'18.
+- R Gao, B Xiong, K Grauman. Im2Flow: Motion Hallucination from Static Images for Action Recognition. CVPR'18
 
 ## Multimodal
 - Y. Aytar, C. Vondrick, and A. Torralba. Soundnet: Learning sound representations from unlabeled video. NIPS 2016.

@@ -7,7 +7,7 @@
 - Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
 
 ## Google
-- Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., and Ku, A. Image transformer. 2018
+- Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., and Ku, A. Image transformer. ICML'18
 	- code available in tensor2tensor
 	- Block of local attention
 	- [h, 3w, d], 3w: width + channel, d=256
@@ -19,8 +19,8 @@
 		<img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
 
 ## DeepMind
-- **PixelRNN** A. v. d. Oord, N Kalchbrenner and K Kavukcuoglu. Pixel recurrent neural networks. ICML'16.
-- **PixelCNN**, A v d Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS 2016
+- **PixelRNN** A Oord, N Kalchbrenner and K Kavukcuoglu. Pixel recurrent neural networks. ICML'16.
+- **PixelCNN**, A Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS'16
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
 	<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
 
@@ -49,6 +49,12 @@
 
 ## OpenAI
 - **IAF**: D Kingma and T Salimans. Improving variational inference with inverse autoregressive flow. NIPS'16
+	- https://github.com/openai/iaf
+	- Inverse version of Rezende, D. and Mohamed, S. Variational inference with normalizing flows. ICML'15
+	- Still a VAE, but the encoder will generate a sequence of (z0, z1, ..., zT)
+	<img src="/Generative/images/iaf1.png" alt="drawing" width="600"/>
+	<img src="/Generative/images/iaf2.png" alt="drawing" width="600"/>
+
 - **Pixel-CNN++**, ICLR 2017
 	<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
 	<img src="/Generative/images/pixelcnnpp2.png" alt="drawing" width="400"/>
@@ -63,7 +69,7 @@
 		u_list  = [self.u_init(x)]
 		ul_list = [self.ul_init[0](x) + self.ul_init[1](x)]
 		```
-		- up_layers: (PixelCNNLayer-up x 3), down-scale twice with a 1-layer conv
+		- **up_layers**: (PixelCNNLayer-up x 3), down-scale twice with a 1 conv stride = (2, 2); followed by **down_layers**: (PixelCNNLayer-down x 3), up-scale twice with a 1-layer deconv stride = (2, 2)
 		```python
 		for i in range(3):
 		    # resnet block
@@ -74,21 +80,6 @@
 		        # downscale (only twice)
 		        u_list  += [self.downsize_u_stream[i](u_list[-1])]
 		        ul_list += [self.downsize_ul_stream[i](ul_list[-1])]
-		```
-		- u_stream: 5 * gated-resnet
-		- ul_stream: 5 * gated-resnet
-		- Two streams interleaves during forward every time
-		```python
-		u_list, ul_list = [], []
-		for i in range(self.nr_resnet):
-		    u  = self.u_stream[i](u)
-		    ul = self.ul_stream[i](ul, a=u)
-		    u_list  += [u]
-		    ul_list += [ul]
-		return u_list, ul_list
-		```
-		- down_layers: (PixelCNNLayer-down x 3), down-scale twice with a 1-layer conv
-		```python
 		u  = u_list.pop()
 		ul = ul_list.pop()
 		for i in range(3):
@@ -100,9 +91,16 @@
 		        ul = self.upsize_ul_stream[i](ul)
 		x_out = self.nin_out(F.elu(ul))
 		```
-		- u-list: 5 * gated-resnet
-		- ul-list: 5 * gated-resnet
-		- Two streams interleaves during forward every time
+		- Each up_layer or down_layer contains two streams: a **u_stream** and a **ul_stream**: 5 * gated-resnet; Two streams interleaves during forward every time
+		```python
+		u_list, ul_list = [], []
+		for i in range(self.nr_resnet):
+		    u  = self.u_stream[i](u)
+		    ul = self.ul_stream[i](ul, a=u)
+		    u_list  += [u]
+		    ul_list += [ul]
+		return u_list, ul_list
+		```
 
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
 	- code available;

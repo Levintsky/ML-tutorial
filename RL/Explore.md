@@ -38,15 +38,15 @@
 
 - Stadie, Levine, Abbeel (2015). Incentivizing Exploration in Reinforcement Learning with Deep Predictive Models.
 - Skip Context Tree Switching
+- **Go-Explore**: A Ecoffet, J Huizinga, J Lehman, K O. Stanley, J Clune. Go-Explore: a New Approach for Hard-Exploration
+Problems. NIPS'19
+	- Montezuma’s Revenge Solved by Go-Explore, a New Algorithm for Hard-Exploration Problems (Sets Records on Pitfall, Too)
+	- https://eng.uber.com/go-explore/
 
 ## Curiosity
 - Deepak Pathak: TensorFlow code for Curiosity-driven Exploration for Deep Reinforcement Learning, ICML 2017
 	- https://github.com/pathak22/noreward-rl
 - Imagination-Augmented Agents for Deep Reinforcement Learning
-
-## Explore-Go
-- Montezuma’s Revenge Solved by Go-Explore, a New Algorithm for Hard-Exploration Problems (Sets Records on Pitfall, Too)
-	- https://eng.uber.com/go-explore/
 
 ## Legacy
 - Schmidhuber. A Possibility for Implementing Curiosity and Boredom in Model-Building Neural Controllers. 1992
