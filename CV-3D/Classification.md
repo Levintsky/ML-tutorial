@@ -10,15 +10,8 @@
 	- For Hausdorff distance, simply a distance transform?
 
 ## SOA
-- T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
-- **SplatNet**: H. Su, V. Jampani, D. Sun, S. Maji, E. Kalogerakis, M.-H. Yang, and J. Kautz. SplatNet: Sparse lattice networks for point cloud processing. CVPR 2018
-	- Input: point clouds and images; output semantic for each point;
-	- BCL (Bilateral Convolution Layer)
-		- Splat: project onto lattice
-		- Convolve
-		- Slice
 - M. Sung, H. Su, R. Yu, and L. Guibas. Deep functional dictionaries: Learning consistent semantic structures on 3D models from functions. NIPS 2018
-	- Input n points; output:  n x k dictionary;
+	- Input n points; output: n x k dictionary;
 	- Structured sparsity;
 	- https://github.com/mhsung/deep-functional-dictionaries
 	- Different deep dictionaries;
@@ -74,8 +67,7 @@ of interactions. TOG 2016
 	- Hang Su, Subhransu Maji, Evangelos Kalogerakis, and Erik Learned-Miller. Multi-view convolutional neural networks for 3d shape recognition. In ICCV, 2015a.
 	- Charles R Qi, Hao Su, Matthias Niessner, Angela Dai, Mengyuan Yan, and Leonidas J Guibas. Volumetric and multi-view cnns for object classification on 3d data. In CVPR, 2016.
 - 3D-Conv:
-	- Daniel Maturana and Sebastian Scherer. Voxnet: A 3d convolutional neural network for real-time object
-recognition. In IROS, 2015.
+	- Daniel Maturana and Sebastian Scherer. Voxnet: A 3d convolutional neural network for real-time object recognition. IROS'15.
 	- Nima Sedaghat, Mohammadreza Zolfaghari, and Thomas Brox. Orientation-boosted voxel nets for 3d object
 recognition. arXiv preprint arXiv:1604.03351, 2016.
 	- Jiajun Wu, Tianfan Xue, Joseph J Lim, Yuandong Tian, Joshua B Tenenbaum, Antonio Torralba, and William T

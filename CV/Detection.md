@@ -138,7 +138,6 @@
 		- P. O. Pinheiro, T.-Y. Lin, R. Collobert, and P. Dollar. Learning to refine object segments. ECCV 2016
 	- **RPN**
 - MSRA:
-	- Y Li, H Qi, J Dai, X Ji, and Y Wei. Fully Convolutional Instance-aware Semantic Segmentation. CVPR'17
 	- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
 
 ## Pose Estimation
@@ -163,6 +162,11 @@
 	- **Dilated Conv**
 - Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
 	- No bounding-box, NMS, anchor;
+
+## Instance Segmentation
+- J Dai, K He, and J Sun. Instance-aware semantic segmentation via multi-task network cascades. CVPR'16
+- Y Li, H Qi, J Dai, X Ji, and Y Wei. Fully Convolutional Instance-aware Semantic Segmentation. CVPR'17
+- Shu Liu, Jiaya Jia, Sanja Fidler, and Raquel Urtasun. Sgn: Sequential grouping networks for instance segmentation. ICCV'17
 
 ## Face Detection and Recognition
 - Y Taigman, M Yang, M Ranzato, L Wolf. DeepFace: Closing the Gap to Human-Level Performance in Face Verification. CVPR'14

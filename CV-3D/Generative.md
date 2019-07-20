@@ -106,9 +106,7 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 - W. Jakob, “Mitsuba renderer,” 2010, http://www.mitsuba-renderer.org.
 - Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. In ICCV, 2015b.
 - Xinchen Yan, Jimei Yang, Ersin Yumer, Yijie Guo, and Honglak Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. In NIPS, 2016.
-- Hao Su, Haoqiang Fan, Leonidas Guibas. A Point Set Generation Network for 3D Object Reconstruction from a Single Image, CVPR 2017
-- **PointNet**: Hao Su, Charles Qi, Kaichun Mo, Leonidas Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR 2017
-	- Define Conv on point cloud 
+- Hao Su, Haoqiang Fan, Leonidas Guibas. A Point Set Generation Network for 3D Object Reconstruction from a Single Image, CVPR 2017 
 - A. Dai, C. R. Qi, and M. Nießner,  **Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR 2017**
 	- https://github.com/angeladai/cnncomplete
 - SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
