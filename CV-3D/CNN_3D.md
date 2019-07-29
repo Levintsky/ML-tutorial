@@ -11,7 +11,7 @@
 		- Input: point clouds and images; output semantic for each point;
 		- BCL (Bilateral Convolution Layer): 1. Splat: project onto lattice; 2. Convolve; 3. Slice. Can have different scale size;
 		- 2D-3D: DeepLab segmentation for 2D images/rendered from mesh; project pixels to 3D, BCL;
-		<img src="/CV-3D/images/splatnet1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/splatnet1.png" alt="drawing" width="450"/>
 		<img src="/CV-3D/images/splatnet2.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/splatnet3.png" alt="drawing" width="600"/>
 
@@ -26,7 +26,7 @@
 		<img src="/CV-3D/images/kd-network2.png" alt="drawing" width="400"/>
 		<img src="/CV-3D/images/kd-network3.png" alt="drawing" width="500"/>
 
-- Unordered:
+- **Unordered**:
 	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17
 		<img src="/CV-3D/images/pointnet.png" alt="drawing" width="600"/>
 
@@ -61,13 +61,22 @@
 		- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
 		<img src="/CV-3D/images/frustum-pointnet.png" alt="drawing" width="600"/>
 
-- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
-- P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua,  and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. 2018
+- **Attention**:
+	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
+		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
+		<img src="/CV-3D/images/3D-transformer.png" alt="drawing" width="600"/>
+
+- P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua, and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. TOG'18
 	- Point Clouds (generally non-uniform);
 	- Estimate sample density distribution;
 	- https://github.com/viscom-ulm/MCCNN
-- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR 2018
-- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X -transformed points. NIPS 2018
+- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
+- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
+	- 1 weighting: of the input features associated with the points, 
+	- 2.permutation: into a latent and potentially canonical order
+	- https://github.com/yangyanli/PointCNN
+	<img src="/CV-3D/images/pointcnn1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/pointcnn2.png" alt="drawing" width="600"/>
 
 ## Voxel
 - B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018

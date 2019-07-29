@@ -3,8 +3,10 @@
 ## Detection From 2D
 - **BEV** (Bird-Eye View):
 	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
+		- BEV: [-40, 40] x [0, 70]
+		- VGG feature extractor: for both BEV and frontal images + FPN to map back;
+		- Multimodal Fusion RPN: 80K - 100K 3D anchors;
 		- Two stages like RCNN;
-		- RPN;
 		- Detector;
 		- https://github.com/kujason/avod
 		<img src="/Autonomous-Driving/images/avod.png" alt="drawing" width="600"/>
@@ -26,20 +28,24 @@
 		<img src="/Autonomous-Driving/images/point-rcnn2.png" alt="drawing" width="600"/>
 
 - Frontal View:
-	- **Waymo**: A Mousavian, D Anguelov, J Flynn, J Kosecka.3D Bounding Box Estimation Using Deep Learning and Geometry. CVPR'17
+	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
+		- **Geometry constraint**: Perspective projection of a 3D bounding box should fit tightly within its 2D detection window
 		- Detect 2D bounding box first;
-		- Estimate: center T = (tx,ty,tz), dimension D = (dx,dy,dz), rotation R, (R, T) in SE(3),
+		- Estimate: center T = (tx,ty,tz), dimension D = (dx,dy,dz), rotation R, (R, T) in SE(3), Regress the box dimensions D rather than translation T
 		- Point-to-point correspondence constraint:
 		- Network structure: backbone CNN outputs feature 512 x 7 x 7, then three heads:
 			- orientation: MLP -> bins x 2 for sin, cos
 			- confidence: MLP -> bins, loss: cross-entropy
 			- dimension: MLP -> 3, loss: MSE
-			<img src="/Autonomous-Driving/images/waymo-3d-detect.png" alt="drawing" width="350"/>
+		- Experiments: Kitti, PASCAL-3D;
+		<img src="/Autonomous-Driving/images/waymo-multibin1.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/waymo-multibin2.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/waymo-multibin3.png" alt="drawing" width="400"/>
 
 	- X Chen, H Ma, J Wan, B Li, and T Xia. Multi-view 3d object detection network for autonomous driving. CVPR'17
 	- B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
 - Geometry constraint:
-	- A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
+	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
 	- B Li, W Ouyang, L Sheng, X Zeng, and X Wang. Gs3d: An efficient 3d object detection frame- work for autonomous driving. 2019.
 
 ## Semantic Segmentation
