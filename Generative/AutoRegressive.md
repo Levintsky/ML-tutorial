@@ -1,9 +1,11 @@
 # Auto-Regressive
 
 ## Legacy
-- **NADE**: Larochelle, Hugo and Murray, Iain. The neural autoregressive distribution estimator. AISTATS 2011
-- **RNADE**: Uria, Benigno, Murray, Iain, and Larochelle, Hugo. RNADE: The real-valued neural autoregressive density-estimator. NIPS'13.
-- **MADE**: Mathieu Germain, Karol Gregor, Iain Murray, and Hugo Larochelle. Made: Masked autoencoder for distribution estimation. ICML'15.
+- **NADE**: H Larochelle and I Murray. The neural autoregressive distribution estimator. AISTATS'11
+	- RBM
+- **RNADE**: B Uria, I Murray and H Larochelle. RNADE: The real-valued neural autoregressive density-estimator. NIPS'13.
+	- RBM
+- **MADE**: M Germain, K Gregor, I Murray, and H Larochelle. MADE: Masked autoencoder for distribution estimation. ICML'15.
 - Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
 
 ## Google
@@ -11,21 +13,21 @@
 	- code available in tensor2tensor
 	- Block of local attention
 	- [h, 3w, d], 3w: width + channel, d=256
-	<img src="/Generative/images/image-transformer1.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/image-transformer1.png" alt="drawing" width="400"/>
 
 	- Self-attention
 		- 1D local attention
 		- 2D local attention: raster-scan of sub-blocks, within each sub-block, raster-scan again for pixels
-		<img src="/Generative/images/image-transformer2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/autor/image-transformer2.png" alt="drawing" width="400"/>
 
 ## DeepMind
 - **PixelRNN** A Oord, N Kalchbrenner and K Kavukcuoglu. Pixel recurrent neural networks. ICML'16.
 - **PixelCNN**, A Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS'16
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
-	<img src="/Generative/images/pixelcnn.png" alt="drawing" width="700"/>
+	<img src="/Generative/images/autor/pixelcnn.png" alt="drawing" width="700"/>
 
 - **ByteNet**: N Kalchbrenner, L Espeholt, K Simonyan, A v d Oord, A Graves, and K Kavukcuoglu. Neural machine translation in linear time. 2016
-<img src="/Generative/images/bytenet.png" alt="drawing" width="550"/>
+<img src="/Generative/images/autor/bytenet.png" alt="drawing" width="550"/>
 
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
 - Reed, S., Oord, A., Kalchbrenner, N., Colmenarejo, S. G., Wang, Z., Chen, Y., Belov, D., and Freitas, N. Parallel multiscale autoregressive density estimation. ICML'17.
@@ -33,32 +35,32 @@
 	- Sample complexity reduces O(N) to O(logN)
 	- Coarse-to-fine: 4 x 4 first
 	- Upscale 6 times to 8 x 8 to 16 x 16 to ... to 256 x 256
-	<img src="/Generative/images/parallel1.png" alt="drawing" width="400"/>
-	<img src="/Generative/images/parallel2.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/parallel1.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/parallel2.png" alt="drawing" width="400"/>
 
 - **MAF**: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
 	- Order matters!
-	<img src="/Generative/images/maf1.png" alt="drawing" width="500"/>
-	<img src="/Generative/images/maf2.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/autor/maf1.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/autor/maf2.png" alt="drawing" width="500"/>
 
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling
 	- 3-bit to 8-bit, most significant first
-	<img src="/Generative/images/fidelity.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/fidelity.png" alt="drawing" width="400"/>
 
 ## OpenAI
 - **IAF**: D Kingma and T Salimans. Improving variational inference with inverse autoregressive flow. NIPS'16
 	- https://github.com/openai/iaf
 	- Inverse version of Rezende, D. and Mohamed, S. Variational inference with normalizing flows. ICML'15
 	- Still a VAE, but the encoder will generate a sequence of (z0, z1, ..., zT)
-	<img src="/Generative/images/iaf1.png" alt="drawing" width="600"/>
-	<img src="/Generative/images/iaf2.png" alt="drawing" width="600"/>
+	<img src="/Generative/images/autor/iaf1.png" alt="drawing" width="600"/>
+	<img src="/Generative/images/autor/iaf2.png" alt="drawing" width="600"/>
 
 - **Pixel-CNN++**, ICLR 2017
-	<img src="/Generative/images/pixelcnnpp.png" alt="drawing" width="700"/>
-	<img src="/Generative/images/pixelcnnpp2.png" alt="drawing" width="400"/>
-	<img src="/Generative/images/pixelcnnpp3.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/pixelcnnpp.png" alt="drawing" width="700"/>
+	<img src="/Generative/images/autor/pixelcnnpp2.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/pixelcnnpp3.png" alt="drawing" width="400"/>
 
 	- Loss function design: cdf observes Mixture of Logistic distribution, with decomposed r-g-b;
     - Implementation: Blind spot;
@@ -103,16 +105,16 @@
 		```
 
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
-	- code available;
-	- Use the technique **SNAIL** proposed in [Mishra, Nikhil, Rohaninejad, Mostafa, Chen, Xi, and Abbeel, Pieter. A simple neural attentive meta-learner. In NIPS 2017 Workshop on Meta-Learning, 2017.]
+	- https://github.com/neocxi/pixelsnail-public
+	- Use the technique **SNAIL** proposed in [N Mishra, M Rohaninejad, X Chen, and P Abbeel. A simple neural attentive meta-learner. In NIPS 2017 Workshop on Meta-Learning, 2017.]
 	- Dilated/strided Convolution helps;
 	- Zigzag ordering;
 	- Built on Transformer;
 	- Key modules:
 		- Residual blocks (Causal-Conv + ResNet + ELU)
 		- Attention blocks
-		<img src="/Generative/images/pixel-snail1.png" alt="drawing" width="400"/>
-		<img src="/Generative/images/pixel-snail2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/autor/pixel-snail1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/autor/pixel-snail2.png" alt="drawing" width="400"/>
 
 - R. Child, S. Gray, A. Radford, I. Sutskever. Generating Long Sequences with Sparse Transformers. 2019
 	- Observation: 128-layer image transformer on Cifar, very sparse attention
@@ -128,13 +130,13 @@
 		- Text (EnWik8)
 		- ImageNet (64x64)
 		- Classical music
-		<img src="/Generative/images/sparse-transformer1.png" alt="drawing" width="400"/>
-		<img src="/Generative/images/sparse-transformer2.png" alt="drawing" width="300"/>
+		<img src="/Generative/images/autor/sparse-transformer1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/autor/sparse-transformer2.png" alt="drawing" width="300"/>
 
 ## Others
 - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
-<img src="/Generative/images/pixel-vae1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/pixel-vae2.png" alt="drawing" width="400"/>
+<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="400"/>
+<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="400"/>
 
 ## Audio
 - B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15

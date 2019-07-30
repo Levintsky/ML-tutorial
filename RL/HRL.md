@@ -1,7 +1,10 @@
 # Hierarchical RL
 
 ## HRL
-- Feudal Network https://github.com/dmakian/feudal_networks
+- **FUN**: A S Vezhnevets, S Osindero, T Schaul, N Heess, M Jaderberg, D Silver, K Kavukcuoglu. Feudal Network for Hierarchical Reinforcement Learning. ICML'17
+	- https://github.com/dmakian/feudal_networks
+	<img src="/RL/images/hrl/fun.png" alt="drawing" width="500"/>
+
 - A Deep Hierarchical Approach to Lifelong Learning in Minecraft, AAAI'17
 - T Shu, C Xiong, R Socher. Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning. ICLR'18
 - Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation
@@ -19,8 +22,7 @@
 - INTRINSIC MOTIVATION AND AUTOMATIC CURRICULA VIA ASYMMETRIC SELF-PLAY
 
 ## Legacy
-- P Dayan, Peter and G Hinton. Feudal reinforcement
-learning. NIPS'93.
+- P Dayan, Peter and G Hinton. Feudal reinforcement learning. NIPS'93.
 - R Sutton, D Precup, and S Singh. Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning. AI'99
 - Hierarchical Learning in Stochastic Domains: Preliminary Results
 - A Tutorial on Bayesian Optimization of Expensive Cost Functions, with Application to Active User Modeling and Hierarchical Reinforcement Learning 2010

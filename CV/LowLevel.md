@@ -6,7 +6,7 @@
 	- Step 2. Pose Tracking: ICP (Iterative closest point), optimize for camera pose;
 	- Step 3. Map optimization: occupancy grid map;
 	- Iterate 2 and 3.
-	<img src="/CV/images/icp.png" alt="drawing" width="450"/>
+	<img src="/CV/images/low-level/icp.png" alt="drawing" width="450"/>
 
 - Visual SLAM
 	- Step 1. Initialization; (essential matrix, triangulation)
@@ -26,7 +26,7 @@
 	- A. Kendall, H. Martirosyan, S. Dasgupta, P. Henry, R. Kennedy, A. Bachrach, and A. Bry. End-to-end learning of geometry and context for deep stereo regression. 2017
 	- J. Zbontar and Y. LeCun. Stereo matching by training a convolutional neural network to compare image patches. JMLR'16
 	- X Cheng, P Wang and R Yang. Learning Depth with Convolutional Spatial Propagation Network. PAMI'18
-	<img src="/CV/images/cspn.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/cspn.png" alt="drawing" width="600"/>
 
 	- F Zhang, V Prisacariu, R Yang, Philip H.S. Torr. GA-Net: Guided Aggregation Net for End-to-end Stereo Matching. CVPR'19
 		- https://github.com/feihuzhang/GANet
@@ -38,9 +38,9 @@
 	- View synthesis as supervision, all source frames s to predict target frame t
 	- Differentiable depth image-based rendering: similar to SPN (Spatial Transformer Network)
 	- Modeling the model limitation: weighted correspondence, regularization on weight to avoid trivial all-zero weight
-	<img src="/CV/images/ssl-depth1.png" alt="drawing" width="600"/>
-	<img src="/CV/images/ssl-depth2.png" alt="drawing" width="600"/>
-	<img src="/CV/images/ssl-depth3.png" alt="drawing" width="500"/>
+	<img src="/CV/images/low-level/ssl-depth1.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/ssl-depth2.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/ssl-depth3.png" alt="drawing" width="400"/>
 
 ## Optical Flow
 - **FlowNet**: A Dosovitskiy, P Fischer, E Ilg, P Hausser, C Hazırbas, V Golkov. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
@@ -53,21 +53,21 @@
 	- FlowNetSD: small displacement
 	- FlowNetFusion: fusion of different flows
 	- Improvement over 1.0: smooth flow fields; preserve fine-motion detail; fast;
-	<img src="/CV/images/flownet2.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/flownet2.png" alt="drawing" width="600"/>
 
 - **MFF**: Z Ren, O Gallo, D Sun, M Yang, E Sudderth and J Kautz. A Fusion Approach for Multi-Frame Optical Flow Estimation. 2019
 - **SelFlow**: P Liu, M R. Lyu, I 
 King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
-<img src="/CV/images/selflow1.png" alt="drawing" width="600"/>
-<img src="/CV/images/selflow2.png" alt="drawing" width="500"/>
+<img src="/CV/images/low-level/selflow1.png" alt="drawing" width="600"/>
+<img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
 
 ## Scene Flow
 - W Ma, S Wang, R Hu, Y Xiong, R Urtasun. Deep Rigid Instance Scene Flow. 2019
-<img src="/CV/images/deep-rigid-scene-flow.png" alt="drawing" width="500"/>
+<img src="/CV/images/low-level/deep-rigid-scene-flow.png" alt="drawing" width="500"/>
 
 - **HD^3-Flow**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
 	- https://github.com/ucbdrive/hd3
-	<img src="/CV/images/hier-matching.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/hier-matching.png" alt="drawing" width="600"/>
 
 ## Camera Pose
 - A. Kendall, M. Grimes, and R. Cipolla. PoseNet: A convolutional network for real-time 6-DOF camera relocalization. ICCV'15
@@ -86,7 +86,7 @@ King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
 
 ## Legacy
 - Structure from motion: simultaneous estimate structure and motion
-	- Y. Furukawa, B. Curless, S. M. Seitz, and R. Szeliski. To- wards internet-scale multi-view stereo. CVPR'10
+	- Y. Furukawa, B. Curless, S. M. Seitz, and R. Szeliski. Towards internet-scale multi-view stereo. CVPR'10
 	- R. A. Newcombe, S. J. Lovegrove, and A. J. Davison. DTAM: Dense tracking and mapping in real-time. ICCV'11
 	- C. Wu. VisualSFM: A visual structure from motion system. http://ccwu.me/vsfm, 2011
 	- Failure: low-texture, occlusion, thin structure

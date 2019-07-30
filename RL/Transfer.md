@@ -17,12 +17,18 @@
 	- Gradient-based meta-learning
 
 ## Multi-Task
-- Berkeley, Modular Multitask Reinforcement Learning with Policy Sketches
+- J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
 
 ## Transfer
 - Resources:
 	- https://github.com/AI-ON/Multitask-and-Transfer-Learning
 - Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World
+- S Daftry, J. A Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
+	- Task: AirDrone MAV flight, monocular reactive control
+	- Deep domain adaptation
+	- Dagger
+	<img src="/RL/images/transfer/mav.png" alt="drawing" width="500"/>
+
 - **OpenAI**:
 	- **Retro Contest**: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
 		- https://contest.openai.com/2018-1/

@@ -45,7 +45,7 @@ of interactions. TOG 2016
 - Voxel:
 	- **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes
 		- Predict next best angle (most uncertain by max entropy diff)
-	- Daniel Maturana and Sebastian Scherer. VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. IROS 2015
+	- D Maturana and S Scherer. VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. IROS 2015
 		- https://github.com/dimatura/voxnet
 - 2D images:
 	- Hang Su, Subhransu Maji, Evangelos Kalogerakis, Erik Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV 2015
@@ -54,28 +54,25 @@ of interactions. TOG 2016
 	- DeepPano: Deep Panoramic Representation for 3-D Shape Recognition.
 - Multi-mode:
 	- Vishakh Hegde, Reza Zadeh. FusionNet: 3D Object Classification Using Multiple Data Representations. NIPS 2016
-	- Charles R. Qi, Hao Su, Matthias Nießner Angela Dai Mengyuan Yan Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR 2016
-		- https://github.com/charlesq34/<3dcnn class="torch"></3dcnn>
+	- Charles R. Qi, Hao Su, Matthias Nießner Angela Dai Mengyuan Yan Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR'16
+		- https://github.com/charlesq34/
 
 ## Understanding, Classification
 - Robotics (grasping, with touch):
-	- M. Bjorkman, Y. Bekiroglu, V. Hogman, and D. Kragic, “Enhancing visual perception of shape through tactile glances,” IROS 2013.
+	- M. Bjorkman, Y. Bekiroglu, V. Hogman, and D. Kragic, Enhancing visual perception of shape through tactile glances, IROS 2013.
 	- 3D Shape Perception from Monocular Vision, Touch, and Shape Priors, Shaoxiong Wang, Jiajun Wu, Xingyuan Sun, Wenzhen Yuan, William T. Freeman, Joshua B. Tenenbaum, and Edward H. Adelson
 	- W. Yuan, S. Dong, and E. H. Adelson, Gelsight: High-resolution robot tactile sensors for estimating geometry and force, Sensors 2017.
 - Representation for Voxel data:
-	- Rohit Girdhar, David F Fouhey, Mikel Rodriguez, and Abhinav Gupta. Learning a predictable and generative vector representation for objects. In ECCV, 2016.
-	- Hang Su, Subhransu Maji, Evangelos Kalogerakis, and Erik Learned-Miller. Multi-view convolutional neural networks for 3d shape recognition. In ICCV, 2015a.
-	- Charles R Qi, Hao Su, Matthias Niessner, Angela Dai, Mengyuan Yan, and Leonidas J Guibas. Volumetric and multi-view cnns for object classification on 3d data. In CVPR, 2016.
+	- R Girdhar, D F Fouhey, M Rodriguez, and A Gupta. Learning a predictable and generative vector representation for objects. ECCV'16.
+	- H Su, S Maji, E Kalogerakis, and E Learned-Miller. Multi-view convolutional neural networks for 3d shape recognition. ICCV'15
+	- C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16.
 - 3D-Conv:
 	- Daniel Maturana and Sebastian Scherer. Voxnet: A 3d convolutional neural network for real-time object recognition. IROS'15.
-	- Nima Sedaghat, Mohammadreza Zolfaghari, and Thomas Brox. Orientation-boosted voxel nets for 3d object
-recognition. arXiv preprint arXiv:1604.03351, 2016.
-	- Jiajun Wu, Tianfan Xue, Joseph J Lim, Yuandong Tian, Joshua B Tenenbaum, Antonio Torralba, and William T
-Freeman. Single image 3d interpreter network. In ECCV, 2016.
+	- N Sedaghat, M Zolfaghari, E Amiri, T Brox. Orientation-boosted voxel nets for 3D object recognition. BMVC'17
+	- J Wu, T Xue, J J Lim, Y Tian, J B Tenenbaum, A Torralba, and W T Freeman. Single image 3d interpreter network. ECCV'16.
 	- Uber-AI-Lab: An intriguing failing of convolutional neural networks and the CoordConv solution
 - Unsupervised:
-	- Danilo Jimenez Rezende, SM Eslami, Shakir Mohamed, Peter Battaglia, Max Jaderberg, and Nicolas Heess. Unsupervised learning of 3d structure from images. In NIPS, 2016.
-- Orientation-boosted voxel nets for 3D object recognition, T. Brox, 2016
+	- Danilo Jimenez Rezende, SM Eslami, Shakir Mohamed, Peter Battaglia, Max Jaderberg, and Nicolas Heess. Unsupervised learning of 3d structure from images. NIPS'16.
 - **3d-r2n2**: A unified approach for single and multi-view 3d object reconstruction
 - T. Groueix, M. Fisher, V. G. Kim, B. Russell, and M. Aubry. AtlasNet: A Papier-Mach ˆ e Approach to Learning 3D Surface Generation. CVPR 2018
 - J. Gwak, C. B. Choy, M. Chandraker, A. Garg, and S. Savarese. Weakly supervised 3d reconstruction with adversarial constraint. 3DV 2017

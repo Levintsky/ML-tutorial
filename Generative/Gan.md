@@ -4,13 +4,20 @@
 - **IS (Inception Score)**: proposed in Improved Techniques for Training GANs. NIPS'16
 	- Quality: the Inception-v3 to every generated image to get the conditional label distribution p(y|x), should be low-entropy
 	- Diversity: KL()
-- **FID (Fréchet Inception Distance)**: proposed in Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, Gunter Klambauer, and Sepp Hochreiter. GANs trained by a two time-scale update rule converge to a local nash equilibrium.
-<img src = '/Generative/images/fid.png' width = '300'>
+- **FID (Fréchet Inception Distance)**: proposed in M Heusel, H Ramsauer, T Unterthiner, B Nessler, G Klambauer, and S Hochreiter. GANs trained by a two time-scale update rule converge to a local nash equilibrium.
+	- FID: compare the statistics of two Gaussian;
+	```python
+	m1, s1 = compute_statistics(path, model, bsize)
+	m2, s2 = compute_statistics(path, model, bsize)
+	frechet_dist(m1, s1, m2, s2)
+	```
+	<img src = '/Generative/images/fid.png' width = '400'>
 
-- Lucas Theis, Aaron van den Oord, and Matthias Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.
-- Wu, Yuhuai, Burda, Yuri, Salakhutdinov, Ruslan, and Grosse, Roger. On the quantitative analysis of decoder- based generative models. 2017.
-- Sanjeev Arora and Yi Zhang. Do gans actually learn the distribution? an empirical study. 2017
-- Evaluation: GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
+- L Theis, A van den Oord, and M Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.
+- Y Wu, Y Burda, R Salakhutdinov, and R Grosse. On the quantitative analysis of decoder-based generative models. 2017.
+- S Arora and Y Zhang. Do gans actually learn the distribution? an empirical study. 2017
+- A Bakhtin, A Szlam, M Ranzato. GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
+	- GenEval dataset
 
 ## GAN
 *Name* | *Paper Link* | *Value Function*
@@ -26,7 +33,7 @@
 **EBGAN**| [Arxiv](https://arxiv.org/abs/1609.03126) | <img src = '/Generative/images/equations/EBGAN.png' height = '70px'>
 **BEGAN**| [Arxiv](https://arxiv.org/abs/1703.10717) | <img src = '/Generative/images/equations/BEGAN.png' height = '105px'>
 
-<img src = '/Generative/images/etc/GAN_structure.png' height = '600px'>
+<img src = '/Generative/images/gan/GAN_structure.png' height = '600px'>
 
 ## GAN
 - Google Brain, Magenta:
@@ -35,24 +42,37 @@
 	- A Odena, C Olah, and J Shlens. Conditional image synthesis with auxiliary classifier GANs. In ICML, 2017.
 	- **BEGAN**: D Berthelot, T Schumm, L Metz. BEGAN: Boundary Equilibrium Generative Adversarial Networks. 2017
 		- Maintain a balance between the generator and discriminator losses
-		<img src = '/Generative/images/began.png' width = '500px'>
+		<img src = '/Generative/images/gan/began.png' width = '500px'>
 
-	- Augustus Odena, Jacob Buckman, Catherine Olsson, Tom B. Brown, Christopher Olah, Colin Raffel, and Ian Goodfellow. Is generator conditioning causally related to GAN performance? ICML 2018.
-	- **WGAN-GP**: Gulrajani, I., Ahmed, F., Arjovsky, M., Dumoulin, V., and Courville, A. C. Improved training of Wasserstein gans. NIPS 2017.
+	- A Odena, J Buckman, C Olsson, T B. Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
+	- **WGAN-GP**: Gulrajani, I., Ahmed, F., Arjovsky, M., Dumoulin, V., and Courville, A. C. Improved training of Wasserstein gans. NIPS'17.
 		- Code: https://github.com/igul222/improved_wgan_training
 		- **Difficulty** with weight constraint: Capacity underuse; Exploding and vanishing gradients; 
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
-		<img src = '/Generative/images/wgan-gp.png' width = '600px'>
+		<img src = '/Generative/images/gan/wgan-gp.png' width = '600px'>
 
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN
-		- Generator
+		- Self-Attention:
+		```python
+		def forward(self, x):
+			q = self.query_conv(x).permute(0,2,1) # B X CX(N)
+        	k =  self.key_conv(x) # B X C x (*W*H)
+        	energy =  torch.bmm(q, k) # transpose check
+        	attention = self.softmax(energy) # BX (N) X (N) 
+        	v = self.value_conv(x) # B X C X N
+        	# skip
+        	out = torch.bmm(v, attention.permute(0,2,1))
+        	out = self.gamma * out + x
+	        return out, attention
+		```
 		- Inception score: 36.8 -> 52.52
 		- Frechet Inception distance: 27.62 -> 18.65
 		```python
 		def forward(self, z):
 		    z = z.view(z.size(0), z.size(1), 1, 1) # (?, 100, 1, 1)
 		    # deconv + spectral-norm + ReLU
+		    # l1, l2, l3: deconv -> spectral-norm -> BN -> RELU
 		    out = self.l1(z) # (?, 512, 4, 4)
 		    out = self.l2(out) # (?, 256, 8, 8)
 		    out = self.l3(out) # (?, 128, 16, 16)
@@ -65,6 +85,7 @@
 		- Discriminator:
 		```python
 		def forward(self, x):
+		    # l1, l2, l3: conv -> spectral-norm -> RELU
 		    out = self.l1(x)
 		    out = self.l2(out)
 		    out = self.l3(out)
@@ -76,7 +97,7 @@
 		```
 		- two-timescale update rule (TTUR)
 - FAIR:
-	- E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS 2015.
+	- E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS'15.
 	- **DC-GAN**: A Radford, L Metz, and S Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. In ICLR, 2016.
 	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
 	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
@@ -95,23 +116,55 @@
 		- One-sided label smoothing: replace 0, 1 with .1, .9; smooth only on positive examples in discriminator;
 		- Virtual batch normalization: each example x is normalized based on the statistics collected on a reference batch
 	- X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, and P Abbeel. **Infogan**: Interpretable representation learning by information maximizing generative adversarial nets. NIPS'16
-		<img src = '/Generative/images/info-gan1.png' width = '400px'>
-		<img src = '/Generative/images/info-gan2.png' width = '550px'>
+		<img src = '/Generative/images/gan/info-gan1.png' width = '400px'>
+		<img src = '/Generative/images/gan/info-gan2.png' width = '550px'>
 
 		- A Q(c|x) to encode x to attributes c, Q shared base-conv with D
 		- System Design: 4 modules: G, Shared Bottom CNN, D, Q
-		- Discriminator: log(D(x)) + log(1-D(G(z))), D-only
-			- Real-x: CrossEntropy(D(FE(x)), 1)
-			- Fake part:
-				- Sample z, discrete-c, continuous-c
-				- Generate images: fake-x = G(z,c), detach fake-x
-				- CrossEntropy(D(FE(x)), 0)
-		- Generator: log(D(G(z))) + I(c, Q(c|x)), G and Q
-			- CrossEntropy(D(G(z)), 1) for G
-			- CrossEntropy(FE(x), idx) or entropy?
-	- Tim Salimans, Han Zhang, Alec Radford, and Dimitris Metaxas. Improving GANs using optimal transport. In ICLR, 2018.
+		- **Front-End**: [Conv - BN - LReLU] x 3, produces a 1024-C feature;
+		- **Discriminator**: [Conv + Sigmoid] x 3
+		- **Encoder Q**: discrete, mu/var for continuous
+		```python
+		def forward(self, x):
+		    y = self.conv(x)
+		    disc_logits = self.conv_disc(y).squeeze()
+		    mu = self.conv_mu(y).squeeze()
+    		var = self.conv_var(y).squeeze().exp()
+		    return disc_logits, mu, var
+		```
+		- **Generator**: [Deconv-BN-ReLU] x 4
+		log(D(x)) + log(1-D(G(z))), D-only
+		- Training D: noisy sample generate disc-c (1-hot), cont-c (uniform) and noise (uniform)
+		```python
+		# real part
+        x, _ = batch_data
+        # CrossEntropy(D(FE(x)), 1)
+        loss_real = criterionD(probs_real, label)
+        # fake part		
+        z, idx = self._noise_sample(dis_c, con_c, noise, bs)
+        fake_x = self.G(z)
+        fe_out2 = self.FE(fake_x.detach())
+        probs_fake = self.D(fe_out2)
+		```
+		- Training G and Q: re-encode disc-c and cont-c from fake-X, should be consistent;
+		```python
+        fe_out = self.FE(fake_x)
+        probs_fake = self.D(fe_out)
+        label.data.fill_(1.0)
+        # loss-1: log(D(G(z))), CrossEntropy(D(G(z)), 1)
+        reconstruct_loss = criterionD(probs_fake, label)
+        # loss-2: I(c, Q(c|x))
+		q_logits, q_mu, q_var = self.Q(fe_out)
+        class_ = torch.LongTensor(idx).cuda()
+        target = Variable(class_)
+        # cross-entropy
+        dis_loss = criterionQ_dis(q_logits, target)
+        # log-Gaussian
+        con_loss = criterionQ_con(con_c, q_mu, q_var)*0.1
+		```
+	- T Salimans, H Zhang, A Radford, and D Metaxas. Improving GANs using optimal transport. ICLR'18.
 - DeepMind:
-	- **BigGAN**: Andrew Brock, Jeff Donahue, Karen Simonyan. Large Scale GAN Training for High Fidelity Natural Image Synthesis, ICLR 2019
+	- **BigGAN**: A Brock, J Donahue, K Simonyan. Large Scale GAN Training for High Fidelity Natural Image Synthesis, ICLR 2019
 		- https://github.com/ajbrock/BigGAN-PyTorch.git
 		- SA-GAN network structure (Zhang 2018)
 		- G: class-conditional BatchNorm (Dumoulin 2017, de Vries 2017)
@@ -121,36 +174,34 @@
 		- Orthogonal Initialization (Saxe 2014)
 		- **Truncated Norm** to sample z from: big trick
 		- IS: precision; FID: recall
-	- Andrew Brock, Theodore Lim, J.M. Ritchie, and Nick Weston. Neural photo editing with introspective adversarial networks. ICLR 2017.
-	- Marc G. Bellemare, Ivo Danihelka, Will Dabney, Shakir Mohamed, Balaji Lakshminarayanan, Stephan Hoyer, and Remi Munos. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
+	- A Brock, T Lim, J.M. Ritchie, and N Weston. Neural photo editing with introspective adversarial networks. ICLR 2017.
+	- M G. Bellemare, I Danihelka, W Dabney, S Mohamed, B Lakshminarayanan, S Hoyer, and R Munos. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
 - **NVIDIA**:
 	- **Progressive**: Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen. Progressive growing of GANs for improved quality, stability, and variation. ICLR 2018.
 		- https://zhuanlan.zhihu.com/p/30637133
-		<img src = '/Generative/images/pgan1.png' width = '500px'>
-		<img src = '/Generative/images/pgan2.png' width = '500px'>
+		<img src = '/Generative/images/gan/pgan1.png' width = '500px'>
+		<img src = '/Generative/images/gan/pgan2.png' width = '500px'>
 
 - Conditional-GAN:
 	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. arXiv preprint arXiv:1411.1784, 2014.
 	- Takeru Miyato and Masanori Koyama. cGANs with projection discriminator. In ICLR, 2018.
-- **SeqGAN**: Yu, L., Zhang, W., Wang, J., and Yu, Y. SeqGAN: Sequence generative adversarial nets with policy gradient. In AAAI, 2017.
-- **SN-GAN**: Spectral Normalization for Generative Adversarial Networks, ICLR 2018
-- Wei, X., Liu, Z., Wang, L., and Gong, B. Improving the improved training of Wasserstein GANs. ICLR'18
-- **BAIR**:
-	- **Cycle-GAN**: Zhu, J.-Y., Park, T., Isola, P., and Efros, A. A. Unpaired image-to-image translation using cycle-consistent adversarial networks. CVPR 2017
-		- https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
-		- G: X -> Y; discriminator: D_Y;
-		- F: Y -> X; discriminator: D_X;
-		- Adversarial loss: E[logD_Y(y)] + E[log(1-D_Y(G(x)))]
-		- Similar loss for D_X
-		- Consistency loss: ||F(G(x))-x|| + ||G(F(y))-y|| with L1 norm
-	- **pix2pix**: Isola, P., Zhu, J.-Y., Zhou, T., and Efros, A. A. Image-to-image translation with conditional adversarial networks. CVPR, 2017.
+- **SeqGAN**: L Yu, W Zhang, J Wang, and Y Yu. SeqGAN: Sequence generative adversarial nets with policy gradient. AAAI'17
+- **SN-GAN**: T Miyato, T Kataoka, M Koyama, Y Yoshida. Spectral Normalization for Generative Adversarial Networks, ICLR'18
+	- https://github.com/pfnet-research/sngan_projection
+	- Theory: the importance of Lipschitz continuity in assuring the boundedness of statistics
+	<img src = '/Generative/images/gan/sn-gan1.png' width = '500'>
+
+	- Spectral Normalization to assure Lipschitz condition.
+	<img src = '/Generative/images/gan/sn-gan2.png' width = '500'>
+	<img src = '/Generative/images/gan/sn-gan3.png' width = '500'>
+
+- X Wei, Z Liu, L Wang, and B Gong. Improving the improved training of Wasserstein GANs. ICLR'18
 - Attention:
-	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text
-to image generation with attentional generative adversarial networks. In CVPR, 2018.
+	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
 - Inference:
-	- Dumoulin, V., Belghazi, I., Poole, B., Lamb, A., Arjovsky, M., Mastropietro, O., and Courville, A. Adversarially learned inference.
+	- V Dumoulin, I Belghazi, B Poole, A Lamb, M Arjovsky, O Mastropietro, and A Courville. Adversarially learned inference.
 - Domain adaptation:
-	- Ganin, Y. and Lempitsky, V. Unsupervised domain adaptation by backpropagation. ICML 2015
+	- Y Ganin and V Lempitsky. Unsupervised domain adaptation by backpropagation. ICML'15
 - Others:
 	- **LSGAN**: X Mao, Q Li, H Xie, R Y.K. Lau, Z Wang, and S. Paul Smolley. Least Squares Generative Adversarial Networks. 2017
 	- **DRAGAN**: N Kodali, J Abernethy, J Hays, Z Kira. On Convergence and Stability of GANs
@@ -162,7 +213,7 @@ to image generation with attentional generative adversarial networks. In CVPR, 2
 	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
 		- q(z|x) and p(z) adversarial loss (encoded latent)
 		- Reconstruction loss
-		<img src = '/Generative/images/pixel-gan.png' height = '100px'>
+		<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
 
 ## Feature Learning
 - Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.

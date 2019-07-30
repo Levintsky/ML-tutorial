@@ -8,11 +8,11 @@
 	- **AlphaGo**: D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. van den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, S. Dieleman, J. Nham, N. Kalchbrenner, I. Sutskever, T. Lillicrap, M. Leach, K. Kavukcuoglu, T. Graepel, and D. Hassabis. Mastering the game of go with deep neural networks and tree search. Nature'14
 	- **AlphaGo Zero**: D Silver, J Schrittwieser, K Simonyan, I Antonoglou, A Huang, A Guez, T Hubert, L Baker, M Lai, A Bolton, Y Chen, T Lillicrap, F Hui, L Sifre, G v d Driessche, T Graepel, D Hassabis. Mastering the game of Go without human knowledge. Nature'17
 		- The system:
-		<img src="/RL/images/agz1.png" alt="drawing" width="600"/>
+		<img src="/RL/images/chess/agz1.png" alt="drawing" width="600"/>
 
 		- MCTS:
-		<img src="/RL/images/agz2.png" alt="drawing" width="600"/>
-		<img src="/RL/images/agz3.png" alt="drawing" width="400"/>
+		<img src="/RL/images/chess/agz2.png" alt="drawing" width="600"/>
+		<img src="/RL/images/chess/agz3.png" alt="drawing" width="400"/>
 
 	- **AlphaZero**: D Silver, T Hubert, J Schrittwieser, I Antonoglou, M Lai, A Guez, M Lanctot, L Sifre, D Kumaran, T Graepel, T Lillicrap, K Simonyan, D Hassabis. A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science'19
 - PhoenixGo
@@ -47,9 +47,13 @@
 	- Codes: https://github.com/tansey/pycfr
 	- A simple (Rock-Paper-Scissors) codes: https://hackernoon.com/artificial-intelligence-poker-and-regret-part-1-36c78d955720
 - Noam Brown, Tuomas Sandholm. (CMU)
-	- Safe and Nested Subgame Solving for Imperfect-Information Games, NIPS 2017
+	- Safe and Nested Subgame Solving for Imperfect-Information Games, NIPS'17 best paper award
 	- Libratus: The Superhuman AI for No-Limit Poker, IJCAI 2017
-	- Reduced Space and Faster Convergence in Imperfect-Information Games via Pruning, ICML 2017
+	- Reduced Space and Faster Convergence in Imperfect-Information Games via Pruning, ICML'17
+	- N Brown, T Sandholm, and B Amos. Depth-Limited Solving for Imperfect-Information Games. NIPS'18
+	- N Brown, A Lerer, S Gross, T Sandholm. Deep Counterfactual Regret Minimization. AAAI'19
+	- G Farina, C Kroer, N Brown, T Sandholm. Stable-Predictive Optimistic Counterfactual Regret Minimization. ICML'19
+	- Superhuman AI for multiplayer poker. Science'19
 
 # Rubik's Cube
 - Basics:

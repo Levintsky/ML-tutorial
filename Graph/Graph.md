@@ -1,9 +1,60 @@
 # GNN, ML to reprsent Graph and Relation
 
+## Survey
+- Z Wu, S Pan, F Chen, G Long, C Zhang, P Yu. A Comprehensive Survey on Graph Neural Networks. 2018
+	<img src="/Graph/images/gcn-survey.png" alt="drawing" width="500"/>
+
 ## Legacy
 - Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005
 - Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. Computational capabilities of graph neural networks. TNN 2009
-- Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. The graph neural network model. TNN 2009
+- Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. The graph neural network model. TNN'09
+- A. Micheli, “Neural network for graphs: A contextual constructive approach. TNN'09
+
+## GCN (Convolutional)
+- **GCN-layer**: T. N. Kipf and M. Welling, Semi-supervised classification with graph convolutional networks. ICLR'17
+	<img src="/Graph/images/gcn-layer.png" alt="drawing" width="500"/>
+
+- **Pooling**: M. Defferrard, X. Bresson, and P. Vandergheynst, “Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16
+	<img src="/Graph/images/gcn-pool.png" alt="drawing" width="500"/>
+
+- Spectral-based
+- Spatial-based
+- Pooling
+
+## Graph Attention Network
+- P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
+	<img src="/Graph/images/gcn-attention.png" alt="drawing" width="500"/>
+
+- J. Zhang, X. Shi, J. Xie, H. Ma, I. King, and D.-Y. Yeung, Gaan: Gated attention networks for learning on large and spatiotemporal graph. UAI'18
+- J. B. Lee, R. Rossi, and X. Kong, “Graph classification using structural attention. KDD'18
+- S. Abu-El-Haija, B. Perozzi, R. Al-Rfou, and A. A. Alemi, Watch your step: Learning node embeddings via graph attention. NIPS'18
+
+## Graph Auto-Encoders
+- T. N. Kipf and M. Welling, Variational graph auto-encoders. 2016
+	<img src="/Graph/images/gcn-vae.png" alt="drawing" width="500"/>
+
+- S. Cao, W. Lu, and Q. Xu, Deep neural networks for learning graph representations. AAAI'16
+- D. Wang, P. Cui, and W. Zhu, Structural deep network embedding. KDD'16
+- C. Wang, S. Pan, G. Long, X. Zhu, and J. Jiang, Mgae: Marginalized graph autoencoder for graph clustering. CIMK'17
+- W. Yu, C. Zheng, W. Cheng, C. C. Aggarwal, D. Song, B. Zong, H. Chen, and W. Wang, Learning deep network representations with adversarially regularized autoencoders. KDD'18
+- S. Pan, R. Hu, G. Long, J. Jiang, L. Yao, and C. Zhang, Adversarially regularized graph autoencoder for graph embedding. IJCAI'18
+
+- K. Tu, P. Cui, X. Wang, P. S. Yu, and W. Zhu, Deep recursive network embedding with regular equivalence. KDD'18
+
+## Graph Generative Networks
+- **Graphrnn**: J. You, R. Ying, X. Ren, W. L. Hamilton, and J. Leskovec, Graphrnn: A deep generative model for graphs. ICML'18
+- B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting. IJCAI'18
+- Y. Li, O. Vinyals, C. Dyer, R. Pascanu, and P. Battaglia, Learning deep generative models of graphs. ICML'18
+- N. De Cao and T. Kipf, Molgan: An implicit generative model for small molecular graphs. arxiv'18
+- A. Bojchevski, O. Shchur, D. Zugner, and S. Gunnemann, Net-gan: Generating graphs via random walks. ICML'18
+- T. Ma, J. Chen, and C. Xiao, Constrained generation of semanti- cally valid graphs via regularizing variational autoencoders. NIPS'18
+
+## Graph Spatial-Temporal Networks
+- Y. Seo, M. Defferrard, P. Vandergheynst, and X. Bresson, Structured sequence modeling with graph convolutional recurrent networks, arXiv preprint arXiv:1612.07659, 2016.
+- Y. Li, R. Yu, C. Shahabi, and Y. Liu, Diffusion convolutional recurrent neural network: Data-driven traffic forecasting, ICLR'18.
+- B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting, IJCAI'18
+- S. Yan, Y. Xiong, and D. Lin, Spatial temporal graph convolutional networks for skeleton-based action recognition, AAAI'18
+- A. Jain, A. R. Zamir, S. Savarese, and A. Saxena, Structural-rnn: Deep learning on spatio-temporal graphs, CVPR'16
 
 ## GNN
 - **DeepMind**:

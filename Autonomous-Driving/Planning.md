@@ -4,7 +4,7 @@
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
 
-## Neural Planning
+## Imitation Learning
 - Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
 - W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
 	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
@@ -27,8 +27,8 @@
 	- **PilotNet**: M Bojarski, D Del Testa, D Dworakowski, B Firner, B Flepp, P Goyal, L D. Jackel, M Monfort, U Muller, J Zhang, X Zhang, J Zhao, K Zieba. End to End Learning for Self-Driving Cars. 2016
 		- Imitation learning from human data; trained just for bc; drift (1m from center) reset in simulator;
 		- Good for path following for a few seconds; not able to make turns;
-		<img src="/Autonomous-Driving/images/e2e-ad1.png" alt="drawing" width="500"/>
-		<img src="/Autonomous-Driving/images/e2e-ad2.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/e2e-ad1.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/e2e-ad2.png" alt="drawing" width="400"/>
 
 	- M Bojarski, P Yeres, A Choromanska, K Choromanski, B Firner, L Jackel, and U Muller. Explaining how a deep neural network trained with end-to-end learning steers a car. 2017
 		- Visualize salient object for pilotnet
@@ -50,9 +50,6 @@
 	- Loss design:
 		- Agent position, heading and box prediction;
 		- Meta prediction: speed, subpixel
-		- Collision Loss: overlap of the predicted agent box with all scene objects
-		- On road loss
-		- Geometry loss
 	- Beyond pure imitation: avoid drift, bad behavior (collisions and off-road driving)
 		- Loss design: collision loss; on-road loss; geometry loss (always follows geometry independent of speed)
 - Berkeley:
@@ -88,6 +85,12 @@
 	<img src="/Autonomous-Driving/images/visri1.png" alt="drawing" width="600"/>
 
 - A Kendall, J Hawke, D Janz, P Mazur, D Reda, J Allen, V Lam, A Bewley, and A Shah. Learning to drive in a day. 2018
+	- Task: lane following
+	- MDP, input: monocular camera; VAE;
+	- Action space: throttle, brake, signal, ...
+	- Reward: speed, infraction of traffic rules
+	- Algorithm: DDPG
+	<img src="/Autonomous-Driving/images/rl-in-a-day.png" alt="drawing" width="450"/>
 
 ## IRL
 - D. S. Gonzalez, J. Dibangoye, and C. Laugier, High-speed highway scene prediction based on driver models learned from demonstrations. ITSC'16

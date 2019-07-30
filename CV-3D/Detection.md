@@ -6,7 +6,7 @@
 		- CNN for view points: Nc class x Na angle/instance x Ntheta
 		- Multiscale Convolutional Response Maps
 		- Viewpoint Conditioned Keypoint Likelihood
-		<img src="/CV-3D/images/viewpts_keypts.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/detection/viewpts_keypts.png" alt="drawing" width="600"/>
 
 	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
 		- **Geometry constraint**: Perspective projection of a 3D bounding box should fit tightly within its 2D detection window
@@ -26,8 +26,8 @@
 	- Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Data-driven 3d voxel patterns for object category recognition. CVPR'15
 		- Input: 2D images
 		- Output: 3DVP, occlusion
-		<img src="/CV-3D/images/3dvp1.png" alt="drawing" width="400"/>
-		<img src="/CV-3D/images/3dvp2.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/detection/3dvp1.png" alt="drawing" width="400"/>
+		<img src="/CV-3D/images/detection/3dvp2.png" alt="drawing" width="600"/>
 
 	- Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Subcategory-aware convolutional neural networks for object proposals and detection. WACV'17
 
@@ -41,7 +41,7 @@
 - **MV3D**: X. Chen, H. Ma, J. Wan, B. Li, and T. Xia. Multi-view 3d object detection network for autonomous driving. CVPR'17
 - A Mousavian, D Anguelov, J Flynn, J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
 - **PointFusion**: D Xu, D Anguelov, A Jain. PointFusion: Deep Sensor Fusion for 3D Bounding Box Estimation. CVPR'18
-	<img src="/CV-3D/images/pointfusion.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/detection/pointfusion.png" alt="drawing" width="600"/>
 
 	- Input: RGB + 3D point cloud
 	- Output: 3 x 8 corner points

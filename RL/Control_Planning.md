@@ -6,7 +6,7 @@
 
 ## Monte-Carlo Tree Search
 - Approach
-<img src="/RL/images/mcts.png" alt="drawing" width="400"/>
+<img src="/RL/images/mcts/mcts.png" alt="drawing" width="400"/>
 
 - Legacy
 	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
@@ -21,25 +21,25 @@
 
 ## Control as Inference
 - A graphical model
-<img src="/RL/images/control-infer1.png" alt="drawing" width="500"/>
+<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
 
 - Backward message: beta(st, at) = p(Ot:T) given (st, at). i.e., given what will happen after t, what is the optimality if we should take (st at).
-<img src="/RL/images/control-infer2.png" alt="drawing" width="600"/>
-<img src="/RL/images/control-infer3.png" alt="drawing" width="600"/>
-<img src="/RL/images/control-infer4.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/control-infer4.png" alt="drawing" width="600"/>
 
 - Forward message: alpha(st) = p(st) given O1:t-1
-<img src="/RL/images/control-infer5.png" alt="drawing" width="600"/>
-<img src="/RL/images/control-infer6.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/control-infer5.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/control-infer6.png" alt="drawing" width="600"/>
 
 - Q-learning with soft optimality
-<img src="/RL/images/soft-q.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/soft-q.png" alt="drawing" width="600"/>
 
 - Policy gradient with soft optimality
-<img src="/RL/images/soft-pg.png" alt="drawing" width="600"/>
+<img src="/RL/images/control/soft-pg.png" alt="drawing" width="600"/>
 
 - Graphical models:
-	- Kappen. (2009). Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model.
+	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
 	- Ziebart. (2010). Modeling interaction via the principle of maximal causal entropy: connection between soft optimality and maximum entropy modeling.
 	- Rawlik, Toussaint, Vijaykumar. (2013). On stochastic optimal control and reinforcement learning by approximate inference: temporal difference style algorithm with soft optimality.
 - Modern soft optimality

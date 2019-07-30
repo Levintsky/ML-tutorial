@@ -5,15 +5,15 @@
 	- **MADDPG**
 	- https://github.com/openai/multiagent-particle-envs
 	- Discrete case:
-	<img src = '/RL/images/maddpg1.png' height = '120px'>
+	<img src = '/RL/images/multi-agent/maddpg1.png' width = '600'>
 	- Continuous case:
-	<img src = '/RL/images/maddpg2.png' height = '170px'>
+	<img src = '/RL/images/multi-agent/maddpg2.png' width = '600'>
 
 ## DeepMind
 - M Jaderberg,, W Czarnecki, I Dunning, L Marris, G Lever, A G Castañeda, C Beattie, N C. Rabinowitz, Ari S. Morcos, A Ruderman, N Sonnerat, T Green, L Deason, Joel Z. Leibo, D Silver, D Hassabis, K Kavukcuoglu, T Graepel. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
 	- For The Win (FTW): CNN from pixels;
-<img src="/RL/images/ftw.jpg" alt="drawing" width="500"/>
-<img src="/RL/images/ftw2.jpg" alt="drawing" width="500"/>
+	<img src="/RL/images/multi-agent/ftw.jpg" alt="drawing" width="500"/>
+	<img src="/RL/images/multi-agent/ftw2.jpg" alt="drawing" width="500"/>
 
 ## Misc
 - A multi-agent reinforcement learning model of common-pool resource appropriation

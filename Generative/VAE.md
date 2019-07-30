@@ -18,12 +18,12 @@
 	- Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013.
 		- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
 		- **BCE** (Binary Cross Entropy) for reconstruction (mnist)
-		<img src="/Generative/images/vae-elbo.png" alt="drawing" width="500"/>
-		<img src="/Generative/images/vae-elbo2.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/vae/vae-elbo.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/vae/vae-elbo2.png" alt="drawing" width="500"/>
 
 	- Conditional VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS 2014
-	<img src="/Generative/images/vae-semi1.png" alt="drawing" width="350"/>
-	<img src="/Generative/images/vae-semi2.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="350"/>
+	<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
 
 	- Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
 - **DeepMind**:
@@ -47,7 +47,7 @@
 - **Google-Brain**:
 	- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
 	- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
-		<img src="/Generative/images/vae-impossible.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
 
 		- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
 		- Inductive biases:
@@ -86,16 +86,14 @@
 
 ## Autoregressive
 - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
-<img src="/Generative/images/pixel-vae1.png" alt="drawing" width="500"/>
-<img src="/Generative/images/pixel-vae2.png" alt="drawing" width="300"/>
+<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="500"/>
+<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="300"/>
 
 ## Recurrent
 - Good summaries:
 	- https://chuansongme.com/n/1628774042621
 - Fabius, O. and van Amersfoort, J. R. Variational recurrent auto-encoders. ICLR'15
-- **VRNN**: Chung, Junyoung, Kastner, Kyle, Dinh, Laurent, Goel,
-Kratarth, Courville, Aaron C., and Bengio, Yoshua. A
-recurrent latent variable model for sequential data. NIPS'15
+- **VRNN**: J Chung, K Kastner, L Dinh, K Goel, A Courville, and Y Bengio. A recurrent latent variable model for sequential data. NIPS'15
 - Samuel R. Bowman, Luke Vilnis, Oriol Vinyals, Andrew M. Dai, Rafal Jozefowicz, Samy Bengio. Generating Sentences From a Continuous Spaces, ICLR'16
 - Neural Variational Inference for Text Processing, ICML'16
 - Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16

@@ -3,7 +3,7 @@
 ## Classification, Network Design
 - **AlexNet** A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS 2012.
 - **VGGNet** K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition (VGGNet): arXiv:1409.1556, 2014
-- **NIN** Lin, Min, Chen, Qiang, and Yan, Shuicheng (NIN): Network in network. Arxiv, 1312.4400, 2013.
+- **NIN** M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
 - **FAIR**:
 	- **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR 2016
 		- downample: conv1x1 (stride=2) - BN
@@ -34,7 +34,7 @@
 		- Short-cut: ReLU after adding shortcut;
 	- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR 2018
 		- https://github.com/bamos/densenet.pytorch.
-	- Kaiming He, Ross Girshick, Piotr Dollar. Rethinking ImageNet Pre-training. CVPR 2019
+	- K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 - **Google-Vision**:
 	- **GoogleNet**: C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich (GoogleNet): Going deeper with convolutions. CVPR, 2015
 		- Inception-V1
@@ -44,5 +44,5 @@
 	- **Inception-V3**: Rethinking the Inception Architecture for Computer Vision; CVPR 2016
 	- **Inception-V4**: Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning;
 - **Bilinear**:
-	- Tsung-Yu Lin, Aruni RoyChowdhury, Subhransu Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
+	- T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
 		- https://github.com/HaoMood/bilinear-cnn

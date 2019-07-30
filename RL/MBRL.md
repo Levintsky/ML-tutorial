@@ -2,18 +2,18 @@
 
 ## Sergey Levine
 - Known dynamics (lec-11)
-<img src="/RL/images/mbrl1.png" alt="drawing" width="500"/>
+<img src="/RL/images/mbrl/mbrl1.png" alt="drawing" width="500"/>
 
 - Linear case:
 	- LQR: linear transition, quadratic cost
-	<img src="/RL/images/mbrl2.png" alt="drawing" width="600"/>
+	<img src="/RL/images/mbrl/mbrl2.png" alt="drawing" width="600"/>
 
 	- Solved with backward recursion
-	<img src="/RL/images/mbrl3.png" alt="drawing" width="550"/>
+	<img src="/RL/images/mbrl/mbrl3.png" alt="drawing" width="550"/>
 
 - Nonlinear case: DDP/iterative LQR
 	- iLQR
-	<img src="/RL/images/mbrl4.png" alt="drawing" width="550"/>
+	<img src="/RL/images/mbrl/mbrl4.png" alt="drawing" width="550"/>
 
 - Learn dynamics (lec-12)
 	- Uncertainty-aware models
@@ -24,20 +24,25 @@
 	- Moment matching (project to Gaussian)
 
 ## Learn a Model
--  World Model:
-	- DeepMind
-		- Neural Predictive Belief Representations, ICLR 2019
-			- Contrastive-Predictive Coding (CPC)
-		- Representation Learning with Contrastive Predictive Coding (NIPS 2018)		
+- World Model
+	- **Navigation**: Z Guo, M G Azar, B Piot, B A. Pires, T Pohlen, R Munos. Neural Predictive Belief Representations, ICLR'19
+		- 1-step frame prediction
+		- Two variants of Contrastive-Predictive Coding (CPC), CPC|Action
+		- DeepMind Lab
+		<img src="/RL/images/mbrl/cpc.png" alt="drawing" width="550"/>
 
-## Atari
 - J. Oh, X. Guo, H. Lee, R. Lewis, and S.Singh. Action-conditional video prediction using deep networks in atari games. arxiv, 2015.
-- Recurrent World Models Facilitate Policy Evolution， NIPS 2018
-	- VAE for compression and regularization
-	- Predict next step
+- D Ha, J Schmidhuber. Recurrent World Models Facilitate Policy Evolution， NIPS'18
+	- VAE to encode frames for compression and regularization
+	- RNN to Predict next step
+	- Game: CarRacing, 
 	- https://worldmodels.github.io
-- Łukasz Kaiser, Mohammad Babaeizadeh, Piotr Miłos, Błazej Osinski, Roy H Campbell, Konrad Czechowski, Dumitru Erhan, Chelsea Finn, Piotr Kozakowski, Sergey Levine, Ryan Sepassi, George Tucker, Henryk Michalewski. Model Based Reinforcement Learning for Atari. 2019
+	<img src="/RL/images/mbrl/r-world.png" alt="drawing" width="550"/>
+
+- Ł Kaiser, M Babaeizadeh, P Miłos, B Osinski, R H Campbell, K Czechowski, D Erhan, C Finn, P Kozakowski, S Levine, R Sepassi, G Tucker, H Michalewski. Model Based Reinforcement Learning for Atari. 2019
 	- SimPLe
+	<img src="/RL/images/mbrl/mbrl-atari1.png" alt="drawing" width="550"/>
+
 	- https://ai.googleblog.com/2019/03/simulated-policy-learning-in-video.html
 	- Open sourced at https://github.com/tensorflow/tensor2tensor
 	- Main loop:
@@ -48,6 +53,8 @@
 		- Input 4 frames
 		- Output: predicts next frame (256 softmax)
 		- Output: Reward
+		<img src="/RL/images/mbrl/mbrl-atari2.png" alt="drawing" width="550"/>
+
 	- RL:
 		- PPO
 	- Experiment: 100k interactions;
@@ -55,7 +62,8 @@
 ## Continuous (MuJoCo, Robotics)
 - M P Deisenroth, C E Rasmussen, D Fox. Learning to Control a Low-Cost Manipulator using Data-Efficient Reinforcement Learning. RSS'11
 	- Gaussian Process to learn the dynamics
-- Guided policy search (model-based RL) for image-based robotic manipulation https://github.com/cbfinn/gps
+- Guided policy search (model-based RL) for image-based robotic manipulation
+	- https://github.com/cbfinn/gps
 - End-to-end training of deep visuomotor policies, L, Finn ’16
 - A Nagabandi, G Kahn, R S. Fearing, S Levine. Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning. ICLR'18
 	- At beginning: avoid overfitting (MBRL is better)
