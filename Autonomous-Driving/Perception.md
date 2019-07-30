@@ -13,6 +13,8 @@
 
 	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
 	- B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
+
+- Frontal View:
 	- **PointRCNN**: S Shi, X Wang, H Li. PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud. CVPR'19
 		- 1 Bottom-up 3D proposal;
 		- 1.1 Point representation: PointNet++ with multi-scale grouping;
@@ -26,8 +28,6 @@
 		- 2.3 Losses for box proposal refinement
 		<img src="/Autonomous-Driving/images/point-rcnn1.png" alt="drawing" width="500"/>
 		<img src="/Autonomous-Driving/images/point-rcnn2.png" alt="drawing" width="600"/>
-
-- Frontal View:
 	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
 		- **Geometry constraint**: Perspective projection of a 3D bounding box should fit tightly within its 2D detection window
 		- Detect 2D bounding box first;
@@ -56,10 +56,10 @@
 ## Detection from 3D
 - 2D as a referral:
 	- C Qi, W Liu, C Wu, H Su, and L Guibas. Frustum pointnets for 3d object detection from RGB-D data. CoRR'17
-	- D Xu, D Anguelov, and A Jain. Pointfu- sion: Deep sensor fusion for 3d bounding box estimation. CoRR'17
+	- D Xu, D Anguelov, and A Jain. Pointfusion: Deep sensor fusion for 3d bounding box estimation. CoRR'17
 - Voxelize:
 	- S Song and J Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
-	- Y Zhou and O Tuzel. Voxelnet: End-to-end learn- ing for point cloud based 3d object detection. CoRR'17
+	- Y Zhou and O Tuzel. Voxelnet: End-to-end learning for point cloud based 3d object detection. CoRR'17
 
 ## Detection from Graph
 - Graph NN:

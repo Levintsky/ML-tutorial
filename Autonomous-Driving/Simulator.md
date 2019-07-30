@@ -2,15 +2,14 @@
 
 ## Baidu
 - **AADS**: W. Li, C. W. Pan, R. Zhang, J. P. Ren, Y. X. Ma, J. Fang, F. L. Yan, Q. C. Geng, X. Y. Huang, H. J. Gong, W. W. Xu, G. P. Wang, D. Manocha, R. G. Yang. AADS: Augmented Autonomous Driving Simulation using Data-driven Algorithms. Science'19
-	<img src="/Autonomous-Driving/images/aads1.png" alt="drawing" width="600"/>
-	<img src="/Autonomous-Driving/images/aads2.png" alt="drawing" width="600"/>
-
 	- Input: RGB images, point cloud, semantic labels, trajectories
 	- **AADS-RGB**: Background image Synthesis, MVS (multi-view stereo), 4-refereces-images (input) -> depth map (output); [22,23] content-aware warping;
 		- Background: Median filter; guided filter; Poisson editting for completion;
 		- Moving objects: randomly initialize object in lanes with direction consistent;
 	- **AADS-PC**: simulate the Velodyne outputs with ApolloScape-PC;
 	- **Trajectories Synthesis**:
+	<img src="/Autonomous-Driving/images/aads1.png" alt="drawing" width="600"/>
+	<img src="/Autonomous-Driving/images/aads2.png" alt="drawing" width="600"/>
 
 ## Intel
 - S. R. Richter, V. Vineet, S. Roth, V. Koltun, Playing for data: Ground truth from computer games. ECCV'16
