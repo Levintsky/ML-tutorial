@@ -1,5 +1,22 @@
 # Prediction
 
+## 2D-Vision
+- SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. Mengye Ren, Andrei Pokrovsky, Bin Yang, and Raquel Urtasun
+
+## Map-Automation
+- G Mattyus, W Luo and R Urtasun. DeepRoadMapper: Extracting Road Topology From Aerial Images. ICCV'17
+- J. Liang, R. Urtasun. End-to-End Deep Structured Models for Drawing Crosswalks. ECCV'18
+
+## 3D-Detection
+- HDNET: Exploiting HD Maps for 3D Object Detection. B. Yang, M. Liang, R. Urtasun. CoRL'18
+
+## Tracking
+- D. Frossard, R. Urtasun. End-to-end Learning of Multi-sensor 3D Tracking by Detection. ICRA'18
+
+## Lane Detection
+- M. Bai, G. Mattyus, N. Homayounfar, S. Wang, S. K. Lakshmikanth, R. Urtasun. Deep Multi-Sensor Lane Detection. IROS'18
+- J Liang, N Homayounfar, WC Ma, S Wang, R Urtasun. Convolutional Recurrent Network for Road Boundary Extraction. CVPR'19
+
 ## Uber
 - **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
 	- 1. 3D detection; 2. tracking; 3. motion forecasting;
