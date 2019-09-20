@@ -31,7 +31,7 @@
 	- DSL [11]
 	- Prefer shorter program (with explicit reward)
 	- Sketch-tool [1] to refine program
--  3D-Aware Scene Manipulation via Inverse Graphics, NIPS 2018
+-  S Yao, T M H Hsu, J Zhu, J Wu, A Torralba, W T. Freeman, J B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics, NIPS'18
 
 ## Toolbox
 - https://github.com/tensorflow/graphics
