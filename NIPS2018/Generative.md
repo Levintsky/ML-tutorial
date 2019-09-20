@@ -23,9 +23,6 @@
 - Beyond Grids: Learning Graph Representations for Visual Recognition (Yin Li)
 - Context-Aware Synthesis and Placement of Object Instances (Google Cloud AI, NVIDIA)
 - A Unified Feature Disentangler for Multi-Domain Image Translation and Manipulation
-- Inpainting, Completion
-	- See and Think: Disentangling Semantic Scene Completion
-	- Image Inpainting via Generative Multi-column Convolutional Neural Networks (Jiaya Jia)
 - Artistic Style
 	- Unsupervised Learning of Artistic Styles with Archetypal Style Analysis
 - **Image-to-image translation for cross-domain disentanglement (Yoshua Bengio)**

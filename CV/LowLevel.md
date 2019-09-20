@@ -20,28 +20,6 @@
 - Robustness Techniques
 	- Drifting
 
-## Depth, Stereo
-- Stereo:
-	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world’s imagery. CVPR'16
-	- A. Kendall, H. Martirosyan, S. Dasgupta, P. Henry, R. Kennedy, A. Bachrach, and A. Bry. End-to-end learning of geometry and context for deep stereo regression. 2017
-	- J. Zbontar and Y. LeCun. Stereo matching by training a convolutional neural network to compare image patches. JMLR'16
-	- X Cheng, P Wang and R Yang. Learning Depth with Convolutional Spatial Propagation Network. PAMI'18
-	<img src="/CV/images/low-level/cspn.png" alt="drawing" width="600"/>
-
-	- F Zhang, V Prisacariu, R Yang, Philip H.S. Torr. GA-Net: Guided Aggregation Net for End-to-end Stereo Matching. CVPR'19
-		- https://github.com/feihuzhang/GANet
-	- X Du, M El-Khamy, J Lee. AMNet: Deep Atrous Multiscale Stereo Disparity Estimation Networks. 2019
-- T Zhou, M Brown, N Snavely, D Lowe. Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
-	- https://github.com/tinghuiz/SfMLearner
-	- Input: ego video;
-	- Output: monocular depth, camera motion;
-	- View synthesis as supervision, all source frames s to predict target frame t
-	- Differentiable depth image-based rendering: similar to SPN (Spatial Transformer Network)
-	- Modeling the model limitation: weighted correspondence, regularization on weight to avoid trivial all-zero weight
-	<img src="/CV/images/low-level/ssl-depth1.png" alt="drawing" width="600"/>
-	<img src="/CV/images/low-level/ssl-depth2.png" alt="drawing" width="600"/>
-	<img src="/CV/images/low-level/ssl-depth3.png" alt="drawing" width="400"/>
-
 ## Optical Flow
 - **FlowNet**: A Dosovitskiy, P Fischer, E Ilg, P Hausser, C Hazırbas, V Golkov. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
 	- FlowNetS: stacks two images as input
@@ -62,7 +40,8 @@ King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
 <img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
 
 ## Scene Flow
-- W Ma, S Wang, R Hu, Y Xiong, R Urtasun. Deep Rigid Instance Scene Flow. 2019
+- **ISF**: A. Behl, O. Jafari, S. Mustikovela, H. Alhaija, C. Rother and A. Geiger: Bounding Boxes, Segmentations and Object Coordinates: How Important is Recognition for 3D Scene Flow Estimation in Autonomous Driving Scenarios?. ICCV'17
+- **UberATG-DRISF**: W Ma, S Wang, R Hu, Y Xiong, R Urtasun. Deep Rigid Instance Scene Flow. 2019
 <img src="/CV/images/low-level/deep-rigid-scene-flow.png" alt="drawing" width="500"/>
 
 - **HD^3-Flow**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19

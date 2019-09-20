@@ -48,7 +48,7 @@
 		- Collect images;
 		- Camera parameter for each image;
 		- Reconstruct 3D geometry;
-		- Bundle adjustment: fuse more info (GPS, IMU, …) in your cost function;
+		- Bundle adjustment: fuse more info (GPS, IMU, ...) in your cost function;
 		- Camera parameter known?
 			- Known: 1D search, with epipolar constraint;
 			- Unknown: 2D search, optical flow first?
@@ -62,6 +62,9 @@
 		- Chevy van: side- and front facing laser scanner; 2 x high-speed video cameras; 8 x camera (Rosette configuration);
 	- Pose optimization: http://code.google.com/p/gpo/wiki/GPO
 	- Align the pose to the road network;
+	- **COLMAP** (SOA): Structure-from-Motion Revisited. CVPR'16
+	- **COLMAP** (SOA): Pixelwise View Selection for Unstructured Multi-View Stereo. ECCV'16
+		- https://colmap.github.io/
 - Depth Fusion (a specific technique):
 	- KinectFusion: Real-Time Dense Surface Mapping and Tracking, ISMAR 2011;
 		- Real-time volumetric reconstruction; 6DOF pose;
