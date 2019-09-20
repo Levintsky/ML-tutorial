@@ -1,8 +1,9 @@
 # 3D Reconstruction
 
 ## Benchmarks
-- Kitti
-- DeMon dataset
+- Kitti;
+- Cityscape;
+- DeMon dataset: combination of SUN3D, ...
 - **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
 
 ## Evaluation
@@ -11,7 +12,7 @@
 
 ## Deep SFM
 - Google: SfM-Net: Learning of Structure and Motion from Video. 2017
-	- Input: two frames;
+	- Input: two frames; (use camera intrinsics when available, otherwise: default;)
 	- Output: depth, segmentation, camera and rigid object motions; optical flow;
 	- Supervision: ssl reprojection photometric error; ego-motion; depth;
 	- https://github.com/waxz/sfm_net (TF)
@@ -26,6 +27,9 @@
 		- Depth supervision (if GT available)
 		- Camera motion (if GT available)
 		- Optical flow (if GT available)
+	<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="600"/>
+
 - Google (T. Zhou): Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
 	- Input 2+ frames, **intrinsic known**
 	- Single stream: depth
@@ -34,17 +38,29 @@
 		- View synthesis: inverse warp back to target frame; (L1)
 		- Explanability mask \* photometric loss
 		- Regularization: multi-scale smoothness loss;
-	<img src="/CV/images/low-level/ssl-depth1.png" alt="drawing" width="600"/>
-	<img src="/CV/images/low-level/ssl-depth2.png" alt="drawing" width="600"/>
-	<img src="/CV/images/low-level/ssl-depth3.png" alt="drawing" width="400"/>
+	<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/reconstruction/ssl-depth3.png" alt="drawing" width="400"/>
 
-- Google: Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
+- Google: A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
 	- https://github.com/google-research/google-research/tree/master/depth_from_video_in_the_wild
 	- Improve on T. Zhou
-	- Output: depth, egomtion, object motion, camera intrinsic;
+	- Output: depth, egomtion, object motion, **camera intrinsic**;
+	- Network structure:
+		- Bottleneck: intrinsics, extrinsics;
+		- Occlusion-aware: from depth-ordering?
+	- Regularization:
+		- 0/1 semantic detection (union of bounding boxes of pedestrians, cyclist, ...) of mobile objects mask;
+		- Randomized layer-normalization (running inference as training mode);
 	- Supervision:
 		- Consistency 
-- DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
+	- Experiments:
+		- Kitti
+		- Cityscapes
+		- YouTube videos
+	<img src="/CV-3D/images/reconstruction/depth-from-video.png" alt="drawing" width="600"/>
+
+- **DeMoN**: B Ummenhofer, H Zhou, J Uhrig, N Mayer, E Ilg, A Dosovitskiy, T Brox. DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
 	- https://github.com/lmb-freiburg/demon (TF)
 	- https://github.com/cvfish/pytorch_demon.git (Pytorch)
 	- Input: two images;
@@ -56,8 +72,14 @@
 		- Flow refine: flow-block(image-pair, im2, intrinsics, prev-prediction)
 		- Depth, normal, camera pose iteration;
 	- Refinement net;
+	- Loss design:
+		- Pointwise inverse depth;
+		- Motion loss: (r, t)
 	- **DeMon dataset**: real-world datasets (SUN3D [40], RGB-D SLAM [36], CITYWALL and ACHTECK-TURM [6]) of outdoor and indoor scenes and a synthesized dataset (SCENES 11 [37, 2]) with random objects flying in the air.
 	- Insight: mixing synthetic and real-world is important;
+	<img src="/CV-3D/images/reconstruction/demon1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/reconstruction/demon2.png" alt="drawing" width="600"/>
+
 - Learning structure-from-motion from motion. ECCV'18
 	- Input: pair of frames (Ir, It)
 	- Estimate camera pose (R, t), compensate rotation for Ir (stablization)
@@ -99,6 +121,11 @@
 		- https://github.com/XinJCheng/CSPN
 	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
 		- https://github.com/ucbdrive/hd3
+
+## Depth Inpainting
+- **GuideNet**: Tang, F. Tian, W. Feng, J. Li and P. Tan: Learning Guided Convolutional Network for Depth Completion. 2019
+- **FuseNet**: Y. Chen, B. Yang, M. Liang and R. Urtasun: Learning Joint 2D-3D Representations for Depth Completion. ICCV 2019.
+
 
 ## Video
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
