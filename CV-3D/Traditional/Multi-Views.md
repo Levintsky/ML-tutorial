@@ -14,3 +14,6 @@
 ## Relation to Epipolar Constraints
 ## Multiple-View Reconstruction Algorithms
 ## Multiple-View Reconstruction of Lines
+
+## MVS
+- Y. Furukawa, B. Curless, S. M. Seitz, and R. Szeliski. Towards internet-scale multi-view stereo. CVPR'10

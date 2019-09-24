@@ -43,6 +43,10 @@
 	- **Incpetion-V2**: Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015
 	- **Inception-V3**: Rethinking the Inception Architecture for Computer Vision; CVPR 2016
 	- **Inception-V4**: Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning;
-- **Bilinear**:
-	- T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
-		- https://github.com/HaoMood/bilinear-cnn
+	
+## Fine-Grained
+- **Bilinear**: T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
+	- https://github.com/HaoMood/bilinear-cnn
+
+## Pooling, Aggregation
+- R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016

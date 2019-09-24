@@ -112,7 +112,7 @@
 	- DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
 - Stereo-misc:
 	- X Cheng, P Wang and R Yang. Learning Depth with Convolutional Spatial Propagation Network. PAMI'18
-	<img src="/CV/images/low-level/cspn.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/stereo/cspn.png" alt="drawing" width="600"/>
 
 	- **SOA**: F Zhang, V Prisacariu, R Yang, Philip H.S. Torr. GA-Net: Guided Aggregation Net for End-to-end Stereo Matching. CVPR'19
 		- https://github.com/feihuzhang/GANet
@@ -121,11 +121,16 @@
 		- https://github.com/XinJCheng/CSPN
 	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
 		- https://github.com/ucbdrive/hd3
+	- Jia-Ren Chang and Yong-Sheng Chen. Pyramid stereo matching network. CVPR'18
 
-## Depth Inpainting
-- **GuideNet**: Tang, F. Tian, W. Feng, J. Li and P. Tan: Learning Guided Convolutional Network for Depth Completion. 2019
+## Depth Inpainting/Completion
+- **GuideNet**: Tang, F. Tian, W. Feng, J. Li and P. Tan: Learning Guided Convolutional Network for Depth Completion. TIP'19
+	- https://github.com/kakaxi314/GuideNet
+	- Inspired by guided-image filter, learnable filter;
+	<img src="/CV-3D/images/depth-est/guide-net1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/depth-est/guide-net2.png" alt="drawing" width="600"/>
+
 - **FuseNet**: Y. Chen, B. Yang, M. Liang and R. Urtasun: Learning Joint 2D-3D Representations for Depth Completion. ICCV 2019.
-
 
 ## Video
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16

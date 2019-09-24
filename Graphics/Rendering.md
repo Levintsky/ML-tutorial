@@ -40,3 +40,7 @@
 	- 6dof
 	- Intrinsic camera modeling
 	- Material modeling:
+
+## Legacy
+- A. Fitzgibbon, Y. Wexler, and A. Zisserman. Image-based rendering using image-based priors. IJCV'05
+- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996

@@ -1,6 +1,5 @@
 # Image Inpainting
 
-
 ## Inpainting
 - D Ulyanov, A Vedaldi, V Lempitsky. Deep Image Prior. 
 	- https://dmitryulyanov.github.io/deep_image_prior

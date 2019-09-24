@@ -14,7 +14,8 @@
 - ICP:
 	- S. Gupta, P. Arbelaez, R. Girshick, and J. Malik. Aligning 3d models to rgb-d images of cluttered scenes. CVPR'15
 
-## Berkeley
+## Learning-based
+- A. Kendall, M. Grimes, and R. Cipolla. PoseNet: A convolutional network for real-time 6-DOF camera relocalization. ICCV'15
 - Shubham Tulsiani, Joao Carreira and Jitendra Malik. Pose Induction for Novel Object Categories. ICCV 2015
 	- Input: images, output three Euler Angles
 	- SCT (Similar Class Transfer): 
