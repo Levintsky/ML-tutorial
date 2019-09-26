@@ -34,24 +34,37 @@
 		- Visualize salient object for pilotnet
 		<img src="/Autonomous-Driving/images/e2e-ad3.png" alt="drawing" width="500"/>
 
-- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
-	- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
-	<img src="/Autonomous-Driving/images/chauffeurnet1.png" alt="drawing" width="600"/>
+- Waymo:
+	- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
+		- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
+		<img src="/Autonomous-Driving/images/chauffeurnet1.png" alt="drawing" width="600"/>
 
-	- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
-	<img src="/Autonomous-Driving/images/chauffeurnet2.png" alt="drawing" width="600"/>
-	<img src="/Autonomous-Driving/images/chauffeurnet3.png" alt="drawing" width="600"/>
+		- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
+		<img src="/Autonomous-Driving/images/chauffeurnet2.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/chauffeurnet3.png" alt="drawing" width="600"/>
 
-	- System Design
-	<img src="/Autonomous-Driving/images/chauffeurnet4.png" alt="drawing" width="600"/>
+		- System Design
+		<img src="/Autonomous-Driving/images/chauffeurnet4.png" alt="drawing" width="600"/>
 
-	- Output: driving trajectory (consumed by controler)
-	- **Imitation Learning**: direct: hard; reward shaping;
-	- Loss design:
-		- Agent position, heading and box prediction;
-		- Meta prediction: speed, subpixel
-	- Beyond pure imitation: avoid drift, bad behavior (collisions and off-road driving)
-		- Loss design: collision loss; on-road loss; geometry loss (always follows geometry independent of speed)
+		- Output: driving trajectory (consumed by controler)
+		- **Imitation Learning**: direct: hard; reward shaping;
+		- Loss design:
+			- Agent position, heading and box prediction;
+			- Meta prediction: speed, subpixel
+		- Beyond pure imitation: avoid drift, bad behavior (collisions and off-road driving)
+			- Loss design: collision loss; on-road loss; geometry loss (always follows geometry independent of speed)
+	- K Refaat, K Ding, N Ponomareva and S Ross. Agent Prioritization for Autonomous Navigation. 2019
+		- Input: ROI 80 x 80 centered on AV;
+		- **Data Generation**: automatic; simulation on real-world logged data;
+		- **Data representation**:
+		- **Hybrid approach**: CNN + GBDT
+		- Ranking CNN;
+		- Rank loss: log(1+exp(sj-si)) to rank agent j and i;
+		- Ranking model:
+			- 1. GBDT: with Engineered or CNN features;
+			- 2. Pairwise loss function from CNN;
+		- Evalution: Normalized Discounted Cumulative Gain (NDCG);
+		- Best performer: **Pairwise CNN + Pairwise GBDT**;
 - Berkeley:
 	- H Xu, Y Gao, F Yu, and T Darrell. End-to-end learning of driving models from large-scale video datasets. CVPR'17
 		- Input: camera

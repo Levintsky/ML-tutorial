@@ -86,51 +86,54 @@
 	- DepthNet(Ir-stab, It): **key difference: depth-net has two inputs**
 	- Normalize traslation tr;
 
-## MVS
-- DeepMVS: Learning Multi-view Stereopsis. CVPR'18
-	- https://github.com/phuang17/DeepMVS
-	- Input: an **arbitrary number** of images with known camera poses and calibration;
-	- Steps:
-		- 0. Images, camera pose and calibration (**COLMAP** to estimate);
-		- 1. Produce plane-sweep volumes;
-		- 2.1 Patch Matching
-		- 2.2 Encoder-decoder intra-volume feature aggregation;
-		- 2.3 Max-pooling to aggregate inter-volume and produce disparity map;
-		- 3. Refinement: dense-crf
-	- Dataset:
-		- DeMoN dataset: 640 x 480 resolution;
-		- **MVS-SYNTH**: 120 sequences synthetic (greatly helpful), each seq contains 100 images of 1920 x 1080 resolution, ground truth disparity map, extrinsic and intrinsic camera;
-		- ETH3D
-- Patch Similarity for stereo:
-	- S. Zagoruyko and N. Komodakis. Learning to compare image patches via convolutional neural networks. CVPR'15
-	- J. Zbontar and Y. LeCun. Stereo matching by training a convolutional neural network to compare image patches. JMLR'16
-	- W. Luo, A. G. Schwing, and R. Urtasun. Efficient deep learning for stereo matching. CVPR'16
-	- W. Hartmann, S. Galliani, M. Havlena, K. Schindler, and L. Van Gool. Learned multi-patch similarity. ICCV'17
-- Plane-sweep volume as input:
-	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
-	- A. Kendall, H. Martirosyan, S. Dasgupta, P. Henry, R. Kennedy, A. Bachrach, and A. Bry. End-to-end learning of geometry and context for deep stereo regression. ICCV'17
-	- DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
-- Stereo-misc:
-	- X Cheng, P Wang and R Yang. Learning Depth with Convolutional Spatial Propagation Network. PAMI'18
-	<img src="/CV-3D/images/stereo/cspn.png" alt="drawing" width="600"/>
-
-	- **SOA**: F Zhang, V Prisacariu, R Yang, Philip H.S. Torr. GA-Net: Guided Aggregation Net for End-to-end Stereo Matching. CVPR'19
-		- https://github.com/feihuzhang/GANet
-	- X Du, M El-Khamy, J Lee. AMNet: Deep Atrous Multiscale Stereo Disparity Estimation Networks. 2019
-	- **SOA**: X. Cheng, P. Wang and R. Yang: Learning Depth with Convolutional Spatial Propagation Network.
-		- https://github.com/XinJCheng/CSPN
-	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
-		- https://github.com/ucbdrive/hd3
-	- Jia-Ren Chang and Yong-Sheng Chen. Pyramid stereo matching network. CVPR'18
-
 ## Depth Inpainting/Completion
+- **DeepLiDAR**: J. Qiu, Z. Cui, Y. Zhang, X. Zhang, S. Liu, B. Zeng and M. Pollefeys. DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image.
+	- https://github.com/JiaxiongQ/DeepLiDAR
+- W. Van Gansbeke, D. Neven, B. De Brabandere and L. Van Gool: Sparse and noisy LiDAR completion with RGB guidance and uncertainty. International Conference on Machine Vision Applications (MVA) 2019.
+	- https://github.com/wvangansbeke/Sparse-Depth-Completion
 - **GuideNet**: Tang, F. Tian, W. Feng, J. Li and P. Tan: Learning Guided Convolutional Network for Depth Completion. TIP'19
 	- https://github.com/kakaxi314/GuideNet
 	- Inspired by guided-image filter, learnable filter;
 	<img src="/CV-3D/images/depth-est/guide-net1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/depth-est/guide-net2.png" alt="drawing" width="600"/>
 
-- **FuseNet**: Y. Chen, B. Yang, M. Liang and R. Urtasun: Learning Joint 2D-3D Representations for Depth Completion. ICCV 2019.
+- **FuseNet**: Y. Chen, B. Yang, M. Liang and R. Urtasun: Learning Joint 2D-3D Representations for Depth Completion. ICCV'19.
+	- 2D-3D Fuse-block:
+		- Multi-scale 2D convolution net: with skip
+		- 3D continuous convolution [Shenlong, CVPR'18]: K-nn
+		- Fusion: element-wise summation
+	<img src="/CV-3D/images/depth-est/fusenet1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/depth-est/fusenet2.png" alt="drawing" width="600"/>
 
-## Video
+## View Synthesis
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
+	- Input: left view;
+	- Output: right view?
+	- Evaluation: Kitti, NYU
+	<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="600"/>
+
+## Single/Multi-Image, Object Reconstruction
+- **DRC**:
+	- https://github.com/shubhtuls/drc
+	- Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency. S Tulsiani, T Zhou, A Efros, J Malik. PAMI'19
+	- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
+		- https://github.com/shubhtuls/mvcSnP
+	- S Tulsiani, S Gupta, D Fouhey, A Efros, J Malik. Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene. CVPR'18
+		- https://github.com/shubhtuls/factored3d
+	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
+		- https://github.com/akar43/CategoryShapes
+- AtlasNet. Groueix. CVPR'18
+- **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
+	- https://github.com/xiumingzhang/GenRe-ShapeHD
+	<img src="/CV-3D/images/reconstruction/genre.png" alt="drawing" width="600"/>
+
+- **MarrNet**: J Wu, Y Wang, T Xue, X Sun, W Freeman, and J Tenenbaum. MarrNet: 3D Shape Reconstruction via 2.5D Sketches. NIPS'17
+	- First predict a 2.5-D (normal, depth, silhouette)
+	- Reprojection consistency;
+- **3D-INN**:
+	- J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18
+		- Detect 2d keypoints as well as 3d structure;
+		- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;
+	- **ShapeHD**: J Wu, C Zhang, X Zhang, Z Zhang, W Freeman, and J Tenenbaum. Learning Shape Priors for Single-View 3D Completion and Reconstruction. ECCV'18
+		- Extension of **3D-INN**
+		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;

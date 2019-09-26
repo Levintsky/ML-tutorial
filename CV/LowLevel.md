@@ -15,10 +15,12 @@
 
 - **Pwc-Net**: D Sun, X Yang, M Liu, and J Kautz. Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume. CVPR'18
 - **MFF**: Z Ren, O Gallo, D Sun, M Yang, E Sudderth and J Kautz. A Fusion Approach for Multi-Frame Optical Flow Estimation. 2019
-- **SelFlow**: P Liu, M R. Lyu, I 
-King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
-<img src="/CV/images/low-level/selflow1.png" alt="drawing" width="600"/>
-<img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
+- **SelFlow**: P Liu, M R. Lyu, I King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
+	<img src="/CV/images/low-level/selflow1.png" alt="drawing" width="600"/>
+	<img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
+
+- **HD3**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
+	- https://github.com/ucbdrive/hd3
 
 ## View Synthesis
 - T. Zhou, S. Tulsiani, W. Sun, J. Malik and A. Efros. View synthesis by appearance flow. ECCV'16

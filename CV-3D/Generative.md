@@ -9,7 +9,7 @@ a Convolutional Network. ECCV 2016
 	- https://github.com/lmb-freiburg/mv3d
 
 ## Recurrent
-- Jimei Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
+- J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
 	- Input/output: images
 	- https://github.com/jimeiyang/deepRotator
 - Christopher B. Choy Danfei Xu? JunYoung Gwak?
@@ -83,16 +83,6 @@ Kevin Chen Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-vie
 		- VAE, GAN
 
 ## Generation
-- **3D-INN**:
-	- Jiajun Wu, Tianfan Xue, Joseph J. Lim, Yuandong Tian, Joshua B. Tenenbaum, Antonio Torralba, and William T. Freeman. Single Image 3D Interpreter Network, ECCV 2016
-		- Detect 2d keypoints as well as 3d structure;
-		- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;
-	- Jiajun Wu, Chengkai Zhang, Xiuming Zhang, Zhoutong Zhang, William T. Freeman, and Joshua B. Tenenbaum: Learning 3D Shape Priors for Shape Completion and Reconstruction, ECCV 2018
-		- Extension of **3D-INN**
-		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;
-- **Marr-Net**: 3d shape reconstruction via 2.5 d sketches, NIPS 2017
-	- First predict a 2.5-D (normal, depth, silhouette)
-	- Reprojection consistency;
 - Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via
 deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 - Interactive 3D modeling with a generative adversarial network, 3D Vision 2017
@@ -100,7 +90,7 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 	- https://github.com/Amir-Arsalan/Synthesize3DviaDepthOrSil
 
 ## 2.5-D, Intrinsic Images
-- H. G. Barrow and J. M. Tenenbaum, “Recovering intrinsic scene characteristics from images,” Computer Vision Systems, 1978
+- H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
 
 ## 3D-Reconstruction, Render
 - W. Jakob, “Mitsuba renderer,” 2010, http://www.mitsuba-renderer.org.
