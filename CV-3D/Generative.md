@@ -72,16 +72,6 @@ Kevin Chen Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-vie
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV 2017
 	- https://github.com/matheusgadelha/PrGAN
 
-## Other
-- **FAIR-3D, Berkeley**:
-	- Shubham Tulsiani, Tinghui Zhou, Alexei A. Efros, Jitendra Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency. CVPR 2017
-		- https://github.com/shubhtuls/drc
-- **DeepMind**:
-	- Unsupervised Learning of 3D Structure from Images
-	- Andrew Brock, Theodore Lim, J.M. Ritchie, Nick Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks
-		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
-		- VAE, GAN
-
 ## Generation
 - Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via
 deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
@@ -94,33 +84,7 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 
 ## 3D-Reconstruction, Render
 - W. Jakob, “Mitsuba renderer,” 2010, http://www.mitsuba-renderer.org.
-- Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. In ICCV, 2015b.
-- Xinchen Yan, Jimei Yang, Ersin Yumer, Yijie Guo, and Honglak Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. In NIPS, 2016.
-- Hao Su, Haoqiang Fan, Leonidas Guibas. A Point Set Generation Network for 3D Object Reconstruction from a Single Image, CVPR 2017 
-- A. Dai, C. R. Qi, and M. Nießner,  **Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR 2017**
-	- https://github.com/angeladai/cnncomplete
-- SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
-- **DRC**: Shubham Tulsiani, Tinghui Zhou, Alexei A Efros, and Jitendra Malik. Multi-view supervision for single-view reconstruction via differentiable ray consistency. CVPR 2017
-	- **Voxel**: occupancy map
-	- Input: one or more observation/camera pairs (O, C), camera-pose only required for training;
-	- Event: a ray intersect a voxel, previous voxels are all unoccupied
-	- Cost:
-		- Depth, Foreground mask
-		- Per-ray consistency loss
-	- Experiment:
-		- ShapeNet
-		- PASCAL 3D
-- Christian Hane, Shubham Tulsiani, Jitendra Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 2017
-	- Input: color, depth, partial volume
-	- Ouptut: voxel
-	- CNN with deep-supervision on different resolution
-	- Most important part: predict layer l+1 based on layer l
-		- Feature Cropping
-		- Upsampling
-		- Output generation
-- Maxim Tatarchenko, Alexey Dosovitskiy, Thomas Brox. Octree Generating Networks:
-Efficient Convolutional Architectures for High-resolution 3D Outputs.
-
+- Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
 
 ## Shape Editing
 - A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and partbased recombination. CGF 2012

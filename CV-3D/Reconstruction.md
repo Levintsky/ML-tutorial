@@ -4,7 +4,11 @@
 - Kitti;
 - Cityscape;
 - DeMon dataset: combination of SUN3D, ...
+- **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
+	- MVS benchmark;
 - **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
+- **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
+	- MVS benchmark;
 
 ## Evaluation
 - Geometric: depth/disparity with GT;
@@ -86,6 +90,12 @@
 	- DepthNet(Ir-stab, It): **key difference: depth-net has two inputs**
 	- Normalize traslation tr;
 
+- **DeepMind**:
+	- Unsupervised Learning of 3D Structure from Images
+	- Andrew Brock, Theodore Lim, J.M. Ritchie, Nick Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks
+		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+		- VAE, GAN
+
 ## Depth Inpainting/Completion
 - **DeepLiDAR**: J. Qiu, Z. Cui, Y. Zhang, X. Zhang, S. Liu, B. Zeng and M. Pollefeys. DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image.
 	- https://github.com/JiaxiongQ/DeepLiDAR
@@ -113,15 +123,39 @@
 	<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="600"/>
 
 ## Single/Multi-Image, Object Reconstruction
-- **DRC**:
+- **DRC**: S Tulsiani, T Zhou, A Efros, J Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency.  PAMI'19
 	- https://github.com/shubhtuls/drc
-	- Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency. S Tulsiani, T Zhou, A Efros, J Malik. PAMI'19
-	- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
-		- https://github.com/shubhtuls/mvcSnP
-	- S Tulsiani, S Gupta, D Fouhey, A Efros, J Malik. Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene. CVPR'18
-		- https://github.com/shubhtuls/factored3d
+	- Input: image (model) + multiple images (refine?);
+	- Output: voxel for 3d;
+	- Assume: camera poses known?
+	- Model: ray termination event;	Event: a ray intersect a voxel, previous voxels are all unoccupied
+	- Cost:
+		- Depth, Foreground mask
+		- Per-ray consistency loss
+	- Experiment:
+		- ShapeNet
+		- PASCAL 3D
+	<img src="/CV-3D/images/reconstruction/drc.png" alt="drawing" width="600"/>
+
+- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
+	- https://github.com/shubhtuls/mvcSnP
+- S Tulsiani, S Gupta, D Fouhey, A Efros, J Malik. Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene. CVPR'18
+	- https://github.com/shubhtuls/factored3d
+	- Input: single image; bounding boxes (objects);
+	- Output: layout, objects with 3D shape (voxel) and pose (location, rotation);
+	<img src="/CV-3D/images/reconstruction/factor3d.png" alt="drawing" width="600"/>
+
 	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
 		- https://github.com/akar43/CategoryShapes
+
+- C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 2017
+	- Input: color, depth, partial volume
+	- Ouptut: voxel
+	- CNN with deep-supervision on different resolution
+	- Most important part: predict layer l+1 based on layer l
+		- Feature Cropping
+		- Upsampling
+		- Output generation
 - AtlasNet. Groueix. CVPR'18
 - **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
 	- https://github.com/xiumingzhang/GenRe-ShapeHD
@@ -137,3 +171,12 @@
 	- **ShapeHD**: J Wu, C Zhang, X Zhang, Z Zhang, W Freeman, and J Tenenbaum. Learning Shape Priors for Single-View 3D Completion and Reconstruction. ECCV'18
 		- Extension of **3D-INN**
 		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;
+
+## Misc
+- Xinchen Yan, Jimei Yang, Ersin Yumer, Yijie Guo, and Honglak Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. In NIPS, 2016.
+- Hao Su, Haoqiang Fan, Leonidas Guibas. A Point Set Generation Network for 3D Object Reconstruction from a Single Image, CVPR 2017 
+- A. Dai, C. R. Qi, and M. Nießner,  **Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR 2017**
+	- https://github.com/angeladai/cnncomplete
+- SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
+- Maxim Tatarchenko, Alexey Dosovitskiy, Thomas Brox. Octree Generating Networks:
+Efficient Convolutional Architectures for High-resolution 3D Outputs.

@@ -77,6 +77,8 @@
 	<img src="/CV-3D/images/cnn_3d/pointcnn1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/cnn_3d/pointcnn2.png" alt="drawing" width="600"/>
 
+- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. 2018
+
 ## Voxel
 - B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018
 	- SSCN (submanifold sparse Conv Net)
