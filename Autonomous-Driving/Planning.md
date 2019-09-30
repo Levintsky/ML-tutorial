@@ -7,44 +7,46 @@
 ## Imitation Learning
 - Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
 - W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
+	- Idea: holistic model, combine detection and planning;
 	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
 		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
 		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
 	- Output: 3D detections and their future trajectories;
 	- Output: space-time cost volume that represents the goodness
 	- Network:
-		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128. 256, 256}, filter size 3x3 and stride 1. (follow **Pixor**)
+		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
 		- Perception Head: follow SSD, 12 anchors each location;
 		- Cost Volume Head: same resolution as BEV,
 		- Efficient Inference: NP-hard, sampling;
 	- Learning:
 		- Perception loss: bounding box, regression,
-		- planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
+		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
 	- Output Parameterization: Clothoid curve; sampling;
-	<img src="/Autonomous-Driving/images/e2e-planner.png" alt="drawing" width="600"/>
+	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the min- imum learned cost;
+	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
 
 - NVIDIA:
 	- **PilotNet**: M Bojarski, D Del Testa, D Dworakowski, B Firner, B Flepp, P Goyal, L D. Jackel, M Monfort, U Muller, J Zhang, X Zhang, J Zhao, K Zieba. End to End Learning for Self-Driving Cars. 2016
 		- Imitation learning from human data; trained just for bc; drift (1m from center) reset in simulator;
 		- Good for path following for a few seconds; not able to make turns;
-		<img src="/Autonomous-Driving/images/e2e-ad1.png" alt="drawing" width="400"/>
-		<img src="/Autonomous-Driving/images/e2e-ad2.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/plan/e2e-ad1.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/plan/e2e-ad2.png" alt="drawing" width="400"/>
 
 	- M Bojarski, P Yeres, A Choromanska, K Choromanski, B Firner, L Jackel, and U Muller. Explaining how a deep neural network trained with end-to-end learning steers a car. 2017
 		- Visualize salient object for pilotnet
-		<img src="/Autonomous-Driving/images/e2e-ad3.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/e2e-ad3.png" alt="drawing" width="500"/>
 
 - Waymo:
 	- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
 		- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
-		<img src="/Autonomous-Driving/images/chauffeurnet1.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/plan/chauffeurnet1.png" alt="drawing" width="600"/>
 
 		- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
-		<img src="/Autonomous-Driving/images/chauffeurnet2.png" alt="drawing" width="600"/>
-		<img src="/Autonomous-Driving/images/chauffeurnet3.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/plan/chauffeurnet2.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/plan/chauffeurnet3.png" alt="drawing" width="600"/>
 
 		- System Design
-		<img src="/Autonomous-Driving/images/chauffeurnet4.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/plan/chauffeurnet4.png" alt="drawing" width="600"/>
 
 		- Output: driving trajectory (consumed by controler)
 		- **Imitation Learning**: direct: hard; reward shaping;
@@ -78,14 +80,14 @@
 		- Conditioned on internal state
 		- Trained on Carla
 		- https://github.com/carla-simulator/imitation-learning.
-		<img src="/Autonomous-Driving/images/cil1.png" alt="drawing" width="400"/>
-		<img src="/Autonomous-Driving/images/cil2.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/plan/cil1.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/plan/cil2.png" alt="drawing" width="600"/>
 
 	- M Muller, A Dosovitskiy, B Ghanem, and V Koltun. Driving policy transfer via modularity and abstraction. CoRL'18
 		- Input: semantic segmentation
 		- Output: high-level control
-		<img src="/Autonomous-Driving/images/cil3.png" alt="drawing" width="500"/>
-		<img src="/Autonomous-Driving/images/cil4.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/cil3.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/cil4.png" alt="drawing" width="500"/>
 - C Chen, A Seff, A Kornhauser, and J Xiao. DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving. ICCV'15
 - A Sauer, N Savinov, and A Geiger. Conditional affordance learning for driving in urban environments. arxiv'18
 
@@ -93,9 +95,9 @@
 - X Pan, Y You, Z Wang, and C Lu. Virtual to real reinforcement learning for autonomous driving. 2017
 	- Transfer from simulator to real
 	- Simulator: TORCS
-	- Image translation
-	<img src="/Autonomous-Driving/images/visri1.png" alt="drawing" width="600"/>
-	<img src="/Autonomous-Driving/images/visri1.png" alt="drawing" width="600"/>
+	- **Image translation** for transfer!
+	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
+	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
 
 - A Kendall, J Hawke, D Janz, P Mazur, D Reda, J Allen, V Lam, A Bewley, and A Shah. Learning to drive in a day. 2018
 	- Task: lane following
@@ -109,15 +111,15 @@
 - D. S. Gonzalez, J. Dibangoye, and C. Laugier, High-speed highway scene prediction based on driver models learned from demonstrations. ITSC'16
 - D. Sadigh, S. Sastry, S. A. Seshia, and A. D. Dragan, Planning for autonomous cars that leverages effects on human actions. 2016
 - N Rhinehart, K M Kitani, and P Vernaza. R2p2: A reparameterized pushforward policy for diverse, precise generative path forecasting. ECCV'18
-	- Brian D Ziebart, Andrew L Maas, J Andrew Bagnell, and Anind K Dey. Maximum entropy inverse reinforcement learning. AAAI'08
-	- Markus Wulfmeier, Peter Ondruska, and Ingmar Posner. Maximum entropy deep inverse reinforcement learning. 2015
+- Brian D Ziebart, Andrew L Maas, J Andrew Bagnell, and Anind K Dey. Maximum entropy inverse reinforcement learning. AAAI'08
+- Markus Wulfmeier, Peter Ondruska, and Ingmar Posner. Maximum entropy deep inverse reinforcement learning. 2015
 - **GAIL**: A Kuefler, J Morton, T Wheeler, and M Kochenderfer. Imitating driver behavior with generative adversarial networks. IV'17
 	- RNN planner: GRU with ELU; (GAIL GRU, GAIL MLP, BC GRU, and BC MLP)
 	- Policy optimizer: TRPO;
 	- Given (s1, a1), (s2, a2),..., (sT, aT) sampled from real/fake for discriminator D, D as reward
-	<img src="/Autonomous-Driving/images/gail-ad1.png" alt="drawing" width="400"/>
-	<img src="/Autonomous-Driving/images/gail-ad2.png" alt="drawing" width="400"/>
-	<img src="/Autonomous-Driving/images/gail-ad3.png" alt="drawing" width="400"/>
+	<img src="/Autonomous-Driving/images/plan/gail-ad1.png" alt="drawing" width="400"/>
+	<img src="/Autonomous-Driving/images/plan/gail-ad2.png" alt="drawing" width="400"/>
+	<img src="/Autonomous-Driving/images/plan/gail-ad3.png" alt="drawing" width="400"/>
 
 	- NGSIM dataset
 

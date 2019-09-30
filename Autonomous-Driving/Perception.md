@@ -1,20 +1,38 @@
 # Perception
 
+## BEV Detection (Bird-Eye View)
+- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
+	- Input: BEV point-clouds, Front-view pc, 2D image;
+	- Output: object class, 3D bounding boxes;
+	- Generates 3D object proposals from **bird’s eye view** map and project them to three views;
+	- Deep fusion network is used to combine region-wise features obtained via ROI pooling for each view;
+	<img src="/Autonomous-Driving/images/detection/mv3d.png" alt="drawing" width="600"/>
+
+- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
+	- BEV: [-40, 40] x [0, 70]
+	- VGG feature extractor: for both BEV and frontal images + FPN to map back;
+	- Multimodal Fusion RPN: 80K - 100K 3D anchors;
+	- Two stages like RCNN;
+	- Detector;
+	- https://github.com/kujason/avod
+	<img src="/Autonomous-Driving/images/avod.png" alt="drawing" width="600"/>
+
+- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
+- B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
+
+## Frontal View
+- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
+	- RPN-based detection;
+	- 1. PointNet for each voxel;
+	- 2. 3D-Conv on voxels;
+	- Divides the point cloud into equally spaced 3D voxels; encodes each voxel via stacked VFE layers; then 3D convolution further aggregates local voxel features, transforming the point cloud into a high-dimensional volumetric representation;
+	- RPN consumes the vol- umetric representation and yields the detection result;
+	- Key contribution: VFE layer (voxel feature encoding);
+	- Experiments: 3D detection from Lidar on KITTI;
+	<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
+
 ## Detection From 2D
-- **BEV** (Bird-Eye View):
-	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
-		- BEV: [-40, 40] x [0, 70]
-		- VGG feature extractor: for both BEV and frontal images + FPN to map back;
-		- Multimodal Fusion RPN: 80K - 100K 3D anchors;
-		- Two stages like RCNN;
-		- Detector;
-		- https://github.com/kujason/avod
-		<img src="/Autonomous-Driving/images/avod.png" alt="drawing" width="600"/>
-
-	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
-	- B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
-
-- Frontal View:
+- :
 	- **PointRCNN**: S Shi, X Wang, H Li. PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud. CVPR'19
 		- 1 Bottom-up 3D proposal;
 		- 1.1 Point representation: PointNet++ with multi-scale grouping;
@@ -46,14 +64,31 @@
 	- B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
 - Geometry constraint:
 	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
-	- B Li, W Ouyang, L Sheng, X Zeng, and X Wang. Gs3d: An efficient 3d object detection frame- work for autonomous driving. 2019.
+	- B Li, W Ouyang, L Sheng, X Zeng, and X Wang. Gs3d: An efficient 3d object detection framework for autonomous driving. 2019.
+
+## Fusion (LiDAR + Image)
+- M Liang, B Yang, Y Chen, R Hu, R Urtasun. Multi-Task Multi-Sensor Fusion for 3D Object Detection. CVPR'19
+	- Input: RGB, LiDAR
+	- Output: 2D, 3D detection; ground estimation; depth completion;
+	- LiDAR to BEV;
+	<img src="/Autonomous-Driving/images/detection/mtms-fusion.png" alt="drawing" width="400"/>
+	<img src="/Autonomous-Driving/images/detection/mtms-fusion2.png" alt="drawing" width="600"/>
 
 ## Semantic Segmentation
 - S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
 <img src="/Autonomous-Driving/images/continuous1.png" alt="drawing" width="500"/>
 <img src="/Autonomous-Driving/images/continuous2.png" alt="drawing" width="600"/>
 
-## Detection from 3D
+## Detection from 3D Point-Clouds
+- Range view (cylindrical range images?):
+	- **VeloFCN**: B Li, T Zhang, and T Xia. Vehicle detection from 3D lidar using fully convolutional network. RSS'16
+	- **MV3D**: X Chen, H Ma, J Wan, B Li, and T Xia. Multi-view 3D object detection network for autonomous driving. CVPR'17
+	- G Meyer, A Laddha, E Kee, C Vallespi-Gonzalez, Carl K. Wellington. LaserNet: An Efficient Probabilistic 3D Object Detector for Autonomous Driving. CVPR'19
+		- 0. Range view;
+		- 1. FCN (class probability for each LIDAR point)
+		- 2. Mean-shift clustering for points; adaptive-NMS;
+	<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
+
 - 2D as a referral:
 	- C Qi, W Liu, C Wu, H Su, and L Guibas. Frustum pointnets for 3d object detection from RGB-D data. CoRR'17
 	- D Xu, D Anguelov, and A Jain. Pointfusion: Deep sensor fusion for 3d bounding box estimation. CoRR'17

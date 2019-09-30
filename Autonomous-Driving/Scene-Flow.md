@@ -13,9 +13,9 @@
 	- 1. Optical flow: Pwc-Net (pyramid, warping, cost-volume)
 	- 2. Stereo: PSM-Net
 	- 3. Segmentation: Mask R-CNN
-	<img src="/CV/images/low-level/deep-rigid-scene-flow.png" alt="drawing" width="500"/>
+	<img src="/Autonomous-Driving/images/scene-flow/deep-rigid-scene-flow.png" alt="drawing" width="500"/>
 
 - **HD^3-Flow**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
 	- https://github.com/ucbdrive/hd3
-	<img src="/CV/images/low-level/hier-matching.png" alt="drawing" width="600"/>
+	<img src="/Autonomous-Driving/images/scene-flow/hier-matching.png" alt="drawing" width="600"/>
 	
