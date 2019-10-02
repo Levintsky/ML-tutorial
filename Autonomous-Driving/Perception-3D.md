@@ -31,6 +31,16 @@
 	- Experiments: 3D detection from Lidar on KITTI;
 	<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
 
+## Misc
+- Multi-Level Radar Fusion for Perception and Prediction.
+	- Insight: Radar has better long-range and speed;
+	- Input: radar, lidar
+	- Lidar: 
+	- Radar: 2D-Conv on raterized image;
+	- 1. Point-level fusion: better long-range detection;
+	- 2. Detection-level fusion: (Association; Aggregation; Refinement;) better state estimation for tracking and prediction;
+	- 3. Track-level fusion: track before detect;
+
 ## Detection From 2D
 - :
 	- **PointRCNN**: S Shi, X Wang, H Li. PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud. CVPR'19
@@ -95,6 +105,7 @@
 - Voxelize:
 	- S Song and J Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
 	- Y Zhou and O Tuzel. Voxelnet: End-to-end learning for point cloud based 3d object detection. CoRR'17
+- HDNET: Exploiting HD Maps for 3D Object Detection. B. Yang, M. Liang, R. Urtasun. CoRL'18
 
 ## Detection from Graph
 - Graph NN:
@@ -107,3 +118,7 @@
 	- D. Boscaini, J. Masci, E. Rodola, and M. Bronstein. Learning shape correspondence with anisotropic convolutional neural networks. NIPS'16
 	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16.
 	- F. Monti, D. Boscaini, J. Masci, E. Rodola, J. Svoboda, and M. M. Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. CVPR'17.
+
+
+## 3D Tracking
+- D. Frossard, R. Urtasun. End-to-end Learning of Multi-sensor 3D Tracking by Detection. ICRA'18

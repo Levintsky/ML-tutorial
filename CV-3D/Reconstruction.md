@@ -14,6 +14,11 @@
 - Geometric: depth/disparity with GT;
 - Photometric;
 
+## Latest
+- Tom, Shenlong, Raquel:
+	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
+- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
+
 ## Deep SFM
 - Google: SfM-Net: Learning of Structure and Motion from Video. 2017
 	- Input: two frames; (use camera intrinsics when available, otherwise: default;)

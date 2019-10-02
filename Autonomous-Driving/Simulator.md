@@ -1,5 +1,13 @@
 # Simulator
 
+## Simulation: to generate data looks new
+- Lidar Simulation:
+	- Mini-conference
+	- Baidu AADS;
+	- L Caccia, H v Hoof, A Courville, J Pineau. Deep Generative Modeling of LiDAR Data. 2019
+- Image simulation
+- Radar simulation
+
 ## Baidu
 - **AADS**: W. Li, C. W. Pan, R. Zhang, J. P. Ren, Y. X. Ma, J. Fang, F. L. Yan, Q. C. Geng, X. Y. Huang, H. J. Gong, W. W. Xu, G. P. Wang, D. Manocha, R. G. Yang. AADS: Augmented Autonomous Driving Simulation using Data-driven Algorithms. Science'19
 	- Input: RGB images, point cloud, semantic labels, trajectories
