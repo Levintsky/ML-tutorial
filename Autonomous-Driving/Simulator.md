@@ -7,6 +7,8 @@
 	- L Caccia, H v Hoof, A Courville, J Pineau. Deep Generative Modeling of LiDAR Data. 2019
 - Image simulation
 - Radar simulation
+- Mesh generation:
+	- Real-to-Sim Object Texture Transfer. Mini-34
 
 ## Baidu
 - **AADS**: W. Li, C. W. Pan, R. Zhang, J. P. Ren, Y. X. Ma, J. Fang, F. L. Yan, Q. C. Geng, X. Y. Huang, H. J. Gong, W. W. Xu, G. P. Wang, D. Manocha, R. G. Yang. AADS: Augmented Autonomous Driving Simulation using Data-driven Algorithms. Science'19
@@ -16,8 +18,8 @@
 		- Moving objects: randomly initialize object in lanes with direction consistent;
 	- **AADS-PC**: simulate the Velodyne outputs with ApolloScape-PC;
 	- **Trajectories Synthesis**:
-	<img src="/Autonomous-Driving/images/aads1.png" alt="drawing" width="600"/>
-	<img src="/Autonomous-Driving/images/aads2.png" alt="drawing" width="600"/>
+	<img src="/Autonomous-Driving/images/simulator/aads1.png" alt="drawing" width="600"/>
+	<img src="/Autonomous-Driving/images/simulator/aads2.png" alt="drawing" width="600"/>
 
 ## Intel
 - S. R. Richter, V. Vineet, S. Roth, V. Koltun, Playing for data: Ground truth from computer games. ECCV'16

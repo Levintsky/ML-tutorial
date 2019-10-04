@@ -1,5 +1,10 @@
 # 3D Reconstruction
 
+## Problem Setup
+- Direct 3D reconstruction;
+- Infer cues:
+	- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
+
 ## Benchmarks
 - Kitti;
 - Cityscape;
@@ -18,8 +23,21 @@
 - Tom, Shenlong, Raquel:
 	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
 - **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
+- Deep Structured 3D Estimation. Mini-12
+	- Input: stereo image, LiDAR;
+	- Output: pose, shape;
+	- Supervision:
+		- Multi-view geometry;
+		- Intuitive physics;
+		- Photo consistency;
+		- Silhouette;
+		- Consistency;
+		- Intuitive physics;
+		- Symmetry;
+	- Metrics: shape; (Chamfer distance) pose;
+	- Exp: ShapeNet, Tor4D, Kitti;
 
-## Deep SFM
+## SSL
 - Google: SfM-Net: Learning of Structure and Motion from Video. 2017
 	- Input: two frames; (use camera intrinsics when available, otherwise: default;)
 	- Output: depth, segmentation, camera and rigid object motions; optical flow;
@@ -38,7 +56,6 @@
 		- Optical flow (if GT available)
 	<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="600"/>
-
 - Google (T. Zhou): Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
 	- Input 2+ frames, **intrinsic known**
 	- Single stream: depth
@@ -50,7 +67,6 @@
 	<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/reconstruction/ssl-depth3.png" alt="drawing" width="400"/>
-
 - Google: A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
 	- https://github.com/google-research/google-research/tree/master/depth_from_video_in_the_wild
 	- Improve on T. Zhou
@@ -68,7 +84,6 @@
 		- Cityscapes
 		- YouTube videos
 	<img src="/CV-3D/images/reconstruction/depth-from-video.png" alt="drawing" width="600"/>
-
 - **DeMoN**: B Ummenhofer, H Zhou, J Uhrig, N Mayer, E Ilg, A Dosovitskiy, T Brox. DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
 	- https://github.com/lmb-freiburg/demon (TF)
 	- https://github.com/cvfish/pytorch_demon.git (Pytorch)
@@ -88,13 +103,11 @@
 	- Insight: mixing synthetic and real-world is important;
 	<img src="/CV-3D/images/reconstruction/demon1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/reconstruction/demon2.png" alt="drawing" width="600"/>
-
 - Learning structure-from-motion from motion. ECCV'18
 	- Input: pair of frames (Ir, It)
 	- Estimate camera pose (R, t), compensate rotation for Ir (stablization)
 	- DepthNet(Ir-stab, It): **key difference: depth-net has two inputs**
 	- Normalize traslation tr;
-
 - **DeepMind**:
 	- Unsupervised Learning of 3D Structure from Images
 	- Andrew Brock, Theodore Lim, J.M. Ritchie, Nick Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks
@@ -111,7 +124,6 @@
 	- Inspired by guided-image filter, learnable filter;
 	<img src="/CV-3D/images/depth-est/guide-net1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/depth-est/guide-net2.png" alt="drawing" width="600"/>
-
 - **FuseNet**: Y. Chen, B. Yang, M. Liang and R. Urtasun: Learning Joint 2D-3D Representations for Depth Completion. ICCV'19.
 	- 2D-3D Fuse-block:
 		- Multi-scale 2D convolution net: with skip
@@ -119,15 +131,51 @@
 		- Fusion: element-wise summation
 	<img src="/CV-3D/images/depth-est/fusenet1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/depth-est/fusenet2.png" alt="drawing" width="600"/>
+- D Frossard, R Urtasun. Probabilistic Depth Completion. Mini-29
+	- Input: image + Lidar;
+	- Output: depth, semantic class, instance id;
+	- Semantic by [Deep Watershed, Min Bai];
+	- Assume a probabilistic model
+	- Model to optimize MLE;
+- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
 
 ## View Synthesis
+- Image Simulation by Geometry-Aware Composition. Mini-conference.
+	- Separate static and dynamic modeling;
+	- Input: a tuple of RGB image, BEV layout, semantic and instance segmentation masks, LiDAR sweep data, and ground height data (in BEV space);
+		- BEV layout: lane info, bounding boxes of dynamic objects;
+	- Object bank: precise geometry; from RGB images with semantic and instance segmentation;
+	- 1. Placement Sampling;
+	- 2. Segment Retrieval;
+	- 3. Novel View Warping;
+	- 4. Final image synthesis;
+	- Geometry refinement: optimize Nx3 mesh with energy with silhoutte, lidar and symmetry;
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
 	- Input: left view;
 	- Output: right view?
 	- Evaluation: Kitti, NYU
 	<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="600"/>
+- E Park, J Yang, E Yumer, D Ceylan, and A Berg. Transformation-Grounded Image Genera- 510 tion Network for Novel 3d View Synthesis. 2017
+- T. Zhou, S. Tulsiani, W. Sun, J. Malik and A. Efros. View synthesis by appearance flow. ECCV'16
+	- https://github.com/tinghuiz/appearance-flow
+- J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
+	- Input/output: images
+	- https://github.com/jimeiyang/deepRotator
+- Legacy:
+	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
+	- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
+	- S. M. Seitz and C. R. Dyer. View morphing. 1996
 
 ## Single/Multi-Image, Object Reconstruction
+- Single-image:
+	- C B Choy, D Xu, J Gwak, K Chen, and S Savarese. 3d-r2n2: A unified approach for single and multiview 3d object reconstruction. ECCV'16
+		- Update model with RNN each time with a new image;
+		- https://github.com/chrischoy/3D-R2N2
+	- X Yan, J Yang, E Yumer, Y Guo, and H Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. NIPS'16
+		- https://github.com/xcyan/ptnbhwd
+	- H Fan, H Su, and L Guibas. A point set generation network for 3d object reconstruction from a single image. CVPR'17
+	- L Mescheder, M Oechsle, M Niemeyer, S Nowozin, and A Geiger. Occupancy networks: Learning 3d reconstruction in function space. CVPR'19
+	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
 - **DRC**: S Tulsiani, T Zhou, A Efros, J Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency.  PAMI'19
 	- https://github.com/shubhtuls/drc
 	- Input: image (model) + multiple images (refine?);
@@ -178,10 +226,7 @@
 		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;
 
 ## Misc
-- Xinchen Yan, Jimei Yang, Ersin Yumer, Yijie Guo, and Honglak Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. In NIPS, 2016.
-- Hao Su, Haoqiang Fan, Leonidas Guibas. A Point Set Generation Network for 3D Object Reconstruction from a Single Image, CVPR 2017 
 - A. Dai, C. R. Qi, and M. Nießner,  **Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR 2017**
 	- https://github.com/angeladai/cnncomplete
 - SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
-- Maxim Tatarchenko, Alexey Dosovitskiy, Thomas Brox. Octree Generating Networks:
-Efficient Convolutional Architectures for High-resolution 3D Outputs.
+- M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs.

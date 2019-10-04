@@ -6,36 +6,37 @@
 
 ## Imitation Learning
 - Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
-- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
-	- Idea: holistic model, combine detection and planning;
-	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
-		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
-		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
-	- Output: 3D detections and their future trajectories;
-	- Output: space-time cost volume that represents the goodness
-	- Network:
-		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
-		- Perception Head: follow SSD, 12 anchors each location;
-		- Cost Volume Head: same resolution as BEV,
-		- Efficient Inference: NP-hard, sampling;
-	- Learning:
-		- Perception loss: bounding box, regression,
-		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
-	- Output Parameterization: Clothoid curve; sampling;
-	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the min- imum learned cost;
-	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
-
+- Uber:
+	- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
+		- Idea: holistic model, combine detection and planning;
+		- Input: raw LiDAR, HD map; H x W x (ZT' + M)
+			- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
+			- HD map: H x W x M (M channels: road, intersection, lanes, ...)
+		- Output: 3D detections and their future trajectories;
+		- Output: space-time cost volume that represents the goodness
+		- Network:
+			- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
+			- Perception Head: follow SSD, 12 anchors each location;
+			- Cost Volume Head: same resolution as BEV,
+			- Efficient Inference: NP-hard, sampling;
+		- Learning:
+			- Perception loss: bounding box, regression,
+			- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
+		- Output Parameterization: Clothoid curve; sampling;
+		- Sampling: sample a set of diverse physically possible trajectories and choose the one with the min- imum learned cost;
+		<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
+	- Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
+		- No HD-Maps
+		- With HD-Maps as supervision;
 - NVIDIA:
 	- **PilotNet**: M Bojarski, D Del Testa, D Dworakowski, B Firner, B Flepp, P Goyal, L D. Jackel, M Monfort, U Muller, J Zhang, X Zhang, J Zhao, K Zieba. End to End Learning for Self-Driving Cars. 2016
 		- Imitation learning from human data; trained just for bc; drift (1m from center) reset in simulator;
 		- Good for path following for a few seconds; not able to make turns;
 		<img src="/Autonomous-Driving/images/plan/e2e-ad1.png" alt="drawing" width="400"/>
 		<img src="/Autonomous-Driving/images/plan/e2e-ad2.png" alt="drawing" width="400"/>
-
 	- M Bojarski, P Yeres, A Choromanska, K Choromanski, B Firner, L Jackel, and U Muller. Explaining how a deep neural network trained with end-to-end learning steers a car. 2017
 		- Visualize salient object for pilotnet
 		<img src="/Autonomous-Driving/images/plan/e2e-ad3.png" alt="drawing" width="500"/>
-
 - Waymo:
 	- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
 		- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
@@ -98,7 +99,6 @@
 	- **Image translation** for transfer!
 	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
 	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
-
 - A Kendall, J Hawke, D Janz, P Mazur, D Reda, J Allen, V Lam, A Bewley, and A Shah. Learning to drive in a day. 2018
 	- Task: lane following
 	- MDP, input: monocular camera; VAE;
@@ -106,6 +106,12 @@
 	- Reward: speed, infraction of traffic rules
 	- Algorithm: DDPG
 	<img src="/Autonomous-Driving/images/rl-in-a-day.png" alt="drawing" width="450"/>
+- Q Sykora, M Ren, S Manivasagam, A Sadat, G Mattyus, R Urtasun. Multi-Agent Value Iteration Network for Scalable Route Planning. Mini-38
+	- Input: map graph
+	- Task: Coordinated traversal of the graph
+	- Graph-VIN
+	- Communication;
+	- Experiment: Sumo
 
 ## IRL
 - D. S. Gonzalez, J. Dibangoye, and C. Laugier, High-speed highway scene prediction based on driver models learned from demonstrations. ITSC'16

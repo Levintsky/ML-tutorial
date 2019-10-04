@@ -22,15 +22,9 @@
 - **HD3**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
 	- https://github.com/ucbdrive/hd3
 
-## View Synthesis
-- T. Zhou, S. Tulsiani, W. Sun, J. Malik and A. Efros. View synthesis by appearance flow. ECCV'16
-- Legacy:
-	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
-	- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
-	- S. M. Seitz and C. R. Dyer. View morphing. 1996
-
 ## Keypoints, Feature Matching
 - X. Han, T. Leung, Y. Jia, R. Sukthankar, and A. C. Berg. MatchNet: Unifying feature and metric learning for patch-based matching. CVPR'15
+- J Yang, S Wang, W Ma, A Barsan, J Martinez, R Urtasun. End-to-End Sparse Image Matching. Mini-18
 
 ## Legacy
 - Structure from motion: simultaneous estimate structure and motion

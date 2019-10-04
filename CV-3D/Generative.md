@@ -1,21 +1,14 @@
-# 3D Generative, Reconstruction and Synthesis
+# 3D Generative and Synthesis
 
-## 2D with 3D Input
-- Alexey Dosovitskiy, Jost Tobias Springenberg, Maxim Tatarchenko, Thomas Brox. Learning to Generate Chairs, Tables and Cars with Convolutional Networks. PAMI 2017
-- Multi-view 3D Models from Single Images with
-a Convolutional Network. ECCV 2016
+## 3D-Aware 2D Generation
+- M Tatarchenko, A Dosovitskiy, T Brox. Multi-view 3D Models from Single Images with a Convolutional Network. ECCV'16
 	- Encoder/Decoder
 	- Input RGB, output RGB/D conditioned on any shape input (angle, ...)
 	- https://github.com/lmb-freiburg/mv3d
-
-## Recurrent
-- J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
-	- Input/output: images
-	- https://github.com/jimeiyang/deepRotator
-- Christopher B. Choy Danfei Xu? JunYoung Gwak?
-Kevin Chen Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV 2016
-	- Update model with RNN each time with a new image;
-	- https://github.com/chrischoy/3D-R2N2
+- A Dosovitskiy, J Springenberg, M Tatarchenko, T Brox. Learning to Generate Chairs, Tables and Cars with Convolutional Networks. PAMI'17
+	- Input: class c, view v, transfrom param theta;
+	- Output: image;
+	- Conv, deconv, upsampling;
 
 ## Template-Based
 - Legacy:
@@ -27,8 +20,7 @@ Kevin Chen Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-vie
 - **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR 2016
 	- Shape prior
 	- https://github.com/mdfirman/voxlets
-- Jiajun Wu. 3D-INN. ECCV 2016
-- - **Hao Su Summary**: http://cseweb.ucsd.edu/~haosu/slides/PartInduction.pdf
+- **Hao Su Summary**: http://cseweb.ucsd.edu/~haosu/slides/PartInduction.pdf
 - S. Tulsiani, H. Su, L. J. Guibas, A. A. Efros, and J. Malik. Learning shape abstractions by assembling volumetric primitives. CVPR 2017
 	- Input: voxel; output: mesh parts (triangles);
 	- Unsupervised?
@@ -56,15 +48,9 @@ Kevin Chen Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-vie
 	- Motion Discovery, Part Co-segmentation
 
 ## Reconstruction
-- Warping, Flow:
-	- Tinghui Zhou, Shubham Tulsiani, Weilun Sun, Jitendra Malik, Alexei A. Efros. View Synthesis by Appearance Flow. ECCV 2016
-		- https://github.com/tinghuiz/appearance-flow
 - Rohit Girdhar, David F. Fouhey, Mikel Rodriguez, Abhinav Gupta. Learning a Predictable and Generative Vector Representation for Objects. ECCV 2016
 
-## GAN
-- Jimei:
-	- Perspective Transformer Nets: Learning Single-View 3D Object Reconstruction without 3D Supervision. NIPS 2016
-		- https://github.com/xcyan/ptnbhwd
+## GAN		
 - MIT Series:
 	- **3D-GAN**: Jiajun Wu, Learning a probabilistic latent space of object shapes via 3d generative-adversarial modeling, NIPS 2016
 		- GAN / GAN-VAE;
@@ -79,12 +65,15 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 - Amir Arsalan Soltani, Haibin Huang, Jiajun Wu, Tejas D. Kulkarni, Joshua B. Tenenbaum. Synthesizing 3D Shapes via Modeling Multi-View Depth Maps and Silhouettes with Deep Generative Networks. CVPR 2017
 	- https://github.com/Amir-Arsalan/Synthesize3DviaDepthOrSil
 
-## 2.5-D, Intrinsic Images
-- H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
-
 ## 3D-Reconstruction, Render
-- W. Jakob, “Mitsuba renderer,” 2010, http://www.mitsuba-renderer.org.
+- W. Jakob, Mitsuba renderer, 2010, http://www.mitsuba-renderer.org.
 - Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
 
 ## Shape Editing
 - A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and partbased recombination. CGF 2012
+
+## 3D-Texture
+- Real-to-Sim Object Texture Transfer. Mini-34
+	- Input: images, LiDAR point clouds
+	- Output: Texture on games
+	- Soft

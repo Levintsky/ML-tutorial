@@ -1,5 +1,8 @@
 # Stereo
 
+## Misc
+- C Lin, O Wang, B Russell, E Shechtman, V Kim, M Fisher, and S Lucey. Photometric mesh optimization for video-aligned 3d object reconstruction. CVPR'19
+
 ## Patch Similarity for Stereo
 - S. Zagoruyko and N. Komodakis. Learning to compare image patches via convolutional neural networks. CVPR'15
 - J. Zbontar and Y. LeCun. Stereo matching by training a convolutional neural network to compare image patches. JMLR'16
@@ -18,6 +21,8 @@
 	- Conv-Deconv on cost volume;
 	- Differentiable arg-max;
 	<img src="/CV-3D/images/stereo/gc-net.png" alt="drawing" width="500"/>
+- S Duggal, S Wang, W Ma, Rui Hu, and R
+Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patchmatch. 2019
 
 ## PSV-based
 - J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
@@ -54,7 +59,6 @@
 	- Cost volume;
 	<img src="/CV-3D/images/stereo/lsm1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/stereo/lsm2.png" alt="drawing" width="600"/>
-
 - S Sun, M Huh, Y Liao, N Zhang, and J Lim. Multi-view to Novel view: Synthesizing Novel Views with Self-Learned Confidence. ECCV'18
 	- Problem: novel view synthesis
 	- Input: many images;
