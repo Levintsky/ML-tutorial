@@ -58,6 +58,10 @@
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV 2017
 	- https://github.com/matheusgadelha/PrGAN
 
+## VAE
+- A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
+	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+
 ## Generation
 - Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via
 deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
