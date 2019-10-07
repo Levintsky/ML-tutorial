@@ -12,7 +12,7 @@
 
 ## Template-Based
 - Legacy:
-	- A.-L. Chauve, P. Labatut, and J.-P. Pons. Robust piecewiseplanar 3d reconstruction and completion from large-scale unstructured point data. CVPR 2010
+	- A.-L. Chauve, P. Labatut, and J.-P. Pons. Robust piecewise planar 3d reconstruction and completion from large-scale unstructured point data. CVPR 2010
 	- F. Lafarge and P. Alliez. Surface reconstruction through point set structuring. Computer Graphics Forum 2013
 	- S. N. Sinha, D. Steedly, R. Szeliski, M. Agrawala, and M. Pollefeys. Interactive 3d architectural modeling from unordered photo collections. TOG 2008
 	- A. Bodis-Szomoru, H. Riemenschneider, and L. Van Gool. Fast, approximate piecewise-planar modeling based on sparse structure-from-motion and superpixels. CVPR 2014

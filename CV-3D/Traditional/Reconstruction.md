@@ -4,6 +4,10 @@
 - https://github.com/openMVG/awesome_3DReconstruction_list
 
 ## Problem definition:
+- Shape from X:
+	- Shape from shading: Photometric stereo: control light sources;
+	- Shape from texture: Assume: regular textures;
+	- Shape from focus: from blur;
 - SLAM:
 	- Input: real-time ordered images;
 	- Output: 6-DOF camera (localization); 3D-reconstruction (mapping);
@@ -15,6 +19,7 @@
 	- Output: camera path only (x, y, z, theta1, 2, 3) Euler Angles
 	- L​ocal consistency, can be a building block of a V-SLAM;
 - MVS:
+	- Input: images, known camera poses;
 	- Output: dense 3D reconstruction;
 
 ## Approaches

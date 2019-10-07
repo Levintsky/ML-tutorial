@@ -59,6 +59,8 @@
 		- 2D-detection: 2D bounding boxes;
 		- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
 		<img src="/CV-3D/images/cnn_3d/frustum-pointnet.png" alt="drawing" width="600"/>
+	- **Foldingnet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. arXiv'17.
+	- P. Achlioptas, O. Diamanti, I. Mitliagkas, and L. Guibas. Learning representations and generative models for 3d point clouds. 2018.
 
 - **Attention**:
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
@@ -88,6 +90,35 @@
 	- **Sparse Voxelized**: applied on Submanifold FCN and U-Nets;
 	- CPU-only;
 	- Experiments: ShapeNet; NYU depth;
+- Oct-tree:
+	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
+
+## Mesh
+- J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
+- A. Sinha, J. Bai, and K. Ramani. Deep learning 3d shape surfaces using geometry images. ECCV'16
+- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolu- tional neural networks on graphs with fast localized spectral filtering. NIPS'16 
+- T. Bagautdinov, C. Wu, J. Saragih, P. Fua, and Y. Sheikh. Modeling facial geometry using compositional vaes.
+- O. Litany, A. Bronstein, M. Bronstein, and A. Makadia. Deformable shape completion with graph convolutional autoencoders. CVPR'17.
+- N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature- steered graph convolutions for 3d shape analysis
+- H. Maron, M. Galun, N. Aigerman, M. Trope, N. Dym, E. Yumer, V. G. Kim, and Y. Lipman. Convolutional neural networks on surfaces via seamless toric covers. 2017.
+- P. Baque, E. Remelli, F. Fleuret, and P. Fua. Geodesic convolutional shape optimization. 2018
+- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
+- H. B. Hamu, H. Maron, I. Kezurer, G. Avineri, and Y. Lipman. Multi-chart generative surface modeling. 2018
+- Legacy:
+	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
+	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
+
+## SDF
+- Legacy:
+	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
+	- **Kinectfusion**: R. A. Newcombe, S. Izadi, O. Hilliges, D. Molyneaux, D. Kim, A. J. Davison, P. Kohi, J. Shotton, S. Hodges, and A. Fitzgibbon. Kinectfusion: Real-time dense surface mapping and tracking. ISMAR'11
+- Voxel-based SDF
+	- A. Zeng, S. Song, M. Nießner, M. Fisher, J. Xiao, and T. Funkhouser. 3dmatch: Learning local geometric descriptors from rgb-d reconstructions. CVPR'17
+	- **3D-EPN**: A. Dai, C. R. Qi, and M. Nießner,  Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR'17
+		- https://github.com/angeladai/cnncomplete
+	- D. Stutz and A. Geiger. Learning 3d shape completion from laser scan data with weak supervision. CVPR'18
+- Point SDF:
+	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
 
 ## 2D-3D Fusion
 - V. Hegde and R. Zadeh. FusionNet: 3D object classification using multiple data representations. 2016

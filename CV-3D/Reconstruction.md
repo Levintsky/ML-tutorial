@@ -22,7 +22,6 @@
 ## Latest
 - Tom, Shenlong, Raquel:
 	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
-- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
 - Deep Structured 3D Estimation. Mini-12
 	- Input: stereo image, LiDAR;
 	- Output: pose, shape;
@@ -209,7 +208,7 @@
 		- Feature Cropping
 		- Upsampling
 		- Output generation
-- AtlasNet. Groueix. CVPR'18
+- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
 - **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
 	- https://github.com/xiumingzhang/GenRe-ShapeHD
 	<img src="/CV-3D/images/reconstruction/genre.png" alt="drawing" width="600"/>
@@ -226,7 +225,5 @@
 		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;
 
 ## Misc
-- A. Dai, C. R. Qi, and M. Nießner,  **Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR 2017**
-	- https://github.com/angeladai/cnncomplete
 - SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
 - M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs.
