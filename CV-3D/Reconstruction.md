@@ -36,82 +36,102 @@
 	- Metrics: shape; (Chamfer distance) pose;
 	- Exp: ShapeNet, Tor4D, Kitti;
 
-## SSL
-- Google: SfM-Net: Learning of Structure and Motion from Video. 2017
-	- Input: two frames; (use camera intrinsics when available, otherwise: default;)
-	- Output: depth, segmentation, camera and rigid object motions; optical flow;
-	- Supervision: ssl reprojection photometric error; ego-motion; depth;
-	- https://github.com/waxz/sfm_net (TF)
-	- Architecture:
-		- Single-image stream: depth (U-Net)
-		- Two-frame stream: camera motion, (object motion, object masks) x K;
-		- Dense Optical Flow from two streams;
-	- Supervision: different motion could generate same frame;
-		- Self supervision; (color)
-		- Spatial smoothness; L1
-		- Forward-backward consistency check: depth consistency
-		- Depth supervision (if GT available)
-		- Camera motion (if GT available)
-		- Optical flow (if GT available)
-	<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="600"/>
-- Google (T. Zhou): Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
-	- Input 2+ frames, **intrinsic known**
-	- Single stream: depth
-	- Two stream: camera pose, explanability mask
-	- Supervision:
-		- View synthesis: inverse warp back to target frame; (L1)
-		- Explanability mask \* photometric loss
-		- Regularization: multi-scale smoothness loss;
-	<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/reconstruction/ssl-depth3.png" alt="drawing" width="400"/>
-- Google: A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
-	- https://github.com/google-research/google-research/tree/master/depth_from_video_in_the_wild
-	- Improve on T. Zhou
-	- Output: depth, egomtion, object motion, **camera intrinsic**;
-	- Network structure:
-		- Bottleneck: intrinsics, extrinsics;
-		- Occlusion-aware: from depth-ordering?
-	- Regularization:
-		- 0/1 semantic detection (union of bounding boxes of pedestrians, cyclist, ...) of mobile objects mask;
-		- Randomized layer-normalization (running inference as training mode);
-	- Supervision:
-		- Consistency 
-	- Experiments:
-		- Kitti
-		- Cityscapes
-		- YouTube videos
-	<img src="/CV-3D/images/reconstruction/depth-from-video.png" alt="drawing" width="600"/>
-- **DeMoN**: B Ummenhofer, H Zhou, J Uhrig, N Mayer, E Ilg, A Dosovitskiy, T Brox. DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
-	- https://github.com/lmb-freiburg/demon (TF)
-	- https://github.com/cvfish/pytorch_demon.git (Pytorch)
-	- Input: two images;
-	- Output: depth, camera motion
-	- Bootstrap net:
-		- Flow from flow-block(image-pair), image only init;
-		- Initial depth, normal and camera pose (R, t) from image pairs;
-	- Iterative net x 3:
-		- Flow refine: flow-block(image-pair, im2, intrinsics, prev-prediction)
-		- Depth, normal, camera pose iteration;
-	- Refinement net;
-	- Loss design:
-		- Pointwise inverse depth;
-		- Motion loss: (r, t)
-	- **DeMon dataset**: real-world datasets (SUN3D [40], RGB-D SLAM [36], CITYWALL and ACHTECK-TURM [6]) of outdoor and indoor scenes and a synthesized dataset (SCENES 11 [37, 2]) with random objects flying in the air.
-	- Insight: mixing synthetic and real-world is important;
-	<img src="/CV-3D/images/reconstruction/demon1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/reconstruction/demon2.png" alt="drawing" width="600"/>
-- Learning structure-from-motion from motion. ECCV'18
-	- Input: pair of frames (Ir, It)
-	- Estimate camera pose (R, t), compensate rotation for Ir (stablization)
-	- DepthNet(Ir-stab, It): **key difference: depth-net has two inputs**
-	- Normalize traslation tr;
-- **DeepMind**:
-	- Unsupervised Learning of 3D Structure from Images
-	- Andrew Brock, Theodore Lim, J.M. Ritchie, Nick Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks
-		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
-		- VAE, GAN
+## Depth Estimation
+- Single view:
+	- **MonoDepth**: C. Godard, O. Mac Aodha, and G. J. Brostow. Unsupervised monocular depth estimation with left-right consistency. CVPR'17
+	- **DORN**: H. Fu, M. Gong, C. Wang, K. Batmanghelich, and D. Tao. Deep ordinal regression network for monocular depth estimation. CVPR'18
+- Multi-view/video supervised:
+	- **DeMoN**: B Ummenhofer, H Zhou, J Uhrig, N Mayer, E Ilg, A Dosovitskiy, T Brox. DeMoN: Depth and Motion Network for Learning Monocular Stereo. CVPR'17
+		- https://github.com/lmb-freiburg/demon (TF)
+		- https://github.com/cvfish/pytorch_demon.git (Pytorch)
+		- Input: two images;
+		- Output: depth, camera motion
+		- Bootstrap net:
+			- Flow from flow-block(image-pair), image only init;
+			- Initial depth, normal and camera pose (R, t) from image pairs;
+		- Iterative net x 3:
+			- Flow refine: flow-block(image-pair, im2, intrinsics, prev-prediction)
+			- Depth, normal, camera pose iteration;
+		- Refinement net;
+		- Loss design:
+			- Pointwise inverse depth;
+			- Motion loss: (r, t)
+		- **DeMon dataset**: real-world datasets (SUN3D [40], RGB-D SLAM [36], CITYWALL and ACHTECK-TURM [6]) of outdoor and indoor scenes and a synthesized dataset (SCENES 11 [37, 2]) with random objects flying in the air.
+		- Insight: mixing synthetic and real-world is important;
+		<img src="/CV-3D/images/reconstruction/demon1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/demon2.png" alt="drawing" width="600"/>
+	- **Neural-RGBD**: C Liu, J Gu, K Kim, S Narasimhan, J Kautz. Neural RGB-D Sensing: Depth and Uncertainty from a Video Camera. CVPR'19
+		- https://github.com/NVlabs/neuralrgbd
+		- Insight: single frame depth, then Bayesian filtering
+		- Input: videos
+		- Output: depth-map
+		- Assumption: camera poses known (from GPS, odometer or IMU, or SOA Visual SLAM DSO[12])
+		- D-Net: estimate DPV (depth probability volume) and confidence;
+			- PSM-Net [6] to extract features and compute warping loss;
+		- K-Net: Integrating DPV over time; (Kalman Gain)
+			- Adaptive damping to combine warped depth and new estimation;
+		- R-Net: upsample and refine DPV
+		- Experiments:
+			- Indoor scene: trained on ScanNet [10], tested on 7Scenes [43]; (pose provided by IMU); good meshes can be obtained by post-processing [33];
+			- Outdoor: trained on Kitti, tested on virtual Kitti; better than Eigen [11], Mono [17], DORN [13];
+		<img src="/CV-3D/images/reconstruction/neural-rgbd.png" alt="drawing" width="600"/>
+- Multi-view/video self-Supervised:
+	- Google: SfM-Net: Learning of Structure and Motion from Video. 2017
+		- Input: two frames; (use camera intrinsics when available, otherwise: default;)
+		- Output: depth, segmentation, camera and rigid object motions; optical flow;
+		- Supervision: ssl reprojection photometric error; ego-motion; depth;
+		- https://github.com/waxz/sfm_net (TF)
+		- Architecture:
+			- Single-image stream: depth (U-Net)
+			- Two-frame stream: camera motion, (object motion, object masks) x K;
+			- Dense Optical Flow from two streams;
+		- Supervision: different motion could generate same frame;
+			- Self supervision; (color)
+			- Spatial smoothness; L1
+			- Forward-backward consistency check: depth consistency
+			- Depth supervision (if GT available)
+			- Camera motion (if GT available)
+			- Optical flow (if GT available)
+		<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="600"/>
+	- Google (T. Zhou): Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
+		- Input 2+ frames, **intrinsic known**
+		- Single stream: depth
+		- Two stream: camera pose, explanability mask
+		- Supervision:
+			- View synthesis: inverse warp back to target frame; (L1)
+			- Explanability mask \* photometric loss
+			- Regularization: multi-scale smoothness loss;
+		<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/ssl-depth3.png" alt="drawing" width="400"/>
+	- Google: A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
+		- https://github.com/google-research/google-research/tree/master/depth_from_video_in_the_wild
+		- Improve on T. Zhou
+		- Output: depth, egomtion, object motion, **camera intrinsic**;
+		- Network structure:
+			- Bottleneck: intrinsics, extrinsics;
+			- Occlusion-aware: from depth-ordering?
+		- Regularization:
+			- 0/1 semantic detection (union of bounding boxes of pedestrians, cyclist, ...) of mobile objects mask;
+			- Randomized layer-normalization (running inference as training mode);
+		- Supervision:
+			- Consistency 
+		- Experiments:
+			- Kitti
+			- Cityscapes
+			- YouTube videos
+		<img src="/CV-3D/images/reconstruction/depth-from-video.png" alt="drawing" width="600"/>
+	- Learning structure-from-motion from motion. ECCV'18
+		- Input: pair of frames (Ir, It)
+		- Estimate camera pose (R, t), compensate rotation for Ir (stablization)
+		- DepthNet(Ir-stab, It): **key difference: depth-net has two inputs**
+		- Normalize traslation tr;
+	- **DeepMind**:
+		- Unsupervised Learning of 3D Structure from Images
+		- Andrew Brock, Theodore Lim, J.M. Ritchie, Nick Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks
+			- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+			- VAE, GAN
 
 ## Depth Inpainting/Completion
 - **DeepLiDAR**: J. Qiu, Z. Cui, Y. Zhang, X. Zhang, S. Liu, B. Zeng and M. Pollefeys. DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image.

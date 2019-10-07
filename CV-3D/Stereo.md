@@ -90,7 +90,7 @@ Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patch
 	- X Du, M El-Khamy, J Lee. AMNet: Deep Atrous Multiscale Stereo Disparity Estimation Networks. 2019
 	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
 		- https://github.com/ucbdrive/hd3
-	- Jia-Ren Chang and Yong-Sheng Chen. Pyramid stereo matching network. CVPR'18
+	- **PSM-Net**: J Chang and Y Chen. Pyramid stereo matching network. CVPR'18
 
 - **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17.
 	- Cost volume;
