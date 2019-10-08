@@ -94,6 +94,7 @@
 	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
 
 ## Mesh
+- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
 - J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
 - A. Sinha, J. Bai, and K. Ramani. Deep learning 3d shape surfaces using geometry images. ECCV'16
 - M. Defferrard, X. Bresson, and P. Vandergheynst. Convolu- tional neural networks on graphs with fast localized spectral filtering. NIPS'16 
@@ -101,6 +102,8 @@
 - O. Litany, A. Bronstein, M. Bronstein, and A. Makadia. Deformable shape completion with graph convolutional autoencoders. CVPR'17.
 - N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature- steered graph convolutions for 3d shape analysis
 - H. Maron, M. Galun, N. Aigerman, M. Trope, N. Dym, E. Yumer, V. G. Kim, and Y. Lipman. Convolutional neural networks on surfaces via seamless toric covers. 2017.
+- M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst. Geometric deep learning: Going beyond euclidean data. SPM'17
+- P. Wang, Y. Gan, Y. Zhang, and P. Shui. 3D shape segmentation via shape fully convolutional networks. 2017
 - P. Baque, E. Remelli, F. Fleuret, and P. Fua. Geodesic convolutional shape optimization. 2018
 - **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
 - H. B. Hamu, H. Maron, I. Kezurer, G. Avineri, and Y. Lipman. Multi-chart generative surface modeling. 2018

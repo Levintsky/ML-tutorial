@@ -21,8 +21,7 @@
 	- Conv-Deconv on cost volume;
 	- Differentiable arg-max;
 	<img src="/CV-3D/images/stereo/gc-net.png" alt="drawing" width="500"/>
-- S Duggal, S Wang, W Ma, Rui Hu, and R
-Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patchmatch. 2019
+- S Duggal, S Wang, W Ma, Rui Hu, and R Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patchmatch. 2019
 
 ## PSV-based
 - J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
@@ -52,13 +51,6 @@ Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patch
 	<img src="/CV-3D/images/stereo/dpsnet2.png" alt="drawing" width="500"/>
 
 ## Multi-View
-- **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine, NIPS 2017.
-	- Input: multiple images;
-	- Output: Voxel 3D;
-	- Assumption: **camera pose known**;
-	- Cost volume;
-	<img src="/CV-3D/images/stereo/lsm1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/stereo/lsm2.png" alt="drawing" width="600"/>
 - S Sun, M Huh, Y Liao, N Zhang, and J Lim. Multi-view to Novel view: Synthesizing Novel Views with Self-Learned Confidence. ECCV'18
 	- Problem: novel view synthesis
 	- Input: many images;
@@ -92,9 +84,6 @@ Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patch
 		- https://github.com/ucbdrive/hd3
 	- **PSM-Net**: J Chang and Y Chen. Pyramid stereo matching network. CVPR'18
 
-- **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17.
-	- Cost volume;
-- RayNet: Learning Volumetric 3D Reconstruction with Ray Potentials, D. Paschalidou and A. O. Ulusoy and C. Schmitt and L. Gool and A. Geiger. CVPR'18.
 - Learning Unsupervised Multi-View Stereopsis via Robust Photometric Consistency, T. Khot, S. Agrawal, S. Tulsiani, C. Mertz, S. Lucey, M. Hebert. 2019.
 - Chengzhou Tang and Ping Tan. BA-Net: Dense Bundle Adjustment Network. 2018
 - **Unsupervised-Deep-VO**: Ruihao Li, Sen Wang, Zhiqiang Long, and Dongbing Gu. Undeepvo: Monocular visual odometry through unsupervised deep learning. In ICRA, 2018.
