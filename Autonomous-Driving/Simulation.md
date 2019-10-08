@@ -6,6 +6,16 @@
 	- Baidu AADS;
 	- L Caccia, H v Hoof, A Courville, J Pineau. Deep Generative Modeling of LiDAR Data. 2019
 - Image simulation
+	- Image Simulation by Geometry-Aware Composition. Mini-conference.
+		- Separate static and dynamic modeling;
+		- Input: a tuple of RGB image, BEV layout, semantic and instance segmentation masks, LiDAR sweep data, and ground height data (in BEV space);
+			- BEV layout: lane info, bounding boxes of dynamic objects;
+		- Object bank: precise geometry; from RGB images with semantic and instance segmentation;
+		- 1. Placement Sampling;
+		- 2. Segment Retrieval;
+		- 3. Novel View Warping;
+		- 4. Final image synthesis;
+		- Geometry refinement: optimize Nx3 mesh with energy with silhoutte, lidar and symmetry;
 - Radar simulation
 - Mesh generation:
 	- Real-to-Sim Object Texture Transfer. Mini-34

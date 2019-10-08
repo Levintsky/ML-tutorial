@@ -1,11 +1,37 @@
 # Navigation Tasks
 
+## Navigation Challenge and Benchmark
+- **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
+	- Tasks: Embodied QA, Language grounding, navigation;
+	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
+	- Habitat-API: https://github.com/facebookresearch/habitat-api
+- **StreetLearn**: P Mirowski, A Banki-Horvath, K Anderson, D Teplyashin, K Hermann, M Malinowski, M Grimes, K Simonyan, K Kavukcuoglu, A Zisserman, R Hadsell. The StreetLearn Environment and Dataset. 2019
+	- Google Street View;
+	- http://streetlearn.cc.
+
+## DeepMind:
+- Reinforcement Learning with Unsupervised Auxiliary Tasks
+	- UNREAL: https://github.com/miyosuda/unreal
+- **DeepMind-Lab**: Learning to navigate in complex environments. ICLR'17
+- Jake Bruce, Niko Sünderhauf, Piotr Mirowski, Raia Hadsell, Michael Milford. Learning Deployable Navigation Policies at Kilometer Scale from a Single Traversal. 2018
+	- Key insight: real robot;
+- A Banino, C Barry, B Uria, C Blundell, T Lillicrap, P Mirowski, A Pritzel, M Chadwick, T Degris, J Modayil, G Wayne, H Soyer, F Viola, B Zhang, R Goroshin, N Rabinowitz, R Pascanu, C Beattie, S Petersen, A Sadik, S Gaffney, H King, K Kavukcuoglu, D Hassabis, R Hadsell, D Kumaran. Vector-based Navigation using Grid-like Representations in Artificial Agents. Nature'18
+- P Mirowski. et.al. Learning to navigate in cities without a map. NIPS'18
+- K Hermann, M Malinowski, P Mirowski, A Banki-Horvath, K Anderson, R Hadsell. Learning to Follow Directions in Street View. 2019
+	- Input: front-view images (Google street-view), instructions; output: policy;
+	- CNN-RNN;
+
+## OpenAI
+
+## FAIR
+- Y Wu, Y Tian. Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning. ICLR'17
+	- VizDoom, known map;
+	- Batch A3C;
+- **House3D**: Y Wu, Y Wu, G Gkioxari, Y Tian. Building generalizable agents with a realistic and rich 3D environment. 2018
+	- https://github.com/facebookresearch/House3D
+	- https://github.com/jxwuyi/HouseNavAgent
+
 ## SOA
-- DeepMind:
-	- Reinforcement Learning with Unsupervised Auxiliary Tasks
-		- UNREAL: https://github.com/miyosuda/unreal
-- FAIR:
-	- Yi Wu: https://github.com/jxwuyi/HouseNavAgent
 - Baidu XWorld:
 	- Zihang Dai: https://github.com/zihangdai/pytorch_xworld
 - Intel:

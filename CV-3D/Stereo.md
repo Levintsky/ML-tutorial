@@ -92,3 +92,11 @@
 - Descriptors:
 	- CENSUS, BRIEF
 - SGM;
+- MVS:
+	- Voxel-based: (space-carving)
+		- K. N. Kutulakos and S. M. Seitz. A theory of shape by space carving. ICCV'99
+		- S. M. Seitz and C. R. Dyer. Photorealistic scene reconstruction by voxel coloring. IJCV'99
+	- Fusion-based:
+		- N. D. Campbell, G. Vogiatzis, C. Hernández, and R. Cipolla. Using multiple hypotheses to improve depth-maps for multiview stereo. ECCV'08
+		- E. Tola, C. Strecha, and P. Fua. Efficient large-scale multi-view stereo for ultra high-resolution image sets. MVA'12
+		- S. Galliani, K. Lasinger, and K. Schindler. Massively parallel multiview stereopsis by surface normal diffusion. ICCV'15

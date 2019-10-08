@@ -48,42 +48,58 @@
 		- Compute neighbors;
 		- Clean/Prune/Merge depthmap;
 		- Start a server to visualize;
-- MVS:
-	- Furukawa tutorial
-		- Collect images;
-		- Camera parameter for each image;
-		- Reconstruct 3D geometry;
-		- Bundle adjustment: fuse more info (GPS, IMU, ...) in your cost function;
-		- Camera parameter known?
-			- Known: 1D search, with epipolar constraint;
-			- Unknown: 2D search, optical flow first?
-		- Photo consistency: SSD, SAD, NCC, Census, Rank, MI;
-		- Space Carving: remove all voxels not photo-consistent;
-		- Visual hull?
-		- Region growing MVS;
-		- Depth-map fusion for MVS;
-		- Fast multi-frame stereo scene flow with motion segmentation;
-	- Google Street View: Capturing the World at Street Level
-		- Chevy van: side- and front facing laser scanner; 2 x high-speed video cameras; 8 x camera (Rosette configuration);
-	- Pose optimization: http://code.google.com/p/gpo/wiki/GPO
-	- Align the pose to the road network;
-	- **COLMAP** (SOA): Structure-from-Motion Revisited. CVPR'16
-	- **COLMAP** (SOA): Pixelwise View Selection for Unstructured Multi-View Stereo. ECCV'16
-		- https://colmap.github.io/
-- Depth Fusion (a specific technique):
-	- KinectFusion: Real-Time Dense Surface Mapping and Tracking, ISMAR 2011;
-		- Real-time volumetric reconstruction; 6DOF pose;
-		- Key novelty: 30Hz tracking;
-		- Kinect input: 640 x 480 depth maps; output voxels;
-		- Steps:
-			- Surface measurement (pre-processing): dense vertex map, normal map;
-			- Surface reconstruction update: global scene fusion, produce TSDF (truncated signed distance function);
-			- Surface prediction: close the loop between mapping and localisation;
-			- Sensor pose estimation: live sensor tracking with multi-scale ICP;
-- Visual Odometry (VO):
-	- Estimate ego-motion of an agent with only single/multiple camera;
-	- L​ocal consistency, can be a building block of a V-SLAM;
-	- Quadrifocal VO: stereo pair at two subsequent time;
+
+## MVS:
+- Y Furukawa, C Hernández. Multi-View Stereo: A Tutorial. 2015
+	- Collect images;
+	- Camera parameter for each image;
+	- Reconstruct 3D geometry;
+	- Bundle adjustment: fuse more info (GPS, IMU, ...) in your cost function;
+	- Camera parameter known?
+		- Known: 1D search, with epipolar constraint;
+		- Unknown: 2D search, optical flow first?
+	- Photo consistency: SSD, SAD, NCC, Census, Rank, MI;
+	- Space Carving: remove all voxels not photo-consistent;
+	- Visual hull?
+	- Region growing MVS;
+	- Depth-map fusion for MVS;
+	- Fast multi-frame stereo scene flow with motion segmentation;
+- Google Street View: Capturing the World at Street Level
+	- Chevy van: side- and front facing laser scanner; 2 x high-speed video cameras; 8 x camera (Rosette configuration);
+- Pose optimization: http://code.google.com/p/gpo/wiki/GPO
+- Align the pose to the road network;
+- **COLMAP** (SOA): Structure-from-Motion Revisited. CVPR'16
+- **COLMAP** (SOA): Pixelwise View Selection for Unstructured Multi-View Stereo. ECCV'16
+	- https://colmap.github.io/
+
+## Depth Fusion (a specific technique):
+- **KinectFusion**: R Newcombe, S Izadi, O Hilliges, D Molyneaux, D Kim, A Davison, P Kohli, J Shotton, S Hodges, A Fitzgibbon. KinectFusion: Real-Time Dense Surface Mapping and Tracking, ISMAR 2011;
+	- Key novelty: 30Hz tracking;
+	- https://blog.csdn.net/tanmengwen/article/details/9231297
+	- https://docs.opencv.org/master/d8/d1f/classcv_1_1kinfu_1_1KinFu.html (opencv)
+	- Real-time volumetric reconstruction; 6DOF pose;
+	- Input: 640 x 480 depth maps; output voxels;
+	- Steps:
+		- 1. Surface measurement (pre-processing): depth map to dense vertex map, normal map;
+		- 2. Sensor pose estimation: live sensor tracking with multi-scale ICP;
+		- 3. Surface reconstruction update: global scene fusion, produce TSDF (truncated signed distance function);
+		- 4. Surface prediction: ray-casting on new TSDF; close the loop between mapping and localisation;
+	<img src="/CV-3D/images/reconstruction/kinect-fusion.png" alt="drawing" width="500"/>
+- **Voxel-Block-Hashing**: M Nießner, M Zollhofer, S Izadi, M Stamminger. Real-time 3D Reconstruction at Scale using Voxel Hashing. SIGGRAPH'13
+	<img src="/CV-3D/images/reconstruction/voxel-hashing1.png" alt="drawing" width="500"/>
+	<img src="/CV-3D/images/reconstruction/voxel-hashing2.png" alt="drawing" width="500"/>
+- **ElasticFusion**:
+	- https://github.com/mp3guy/ElasticFusion
+- **SemanticFusion**: SemanticFusion: Dense 3D Semantic Mapping with Convolutional Neural Networks. 2016
+	- Combine ElasticFusion and CNN;
+	- https://github.com/seaun163/semanticfusion
+	<img src="/CV-3D/images/reconstruction/semanticfusion.png" alt="drawing" width="500"/>
+
+## Visual Odometry (VO):
+- Estimate ego-motion of an agent with only single/multiple camera;
+- L​ocal consistency, can be a building block of a V-SLAM;
+- Quadrifocal VO: stereo pair at two subsequent time;
+
 - SLAM:
 	- SLAM: Orb-slam2, DSO as starting point for 3D reconstruction reading.
 	- Filtering-based SLAM: Kalman/particle;

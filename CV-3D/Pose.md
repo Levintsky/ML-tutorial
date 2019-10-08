@@ -24,3 +24,9 @@
 		- For an unknown class c', find most similar class known
 	- GC (Generalized Classifier):
 		- VGG, Na x Nθ
+- A Handa, M Bloesch, V Pătrăucean, S Stent, J McCormac, and A Davison. gvnn: Neural network library for geometric computer vision. ECCVW'16
+- C Wang, Buenaposada, M Jose, R Zhu, and S Lucey. Learning depth from monocular videos using direct methods. CVPR'18
+	- Make direct method differentiable.
+- R Clark, M Bloesch, J Czarnowski, S Leutenegger, and A Davison. Learning to solve nonlinear least squares for monocular stereo. ECCV'18
+	- solve nonlinear least squares in two-view SfM using a LSTM-RNN
+- Z Lv, F Dellaert, J Rehg, A Geiger. Taking a Deeper Look at the Inverse Compositional Algorithm. 2019

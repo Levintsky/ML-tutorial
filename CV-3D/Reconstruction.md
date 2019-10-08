@@ -1,7 +1,8 @@
 # 3D Reconstruction
 
 ## Problem Setup
-- Direct 3D reconstruction;
+- Direct 3D reconstruction for whole object;
+- Scene: depth map;
 - Infer cues:
 	- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
 
@@ -25,8 +26,7 @@
 - Tom, Shenlong, Raquel:
 	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
 - Deep Structured 3D Estimation. Mini-12
-	- Input: stereo image, LiDAR;
-	- Output: pose, shape;
+	- Input: stereo image, LiDAR; Output: pose, shape;
 	- Supervision:
 		- Multi-view geometry;
 		- Intuitive physics;
@@ -75,8 +75,24 @@
 		- **DeMon dataset**: real-world datasets (SUN3D [40], RGB-D SLAM [36], CITYWALL and ACHTECK-TURM [6]) of outdoor and indoor scenes and a synthesized dataset (SCENES 11 [37, 2]) with random objects flying in the air.
 		<img src="/CV-3D/images/reconstruction/demon1.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/demon2.png" alt="drawing" width="600"/>
+	- **RayNet**: Potentials, D. Paschalidou and A. O. Ulusoy and C. Schmitt and L. Gool and A. Geiger. Learning Volumetric 3D Reconstruction with Ray. CVPR'18
+		- Insight: combine the power of CNN and unrolled MRF message passing;
+		- https://avg.is.tue.mpg.de/research_projects/raynet
+		- Input: images with camera poses; output: voxels?
+		- 1. Multi-View CNN for stereo;
+		- 2. Unrolled MRF message passing;
+		<img src="/CV-3D/images/reconstruction/raynet.png" alt="drawing" width="600"/>
+	- **Factor-3d**: S Tulsiani, S Gupta, D Fouhey, A Efros, J Malik. Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene. CVPR'18
+		- Key insight: 3D-scene + 3D-object;
+		- https://github.com/shubhtuls/factored3d
+		- Input: single image; bounding boxes (objects); shape, pose, scene-3d;
+		- Output: layout, objects with 3D shape (voxel) and pose (location, rotation);
+		<img src="/CV-3D/images/reconstruction/factor3d.png" alt="drawing" width="600"/>
 	- **DeepTAM**: H Zhou, B Ummenhofer,T Brox. DeepTAM: Deep Tracking and Mapping. ECCV'18
+		- keyframe-based dense camera tracking and depth map estimation
 		- https://github.com/lmb-freiburg/deeptam
+		<img src="/CV-3D/images/reconstruction/deeptam1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/deeptam2.png" alt="drawing" width="600"/>
 	- **Neural-RGBD**: C Liu, J Gu, K Kim, S Narasimhan, J Kautz. Neural RGB-D Sensing: Depth and Uncertainty from a Video Camera. CVPR'19
 		- Insight: depth as a probability with confidence, single frame depth, then Bayesian filtering to refine;
 		- https://github.com/NVlabs/neuralrgbd
@@ -131,7 +147,7 @@
 		- Supervision: SSIM on warped images
 		<img src="/CV-3D/images/reconstruction/sfmfm.png" alt="drawing" width="600"/>
 	- Mahjourian, R., Wicke, M., Angelova, A.: Unsupervised learning of depth and ego-motion from monocular video using 3d geometric constraints. CoRR'18
-	- Google: A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
+	- A Gordon, H Li, R Jonschkowski, A Angelova. Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras. ICCV'19
 		- Insight: Improve on T. Zhou on semantic detection; layer-normalization;
 		- https://github.com/google-research/google-research/tree/master/depth_from_video_in_the_wild
 		- Input: two images; Output: depth, egomtion, object motion, **camera intrinsic**;
@@ -146,10 +162,25 @@
 		- Experiments:
 			- Kitti; Cityscapes; YouTube videos
 		<img src="/CV-3D/images/reconstruction/depth-from-video.png" alt="drawing" width="600"/>
-	- Yin, Z., Shi, J.: Geonet: Unsupervised learning of dense depth, optical flow and camera pose. CVPR'18
+	- **Geonet**: Yin, Z., Shi, J.: Geonet: Unsupervised learning of dense depth, optical flow and camera pose. CVPR'18
+		- https://github.com/yzcjtr/GeoNet
+		- Input: images; output: depth, camera motion, flow;
+		<img src="/CV-3D/images/reconstruction/geonet.png" alt="drawing" width="600"/>
+	- **BA-Net**: C Tang, P Tan. BA-Net: Dense Bundle Adjustment Networks. ICLR'19
+		- https://github.com/frobelbest/BANet
+		- Input: images; Output: camera poses T and dense depth map;
+		- 1. DRN [dilated-residual-net CVPR'17] for depth est backbone;
+		- 2. FPN: Feature Pyramid Constructor for multi-scale; concat upscaled est and merge from last conv;
+		- 3. BA-Layer: differentiable LM (Levenberg-Marquadt)
+		- Supervision: camera pose; depth map;
+		<img src="/CV-3D/images/reconstruction/ba-net.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/ba-net2.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/reconstruction/ba-net3.png" alt="drawing" width="600"/>
 
 ## Object 3D Reconstruction
 - Single-image:
+	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
+		- https://github.com/akar43/CategoryShapes
 	- Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang, and J. Xiao. 3D ShapeNets: A deep representation for volumetric shapes. CVPR'15
 		- Input: image; output: voxel;
 	- X Yan, J Yang, E Yumer, Y Guo, and H Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. NIPS'16
@@ -160,6 +191,15 @@
 		- Encoder-decoder: view-invariant encoder for image h(I), decoder generates 3d v=g(h(I));
 		- Supervision: silhouette-based volumetric loss from space carving;
 		<img src="/CV-3D/images/reconstruction/per-trans-net.png" alt="drawing" width="600"/>
+	- D Rezende, S Eslami, S Mohamed. Unsupervised Learning of 3D Structure from Images. NIPS'16
+		- Key insight: **VAE** style; SSL;
+		- Experiment: ShapeNet;
+		<img src="/CV-3D/images/reconstruction/unsup-3d.png" alt="drawing" width="600"/>
+	- **OGN**: M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs. 2017
+		- Key: **Coarse to fine**;
+		- https://github.com/lmb-freiburg/ogn
+		- Input: image; output: voxel;
+		<img src="/CV-3D/images/reconstruction/ogn.png" alt="drawing" width="600"/>
 	- H Fan, H Su, and L Guibas. A point set generation network for 3d object reconstruction from a single image. CVPR'17
 		- Key insight: hourglass better; random variable;
 		- https://github.com/fanhqme/PointSetGeneration
@@ -167,18 +207,70 @@
 		- Net-structure: encoder, predictor;
 		- Supervision: 1. Chamfer distance; 2. EMD with approximation;
 		<img src="/CV-3D/images/reconstruction/point-set-gen.png" alt="drawing" width="600"/>
+	- **HSP**: C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 3DV'17
+		- Insight: **coarse to fine**, 16^3 to 32^3 to ... 256^3; only nodes on boundary needs upsamplng;
+		- https://github.com/chaene/hsp
+		- Input: color, depth, partial volume; Ouptut: voxel (3 classes: free, **boundary**, occupied)
+		- CNN with deep-supervision on different resolution
+		- Most important part: predict layer l+1 based on layer l (e.g. from 16^3 to 32^3)
+			- 1. Feature Cropping: (b/2+2p)^3 region with p padding;
+			- 2. Upsampling: (b+2p)^3 region
+			- 3. Output generation: max boundary prediction reponse; above threshold, expand child;
+		<img src="/CV-3D/images/reconstruction/factor3d.png" alt="drawing" width="600"/>
+	- **DRC**: S Tulsiani, T Zhou, A Efros, J Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency.  PAMI'19
+		- Key insight: relax 3D GT requirement to 2D consistency!
+		- https://github.com/shubhtuls/drc (torch);
+		- Input: image (model) + multiple images (refine?); Output: voxel for 3d;
+		- Assume: camera poses known?
+		- Model: ray termination event;	Event: a ray intersect a voxel, previous voxels are all unoccupied
+		- Supervision:
+			- Depth, Foreground mask
+			- Per-ray consistency loss
+		- Experiment: ShapeNet; PASCAL 3D
+		<img src="/CV-3D/images/reconstruction/drc.png" alt="drawing" width="600"/>
+	- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
+		- Key insight: **unknown-shape**, 
+		- https://github.com/shubhtuls/mvcSnP
+		- Input: single image; output: camera pose, 3D-shape;
+		- Training mode: (two images of an object as input)
+			- Shape from first view; (conanical view?)
+			- Pose from second view;
+		- Test mode: independent shape and pose;
+		<img src="/CV-3D/images/reconstruction/mvc.png" alt="drawing" width="600"/>
 	- DeformNet: A Kuryenkov, J Ji, A Garg, V Mehta, J Gwak, C Choy, S Savarese. DeformNet: Free-Form Deformation Network for 3D Shape Reconstruction from a Single Image. 2017
 		- Insight: first CNN retrive a **prototype**, then CNN to deform
 		- https://deformnet-site.github.io/DeformNet-website/
+		- Input: single image; output: point clouds;
+	- **3D-INN**: J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18
+		- Key insight: skeleton representation for 3D objects (so keypoints infers 3D);
+		- Input: single image; output:	2d keypoints as well as 3d structure;
+		- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;
+		<img src="/CV-3D/images/reconstruction/3d-inn.png" alt="drawing" width="600"/>
 	- **MarrNet**: J Wu, Y Wang, T Xue, X Sun, W Freeman, and J Tenenbaum. MarrNet: 3D Shape Reconstruction via 2.5D Sketches. NIPS'17
-		- First predict a 2.5-D (normal, depth, silhouette)
-		- Reprojection consistency;
-	- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
-		- https://github.com/shubhtuls/mvcSnP
-	- J. Wu, C. Zhang, X. Zhang, Z. Zhang, W. T. Freeman, and J. B. Tenenbaum. Learning shape priors for single-view 3D completion and reconstruction. ECCV'18
+		- Key insight: 3D-cues first (2.5-D: normal, depth, silhouette), then 3D shape
+		- http://marrnet.csail.mit.edu/
+		- https://github.com/jiajunwu/marrnet
+		- Input: image; output: voxel;
+		- Network: encoder (ResNet-18) - decoder (input normal image + depth image masked by silhouette);
+		- Supervision: (2D-3D Reprojection consistency)
+			- Depth map with voxel: L2;
+			- Surface normal; (surface orthogonal to normal should be 1)
+		<img src="/CV-3D/images/reconstruction/marrnet.png" alt="drawing" width="600"/>
+	- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
+		- https://github.com/ThibaultGROUEIX/AtlasNet
+		- Input: 2D image/Point Cloud; Output: Mesh;
+	- **ShapeHD**: J. Wu, C. Zhang, X. Zhang, Z. Zhang, W. T. Freeman, and J. B. Tenenbaum. Learning shape priors for single-view 3D completion and reconstruction. ECCV'18
+		- Key insigth: improve on MarrNet with naturalness (pretrained discriminator) to solve ambiguity, with Wasserstein-GAN loss;
+		- https://github.com/xiumingzhang/GenRe-ShapeHD
+		- Input: single view; Output: 3D completion/reconstruction;
+		<img src="/CV-3D/images/reconstruction/shapehd.png" alt="drawing" width="600"/>
 	- **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
+		- Insight: project to spherical map;
 		- https://github.com/xiumingzhang/GenRe-ShapeHD
 		<img src="/CV-3D/images/reconstruction/genre.png" alt="drawing" width="600"/>
+	- H Kato, Y Ushiku, T Harada. Neural 3D Mesh Renderer. CVPR'18
+		- Image to mesh;
+		- http://hiroharu-kato.com/projects_en/neural_renderer.html
 	- **Occupancy-Network**: L Mescheder, M Oechsle, M Niemeyer, S Nowozin, and A Geiger. Occupancy networks: Learning 3d reconstruction in function space. CVPR'19
 		- Insight: new 3D representation, could generate mesh at any resoltuion;
 		- https://github.com/autonomousvision/occupancy_networks
@@ -187,68 +279,31 @@
 		- Surface at inference time: Multiresolution IsoSurface Extraction (MISE)
 	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
 - Multi-view:
+	- S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
+		- Estimate normal of depth map; then improve depth map fusion;
 	- C B Choy, D Xu, J Gwak, K Chen, and S Savarese. 3d-r2n2: A unified approach for single and multiview 3d object reconstruction. ECCV'16
 		- https://github.com/chrischoy/3D-R2N2
 		- Input: single/multiple images; output: voxel;
 		- Update model with RNN each time with a new image;
 		<img src="/CV-3D/images/reconstruction/3d-r2n2.png" alt="drawing" width="600"/>
 	- **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17.
-		- Cost volume;
+		- Insight: end-to-end multi-view stereo; geometry with color encoded in voxel with **unproject**;
+		- https://github.com/mjiUST/SurfaceNet
+		- Input: images with camera pose; Output: 3D voxel, with [0,1] for on surface or not;
+		- Turn images to CVC (color voxel cube)
+		<img src="/CV-3D/images/reconstruction/surface-net1.png" alt="drawing" width="450"/>
+		<img src="/CV-3D/images/reconstruction/surface-net2.png" alt="drawing" width="450"/>
 	- **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine, NIPS'17
-		- Input: multiple images;
-		- Output: Voxel 3D;
+		- Key insight: **unproject**;
+		- https://github.com/akar43/lsm
+		- Input: multiple images; Output: 32^3 Voxel 3D;
 		- Assumption: **camera pose known**;
 		- Cost volume;
 		<img src="/CV-3D/images/stereo/lsm1.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/stereo/lsm2.png" alt="drawing" width="600"/>
-	- RayNet: Potentials, D. Paschalidou and A. O. Ulusoy and C. Schmitt and L. Gool and A. Geiger. Learning Volumetric 3D Reconstruction with Ray. CVPR'18.
-- **DRC**: S Tulsiani, T Zhou, A Efros, J Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency.  PAMI'19
-	- https://github.com/shubhtuls/drc
-	- Input: image (model) + multiple images (refine?);
-	- Output: voxel for 3d;
-	- Assume: camera poses known?
-	- Model: ray termination event;	Event: a ray intersect a voxel, previous voxels are all unoccupied
-	- Cost:
-		- Depth, Foreground mask
-		- Per-ray consistency loss
-	- Experiment:
-		- ShapeNet
-		- PASCAL 3D
-	<img src="/CV-3D/images/reconstruction/drc.png" alt="drawing" width="600"/>
 
-- S Tulsiani, S Gupta, D Fouhey, A Efros, J Malik. Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene. CVPR'18
-	- https://github.com/shubhtuls/factored3d
-	- Input: single image; bounding boxes (objects);
-	- Output: layout, objects with 3D shape (voxel) and pose (location, rotation);
-	<img src="/CV-3D/images/reconstruction/factor3d.png" alt="drawing" width="600"/>
-
-	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
-		- https://github.com/akar43/CategoryShapes
-
-- C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 2017
-	- Input: color, depth, partial volume
-	- Ouptut: voxel
-	- CNN with deep-supervision on different resolution
-	- Most important part: predict layer l+1 based on layer l
-		- Feature Cropping
-		- Upsampling
-		- Output generation
-- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
-
-- **3D-INN**:
-	- J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18
-		- Detect 2d keypoints as well as 3d structure;
-		- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;
-	- **ShapeHD**: J Wu, C Zhang, X Zhang, Z Zhang, W Freeman, and J Tenenbaum. Learning Shape Priors for Single-View 3D Completion and Reconstruction. ECCV'18
-		- Extension of **3D-INN**
-		- An "adversarial" Naturalness Network to determine quality, with Wasserstein-GAN loss;
-- D Rezende, S Eslami, S Mohamed. Unsupervised Learning of 3D Structure from Images. NIPS'16
-	- VAE style;
-	- Experiment: ShapeNet;
-	<img src="/CV-3D/images/reconstruction/unsup-3d.png" alt="drawing" width="600"/>
-
-## Depth/Shape Completion (3D-3D)
-- Depth Inpainting/Completion
+## Depth/Shape Completion, AE (3D-3D)
+- Scene (Depth) Inpainting/Completion
 	- **DeepLiDAR**: J. Qiu, Z. Cui, Y. Zhang, X. Zhang, S. Liu, B. Zeng and M. Pollefeys. DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image.
 		- https://github.com/JiaxiongQ/DeepLiDAR
 	- W. Van Gansbeke, D. Neven, B. De Brabandere and L. Van Gool: Sparse and noisy LiDAR completion with RGB guidance and uncertainty. International Conference on Machine Vision Applications (MVA) 2019.
@@ -272,29 +327,22 @@
 		- Assume a probabilistic model
 		- Model to optimize MLE;
 	- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
-- Shape Completion
+- Object (Shape) Completion
 	- A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3D-encoder-predictor CNNs and shape synthesis. CVPR'17
 	- L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. ICCV'17
 	- G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17
+- AutoEncoder
+	- Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
+		- Input: multiple mesh; output: new mesh synthesis (deformation);
+	- Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia
 
 ## View Synthesis
-- Image Simulation by Geometry-Aware Composition. Mini-conference.
-	- Separate static and dynamic modeling;
-	- Input: a tuple of RGB image, BEV layout, semantic and instance segmentation masks, LiDAR sweep data, and ground height data (in BEV space);
-		- BEV layout: lane info, bounding boxes of dynamic objects;
-	- Object bank: precise geometry; from RGB images with semantic and instance segmentation;
-	- 1. Placement Sampling;
-	- 2. Segment Retrieval;
-	- 3. Novel View Warping;
-	- 4. Final image synthesis;
-	- Geometry refinement: optimize Nx3 mesh with energy with silhoutte, lidar and symmetry;
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
 	- Key insight: Unsupervised;
-	- Input: left view;
-	- Output: right view?
+	- Input: left view; Output: right view
 	- Evaluation: Kitti, NYU
 	<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="600"/>
-- E Park, J Yang, E Yumer, D Ceylan, and A Berg. Transformation-Grounded Image Genera- 510 tion Network for Novel 3d View Synthesis. 2017
+- E Park, J Yang, E Yumer, D Ceylan, and A Berg. Transformation-Grounded Image Generation Network for Novel 3d View Synthesis. 2017
 - T. Zhou, S. Tulsiani, W. Sun, J. Malik and A. Efros. View synthesis by appearance flow. ECCV'16
 	- https://github.com/tinghuiz/appearance-flow
 - J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
@@ -308,4 +356,10 @@
 ## Misc
 - X. Wang, D. Fouhey, and A. Gupta. Designing deep networks for surface normal estimation. CVPR'15
 - SurfNet: Generating 3D shape surfaces using deep residual networks, CVPR 2017
-- M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs.
+- Deep Marching Cubes: Learning Explicit Surface Representations. CVPR'18
+- Learning Category-Specific Mesh Reconstruction from Image Collections. 2018
+- Pixels, voxels, and views: A study of shape representations for single view 3D object shape prediction. CVPR'18
+- 3D-RCNN: Instance-level 3D Object Reconstruction via Render-and-Compare. CVPR'18
+- Learning View Priors for Single-view 3D Reconstruction. CVPR'19
+- CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
+
