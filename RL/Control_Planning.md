@@ -58,8 +58,10 @@
 - G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
 - M Moczulski, K Xu, A Courville, K Cho. A Controller-Recognizer Framework: How necessary is recognition for control? ICML'16
 - Y Chebotar, K Hausman, M Zhang, G Sukhatme, S Schaal, S Levine. Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning. ICML'17
-- D Silver, H v Hasselt, M Hessel, T Schaul, A Guez, T Harley,
-G Dulac-Arnold, D Reichert, N Rabinowitz, A Barreto, T Degris. The Predictron: End-To-End Learning and Planning, ICML'17
+- D Silver, H v Hasselt, M Hessel, T Schaul, A Guez, T Harley, G Dulac-Arnold, D Reichert, N Rabinowitz, A Barreto, T Degris. The Predictron: End-To-End Learning and Planning, ICML'17
+- **OptNet**: B Amos and Z Kolter. OptNet: Differentiable Optimization as a Layer in Neural Networks. ICML'17
+- **MPC**: B Amos, I Rodriguez, J Sacks, B Boots, Z Kolter. Differentiable MPC for End-to-end Planning and Control. 2019
+	- https://locuslab.github.io/mpc.pytorch/
 
 ## Theory
 - On the Sample Complexity of the Linear Quadratic Regulator

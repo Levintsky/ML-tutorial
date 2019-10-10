@@ -1,5 +1,11 @@
 # Navigation Tasks
 
+## Core Problems
+- Exploration
+
+## SOA and Misc
+- T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
+
 ## Navigation Challenge and Benchmark
 - **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
 	- Tasks: Embodied QA, Language grounding, navigation;
@@ -8,6 +14,9 @@
 - **StreetLearn**: P Mirowski, A Banki-Horvath, K Anderson, D Teplyashin, K Hermann, M Malinowski, M Grimes, K Simonyan, K Kavukcuoglu, A Zisserman, R Hadsell. The StreetLearn Environment and Dataset. 2019
 	- Google Street View;
 	- http://streetlearn.cc.
+
+## CMU
+- Devendra Singh Chaplot, Saurabh Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19
 
 ## DeepMind:
 - Reinforcement Learning with Unsupervised Auxiliary Tasks
@@ -21,17 +30,20 @@
 	- Input: front-view images (Google street-view), instructions; output: policy;
 	- CNN-RNN;
 
-## OpenAI
+## VIN
+- Value Iteration Network. NIPS'16
+	<img src="/RL/images/navigation/vin1.png" alt="drawing" width="600"/>
+	<img src="/RL/images/navigation/vin2.png" alt="drawing" width="600"/>
+- **GVIN**: S Niu, S Chen, H Guo, C Targonski, M Smith, J Kovačević. Generalized Value Iteration Networks: Life Beyond Lattices. AAAI'18
+	<img src="/RL/images/navigation/gvin.png" alt="drawing" width="600"/>
 
-## FAIR
+## Embodied AI
 - Y Wu, Y Tian. Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning. ICLR'17
 	- VizDoom, known map;
 	- Batch A3C;
 - **House3D**: Y Wu, Y Wu, G Gkioxari, Y Tian. Building generalizable agents with a realistic and rich 3D environment. 2018
 	- https://github.com/facebookresearch/House3D
 	- https://github.com/jxwuyi/HouseNavAgent
-
-## SOA
 - Baidu XWorld:
 	- Zihang Dai: https://github.com/zihangdai/pytorch_xworld
 - Intel:
