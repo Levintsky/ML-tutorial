@@ -1,5 +1,11 @@
 # Navigation Tasks
 
+## Core Problems
+- Exploration
+
+## SOA and Misc
+- T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
+
 ## Navigation Challenge and Benchmark
 - **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
 	- Tasks: Embodied QA, Language grounding, navigation;
@@ -8,6 +14,9 @@
 - **StreetLearn**: P Mirowski, A Banki-Horvath, K Anderson, D Teplyashin, K Hermann, M Malinowski, M Grimes, K Simonyan, K Kavukcuoglu, A Zisserman, R Hadsell. The StreetLearn Environment and Dataset. 2019
 	- Google Street View;
 	- http://streetlearn.cc.
+
+## CMU
+- Devendra Singh Chaplot, Saurabh Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19
 
 ## DeepMind:
 - Reinforcement Learning with Unsupervised Auxiliary Tasks
