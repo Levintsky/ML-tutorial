@@ -30,17 +30,20 @@
 	- Input: front-view images (Google street-view), instructions; output: policy;
 	- CNN-RNN;
 
-## OpenAI
+## VIN
+- Value Iteration Network. NIPS'16
+	<img src="/RL/images/navigation/vin1.png" alt="drawing" width="600"/>
+	<img src="/RL/images/navigation/vin2.png" alt="drawing" width="600"/>
+- **GVIN**: S Niu, S Chen, H Guo, C Targonski, M Smith, J Kovačević. Generalized Value Iteration Networks: Life Beyond Lattices. AAAI'18
+	<img src="/RL/images/navigation/gvin.png" alt="drawing" width="600"/>
 
-## FAIR
+## Embodied AI
 - Y Wu, Y Tian. Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning. ICLR'17
 	- VizDoom, known map;
 	- Batch A3C;
 - **House3D**: Y Wu, Y Wu, G Gkioxari, Y Tian. Building generalizable agents with a realistic and rich 3D environment. 2018
 	- https://github.com/facebookresearch/House3D
 	- https://github.com/jxwuyi/HouseNavAgent
-
-## SOA
 - Baidu XWorld:
 	- Zihang Dai: https://github.com/zihangdai/pytorch_xworld
 - Intel:
