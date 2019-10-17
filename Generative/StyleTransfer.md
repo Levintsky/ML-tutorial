@@ -179,6 +179,8 @@
 	- G Ghiasi, H Lee, M Kudlur, V Dumoulin, J Shlens. Exploring the Structure of a Real-time, Arbitrary Neural Artistic Stylization Network. BMVC'17
 	- Yijun Li, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, and Ming-Hsuan Yang. Universal Style Transfer via Feature Transforms. NIPS'17
 
+## 3D Point Cloud
+
 ## Legacy
 - NPR (non-photorealistic rendering):
 	- B. Gooch and A. Gooch, Non-photorealistic rendering. 2001

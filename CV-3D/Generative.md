@@ -71,13 +71,6 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 
 ## 3D-Reconstruction, Render
 - W. Jakob, Mitsuba renderer, 2010, http://www.mitsuba-renderer.org.
-- Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
 
 ## Shape Editing
 - A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and partbased recombination. CGF 2012
-
-## 3D-Texture
-- Real-to-Sim Object Texture Transfer. Mini-34
-	- Input: images, LiDAR point clouds
-	- Output: Texture on games
-	- Soft
