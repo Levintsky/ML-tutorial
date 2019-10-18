@@ -181,6 +181,9 @@
 		- https://zhuanlan.zhihu.com/p/30637133
 		<img src = '/Generative/images/gan/pgan1.png' width = '500px'>
 		<img src = '/Generative/images/gan/pgan2.png' width = '500px'>
+	- **SPADE**: T Park, M Liu, T Wang, J Zhu. Semantic Image Synthesis with Spatially-Adaptive Normalization. CVPR'19
+		- Key: different scale and bias for different semantic layer!
+		- https://github.com/NVLabs/SPADE
 
 - Conditional-GAN:
 	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. arXiv preprint arXiv:1411.1784, 2014.

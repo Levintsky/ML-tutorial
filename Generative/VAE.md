@@ -28,7 +28,6 @@
 	- Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
 - **DeepMind**:
 	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML 2014
-	- D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
 	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. In ICML, 2016.
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
 		- https://github.com/ericjang/draw
@@ -56,7 +55,6 @@
 
 - **OpenAI**:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. arXiv preprint arXiv:1611.02731, 2016.
-	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16
 - **FAIR**:
 	- Bouchacourt, D., Tomioka, R., and Nowozin, S. Multi-level variational autoencoder: Learning disentangled representations from grouped observations. AAAI'18.
 	- **Non-Adversarial Mapping with VAEs**, NIPS'18

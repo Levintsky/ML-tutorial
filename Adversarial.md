@@ -11,11 +11,12 @@
 	- Reactive
 	- Proactive
 
-## Classic
+## Attack
 - D Lowd, C Meek. Adversarial Learning. KDD'05
 - C Szegedy, W Zaremba, I Sutskever, J Bruna, D Erhan, I Goodfellow, R Fergus	. Intriguing properties of neural networks. ICLR'14
 - **FGSM**: I J. Goodfellow, J Shlens, C Szegedy. Explaining and harnessing adversarial examples. ICLR'15
 	- Key: apply sign of gradient rather than gradient itself;
+	- https://pytorch.org/tutorials/beginner/fgsm_tutorial.html
 - A Nguyen, J Yosinski, J Clune. Deep Neural Networks are Easily Fooled: High Confidence Predictions for Unrecognizable Images. CVPR'15
 	- Evolutionary; MAP-Elite; (keep best found so far)
 - S Moosavi-Dezfooli, A Fawzi, P Frossard. DeepFool: a simple and accurate method to fool deep neural networks. 2016
@@ -30,12 +31,27 @@
 - C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
 	- https://github.com/xiangchong1/3d-adv-pc
 	- adversarial point perturbation or adversarial point generation
+- Unrestricted (no Lp norm constraint):
+	- Y Song et al. Constructing unrestricted adversarial examples with generative models. 2018.
+	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
+	- H Hosseini and R Poovendran. Semantic adversarial examples. CVPRW'18
+	- **UAE**: Unrestricted Adversarial Examples via Semantic Manipulation. ICLR'20
+		- Problem: Colorization (cAdv); image to LAB space, input L (h x w x 1), sparse color hint (ab, h x w x 2), binary mask;
+			- Per-pixel distribution from [Zhang 2017]
+			- Only change high entropy region;
+		- Problem: Texture Attck (tAdv); with Gram matrix;
+		- Caption attack;
+		- AMT study for naturalness;
+	- G Shen, C Mao, J Yang, B Ray. Unrestricted Adversarial Attacks for Semantic Segmentation. ICLR'20
+		- based on SPADE [Semantic image synthesis with spatially-adaptive normalization, 2019]
+	- L Jain, W Wu, S Chen, U Jang, V Chandrasekaran, S Seshia, S Jha. Generating Semantic Adversarial Examples with Differentiable Rendering. ICLR'20
+	- H Qiu, C Xiao, L Yang, X Yan, H Lee, B Li. SemanticAdv: Generating Adversarial Examples via Attribute-Conditional Image Editing. ICLR'20
 
 ## Robustness/Defense
 - A Kurakin, I Goodfellow, and S Bengio. Adversarial machine learning at scale. ICLR'17
 - A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
 - **ALP**: H. Kannan, A. Kurakin, and I. Goodfellow. Adversarial logit pairing. NIPS'18
-- C Xie, Y Wu, L Maaten, A Yuille, and K He. Kaiming, Feature Denoising for Improving Adversarial Robustness. CVPR'19
+- C Xie, Y Wu, L Maaten, A Yuille, and K He. Feature Denoising for Improving Adversarial Robustness. CVPR'19
 	- CAAD defense champion;
 	- https://github.com/facebookresearch/ImageNet-Adversarial-Training
 	- Non-local means (best), mean-filter, median filter, bilateral filter;
