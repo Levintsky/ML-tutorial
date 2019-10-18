@@ -13,6 +13,7 @@
 <img src = '/Weak-Unsupervised/images/fastText.png' width = '500px'>
 
 ## FAIR
+- Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. 2018
 - FastText
 
 ## Measure Distance
