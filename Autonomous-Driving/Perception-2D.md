@@ -20,6 +20,10 @@
 	- Problem setup: semantic seg + instance seg;
 	- https://github.com/uber-research/UPSNet
 	- Cityscapes, COCO
+- K Lis, K Nakka, P Fua, M Salzmann. Detecting the Unexpected via Image Resynthesis. 2019
+	- Segmentation model: SegNet or PSP;
+	<img src="/Autonomous-Driving/images/vision2d/anomaly1.png" alt="drawing" width="450"/>
+	<img src="/Autonomous-Driving/images/vision2d/anomaly2.png" alt="drawing" width="450"/>
 
 ## Misc
 - SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. Mengye Ren, Andrei Pokrovsky, Bin Yang, and Raquel Urtasun

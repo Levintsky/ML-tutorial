@@ -151,6 +151,8 @@
 - H Joo, T Simon, Y Sheikh. Total Capture: A 3D Deformation Model for Tracking Faces, Hands, and Bodies. CVPR'18
 
 ## Semantic Segmentation
+- **SegNet**: V. Badrinarayanan, A. Kendall, and R. Cipolla. SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation. 2015
+-  A. Kendall, V. Badrinarayanan, and R. Cipolla. Bayesian Segnet: Model Uncertainty in Deep Convolutional EncoderDecoder Architectures for Scene Understanding. 2015
 - **U-Net**: O Ronneberger, P Fischer, T Brox: Convolutional Networks for Biomedical Image Segmentation, MICCAI'15
 - **FCN**: J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks for semantic segmentation. CVPR'15
 	- https://github.com/wkentaro/pytorch-fcn
@@ -158,6 +160,7 @@
 	- Pyramid (like SSD)
 - **DeepLab v3**: L Chen, G Papandreou, F Schroff, H Adam. Rethinking Atrous Convolution for Semantic Image Segmentation. 2017
 	- https://github.com/tensorflow/models/tree/master/research/deeplab
+- **PSP**: H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid Scene Parsing Network. CVPR'17
 - ResNet-DUC: P Wang, P Chen, Y Yuan, D Liu, Z Huang, X Hou, G Cottrell. Understanding Convolution for Semantic Segmentation. WAVC'18
 	- **Dilated Conv**
 - Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
