@@ -362,4 +362,3 @@
 - 3D-RCNN: Instance-level 3D Object Reconstruction via Render-and-Compare. CVPR'18
 - Learning View Priors for Single-view 3D Reconstruction. CVPR'19
 - CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
-

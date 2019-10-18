@@ -12,6 +12,11 @@
 	- Proactive
 
 ## Attack
+- Optimization-based:
+	- N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
+	- Y Liu, X Chen, C Liu, and D Song. Delving into transferable adversarial examples and black-box attacks. ICLR'17
+	-  Ivan Evtimov, Kevin Eykholt, Ear- lence Fernandes, Tadayoshi Kohno, Bo Li, Atul Prakash, Amir Rahmati, and Dawn Song. Robust physical-world attacks on machine learning models. 2017
+	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
 - D Lowd, C Meek. Adversarial Learning. KDD'05
 - C Szegedy, W Zaremba, I Sutskever, J Bruna, D Erhan, I Goodfellow, R Fergus	. Intriguing properties of neural networks. ICLR'14
 - **FGSM**: I J. Goodfellow, J Shlens, C Szegedy. Explaining and harnessing adversarial examples. ICLR'15
@@ -23,7 +28,6 @@
 - N Papernot, P McDaniel, I Goodfellow, S Jha, Z Celik, A Swami. Practical Black-Box Attacks against Machine Learning. 2017
 	- Black box (no-access to parameter and net structure)
 	- Adversarial exmaples are transferrable
-- N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
 - Y Dong, F Liao, T Pang, H Su, J Zhu, X Hu, J Li. Boosting Adversarial Attacks with Momentum. CVPR'18
 	- 2017 winner;
 - Eykholt. Robust Physical-World Attacks on Deep Learning Visual Classification. CVPR'18
@@ -48,6 +52,7 @@
 	- H Qiu, C Xiao, L Yang, X Yan, H Lee, B Li. SemanticAdv: Generating Adversarial Examples via Attribute-Conditional Image Editing. ICLR'20
 
 ## Robustness/Defense
+- N Papernot, P McDaniel, X Wu, S Jha, A Swami. Distillation as a Defense to Adversarial Perturbations against Deep Neural Networks. 2016
 - A Kurakin, I Goodfellow, and S Bengio. Adversarial machine learning at scale. ICLR'17
 - A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
 - **ALP**: H. Kannan, A. Kurakin, and I. Goodfellow. Adversarial logit pairing. NIPS'18
