@@ -3,6 +3,9 @@
 ## Tutorial
 - B Biggio, F Roli. Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning. 2018
 - https://zhuanlan.zhihu.com/p/32037178
+- https://www.jiqizhixin.com/articles/2018-03-05-4
+- https://zhuanlan.zhihu.com/p/57733228
+- https://medium.com/onfido-tech/adversarial-attacks-and-defences-for-convolutional-neural-networks-66915ece52e7
 
 ## Basic Concepts
 - White-box attack
