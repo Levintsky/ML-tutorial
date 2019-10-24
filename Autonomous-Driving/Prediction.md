@@ -28,6 +28,9 @@
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
 
+- SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. 2019
+	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.
+
 ## Trajectories, Multi-Agent
 - **TrafficPredict**: Y. Ma et al., TrafficPredict: Trajectory Prediction for Heterogeneous Traffic-Agents. 2018
 - J. Ren et al., Heter-Sim: Interactive data-driven optimization for simulating heterogeneous multi-agent systems. arxiv'18
