@@ -4,8 +4,32 @@
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
 
+## Misc
+- A-star search:
+	- Z Ajanovic, B Lacevic, B Shyrokau, M Stolz, and M Horn. Search-based optimal motion planning for automated driving. IROS'18
+- Optimization:
+	- P Bender, O Tas, J Ziegler, and C Stiller. The combinatorial aspect of motion planning: Maneuver variants in structured environments. IV'15
+	- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
+	- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
+	- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
+- Behavior planning:
+	- T Gu, J Dolan, and J Lee. On-road trajectory planning for general autonomous driving with enhanced tunability. Intelligent Autonomous Systems'16
+		- Multi-phase decision making: long range traffic-free first;
+		- Traffic-based refinement, other actors taken into account;
+		- Last local trajectory planning, short term;
+	- **Baidu**: H Fan, F Zhu, C Liu, L Zhang, L Zhuang, D Li, W Zhu, J Hu, H Li, and Q Kong. Baidu apollo em motion planner. 2018
+		- Dynamic programming for approximate path and speed profile in EM scheme;
+		- Quadratic programming of cost function;
+		- Manually designed cost for lane boundaries, collision, traffic lights, and other driving conditions;
+- Trajectory planning:
+	- J Ziegler and C Stiller. Spatiotemporal state lattices for fast trajectory planning in dynamic on-road driving scenarios. IROS'09
+	- M Pivtoraiko, R Knepper, and A Kelly. Differentially constrained mobile robot motion planning in state lattices. 2009
+	- M Werling, J Ziegler, S Kammel, and S Thrun. Optimal trajectory generation for dynamic street scenarios in a frenet frame. ICRA'10
+		- Parallel sampling:
+
 ## Imitation Learning
-- Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
+- **Alvinn**: Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
+- Nathan D Ratliff, J Andrew Bagnell, and Martin A Zinkevich. Maximum margin planning. ICML'06
 - Uber:
 	- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
 		- Idea: holistic model, combine detection and planning;
@@ -23,8 +47,43 @@
 			- Perception loss: bounding box, regression,
 			- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
 		- Output Parameterization: Clothoid curve; sampling;
-		- Sampling: sample a set of diverse physically possible trajectories and choose the one with the min- imum learned cost;
+		- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
 		<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
+	- **PLT-Planner**: PLT (Path, Lateral, Time)
+		- https://drive.google.com/open?id=1F9Yv2fwNGxuTboE8aSHue_gCaSssXu0I
+		- https://docs.google.com/presentation/d/1fRycSFv1boK-9WLR7mxUdNy6V0Ug8ylrDjUs5ww7A80/edit#slide=id.p
+		- Improves upon PT solver;
+		- Largely a framework: sample rollouts - cost rollouts - pick minimum cost;
+		- Rollout generation:
+			- Spatial path + velocity profile + steering quantities; exectubale
+		- Interactive: (policy + cost); intelligent mode for driver, constant for pedestrains;
+			- Actors react to accomodate for av's action (policy): retimed waypoints (only consider them changing velocity)
+			- Actions induce burden;
+		- Ignore rules: filter out actors following behind AV;
+			- Failure in lane changes and merges;
+	- A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
+		- Behavior planning, Trajectory planning;
+		- Input: desired route, state of the world (av state, map, detected object);
+		- Output: high-level behavior b; trajectory tau;
+		- Unified cost function: a weighted combination of manual designed cost:
+			- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
+			- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
+			- Headway: keep a safe longitudinal distance from leading car, depending on speed;
+			- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
+			- Route: penalize the number of lane-changes that is required to converge to the route
+			- Cost-to-go: he deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
+			- Speed limit, travel distance and dynamics;
+		- Inference:
+			- Behabioral planner (tau, b): Frenet frame; position s and lateral offset d separately; (not very precise)
+			- Trajectory planner (u): BFGS solver;
+		- Learning:
+			- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
+			- Imitation loss
+			- Weight decay (L2 regularizer)
+		- Experiments:
+			- Datasets: ManualDrive, TOR-4D;
+			- Evaluation: similarity to human; passenger comfort (average jerk and lateral acceleration); spatiotemporal overlap;
+			- Baselines: Oracle ACC; PT;
 	- Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
 		- No HD-Maps
 		- With HD-Maps as supervision;
@@ -83,7 +142,7 @@
 		- https://github.com/carla-simulator/imitation-learning.
 		<img src="/Autonomous-Driving/images/plan/cil1.png" alt="drawing" width="400"/>
 		<img src="/Autonomous-Driving/images/plan/cil2.png" alt="drawing" width="600"/>
-
+	- Felipe Codevilla, Matthias Miiller, Antonio López, Vladlen Koltun, and Alexey Dosovitskiy. End-to-end driving via conditional imitation learning. ICRA'18
 	- M Muller, A Dosovitskiy, B Ghanem, and V Koltun. Driving policy transfer via modularity and abstraction. CoRL'18
 		- Input: semantic segmentation
 		- Output: high-level control
@@ -99,6 +158,7 @@
 	- **Image translation** for transfer!
 	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
 	<img src="/Autonomous-Driving/images/plan/visri1.png" alt="drawing" width="600"/>
+- C Paxton, V Raman, G D Hager, and M Kobilarov. Combining neural networks and tree search for task and motion planning in challenging environments. IROS'17
 - A Kendall, J Hawke, D Janz, P Mazur, D Reda, J Allen, V Lam, A Bewley, and A Shah. Learning to drive in a day. 2018
 	- Task: lane following
 	- MDP, input: monocular camera; VAE;
@@ -128,12 +188,6 @@
 	<img src="/Autonomous-Driving/images/plan/gail-ad3.png" alt="drawing" width="400"/>
 
 	- NGSIM dataset
-
-## Optimization Based Planners (Manual)
-- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
-- H Fan, F Zhu, C Liu, L Zhang, L Zhuang, D Li, W Zhu, J Hu, H Li, and Q Kong. Baidu apollo em motion planner. 2018
-- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
-- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
 
 ## Planning under Uncertainty
 - T Bandyopadhyay, K S Won, E Frazzoli, D Hsu, W S Lee, and D Rus. Intention-aware motion planning. Algorithmic foundations of robotics X'13
