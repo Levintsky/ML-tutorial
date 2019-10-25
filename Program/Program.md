@@ -20,7 +20,8 @@
 	- Differentiable, fine-tuned by gd
 
 ## Input/Output examples -> Program
-- U Toronto, Vector Institute, Uber ATG. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS 2018
+- L Zhang, G Rosenblatt, E Fetaya, R Liao, W Byrd, M Might, R Urtasun, R Zemel. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS'18
+	- https://github.com/xuexue/neuralkanren
 	- Input: input/output examples
 	- miniKanren as symbolic system
 	- ML propose candidates program satisfying the candidates
