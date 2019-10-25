@@ -1,5 +1,8 @@
 # Planning
 
+## Survey
+- B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
+
 ## Dataset for Imitation Learning
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
@@ -133,6 +136,16 @@
 		- Output: action
 		- Dataset: Berkeley DeepDrive Video dataset (BDDV)
 		<img src="/Autonomous-Driving/images/fcn-lstm.png" alt="drawing" width="400"/>
+	- J Chen, B Yuan and M Tomizuka. Deep Imitation Learning for Autonomous Driving in Generic Urban Scenarios with Enhanced Safety. 2019
+		- https://docs.google.com/presentation/d/1xU-ue8R2XlppgBM0qIpsPjoqI5zfZ23OUoRonJhX20w/edit#slide=id.g653e76e7ff_0_3
+		- Input: HD map; Routing information; Traffic light state; Historical detections; Historical ego-car state;
+		- Output: waypoints; control;
+		- Model architecture;
+		- Experiments: CarLA;
+		<img src="/Autonomous-Driving/images/plan/deep-il.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/deep-il-planner.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/deep-il-track-control.png" alt="drawing" width="500"/>
+		<img src="/Autonomous-Driving/images/plan/deep-il-safety-control.png" alt="drawing" width="500"/>
 
 - Intel:
 	- **CarLA**: F Codevilla, M Muller, A Lopez, V Koltun, and A Dosovitskiy. End-to-end driving via conditional imitation learning. ICRA'18

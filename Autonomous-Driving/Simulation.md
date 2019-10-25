@@ -58,7 +58,8 @@ domain adaptation. ICML'18.
 - Intel:
 	- S. R. Richter, V. Vineet, S. Roth, V. Koltun, Playing for data: Ground truth from computer games. ECCV'16
 	- **CARLA**: A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun, CARLA: An Open Urban Driving Simulator. CoRL'17
-		- VR
+		- http://carla.org/
+		- https://github.com/carla-simulator/carla
 - Microsoft
 	- **AirSim**: S. Shah, D. Dey, C. Lovett, A. Kapoor, AirSim: High-fidelity visual and physical simulation for autonomous vehicles. Field and Service Robotics. 5, 621–635 (2018).
 - NVIDIA:
