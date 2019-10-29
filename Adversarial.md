@@ -16,7 +16,7 @@
 
 ## Attack
 - Optimization-based:
-	- N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
+	- **SOA**: N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
 	- Y Liu, X Chen, C Liu, and D Song. Delving into transferable adversarial examples and black-box attacks. ICLR'17
 	-  Ivan Evtimov, Kevin Eykholt, Ear- lence Fernandes, Tadayoshi Kohno, Bo Li, Atul Prakash, Amir Rahmati, and Dawn Song. Robust physical-world attacks on machine learning models. 2017
 	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
