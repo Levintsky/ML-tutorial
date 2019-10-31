@@ -93,8 +93,6 @@
 			- 3. The reward by discriminator is fed into Stein Variational Policy Gradient (SVPG) particles, outputting a diverse set of randomization configurations.
 			<img src="/RL/images/transfer/adr.png" alt="drawing" width="500"/>
 
-- How to pick the domain randomization parameters for sim-to-real transfer of reinforcement learning policies?
-
 ## OpenAI
 - **Retro Contest**: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
 	- https://contest.openai.com/2018-1/
