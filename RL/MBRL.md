@@ -111,5 +111,4 @@
 ## Legacy
 - **PILCO**: M P Deisenroth, C E Rasmussen. PILCO: A Model-Based and Data-Efficient Approach to Policy Search. ICML'11
 - **DDP**: Mayne, Jacobson. Differential dynamic programming. 1970
-- **iLQR**: Tassa, Erez, Todorov.  Synthesis and Stabilization of Complex
-Behaviors through Online Trajectory Optimization. 2012
+- **iLQR**: Tassa, Erez, Todorov.  Synthesis and Stabilization of Complex Behaviors through Online Trajectory Optimization. 2012

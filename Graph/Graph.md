@@ -6,6 +6,12 @@
 	<img src="/Graph/images/gnn-survey.png" alt="drawing" width="500"/>
 - Z Zhang, P Cui and W Zhu. Deep Learning on Graphs: A Survey. 2018
 
+## Typical Applications
+- Molecule;
+- n-Body system; rigid body system;
+- NLP: parse-tree;
+- Image: Scene-graph;
+
 ## Legacy
 - Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005
 - Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. Computational capabilities of graph neural networks. TNN 2009
@@ -58,6 +64,17 @@
 		- **DCNN**: J. Atwood and D. Towsley, Diffusion-convolutional neural networks, NIPS'16
 	- **LGCN**: H. Gao, Z. Wang, and S. Ji, Large-scale learnable graph convolutional networks. KDD'18
 - Pooling
+- **Relation-Network**: A Santoro, D Raposo, D G.T. Barrett, M Malinowski, R Pascanu, P Battaglia, T Lillicrap. A simple neural network module for relational reasoning. 2017
+	- Insight: one step GNN with a complete graph;
+	- V (vertices); u (attributes); E (edges)
+	- Update and aggregate operator
+	<img src="/Graph/images/gcn-attention.png" alt="drawing" width="500"/>
+- **GN-Block**: P W. Battaglia, J B. Hamrick, V Bapst, A Sanchez-Gonzalez, V Zambaldi, M Malinowski, A Tacchetti, D Raposo, A Santoro, R Faulkner, C Gulcehre, F Song, A Ballard, J Gilmer, G Dahl, A Vaswani, K Allen, C Nash, V Langston, C Dyer, N Heess, D Wierstra, P Kohli, M Botvinick,O Vinyals, Y Li, R Pascanu. Relational inductive biases, deep learning, and graph networks. 2018
+	- Insight: edge attributes; local, global aggregation;
+	- https://github.com/deepmind/graph_nets
+	- MPNN [Gilmer'17] is a special case of GN;
+	- Non-local NN;
+	<img src="/Graph/images/gn-block.png" alt="drawing" width="500"/>
 
 ## Graph Attention Network
 - P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
@@ -82,15 +99,17 @@
 - S. Yan, Y. Xiong, and D. Lin, Spatial temporal graph convolutional networks for skeleton-based action recognition, AAAI'18
 - A. Jain, A. R. Zamir, S. Savarese, and A. Saxena, Structural-rnn: Deep learning on spatio-temporal graphs, CVPR'16
 
+## Across-Graph
+- **GMN**: Y Li, C Gu, T Dullien, O Vinyals, P Kohli. Graph Matching Networks for Learning the Similarity of Graph Structured Objects. ICML'19
+	- Input two graphs G1=(V1,E1), G2=(V2,E2);
+	- Output similarity;
+	- Network structure:
+		- Encoder for node and edges
+		- Propagation layer: message passing; (T rounds)
+		- Aggregator; (graph-level, MLP)
+	- Similarity produced from aggregator feature;
+
 ## GNN
-- **DeepMind**:
-	- A Santoro, D Raposo, D G.T. Barrett, M Malinowski, R Pascanu, P Battaglia, T Lillicrap. A simple neural network module for relational reasoning. 2017
-		- V (vertices)
-		- u (attributes)
-		- E (edges)
-		- Update and aggregate operator
-	- P W. Battaglia, J B. Hamrick, V Bapst, A Sanchez-Gonzalez, V Zambaldi, M Malinowski, A Tacchetti, D Raposo, A Santoro, R Faulkner, C Gulcehre, F Song, A Ballard, J Gilmer, G Dahl, A Vaswani, K Allen, C Nash, V Langston, C Dyer, N Heess, D Wierstra, P Kohli, M Botvinick,O Vinyals, Y Li, R Pascanu. Relational inductive biases, deep learning, and graph networks. 2018
-	- Y Li, C Gu, T Dullien, O Vinyals, P Kohli. Graph Matching Networks for Learning the Similarity of Graph Structured Objects. 2019
 - **GNN**:
 	- http://snap.stanford.edu/proj/embeddings-www/
 - Semi-supervised classification with graph convolutional networks. NIPS 2015
