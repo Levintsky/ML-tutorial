@@ -43,10 +43,20 @@
 	- **Incpetion-V2**: Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015
 	- **Inception-V3**: Rethinking the Inception Architecture for Computer Vision; CVPR 2016
 	- **Inception-V4**: Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning;
-	
+
 ## Fine-Grained
 - **Bilinear**: T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
 	- https://github.com/HaoMood/bilinear-cnn
 
 ## Pooling, Aggregation
 - R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016
+
+## Attention
+- V Mnih, N Heess, A Graves, et al. Recurrent models of visual attention. NIPS'14
+- J Ba, V Mnih, and K Kavukcuoglu. Multiple object recognition with visual attention. arxiv'14
+- T Xiao, Y Xu, K Yang, J Zhang, Y Peng, and Z Zhang. The application of two-level attention models in deep convolutional neural network for fine-grained image classification. CVPR'15
+- M Chung, S Cho. Cram: Clued recurrent attention model. arxiv'18
+- J Fu, H Zheng, and T Mei. Look closer to see better: Recurrent attention convolutional neural network for fine-grained image recognition. CVPR'17
+- A Ablavatski, S Lu, and J Cai. Enriched deep recurrent visual attention model for multiple object recognition. WACV'17
+- H Zheng, J Fu, T Mei, and J Luo. Learning multi-attention convolutional neural network for fine-grained image recognition. ICCV'17
+- F Wang, M Jiang, C Qian, S Yang, C Li, H Zhang, X Wang, and X Tang. Residual attention network for image classification. arxiv'17

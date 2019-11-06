@@ -85,7 +85,6 @@
 		- BLEU-4 1.42 to 5.42 on YouCook II;
 		<img src="/CV/images/video/videobert-1.png" alt="drawing" width="600"/>
 		<img src="/CV/images/video/videobert-2.png" alt="drawing" width="600"/>
-
 - MSRA:
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
@@ -93,6 +92,8 @@
 - Instructional:
 	- J. Malmaud, J. Huang, V. Rathod, N. Johnston, A. Rabinovich, and K. Murphy. What’s cooking? interpreting cooking videos using text, speech and vision. NAACL 2015
 	- J.-B. Alayrac, P. Bojanowski, N. Agrawal, J. Sivic, I. Laptev, and S. Lacoste-Julien. Unsupervised learning from narrated instruction videos. CVPR 2016
+- Attention-based:
+	- M Shan and N Atanasov. A spatiotemporal model with visual attention for video classification. 2017
 - **P3D**: Z. Qiu, T. Yao, , and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
 - **ARTNet**: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
 - K. Hara, H. Kataoka, and Y. Satoh. Can spatiotemporal 3d cnns retrace the history of 2d cnns and imagenet? CVPR 2018

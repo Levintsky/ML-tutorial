@@ -120,7 +120,8 @@
 	- Bronstein, M. M., Bruna, J., LeCun, Y., Szlam, A., and Vandergheynst, P. Geometric deep learning: going beyond euclidean data. SPM 2017
 	- Wang, X., Girshick, R., Gupta, A., and He, K. Non-local neural networks. CVPR 2018
 		- Combine self-attention in computer vision
-- Capsule Graph Neural Network. ICLR'19
+- Z Xinyi, L Chen. Capsule Graph Neural Network. ICLR'19
+	- https://docs.google.com/presentation/d/1g48ETPJGzi8xDAWEB53KiYxUCWVHwOBQCePvK5c10Ow/edit#slide=id.g2645f83e45_0_0
 
 ## Applications
 - Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018

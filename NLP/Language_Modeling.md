@@ -8,6 +8,7 @@
 	- https://allennlp.org/elmo
 	- ELMo (Embeddings from Language Models)
 	- bidirectional LSTM, predict next/last word
+- **Attention**: D Bahdanau, K Cho, and Y Bengio. Neural machine translation by jointly learning to align and translate. arxiv'14
 - Google NLP:
 	- **GMNT**: Y. Wu, M. Schuster, Z. Chen, Q.V. Le, M. Norouzi, et al. Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. 2016
 		<img src="/NLP/images/gmnt.png" alt="drawing" width="500"/>

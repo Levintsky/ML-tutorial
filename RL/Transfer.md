@@ -19,7 +19,11 @@
 ## Multi-Task
 - J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
 
-## Transfer
+## Generalization, Overfitting
+- Karl Cobbe, Oleg Klimov, Chris Hesse, Taehoon Kim, and John Schulman. Quantifying generalization in reinforcement learning. arxiv'18
+- Jesse Farebrother, Marlos C. Machado, and Michael Bowling. Generalization and regularization in DQN. CoRR'18
+
+## Domain Adaptation (DA)
 - Resources:
 	- https://github.com/AI-ON/Multitask-and-Transfer-Learning
 - S Daftry, J. A Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
@@ -27,8 +31,13 @@
 	- Deep domain adaptation
 	- Dagger
 	<img src="/RL/images/transfer/mav.png" alt="drawing" width="500"/>
+- Konstantinos Bousmalis, Alex Irpan, Paul Wohlhart, Yunfei Bai, Matthew Kelcey, Mrinal Kalakrishnan, Laura Downs, Julian Ibarz, Peter Pastor, Kurt Konolige, Sergey Levine, and Vincent Vanhoucke. Using simulation and domain adaptation to improve efficiency of deep robotic grasping. CoRR'17
+- Shani Gamrian and Yoav Goldberg. Transfer learning for related reinforcement learning tasks via image-to-image translation. CoRR'18
+- Stephen James, Paul Wohlhart, Mrinal Kalakrishnan, Dmitry Kalashnikov, Alex Irpan, Julian
+Ibarz, Sergey Levine, Raia Hadsell, and Konstantinos Bousmalis. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
+- Transfer Value or Policy? A Value-centric Framework Towards Transferrable Continuous Reinforcement Learning. 2019
 
-## Domain Randomization
+## Domain Randomization (DR)
 - https://lilianweng.github.io/lil-log/2019/05/05/domain-randomization.html
 - Uniform randomization:
 	- F Sadeghi, S Levine. CAD2RL: Real Single-Image Flight Without a Single Real Image. 2016

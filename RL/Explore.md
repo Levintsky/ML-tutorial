@@ -70,6 +70,7 @@ dynamic environments. AGI'11
 - Deepak Pathak: TensorFlow code for Curiosity-driven Exploration for Deep Reinforcement Learning, ICML 2017
 	- https://github.com/pathak22/noreward-rl
 - **I2A**T Weber, S Racanière, D P. Reichert, L Buesing, A Guez, D J Rezende, A P Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
+- Sainbayar Sukhbaatar, Zeming Lin, Ilya Kostrikov, Gabriel Synnaeve, Arthur Szlam, Rob Fergus. Intrinsic Motivation and Automatic Curricula via Asymmetric Self-Play. ICLR'18
 
 ## Legacy
 - Schmidhuber. A Possibility for Implementing Curiosity and Boredom in Model-Building Neural Controllers. 1992

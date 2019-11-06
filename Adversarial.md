@@ -18,10 +18,10 @@
 - Optimization-based:
 	- **SOA**: N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
 	- Y Liu, X Chen, C Liu, and D Song. Delving into transferable adversarial examples and black-box attacks. ICLR'17
-	-  Ivan Evtimov, Kevin Eykholt, Ear- lence Fernandes, Tadayoshi Kohno, Bo Li, Atul Prakash, Amir Rahmati, and Dawn Song. Robust physical-world attacks on machine learning models. 2017
+	-  I Evtimov, K Eykholt, E Fernandes, T Kohno, B Li, A Prakash, A Rahmati, and D Song. Robust physical-world attacks on machine learning models. 2017
 	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
 - D Lowd, C Meek. Adversarial Learning. KDD'05
-- C Szegedy, W Zaremba, I Sutskever, J Bruna, D Erhan, I Goodfellow, R Fergus	. Intriguing properties of neural networks. ICLR'14
+- C Szegedy, W Zaremba, I Sutskever, J Bruna, D Erhan, I Goodfellow, R Fergus. Intriguing properties of neural networks. ICLR'14
 - **FGSM**: I J. Goodfellow, J Shlens, C Szegedy. Explaining and harnessing adversarial examples. ICLR'15
 	- Key: apply sign of gradient rather than gradient itself;
 	- https://pytorch.org/tutorials/beginner/fgsm_tutorial.html
@@ -35,9 +35,6 @@
 	- 2017 winner;
 - Eykholt. Robust Physical-World Attacks on Deep Learning Visual Classification. CVPR'18
 - **PGD**: A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
-- C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
-	- https://github.com/xiangchong1/3d-adv-pc
-	- adversarial point perturbation or adversarial point generation
 - Unrestricted (no Lp norm constraint):
 	- Y Song et al. Constructing unrestricted adversarial examples with generative models. 2018.
 	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
@@ -63,3 +60,13 @@
 	- CAAD defense champion;
 	- https://github.com/facebookresearch/ImageNet-Adversarial-Training
 	- Non-local means (best), mean-filter, median filter, bilateral filter;
+
+## 3D
+- Attack:
+	- C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
+		- https://github.com/xiangchong1/3d-adv-pc
+		- adversarial point perturbation or adversarial point generation
+- Defense:
+	- H Zhou, K Chen, W Zhang, H Fang, W Zhou, N Yu. DUP-Net: Denoiser and Upsampler Network for 3D Adversarial Point Clouds Defense. ICCV'19
+		- 1. Remove outlier by local filtering;
+		- 2. Upsampling: L Yu, X Li, C Fu, D Cohen-Or, P Heng. PU-Net: Point Cloud Upsampling Network. CVPR'18

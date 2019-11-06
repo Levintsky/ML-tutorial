@@ -79,7 +79,13 @@
 	<img src="/CV-3D/images/cnn_3d/pointcnn1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/cnn_3d/pointcnn2.png" alt="drawing" width="600"/>
 
-- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. 2018
+- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
+	- Graph **changes by layer**: compute nn on the fly;
+	- EdgeConv-layer:
+		- Dynamic Graph construction: Each node has k nearest neighbors in feature space, form k-edges; 
+		- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
+		- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
+		- Aggregation: maxpool edges with the same node, maps the feature back;
 
 ## Voxel
 - B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018
