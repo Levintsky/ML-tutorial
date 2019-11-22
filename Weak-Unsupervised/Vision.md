@@ -44,7 +44,8 @@
 	- General feature learning
 
 ## FAIR
-- **URU**: Exploring the Limits of Weakly Supervised Pretraining. ECCV 2018
+- **URU**: D Mahajan, R Girshick, V Ramanathan, K He, M Paluri, Y Li, A Bharambe, L van der Maaten. Exploring the Limits of Weakly Supervised Pretraining. ECCV 2018
+	- **IG-1B** dataset: Instagram
 	- Pretrain on a larger dataset (1.5 billion Instagram) + (1.5k, 8.5k, 17k hashtag classes);
 	- Preprocessing: image-deduplication, hash-tags clean up (SynNet);
 	- Model: ResNext;
@@ -52,7 +53,7 @@
 	- Conclusion 1: hash-tags v.s. accuracy; (always a gain, fine-grained target needs a fine-grained source);
 	- Conclusion 2: larger amount of pretrain -> better target domain accuracy;
 	- Conclusion 3: the smaller the label noise (hashtags are noisy) -> better target accuracy;
-- Armand Joulin, Laurens van der Maaten, Allan Jabri, Nicolas Vasilache. Learning Visual Features from Large Weakly Supervised Data. ECCV 2016
+- A Joulin, L van der Maaten, A Jabri, N Vasilache. Learning Visual Features from Large Weakly Supervised Data. ECCV 2016
 - Weak detetection (Zhenheng):
 	- Image has only image level labeling (no bbox or segments);
 	- Hundreds of candidate proposals (can't penalize bbox reg-loss or classification loss);
@@ -62,7 +63,28 @@
 	- Task 1: **Jigsaw** (permutation)
 	- Task 2: **Colorization**
 	- Pretrain, then only train top linear layer;
-- Deep Clustering for Unsupervised Learning of Visual Features. ECCV 2018
+- M Caron, P Bojanowski, A Joulin, M Douze. Deep Clustering for Unsupervised Learning of Visual Features. ECCV'18
+- **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
+	- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
+	- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
+	- Momentum update: slowly updating key encoder; theta-key = 0.999 theta-key + 0.001 theta-query;
+	- Positive: random augmentation (with grayscale);
+	- Shuffling-BN: train with multiple GPUs independently, the sample order of minibatch randomly shuffled;
+	- Exp:
+		- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
+		- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
+		- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
+
+## SOA
+- Dictionary Learning
+	- Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin. Unsupervised feature learning via non-parametric instance discrimination. In CVPR, 2018
+	- Philip Bachman, R Devon Hjelm, and William Buchwalter. Learning representations by maximizing mutual information. 2019
+	- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. In ICLR, 2019.
+	- **LocalAggr**: Chengxu Zhuang, Alex Lin Zhai, and Daniel Yamins. Local aggregation for unsupervised learning of visual embeddings. In ICCV, 2019.
+- **CPC**:
+	- Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. 2018
+	- Olivier J Hénaff, Ali Razavi, Carl Doersch, SM Eslami, and Aaron van den Oord. Data-efficient image recognition with contrastive predictive coding. 2019
+	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. 2019
 
 ## Tasks
 - Context prediction:
