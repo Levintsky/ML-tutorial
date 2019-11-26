@@ -21,8 +21,16 @@
 	- Baxter & Bartlett (2001). Infinite-horizon policy-gradient estimation: temporally decomposed policy gradient (not the first paper on this! see actor-critic section later)
 	- Peters & Schaal (2008). Reinforcement learning of motor skills with policy gradients: very accessible overview of optimal baselines and natural gradient
 - SOA
+	- About **Natural Gradient**:
+		- https://www.zhihu.com/question/266846405
+		- https://zhuanlan.zhihu.com/p/82934100
 	- Levine & Koltun (2013). Guided policy search: deep RL with importance sampled policy gradient (unrelated to later discussion of guided policy search)
 	- **TRPO**: J Schulman, S Levine, P Moritz, M Jordan, P Abbeel. Trust region policy optimization. ICML'15
+		- **Trick-1**: make new expectation as old plus Advantage; J(pi')=J(pi)+E(Adv(s,a)), notice the expectation is under new policy pi';
+		- **Trick-2**: not able to get expectation under new policy? IS, Ex~p[f(x)]=Ex~q[q/p f(x)]
+		- **Trick-3**: bound the difference between pi'(s) and pi(s), |pi'(s)-pi(s)| < eps easier to bound; 
+		- **Trick-4**: First order approx for J, natural gradient for update;
+		- https://zhuanlan.zhihu.com/p/26308073
 		- Theoretical Guarantee of monotonic improvement if KL constraint satisfied
 		- Surrogate loss
 		- Line search to make the best stepsize update;

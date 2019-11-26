@@ -8,7 +8,7 @@
 	- Predict color from gray scale values
 		- Colorful Image Colorization, ECCV 2016
 	- Predict image rotation
-		- S. Gidaris et al. “Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
+		- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
 	- M. Caron et al. Deep clustering for unsupervised learning of visual features, ECCV 2018
 		- Extract CNN and run K-means
 		- Train on cluster id;
@@ -63,7 +63,10 @@
 	- Task 1: **Jigsaw** (permutation)
 	- Task 2: **Colorization**
 	- Pretrain, then only train top linear layer;
-- M Caron, P Bojanowski, A Joulin, M Douze. Deep Clustering for Unsupervised Learning of Visual Features. ECCV'18
+- Clustering:
+	- M Caron, P Bojanowski, A Joulin, M Douze. Deep Clustering for Unsupervised Learning of Visual Features. ECCV'18
+	- X Ji, J Henriques, A Vedaldi. Invariant Information Clustering for Unsupervised Image Classification and Segmentation.
+		- https://github.com/xu-ji/IIC
 - **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
 	- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
 	- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
