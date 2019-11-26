@@ -24,6 +24,7 @@
 	- Moment matching (project to Gaussian)
 
 ## Learn a Model
+- **I2A**: T Weber, S Racanière, D Reichert, L Buesing, A Guez, D Rezende, A Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
 - World Model
 	- **Navigation**: Z Guo, M G Azar, B Piot, B A. Pires, T Pohlen, R Munos. Neural Predictive Belief Representations, ICLR'19
 		- 1-step frame prediction
@@ -100,6 +101,7 @@
 	- I. Osband. Risk versus uncertainty in deep learning: Bayes, bootstrap and the dangers of dropout. NIPSW'16
 	- I. Osband, C. Blundell, A. Pritzel, and B. Van Roy. Deep exploration via bootstrapped DQN. NIPS'16
 	- C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger. On calibration of modern neural networks. ICML'17
+- **MBMF**: Somil Bansal Roberto Calandra Kurtland Chua Sergey Levine Claire Tomlin. Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
 - V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
 - **PETS**: K Chua, R Calandra, R McAllister, S Levine. Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models. NIPS'18
 	- **SOA**!
