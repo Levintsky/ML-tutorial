@@ -1,58 +1,57 @@
 # Strong Baselines
 
 ## Policy Gradient
-- Sergey Levine:
-	- PG
+- Basic PG (from Sergey Levine CS-294)
 	<img src="/RL/images/pg.png" alt="drawing" width="600"/>
 
-	- Baseline for variance reduction:
+	- **Baseline for variance reduction**:
 	<img src="/RL/images/pg-baseline.png" alt="drawing" width="600"/>
 
-	- IS, off-policy PG
+	- **IS, off-policy PG**:
 	<img src="/RL/images/pg-is.png" alt="drawing" width="600"/>
 
-- Classic
+- Advantages:
 	- On-Policy
 	- Better Convergence
 	- Effective in high-dimensional or continuous action spaces
 	- Can learn **stochastic** policies
-- Legacy
+- Legacy:
 	- **REINFORCE**: Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. 1992
 	- Baxter & Bartlett (2001). Infinite-horizon policy-gradient estimation: temporally decomposed policy gradient (not the first paper on this! see actor-critic section later)
 	- Peters & Schaal (2008). Reinforcement learning of motor skills with policy gradients: very accessible overview of optimal baselines and natural gradient
-- SOA
+- Recent:
+	- **GPS**: S, Levine & Koltun. Guided policy search: deep RL with importance sampled policy gradient.  ICML'13. (unrelated to later discussion of guided policy search)
 	- About **Natural Gradient**:
+		- Relation with Gauss-Newton
 		- https://www.zhihu.com/question/266846405
 		- https://zhuanlan.zhihu.com/p/82934100
-	- Levine & Koltun (2013). Guided policy search: deep RL with importance sampled policy gradient (unrelated to later discussion of guided policy search)
 	- **TRPO**: J Schulman, S Levine, P Moritz, M Jordan, P Abbeel. Trust region policy optimization. ICML'15
 		- **Trick-1**: make new expectation as old plus Advantage; J(pi')=J(pi)+E(Adv(s,a)), notice the expectation is under new policy pi';
-		- **Trick-2**: not able to get expectation under new policy? IS, Ex~p[f(x)]=Ex~q[q/p f(x)]
-		- **Trick-3**: bound the difference between pi'(s) and pi(s), |pi'(s)-pi(s)| < eps easier to bound; 
+			<img src="/RL/images/algos/trpo1.png" alt="drawing" width="500"/>
+		- **Trick-2**: not able to get expectation under new policy? IS, Expectation under p[f(x)] versus Expecation under q(x) q[q/p f(x)]
+		- **Trick-3**: bound the difference between pi'(s) and pi(s), |pi'(s)-pi(s)| < eps easier to bound with KL-divergence; 
+			<img src="/RL/images/algos/trpo2.png" alt="drawing" width="600"/>
+			<img src="/RL/images/algos/trpo3.png" alt="drawing" width="600"/>
 		- **Trick-4**: First order approx for J, natural gradient for update;
+			<img src="/RL/images/algos/trpo4.png" alt="drawing" width="600"/>
+			<img src="/RL/images/algos/trpo5.png" alt="drawing" width="400"/>		
 		- https://zhuanlan.zhihu.com/p/26308073
-		- Theoretical Guarantee of monotonic improvement if KL constraint satisfied
-		- Surrogate loss
-		- Line search to make the best stepsize update;
+		- In summary: Theoretical Guarantee of monotonic improvement if KL constraint satisfied; Surrogate loss; Line search to make the best stepsize update;
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
-		<img src="/RL/images/trpo1.png" alt="drawing" width="600"/>
-		<img src="/RL/images/trpo2.png" alt="drawing" width="600"/>
-		<img src="/RL/images/trpo3.png" alt="drawing" width="600"/>
-		<img src="/RL/images/trpo4.png" alt="drawing" width="600"/>
-		<img src="/RL/images/trpo5.png" alt="drawing" width="400"/>
 
-	- **PPO** J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
-	<img src="/RL/images/ppo.png" alt="drawing" width="400"/>
-
-	- Trust region policy optimization with value function approximation
+	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
+		<img src="/RL/images/ppo.png" alt="drawing" width="400"/>
 
 ## Value + Policy, Actor-Critic
-- Sergey Levine:
-<img src="/RL/images/ac1.png" alt="drawing" width="500"/>
-<img src="/RL/images/ac2.png" alt="drawing" width="500"/>
+- Basics: (Sergey Levine, CS-294)
+	- Actor: the policy
+	- Critic: value function
+	- Reduce variance of policy gradient
+	<img src="/RL/images/ac1.png" alt="drawing" width="500"/>
+	<img src="/RL/images/ac2.png" alt="drawing" width="500"/>
 
-- Implementation loops:
-	- 1: act/sample, no gradient!
+- A generatl framework (for Implementation):
+	- Phase 1: collect data (act/sample, no gradient!)
 	```python
 	def act(self, inputs, rnn_hxs, masks, deterministic=False):
 		value, actor_features, rnn_hxs = self.base(inputs, rnn_hxs, masks)
@@ -66,15 +65,15 @@
 		dist_entropy = dist.entropy().mean()
 		return value, action, action_log_probs, rnn_hxs
 	```
-	- 1.1 Env step
+	- 1.1 Environment step forward;
 	```python 
 	obs, reward, done, infos = envs.step(action)
 	# st, at, st+1, vt, rt, mt
 	rollouts.insert(obs, recurrent_hidden_states, action,
 					action_log_prob, value, reward, masks, bad_masks)
 	```
-	- 2: A2C/PPO/...
-	- 2.1 Estimate target value (GAE/n-step)
+	- Phase 2: Learning of both actor and critic (A2C/PPO/...): 
+	- 2.1 Critic target: Estimated with (GAE/n-step)
 	```python
 	next_value = actor_critic.get_value(
 		rollouts.obs[-1], rollouts.recurrent_hidden_states[-1],
@@ -82,7 +81,7 @@
 	rollouts.compute_returns(next_value, args.use_gae, args.gamma,
 		args.gae_lambda, args.use_proper_time_limits)
 	```
-	- 2.2 Update
+	- 2.2 Loss function and Update: value loss (adv ^ 2) + action-loss (adv * log pi(a|s))
 	```python
 	def update(self, rollouts):
 		values = values.view(num_steps, num_processes, 1)
@@ -100,34 +99,91 @@
 		self.bad_masks[0].copy_(self.bad_masks[-1])
 	```
 
-- Classic
-	- Actor: the policy
-	- Critic: value function
-	- Reduce variance of policy gradient
 - Legacy
 	- Sutton, McAllester, Singh, Mansour (1999). Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation
-- SOA
-	- D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML, 2014.
+- Recent:
+	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14
 	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
-	<img src="/RL/images/gae.png" alt="drawing" width="600"/>
-
+		<img src="/RL/images/gae.png" alt="drawing" width="600"/>
 	- **Q-Prop**: S Gu, T Lillicrap, Z Ghahramani, R E. Turner, S Levine. Sample-efficient policy-gradient with an off-policy critic: policy gradient with Q-function control variate. ICLR'17
 		- https://github.com/shaneshixiang/rllabplusplus
-	<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
-
+		<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
 	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
 		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches
 		<img src="/RL/images/pcl.png" alt="drawing" width="600"/>
+	- **ACER**: Ziyu Wang, Victor Bapst, Nicolas Heess, Volodymyr Mnih, Remi Munos, Koray Kavukcuoglu, Nando de Freitas. Sample Efficient Actor-Critic with Experience Replay. ICLR'17
+		- Available in OpenAI baselines
+	- **ACKTR**: Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
+		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
+	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. 2018
 
-## Value Function
-- Sergey Levine:
-<img src="/RL/images/q-1.png" alt="drawing" width="500"/>
-<img src="/RL/images/q-2.png" alt="drawing" width="500"/>
-<img src="/RL/images/q-3.png" alt="drawing" width="500"/>
+## Value Function, Q-learning
+- Basics (Sergey Levine, CS-294):
+	<img src="/RL/images/q-1.png" alt="drawing" width="400"/>
+	<img src="/RL/images/q-2.png" alt="drawing" width="500"/>
+	<img src="/RL/images/q-3.png" alt="drawing" width="500"/>
+- Classic
+	- Off-Policy
+	- Experience Replay
+	- Fixed Q-targets
+	<img src="/RL/images/q-4.png" alt="drawing" width="500"/>
 
-- DDPG (Cont) design:
+	- Multi-Step Returns: R Munos, T Stepleton, A Harutyunyan, M G. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
+	<img src="/RL/images/q-multistep.png" alt="drawing" width="500"/>
+- Legacy:
+	- **TD**: Sutton, R. S. Learning to predict by the methods of temporal differences. Machine learning, 3(1):9–44, 1988.
+	- C. J. Watkins and P. Dayan. Q-learning. Machine learning'92.
+	- **Experience Replay**: Lin, L.-J. Self-improving reactive agents based on reinforcement learning, planning and teaching. ML'92
+	- Precup, D., Sutton, R. S., and Dasgupta, S. Off-policy temporal-difference learning with function approximation. ICML'01
+- **Overestimation**:
+	- Thrun, S. and Schwartz, A. Issues in using function approximation for reinforcement learning. In Proceedings of the 1993 Connectionist Models Summer School Hillsdale, NJ. Lawrence Erlbaum, 1993.
+	- **Double Q-Learning**: Van Hasselt, H. Double q-learning. NIPS'10
+	- **Double DQN**: H v Hasselt, A Guez, D Silver. Deep Reinforcement Learning with Double Q-learning. NIPS'15
+		- Two networks, one to choose action, the other to compute Q(s,a)
+		<img src="/RL/images/double-q.png" alt="drawing" width="500"/>
+- SOA
+	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
+	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
+	- T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
+		- Prioritizing with TD-error
+		- Implement with a heap
+	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
+		- Two heads for value function;
+		- One for state value;
+		- One for state-dependent action advantage function;
+	<img src="/RL/images/duel.png" alt="drawing" width="500"/>
+
+	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
+	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
+		- Double Q-learning
+		- Prioritized replay
+		- Dueling network
+		- Multi-step learning
+		- Distributional RL
+		- Noisy Nets (for Montezuma's Revenge)
+	- **Non-delusional Q-learning and value iteration**, NIPS 2018 best paper award:
+		- Delusion: parameter update inconsistent with following policy;
+		- PCVI: Tabular (model-based MDP)
+		- PCQL: Q-learning (model-free)
+- Continuous:
+	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+		- SVG(0): model free
+		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
+
+		- SVG(1): one-step dynamics
+		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
+
+		- SVG(inf)
+		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+
+	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
+	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
+		- https://github.com/ghliu/pytorch-ddpg
+		<img src="/RL/images/ddpg.png" alt="drawing" width="500"/>
+
+	- DDPG (Cont) design:
 	- 1. ddpg class;
 	```python
 	class DDPG(object):
@@ -189,65 +245,18 @@
     policy_loss.backward()
     self.actor_optim.step()
 	```
-- Classic
-	- Off-Policy
-	- Experience Replay
-	- Fixed Q-targets
-	<img src="/RL/images/q-4.png" alt="drawing" width="500"/>
-
-	- Multi-Step Returns: R Munos, T Stepleton, A Harutyunyan, M G. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
-	<img src="/RL/images/q-multistep.png" alt="drawing" width="500"/>
-
-- Legacy
-	- C. J. Watkins and P. Dayan. Q-learning. Machine learning, 1992.
-- SOA
-	- **DQN** Playing Atari with deep reinforcement learning, Mnih et al. 2013
-	- **DQN** V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
-	- **Double Q-Learning**: H v Hasselt, A Guez, D Silver. Deep Reinforcement Learning with Double Q-learning. NIPS'15
-		- Two network, one to choose action, the other to compute Q(s,a)
-		<img src="/RL/images/double-q.png" alt="drawing" width="500"/>
-
-	- T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
-		- Prioritizing with TD-error
-		- Implement with a heap
-	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
-		- Two heads for value function;
-		- One for state value;
-		- One for state-dependent action advantage function;
-	<img src="/RL/images/duel.png" alt="drawing" width="500"/>
-
-	- **Distributional RL**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
-
-	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
-
-	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
-		- Double Q-learning
-		- Prioritized replay
-		- Dueling network
-		- Multi-step learning
-		- Distributional RL
-		- Noisy Nets (for Montezuma's Revenge)
-	- **Non-delusional Q-learning and value iteration**, NIPS 2018 best paper award:
-		- Delusion: parameter update inconsistent with following policy;
-		- PCVI: Tabular (model-based MDP)
-		- PCQL: Q-learning (model-free)
-- Continuous:
-	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
-		- SVG(0): model free
-		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
-
-		- SVG(1): one-step dynamics
-		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
-
-		- SVG(inf)
-		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
-
-	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
-	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
-		- https://github.com/ghliu/pytorch-ddpg
-		<img src="/RL/images/ddpg.png" alt="drawing" width="500"/>
 
 	- D Kalashnikov, A Irpan, P Pastor, J Ibarz, A Herzog, E Jang, D Quillen, E Holly, M Kalakrishnan, V Vanhoucke, S Levine. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
+
+## Unclassified
+- **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+- O’Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
+- **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
+- Distributional:
+	- **Distributional RL**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
+- Variance-reduction:
+	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
 
 ## Baselines
 - Open-AI Baselines
