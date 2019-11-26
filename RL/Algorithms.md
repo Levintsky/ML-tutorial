@@ -40,15 +40,24 @@
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
 
 	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
+<<<<<<< HEAD
 		<img src="/RL/images/ppo.png" alt="drawing" width="400"/>
+=======
+		<img src="/RL/images/algos/ppo.png" alt="drawing" width="400"/>
+>>>>>>> ff9c64bc39a57c145af75b17bea09f98e2f61b36
 
 ## Value + Policy, Actor-Critic
 - Basics: (Sergey Levine, CS-294)
 	- Actor: the policy
 	- Critic: value function
 	- Reduce variance of policy gradient
+<<<<<<< HEAD
 	<img src="/RL/images/ac1.png" alt="drawing" width="500"/>
 	<img src="/RL/images/ac2.png" alt="drawing" width="500"/>
+=======
+	<img src="/RL/images/algos/ac1.png" alt="drawing" width="500"/>
+	<img src="/RL/images/algos/ac2.png" alt="drawing" width="500"/>
+>>>>>>> ff9c64bc39a57c145af75b17bea09f98e2f61b36
 
 - A generatl framework (for Implementation):
 	- Phase 1: collect data (act/sample, no gradient!)
@@ -103,6 +112,10 @@
 	- Sutton, McAllester, Singh, Mansour (1999). Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation
 - Recent:
 	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14
+<<<<<<< HEAD
+=======
+		<img src="/RL/images/algos/dpg.png" alt="drawing" width="450"/>
+>>>>>>> ff9c64bc39a57c145af75b17bea09f98e2f61b36
 	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
@@ -118,6 +131,7 @@
 	- **ACKTR**: Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
 		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
 	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. 2018
+<<<<<<< HEAD
 
 ## Value Function, Q-learning
 - Basics (Sergey Levine, CS-294):
@@ -257,6 +271,117 @@
 	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
+=======
+		- Continuous control;
+		- https://github.com/vitchyr/rlkit
+		- Policy update: policy-loss = alpha log(pi) - Q(s, pi(s))
+		- Value update: target value = r + gamma q_target(s', pi(s'))
+		<img src="/RL/images/algos/sac.png" alt="drawing" width="500"/>
+
+## Value Function, Q-learning
+- Basics (Sergey Levine, CS-294):
+	<img src="/RL/images/algos/q-1.png" alt="drawing" width="400"/>
+	<img src="/RL/images/algos/q-2.png" alt="drawing" width="500"/>
+	<img src="/RL/images/algos/q-3.png" alt="drawing" width="500"/>
+- On policy: SARSA
+	<img src="/RL/images/algos/sarsa.png" alt="drawing" width="450"/>
+- Classic
+	- Q-learning: Off-Policy
+	- Experience Replay
+	- Fixed Q-targets
+		<img src="/RL/images/algos/q-4.png" alt="drawing" width="500"/>
+	- Multi-Step Returns: R Munos, T Stepleton, A Harutyunyan, M G. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
+		<img src="/RL/images/q-multistep.png" alt="drawing" width="500"/>
+- Legacy:
+	- **TD**: Sutton, R. S. Learning to predict by the methods of temporal differences. Machine learning, 3(1):9–44, 1988.
+	- C. J. Watkins and P. Dayan. Q-learning. Machine learning'92.
+	- **Experience Replay**: Lin, L.-J. Self-improving reactive agents based on reinforcement learning, planning and teaching. ML'92
+	- **SARSA**: Singh, S., Jaakkola, T., Littman, M. L., and Szepesvari, C. Convergence results for single-step on-policy reinforcement-learning algorithms. ML'00
+	- Precup, D., Sutton, R. S., and Dasgupta, S. Off-policy temporal-difference learning with function approximation. ICML'01
+- **Overestimation**:
+	- Thrun, S. and Schwartz, A. Issues in using function approximation for reinforcement learning. In Proceedings of the 1993 Connectionist Models Summer School Hillsdale, NJ. Lawrence Erlbaum, 1993.
+	- **Double Q-Learning**: Van Hasselt, H. Double q-learning. NIPS'10
+	- **Double DQN**: H v Hasselt, A Guez, D Silver. Deep Reinforcement Learning with Double Q-learning. NIPS'15
+		- Two networks, one to choose action, the other to compute Q(s,a)
+		<img src="/RL/images/algos/double-q.png" alt="drawing" width="500"/>
+	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
+		- https://github.com/sfujim/TD3
+		- Clipped Double Q-learning: actor x1,  critic x 2 (not the target), target also has two critic;
+		- For value iteration: y = r + min(Q1(s', a'), Q2(s', a'))
+		- Delayed Policy update: at lower frequency;
+		- Sync actor/critic target with current at even lower frequency;
+		<img src="/RL/images/algos/TD3.png" alt="drawing" width="500"/>
+- SOA
+	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
+	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
+	- T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
+		- Prioritizing with TD-error
+		- Implement with a heap
+	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
+		- Two heads for value function;
+		- One for state value;
+		- One for state-dependent action advantage function;
+	<img src="/RL/images/duel.png" alt="drawing" width="500"/>
+
+	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
+	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
+		- Double Q-learning
+		- Prioritized replay
+		- Dueling network
+		- Multi-step learning
+		- Distributional RL
+		- Noisy Nets (for Montezuma's Revenge)
+	- **Non-delusional Q-learning and value iteration**, NIPS 2018 best paper award:
+		- Delusion: parameter update inconsistent with following policy;
+		- PCVI: Tabular (model-based MDP)
+		- PCQL: Q-learning (model-free)
+- Continuous:
+	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+		- SVG(0): model free
+		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
+
+		- SVG(1): one-step dynamics
+		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
+
+		- SVG(inf)
+		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+
+	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
+	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
+		- https://github.com/ghliu/pytorch-ddpg
+		- A deep variant of DPG
+		<img src="/RL/images/algos/ddpg.png" alt="drawing" width="500"/>
+
+		- 1. ddpg class;
+			- Actor, actor-target, actor optimizer
+			- Critic, critic-target, critic optimizer
+		- 2. Collect experience: record (s, a, s', r)
+		- 3. Learning
+			- value loss (critic): Q(s, a; theta1) with target r + gamma Q-target(s', actor-target(s'))
+			- policy loss (actor): -Q(s, actor(s))
+
+	- D Kalashnikov, A Irpan, P Pastor, J Ibarz, A Herzog, E Jang, D Quillen, E Holly, M Kalakrishnan, V Vanhoucke, S Levine. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
+>>>>>>> ff9c64bc39a57c145af75b17bea09f98e2f61b36
+
+## Unclassified
+- **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+- O’Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
+- **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
+- Distributional:
+	- **Distributional RL**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
+- Variance-reduction:
+	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
+- Max Entropy:
+	- Ziebart, B. D., Maas, A. L., Bagnell, J. A., and Dey, A. K. Maximum entropy inverse reinforcement learning. AAAI'08
+	- Toussaint, M. Robot trajectory optimization using approximate inference. ICML'09
+	- Rawlik, K., Toussaint, M., and Vijayakumar, S. On stochastic optimal control and reinforcement learning by approximate inference. RSS'12
+	- Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. UAI'16
+	- Haarnoja, T., Tang, H., Abbeel, P., and Levine, S. Reinforcement learning with deep energy-based policies. ICML'17
+	- O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
+	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
+	- PCL: NIPS'17
+	- SAC: 2018
 
 ## Baselines
 - Open-AI Baselines
@@ -267,6 +392,9 @@
 	- GAIL
 	- HER
 	- PPO1 (Multi-CPU using MPI), PPO2 (Optimized for GPU), TRPO
+- **rlkit**
+	- https://github.com/vitchyr/rlkit
+	- RIG, TDMs, HER, DQN, SAC, TD3
 - Pytorch libraries:
 	- DQN Adventure: https://github.com/higgsfield/RL-Adventure
 	- Ye Yuan (CMU): https://github.com/Khrylx/PyTorch-RL
