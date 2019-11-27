@@ -1,4 +1,7 @@
-# Strong Baselines
+# RL Algorithms
+
+## Summaries
+- https://spinningup.openai.com/en/latest/spinningup/keypapers.html
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294)
@@ -41,6 +44,7 @@
 
 	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
 		<img src="/RL/images/algos/ppo.png" alt="drawing" width="400"/>
+<<<<<<< HEAD
 
 ## Natural Gradient
 - Legacy:
@@ -51,6 +55,8 @@
 	- PSD (positive semi-definite);
 - James Martens. New insights and perspectives on the natural gradient method. 2017
 	- Geometric interpretation: the steepest change of KL(P(theta+d)||P(theta)), locally symmetric;
+=======
+>>>>>>> da09030409596e9e3fcc69dff2884bd6eefab823
 
 ## Value + Policy, Actor-Critic
 - Basics: (Sergey Levine, CS-294)
@@ -59,7 +65,10 @@
 	- Reduce variance of policy gradient
 	<img src="/RL/images/algos/ac1.png" alt="drawing" width="500"/>
 	<img src="/RL/images/algos/ac2.png" alt="drawing" width="500"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> da09030409596e9e3fcc69dff2884bd6eefab823
 - A generatl framework (for Implementation):
 	- Phase 1: collect data (act/sample, no gradient!)
 	```python
@@ -168,12 +177,15 @@
 		- Delayed Policy update: at lower frequency;
 		- Sync actor/critic target with current at even lower frequency;
 		<img src="/RL/images/algos/TD3.png" alt="drawing" width="500"/>
-- SOA
+- More modern techniques:
 	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
 	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
-	- T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
+	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
 		- Prioritizing with TD-error
 		- Implement with a heap
+	- **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
+		- 1+ goal we may try to achieve;
+		- Every episode sample state goal pair (s0, g);
 	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
 		- Two heads for value function;
 		- One for state value;
@@ -221,11 +233,23 @@
 
 ## Unclassified
 - **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+	<img src="/RL/images/algos/her.png" alt="drawing" width="500"/>
 - O’Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
 - Distributional:
 	- **C51**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+<<<<<<< HEAD
 	- **QT-DQN**: Will Dabney, Mark Rowland, Marc G. Bellemare, Remi Munos. Distributional Reinforcement Learning with Quantile Regression. AAAI'18
+=======
+		- Q(s, a) from scalar to a categorical 51 classes (linear between v-min to v-max)
+		- Do KL divergence training between Q(st, at) and r(st, at) + max_a Q(st+1, a), when take argmax action, just calculate expectation (marginalize 51 categories);
+		<img src="/RL/images/algos/c51.png" alt="drawing" width="500"/>
+	- **QR-DQN**: Will Dabney, Mark Rowland, Marc G. Bellemare, Rémi Munos. Distributional Reinforcement Learning with Quantile Regression. AAAI'18
+		<img src="/RL/images/algos/qr-dqn.png" alt="drawing" width="500"/>
+	- **IQN**: Will Dabney, Georg Ostrovski, David Silver, Remi Munos. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
+	- **dopamine**: Pablo Samuel Castro, Subhodeep Moitra, Carles Gelada, Saurabh Kumar, Marc G. Bellemare. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
+		- https://github.com/google/dopamine
+>>>>>>> da09030409596e9e3fcc69dff2884bd6eefab823
 	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
