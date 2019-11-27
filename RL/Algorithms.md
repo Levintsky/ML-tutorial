@@ -1,4 +1,7 @@
-# Strong Baselines
+# RL Algorithms
+
+## Summaries
+- https://spinningup.openai.com/en/latest/spinningup/keypapers.html
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294)
@@ -157,17 +160,20 @@
 		- Delayed Policy update: at lower frequency;
 		- Sync actor/critic target with current at even lower frequency;
 		<img src="/RL/images/algos/TD3.png" alt="drawing" width="500"/>
-- SOA
+- More modern techniques:
 	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
 	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
-	- T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
+	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
 		- Prioritizing with TD-error
 		- Implement with a heap
+	- **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
+		- 1+ goal we may try to achieve;
+		- Every episode sample state goal pair (s0, g);
 	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
 		- Two heads for value function;
 		- One for state value;
 		- One for state-dependent action advantage function;
-	<img src="/RL/images/duel.png" alt="drawing" width="500"/>
+		<img src="/RL/images/duel.png" alt="drawing" width="500"/>
 
 	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
 	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
@@ -210,10 +216,19 @@
 
 ## Unclassified
 - **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+	<img src="/RL/images/algos/her.png" alt="drawing" width="500"/>
 - O’Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
 - Distributional:
-	- **Distributional RL**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+	- **C51**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+		- Q(s, a) from scalar to a categorical 51 classes (linear between v-min to v-max)
+		- Do KL divergence training between Q(st, at) and r(st, at) + max_a Q(st+1, a), when take argmax action, just calculate expectation (marginalize 51 categories);
+		<img src="/RL/images/algos/c51.png" alt="drawing" width="500"/>
+	- **QR-DQN**: Will Dabney, Mark Rowland, Marc G. Bellemare, Rémi Munos. Distributional Reinforcement Learning with Quantile Regression. AAAI'18
+		<img src="/RL/images/algos/qr-dqn.png" alt="drawing" width="500"/>
+	- **IQN**: Will Dabney, Georg Ostrovski, David Silver, Remi Munos. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
+	- **dopamine**: Pablo Samuel Castro, Subhodeep Moitra, Carles Gelada, Saurabh Kumar, Marc G. Bellemare. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
+		- https://github.com/google/dopamine
 	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
