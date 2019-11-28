@@ -2,6 +2,29 @@
 
 ## Summaries
 - https://spinningup.openai.com/en/latest/spinningup/keypapers.html
+- https://github.com/navneet-nmk/pytorch-rl
+- https://github.com/sweetice/Deep-reinforcement-learning-with-pytorch
+- Open-AI Baselines
+	- https://github.com/openai/baselines
+	- A2C, ACER, ACKTR / DDPG / DQN / GAIL / HER
+	- PPO1 (Multi-CPU using MPI), PPO2 (Optimized for GPU), TRPO
+- **rlkit**
+	- https://github.com/vitchyr/rlkit
+	- RIG, TDMs, HER, DQN, SAC, TD3
+- Pytorch libraries:
+	- DQN Adventure: https://github.com/higgsfield/RL-Adventure
+	- Ye Yuan (CMU): https://github.com/Khrylx/PyTorch-RL
+	- Shangtong Zhang: https://github.com/ShangtongZhang/DeepRL
+	- Ilya Kostrikov (NYU): https://github.com/ikostrikov
+	- Rainbow: https://github.com/Kaixhin/Rainbow
+	- A3C LSTM: https://github.com/dgriff777/rl_a3c_pytorch
+- Tensorflow libraries:
+	- https://github.com/brendanator/atari-rl
+	- https://github.com/steveKapturowski/tensorflow-rl
+	- https://github.com/tensorflow/agents
+- Shane Gu: https://github.com/shaneshixiang/rllabplusplus
+- Berkeley RL: https://github.com/rll/rllab
+- GA3C: https://github.com/NVlabs/GA3C
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294)
@@ -44,6 +67,7 @@
 
 	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
 		<img src="/RL/images/algos/ppo.png" alt="drawing" width="400"/>
+	- **PPO**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
 
 ## Natural Gradient
 - Legacy:
@@ -120,15 +144,9 @@
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
 		<img src="/RL/images/gae.png" alt="drawing" width="600"/>
-	- **Q-Prop**: S Gu, T Lillicrap, Z Ghahramani, R E. Turner, S Levine. Sample-efficient policy-gradient with an off-policy critic: policy gradient with Q-function control variate. ICLR'17
-		- https://github.com/shaneshixiang/rllabplusplus
-		<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
-	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
-		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches
-		<img src="/RL/images/pcl.png" alt="drawing" width="600"/>
 	- **ACER**: Ziyu Wang, Victor Bapst, Nicolas Heess, Volodymyr Mnih, Remi Munos, Koray Kavukcuoglu, Nando de Freitas. Sample Efficient Actor-Critic with Experience Replay. ICLR'17
 		- Available in OpenAI baselines
-	- **ACKTR**: Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
+	- **ACKTR**: Yuhuai Wu, Elman Mansimov, Shun Liao, Roger Grosse, Jimmy Ba. Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
 		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
 	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. 2018
 		- Continuous control;
@@ -173,6 +191,7 @@
 - More modern techniques:
 	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
 	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
+	- **Recurrent-DQN**: Matthew Hausknecht, Peter Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
 	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
 		- Prioritizing with TD-error
 		- Implement with a heap
@@ -227,7 +246,8 @@
 ## Unclassified
 - **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
 	<img src="/RL/images/algos/her.png" alt="drawing" width="500"/>
-- O’Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
+- Paulo Rauber, Avinash Ummadisingu, Filipe Mutz, Juergen Schmidhuber. Hindsight policy gradients. ICLR'19
+- O'Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
 - Distributional:
 	- **C51**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
@@ -252,33 +272,21 @@
 	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
 	- PCL: NIPS'17
 	- SAC: 2018
-
-## Baselines
-- Open-AI Baselines
-	- https://github.com/openai/baselines
-	- A2C, ACER, ACKTR
-	- DDPG
-	- DQN
-	- GAIL
-	- HER
-	- PPO1 (Multi-CPU using MPI), PPO2 (Optimized for GPU), TRPO
-- **rlkit**
-	- https://github.com/vitchyr/rlkit
-	- RIG, TDMs, HER, DQN, SAC, TD3
-- Pytorch libraries:
-	- DQN Adventure: https://github.com/higgsfield/RL-Adventure
-	- Ye Yuan (CMU): https://github.com/Khrylx/PyTorch-RL
-	- Shangtong Zhang: https://github.com/ShangtongZhang/DeepRL
-	- Ilya Kostrikov (NYU): https://github.com/ikostrikov
-	- Rainbow: https://github.com/Kaixhin/Rainbow
-	- A3C LSTM: https://github.com/dgriff777/rl_a3c_pytorch
-- Tensorflow libraries:
-	- https://github.com/brendanator/atari-rl
-	- https://github.com/steveKapturowski/tensorflow-rl
-	- https://github.com/tensorflow/agents
-- Shane Gu:
-	- https://github.com/shaneshixiang/rllabplusplus
-- Berkeley RL:
-	- https://github.com/rll/rllab
-- GA3C:
-	- https://github.com/NVlabs/GA3C
+- Action Dependent:
+	- **Q-Prop**: S Gu, T Lillicrap, Z Ghahramani, R E. Turner, S Levine. Sample-efficient policy-gradient with an off-policy critic: policy gradient with Q-function control variate. ICLR'17
+		- https://github.com/shaneshixiang/rllabplusplus
+		<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
+	- **Stein-Control-Variate**: Hao Liu, Yihao Feng, Yi Mao, Dengyong Zhou, Jian Peng, Qiang Liu. Action-depedent Control Variates for Policy Optimization via Stein’s Identity. ICLR'18
+	- The Mirage of Action-Dependent Baselines in Reinforcement Learning.
+		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
+- PCL:
+	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
+		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches
+		<img src="/RL/images/pcl.png" alt="drawing" width="600"/>
+	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
+- PG + Q-Learning:
+	- O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
+	- **Reactor**: Audrunas Gruslys, Will Dabney, Mohammad Gheshlaghi Azar, Bilal Piot, Marc Bellemare, Remi Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
+	- **IPG**: 	Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning
+	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
+		- Theoretical link;
