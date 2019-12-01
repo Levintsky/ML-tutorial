@@ -28,3 +28,7 @@
 - W Grathwohl, R Chen, J Bettencourt, I Sutskever, and D Duvenaud. Ffjord: Free-form continuous dynamics for scalable reversible generative models. ICLR'19
 - **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
 	- https://www.guandaoyang.com/PointFlow/
+
+## Neural ODE
+- University of Toronto: Neural ODE (NIPS 2018)
+		- Another ODE-Solver for back-prop

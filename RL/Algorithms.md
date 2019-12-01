@@ -153,10 +153,10 @@
 		- https://github.com/vitchyr/rlkit
 		- Policy update: policy-loss = alpha log(pi) - Q(s, pi(s))
 		- Value update: target value = r + gamma q_target(s', pi(s'))
-		<img src="/RL/images/algos/sac.png" alt="drawing" width="500"/>
+		<img src="/RL/images/algos/sac.png" alt="drawing" width="400"/>
 
 ## Value Function, Q-learning
-- Basics (Sergey Levine, CS-294):
+- Basics (Sergey Levine, CS-294):\
 	<img src="/RL/images/algos/q-1.png" alt="drawing" width="400"/>
 	<img src="/RL/images/algos/q-2.png" alt="drawing" width="500"/>
 	<img src="/RL/images/algos/q-3.png" alt="drawing" width="500"/>
@@ -165,7 +165,7 @@
 - Classic
 	- Q-learning: Off-Policy
 	- Experience Replay
-	- Fixed Q-targets
+	- Fixed Q-targets\
 		<img src="/RL/images/algos/q-4.png" alt="drawing" width="500"/>
 	- Multi-Step Returns: R Munos, T Stepleton, A Harutyunyan, M G. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
 		<img src="/RL/images/q-multistep.png" alt="drawing" width="500"/>

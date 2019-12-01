@@ -2,8 +2,6 @@
 
 ## Another View
 - Neural ODE
-	- University of Toronto: Neural ODE (NIPS 2018)
-		- Another ODE-Solver for back-prop
 	- Chang Bo. Reversible architectures for arbitrarily deep residual neural networks. 2017
 	- Chang Bo. Multi-level residual networks from dynamical systems view. ICLR 2018
 	- Lu. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. 2017
@@ -15,12 +13,6 @@
 	- PDE-Net: Learning PDEs from Data. 2017
 	- Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 		- Gaussian Process to solve ODE
-
-## Capsule
-- Matrix Capsules with EM routing
-	- https://github.com/shzygmyx/Matrix-Capsules-pytorch
-- Dynamic Routing Between Capsules
-	- https://github.com/naturomics/CapsNet-Tensorflow
 
 ## Reverse, Invert
 
