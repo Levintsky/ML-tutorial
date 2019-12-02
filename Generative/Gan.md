@@ -1,5 +1,22 @@
 # General Adversarial Net
 
+## Unclassified
+- Xinyu Gong, Shiyu Chang, Yifan Jiang, Zhangyang Wang. AutoGAN: Neural Architecture Search for Generative Adversarial Networks. ICCV 2019
+- 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
+- Free-Form Image Inpainting With Gated Convolution. ICCV'19
+- Seeing What a GAN Cannot Generate. ICCV'19
+- PointFlow: 3D Point Cloud Generation With Continuous Normalizing Flows. ICCV'19
+- Meta-Sim: Learning to Generate Synthetic Datasets. ICCV'19
+- Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
+- SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19
+- Counterfactual Critic Multi-Agent Training for Scene Graph Generation. ICCV'19
+- 3D:
+	- Neural 3D Morphable Models: Spiral Convolutional Networks for 3D Shape Representation Learning and Generation. ICCV'19
+- CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
+- ClothFlow: A Flow-Based Model for Clothed Person Generation. ICCV'19
+- Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
+- DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer. ICCV'19
+
 ## Evaluation
 - **IS (Inception Score)**: proposed in Improved Techniques for Training GANs. NIPS'16
 	- Quality: the Inception-v3 to every generated image to get the conditional label distribution p(y|x), should be low-entropy

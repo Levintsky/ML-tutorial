@@ -4,10 +4,14 @@
 - lec-17, 18 (CS-294, Sergey Levine)
 - Approach 1: UCB\
 	<img src="/RL/images/xx/xx-ucb.png" alt="drawing" width="500"/>
-- Approach 2: **Thompson Sampling**: O Chapelle, L Li. An Empirical Evaluation of Thompson Sampling, NIPS'11
+- Approach 2: **Thompson Sampling**:\
 	<img src="/RL/images/xx/thompson-sampling.png" alt="drawing" width="500"/>
-	- Information Gain: D Russo, B V Roy. Learning to Optimize via Information-Directed Sampling. NIPS'14\
+	- An easy tutorial: https://github.com/andrecianflone/thompson/blob/master/thompson.ipynb
+	- O Chapelle, L Li. An Empirical Evaluation of Thompson Sampling, NIPS'11
+	- Russo, Daniel, Benjamin Van Roy, Abbas Kazerouni, and Ian Osband. A Tutorial on Thompson Sampling. 2017
+- Approach 3: Information Gain:\
 	<img src="/RL/images/xx/xx-ig.png" alt="drawing" width="500"/>
+	- D Russo, B V Roy. Learning to Optimize via Information-Directed Sampling. NIPS'14
 - Summary\
 	<img src="/RL/images/xx/xx-sum.png" alt="drawing" width="500"/>
 
@@ -49,6 +53,7 @@ def bonus(self, observation):
 - Thompson Sampling
 	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16
 	<img src="/RL/images/xx/xx-bootstrap1.png" alt="drawing" width="600"/>
+	<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
 	<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
 
 ## Multi-Arm Bandit
