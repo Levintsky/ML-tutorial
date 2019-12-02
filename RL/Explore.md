@@ -45,11 +45,11 @@ def bonus(self, observation):
 - **EX2**: J Fu, J D. Co-Reyes, S Levine. EX2: Exploration with Exemplar Models for Deep Reinforcement Learning, NIPS'17
 	- https://github.com/justinjfu/exemplar_models
 	- Exemplar-classifier for seen/unseen:
-	<img src="/RL/images/xx/xx-ex2-1.png" alt="drawing" width="400"/>
+		<img src="/RL/images/xx/xx-ex2-1.png" alt="drawing" width="400"/>
 	- Model archetecture (amortized rather than one each model)
-	<img src="/RL/images/xx/xx-ex2-2.png" alt="drawing" width="400"/>
+		<img src="/RL/images/xx/xx-ex2-2.png" alt="drawing" width="400"/>
 	- Put together:
-	<img src="/RL/images/xx/xx-ex2-3.png" alt="drawing" width="400"/>
+		<img src="/RL/images/xx/xx-ex2-3.png" alt="drawing" width="400"/>
 - Thompson Sampling
 	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16
 	<img src="/RL/images/xx/xx-bootstrap1.png" alt="drawing" width="600"/>
