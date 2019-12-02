@@ -75,11 +75,11 @@ def bonus(self, observation):
 	- Insight: MBRF with BNN on **dynamics uncertainty**;
 	- Improve on e-greedy and adding Gaussian noise;
 	- Trick 1: Maximization of information gain about the agent's belief of environment dynamics; KL() measure the diff prior and posterior (after the new (st, at, st+1)), s.t. r'(st, at, st+1) = r(st, at) + KL(prior|posterior)\
-	<img src="/RL/images/xx/vime1.png" alt="drawing" width="500"/>
+		<img src="/RL/images/xx/vime1.png" alt="drawing" width="500"/>\
 	- Trick 2: Variational Bayes with BNN; assume the parameters observe factorized Gaussian;\
-	<img src="/RL/images/xx/vime2.png" alt="drawing" width="500"/>
+		<img src="/RL/images/xx/vime2.png" alt="drawing" width="500"/>\
 	- Put all together: run an episdoe with current policy, save KL change;  update the policy with r'(s,a,st+1) with curiosity added in reward;\
-	<img src="/RL/images/xx/vime3.png" alt="drawing" width="500"/>
+		<img src="/RL/images/xx/vime3.png" alt="drawing" width="500"/>
 - **ICM**: Deepak Pathak, Pulkit Agrawal, Alexei A. Efros, Trevor Darrell. for Curiosity-driven Exploration for Deep Reinforcement Learning, ICML 2017
 	- Insight: given action, prediction next state? (can't model stochasticity or white noise);
 	- Inverse model: given two states, guess what actions taken;

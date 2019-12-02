@@ -13,6 +13,11 @@
 	- **SNAIL**: Pieter Abbeel, et. al. A Simple Neural Attentive Meta-Learner, ICLR 2018
 		- Temporal 1D-Conv + Attention;
 
+## Legacy
+- Jurgen Schmidhuber. Evolutionary principles in self-referential learning. 1987
+- Devang K Naik and RJ Mammone. Meta-neural networks that learn by learning. IJCNN'92
+- Sebastian Thrun and Lorien Pratt. Learning to learn. 1998
+
 ## MAML (Chelsea Finn)
 - MAML: https://github.com/cbfinn/maml
 - MAML Pytorch: https://github.com/katerakelly/pytorch-maml
