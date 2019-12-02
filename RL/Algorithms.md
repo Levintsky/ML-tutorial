@@ -31,13 +31,13 @@
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294)
-	<img src="/RL/images/pg.png" alt="drawing" width="600"/>
+	<img src="/RL/images/algos/pg.png" alt="drawing" width="600"/>
 
 	- **Baseline for variance reduction**:
-	<img src="/RL/images/pg-baseline.png" alt="drawing" width="600"/>
+	<img src="/RL/images/algos/pg-baseline.png" alt="drawing" width="600"/>
 
 	- **IS, off-policy PG**:
-	<img src="/RL/images/pg-is.png" alt="drawing" width="600"/>
+	<img src="/RL/images/algos/pg-is.png" alt="drawing" width="600"/>
 - Advantages:
 	- On-Policy
 	- Better Convergence
