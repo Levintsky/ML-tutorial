@@ -36,7 +36,7 @@
 - A Bakhtin, A Szlam, M Ranzato. GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
 	- GenEval dataset
 
-## GAN
+## GAN of different Forms
 *Name* | *Paper Link* | *Value Function*
 :---: | :---: | :--- |
 **GAN** | [Arxiv](https://arxiv.org/abs/1406.2661) | <img src = '/Generative/images/equations/GAN.png' height = '70px'>
@@ -50,41 +50,38 @@
 **EBGAN**| [Arxiv](https://arxiv.org/abs/1609.03126) | <img src = '/Generative/images/equations/EBGAN.png' height = '70px'>
 **BEGAN**| [Arxiv](https://arxiv.org/abs/1703.10717) | <img src = '/Generative/images/equations/BEGAN.png' height = '105px'>
 
-<img src = '/Generative/images/gan/GAN_structure.png' height = '600px'>
+<img src = '/Generative/images/gan/GAN_structure.png' height = '500px'>
 
 ## GAN
-- Google Brain, Magenta:
-	- **GAN**: I Goodfellow, J Pouget-Abadie, M Mirza, B Xu, D Warde-Farley, S Ozair, A Courville, and Y Bengio. Generative adversarial nets. NIPS'14.
-	- W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. In ICLR, 2018.
-	- A Odena, C Olah, and J Shlens. Conditional image synthesis with auxiliary classifier GANs. In ICML, 2017.
-	- **BEGAN**: D Berthelot, T Schumm, L Metz. BEGAN: Boundary Equilibrium Generative Adversarial Networks. 2017
-		- Maintain a balance between the generator and discriminator losses
-		<img src = '/Generative/images/gan/began.png' width = '500px'>
-
-	- A Odena, J Buckman, C Olsson, T B. Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
+- **GAN**: I Goodfellow, J Pouget-Abadie, M Mirza, B Xu, D Warde-Farley, S Ozair, A Courville, and Y Bengio. Generative adversarial nets. NIPS'14.
+- **DC-GAN**: A Radford, L Metz, and S Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. In ICLR, 2016.
+	- First to use Conv
+- **EBGAN**: J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
+- Conditional:
+	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. 2014.
+	- A Odena, C Olah, and J Shlens. Conditional image synthesis with auxiliary classifier GANs. ICML'17.
+		<img src = '/Generative/images/gan/acgan.png' width = '300'>
+	- Takeru Miyato and Masanori Koyama. cGANs with projection discriminator. In ICLR, 2018.
+- **BEGAN**: D Berthelot, T Schumm, L Metz. BEGAN: Boundary Equilibrium Generative Adversarial Networks. 2017
+	- Auto-encoder as a discriminator as was first proposed in EBGAN
+	- Maintain a balance between the generator and discriminator losses: E[LG(z)]=gammaE[L(x)]
+	<img src = '/Generative/images/gan/began.png' width = '500px'>
+- W-GAN:
+	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
+		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
+		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
+		- W-GAN is Earth-Mover-Distance
+		- Kantorovich-Rubinstein duality
 	- **WGAN-GP**: Gulrajani, I., Ahmed, F., Arjovsky, M., Dumoulin, V., and Courville, A. C. Improved training of Wasserstein gans. NIPS'17.
+		- Insight: force penalty w.r.t. input is 1 almost everywhere;
 		- Code: https://github.com/igul222/improved_wgan_training
 		- **Difficulty** with weight constraint: Capacity underuse; Exploding and vanishing gradients; 
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
 		<img src = '/Generative/images/gan/wgan-gp.png' width = '600px'>
-
+- Attention, Transformer:
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN
-		- Self-Attention:
-		```python
-		def forward(self, x):
-			q = self.query_conv(x).permute(0,2,1) # B X CX(N)
-        	k =  self.key_conv(x) # B X C x (*W*H)
-        	energy =  torch.bmm(q, k) # transpose check
-        	attention = self.softmax(energy) # BX (N) X (N) 
-        	v = self.value_conv(x) # B X C X N
-        	# skip
-        	out = torch.bmm(v, attention.permute(0,2,1))
-        	out = self.gamma * out + x
-	        return out, attention
-		```
-		- Inception score: 36.8 -> 52.52
-		- Frechet Inception distance: 27.62 -> 18.65
+		- Main module:
 		```python
 		def forward(self, z):
 		    z = z.view(z.size(0), z.size(1), 1, 1) # (?, 100, 1, 1)
@@ -97,7 +94,20 @@
 		    out = self.l4(out) # (?, 64, 32, 32)
 		    out, p2 = self.attn2(out) # (?, 64, 32, 32)
 		    out = self.last(out) # (?, 3, 64, 64)
-		    return out, p1, p2
+			return out, p1, p2
+		```
+		- Self-Attention module for global message passing:
+		```python
+		def forward(self, x):
+			q = self.query_conv(x).permute(0,2,1) # B X CX(N)
+        	k =  self.key_conv(x) # B X C x (*W*H)
+        	energy =  torch.bmm(q, k) # transpose check
+        	attention = self.softmax(energy) # BX (N) X (N) 
+        	v = self.value_conv(x) # B X C X N
+        	# skip
+        	out = torch.bmm(v, attention.permute(0,2,1))
+        	out = self.gamma * out + x
+	        return out, attention
 		```
 		- Discriminator:
 		```python
@@ -112,16 +122,59 @@
 		    out=self.last(out)
 		    return out.squeeze(), p1, p2
 		```
-		- two-timescale update rule (TTUR)
+		- Other tricks: two-timescale update rule (TTUR)
+		- Experiments: Inception score: 36.8 -> 52.52; Frechet Inception distance: 27.62 -> 18.65
+- **SN-GAN**: T Miyato, T Kataoka, M Koyama, Y Yoshida. Spectral Normalization for Generative Adversarial Networks, ICLR'18
+	- https://github.com/pfnet-research/sngan_projection
+	- Theory: the importance of Lipschitz continuity in assuring the boundedness of statistics
+		<img src = '/Generative/images/gan/sn-gan1.png' width = '500'>
+	- Spectral Normalization to assure Lipschitz condition.
+		<img src = '/Generative/images/gan/sn-gan2.png' width = '500'>
+		<img src = '/Generative/images/gan/sn-gan3.png' width = '500'>
+	- Algorithm design: generator remains the same, SN on discriminator;
+	```python
+	class Discriminator(nn.Module):
+	    def __init__(self):
+	        super(Discriminator, self).__init__()
+	        self.conv1 = SpectralNorm(nn.Conv2d(channels, 64, 3, stride=1, padding=(1,1)))
+	        ...
+	        self.conv7 = SpectralNorm(nn.Conv2d(256, 512, 3, stride=1, padding=(1,1)))
+	        self.fc = SpectralNorm(nn.Linear(w_g * w_g * 512, 1))
+	```
+	- SN modele: divided W by max spectral norm numerically and reset value;
+	```python
+	@property
+    def W_(self):
+        w_mat = self.weight.view(self.weight.size(0), -1)
+        sigma, _u = max_singular_value(w_mat, self.u)
+        self.u.copy_(_u)
+        return self.weight / sigma
+    def forward(self, input):
+        return F.linear(input, self.W_, self.bias)
+	```
+
+## Analaysis
+- Metz, L., Poole, B., Pfau, D., and Sohl-Dickstein, J. Unrolled generative adversarial networks. 2016
+- Arora, S., Ge, R., Liang, Y., Ma, T., and Zhang, Y. Generalization and equilibrium in generative adversarial nets (gans). 2017
+- Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Up- date Rule Converge to a Local Nash Equilibrium. 2017
+- Nagarajan, V. and Kolter, J. Z. Gradient descent GAN optimization is locally stable. 2017
+- Arjovsky, M. and Bottou, L. Towards Principled Methods for Training Generative Adversarial Networks. 2017
+- W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. ICLR'18
+	- View: a divergence between the training distribution and the model distribution obtains its minimum value at equilibrium
+	- This paper: too restrictive
+	- Conclusion 1: Both gradient penalties (GAN-GP and DRAGAN-NS) help when training non-saturating GANs, by making the models more robust to hyperparameters.
+	- The non-saturating GAN trained with gradient penalties produces better sample (IS)
+	- WGAN-GP models perform best on Color MNIST and CIFAR-10.
+- A Odena, J Buckman, C Olsson, T B. Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
+	- Follow Pennington et al., 2017 to analyze Jacobian;
+	- Jacobian generally becomes ill-conditioned at the beginning of training: a good cluster in which the condition number stays the same or even gradually decreases, and a “bad cluster”, in which the condition number continues to grow
+	- that the average (with z ∼ p(z)) conditioning of the generator is highly predictive of IS and FID;
+	- Propose to use Jacobian loss:\
+		<img src = '/Generative/images/gan/causal-gan.png' width = '400'>
+
+## Unclassified	
 - FAIR:
 	- E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS'15.
-	- **DC-GAN**: A Radford, L Metz, and S Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. In ICLR, 2016.
-	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
-		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
-		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
-		- W-GAN is Earth-Mover-Distance
-		- Kantorovich-Rubinstein duality
 	- Y. Taigman, A. Polyak, and L. Wolf. Unsupervised cross-domain image generation. In ICLR, 2017.
 - OpenAI:
 	- T Salimans, I Goodfellow, W Zaremba, V Cheung, A Radford, and X Chen. Improved techniques for training gans. NIPS 2016
@@ -200,20 +253,8 @@
 		<img src = '/Generative/images/gan/pgan2.png' width = '500px'>
 	- **SPADE**: T Park, M Liu, T Wang, J Zhu. Semantic Image Synthesis with Spatially-Adaptive Normalization. CVPR'19
 		- Key: different scale and bias for different semantic layer!
-		- https://github.com/NVLabs/SPADE
-
-- Conditional-GAN:
-	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. arXiv preprint arXiv:1411.1784, 2014.
-	- Takeru Miyato and Masanori Koyama. cGANs with projection discriminator. In ICLR, 2018.
+		- https://github.com/NVLabs/SPADE	
 - **SeqGAN**: L Yu, W Zhang, J Wang, and Y Yu. SeqGAN: Sequence generative adversarial nets with policy gradient. AAAI'17
-- **SN-GAN**: T Miyato, T Kataoka, M Koyama, Y Yoshida. Spectral Normalization for Generative Adversarial Networks, ICLR'18
-	- https://github.com/pfnet-research/sngan_projection
-	- Theory: the importance of Lipschitz continuity in assuring the boundedness of statistics
-	<img src = '/Generative/images/gan/sn-gan1.png' width = '500'>
-
-	- Spectral Normalization to assure Lipschitz condition.
-	<img src = '/Generative/images/gan/sn-gan2.png' width = '500'>
-	<img src = '/Generative/images/gan/sn-gan3.png' width = '500'>
 
 - X Wei, Z Liu, L Wang, and B Gong. Improving the improved training of Wasserstein GANs. ICLR'18
 - Attention:

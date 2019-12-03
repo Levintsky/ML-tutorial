@@ -19,8 +19,6 @@
 - Devendra Singh Chaplot, Saurabh Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19
 
 ## DeepMind:
-- Reinforcement Learning with Unsupervised Auxiliary Tasks
-	- UNREAL: https://github.com/miyosuda/unreal
 - **DeepMind-Lab**: Learning to navigate in complex environments. ICLR'17
 - Jake Bruce, Niko Sünderhauf, Piotr Mirowski, Raia Hadsell, Michael Milford. Learning Deployable Navigation Policies at Kilometer Scale from a Single Traversal. 2018
 	- Key insight: real robot;

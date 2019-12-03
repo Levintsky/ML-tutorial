@@ -11,8 +11,7 @@
 - Y Jing, Y Yang, Z Feng, J Ye, Y Yu, and M Song. Neural Style Transfer: A Review. TVCG 2018
 	- https://www.jiqizhixin.com/articles/2018-05-15-5
 	- https://github.com/ycjing/Neural-Style-Transfer-Papers
-	<img src="/Generative/images/transfer/style-transfer.png" alt="drawing" width="600"/>
-
+		<img src="/Generative/images/transfer/style-transfer.png" alt="drawing" width="600"/>
 - Style-Transfer in text: https://github.com/fuzhenxin/Style-Transfer-in-Text
 
 ## Classic
