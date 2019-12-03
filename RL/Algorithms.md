@@ -194,9 +194,6 @@
 		- Prioritizing with TD-error
 		- Implement with a heap\
 		<img src="/RL/images/algos/per.png" alt="drawing" width="400"/>
-	- **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
-		- 1+ goal we may try to achieve;
-		- Every episode sample state goal pair (s0, g);
 	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
 		- Two heads for value function;
 		- One for state value;

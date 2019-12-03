@@ -5,7 +5,6 @@
 - A Deep Hierarchical Approach to Lifelong Learning in Minecraft, AAAI'17
 - T Shu, C Xiong, R Socher. Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning. ICLR'18
 - Tejas D Kulkarni, Karthik R Narasimhan, Ardavan Saeedi, and Joshua B Tenenbaum. Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation. NIPS'16
-- **STRAW**: Alexander Vezhnevets, Volodymyr Mnih, John Agapiou, Simon Osindero, A Graves, O Vinyals, K Kavukcuoglu. Strategic Attentive Writer for Learning Macro-Actions. 2016
 - S Zheng, Y Yue and P Lucey. Generating long-term trajectories using deep hierarchical networks. NIPS'16.
 	- Long-term planning;
 - Kulkarni, Tejas D, Narasimhan, Karthik, Saeedi, Ardavan, and Tenenbaum, Josh. Hierarchical deep reinforcement learning: Integrating temporal abstraction and intrinsic motivation. NIPS'16
@@ -20,6 +19,14 @@
 - Pierre-Luc Bacon and Doina Precup. The option-critic architecture. NIPSW'15
 - Pierre-Luc Bacon, Jean Harb, and Doina Precup. The Option-Critic Architecture, AAAI 2017
 - Nicolas Heess, Greg Wayne, Yuval Tassa, Timothy Lillicrap, Martin Riedmiller, and David Silver. Learning and transfer of modulated locomotor controllers. 2016
+- **STRAW**: Alexander Vezhnevets, Volodymyr Mnih, John Agapiou, Simon Osindero, A Graves, O Vinyals, K Kavukcuoglu. Strategic Attentive Writer for Learning Macro-Actions. NIPS'16
+	- Stick to the plan (commit)\
+		<img src="/RL/images/hrl/straw1.png" alt="drawing" width="500"/>
+	- Attention model:\
+		<img src="/RL/images/hrl/straw2.png" alt="drawing" width="500"/>
+	- Algorithm:\
+		<img src="/RL/images/hrl/straw3.png" alt="drawing" width="400"/>
+	- Experiments: 2D-maze; Atari;
 - **FUN**: A S Vezhnevets, S Osindero, T Schaul, N Heess, M Jaderberg, D Silver, K Kavukcuoglu. Feudal Network for Hierarchical Reinforcement Learning. ICML'17
 	- https://github.com/dmakian/feudal_networks
 	<img src="/RL/images/hrl/fun.png" alt="drawing" width="500"/>

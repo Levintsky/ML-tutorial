@@ -2,6 +2,7 @@
 
 ## A Summary
 - M Wistuba, A Rawat, Te Pedapati. A Survey on Neural Architecture Search. 2019
+- https://github.com/hibayesian/awesome-automl-papers
 - https://github.com/markdtw/awesome-architecture-search
 
 ## FAIR
@@ -15,8 +16,6 @@
 		- Stages: progressive downsample;
 	- Experiments (ImageNet 1000, 1.28M train, 50k val):
 		- Baselines: MobileNet, ShuffleNet;
-- Device:
-	- Yuandong, FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search
 
 ## Google
 - **RL**:
@@ -40,8 +39,6 @@
 - **Constrained Search Space**:
 	- Prajit Ramachandran, Barret Zoph, and Quoc V. Le. Searching for activation functions. ICLR'18
 	- Ekin Dogus Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le. Autoaugment: Learning augmentation policies from data. CoRR'18
-- **Device**:
-	- Mingxing Tan, Bo Chen, Ruoming Pang, Vijay Vasudevan, and Quoc V. Le. Mnasnet: Platform-aware neural architecture search for mobile. CoRR'18
 - DeepMind:
 	- Brock, Andrew, Lim, Theodore, Ritchie, James M., and Weston, Nick. SMASH: one-shot model architecture search through hypernetworks. ICLR, 2018.
 
@@ -72,7 +69,7 @@
 
 ## Optimization Approaches
 - RL
-<img src="/AutoML-Meta/images/automl-rl.jpg" alt="drawing" width="500"/>
+	<img src="/AutoML-Meta/images/automl-rl.jpg" alt="drawing" width="500"/>
 
 	- Baker, B.; Gupta, O.; Naik, N.; and Raskar, R (MetaQNN). Designing neural network architectures using reinforcement learning. ICLR 2017
 		- https://github.com/bowenbaker/metaqnn
@@ -87,8 +84,8 @@
 	- Zhong, Zhao, Yan, Junjie, and Liu, Cheng-Lin. Practical network blocks design with q-learning. AAAI, 2018.
 
 - Evolution:
-<img src="/AutoML-Meta/images/automl-evo.jpg" alt="drawing" width="500"/>
-<img src="/AutoML-Meta/images/automl-ea2.jpg" alt="drawing" width="500"/>
+	<img src="/AutoML-Meta/images/automl-evo.jpg" alt="drawing" width="500"/>
+	<img src="/AutoML-Meta/images/automl-ea2.jpg" alt="drawing" width="500"/>
 
 	- Component and Logics:
 		- Initialization
@@ -103,8 +100,7 @@
 	- AutoKeras 2018: Efficient Neural Architecture Search with Network Morphism
 	- Ye-Hoon Kim, Bhargava Reddy, Sojung Yun, and Chanwon Seo. Nemo : Neuro-evolution with multiobjective optimization of deep neural network for speed and accuracy. ICML'17 Workshop
 - Surrogate Model-Based Optimization (SMBO)
-<img src="/AutoML-Meta/images/smbo.jpg" alt="drawing" width="500"/>
-
+	<img src="/AutoML-Meta/images/smbo.jpg" alt="drawing" width="500"/>
 
 	- C. Liu, B. Zoph, J Shlens, W. Hua, A Yuille, K. Murphy (PNAS): 2017 Progressive neural architecture search
 	- Negrinho, Renato and Gordon, Geoff: Deeparchitect: Automatically designing and training deep architectures, CVPR 2017

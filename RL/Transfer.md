@@ -17,6 +17,18 @@
 	- Gradient-based meta-learning
 
 ## Multi-Task
+- **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
+	- Multi-task Q-learning, Vg(s;theta) with g as the goal; 
+	- 1+ goal we may try to achieve;
+	- Every episode sample state goal pair (s0, g);
+	- Different model architecture to represent goal and state\
+		<img src="/RL/images/transfer/uvfa1.png" alt="drawing" width="450"/>
+	- Algorithm\
+		<img src="/RL/images/transfer/uvfa2.png" alt="drawing" width="400"/>
+- A Rusu, N Rabinowitz, G Desjardins, H Soyer, James Kirkpatrick, Koray Kavukcuoglu, Razvan Pascanu, Raia Hadsell. Progressive Neural Networks. 2016
+	- They are schemes that can train NN’s in an ensemble individually in a sequential fashion where an output of all trained NN’s are stored and updated in an information center. The communication among NN’s is maintained indirectly through IC (information center), which ultimately reduces the interaction among the NNs
+	- A3C used for training; everytime freeze previous learned knowledge
+		<img src="/RL/images/transfer/progressive.png" alt="drawing" width="450"/>
 - J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
 
 ## Generalization, Overfitting
