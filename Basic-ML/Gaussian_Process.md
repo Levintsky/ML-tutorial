@@ -34,4 +34,4 @@
 - Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S. Schoenholz, Jeffrey Pennington, Jascha Sohl-Dickstein. Deep Neural Networks as Gaussian Processes. ICLR'18
 	- Exact equivalence between infinitely wide deep networks and GPs
 	- Focus on exact Bayesian inference for regression tasks
-	- https://github.com/brain- research/nngp.
+	- https://github.com/brain-research/nngp
