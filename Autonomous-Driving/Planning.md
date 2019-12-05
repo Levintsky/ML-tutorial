@@ -146,7 +146,6 @@
 		<img src="/Autonomous-Driving/images/plan/deep-il-planner.png" alt="drawing" width="500"/>
 		<img src="/Autonomous-Driving/images/plan/deep-il-track-control.png" alt="drawing" width="500"/>
 		<img src="/Autonomous-Driving/images/plan/deep-il-safety-control.png" alt="drawing" width="500"/>
-
 - Intel:
 	- **CarLA**: F Codevilla, M Muller, A Lopez, V Koltun, and A Dosovitskiy. End-to-end driving via conditional imitation learning. ICRA'18
 		- Same input, different intention (straight/turn) different action
@@ -163,6 +162,10 @@
 		<img src="/Autonomous-Driving/images/plan/cil4.png" alt="drawing" width="500"/>
 - C Chen, A Seff, A Kornhauser, and J Xiao. DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving. ICCV'15
 - A Sauer, N Savinov, and A Geiger. Conditional affordance learning for driving in urban environments. arxiv'18
+- Jeffrey Hawke, Richard Shen, Corina Gurau, Siddharth Sharma, Daniele Reda, Nikolay Nikolov
+Przemysław Mazur, Sean Micklethwaite, Nicolas Griffiths, Amar Shah, Alex Kendall. Urban Driving with Conditional Imitation Learning. 2019
+	- Input three images x 2 frames; no LiDAR;
+		<img src="/Autonomous-Driving/images/plan/wayve-cil.png" alt="drawing" width="500"/>
 
 ## RL
 - X Pan, Y You, Z Wang, and C Lu. Virtual to real reinforcement learning for autonomous driving. 2017
