@@ -36,9 +36,10 @@
 		- Building modules:\
 			<img src = '/Generative/images/flow/glow1.png' width = '300'>
 			<img src = '/Generative/images/flow/glow2.png' width = '500'>
+- VAE + Flow:
 	- **f-VAEs**: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
 - Autoregressive Flow:
-	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16
+	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16\
 		<img src = '/Generative/images/flow/iaf.png' width = '400'>
 	- **MAF**: G Papamakarios, T Pavlakou, I Murray. Masked Autoregressive Flow for Density Estimation. NIPS'17
 		- A type of NF, where the transformation layer is built as an autoregressive neural network
@@ -57,3 +58,15 @@ Bridging deep architectures and numerical differential equations. 2017
 	- Another ODE-Solver for back-prop
 	- dh/dt = f(h, t, theta)
 	- https://github.com/rtqichen/torchdiffeq
+	- Gradient w.r.t. parameter
+		<img src = '/Generative/images/flow/neural-ode.png' width = '400'>
+	- Residual net with ODE: 6 x residual blocks
+	- Continuous Normalizing Flows
+	- Generative latent function time-series
+- **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
+	- https://github.com/rtqichen/ffjord/
+- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
+Invertible Residual Networks. ICML'19
+- Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
+- Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
+- Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
