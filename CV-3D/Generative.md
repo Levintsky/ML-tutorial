@@ -57,10 +57,14 @@
 		- Noisy / Blurry;
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV 2017
 	- https://github.com/matheusgadelha/PrGAN
+- Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. ICML'18
 
 ## VAE
 - A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
 	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
+- **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
+	- Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
 
 ## Generation
 - Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via
@@ -74,3 +78,8 @@ deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 
 ## Shape Editing
 - A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and partbased recombination. CGF 2012
+
+## PC Upsampling
+- Wang Yifan, Shihao Wu, Hui Huang, Daniel Cohen-Or, and Olga Sorkine-Hornung. Patch-based progressive 3d point set upsampling. arXiv preprint arXiv:1811.11286, 2018
+- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Ec-net: an edge-aware point set consolidation network. ECCV'18
+- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Pu-net: Point cloud upsampling network. CVPR'18

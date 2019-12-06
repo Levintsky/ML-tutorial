@@ -53,15 +53,15 @@
 		```	
 		- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
 		<img src="/CV-3D/images/cnn_3d/pointnet++.png" alt="drawing" width="600"/>
-
 	- **Frustum PointNet**: C Qi, W Liu, C Wu, H Su, L Guibas. Frustum PointNets for 3D Object Detection from RGB-D Data, CVPR'18
 		- RGB-D
 		- 2D-detection: 2D bounding boxes;
 		- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
 		<img src="/CV-3D/images/cnn_3d/frustum-pointnet.png" alt="drawing" width="600"/>
 	- **Foldingnet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. arXiv'17.
-	- P. Achlioptas, O. Diamanti, I. Mitliagkas, and L. Guibas. Learning representations and generative models for 3d point clouds. 2018.
-
+	- P. Achlioptas, O. Diamanti, I. Mitliagkas, and L. Guibas. Learning representations and generative models for 3d point clouds. ICML'18.
+	- Yaoqing Yang, Chen Feng, Yiru Shen, and Dong Tian. Foldingnet: Point cloud auto-encoder via deep grid deformation. CVPR'18
+	- Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. 2018
 - **Attention**:
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
