@@ -68,10 +68,19 @@
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
 ## Neural ODE
-- Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks:
-Bridging deep architectures and numerical differential equations. 2017
 - Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
 - Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
+- **PDE-Net**: Zichao Long, Yiping Lu, Xianzhong Ma, Bin Dong. PDE-Net: Learning PDEs from Data. ICML'18
+	- Two objectives at the same time:
+		- To accurately predict dynamics of complex systems
+		- To uncover the underlying hidden PDE models (previous PDEs are human designed)
+	- The model\
+		<img src = '/Generative/images/flow/pde-net.png' width = '350'>
+- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
+- **DURR**: Xiaoshuai Zhang, Yiping Lu, Jiaying Liu, Bin Dong. Dynamically Unfolding Recurrent Restorer: A Moving Endpoint Control Method for Image Restoration. ICLR'19
+- Chang B, Meng L, Haber E, et al. Reversible architectures for arbitrarily deep residual neura networks. AAAI'18
+- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
+Modeling. NIPS'18
 - Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud. Neural ordinary differential equations. NIPS'18
 	- Another ODE-Solver for back-prop
 	- dh/dt = f(h, t, theta)
@@ -83,6 +92,7 @@ Bridging deep architectures and numerical differential equations. 2017
 	- Generative latent function time-series
 - **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
 	- https://github.com/rtqichen/ffjord/
+	<img src = '/Generative/images/flow/gnf2.png' width = '450'>
 - Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
 Invertible Residual Networks. ICML'19
 - Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
