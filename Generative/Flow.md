@@ -12,7 +12,7 @@
 - Important! change of variable theorem: 
 
 ## Normalizing Flows
-- **Normalizing flows**: D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
+- **Normalizing flows** or **Planar Flows**: D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
 	- Transforms a simple distribution into a complex one by applying a sequence of invertible transformation functions.\
 		<img src = '/Generative/images/flow/nf.png' width = '600'>
 	- Maximize likelihood directly:\
@@ -39,6 +39,11 @@
 - VAE + Flow:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16
 	- **f-VAEs**: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
+	- **Sylvester-nf**: Rianne van den Berg, Leonard Hasenclever, Jakub M. Tomczak, Max Welling. Sylvester Normalizing Flows for Variational Inference. UAI'18
+		- Motivation:\
+			<img src = '/Generative/images/flow/sylvester-nf1.png' width = '400'>
+		- VAE-flow:
+			<img src = '/Generative/images/flow/sylvester-nf2.png' width = '400'>
 - Autoregressive Flow:
 	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16\
 		<img src = '/Generative/images/flow/iaf.png' width = '400'>
@@ -61,9 +66,9 @@
 
 ## Flow-based Graph Generation
 - Jenny Liu, Aviral Kumar, Jimmy Ba, Jamie Kiros, Kevin Swersky. Graph Normalizing Flows. 2019
-	- Invertible message passing process:
+	- Invertible message passing process:\
 		<img src = '/Generative/images/flow/gnf1.png' width = '450'>
-	- Sample prior for generation:
+	- Sample prior for generation:\
 		<img src = '/Generative/images/flow/gnf2.png' width = '350'>
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
@@ -85,14 +90,13 @@ Modeling. NIPS'18
 	- Another ODE-Solver for back-prop
 	- dh/dt = f(h, t, theta)
 	- https://github.com/rtqichen/torchdiffeq
-	- Gradient w.r.t. parameter
+	- Gradient w.r.t. parameter\
 		<img src = '/Generative/images/flow/neural-ode.png' width = '400'>
 	- Residual net with ODE: 6 x residual blocks
 	- Continuous Normalizing Flows
 	- Generative latent function time-series
 - **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
 	- https://github.com/rtqichen/ffjord/
-	<img src = '/Generative/images/flow/gnf2.png' width = '450'>
 - Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
 Invertible Residual Networks. ICML'19
 - Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
