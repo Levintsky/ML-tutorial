@@ -73,7 +73,21 @@
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
 ## Neural ODE
-- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
+- Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
+	- Gaussian Process to solve ODE
+- Reversible:
+	- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
+	- **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
+		- Insight: resnet expensive to store activation in memory, revnet could calculate activation from next layer;
+		- Modularized: an auxiliary z = x1 + F(x2), the rev-block could only use stride=1 unlike resnet:\
+			<img src = '/Generative/images/flow/Revnet1.png' width = '450'>
+		- Forward and reverse:\
+			<img src = '/Generative/images/flow/Revnet2.png' width = '450'>
+		- Backward:\
+			<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
+	- Chang B, Meng L, Haber E, et al. Reversible architectures for arbitrarily deep residual neura networks. AAAI'18
+	- Chang Bo. Multi-level residual networks from dynamical systems view. ICLR 2018
+	- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
 - Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
 - **PDE-Net**: Zichao Long, Yiping Lu, Xianzhong Ma, Bin Dong. PDE-Net: Learning PDEs from Data. ICML'18
 	- Two objectives at the same time:
@@ -81,9 +95,7 @@
 		- To uncover the underlying hidden PDE models (previous PDEs are human designed)
 	- The model\
 		<img src = '/Generative/images/flow/pde-net.png' width = '350'>
-- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
 - **DURR**: Xiaoshuai Zhang, Yiping Lu, Jiaying Liu, Bin Dong. Dynamically Unfolding Recurrent Restorer: A Moving Endpoint Control Method for Image Restoration. ICLR'19
-- Chang B, Meng L, Haber E, et al. Reversible architectures for arbitrarily deep residual neura networks. AAAI'18
 - Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
 Modeling. NIPS'18
 - Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud. Neural ordinary differential equations. NIPS'18
