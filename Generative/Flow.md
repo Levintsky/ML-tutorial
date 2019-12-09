@@ -72,6 +72,22 @@
 		<img src = '/Generative/images/flow/gnf2.png' width = '350'>
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
+## Invertible
+- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
+Invertible Residual Networks. ICML'19
+	- A density model, main insight: free-form! A comparison:\
+		<img src = '/Generative/images/flow/i-resnet4.png' width = '400'>
+	- https://github.com/jhjacobsen/invertible-resnet
+	- With contractive g(), i.e., Lip(g(theta)) < 1:\
+		<img src = '/Generative/images/flow/i-resnet.png' width = '400'>
+	- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion:
+		<img src = '/Generative/images/flow/i-resnet2.png' width = '400'>
+	- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
+	- For (1), (2), the approximate trick;
+	- For (3), truncated at n steps;
+	- The algorithm:
+		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
+
 ## Neural ODE
 - Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 	- Gaussian Process to solve ODE
@@ -109,8 +125,6 @@ Modeling. NIPS'18
 	- Generative latent function time-series
 - **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
 	- https://github.com/rtqichen/ffjord/
-- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
-Invertible Residual Networks. ICML'19
 - Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
 - Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
 - Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
