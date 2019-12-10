@@ -73,8 +73,18 @@
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
 ## Invertible
-- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen.
-Invertible Residual Networks. ICML'19
+- **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
+	- Insight: resnet expensive to store activation in memory, revnet could calculate activation from next layer;
+	- Modularized: an auxiliary z = x1 + F(x2), the rev-block could only use stride=1 unlike resnet:\
+		<img src = '/Generative/images/flow/Revnet1.png' width = '450'>
+	- Forward and reverse:\
+		<img src = '/Generative/images/flow/Revnet2.png' width = '450'>
+	- Backward:\
+		<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
+- Yunfei Teng, Anna Choromanska, and Mariusz Bojarski. Invertible autoencoder for domain adaptation. 2018
+- R.T. Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
+- Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
+- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
 	- A density model, main insight: free-form! A comparison:\
 		<img src = '/Generative/images/flow/i-resnet4.png' width = '400'>
 	- https://github.com/jhjacobsen/invertible-resnet
@@ -85,7 +95,7 @@ Invertible Residual Networks. ICML'19
 	- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
 	- For (1), (2), the approximate trick;
 	- For (3), truncated at n steps;
-	- The algorithm:
+	- The algorithm:\
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
 
 ## Neural ODE
@@ -93,14 +103,6 @@ Invertible Residual Networks. ICML'19
 	- Gaussian Process to solve ODE
 - Reversible:
 	- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
-	- **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
-		- Insight: resnet expensive to store activation in memory, revnet could calculate activation from next layer;
-		- Modularized: an auxiliary z = x1 + F(x2), the rev-block could only use stride=1 unlike resnet:\
-			<img src = '/Generative/images/flow/Revnet1.png' width = '450'>
-		- Forward and reverse:\
-			<img src = '/Generative/images/flow/Revnet2.png' width = '450'>
-		- Backward:\
-			<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
 	- Chang B, Meng L, Haber E, et al. Reversible architectures for arbitrarily deep residual neura networks. AAAI'18
 	- Chang Bo. Multi-level residual networks from dynamical systems view. ICLR 2018
 	- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
