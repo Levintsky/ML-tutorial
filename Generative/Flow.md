@@ -90,8 +90,7 @@
 	- https://github.com/jhjacobsen/invertible-resnet
 	- With contractive g(), i.e., Lip(g(theta)) < 1:\
 		<img src = '/Generative/images/flow/i-resnet.png' width = '400'>
-	- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion:
-		<img src = '/Generative/images/flow/i-resnet2.png' width = '400'>
+	- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
 	- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
 	- For (1), (2), the approximate trick;
 	- For (3), truncated at n steps;
