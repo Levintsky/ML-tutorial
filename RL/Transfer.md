@@ -16,6 +16,12 @@
 	- RNN-based meta-learning
 	- Gradient-based meta-learning
 
+## General Transfer
+- **PathNet**: Chrisantha Fernando, Dylan Banarse, Charles Blundell, Yori Zwols, David Ha, Andrei A. Rusu, Alexander Pritzel, Daan Wierstra. PathNet: Evolution Channels Gradient Descent in Super Neural Networks. 2017
+	-  Use agents embedded in the neural network whose task is to discover which parts of the network to re-use for new tasks;
+	- MNIST, CIFAR, SVHN;
+	- A3C on some games;
+
 ## Multi-Task
 - **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
 	- Multi-task Q-learning, Vg(s;theta) with g as the goal; 
@@ -25,11 +31,13 @@
 		<img src="/RL/images/transfer/uvfa1.png" alt="drawing" width="450"/>
 	- RL algorithm: Q-learning\
 		<img src="/RL/images/transfer/uvfa2.png" alt="drawing" width="400"/>
-- A Rusu, N Rabinowitz, G Desjardins, H Soyer, James Kirkpatrick, Koray Kavukcuoglu, Razvan Pascanu, Raia Hadsell. Progressive Neural Networks. 2016
-	- They are schemes that can train NN’s in an ensemble individually in a sequential fashion where an output of all trained NN’s are stored and updated in an information center. The communication among NN’s is maintained indirectly through IC (information center), which ultimately reduces the interaction among the NNs
-	- RL Alg: A3C
-	- Everytime freeze previous learned knowledge;\
-		<img src="/RL/images/transfer/progressive.png" alt="drawing" width="450"/>
+- **Progressive-Nets**:
+	- A Rusu, N Rabinowitz, G Desjardins, H Soyer, James Kirkpatrick, Koray Kavukcuoglu, Razvan Pascanu, Raia Hadsell. Progressive Neural Networks. 2016
+		- They are schemes that can train NN’s in an ensemble individually in a sequential fashion where an output of all trained NN’s are stored and updated in an information center. The communication among NN’s is maintained indirectly through IC (information center), which ultimately reduces the interaction among the NNs
+		- RL Alg: A3C
+		- Everytime freeze previous learned knowledge;\
+			<img src="/RL/images/transfer/progressive.png" alt="drawing" width="450"/>
+	- Andrei A. Rusu, Mel Vecerik, Thomas Rothörl, Nicolas Heess, Razvan Pascanu, Raia Hadsell. Sim-to-Real Robot Learning from Pixels with Progressive Nets. CoRL'17
 - **UNREAL**: Max Jaderberg, Volodymyr Mnih, Wojciech Marian Czarnecki, Tom Schaul, Joel Z Leibo, David Silver, Koray Kavukcuoglu. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
 	- https://github.com/miyosuda/unreal
 - **IU Agent**: Serkan Cabi, Sergio Gómez Colmenarejo, Matthew W. Hoffman, Misha Denil, Ziyu Wang, Nando de Freitas. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
@@ -54,8 +62,7 @@
 	<img src="/RL/images/transfer/mav.png" alt="drawing" width="500"/>
 - Konstantinos Bousmalis, Alex Irpan, Paul Wohlhart, Yunfei Bai, Matthew Kelcey, Mrinal Kalakrishnan, Laura Downs, Julian Ibarz, Peter Pastor, Kurt Konolige, Sergey Levine, and Vincent Vanhoucke. Using simulation and domain adaptation to improve efficiency of deep robotic grasping. CoRR'17
 - Shani Gamrian and Yoav Goldberg. Transfer learning for related reinforcement learning tasks via image-to-image translation. CoRR'18
-- Stephen James, Paul Wohlhart, Mrinal Kalakrishnan, Dmitry Kalashnikov, Alex Irpan, Julian
-Ibarz, Sergey Levine, Raia Hadsell, and Konstantinos Bousmalis. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
+- Stephen James, Paul Wohlhart, Mrinal Kalakrishnan, Dmitry Kalashnikov, Alex Irpan, Julian Ibarz, Sergey Levine, Raia Hadsell, and Konstantinos Bousmalis. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
 - Transfer Value or Policy? A Value-centric Framework Towards Transferrable Continuous Reinforcement Learning. 2019
 
 ## Domain Randomization (DR)
@@ -68,6 +75,25 @@ Ibarz, Sergey Levine, Raia Hadsell, and Konstantinos Bousmalis. Sim-to-real via 
 	- **Dactyl**: Marcin Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
 		- At first, barely survive 5 seconds without dropping
 		- DR: evolved work surprisingly well;
+		- https://blog.openai.com/learning-dexterity/
+		- Train models:
+			- A LSTM RL to predict action (control policy);
+			- A CNN to predict object pose;
+			- Combine pose estimation and control policy from multiple camera inputs;\
+				<img src="/RL/images/robotics/dexterity4.png" alt="drawing" width="400"/>
+			- Trained with PPO;
+			- **Policy actions**: correspond to desired joints angles relative to the current ones, **discrete action spaces work much better.**
+			- **Reward**: at timestep t is r(t) = d(t) − d(t+1), desired and current object orientations. additional reward of 5 whenever a goal is achieved and a reward of −20.
+			<img src="/RL/images/robotics/dexterity.png" alt="drawing" width="600"/>
+			<img src="/RL/images/robotics/dexterity3.png" alt="drawing" width="600"/>
+		- Problem setup: Manipulate objects using a Shadow Dexterous Hand
+		- **Hardware**: a humanoid robotic hand with 24 degrees of freedom (DoF) actuated by 20 pairs of agonist–antagonist tendons\
+			<img src="/RL/images/robotics/dexterity2.png" alt="drawing" width="600"/>
+		- **Simulator**: simulate the physical system with the MuJoCo physics engine; use Unity2 to render the images for training the vision based pose estimator.
+		- modify the basic version of our simulation to a distribution over many simulations that foster transfer
+		- Same distributed system as OpenAI Five;
+		- Distributed workers collect experience at large scale;
+			<img src="/RL/images/robotics/dexterity4.png" alt="drawing" width="600"/>
 - DR as optimization
 	- Q Vuong, S Vikram, H Su, S Gao, H Christensen. How to pick the domain randomization parameters for sim-to-real transfer of reinforcement learning policies? 2019
 		- Insight: domain randomization as an optimization problem; learn a distribution on of source domain which a policy is trained on can achieve maximal performance in real world;
@@ -122,6 +148,7 @@ Ibarz, Sergey Levine, Raia Hadsell, and Konstantinos Bousmalis. Sim-to-real via 
 				- The intuition is that if an environment is easy, the same policy agent can produce similar trajectories as in the reference one. Then the model should reward and explore hard environments by encouraging different behaviors.
 			- 3. The reward by discriminator is fed into Stein Variational Policy Gradient (SVPG) particles, outputting a diverse set of randomization configurations.
 			<img src="/RL/images/transfer/adr.png" alt="drawing" width="500"/>
+- X. B. Peng, M. Andrychowicz, W. Zaremba, and P. Abbeel. Sim-to-real transfer of robotic control with dynamics randomization. CoRR'17
 
 ## OpenAI
 - **Retro Contest**: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018

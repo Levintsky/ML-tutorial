@@ -84,6 +84,9 @@
 - Hierarchical VAE:
 	- Harrison A Edwards and Amos J. Storkey. Towards a neural statistician. In ICLR, 2017
 
+## Applications
+- **MT-VAE**: Xinchen Yan, Akash Rastogi, Ruben Villegas, Kalyan Sunkavalli, Eli Shechtman, Sunil Hadap, Ersin Yumer, Honglak Lee. MT-VAE: Learning Motion Transformations to Generate Multimodal Human Dynamics. 2018
+
 ## Autoregressive
 - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
 <img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="500"/>
