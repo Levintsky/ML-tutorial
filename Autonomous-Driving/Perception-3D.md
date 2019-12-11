@@ -59,8 +59,7 @@
 	<img src="/Autonomous-Driving/images/detection/point-rcnn2.png" alt="drawing" width="600"/>
 
 ## Detection From 2D
-- :
-	- B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
+- B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
 - Geometry constraint:
 	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
 	- B Li, W Ouyang, L Sheng, X Zeng, and X Wang. Gs3d: An efficient 3d object detection framework for autonomous driving. 2019.
@@ -112,16 +111,11 @@
 
 ## Detection from Graph
 - Graph NN:
-	- **GNN**: F. Scarselli, M. Gori, A. C. Tsoi, M. Hagenbuchner, and G. Monfardini. The graph neural network model. TNN'09
-	- **GGNN**: Y. Li, D. Tarlow, M. Brockschmidt, and R. Zemel. Gated graph sequence neural networks. 2015
 	- X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. CVPR'17
 - Graph Convolution Networks:
-	- Graph Laplacian
-	- J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. ICLR'14 
 	- D. Boscaini, J. Masci, E. Rodola, and M. Bronstein. Learning shape correspondence with anisotropic convolutional neural networks. NIPS'16
 	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16.
 	- F. Monti, D. Boscaini, J. Masci, E. Rodola, J. Svoboda, and M. M. Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. CVPR'17.
-
 
 ## 3D Tracking
 - D. Frossard, R. Urtasun. End-to-end Learning of Multi-sensor 3D Tracking by Detection. ICRA'18

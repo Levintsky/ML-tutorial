@@ -2,10 +2,14 @@
 
 ## Unclassified
 - Xinyu Gong, Shiyu Chang, Yifan Jiang, Zhangyang Wang. AutoGAN: Neural Architecture Search for Generative Adversarial Networks. ICCV 2019
-- 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
-- Free-Form Image Inpainting With Gated Convolution. ICCV'19
-- Seeing What a GAN Cannot Generate. ICCV'19
-- PointFlow: 3D Point Cloud Generation With Continuous Normalizing Flows. ICCV'19
+	- https://github.com/TAMU-VITA/AutoGAN
+- Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
+	- https://github.com/seowok/TreeGAN
+- Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, Thomas Huang. Free-Form Image Inpainting With Gated Convolution. ICCV'19
+	- https://github.com/JiahuiYu/generative_inpainting
+- David Bau, Jun-Yan Zhu, Jonas Wulff, William Peebles, Hendrik Strobelt, Bolei Zhou, Antonio Torralba. Seeing What a GAN Cannot Generate. ICCV'19
+	- http://ganseeing.csail.mit.edu/
+	- https://github.com/davidbau/ganseeing
 - Meta-Sim: Learning to Generate Synthetic Datasets. ICCV'19
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
 - SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19

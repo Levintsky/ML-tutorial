@@ -164,7 +164,7 @@
 - A Sauer, N Savinov, and A Geiger. Conditional affordance learning for driving in urban environments. arxiv'18
 - Jeffrey Hawke, Richard Shen, Corina Gurau, Siddharth Sharma, Daniele Reda, Nikolay Nikolov
 Przemysław Mazur, Sean Micklethwaite, Nicolas Griffiths, Amar Shah, Alex Kendall. Urban Driving with Conditional Imitation Learning. 2019
-	- Input three images x 2 frames; no LiDAR;
+	- Input three images x 2 frames; no LiDAR;\
 		<img src="/Autonomous-Driving/images/plan/wayve-cil.png" alt="drawing" width="500"/>
 
 ## RL
