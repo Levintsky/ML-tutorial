@@ -49,7 +49,7 @@
 		<img src = '/Generative/images/flow/iaf.png' width = '400'>
 	- **MAF**: G Papamakarios, T Pavlakou, I Murray. Masked Autoregressive Flow for Density Estimation. NIPS'17
 		- A type of NF, where the transformation layer is built as an autoregressive neural network
-		- https://github.com/gpapamak/maf
+		- https://github.com/gpapamak/maf \
 			<img src = '/Generative/images/flow/maf.png' width = '400'>
 	- Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
 - Flow + GAN:

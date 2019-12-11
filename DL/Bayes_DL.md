@@ -2,8 +2,7 @@
 
 ## Legacy
 - C Peterson. A mean field theory learning algorithm for neural networks. 1987
-- G Hinton and D Camp. Keeping the neural networks simple by minimizing the
-description length of the weights. COLT'93
+- G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
 ## Variational Inference
 - A Graves. Practical variational inference for neural networks. NIPS'11

@@ -38,7 +38,7 @@
 		- WMT 2014, Eng-Deu, Eng-Fre, ..., 0.7 BLEU improvement over Transformer on Eng-Deu;
 - **Constrained Search Space**:
 	- Prajit Ramachandran, Barret Zoph, and Quoc V. Le. Searching for activation functions. ICLR'18
-	- Ekin Dogus Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le. Autoaugment: Learning augmentation policies from data. CoRR'18
+	- Ekin Dogus Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le. AutoAugment: Learning augmentation policies from data. CVPR'19
 - DeepMind:
 	- Brock, Andrew, Lim, Theodore, Ritchie, James M., and Weston, Nick. SMASH: one-shot model architecture search through hypernetworks. ICLR, 2018.
 
