@@ -3,21 +3,45 @@
 ## Summary
 - https://github.com/floodsung/Meta-Learning-Papers
 - LSTM Learner:
-	- S. Ravi and H. Larochelle. Optimization as a model for fewshot learning. ICLR 2017
 - Parameter Prediction
 	- L. Bertinetto, J. F. Henriques, J. Valmadre, P. Torr, and A. Vedaldi. Learning feed-forward one-shot learners. NIPS 2016
 	- H. Qi, M. Brown, and D. G. Lowe. Low-shot learning with imprinted weights. 2017
-- Metric:
-	-  O. Vinyals, C. Blundell, T. Lillicrap, D. Wierstra, et al. Matching networks for one shot learning. NIPS 2016
-- Conv-learner:
-	- **SNAIL**: Pieter Abbeel, et. al. A Simple Neural Attentive Meta-Learner, ICLR 2018
-		- Temporal 1D-Conv + Attention;
 
-## MAML (Chelsea Finn)
-- MAML: https://github.com/cbfinn/maml
-- MAML Pytorch: https://github.com/katerakelly/pytorch-maml
+## Legacy
+- Jurgen Schmidhuber. Evolutionary principles in self-referential learning. 1987
+- Devang K Naik and RJ Mammone. Meta-neural networks that learn by learning. IJCNN'92
+- Sebastian Thrun and Lorien Pratt. Learning to learn. 1998
 
-## Uncertainty
+## Attention
+- Oriol Vinyals, Charles Blundell, Tim Lillicrap, Daan Wierstra, et al. Matching networks for
+one shot learning. NIPS'16
+- **SNAIL**: Pieter Abbeel, et. al. A Simple Neural Attentive Meta-Learner, ICLR 2018
+	- Temporal 1D-Conv + Attention;
+
+## Recurrent
+- Sepp Hochreiter, A Steven Younger, and Peter R Conwell. Learning to learn using gradient
+descent. ICANN'01
+- Adam Santoro, Sergey Bartunov, Matthew Botvinick, Daan Wierstra, and Timothy Lillicrap.
+Meta-learning with memory-augmented neural networks. ICML'16
+- S. Ravi and H. Larochelle. Optimization as a model for fewshot learning. ICLR 2017
+
+## MAML, Bi-level Optimization
+- Dougal Maclaurin, David Duvenaud, and Ryan Adams. Gradient-based hyperparameter opti-
+mization through reversible learning. ICML'15
+- **MAML**: Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ICML'17
+	- https://github.com/cbfinn/maml (tensorflow)
+	- https://github.com/katerakelly/pytorch-maml (pytorch)
+	- A bi-level optimization problem\
+		<img src = '/AutoML-Meta/images/maml1.png' width='400'>
+	- Inner level: SGD\
+		<img src = '/AutoML-Meta/images/maml2.png' width='400'>
+
+- Chelsea Finn and Sergey Levine. Meta-learning and universality: Deep representations and
+gradient descent can approximate any learning algorithm. 2017
+- Maruan Al-Shedivat, Trapit Bansal, Yuri Burda, Ilya Sutskever, Igor Mordatch, and Pieter
+Abbeel. Continuous adaptation via meta-learning in nonstationary and competitive environments. 2017
+- Chelsea Finn, Tianhe Yu, Tianhao Zhang, Pieter Abbeel, and Sergey Levine. One-shot visual
+imitation learning via meta-learning. 2017
 - **BMAML** Bayesian Model-Agnostic Meta-Learning (Yoshua Bengio, NIPS 2018)
 	- BMAML
 	- Add uncertainty on both initial model and update
@@ -26,6 +50,16 @@
 - **Probabilistic Model-Agnostic Meta-Learning** (Chelsea Finn, NIPS 2018)
 	- Uncertainty
 	- A graphical model view
+- Chelsea Finn, Aravind Rajeswaran, Sham Kakade, and Sergey Levine. Online meta-learning. ICML'19
+- **iMAML**: Aravind Rajeswaran, Chelsea Finn, Sham Kakade, Sergey Levine. Meta-Learning with Implicit Gradients. NIPS'19
+	- Notice the regularization:
+		<img src = '/AutoML-Meta/images/iMAML1.png' width='400'>
+	- Total and Partial Derivatives of the nested function:
+		<img src = '/AutoML-Meta/images/iMAML2.png' width='400'>
+	- dAlg(theta)/dtheta memory heavy, intractable large graph;
+		<img src = '/AutoML-Meta/images/iMAML3.png' width='400'>
+- Applications of MAML:
+	- Fei Mi, Minlie Huang, Jiyong Zhang, and Boi Faltings. Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 2019
 
 ## SOA
 - F. Sung, Y. Yang, L. Zhang, T. Xiang, P. H. Torr, and T. M. Hospedales. Learning to compare: Relation network for fewshot learning. CVPR, 2018.

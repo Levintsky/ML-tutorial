@@ -14,7 +14,9 @@
 - ICP:
 	- S. Gupta, P. Arbelaez, R. Girshick, and J. Malik. Aligning 3d models to rgb-d images of cluttered scenes. CVPR'15
 
-## Berkeley
+## Learning-based
+- Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
+- A. Kendall, M. Grimes, and R. Cipolla. PoseNet: A convolutional network for real-time 6-DOF camera relocalization. ICCV'15
 - Shubham Tulsiani, Joao Carreira and Jitendra Malik. Pose Induction for Novel Object Categories. ICCV 2015
 	- Input: images, output three Euler Angles
 	- SCT (Similar Class Transfer): 
@@ -23,3 +25,9 @@
 		- For an unknown class c', find most similar class known
 	- GC (Generalized Classifier):
 		- VGG, Na x Nθ
+- A Handa, M Bloesch, V Pătrăucean, S Stent, J McCormac, and A Davison. gvnn: Neural network library for geometric computer vision. ECCVW'16
+- C Wang, Buenaposada, M Jose, R Zhu, and S Lucey. Learning depth from monocular videos using direct methods. CVPR'18
+	- Make direct method differentiable.
+- R Clark, M Bloesch, J Czarnowski, S Leutenegger, and A Davison. Learning to solve nonlinear least squares for monocular stereo. ECCV'18
+	- solve nonlinear least squares in two-view SfM using a LSTM-RNN
+- Z Lv, F Dellaert, J Rehg, A Geiger. Taking a Deeper Look at the Inverse Compositional Algorithm. 2019

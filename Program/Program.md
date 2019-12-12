@@ -1,9 +1,5 @@
 # Program Synthesis
 
-## Bayesian Program Induction
-- MIT
-	- **Learning Libraries of Subroutines for Neurally–Guided Bayesian Program Induction**, NIPS 2018
-
 ## Translation
 - Tree-to-tree Neural Networks for Program Translation (Berkeley), NIPS 2018
 	- Each language to parse tree as IR (intermediate representation);
@@ -20,11 +16,12 @@
 	- Differentiable, fine-tuned by gd
 
 ## Input/Output examples -> Program
-- U Toronto, Vector Institute, Uber ATG. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS 2018
+- L Zhang, G Rosenblatt, E Fetaya, R Liao, W Byrd, M Might, R Urtasun, R Zemel. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS'18
+	- https://github.com/xuexue/neuralkanren
 	- Input: input/output examples
 	- miniKanren as symbolic system
 	- ML propose candidates program satisfying the candidates
-- FAIR, **Automatic Program Synthesis of Long Programs with a Learned Garbage Collector (FAIR)**, NIPS 2018
+- A Zohar, L Wolf. Automatic Program Synthesis of Long Programs with a Learned Garbage Collector, NIPS'18
 	-  https://github.com/amitz25/PCCoder
 	- Predict statement by statement
 	- Garbage collection (things can be discarded)
@@ -32,11 +29,11 @@
 	- Prediction guided search
 
 ## Misc
-- Simple, Distributed, and Accelerated Probabilistic Programming (Google Brain)
+- D Tran, M Hoffman, D Moore, C Suter, S Vasudevan, A Radul, M Johnson, R Saurous. Simple, Distributed, and Accelerated Probabilistic Programming. NIPS'18
 - **Memory Augmented Policy Optimization for Program Synthesis and Semantic Parsing (Chen Liang)**
 - Backpropagation with Callbacks: Foundations for Efficient and Expressive Differentiable Programming
 - Autoconj: Recognizing and Exploiting Conjugacy Without a Domain-Specific Language
-- **Learning Libraries of Subroutines for Neurally–Guided Bayesian Program Induction (MIT)**
+- K Ellis, L Morales, M Sablé-Meyer, A Solar-Lezama, J Tenenbaum. Learning Libraries of Subroutines for Neurally–Guided Bayesian Program Induction, NIPS'18
 	- DSL (Domain specific language)
     - Program search: neural network
     - EC2 (ECC, for Explore/Compress/Compile)

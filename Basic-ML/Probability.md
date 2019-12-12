@@ -5,6 +5,7 @@
 	- E(x) = p
 	- V(x) = p(1-p)
 - Poisson:
+	- Physical meaning: x ~ Binomial(n, p), n very large, n x p = labmda, then k appearancd observes Poisson
 	- p(k) = lambda^k exp(-lambda)/k!
 	- E(x) = lambda
 	- V(x) = lambda

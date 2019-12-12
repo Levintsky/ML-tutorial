@@ -40,6 +40,7 @@
 # Poker (Texas Hod'em)
 - Imperfect information Game
 - **CFR** (Counterfactural Regret Minimization)
+	- A great summary (Ricson): http://modelai.gettysburg.edu/2013/cfr/
 	- Zinkevich, M., Johanson, M., Bowling, M., & Piccione, C. Regret minimization in games with incomplete information, NIPS 2008
 	- Lanctot, M., Waugh, K., Zinkevich, M., & Bowling, M, Monte Carlo sampling for regret minimization in extensive games, NIPS 2009
 	- Johanson, M., Bard, N., Lanctot, M., Gibson, R., & Bowling, M, Efficient Nash equilibrium approximation through Monte Carlo counterfactual regret minimization, 2012
@@ -59,7 +60,7 @@
 - Basics:
 	- How to solve the rubik’s cube - beginners method. https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/.
 - Mathematics:
-	- Daniel Kunkle and Gene Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC ’07
+	- Daniel Kunkle and Gene Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC'07
 	- Silviu Radu. Rubik’s cube can be solved in 34 quarter turns. http://cubezzz.dyndns.org/drupal/?q=node/view/92, Jul 2007.
 	- Michael Reid. Superflip requires 20 face turns. http://www.math.rwth-aachen.de/~Martin.Schoenert/Cube-Lovers/michael_reid__superflip_requires_20_face_turns.html, Jan 1995.
 	- Tomas Rokicki. Twenty-two moves suffice for rubik’s cubeR. The Mathematical Intelligencer, 32(1):33–40, 2010.
@@ -73,7 +74,7 @@
 	- Deepening A* search.
 	- Richard E. Korf. Finding optimal solutions to rubik’s cube using pattern databases. AAAI’97/IAAI’97, pages 700–705. AAAI
 - **Kociemba**:
-	-  Two-phase algorithm details. http://kociemba.org/math/imptwophase.htm.
+	- Two-phase algorithm details. http://kociemba.org/math/imptwophase.htm.
 	- Maxim Tsoy. Kociemba. https://github.com/muodov/kociemba, 2018.
 - Deep-learning:
 	- Robert Brunetto and Otakar Trunda. Deep heuristic-learning in the rubik’s cube domain: an experimental evaluation. 2017.

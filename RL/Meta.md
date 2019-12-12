@@ -7,13 +7,13 @@
 - M Botvinick, S Ritter, J X. Wang, Z Kurth-Nelson, C Blundell, D Hassabis. Reinforcement Learning, Fast and Slow. Trends in Cognitive Sciences 2019 
 
 ## OpenAI
-- Y Duan, J Schulman, X Chen, P Bartlett, I Sutskever, P Abbeel. RL2: Fast Reinforcement Learning via Slow Reinforcement Learning. 2016
+- **RL2**: Y Duan, J Schulman, X Chen, P Bartlett, I Sutskever, P Abbeel. RL2: Fast Reinforcement Learning via Slow Reinforcement Learning. 2016
 	- Fast RL: learned "algorithm" performed by LSTM
 	- Slow RL: algorithm used to train LSTM in outer loop
 - I Clavera, J Rothfuss, J Schulman, Y Fujita, T Asfour, P Abbeel. Model-Based Reinforcement Learning via Meta-Policy Optimization. CoRL'18
 - A Nichol, J Achiam and J Schulman. On First-Order Meta-Learning Algorithms. 2018
 
 ## Berkeley
-- MAML:
+- **MAML**:
 	- MAML for RL: https://github.com/cbfinn/maml_rl
-
+- **SNAIL**: A Simple Neural Attentive Meta-Learner, Mishra et al, 2018.

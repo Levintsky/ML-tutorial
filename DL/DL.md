@@ -12,6 +12,9 @@
 - Aidan N. Gomez, Ivan Zhang, Kevin Swersky, Yarin Gal, Geoffrey E. Hinton. Targeted Dropout. ICLR 2019
 	- github.com/for-ai/TD
 
+## Regularization
+- Xavier Gastaldi. Shake-Shake regularization. 2017
+
 ## Gumbel-Softmax
 - E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
 <img src="/DL/images/gumbel-softmax.png" alt="drawing" width="500"/>

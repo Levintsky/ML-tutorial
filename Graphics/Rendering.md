@@ -16,6 +16,8 @@
 - Justin Johnson, Agrim Gupta, and Li Fei-Fei. Image generation from scene graphs. CVPR 2018
 	- Step 1: Generate scene graph: S. Schuster, R. Krishna, A. Chang, L. Fei-Fei, and C. D. Manning. Generating semantically precise scene graphs from textual descriptions for improved image retrieval.
 	- Step 2: generate image
+- H Kato, Y Ushiku, T Harada. Neural 3d mesh renderer. CVPR'18.
+- T Li, M Aittala, F Durand, and J Lehtinen. Differentiable monte carlo ray tracing through edge sampling. SIGGRAPH'18
 
 ## MIT
 - **GPGP**:  Mansinghka, V. K., Kulkarni, T. D., Perov, Y. N., and Tenenbaum, J. Approximate bayesian image interpretation using generative probabilistic graphics programs. NIPS'13
@@ -31,7 +33,7 @@
 	- DSL [11]
 	- Prefer shorter program (with explicit reward)
 	- Sketch-tool [1] to refine program
--  3D-Aware Scene Manipulation via Inverse Graphics, NIPS 2018
+-  S Yao, T M H Hsu, J Zhu, J Wu, A Torralba, W T. Freeman, J B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics, NIPS'18
 
 ## Toolbox
 - https://github.com/tensorflow/graphics
@@ -40,3 +42,7 @@
 	- 6dof
 	- Intrinsic camera modeling
 	- Material modeling:
+
+## Legacy
+- A. Fitzgibbon, Y. Wexler, and A. Zisserman. Image-based rendering using image-based priors. IJCV'05
+- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996

@@ -18,6 +18,9 @@
 - Behavior Cloning
 - Introduction to Reinforcement Learning
 
+## From OR point of view
+- http://www.columbia.edu/~sa3305/
+
 ## Good Summaries
 - Algorithms: https://github.com/tigerneil/awesome-deep-rl
 - L. P. Kaelbling, M. L. Littman, and A. W. Moore. Reinforcement learning: A survey. JAIR, 1996.
