@@ -1,5 +1,10 @@
 # Robotics, Continuous Control
 
+## From Spinning Up
+- Benchmarking Reinforcement Learning Algorithms on Real-World Robots, Mahmood et al, 2018.
+- QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation, Kalashnikov et al, 2018. Algorithm: QT-Opt.
+- Jason Gauci, Edoardo Conti, Yitao Liang, Kittipat Virochsiri, Yuchen He, Zachary Kaden, Vivek Narayanan, Xiaohui Ye, Zhengxing Chen, Scott Fujimoto. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
+
 ## Berkeley
 - C. Finn, X. Y. Tan, Y. Duan, T. Darrell, S. Levine, and P. Abbeel. Learning visual feature spaces for robotic manipulation with deep spatial autoencoders. arxiv, 2015.
 - A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots, 2015
