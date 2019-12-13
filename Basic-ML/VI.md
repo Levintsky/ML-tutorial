@@ -25,3 +25,7 @@
 <img src="/Basic-ML/images/mean-field1.png" alt="drawing" width="200"/>
 
 - LDA:
+
+## MCMC with Mini-Batch
+- **SGLD**: Max Welling, Yee Whye Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
+- **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
