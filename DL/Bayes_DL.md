@@ -5,6 +5,8 @@
 - G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
 ## Variational Inference
+- David JC MacKay. Probable networks and plausible predictions—a review of practical bayesian methods for supervised neural networks. Network: Computation in Neural Systems, 6(3):469–505, 1995.
+- Radford M Neal. Bayesian learning for neural networks. PhD thesis, Citeseer, 1995.
 - A Graves. Practical variational inference for neural networks. NIPS'11
 	- fully factorized Gaussian posteriors which used a simple (but biased) gradient estimator
 - **BBB (Bayes by Backprop)**: C Blundell, J Cornebise, K Kavukcuoglu, and D Wierstra. Weight uncertainty in neural network. ICML'15
@@ -46,6 +48,10 @@
 	- **NP**: M. Garnelo, J. Schwarz, D. Rosenbaum, F. Viola, D. J. Rezende, S. M. A. Eslami, and Y. Whye Teh. Neural processes. arxiv'18
 	- **VIP**: C Ma, Y Li, and J Hernández-Lobato. Variational implicit processes. arxiv'18
 		- Reverse of fBNNs: they specify BNN priors and use GPs to approximate the posterior
+	- **FNP**: Christos Louizos, Xiahan Shi, Klamer Schutte, Max Welling. The Functional Neural Process. NIPS'19
+		- inference over the weights of a neural network can be a daunting task due to the high dimensionality and posterior complexity
+		- "bypass" the aforementioned issues is that of adopting a stochastic process, like GP;
+		- https://github.com/AMLab-Amsterdam/FNP
 
 ## Variational Generative
 - **fBNN**: S Sun, G Zhang, J Shi, R Grosse. Functional Variational Bayesian Neural Networks. ICLR'19

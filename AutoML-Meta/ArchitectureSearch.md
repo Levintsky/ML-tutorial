@@ -5,6 +5,11 @@
 - https://github.com/hibayesian/awesome-automl-papers
 - https://github.com/markdtw/awesome-architecture-search
 
+## Unclassfied
+- Bo Chen, Golnaz Ghiasi, Hanxiao Liu, Tsung-Yi Lin, Dmitry Kalenichenko, Hartwig Adams, Quoc V Le. MnasFPN: Learning Latency-aware Pyramid Architecture for Object Detection on Mobile Devices. 2019
+- Barret Zoph, Ekin D Cubuk, Golnaz Ghiasi, Tsung-Yi Lin, Jonathon Shlens, Quoc V Le. Learning Data Augmentation Strategies for Object Detection. 2019
+- **Nas-fpn**: Golnaz Ghiasi, Tsung-Yi Lin, Quoc V. Le. Nas-fpn: Learning scalable feature pyramid architecture for object detection. CVPR'19
+
 ## FAIR
 - Saining Xie, Kaiming He. Exploring Randomly Wired Neural Networks for Image Recognition. ICCV'19
 	- Network generators: g(theta), g: residual, theta: layers, ...
