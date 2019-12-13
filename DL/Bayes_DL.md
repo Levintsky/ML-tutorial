@@ -20,7 +20,6 @@
 		<img src="/DL/images/bnn/bbb4.png" alt="drawing" width="400"/>
 	- Contextual Bandits with Thompson Sampling:\
 		<img src="/DL/images/bnn/bbb5.png" alt="drawing" width="400"/>
-
 - Modeling correlations between weights with Gaussian variational posterior:
 	- C Louizos and M Welling. Structured and efficient variational deep learning with matrix Gaussian posteriors. ICML'16
 	- S Sun, C Chen, and L Carin. Learning structured weight uncertainty in Bayesian neural networks. AISTATS'17
