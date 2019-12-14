@@ -9,8 +9,8 @@
 			- Moving objects: randomly initialize object in lanes with direction consistent;
 		- **AADS-PC**: simulate the Velodyne outputs with ApolloScape-PC;
 		- **Trajectories Synthesis**:
-		<img src="/Autonomous-Driving/images/simulator/aads1.png" alt="drawing" width="600"/>
-		<img src="/Autonomous-Driving/images/simulator/aads2.png" alt="drawing" width="600"/>
+			<img src="/Autonomous-Driving/images/simulator/aads1.png" alt="drawing" width="600"/>
+			<img src="/Autonomous-Driving/images/simulator/aads2.png" alt="drawing" width="600"/>
 - Intel:
 	- S. R. Richter, V. Vineet, S. Roth, V. Koltun, Playing for data: Ground truth from computer games. ECCV'16
 	- **CARLA**: A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun, CARLA: An Open Urban Driving Simulator. CoRL'17
