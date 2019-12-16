@@ -15,3 +15,10 @@
 	- CMDP (Constrained MDP), with upper-bound cost we should satisfy;
 	- safe policy iteration (SPI) and safe value iteration (SVI);
 	- safe DQN, safe DPI;
+
+## Robust Control
+- **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
+	- https://github.com/modestyachts/robust-control-from-vision
+	- Affine error-profile model;
+	- Model: MBRL (LQR)
+	- Evaluated on synthetic example CARLA

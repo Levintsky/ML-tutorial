@@ -22,7 +22,11 @@
 - Geometric: depth/disparity with GT;
 - Photometric;
 
-## Latest
+## Differentiable Rendering
+- Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
+	- Problem: 2D images to mesh;
+
+## Unclassified
 - Tom, Shenlong, Raquel:
 	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
 - Deep Structured 3D Estimation. Mini-12
@@ -192,7 +196,7 @@
 		- Supervision: silhouette-based volumetric loss from space carving;
 		<img src="/CV-3D/images/reconstruction/per-trans-net.png" alt="drawing" width="600"/>
 	- D Rezende, S Eslami, S Mohamed. Unsupervised Learning of 3D Structure from Images. NIPS'16
-		- Key insight: **VAE** style; SSL;
+		- Key insight: **VAE** style; SSL; REINFORCE to back-prop through black-box renderer;
 		- Experiment: ShapeNet;
 		<img src="/CV-3D/images/reconstruction/unsup-3d.png" alt="drawing" width="600"/>
 	- **OGN**: M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs. 2017

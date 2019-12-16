@@ -3,6 +3,13 @@
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
 
+## Unclassified
+- **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
+	- https://github.com/modestyachts/robust-control-from-vision
+	- Affine error-profile model;
+	- Model: MBRL (LQR)
+	- Evaluated on synthetic example CARLA
+
 ## Dataset for Imitation Learning
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
