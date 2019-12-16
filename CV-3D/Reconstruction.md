@@ -33,6 +33,9 @@
 	- Assumption: deform an existing mesh (not from scratch); preprocessed segmentation;
 	- Evaluation: 13 classes from ShapeNet;\
 		<img src="/CV-3D/images/dr/neural-dr.png" alt="drawing" width="500"/>
+- **DIB-R**: Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
+	<img src="/CV-3D/images/dr/dib-r.png" alt="drawing" width="500"/>
+- Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft ras- terizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
 
 ## Unclassified
 - Tom, Shenlong, Raquel:
