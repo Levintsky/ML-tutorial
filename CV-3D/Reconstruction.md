@@ -23,8 +23,15 @@
 - Photometric;
 
 ## Differentiable Rendering
-- Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
-	- Problem: 2D images to mesh;
+- **Opendr**: Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. ECCV'14
+	- General framework, not only for NN;
+- **Neural-Renderer**: Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
+	- Problem: 1. single 2D image to mesh; 2. Mesh Editing;
+	- Insight: differentiable; approximate GD; first mesh generative model;
+	- Supervision: silhouette loss + smoothness loss;
+	- Assumption: deform an existing mesh (not from scratch); preprocessed segmentation;
+	- Evaluation: 13 classes from ShapeNet;
+		<img src="/CV-3D/images/dr/neural-dr.png" alt="drawing" width="500"/>
 
 ## Unclassified
 - Tom, Shenlong, Raquel:
@@ -187,8 +194,8 @@
 		- https://github.com/akar43/CategoryShapes
 	- Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang, and J. Xiao. 3D ShapeNets: A deep representation for volumetric shapes. CVPR'15
 		- Input: image; output: voxel;
-	- X Yan, J Yang, E Yumer, Y Guo, and H Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. NIPS'16
-		- Insight: encoder-decoder for 2d-3d, silhouette supervision from different views instead of gt;
+	- **PTN**: X Yan, J Yang, E Yumer, Y Guo, and H Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. NIPS'16
+		- Insight: encoder-decoder for 2d-3d, no 3d supervision, silhouette supervision from different views instead of gt;
 		- https://github.com/xcyan/ptnbhwd
 		- Input: image; output: voxel;
 		- Assumption: clean background;

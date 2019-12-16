@@ -265,7 +265,6 @@
 - Merel, J., Tassa, Y., Srinivasan, S., Lemmon, J., Wang, Z., Wayne, G., and Heess, N. Learning human behaviors from motion capture by adversarial imitation. arXiv preprint arXiv:1707.02201, 2017.
 
 ## Misc
-- Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. In ECCV, 2014.
 - Louppe, G. and Cranmer, K. Adversarial variational optimization
 of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.
 
