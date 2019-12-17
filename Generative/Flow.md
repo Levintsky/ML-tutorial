@@ -98,6 +98,15 @@
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
 
 ## Neural ODE
+- Good summaries:
+	- About adjoint method: https://blog.csdn.net/liangdaojun/article/details/100633277
+	- About trace for flow generative: https://blog.csdn.net/hanss2/article/details/85331863
+	- https://zhuanlan.zhihu.com/p/51514687
+- Control (ODE/PDE) + NN:
+	- Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
+		- Same thing as Neural ODE; Neural ODE is strong in flow-based generative modeling;
+- **LGQ**: Laurent Lessard, Benjamin Recht, Andrew Packard. Analysis and Design of Optimization Algorithms via Integral Quadratic Constraints. 2015
+- Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019
 - Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 	- Gaussian Process to solve ODE
 - Reversible:
