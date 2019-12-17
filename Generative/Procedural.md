@@ -85,6 +85,7 @@
 		- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 
 		- Finally, they execute the program on the structural scene representation to obtain the final answer
 		- 99.8% on CLEVR
+	- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
 
 ## Unclassified
 - GRAINS: Generative recursive autoencoders for indoor scenes. 2019
@@ -95,4 +96,3 @@
 - InverseCSG: automatic conversion of 3D models to CSG trees. 2018
 - Learning elementary structures for 3D shape generation and matching
 - Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guibas. Supervised fitting of geometric primitives to 3d point clouds. CVPR'19
-- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
