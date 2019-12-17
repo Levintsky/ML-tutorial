@@ -22,7 +22,6 @@
 - **Picture**: Kulkarni, T. D., Kohli, P., Tenenbaum, J. B., and Mansinghka, V. Picture: A probabilistic programming language for scene perception. CVPR'15
 - **DC-IGN**: Kulkarni, T. D., Whitney, W. F., Kohli, P., and Tenenbaum, J. Deep convolutional inverse graphics network. NIPS'15
 	<img src="/Graphics/images/dc_ign.png" alt="drawing" width="600"/>
-- J Wu, JB Tenenbaum, P Kohli. Neural scene de-rendering. CVPR'17
 - S Yao, T M H Hsu, J Zhu, J Wu, A Torralba, W T. Freeman, J B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics, NIPS'18
 
 ## Toolbox
