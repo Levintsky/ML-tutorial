@@ -28,4 +28,8 @@
 
 ## MCMC with Mini-Batch
 - **SGLD**: Max Welling, Yee Whye Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
+	- Insight: a new framework for learning from large scale datasets based on iterative learning from small mini-batches.
+	- By adding the right amount of noise to a standard stochastic gradient optimization algorithm we show that the iterates will converge to samples from the true posterior distribution as we anneal the stepsize;
+	- Problem setup: estimate posterior p(W|D)
+	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients
 - **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
