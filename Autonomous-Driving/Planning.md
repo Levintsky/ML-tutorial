@@ -3,6 +3,12 @@
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
 
+## Problem Setup
+- Input: current status and context (self, every actor else, traffic light, ...)
+- Output: a feasible trajectory
+	- Solution 1: Cost first: propose a cost c(tau) combining everything you require (Abbas version: linear combination w1c1(tau)+w2c2(tau)+ ..., linear weight learnable by struct-SVM); when inference, LQR or method to propose trajectory minimize the cost;
+	- Solution 2: MPC (model-predictive control, solutions first); use model to propose a lot of solutions, pick the one with the lowest cost
+
 ## Unclassified
 - **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
 	- https://github.com/modestyachts/robust-control-from-vision
