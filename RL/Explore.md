@@ -2,7 +2,7 @@
 
 ## Classics
 - lec-17, 18 (CS-294, Sergey Levine)
-- Approach 1: UCB\
+- Approach 1: **UCB** (Upper Confidence Bounds)\
 	<img src="/RL/images/xx/xx-ucb.png" alt="drawing" width="500"/>
 - Approach 2: **Thompson Sampling**:\
 	<img src="/RL/images/xx/thompson-sampling.png" alt="drawing" width="500"/>

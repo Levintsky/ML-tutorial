@@ -4,28 +4,60 @@
 - Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
 - Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
 
+## Summaires
+- https://www.jianshu.com/p/bfa6b5947cd9
+- http://www.sohu.com/a/210551059_473283
+- https://zhuanlan.zhihu.com/p/34342392
+- https://blog.csdn.net/a7910932/article/details/46593691
+- https://www.zhihu.com/question/41765860
+- https://zhuanlan.zhihu.com/p/27239155
+- https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html#loss-function-elbo
+
 ## VAE-Basics
-- A Very good tutorial:
-	- https://www.jianshu.com/p/bfa6b5947cd9
-	- http://www.sohu.com/a/210551059_473283
-	- https://zhuanlan.zhihu.com/p/34342392
-	- https://blog.csdn.net/a7910932/article/details/46593691
-	- https://www.zhihu.com/question/41765860
-	- https://zhuanlan.zhihu.com/p/27239155
 - A great codebase:
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
-- **VAE**:
-	- Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013.
-		- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
-		- **BCE** (Binary Cross Entropy) for reconstruction (mnist)
+- **VAE**: Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013.
+	- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
+	- **BCE** (Binary Cross Entropy) for reconstruction (mnist)\
 		<img src="/Generative/images/vae/vae-elbo.png" alt="drawing" width="500"/>
 		<img src="/Generative/images/vae/vae-elbo2.png" alt="drawing" width="500"/>
+- Semi-VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS 2014\
+	- Problem setup: some (x, y) pairs, some x only;
+		<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="300"/>
+	- Formulation:\
+		<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
+- **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
+	<img src="/Generative/images/vae/cVAE.png" alt="drawing" width="450"/>
+- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
 
-	- Conditional VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS 2014
-	<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="350"/>
-	<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
+## Disentangle
+- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR 2017
+	- Better disentangle
+	- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
+- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
+- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
+	- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
+	- Inductive biases:
+		- Gaussian encoder: mean, log-variance
+		- Bernoulli decoder: 10 latent dimension\
+		<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
 
-	- Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
+## Discrete
+- **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
+	- VAE with discrete latent variables, K-means style codebook;\
+		<img src="/Generative/images/vae/vq-vae1-1.png" alt="drawing" width="450"/>
+	- Formulation:\
+		<img src="/Generative/images/vae/vq-vae1-2.png" alt="drawing" width="450"/>
+- **VQ-VAE-2**: Ali Razavi, Aäron van den Oord, Oriol Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
+	- a two-level hierarchical VQ-VAE combined with self-attention autoregressive model.
+	- Stage 1 is to train a hierarchical VQ-VAE: The design of hierarchical latent variables intends to separate local patterns (i.e., texture) from global information (i.e., object shapes). The training of the larger bottom level codebook is conditioned on the smaller top level code too, so that it does not have to learn everything from scratch.
+	- Stage 2 is to learn a prior over the latent discrete codebook so that we sample from it and generate images. In this way, the decoder can receive input vectors sampled from a similar distribution as the one in training. A powerful autoregressive model enhanced with multi-headed self-attention layers is used to capture the prior distribution (like PixelSNAIL; Chen et al 2017).
+	- Framework:\
+		<img src="/Generative/images/vae/VQ-VAE-2.png" alt="drawing" width="450"/>
+	- Algorithm:\
+		<img src="/Generative/images/vae/VQ-VAE-2-algo.png" alt="drawing" width="450"/>
+
+## Unclassified
 - **DeepMind**:
 	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML 2014
 	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. In ICML, 2016.
@@ -33,25 +65,12 @@
 		- https://github.com/ericjang/draw
 		- https://github.com/chenzhaomin123/draw_pytorch
 	- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
-	- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR 2017
-		- Better disentangle
-		- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
-	- **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
-		- VAE with discrete latent variables
-	- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
 	- **ACN**: Graves et. al., Associative Compression Networks for Representation Learning (2018)
 	- FactorVAE: H Kim, A Mnih. Disentangling by Factorising. ICML'18
 		- Better disentanglement: majority vote classifier on a different feature vector which accounts for a corner case in the BetaVAE metric
-	- **VQ-VAE-2**: Ali Razavi, Aäron van den Oord, Oriol Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
+	
 - **Google-Brain**:
-	- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
-	- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
-		<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
-
-		- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
-		- Inductive biases:
-			- Gaussian encoder: mean, log-variance
-			- Bernoulli decoder: 10 latent dimension 
+ 
 
 - **OpenAI**:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16.

@@ -22,7 +22,7 @@
 	- Weight: w(ts) = w(ts-1) p(yt|zts)p(zts|zt-1s)/q(zts|zs1:t-1,y1:t)
 	- For degeneration, do resampling
 
-## MCMC
+## MCMC (Kevin Murphy Chap 24)
 - Gibbs sampling:
 	- Basic idea: p(x1|x2, x3), then x2, x3
 	- Save all samples, evaluate probability
@@ -34,10 +34,18 @@
 	- If symmetric q(x'|x)=q(x|x'), accept with r = min(1, p(x')/p(x))
 	- Assymetric r = min(1, p(x')q(x|x')/p(x)q('x|x))
 	- Gibbs sampling is a special case of MH
-- Data-driven MCMC (Tu, Zhu)
-	- Proposal also data-driven
-	- q(x'|x,D) = pi0 q0(x'|x) + sum pik qk(xk'|fk(D))
-	- q0: a standard data-independent proposal (random walk)
-	- qk proposes changes to kth part
+		<img src="/Basic-ML/images/mc/mh.png" alt="drawing" width="400"/>
+	- Data-driven MCMC (Tu, Zhu)
+		- Proposal also data-driven
+		- q(x'|x,D) = pi0 q0(x'|x) + sum pik qk(xk'|fk(D))
+		- q0: a standard data-independent proposal (random walk)
+		- qk proposes changes to kth part
 - Speed and accuracy
 	- Burn-in phase: when more stable
+- Auxiliary variable MCMC: Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x)=sum_z(p(x,z))
+	- Slice-sampling: introduce auxiliary height h;
+		<img src="/Basic-ML/images/mc/slice-mc.png" alt="drawing" width="400"/>
+	- Swendsen-Wang;
+	- HMC: exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
+		<img src="/Basic-ML/images/mc/hmc.png" alt="drawing" width="400"/>
+	- Gibbs sampling velocity;
