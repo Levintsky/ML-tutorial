@@ -26,7 +26,7 @@
 		<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="300"/>
 	- Formulation:\
 		<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
-- **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015
+- **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015\
 	<img src="/Generative/images/vae/cVAE.png" alt="drawing" width="450"/>
 - **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
 
@@ -67,11 +67,7 @@
 	- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
 	- **ACN**: Graves et. al., Associative Compression Networks for Representation Learning (2018)
 	- FactorVAE: H Kim, A Mnih. Disentangling by Factorising. ICML'18
-		- Better disentanglement: majority vote classifier on a different feature vector which accounts for a corner case in the BetaVAE metric
-	
-- **Google-Brain**:
- 
-
+		- Better disentanglement: majority vote classifier on a different feature vector which accounts for a corner case in the BetaVAE metric 
 - **OpenAI**:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16.
 - **FAIR**:
