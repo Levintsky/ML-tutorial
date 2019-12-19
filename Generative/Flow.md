@@ -8,9 +8,16 @@
 - http://akosiorek.github.io/ml/2018/04/03/norm_flows.html
 - **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed
 Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
-	- Expressive power: universal representation is possible under reasonable conditions
+	- Expressive power: universal representation is possible under reasonable conditions (proved with Autogressive flows);
 	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
 		<img src = '/Generative/images/flow/survey1.png' width = '400'>
+	- Constructing Flows:
+		- Autoregressive flows (Jacobian determinant is triangular and tractable), zi only based on inputs z(j<=i);
+			- Affine/location-scale: NICE, RealNVP, IAF, MAF, Glow;
+			- Non-affine: conic (NAF, block NAF, B-NAF, Flow++); drawback: not inverted analytically, only iteratively via bp;
+			- Recurrent autoregressive flows [Olivia 18, IAF 16]: share parameters across conditioners with RNN;
+			- MAF: masking out connections with (1/0 matrix); or soft-attention (transformer)
+		- Linear flow: z'=Wz, W: DxD invertible; shortcoming:
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
@@ -56,10 +63,17 @@ Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Infere
 		- A type of NF, where the transformation layer is built as an autoregressive neural network
 		- https://github.com/gpapamak/maf \
 			<img src = '/Generative/images/flow/maf.png' width = '400'>
-	- Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+	- Yang Song, Chenlin Meng, and Stefano Ermon. MintNet: Building invertible neural networks with masked convolutions. NIPS'19
+	- **NAF**: Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+	- Priyank Jaini, Kira A. Selby, and Yaoliang Yu. Sum-of-squares polynomial flow. ICML'19
+	- **B-NAF** Nicola De Cao, Ivan Titov, and Wilker Aziz. Block neural autoregressive flow. UAI'19
+	- **Flow++**: Jonathan Ho, Xi Chen, Aravind Srinivas, Yan Duan, and Pieter Abbeel. Flow++: Improving flow-based generative models with variational dequantization and architecture. ICML'19
+design.
 - Flow + GAN:
 	- Ivo Danihelka, Balaji Lakshminarayanan, Benigno Uria, Daan Wierstra, and Peter Dayan. Comparison of maximum likelihood and gan-based training of real nvps. 2017
 	- Aditya Grover, Manik Dhar, and Stefano Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
+- Recurrent:
+	- Junier Oliva, Avinava Dubey, Manzil Zaheer, Barnabas Poczos, Ruslan Salakhutdinov, Eric Xing, and Jeff Schneider. Transformation autoregressive networks. ICML'18
 - W Grathwohl, R Chen, J Bettencourt, I Sutskever, and D Duvenaud. Ffjord: Free-form continuous dynamics for scalable reversible generative models. ICLR'19
 - **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
 	- https://www.guandaoyang.com/PointFlow/
@@ -101,6 +115,7 @@ Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Infere
 	- For (3), truncated at n steps;
 	- The algorithm:\
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
+- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
 
 ## Neural ODE
 - Good summaries:

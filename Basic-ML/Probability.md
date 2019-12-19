@@ -37,13 +37,18 @@
 	<img src="/Basic-ML/images/prob/gaussian-2d.png" alt="drawing" width="500"/>
 	<img src="/Basic-ML/images/prob/Gaussian.png" alt="drawing" width="600"/>
 
+## Measure Distance between Distributions
+- KL
+- f-duvergence
+- IPM
+
 ## Bounds, Theory
 - Weak law of large numbers (Khinchin's law)
-	- the sample average converges in probability towards the expected value
+	- the sample average converges in probability towards the expected value\
 		<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="600"/>
-- Chebyshev
+- Chebyshev\
 	<img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
 - Central Limit:
 	- X i.i.d., with mean, std
-	- (sum(x) - n mu) / sqrt(n)std close to N(0, 1)
+	- (sum(x) - n mu) / sqrt(n)std close to N(0, 1)\
 		<img src="/Basic-ML/images/law-central-limit.png" alt="drawing" width="600"/>
