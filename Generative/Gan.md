@@ -173,9 +173,9 @@
 - Multi-Scale:
 	- **Progressive**: Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen. Progressive growing of GANs for improved quality, stability, and variation. ICLR 2018.
 		- https://zhuanlan.zhihu.com/p/30637133
-		- G and D for each scale;
+		- G and D for each scale;\
 			<img src = '/Generative/images/gan/pgan1.png' width = '500px'>
-		- Upscaling x2 as a residual operation:
+		- Upscaling x2 as a residual operation:\	
 			<img src = '/Generative/images/gan/pgan2.png' width = '500px'>
 
 ## Techniques
@@ -247,7 +247,7 @@
 - GAN + AE (Reconstruction ability):
 	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
 		- q(z|x) and p(z) adversarial loss (encoded latent)
-		- Reconstruction loss
+		- Reconstruction loss:\
 		<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
 
 ## Feature Learning
