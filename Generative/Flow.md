@@ -6,6 +6,11 @@
 - https://blog.evjang.com/2018/01/nf1.html
 - https://blog.evjang.com/2018/01/nf2.html
 - http://akosiorek.github.io/ml/2018/04/03/norm_flows.html
+- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed
+Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+	- Expressive power: universal representation is possible under reasonable conditions
+	- Optimize for Transform and prior:
+		<img src = '/Generative/images/flow/survey1.png' width = '600'>
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
