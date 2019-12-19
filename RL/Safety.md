@@ -3,6 +3,11 @@
 ## Safe RL
 - Amodei et al. Concrete Problems in AI Safety, 2016. 
 	- Contribution: establishes a taxonomy of safety problems, serving as an important jumping-off point for future research. We need to solve these!
+	- 1. Avoiding Negative Side Effects;
+	- 2. Avoiding Reward Hacking;
+	- 3. Scalable Oversight;
+	- 4. Safe Exploration;
+	- 5. Robustness to Distribution Shift;
 - **LFP**: Christiano et al. Deep Reinforcement Learning From Human Preferences, 2017.
 - **CPO**: Achiam et al. Constrained Policy Optimization. 2017.
 - **HIRL**: Saunders et al. Trial without Error: Towards Safe Reinforcement Learning via Human Intervention, 2017.
