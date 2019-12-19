@@ -9,8 +9,8 @@
 - **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed
 Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
 	- Expressive power: universal representation is possible under reasonable conditions
-	- Optimize for Transform and prior:
-		<img src = '/Generative/images/flow/survey1.png' width = '600'>
+	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
+		<img src = '/Generative/images/flow/survey1.png' width = '400'>
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
