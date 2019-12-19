@@ -1,10 +1,5 @@
 # CNN for 3D Data
 
-## Unclassified
-- Yongheng Zhao, Tolga Birdal, Haowen Deng, Federico Tombari. 3D Point Capsule Networks. CVPR'19
-	- Claims: works on both classification and AE, better than AE [ICML'18];
-	- https://github.com/yongheng1991/3D-point-capsule-networks
-
 ## Point Clouds
 - **Grid-Cell**:
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018

@@ -127,5 +127,5 @@
 - Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018
 - Raposo, D., Santoro, A., Barrett, D., Pascanu, R., Lillicrap, T., and Battaglia, P. (2017). Discovering
 objects and their relations from entangled scene representations. ICLR Workshop 2017
-- Garcia, V. and Bruna, J. (2018). Few-shot learning with graph neural networks. ICLR 2017
+- Garcia, V. and Bruna, J. Few-shot learning with graph neural networks. ICLR 2017
 - Bordes, A., Usunier, N., Garcia-Duran, A., Weston, J., and Yakhnenko, O. Translating embeddings for modeling multi-relational data. NIPS 2013
