@@ -20,10 +20,13 @@
 
 ## Word + Character
 - R. Jozefowicz et. al. Exploring the Limits of Language Modeling (2016)
-<img src = '/Weak-Unsupervised/images/limit-lm.png' width = '500px'>
-
+	<img src = '/Weak-Unsupervised/images/limit-lm.png' width = '500px'>
 - P Bojanowski and E Grave and A Joulin and T Mikolov. Enriching Word Vectors with Subword Information. TACL'17
-<img src = '/Weak-Unsupervised/images/fastText.png' width = '500px'>
+	<img src = '/Weak-Unsupervised/images/fastText.png' width = '500px'>
+
+## Unclassifed
+- Diffusion Maps for Textual Network Embedding. NIPS'18
+- Unsupervised Cross-Modal Alignment of Speech and Text Embedding Spaces. NIPS'18
 
 ## FAIR
 - Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. 2018

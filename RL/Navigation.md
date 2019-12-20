@@ -5,6 +5,7 @@
 
 ## SOA and Misc
 - T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
+- Speaker-Follower Models for Vision-and-Language Navigation. NIPS'18
 
 ## Navigation Challenge and Benchmark
 - VizDoom 2016

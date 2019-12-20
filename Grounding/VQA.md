@@ -16,6 +16,10 @@
 	- https://cbmm.mit.edu/research/projects-thrust/vision-and-language/grounded-question-answering
 	- Object-level grounding;
 
+## Unclassified
+- Learning Conditioned Graph Structures for Interpretable Visual Question Answering. NIPS'18
+- Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering. NIPS'18
+
 ## VQA
 - MSR:
 	- Vqa: Visual question answering. ICCV 2015.

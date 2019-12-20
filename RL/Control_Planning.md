@@ -65,3 +65,7 @@
 
 ## Theory
 - On the Sample Complexity of the Linear Quadratic Regulator
+
+## Applications
+- Data center cooling using model-predictive control. NIPS'18 Tutorial
+

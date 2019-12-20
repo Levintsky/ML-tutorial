@@ -7,6 +7,11 @@
 	- L. Bertinetto, J. F. Henriques, J. Valmadre, P. Torr, and A. Vedaldi. Learning feed-forward one-shot learners. NIPS 2016
 	- H. Qi, M. Brown, and D. G. Lowe. Low-shot learning with imprinted weights. 2017
 
+## Unclassified
+- Probabilistic Matrix Factorization for Automated Machine Learning. NIPS'18
+- Yoshua Bengio. MetaGAN: An Adversarial Approach to Few-Shot Learning. NIPS'18
+- Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS'18
+
 ## Legacy
 - Jurgen Schmidhuber. Evolutionary principles in self-referential learning. 1987
 - Devang K Naik and RJ Mammone. Meta-neural networks that learn by learning. IJCNN'92

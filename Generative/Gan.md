@@ -201,7 +201,7 @@
 ## Analaysis
 - Metz, L., Poole, B., Pfau, D., and Sohl-Dickstein, J. Unrolled generative adversarial networks. 2016
 - Arora, S., Ge, R., Liang, Y., Ma, T., and Zhang, Y. Generalization and equilibrium in generative adversarial nets (gans). 2017
-- Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Up- date Rule Converge to a Local Nash Equilibrium. 2017
+- Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium. 2017
 - Nagarajan, V. and Kolter, J. Z. Gradient descent GAN optimization is locally stable. 2017
 - Arjovsky, M. and Bottou, L. Towards Principled Methods for Training Generative Adversarial Networks. 2017
 - W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. ICLR'18
@@ -265,8 +265,7 @@
 - Merel, J., Tassa, Y., Srinivasan, S., Lemmon, J., Wang, Z., Wayne, G., and Heess, N. Learning human behaviors from motion capture by adversarial imitation. arXiv preprint arXiv:1707.02201, 2017.
 
 ## Misc
-- Louppe, G. and Cranmer, K. Adversarial variational optimization
-of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.
+- Louppe, G. and Cranmer, K. Adversarial variational optimization of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.
 
 ## Codes
 - StarGAN: https://github.com/yunjey/StarGAN
