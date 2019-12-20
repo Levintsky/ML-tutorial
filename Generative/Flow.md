@@ -11,13 +11,33 @@ Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Infere
 	- Expressive power: universal representation is possible under reasonable conditions (proved with Autogressive flows);
 	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
 		<img src = '/Generative/images/flow/survey1.png' width = '400'>
-	- Constructing Flows:
+	- Constructing Flows (finite compositions):
 		- Autoregressive flows (Jacobian determinant is triangular and tractable), zi only based on inputs z(j<=i);
 			- Affine/location-scale: NICE, RealNVP, IAF, MAF, Glow;
 			- Non-affine: conic (NAF, block NAF, B-NAF, Flow++); drawback: not inverted analytically, only iteratively via bp;
 			- Recurrent autoregressive flows [Olivia 18, IAF 16]: share parameters across conditioners with RNN;
 			- MAF: masking out connections with (1/0 matrix); or soft-attention (transformer)
 		- Linear flow: z'=Wz, W: DxD invertible; shortcoming:
+		- Residual flow: guaranteed to be invertible if contractive; shortcoming: no known general efficient procedure for computing Jacobian determinant;
+			- Planar flow;
+			- Sylvester flow;
+			- Radial flow;
+		- Practical consideration:
+			- Normalization;
+	- Constructing Flows: continuous-time transformation;
+		- Neural ODE; trace for flow; Hutchinson’s trace estimator [1990] to make trace estimation fast;
+		- Solving forward: Runge-Kutta family;
+		- Solving backward: adjoint [adjoint sensitivity method, Pontryagin 1962];
+	- Generalization: generate probability;
+		- RAD;
+		- Discrete distribution;
+		- Riemannian manifold;
+	- Applications:
+		- Probabilistic modeling: MLE: KL(px(x), px(x, theta)), density estimation;
+		- Generation;
+		- Inference: modeling parameters to infer unkonwn quantities within a model;
+		- Representation learning;
+		- RL: imitation learning; Yannick Schroecker, Mel Vecerik, and Jon Scholz. Generative predecessor models for sample-efficient imitation learning. ICLR'19
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
@@ -90,6 +110,9 @@ design.
 	- Sample prior for generation:\
 		<img src = '/Generative/images/flow/gnf2.png' width = '350'>
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
+
+## Generalization
+- **RAD**: Laurent Dinh, Jascha Sohl-Dickstein, Razvan Pascanu, and Hugo Larochelle. A RAD approach to deep mixture models. ICLR'19
 
 ## Invertible
 - **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
