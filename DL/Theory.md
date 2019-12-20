@@ -5,6 +5,9 @@
 	- Rassi. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
 	- Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
 
+## Approximator
+- ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
+
 ## Reverse, Invert
 
 ## Convergence

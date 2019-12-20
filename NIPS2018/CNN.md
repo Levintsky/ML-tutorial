@@ -4,9 +4,6 @@
 - Invertibility of Convolutional Generative Networks from Partial Measurements (MIT)
 - An intriguing failing of convolutional neural networks and the CoordConv solution (Uber)
 
-## Segmentation
-- A Probabilistic U-Net for Segmentation of Ambiguous Images (DeepMind)
-
 ## Pruning
 - Mobile-Net
 - Synaptic Strength For Convolutional Neural Network
@@ -22,12 +19,6 @@
 - **Learning to Exploit Stability for 3D Scene Parsing (Jiajun Wu)**
 - **Visual Object Networks: Image Generation with Disentangled 3D Representations (MIT)**
 - **Learning to Reconstruct Shapes from Unseen Classes (MIT)**
-
-## Low-Level
-- Deep Non-Blind Deconvolution via Generalized Low-Rank Approximation
-
-## Video
-- Trajectory Convolution for Action Recognition (Dahua Lin)
 
 ## Non-local
 - Compact Generalized Non-local Network (Baidu)

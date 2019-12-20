@@ -155,6 +155,7 @@
 	- **Dilated Conv**
 - Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
 	- No bounding-box, NMS, anchor;
+- A Probabilistic U-Net for Segmentation of Ambiguous Images. NIPS'18
 
 ## Instance Segmentation
 - J Dai, K He, and J Sun. Instance-aware semantic segmentation via multi-task network cascades. CVPR'16

@@ -26,6 +26,9 @@
 - X. Han, T. Leung, Y. Jia, R. Sukthankar, and A. C. Berg. MatchNet: Unifying feature and metric learning for patch-based matching. CVPR'15
 - J Yang, S Wang, W Ma, A Barsan, J Martinez, R Urtasun. End-to-End Sparse Image Matching. Mini-18
 
+## Deblur, Deconv
+- Deep Non-Blind Deconvolution via Generalized Low-Rank Approximation. NIPS'18
+
 ## Legacy
 - Structure from motion: simultaneous estimate structure and motion
 	- R. A. Newcombe, S. J. Lovegrove, and A. J. Davison. DTAM: Dense tracking and mapping in real-time. ICCV'11

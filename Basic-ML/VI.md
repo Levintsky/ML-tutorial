@@ -46,3 +46,6 @@
 		<img src="/Basic-ML/images/VI/sgld.png" alt="drawing" width="400"/>
 - **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
+
+## Theory
+- Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18

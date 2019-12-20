@@ -25,9 +25,6 @@
 - Orthogonally Decoupled Variational Gaussian Processes
 - Improving Explorability in Variational Inference with Annealed Variational Objectives
 
-## EM
-- Theoretical guarantees for EM under misspecified Gaussian mixture models
-
 ## Graphical Model
 - Graphical model inference: Sequential Monte Carlo meets deterministic approximations
 
@@ -36,7 +33,6 @@
 	- Orthogonally Decoupled Variational Gaussian Processes
 - Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders
 	- Generate graphs
-- Explaining Deep Learning Models -- A Bayesian Non-parametric Approach
 
 ## Amortized Inference
 - Amortized Inference Regularization

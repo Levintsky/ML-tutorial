@@ -24,7 +24,6 @@
 - Entropy and mutual information in models of deep neural networks
 - **Large Margin Deep Networks for Classification (Google Brain)**
 - **Hyperbolic Neural Networks**
-- ResNet with one-neuron hidden layers is a Universal Approximator
 - **Towards Understanding Learning Representations: To What Extent Do Different Neural Networks Learn the Same Representation (John Hopcroft)**
 
 ## Kernel
