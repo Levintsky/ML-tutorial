@@ -6,6 +6,7 @@
 
 ## Benchmarks
 - **Skip-Gram**: T. Mikolov et al. Efficient estimation of word representations in vector space. arXiv 2013
+	- Problem setup: given 4 (+/-2) context words, predict center target;
 	- Suppose that you have a sliding window of a fixed size moving along a sentence: the word in the middle is the “target” and those on its left and right within the sliding window are the context words
 - Context-Based: Continuous Bag-of-Words (CBOW)
 - **Glove**. J. Pennington, R. Socher, and C. Manning. Glove: Global vectors for word representation. EMNLP 2014.
@@ -13,6 +14,7 @@
 
 ## Loss Functions
 - Softmax (skip-gram);
+	- Limitation: when V is very large, calculating denominator requires going through all the words for every single sample is impractical;
 - Hierarchical Softmax: Frederic Morin, Yoshua Bengio. Hierarchical Probabilistic Neural Network Language Model. AISTATS'05
 - Cross Entropy;
 - Noise Contrastive Estimation (NCE)
