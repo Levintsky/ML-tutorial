@@ -16,3 +16,10 @@
 		- an elegant synthesis of two broad approaches in CV: the multiple view geometric, and the deep representations
 - **Test of Time Award**:
 	- Lin Xiao. Dual Averaging Method for Regularized Stochastic Learning and Online Optimization
+
+## NIPS'18
+- Learning to Solve SMT Formulas. NIPS'18
+- Constructing Deep Neural Networks by Bayesian Network Structure Learning. NIPS'18
+- Human-in-the-Loop Interpretability Prior
+- Provable Gaussian Embedding with One Observation
+- **Non-delusional Q-learning and value-iteration**. Best paper award

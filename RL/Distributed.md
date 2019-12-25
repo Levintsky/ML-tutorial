@@ -1,9 +1,10 @@
 # Distributed RL
 
-## Analysis
+## From Spinningup
 - Adam Stooke, Pieter Abbeel. Accelerated Methods for Deep Reinforcement Learning, Stooke and Abbeel, 2018.
 	- Contribution: Systematic analysis of parallelization in deep RL across algorithms.
 	- https://github.com/astooke/accel_rl
+- IMPALA, Ape-X, R2D2, RLlib;
 
 ## Distributed RL Platforms
 - A summary:\
@@ -19,14 +20,14 @@
 - **AlphaZero**\
 	<img src="/RL/images/dist/dist-rl-agz.png" alt="drawing" width="600"/>
 - **IMPALA**: L Espeholt, H Soyer, R Munos, K Simonyan, V Mnih, T Ward, Y Doron, V Firoiu, T Harley, I Dunning, S Legg, K Kavukcuoglu. IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures. ICML'18
-	- https://github.com/deepmind/scalable_agent
-	<img src="/RL/images/dist/impala.png" alt="drawing" width="700"/>
-	- V-trace: old policy mu (generated the trajectory), new policy pi
-	<img src="/RL/images/dist/impala2.png" alt="drawing" width="600"/>
+	- https://github.com/deepmind/scalable_agent \
+		<img src="/RL/images/dist/impala.png" alt="drawing" width="700"/>
+	- V-trace: old policy mu (generated the trajectory), new policy pi\
+		<img src="/RL/images/dist/impala2.png" alt="drawing" width="600"/>
 - T Salimans, J Ho, X Chen, S Sidor, I Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
 	<img src="/RL/images/dist/dist-rl-evo.png" alt="drawing" width="600"/>
 - **RLlib**: E Liang, R Liaw, P Moritz, R Nishihara, R Fox, K Goldberg, J E. Gonzalez, M I. Jordan, I Stoica. RLlib: Abstractions for Distributed Reinforcement Learning. ICML'18
-	- https://ray.readthedocs.io/en/latest/rllib.html
+	- https://ray.readthedocs.io/en/latest/rllib.html \
 		<img src="/RL/images/dist/rllib.png" alt="drawing" width="600"/>
 - **R2D2**: Steven Kapturowski, Georg Ostrovski, John Quan, Remi Munos, Will Dabney. Recurrent Experience Replay in Distributed Reinforcement Learning. ICLR'19
 - Dopamine: https://github.com/google/dopamine

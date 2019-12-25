@@ -49,3 +49,8 @@
 	- HMC: exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
 		<img src="/Basic-ML/images/mc/hmc.png" alt="drawing" width="400"/>
 	- Gibbs sampling velocity;
+
+## Unclassified
+- Graphical model inference: Sequential Monte Carlo meets deterministic approximations. NIPS'18
+- On Markov Chain Gradient Descent. NIPS'18
+- On Learning Markov Chains. NIPS'18

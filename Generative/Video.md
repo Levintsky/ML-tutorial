@@ -23,20 +23,15 @@
 	- Image-to-image translation
 	- 1. Pose detection [5, 27, 35]: keypoints and lines between connected joints
 	- 2. Global pose normalization: different people has different portion, linear mapping;
-	- 3. Mapping from normalized pose stick figures to the target subject: pix2pixHD
-	<img src="/Generative/images/video/every-dance1.png" alt="drawing" width="600"/>
-
-	- Loss design: pix2pixHD; D1, D2, D3: multi-scale
-	<img src="/Generative/images/video/every-dance2.png" alt="drawing" width="600"/>
-
-	- Temporal smoothness:
-	<img src="/Generative/images/video/every-dance3.png" alt="drawing" width="500"/>
-
-	- Face GAN:
-	<img src="/Generative/images/video/every-dance4.png" alt="drawing" width="500"/>
-
-	- Full objective:
-	<img src="/Generative/images/video/every-dance5.png" alt="drawing" width="500"/>	
-
+	- 3. Mapping from normalized pose stick figures to the target subject: pix2pixHD\
+		<img src="/Generative/images/video/every-dance1.png" alt="drawing" width="600"/>
+	- Loss design: pix2pixHD; D1, D2, D3: multi-scale:\
+		<img src="/Generative/images/video/every-dance2.png" alt="drawing" width="600"/>
+	- Temporal smoothness:\
+		<img src="/Generative/images/video/every-dance3.png" alt="drawing" width="500"/>
+	- Face GAN:\
+		<img src="/Generative/images/video/every-dance4.png" alt="drawing" width="500"/>
+	- Full objective:\
+		<img src="/Generative/images/video/every-dance5.png" alt="drawing" width="500"/>	
 - T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
 - D. Chen, J. Liao, L. Yuan, N. Yu, and G. Hua. Coherent online video style transfer. ICCV'17

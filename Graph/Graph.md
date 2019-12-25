@@ -129,3 +129,10 @@
 objects and their relations from entangled scene representations. ICLR Workshop 2017
 - Garcia, V. and Bruna, J. Few-shot learning with graph neural networks. ICLR 2017
 - Bordes, A., Usunier, N., Garcia-Duran, A., Weston, J., and Yakhnenko, O. Translating embeddings for modeling multi-relational data. NIPS 2013
+
+## Unclassified
+- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
+- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
+- Link Prediction Based on Graph Neural Networks. NIPS'18
+- Hierarchical Graph Representation Learning with Differentiable Pooling (Jure Leskovec). NIPS'18
+- LinkNet: Relational Embedding for Scene Graph. NIPS'18

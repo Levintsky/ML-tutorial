@@ -5,6 +5,9 @@
 	- B. Lake, R. Salakhutdinov, J. Gross, and J. Tenenbaum. One shot learning of simple visual concepts. 2011
 	- B. M. Lake, R. R. Salakhutdinov, and J. Tenenbaum. Oneshot learning by inverting a compositional causal process. NIPS 2013
 
+## Unclassified
+- TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS'18
+
 ## Low-Shot (FAIR)
 - Feature halucination:
 	- B. Hariharan and R. Girshick. Low-shot visual recognition by shrinking and hallucinating features. ICCV 2017
@@ -18,3 +21,4 @@
 - S. Rahman, S. Khan, and F. Porikli. Zero-shot object detection: Learning to simultaneously recognize and localize
 novel concepts. 2018
 - P. Zhu, H. Wang, T. Bolukbasi, and V. Saligrama. Zero-shot detection. 2018
+- Berkeley. Generalized Zero-Shot Learning with Deep Calibration Network. NIPS'18

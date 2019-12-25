@@ -82,6 +82,7 @@
 		- **Difficulty** with weight constraint: Capacity underuse; Exploding and vanishing gradients; 
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
 			<img src = '/Generative/images/gan/wgan-gp.png' width='500'>
+	- Cambridge. Banach Wasserstein GAN. NIPS'18
 - Attention, Transformer:
 	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
@@ -210,12 +211,15 @@
 	- Conclusion 1: Both gradient penalties (GAN-GP and DRAGAN-NS) help when training non-saturating GANs, by making the models more robust to hyperparameters.
 	- The non-saturating GAN trained with gradient penalties produces better sample (IS)
 	- WGAN-GP models perform best on Color MNIST and CIFAR-10.
+- Lars Mescheder, Andreas Geiger, and Sebastian Nowozin. Which training methods for GANs do actually converge? ICML'18.
 - A Odena, J Buckman, C Olsson, T B. Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
 	- Follow Pennington et al., 2017 to analyze Jacobian;
 	- Jacobian generally becomes ill-conditioned at the beginning of training: a good cluster in which the condition number stays the same or even gradually decreases, and a "bad cluster", in which the condition number continues to grow
 	- that the average (with z ∼ p(z)) conditioning of the generator is highly predictive of IS and FID;
 	- Propose to use Jacobian loss:\
 		<img src = '/Generative/images/gan/causal-gan.png' width = '400'>
+- A Convex Duality Framework for GANs. NIPS'18
+- Are GANs Created Equal? A Large-Scale Study. NIPS'18
 
 ## Unclassified	
 - E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS'15.
@@ -248,7 +252,12 @@
 	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
 		- q(z|x) and p(z) adversarial loss (encoded latent)
 		- Reconstruction loss:\
-		<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
+			<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
+- Graphical Generative Adversarial Networks. NIPS'18
+- Yair Weiss. On GANs and GMMs. NIPS'18
+
+## Multi-Modal
+- Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
 
 ## Feature Learning
 - Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
@@ -257,9 +266,6 @@
 
 ## Variational
 - Sebastian Nowozin, Botond Cseke, and Ryota Tomioka. **f-GAN**: Training generative neural samplers using variational divergence minimization. NIPS 2016
-
-## Analysis
-- Lars Mescheder, Andreas Geiger, and Sebastian Nowozin. Which training methods for GANs do actually converge? In ICML, 2018.
 
 ## RL, Imitation Learning
 - Merel, J., Tassa, Y., Srinivasan, S., Lemmon, J., Wang, Z., Wayne, G., and Heess, N. Learning human behaviors from motion capture by adversarial imitation. arXiv preprint arXiv:1707.02201, 2017.

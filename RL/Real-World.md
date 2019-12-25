@@ -3,7 +3,6 @@
 ## From Spinning Up
 - Benchmarking Reinforcement Learning Algorithms on Real-World Robots, Mahmood et al, 2018.
 - QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation, Kalashnikov et al, 2018. Algorithm: QT-Opt.
-- Jason Gauci, Edoardo Conti, Yitao Liang, Kittipat Virochsiri, Yuchen He, Zachary Kaden, Vivek Narayanan, Xiaohui Ye, Zhengxing Chen, Scott Fujimoto. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
 
 ## Berkeley
 - C. Finn, X. Y. Tan, Y. Duan, T. Darrell, S. Levine, and P. Abbeel. Learning visual feature spaces for robotic manipulation with deep spatial autoencoders. arxiv, 2015.
@@ -32,6 +31,9 @@
 - Simulation only:
 	- Y. Bai and C. K. Liu. Dexterous manipulation using both palm and fingers. ICLR'14
 	- I. Mordatch, Z. Popovic, and E. Todorov. Contact-invariant optimization for hand manipulation. SCA'12
+
+## Robotics
+- Robot Learning in Homes: Improving Generalization and Reducing Dataset Bias. NIPS'18 Tutorial
 
 ## Legacy
 - L.-J. Lin. Reinforcement learning for robots using neural networks. No. CMU-CS-93-103. Carnegie-Mellon Univ Pittsburgh PA School of Computer Science, 1993.

@@ -7,22 +7,16 @@
 - Alpha Go:
 	- **AlphaGo**: D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. van den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, S. Dieleman, J. Nham, N. Kalchbrenner, I. Sutskever, T. Lillicrap, M. Leach, K. Kavukcuoglu, T. Graepel, and D. Hassabis. Mastering the game of go with deep neural networks and tree search. Nature'14
 	- **AlphaGo Zero**: D Silver, J Schrittwieser, K Simonyan, I Antonoglou, A Huang, A Guez, T Hubert, L Baker, M Lai, A Bolton, Y Chen, T Lillicrap, F Hui, L Sifre, G v d Driessche, T Graepel, D Hassabis. Mastering the game of Go without human knowledge. Nature'17
-		- The system:
-		<img src="/RL/images/chess/agz1.png" alt="drawing" width="600"/>
-
-		- MCTS:
-		<img src="/RL/images/chess/agz2.png" alt="drawing" width="600"/>
-		<img src="/RL/images/chess/agz3.png" alt="drawing" width="400"/>
-
+		- The system:\
+			<img src="/RL/images/chess/agz1.png" alt="drawing" width="600"/>
+		- MCTS:\
+			<img src="/RL/images/chess/agz2.png" alt="drawing" width="600"/>
+			<img src="/RL/images/chess/agz3.png" alt="drawing" width="400"/>
 	- **AlphaZero**: D Silver, T Hubert, J Schrittwieser, I Antonoglou, M Lai, A Guez, M Lanctot, L Sifre, D Kumaran, T Graepel, T Lillicrap, K Simonyan, D Hassabis. A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science'19
-- PhoenixGo
-	- https://github.com/Tencent/PhoenixGo
-- MuGo
-	- https://github.com/brilee/MuGo
-- Leela
-	- https://github.com/gcp/leela-zero
-- MiniGo:
-	- https://github.com/tensorflow/minigo
+- PhoenixGo: https://github.com/Tencent/PhoenixGo
+- MuGo: https://github.com/brilee/MuGo
+- Leela: https://github.com/gcp/leela-zero
+- MiniGo: https://github.com/tensorflow/minigo
 - ELF:
 	- Y. Tian and Y. Zhu. Better computer go player with neural network and long- term prediction. arxiv, 2015.
 	- Y Tian, J Ma, Q Gong, S Sengupta, Z Chen, J Pinkerton, L Zitnick. ELF OpenGo: an analysis and open reimplementation of AlphaZero. ICML'19
@@ -34,10 +28,10 @@
 	- C. Maddison, A. Huang, I. Sutskever, and D. Silver. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
 	- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML'15.
 
-# Gammon
+## Gammon
 - Gerald Tesauro. Temporal difference learning and td-gammon. Communications of the ACM, 38(3):58–68, 1995.
 
-# Poker (Texas Hod'em)
+## Poker (Texas Hod'em)
 - Imperfect information Game
 - **CFR** (Counterfactural Regret Minimization)
 	- A great summary (Ricson): http://modelai.gettysburg.edu/2013/cfr/
@@ -52,6 +46,7 @@
 	- Libratus: The Superhuman AI for No-Limit Poker, IJCAI 2017
 	- Reduced Space and Faster Convergence in Imperfect-Information Games via Pruning, ICML'17
 	- N Brown, T Sandholm, and B Amos. Depth-Limited Solving for Imperfect-Information Games. NIPS'18
+	- Tuomas Sandholm. Practical exact algorithm for trembling-hand equilibrium refinements in games. NIPS'18
 	- N Brown, A Lerer, S Gross, T Sandholm. Deep Counterfactual Regret Minimization. AAAI'19
 	- G Farina, C Kroer, N Brown, T Sandholm. Stable-Predictive Optimistic Counterfactual Regret Minimization. ICML'19
 	- Superhuman AI for multiplayer poker. Science'19

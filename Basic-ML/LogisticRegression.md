@@ -16,5 +16,8 @@
 	- G: p(x, y\|w)
 
 ## Generalized Linear Models
-- Exponential Family:
+- Exponential Family:\
 	<img src="/Basic-ML/images/glinear.png" alt="drawing" width="500"/>
+
+## Unclassified
+- On Coresets for Logistic Regression. NIPS'18

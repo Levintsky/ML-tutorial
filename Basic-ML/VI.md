@@ -13,6 +13,8 @@
 	- M-step: argmax_theta Q(theta, theta_old)
 - EM Theory:
 	<img src="/Basic-ML/images/VI/em1.png" alt="drawing" width="600"/>
+- Modern:
+	- Benefits of over-parameterization with EM. NIPS'18
 
 ## VI Basics:
 - MCMC:
@@ -22,7 +24,7 @@
 	- ELBO(q) = E(log p(z, x)) - E(log q(z))
 
 ## Mean Field
-- Mean field
+- Mean field\
 	<img src="/Basic-ML/images/VI/mean-field1.png" alt="drawing" width="200"/>
 - LDA:
 
@@ -49,3 +51,32 @@
 
 ## Theory
 - Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18
+
+## Unclassified
+- DropMax: Adaptive Variational Softmax. NIPS'18
+- Latent Alignment and Variational Attention. NIPS'18
+- Topic Modeling
+	- Distilled Wasserstein Learning for Word Embedding and Topic Modeling (Lawrence Carin) NIPS'18
+	- Dirichlet belief networks for topic structure learning NIPS'18
+- Stein Variational Gradient Descent as Moment Matching NIPS'18
+- Improving Explorability in Variational Inference with Annealed Variational Objectives (MILA) NIPS'18
+- Mean-field theory of graph neural networks in graph partitioning NIPS'18
+- Regret bounds for meta Bayesian optimization with an unknown Gaussian process prior (MIT) NIPS'18
+- Eric Xing. DAGs with NO TEARS: Continuous Optimization for Structure Learning, NIPS'18
+- GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration, NIPS'18
+- Coupled Variational Bayes via Optimization Embedding (Le Song) NIPS'18
+- Discretely Relaxing Continuous Variables for tractable Variational Inference NIPS'18
+- Cluster Variational Approximations for Structure Learning of Continuous-Time Bayesian Networks from Incomplete Data NIPS'18
+- A Stein variational Newton method NIPS'18
+- Wasserstein Variational Inference NIPS'18
+- Variational Inference with Tail-adaptive f-Divergence NIPS'18
+- Boosting Black Box Variational Inference NIPS'18
+- Using Large Ensembles of Control Variates for Variational Inference NIPS'18
+- Streamlining Variational Inference for Constraint Satisfaction Problems NIPS'18
+- Importance Weighting and Variational Inference NIPS'18
+- Orthogonally Decoupled Variational Gaussian Processes NIPS'18
+- Improving Explorability in Variational Inference with Annealed Variational Objectives NIPS'18
+- Amortized Inference
+	- Amortized Inference Regularization. NIPS'18
+	- A General Method for Amortizing Variational Filtering. NIPS'18
+	- **Faithful Inversion of Generative Models for Effective Amortized Inference**. NIPS'18

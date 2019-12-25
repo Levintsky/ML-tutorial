@@ -1,20 +1,20 @@
 # Model-based RL
 
+## From Spinningup
+- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
+- Model given: AlphaGo, Exit;
+
 ## Sergey Levine
-- Known dynamics (lec-11)
-<img src="/RL/images/mbrl/mbrl1.png" alt="drawing" width="500"/>
-
+- Known dynamics (lec-11)\
+	<img src="/RL/images/mbrl/mbrl1.png" alt="drawing" width="500"/>
 - Linear case:
-	- LQR: linear transition, quadratic cost
-	<img src="/RL/images/mbrl/mbrl2.png" alt="drawing" width="600"/>
-
-	- Solved with backward recursion
-	<img src="/RL/images/mbrl/mbrl3.png" alt="drawing" width="550"/>
-
+	- LQR: linear transition, quadratic cost\
+		<img src="/RL/images/mbrl/mbrl2.png" alt="drawing" width="600"/>
+	- Solved with backward recursion\
+		<img src="/RL/images/mbrl/mbrl3.png" alt="drawing" width="550"/>
 - Nonlinear case: DDP/iterative LQR
-	- iLQR
-	<img src="/RL/images/mbrl/mbrl4.png" alt="drawing" width="550"/>
-
+	- iLQR\
+		<img src="/RL/images/mbrl/mbrl4.png" alt="drawing" width="550"/>
 - Learn dynamics (lec-12)
 	- Uncertainty-aware models
 	- Aleatoric or statistical uncertainty
@@ -25,25 +25,26 @@
 
 ## Learn a Model
 - **I2A**: T Weber, S Racanière, D Reichert, L Buesing, A Guez, D Rezende, A Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
+	- Framework:\
+		<img src="/RL/images/mbrl/i2a-1.png" alt="drawing" width="550"/>
+		<img src="/RL/images/mbrl/i2a-2.png" alt="drawing" width="550"/>
+	- Game: Sokoban;
 - World Model
 	- **Navigation**: Z Guo, M G Azar, B Piot, B A. Pires, T Pohlen, R Munos. Neural Predictive Belief Representations, ICLR'19
 		- 1-step frame prediction
 		- Two variants of Contrastive-Predictive Coding (CPC), CPC|Action
-		- DeepMind Lab
-		<img src="/RL/images/mbrl/cpc.png" alt="drawing" width="550"/>
-
+		- DeepMind Lab\
+			<img src="/RL/images/mbrl/cpc.png" alt="drawing" width="550"/>
 - J. Oh, X. Guo, H. Lee, R. Lewis, and S.Singh. Action-conditional video prediction using deep networks in atari games. arxiv, 2015.
 - D Ha, J Schmidhuber. Recurrent World Models Facilitate Policy Evolution， NIPS'18
 	- VAE to encode frames for compression and regularization
 	- RNN to Predict next step
 	- Game: CarRacing, 
-	- https://worldmodels.github.io
-	<img src="/RL/images/mbrl/r-world.png" alt="drawing" width="550"/>
-
+	- https://worldmodels.github.io \
+		<img src="/RL/images/mbrl/r-world.png" alt="drawing" width="550"/>
 - Ł Kaiser, M Babaeizadeh, P Miłos, B Osinski, R H Campbell, K Czechowski, D Erhan, C Finn, P Kozakowski, S Levine, R Sepassi, G Tucker, H Michalewski. Model Based Reinforcement Learning for Atari. 2019
-	- SimPLe
-	<img src="/RL/images/mbrl/mbrl-atari1.png" alt="drawing" width="550"/>
-
+	- SimPLe\
+		<img src="/RL/images/mbrl/mbrl-atari1.png" alt="drawing" width="550"/>
 	- https://ai.googleblog.com/2019/03/simulated-policy-learning-in-video.html
 	- Open sourced at https://github.com/tensorflow/tensor2tensor
 	- Main loop:
@@ -53,9 +54,8 @@
 	- World model: feed-forward CNN
 		- Input 4 frames
 		- Output: predicts next frame (256 softmax)
-		- Output: Reward
-		<img src="/RL/images/mbrl/mbrl-atari2.png" alt="drawing" width="550"/>
-
+		- Output: Reward\
+			<img src="/RL/images/mbrl/mbrl-atari2.png" alt="drawing" width="550"/>
 	- RL:
 		- PPO
 	- Experiment: 100k interactions;
@@ -101,13 +101,21 @@
 	- I. Osband. Risk versus uncertainty in deep learning: Bayes, bootstrap and the dangers of dropout. NIPSW'16
 	- I. Osband, C. Blundell, A. Pritzel, and B. Van Roy. Deep exploration via bootstrapped DQN. NIPS'16
 	- C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger. On calibration of modern neural networks. ICML'17
-- **MBMF**: Somil Bansal Roberto Calandra Kurtland Chua Sergey Levine Claire Tomlin. Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
-- V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
+- **MBMF**: Somil Bansal Roberto Calandra Kurtland Chua Sergey Levine Claire Tomlin. MBMF: Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
+	- Learn a probabilistic dynamics model and leveraging it as a prior for the intertwined model-free optimization;\
+		<img src="/RL/images/mbrl/mbmf.png" alt="drawing" width="550"/>
+- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
+	- Insight: approximate, few-step simulation of a reward- dense environment
+	- Problem setup: continuous state and action;
+	- RL: AC, on-policy; (IS not required)\
+		<img src="/RL/images/mbrl/mve.png" alt="drawing" width="550"/>
+- **ME-TRPO**: Kurutach. Model-Ensemble Trust-Region Policy Optimization. 2018
 - **PETS**: K Chua, R Calandra, R McAllister, S Levine. Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models. NIPS'18
 	- **SOA**!
-	- https://github.com/kchua/handful-of-trials
-	<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
-- J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
+	- https://github.com/kchua/handful-of-trials \
+		<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
+- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
+- **MB-MPO**: Clavera. Model-Based Reinforcement Learning via Meta-Policy Optimization. 2018
 - **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M J. Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
 
 ## Legacy

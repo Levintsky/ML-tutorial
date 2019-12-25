@@ -37,7 +37,6 @@
 	- DSL (Domain specific language)
     - Program search: neural network
     - EC2 (ECC, for Explore/Compress/Compile)
-- Learning Loop Invariants for Program Verification (Le Song)
 - DeepProbLog: Neural Probabilistic Logic Programming
 - **Improving Neural Program Synthesis with Inferred Execution Traces (Dawn Song)**
 - Le Song, Learning Loop Invariants for Program Verification, NIPS 2018

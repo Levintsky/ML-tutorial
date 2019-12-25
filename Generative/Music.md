@@ -36,3 +36,7 @@
 
 ## OpenAI
 - MuseNet
+
+## Unclassified
+- DeepMind. The challenge of realistic music generation: modelling raw audio at scale. NIPS'18
+- Francis Bach. SING: Symbol-to-Instrument Neural Generator. NIPS'18

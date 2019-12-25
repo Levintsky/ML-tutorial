@@ -8,6 +8,7 @@
 - G Toderici, D Vincent, N Johnston, S Hwang, D Minnen, J Shor, and M Covell. Full resolution image compression with recurrent neural networks. CVPR'17
 - F Mentzer, E Agustsson, M Tschannen, R Timofte, and L Gool. Conditional probability models for deep image compression. CVPR'18
 - J Balle, D Minnen, S Singh, S Hwang, and N Johnston. Variational image compression with a scale hyperprior. ICLR'18
+- Mobile-Net. NIPS'18
 - J Lee, S Cho, and S Beack. Context-adaptive entropy model for end-to-end optimized image compression. ICLR'19
 - H Liu, T Chen, P Guo, Q Shen, X Cao, Y Wang, and Z Ma. Non-local Attention Optimized Deep Image Compression. 2019.
 

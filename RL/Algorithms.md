@@ -7,7 +7,7 @@
 - Chinese:
 	- https://zhuanlan.zhihu.com/sharerl
 	- https://zhuanlan.zhihu.com/p/68205048
-- Open-AI Baselines
+- Open-AI Baselines:
 	- https://github.com/openai/baselines
 	- A2C, ACER, ACKTR / DDPG / DQN / GAIL / HER
 	- PPO1 (Multi-CPU using MPI), PPO2 (Optimized for GPU), TRPO
@@ -28,16 +28,24 @@
 - Shane Gu: https://github.com/shaneshixiang/rllabplusplus
 - Berkeley RL: https://github.com/rll/rllab
 - GA3C: https://github.com/NVlabs/GA3C
+- Model-free RL from Spinningup:
+	- DQN: DQN, DRQN; Duel DQN; PER; Rainbow;
+	- PG: A3C, TRPO, GAE, PPO, ACKTR, ACER, SAC;
+	- DPG: DPG, DDPG, TD3;
+	- Distributional: C51, QR-DQN, IQN, Dopamine;
+	- Action-dependent: Q-prop, Stein control, mirage;
+	- PCL: PCL, Trust-PCL;
+	- Other continuous combine pg and q: PGQL, Reactor, IPG, equivalence between...;
+	- Evolutionary: ES;
 
 ## Policy Gradient
-- Basic PG (from Sergey Levine CS-294)
+- Basic PG (from Sergey Levine CS-294)\
 	<img src="/RL/images/algos/pg.png" alt="drawing" width="600"/>
 
-	- **Baseline for variance reduction**:
-	<img src="/RL/images/algos/pg-baseline.png" alt="drawing" width="600"/>
-
-	- **IS, off-policy PG**:
-	<img src="/RL/images/algos/pg-is.png" alt="drawing" width="600"/>
+	- **Baseline for variance reduction**:\
+		<img src="/RL/images/algos/pg-baseline.png" alt="drawing" width="600"/>
+	- **IS, off-policy PG**:\
+		<img src="/RL/images/algos/pg-is.png" alt="drawing" width="600"/>
 - Advantages:
 	- On-Policy
 	- Better Convergence
@@ -79,11 +87,11 @@
 - Fisher Information Matrix:
 	- PSD (positive semi-definite);
 - J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature.
-	- Assumption: FC (si = Wi\* ai) + non-linear (ai = phi(si)), then DWi=gi x ai-1, Fisher:
-	<img src="/RL/images/algos/k-fac1.png" alt="drawing" width="400"/>
-	- Approx: 
-	<img src="/RL/images/algos/k-fac2.png" alt="drawing" width="400"/>
-- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. In ICML, 2016.
+	- Assumption: FC (si = Wi\* ai) + non-linear (ai = phi(si)), then DWi=gi x ai-1, Fisher:\
+		<img src="/RL/images/algos/k-fac1.png" alt="drawing" width="400"/>
+	- Approx:\
+		<img src="/RL/images/algos/k-fac2.png" alt="drawing" width="400"/>
+- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
 - James Martens. New insights and perspectives on the natural gradient method. 2017
 	- Geometric interpretation: the steepest change of KL(P(theta+d)||P(theta)), locally symmetric;
 
@@ -153,16 +161,23 @@
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
 		<img src="/RL/images/gae.png" alt="drawing" width="600"/>
 	- **ACER**: Ziyu Wang, Victor Bapst, Nicolas Heess, Volodymyr Mnih, Remi Munos, Koray Kavukcuoglu, Nando de Freitas. Sample Efficient Actor-Critic with Experience Replay. ICLR'17
-		- AC with off-policy, IS
-		- Available in OpenAI baselines
+		- AC with off-policy, IS;
+		- Available in OpenAI baselines;
 	- **ACKTR**: Yuhuai Wu, Elman Mansimov, Shun Liao, Roger Grosse, Jimmy Ba. Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
 		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
-	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. 2018
-		- Continuous control;
+	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. ICML'18
+		- Insight: succeed while as random as possible; 1. separate network for policy and value; 2. off-policy AC; 3. Entropy max;
+		- Problem setup: Continuous control;
+		- Algorithm: off-policy actor-critic;
 		- https://github.com/vitchyr/rlkit
+		- Formulation: J(pi) = sum r(st,at) + alpha H(pi(.|st))
+		- Lemma 1: formulation equivalent with soft Bellman (converge when infinity);
+		- Lemma 2: project back to pi' = argmin KL(pi'(.|st), exp(Q(pi-old))/Z-old) guarantees improvement;
+		- Theory 3: soft policy iteration + projection converge to optimal;
 		- Policy update: policy-loss = alpha log(pi) - Q(s, pi(s))
 		- Value update: target value = r + gamma q_target(s', pi(s'))
-		<img src="/RL/images/algos/sac.png" alt="drawing" width="400"/>
+		- With V(.;psi), V(.;psi') as value network (original and target), Q(s,a;theta), pi(.|s,phi), SAC alg:\
+			<img src="/RL/images/algos/sac.png" alt="drawing" width="400"/>
 
 ## Value Function, Q-learning
 - Basics (Sergey Levine, CS-294):\
@@ -187,18 +202,18 @@
 - More modern techniques:
 	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
 	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
-	- **Recurrent-DQN**: Matthew Hausknecht, Peter Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
+	- **DRQN**: Matthew Hausknecht, Peter Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
 		- Could bootstrap from start of the episode or random point;\
-		<img src="/RL/images/algos/drqn.png" alt="drawing" width="400"/>
+			<img src="/RL/images/algos/drqn.png" alt="drawing" width="400"/>
 	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
 		- Prioritizing with TD-error
 		- Implement with a heap\
-		<img src="/RL/images/algos/per.png" alt="drawing" width="400"/>
+			<img src="/RL/images/algos/per.png" alt="drawing" width="400"/>
 	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
 		- Two heads for value function;
 		- One for state value;
-		- One for state-dependent action advantage function;
-		<img src="/RL/images/algos/duel.png" alt="drawing" width="400"/>
+		- One for state-dependent action advantage function;\
+			<img src="/RL/images/algos/duel.png" alt="drawing" width="400"/>
 	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
 	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
 		- Double Q-learning
@@ -213,20 +228,17 @@
 		- PCQL: Q-learning (model-free)
 - Continuous:
 	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
-		- SVG(0): model free
-		<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
-
-		- SVG(1): one-step dynamics
-		<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
-
-		- SVG(inf)
-		<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+		- SVG(0): model free\
+			<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
+		- SVG(1): one-step dynamics\
+			<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
+		- SVG(inf)\
+			<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
 		- https://github.com/ghliu/pytorch-ddpg
-		- A deep variant of DPG
-		<img src="/RL/images/algos/ddpg.png" alt="drawing" width="500"/>
-
+		- A deep variant of DPG\
+			<img src="/RL/images/algos/ddpg.png" alt="drawing" width="500"/>
 		- 1. ddpg class;
 			- Actor, actor-target, actor optimizer
 			- Critic, critic-target, critic optimizer
@@ -243,11 +255,11 @@
 		<img src="/RL/images/algos/double-q.png" alt="drawing" width="500"/>
 	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
 		- https://github.com/sfujim/TD3
-		- Clipped Double Q-learning: actor x1,  critic x 2 (not the target), target also has two critic;
+		- Clipped Double Q-learning: actor x1,  critic x2 (not the target), target also has two critic;
 		- For value iteration: y = r + min(Q1(s', a'), Q2(s', a'))
 		- Delayed Policy update: at lower frequency;
-		- Sync actor/critic target with current at even lower frequency;
-		<img src="/RL/images/algos/TD3.png" alt="drawing" width="400"/>
+		- Sync actor/critic target with current at even lower frequency;\
+			<img src="/RL/images/algos/TD3.png" alt="drawing" width="400"/>
 
 ## Unclassified
 - **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
@@ -259,7 +271,7 @@
 	- **C51**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
 		- Q(s, a) from scalar to a categorical 51 classes (linear between v-min to v-max)
 		- Do KL divergence training between Q(st, at) and r(st, at) + max_a Q(st+1, a), when take argmax action, just calculate expectation (marginalize 51 categories);\
-		<img src="/RL/images/algos/c51.png" alt="drawing" width="400"/>
+			<img src="/RL/images/algos/c51.png" alt="drawing" width="400"/>
 	- **QR-DQN**: Will Dabney, Mark Rowland, Marc G. Bellemare, Rémi Munos. Distributional Reinforcement Learning with Quantile Regression. AAAI'18\
 		<img src="/RL/images/algos/qr-dqn.png" alt="drawing" width="400"/>
 	- **IQN**: Will Dabney, Georg Ostrovski, David Silver, Remi Munos. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
@@ -289,8 +301,11 @@
 		- Claims V(s,a) style does not reduce variance
 - PCL:
 	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
-		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches
-		<img src="/RL/images/algos/pcl.png" alt="drawing" width="600"/>
+		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches:
+		- Entropy O(s,pi)=O-old(s,pi) + H(s,pi) with **discounted entropy regularizer**\
+		- H(s, pi) = entropy(pi|s) - gamma \* entropy(pi|s')
+		- Theory: correctness with control inference;\
+			<img src="/RL/images/algos/pcl.png" alt="drawing" width="600"/>
 	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
 - PG + Q-Learning:
 	- O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
@@ -302,4 +317,24 @@
 ## Evoluation Strategy
 - https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html
 - **CMA-ES**: Nikolaus Hansen and Andreas Ostermeier. Completely derandomized self-adaptation in evolution strategies. Evolutionary computation, 9(2):159–195, 2001
-- Tim Salimans, Jonathan Ho, Xi Chen, Szymon Sidor, Ilya Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+	- a population of parameter vectors (“genotypes”) is perturbed "mutated" 
+	- and their objective function value (“fitness”) is evaluated.
+	- The highest scoring parameter vectors are then recombined to form the population for the next generation, and this procedure is iterated until the objective is fully optimized;
+	- Successful in optimization in low-medium dimension;
+- **NES**:
+	- Daan Wierstra, Tom Schaul, Jan Peters, and Juergen Schmidhuber. Natural evolution strategies. 2008
+	- Daan Wierstra, Tom Schaul, Tobias Glasmachers, Yi Sun, Jan Peters, and Jürgen Schmidhuber. Natural evolution strategies. JMLR'14
+- **ES**: Tim Salimans, Jonathan Ho, Xi Chen, Szymon Sidor, Ilya Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+	- ES and parallel version:
+		<img src="/RL/images/algos/es1.png" alt="drawing" width="450"/>
+		<img src="/RL/images/algos/es2.png" alt="drawing" width="450"/>
+	- Adaptive stepsize does not help;
+	- Comparison with PG:\
+		<img src="/RL/images/algos/es3.png" alt="drawing" width="400"/>
+	- Experiments: 3D humanoid walking in 10 minute, competitive on Atari;
+- Legacy:
+	- I. Rechenberg and M. Eigen. Evolutionsstrategie: Optimierung Technischer Systeme nach Prinzipien der Biologischen Evolution. 1973
+	- H.-P. Schwefel. Numerische optimierung von computer-modellen mittels der evolutionsstrategie. 1977
+	- Juergen Schmidhuber and Jieyu Zhao. Direct policy search and uncertain policy evaluation. 1998
+	- Sebastian Risi and Julian Togelius. Neuroevolution in games: State of the art and open challenges. 2015
+- **Evolved Policy Gradients (OpenAI)**

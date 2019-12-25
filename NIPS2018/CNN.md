@@ -1,11 +1,6 @@
 # CNN
 
-## CNN
-- Invertibility of Convolutional Generative Networks from Partial Measurements (MIT)
-- An intriguing failing of convolutional neural networks and the CoordConv solution (Uber)
-
 ## Pruning
-- Mobile-Net
 - Synaptic Strength For Convolutional Neural Network
 
 ## Attention

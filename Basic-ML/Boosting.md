@@ -4,17 +4,14 @@
 - Packages of split finding:
 	- **scikit-learn**: Scikit-learn: Machine learning in Python. JMLR'11
 	- **gbm**: G. Ridgeway. Generalized Boosted Models: A guide to the gbm package.
-- Split
-<img src="/Basic-ML/images/boosting/cart1.png" alt="drawing" width="600"/>
-
-- Exact optimal split finding of m dimension n instances: O(mn) + O(mlogn) sorting:
-<img src="/Basic-ML/images/boosting/cart2.png" alt="drawing" width="600"/>
-
-- Approximate optimal split finding: percentile. 1. global: propose candidates once at beginning; 2. local: recalculate everytime; **Weighted-Quantile sketch** to propose candidates; 
-<img src="/Basic-ML/images/boosting/cart3.png" alt="drawing" width="600"/>
-
-- Sparsity-aware split finding:
-<img src="/Basic-ML/images/boosting/cart4.png" alt="drawing" width="550"/>
+- Split\
+	<img src="/Basic-ML/images/boosting/cart1.png" alt="drawing" width="600"/>
+- Exact optimal split finding of m dimension n instances: O(mn) + O(mlogn) sorting:\
+	<img src="/Basic-ML/images/boosting/cart2.png" alt="drawing" width="600"/>
+- Approximate optimal split finding: percentile. 1. global: propose candidates once at beginning; 2. local: recalculate everytime; **Weighted-Quantile sketch** to propose candidates;\ 
+	<img src="/Basic-ML/images/boosting/cart3.png" alt="drawing" width="600"/>
+- Sparsity-aware split finding:\
+	<img src="/Basic-ML/images/boosting/cart4.png" alt="drawing" width="550"/>
 
 ## Boosting
 - **XG-Boost**: Tianqi Chen, Carlos Guestrin. XGBoost: A Scalable Tree Boosting System, KDD 2016
@@ -32,6 +29,7 @@
 	- Exponential loss exp(-yif(xi)|: AdaBoost
 	- Logloss log(1+exp(-yif(xi))): LogitBoost
 	- H(x) = sgn(h1(x)+h2(x)+h3(x)+...)
+- Zhihua Zhou. Multi-Layered Gradient Boosting Decision Trees. NIPS'18
 
 ## Legacy
 - J. Friedman. Greedy function approximation: a gradient boosting machine. Annals of Statistics. 2001
