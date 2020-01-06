@@ -8,11 +8,6 @@
 - Planning: prediction + routing;
 - Control;
 
-## Benchmarks
-- Kitti;
-- TOR4D;
-- **nuscenes**: Holger Caesar, Varun Bankiti, Alex H. Lang, Sourabh Vora, Venice Erin Liong, Qiang Xu, Anush Krishnan, Yu Pan, Giancarlo Baldan, and Oscar Beijbom. nuscenes: A multimodal dataset for autonomous driving. 2019
-
 ## Simulators
 - Baidu: AADS
 - Intel: CARLA

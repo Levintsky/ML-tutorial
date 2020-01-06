@@ -8,9 +8,6 @@
 	- Ruben M. Smelik, Tim Tutenel, Rafael Bidarra, and Bedrich Benes. 2014. A Survey on Procedural Modelling for Virtual Worlds. Computer Graphics Forum'14\
 		<img src = '/Generative/images/pm/survey.png' width = '600'>
 
-## Benchmarks
-- Shenlong Wang, Min Bai, Gellert Mattyus, Hang Chu, Wenjie Luo, Bin Yang, Justin Liang, Joel Cheverie, Sanja Fidler, Raquel Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
-
 ## Legacy
 - **L-System**: Aristid Lindenmayer. Mathematical models for cellular interactions in development. Journal of theoretical biology 1968
 	- First PM paper;
