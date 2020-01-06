@@ -31,6 +31,10 @@
 		- Lane graph connection: predecessor, successor, left/right neighbor;
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
+- DeepSignals: Predicting Intent of Drivers Through Visual Attributes [ICRA’19, D Frossard]
+- Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
+- PnP with Radar [Benson Guo];
+- Multimodal Trajectory Predictions for Autonomous Driving using Deep Convolutional Networks [ICRA'19, Pitts]
 
 ## Pure Prediction
 - Mayank Bansal, Alex Krizhevsky, and Abhijit S. Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18

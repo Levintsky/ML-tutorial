@@ -82,7 +82,7 @@
 			- Actions induce burden;
 		- Ignore rules: filter out actors following behind AV;
 			- Failure in lane changes and merges;
-	- A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
+	- **Current**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
 		- Behavior planning, Trajectory planning;
 		- Input: desired route, state of the world (av state, map, detected object);
 		- Output: high-level behavior b; trajectory tau;

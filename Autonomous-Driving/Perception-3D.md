@@ -76,6 +76,13 @@
 			- 2.2 Feature learning for box proposal refinement;
 			- 2.3 Losses for box proposal refinement\
 			<img src="/Autonomous-Driving/images/detection/point-rcnn3.png" alt="drawing" width="400"/>
+- Range view (cylindrical range images?):
+	- **VeloFCN**: B Li, T Zhang, and T Xia. Vehicle detection from 3D lidar using fully convolutional network. RSS'16
+	- G Meyer, A Laddha, E Kee, C Vallespi-Gonzalez, Carl K. Wellington. LaserNet: An Efficient Probabilistic 3D Object Detector for Autonomous Driving. CVPR'19
+		- 0. Range view;
+		- 1. FCN (class probability for each LIDAR point)
+		- 2. Mean-shift clustering for points; adaptive-NMS;
+	<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
 
 ## Methodology
 - Kernel:
@@ -91,11 +98,11 @@
 	- F. Monti, D. Boscaini, J. Masci, E. Rodola, J. Svoboda, and M. M. Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. CVPR'17.
 
 ## Misc
-- S Segal, E Kee, W Luo, E Yumer, R Urtasun. ScenarioNet: Universal Spatial Embeddings for Semantic Search in Self-Driving.
-	- Input: language query? Output: Search
-	- Backbone: Pixor
-	- Embedding for log;
-	- Attention + ranking;
+- FaF: Detection, Tracking and Motion Forecasting [CVPR'18, Wenjie];
+- OSIS: Identifying Unknown Instances [Kelvin Wong, Shenlong]
+	- Unseen: deer, … detect and group the point-clouds
+- Exemplar memory module for rare-seen object recognition [Mengfei Liu];
+- MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving [IV’18]
 
 ## Detection From 2D
 - B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
@@ -120,13 +127,6 @@
 	- Tasks:
 
 ## Detection from 3D Point-Clouds
-- Range view (cylindrical range images?):
-	- **VeloFCN**: B Li, T Zhang, and T Xia. Vehicle detection from 3D lidar using fully convolutional network. RSS'16
-	- G Meyer, A Laddha, E Kee, C Vallespi-Gonzalez, Carl K. Wellington. LaserNet: An Efficient Probabilistic 3D Object Detector for Autonomous Driving. CVPR'19
-		- 0. Range view;
-		- 1. FCN (class probability for each LIDAR point)
-		- 2. Mean-shift clustering for points; adaptive-NMS;
-	<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
 - 2D as a referral:
 	- D Xu, D Anguelov, and A Jain. Pointfusion: Deep sensor fusion for 3d bounding box estimation. CoRR'17
 - Voxelize:

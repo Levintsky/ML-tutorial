@@ -34,6 +34,12 @@
 	- Segmentation model: SegNet or PSP;
 	<img src="/Autonomous-Driving/images/vision2d/anomaly1.png" alt="drawing" width="450"/>
 	<img src="/Autonomous-Driving/images/vision2d/anomaly2.png" alt="drawing" width="450"/>
+- PolyTransform: Deep Polygon Transformer for Instance Segmentation [Justin Liang];
+- Level-Set R-CNN [Namdar];
+- Efficient Convolutions for Real-Time Semantic Segmentation of 3D Point Clouds [3DV’18, C Zhang]
+- Deep Parametric Continuous Convolutional Neural Networks [CVPR’18, Shenlong]
+- SurfConv: Bridging 3D and 2D Convolution for RGBD Images [CVPR’18, H Chu]
+- DeepRoadMapper: Extracting Road Topology From Aerial Images [ICCV’17, G Mattyus]
 
 ## Misc
 - Mengye Ren, Andrei Pokrovsky, Bin Yang, and Raquel Urtasun. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 

@@ -46,7 +46,10 @@
 	- Charlie Hou. Pix2Pix, GAN, ...
 - Mesh generation?
 - Lane graph: Ricson, Xinchen;
-- Traffic generation: Simon;
+- Traffic generation: Simon, Shenlong;
+- Pedestrian-Sim: Alyssa;
+- 3D-3D Style Transfer [Kibok];
+- 3D Reconstruction (objects): Weakly supervised shape completion [Jiayuan, Mini-Conf] Full shape from partial observation;
 
 ## General Data Generation
 - **Virtual-Kitti**: A. Gaidon, Q. Wang, Y. Cabon, and E. Vig. Virtual worlds as proxy for multi-object tracking analysis. CVPR'16
