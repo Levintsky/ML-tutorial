@@ -16,6 +16,11 @@
 	- Model: MBRL (LQR)
 	- Evaluated on synthetic example CARLA
 
+## End-to-End
+- ALVINN
+- NVIDIA
+- EndRun
+
 ## Dataset for Imitation Learning
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
