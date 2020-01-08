@@ -8,14 +8,12 @@
 - **SN-PatchGAN**: Yu, Z Lin, J Yang, X Shen, X Lu, T Huang. Free-Form Image Inpainting with Gated Convolution
 	- http://jiahuiyu.com/deepfill2
 	- Input: sketches as guidance;
-	- Improve on partial-conv on soft-gated conv;
-	<img src="/Graphics/images/sn-patchgan.png" alt="drawing" width="600"/>
-
+	- Improve on partial-conv on soft-gated conv;\
+		<img src="/Graphics/images/sn-patchgan.png" alt="drawing" width="600"/>
 - S Hong, X Yan, T Huang, H Lee. Learning Hierarchical Semantic Image Manipulation through Structured Representations. NIPS'18
 	<img src="/Graphics/images/hier-inpaint1.png" alt="drawing" width="600"/>
 	<img src="/Graphics/images/hier-inpaint2.png" alt="drawing" width="600"/>
 	<img src="/Graphics/images/hier-inpaint3.png" alt="drawing" width="600"/>
-
 - See and Think: Disentangling Semantic Scene Completion. NIPS'18
 - Image Inpainting via Generative Multi-column Convolutional Neural Networks (Jiaya Jia). NIPS'18
 - **Partial-Conv**: G Liu, F Reda, K J Shih, T Wang, A Tao, and B Catanzaro. 2018. Image Inpainting for Irregular Holes Using Partial Convolutions. 2018

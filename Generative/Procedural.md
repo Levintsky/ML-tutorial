@@ -62,6 +62,8 @@
 	- Xiao, J., Fang, T., Zhao, P., Lhuillier, M., Quan, L. Image-based street-side city modeling. TOG'09
 	- Paul Merrell, Eric Schkufza, and Vladlen Koltun. 2010. Computer-generated residential building layouts. TOG'10
 	- Pylvanainen, T., Berclaz, J., Korah, T., Hedau, V., Aanjaneya, M., Grzeszczuk, R.: 3d city modeling from street-level data for augmented reality applications. 3DIM/3DPVT'12
+	- Inverse: Gen Nishida, Ignacio Garcia-Dorado, Daniel G. Aliaga, Bedrich Benes, Adrien Bousseau. Interactive Sketching of Urban Procedural Models. TOG'16
+		- Inverse PM: Our interactive sketching tool allows the user to quickly and easily author procedural 3D building models. The user only performs interactive sketching and our system automatically generates the procedural model and its parameters yielding the sketched shape.
 - Buildings:
 	- One of the best-developed PM areas
 	- **Context-free Split-Grammar**: Peter Wonka, Michael Wimmer, Francois Sillion, and William Ribarsky. 2003. Instant architecture. TOG'03
@@ -104,7 +106,10 @@
 	- O Stava, S Pirk, J Kratt, B Chen, R Mech, O Deussen, and B Benes. Inverse Procedural Modelling of Trees. In Computer Graphics Forum. 2014
 - Bedrich Beneš, Ondrej Štava, Radomir Mech, and Gavin Miller. Guided Procedural Modeling. In Eurographics 2011.
 
-## 3D PM
+## 3D PM/Template
+- Siddhartha Chaudhuri, Evangelos Kalogerakis, Leonidas Guibas, and Vladlen Koltun. Probabilistic reasoning for assembly-based 3d modeling. TOG'11
+	- Bayesian Network with a library of things;
+		<img src = '/Generative/images/pm/3d-bnn.png' width = '500'>
 - Ersin Yumer, Paul Asente, Radomir Mech, Levent Burak Kara. Procedural Modeling Using Autoencoder Networks. UIST'15
 	- Preprocess: categorization tree;
 	- Autoencoder on PM parameters space;\
@@ -158,17 +163,68 @@
 		<img src = '/Generative/images/pm/exe-3d-3.png' width = '500'>
 	- Loss: reconstruction\
 		<img src = '/Generative/images/pm/exe-3d-4.png' width = '500'>
-- Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. 2019
-	- https://cs.stanford.edu/~kaichun/structurenet/
-	- https://github.com/daerduoCarey/structurenet
+- Primitives, regularity, structure:
+	- Niloy Mitra, Michael Wand, Hao Richard Zhang, Daniel Cohen-Or, Vladimir Kim, and Qi-Xing Huang. Structure-aware shape processing. In SIGGRAPH Asia Courses, 2013
+	- Shubham Tulsiani, Hao Su, Leonidas J. Guibas, Alexei A. Efros, Jitendra Malik. Learning Shape Abstractions by Assembling Volumetric Primitives. CVPR'17
+- Recurrent:
+	- **3D-PRNN**: Chuhang Zou, Ersin Yumer, Jimei Yang, Duygu Ceylan, Derek Hoiem. 3D-PRNN: Generating Shape Primitives with Recurrent Neural Networks. ICCV'17
+		- https://github.com/zouchuhang/3D-PRNN
+- Recursive/Hierarchical/Tree-structured generation:
+	- Yanzhen Wang, Kai Xu, Jun Li, Hao Zhang, Ariel Shamir, Ligang Liu, Zhi-Quan Cheng, and Yueshan Xiong. Symmetry Hierarchy of Man-Made Objects. CGF'11
+		- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
+	- **GRASS**. Jun Li, Kai Xu, Siddhartha Chaudhuri, Ersin Yumer, Hao Zhang, Leonidas Guibas. GRASS: Generative Recursive Autoencoders for Shape Structures. SIGGRAPH 2017
+		- Regularity/symmetry;
+	- Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. 2019
+		- https://cs.stanford.edu/~kaichun/structurenet/
+		- https://github.com/daerduoCarey/structurenet
+	- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
+	- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
+	- Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
+- Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
+	- Infer a hierarchical bounding box structure from a single image of a 3D shape;
+- **CSGNet**: Gopal Sharma Rishabh Goyal Difan Liu Evangelos Kalogerakis Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. 2018
+	- Problem definition: **boolean** operation, include **minus**;\
+		<img src = '/Generative/images/pm/csgnet1.png' width = '450'>
+	- Algorithm:\
+		<img src = '/Generative/images/pm/csgnet2.png' width = '450'>
+- Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guiba. Supervised Fitting of Geometric Primitives to 3D Point Clouds. CVPR'19
 
 ## 2D PM
-- **NGPM**: Daniel Ritchie, Anna Thomas, Pat Hanrahan, Noah Goodman. Neurally-Guided Procedural Models: Amortized Inference for Procedural Graphics Programs using Neural Networks. NIPS'16
-	- Problem setup: for a shape, generate particles to cover;
-	- Probabilistic Programming with NN;\
-		<img src = '/Generative/images/pm/ngpm1.png' width = '500'>
-	- Minimize KL divergence PCM and PGM;\
-		<img src = '/Generative/images/pm/ngpm2.png' width = '400'>
+- Stroke:
+	- **SPRIAL**. Y. Ganin, T. Kulkarni, Igor Babuschkin, S. M. Ali Eslami, Oriol Vinyals. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML'18
+- Template/primitives:
+	- Kevin Ellis, Armando Solar-Lezama, Joshua B. Tenenbaum. Unsupervised Learning by Program Synthesis. NIPS'15
+- Reasoning:
+	- **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
+	- Justin Johnson, Judy Hoffman, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C. Lawrence Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+	- Zhijian Liu, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Physical Primitive Decomposition. ECCV'18
+	- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T Freeman, Joshua B Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
+		- Problem definition: focus on learning the high-level scene regularities described by loop structures:\
+			<img src="/Graphics/images/learn-to-describe.png" alt="drawing" width="500"/>
+		- An object parser predicts the segmentation mask and attributes for each object in the image; (Mask-RCNN, ResNet-34)
+		- A group recognizer predicts the group that each object belongs to; concatenate original, mask of self, mask of objects, then ResNet + fc output two heads (same group and category?)
+		- DSL; learn with seq2seq LSTM, each step output a token t and a parameter matrix P;\
+			<img src="/Graphics/images/learn-to-describe-dsl.png" alt="drawing" width="450"/>
+		- Algorithm:\
+			<img src="/Graphics/images/learn-to-describe-alg.png" alt="drawing" width="450"/>
+- De-render, Inverse Graphics:
+	- **Picture**: Kulkarni, T. D., Kohli, P., Tenenbaum, J. B., and Mansinghka, V. Picture: A probabilistic programming language for scene perception. CVPR'15
+	- **DC-IGN**: Kulkarni, T. D., Whitney, W. F., Kohli, P., and Tenenbaum, J. Deep convolutional inverse graphics network. NIPS'15
+		- Probabilistic programming:\
+			<img src="/Graphics/images/dc_ign.png" alt="drawing" width="600"/>
+	- **NGPM**: Daniel Ritchie, Anna Thomas, Pat Hanrahan, Noah Goodman. Neurally-Guided Procedural Models: Amortized Inference for Procedural Graphics Programs using Neural Networks. NIPS'16
+		- Problem setup: for a shape, generate particles to cover;
+		- Probabilistic Programming with NN;\
+			<img src = '/Generative/images/pm/ngpm1.png' width = '500'>
+		- Minimize KL divergence PCM and PGM;\
+			<img src = '/Generative/images/pm/ngpm2.png' width = '400'>
+	- **R3NN**: Emilio Parisotto, Abdel-rahman Mohamed, Rishabh Singh, Lihong Li, Dengyong Zhou, and Pushmeet Kohli. Neuro-symbolic program synthesis. ICLR'17
+	- Tony Beltramelli. Pix2code: Generating code from a graphical user interface screenshot. EICA'18
+		- GUI image to markup-like code;
+	- Rudy Bunel, Matthew Hausknecht, Jacob Devlin, Rishabh Singh, and Pushmeet Kohli. Leveraging grammar and reinforcement learning for neural program synthesis. ICLR'18
+		- goes beyond the pure supervised learning setting and improves performance on diversity and syntax by leveraging grammar and reinforcement learning;
+
+## Unclassified
 - J Wu, JB Tenenbaum, P Kohli. Neural scene de-rendering. CVPR'17
 	- Problem setup: image to xml;\
 		<img src = '/Generative/images/pm/derender1.png' width='350'>
@@ -182,12 +238,14 @@
 	- http://3dsdn.csail.mit.edu/
 	- https://github.com/ysymyth/3D-SDN
 - Kevin Ellis, Daniel Ritchie, Armando Solar-Lezama, Josh Tenenbaum. Learning to Infer Graphics Programs from Hand-Drawn Images, NIPS 2018
-	- Noisy input (data augmentation)
+	- Problem: Noisy input (data augmentation); output program;
+	- One at a time:\
+		<img src = '/Generative/images/pm/latex.png' width = '450'>
 	- Combining NGPM [4] and Attend-Infer-Repeat [5]
 	- Learn a loss function?
 	- DSL [11]
 	- Prefer shorter program (with explicit reward)
-	- Sketch-tool [1] to refine program
+	- Sketch-tool [1] to refine program: constraint-based SAT solver to perform program search and is much slower
 - Daniel Ritchie, Kai Wang, and Yu-an Lin. Fast and Flexible Indoor Scene Synthesis via Deep Convolutional Generative Models. CVPR'19
 - Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
 - **PGIM**: Jiayuan Mao, Xiuming Zhang, Yikai Li, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Program-Guided Image Manipulators. ICCV'19
@@ -202,10 +260,8 @@
 	- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
 
 ## Unclassified
-- GRAINS: Generative recursive autoencoders for indoor scenes. 2019
 - Scenic: a language for scenario specification and scene generation. 2019
 - A learning approach to evaluate the quality of 3D city models
-- Gopal Sharma Rishabh Goyal Difan Liu Evangelos Kalogerakis Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. 2018
 - Yaroslav Ganin, Tejas Kulkarni, Igor Babuschkin, S.M. Ali Eslami, Oriol Vinyals. Synthesizing programs for images using reinforced adversarial learning. 2018
 - InverseCSG: automatic conversion of 3D models to CSG trees. 2018
 - Learning elementary structures for 3D shape generation and matching
