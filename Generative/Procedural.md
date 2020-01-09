@@ -12,7 +12,7 @@
 - **L-System**: Aristid Lindenmayer. Mathematical models for cellular interactions in development. Journal of theoretical biology 1968
 	- First PM paper;
 - K Perlin. An image synthesizer. SIGGRAPH'85
-- Przemyslaw Prusinkiewicz. 1986. Graphical applications of L-systems. In Proceedings of graphics interface. 1986
+- Przemyslaw Prusinkiewicz. Graphical applications of L-systems. In Proceedings of graphics interface. 1986
 - Terrain: noise-based, physics-based;
 	- Fractal: BB Mandelbrot. The Fractal Geometry of Nature. W. H. Freeman, 1982
 		- Height (limitation: can't handle overhangs and caves)
@@ -29,7 +29,7 @@
 	- Przemyslaw Prusinkiewicz, Mark James, and Radomir Mech. Synthetic topiary. SIGGRAPH'94
 	- Radomir Mech and Przemyslaw Prusinkiewicz. Visual models of plants interacting with their environment. SIGGRAPH'96
 	- Michael T. Wong, Douglas E. Zongker, and David H. Salesin. Computer-generated Floral Ornament. SIGGRAPH'98
-	- **Xfrog**: L INTERMANN B., D EUSSEN O.: Interactive Modeling of Plants. CGA'99
+	- **Xfrog**: D Lintermann, O Deussen. Interactive Modeling of Plants. CGA'99
 	- T Ijiri, S Owada, T Igarashi. Seamless integration of initial sketching and subsequent detail editing in flower modeling. CGF'06 
 	- S Longay, A Runions, F Boudon, Przemyslaw Prusinkiewicz. Treesketch: Interactive modeling of trees on a tablet. EG'12
 	- T Ijiri, S Owada, T Igarashi. The sketch L-System: Global control of tree modeling using free-form strokes. Smart Graphics'06
@@ -52,11 +52,11 @@
 		- The L-system is goal-driven: its goals are population density (roads try to connect population centers) and specific road patterns, for example the raster or the radial pattern;
 	- J Sun, X Yu, G Baciu, M Green. Template-based generation of road networks for virtual city modeling. VRST'02
 		- Several frequent patterns in real road networks and use them as basic building blocks;
-	- T Lechner, B Watson, U Wilensky. Procedural city modeling. 03
+	- T Lechner, B Watson, U Wilensky. Procedural city modeling. Midwestern Graphics Conference'03
 		- Not only residential, commercial and industrial areas;
 		- But also special areas like government buildings, squares, and monuments
-	- G Kelly, H McCabe. A survey of procedural techniques for city generation. 06
-	- Sinha, S.N., Steedly, D., Szeliski, R., Agrawala, M., Pollefeys, M.: Interactive 3d architectural modeling from unordered photo collections. TOG'08
+	- G Kelly, H McCabe. A survey of procedural techniques for city generation. ITB'06
+	- Sinha, S.N., Steedly, D., Szeliski, R., Agrawala, M., Pollefeys, M. Interactive 3d architectural modeling from unordered photo collections. TOG'08
 	- Guoning Chen, Gregory Esch, Peter Wonka, Pascal Mueller, Eugene Zhang. Interactive procedural street modeling. SIGGRAPH'08
 		- Interactive modeling method for road networks by the use of tensor field;
 	- Xiao, J., Fang, T., Zhao, P., Lhuillier, M., Quan, L. Image-based street-side city modeling. TOG'09
@@ -114,25 +114,9 @@
 	- Preprocess: categorization tree;
 	- Autoencoder on PM parameters space;\
 		<img src = '/Generative/images/pm/pm-ae.png' width = '400'>
-- **SMPL**: M. Loper, N. Mahmood, J. Romero, G. Pons-Moll, and M. J. Black. SMPL: A skinned multi-person linear model. TOG'15
-	- Key idea: Template mesh **T** (6,890 x 3) with 6,890 vertices (23 joints + 1 whole) with blended weight **W** (6,8890 x 24, influence of rotation joint k on vertex i), joint **J** (24 x 6,890, rest vertices to rest joints), Shape-blended shapes **S** (6,890 x 3 x 10), pose blended shapes **P** (6,890 x 3 x 207);
-	- https://smpl.is.tue.mpg.de/ (python code available)
-	- https://github.com/CalciferZh/SMPL (pytorch version)
-	- Model:\
-		<img src = '/Generative/images/pm/smpl-full.png' width = '400'>
-	- Given new pose theta (24, 3), beta (10,), global translation (3,) generate new mesh;
-		- 1. shape blending: v-shaped = S x beta + template (6,890 x 3)
-		- 2. map to joint: J = J x v_shaped (24 x 3)
-		- 3. Pose: R = Rodrigues(theta) (24 x 3 x 3)
-		- 4. Pose: v_posed = v_shaped + P x (R-I), where (R-I) of shape 207 (23 x 3 x 3, first dim global so skipped?)
-		- 5. Kinematic tree (parent joint on child joint) 24 x 2 integer matrix; apply chain rotation to get results (24 x 4 x 4); obtain T = W x results (6,890 x 4 x 4) 
-		- 6. Rest shapes: cat(v_posed, ones) (6,890 x 4)
-		- 7. Final: v = T x v_posed + translation (6,890 x 3)
-	- Parametrized model of 3D human shape: yaw, pitch, roll of human body joints; parameters control deformation of body skin; a fixed number of n=6,890 3D mesh vertex coordinates:\
-		<img src = '/Generative/images/pm/smpl.png' width = '400'>
-	- where the 3D point Xi equals the normalized bar(Xi), beta mixture of skin s(m,i) and skeleton pose p(n,i);
 - Hang Chu, Shenlong Wang, Raquel Urtasun, Sanja Fidler. HouseCraft- Building Houses from Rental Ads and Street Views. ECCV'16
 	- http://www.cs.toronto.edu/housecraft
+	- https://github.com/chuhang/HouseCraft (Matlab)
 	- Problem setup: input approximate address, several geo-tagged StreetView images, floor plan; output geometry and location;\
 		<img src = '/Generative/images/pm/house-craft1.png' width = '450'>
 	- Dataset collection: 174 houses (The SydneyHouse Dataset from http://www.domain.com.au)
@@ -144,36 +128,59 @@
 	- https://github.com/dritchie/adnn
 	- Improved version of UIST'15\
 		<img src = '/Generative/images/pm/sketch-pm.png' width = '500'>
-- Hsiao-Yu Fish Tung, Hsiao-Wei Tung, Ersin Yumer, Katerina Fragkiadaki. Self-supervised Learning of Motion Capture. NIPS'17
-	- https://github.com/htung0101/3d_smpl
-	- Input: a video sequence, 2D body joint heatmaps; output a neural net predicts body parameters for SMPL 3D human mesh;
-	- Training: 1. pretrained with synthetic data; 2. finetuned with self-supervised loss (keypoints, 2D segmentation, 2D optical flow);\
-		<img src = '/Generative/images/pm/ssl-mocap.png' width = '500'>
-	- Evaluation: 3D dense human shape tracking in SURREAL, H3.6M;
-- Meysam Madadi, Hugo Bertiche and Sergio Escalera. SMPLR: Deep SMPL reverse for 3D human pose and shape recovery. 2019
-- Yonglong Tian, Andrew Luo, Xingyuan Sun, Kevin Ellis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Infer and Execute 3D Shape Programs. ICLR'19
-	- http://shape2prog.csail.mit.edu/
-	- https://github.com/HobbitLong/shape2prog
-	- Key take-away: bottom-up recognition + top-down symbolic program;
-	- Problem setup: input voxels; output programs;\
-		<img src = '/Generative/images/pm/exe-3d-1.png' width = '500'>
-	- Program generator: Block-LSTM + step-LSTM\
-		<img src = '/Generative/images/pm/exe-3d-2.png' width = '500'>
-	- Program executor: NPI at block-level, trained with large amount of synthetic\
-		<img src = '/Generative/images/pm/exe-3d-3.png' width = '500'>
-	- Loss: reconstruction\
-		<img src = '/Generative/images/pm/exe-3d-4.png' width = '500'>
+- SMPL for Human:
+	- **SMPL**: M. Loper, N. Mahmood, J. Romero, G. Pons-Moll, and M. J. Black. SMPL: A skinned multi-person linear model. TOG'15
+		- Key idea: Template mesh **T** (6,890 x 3) with 6,890 vertices (23 joints + 1 whole) with blended weight **W** (6,890 x 24, influence of rotation joint k on vertex i), joint **J** (24 x 6,890, rest vertices to rest joints), shape-blended shapes **S** (6,890 x 3 x 10), pose blended shapes **P** (6,890 x 3 x 207);
+		- https://smpl.is.tue.mpg.de/ (python code available)
+		- https://github.com/CalciferZh/SMPL (pytorch version)
+		- Model:\
+			<img src = '/Generative/images/pm/smpl-full.png' width = '400'>
+		- Given new pose theta (24, 3), beta (10,), global translation (3,), a new mesh is generated as:
+			- 1. shape blending: v-shaped = S x beta + template (6,890 x 3)
+			- 2. map to joint: J = J x v_shaped (24 x 3)
+			- 3. Pose: R = Rodrigues(theta) (24 x 3 x 3)
+			- 4. Pose: v_posed = v_shaped + P x (R-I), where (R-I) of shape 207 (23 x 3 x 3, first dim global so skipped?)
+			- 5. Kinematic tree (parent joint on child joint) 24 x 2 integer matrix; apply chain rotation to get results (24 x 4 x 4); obtain T = W x results (6,890 x 4 x 4) 
+			- 6. Rest shapes: cat(v_posed, ones) (6,890 x 4)
+			- 7. Final: v = T x v_posed + translation (6,890 x 3)
+		- Parametrized model of 3D human shape: yaw, pitch, roll of human body joints; parameters control deformation of body skin; a fixed number of n=6,890 3D mesh vertex coordinates:\
+			<img src = '/Generative/images/pm/smpl.png' width = '400'>
+		- where the 3D point Xi equals the normalized bar(Xi), beta mixture of skin s(m,i) and skeleton pose p(n,i);
+	- Hsiao-Yu Fish Tung, Hsiao-Wei Tung, Ersin Yumer, Katerina Fragkiadaki. Self-supervised Learning of Motion Capture. NIPS'17
+		- https://github.com/htung0101/3d_smpl (Tensorflow)
+		- Input: a video sequence, 2D body joint heatmaps; output a neural net predicts body parameters for SMPL 3D human mesh;
+		- Training: 1. pretrained with synthetic data; 2. finetuned with self-supervised loss (keypoints, 2D segmentation, 2D optical flow);\
+			<img src = '/Generative/images/pm/ssl-mocap.png' width = '500'>
+		- Evaluation: 3D dense human shape tracking in SURREAL, H3.6M;
+	- Meysam Madadi, Hugo Bertiche and Sergio Escalera. SMPLR: Deep SMPL reverse for 3D human pose and shape recovery. 2019
 - All objects/primitives at once (regularity, structure):
 	- Niloy Mitra, Michael Wand, Hao Richard Zhang, Daniel Cohen-Or, Vladimir Kim, and Qi-Xing Huang. Structure-aware shape processing. In SIGGRAPH Asia Courses, 2013
 	- Shubham Tulsiani, Hao Su, Leonidas J. Guibas, Alexei A. Efros, Jitendra Malik. Learning Shape Abstractions by Assembling Volumetric Primitives. CVPR'17
-- Recurrent:
+- Progressive (CNN or RNN):
 	- **3D-PRNN**: Chuhang Zou, Ersin Yumer, Jimei Yang, Duygu Ceylan, Derek Hoiem. 3D-PRNN: Generating Shape Primitives with Recurrent Neural Networks. ICCV'17
 		- https://github.com/zouchuhang/3D-PRNN
+		- Ground truth given!
+	- Yonglong Tian, Andrew Luo, Xingyuan Sun, Kevin Ellis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Infer and Execute 3D Shape Programs. ICLR'19
+		- http://shape2prog.csail.mit.edu/
+		- https://github.com/HobbitLong/shape2prog
+		- Key take-aways: bottom-up recognition + top-down symbolic program;
+		- Problem setup: input voxels; output programs;\
+			<img src = '/Generative/images/pm/exe-3d-1.png' width = '500'>
+		- Program generator: Block-LSTM + step-LSTM\
+			<img src = '/Generative/images/pm/exe-3d-2.png' width = '500'>
+		- Program executor: NPI at block-level, trained with large amount of synthetic\
+			<img src = '/Generative/images/pm/exe-3d-3.png' width = '500'>
+		- Loss: reconstruction\
+			<img src = '/Generative/images/pm/exe-3d-4.png' width = '500'>
+		- Key 1: program generator needed a lot of pretrain on large synthetic (block-level LSTM); manually designed program to generate, 
+		- Key 2: executor trained on part-level separately; to make generator-executor differentiable;
+		- Key 3: the domain gap between the synthetic and ShapeNet is still large;
 - Recursive/Hierarchical/Tree-structured generation:
 	- Yanzhen Wang, Kai Xu, Jun Li, Hao Zhang, Ariel Shamir, Ligang Liu, Zhi-Quan Cheng, and Yueshan Xiong. Symmetry Hierarchy of Man-Made Objects. CGF'11
 		- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
 	- **GRASS**. Jun Li, Kai Xu, Siddhartha Chaudhuri, Ersin Yumer, Hao Zhang, Leonidas Guibas. GRASS: Generative Recursive Autoencoders for Shape Structures. SIGGRAPH 2017
 		- Regularity/symmetry;
+		- https://github.com/kevin-kaixu/grass_pytorch
 	- **StructureNet**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. 2019
 		- https://cs.stanford.edu/~kaichun/structurenet/
 		- https://github.com/daerduoCarey/structurenet
@@ -183,29 +190,50 @@
 		- VAE:\
 			<img src = '/Generative/images/pm/structure-net2.png' width = '500'>
 	- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
+		- https://github.com/BigkoalaZhu/SCORES
 	- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
-	- Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
-	- Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
+		- https://github.com/ManyiLi12345/GRAINS
+	- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
+		- https://github.com/daerduoCarey/structedit
+	- **Im2Struct**: Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
 		- Infer a hierarchical bounding box structure from a single image of a 3D shape;
+		- https://github.com/chengjieniu/Im2Struct
 	- **GNN**: Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
+		- https://github.com/brownvc/planit
 		- Indoor scene graph with GNN, then based on the graph, one-object at a time;\
 			<img src = '/Generative/images/pm/indoor-scene-graph.png' width = '400'>
 - **CSGNet**: Gopal Sharma Rishabh Goyal Difan Liu Evangelos Kalogerakis Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. 2018
+	- https://github.com/hippogriff/CSGNet
 	- Problem definition: **boolean** operation, include **minus**;\
 		<img src = '/Generative/images/pm/csgnet1.png' width = '450'>
 	- Algorithm:\
 		<img src = '/Generative/images/pm/csgnet2.png' width = '450'>
-- Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guiba. Supervised Fitting of Geometric Primitives to 3D Point Clouds. CVPR'19
+- **SPFN**: Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guiba. Supervised Fitting of Geometric Primitives to 3D Point Clouds. CVPR'19
+	- https://github.com/lingxiaoli94/SPFN
 
 ## 2D PM
 - Stroke:
 	- **SPRIAL**. Y. Ganin, T. Kulkarni, Igor Babuschkin, S. M. Ali Eslami, Oriol Vinyals. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML'18
+		- https://github.com/deepmind/spiral
 - Template/primitives:
 	- Kevin Ellis, Armando Solar-Lezama, Joshua B. Tenenbaum. Unsupervised Learning by Program Synthesis. NIPS'15
-- Reasoning:
-	- **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
-	- Justin Johnson, Judy Hoffman, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C. Lawrence Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+		- https://github.com/ellisk42/sasquatch
+- Physics:
 	- Zhijian Liu, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Physical Primitive Decomposition. ECCV'18
+		- http://ppd.csail.mit.edu/
+- Neural-Symbolic Reasoning:
+	- **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
+	- **clevr-iep**: Justin Johnson, Judy Hoffman, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C. Lawrence Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+		- https://github.com/facebookresearch/clevr-iep
+	- **sg2im**: Justin Johnson, Agrim Gupta, Li Fei-Fei. Image Generation from Scene Graphs. CVPR'18
+		- https://github.com/google/sg2im
+	- **Neural-Symbolic VQA**: Kexin Yi, Jiajun Wu, Chuang Gan, Antonio Torralba, Pushmeet Kohli, Joshua B. Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding. NeurIPS 2018
+		- http://nsvqa.csail.mit.edu/
+		- An interpretable VQA model that disentangles language reasoning from visual understanding
+		- For visual understanding, first perform objects segmentation and then learn to obtain structural scene representation (with supervision) such as color, size, shape, position.
+		- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 
+		- Finally, they execute the program on the structural scene representation to obtain the final answer
+		- 99.8% on CLEVR
 	- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T Freeman, Joshua B Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
 		- Problem definition: focus on learning the high-level scene regularities described by loop structures:\
 			<img src="/Generative/images/pm/learn-to-describe.png" alt="drawing" width="500"/>
@@ -215,6 +243,15 @@
 			<img src="/Generative/images/pm/learn-to-describe-dsl.png" alt="drawing" width="450"/>
 		- Algorithm:\
 			<img src="/Generative/images/pm/learn-to-describe-alg.png" alt="drawing" width="450"/>
+	- **NSCL**: Jiayuan Mao, Chuang Gan, Pushmeet Kohli, Joshua B. Tenenbaum, Jiajun Wu. The Neuro-Symbolic Concept Learner: Interpreting Scenes, Words, and Sentences from Natural Supervision. ICLR'19
+		- http://nscl.csail.mit.edu/
+	- **NGSI**: Sidi Lu, Jiayuan Mao, Joshua B. Tenenbaum, Jiajun Wu. Neurally-Guided Structure Inference. ICML'19
+		- https://github.com/desire2020/NGSI
+	- **PGIM**: Jiayuan Mao, Xiuming Zhang, Yikai Li, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Program-Guided Image Manipulators. ICCV'19
+		- http://pgim.csail.mit.edu
+	- Chi Han, Jiayuan Mao, Chuang Gan, Joshua B. Tenenbaum, Jiajun Wu. Visual Concept-Metaconcept Learning. NIPS'19
+		- http://vcml.csail.mit.edu/
+		- https://github.com/Glaciohound/VCML
 - De-render, Inverse Graphics:
 	- **Picture**: Kulkarni, T. D., Kohli, P., Tenenbaum, J. B., and Mansinghka, V. Picture: A probabilistic programming language for scene perception. CVPR'15
 	- **DC-IGN**: Kulkarni, T. D., Whitney, W. F., Kohli, P., and Tenenbaum, J. Deep convolutional inverse graphics network. NIPS'15
@@ -265,20 +302,9 @@
 			<img src = '/Generative/images/pm/3d-sdn.png' width = '400'>
 
 ## Unclassified
-- **PGIM**: Jiayuan Mao, Xiuming Zhang, Yikai Li, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Program-Guided Image Manipulators. ICCV'19
-	- http://pgim.csail.mit.edu
-- Reasoning, VQA:
-	- Kexin Yi, Jiajun Wu, Chuang Gan, Antonio Torralba, Pushmeet Kohli and Joshua B. Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NIPS 2018
-		- An interpretable VQA model that disentangles language reasoning from visual understanding
-		- For visual understanding, first perform objects segmentation and then learn to obtain structural scene representation (with supervision) such as color, size, shape, position.
-		- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 
-		- Finally, they execute the program on the structural scene representation to obtain the final answer
-		- 99.8% on CLEVR
-	- Yunchao Liu, Zheng Wu, Daniel Ritchie, William T. Freeman, Joshua B. Tenenbaum, and Jiajun Wu. Learning to describe scenes with programs. ICLR'19
-
-## Unclassified
-- Scenic: a language for scenario specification and scene generation. 2019
-- A learning approach to evaluate the quality of 3D city models
-- InverseCSG: automatic conversion of 3D models to CSG trees. 2018
-- Learning elementary structures for 3D shape generation and matching
-- Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guibas. Supervised fitting of geometric primitives to 3d point clouds. CVPR'19
+- Daniel J. Fremont, Tommaso Dreossi, Shromona Ghosh, Xiangyu Yue, Alberto L. Sangiovanni-Vincentelli, Sanjit A. Seshia. Scenic: A Language for Scenario Specification and Scene Generation. Scenic: a language for scenario specification and scene generation. PLDI'19
+	- https://github.com/BerkeleyLearnVerify/Scenic
+- Ennafii, Oussama; Le Bris, Arnaud; Lafarge, Florent; Mallet, Clément. A learning approach to evaluate the quality of 3D city models. Engineering & Remote Sensing'19
+- Tao Du, Jeevana Priya Inala, Yewen Pu, Andrew Spielberg, Adriana Schulz, Daniela Rus, Armando Solar-Lezama, Wojciech Matusik. InverseCSG: automatic conversion of 3D models to CSG trees. SIGGRAPH Asia'18
+	- http://cfg.mit.edu/content/inversecsg-automatic-conversion-3d-models-csg-trees
+- Theo Deprelle, Thibault Groueix, Matthew Fisher, Vladimir Kim, Bryan Russell, Mathieu Aubry. Learning elementary structures for 3D shape generation and matching. NIPS'19
