@@ -23,7 +23,7 @@
 
 ## Autoregressive
 - **SMILES**: M Segler, T Kogej, C Tyrchan, and M P Waller. Generating focused molecule libraries for drug discovery with recurrent neural networks. 2017
-	- RNN on domain-specific sequentializations of graphs
+	- RNN on domain-specific sequentializations of graphs;
 - **GEG**: Y Li, O Vinyals, C Dyer, R Pascanu, P Battaglia. Learning Deep Generative Models of Graphs. ICML'18
 	- (1) sample whether to add a new node of a particular type or terminate;
 	- (2) we add a node of this type to the graph;

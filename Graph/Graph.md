@@ -12,6 +12,10 @@
 - NLP: parse-tree;
 - Image: Scene-graph;
 
+## Unclassified
+- **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are
+Graph Neural Networks? ICLR'19
+
 ## Legacy
 - Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005
 - Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. Computational capabilities of graph neural networks. TNN 2009
@@ -79,7 +83,6 @@
 ## Graph Attention Network
 - P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
 	<img src="/Graph/images/gcn-attention.png" alt="drawing" width="500"/>
-
 - J. Zhang, X. Shi, J. Xie, H. Ma, I. King, and D.-Y. Yeung, Gaan: Gated attention networks for learning on large and spatiotemporal graph. UAI'18
 - J. B. Lee, R. Rossi, and X. Kong, “Graph classification using structural attention. KDD'18
 - S. Abu-El-Haija, B. Perozzi, R. Al-Rfou, and A. A. Alemi, Watch your step: Learning node embeddings via graph attention. NIPS'18

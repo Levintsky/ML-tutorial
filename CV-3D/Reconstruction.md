@@ -19,7 +19,9 @@
 	- MVS benchmark;
 
 ## Evaluation
-- Geometric: depth/disparity with GT;
+- Geometric:
+	- Depth/disparity with GT;
+	- **Chamfer distance**: H. G. Barrow, J. M. Tenenbaum, R. C. Bolles, and H. C. Wolf. Parametric Correspondence and Chamfer Matching: Two New Techniques for Image Matching. IJCAI'77
 - Photometric;
 
 ## Differentiable Rendering
@@ -295,11 +297,11 @@
 - Multi-view:
 	- S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
 		- Estimate normal of depth map; then improve depth map fusion;
-	- C B Choy, D Xu, J Gwak, K Chen, and S Savarese. 3d-r2n2: A unified approach for single and multiview 3d object reconstruction. ECCV'16
+	- **3d-r2n2**: C B Choy, D Xu, J Gwak, K Chen, and S Savarese. 3d-r2n2: A unified approach for single and multiview 3d object reconstruction. ECCV'16
 		- https://github.com/chrischoy/3D-R2N2
 		- Input: single/multiple images; output: voxel;
 		- Update model with RNN each time with a new image;
-		<img src="/CV-3D/images/reconstruction/3d-r2n2.png" alt="drawing" width="500"/>
+			<img src="/CV-3D/images/reconstruction/3d-r2n2.png" alt="drawing" width="500"/>
 	- **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17.
 		- Insight: end-to-end multi-view stereo; geometry with color encoded in voxel with **unproject**;
 		- https://github.com/mjiUST/SurfaceNet
