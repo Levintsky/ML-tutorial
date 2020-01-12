@@ -175,7 +175,7 @@
 		- Key 1: program generator needed a lot of pretrain on large synthetic (block-level LSTM); manually designed program to generate, 
 		- Key 2: executor trained on part-level separately; to make generator-executor differentiable;
 		- Key 3: the domain gap between the synthetic and ShapeNet is still large;
-- Recursive/Hierarchical/Tree-structured generation:
+- Hierarchical (RvNN/Tree/Graph):
 	- Yanzhen Wang, Kai Xu, Jun Li, Hao Zhang, Ariel Shamir, Ligang Liu, Zhi-Quan Cheng, and Yueshan Xiong. Symmetry Hierarchy of Man-Made Objects. CGF'11
 		- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
 	- **GRASS**. Jun Li, Kai Xu, Siddhartha Chaudhuri, Ersin Yumer, Hao Zhang, Leonidas Guibas. GRASS: Generative Recursive Autoencoders for Shape Structures. SIGGRAPH 2017
@@ -193,6 +193,10 @@
 		- https://github.com/BigkoalaZhu/SCORES
 	- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
 		- https://github.com/ManyiLi12345/GRAINS
+		- Tree-VAE:\
+			<img src = '/Generative/images/pm/grains1.png' width = '450'>
+		- Inference mode:\
+			<img src = '/Generative/images/pm/grains2.png' width = '450'>
 	- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
 		- https://github.com/daerduoCarey/structedit
 	- **Im2Struct**: Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
