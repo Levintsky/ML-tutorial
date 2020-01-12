@@ -11,7 +11,6 @@
 	- Ananya Uppal, Shashank Singh, Barnabás Póczos. Nonparametric Density Estimation & Convergence Rates for GANs under Besov IPM Losses
 	- Alaa Maalouf, Ibrahim Jubran, Dan Feldman. Fast and Accurate Least-Mean-Squares Solvers.
 - **Honorable Mention Outstanding New Directions Paper Award**:
-	- Sindy Löwe, Peter O’Connor, Bastiaan S. Veeling. Putting An End to End-to-End: Gradient-Isolated Learning of Representations
 	- Vincent Sitzmann, Michael Zollhöfer, Gordon Wetzstein. Scene Representation Networks: Continuous 3D-Structure-Aware Neural Scene Representations.
 		- an elegant synthesis of two broad approaches in CV: the multiple view geometric, and the deep representations
 - **Test of Time Award**:
