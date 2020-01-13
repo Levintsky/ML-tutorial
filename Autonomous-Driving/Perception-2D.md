@@ -16,6 +16,7 @@
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin3.png" alt="drawing" width="400"/>
 
 ## Segmentation
+- **DARNet**: Dominic Cheng, Renjie Liao, Sanja Fidler, Raquel Urtasun. DARNet: Deep Active Ray Network for Building Segmentation. CVPR'19
 - **UPSNet**: Y Xiong, R Liao, H Zhao, R Hu, M Bai, E Yumer, R Urtasun. UPSNet: A Unified Panoptic Segmentation Network. CVPR'19
 	- Problem setup: semantic seg + instance seg (Mask R-CNN);
 		- Countable things: people, bicycle, car (thing);
@@ -34,7 +35,7 @@
 	- Segmentation model: SegNet or PSP;
 	<img src="/Autonomous-Driving/images/vision2d/anomaly1.png" alt="drawing" width="450"/>
 	<img src="/Autonomous-Driving/images/vision2d/anomaly2.png" alt="drawing" width="450"/>
-- PolyTransform: Deep Polygon Transformer for Instance Segmentation [Justin Liang];
+- Justin Liang, Namdar Homayounfar, Wei-Chiu Ma, Yuwen Xiong, Rui Hu, Raquel Urtasun. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
 - Level-Set R-CNN [Namdar];
 - Efficient Convolutions for Real-Time Semantic Segmentation of 3D Point Clouds [3DV’18, C Zhang]
 - Deep Parametric Continuous Convolutional Neural Networks [CVPR’18, Shenlong]
