@@ -199,6 +199,8 @@
 			<img src = '/Generative/images/pm/structure-net2.png' width = '500'>
 	- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
 		- https://github.com/BigkoalaZhu/SCORES
+		- Problem setup: input two source shapes a,b, rough placement c; output optimized structure d;\
+			<img src = '/Generative/images/pm/structure-net2.png' width = '500'>
 	- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
 		- https://github.com/ManyiLi12345/GRAINS
 		- Tree-VAE:\
@@ -207,6 +209,9 @@
 			<img src = '/Generative/images/pm/grains2.png' width = '450'>
 	- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
 		- https://github.com/daerduoCarey/structedit
+		- Problem setup: 3D shape analogy; Source Si, target Sj;
+		- Insight: extension of StructureNet;
+			<img src = '/Generative/images/pm/structedit.png' width = '450'>
 	- **Im2Struct**: Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
 		- Infer a hierarchical bounding box structure from a single image of a 3D shape;
 		- https://github.com/chengjieniu/Im2Struct
@@ -214,7 +219,6 @@
 		- https://github.com/brownvc/planit
 		- Indoor scene graph with GNN, then based on the graph, one-object at a time;\
 			<img src = '/Generative/images/pm/indoor-scene-graph.png' width = '400'>
-
 - **SPFN**: Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guiba. Supervised Fitting of Geometric Primitives to 3D Point Clouds. CVPR'19
 	- https://github.com/lingxiaoli94/SPFN
 	- Input: N x 3 point clouds; output: K (24 at maximum) primitives, (4 types: plane, cylinder, sphere, cone);
@@ -283,6 +287,17 @@
 		- GUI image to markup-like code;
 	- Rudy Bunel, Matthew Hausknecht, Jacob Devlin, Rishabh Singh, and Pushmeet Kohli. Leveraging grammar and reinforcement learning for neural program synthesis. ICLR'18
 		- goes beyond the pure supervised learning setting and improves performance on diversity and syntax by leveraging grammar and reinforcement learning;
+	- **VON**: Jun-Yan Zhu, Zhoutong Zhang, Chengkai Zhang, Jiajun Wu, Antonio Torralba, Joshua B. Tenenbaum, William T. Freeman. Visual Object Networks: Image Generation with Disentangled 3D Representation. NIPS'18
+		- http://von.csail.mit.edu/
+		- https://github.com/junyanz/VON
+		- Problem setup: latent z to 3D-aware image;
+		- Assumption: image formation = shape + viewpoint + texture;
+		- Model: category specific;
+		- Algorithm:\
+			<img src = '/Generative/images/pm/von.png' width = '400'>
+		- 1. Train z to 3D voxel with WGAN-GP;
+		- 2. Input: camera parameters and 3D voxel, output 2.5D sketches [Tulsiani'17]; z-view (elevation and azimuth) sampled from training prior;
+		- 3. G_texture(v-2.5D, z-texture), need to model object texture, illumitation and differentiable rendering, handled with unpaired image-to-image translation (relaxed 1-1 mapping CycleGAN);
 - Progressive CNN:
 	- J Wu, JB Tenenbaum, P Kohli. Neural scene de-rendering. CVPR'17
 		- Problem setup: image to xml;\

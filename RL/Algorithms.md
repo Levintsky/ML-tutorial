@@ -260,6 +260,13 @@
 		- Delayed Policy update: at lower frequency;
 		- Sync actor/critic target with current at even lower frequency;\
 			<img src="/RL/images/algos/TD3.png" alt="drawing" width="400"/>
+- Bias:
+	- **SBEED**: Bo Dai, Albert Shaw, Lihong Li, Lin Xiao, Niao He, Zhen Liu, Jianshu Chen, Le Song. SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation. ICML'18
+		- Value iteration does not have a cost function to optimize, it is just a fixed point iteration;
+		- Key idea: use conjugate of the square function to avoid the bias introduced in square function;
+		- Tradeoff: introduce a mini-max formulation;
+		<img src="/RL/images/algos/sbeed.png" alt="drawing" width="400"/>
+	- Yihao Feng, Lihong Li, Qiang Liu. A Kernel Loss for Solving the Bellman Equation. NIPS'19
 
 ## Unclassified
 - **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17

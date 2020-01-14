@@ -51,10 +51,6 @@
 - Mirrored Langevin Dynamics. NIPS'18
 - The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
 
-## SVGD
-- Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
-	- https://github.com/DartML/Stein-Variational-Gradient-Descent
-
 ## Variance Reduction:
 - UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
 - SEGA: Variance Reduction via Gradient Sketching. NIPS'18

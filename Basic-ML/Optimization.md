@@ -17,3 +17,7 @@
 ## Unclassified
 - Natasha 2: Faster Non-Convex Optimization Than SGD. NIPS'18
 - Learning with SGD and Random Features. NIPS'18
+
+## SVGD
+- Qiang Liu, Dilin Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
+	- https://github.com/DartML/Stein-Variational-Gradient-Descent
