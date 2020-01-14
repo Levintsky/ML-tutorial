@@ -116,6 +116,8 @@
 - Neural Variational Inference for Text Processing, ICML'16
 - Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16
 - A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues, AAAI'17
+- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019
+	<img src="/Generative/images/vae/td-vae.png" alt="drawing" width="500"/>
 
 ## Analysis of VAE
 - Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
