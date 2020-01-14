@@ -62,7 +62,7 @@ imitation learning via meta-learning. 2017
 	- dAlg(theta)/dtheta memory heavy, intractable large graph;\
 		<img src = '/AutoML-Meta/images/iMAML3.png' width='400'>
 - Mingzhang Yin, George Tucker, Mingyuan Zhou, Sergey Levine, Chelsea Finn. Meta-Learning without Memorization. 2019
-	- Problem definition: Complete memorization in meta-learning is when the learned model ignores the task training data such that I(y\*; D|x\*, θ) = 0 (i.e., q(y\*|x\*, θ, D)=q(y\* | x\*, θ) = E_[D'|x\*] [q(y\*|x\*, θ, D')]).
+	- Problem definition: Complete memorization in meta-learning is when the learned model ignores the task training data such that I(y\*; D|x\*, θ) = 0 (i.e., q(y\*|x\*, θ, D)=q(y\* | x\*, θ) = E D'|x\* [q( y \* | x\*, θ, D')].
 - Applications of MAML:
 	- Fei Mi, Minlie Huang, Jiyong Zhang, and Boi Faltings. Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 2019
 
