@@ -156,6 +156,7 @@
 - All objects/primitives at once (regularity, structure):
 	- Niloy Mitra, Michael Wand, Hao Richard Zhang, Daniel Cohen-Or, Vladimir Kim, and Qi-Xing Huang. Structure-aware shape processing. In SIGGRAPH Asia Courses, 2013
 	- Shubham Tulsiani, Hao Su, Leonidas J. Guibas, Alexei A. Efros, Jitendra Malik. Learning Shape Abstractions by Assembling Volumetric Primitives. CVPR'17
+		- Supervision: unsupervised, reconstruction loss;
 - Progressive (CNN or RNN):
 	- **3D-PRNN**: Chuhang Zou, Ersin Yumer, Jimei Yang, Duygu Ceylan, Derek Hoiem. 3D-PRNN: Generating Shape Primitives with Recurrent Neural Networks. ICCV'17
 		- https://github.com/zouchuhang/3D-PRNN
@@ -175,6 +176,13 @@
 		- Key 1: program generator needed a lot of pretrain on large synthetic (block-level LSTM); manually designed program to generate, 
 		- Key 2: executor trained on part-level separately; to make generator-executor differentiable;
 		- Key 3: the domain gap between the synthetic and ShapeNet is still large;
+	- **CSGNet**: Gopal Sharma Rishabh Goyal Difan Liu Evangelos Kalogerakis Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. 2018
+		- https://github.com/hippogriff/CSGNet
+		- Problem definition: **boolean** operation, include **minus**;\
+			<img src = '/Generative/images/pm/csgnet1.png' width = '450'>
+		- Algorithm:\
+			<img src = '/Generative/images/pm/csgnet2.png' width = '450'>
+		- Supervision: unsuperivsed, reconstruction loss;
 - Hierarchical (RvNN/Tree/Graph):
 	- Yanzhen Wang, Kai Xu, Jun Li, Hao Zhang, Ariel Shamir, Ligang Liu, Zhi-Quan Cheng, and Yueshan Xiong. Symmetry Hierarchy of Man-Made Objects. CGF'11
 		- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
@@ -206,14 +214,17 @@
 		- https://github.com/brownvc/planit
 		- Indoor scene graph with GNN, then based on the graph, one-object at a time;\
 			<img src = '/Generative/images/pm/indoor-scene-graph.png' width = '400'>
-- **CSGNet**: Gopal Sharma Rishabh Goyal Difan Liu Evangelos Kalogerakis Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. 2018
-	- https://github.com/hippogriff/CSGNet
-	- Problem definition: **boolean** operation, include **minus**;\
-		<img src = '/Generative/images/pm/csgnet1.png' width = '450'>
-	- Algorithm:\
-		<img src = '/Generative/images/pm/csgnet2.png' width = '450'>
+
 - **SPFN**: Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, Leonidas Guiba. Supervised Fitting of Geometric Primitives to 3D Point Clouds. CVPR'19
 	- https://github.com/lingxiaoli94/SPFN
+	- Input: N x 3 point clouds; output: K (24 at maximum) primitives, (4 types: plane, cylinder, sphere, cone);
+	- Algorithm: output membership (reorder-able with Hungarian Matching, normal, types)\
+		<img src = '/Generative/images/pm/spfn1.png' width = '450'>
+	- Key 1: membership reordering with Hungarian Matching;
+	- Key 2: make RANSAC and Least-Square differentiable; separate models for each primitive;
+	- Supervision: **ground truth** required; (Hungarian Matching)
+	- Evaluation metrics: IoU; mean primitive type accuracy;
+	- Benchmark: ANSI TraceParts; 13,831/3,366 for training/test;
 
 ## 2D PM
 - Stroke:
