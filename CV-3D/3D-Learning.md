@@ -27,9 +27,8 @@
 		<img src="/CV-3D/images/cnn_3d/kd-network3.png" alt="drawing" width="500"/>
 
 - **Unordered**:
-	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17
+	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
 		<img src="/CV-3D/images/cnn_3d/pointnet.png" alt="drawing" width="600"/>
-
 	- **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
 		- **Classification mode**: [SA module x 3] + FC_layers;
 		- **Semantic Segmentation mode**: [SA-module x3] + [FP-modules x4] + [Conv1d x2]
@@ -53,20 +52,10 @@
 		```	
 		- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
 		<img src="/CV-3D/images/cnn_3d/pointnet++.png" alt="drawing" width="600"/>
-	- **Frustum PointNet**: C Qi, W Liu, C Wu, H Su, L Guibas. Frustum PointNets for 3D Object Detection from RGB-D Data, CVPR'18
-		- RGB-D
-		- 2D-detection: 2D bounding boxes;
-		- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
-		<img src="/CV-3D/images/cnn_3d/frustum-pointnet.png" alt="drawing" width="600"/>
-	- **Foldingnet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. arXiv'17.
-	- P. Achlioptas, O. Diamanti, I. Mitliagkas, and L. Guibas. Learning representations and generative models for 3d point clouds. ICML'18.
-	- Yaoqing Yang, Chen Feng, Yiru Shen, and Dong Tian. Foldingnet: Point cloud auto-encoder via deep grid deformation. CVPR'18
-	- Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. 2018
 - **Attention**:
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
 		<img src="/CV-3D/images/cnn_3d/3d-transformer.png" alt="drawing" width="600"/>
-
 - P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua, and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. TOG'18
 	- Point Clouds (generally non-uniform);
 	- Estimate sample density distribution;
@@ -78,14 +67,16 @@
 	- https://github.com/yangyanli/PointCNN
 	<img src="/CV-3D/images/cnn_3d/pointcnn1.png" alt="drawing" width="600"/>
 	<img src="/CV-3D/images/cnn_3d/pointcnn2.png" alt="drawing" width="600"/>
-
-- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
-	- Graph **changes by layer**: compute nn on the fly;
-	- EdgeConv-layer:
-		- Dynamic Graph construction: Each node has k nearest neighbors in feature space, form k-edges; 
-		- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
-		- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
-		- Aggregation: maxpool edges with the same node, maps the feature back;
+- Graph:
+	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18
+		<img src="/CV-3D/images/cnn_3d/foldingnet.png" alt="drawing" width="600"/>
+	- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
+		- Graph **changes by layer**: compute nn on the fly;
+		- EdgeConv-layer:
+			- Dynamic Graph construction: Each node has k nearest neighbors in feature space, form k-edges; 
+			- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
+			- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
+			- Aggregation: maxpool edges with the same node, maps the feature back;
 
 ## Voxel
 - B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018
@@ -119,7 +110,7 @@
 	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
 	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
 
-## TSDF
+## Implicit: TSDF
 - Legacy:
 	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
 	- **Kinectfusion**: R. A. Newcombe, S. Izadi, O. Hilliges, D. Molyneaux, D. Kim, A. J. Davison, P. Kohi, J. Shotton, S. Hodges, and A. Fitzgibbon. Kinectfusion: Real-time dense surface mapping and tracking. ISMAR'11

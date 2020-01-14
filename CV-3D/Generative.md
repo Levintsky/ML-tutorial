@@ -57,18 +57,20 @@
 		- Noisy / Blurry;
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV 2017
 	- https://github.com/matheusgadelha/PrGAN
-- Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. ICML'18
+- Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. ICLR'19
 
-## VAE
-- A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
-	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
-- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
-- **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
-	- Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
+## AE, VAE
+- AE
+	- Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. ICML'18
+- VAE
+	- A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
+		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
+	- **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
+		- Build on Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
 
 ## Generation
-- Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via
-deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
+- Haibin Huang, Evangelos Kalogerakis, and Benjamin Marlin. Analysis and synthesis of 3d shape families via deep-learned generative models of surfaces. CGF, 34(5):25–38, 2015.
 - Interactive 3D modeling with a generative adversarial network, 3D Vision 2017
 - Amir Arsalan Soltani, Haibin Huang, Jiajun Wu, Tejas D. Kulkarni, Joshua B. Tenenbaum. Synthesizing 3D Shapes via Modeling Multi-View Depth Maps and Silhouettes with Deep Generative Networks. CVPR 2017
 	- https://github.com/Amir-Arsalan/Synthesize3DviaDepthOrSil

@@ -10,15 +10,6 @@
 	- For Hausdorff distance, simply a distance transform?
 
 ## SOA
-- M. Sung, H. Su, R. Yu, and L. Guibas. Deep functional dictionaries: Learning consistent semantic structures on 3D models from functions. NIPS 2018
-	- Input n points; output: n x k dictionary;
-	- Structured sparsity;
-	- https://github.com/mhsung/deep-functional-dictionaries
-	- Different deep dictionaries;
-	- Applications with adaptation in co-segmentation, keypoint correspondence, smooth functional approximation (modeled as constraint);
-	- Given an input X, At = A(X; theta) to get basis
-	- Solve x = argmin||At x - f||^2 s.t. C(x)
-	- Update theta = theta - eta * d L(A(X, theta); f, x) / dx
 - P.-S. Wang, Y. Liu, Y.-X. Guo, C.-Y. Sun, and X. Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
 - Y. Wang, Y. Sun, Z. Liu, S. E. Sarma, M. M. Bronstein, and J. M. Solomon. Dynamic graph cnn for learning on point clouds. 2018
 - X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia 2018

@@ -47,6 +47,11 @@
 	- Dense fusion:
 	- STN
 	- Experiments: KITTI, AP-3D
+- **Frustum PointNet**: C Qi, W Liu, C Wu, H Su, L Guibas. Frustum PointNets for 3D Object Detection from RGB-D Data, CVPR'18
+	- RGB-D
+	- 2D-detection: 2D bounding boxes;
+	- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
+	<img src="/CV-3D/images/cnn_3d/frustum-pointnet.png" alt="drawing" width="600"/>
 
 ## Active Learning
 - Li Yi, Vladimir G. Kim, Duygu Ceylan, I-Chao Shen, Mengyan Yan, Hao Su, Cewu Lu, Qixing Huang, Alla Sheffer, Leonidas Guibas. A Scalable Active Framework for Region Annotation in 3D Shape Collections. SIGGRAPH Asia'18
