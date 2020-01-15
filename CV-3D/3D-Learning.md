@@ -25,7 +25,6 @@
 		<img src="/CV-3D/images/cnn_3d/kd-network1.png" alt="drawing" width="500"/>
 		<img src="/CV-3D/images/cnn_3d/kd-network2.png" alt="drawing" width="400"/>
 		<img src="/CV-3D/images/cnn_3d/kd-network3.png" alt="drawing" width="500"/>
-
 - **Unordered**:
 	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
 		<img src="/CV-3D/images/cnn_3d/pointnet.png" alt="drawing" width="600"/>
@@ -77,8 +76,15 @@
 			- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
 			- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
 			- Aggregation: maxpool edges with the same node, maps the feature back;
+- Unclassified:
+	- Y. Xu, T. Fan, M. Xu, L. Zeng, and Y. Qiao. SpiderCNN: Deep learning on point sets with parameterized convolutional filters. ECCV 2018
+		- **SOA**
 
 ## Voxel
+- **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes
+	- Predict next best angle (most uncertain by max entropy diff)
+- D Maturana and S Scherer. VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. IROS 2015
+	- https://github.com/dimatura/voxnet
 - B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018
 	- SSCN (submanifold sparse Conv Net)
 	- https://github.com/facebookresearch/SparseConvNet
@@ -89,6 +95,8 @@
 	- Experiments: ShapeNet; NYU depth;
 - Oct-tree:
 	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
+	- P.-S. Wang, Y. Liu, Y.-X. Guo, C.-Y. Sun, and X. Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
+		- SOA classification;
 
 ## Mesh
 - K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
@@ -110,6 +118,12 @@
 	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
 	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
 
+## Multiple 2D Images
+- Hang Su, Subhransu Maji, Evangelos Kalogerakis, Erik Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV 2015
+	- https://github.com/jongchyisu/mvcnn_pytorch
+	- Multi-view pooling
+- B Shi, S Bai, X Bai. DeepPano: Deep Panoramic Representation for 3-D Shape Recognition. SPL'15
+
 ## Implicit: TSDF
 - Legacy:
 	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
@@ -125,3 +139,6 @@
 
 ## 2D-3D Fusion
 - V. Hegde and R. Zadeh. FusionNet: 3D object classification using multiple data representations. 2016
+- Vishakh Hegde, Reza Zadeh. FusionNet: 3D Object Classification Using Multiple Data Representations. NIPS 2016
+- Charles R. Qi, Hao Su, Matthias Nießner Angela Dai Mengyuan Yan Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR'16
+	- https://github.com/charlesq34/
