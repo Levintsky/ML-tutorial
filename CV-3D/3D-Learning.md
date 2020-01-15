@@ -76,6 +76,7 @@
 			- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
 			- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
 			- Aggregation: maxpool edges with the same node, maps the feature back;
+	- X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia'18
 - Unclassified:
 	- Y. Xu, T. Fan, M. Xu, L. Zeng, and Y. Qiao. SpiderCNN: Deep learning on point sets with parameterized convolutional filters. ECCV 2018
 		- **SOA**

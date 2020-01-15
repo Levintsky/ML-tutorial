@@ -20,7 +20,7 @@
 	- Iterative Part-state Inference Network (ISIN)
 
 ## Unsupervised (Reconstruction)
-- S. Tulsiani, H. Su, L. J. Guibas, A. A. Efros, and J. Malik. Learning shape abstractions by assembling volumetric primitives. CVPR 2017
+- S. Tulsiani, H. Su, L. J. Guibas, A. A. Efros, and J. Malik. Learning shape abstractions by assembling volumetric primitives. CVPR'17
 	- Input: voxel; output: mesh parts (triangles);
 	- Unsupervised?
 	- Each part (z, q, t): z, shape; q rotation; t translation;
@@ -43,7 +43,7 @@
 	- Update theta = theta - eta * d L(A(X, theta); f, x) / dx
 
 ## SSL
-- Idea: Mobility-based part structure induction
+- Idea: Mobility-based part structure induction;
 - Li Yi, Haibin Huang, Difan Liu, Evangelos Kalogerakis, Hao Su, Leonidas Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia'18
 	- https://github.com/ericyi/articulated-part-induction
 

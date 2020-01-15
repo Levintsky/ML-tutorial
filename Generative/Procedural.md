@@ -210,7 +210,7 @@
 	- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
 		- https://github.com/daerduoCarey/structedit
 		- Problem setup: 3D shape analogy; Source Si, target Sj;
-		- Insight: extension of StructureNet;
+		- Insight: extension of StructureNet;\
 			<img src = '/Generative/images/pm/structedit.png' width = '450'>
 	- **Im2Struct**: Chengjie Niu, Jun Li, and Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
 		- Infer a hierarchical bounding box structure from a single image of a 3D shape;
