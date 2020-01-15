@@ -1,32 +1,16 @@
 # Program Synthesis
 
-## Translation
-- Tree-to-tree Neural Networks for Program Translation (Berkeley), NIPS 2018
+## Program Translation
+- Xinyun Chen, Chang Liu, Dawn Song. Tree-to-tree Neural Networks for Program Translation, NIPS 2018
 	- Each language to parse tree as IR (intermediate representation);
 	- Learn mapping function with tree-to-tree network;
 	- Tree encoder for source language with Tree-LSTM;
 	- Decoder: (1) attention; (2) source encoding; (3) combined encoding; (4) argmax + softmax;
 
-## Applications: regard a problem as program synthesis
-- Univ of Edinburgh, Google Brain. HOUDINI: Lifelong Learning as Program Synthesis, NIPS 2018
-	- Problem: lifelong learning
-	- Neural libraries for lifelong learning
-	- Functional programs represent deep architecture
-	- Symbolic program synthesis to choose: which to re-use? put them together?
-	- Differentiable, fine-tuned by gd
-
-## Input/Output examples -> Program
-- L Zhang, G Rosenblatt, E Fetaya, R Liao, W Byrd, M Might, R Urtasun, R Zemel. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS'18
-	- https://github.com/xuexue/neuralkanren
-	- Input: input/output examples
-	- miniKanren as symbolic system
-	- ML propose candidates program satisfying the candidates
-- A Zohar, L Wolf. Automatic Program Synthesis of Long Programs with a Learned Garbage Collector, NIPS'18
-	-  https://github.com/amitz25/PCCoder
-	- Predict statement by statement
-	- Garbage collection (things can be discarded)
-	- Dynamic input
-	- Prediction guided search
+## Execution
+- **NPI**: Scott Reed and Nando De Freitas. Neural programmer-interpreters. ICLR'16
+- Matko Bosnjak, Tim Rocktaschel, Jason Naradowsky, Sebastian Riedel. Programming with a Differentiable Forth Interpreter. ICML'17
+- Jonathon Cai, Richard Shin, and Dawn Song. Making neural programming architectures generalize via recursion. ICLR'17
 
 ## Misc
 - D Tran, M Hoffman, D Moore, C Suter, S Vasudevan, A Radul, M Johnson, R Saurous. Simple, Distributed, and Accelerated Probabilistic Programming. NIPS'18
@@ -37,7 +21,6 @@
 	- DSL (Domain specific language)
     - Program search: neural network
     - EC2 (ECC, for Explore/Compress/Compile)
-- Learning Loop Invariants for Program Verification (Le Song)
 - DeepProbLog: Neural Probabilistic Logic Programming
 - **Improving Neural Program Synthesis with Inferred Execution Traces (Dawn Song)**
 - Le Song, Learning Loop Invariants for Program Verification, NIPS 2018

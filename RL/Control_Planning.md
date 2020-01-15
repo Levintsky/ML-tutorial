@@ -5,9 +5,8 @@
 - Control as an Inference (lec-15)
 
 ## Monte-Carlo Tree Search
-- Approach
-<img src="/RL/images/mcts/mcts.png" alt="drawing" width="400"/>
-
+- Approach\
+	<img src="/RL/images/mcts/mcts.png" alt="drawing" width="400"/>
 - Legacy
 	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
 	- S. Gelly and D. Silver. Combining online and offline knowledge in uct. ICML, 2007.
@@ -20,24 +19,19 @@
 	- Thomas Anthony, Zheng Tian, and David Barber. Thinking fast and slow with deep learning and tree search, 2017.
 
 ## Control as Inference
-- A graphical model
-<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
-
-- Backward message: beta(st, at) = p(Ot:T) given (st, at). i.e., given what will happen after t, what is the optimality if we should take (st at).
-<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
-<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>
-<img src="/RL/images/control/control-infer4.png" alt="drawing" width="600"/>
-
-- Forward message: alpha(st) = p(st) given O1:t-1
-<img src="/RL/images/control/control-infer5.png" alt="drawing" width="600"/>
-<img src="/RL/images/control/control-infer6.png" alt="drawing" width="600"/>
-
-- Q-learning with soft optimality
-<img src="/RL/images/control/soft-q.png" alt="drawing" width="600"/>
-
-- Policy gradient with soft optimality
-<img src="/RL/images/control/soft-pg.png" alt="drawing" width="600"/>
-
+- A graphical model\
+	<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
+- Backward message: beta(st, at) = p(Ot:T) given (st, at). i.e., given what will happen after t, what is the optimality if we should take (st at).\
+	<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
+	<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>
+	<img src="/RL/images/control/control-infer4.png" alt="drawing" width="600"/>
+- Forward message: alpha(st) = p(st) given O1:t-1\
+	<img src="/RL/images/control/control-infer5.png" alt="drawing" width="600"/>
+	<img src="/RL/images/control/control-infer6.png" alt="drawing" width="600"/>
+- Q-learning with soft optimality\
+	<img src="/RL/images/control/soft-q.png" alt="drawing" width="600"/>
+- Policy gradient with soft optimality\
+	<img src="/RL/images/control/soft-pg.png" alt="drawing" width="600"/>
 - Graphical models:
 	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
 	- Ziebart. (2010). Modeling interaction via the principle of maximal causal entropy: connection between soft optimality and maximum entropy modeling.
@@ -52,7 +46,7 @@
 ## Legacy
 - Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes, 2007
 
-## SOA
+## Unclassified
 - N Heess, J J Hunt, T P Lillicrap, D Silver. Memory-based control with recurrent neural networks. NIPS'15
 - C Blundell, B Uria, A Pritzel, Y Li, A Ruderman, J Z Leibo, J Rae, D Wierstra, D Hassabis. Model-Free Episodic Control
 - G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
@@ -62,6 +56,12 @@
 - **OptNet**: B Amos and Z Kolter. OptNet: Differentiable Optimization as a Layer in Neural Networks. ICML'17
 - **MPC**: B Amos, I Rodriguez, J Sacks, B Boots, Z Kolter. Differentiable MPC for End-to-end Planning and Control. 2019
 	- https://locuslab.github.io/mpc.pytorch/
+- Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
+- Berkeley. Variational Inverse Control with Events: A General Framework for Data-Driven Reward Definition. NIPS'18
 
 ## Theory
 - On the Sample Complexity of the Linear Quadratic Regulator
+
+## Applications
+- Data center cooling using model-predictive control. NIPS'18 Tutorial
+

@@ -37,6 +37,7 @@ speech processing. ICASSP, 2013.
 	- Deep speech: Scaling up end-to-end speech recognition. arXiv preprint arXiv:1412.5567 (2014).
 	- Deep speech 2: End-to-end speech recognition in english and mandarin. arXiv preprint arXiv:1512.02595 (2015).
 	- All use power-spectrum as input.
+	- Neural Voice Cloning with a Few Samples. NIPS'18
 - **FAIR**:
 	- Ronan: Estimating phoneme class conditional probabilities from raw speech signal using convolutional neural networks. 2013
 	- Ronan: Wav2Letter: an End-to-End ConvNet-based Speech Recognition System
@@ -50,8 +51,8 @@ speech processing. ICASSP, 2013.
 
 ## TTS
 - van den Oord, A., et al. WaveNet: A Generative Model for Raw Audio. NIPS'16
-	- Dilated Conv
-	<img src = '/NLP/images/wavenet1.png' width = '500px'>
-
-	- ResNet
-	<img src = '/NLP/images/wavenet2.png' width = '500px'>
+	- Dilated Conv\
+		<img src = '/NLP/images/wavenet1.png' width = '500px'>
+	- ResNet\
+		<img src = '/NLP/images/wavenet2.png' width = '500px'>
+- Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis. NIPS'18

@@ -1,6 +1,10 @@
 # Style Transfer
 
 ## Unclassified, New
+- Unsupervised Image-to-Image Translation Using Domain-Specific Variational Information Bound. NIPS'18
+- A Unified Feature Disentangler for Multi-Domain Image Translation and Manipulation. NIPS'18
+- Yoshua Bengio. Image-to-image translation for cross-domain disentanglement. NIPS'18
+- Unsupervised Learning of Artistic Styles with Archetypal Style Analysis. NIPS'18
 - Han Shu, Yunhe Wang, Xu Jia, Kai Han, Hanting Chen, Chunjing Xu, Qi Tian, Chang Xu. Co-Evolutionary Compression for Unpaired Image Translation. ICCV'19
 - Interactive Sketch & Fill: Multiclass Sketch-to-Image Translation. ICCV'19
 - Attribute-Driven Spontaneous Motion in Unpaired Image Translation. ICCV'19
@@ -141,8 +145,7 @@
 - Parametric:
 	- Content loss: intermediate layer square-loss (F1-F2)^2
 	- Style loss: 2nd order (G1-G2)^2
-	<img src="/Generative/images/transfer/neural-style1.png" alt="drawing" width="250"/>
-
+		<img src="/Generative/images/transfer/neural-style1.png" alt="drawing" width="250"/>
 	- L. A. Gatys, A. S. Ecker, and M. Bethge, Texture Synthesis Using Convolutional Neural Networks. NIPS'15
 	- L. A. Gatys, A. S. Ecker, and M. Bethge, A neural algorithm of artistic style. 2015
 	- L. A. Gatys, A. S. Ecker, and M. Bethge, Image style transfer using convolutional neural networks, CVPR'16

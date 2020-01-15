@@ -6,6 +6,38 @@
 - https://blog.evjang.com/2018/01/nf1.html
 - https://blog.evjang.com/2018/01/nf2.html
 - http://akosiorek.github.io/ml/2018/04/03/norm_flows.html
+- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed
+Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+	- Expressive power: universal representation is possible under reasonable conditions (proved with Autogressive flows);
+	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
+		<img src = '/Generative/images/flow/survey1.png' width = '400'>
+	- Constructing Flows (finite compositions):
+		- Autoregressive flows (Jacobian determinant is triangular and tractable), zi only based on inputs z(j<=i);
+			- Affine/location-scale: NICE, RealNVP, IAF, MAF, Glow;
+			- Non-affine: conic (NAF, block NAF, B-NAF, Flow++); drawback: not inverted analytically, only iteratively via bp;
+			- Recurrent autoregressive flows [Olivia 18, IAF 16]: share parameters across conditioners with RNN;
+			- MAF: masking out connections with (1/0 matrix); or soft-attention (transformer)
+		- Linear flow: z'=Wz, W: DxD invertible; shortcoming:
+		- Residual flow: guaranteed to be invertible if contractive; shortcoming: no known general efficient procedure for computing Jacobian determinant;
+			- Planar flow;
+			- Sylvester flow;
+			- Radial flow;
+		- Practical consideration:
+			- Normalization;
+	- Constructing Flows: continuous-time transformation;
+		- Neural ODE; trace for flow; Hutchinson’s trace estimator [1990] to make trace estimation fast;
+		- Solving forward: Runge-Kutta family;
+		- Solving backward: adjoint [adjoint sensitivity method, Pontryagin 1962];
+	- Generalization: generate probability;
+		- RAD;
+		- Discrete distribution;
+		- Riemannian manifold;
+	- Applications:
+		- Probabilistic modeling: MLE: KL(px(x), px(x, theta)), density estimation;
+		- Generation;
+		- Inference: modeling parameters to infer unkonwn quantities within a model;
+		- Representation learning;
+		- RL: imitation learning; Yannick Schroecker, Mel Vecerik, and Jon Scholz. Generative predecessor models for sample-efficient imitation learning. ICLR'19
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
@@ -51,10 +83,17 @@
 		- A type of NF, where the transformation layer is built as an autoregressive neural network
 		- https://github.com/gpapamak/maf \
 			<img src = '/Generative/images/flow/maf.png' width = '400'>
-	- Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+	- Yang Song, Chenlin Meng, and Stefano Ermon. MintNet: Building invertible neural networks with masked convolutions. NIPS'19
+	- **NAF**: Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+	- Priyank Jaini, Kira A. Selby, and Yaoliang Yu. Sum-of-squares polynomial flow. ICML'19
+	- **B-NAF** Nicola De Cao, Ivan Titov, and Wilker Aziz. Block neural autoregressive flow. UAI'19
+	- **Flow++**: Jonathan Ho, Xi Chen, Aravind Srinivas, Yan Duan, and Pieter Abbeel. Flow++: Improving flow-based generative models with variational dequantization and architecture. ICML'19
+design.
 - Flow + GAN:
 	- Ivo Danihelka, Balaji Lakshminarayanan, Benigno Uria, Daan Wierstra, and Peter Dayan. Comparison of maximum likelihood and gan-based training of real nvps. 2017
 	- Aditya Grover, Manik Dhar, and Stefano Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
+- Recurrent:
+	- Junier Oliva, Avinava Dubey, Manzil Zaheer, Barnabas Poczos, Ruslan Salakhutdinov, Eric Xing, and Jeff Schneider. Transformation autoregressive networks. ICML'18
 - W Grathwohl, R Chen, J Bettencourt, I Sutskever, and D Duvenaud. Ffjord: Free-form continuous dynamics for scalable reversible generative models. ICLR'19
 - **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
 	- https://www.guandaoyang.com/PointFlow/
@@ -72,6 +111,9 @@
 		<img src = '/Generative/images/flow/gnf2.png' width = '350'>
 - GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
 
+## Generalization
+- **RAD**: Laurent Dinh, Jascha Sohl-Dickstein, Razvan Pascanu, and Hugo Larochelle. A RAD approach to deep mixture models. ICLR'19
+
 ## Invertible
 - **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
 	- Insight: resnet expensive to store activation in memory, revnet could calculate activation from next layer;
@@ -83,6 +125,7 @@
 		<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
 - Yunfei Teng, Anna Choromanska, and Mariusz Bojarski. Invertible autoencoder for domain adaptation. 2018
 - R.T. Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
+- MIT. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
 - Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
 - Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
 	- A density model, main insight: free-form! A comparison:\
@@ -96,8 +139,18 @@
 	- For (3), truncated at n steps;
 	- The algorithm:\
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
+- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
 
 ## Neural ODE
+- Good summaries:
+	- About adjoint method: https://blog.csdn.net/liangdaojun/article/details/100633277
+	- About trace for flow generative: https://blog.csdn.net/hanss2/article/details/85331863
+	- https://zhuanlan.zhihu.com/p/51514687
+- Control (ODE/PDE) + NN:
+	- Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
+		- Same thing as Neural ODE; Neural ODE is strong in flow-based generative modeling;
+- **LGQ**: Laurent Lessard, Benjamin Recht, Andrew Packard. Analysis and Design of Optimization Algorithms via Integral Quadratic Constraints. 2015
+- Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019
 - Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 	- Gaussian Process to solve ODE
 - Reversible:

@@ -7,6 +7,12 @@
 - MSCOCO
 - http://www.sohu.com/a/313942390_651893?sec=wd
 
+## Unclassified
+- Partially-Supervised Image Captioning. NIPS'18
+- Dahua Lin. A Neural Compositional Paradigm for Image Captioning. NIPS'18
+- Weakly Supervised Dense Event Captioning in Videos. NIPS'18
+- Answerer in Questioner's Mind: Information Theoretic Approach to Goal-Oriented Visual Dialog. NIPS'18
+
 ## Classical
 - Stanford
 	- **NeuralTalk**: A. Karpathy. https://github.com/karpathy/neuraltalk

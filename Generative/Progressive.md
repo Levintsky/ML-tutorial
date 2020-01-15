@@ -5,10 +5,7 @@
 	- Lake, B. M., Salakhutdinov, R., and Tenenbaum, J. B. Human-level concept learning through probabilistic program induction. Science, 2015.
 	- Lake, B. M., Ullman, T. D., Tenenbaum, J. B., and Gershman, S. J. Building machines that learn and think like people. Behavioral and Brain Sciences, 40, 2017.
 
-## Recurrent, Progressive
-- 3D:
-	- **3D-PRNN**:
-		- https://github.com/zouchuhang/3D-PRNN
+## Recurrent, Progressive	
 - Greg Mori. Probabilistic Neural Programmed Networks for Scene Generation, NIPS 2018
 	- Input: text-based programs
     - Output: rendered images

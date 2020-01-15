@@ -5,8 +5,39 @@
 	- Rassi. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
 	- Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
 
+## Approximator
+- ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
+
 ## Reverse, Invert
 
 ## Convergence
-- **FAIR**:
-	- Behnam Neyshabur, Zhiyuan Li, Srinadh Bhojanapalli, Yann LeCun, Nathan Srebro: Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
+- Over-Parametrization:
+	- Behnam Neyshabur, Zhiyuan Li, Srinadh Bhojanapalli, Yann LeCun, Nathan Srebro. Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
+	- Francis Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
+	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
+	- How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
+- SGD:
+	- Which Neural Net Architectures Give Rise to Exploding and Vanishing Gradients. NIPS'18
+	- Allen Zhu. Byzantine Stochastic Gradient Descent. NIPS'18
+- Normalization:
+	- How Does Batch Normalization Help Optimization? NIPS'18
+	- Understanding Batch Normalizations. NIPS'18
+	- Understanding Weight Normalized Deep Neural Networks with Rectified Linear Units. NIPS'18
+- Paul Hand. Phase Retrieval Under a Generative Prior. NIPS'18
+- Berkeley. On the Local Minima of the Empirical Risk. NIPS'18
+- Allen Zhu. NEON2: Finding Local Minima via First-Order Oracles. NIPS'18
+- Are ResNets Provably Better than Linear Predictors? NIPS'18
+- Simon Du, Jason Lee. Algorithmic Regularization in Learning Deep Homogeneous Models: Layers are Automatically Balanced. NIPS'18
+
+## Capacity
+- Pierre Baldi. Neuronal Capacity. NIPS'18
+
+## Dimensionality
+- On the Dimensionality of Word Embedding (Stanford)
+	- PIP loss, bias-variance trade-off
+
+## Sample Complexity
+- Simon Du. How Many Samples are Needed to Estimate a Convolutional Neural Network? NIPS'18
+
+## Unclassified
+- FAIR. The Description Length of Deep Learning models. NIPS'18

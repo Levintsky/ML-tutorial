@@ -1,5 +1,8 @@
 # Video Understanding
 
+## Unclassified
+- Dahua Lin. Trajectory Convolution for Action Recognition. NIPS'18
+
 ## Benchmarks
 - Google:
 	- **Sports-1M**: Andrej Karpathy; George Toderici; Sanketh Shetty; Thomas Leung; Rahul Sukthankar; Li Fei-Fei. Large-scale Video Classification with Convolutional Neural Networks. CVPR 2014;

@@ -12,6 +12,10 @@
 - NLP: parse-tree;
 - Image: Scene-graph;
 
+## Unclassified
+- **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are
+Graph Neural Networks? ICLR'19
+
 ## Legacy
 - Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005
 - Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. Computational capabilities of graph neural networks. TNN 2009
@@ -79,7 +83,6 @@
 ## Graph Attention Network
 - P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
 	<img src="/Graph/images/gcn-attention.png" alt="drawing" width="500"/>
-
 - J. Zhang, X. Shi, J. Xie, H. Ma, I. King, and D.-Y. Yeung, Gaan: Gated attention networks for learning on large and spatiotemporal graph. UAI'18
 - J. B. Lee, R. Rossi, and X. Kong, “Graph classification using structural attention. KDD'18
 - S. Abu-El-Haija, B. Perozzi, R. Al-Rfou, and A. A. Alemi, Watch your step: Learning node embeddings via graph attention. NIPS'18
@@ -127,5 +130,12 @@
 - Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018
 - Raposo, D., Santoro, A., Barrett, D., Pascanu, R., Lillicrap, T., and Battaglia, P. (2017). Discovering
 objects and their relations from entangled scene representations. ICLR Workshop 2017
-- Garcia, V. and Bruna, J. (2018). Few-shot learning with graph neural networks. ICLR 2017
+- Garcia, V. and Bruna, J. Few-shot learning with graph neural networks. ICLR 2017
 - Bordes, A., Usunier, N., Garcia-Duran, A., Weston, J., and Yakhnenko, O. Translating embeddings for modeling multi-relational data. NIPS 2013
+
+## Unclassified
+- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
+- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
+- Link Prediction Based on Graph Neural Networks. NIPS'18
+- Hierarchical Graph Representation Learning with Differentiable Pooling (Jure Leskovec). NIPS'18
+- LinkNet: Relational Embedding for Scene Graph. NIPS'18

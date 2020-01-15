@@ -6,14 +6,17 @@
 		- https://www.shapenet.org/
 		- 55 classes, 51,300 unique 3D models (ShapeNetCore)
 		- Part label available
-	- **ModelNet**: Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. In CVPR, 2015.
+	- **ModelNet**: Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
 		- http://3dshapenets.cs.princeton.edu/
 		- 30 x 30 x 30 voxels
 		- 662 classes, 151,128 CAD models (3D)
 		- ModelNet10: 4899 models from 10 categories 
 		- ModelNet40: 12311 models from 40 categories, all are uniformly orientated
-	- **PartNet**: Kaichun Mo, Shilin Zhu, Angel X. Chang, Li Yi, Subarna Tripathi, Leonidas J. Guibas, Hao Su. PartNet: A Large-scale Benchmark for Fine-grained and Hierarchical Part-level 3D Object Understanding.
+	- **PartNet**: Kaichun Mo, Shilin Zhu, Angel X. Chang, Li Yi, Subarna Tripathi, Leonidas J. Guibas, Hao Su. PartNet: A Large-scale Benchmark for Fine-grained and Hierarchical Part-level 3D Object Understanding. CVPR'19
 		- https://cs.stanford.edu/~kaichun/partnet/
+		- https://github.com/daerduoCarey/partnet_anno_system (Online annotation system)
+		- https://github.com/daerduoCarey/partnet_dataset
+		- Download link is in ShapeNet https://www.shapenet.org/download/parts
 		- 573,585 parts, 26,671 3D models, 24 categories
 		- Based on ShapeNet-Core
 		- Hierarchical labeling
@@ -56,7 +59,7 @@ labeling from online repositories. TOG 2017
 	- 10,355 training, 2,860 testing;
 - **SceneNN**: 2016
 	- 100+ indoor scene meshes;
-- **ScanNet**: 2017
+- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
 - **Matterport3D**: RGB-D indoor Environment;
 - **SUNCG**:
 - **MINOS: Multimodal Indoor Simulator**: 2017;

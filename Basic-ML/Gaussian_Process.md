@@ -35,3 +35,8 @@
 	- Exact equivalence between infinitely wide deep networks and GPs
 	- Focus on exact Bayesian inference for regression tasks
 	- https://github.com/brain-research/nngp
+
+## Unclassified
+- Orthogonally Decoupled Variational Gaussian Processes. NIPS'18
+- Infinite-Horizon Gaussian Processes. NIPS'18
+- Learning Gaussian Processes by Minimizing PAC-Bayesian Generalization Bounds. NIPS'18

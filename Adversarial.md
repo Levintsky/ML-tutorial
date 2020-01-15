@@ -35,6 +35,7 @@
 	- 2017 winner;
 - Eykholt. Robust Physical-World Attacks on Deep Learning Visual Classification. CVPR'18
 - **PGD**: A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
+- **Uber**: An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 - Unrestricted (no Lp norm constraint):
 	- Y Song et al. Constructing unrestricted adversarial examples with generative models. 2018.
 	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018
@@ -56,6 +57,7 @@
 - A Kurakin, I Goodfellow, and S Bengio. Adversarial machine learning at scale. ICLR'17
 - A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
 - **ALP**: H. Kannan, A. Kurakin, and I. Goodfellow. Adversarial logit pairing. NIPS'18
+- Adversarially Robust Optimization with Gaussian Processes. NIPS'18
 - C Xie, Y Wu, L Maaten, A Yuille, and K He. Feature Denoising for Improving Adversarial Robustness. CVPR'19
 	- CAAD defense champion;
 	- https://github.com/facebookresearch/ImageNet-Adversarial-Training
@@ -70,3 +72,9 @@
 	- H Zhou, K Chen, W Zhang, H Fang, W Zhou, N Yu. DUP-Net: Denoiser and Upsampler Network for 3D Adversarial Point Clouds Defense. ICCV'19
 		- 1. Remove outlier by local filtering;
 		- 2. Upsampling: L Yu, X Li, C Fu, D Cohen-Or, P Heng. PU-Net: Point Cloud Upsampling Network. CVPR'18
+
+## Unclassified
+- Andrew Ilyas, Shibani Santurkar, Dimitris Tsipras, Logan Engstrom, Brandon Tran, Aleksander Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19
+	- Some features are robust, some are non-robust
+	- Imagine binary classifcation: f(x) and y (+/-1)
+	- Insight: create a new dataset, manipulate x (originally cat), s.t., turns it into a dog with cat-looking with dog-robust-feature and labled it as a dog in the new dataset;

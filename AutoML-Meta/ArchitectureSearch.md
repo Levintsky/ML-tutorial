@@ -4,6 +4,14 @@
 - M Wistuba, A Rawat, Te Pedapati. A Survey on Neural Architecture Search. 2019
 - https://github.com/hibayesian/awesome-automl-papers
 - https://github.com/markdtw/awesome-architecture-search
+- NIPS Tutorial: https://nips.cc/Conferences/2018/Schedule?showEvent=10979
+	- Frank Hutter
+
+## Unclassfied
+- Bo Chen, Golnaz Ghiasi, Hanxiao Liu, Tsung-Yi Lin, Dmitry Kalenichenko, Hartwig Adams, Quoc V Le. MnasFPN: Learning Latency-aware Pyramid Architecture for Object Detection on Mobile Devices. 2019
+- Barret Zoph, Ekin D Cubuk, Golnaz Ghiasi, Tsung-Yi Lin, Jonathon Shlens, Quoc V Le. Learning Data Augmentation Strategies for Object Detection. 2019
+- **Nas-fpn**: Golnaz Ghiasi, Tsung-Yi Lin, Quoc V. Le. Nas-fpn: Learning scalable feature pyramid architecture for object detection. CVPR'19
+- Transfer Learning with Neural AutoML. NIPS'18
 
 ## FAIR
 - Saining Xie, Kaiming He. Exploring Randomly Wired Neural Networks for Image Recognition. ICCV'19

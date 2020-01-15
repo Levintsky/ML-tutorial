@@ -1,8 +1,12 @@
 # Exploration, Exploitation
 
+## From spinningup
+- Intrinsic motivation: VIME, CTS/PixelCNN/hash-based pseudo-count; EX2; ICM; Burda; RND;
+- Unsupervised: VIC; DIAYN; VALOR;
+
 ## Classics
 - lec-17, 18 (CS-294, Sergey Levine)
-- Approach 1: UCB\
+- Approach 1: **UCB** (Upper Confidence Bounds)\
 	<img src="/RL/images/xx/xx-ucb.png" alt="drawing" width="500"/>
 - Approach 2: **Thompson Sampling**:\
 	<img src="/RL/images/xx/thompson-sampling.png" alt="drawing" width="500"/>
@@ -34,27 +38,28 @@ def bonus(self, observation):
   exploration_bonus = self.beta / math.sqrt(pseudo_count + 0.01)
   return exploration_bonus
 ```
-- **CTS-Pseudocounts**: M G. Bellemare, S Srinivasan, G Ostrovski, T Schaul, D Saxton, R Munos. Unifying Count-Based Exploration and Intrinsic Motivation, NIPS'16
-	- CTS model (Bellemare, M., Veness, J., and Talvitie, E. (2014). Skip context tree switching. ICML'14);
-	- Enhance the reward r with rareness of next state N(s), r'=r+beta/sqrt(N(s)+eps):
-		<img src="/RL/images/xx/xx-pseudo.png" alt="drawing" width="500"/>
-- **PixelCNN-Pseudocounts**: Georg Ostrovski, Marc G. Bellemare, Aaron van den Oord, Remi Munos. Count-Based Exploration with Neural Density Models. ICML'17
-- **Hash-Pseudocounts**: H Tang, R Houthooft, D Foote, A Stooke, X Chen, Y Duan, J Schulman, F D Turck, P Abbeel. #Exploration: A Study of Count-Based Exploration for Deep Reinforcement Learning. NIPS'17
-	<img src="/RL/images/xx/xx-hash.png" alt="drawing" width="400"/>
-	<img src="/RL/images/xx/xx-hash2.png" alt="drawing" width="400"/>
+- Pseudo-count:
+	- **CTS**: M G. Bellemare, S Srinivasan, G Ostrovski, T Schaul, D Saxton, R Munos. Unifying Count-Based Exploration and Intrinsic Motivation, NIPS'16
+		- CTS model (Bellemare, M., Veness, J., and Talvitie, E. (2014). Skip context tree switching. ICML'14);
+		- Enhance the reward r with rareness of next state N(s), r'=r+beta/sqrt(N(s)+eps):
+			<img src="/RL/images/xx/xx-pseudo.png" alt="drawing" width="500"/>
+	- **PixelCNN**: Georg Ostrovski, Marc G. Bellemare, Aaron van den Oord, Remi Munos. Count-Based Exploration with Neural Density Models. ICML'17
+	- **Hash**: H Tang, R Houthooft, D Foote, A Stooke, X Chen, Y Duan, J Schulman, F D Turck, P Abbeel. #Exploration: A Study of Count-Based Exploration for Deep Reinforcement Learning. NIPS'17\
+		<img src="/RL/images/xx/xx-hash.png" alt="drawing" width="400"/>
+		<img src="/RL/images/xx/xx-hash2.png" alt="drawing" width="400"/>
 - **EX2**: J Fu, J D. Co-Reyes, S Levine. EX2: Exploration with Exemplar Models for Deep Reinforcement Learning, NIPS'17
 	- https://github.com/justinjfu/exemplar_models
-	- Exemplar-classifier for seen/unseen:
+	- Exemplar-classifier for seen/unseen:\
 		<img src="/RL/images/xx/xx-ex2-1.png" alt="drawing" width="400"/>
-	- Model archetecture (amortized rather than one each model)
+	- Model archetecture (amortized rather than one each model)\
 		<img src="/RL/images/xx/xx-ex2-2.png" alt="drawing" width="400"/>
-	- Put together:
+	- Put together:\
 		<img src="/RL/images/xx/xx-ex2-3.png" alt="drawing" width="400"/>
 - Thompson Sampling
-	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16
-	<img src="/RL/images/xx/xx-bootstrap1.png" alt="drawing" width="600"/>
-	<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
-	<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
+	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16\
+		<img src="/RL/images/xx/xx-bootstrap1.png" alt="drawing" width="600"/>
+		<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
+		<img src="/RL/images/xx/xx-bootstrap3.png" alt="drawing" width="600"/>
 
 ## Multi-Arm Bandit
 - http://iosband.github.io/2015/07/28/Beat-the-bandit.html
@@ -67,7 +72,7 @@ def bonus(self, observation):
 	- Montezuma's Revenge Solved by Go-Explore, a New Algorithm for Hard-Exploration Problems (Sets Records on Pitfall, Too)
 	- https://eng.uber.com/go-explore/
 
-## Curiosity
+## Curiosity, Intrinsic Reward
 - J. Schmidhuber, Curious model-building control systems. IJCNN'91
 - J. Schmidhuber, Formal theory of creativity, fun, and intrinsic motivation (1990–2010), IEEE Trans. Auton. Mental Develop'10
 - Y. Sun, F. Gomez, and J. Schmidhuber, Planning to be surprised: Optimal Bayesian exploration in dynamic environments. AGI'11
@@ -87,9 +92,63 @@ def bonus(self, observation):
 	<img src="/RL/images/xx/xx-icm.png" alt="drawing" width="500"/>
 - **I2A**: T Weber, S Racanière, D P. Reichert, L Buesing, A Guez, D J Rezende, A P Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
 - Sainbayar Sukhbaatar, Zeming Lin, Ilya Kostrikov, Gabriel Synnaeve, Arthur Szlam, Rob Fergus. Intrinsic Motivation and Automatic Curricula via Asymmetric Self-Play. ICLR'18
+- Sergey. Visual Reinforcement Learning with Imagined Goals. NIPS'18
+- Learning to Play With Intrinsically-Motivated, Self-Aware Agents. NIPS'18
+- Satinder Singh. On Learning Intrinsic Rewards for Policy Gradient Methods. NIPS'18
 - Yuri Burda, Harri Edwards, Deepak Pathak, Amos Storkey, Trevor Darrell, Alexei A. Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
 	- Contribution: Systematic analysis of how surprisal-based intrinsic motivation performs in a wide variety of environments.
 - Yuri Burda, Harrison Edwards, Amos Storkey, Oleg Klimov. Exploration by Random Network Distillation. ICLR'19
+
+## Unsupervised Option Discovery
+- R Sutton, D Precup, and S Singh. Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning. AI'99
+- **Intrinsically motivated agent**
+- Tobias Jung, Daniel Polani, and Peter Stone. Empowerment for continuous agent—environment systems. Adaptive Behavior, 19(1):16–39, 2011.
+- Shakir Mohamed and Danilo Jimenez Rezende. Variational information maximisation for intrinsically motivated reinforcement learning. NIPS'15
+- **VIC**: Karol Gregor, Danilo Rezende and Daan Wierstra. Variational Intrinsic Control. ICLR'17
+	- Unsupervised RL, discover set of intrinsic options
+	- Maximizing the number of different states an agent can reliably reach
+	- Notation: option Omega, then associated policy pi(a|s,Omega) follows the option;
+	- Different option should result in different result, if for two options Ω1 and Ω2, upon reaching state s(f1), we can infer it was option Ω1 that was executed rather than Ω2, and when reaching a state s(f2) we can infer it was option Ω2 rather than Ω1, then Ω1 and Ω2 can be said to be intrinsically different options:\
+		<img src="/RL/images/hrl/vic1.png" alt="drawing" width="500"/>
+	- p(sf|s0,Ω) is inherent to the environment, but obtaining Bayes' reverse p(Ω|s0,sf) is difficult. I-VB for approximate:\
+		<img src="/RL/images/hrl/vic2.png" alt="drawing" width="500"/>
+	- Put together to learn options Omega:\
+		<img src="/RL/images/hrl/vic3.png" alt="drawing" width="400"/>
+	- Instrinsic control with implicit options (action as options):
+		<img src="/RL/images/hrl/vic4.png" alt="drawing" width="400"/>
+	- Experiments: grid world;
+- Carlos Florensa, Yan Duan, and Pieter Abbeel. Stochastic neural networks for hierarchical reinforcement learning. 2017
+	- Setting: with a single task reward;
+- Roy Fox, Sanjay Krishnan, Ion Stoica, and Ken Goldberg. Multi-Level Discovery of Deep Options. 2017
+- Karol Hausman, Jost Tobias Springenberg, Ziyu Wang, Nicolas Heess, and Martin Riedmiller. Learning an embedding space for transferable robot skills. ICLR'18
+	- Insight: a discriminability objective is equivalent to maximizing the mutual information between the latent skill z and some aspect of the corresponding trajectory;
+	- Setting: with many tasks and reward function
+- **VALOR**: Joshua Achiam, Harrison Edwards, Dario Amodei, Pieter Abbeel. Variational Option Discovery Algorithms. 2018
+	- https://github.com/Steven-Ho/VALOR (pytorch)
+	- Option discovery based on variational inference
+	- Trick 1: VAE style;
+	- Trick 2: curriculum learning;
+	- Context c sample from a noisy distribution G, decoder D decodes back to c, Cost function with 2nd term encourage exploratoin:\
+		<img src="/RL/images/hrl/valor1.png" alt="drawing" width="300"/>
+	- Algorithm:\
+		<img src="/RL/images/hrl/valor2.png" alt="drawing" width="400"/>
+	- Network architecture, notice the decoder does not see action, otherwise it will cheat and ignore environment;
+		<img src="/RL/images/hrl/valor2.png" alt="drawing" width="400"/>
+- **DIAYN**: Benjamin Eysenbach, Abhishek Gupta, Julian Ibarz, Sergey Levine. Diversity is All You Need: Learning Skills without a Reward Function. ICLR'19
+	- **Unsupervised skill discovery**: Unsupervised emergence of diverse skills, such as walking and jumping; learn skills that not only are **distinguishable**, but also are as **diverse** as possible
+	- Trick 1: max entropy polices to force skill diverse;
+	- Trick 2: fix the prior distribution over skills, rather than learn it; (prevent collapsing to sampling only a handful of skills)
+	- Trick 3: discriminator looks at every state (VIC only final state)\
+		<img src="/RL/images/hrl/diayn.png" alt="drawing" width="400"/>
+	- The utility:\
+		<img src="/RL/images/hrl/diayn2.png" alt="drawing" width="400"/>
+
+## Unclassified
+- https://blog.openai.com/reinforcement-learning-with-prediction-based-rewards/
+- https://blog.openai.com/learning-montezumas-revenge-from-a-single-demonstration/
+- Exploration in Structured Reinforcement Learning. NIPS'18
+- Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NIPS'18
+- Diversity-Driven Exploration Strategy for Deep Reinforcement Learning. NIPS'18
 
 ## Legacy
 - Schmidhuber. A Possibility for Implementing Curiosity and Boredom in Model-Building Neural Controllers. 1992

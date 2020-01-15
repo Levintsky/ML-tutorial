@@ -4,7 +4,15 @@
 - Erdős, Rényi, 1960
 - Barabási, Albert, 1999
 
-## VAE:
+## Others
+- D Johnson. Learning graphical state transitions. ICLR'17
+- B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting. IJCAI'18
+- N. De Cao and T. Kipf, Molgan: An implicit generative model for small molecular graphs. arxiv'18
+- A. Bojchevski, O. Shchur, D. Zugner, and S. Gunnemann, Net-gan: Generating graphs via random walks. ICML'18
+- **NTG**: Hang Chu, Daiqing Li, David Acuna, Amlan Kar, Maria Shugrina, Xinkai Wei, Ming-Yu Liu, Antonio Torralba, Sanja Fidler. Neural Turtle Graphics for Modeling City Road Layouts. ICCV'19
+	- https://nv-tlabs.github.io/NTG/
+
+## VAE
 - T. N. Kipf and M. Welling, Variational graph auto-encoders. 2016
 	- http://tkipf.github.io/graph-convolutional-networks/
 	- X: N x F (features on nodes); Adj: N x N;
@@ -23,7 +31,7 @@
 
 ## Autoregressive
 - **SMILES**: M Segler, T Kogej, C Tyrchan, and M P Waller. Generating focused molecule libraries for drug discovery with recurrent neural networks. 2017
-	- RNN on domain-specific sequentializations of graphs
+	- RNN on domain-specific sequentializations of graphs;
 - **GEG**: Y Li, O Vinyals, C Dyer, R Pascanu, P Battaglia. Learning Deep Generative Models of Graphs. ICML'18
 	- (1) sample whether to add a new node of a particular type or terminate;
 	- (2) we add a node of this type to the graph;
@@ -43,9 +51,3 @@
 	- Generate B rolls at a time;
 	- Node representation: linear mapping for initial node feat;
 	- GNN with Attentive Messages: add all augmented edges, run message passing in GNN, classification of the edges to decide y/n with GRU;
-
-## Others
-- D Johnson. Learning graphical state transitions. ICLR'17
-- B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting. IJCAI'18
-- N. De Cao and T. Kipf, Molgan: An implicit generative model for small molecular graphs. arxiv'18
-- A. Bojchevski, O. Shchur, D. Zugner, and S. Gunnemann, Net-gan: Generating graphs via random walks. ICML'18

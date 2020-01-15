@@ -14,3 +14,11 @@
 
 ## NTM
 - W. Zaremba and I. Sutskever. Reinforcement learning neural turing machines. arxiv, 2015.
+
+## Recommendation
+- Fighting Boredom in Recommender Systems with Linear Reinforcement Learning. NIPS'18
+- **Horizon**: Jason Gauci, Edoardo Conti, Yitao Liang, Kittipat Virochsiri, Yuchen He, Zachary Kaden, Vivek Narayanan, Xiaohui Ye, Zhengxing Chen, Scott Fujimoto. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
+
+## Unclassified
+- Learning Temporal Point Processes via Reinforcement Learning. NIPS'18
+- Reinforcement Learning of Theorem Proving. NIPS'18

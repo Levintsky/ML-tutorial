@@ -3,6 +3,24 @@
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
 
+## Problem Setup
+- Input: current status and context (self, every actor else, traffic light, ...)
+- Output: a feasible trajectory
+	- Solution 1: Cost first: propose a cost c(tau) combining everything you require (Abbas version: linear combination w1c1(tau)+w2c2(tau)+ ..., linear weight learnable by struct-SVM); when inference, LQR or method to propose trajectory minimize the cost;
+	- Solution 2: MPC (model-predictive control, solutions first); use model to propose a lot of solutions, pick the one with the lowest cost
+
+## Unclassified
+- **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
+	- https://github.com/modestyachts/robust-control-from-vision
+	- Affine error-profile model;
+	- Model: MBRL (LQR)
+	- Evaluated on synthetic example CARLA
+
+## End-to-End
+- ALVINN
+- NVIDIA
+- EndRun
+
 ## Dataset for Imitation Learning
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
@@ -64,7 +82,7 @@
 			- Actions induce burden;
 		- Ignore rules: filter out actors following behind AV;
 			- Failure in lane changes and merges;
-	- A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
+	- **Current**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
 		- Behavior planning, Trajectory planning;
 		- Input: desired route, state of the world (av state, map, detected object);
 		- Output: high-level behavior b; trajectory tau;

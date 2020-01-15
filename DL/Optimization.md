@@ -1,5 +1,8 @@
 # Optimization Methods
 
+## Loss Design
+- Visualizing the Loss Landscape of Neural Nets. NIPS'18
+
 ## Lagrange Dual
 - A good summary:
 	- https://blog.csdn.net/asd136912/article/details/79149881
@@ -33,22 +36,29 @@
 - U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 
 ## 2nd-Order
-- Natural Gradient:
+- Natural Gradient (check RL section):
 	- Left multiplying inverse of Fisher Information Matrix
+	- Exact natural gradient in deep linear networks and application to the nonlinear case. NIPS'18
+	- Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
 - **KFAC**: J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature. 2015
 	- Kronecker approximation to Fisher
-- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher
-matrix.
+- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix.
 	- Cholesky decomposition.
 - **PRONG**: G. Desjardins, K. Simonyan, R. Pascanu, et.al. Natural neural networks. NIPS 2015
 	- Whitening each layer.
 
-## SVGD
-- Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
-	- https://github.com/DartML/Stein-Variational-Gradient-Descent
+## Noise
+- Mirrored Langevin Dynamics. NIPS'18
+- The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
+
+## Variance Reduction:
+- UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
+- SEGA: Variance Reduction via Gradient Sketching. NIPS'18
+- Stochastic Expectation Maximization with Variance Reduction. NIPS'18
 
 ## Large-Scale
 - R Anil, V Gupta, T Koren, and Y Singer. Memory-efficient adaptive optimization for large-scale learning. 2019
+- Frank Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
 
 ## Mix-Integer Programming (MIP)
 - Take-aways:
@@ -72,5 +82,7 @@ matrix.
 - **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
 	- https://github.com/cvxgrp/cvxpylayers (support both pytorch and tf)
 
-## Misc
+## Unclassified
 - Noam Shazeer and Mitchell Stern. Adafactor: Adaptive learning rates with sublinear memory cost. 2018
+- Provably Correct Automatic Sub-Differentiation for Qualified Programs. NIPS'18
+- L4: Practical loss-based stepsize adaptation for deep learning

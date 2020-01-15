@@ -1,9 +1,5 @@
 # Prediction
 
-## Map-Automation
-- G Mattyus, W Luo and R Urtasun. DeepRoadMapper: Extracting Road Topology From Aerial Images. ICCV'17
-- J. Liang, R. Urtasun. End-to-End Deep Structured Models for Drawing Crosswalks. ECCV'18
-
 ## PnP Together
 - **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
 	- Input: 4D tensor from BEV 3D LiDAR (voxelized with height), temporal (all data changed to current frame coordinate system)
@@ -21,11 +17,11 @@
 	- Output: 1. trajectory regression; (a sequence of bounding boxes); 2. high level actions (keep lane, turn left/right, left/right lane change, stopping, stopped, parked)
 	- Output head: 1. detection branch; (anchors) 2. intention branch; 3. intention as an embedding for motion estimation/regression;
 	- **Two-stream + Late fusion**: predict probability of being a vehicle; predict bounding box into the future;
-	- Predicts: detection scores for vehicle and background classes, high level action probabilities corresponding to discrete intention, and bounding box regressions in the current and future time steps to represent the intended trajectory;
-	<img src="/Autonomous-Driving/images/prediction/intentnet.png" alt="drawing" width="600"/>
+	- Predicts: detection scores for vehicle and background classes, high level action probabilities corresponding to discrete intention, and bounding box regressions in the current and future time steps to represent the intended trajectory;\
+		<img src="/Autonomous-Driving/images/prediction/intentnet.png" alt="drawing" width="600"/>
 - SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. 2019
-	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.
-	<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
+	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.\
+		<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
 - M Liang, B Yang, R Hu, Y Chen, R Urtasun. Learning Lane Graph Representations for Structured Prediction.
 	- Main take-away: use lane graph rather than rasterize;
 	- Input: lane graph, BEV Lidar, camera images;
@@ -35,15 +31,16 @@
 		- Lane graph connection: predecessor, successor, left/right neighbor;
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
+- DeepSignals: Predicting Intent of Drivers Through Visual Attributes [ICRA’19, D Frossard]
+- Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
+- PnP with Radar [Benson Guo];
+- Multimodal Trajectory Predictions for Autonomous Driving using Deep Convolutional Networks [ICRA'19, Pitts]
 
 ## Pure Prediction
 - Mayank Bansal, Alex Krizhevsky, and Abhijit S. Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18
-- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. CoRR'18
-	- Multi future
-- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
-	- Multi future
-- **Desire**: Namhoon Lee, Wongun Choi, Paul Vernaza, Chris Choy, Philip H. S. Torr, and Manmohan Chandraker. Desire: Distant future prediction in dynamic scenes with interacting agents. 2017
-	- Multi future;
+- Multi future:
+	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. CoRR'18
+	- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
 - **Multipath**: Yuning Chai, Benjamin Sapp, Mayank Bansal, and Dragomir Anguelov. Multipath: Multiple probabilistic anchor trajectory hypotheses for behavior prediction. 2019
 - Tianyang Zhao, Yifei Xu, Mathew Monfort, Wongun Choi, Chris Baker, Yibiao Zhao, Yizhou Wang, and Ying Nian Wu. Multi-agent tensor fusion for contextual trajectory prediction. CoRR'19
 - **MFP**: Yichuan Charlie Tang, Ruslan Salakhutdinov. Multiple Futures Prediction. NIPS'19
@@ -68,7 +65,30 @@
 - Chen Sun, Per Karlsson, Jiajun Wu, Joshua B. Tenenbaum, and Kevin Murphy. Stochastic prediction of multi-agent interactions from partial observations. CoRR'19
 	- Multi-modality
 - Nicholas Watters, Daniel Zoran, Theophane Weber, Peter Battaglia, Razvan Pascanu, and Andrea Tacchetti. Visual interaction networks: Learning a physics simulator from video. NIPS'17
+- **R2P2**: N. Rhinehart, K. M. Kitani, and P. Vernaza. R2P2: A reparameterized pushforward policy for diverse, precise generative path forecasting. ECCV'18
 - **PRECOG**: Nicholas Rhinehart, Rowan McAllister, Kris M. Kitani, and Sergey Levine. PRECOG: prediction conditioned on goals in visual multi-agent settings. CoRR'19
+	- https://sites.google.com/view/precog
+	- Key: a factorized flow-based generative model that forecasts the joint state of all agents; the use of factorized latent variables to model decoupled agent intentions even though agent dynamics are coupled;
+	- Problem setup: input lidar; output: future trajectory based on **goal**;
+		<img src="/Autonomous-Driving/images/prediction/precog1.png" alt="drawing" width="500"/>
+	- Model: POMDP, A-agents, T-steps, D=2 (x, y); **flow-based method, invertible**;
+	- **ESP**: Estimating Social-forecast Probabilities;
+	- Gaussian for each agent;\
+		<img src="/Autonomous-Driving/images/prediction/precog2.png" alt="drawing" width="250"/>
+	- Model all together:\
+		<img src="/Autonomous-Driving/images/prediction/precog2.png" alt="drawing" width="600"/>
+	- Planning: learn a prior for latent z;
+- RL-like, Imitation:
+	- N. Deoand, M. M. Trivedi. Multi-modal trajectory prediction of surrounding vehicles with maneuver based LSTMs. 2018
+	- **Desire**: Namhoon Lee, Wongun Choi, Paul Vernaza, Chris Choy, Philip H. S. Torr, and Manmohan Chandraker. Desire: Distant future prediction in dynamic scenes with interacting agents. 2017
+		- Multi future;
+	- S. Park, B. Kim, C. M. Kang, C. C. Chung, and J. W. Choi. Sequence-to-sequence prediction of vehicle trajectory via LSTM encoder-decoder architecture. arxiv'18
+
+## Game Theory
+- M. Tan. Multi-agent reinforcement learning: Independent vs. cooperative agents. ICML'93
+- C. Claus and C. Boutilier. The dynamics of reinforcement learning in cooperative multiagent systems. AAAI'98
+-  F. S. Melo and M. Veloso. with sparse interactions. AI'11
+- J. F. Fisac, E. Bronstein, E. Stefansson, D. Sadigh, S. S. Sastry, and A. D. Dragan. Hierarchical game-theoretic planning for autonomous vehicles. arxiv'18
 
 ## Physics
 - Greg Welch, Gary Bishop, et al. An introduction to the kalman filter. 1995

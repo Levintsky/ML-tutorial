@@ -7,6 +7,11 @@
 	- L. Bertinetto, J. F. Henriques, J. Valmadre, P. Torr, and A. Vedaldi. Learning feed-forward one-shot learners. NIPS 2016
 	- H. Qi, M. Brown, and D. G. Lowe. Low-shot learning with imprinted weights. 2017
 
+## Unclassified
+- Probabilistic Matrix Factorization for Automated Machine Learning. NIPS'18
+- Yoshua Bengio. MetaGAN: An Adversarial Approach to Few-Shot Learning. NIPS'18
+- Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS'18
+
 ## Legacy
 - Jurgen Schmidhuber. Evolutionary principles in self-referential learning. 1987
 - Devang K Naik and RJ Mammone. Meta-neural networks that learn by learning. IJCNN'92
@@ -26,8 +31,7 @@ Meta-learning with memory-augmented neural networks. ICML'16
 - S. Ravi and H. Larochelle. Optimization as a model for fewshot learning. ICLR 2017
 
 ## MAML, Bi-level Optimization
-- Dougal Maclaurin, David Duvenaud, and Ryan Adams. Gradient-based hyperparameter opti-
-mization through reversible learning. ICML'15
+- Dougal Maclaurin, David Duvenaud, and Ryan Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
 - **MAML**: Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ICML'17
 	- https://github.com/cbfinn/maml (tensorflow)
 	- https://github.com/katerakelly/pytorch-maml (pytorch)
@@ -35,33 +39,34 @@ mization through reversible learning. ICML'15
 		<img src = '/AutoML-Meta/images/maml1.png' width='400'>
 	- Inner level: SGD\
 		<img src = '/AutoML-Meta/images/maml2.png' width='400'>
-
 - Chelsea Finn and Sergey Levine. Meta-learning and universality: Deep representations and
 gradient descent can approximate any learning algorithm. 2017
 - Maruan Al-Shedivat, Trapit Bansal, Yuri Burda, Ilya Sutskever, Igor Mordatch, and Pieter
 Abbeel. Continuous adaptation via meta-learning in nonstationary and competitive environments. 2017
 - Chelsea Finn, Tianhe Yu, Tianhao Zhang, Pieter Abbeel, and Sergey Levine. One-shot visual
 imitation learning via meta-learning. 2017
-- **BMAML** Bayesian Model-Agnostic Meta-Learning (Yoshua Bengio, NIPS 2018)
+- **BMAML**: Taesup Kim, Jaesik Yoon, Ousmane Dia, Sungwoong Kim, Yoshua Bengio, Sungjin Ahn.  Bayesian Model-Agnostic Meta-Learning. NIPS'18
 	- BMAML
 	- Add uncertainty on both initial model and update
 	- Stein Variational Gradient Descent (SVGD)
 	- Extend uncertainty-awareness to meta-update
-- **Probabilistic Model-Agnostic Meta-Learning** (Chelsea Finn, NIPS 2018)
+- **PMAML**: Chelsea Finn, Kelvin Xu, Sergey Levine. Probabilistic Model-Agnostic Meta-Learning. NIPS'18
 	- Uncertainty
 	- A graphical model view
 - Chelsea Finn, Aravind Rajeswaran, Sham Kakade, and Sergey Levine. Online meta-learning. ICML'19
 - **iMAML**: Aravind Rajeswaran, Chelsea Finn, Sham Kakade, Sergey Levine. Meta-Learning with Implicit Gradients. NIPS'19
-	- Notice the regularization:
+	- Notice the regularization:\
 		<img src = '/AutoML-Meta/images/iMAML1.png' width='400'>
-	- Total and Partial Derivatives of the nested function:
+	- Total and Partial Derivatives of the nested function:\
 		<img src = '/AutoML-Meta/images/iMAML2.png' width='400'>
-	- dAlg(theta)/dtheta memory heavy, intractable large graph;
+	- dAlg(theta)/dtheta memory heavy, intractable large graph;\
 		<img src = '/AutoML-Meta/images/iMAML3.png' width='400'>
+- Mingzhang Yin, George Tucker, Mingyuan Zhou, Sergey Levine, Chelsea Finn. Meta-Learning without Memorization. 2019
+	- Problem definition: Complete memorization in meta-learning is when the learned model ignores the task training data such that I(y\*; D|x\*, θ) = 0 (i.e., q(y\*|x\*, θ, D)=q(y\* | x\*, θ) = E D'|x\* [q( y \* | x\*, θ, D')].
 - Applications of MAML:
 	- Fei Mi, Minlie Huang, Jiyong Zhang, and Boi Faltings. Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 2019
 
-## SOA
+## General Low-Shot Learning
 - F. Sung, Y. Yang, L. Zhang, T. Xiang, P. H. Torr, and T. M. Hospedales. Learning to compare: Relation network for fewshot learning. CVPR, 2018.
 
 ## Detection
