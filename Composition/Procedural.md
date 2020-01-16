@@ -6,7 +6,7 @@
 	- DS Ebert, FK Musgrave, D Peachey, K Perlin, S Worley. Texturing & Modeling, a Procedural Approach, 3rd ed. Elsevier, 2003.
 	- Lagae, Ares; Lefebvre, Sylvain; Cook, Rob; DeRose, Tony; Drettakis, George; Ebert, DS; Lewis, JP ; Perlin, Ken ; Zwicker, Matthias. State of the art in procedural noise function. EG'10
 	- Ruben M. Smelik, Tim Tutenel, Rafael Bidarra, and Bedrich Benes. 2014. A Survey on Procedural Modelling for Virtual Worlds. Computer Graphics Forum'14\
-		<img src = '/Generative/images/pm/survey.png' width = '600'>
+		<img src = '/Composition/images/survey.png' width = '600'>
 
 ## Legacy
 - **L-System**: Aristid Lindenmayer. Mathematical models for cellular interactions in development. Journal of theoretical biology 1968
