@@ -25,6 +25,10 @@
 		<img src = '/Program/images/unsup1.png' width = '400px'>
 	- Algorithm:\
 		<img src = '/Program/images/unsup2.png' width = '400px'>
+	- Grammar:\
+		<img src = '/Program/images/unsup3.png' width = '400px'>
+	- SMT search space:\
+		<img src = '/Program/images/unsup4.png' width = '400px'>
 
 ## SMT (Symbolic Search)
 - Much progress has been made in the engineering of general-purpose symbolic

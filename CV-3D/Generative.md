@@ -38,8 +38,11 @@
 - Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. ICLR'19
 
 ## AE, VAE
-- AE
+- AE:
+	- Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
+		- Input: multiple mesh; output: new mesh synthesis (deformation);
 	- Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. ICML'18
+	- Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia
 - VAE
 	- A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
 		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
@@ -52,6 +55,11 @@
 - Interactive 3D modeling with a generative adversarial network, 3D Vision 2017
 - Amir Arsalan Soltani, Haibin Huang, Jiajun Wu, Tejas D. Kulkarni, Joshua B. Tenenbaum. Synthesizing 3D Shapes via Modeling Multi-View Depth Maps and Silhouettes with Deep Generative Networks. CVPR 2017
 	- https://github.com/Amir-Arsalan/Synthesize3DviaDepthOrSil
+
+## Completion
+- A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3D-encoder-predictor CNNs and shape synthesis. CVPR'17
+- L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. ICCV'17
+- G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17
 
 ## 3D-Reconstruction, Render
 - W. Jakob, Mitsuba renderer, 2010, http://www.mitsuba-renderer.org.

@@ -13,6 +13,10 @@
 - J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
 	- Input/output: images
 	- https://github.com/jimeiyang/deepRotator
+- S Sun, M Huh, Y Liao, N Zhang, and J Lim. Multi-view to Novel view: Synthesizing Novel Views with Self-Learned Confidence. ECCV'18
+	- Problem: novel view synthesis
+	- Input: many images;
+	- https://github.com/shaohua0116/Multiview2Novelview
 
 ## Legacy:
 - S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
