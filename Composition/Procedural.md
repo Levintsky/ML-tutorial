@@ -71,7 +71,7 @@
 - Jerry O. Talton, Yu Lou, Jared Duke, Steve Lesser, Radomir Mech, and Vladlen Koltun.  Metropolis Procedural Modeling. TOG'11
 	- http://vladlen.info/publications/metropolis-procedural-modeling/
 	- https://code.google.com/archive/p/metropolis-procedural-modeling/source
-- CityEngine;
+- CityEngine: EsriCityEngine: http://www.esri.com/software/cityengine (2017)
 
 ## Buildings
 - One of the best-developed PM areas
@@ -82,6 +82,7 @@
 	- CGA: specifically designed for building facades
 - D Finkenzeller, J Bender. Semantic representation of complex building structures. CGV'08
 - D Finkenzeller. Detailed building façades. CGA'08
+- Dylla, K., Frischer, B., Muller, P., Ulmer, A., Haegler, S.: Rome reborn 2.0: A case study of virtual city reconstruction using procedural modeling techniques. Computer Graphics World 16(6) (2008)
 - G Patow. User-friendly graph editing for procedural modeling of buildings. CGA'12
 - P Merrell, E Schkufza, V Koltun. Computer-generated residential building layouts. TOG'10
 	- **Bayesian Network** for generation;
@@ -91,6 +92,8 @@
 	- Inverse: F Bao, M Schwarz, P Wonka. Procedural facade variations from a single layout. TOG'13
 	- H Zhang, K Xu, W Jiang, J Lin, D Cohen-Or, B Chen. Layered analysis of irregular facades via symmetry. TOG'13
 	- parametric context-free split grammar:
+- Demir, I., Aliaga, D.G., Benes, B.: Procedural editing of 3d building point clouds. ICCV'15
+- Demir, I., Aliaga, D.G., Benes, B.: Proceduralization for editing 3d architectural models. 3DV'16
 
 ## Furniture, building interior:
 - Problem: floor Plan; furniture layouts; room subdivision;
@@ -105,6 +108,7 @@
 - Flant Factory: e-on software, tool to model and render 3D vegetation;
 - VUE;
 - Houdini: Side Effects Software. Available from http://www.sidefx.com/
+- Merrell, P., Schkufza, E., Koltun, V.: Computer-generated residential building layouts. TOG'14
 
 ## Light
 - Michael Schwarz and Peter Wonka. Procedural Design of Exterior Lighting for Buildings with Complex Constraints. TOG'2014
@@ -118,3 +122,4 @@
 - Tree:
 	- O Stava, S Pirk, J Kratt, B Chen, R Mech, O Deussen, and B Benes. Inverse Procedural Modelling of Trees. CGF'14
 - Bedrich Beneš, Ondrej Štava, Radomir Mech, and Gavin Miller. Guided Procedural Modeling. EG'11
+- Martinovic, A., Van Gool, L.: Bayesian grammar learning for inverse procedural modeling. CVPR'13

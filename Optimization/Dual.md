@@ -10,6 +10,8 @@
 	- SVM;
 
 ## Primal Dual
+- Fenchel-Legendre Duality
+- https://tintin.space/2019/04/20/Primal/
 - **ADMM**: D. Gabay and B. Mercier. A dual algorithm for the solution of nonlinear variational problems via finite element approximation. Computers & Mathematics with Applications, 1976
 - S Boyd. Alternating Direction Method of Multipliers. 2011
 - A. Chambolle and T. Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. JMIV'11
