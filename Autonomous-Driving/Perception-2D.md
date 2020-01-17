@@ -38,6 +38,8 @@
 - Justin Liang, Namdar Homayounfar, Wei-Chiu Ma, Yuwen Xiong, Rui Hu, Raquel Urtasun. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
 - Level-Set R-CNN [Namdar];
 - Efficient Convolutions for Real-Time Semantic Segmentation of 3D Point Clouds [3DV’18, C Zhang]
+- **DSAC**: D. Marcos, D. Tuia, B. Kellenberger, L. Zhang, M. Bai, R. Liao and R. Urtasun. Learning deep structured active contours end-to-end. CVPR'18
+	- Check mapping for details;
 - Deep Parametric Continuous Convolutional Neural Networks [CVPR’18, Shenlong]
 - SurfConv: Bridging 3D and 2D Convolution for RGBD Images [CVPR’18, H Chu]
 - DeepRoadMapper: Extracting Road Topology From Aerial Images [ICCV’17, G Mattyus]

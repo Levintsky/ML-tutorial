@@ -84,7 +84,6 @@
 			<img src = '/Generative/images/gan/wgan-gp.png' width='500'>
 	- Cambridge. Banach Wasserstein GAN. NIPS'18
 - Attention, Transformer:
-	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN
 		- Main module:
@@ -256,7 +255,13 @@
 - Graphical Generative Adversarial Networks. NIPS'18
 - Yair Weiss. On GANs and GMMs. NIPS'18
 
-## Multi-Modal
+## Multi-Modal (Text, ...)
+- Shizhan Zhu, Sanja Fidler, Raquel Urtasun, Dahua Lin, Chen Change Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
+	- Problem setup: input image + text; output new image (focus on fashion);\
+		<img src = '/Generative/images/gan/prada1.png' width = '400'>
+	- Model: two GANS:\
+		<img src = '/Generative/images/gan/prada2.png' width = '400'>
+- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
 - Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
 
 ## Feature Learning
