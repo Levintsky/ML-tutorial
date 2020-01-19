@@ -2,6 +2,10 @@
 
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
+	- Overall:\
+		<img src="/Autonomous-Driving/images/plan/survey.png" alt="drawing" width="500"/>
+	- Route planning: Dijkstra, A\*;
+	- 
 
 ## Problem Setup
 - Input: current status and context (self, every actor else, traffic light, ...)
