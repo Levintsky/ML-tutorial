@@ -13,6 +13,9 @@
 - **Nas-fpn**: Golnaz Ghiasi, Tsung-Yi Lin, Quoc V. Le. Nas-fpn: Learning scalable feature pyramid architecture for object detection. CVPR'19
 - Transfer Learning with Neural AutoML. NIPS'18
 
+## Applications
+-  Kary Ho, Andrew Gilbert, Hailin Jin, John Collomosse. Neural Architecture Search for Deep Image Prior. 2020
+
 ## FAIR
 - Saining Xie, Kaiming He. Exploring Randomly Wired Neural Networks for Image Recognition. ICCV'19
 	- Network generators: g(theta), g: residual, theta: layers, ...

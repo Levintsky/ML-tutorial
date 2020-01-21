@@ -16,9 +16,12 @@
 - Summaries:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
+- Context prediction:
+	- Unsupervised Visual Representation Learning by Context Prediction. ICCV 2015
+	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
 - Input two image patches, predict spatial relationship:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
-- Predict color from gray scale values
+- Predict color from gray scale values:
 	- Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
 - Predict image rotation:
 	- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
@@ -91,8 +94,6 @@
 	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
 
 ## Tasks
-- Context prediction:
-	- Unsupervised Visual Representation Learning by Context Prediction. ICCV 2015
 - Jigsaw:
 	- Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV 2016
 
