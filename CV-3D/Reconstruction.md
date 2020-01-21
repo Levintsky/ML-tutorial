@@ -432,6 +432,8 @@
 		- Assume a probabilistic model
 		- Model to optimize MLE;
 	- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
+- Angela Dai, Daniel Ritchie, Martin Bokeloh, Scott Reed, Jurgen Sturm, Matthias Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
+- Angela Dai, Christian Diller, Matthias Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
 
 ## Misc
 - X. Wang, D. Fouhey, and A. Gupta. Designing deep networks for surface normal estimation. CVPR'15
