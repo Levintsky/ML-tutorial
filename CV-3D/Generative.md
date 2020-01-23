@@ -11,44 +11,10 @@
 	- Conv, deconv, upsampling;
 
 ## Template-Based
-- Legacy:
-	- A.-L. Chauve, P. Labatut, and J.-P. Pons. Robust piecewise planar 3d reconstruction and completion from large-scale unstructured point data. CVPR 2010
-	- F. Lafarge and P. Alliez. Surface reconstruction through point set structuring. Computer Graphics Forum 2013
-	- S. N. Sinha, D. Steedly, R. Szeliski, M. Agrawala, and M. Pollefeys. Interactive 3d architectural modeling from unordered photo collections. TOG 2008
-	- A. Bodis-Szomoru, H. Riemenschneider, and L. Van Gool. Fast, approximate piecewise-planar modeling based on sparse structure-from-motion and superpixels. CVPR 2014
 - Haibin Huang, Evangelos Kalogerakis, Benjamin Marlin. Analysis and synthesis of 3D shape families via deep-learned generative models of surfaces. Eurographics 2015
-- **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR 2016
-	- Shape prior
-	- https://github.com/mdfirman/voxlets
-- Im2Struct: Recovering 3D Shape Structure from a Single RGB Image (2018 CVPR)
 - Li Yi, Haibin Huang, Difan Liu, Evangelos Kalogerakis, Hao Su, Leonidas Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia 2018
 	- Deep Matching (Point Net)
 	- Motion Discovery, Part Co-segmentation
-
-## Reconstruction
-- Rohit Girdhar, David F. Fouhey, Mikel Rodriguez, Abhinav Gupta. Learning a Predictable and Generative Vector Representation for Objects. ECCV 2016
-
-## GAN		
-- MIT Series:
-	- **3D-GAN**: Jiajun Wu, Learning a probabilistic latent space of object shapes via 3d generative-adversarial modeling, NIPS 2016
-		- GAN / GAN-VAE;
-		- Noisy / Blurry;
-- **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV 2017
-	- https://github.com/matheusgadelha/PrGAN
-- Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. ICLR'19
-
-## AE, VAE
-- AE:
-	- Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
-		- Input: multiple mesh; output: new mesh synthesis (deformation);
-	- Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. ICML'18
-	- Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia
-- VAE
-	- A Brock, T Lim, J Ritchie, N Weston. Generative and Discriminative Voxel Modeling with Convolutional Neural Networks. NIPSW'16
-		- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
-	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
-	- **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
-		- Build on Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
 
 ## Conditional
 - Text to 3D:

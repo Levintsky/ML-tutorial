@@ -1,20 +1,33 @@
-# CNN for 3D Data
+# 3D Data as Input
+
+## Basics
+- Point clouds;
+- Voxel;
+- Mesh;
+- Multi-view images;
+
+## Unclassified
+- L. Yi, H. Su, X. Guo, and L. J. Guibas. SyncSpecCNN: Synchronized spectral CNN for 3D shape segmentation. CVPR'17
+- S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV'17
+- Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
+	- 2D as 3D;
 
 ## Point Clouds
-- **Grid-Cell**:
+- Unclassified:
+	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
+		- VAE
+- **Grid-Cell**: still within regular grid;
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
 		- Preprocessing: normalize to [-1, 1]
 		- Each grid cell: **exactly K=4 points** in 16 x 16 x 16, each cell 3K-dim feature; if originally >= K points, sample; < K, sample with replacement
-		<img src="/CV-3D/images/cnn_3d/pointgrid.png" alt="drawing" width="600"/>
-	
+		<img src="/CV-3D/images/3d_input/pointgrid.png" alt="drawing" width="500"/>
 	- **SplatNet**: H. Su, V. Jampani, D. Sun, S. Maji, E. Kalogerakis, M.-H. Yang, and J. Kautz. SplatNet: Sparse lattice networks for point cloud processing. CVPR'18
 		- Input: point clouds and images; output semantic for each point;
 		- BCL (Bilateral Convolution Layer): 1. Splat: project onto lattice; 2. Convolve; 3. Slice. Can have different scale size;
 		- 2D-3D: DeepLab segmentation for 2D images/rendered from mesh; project pixels to 3D, BCL;
-		<img src="/CV-3D/images/cnn_3d/splatnet1.png" alt="drawing" width="450"/>
-		<img src="/CV-3D/images/cnn_3d/splatnet2.png" alt="drawing" width="600"/>
-		<img src="/CV-3D/images/cnn_3d/splatnet3.png" alt="drawing" width="600"/>
-
+		<img src="/CV-3D/images/3d_input/splatnet1.png" alt="drawing" width="450"/>
+		<img src="/CV-3D/images/3d_input/splatnet2.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/splatnet3.png" alt="drawing" width="600"/>
 	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
 		- Irregular grid;
 		- http://sites.skoltech.ru/compvision/kdnets/
@@ -22,12 +35,12 @@
 		- Non-leaf nodes: Recursive bottom-up, Recursive-NN;
 		- Properties: Layerwise parameter sharing; Hierarchical representation; Partial invariance to jitter; Non-invariance to rotations; Role of kd-tree structure;
 		- Experiments: MNIST 2D points; ModelNet;
-		<img src="/CV-3D/images/cnn_3d/kd-network1.png" alt="drawing" width="500"/>
-		<img src="/CV-3D/images/cnn_3d/kd-network2.png" alt="drawing" width="400"/>
-		<img src="/CV-3D/images/cnn_3d/kd-network3.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/kd-network1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/kd-network2.png" alt="drawing" width="400"/>
+		<img src="/CV-3D/images/3d_input/kd-network3.png" alt="drawing" width="500"/>
 - **Unordered**:
 	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
-		<img src="/CV-3D/images/cnn_3d/pointnet.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/3d_input/pointnet.png" alt="drawing" width="600"/>
 	- **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
 		- **Classification mode**: [SA module x 3] + FC_layers;
 		- **Semantic Segmentation mode**: [SA-module x3] + [FP-modules x4] + [Conv1d x2]
@@ -50,11 +63,11 @@
 		feat[i-1] = self.FP_modules[i](xyz[i-1], xyz[i], feat[i-1], feat[i])
 		```	
 		- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
-		<img src="/CV-3D/images/cnn_3d/pointnet++.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/3d_input/pointnet++.png" alt="drawing" width="600"/>
 - **Attention**:
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
-		<img src="/CV-3D/images/cnn_3d/3d-transformer.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
 - P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua, and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. TOG'18
 	- Point Clouds (generally non-uniform);
 	- Estimate sample density distribution;
@@ -64,11 +77,11 @@
 	- 1 weighting: of the input features associated with the points, 
 	- 2.permutation: into a latent and potentially canonical order
 	- https://github.com/yangyanli/PointCNN
-	<img src="/CV-3D/images/cnn_3d/pointcnn1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/cnn_3d/pointcnn2.png" alt="drawing" width="600"/>
-- Graph:
-	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18
-		<img src="/CV-3D/images/cnn_3d/foldingnet.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
+- **Graph**:
+	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
+		<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
 	- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
 		- Graph **changes by layer**: compute nn on the fly;
 		- EdgeConv-layer:
@@ -82,11 +95,13 @@
 		- **SOA**
 
 ## Voxel
-- **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes
+- **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes. CVPR'15
 	- Predict next best angle (most uncertain by max entropy diff)
 - D Maturana and S Scherer. VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. IROS 2015
 	- https://github.com/dimatura/voxnet
-- B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR 2018
+- C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16
+- N Sedaghat, M Zolfaghari, E Amiri, T Brox. Orientation-boosted voxel nets for 3D object recognition. BMVC'17
+- B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR'18
 	- SSCN (submanifold sparse Conv Net)
 	- https://github.com/facebookresearch/SparseConvNet
 	- SSCN(m, n, f, s): m input, n output, f filter-size, s stride;
@@ -98,10 +113,12 @@
 	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
 	- P.-S. Wang, Y. Liu, Y.-X. Guo, C.-Y. Sun, and X. Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
 		- SOA classification;
+- Z. Wang and F. Lu. VoxSegNet: Volumetric CNNs for semantic part segmentation of 3D shapes. TVCG'19
+- Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. Structure-aware generative network for 3d-shape modeling. TOG'19
 
 ## Mesh
-- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
 - J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
+- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
 - A. Sinha, J. Bai, and K. Ramani. Deep learning 3d shape surfaces using geometry images. ECCV'16
 - M. Defferrard, X. Bresson, and P. Vandergheynst. Convolu- tional neural networks on graphs with fast localized spectral filtering. NIPS'16 
 - T. Bagautdinov, C. Wu, J. Saragih, P. Fua, and Y. Sheikh. Modeling facial geometry using compositional vaes.
@@ -110,20 +127,24 @@
 - H. Maron, M. Galun, N. Aigerman, M. Trope, N. Dym, E. Yumer, V. G. Kim, and Y. Lipman. Convolutional neural networks on surfaces via seamless toric covers. 2017.
 - M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst. Geometric deep learning: Going beyond euclidean data. SPM'17
 - P. Wang, Y. Gan, Y. Zhang, and P. Shui. 3D shape segmentation via shape fully convolutional networks. 2017
+- Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
 - P. Baque, E. Remelli, F. Fleuret, and P. Fua. Geodesic convolutional shape optimization. 2018
-- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
 - H. B. Hamu, H. Maron, I. Kezurer, G. Avineri, and Y. Lipman. Multi-chart generative surface modeling. 2018
-- **MeshNet**: Y Feng, Y Feng, H You, X Zhao, Y Gao. MeshNet: Mesh Neural Network for 3D Shape Representation. AAAI'19
-	<img src="/CV-3D/images/cnn_3d/meshnet.png" alt="drawing" width="600"/>
+- **MeshNet**: Y Feng, Y Feng, H You, X Zhao, Y Gao. MeshNet: Mesh Neural Network for 3D Shape Representation. AAAI'19 \
+	<img src="/CV-3D/images/3d_input/meshnet.png" alt="drawing" width="600"/>
 - Legacy:
 	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
 	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
 
 ## Multiple 2D Images
-- Hang Su, Subhransu Maji, Evangelos Kalogerakis, Erik Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV 2015
+- Hang Su, Subhransu Maji, Evangelos Kalogerakis, Erik Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV'15
 	- https://github.com/jongchyisu/mvcnn_pytorch
 	- Multi-view pooling
+- S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
 - B Shi, S Bai, X Bai. DeepPano: Deep Panoramic Representation for 3-D Shape Recognition. SPL'15
+- **3D-R2N2**: Christopher B. Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
+- **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17
+- **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine. NIPS'17
 
 ## Implicit: TSDF
 - Legacy:
@@ -139,7 +160,13 @@
 - I Cherabier, J Schonberger, M Oswald, M Pollefeys, A Geiger. Learning Priors for Semantic 3D Reconstruction. ECCV'18
 
 ## 2D-3D Fusion
+- C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16
 - V. Hegde and R. Zadeh. FusionNet: 3D object classification using multiple data representations. 2016
 - Vishakh Hegde, Reza Zadeh. FusionNet: 3D Object Classification Using Multiple Data Representations. NIPS 2016
 - Charles R. Qi, Hao Su, Matthias Nießner Angela Dai Mengyuan Yan Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR'16
 	- https://github.com/charlesq34/
+
+## Touch (Robotics, with grasping, touch)
+- M. Bjorkman, Y. Bekiroglu, V. Hogman, and D. Kragic, Enhancing visual perception of shape through tactile glances, IROS 2013.
+- 3D Shape Perception from Monocular Vision, Touch, and Shape Priors, Shaoxiong Wang, Jiajun Wu, Xingyuan Sun, Wenzhen Yuan, William T. Freeman, Joshua B. Tenenbaum, and Edward H. Adelson
+- W. Yuan, S. Dong, and E. H. Adelson, Gelsight: High-resolution robot tactile sensors for estimating geometry and force, Sensors 2017.
