@@ -126,6 +126,15 @@
 	- GRU + VAE;
 
 ## Mesh
+- Legacy- Marching Cubes:
+	- Given function defining +/- as outside inside, output the surface (mesh);
+	- Insight: go through each cube independently, lookup table (2 ^ 8 = 256 cases), handle the surface accordingly by lookup, adapt to find a better surface;
+	- http://www.cs.carleton.edu/cs_comps/0405/shape/marching_cubes.html
+	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
+		- Input: mask; output: mesh triangulation;
+	- https://www.boristhebrave.com/2018/04/15/marching-cubes-tutorial/
+	- https://www.boristhebrave.com/2018/04/15/marching-cubes-3d-tutorial/
+	- https://github.com/BorisTheBrave/mc-dc
 - Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
 	- AutoEncoder;
 	- Input: multiple mesh; output: new mesh synthesis (deformation);
@@ -171,6 +180,15 @@
 ## Implicit Functions
 - SDF:
 	- **DeepSDF**: Jeong Joon Park, Peter Florence, Julian Straub, Richard Newcombe, and Steven Lovegrove. DeepSDF: Learning continuous signed distance functions for shape representation. CVPR'19
+		- Insight: point-based SDF;
+		- https://github.com/facebookresearch/DeepSDF
+		- Formulation: given a point x, a NN with latent code z as a classifier \
+			<img src="/CV-3D/images/3d_output/deep-sdf1.png" alt="drawing" width="350"/>
+		- Autoencoder: \
+			<img src="/CV-3D/images/3d_output/deep-sdf2.png" alt="drawing" width="400"/>
+		- Auto-decoder (encoder-less) training and inference: \
+			<img src="/CV-3D/images/3d_output/deep-sdf3.png" alt="drawing" width="400"/>
+			<img src="/CV-3D/images/3d_output/deep-sdf4.png" alt="drawing" width="400"/>
 - Indicator:
 	- **OccNet**: Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and Andreas Geiger. Occupancy networks: Learning 3d reconstruction in function space. CVPR'19
 		- Insight: new 3D representation, could generate mesh at any resoltuion;
