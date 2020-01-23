@@ -38,5 +38,7 @@
 - MuseNet
 
 ## Unclassified
+- Hang Chu, Raquel Urtasun, Sanja Fidler. Song From PI: A Musically Plausible Network for Pop Music Generation. ICLR'17
+	- https://chuhang.github.io/projects/songfrompi/index.html
 - DeepMind. The challenge of realistic music generation: modelling raw audio at scale. NIPS'18
 - Francis Bach. SING: Symbol-to-Instrument Neural Generator. NIPS'18

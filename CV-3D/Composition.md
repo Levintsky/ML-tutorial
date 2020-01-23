@@ -1,23 +1,8 @@
 # Part/Primitive/Compositional Model
 
-## Summaries
-- Hao Su: http://cseweb.ucsd.edu/~haosu/slides/PartInduction.pdf
-- Part:
-	- Descriptive
-	- Concise
-	- Interpretable
-
-## Legacy
-- Representing Shape for Recognition, Marr and Nishihara (1978)
-
 ## Co-Segmentation
 - R. Hu, L. Fan, and L. Liu. Co-segmentation of 3D shapes via subspace clustering. CGF 2012
 - Y. Wang, S. Asafi, O. Van Kaick, H. Zhang, D. Cohen-Or, and B. Chen. Active co-analysis of a set of shapes. TOG 2012
-
-## 2D
-- **ISIN**: Cewu Lu, Hao Su, Yongyi Lu, Li Yi, Chi-Keung Tang, Leonidas Guibas. Beyond Holistic Object Recognition: Enriching Image Understanding with Part States. CVPR 2018
-	- Objerect Part-State Dataset
-	- Iterative Part-state Inference Network (ISIN)
 
 ## Unsupervised (Reconstruction)
 - S. Tulsiani, H. Su, L. J. Guibas, A. A. Efros, and J. Malik. Learning shape abstractions by assembling volumetric primitives. CVPR'17

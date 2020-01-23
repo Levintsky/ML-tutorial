@@ -133,7 +133,6 @@
 - **MeshNet**: Y Feng, Y Feng, H You, X Zhao, Y Gao. MeshNet: Mesh Neural Network for 3D Shape Representation. AAAI'19 \
 	<img src="/CV-3D/images/3d_input/meshnet.png" alt="drawing" width="600"/>
 - Legacy:
-	- **Marching cubes**: W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3d surface construction algorithm. SIGGRAPH'87
 	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
 
 ## Multiple 2D Images
@@ -146,25 +145,24 @@
 - **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17
 - **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine. NIPS'17
 
-## Implicit: TSDF
+## Implicit Functions
 - Legacy:
 	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
 	- **Kinectfusion**: R. A. Newcombe, S. Izadi, O. Hilliges, D. Molyneaux, D. Kim, A. J. Davison, P. Kohi, J. Shotton, S. Hodges, and A. Fitzgibbon. Kinectfusion: Real-time dense surface mapping and tracking. ISMAR'11
-- Voxel-based SDF
+- Voxel-based SDF:
 	- A. Zeng, S. Song, M. Nießner, M. Fisher, J. Xiao, and T. Funkhouser. 3dmatch: Learning local geometric descriptors from rgb-d reconstructions. CVPR'17
 	- **3D-EPN**: A. Dai, C. R. Qi, and M. Nießner,  Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR'17
 		- https://github.com/angeladai/cnncomplete
 	- D. Stutz and A. Geiger. Learning 3d shape completion from laser scan data with weak supervision. CVPR'18
-- Point SDF:
+- Point-based SDF:
 	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
+		- https://github.com/facebookresearch/DeepSDF
 - I Cherabier, J Schonberger, M Oswald, M Pollefeys, A Geiger. Learning Priors for Semantic 3D Reconstruction. ECCV'18
 
 ## 2D-3D Fusion
-- C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16
-- V. Hegde and R. Zadeh. FusionNet: 3D object classification using multiple data representations. 2016
-- Vishakh Hegde, Reza Zadeh. FusionNet: 3D Object Classification Using Multiple Data Representations. NIPS 2016
-- Charles R. Qi, Hao Su, Matthias Nießner Angela Dai Mengyuan Yan Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR'16
+- Charles R. Qi, Hao Su, Matthias Nießner, Angela Dai, Mengyuan Yan, Leonidas J. Guibas. Volumetric and Multi-View CNNs for Object Classification on 3D Data. CVPR'16
 	- https://github.com/charlesq34/
+- Vishakh Hegde, Reza Zadeh. FusionNet: 3D Object Classification Using Multiple Data Representations. NIPS'16
 
 ## Touch (Robotics, with grasping, touch)
 - M. Bjorkman, Y. Bekiroglu, V. Hogman, and D. Kragic, Enhancing visual perception of shape through tactile glances, IROS 2013.

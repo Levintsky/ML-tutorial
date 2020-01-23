@@ -9,6 +9,7 @@
 	- Input: class c, view v, transfrom param theta;
 	- Output: image;
 	- Conv, deconv, upsampling;
+- Johanna Delanoy, Mathieu Aubry, Phillip Isola, Alexei A. Efros, Adrien Bousseau. 3D Sketching using Multi-View Deep Volumetric Prediction. CGIT'18
 
 ## Template-Based
 - Haibin Huang, Evangelos Kalogerakis, Benjamin Marlin. Analysis and synthesis of 3D shape families via deep-learned generative models of surfaces. Eurographics 2015
