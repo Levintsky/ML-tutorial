@@ -12,7 +12,17 @@
 - **Does-not-Work-yet**:
 	- General feature learning
 
-## Images:
+## Unclassified
+- **Pseudo-label**: Dong-Hyun Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13 
+- **RandAugment**: Ekin D. Cubuk, Barret Zoph, Jonathon Shlens, and Quoc V. Le. Randaugment: Practical automated data augmentation with a reduced search space. 2019
+- **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
+- **ReMixMatch**: David Berthelot, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel, Kihyuk Sohn. ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring. 2019
+	- CTAugment
+- **FixMatch**: Kihyuk Sohn, David Berthelot, Chun-Liang Li, Zizhao Zhang, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel. FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence. 2020
+	- https://github.com/google-research/fixmatch
+	- CIFAR: 94.9% with 250 labels, 88.6% with 40 (4 per class);
+
+## Images
 - Summaries:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised

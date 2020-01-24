@@ -1,7 +1,7 @@
 # Part/Primitive/Compositional Model
 
 ## Co-Segmentation
-- R. Hu, L. Fan, and L. Liu. Co-segmentation of 3D shapes via subspace clustering. CGF 2012
+- R. Hu, L. Fan, and L. Liu. Co-segmentation of 3D shapes via subspace clustering. CGF'12
 - Y. Wang, S. Asafi, O. Van Kaick, H. Zhang, D. Cohen-Or, and B. Chen. Active co-analysis of a set of shapes. TOG 2012
 
 ## Unsupervised (Reconstruction)
@@ -13,7 +13,7 @@
 		- Coverage loss: distance of primitives; penalize to confirm O in Pm
 		- Consistency loss:
 	- Variable number of primitives: (z, q, t, p), p binary for existence
-	- REINFORCE; parsimony reward for fewer parts
+	- REINFORCE; parsimony reward for fewer parts;
 	- Experiment: ShapeNet, 32x32x32, ADAM;
 
 ## Weak-Supervision
