@@ -4,10 +4,14 @@
 - A structured model to explain a scene/object/...
 - Summaries:
 - Hao Su: http://cseweb.ucsd.edu/~haosu/slides/PartInduction.pdf
-- Part:
-	- Descriptive
-	- Concise
-	- Interpretable
+	- Part:
+		- Descriptive
+		- Concise
+		- Interpretable
+	- Supervision:
+		- Unsupervised: Shape-Abstract (Shubham), CSGNet;
+		- Weak-supervised: deep-functional-dictionaries (Sung);
+		- SSL: deep-part-induction (Yi Li);
 
 ## Legacy
 - Roberts, L.G.: Machine perception of three-dimensional solids. Ph.D. thesis 1963

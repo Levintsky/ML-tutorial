@@ -16,11 +16,6 @@
 		- For Hausdorff distance, simply a distance transform?
 
 ## Unclassified
-- Danilo Jimenez Rezende, SM Eslami, Shakir Mohamed, Peter Battaglia, Max Jaderberg, and Nicolas Heess. Unsupervised learning of 3d structure from images. NIPS'16
-	- Key insight: **VAE** style; SSL; REINFORCE to back-prop through black-box renderer;
-	- Input: single image;
-	- Experiment: ShapeNet;
-	<img src="/CV-3D/images/3d_output/unsup-3d.png" alt="drawing" width="600"/>
 - **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR 2016
 	- Shape prior
 	- https://github.com/mdfirman/voxlets
@@ -52,14 +47,22 @@
 - Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointflow: 3d point cloud generation with continuous normalizing flows. ICCV'19
 
 ## Voxel
+- Completion:
+	- D. Stutz and A. Geiger. Learning 3D shape completion from laser scan data with weak supervision. CVPR'18
 - Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
 	- Input: image; output: voxel;
+- A. O. Ulusoy, A. Geiger, and M. J. Black. Towards probabilistic volumetric reconstruction using ray potentials. 3DV'15
 - R Girdhar, D F Fouhey, M Rodriguez, and A Gupta. Learning a predictable and generative vector representation for objects. ECCV'16
 - **3D-R2N2**: Christopher B. Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
 	- https://github.com/chrischoy/3D-R2N2
 	- Input: single/multiple images; output: voxel;
 	- Update model with RNN each time with a new image;
 	<img src="/CV-3D/images/3d_output/3d-r2n2.png" alt="drawing" width="500"/>
+- Danilo Jimenez Rezende, SM Eslami, Shakir Mohamed, Peter Battaglia, Max Jaderberg, and Nicolas Heess. Unsupervised learning of 3d structure from images. NIPS'16
+	- Key insight: **VAE** style; SSL; REINFORCE to back-prop through black-box renderer;
+	- Input: single image;
+	- Experiment: ShapeNet;
+	<img src="/CV-3D/images/3d_output/unsup-3d.png" alt="drawing" width="600"/>
 - Andrew Brock, Theodore Lim, James M Ritchie, and Nick Weston. Generative and discriminative voxel modeling with convolutional neural networks. 3D Deep Learning Workshop at NIPS'16
 	- VAE;
 	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
@@ -122,11 +125,12 @@
 		- Pose from second view;
 	- Test mode: independent shape and pose;
 	<img src="/CV-3D/images/3d_output/mvc.png" alt="drawing" width="600"/>
+- Y. Liao, S. Donne, and A. Geiger. Deep marching cubes: Learning explicit surface representations. CVPR'18
 - Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. Structure-aware generative network for 3d-shape modeling. TOG'19
 	- GRU + VAE;
 
 ## Mesh
-- Legacy- Marching Cubes:
+- Legacy: Marching Cubes;
 	- Given function defining +/- as outside inside, output the surface (mesh);
 	- Insight: go through each cube independently, lookup table (2 ^ 8 = 256 cases), handle the surface accordingly by lookup, adapt to find a better surface;
 	- http://www.cs.carleton.edu/cs_comps/0405/shape/marching_cubes.html
@@ -135,15 +139,27 @@
 	- https://www.boristhebrave.com/2018/04/15/marching-cubes-tutorial/
 	- https://www.boristhebrave.com/2018/04/15/marching-cubes-3d-tutorial/
 	- https://github.com/BorisTheBrave/mc-dc
+- Legacy: Poisson Surface Reconstruction
+	- M. M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface reconstruction. SGP'06
+	- M. M. Kazhdan and H. Hoppe. Screened poisson surface reconstruction. SIGGRAPH'13
+- Legacy:
+	- F. Bernardini, J. Mittleman, H. Rushmeier, C. Silva, and G. Taubin. The ball-pivoting algorithm for surface reconstruction. TVCG'99
+	- F. Calakli and G. Taubin. SSD: smooth signed distance surface reconstruction. CGF'11
 - Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
 	- AutoEncoder;
 	- Input: multiple mesh; output: new mesh synthesis (deformation);
+- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
+	- Assumption: template provided;
 - Nobuyuki Umetani. Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia'17
 	- AutoEncoder;
 - **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
 	- https://github.com/ThibaultGROUEIX/AtlasNet
+- A. Kanazawa, M. J. Black, D. W. Jacobs, and J. Malik. End-to-end recovery of human shape and pose. CVPR'18
+	- Assumption: template provided;
 - Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
 - Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. ECCV'18
+	- Assumption: template provided;
+- A. Ranjan, T. Bolkart, S. Sanyal, and M. J. Black. Generating 3D faces using convolutional mesh autoencoders. ECCV'18
 - **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
 	- Insight: project to spherical map;
 	- Input: single image;
@@ -163,9 +179,9 @@
 
 ## Templates/Primitives (Also check composition folder)
 - Legacy:
+	- S. N. Sinha, D. Steedly, R. Szeliski, M. Agrawala, and M. Pollefeys. Interactive 3d architectural modeling from unordered photo collections. TOG'08
 	- A.-L. Chauve, P. Labatut, and J.-P. Pons. Robust piecewise planar 3d reconstruction and completion from large-scale unstructured point data. CVPR'10
 	- F. Lafarge and P. Alliez. Surface reconstruction through point set structuring. CGF'13
-	- S. N. Sinha, D. Steedly, R. Szeliski, M. Agrawala, and M. Pollefeys. Interactive 3d architectural modeling from unordered photo collections. TOG'08
 	- A. Bodis-Szomoru, H. Riemenschneider, and L. Van Gool. Fast, approximate piecewise-planar modeling based on sparse structure-from-motion and superpixels. CVPR'14
 - Recursive:
 	- Chengjie Niu, Jun Li, Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
@@ -179,6 +195,7 @@
 
 ## Implicit Functions
 - SDF:
+	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
 	- **DeepSDF**: Jeong Joon Park, Peter Florence, Julian Straub, Richard Newcombe, and Steven Lovegrove. DeepSDF: Learning continuous signed distance functions for shape representation. CVPR'19
 		- Insight: point-based SDF;
 		- https://github.com/facebookresearch/DeepSDF
@@ -195,7 +212,8 @@
 		- https://github.com/autonomousvision/occupancy_networks
 		- Input image; output: **continuous decision boundary of a deep-NN**;
 		- Learn an occupancy function: R3 to [0,1];
-		- Surface at inference time: Multiresolution IsoSurface Extraction (MISE)
+		- Surface at inference time: Multiresolution IsoSurface Extraction (MISE) \
+		<img src="/CV-3D/images/3d_output/occnet-mise.png" alt="drawing" width="400"/>
 - Zhiqin Chen and Hao Zhang. Learning implicit fields for generative shape modeling. CoRR'18
 - **DISN**: Qiangeng Xu, Weiyue Wang, Duygu Ceylan, Radomir Mech, and Ulrich Neumann. Disn: Deep implicit surface network for high-quality single-view 3d reconstruction. 2019
 
@@ -220,5 +238,5 @@
 - **ShapeHD**: J. Wu, C. Zhang, X. Zhang, Z. Zhang, W. T. Freeman, and J. B. Tenenbaum. Learning shape priors for single-view 3D completion and reconstruction. ECCV'18
 	- Key insigth: improve on MarrNet with naturalness (pretrained discriminator) to solve ambiguity, with Wasserstein-GAN loss;
 	- https://github.com/xiumingzhang/GenRe-ShapeHD
-	- Input: single view; Output: 3D completion/reconstruction; \
+	- Input: single view; Output: 3D voxel completion/reconstruction; \
 	<img src="/CV-3D/images/3d_output/shapehd.png" alt="drawing" width="600"/>
