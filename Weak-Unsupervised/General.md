@@ -3,6 +3,11 @@
 ## Resources
 - NIPS'18 Tutorial: https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
 
+## Augment Consistency
+- **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
+	- https://github.com/google-research/uda
+	<img src = '/Weak-Unsupervised/images/uda.png' width = '400px'>
+
 ## Google Brain
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
 	- https://github.com/google-research/disentanglement_lib
