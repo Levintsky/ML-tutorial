@@ -1,4 +1,4 @@
-# Graph Learning
+# Learning on Graphs
 
 ## Graph Matching
 - Generalizing Graph Matching beyond Quadratic Assignment Model. NIPS'18

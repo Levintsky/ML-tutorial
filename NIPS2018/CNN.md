@@ -12,8 +12,6 @@
 - Multi-View Silhouette and Depth Decomposition for High Resolution 3D Object Representation
 - Unsupervised Depth Estimation, 3D Face Rotation and Replacement
 - **Learning to Exploit Stability for 3D Scene Parsing (Jiajun Wu)**
-- **Visual Object Networks: Image Generation with Disentangled 3D Representations (MIT)**
-- **Learning to Reconstruct Shapes from Unseen Classes (MIT)**
 
 ## Non-local
 - Compact Generalized Non-local Network (Baidu)
