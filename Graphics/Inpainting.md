@@ -2,11 +2,22 @@
 
 ## Problem Definition
 - Hole filling;
-- Legayc: generally an engergy minimization problem:
+- Legacy: generally an engergy minimization problem:
 - Formulation: patch not masked for inpainting should be consistent \
 	<img src="/Graphics/images/inpaint-energy.png" alt="drawing" width="400"/>
 - Geometry-aware: 2nd term same as above, first term for gemoetry reprojection error; \
 	<img src="/Graphics/images/inpaint-energy-2.png" alt="drawing" width="400"/>
+- Key trick: To preserve structure, patch priority computation specifies the patch filling order;
+
+## Unclassified
+- Z. Yan, X. Li, M. Li, W. Zuo, and S. Shan. Shift-net: Image inpainting via deep feature rearrangement. arxiv'18
+	- U-Net;
+- R. Mechrez, I. Talmi, F. Shama, and L. Zelnik-Manor. Learning to maintain natural image statistics. arxiv'18
+	- relative distance measure
+- R. Mechrez, I. Talmi, and L. Zelnik-Manor. The contextual loss for image transformation with non-aligned data. arxiv'18
+	- relative distance measure
+- I. Talmi, R. Mechrez, and L. Zelnik-Manor. Template matching with deformable diversity similarity. CVPR'17
+	- relative distance measure
 
 ## Legacy
 - **ZNCC**: Dirk Padfield. Masked object registration in the fourier domain. TIP'12
@@ -29,6 +40,11 @@
 	- M. Wilczkowiak, G. Brostow, B. Tordoff, and R. Cipolla. Hole fill through photomontage. BMVC'05
 	- N. Komodakis. Image completion using global optimization. CVPR'06
 	- N. Komodakis and G. Tziritas. Image completion using efficient belief propagation via priority scheduling and dynamic pruning. TIP'07
+- Exemplar-based:
+	- A. Criminisi, P. Pérez, and K. Toyama. Region filling and object removal by exemplar-based image inpainting. TIP'04
+	- J. Jia and C.-K. Tang. Image repairing: Robust image synthesis by adaptive nd tensor voting. In CVPR'03
+	- J. Jia and C.-K. Tang. Inference of segmented color and texture description by tensor voting. PAMI'04
+	- J. Sun, L. Yuan, J. Jia, and H.-Y. Shum. Image completion with structure propagation. TOG'05
 
 ## Inpainting
 - **Context-encoder**: Deepak Pathak, Philipp Krahenbuhl, Jeff Donahue, Trevor Darrell, and Alexei A Efros. Context encoders: Feature learning by inpainting. CVPR'16
@@ -45,7 +61,7 @@
 	- **Supervision**: local+global GAN; part parsing output; \
 		<img src="/Graphics/images/face-inpaint.png" alt="drawing" width="400"/>
 - Chao Yang, Xin Lu, Zhe Lin, Eli Shechtman, Oliver Wang, and Hao Li. High-resolution image inpainting using multi-scale neural patch synthesis. CVPR'17
-	- Deep PatchMatch;
+	- Key insight: Deep PatchMatch (nearest + neighbor); MRF post-processing;
 	- https://github.com/leehomyc/Faster-High-Res-Neural-Inpainting
 	- Insight: 1. Pretrain a loss; 2. AE framework; 3. iterative;
 	- Supervision loss: pretrained content loss and texture loss Ec and Et; content: with ground-truth + adv-loss; texture: nearest neighbor with VGG relu3 and relu4; \
@@ -68,24 +84,39 @@
 	- https://dmitryulyanov.github.io/deep_image_prior
 	- Deep energy based, natural image should have low cost;
 	- Optimize image iteration by iteration;
-- Yi Wang, Xin Tao, Xiaojuan Qi, Xiaoyong Shen, Jiaya Jia. Image Inpainting via Generative Multi-column Convolutional Neural Networks. NIPS'18
-- Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas S Huang. 2018. Generative Image Inpainting with Contextual Attention. CVPR'18
-	- Contextual attention;
+- Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas S Huang. Generative Image Inpainting with Contextual Attention. CVPR'18
+	- Key insight: Contextual attention; deep nearest neighbor;
+	- https://github.com/JiahuiYu/generative_inpainting \
+		<img src="/Graphics/images/gen-inpaint-1.png" alt="drawing" width="500"/>
+	- Contextual attention: foreground (missing pixels) and background attention;
+		<img src="/Graphics/images/gen-inpaint-2.png" alt="drawing" width="400"/>
 - W. Xian, P. Sangkloy, J. Lu, C. Fang, F. Yu, and J. Hays. Texturegan: Controlling deep image synthesis with texture patches. CVPR'18
+	- https://github.com/janesjanes/Pytorch-TextureGAN
+	- http://texturegan.eye.gatech.edu/
+		<img src="/Graphics/images/texturegan.png" alt="drawing" width="400"/>
 - **Partial-Conv**: G Liu, F Reda, K J Shih, T Wang, A Tao, and B Catanzaro. Image Inpainting for Irregular Holes Using Partial Convolutions. ECCV'18
 	- Insight: Convolution is masked and re-normalized to utilize valid pixels only;
+	- https://github.com/NVIDIA/partialconv
+- **GMCNN**: Yi Wang, Xin Tao, Xiaojuan Qi, Xiaoyong Shen, Jiaya Jia. Image Inpainting via Generative Multi-column Convolutional Neural Networks. NIPS'18
+	- https://github.com/shepnerd/inpainting_gmcnn \
+	- 3 submodules: a generator to produce results, global local discriminators for adversarial training, and a pretrained VGG network [20] to calculate ID-MRF loss. In the testing phase, only the generator network is used. \
+		<img src="/Graphics/images/gmcnn.png" alt="drawing" width="500"/>
+	- ID-MRF (implicit diversified Markov random fields): direct NN: over-smooth result; relative distance encourages different patch find different candidate (otherwise softmax loss will be large); \
+		<img src="/Graphics/images/gmcnn-1.png" alt="drawing" width="500"/>
+	- Information fusion: spatial variant loss (close to the boundary are more constrained);  adversarial loss (WGAN);
 - S Hong, X Yan, T Huang, H Lee. Learning Hierarchical Semantic Image Manipulation through Structured Representations. NIPS'18
-	<img src="/Graphics/images/hier-inpaint1.png" alt="drawing" width="600"/>
-	<img src="/Graphics/images/hier-inpaint2.png" alt="drawing" width="600"/>
-	<img src="/Graphics/images/hier-inpaint3.png" alt="drawing" width="600"/>
-- Shice Liu, YU HU, Yiming Zeng, Qiankun Tang, Beibei Jin, Yinhe Han, Xiaowei Li. See and Think: Disentangling Semantic Scene Completion. NIPS'18
-- Shunyu Yao, Tzu Ming Harry Hsu, Jun-Yan Zhu, Jiajun Wu, Antonio Torralba, William T. Freeman, Joshua B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics. NIPS'18
+	- Key insight: generate the semantic mask first;
+	- https://github.com/xcyan/neurips18_hierchical_image_manipulation \
+	<img src="/Graphics/images/hier-inpaint1.png" alt="drawing" width="500"/>
+	<img src="/Graphics/images/hier-inpaint2.png" alt="drawing" width="500"/>
+	<img src="/Graphics/images/hier-inpaint3.png" alt="drawing" width="500"/>
 - Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, and Jan Kautz. Context-aware synthesis and placement of object instances. NIPS'18
+	- https://github.com/NVlabs/Instance_Insertion
 - **SN-PatchGAN**: Yu, Z Lin, J Yang, X Shen, X Lu, T Huang. Free-Form Image Inpainting with Gated Convolution. ICCV'19
 	- http://jiahuiyu.com/deepfill2
 	- Input: sketches as guidance;
 	- Improve on partial-conv on soft-gated conv;\
-		<img src="/Graphics/images/sn-patchgan.png" alt="drawing" width="600"/>
+		<img src="/Graphics/images/sn-patchgan.png" alt="drawing" width="500"/>
 - Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model from a Single Natural Image. ICCV'19 best paper
 
 ## User-Guided

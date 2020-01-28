@@ -19,7 +19,6 @@
 
 ## MIT
 - **GPGP**:  Mansinghka, V. K., Kulkarni, T. D., Perov, Y. N., and Tenenbaum, J. Approximate bayesian image interpretation using generative probabilistic graphics programs. NIPS'13
-- S Yao, T M H Hsu, J Zhu, J Wu, A Torralba, W T. Freeman, J B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics, NIPS'18
 
 ## Toolbox
 - https://github.com/tensorflow/graphics

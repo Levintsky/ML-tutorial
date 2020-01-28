@@ -1,29 +1,5 @@
 # 3D Reconstruction
 
-## Problem Setup
-- Direct 3D reconstruction for whole object;
-- Scene: depth map;
-- Infer cues:
-	- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
-
-## Benchmarks
-- **Kitti**;
-- **Virtual Kitti**: A Gaidon, Q Wang, Y Cabon, E Vig. Virtual Worlds as Proxy for Multi-Object Tracking Analysis. CVPR'16
-	- https://github.com/VisualComputingInstitute/vkitti3D-dataset
-- Cityscape;
-- DeMon dataset: combination of SUN3D, ...
-- **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
-	- MVS benchmark;
-- **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
-- **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
-	- MVS benchmark;
-
-## Evaluation
-- Geometric:
-	- Depth/disparity with GT;
-	- **Chamfer distance**: H. G. Barrow, J. M. Tenenbaum, R. C. Bolles, and H. C. Wolf. Parametric Correspondence and Chamfer Matching: Two New Techniques for Image Matching. IJCAI'77
-- Photometric;
-
 ## Differentiable Rendering
 - **Opendr**: Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. ECCV'14
 	- General framework, not only for NN;
@@ -230,7 +206,6 @@
 	- Learning Unsupervised Multi-View Stereopsis via Robust Photometric Consistency, T. Khot, S. Agrawal, S. Tulsiani, C. Mertz, S. Lucey, M. Hebert. 2019.
 	- Chengzhou Tang and Ping Tan. BA-Net: Dense Bundle Adjustment Network. 2018
 	- **Unsupervised-Deep-VO**: Ruihao Li, Sen Wang, Zhiqiang Long, and Dongbing Gu. Undeepvo: Monocular visual odometry through unsupervised deep learning. In ICRA, 2018.
-
 - DL: PSV (plane-sweep algorithm):
 	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
 		- Problem: new view synthesis

@@ -14,6 +14,16 @@
 		- Sum of closest point distances
 		- Asymmetric
 		- For Hausdorff distance, simply a distance transform?
+- 3D reconstruction:
+	- Direct 3D reconstruction for whole object;
+	- Scene: depth map;
+	- Infer cues:
+		- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
+- Evaluation:
+	- Geometric:
+		- Depth/disparity with GT;
+		- **Chamfer distance**: H. G. Barrow, J. M. Tenenbaum, R. C. Bolles, and H. C. Wolf. Parametric Correspondence and Chamfer Matching: Two New Techniques for Image Matching. IJCAI'77
+	- Photometric;
 
 ## Unclassified
 - **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR 2016
@@ -126,6 +136,8 @@
 	- Test mode: independent shape and pose;
 	<img src="/CV-3D/images/3d_output/mvc.png" alt="drawing" width="600"/>
 - Y. Liao, S. Donne, and A. Geiger. Deep marching cubes: Learning explicit surface representations. CVPR'18
+- **SATNet**: Shice Liu, YU HU, Yiming Zeng, Qiankun Tang, Beibei Jin, Yinhe Han, Xiaowei Li. See and Think: Disentangling Semantic Scene Completion. NIPS'18
+	- https://github.com/ShiceLiu/SATNet
 - Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. Structure-aware generative network for 3d-shape modeling. TOG'19
 	- GRU + VAE;
 

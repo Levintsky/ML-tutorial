@@ -1,16 +1,5 @@
 # 3D Generative and Synthesis
 
-## 3D-Aware 2D Generation
-- M Tatarchenko, A Dosovitskiy, T Brox. Multi-view 3D Models from Single Images with a Convolutional Network. ECCV'16
-	- Encoder/Decoder
-	- Input RGB, output RGB/D conditioned on any shape input (angle, ...)
-	- https://github.com/lmb-freiburg/mv3d
-- A Dosovitskiy, J Springenberg, M Tatarchenko, T Brox. Learning to Generate Chairs, Tables and Cars with Convolutional Networks. PAMI'17
-	- Input: class c, view v, transfrom param theta;
-	- Output: image;
-	- Conv, deconv, upsampling;
-- Johanna Delanoy, Mathieu Aubry, Phillip Isola, Alexei A. Efros, Adrien Bousseau. 3D Sketching using Multi-View Deep Volumetric Prediction. CGIT'18
-
 ## Template-Based
 - Haibin Huang, Evangelos Kalogerakis, Benjamin Marlin. Analysis and synthesis of 3D shape families via deep-learned generative models of surfaces. Eurographics 2015
 - Li Yi, Haibin Huang, Difan Liu, Evangelos Kalogerakis, Hao Su, Leonidas Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia 2018
