@@ -42,7 +42,7 @@
 - **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
 	<img src="/Bayes/images/prob/gaussian-bayes-the.png" alt="drawing" width="400"/>
 - MLE for Gaussian: \
-	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="250"/>
 - Inference:
 	- Single var, variance known, for mean mu as **Gaussian**(mu0, sigma0): \
 		<img src="/Bayes/images/prob/gaussian-inf-1.png" alt="drawing" width="400"/>
