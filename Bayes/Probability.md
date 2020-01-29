@@ -30,16 +30,16 @@
 - Definition: \
 	<img src="/Bayes/images/prob/gaussian.png" alt="drawing" width="400"/>
 - Eigen value and vector of covariance matrix; with y=U(x-mu) \
-	<img src="/Bayes/images/prob/gaussian-eigen0.png" alt="drawing" width="350"/>
+	<img src="/Bayes/images/prob/gaussian-eigen0.png" alt="drawing" width="250"/>\
 	<img src="/Bayes/images/prob/gaussian-eigen1.png" alt="drawing" width="400"/>
 	<img src="/Bayes/images/prob/gaussian-eigen2.png" alt="drawing" width="400"/>
 - Conditional, precision matrix;
-	- Lambda = inv(Cov); \
+	- Lambda = inv(Cov);
 	<img src="/Bayes/images/prob/gaussian-joint1.png" alt="drawing" width="400"/>
 	<img src="/Bayes/images/prob/gaussian-joint2.png" alt="drawing" width="400"/>
 - Joint 2-dim Gaussian distribution: \
 	<img src="/Bayes/images/prob/gaussian-2d.png" alt="drawing" width="400"/>
-- Gaussian Bayes Theorem: x, y=Ax+b, then \
+- **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
 	<img src="/Bayes/images/prob/gaussian-bayes-the.png" alt="drawing" width="400"/>
 - MLE for Gaussian: \
 	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="400"/>

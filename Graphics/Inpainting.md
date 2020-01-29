@@ -92,7 +92,7 @@
 		<img src="/Graphics/images/gen-inpaint-2.png" alt="drawing" width="400"/>
 - W. Xian, P. Sangkloy, J. Lu, C. Fang, F. Yu, and J. Hays. Texturegan: Controlling deep image synthesis with texture patches. CVPR'18
 	- https://github.com/janesjanes/Pytorch-TextureGAN
-	- http://texturegan.eye.gatech.edu/
+	- http://texturegan.eye.gatech.edu/ \
 		<img src="/Graphics/images/texturegan.png" alt="drawing" width="400"/>
 - **Partial-Conv**: G Liu, F Reda, K J Shih, T Wang, A Tao, and B Catanzaro. Image Inpainting for Irregular Holes Using Partial Convolutions. ECCV'18
 	- Insight: Convolution is masked and re-normalized to utilize valid pixels only;
