@@ -30,7 +30,7 @@
 - Definition: \
 	<img src="/Bayes/images/prob/gaussian.png" alt="drawing" width="400"/>
 - Eigen value and vector of covariance matrix; with y=U(x-mu) \
-	<img src="/Bayes/images/prob/gaussian-eigen0.png" alt="drawing" width="250"/>\
+	<img src="/Bayes/images/prob/gaussian-eigen0.png" alt="drawing" width="200"/>\
 	<img src="/Bayes/images/prob/gaussian-eigen1.png" alt="drawing" width="400"/>
 	<img src="/Bayes/images/prob/gaussian-eigen2.png" alt="drawing" width="400"/>
 - Conditional, precision matrix;
@@ -42,7 +42,7 @@
 - **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
 	<img src="/Bayes/images/prob/gaussian-bayes-the.png" alt="drawing" width="400"/>
 - MLE for Gaussian: \
-	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="250"/>
+	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="200"/>
 - Inference:
 	- Single var, variance known, for mean mu as **Gaussian**(mu0, sigma0): \
 		<img src="/Bayes/images/prob/gaussian-inf-1.png" alt="drawing" width="400"/>
@@ -54,7 +54,7 @@
 			<img src="/Bayes/images/prob/gamma.png" alt="drawing" width="300"/>
 		<img src="/Bayes/images/prob/gaussian-inf-3.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-4.png" alt="drawing" width="400"/>
-	- Singel var, both mean and precision unknown; \
+	- Singel var, both mean and precision unknown;
 		- Likelihood: \
 			<img src="/Bayes/images/prob/gaussian-inf-5.png" alt="drawing" width="400"/>
 		- Prior take the same form with (c, d, beta); \
@@ -70,9 +70,9 @@
 
 ## Periodic
 - On a circle: average angle \
-	<img src="/Bayes/images/prob/periodic-1.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/prob/periodic-1.png" alt="drawing" width="200"/>
 - Definition: distribution with peorid 2pi \
-	<img src="/Bayes/images/prob/periodic-2.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/prob/periodic-2.png" alt="drawing" width="250"/>
 - With (x1, x2) and (mu1, mu2) as prior, we have: \
 	<img src="/Bayes/images/prob/periodic-3.png" alt="drawing" width="400"/>
 	<img src="/Bayes/images/prob/periodic-4.png" alt="drawing" width="400"/>
@@ -119,7 +119,7 @@
 ## Bounds, Theory
 - Weak law of large numbers (Khinchin's law)
 	- the sample average converges in probability towards the expected value\
-		<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="600"/>
+		<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="400"/>
 - Chebyshev\
 	<img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
 - Central Limit:

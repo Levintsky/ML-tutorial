@@ -19,7 +19,7 @@
 - Bayesian linear regression
 - Conjugate prior
 
-## Linear Model (Bishop, Chap 3)
+## Linear Regression (Bishop, Chap 3)
 - Linear model: basics with basis function \
 	<img src="/Bayes/images/lr/lr-1.png" alt="drawing" width="200"/>
 - Multiple output target t, with Moore-Penrose pseudo-inverse: \

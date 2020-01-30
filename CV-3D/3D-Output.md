@@ -26,13 +26,18 @@
 	- Photometric;
 
 ## Unclassified
-- **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR 2016
+- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
+- **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR'16
 	- Shape prior
 	- https://github.com/mdfirman/voxlets
+- Abhijit Kundu, Yin Li, and James M. Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
+- Stephan R. Richter and Stefan Roth. Matryoshka networks: Predicting 3d geometry via nested shape layers. CVPR'18
+- Peng-Shuai Wang, Chun-Yu Sun, Yang Liu, and Xin Tong. Adaptive O-CNN: a patch-based deep representation of 3d shapes. SIGGRAPH Asia'18
 
 ## Legacy (Non-DL)
 - A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
 	- https://github.com/akar43/CategoryShapes
+- Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
 
 ## Point Cloud
 - GAN:
@@ -168,17 +173,35 @@
 	- https://github.com/ThibaultGROUEIX/AtlasNet
 - A. Kanazawa, M. J. Black, D. W. Jacobs, and J. Malik. End-to-end recovery of human shape and pose. CVPR'18
 	- Assumption: template provided;
-- Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
-- Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. ECCV'18
+- **cmr**: Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
+	- https://github.com/akanazawa/cmr
+	<img src="/CV-3D/images/3d_output/cmr.png" alt="drawing" width="550"/>
+- **Pixel2mesh**: Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. ECCV'18
 	- Assumption: template provided;
+	- https://github.com/nywang16/Pixel2Mesh
+	<img src="/CV-3D/images/3d_output/pixel2mesh-1.png" alt="drawing" width="500"/>
+	<img src="/CV-3D/images/3d_output/pixel2mesh-2.png" alt="drawing" width="500"/>
 - A. Ranjan, T. Bolkart, S. Sanyal, and M. J. Black. Generating 3D faces using convolutional mesh autoencoders. ECCV'18
 - **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
 	- Insight: project to spherical map;
 	- Input: single image;
 	- https://github.com/xiumingzhang/GenRe-ShapeHD
 	<img src="/CV-3D/images/3d_output/genre.png" alt="drawing" width="600"/>
-- Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh R-CNN. ICCV'19
-- Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. 2019
+- Edward Smith, Scott Fujimoto, and David Meger. Multiview silhouette and depth decomposition for high resolution 3d object representation. NeurIPS'18
+- **Geometrics**: Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. ICML'19
+- **Mesh R-CNN**: Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh R-CNN. ICCV'19
+	- https://gkioxari.github.io/meshrcnn/
+	- https://github.com/facebookresearch/meshrcnn
+	- Problem setup: input single image, output a set of detected object instances, with a triangle mesh for each object.
+	- Approach: Mask R-CNN, coarse voxel (initial mesh), mesh refinement;
+		<img src="/CV-3D/images/3d_output/mesh-rcnn.png" alt="drawing" width="600"/>
+	- Lift to 3D: w x h G-channel;
+	- Cubify: voxel to triangular mesh (8 vertices, 18 edges, 12 faces); merge shared edges and vertices; eliminate interior ones;
+	- Mesh refinement (similar to **Pixel2mesh**):
+		- 1. vertex alignment, which extracts image features for vertices; (with camera intrinsic)
+		- 2. graph convolution, which propagates information along mesh edges;
+		- 3. vertex refinement， which updates vertex positions.
+	- Supevision: similar to **Geometrics**; sample points, Chamfer-Distance;
 
 ## Oct-Tree
 - Gernot Riegler, Ali Osman Ulusoy, and Andreas Geiger. Octnet: Learning deep 3d representations at high resolutions. CVPR'17
@@ -193,6 +216,7 @@
 - Legacy:
 	- S. N. Sinha, D. Steedly, R. Szeliski, M. Agrawala, and M. Pollefeys. Interactive 3d architectural modeling from unordered photo collections. TOG'08
 	- A.-L. Chauve, P. Labatut, and J.-P. Pons. Robust piecewise planar 3d reconstruction and completion from large-scale unstructured point data. CVPR'10
+	- Sanja Fidler, Sven Dickinson, and Raquel Urtasun. 3d object detection and viewpoint estimation with a deformable 3d cuboid model. NIPS'12
 	- F. Lafarge and P. Alliez. Surface reconstruction through point set structuring. CGF'13
 	- A. Bodis-Szomoru, H. Riemenschneider, and L. Van Gool. Fast, approximate piecewise-planar modeling based on sparse structure-from-motion and superpixels. CVPR'14
 - Recursive:

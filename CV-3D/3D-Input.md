@@ -149,6 +149,10 @@
 - **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17
 - **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine. NIPS'17
 
+## RGBD
+- Saurabh Gupta, Ross Girshick, Pablo Arbelaez, and Jitendra Malik. Learning rich features from rgb-d images for object detection and segmentatio. ECCV'14
+- Shuran Song and Jianxiong Xiao. Deep Sliding Shapes for amodal 3D object detection in RGB-D images. CVPR'16
+
 ## Implicit Functions
 - Legacy:
 	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96

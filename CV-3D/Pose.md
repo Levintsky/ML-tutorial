@@ -3,6 +3,11 @@
 ## Tutorials
 - S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV 2017
 
+## Unclassified
+- David F. Fouhey, Abhinav Gupta, and Martial Hebert. Data-driven 3D primitives for single image understanding. ICCV'13
+- Shubham Tulsiani and Jitendra Malik. Viewpoints and keypoints. CVPR'15
+- Derek Hoiem, Alexei A. Efros, and Martial Hebert.Geometric context from a single image. ICCV'15
+
 ## Geometry-based
 - Keypoint matching:
 	- M. Aubry, D. Maturana, A. A. Efros, B. C. Russell, and J. Sivic. Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models. CVPR'14

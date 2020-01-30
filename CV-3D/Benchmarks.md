@@ -1,5 +1,8 @@
 # Benchmarks
 
+## Unclassified
+- **Pix3d**: Xingyuan Sun, Jiajun Wu, Xiuming Zhang, Zhoutong Zhang, Chengkai Zhang, Tianfan Xue, Joshua B. Tenenbaum, and William T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
+
 ## Objects
 - ShapeNet-Series:
 	- **ShapeNet**: Angel X Chang, Thomas Funkhouser, Leonidas Guibas, et al. Shapenet: An information-rich 3d model repository. 2015
