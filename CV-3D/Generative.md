@@ -22,9 +22,6 @@
 - L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. ICCV'17
 - G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17
 
-## 3D-Reconstruction, Render
-- W. Jakob, Mitsuba renderer, 2010, http://www.mitsuba-renderer.org.
-
 ## Shape Editing
 - A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and partbased recombination. CGF 2012
 

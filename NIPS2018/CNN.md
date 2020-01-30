@@ -8,7 +8,6 @@
 
 ## 3D
 - 3D Steerable CNNs: Learning Rotationally Equivariant Features in Volumetric Data
-- RenderNet: A deep convolutional network for differentiable rendering from 3D shapes
 - Multi-View Silhouette and Depth Decomposition for High Resolution 3D Object Representation
 - Unsupervised Depth Estimation, 3D Face Rotation and Replacement
 - **Learning to Exploit Stability for 3D Scene Parsing (Jiajun Wu)**
