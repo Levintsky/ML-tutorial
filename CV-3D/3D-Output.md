@@ -189,6 +189,7 @@
 	<img src="/CV-3D/images/3d_output/genre.png" alt="drawing" width="600"/>
 - Edward Smith, Scott Fujimoto, and David Meger. Multiview silhouette and depth decomposition for high resolution 3d object representation. NeurIPS'18
 - **Geometrics**: Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. ICML'19
+	- https://github.com/EdwardSmith1884/GEOMetrics
 - **Mesh R-CNN**: Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh R-CNN. ICCV'19
 	- https://gkioxari.github.io/meshrcnn/
 	- https://github.com/facebookresearch/meshrcnn

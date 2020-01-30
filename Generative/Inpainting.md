@@ -4,9 +4,9 @@
 - Hole filling;
 - Legacy: generally an engergy minimization problem:
 - Formulation: patch not masked for inpainting should be consistent \
-	<img src="/Graphics/images/inpaint-energy.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/inpaint/inpaint-energy.png" alt="drawing" width="400"/>
 - Geometry-aware: 2nd term same as above, first term for gemoetry reprojection error; \
-	<img src="/Graphics/images/inpaint-energy-2.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/inpaint/inpaint-energy-2.png" alt="drawing" width="400"/>
 - Key trick: To preserve structure, patch priority computation specifies the patch filling order;
 
 ## Unclassified
@@ -51,35 +51,35 @@
 	- Inpaint from surrounding context;
 	- Insight: inpainting auto-encoder; loss: L2;
 	- Problem: fixed size (resolution), fixed mask; \
-	<img src="/Graphics/images/context-encoder.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/inpaint/context-encoder.png" alt="drawing" width="400"/>
 - Emily Denton, Sam Gross, and Rob Fergus. Semi-supervised learning with context-conditional generative adversarial networks. arxiv'16 (ICLR'17 reject)
 	- Generalized from context encoder, with GAN loss; \
-	<img src="/Graphics/images/ssl-gan.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/inpaint/ssl-gan.png" alt="drawing" width="400"/>
 - Y Li, S Liu, J Yang, and M Yang. Generative Face Completion. CVPR'17
 	- Problem setup: Face inpainting; 3 supervision!
 	- Insight: denoise/inpainting autoencoder;
 	- **Supervision**: local+global GAN; part parsing output; \
-		<img src="/Graphics/images/face-inpaint.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/face-inpaint.png" alt="drawing" width="400"/>
 - Chao Yang, Xin Lu, Zhe Lin, Eli Shechtman, Oliver Wang, and Hao Li. High-resolution image inpainting using multi-scale neural patch synthesis. CVPR'17
 	- Key insight: Deep PatchMatch (nearest + neighbor); MRF post-processing;
 	- https://github.com/leehomyc/Faster-High-Res-Neural-Inpainting
 	- Insight: 1. Pretrain a loss; 2. AE framework; 3. iterative;
 	- Supervision loss: pretrained content loss and texture loss Ec and Et; content: with ground-truth + adv-loss; texture: nearest neighbor with VGG relu3 and relu4; \
-		<img src="/Graphics/images/neural-inpaint-1.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/neural-inpaint-1.png" alt="drawing" width="400"/>
 	- Generative model: \
-		<img src="/Graphics/images/neural-inpaint-2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/neural-inpaint-2.png" alt="drawing" width="400"/>
 	- Start from infilling mean color x0, iteratively optimize: \
-		<img src="/Graphics/images/neural-inpaint-3.png" alt="drawing" width="250"/>
+		<img src="/Generative/images/inpaint/neural-inpaint-3.png" alt="drawing" width="250"/>
 - Raymond A Yeh, Chen Chen, Teck Yian Lim, Alexander Schwing, Mark Hasegawa-Johnson, and Minh N Do. Semantic image inpainting with deep generative models. CVPR'17
 	- https://github.com/moodoki/semantic_image_inpainting
 	- Key insight: manipulate z; \
-		<img src="/Graphics/images/semantic-inpaint.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/semantic-inpaint.png" alt="drawing" width="400"/>
 - **Global-Local-GAN**: S Iizuka, E Simo-Serra, and H Ishikawa. Globally and locally consistent image completion. TOG'17
 	- https://github.com/satoshiiizuka/siggraph2017_inpainting
 	- Fully-Conv CNN;
 	- Rely heavily on post-processing (Poisson blending, MRF, Kaiming's)
 	- Supervision: GAN loss; \
-		<img src="/Graphics/images/global-local.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/global-local.png" alt="drawing" width="400"/>
 - **Deep-Prior**: D Ulyanov, A Vedaldi, V Lempitsky. Deep Image Prior. CVPR'18
 	- https://dmitryulyanov.github.io/deep_image_prior
 	- Deep energy based, natural image should have low cost;
@@ -87,36 +87,36 @@
 - Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas S Huang. Generative Image Inpainting with Contextual Attention. CVPR'18
 	- Key insight: Contextual attention; deep nearest neighbor;
 	- https://github.com/JiahuiYu/generative_inpainting \
-		<img src="/Graphics/images/gen-inpaint-1.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/inpaint/gen-inpaint-1.png" alt="drawing" width="500"/>
 	- Contextual attention: foreground (missing pixels) and background attention;
-		<img src="/Graphics/images/gen-inpaint-2.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/gen-inpaint-2.png" alt="drawing" width="400"/>
 - W. Xian, P. Sangkloy, J. Lu, C. Fang, F. Yu, and J. Hays. Texturegan: Controlling deep image synthesis with texture patches. CVPR'18
 	- https://github.com/janesjanes/Pytorch-TextureGAN
 	- http://texturegan.eye.gatech.edu/ \
-		<img src="/Graphics/images/texturegan.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/texturegan.png" alt="drawing" width="400"/>
 - **Partial-Conv**: G Liu, F Reda, K J Shih, T Wang, A Tao, and B Catanzaro. Image Inpainting for Irregular Holes Using Partial Convolutions. ECCV'18
 	- Insight: Convolution is masked and re-normalized to utilize valid pixels only;
 	- https://github.com/NVIDIA/partialconv
 - **GMCNN**: Yi Wang, Xin Tao, Xiaojuan Qi, Xiaoyong Shen, Jiaya Jia. Image Inpainting via Generative Multi-column Convolutional Neural Networks. NIPS'18
 	- https://github.com/shepnerd/inpainting_gmcnn \
 	- 3 submodules: a generator to produce results, global local discriminators for adversarial training, and a pretrained VGG network [20] to calculate ID-MRF loss. In the testing phase, only the generator network is used. \
-		<img src="/Graphics/images/gmcnn.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/inpaint/gmcnn.png" alt="drawing" width="500"/>
 	- ID-MRF (implicit diversified Markov random fields): direct NN: over-smooth result; relative distance encourages different patch find different candidate (otherwise softmax loss will be large); \
-		<img src="/Graphics/images/gmcnn-1.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/inpaint/gmcnn-1.png" alt="drawing" width="500"/>
 	- Information fusion: spatial variant loss (close to the boundary are more constrained);  adversarial loss (WGAN);
 - S Hong, X Yan, T Huang, H Lee. Learning Hierarchical Semantic Image Manipulation through Structured Representations. NIPS'18
 	- Key insight: generate the semantic mask first;
 	- https://github.com/xcyan/neurips18_hierchical_image_manipulation \
-	<img src="/Graphics/images/hier-inpaint1.png" alt="drawing" width="500"/>
-	<img src="/Graphics/images/hier-inpaint2.png" alt="drawing" width="500"/>
-	<img src="/Graphics/images/hier-inpaint3.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/inpaint/hier-inpaint1.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/inpaint/hier-inpaint2.png" alt="drawing" width="500"/>
+	<img src="/Generative/images/inpaint/hier-inpaint3.png" alt="drawing" width="500"/>
 - Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, and Jan Kautz. Context-aware synthesis and placement of object instances. NIPS'18
 	- https://github.com/NVlabs/Instance_Insertion
 - **SN-PatchGAN**: Yu, Z Lin, J Yang, X Shen, X Lu, T Huang. Free-Form Image Inpainting with Gated Convolution. ICCV'19
 	- http://jiahuiyu.com/deepfill2
 	- Input: sketches as guidance;
 	- Improve on partial-conv on soft-gated conv;\
-		<img src="/Graphics/images/sn-patchgan.png" alt="drawing" width="500"/>
+		<img src="/Generative/images/inpaint/sn-patchgan.png" alt="drawing" width="500"/>
 - Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model from a Single Natural Image. ICCV'19 best paper
 
 ## User-Guided
@@ -145,7 +145,7 @@
 	- 1. depth estimation;
 		- 1.1 UPSNet for segmentation; 5 super-class: road, ground, vegetation, building, streetpole; 3d (depth?) interpolation; sky-mask: sky depth to infinity;
 	- 2. correspondence on image; \
-		<img src="/Graphics/images/dynamic-removal-align.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/dynamic-removal-align.png" alt="drawing" width="400"/>
 	- 3. inpainting;
 		- Rerun algorithm 1 from frames i' > i; (forward, backward) \
-		<img src="/Graphics/images/dynamic-removal-inpaint.png" alt="drawing" width="400"/>
+		<img src="/Generative/images/inpaint/dynamic-removal-inpaint.png" alt="drawing" width="400"/>

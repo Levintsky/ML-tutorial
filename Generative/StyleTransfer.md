@@ -18,6 +18,9 @@
 		<img src="/Generative/images/transfer/style-transfer.png" alt="drawing" width="600"/>
 - Style-Transfer in text: https://github.com/fuzhenxin/Style-Transfer-in-Text
 
+## Unclassified
+- **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
+
 ## Classic
 - **CRN**: Q Chen, V Koltun. Photographic Image Synthesis with Cascaded Refinement Networks. ICCV'17
 	- https://github.com/WojciechMormul/crn
@@ -180,8 +183,6 @@
 		- Adaptive Instance Normalization (AdaIN)
 	- G Ghiasi, H Lee, M Kudlur, V Dumoulin, J Shlens. Exploring the Structure of a Real-time, Arbitrary Neural Artistic Stylization Network. BMVC'17
 	- Yijun Li, Chen Fang, Jimei Yang, Zhaowen Wang, Xin Lu, and Ming-Hsuan Yang. Universal Style Transfer via Feature Transforms. NIPS'17
-
-## 3D Point Cloud
 
 ## Legacy
 - NPR (non-photorealistic rendering):

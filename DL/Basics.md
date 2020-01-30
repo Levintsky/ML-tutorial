@@ -6,6 +6,34 @@
 ## Books
 - **Deep learning**: Ian Goodfellow, Yoshua Bengio, Aaron Courville, and Yoshua Bengio. volume 1. MIT press Cambridge, 2016.
 
+## PRML (Chapter 5)
+- Feed-forward:
+	- Notation: aj = sum_i w_ji xi + wj0;
+	- Weight space symmetry: tanh(-a) = -tanh(a);
+	- Target regression: p(t|w, x) = N(y(x, w), beta^(-1)), with beta as the precision;
+	- Cross entropy loss: -sum t_k ln y_k(x, w), with softmax;
+- Training:
+	- SGD, Hessian;
+- Error backprop: Jacobian matrix;
+- Hessian matrix:
+	- Diagonal approximation:
+		<img src="/DL/images/hessian-approx.png" alt="drawing" width="500"/>
+	- Outer product approx, ignore the 2nd term in 5.83;
+		<img src="/DL/images/hessian-1.png" alt="drawing" width="200"/>
+		<img src="/DL/images/hessian-2.png" alt="drawing" width="300"/>
+		<img src="/DL/images/hessian-3.png" alt="drawing" width="200"/>
+	- Fast approximation by Hessian;
+- Regularization:
+	- Regularization;
+	- Early stopping;
+	- Invariance;
+	- Tangent propagation [Simard'92];
+	- Training with transformed data;
+	- CNN;
+	- Soft weight sharing;
+		- L2-regularization: Gaussian prior;
+		- Mixture of Gaussian;
+
 ## Dropout
 - Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdinov. Dropout: A simple way to prevent neural networks from overfitting. JMLR, 15:1929–1958, 2014
 - Y Gal, J Hron, A Kendall. Concrete Dropout. NIPS'17
