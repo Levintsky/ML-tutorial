@@ -16,12 +16,12 @@
 	- SGD, Hessian;
 - Error backprop: Jacobian matrix;
 - Hessian matrix:
-	- Diagonal approximation:
+	- Diagonal approximation:\
 		<img src="/DL/images/hessian-approx.png" alt="drawing" width="500"/>
-	- Outer product approx, ignore the 2nd term in 5.83;
-		<img src="/DL/images/hessian-1.png" alt="drawing" width="200"/>
-		<img src="/DL/images/hessian-2.png" alt="drawing" width="300"/>
-		<img src="/DL/images/hessian-3.png" alt="drawing" width="200"/>
+	- Outer product approx, ignore the 2nd term in (5.83);\
+		<img src="/DL/images/hessian-1.png" alt="drawing" width="250"/>\
+		<img src="/DL/images/hessian-2.png" alt="drawing" width="250"/>\
+		<img src="/DL/images/hessian-3.png" alt="drawing" width="250"/>
 	- Fast approximation by Hessian;
 - Regularization:
 	- Regularization;
@@ -33,12 +33,16 @@
 	- Soft weight sharing;
 		- L2-regularization: Gaussian prior;
 		- Mixture of Gaussian;
+- Mixture density networks:
+	- Mixture Gaussian for multi-modal;
+		<img src="/DL/images/mdn-1.png" alt="drawing" width="450"/>
+		<img src="/DL/images/mdn-2.png" alt="drawing" width="450"/>
 
 ## Dropout
 - Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdinov. Dropout: A simple way to prevent neural networks from overfitting. JMLR, 15:1929–1958, 2014
 - Y Gal, J Hron, A Kendall. Concrete Dropout. NIPS'17
 - Aidan N. Gomez, Ivan Zhang, Kevin Swersky, Yarin Gal, Geoffrey E. Hinton. Targeted Dropout. ICLR 2019
-	- github.com/for-ai/TD
+	- https://github.com/for-ai/TD
 
 ## Regularization
 - Xavier Gastaldi. Shake-Shake regularization. 2017
