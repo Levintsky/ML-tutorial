@@ -20,6 +20,7 @@
 
 ## Unclassified
 - **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
+- Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, Jan Kautz. Context-Aware Synthesis and Placement of Object Instances. NIPS'18
 
 ## Classic
 - **CRN**: Q Chen, V Koltun. Photographic Image Synthesis with Cascaded Refinement Networks. ICCV'17

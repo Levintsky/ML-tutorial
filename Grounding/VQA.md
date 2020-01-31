@@ -19,6 +19,7 @@
 ## Unclassified
 - Learning Conditioned Graph Structures for Interpretable Visual Question Answering. NIPS'18
 - Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering. NIPS'18
+- Jin-Hwa Kim, Jaehyun Jun, Byoung-Tak Zhang. Bilinear Attention Networks. NIPS'18
 
 ## VQA
 - MSR:

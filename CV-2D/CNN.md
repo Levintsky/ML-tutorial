@@ -1,4 +1,4 @@
-# Classification
+# CNN (with focus on Classification)
 
 ## Classification, Network Design
 - **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS 2012.
@@ -52,8 +52,10 @@
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 
 ## Fine-Grained
-- **Bilinear**: T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV 2015
+- **Bilinear**: T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV'15
 	- https://github.com/HaoMood/bilinear-cnn
+- Kaiyu Yue, Ming Sun, Yuchen Yuan, Feng Zhou, Errui Ding, Fuxin Xu. Compact Generalized Non-local Network. NIPS'18
+	- https://github.com/KaiyuYue/cgnl-network.pytorch
 
 ## Pooling, Aggregation
 - R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016

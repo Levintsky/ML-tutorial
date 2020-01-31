@@ -1,6 +1,12 @@
 # General Adversarial Net
 
 ## Unclassified
+- **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
+- Michael Arbel, Dougal J. Sutherland, Mikolaj Binkowski, Arthur Gretton. On gradient regularizers for MMD GANs. NIPS'18
+- Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
+- Memory Replay GANs: Learning to Generate New Categories without Forgetting. NIPS'18
+- Chang Xiao, Peilin Zhong, Changxi Zheng. BourGAN: Generative Networks with Metric Embeddings. NIPS'18
+- Xiaojie Wang, Rui Zhang, Yu Sun, Jianzhong Qi. KDGAN: Knowledge Distillation with Generative Adversarial Networks. NIPS'18
 - Xinyu Gong, Shiyu Chang, Yifan Jiang, Zhangyang Wang. AutoGAN: Neural Architecture Search for Generative Adversarial Networks. ICCV 2019
 	- https://github.com/TAMU-VITA/AutoGAN
 - Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19

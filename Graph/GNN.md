@@ -13,6 +13,7 @@
 - Image: Scene-graph;
 
 ## Unclassified
+- Yin Li, Abhinav Gupta. Beyond Grids: Learning Graph Representations for Visual Recognition. NIPS'18
 - **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are
 Graph Neural Networks? ICLR'19
 

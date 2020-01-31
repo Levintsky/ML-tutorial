@@ -13,6 +13,7 @@
 	- General feature learning
 
 ## Unclassified
+- Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
 - **ReMixMatch**: David Berthelot, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel, Kihyuk Sohn. ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring. 2019
 	- CTAugment
 	- https://github.com/google-research/remixmatch

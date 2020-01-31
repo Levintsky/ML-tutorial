@@ -24,3 +24,6 @@
 		<img src="/DL/images/info-theory/old-bound.png" alt="drawing" width="450"/>
 - New Input compression bound:
 		<img src="/DL/images/info-theory/new-bound.png" alt="drawing" width="450"/>
+
+## Information Theory in NN
+- Marylou Gabrié, Andre Manoel, Clément Luneau, Jean Barbier, Nicolas Macris, Florent Krzakala, Lenka Zdeborová. Entropy and mutual information in models of deep neural networks. NIPS'18

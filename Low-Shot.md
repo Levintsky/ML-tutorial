@@ -7,6 +7,7 @@
 
 ## Unclassified
 - TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS'18
+- Ruixiang ZHANG, Tong Che, Zoubin Ghahramani, Yoshua Bengio, Yangqiu Song. MetaGAN: An Adversarial Approach to Few-Shot Learning. NIPS'18
 
 ## Low-Shot (FAIR)
 - Feature halucination:

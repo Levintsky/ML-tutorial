@@ -36,3 +36,6 @@
 - R. Hu, W. Li, O. Van Kaick, A. Shamir, H. Zhang, and H. Huang. Learning to predict part mobility from a single static snapshot. TOG 2017
 - R. Hu, O. van Kaick, B. Wu, H. Huang, A. Shamir, and H. Zhang. Learning how objects function via co-analysis of interactions. TOG 2016
 - R. Hu, Z. Yan, J. Zhang, O. van Kaick, A. Shamir, H. Zhang, and H. Huang. Predictive and generative neural networks for object functionality. CGF 2018
+
+## Physics
+- Yilun Du, Zhijian Liu, Hector Basevi, Aleš Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Exploit Stability for 3D Scene Parsing. NIPS'18

@@ -4,9 +4,6 @@
 - C Peterson. A mean field theory learning algorithm for neural networks. 1987
 - G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
-## Unclassified
-- Explaining Deep Learning Models -- A Bayesian Non-parametric Approach. NIPS'18
-
 ## Variational Inference
 - David JC MacKay. Probable networks and plausible predictions—a review of practical bayesian methods for supervised neural networks. Network: Computation in Neural Systems, 6(3):469–505, 1995.
 - Radford M Neal. Bayesian learning for neural networks. PhD thesis, Citeseer, 1995.

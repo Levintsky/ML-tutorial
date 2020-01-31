@@ -19,9 +19,10 @@
 
 ## Fast
 - Separable:
-	-  F. Chollet. Xception: Deep learning with depthwise separable convolutions. CVPR 2017
+	-  F. Chollet. Xception: Deep learning with depthwise separable convolutions. CVPR'17
 
-## Small/Compress
+## Prune/Compress
+- Chen Lin, Zhao Zhong, Wei Wu, Junjie Yan. Synaptic Strength For Convolutional Neural Network. NIPS'18
 - **Song Han**:
 	- S. Han, H. Mao, and W. J. Dally. Deep compression: Compressing deep neural networks with pruning, trained quantization and huffman coding. 2015
 	- S. Han, J. Pool, J. Tran, and W. Dally. Learning both weights and connections for efficient neural network. NIPS'15

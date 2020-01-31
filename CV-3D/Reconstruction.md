@@ -1,5 +1,8 @@
 # 3D Reconstruction
 
+## Unclassified
+- Joel Ruben Antony Moniz, Christopher Beckham, Simon Rajotte, Sina Honari, Christopher Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
+
 ## Depth Estimation
 - Single view:
 	- D. Eigen, C. Puhrsch, and R. Fergus. Depth map prediction from a single image using a multi-scale deep network. NIPS'14
