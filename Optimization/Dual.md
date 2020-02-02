@@ -8,6 +8,12 @@
 	- https://zhuanlan.zhihu.com/p/26514613
 - Application:
 	- SVM;
+- Bishop, PRML, Appendix E;
+	- Maximize f(x1, x2) s.t. g(x1, x2) = 0;
+	- Equality constraint: partial derivative of f and g must be parallel (lambda);
+		<img src="/Optimization/images/dual/lagrange-dual-1.png" alt="drawing" width="400"/>
+	- Inequality constraint: g(x) >= 0; g(x) > 0 inactive constraint, g(x) = 0, active; introduce lambda \* g(x):
+		<img src="/Optimization/images/dual/lagrange-dual-2.png" alt="drawing" width="400"/>
 
 ## Primal Dual
 - Fenchel-Legendre Duality

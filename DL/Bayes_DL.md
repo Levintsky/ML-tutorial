@@ -12,7 +12,7 @@
 - Build a local Gaussian for variance, then we have Gaussian approx:
 	<img src="/DL/images/bnn/bnn-bishop-3.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-4.png" alt="drawing" width="450"/>
-- Predict:
+- Predict:\
 	<img src="/DL/images/bnn/bnn-bishop-5.png" alt="drawing" width="450"/>
 - With Taylor expansion, we have
 	<img src="/DL/images/bnn/bnn-bishop-6.png" alt="drawing" width="450"/>

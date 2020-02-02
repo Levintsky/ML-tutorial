@@ -34,7 +34,7 @@
 		- L2-regularization: Gaussian prior;
 		- Mixture of Gaussian;
 - Mixture density networks:
-	- Mixture Gaussian for multi-modal;
+	- Mixture Gaussian for multi-modal;\
 		<img src="/DL/images/mdn-1.png" alt="drawing" width="450"/>
 		<img src="/DL/images/mdn-2.png" alt="drawing" width="450"/>
 

@@ -4,6 +4,53 @@
 - David Blei. Variational Inference: A Review for Statisticians, 2018
 	- ELBO (Evidence Lower-Bound)
 
+## Mixture Models, EM (PRML, Chap 9)
+- K-means;
+- Mixture of Gaussian;
+	<img src="/Bayes/images/VI/gmm.png" alt="drawing" width="400"/>
+- {X, Z}, Because we cannot use the complete-data log likelihood, we consider instead its **expected value** under the posterior distribution of the latent variable, which corresponds (as we shall see) to the E step of the EM algorithm;
+	<img src="/Bayes/images/VI/mixture-em.png" alt="drawing" width="400"/>
+- EM for Bayesian linear regression: converge to the same result with direct method:
+	<img src="/Bayes/images/VI/em-bayes-lr-1.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/VI/em-bayes-lr-2.png" alt="drawing" width="400"/>
+- General EM:\
+	<img src="/Bayes/images/VI/em-elbo-1.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/VI/em-elbo-2.png" alt="drawing" width="400"/>
+-  The generalized EM, or GEM, algorithm addresses the problem of an intractable M step. Instead of aiming to maximize L(q, θ) with respect to θ, it seeks instead to change the parameters in such a way as to increase its value;
+
+## Approximate Inference (PRML, Chap 10)
+- Basics: Many problems can be expressed in terms of an optimization problem in which the quantity being optimized is a functional. This is done by restricting the range of functions over which the optimization is performed. Our goal is to find an approximation for the posterior distribution p(Z\|X) as well as for the model evidence p(X).
+- Factorized model: mean field;\
+	<img src="/Bayes/images/VI/mean-field-1.png" alt="drawing" width="300"/>
+	<img src="/Bayes/images/VI/mean-field-2.png" alt="drawing" width="450"/>
+	<img src="/Bayes/images/VI/mean-field-3.png" alt="drawing" width="350"/>
+- E.g.1: EM of GMM with Dirichlet prior on pi (PRML 10.2);
+	<img src="/Bayes/images/VI/em-gmm-1.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/VI/em-gmm-2.png" alt="drawing" width="400"/>
+- E.g.2: EM of linear regression: a gamma prior alpha ~ gamma(a0, b0) for weight precision;
+	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>
+	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="400"/>
+	- Assume variational factorized posterior: q(w, alpha) = q(w) q(alpha)
+	- Prior alpha:\
+		<img src="/Bayes/images/VI/em-lr-4.png" alt="drawing" width="400"/>
+	- Weight w:\
+		<img src="/Bayes/images/VI/em-lr-5.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/VI/em-lr-6.png" alt="drawing" width="400"/>
+	- Predict:
+		<img src="/Bayes/images/VI/em-lr-7.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/VI/em-lr-8.png" alt="drawing" width="400"/>
+- E.g.3: exponential family;
+	- Model: (x, z) with latent z, conjagate prior on nita
+		<img src="/Bayes/images/VI/em-exp-family-1.png" alt="drawing" width="400"/>
+	- Variational factorized posterior: q(z, nita) = q(z) q(nita)
+	- q(z)
+		<img src="/Bayes/images/VI/em-exp-family-2.png" alt="drawing" width="400"/>
+	- q(nita)
+		<img src="/Bayes/images/VI/em-exp-family-3.png" alt="drawing" width="400"/>
+- Local variational method:
+	<img src="/Bayes/images/VI/local-vi.png" alt="drawing" width="400"/>
+
 ## Mixture of Experts
 - Important property:
 	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
@@ -12,7 +59,7 @@
 	- E-step: p(z), (In VBEM, will be q(z))
 	- M-step: argmax_theta Q(theta, theta_old)
 - EM Theory:
-	<img src="/Basic-ML/images/VI/em1.png" alt="drawing" width="600"/>
+	<img src="/Bayes/images/VI/em1.png" alt="drawing" width="600"/>
 - Modern:
 	- Benefits of over-parameterization with EM. NIPS'18
 
@@ -24,8 +71,6 @@
 	- ELBO(q) = E(log p(z, x)) - E(log q(z))
 
 ## Mean Field
-- Mean field\
-	<img src="/Basic-ML/images/VI/mean-field1.png" alt="drawing" width="200"/>
 - LDA:
 
 ## MCMC with Mini-Batch
@@ -45,7 +90,7 @@
 	- By adding the right amount of noise to a standard stochastic gradient optimization algorithm we show that the iterates will converge to samples from the true posterior distribution as we anneal the stepsize;
 	- Problem setup: estimate posterior p(W|D)
 	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients\
-		<img src="/Basic-ML/images/VI/sgld.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/VI/sgld.png" alt="drawing" width="400"/>
 - **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
 
