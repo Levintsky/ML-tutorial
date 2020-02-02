@@ -19,9 +19,9 @@
 	- Diagonal approximation:\
 		<img src="/DL/images/hessian-approx.png" alt="drawing" width="500"/>
 	- Outer product approx, ignore the 2nd term in (5.83);\
-		<img src="/DL/images/hessian-1.png" alt="drawing" width="250"/>\
-		<img src="/DL/images/hessian-2.png" alt="drawing" width="250"/>\
-		<img src="/DL/images/hessian-3.png" alt="drawing" width="250"/>
+		<img src="/DL/images/hessian-1.png" alt="drawing" width="300"/>\
+		<img src="/DL/images/hessian-2.png" alt="drawing" width="200"/>\
+		<img src="/DL/images/hessian-3.png" alt="drawing" width="200"/>
 	- Fast approximation by Hessian;
 - Regularization:
 	- Regularization;
@@ -34,7 +34,7 @@
 		- L2-regularization: Gaussian prior;
 		- Mixture of Gaussian;
 - Mixture density networks:
-	- Mixture Gaussian for multi-modal;
+	- Mixture Gaussian for multi-modal;\
 		<img src="/DL/images/mdn-1.png" alt="drawing" width="450"/>
 		<img src="/DL/images/mdn-2.png" alt="drawing" width="450"/>
 

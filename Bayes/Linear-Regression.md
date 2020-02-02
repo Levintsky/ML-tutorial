@@ -2,7 +2,7 @@
 
 ## MLE
 - OLS (ordinary least squares) \
-	<img src="/Bayes/images/lr/linear-regression1.png" alt="drawing" width="250"/>\
+	<img src="/Bayes/images/lr/linear-regression1.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/lr/linear-regression2.png" alt="drawing" width="200"/>
 - Geometric interpretation:\
 	<img src="/Bayes/images/lr/linear-regression3.png" alt="drawing" width="150"/>
@@ -34,13 +34,16 @@
 	<img src="/Bayes/images/lr/lr-6.png" alt="drawing" width="400"/>
 	- An example: given L=100 datasets, each dataset contains N=25 point. We use a linear combination of Gaussian to fit h(x)=sin(x); bias models deviation of average of different fit mean(y(x)) from h(x); variance measures each yi(x) from mean(y(x)); \
 		<img src="/Bayes/images/lr/lr-7.png" alt="drawing" width="400"/>
-- Bayesian LR: conjugate prior Gaussian \
-	<img src="/Bayes/images/lr/lr-8.png" alt="drawing" width="300"/>
-	<img src="/Bayes/images/lr/lr-9.png" alt="drawing" width="400"/>
+- Bayesian LR: conjugate **prior** Gaussian w ~ N(m0, S0), then **posterior** is\
+	<img src="/Bayes/images/lr/lr-8.png" alt="drawing" width="300"/>\
+	<img src="/Bayes/images/lr/lr-9.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/lr/lr-10.png" alt="drawing" width="400"/>
-- Beyesian LR: prediction with (smoother matrix or the equivalent kernel), satisfy sum_n k(x,x_n)=1 \
-	<img src="/Bayes/images/lr/lr-11.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/lr/lr-12.png" alt="drawing" width="200"/>\
+- Beyesian LR prediction. Problem definition:
+	<img src="/Bayes/images/lr/lr-11.0.png" alt="drawing" width="400"/>\
+	- With Gaussian Bayes theorem of convolving two Gaussian, we have:
+		<img src="/Bayes/images/lr/lr-11.png" alt="drawing" width="400"/>\
+	- With smoother matrix, or the equivalent kernel, satisfying sum_n k(x,x_n)=1, we have \
+	<img src="/Bayes/images/lr/lr-12.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/lr/lr-13.png" alt="drawing" width="200"/>
 - Bayesian Model comparison:
 	- L models {Mi}, i = 1, ..., L. **Bayes factor**: p(D|Mi)/p(D|Mj)

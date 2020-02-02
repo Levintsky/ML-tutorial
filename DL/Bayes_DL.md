@@ -6,15 +6,15 @@
 
 ## Bayesian NN (PRML Chapter 5.6)
 - Assumptions: 2 Gaussian, weight w ~ N(0, alpha^(-1)), p(t\|x,w) ~ N(y(x,w), beta^(-1)). Then the posterior:
-	<img src="/DL/images/bnn/bnn-bishop-1.png" alt="drawing" width="450"/>
+	<img src="/DL/images/bnn/bnn-bishop-1.png" alt="drawing" width="400"/>
 - w-MAP (mode) can be found if alpha and beta known:
 	<img src="/DL/images/bnn/bnn-bishop-2.png" alt="drawing" width="450"/>
 - Build a local Gaussian for variance, then we have Gaussian approx:
 	<img src="/DL/images/bnn/bnn-bishop-3.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-4.png" alt="drawing" width="450"/>
-- Predict:
+- Predict:\
 	<img src="/DL/images/bnn/bnn-bishop-5.png" alt="drawing" width="450"/>
-- With Taylor expansion, we have
+- With Taylor expansion, we have\
 	<img src="/DL/images/bnn/bnn-bishop-6.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-7.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-8.png" alt="drawing" width="450"/>
