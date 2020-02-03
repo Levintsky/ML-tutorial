@@ -16,12 +16,12 @@
 	<img src="/Basic-ML/images/kernel/kernel-2.1.png" alt="drawing" width="400"/>\
 	<img src="/Basic-ML/images/kernel/kernel-2.2.png" alt="drawing" width="400"/>\
 - Kernel between sets:\
-	<img src="/Basic-ML/images/kernel/kernel-2.3.png" alt="drawing" width="300"/>
+	<img src="/Basic-ML/images/kernel/kernel-2.3.png" alt="drawing" width="200"/>
 - Kernels of generative models:\
-	<img src="/Basic-ML/images/kernel/kernel-2.4.png" alt="drawing" width="300"/>\
-	<img src="/Basic-ML/images/kernel/kernel-2.5.png" alt="drawing" width="400"/>\
+	<img src="/Basic-ML/images/kernel/kernel-2.4.png" alt="drawing" width="250"/>\
+	<img src="/Basic-ML/images/kernel/kernel-2.5.png" alt="drawing" width="300"/>\
 	<img src="/Basic-ML/images/kernel/kernel-2.6.png" alt="drawing" width="400"/>
-- Radial Basis Function:
+- Radial Basis Function:\
 	<img src="/Basic-ML/images/kernel/nadaraya-watson.png" alt="drawing" width="400"/>
 
 ## Sparse Kernel Machines (PRML, Chap 7)
