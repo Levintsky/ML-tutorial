@@ -24,10 +24,19 @@
 	<img src="/Bayes/images/VI/mean-field-1.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/VI/mean-field-2.png" alt="drawing" width="450"/>\
 	<img src="/Bayes/images/VI/mean-field-3.png" alt="drawing" width="350"/>
-- E.g.1: EM of GMM with Dirichlet prior on pi (PRML 10.2);\
+- E.g.1: factorized Gaussian to approximate 2-dimension Gaussian:\
+	<img src="/Bayes/images/VI/em-gauss-1.png" alt="drawing" width="400"/>\
+	- Iteratively optimize:\
+		<img src="/Bayes/images/VI/em-gauss-2.png" alt="drawing" width="400"/>
+- E.g.2: Gaussian, factorized prior (mean, precision) for conjugate prior:\
+	<img src="/Bayes/images/VI/em-gauss-prior-1.png" alt="drawing" width="400"/>\
+	- Assume q(mu, tau) = q(mu) q(tau), we have
+		<img src="/Bayes/images/VI/em-gauss-prior-2.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/VI/em-gauss-prior-3.png" alt="drawing" width="400"/>
+- E.g.3: EM of GMM with Dirichlet prior on pi (PRML 10.2), Gaussian-Wishart prior on mean, precision;\
 	<img src="/Bayes/images/VI/em-gmm-1.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/VI/em-gmm-2.png" alt="drawing" width="300"/>
-- E.g.2: EM of linear regression: a gamma prior alpha ~ gamma(a0, b0) for weight precision;
+- E.g.4: EM of linear regression: a gamma prior alpha ~ gamma(a0, b0) for weight precision; assume q(w, alpha) ~ q(w) q(alpha)
 	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="300"/>
@@ -40,7 +49,7 @@
 	- Predict:\
 		<img src="/Bayes/images/VI/em-lr-7.png" alt="drawing" width="400"/>\
 		<img src="/Bayes/images/VI/em-lr-8.png" alt="drawing" width="400"/>
-- E.g.3: exponential family;
+- E.g.5: exponential family;
 	- Model: (x, z) with latent z, conjagate prior on nita;\
 		<img src="/Bayes/images/VI/em-exp-family-1.png" alt="drawing" width="400"/>
 	- Variational factorized posterior: q(z, nita) = q(z) q(nita)
