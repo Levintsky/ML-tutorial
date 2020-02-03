@@ -38,10 +38,13 @@
 	<img src="/Bayes/images/lr/lr-8.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/lr/lr-9.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/lr/lr-10.png" alt="drawing" width="400"/>
-- Beyesian LR: prediction with (smoother matrix or the equivalent kernel), satisfy sum_n k(x,x_n)=1 \
-	<img src="/Bayes/images/lr/lr-11.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/lr/lr-12.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/lr/lr-13.png" alt="drawing" width="200"/>
+- Beyesian LR prediction. Problem definition:
+	<img src="/Bayes/images/lr/lr-11.0.png" alt="drawing" width="400"/>\
+	- With Gaussian Bayes theorem of convolving two Gaussian, we have:
+		<img src="/Bayes/images/lr/lr-11.png" alt="drawing" width="400"/>\
+	- With smoother matrix, or the equivalent kernel, satisfying sum_n k(x,x_n)=1, we have \
+		<img src="/Bayes/images/lr/lr-12.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/lr/lr-13.png" alt="drawing" width="200"/>
 - Bayesian Model comparison:
 	- L models {Mi}, i = 1, ..., L. **Bayes factor**: p(D|Mi)/p(D|Mj)
 - Evidence approximation:

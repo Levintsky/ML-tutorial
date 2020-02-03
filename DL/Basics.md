@@ -19,9 +19,9 @@
 	- Diagonal approximation:\
 		<img src="/DL/images/hessian-approx.png" alt="drawing" width="500"/>
 	- Outer product approx, ignore the 2nd term in (5.83);\
-		<img src="/DL/images/hessian-1.png" alt="drawing" width="250"/>\
-		<img src="/DL/images/hessian-2.png" alt="drawing" width="250"/>\
-		<img src="/DL/images/hessian-3.png" alt="drawing" width="250"/>
+		<img src="/DL/images/hessian-1.png" alt="drawing" width="300"/>\
+		<img src="/DL/images/hessian-2.png" alt="drawing" width="200"/>\
+		<img src="/DL/images/hessian-3.png" alt="drawing" width="200"/>
 	- Fast approximation by Hessian;
 - Regularization:
 	- Regularization;
