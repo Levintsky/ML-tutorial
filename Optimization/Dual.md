@@ -46,3 +46,7 @@
 - Fenchel duality with auxiliary y: L(x,y)= < y, Kx > - F\*(y) + G(x), where F\*(y)=sup_z {< z, y> - F(z)}
 - Algorithm:\
 	<img src="/Optimization/images/dual/primal-dual.png" alt="drawing" width="400"/>
+
+## Conjugate Dual
+
+## Convex Dual

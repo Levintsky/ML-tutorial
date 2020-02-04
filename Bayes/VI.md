@@ -57,8 +57,24 @@
 		<img src="/Bayes/images/VI/em-exp-family-2.png" alt="drawing" width="400"/>
 	- q(nita)\
 		<img src="/Bayes/images/VI/em-exp-family-3.png" alt="drawing" width="400"/>
-- Local variational method:\
-	<img src="/Bayes/images/VI/local-vi.png" alt="drawing" width="400"/>
+- Local variational method, **conjugate function**:\
+	<img src="/Bayes/images/VI/local-vi-1.png" alt="drawing" width="400"/>
+	- For convex function f(x) and g(lambda), we define its **lower bound**:\
+		<img src="/Bayes/images/VI/local-vi-2.png" alt="drawing" width="400"/>
+	- For concave funtions, we could get **upper bound**:\
+		<img src="/Bayes/images/VI/local-vi-3.png" alt="drawing" width="400"/>
+	- Log(logistic) is concave, with upper bound:\
+		<img src="/Bayes/images/VI/local-vi-4.png" alt="drawing" width="400"/>
+	- Log(logistic) lower bound:\
+		<img src="/Bayes/images/VI/local-vi-5.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/VI/local-vi-6.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/VI/local-vi-7.png" alt="drawing" width="400"/>
+- E.g.6: variational logistic regression:
+- Expectation propagation: the **reverse form KL(p, q)**:
+	- We use an exponential family q(z) to approx p(z):\
+		<img src="/Bayes/images/VI/ep-1.png" alt="drawing" width="400"/>
+	- E.g. Moment matching; the cost:\
+		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
 
 ## Mixture of Experts
 - Important property:
