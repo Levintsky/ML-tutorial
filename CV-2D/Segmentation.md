@@ -24,6 +24,9 @@
 - Alexander Kirillov, Kaiming He, Ross Girshick, Carsten Rother, Piotr Dollár. Panoptic Segmentation. 2019
 
 ## Level Set
+- Resources:
+	- https://www.cnblogs.com/avin/p/6713660.html
+	- https://www.zhihu.com/question/22608763
 - Tutorial: 
 	- Daniel Cremers. Level Set Methods in Computer Vision. ECCV'06
 - D Cremers, M Rousson, R Deriche. A Review of Statistical Approaches to Level Set Segmentation: Integrating color, texture, motion and shape. IJCV'06

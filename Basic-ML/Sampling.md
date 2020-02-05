@@ -18,6 +18,20 @@
 	<img src="/Basic-ML/images/sample/mc-em.png" alt="drawing" width="400"/>
 - IP algorithm\
 	<img src="/Basic-ML/images/sample/ip.png" alt="drawing" width="400"/>
+- Slice Sampling;
+- HMC (Hamilton Monte Carlo);
+	- z state; r = dz / dtau, momentum;\
+		<img src="/Basic-ML/images/sample/hmc-1.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/sample/hmc-2.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/sample/hmc-3.png" alt="drawing" width="400"/>
+	- Liouville's Theorem: volume preservation;\
+		<img src="/Basic-ML/images/sample/hmc-4.png" alt="drawing" width="400"/>
+	- Numerical integration over time: Leapfrog algorithm:\
+		<img src="/Basic-ML/images/sample/hmc-5.png" alt="drawing" width="400"/>
+	- Hybrid Monte Carlo: Metropolis to handle numerical error;\
+		<img src="/Basic-ML/images/sample/hmc-6.png" alt="drawing" width="400"/>
+- Estimate partion function of p(z) = exp(-E(z)): sample from another distribution of energy G(z):
+	<img src="/Basic-ML/images/sample/partition.png" alt="drawing" width="400"/>
 
 ## Sampling
 - Sampling from Standard Distributions
@@ -73,6 +87,27 @@
 	- HMC: exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
 		<img src="/Basic-ML/images/sample/hmc.png" alt="drawing" width="400"/>
 	- Gibbs sampling velocity;
+
+## MCMC with Mini-Batch
+- Physics Background:
+	- Lagrange Mechanics: q as coordinates, v=dq/dt as velocity, then we have Euler-Lagrange equation: dL/dq - d(dL/dv)/dt=0, Lagrangian L satisifying this equation could be L=mv^2/2-V(q), with V as the potential energy;
+	- Legendre Transform: K=mv^2/2, then the slope p; applying duality to Lagrange and maximum, T(v) = mv^2/2
+	- Hamilton: H=pq-L (Legendre), H(q,p)=T(p)+V(q); energy conservation: dH/dt=0 
+	- T(p) or K(p): kinetic energy; p^TM^(-1)p, where M is mass matrix;
+	- U(q) or V(q): potential energy;
+	- Equation of motion: dqi/dt=dH/dpi, dpi/dt=-dH/dqi;
+- **HMC**: MCMC using Hamiltonian dynamics. Radford M. Neal 2012
+	- https://blog.csdn.net/qy20115549/article/details/54561643
+- **SGLD**: Max Welling, Yee Whye Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
+	- Insight: a new framework for learning from large scale datasets based on iterative learning from small mini-batches.
+	- https://github.com/henripal/sgld
+	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
+	- By adding the right amount of noise to a standard stochastic gradient optimization algorithm we show that the iterates will converge to samples from the true posterior distribution as we anneal the stepsize;
+	- Problem setup: estimate posterior p(W|D)
+	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients\
+		<img src="/Bayes/images/VI/sgld.png" alt="drawing" width="400"/>
+- **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
+- Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
 
 ## Unclassified
 - Fredrik Lindsten, Jouni Helske, Matti Vihola. Graphical model inference: Sequential Monte Carlo meets deterministic approximations. NIPS'18

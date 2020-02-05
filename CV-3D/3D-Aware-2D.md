@@ -31,7 +31,7 @@ Ryan Overbeck, Noah Snavely, Richard Tucker. DeepView: View synthesis with learn
 	- https://github.com/google-research/google-research/tree/master/mpi_extrapolation
 - Daeyun Shin, Zhile Ren, Erik B. Sudderth, Charless C. Fowlkes. 3D Scene Reconstruction with Multi-layer Depth and Epipolar Transformers. ICCV'19
 	- https://research.dshin.org/iccv19/multi-layer-depth/
-- Olivia Wiles, Georgia Gkioxari, Richard Szeliski, Justin Johnson. SynSin: End-to-end View Synthesis from a Single Image. CVPR'20 submission
+- **SynSin**: Olivia Wiles, Georgia Gkioxari, Richard Szeliski, Justin Johnson. SynSin: End-to-end View Synthesis from a Single Image. CVPR'20 submission
 	- http://www.robots.ox.ac.uk/~ow/synsin.html
 
 ## Disentangled

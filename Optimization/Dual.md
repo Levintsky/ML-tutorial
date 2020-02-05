@@ -48,5 +48,5 @@
 	<img src="/Optimization/images/dual/primal-dual.png" alt="drawing" width="400"/>
 
 ## Conjugate Dual
-
+- https://www.ise.ncsu.edu/fuzzy-neural/wp-content/uploads/sites/9/2019/03/Lecturenote5.pdf
 ## Convex Dual
