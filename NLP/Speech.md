@@ -1,7 +1,7 @@
 # Speech Recognition
 
 ## Benchmarks
-- **Librispeech**: Librispeech: an asr corpus based on public domain audio books. ICASSP 2015.
+- **Librispeech**: Librispeech: an asr corpus based on public domain audio books. ICASSP'15
 	- http://www.openslr.org/11
 
 ## Input Features
@@ -17,13 +17,13 @@ Eurospeech (1993).
 	- Hinton. et.al. Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups. SPM 2012
 - **CNN**
 	- Sercu, Lecun. Very deep multilingual convolutional neural networks for lvcsr. arXiv preprint arXiv:1509.08967 (2015).
-	- Joint training of convolutional and nonconvolutional neural networks. In ICASSP (2014), 
+	- Joint training of convolutional and nonconvolutional neural networks. ICASSP'14 
 - **RNN**
-	- Alex Graves. Speech recognition with deep recurrent neural networks. ICASSP 2013
+	- Alex Graves. Speech recognition with deep recurrent neural networks. ICASSP'13
 - ReLU
 	- M. Zeiler, M. Ranzato, R. Monga, M. Mao, K. Yang, Q. V. Le, P. Nguyen,
 A. Senior, V. Vanhoucke, J. Dean, and G. Hinton. On rectified linear units for
-speech processing. ICASSP, 2013.
+speech processing. ICASSP'13
 - **CTC**
 	- A loss function without parameter, to choose the alignment with the best score
 	- Alex Graves. Connectionist temporal classification: labelling unsegmented sequence data with recurrent neural networks. ICML 2006.
