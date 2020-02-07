@@ -78,6 +78,8 @@ phi0 = .25 * atan(-sum(2 * x1bar ** 3 .* x2bar - 2 * x2bar ** 3 .* x1bar) /
 V = [[cos(phi0), sin(phi0)], [-sin(phi0), cos(phi0)]]
 s1bar, s2bar = V * [x1bar; x2bar]
 ```
+
+## Legacy
 - Mutual information (MI) estimation:
 	- **Kernel-ICA**: Francis R. Bach, Michael I. Jordan. Kernel Independent Component Analysis. JMLR'02
 - Entropy, negentropy estimation
@@ -93,3 +95,28 @@ s1bar, s2bar = V * [x1bar; x2bar]
 	- JADE[Cardoso,1993]
 - Nonlinear correlation based methods
 	- [Jutten and Herault, 1991]
+
+## Deep Latent Model (ICA)
+- Ilyes Khemakhem, Diederik P. Kingma, Ricardo Pio Monti, Aapo Hyvärinen. Variational Autoencoders and Nonlinear ICA: A Unifying Framework. AISTATS'20 submission.
+	- x d-dim, u m-dim both observed; z n-dim, n <= d latent;
+	- Parameters: theta = (f, T, lambda); f: mixing? T sufficient statistics;
+	- Model assumption:\
+		<img src="/Bayes/images/pca/ica-vae-1.png" alt="drawing" width="250"/>\
+		<img src="/Bayes/images/pca/ica-vae-2.png" alt="drawing" width="250"/>\
+		<img src="/Bayes/images/pca/ica-vae-3.png" alt="drawing" width="250"/>
+	- Main result:\
+		<img src="/Bayes/images/pca/ica-vae-4.png" alt="drawing" width="400"/>
+- Peter Sorrenson, Carsten Rother, Ullrich Köthe. Disentanglement by Nonlinear ICA with General Incompressible-flow Networks (GIN). ICLR'20
+	- Architecture:\
+		<img src="/Bayes/images/pca/ica-flow-1.png" alt="drawing" width="400"/>
+	- Model:\
+		<img src="/Bayes/images/pca/ica-flow-2.png" alt="drawing" width="400"/>
+	- Given {(x1, u1), (x2, u2), ...}, x: data, u: class label, our cost function:\
+		<img src="/Bayes/images/pca/ica-flow-3.png" alt="drawing" width="400"/>
+
+## Unclassified
+- Identifiability in Time Series:
+	- **TCL**: Hyvärinen, A. and Morioka, H. Unsupervised feature extraction by time-contrastive learning and nonlinear ICA. NIPS'16
+	- Aapo Hyvarinen and Hiroshi Morioka. Nonlinear ICA of temporally dependent stationary sources. PMLR'17
+- Aapo Hyvarinen, Hiroaki Sasaki, and Richard E Turner. Nonlinear ICA using auxiliary variables and generalized contrastive learning. 2018
+- Hyvärinen, A., Sasaki, H., and Turner, R. Nonlinear ICA Using Auxiliary Variables and Generalized Contrastive Learning. AISTATS'19
