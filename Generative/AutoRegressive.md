@@ -13,8 +13,7 @@
 	- code available in tensor2tensor
 	- Block of local attention
 	- [h, 3w, d], 3w: width + channel, d=256
-	<img src="/Generative/images/autor/image-transformer1.png" alt="drawing" width="400"/>
-
+		<img src="/Generative/images/autor/image-transformer1.png" alt="drawing" width="400"/>
 	- Self-attention
 		- 1D local attention
 		- 2D local attention: raster-scan of sub-blocks, within each sub-block, raster-scan again for pixels
@@ -25,46 +24,41 @@
 - **PixelCNN**, A Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS'16
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
 	<img src="/Generative/images/autor/pixelcnn.png" alt="drawing" width="700"/>
-
 - **ByteNet**: N Kalchbrenner, L Espeholt, K Simonyan, A v d Oord, A Graves, and K Kavukcuoglu. Neural machine translation in linear time. 2016
-<img src="/Generative/images/autor/bytenet.png" alt="drawing" width="550"/>
-
+	<img src="/Generative/images/autor/bytenet.png" alt="drawing" width="550"/>
 - **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
 - Reed, S., Oord, A., Kalchbrenner, N., Colmenarejo, S. G., Wang, Z., Chen, Y., Belov, D., and Freitas, N. Parallel multiscale autoregressive density estimation. ICML'17.
 	- Conditional indenpendence, parallel
 	- Sample complexity reduces O(N) to O(logN)
 	- Coarse-to-fine: 4 x 4 first
 	- Upscale 6 times to 8 x 8 to 16 x 16 to ... to 256 x 256
-	<img src="/Generative/images/autor/parallel1.png" alt="drawing" width="400"/>
-	<img src="/Generative/images/autor/parallel2.png" alt="drawing" width="400"/>
-
+		<img src="/Generative/images/autor/parallel1.png" alt="drawing" width="400"/>\
+		<img src="/Generative/images/autor/parallel2.png" alt="drawing" width="400"/>
 - **MAF**: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NIPS'17
 	- Order matters!
 	<img src="/Generative/images/autor/maf1.png" alt="drawing" width="500"/>
 	<img src="/Generative/images/autor/maf2.png" alt="drawing" width="500"/>
-
 - Menick, J. and Kalchbrenner, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 	- Ordering
 	- Multi-scale upsampling
-	- 3-bit to 8-bit, most significant first
-	<img src="/Generative/images/autor/fidelity.png" alt="drawing" width="400"/>
+	- 3-bit to 8-bit, most significant first\
+		<img src="/Generative/images/autor/fidelity.png" alt="drawing" width="400"/>
 
 ## OpenAI
 - **IAF**: D Kingma and T Salimans. Improving variational inference with inverse autoregressive flow. NIPS'16
 	- https://github.com/openai/iaf
 	- Inverse version of Rezende, D. and Mohamed, S. Variational inference with normalizing flows. ICML'15
 	- Still a VAE, but the encoder will generate a sequence of (z0, z1, ..., zT)
-	<img src="/Generative/images/autor/iaf1.png" alt="drawing" width="600"/>
-	<img src="/Generative/images/autor/iaf2.png" alt="drawing" width="600"/>
-
-- **Pixel-CNN++**, ICLR 2017
-	<img src="/Generative/images/autor/pixelcnnpp.png" alt="drawing" width="700"/>
-	<img src="/Generative/images/autor/pixelcnnpp2.png" alt="drawing" width="400"/>
-	<img src="/Generative/images/autor/pixelcnnpp3.png" alt="drawing" width="400"/>
-
+		<img src="/Generative/images/autor/iaf1.png" alt="drawing" width="600"/>
+		<img src="/Generative/images/autor/iaf2.png" alt="drawing" width="600"/>
+- **Pixel-CNN++**, PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications. ICLR'17
+	- Model architecture: U-Net\
+		<img src="/Generative/images/autor/pixelcnnpp.png" alt="drawing" width="700"/>
+	- Color distribution observes a mixture of logistic:\
+		<img src="/Generative/images/autor/pixelcnnpp2.png" alt="drawing" width="400"/>\
+		<img src="/Generative/images/autor/pixelcnnpp3.png" alt="drawing" width="400"/>
 	- Loss function design: cdf observes Mixture of Logistic distribution, with decomposed r-g-b;
     - Implementation: Blind spot;
-	- UNet shortcut;
 	- Architecture:
 		- Init 1-layer shifted Conv-2D
 		```python
@@ -115,7 +109,6 @@
 		- Attention blocks
 		<img src="/Generative/images/autor/pixel-snail1.png" alt="drawing" width="400"/>
 		<img src="/Generative/images/autor/pixel-snail2.png" alt="drawing" width="400"/>
-
 - R. Child, S. Gray, A. Radford, I. Sutskever. Generating Long Sequences with Sparse Transformers. 2019
 	- Observation: 128-layer image transformer on Cifar, very sparse attention
 		- Two variations:
@@ -130,13 +123,13 @@
 		- Text (EnWik8)
 		- ImageNet (64x64)
 		- Classical music
-		<img src="/Generative/images/autor/sparse-transformer1.png" alt="drawing" width="400"/>
-		<img src="/Generative/images/autor/sparse-transformer2.png" alt="drawing" width="300"/>
+		<img src="/Generative/images/autor/sparse-transformer1.png" alt="drawing" width="400"/>\
+		<img src="/Generative/images/autor/sparse-transformer2.png" alt="drawing" width="200"/>
 
 ## Others
-- **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
-<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="400"/>
-<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="400"/>
+- **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR'17
+	<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="400"/>
+	<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="400"/>
 
 ## Audio
 - B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15

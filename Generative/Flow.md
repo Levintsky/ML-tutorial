@@ -66,16 +66,16 @@ Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Infere
 	- **Glow**: D Kingma, P Dhariwal. Glow: Generative Flow with Invertible 1x1 Convolutions. NIPS'18
 		- https://github.com/openai/glow
 		- Building modules:\
-			<img src = '/Generative/images/flow/glow1.png' width = '300'>
+			<img src = '/Generative/images/flow/glow1.png' width = '200'>\
 			<img src = '/Generative/images/flow/glow2.png' width = '500'>
 - VAE + Flow:
 	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16
 	- **f-VAEs**: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
 	- **Sylvester-nf**: Rianne van den Berg, Leonard Hasenclever, Jakub M. Tomczak, Max Welling. Sylvester Normalizing Flows for Variational Inference. UAI'18
 		- Motivation:\
-			<img src = '/Generative/images/flow/sylvester-nf1.png' width = '400'>
-		- VAE-flow:
-			<img src = '/Generative/images/flow/sylvester-nf2.png' width = '400'>
+			<img src = '/Generative/images/flow/sylvester-nf1.png' width = '300'>
+		- VAE-flow:\
+			<img src = '/Generative/images/flow/sylvester-nf2.png' width = '350'>
 - Autoregressive Flow:
 	- **IAF**: Kingma, D. P., Salimans, T., Jozefowicz, R., Chen, X., Sutskever, I., and Welling, M. Improved variational inference with inverse autoregressive flow. NIPS'16\
 		<img src = '/Generative/images/flow/iaf.png' width = '400'>
@@ -109,7 +109,8 @@ design.
 		<img src = '/Generative/images/flow/gnf1.png' width = '450'>
 	- Sample prior for generation:\
 		<img src = '/Generative/images/flow/gnf2.png' width = '350'>
-- GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
+- Chence Shi, Minkai Xu, Zhaocheng Zhu, Weinan Zhang, Ming Zhang, Jian Tang. GraphAF: a Flow-based Autoregressive Model for Molecular Graph Generation. ICLR'20
+	- https://drive.google.com/drive/folders/1LFfB5l0B6Zb-8WtV0EhmgolpHc9h-rcI
 
 ## Generalization
 - **RAD**: Laurent Dinh, Jascha Sohl-Dickstein, Razvan Pascanu, and Hugo Larochelle. A RAD approach to deep mixture models. ICLR'19
@@ -125,7 +126,7 @@ design.
 		<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
 - Yunfei Teng, Anna Choromanska, and Mariusz Bojarski. Invertible autoencoder for domain adaptation. 2018
 - R.T. Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
-- MIT. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
+- Fangchang Ma, Ulas Ayaz, Sertac Karaman. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
 - Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
 - Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
 	- A density model, main insight: free-form! A comparison:\
@@ -141,44 +142,3 @@ design.
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
 - Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
 
-## Neural ODE
-- Good summaries:
-	- About adjoint method: https://blog.csdn.net/liangdaojun/article/details/100633277
-	- About trace for flow generative: https://blog.csdn.net/hanss2/article/details/85331863
-	- https://zhuanlan.zhihu.com/p/51514687
-- Control (ODE/PDE) + NN:
-	- Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
-		- Same thing as Neural ODE; Neural ODE is strong in flow-based generative modeling;
-- **LGQ**: Laurent Lessard, Benjamin Recht, Andrew Packard. Analysis and Design of Optimization Algorithms via Integral Quadratic Constraints. 2015
-- Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019
-- Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
-	- Gaussian Process to solve ODE
-- Reversible:
-	- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
-	- Chang B, Meng L, Haber E, et al. Reversible architectures for arbitrarily deep residual neura networks. AAAI'18
-	- Chang Bo. Multi-level residual networks from dynamical systems view. ICLR 2018
-	- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
-- Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
-- **PDE-Net**: Zichao Long, Yiping Lu, Xianzhong Ma, Bin Dong. PDE-Net: Learning PDEs from Data. ICML'18
-	- Two objectives at the same time:
-		- To accurately predict dynamics of complex systems
-		- To uncover the underlying hidden PDE models (previous PDEs are human designed)
-	- The model\
-		<img src = '/Generative/images/flow/pde-net.png' width = '350'>
-- **DURR**: Xiaoshuai Zhang, Yiping Lu, Jiaying Liu, Bin Dong. Dynamically Unfolding Recurrent Restorer: A Moving Endpoint Control Method for Image Restoration. ICLR'19
-- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
-Modeling. NIPS'18
-- Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud. Neural ordinary differential equations. NIPS'18
-	- Another ODE-Solver for back-prop
-	- dh/dt = f(h, t, theta)
-	- https://github.com/rtqichen/torchdiffeq
-	- Gradient w.r.t. parameter\
-		<img src = '/Generative/images/flow/neural-ode.png' width = '400'>
-	- Residual net with ODE: 6 x residual blocks
-	- Continuous Normalizing Flows
-	- Generative latent function time-series
-- **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
-	- https://github.com/rtqichen/ffjord/
-- Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
-- Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
-- Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19

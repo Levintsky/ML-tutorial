@@ -3,20 +3,14 @@
 ## Unclassified
 - **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
 - Michael Arbel, Dougal J. Sutherland, Mikolaj Binkowski, Arthur Gretton. On gradient regularizers for MMD GANs. NIPS'18
-- Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
-- Memory Replay GANs: Learning to Generate New Categories without Forgetting. NIPS'18
+- Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai1, Jia Zhu, Jian Yin. Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
+- Chenshen Wu, Luis Herranz, Xialei Liu, Yaxing Wang, Joost van de Weijer, Bogdan Raducanu. Memory Replay GANs: Learning to Generate New Categories without Forgetting. NIPS'18
 - Chang Xiao, Peilin Zhong, Changxi Zheng. BourGAN: Generative Networks with Metric Embeddings. NIPS'18
 - Xiaojie Wang, Rui Zhang, Yu Sun, Jianzhong Qi. KDGAN: Knowledge Distillation with Generative Adversarial Networks. NIPS'18
 - Xinyu Gong, Shiyu Chang, Yifan Jiang, Zhangyang Wang. AutoGAN: Neural Architecture Search for Generative Adversarial Networks. ICCV 2019
 	- https://github.com/TAMU-VITA/AutoGAN
 - Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
 	- https://github.com/seowok/TreeGAN
-- Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, Thomas Huang. Free-Form Image Inpainting With Gated Convolution. ICCV'19
-	- https://github.com/JiahuiYu/generative_inpainting
-- David Bau, Jun-Yan Zhu, Jonas Wulff, William Peebles, Hendrik Strobelt, Bolei Zhou, Antonio Torralba. Seeing What a GAN Cannot Generate. ICCV'19
-	- http://ganseeing.csail.mit.edu/
-	- https://github.com/davidbau/ganseeing
-- Meta-Sim: Learning to Generate Synthetic Datasets. ICCV'19
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
 - SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19
 - Counterfactual Critic Multi-Agent Training for Scene Graph Generation. ICCV'19
@@ -26,25 +20,6 @@
 - ClothFlow: A Flow-Based Model for Clothed Person Generation. ICCV'19
 - Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
 - DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer. ICCV'19
-
-## Evaluation
-- **IS (Inception Score)**: proposed in Improved Techniques for Training GANs. NIPS'16
-	- Quality: the Inception-v3 to every generated image to get the conditional label distribution p(y|x), should be low-entropy
-	- Diversity: KL()
-- **FID (Fréchet Inception Distance)**: proposed in M Heusel, H Ramsauer, T Unterthiner, B Nessler, G Klambauer, and S Hochreiter. GANs trained by a two time-scale update rule converge to a local nash equilibrium.
-	- FID: compare the statistics of two Gaussian;
-	```python
-	m1, s1 = compute_statistics(path, model, bsize)
-	m2, s2 = compute_statistics(path, model, bsize)
-	frechet_dist(m1, s1, m2, s2)
-	```
-	<img src = '/Generative/images/fid.png' width = '400'>
-
-- L Theis, A van den Oord, and M Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.
-- Y Wu, Y Burda, R Salakhutdinov, and R Grosse. On the quantitative analysis of decoder-based generative models. 2017.
-- S Arora and Y Zhang. Do gans actually learn the distribution? an empirical study. 2017
-- A Bakhtin, A Szlam, M Ranzato. GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
-	- GenEval dataset
 
 ## GAN of different Forms
 *Name* | *Paper Link* | *Value Function*
@@ -77,6 +52,19 @@
 	- Maintain a balance between the generator and discriminator losses: E[LG(z)]=gammaE[L(x)]
 		<img src = '/Generative/images/gan/began.png' width = '500'>
 - W-GAN:
+	- Basics:
+		- Linear programming problem;\
+			<img src = '/Generative/images/gan/wgan-dual.png' width='400'>
+		- Weak duality: (z >= z-dual), z = (c, x) >= (Ay, x) = (y, b) = z-dual
+		- Strong duality: z = z-dual;
+			- 1. Farkas Theorem:
+			- 2. Contruct a problem related to oringal LP;
+		- Cost function:\
+			<img src = '/Generative/images/gan/wgan-dual-2.png' width='400'>
+		- Constraints: f(xi) + g(xj) <= Dij (Dii = 0 gives f(xi) + g(xi) <= 0)
+		- Since we optimize [p-r, p-fake] x [f, g], both f(xi), g(xi) should be large, we have g+f=0, or g=-f;
+		- Final cost: E(x-Pr)f(x) - E(x-P-fake)f(x);
+		- Constraint f(xi) + g(xj) <= Dij become f(xi) - f(xj) <= Dij. f(xi) + f(xj) >= -Dij, which becomes Lipschitz L <= 1.
 	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
 		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
 		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
@@ -88,7 +76,7 @@
 		- **Difficulty** with weight constraint: Capacity underuse; Exploding and vanishing gradients; 
 		- sup[E_pr(f(x))-E_pg(f(x))]/K, where f() is K-Lipschitz (f's gradient < K)
 			<img src = '/Generative/images/gan/wgan-gp.png' width='500'>
-	- Cambridge. Banach Wasserstein GAN. NIPS'18
+	- Jonas Adler, Sebastian Lunz. Banach Wasserstein GAN. NIPS'18
 - Attention, Transformer:
 	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
 		- https://github.com/heykeetae/Self-Attention-GAN

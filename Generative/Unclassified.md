@@ -13,3 +13,7 @@
 
 ## Analysis
 - Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
+
+## Steerability
+- A Jahanian, L Chai, P Isola. On the "steerability" of generative adversarial networks. ICLR'20
+	- https://ali-design.github.io/gan_steerability/
