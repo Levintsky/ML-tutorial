@@ -8,7 +8,7 @@
 - K-means;
 - Mixture of Gaussian;\
 	<img src="/Bayes/images/VI/gmm.png" alt="drawing" width="300"/>
-- {X, Z}, Because we cannot use the complete-data log likelihood, we consider instead its **expected value** under the posterior distribution of the latent variable, which corresponds (as we shall see) to the E step of the EM algorithm;
+- {X, Z}, Because we cannot use the complete-data log likelihood, we consider instead its **expected value** under the posterior distribution of the latent variable, which corresponds (as we shall see) to the E step of the EM algorithm;\
 	<img src="/Bayes/images/VI/mixture-em.png" alt="drawing" width="400"/>
 - EM for Bayesian linear regression: converge to the same result with direct method:
 	<img src="/Bayes/images/VI/em-bayes-lr-1.png" alt="drawing" width="400"/>\
@@ -97,6 +97,14 @@
 
 ## Mean Field
 - LDA:
+
+## Black-box VI
+- Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14
+	- Basics behind VAE;
+	- ELBO:\
+		<img src="/Bayes/images/VI/bb-vi-1.png" alt="drawing" width="600"/>
+	- Algorithm:\
+		<img src="/Bayes/images/VI/bb-vi-2.png" alt="drawing" width="600"/>
 
 ## Theory
 - Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18
