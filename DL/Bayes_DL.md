@@ -6,14 +6,14 @@
 
 ## Bayesian NN (PRML Chapter 5.6)
 - Assumptions: 2 Gaussian, weight w ~ N(0, alpha^(-1)), p(t\|x,w) ~ N(y(x,w), beta^(-1)). Then the posterior:
-	<img src="/DL/images/bnn/bnn-bishop-1.png" alt="drawing" width="400"/>
+	<img src="/DL/images/bnn/bnn-bishop-1.png" alt="drawing" width="300"/>
 - w-MAP (mode) can be found if alpha and beta known:
 	<img src="/DL/images/bnn/bnn-bishop-2.png" alt="drawing" width="450"/>
 - Build a local Gaussian for variance, then we have Gaussian approx:
-	<img src="/DL/images/bnn/bnn-bishop-3.png" alt="drawing" width="450"/>
-	<img src="/DL/images/bnn/bnn-bishop-4.png" alt="drawing" width="450"/>
+	<img src="/DL/images/bnn/bnn-bishop-3.png" alt="drawing" width="400"/>
+	<img src="/DL/images/bnn/bnn-bishop-4.png" alt="drawing" width="400"/>
 - Predict:\
-	<img src="/DL/images/bnn/bnn-bishop-5.png" alt="drawing" width="450"/>
+	<img src="/DL/images/bnn/bnn-bishop-5.png" alt="drawing" width="400"/>
 - With Taylor expansion, we have\
 	<img src="/DL/images/bnn/bnn-bishop-6.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-7.png" alt="drawing" width="450"/>
@@ -33,7 +33,7 @@
 		<img src="/DL/images/bnn/bbb1.png" alt="drawing" width="400"/>
 	- Improved on [Alex 2011] with an unbiased gradient estimator using the reparameterization trick (VAE):\
 		<img src="/DL/images/bnn/bbb2.png" alt="drawing" width="400"/>
-	- Gausian **posterior** q(w|theta) (slow-convergence):\
+	- Prior: theta wih Gaussian N(mu; rho); Gausian **posterior** q(w|theta) (slow-convergence):\
 		<img src="/DL/images/bnn/bbb3.png" alt="drawing" width="400"/>
 	- Scale-mixture Gausian **prior** P(w) for weight, Gaussian prior for bias (to solve slow-convergence):\
 		<img src="/DL/images/bnn/bbb4.png" alt="drawing" width="400"/>
