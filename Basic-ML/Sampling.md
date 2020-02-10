@@ -21,9 +21,9 @@
 - Slice Sampling;
 - HMC (Hamilton Monte Carlo);
 	- z state; r = dz / dtau, momentum;\
-		<img src="/Basic-ML/images/sample/hmc-1.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/sample/hmc-1.png" alt="drawing" width="350"/>\
 		<img src="/Basic-ML/images/sample/hmc-2.png" alt="drawing" width="400"/>\
-		<img src="/Basic-ML/images/sample/hmc-3.png" alt="drawing" width="400"/>
+		<img src="/Basic-ML/images/sample/hmc-3.png" alt="drawing" width="350"/>
 	- Liouville's Theorem: volume preservation;\
 		<img src="/Basic-ML/images/sample/hmc-4.png" alt="drawing" width="400"/>
 	- Numerical integration over time: Leapfrog algorithm:\
@@ -57,7 +57,7 @@
 	- We use Markov Chain to sample:\
 		<img src="/Basic-ML/images/sample/mh-1.png" alt="drawing" width="400"/>\
 		<img src="/Basic-ML/images/sample/mh-2.png" alt="drawing" width="400"/>
-- Gibbs sampling: replacing one variable at a time; sampling from **conditional distribution**: a special case of MCMC with acceptance p=1.
+- Gibbs sampling: replacing one variable at a time; sampling from **conditional distribution**: a special case of MCMC with acceptance p=1.\
 	<img src="/Basic-ML/images/sample/gibbs.png" alt="drawing" width="400"/>
 
 ## MCMC (Kevin Murphy Chap 24)
@@ -71,8 +71,8 @@
 	- At each step, propose to move from the current state x to a new state x' with probability q(x'|x)
 	- If symmetric q(x'|x)=q(x|x'), accept with r = min(1, p(x')/p(x))
 	- Assymetric r = min(1, p(x')q(x|x')/p(x)q('x|x))
-	- Gibbs sampling is a special case of MH
-		<img src="/Basic-ML/images/sample/mh.png" alt="drawing" width="400"/>
+	- Gibbs sampling is a special case of MH;\
+		<img src="/Basic-ML/images/sample/mh.png" alt="drawing" width="350"/>
 	- Data-driven MCMC (Tu, Zhu)
 		- Proposal also data-driven
 		- q(x'|x,D) = pi0 q0(x'|x) + sum pik qk(xk'|fk(D))
@@ -81,8 +81,8 @@
 - Speed and accuracy
 	- Burn-in phase: when more stable
 - Auxiliary variable MCMC: Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x)=sum_z(p(x,z))
-	- Slice-sampling: introduce auxiliary height h;
-		<img src="/Basic-ML/images/sample/slice-mc.png" alt="drawing" width="400"/>
+	- Slice-sampling: introduce auxiliary height h;\
+		<img src="/Basic-ML/images/sample/slice-mc.png" alt="drawing" width="350"/>
 	- Swendsen-Wang;
 	- HMC: exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
 		<img src="/Basic-ML/images/sample/hmc.png" alt="drawing" width="400"/>
@@ -103,9 +103,15 @@
 	- https://github.com/henripal/sgld
 	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
 	- By adding the right amount of noise to a standard stochastic gradient optimization algorithm we show that the iterates will converge to samples from the true posterior distribution as we anneal the stepsize;
-	- Problem setup: estimate posterior p(W|D)
-	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients\
-		<img src="/Bayes/images/VI/sgld.png" alt="drawing" width="400"/>
+	- Problem setup: N data items, minibatch size n. Estimate posterior p(W|D).
+	- Proposed formulation:\
+		<img src="/Basic-ML/images/sample/sgld-1.png" alt="drawing" width="400"/>
+	- True gradient g, diff h (zero mean random variable), sgd: g+h;\
+		<img src="/Basic-ML/images/sample/sgld-2.png" alt="drawing" width="400"/>
+	- Main result: (theta-t1, theta-t2, ...) will converge to the posterior;
+	- Proof by construction: subsequence t1 < t2 < ...,  s.t. sum of step-size from ti+1 to t(i+1) approx step-size-0, then central limit theorem sum of h and injected eta observes Gaussian of same magnitude;
+		<img src="/Basic-ML/images/sample/sgld-3.png" alt="drawing" width="400"/>
+	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
 - **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
 
