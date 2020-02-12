@@ -1,17 +1,17 @@
 # Probability
 
-## Discrete
+## Discrete (Kevin Murphy 2.3)
 - Binary:
 	- Bernoulli
 		- E(x) = p
 		- V(x) = p(1-p)
-	- Binomial: \
+	- Binomial: conjugacy prior is Beta \
 		- E(x) = np
 		- V(x) = np(1-p) \
-		<img src="/Bayes/images/prob/binomial.png" alt="drawing" width="400"/>
-	- Beta: **conjugacy** of binomial \
-		<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="350"/>
-		<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="350"/>
+			<img src="/Bayes/images/prob/binomial.png" alt="drawing" width="300"/>
+		- Beta: **conjugacy prior** of binomial \
+			<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="350"/>\
+			<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="350"/>
 	- Conjugacy: posterior of the same functional form with prior
 		<img src="/Bayes/images/prob/binomial-post.png" alt="drawing" width="400"/>
 - Multinomial:
@@ -25,6 +25,26 @@
 	- E(x) = lambda
 	- V(x) = lambda \
 	<img src="/Bayes/images/prob/poisson.png" alt="drawing" width="400"/>
+
+## Continuous (Kevin Murphy 2.4)
+- Uniform U(a, b)
+	- E(x) = (a+b)/2
+	- V(x) = (b-a)^2/12
+- Exponential: p(x) = exp(-x/theta) / theta
+	- E(x) = theta
+	- V(x) = theta^2
+- Laplace:\
+	<img src="/Bayes/images/prob/laplace.png" alt="drawing" width="400"/>
+- Gamma:\
+	<img src="/Bayes/images/prob/gamma-1.png" alt="drawing" width="300"/>\
+	<img src="/Bayes/images/prob/gamma-2.png" alt="drawing" width="300"/>
+	- Exponential, Erlang and Chi-square are special case of Gamma:
+		<img src="/Bayes/images/prob/gamma-3.png" alt="drawing" width="450"/>
+	- Inverse Gamma:\
+		<img src="/Bayes/images/prob/igamma.png" alt="drawing" width="450"/>
+- Beta: **conjugacy prior** of binomial \
+	<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="350"/>\
+	<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="350"/>
 
 ## Gaussian
 - Definition: \
@@ -88,14 +108,6 @@
 - Congugate prior and posterior: \
 	<img src="/Bayes/images/prob/exp-family-3.png" alt="drawing" width="350"/>\
 	<img src="/Bayes/images/prob/exp-family-4.png" alt="drawing" width="400"/>
-
-## Continuous
-- Uniform U(a, b)
-	- E(x) = (a+b)/2
-	- V(x) = (b-a)^2/12
-- Exponential: p(x) = exp(-x/theta) / theta
-	- E(x) = theta
-	- V(x) = theta^2
 
 ## Multidimensional
 - Joint distribution
