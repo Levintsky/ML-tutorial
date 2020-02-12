@@ -99,6 +99,7 @@
 - LDA:
 
 ## Black-box VI
+- John Paisley, David M. Blei, Michael I. Jordan. Variational Bayesian Inference with Stochastic Search. ICML'12
 - Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14
 	- Basics behind VAE;
 	- ELBO:\
