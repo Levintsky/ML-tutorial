@@ -2,6 +2,37 @@
 
 ## Quaternion
 - https://krasjet.github.io/quaternion/quaternion.pdf
+- https://github.com/Krasjet/quaternion
+- Complex operation as matrix;\
+	<img src="/Math/images/algebra/complex.png" alt="drawing" width="350"/>
+- 3D rotation, Rodrigues' Rotation Formula:\
+	<img src="/Math/images/algebra/3d-rotate-1.png" alt="drawing" width="350"/>\
+	<img src="/Math/images/algebra/3d-rotate-2.png" alt="drawing" width="350"/>
+- Quaternion:
+	- ii = jj = kk = ijk = -1
+	- Left product of q1:\
+		<img src="/Math/images/algebra/left-prod-1.png" alt="drawing" width="350"/>\
+		<img src="/Math/images/algebra/left-prod-2.png" alt="drawing" width="350"/>
+	- Right product of q1:\
+		<img src="/Math/images/algebra/right-prod.png" alt="drawing" width="350"/>
+	- Graßmann Product:\
+		<img src="/Math/images/algebra/grasmann-prod.png" alt="drawing" width="350"/>
+	- Pure Quaternion:\
+		<img src="/Math/images/algebra/pure-qua-1.png" alt="drawing" width="350"/>
+	- Inverse: conjugate;
+	- 3D rotation:\
+		<img src="/Math/images/algebra/qua-prod-1.png" alt="drawing" width="400"/>\
+		<img src="/Math/images/algebra/qua-prod-2.png" alt="drawing" width="400"/>\
+		<img src="/Math/images/algebra/qua-prod-3.png" alt="drawing" width="400"/>\
+		<img src="/Math/images/algebra/qua-prod-4.png" alt="drawing" width="400"/>
+	- From Quaternion to axis, angle:\
+		<img src="/Math/images/algebra/qua-prod-5.png" alt="drawing" width="400"/>\
+		<img src="/Math/images/algebra/qua-prod-6.png" alt="drawing" width="400"/>
+	- Bijective? No, q and -q is the same rotation; 2-1 Surjective Homomorphism;
+		<img src="/Math/images/algebra/qua-exp-1.png" alt="drawing" width="400"/>\
+		<img src="/Math/images/algebra/qua-exp-2.png" alt="drawing" width="400"/>
+	- Interpolation: t=0, q0; t=1, q1. derive a smooth transition?
+		<img src="/Math/images/algebra/slerp.png" alt="drawing" width="400"/>\
 
 ## Group
 - A set with binary operation (G, .)
