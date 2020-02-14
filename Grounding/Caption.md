@@ -32,6 +32,7 @@
 - C. Wang, H. Yang, C. Bartz, and C. Meinel. Image captioning with deep bidirectional lstms. ACMMM'16
 	- Training: bidirectional;
 	- Inference: uni-directional; Beam search in each direction; BiDirectional RNNs to rescore candidates;
+- **BiBS**: Bidirectional Beam Search: Forward-Backward Inference in Neural Sequence Models for Fill-in-the-Blank Image Captioning. CVPR'17
 
 ## Reasoning
 - **VCR**: Visual Commonsense Reasoning. CVPR'19

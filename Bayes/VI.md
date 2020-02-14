@@ -140,4 +140,4 @@
 - Amortized Inference
 	- Amortized Inference Regularization. NIPS'18
 	- A General Method for Amortizing Variational Filtering. NIPS'18
-	- **Faithful Inversion of Generative Models for Effective Amortized Inference**. NIPS'18
+	- Stefan Webb, Adam Golinski, Robert Zinkov, N. Siddharth, Tom Rainforth, Yee Whye Teh, Frank Wood. Faithful Inversion of Generative Models for Effective Amortized Inference. NIPS'18
