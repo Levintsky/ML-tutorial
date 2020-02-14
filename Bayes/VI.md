@@ -98,6 +98,9 @@
 ## Mean Field
 - LDA:
 
+## Legacy
+- M. J. Wainwright and M. I. Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
+
 ## Black-box VI
 - John Paisley, David M. Blei, Michael I. Jordan. Variational Bayesian Inference with Stochastic Search. ICML'12
 - Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14

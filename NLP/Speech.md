@@ -20,10 +20,8 @@ Eurospeech (1993).
 	- Joint training of convolutional and nonconvolutional neural networks. ICASSP'14 
 - **RNN**
 	- Alex Graves. Speech recognition with deep recurrent neural networks. ICASSP'13
-- ReLU
-	- M. Zeiler, M. Ranzato, R. Monga, M. Mao, K. Yang, Q. V. Le, P. Nguyen,
-A. Senior, V. Vanhoucke, J. Dean, and G. Hinton. On rectified linear units for
-speech processing. ICASSP'13
+- ReLU:
+	- M. Zeiler, M. Ranzato, R. Monga, M. Mao, K. Yang, Q. V. Le, P. Nguyen, A. Senior, V. Vanhoucke, J. Dean, and G. Hinton. On rectified linear units for speech processing. ICASSP'13
 - **CTC**
 	- A loss function without parameter, to choose the alignment with the best score
 	- Alex Graves. Connectionist temporal classification: labelling unsegmented sequence data with recurrent neural networks. ICML 2006.
