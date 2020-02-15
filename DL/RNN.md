@@ -29,7 +29,7 @@
 
 ## Beam Search
 - Ronan Collobert, Awni Hannun, Gabriel Synnaeve. A fully differentiable beam search decoder. ICML'19
-- Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where To Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19
+- Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
 
 ## Unclassified
 - Nan Rosemary Ke, Anirudh Goyal, Olexa Bilaniuk, Jonathan Binas, Michael C. Mozer, Chris Pal, Yoshua Bengio. Sparse Attentive Backtracking: Temporal Credit Assignment Through Reminding. NIPS'18

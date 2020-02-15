@@ -47,14 +47,45 @@
 ## Regularization
 - Xavier Gastaldi. Shake-Shake regularization. 2017
 
-## Gumbel-Softmax
-- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
-<img src="/DL/images/gumbel-softmax.png" alt="drawing" width="500"/>
-<img src="/DL/images/gumbel-softmax2.png" alt="drawing" width="500"/>
-
-- Good summaries:
-	- https://casmls.github.io/general/2017/02/01/GumbelSoftmax.html
-	- https://www.zhihu.com/question/62631725
-	- https://blog.csdn.net/a358463121/article/details/80820878
+## Reparametrization Trick
 - Make sampling process differentiable;
-- Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
+- **Score-function**: the gradient of the log-likelihood function with respect to the parameter vector;
+- Reinforce: unbiased but high variance\
+	<img src="/DL/images/basics/reinforce.png" alt="drawing" width="400"/>
+- Variance reduction: control-variate baseline\
+	<img src="/DL/images/basics/var-reduce.png" alt="drawing" width="400"/>
+- **DARN**: K. Gregor, I. Danihelka, A. Mnih, C. Blundell, and D. Wierstra. Deep autoregressive networks. arxiv'13
+	- First-order Taylor, estimator biased for non-quadratic f:
+		<img src="/DL/images/basics/darn.png" alt="drawing" width="400"/>
+- **NVIL**: A. Mnih and K. Gregor. Neural variational inference and learning in belief networks. ICML'14
+	- Baseline 1: moving average f-bar;
+	- Baseline 2: input dependent f(x);
+	- Variance normalization /Var(f);
+- Straight-Through (ST) estimator:
+	- **ST**: Y. Bengio, N. Leonard, and A. Courville. Estimating or propagating gradients through stochastic neurons for conditional computation. arxiv'13
+	- J. Chung, S. Ahn, and Y. Bengio. Hierarchical multiscale recurrent neural networks. arXiv'16
+	- J. T. Rolfe. Discrete Variational Autoencoders. ArXiv'16
+- **MuProp**: S. Gu, S. Levine, I. Sutskever, and A Mnih. MuProp: Unbiased Backpropagation for Stochastic Neural Networks. ICLR'16\
+	<img src="/DL/images/basics/muprop.png" alt="drawing" width="400"/>
+- **VIMCO**: A. Mnih and D. J. Rezende. Variational inference for monte carlo objectives. arXiv'16
+	<img src="/DL/images/basics/vimco.png" alt="drawing" width="400"/>
+- Gumbel-Softmax
+	- About Gumbel distribution: pdf f(.) and cdf F(.)\
+		<img src="/DL/images/basics/gumbel-1.png" alt="drawing" width="400"/>
+		<img src="/DL/images/basics/gumbel-2.png" alt="drawing" width="300"/>
+		<img src="/DL/images/basics/gumbel-3.png" alt="drawing" width="300"/>
+	- Gumbel-Max trick:\
+		<img src="/DL/images/basics/gumbel-softmax.png" alt="drawing" width="450"/>
+	- Proof:\
+		<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
+	- C. J. Maddison, A. Mnih, and Y. Whye Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
+		- Independently discover the same trick;
+	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
+		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When tau approaches 0, equivalent to Gumbel:
+			<img src="/DL/images/basics/gumbel-softmax2.png" alt="drawing" width="500"/>
+		- True Gumbel-softmax distribution:\
+			<img src="/DL/images/basics/gumbel-softmax-true.png" alt="drawing" width="500"/>
+	- Good summaries:
+		- https://casmls.github.io/general/2017/02/01/GumbelSoftmax.html
+		- https://www.zhihu.com/question/62631725
+		- https://blog.csdn.net/a358463121/article/details/80820878
