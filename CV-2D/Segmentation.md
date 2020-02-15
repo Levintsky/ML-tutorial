@@ -18,10 +18,28 @@
 - A Probabilistic U-Net for Segmentation of Ambiguous Images. NIPS'18
 
 ## Instance Segmentation
+- Top down (prior bounding box):
+	- **FCIS**: Yi Li, Haozhi Qi, Jifeng Dai, Xiangyang Ji, and Yichen Wei. Fully convolutional instance-aware semantic segmentation. CVPR'17
+	- Mask R-CNN: ICCV'17
+	- **PANet**: Shu Liu, Lu Qi, Haifang Qin, Jianping Shi, and Jiaya Jia. Path aggregation network for instance segmentation. CVPR'18
+	- **Mask Scoring R-CNN**: Zhaojin Huang, Lichao Huang, Yongchao Gong, Chang Huang, and Xinggang Wang. Mask scoring R-CNN. CVPR'19
+	- **Tensormask**: Xinlei Chen, Ross Girshick, Kaiming He, and Piotr Dollar. Tensormask: A foundation for dense object segmentation. ICCV'19
+- Bottom-up (grouping):
+	- Alejandro Newell, Zhiao Huang, and Jia Deng. Associative embedding: End-to-end learning for joint detection and grouping. NIPS'17
+	- Bert De Brabandere, Davy Neven, and Luc Van Gool. Semantic instance segmentation with a discriminative loss function. 2017
+	- **SGN**: Shu Liu, Jiaya Jia, Sanja Fidler, and Raquel Urtasun. Sgn: Sequential grouping networks for instance segmentation. ICCV'17
+	- **SSAP**: Naiyu Gao, Yanhu Shan, Yupei Wang, Xin Zhao, Yinan Yu, Ming Yang, and Kaiqi Huang. Ssap: Single-shot instance segmentation with affinity pyramid. ICCV'19
 - J Dai, K He, and J Sun. Instance-aware semantic segmentation via multi-task network cascades. CVPR'16
 - Y Li, H Qi, J Dai, X Ji, and Y Wei. Fully Convolutional Instance-aware Semantic Segmentation. CVPR'17
-- Shu Liu, Jiaya Jia, Sanja Fidler, and Raquel Urtasun. Sgn: Sequential grouping networks for instance segmentation. ICCV'17
 - Alexander Kirillov, Kaiming He, Ross Girshick, Carsten Rother, Piotr Dollár. Panoptic Segmentation. 2019
+- **SOLO**: Xinlong Wang, Tao Kong, Chunhua Shen, Yuning Jiang, Lei Li. SOLO: Segmenting Objects by Locations. 2020
+	- S x S cells, each object instance assigned to one cell;
+	- Model:\
+		<img src="/CV-2D/images/segmentation/solo.png" alt="drawing" width="500"/>
+	- Supervision: category (focal loss) + mask (Dice Loss)
+
+## Unclassified
+- Pedro H. O. Pinheiro, Ronan Collobert, and Piotr Dollar. Learning to segment object candidates. NIPS'15
 
 ## Level Set
 - Resources:

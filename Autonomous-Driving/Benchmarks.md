@@ -8,6 +8,10 @@
 	- 2 x gray-scale camera;
 	- 2 x color camera;
 - TOR4D;
+- **ApolloScape**:
+	- http://apolloscape.auto/
+	- 146,997 frames
+	- Trajectory dataset, 3D Lidar Object Detection and Tracking dataset including about 100K image frames, 80k lidar point cloud and 1000km trajectories for urban traffic;
 
 ## Prediction
 - **nuScenes**: H. Caesar, V. Bankiti, A. H. Lang, S. Vora, V. E. Liong, Q. Xu, A. Krishnan, Y. Pan, G. Baldan, and O. Beijbom. nuscenes: A multimodal dataset for autonomous driving. 2019
