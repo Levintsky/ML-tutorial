@@ -1,60 +1,97 @@
 # Continuous Latent Variables
 
-## PCA, ICA (PRML, Chap 12)
-- PCA:
-	- Maximum variation;
-	- Minimum error;
-	- Whitening;\
-		<img src="/Bayes/images/pca/whiten.png" alt="drawing" width="400"/>
-- Probabilistic PCA:
-	- expressed as the maximum likelihood solution of a probabilistic latent variable model;
-		<img src="/Bayes/images/pca/pca-1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-2.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-3.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-4.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-5.png" alt="drawing" width="250"/>
-	- MLE-PCA:\
-		<img src="/Bayes/images/pca/pca-6.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-7.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/pca-8.png" alt="drawing" width="400"/>
-	- EM-PCA:\
-		<img src="/Bayes/images/pca/em-pca1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/em-pca2.png" alt="drawing" width="400"/>
-		- E-step:\
-			<img src="/Bayes/images/pca/em-pca3.png" alt="drawing" width="400"/>
-		- M-step:\
-			<img src="/Bayes/images/pca/em-pca4.png" alt="drawing" width="400"/>
-	- Bayesian PCA:\
-		<img src="/Bayes/images/pca/bayes-pca.png" alt="drawing" width="400"/>
-	- Factor analysis: different in that the variance of x is diagonal rather than isotropic:
-		<img src="/Bayes/images/pca/factor-analysis-1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/factor-analysis-2.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/factor-analysis-3.png" alt="drawing" width="400"/>
-- Kernel PCA: N samples, M-dim features;
-	- Feature space (M x M):\
-		<img src="/Bayes/images/pca/k-pca-1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/k-pca-2.png" alt="drawing" width="400"/>
-	- Sample space (N x N):\
-		<img src="/Bayes/images/pca/k-pca-3.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/k-pca-4.png" alt="drawing" width="400"/>
-	- Prediction:\
-		<img src="/Bayes/images/pca/k-pca-5.png" alt="drawing" width="400"/>
-	- Normalization (feature 0 mean):\
-		<img src="/Bayes/images/pca/k-pca-6.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/pca/k-pca-7.png" alt="drawing" width="400"/>
-- Non-linear latent
+## PCA, ICA
+- PRML, Chap 12
+	- PCA:
+		- Maximum variation;
+		- Minimum error;
+		- Whitening;\
+			<img src="/Bayes/images/pca/whiten.png" alt="drawing" width="400"/>
+	- Probabilistic PCA:
+		- expressed as the maximum likelihood solution of a probabilistic latent variable model;
+			<img src="/Bayes/images/pca/pca-1.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-2.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-3.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-4.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-5.png" alt="drawing" width="250"/>
+		- MLE-PCA:\
+			<img src="/Bayes/images/pca/pca-6.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-7.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/pca-8.png" alt="drawing" width="400"/>
+		- EM-PCA:\
+			<img src="/Bayes/images/pca/em-pca1.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/em-pca2.png" alt="drawing" width="400"/>
+			- E-step:\
+				<img src="/Bayes/images/pca/em-pca3.png" alt="drawing" width="400"/>
+			- M-step:\
+				<img src="/Bayes/images/pca/em-pca4.png" alt="drawing" width="400"/>
+		- Bayesian PCA:\
+			<img src="/Bayes/images/pca/bayes-pca.png" alt="drawing" width="400"/>
+		- Factor analysis: different in that the variance of x is diagonal rather than isotropic:
+			<img src="/Bayes/images/pca/factor-analysis-1.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/factor-analysis-2.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/factor-analysis-3.png" alt="drawing" width="400"/>
+	- Kernel PCA: N samples, M-dim features;
+		- Feature space (M x M):\
+			<img src="/Bayes/images/pca/k-pca-1.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/k-pca-2.png" alt="drawing" width="400"/>
+		- Sample space (N x N):\
+			<img src="/Bayes/images/pca/k-pca-3.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/pca/k-pca-4.png" alt="drawing" width="400"/>
+		- Prediction:\
+			<img src="/Bayes/images/pca/k-pca-5.png" alt="drawing" width="400"/>
+		- Normalization (feature 0 mean):\
+			<img src="/Bayes/images/pca/k-pca-6.png" alt="drawing" width="400"/>
+			<img src="/Bayes/images/pca/k-pca-7.png" alt="drawing" width="400"/>
+- Latent Linear Model (Kevin Murphy, Chap 12);
+	- Factor Analysis: problem definition: infer latent z; learn W\
+		<img src="/Bayes/images/pca/fa-def.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/pca/fa-def2.png" alt="drawing" width="400"/>
+	- Mixture of FA: a latent discrete indicator q\
+		<img src="/Bayes/images/pca/mixture-fa.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/pca/mixture-fa2.png" alt="drawing" width="400"/>
+	- EM for mixuter FA:
+		- E-step: infer q and z;\
+			<img src="/Bayes/images/pca/mixture-fa-em1.png" alt="drawing" width="400"/>
+		- M-step: learning;\
+			<img src="/Bayes/images/pca/mixture-fa-em2.png" alt="drawing" width="400"/>
+	- PCA (check PCA.md)
+	- PPCA: factor analysis;
+	- Categorical PCA: logistic normal;\
+		<img src="/Bayes/images/pca/cat-pca.png" alt="drawing" width="400"/>
+	- Supervised PCA:\
+		<img src="/Bayes/images/pca/sup-pca.png" alt="drawing" width="400"/>
+	- Discriminative PCA: solve the problem in supervised PCA, x and y has same weight;
+	- Discriminative supervised PCA: partial least square;\
+		<img src="/Bayes/images/pca/pls.png" alt="drawing" width="400"/>
+	- CCA (Canonical correlation analysis);\
+		<img src="/Bayes/images/pca/cca.png" alt="drawing" width="400"/>
+- Applications:
+	- Quan Wang. Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models. 2014
+		- Key insight: preimage, iteratively optimize z, such that the projection with on true feature-space eigen-vector v1, v2, ... is the same as the kernelized result;
+			<img src="/Bayes/images/pca/pre-image-1.png" alt="drawing" width="400"/>
+		- Gaussian kernels:\
+			<img src="/Bayes/images/pca/pre-image-2.png" alt="drawing" width="400"/>
+
+## ICA
+- Non-linear latent (PRML, Chap 12)
 	- ICA: blind source separation;
 	- Autoassociative neural network;
 	- Modeling nonlinear manifold;
-
-## PCA
-- Quan Wang. Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models. 2014
-	- Key insight: preimage, iteratively optimize z, such that the projection with on true feature-space eigen-vector v1, v2, ... is the same as the kernelized result;
-		<img src="/Bayes/images/pca/pre-image-1.png" alt="drawing" width="400"/>
-	- Gaussian kernels:\
-		<img src="/Bayes/images/pca/pre-image-2.png" alt="drawing" width="400"/>
-
-## ICA
+- Kevin Murphy, 12.6
+	- Problem definition: z, independent non-Gaussian variance=1;
+		<img src="/Bayes/images/pca/ica-def.png" alt="drawing" width="400"/>
+	- MLE: problem definition:\
+		<img src="/Bayes/images/pca/ica-mle.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/pca/ica-mle-2.png" alt="drawing" width="400"/>
+	- FastICA (Hyvarinen and Oja 2000): assume all source distributions are **known** and are the **same**;
+		<img src="/Bayes/images/pca/fast-ica-1.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/pca/fast-ica-2.png" alt="drawing" width="400"/>
+	- Modeling source distribution:
+		- Super-Gaussian distributions: kurt(z) > 0; natural signals (images) with filtering;
+			<img src="/Bayes/images/pca/kurt.png" alt="drawing" width="200"/>
+		- Skewed distribution:\
+			<img src="/Bayes/images/pca/skew.png" alt="drawing" width="200"/>
 - Example:
 ```python
 # mix s1 and s2, and get 
@@ -64,7 +101,7 @@ x1 = A[0, 0] * s1 + A[0, 1] * s2
 x2 = A[1, 0] * s1 + A[1, 1] * s2
 m, n = X1.shape
 x1, x2 = x1.reshape(m*n, 1), x2.reshape(m*n, 1)
-# step 1: normalize, whiten, toremove >= 2nd order correlation
+# step 1: normalize, whiten, to remove >= 2nd order correlation
 x1 = x1 - mean(x1)
 x2 = x2 - mean(x2)
 theta0 = 0.5 * atan(-2. * sum(x1 * x2) / sum(x1 ** 2 + x2 ** 2))
@@ -97,6 +134,7 @@ s1bar, s2bar = V * [x1bar; x2bar]
 	- [Jutten and Herault, 1991]
 
 ## Deep Latent Model (ICA)
+- Assaf Shocher, Michal Irani. Blind Super-Resolution Kernel Estimation using an Internal-GAN Sefi Bell-Kligler. NIPS'19
 - Ilyes Khemakhem, Diederik P. Kingma, Ricardo Pio Monti, Aapo Hyvärinen. Variational Autoencoders and Nonlinear ICA: A Unifying Framework. AISTATS'20 submission.
 	- x d-dim, u m-dim both observed; z n-dim, n <= d latent;
 	- Parameters: theta = (f, T, lambda); f: mixing? T sufficient statistics;

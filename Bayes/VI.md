@@ -4,19 +4,43 @@
 - David Blei. Variational Inference: A Review for Statisticians, 2018
 	- ELBO (Evidence Lower-Bound)
 
-## Mixture Models, EM (PRML, Chap 9)
-- K-means;
-- Mixture of Gaussian;\
-	<img src="/Bayes/images/VI/gmm.png" alt="drawing" width="300"/>
-- {X, Z}, Because we cannot use the complete-data log likelihood, we consider instead its **expected value** under the posterior distribution of the latent variable, which corresponds (as we shall see) to the E step of the EM algorithm;\
-	<img src="/Bayes/images/VI/mixture-em.png" alt="drawing" width="400"/>
-- EM for Bayesian linear regression: converge to the same result with direct method:
-	<img src="/Bayes/images/VI/em-bayes-lr-1.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/VI/em-bayes-lr-2.png" alt="drawing" width="400"/>
-- General EM:\
-	<img src="/Bayes/images/VI/em-elbo1.png" alt="drawing" width="250"/>\
-	<img src="/Bayes/images/VI/em-elbo2.png" alt="drawing" width="400"/>
--  The generalized EM, or GEM, algorithm addresses the problem of an intractable M step. Instead of aiming to maximize L(q, θ) with respect to θ, it seeks instead to change the parameters in such a way as to increase its value;
+## Mixture Models, EM
+- PRML, Chap 9
+	- K-means;
+	- Mixture of Gaussian;\
+		<img src="/Bayes/images/VI/gmm.png" alt="drawing" width="300"/>
+	- {X, Z}, Because we cannot use the complete-data log likelihood, we consider instead its **expected value** under the posterior distribution of the latent variable, which corresponds (as we shall see) to the E step of the EM algorithm;\
+		<img src="/Bayes/images/VI/mixture-em.png" alt="drawing" width="400"/>
+	- EM for Bayesian linear regression: converge to the same result with direct method:
+		<img src="/Bayes/images/VI/em-bayes-lr-1.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/VI/em-bayes-lr-2.png" alt="drawing" width="400"/>
+	- General EM:\
+		<img src="/Bayes/images/VI/em-elbo1.png" alt="drawing" width="250"/>\
+		<img src="/Bayes/images/VI/em-elbo2.png" alt="drawing" width="400"/>
+	- The generalized EM, or GEM, algorithm addresses the problem of an intractable M step. Instead of aiming to maximize L(q, θ) with respect to θ, it seeks instead to change the parameters in such a way as to increase its value;
+- Mixture Model (Kevin Murphy, Chap 11):
+	- Important property:
+		- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
+	- p(x) = sum_z p(x,z)
+	- EM:
+		- E-step: p(z), (In VBEM, will be q(z))
+		- M-step: argmax_theta Q(theta, theta_old)
+	- EM Theory:
+		<img src="/Bayes/images/VI/em1.png" alt="drawing" width="600"/>
+	- EM Algorithms:
+		- Batch-EM:\
+			<img src="/Bayes/images/VI/batch-em.png" alt="drawing" width="350"/>
+		- Incremental-EM:\
+			<img src="/Bayes/images/VI/inc-em.png" alt="drawing" width="350"/>
+		- Stepwise-EM:\
+			<img src="/Bayes/images/VI/stepwise-em.png" alt="drawing" width="350"/>
+		- Annealed EM;
+		- Variational EM;
+		- Monte Carlo EM: draw samples, then sufficient statistics;
+		- Generalized EM: M-step partially;
+- Modern:
+	- Ji Xu, Daniel Hsu, Arian Maleki. Benefits of over-parameterization with EM. NIPS'18
+	- Belhal Karimi, Hoi-To Wai, Eric Moulines, Marc Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
 
 ## Approximate Inference (PRML, Chap 10)
 - Basics: Many problems can be expressed in terms of an optimization problem in which the quantity being optimized is a functional. This is done by restricting the range of functions over which the optimization is performed. Our goal is to find an approximation for the posterior distribution p(Z\|X) as well as for the model evidence p(X).
@@ -75,18 +99,6 @@
 		<img src="/Bayes/images/VI/ep-1.png" alt="drawing" width="400"/>
 	- E.g. Moment matching; the cost:\
 		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
-
-## Mixture of Experts
-- Important property:
-	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
-- p(x) = sum_z p(x,z)
-- EM:
-	- E-step: p(z), (In VBEM, will be q(z))
-	- M-step: argmax_theta Q(theta, theta_old)
-- EM Theory:
-	<img src="/Bayes/images/VI/em1.png" alt="drawing" width="600"/>
-- Modern:
-	- Benefits of over-parameterization with EM. NIPS'18
 
 ## VI Basics:
 - MCMC:

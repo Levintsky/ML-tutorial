@@ -5,24 +5,40 @@
 - Bernhard Scholkopf, Alexander J. Smola. Learning with kernels. 2002
 - John Shawe-Taylor and Nello Cristianini. Kernel Methods for Pattern Analysis. 2004
 
-## Kernel Methods (PRML, Chap 6)
-- Formulation with the dual a:\
-	<img src="/Basic-ML/images/kernel/kernel-1.1.png" alt="drawing" width="400"/>
-- Then, for a we have:\
-	<img src="/Basic-ML/images/kernel/kernel-1.2.png" alt="drawing" width="400"/>
-- For prediction:\
-	<img src="/Basic-ML/images/kernel/kernel-1.3.png" alt="drawing" width="400"/>
-- Constructing Kernels:\
-	<img src="/Basic-ML/images/kernel/kernel-2.1.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/kernel/kernel-2.2.png" alt="drawing" width="400"/>\
-- Kernel between sets:\
-	<img src="/Basic-ML/images/kernel/kernel-2.3.png" alt="drawing" width="200"/>
-- Kernels of generative models:\
-	<img src="/Basic-ML/images/kernel/kernel-2.4.png" alt="drawing" width="250"/>\
-	<img src="/Basic-ML/images/kernel/kernel-2.5.png" alt="drawing" width="300"/>\
-	<img src="/Basic-ML/images/kernel/kernel-2.6.png" alt="drawing" width="400"/>
-- Radial Basis Function:\
-	<img src="/Basic-ML/images/kernel/nadaraya-watson.png" alt="drawing" width="400"/>
+## Kernel Methods
+- PRML, Chap 6
+	- Many linear models for regression and classification can be reformulated in terms of a dual representation in which kernel arrises:\
+		<img src="/Basic-ML/images/kernel/kernel-1.1.png" alt="drawing" width="400"/>
+	- Then, for a we have:\
+		<img src="/Basic-ML/images/kernel/kernel-1.2.png" alt="drawing" width="400"/>
+	- For prediction:\
+		<img src="/Basic-ML/images/kernel/kernel-1.3.png" alt="drawing" width="400"/>
+	- Constructing Kernels:\
+		<img src="/Basic-ML/images/kernel/kernel-2.1.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/kernel/kernel-2.2.png" alt="drawing" width="400"/>\
+	- Kernel between sets:\
+		<img src="/Basic-ML/images/kernel/kernel-2.3.png" alt="drawing" width="200"/>
+	- Kernels of generative models:\
+		<img src="/Basic-ML/images/kernel/kernel-2.4.png" alt="drawing" width="250"/>\
+		<img src="/Basic-ML/images/kernel/kernel-2.5.png" alt="drawing" width="300"/>\
+		<img src="/Basic-ML/images/kernel/kernel-2.6.png" alt="drawing" width="400"/>
+	- Radial Basis Function:\
+		<img src="/Basic-ML/images/kernel/nadaraya-watson.png" alt="drawing" width="400"/>
+- Kevin Murphy (Chap 14)
+	- Kernel functions;
+		- RBF;
+		- **Mercer** kernels: Gram matrix positive definite kernel;
+		- Linear;
+		- Matern;
+		- String;
+		- Pyramid match;
+		- Kernel from generative models;
+		- Fisher;
+	- Kernel trick;
+		- Kernel NN;
+		- Kernel K-medoids;
+		- Kernel ridge regression;
+		- Kernel PCA;
 
 ## Sparse Kernel Machines (PRML, Chap 7)
 - SVM: for Lagrange Dual, check opt.pdf
@@ -75,10 +91,36 @@
 	- with desired loss delta(y, y')
 	- argmin w, s.t. ||w||^2 + C max(y) (delta(y, ygt) + w (phi(x,y)-phi(x,ygt)))
 - Special case: ranking-SVM;
+- Kevin Murphy, Chap 19.7
+	- Training/testing time, minimize expected loss:\
+		<img src="/Basic-ML/images/svm/ssvm-1.png" alt="drawing" width="400"/>
+	- Lower/upper bound:\
+		<img src="/Basic-ML/images/svm/ssvm-2.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/svm/ssvm-3.png" alt="drawing" width="400"/>
+	- Gaussian prior:\
+		<img src="/Basic-ML/images/svm/ssvm-4.png" alt="drawing" width="400"/>
+	- Non-probabilistic view:\
+		<img src="/Basic-ML/images/svm/ssvm-5.png" alt="drawing" width="400"/>\
+		<img src="/Basic-ML/images/svm/ssvm-6.png" alt="drawing" width="400"/>
+	- Cutting plane methods (http://svmlight.joachims.org/svm_struct.html)
+		- We start with an initial guess w and no constraints. At each iteration, we then do the following: for each example i, we find the "most violated" constraint involving x and yˆ . If the loss-augmented margin violation exceeds the current value of ξ by more than ε, we add yˆ to the working set of constraints for this training case, W , and then  solve the resulting new QP to find the new w, ξ.
+		- Loss-augmented decoding: the other key to efficiency is the ability to find the most violated constraint in line 5 of the algorithm
+		<img src="/Basic-ML/images/svm/ssvm-7.png" alt="drawing" width="400"/>
+	- The structured perceptron algorithm;
+	- Stochastic subgradient descent;
+	- **Latent structural SVMs**: hidden h; e.g. in machine translation, we may know the source text x (say English) and the target text y (say French), but we typically do not know the alignment;
+		- Formulation:\
+			<img src="/Basic-ML/images/svm/latent-svm-1.png" alt="drawing" width="400"/>
+		- Bound:\
+			<img src="/Basic-ML/images/svm/latent-svm-2.png" alt="drawing" width="400"/>
+		- CCCP (concave-convex procedure): this objective is no longer convex; minimizing functions of the form f(w) − g(w), where f and g are convex. The method alternates between finding a linear upper bound u on −g, and then minimizing the convex function f(w) + u(w);\
+			<img src="/Basic-ML/images/svm/latent-svm-3.png" alt="drawing" width="400"/>
+		- A hard EM alg:\
+			<img src="/Basic-ML/images/svm/latent-svm-4.png" alt="drawing" width="400"/>
 
 ## NN
 - Tobias Plötz, Stefan Roth. Neural Nearest Neighbors Networks. NIPS'18
-- Ignacio Rocco, Mircea Cimpoi, Relja Arandjelovic, Akihiko Torii, Tomas Pajdla, Josef Sivi. Neighbourhood Consensus Networks. NIPS'18
+- Ignacio Rocco, Mircea Cimpoi, Relja Arandjelovic, Akihiko Torii, Tomas Pajdla, Josef Sivic. Neighbourhood Consensus Networks. NIPS'18
 - Ari Morcos, Maithra Raghu, Samy Bengio. Insights on representational similarity in neural networks with canonical correlation. NIPS'18
 
 ## Kernel
