@@ -4,7 +4,7 @@
 - NBC (Naive Bayes):\
 	<img src="/Bayes/images/basics/nbc.png" alt="drawing" width="400"/>
 
-## Kevin Murphy (Chap 5)
+## Bayesian Statistics (Kevin Murphy Chap 5)
 - MAP estimation is not invariant to reparameterization
 - Credible intervals:\
 	<img src="/Bayes/images/basics/cred-int.png" alt="drawing" width="400"/>
@@ -38,3 +38,14 @@
 		<img src="/Bayes/images/basics/f-score.png" alt="drawing" width="350"/>
 	- Multi-arm bandit: UCB, Thompson Sampling;
 	- Utility theory;
+
+## Frequentist Statistics (Kevin Murphy Chap 6)
+- The parameter is viewed as fixed and the data as random, which is the exact opposite of the Bayesian approach;
+- Sampling distribution:\
+	<img src="/Bayes/images/basics/sample-dist.png" alt="drawing" width="400"/>
+- Frequentist decision theory:
+	<img src="/Bayes/images/basics/freq-decision.png" alt="drawing" width="400"/>
+- Not only is the frequentist definition unnatural, it cannot even be computed, because true theta is unknown. Consequently, we cannot compare different estimators in terms of their frequentist risk. We discuss various solutions to this below.
+	- Option 1: Bayes risk;
+	- Option 2: Minimax risk;
+	- Admissible estimator: An estimator is said to be admissible if it is not strictly dominated by any other estimator;

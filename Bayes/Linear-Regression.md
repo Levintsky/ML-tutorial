@@ -1,6 +1,6 @@
 # Linear Regression
 
-## MLE
+## MLE (Kevin Murphy, Chap 7)
 - OLS (ordinary least squares) \
 	<img src="/Bayes/images/lr/linear-regression1.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/lr/linear-regression2.png" alt="drawing" width="200"/>

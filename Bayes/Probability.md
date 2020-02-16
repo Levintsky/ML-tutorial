@@ -43,10 +43,10 @@
 	- Inverse Gamma:\
 		<img src="/Bayes/images/prob/igamma.png" alt="drawing" width="450"/>
 - Beta: **conjugacy prior** of binomial \
-	<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="350"/>\
-	<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="350"/>
+	<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="300"/>\
+	<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="300"/>
 
-## Gaussian
+## Gaussian (PRML, Chap 2; Kevin Murphy, Chap 4)
 - Definition: \
 	<img src="/Bayes/images/prob/gaussian.png" alt="drawing" width="400"/>
 - Eigen value and vector of covariance matrix; with y=U(x-mu) \
@@ -57,13 +57,13 @@
 	- Lambda = inv(Cov);\
 	<img src="/Bayes/images/prob/gaussian-joint1.png" alt="drawing" width="400"/>
 	<img src="/Bayes/images/prob/gaussian-joint2.png" alt="drawing" width="400"/>
-- Joint 2-dim Gaussian distribution: \
+- Special case: joint 2-dim Gaussian distribution: \
 	<img src="/Bayes/images/prob/gaussian-2d.png" alt="drawing" width="400"/>
 - **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
 	<img src="/Bayes/images/prob/gaussian-bayes-the.png" alt="drawing" width="400"/>
 - MLE for Gaussian: \
 	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="200"/>
-- Posterior inference:
+- Posterior inference (PRML, Chap 2; focus on **Precision**):
 	- Single var, variance known, for mean mu as **Gaussian**(mu0, sigma0): \
 		<img src="/Bayes/images/prob/gaussian-inf-1.png" alt="drawing" width="400"/>
 	- Single var, mean known, infer **precision** lambda=1/sigma^2 as **Gamma**(a, b): \
@@ -74,19 +74,40 @@
 			<img src="/Bayes/images/prob/gamma.png" alt="drawing" width="300"/>
 		<img src="/Bayes/images/prob/gaussian-inf-3.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-4.png" alt="drawing" width="400"/>
-	- Single var, both mean and precision unknown;
+	- Single var, both mean and precision unknown: **Gaussian-Gamma**;
 		- Likelihood: \
 			<img src="/Bayes/images/prob/gaussian-inf-5.png" alt="drawing" width="400"/>
 		- Prior take the same form with (c, d, beta); \
 			<img src="/Bayes/images/prob/gaussian-inf-6.png" alt="drawing" width="400"/>
 		- With mu0 = c/beta, a = 1 + beta/2, b = d - c^2/2beta; \
 			<img src="/Bayes/images/prob/gaussian-inf-7.png" alt="drawing" width="400"/>
-	- Multi var, both mean and precision unknown; \
+	- Multi var, both mean and precision unknown; **Gaussian-Wishart**\
 		<img src="/Bayes/images/prob/wishart.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-8.png" alt="drawing" width="400"/>
 	- We know x ~ N(mu, tau^-1) has conjagate Gamma prior Gam(tau|a, b). We integrate out precision tau, marginal distribution of p(x\|mu, a, b) is a **student-t** distribution: \
 		<img src="/Bayes/images/prob/gaussian-inf-9.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-10.png" alt="drawing" width="400"/>
+- Posterior inference (Kevin Murphy, Chap 4.6; focus on **Covariance**):
+	- x ~ Gamma; 1/x ~ Inverse-Gamma; single var case:\
+		<img src="/Bayes/images/prob/gaussian-inf-11.png" alt="drawing" width="400"/>
+	- Inverse of Wishart: I-Wishart;
+		<img src="/Bayes/images/prob/gaussian-inf-12.png" alt="drawing" width="400"/>
+	- Posterior of Covariance: Inverse-Wishart;
+	- Multi var, both mean and variance unknown: **NIW** (Normal-inverse-wishart);
+		- Likelihood:\
+			<img src="/Bayes/images/prob/gaussian-inf-13.png" alt="drawing" width="400"/>
+		- Prior:\
+			<img src="/Bayes/images/prob/gaussian-inf-14.png" alt="drawing" width="400"/>
+		- Posterior:\
+			<img src="/Bayes/images/prob/gaussian-inf-15.png" alt="drawing" width="400"/>
+	- Posterior predictive:
+		- Definition:\
+			<img src="/Bayes/images/prob/gaussian-inf-16.png" alt="drawing" width="400"/>
+		- NIX (normal inverse chi-squared):\
+			<img src="/Bayes/images/prob/gaussian-inf-17.png" alt="drawing" width="400"/>\
+			<img src="/Bayes/images/prob/gaussian-inf-18.png" alt="drawing" width="400"/>
+	- Bayesian t-test:\
+		<img src="/Bayes/images/prob/t-test.png" alt="drawing" width="400"/>
 
 ## Periodic
 - On a circle: average angle \
