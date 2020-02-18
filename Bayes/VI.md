@@ -1,5 +1,12 @@
 # EM, Variational Inference
 
+## Basics
+- VI, ELBO:
+	- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
+	- ELBO(q) = E(log p(z, x)) - E(log q(z))
+- MCMC:
+	- Hard to do m-step, sample some z and average
+
 ## Summaries and Tutorials
 - David Blei. Variational Inference: A Review for Statisticians, 2018
 	- ELBO (Evidence Lower-Bound)
@@ -18,7 +25,7 @@
 		<img src="/Bayes/images/VI/em-elbo1.png" alt="drawing" width="250"/>\
 		<img src="/Bayes/images/VI/em-elbo2.png" alt="drawing" width="400"/>
 	- The generalized EM, or GEM, algorithm addresses the problem of an intractable M step. Instead of aiming to maximize L(q, θ) with respect to θ, it seeks instead to change the parameters in such a way as to increase its value;
-- Mixture Model (Kevin Murphy, Chap 11):
+- Kevin Murphy, Chap 11:
 	- Important property:
 		- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
 	- p(x) = sum_z p(x,z)
@@ -99,16 +106,6 @@
 		<img src="/Bayes/images/VI/ep-1.png" alt="drawing" width="400"/>
 	- E.g. Moment matching; the cost:\
 		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
-
-## VI Basics:
-- MCMC:
-	- Hard to do m-step, sample some z and average
-- VI, ELBO:
-	- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
-	- ELBO(q) = E(log p(z, x)) - E(log q(z))
-
-## Mean Field
-- LDA:
 
 ## Legacy
 - M. J. Wainwright and M. I. Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008

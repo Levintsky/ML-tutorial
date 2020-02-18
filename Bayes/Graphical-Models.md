@@ -29,7 +29,7 @@
 ## Undirected Graphical Models
 - PRML, Chap 8.3
 	- MRF:\
-		<img src="/Bayes/images/gm/gm-mrf-1.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/gm/mrf-1.png" alt="drawing" width="400"/>
 	- CRF
 	- M. Schmidt. UGM: A Matlab toolbox for probabilistic undirected graphical models.
 		- http://www.cs.ubc.ca/~schmidtm/Software/UGM.html. 

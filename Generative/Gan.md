@@ -1,6 +1,8 @@
 # General Adversarial Net
 
 ## Unclassified
+- NIPS'19 oral:
+	- Multi-marginal Wasserstein GAN. NIPS'19
 - **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
 - Michael Arbel, Dougal J. Sutherland, Mikolaj Binkowski, Arthur Gretton. On gradient regularizers for MMD GANs. NIPS'18
 - Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai1, Jia Zhu, Jian Yin. Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18

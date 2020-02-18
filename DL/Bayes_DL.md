@@ -4,6 +4,9 @@
 - C Peterson. A mean field theory learning algorithm for neural networks. 1987
 - G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
+## Unclassified
+- A Simple Baseline for Bayesian Uncertainty in Deep Learning. NIPS'19
+
 ## Bayesian NN (PRML Chapter 5.6)
 - Assumptions: 2 Gaussian, weight w ~ N(0, alpha^(-1)), p(t\|x,w) ~ N(y(x,w), beta^(-1)). Then the posterior:
 	<img src="/DL/images/bnn/bnn-bishop-1.png" alt="drawing" width="300"/>

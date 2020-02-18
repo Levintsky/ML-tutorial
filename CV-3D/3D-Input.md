@@ -11,6 +11,7 @@
 - S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV'17
 - Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 	- 2D as 3D;
+- **PVCNN**: Zhijian Liu, Haotian Tang, Yujun Lin, Song Han. Point-Voxel CNN for Efficient 3D Deep Learning. NIPS'19
 
 ## Point Clouds
 - Unclassified:
