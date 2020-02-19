@@ -99,6 +99,7 @@
 	- R. Arandjelovic et al. Object that sound, ECCV 2018
 - R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15
 - Self-Supervised Video Representation Learning With Odd-One-Out Networks
+- Matthias Minderer, Chen Sun, Ruben Villegas, Forrester Cole, Kevin Murphy, Honglak Lee. Unsupervised learning of object structure and dynamics from videos. NIPS'19
 
 ## SOA
 - **CPC**:

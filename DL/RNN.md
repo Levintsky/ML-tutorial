@@ -1,5 +1,12 @@
 # Recurrent Neural Network
 
+## Unclassified
+- Nan Rosemary Ke, Anirudh Goyal, Olexa Bilaniuk, Jonathan Binas, Michael C. Mozer, Chris Pal, Yoshua Bengio. Sparse Attentive Backtracking: Temporal Credit Assignment Through Reminding. NIPS'18
+- Iryna Korshunova, Jonas Degrave, Ferenc Huszár, Yarin Gal, Arthur Gretton, Joni Dambre. BRUNO: A Deep Recurrent Model for Exchangeable Data. NIPS'18
+- Aditya Kusupati, Manish Singh, Kush Bhatia, Ashish Kumar, Prateek Jain, Manik Varma. FastGRNN: A Fast, Accurate, Stable and Tiny Kilobyte Sized Gated Recurrent Neural Network. NIPS'18
+- Kevin Liang, Guoyin Wang, Yitong Li, Ricardo Henao, Lawrence Carin. Kernel-Based Approaches for Sequence Modeling: Connections to Neural Methods. NIPS'19	
+- Giancarlo Kerg, Kyle Goyette, Maximilian Puelma Touzel, Gauthier Gidel, Eugene Vorontsov, Yoshua Bengio, Guillaume Lajoie. Non-normal Recurrent Neural Network (nnRNN): learning long time dependencies while improving expressivity with transient dynamics. NIPS'19
+
 ## Legacy
 - S. Hochreiter and J. Schmidhuber. Long short-term memory. Neural Computation'97
 - **GRU**: K. Cho, B. van Merrienboer, D. Bahdanau, and Y. Bengio. On the properties of neural machine translation: Encoderdecoder approaches. 2014
@@ -41,10 +48,3 @@
 ## Beam Search
 - Ronan Collobert, Awni Hannun, Gabriel Synnaeve. A fully differentiable beam search decoder. ICML'19
 - Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
-
-## Unclassified
-- Nan Rosemary Ke, Anirudh Goyal, Olexa Bilaniuk, Jonathan Binas, Michael C. Mozer, Chris Pal, Yoshua Bengio. Sparse Attentive Backtracking: Temporal Credit Assignment Through Reminding. NIPS'18
-- Iryna Korshunova, Jonas Degrave, Ferenc Huszár, Yarin Gal, Arthur Gretton, Joni Dambre. BRUNO: A Deep Recurrent Model for Exchangeable Data. NIPS'18
-- Aditya Kusupati, Manish Singh, Kush Bhatia, Ashish Kumar, Prateek Jain, Manik Varma. FastGRNN: A Fast, Accurate, Stable and Tiny Kilobyte Sized Gated Recurrent Neural Network. NIPS'18
-- NeurIPS 2019 oral:
-	

@@ -69,7 +69,7 @@
 - Log-Partition function:\
 	<img src="/Bayes/images/lr/log-partition-1.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/lr/log-partition-2.png" alt="drawing" width="400"/>
-- 􏰁**Pitman-Koopman-Darmois theorem** states that, under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics. 
+- **Pitman-Koopman-Darmois theorem** states that, under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics. 
 - **Maxent**: The principle of maximum entropy or maxent says we should pick the distribution with maximum entropy (closest to uniform), subject to the constraints that the moments of the distribution match the empirical moments of the specified functions\
 	<img src="/Bayes/images/lr/maxent-1.png" alt="drawing" width="200"/>\
 	<img src="/Bayes/images/lr/maxent-2.png" alt="drawing" width="300"/>

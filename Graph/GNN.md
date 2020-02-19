@@ -16,6 +16,7 @@
 - Yin Li, Abhinav Gupta. Beyond Grids: Learning Graph Representations for Visual Recognition. NIPS'18
 - **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are
 Graph Neural Networks? ICLR'19
+- Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman. Provably Powerful Graph Networks. NIPS'19
 
 ## Legacy
 - Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005

@@ -8,6 +8,9 @@
 	- Hard to do m-step, sample some z and average
 
 ## Summaries and Tutorials
+- M. J. Wainwright and M. I. Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
+- Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
+- Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
 - David Blei. Variational Inference: A Review for Statisticians, 2018
 	- ELBO (Evidence Lower-Bound)
 
@@ -107,9 +110,6 @@
 	- E.g. Moment matching; the cost:\
 		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
 
-## Legacy
-- M. J. Wainwright and M. I. Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
-
 ## Black-box VI
 - John Paisley, David M. Blei, Michael I. Jordan. Variational Bayesian Inference with Stochastic Search. ICML'12
 - Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14
@@ -118,6 +118,9 @@
 		<img src="/Bayes/images/VI/bb-vi-1.png" alt="drawing" width="600"/>
 	- Algorithm:\
 		<img src="/Bayes/images/VI/bb-vi-2.png" alt="drawing" width="600"/>
+
+## Conjugate Prior
+- Mohammad Emtiyaz Khan, Wu Lin. Conjugate-Computation Variational Inference : Converting Variational Inference in Non-Conjugate Models to Inferences in Conjugate Models. AISTATS'17
 
 ## Theory
 - Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18

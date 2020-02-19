@@ -7,7 +7,6 @@
 - GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML 2018
 - Carter et. al., Experiments in Handwriting with a Neural Network (2016)
 - C. Olah et. al. Feature Visualization, distill (2018)
-- Zhiting Hu, Zichao Yang, Ruslan Salakhutdinov, Xiaodan Liang, Lianhui Qin, Haoye Dong, Eric Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18
 - Eszter Vertes, Maneesh Sahani. Flexible and accurate inference and learning for deep generative models. NIPS'18
 - Bolton Bailey, Matus J. Telgarsky. Size-Noise Tradeoffs in Generative Networks. NIPS'18
 

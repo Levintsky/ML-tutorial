@@ -158,3 +158,5 @@ s1bar, s2bar = V * [x1bar; x2bar]
 	- Aapo Hyvarinen and Hiroshi Morioka. Nonlinear ICA of temporally dependent stationary sources. PMLR'17
 - Aapo Hyvarinen, Hiroaki Sasaki, and Richard E Turner. Nonlinear ICA using auxiliary variables and generalized contrastive learning. 2018
 - Hyvärinen, A., Sasaki, H., and Turner, R. Nonlinear ICA Using Auxiliary Variables and Generalized Contrastive Learning. AISTATS'19
+- Wei Wang, Zheng Dang, Yinlin Hu, Pascal Fua, Mathieu Salzmann. Backpropagation-Friendly Eigendecomposition. NIPS'19
+- Piotr Indyk, Ali Vakilian, Yang Yuan. Learning-Based Low-Rank Approximations. NIPS'19

@@ -13,6 +13,7 @@
 	- Francis Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
 	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
 	- How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
+	- Lili Su, Pengkun Yang. On Learning Over-parameterized Neural Networks: A Functional Approximation Perspective. NIPS'19
 - SGD:
 	- Which Neural Net Architectures Give Rise to Exploding and Vanishing Gradients. NIPS'18
 	- Allen Zhu. Byzantine Stochastic Gradient Descent. NIPS'18
@@ -38,6 +39,7 @@
 - NeurIPS 2019 orals:
 	- Uniform convergence may be unable to explain generalization in deep learning. NIPS'19
 		- https://www.youtube.com/watch?v=o3GfnEjTdIQ
+- Zeyuan Allen-Zhu, Yuanzhi Li. Can SGD Learn Recurrent Neural Networks with Provable Generalization? NIPS'19
 
 ## Capacity
 - Pierre Baldi. Neuronal Capacity. NIPS'18

@@ -1,8 +1,9 @@
 # Variational Auto Encoder
 
-## Basics from Large-Scale Variational Inference
-- Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
-- Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
+## Unclassified
+- Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18
+- Emile Mathieu, Charline Le Lan, Chris J. Maddison, Ryota Tomioka, Yee Whye Teh. Continuous Hierarchical Representations with Poincaré Variational Auto-Encoders. NIPS'19
+- Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen. D-VAE: A Variational Autoencoder for Directed Acyclic Graphs. NIPS'19
 
 ## Summaires
 - https://www.jianshu.com/p/bfa6b5947cd9
@@ -128,6 +129,3 @@
 - Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 - **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
 	- Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
-
-## Unclassified
-- Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18

@@ -14,6 +14,9 @@
 	- Reactive
 	- Proactive
 
+## Unclassified
+- Ke Li, Tianhao Zhang, Jitendra Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
+
 ## Attack
 - Optimization-based:
 	- **SOA**: N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
@@ -62,5 +65,3 @@
 	- H Zhou, K Chen, W Zhang, H Fang, W Zhou, N Yu. DUP-Net: Denoiser and Upsampler Network for 3D Adversarial Point Clouds Defense. ICCV'19
 		- 1. Remove outlier by local filtering;
 		- 2. Upsampling: L Yu, X Li, C Fu, D Cohen-Or, P Heng. PU-Net: Point Cloud Upsampling Network. CVPR'18
-
-## Unclassified

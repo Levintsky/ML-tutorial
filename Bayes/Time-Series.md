@@ -1,5 +1,9 @@
 # Time Series
 
+## Unclassified
+- Alexander Neitz, Giambattista Parascandolo, Stefan Bauer, Bernhard Schölkopf. Adaptive Skip Intervals: Temporal Abstraction for Recurrent Dynamical Models. NIPS'18
+- Yifan Sun, Yaqi Duan, Hao Gong, Mengdi Wang. Learning low-dimensional state embeddings and metastable clusters from time series data. NIPS'19
+
 ## Tue Tutorial
 - Precision and Recall for Time Series
 
@@ -59,6 +63,3 @@
 ## Beam Search
 - A MAP view:\
 	<img src="/Bayes/images/time-series/beam-search.png" alt="drawing" width="400"/>
-
-## Unclassified
-- Alexander Neitz, Giambattista Parascandolo, Stefan Bauer, Bernhard Schölkopf. Adaptive Skip Intervals: Temporal Abstraction for Recurrent Dynamical Models. NIPS'18

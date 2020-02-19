@@ -5,7 +5,11 @@
 - G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
 ## Unclassified
-- A Simple Baseline for Bayesian Uncertainty in Deep Learning. NIPS'19
+- Ritter et al. A scalable laplace approximation for neural networks. 2018
+	- SGD-based;
+- **SWAG**: Wesley J Maddox, Pavel Izmailov, Timur Garipov, Dmitry Vetrov, Andrew Gordon Wilson. A Simple Baseline for Bayesian Uncertainty in Deep Learning. NIPS'19
+	- SGD-based;
+- Osawa et al. Practical Deep Learning with Bayesian Principles. NeurIPS'19
 
 ## Bayesian NN (PRML Chapter 5.6)
 - Assumptions: 2 Gaussian, weight w ~ N(0, alpha^(-1)), p(t\|x,w) ~ N(y(x,w), beta^(-1)). Then the posterior:
@@ -22,15 +26,37 @@
 	<img src="/DL/images/bnn/bnn-bishop-7.png" alt="drawing" width="450"/>
 	<img src="/DL/images/bnn/bnn-bishop-8.png" alt="drawing" width="450"/>
 
-## Variational Inference
+## Legacy on Bayesian as Optimization
+- Formulation:
+	<img src="/DL/images/bnn/bayes-opt-1.png" alt="drawing" width="400"/>
+- Bayesian Statistics:
+	- Jaynes, Edwin T. Information theory and statistical mechanics. Physical review 1957
+	- Zellner, A. Optimal information processing and Bayes's theorem. The American Statistician 1988
+	- Bissiri, Pier Giovanni, Chris C. Holmes, and Stephen G. Walker. A general framework for updating belief distributions. RSS: Series B (Statistical Methodology) (2016)
+- PAC-Bayes
+	- Shawe-Taylor, John, and Robert C. Williamson. A PAC analysis of a Bayesian estimator. COLT'97
+	- Alquier, Pierre. PAC-Bayesian bounds for randomized empirical risk minimizers. Mathematical Methods of Statistics 17.4 (2008): 279-304.
+- Online-learning (Exponential Weight Aggregates)
+	- Cesa-Bianchi, Nicolo, and Gabor Lugosi. Prediction, learning, and games. 2006.
+- Free-energy principle:
+	- Friston, K. The free-energy principle: a unified brain theory? Nature neuroscience (2010)
+
+## Posterior Approximations
+- Formulation:
+	<img src="/DL/images/bnn/bayes-opt-2.png" alt="drawing" width="400"/>
 - Hinton, G. and Van Camp, D. Keeping neural networks simple by minimizing the description length of the weights. COLT'93
+- Entropy-regularized/Maximum-entropy RL:
+	- Williams, Ronald J., and Jing Peng. Function optimization using connectionist reinforcement learning algorithms. Connection Science 3.3 (1991): 241-268
+	- Ziebart, Brian D. Modeling purposeful adaptive behavior with the principle of maximum causal entropy. Diss. figshare, 2010. (see chapter 5)
+
+## Variational Inference
 - David JC MacKay. Probable networks and plausible predictions—a review of practical bayesian methods for supervised neural networks. Network: Computation in Neural Systems, 6(3):469–505, 1995.
 - Radford M Neal. Bayesian learning for neural networks. PhD thesis, Citeseer, 1995.
 - Barber, D. and Bishop, C. M. Ensemble learning for multilayer networks. NIPS'98
 - A Graves. Practical variational inference for neural networks. NIPS'11
-	- fully factorized Gaussian posteriors which used a simple (but biased) gradient estimator
+	- VI-based: Fully factorized Gaussian posteriors which used a simple (but biased) gradient estimator;
 - **BBB (Bayes by Backprop)**: C Blundell, J Cornebise, K Kavukcuoglu, and D Wierstra. Weight uncertainty in neural network. ICML'15
-	- Insight: treat weight w as distribution rather than point; Bayesian treatment: p(y|x)=E_p(w|D)[p(y|x,w)]
+	- Insight: VI-based; treat weight w as distribution rather than point; Bayesian treatment: p(y|x)=E_p(w|D)[p(y|x,w)]
 	- Code links: https://github.com/nitarshan/bayes-by-backprop
 	- Variational learning of q(w|theta) to approximate p(w|D) with KL:\
 		<img src="/DL/images/bnn/bbb1.png" alt="drawing" width="400"/>
@@ -52,6 +78,7 @@
 	- J Shi, S Sun, and J Zhu. Kernel implicit variational inference. ICLR'18
 - Dropout as BNN:
 	- Y Gal and Z Ghahramani. Dropout as a Bayesian approximation: Representing model uncertainty in deep learning. ICML'16
+		- SGD based;
 	- Y Gal, J Hron, A Kendall. Concrete Dropout. NIPS'17
 - Decorrelate the gradients within a mini-batch for reducing variances during training:
 	- D Kingma, T Salimans, and M Welling. Variational dropout and the local reparameterization trick. NIPS'15
@@ -66,6 +93,16 @@
 	- Leimkuhler, B., Matthews, C., and Vlaar, T. Partitioned integrators for thermodynamic parameterization of neural networks. 2019
 	- Heek, J. and Kalchbrenner, N. Bayesian inference for large scale image classification. ICLR'20
 	- Zhang, R., Li, C., Zhang, J., Chen, C., and Wilson, A. G. Cyclical stochastic gradient MCMC for Bayesian deep learning. ICLR'20
+- Various optimizers as Bayesian:
+	- Summary:
+		- Gradient descent is derived using a Gaussian with fixed covariance, and estimating the mean;
+		- Newton’s method is derived using multivariate Gaussian;
+		- RMSprop is derived using diagonal covariance;
+		- Adam is derived by adding heavy-ball momentum term;
+	- Khan and Lin. Conjugate-computation variational inference: Converting variational inference in non-conjugate models to inferences in conjugate models. AIstats'17
+	- Khan, et al. Fast and scalable Bayesian deep learning by weight-perturbation in Adam. ICML'18
+	- Lin, Wu, Mohammad Emtiyaz Khan, and Mark Schmidt. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
+	- Khan et al., Approximate Inference Turns Deep Networks into Gaussian Processes. NIPS'19
 - Florian Wenzel, Kevin Roth, Bastiaan S. Veeling, Jakub Swiatkowski, Linh Tran, Stephan Mandt, Jasper Snoek, Tim Salimans, Rodolphe Jenatton, Sebastian Nowozin. How Good is the Bayes Posterior in Deep Neural Networks Really? 2020
 	- Predictive performance is improved significantly through the use of a **cold posterior**;
 	- T<1: sharpening posterior, overcounting data by 1/T; T=1, true Bayes posterior;

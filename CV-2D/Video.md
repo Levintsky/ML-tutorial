@@ -130,6 +130,7 @@
 - MIT:
 	- T. Xue, J. Wu, K. Bouman, and B. Freeman. Visual dynamics: Probabilistic future frame synthesis via cross convolutional networks. NIPS 2016
 	- C. Vondrick, H. Pirsiavash, and A. Torralba. Generating videos with scene dynamics. In NeurIPS, 2016.
+- Ruben Villegas, Arkanath Pathak, Harini Kannan, Dumitru Erhan, Quoc V Le, Honglak Lee. High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks. NIPS'19
 
 ## Legacy, Hand-Designed
 - P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV 2005

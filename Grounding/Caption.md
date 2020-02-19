@@ -12,6 +12,7 @@
 - Dahua Lin. A Neural Compositional Paradigm for Image Captioning. NIPS'18
 - Weakly Supervised Dense Event Captioning in Videos. NIPS'18
 - Answerer in Questioner's Mind: Information Theoretic Approach to Goal-Oriented Visual Dialog. NIPS'18
+- Fenglin Liu, Yuanxin Liu, Xuancheng Ren, Xiaodong He, Xu Sun. Aligning Visual Regions and Textual Concepts for Semantic-Grounded Image Representations. NIPS'19
 
 ## Classical
 - Stanford
