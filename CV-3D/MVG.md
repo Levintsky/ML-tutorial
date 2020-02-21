@@ -37,7 +37,9 @@
 		- Distortion:
 			- xc = xc(1 + k1 r^2 + k2 r^4)
 			- yc = yc(1 + k1 r^2 + k2 r^4)
-	- 3D to 2D (world-to-screen): P = K[R\|T]; x=PX=KEX;
+	- **3D to 2D** (world-to-screen):
+		- P = K[R\|T]; x=PX=KEX;
+		- T = -Rc, with c as the camera center;
 	- Screen to world: X ~ E(-1) K(-1) x;
 	- Camera to camera (assume z known):\
 		<img src="/CV-3D/images/mvg/cam-cam.png" alt="drawing" width="400"/>

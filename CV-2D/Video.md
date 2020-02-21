@@ -44,24 +44,58 @@
 - **Cooking**: David Chen, William Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL 2011
 	- 2,089 videos; 85,550 English descriptions
 
+## Legacy, Hand-Designed
+- P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV'05
+- **STIP**: I. Laptev and T. Lindeberg. Space-time interest points. ICCV 2003
+- S. Sadanand and J. Corso. Action bank: A high-level representation of activity in video. CVPR 2012
+- H. Wang and C. Schmid. Action recognition with improved trajectories. ICCV 2013
+
 ## Classification, Action Recognition
-- FAIR:
+- Matching, Attentional, optical flow:
+	- Karen Simonyan and Andrew Zisserman. Two-stream convolutional networks for action recognition in videos. NIPS'14
+	- Andrew Zisserman Christoph Feichtenhofer, Axel Pinz. Convolutional two-stream network fusion for video action recognition. CVPR'16
+	- M Shan and N Atanasov. A spatiotemporal model with visual attention for video classification. 2017
 	- X Wang, R Girshick, A Gupta, K He. Non-local Neural Networks, CVPR'18
 		- Video classification
 		- THW 512 dimension, attention with every other location
 		- Softmax sum;
 		<img src="/CV/images/video/non-local.png" alt="drawing" width="500"/>
-
-	- C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV 2019 Submission
+	- **CPNet**: Xingyu Liu, Joon-Young Lee, Hailin Jin. Learning Video Representations from Correspondence Proposals. CVPR'19 oral
+		- Insight: hard attention by kNN;
+		- https://github.com/xingyul/cpnet
+		- Model:\
+			<img src="/CV/images/video/cpnet-1.png" alt="drawing" width="400"/>
+		- Correspondence Embedding layer:\
+			<img src="/CV/images/video/cpnet-2.png" alt="drawing" width="400"/>
+	- C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV'19
 		- Slow pathway: 2 fps;
 		- Fast pathway: 16 fps; lightweight computation; (same net, small hyper)
 		<img src="/CV/images/video/slowfast.png" alt="drawing" width="500"/>
-
 	- New attention:
 		- https://github.com/takatosp1/pytorch-CycleGAN-and-pix2pix/commit/d10e1f6b090ee5efb1fa5418c47ba16389f4d4b4#diff-ac5552fd6a3c08ad22387efbe42d137d
-- AML:
-	- **R(2+1)D**: D. Tran, H. Wang, L. Torresani, J. Ray, Y. LeCun, and M. Paluri. A closer look at spatiotemporal convolutions for action recognition. CVPR 2018
-	- **CSN**: Du Tran. Video Classification with Channel-Separated Convolutional Networks. ICCV 2019 submission
+	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
+		- Vector-quantization: S3D for feature extraction;
+		- WordPiece for text (ASR API);
+		- BLEU-4 1.42 to 5.42 on YouCook II;
+		<img src="/CV/images/video/videobert-1.png" alt="drawing" width="600"/>
+		<img src="/CV/images/video/videobert-2.png" alt="drawing" width="600"/>
+- C3D:
+	- Andrej Karpathy, George Toderici, Sanketh Shetty, Thomas Leung, Rahul Sukthankar, and Li Fei-Fei. Large-scale video classification with convolutional neural networks. CVPR'14
+	- Du Tran, Lubomir Bourdev, Rob Fergus, Lorenzo Torresani, and Manohar Paluri. Learning spatiotemporal features with 3d convolutional networks. ICCV'15
+	- **ArtNet**: Limin Wang, Wei Li, Wen Li, and Luc Van Gool. Appearance-and-relation networks for video classification. CVPR'18
+		- Insight: C3D w/o correspondence, then concat;
+		<img src="/CV/images/video/artnet.png" alt="drawing" width="600"/>
+	- Mohammadreza Zolfaghari, Kamaljeet Singh, and Thomas Brox. Eco: Efficient convolutional network for online video understanding. ECCV'18
+	- **S3D**: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV'18
+		- I3D (inflate the 2D conv in Inception)
+		- Bottom-Heavy-I3D: 3D temporal-conv at bottom, 2D-Conv at top
+		- Top-Heavy-I3D: 2D-conv at bottom, 3D temporal-conv at top (faster, more accurate)
+		- S3D: 7x7x7 Conv -> 1x7x7 Conv + 7x1x1 Conv
+		- With optical-flow: 77.2% top-1, 93.0% top-5
+		<img src="/CV/images/video/s3d-1.png" alt="drawing" width="600"/>
+		<img src="/CV/images/video/s3d-2.png" alt="drawing" width="600"/>
+	- **R(2+1)D**: D. Tran, H. Wang, L. Torresani, J. Ray, Y. LeCun, and M. Paluri. A closer look at spatiotemporal convolutions for action recognition. CVPR'18
+	- **CSN**: Du Tran. Video Classification with Channel-Separated Convolutional Networks. ICCV'19
 		- Bottleneck: 1x1x1 -> 3x3x3 -> 1x1x1
 		- ip-CSN: 1x1x1 -> 1x1x1 -> 3x3x3(dw) -> 1x1x1
 		- ir-CSN: 1x1x1 -> 1x1x1 -> 3x3x3(dw) -> 1x1x1
@@ -70,33 +104,17 @@
 			- Kinetics: 71.8% (ip-CSN, res-101), 71.3% (ir-CSN, res-101), 70.6% (ResNet3D); 78.5% top1, 93.4% top5 with Sports1M pretrain
 			- Sports1M: 75.5%, 92.7% (ir-CSN res-152)
 		<img src="/CV/images/video/csn1.png" alt="drawing" width="450"/>
-		<img src="/CV/images/video/csn2.png" alt="drawing" width="450"/>
-
-- Google:
-	- **S3D**: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV 2018
-		- I3D (inflate the 2D conv in Inception)
-		- Bottom-Heavy-I3D: 3D temporal-conv at bottom, 2D-Conv at top
-		- Top-Heavy-I3D: 2D-conv at bottom, 3D temporal-conv at top (faster, more accurate)
-		- S3D: 7x7x7 Conv -> 1x7x7 Conv + 7x1x1 Conv
-		- With optical-flow: 77.2% top-1, 93.0% top-5
-		<img src="/CV/images/video/s3d-1.png" alt="drawing" width="600"/>
-		<img src="/CV/images/video/s3d-2.png" alt="drawing" width="600"/>
-	
-	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV 2019
-		- Vector-quantization: S3D for feature extraction;
-		- WordPiece for text (ASR API);
-		- BLEU-4 1.42 to 5.42 on YouCook II;
-		<img src="/CV/images/video/videobert-1.png" alt="drawing" width="600"/>
-		<img src="/CV/images/video/videobert-2.png" alt="drawing" width="600"/>
+		<img src="/CV/images/video/csn2.png" alt="drawing" width="450"/>	
+- RNN, LSTM:
+	- Jeffrey Donahue, Lisa Anne Hendricks, Sergio Guadarrama, Marcus Rohrbach, Subhashini Venugopalan, Kate Saenko, and Trevor Darrell. Long-term recurrent convolutional networks for visual recognition and description. CVPR'15
+	- Joe Yue-Hei Ng, Matthew Hausknecht, Sudheendra Vijayanarasimhan, Oriol Vinyals, Rajat Monga, and George Toderici. Beyond short snippets: Deep networks for video classification. CVPR'15
 - MSRA:
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
 	- Z Zhang, Dazhi Cheng, X Zhu, S Lin, and J Dai. Integrated Object Detection and Tracking with Tracklet-Conditioned Detection. 2018
 - Instructional:
 	- J. Malmaud, J. Huang, V. Rathod, N. Johnston, A. Rabinovich, and K. Murphy. What’s cooking? interpreting cooking videos using text, speech and vision. NAACL 2015
-	- J.-B. Alayrac, P. Bojanowski, N. Agrawal, J. Sivic, I. Laptev, and S. Lacoste-Julien. Unsupervised learning from narrated instruction videos. CVPR 2016
-- Attention-based:
-	- M Shan and N Atanasov. A spatiotemporal model with visual attention for video classification. 2017
+	- J.-B. Alayrac, P. Bojanowski, N. Agrawal, J. Sivic, I. Laptev, and S. Lacoste-Julien. Unsupervised learning from narrated instruction videos. CVPR'16
 - **P3D**: Z. Qiu, T. Yao, , and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
 - **ARTNet**: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
 - K. Hara, H. Kataoka, and Y. Satoh. Can spatiotemporal 3d cnns retrace the history of 2d cnns and imagenet? CVPR 2018
@@ -131,9 +149,3 @@
 	- T. Xue, J. Wu, K. Bouman, and B. Freeman. Visual dynamics: Probabilistic future frame synthesis via cross convolutional networks. NIPS 2016
 	- C. Vondrick, H. Pirsiavash, and A. Torralba. Generating videos with scene dynamics. In NeurIPS, 2016.
 - Ruben Villegas, Arkanath Pathak, Harini Kannan, Dumitru Erhan, Quoc V Le, Honglak Lee. High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks. NIPS'19
-
-## Legacy, Hand-Designed
-- P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV 2005
-- **STIP**: I. Laptev and T. Lindeberg. Space-time interest points. ICCV 2003
-- S. Sadanand and J. Corso. Action bank: A high-level representation of activity in video. CVPR 2012
-- H. Wang and C. Schmid. Action recognition with improved trajectories. ICCV 2013

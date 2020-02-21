@@ -24,6 +24,12 @@
 - Normalized cuts
 - Graph cuts and energy-based methods;
 
+## Unclassified
+- Pedro H. O. Pinheiro, Ronan Collobert, and Piotr Dollar. Learning to segment object candidates. NIPS'15
+
+## Benchmarks
+- German Ros, Laura Sellart, Joanna Materzynska, David Vazquez, and Antonio M. Lopez. The synthia dataset: A large collection of synthetic images for semantic segmentation of urban scenes. CVPR'16
+
 ## Semantic Segmentation
 - **SegNet**: V. Badrinarayanan, A. Kendall, and R. Cipolla. SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation. 2015
 -  A. Kendall, V. Badrinarayanan, and R. Cipolla. Bayesian Segnet: Model Uncertainty in Deep Convolutional EncoderDecoder Architectures for Scene Understanding. 2015
@@ -61,9 +67,6 @@
 	- Model:\
 		<img src="/CV-2D/images/segmentation/solo.png" alt="drawing" width="500"/>
 	- Supervision: category (focal loss) + mask (Dice Loss)
-
-## Unclassified
-- Pedro H. O. Pinheiro, Ronan Collobert, and Piotr Dollar. Learning to segment object candidates. NIPS'15
 
 ## Level Set
 - Resources:

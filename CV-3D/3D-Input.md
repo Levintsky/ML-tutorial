@@ -17,6 +17,13 @@
 - Unclassified:
 	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 		- VAE
+	- Y. Xu, T. Fan, M. Xu, L. Zeng, and Y. Qiao. SpiderCNN: Deep learning on point sets with parameterized convolutional filters. ECCV'18
+		- **SOA**
+	- P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua, and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. TOG'18
+		- Point Clouds (generally non-uniform);
+		- Estimate sample density distribution;
+		- https://github.com/viscom-ulm/MCCNN
+	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
 - **Grid-Cell**: still within regular grid;
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
 		- Preprocessing: normalize to [-1, 1]
@@ -69,17 +76,12 @@
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
 		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
-- P. Hermosilla, T. Ritschel, P.-P. Vazquez, A. Vinacua, and T. Ropinski. Monte carlo convolution for learning on non-uniformly sampled point clouds. TOG'18
-	- Point Clouds (generally non-uniform);
-	- Estimate sample density distribution;
-	- https://github.com/viscom-ulm/MCCNN
-- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
-- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
-	- 1 weighting: of the input features associated with the points, 
-	- 2.permutation: into a latent and potentially canonical order
-	- https://github.com/yangyanli/PointCNN
-	<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
+	- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
+		- 1 weighting: of the input features associated with the points, 
+		- 2.permutation: into a latent and potentially canonical order
+		- https://github.com/yangyanli/PointCNN
+		<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
 - **Graph**:
 	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
 		<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
@@ -90,10 +92,7 @@
 			- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
 			- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
 			- Aggregation: maxpool edges with the same node, maps the feature back;
-	- X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia'18
-- Unclassified:
-	- Y. Xu, T. Fan, M. Xu, L. Zeng, and Y. Qiao. SpiderCNN: Deep learning on point sets with parameterized convolutional filters. ECCV 2018
-		- **SOA**
+	- X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia'18	
 
 ## Voxel
 - **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes. CVPR'15
@@ -149,6 +148,21 @@
 - **3D-R2N2**: Christopher B. Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
 - **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17
 - **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine. NIPS'17
+
+## Temporal or Multi-3D
+- Fast-and-Furious;
+- **MinkowskiNet**: Christopher Choy, JunYoung Gwak, and Silvio Savarese. 4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks. CVPR'19
+	- 4D-occupancy grid;
+	- https://github.com/StanfordVL/MinkowskiEngine
+- Xingyu Liu, Mengyuan Yan, Jeannette Bohg. MeteorNet: Deep Learning on Dynamic 3D Point Cloud Sequences. ICCV'19
+	- https://sites.google.com/view/meteornet
+	- https://github.com/xingyul/meteornet
+	- Two grouping: direct v.s. chain-flow-based;
+	- Problem setup: classification; semantic segmentation; scene-flow;\
+		<img src="/CV-3D/images/3d_input/meteor-net-1.png" alt="drawing" width="400"/>
+	- Algorithm:\
+		<img src="/CV-3D/images/3d_input/meteor-net-2.png" alt="drawing" width="500"/>
+	- Experiments: SOA on Synthia dataset semantic segmentation;
 
 ## RGBD
 - Saurabh Gupta, Ross Girshick, Pablo Arbelaez, and Jitendra Malik. Learning rich features from rgb-d images for object detection and segmentatio. ECCV'14
