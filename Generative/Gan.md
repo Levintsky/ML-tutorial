@@ -14,7 +14,6 @@
 - Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
 	- https://github.com/seowok/TreeGAN
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
-- SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19
 - Counterfactual Critic Multi-Agent Training for Scene Graph Generation. ICCV'19
 - 3D:
 	- Neural 3D Morphable Models: Spiral Convolutional Networks for 3D Shape Representation Learning and Generation. ICCV'19
@@ -173,6 +172,14 @@
 			<img src = '/Generative/images/gan/pgan1.png' width = '500px'>
 		- Upscaling x2 as a residual operation:\	
 			<img src = '/Generative/images/gan/pgan2.png' width = '500px'>
+- Single image:
+	- Assaf Shocher, Nadav Cohen, and Michal Irani. Zero-Shot Super-Resolution using Deep Internal Learning. CVPR'18
+	- Assaf Shocher, Shai Bagon, Phillip Isola, and Michal Irani. InGAN: Capturing and Remapping the "DNA" of a Natural Image. ICCV'19
+	- Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19 Marr Prize
+		- Multi-scale GAN:\
+			<img src = '/Generative/images/gan/sin-gan-1.png' width = '400'>
+		- A single scale:\
+			<img src = '/Generative/images/gan/sin-gan-2.png' width = '400'>
 
 ## Techniques
 - T Salimans, I Goodfellow, W Zaremba, V Cheung, A Radford, and X Chen. Improved techniques for training gans. NIPS 2016

@@ -8,7 +8,23 @@
 ## Approximator
 - ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
 
+## Prediction Uncertainty, Probability Calibration
+- Resources: https://treszkai.github.io/2019/09/26/overconfidence
+- Niculescu-Mizil, Alexandru and Caruana, Rich. Predicting good probabilities with supervised learning. ICML'05
+	- Well calibrated;
+- Chuan Guo, Geoff Pleiss, Yu Sun, Kilian Q. Weinberger. On Calibration of Modern Neural Networks. ICML'17
+	- Neural Networks are over confident;
+- Balaji Lakshminarayanan, Alexander Pritzel, Charles Blundell. Simple and scalable predictive uncertainty estimation using deep ensembles. NIPS'17
+
 ## Convergence
+- Preetum Nakkiran, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, Ilya Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. ICLR'20
+	- https://openai.com/blog/deep-double-descent/
+	- Model-wise double descent: there is a regime where bigger models are worse;
+		<img src="/DL/images/analysis/double-descent-1.png" alt="drawing" width="450"/>
+	- Sample-wise non-monotonicity: there is a regime where more samples hurts;
+		<img src="/DL/images/analysis/double-descent-2.png" alt="drawing" width="450"/>
+	- Epoch-wise double descent;
+	- Hypothesis: Our intuition is that, for models at the interpolation threshold, there is effectively only one model that fits the train data, and forcing it to fit even slightly noisy or misspecified labels will destroy its global structure. That is, there are no “good models” which both interpolate the train set and perform well on the test set. However, in the over-parameterized regime, there are many models that fit the train set and there exist such good models. Moreover, the implicit bias of stochastic gradient descent (SGD) leads it to such good models, for reasons we don't yet understand.
 - Over-Parametrization:
 	- Francis Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
 	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18

@@ -1,8 +1,11 @@
 # Bayesian Neural Network
 
+## Resources
+- Yarin Gal. http://bdl101.ml/
+- NIPS'19 Tutorial: Deep Learning with Bayesian Principles. 
+
 ## Legacy
 - C Peterson. A mean field theory learning algorithm for neural networks. 1987
-- G Hinton and D Camp. Keeping the neural networks simple by minimizing the description length of the weights. COLT'93
 
 ## Unclassified
 - Ritter et al. A scalable laplace approximation for neural networks. 2018
@@ -10,6 +13,9 @@
 - **SWAG**: Wesley J Maddox, Pavel Izmailov, Timur Garipov, Dmitry Vetrov, Andrew Gordon Wilson. A Simple Baseline for Bayesian Uncertainty in Deep Learning. NIPS'19
 	- SGD-based;
 - Osawa et al. Practical Deep Learning with Bayesian Principles. NeurIPS'19
+	- https://github.com/team-approx-bayes/dl-with-bayes
+	- Formulation of 2nd order: make use of dmu/dlambda = Hessian in exponential family dA/dLambda=mu, dmu/dLambda=Hessian;\
+		<img src="/DL/images/bnn/bnn-opt.png" alt="drawing" width="400"/>
 
 ## Bayesian NN (PRML Chapter 5.6)
 - Assumptions: 2 Gaussian, weight w ~ N(0, alpha^(-1)), p(t\|x,w) ~ N(y(x,w), beta^(-1)). Then the posterior:
@@ -27,13 +33,13 @@
 	<img src="/DL/images/bnn/bnn-bishop-8.png" alt="drawing" width="450"/>
 
 ## Legacy on Bayesian as Optimization
-- Formulation:
-	<img src="/DL/images/bnn/bayes-opt-1.png" alt="drawing" width="400"/>
+- Formulation: can be derived by minimizing KL(q(theta\|lambda), p(data\|theta)p(theta))\
+	<img src="/DL/images/bnn/bayes-opt-1.png" alt="drawing" width="300"/>
 - Bayesian Statistics:
 	- Jaynes, Edwin T. Information theory and statistical mechanics. Physical review 1957
 	- Zellner, A. Optimal information processing and Bayes's theorem. The American Statistician 1988
 	- Bissiri, Pier Giovanni, Chris C. Holmes, and Stephen G. Walker. A general framework for updating belief distributions. RSS: Series B (Statistical Methodology) (2016)
-- PAC-Bayes
+- PAC-Bayes:
 	- Shawe-Taylor, John, and Robert C. Williamson. A PAC analysis of a Bayesian estimator. COLT'97
 	- Alquier, Pierre. PAC-Bayesian bounds for randomized empirical risk minimizers. Mathematical Methods of Statistics 17.4 (2008): 279-304.
 - Online-learning (Exponential Weight Aggregates)
@@ -42,8 +48,8 @@
 	- Friston, K. The free-energy principle: a unified brain theory? Nature neuroscience (2010)
 
 ## Posterior Approximations
-- Formulation:
-	<img src="/DL/images/bnn/bayes-opt-2.png" alt="drawing" width="400"/>
+- Formulation:\
+	<img src="/DL/images/bnn/bayes-opt-2.png" alt="drawing" width="300"/>
 - Hinton, G. and Van Camp, D. Keeping neural networks simple by minimizing the description length of the weights. COLT'93
 - Entropy-regularized/Maximum-entropy RL:
 	- Williams, Ronald J., and Jing Peng. Function optimization using connectionist reinforcement learning algorithms. Connection Science 3.3 (1991): 241-268

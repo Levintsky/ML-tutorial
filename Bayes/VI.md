@@ -50,6 +50,7 @@
 		- Generalized EM: M-step partially;
 - Modern:
 	- Ji Xu, Daniel Hsu, Arian Maleki. Benefits of over-parameterization with EM. NIPS'18
+	- Wu Lin, Mohammad Emtiyaz Khan, Mark Schmid. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
 	- Belhal Karimi, Hoi-To Wai, Eric Moulines, Marc Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
 
 ## Approximate Inference (PRML, Chap 10)
@@ -111,7 +112,6 @@
 		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
 
 ## Black-box VI
-- John Paisley, David M. Blei, Michael I. Jordan. Variational Bayesian Inference with Stochastic Search. ICML'12
 - Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14
 	- Basics behind VAE;
 	- ELBO:\
@@ -121,6 +121,11 @@
 
 ## Conjugate Prior
 - Mohammad Emtiyaz Khan, Wu Lin. Conjugate-Computation Variational Inference : Converting Variational Inference in Non-Conjugate Models to Inferences in Conjugate Models. AISTATS'17
+
+## Minibatch
+- MD Hoffman, DM Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
+	- Insight: case of mini-batch; need a global variable beta to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
+		<img src="/Bayes/images/VI/svi.png" alt="drawing" width="400"/>
 
 ## Theory
 - Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18

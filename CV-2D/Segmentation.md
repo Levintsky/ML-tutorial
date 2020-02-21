@@ -1,5 +1,29 @@
 # Segmentation
 
+## Basics
+- Rick Szeliski (Chap 5)
+- Active contours;
+	- Snakes;
+	- Dynamic snakes and CONDENSATION;
+	- Scissors;
+	- Level Sets;
+		- Assume that the embedding function φ is a sdf away from the curve, in which case |φ| = 1
+		- The first term in Equation moves the curve in the direction of its curvature, i.e., it acts to straighten the curve, under the influence of the modulation function g(I).
+		- The second term moves the curve down the gradient of g(I), encouraging the curve to migrate towards minima of g(I)
+		<img src="/CV-2D/images/segmentation/level-set.png" alt="drawing" width="500"/>
+	- Application: Contour tracking and rotoscoping;
+- Split and merge;
+	- Watershed;
+	- Region splitting (divisive clustering);
+	- Region merging (agglomerative clustering);
+	- Graph-based segmentation;
+	- Probabilistic aggregation;
+- Mean shift and mode finding
+	- K-means and mixtures of Gaussians
+	- Mean shift
+- Normalized cuts
+- Graph cuts and energy-based methods;
+
 ## Semantic Segmentation
 - **SegNet**: V. Badrinarayanan, A. Kendall, and R. Cipolla. SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation. 2015
 -  A. Kendall, V. Badrinarayanan, and R. Cipolla. Bayesian Segnet: Model Uncertainty in Deep Convolutional EncoderDecoder Architectures for Scene Understanding. 2015
