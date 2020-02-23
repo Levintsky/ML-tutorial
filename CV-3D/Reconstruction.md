@@ -1,61 +1,7 @@
 # 3D Reconstruction
 
-## Problem Setup
-- Direct 3D reconstruction for whole object;
-- Scene: depth map;
-- Infer cues:
-	- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
-
-## Benchmarks
-- **Kitti**;
-- **Virtual Kitti**: A Gaidon, Q Wang, Y Cabon, E Vig. Virtual Worlds as Proxy for Multi-Object Tracking Analysis. CVPR'16
-	- https://github.com/VisualComputingInstitute/vkitti3D-dataset
-- Cityscape;
-- DeMon dataset: combination of SUN3D, ...
-- **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
-	- MVS benchmark;
-- **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
-- **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
-	- MVS benchmark;
-
-## Evaluation
-- Geometric:
-	- Depth/disparity with GT;
-	- **Chamfer distance**: H. G. Barrow, J. M. Tenenbaum, R. C. Bolles, and H. C. Wolf. Parametric Correspondence and Chamfer Matching: Two New Techniques for Image Matching. IJCAI'77
-- Photometric;
-
-## Differentiable Rendering
-- **Opendr**: Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. ECCV'14
-	- General framework, not only for NN;
-- **Neural-Renderer**: Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
-	- Problem: 1. single 2D image to mesh; 2. Mesh Editing;
-	- Insight: differentiable; approximate GD; first mesh generative model;
-	- http://hiroharu-kato.com/projects_en/neural_renderer.html
-	- https://github.com/daniilidis-group/neural_renderer
-	- Supervision: silhouette loss + smoothness loss;
-	- Assumption: deform an existing mesh (not from scratch); preprocessed segmentation;
-	- Evaluation: 13 classes from ShapeNet;\
-		<img src="/CV-3D/images/dr/neural-dr.png" alt="drawing" width="500"/>
-- **DIB-R**: Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
-	- https://nv-tlabs.github.io/DIB-R/
-		<img src="/CV-3D/images/dr/dib-r.png" alt="drawing" width="500"/>
-- Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
-
 ## Unclassified
-- Tom, Shenlong, Raquel:
-	- https://docs.google.com/presentation/d/1Mxpq_EQvlHXAsF_fz18-VN2UN6WPaACKIQvRFj7o7YM/edit#slide=id.g5058d9e3b1_0_0
-- Deep Structured 3D Estimation. Mini-12
-	- Input: stereo image, LiDAR; Output: pose, shape;
-	- Supervision:
-		- Multi-view geometry;
-		- Intuitive physics;
-		- Photo consistency;
-		- Silhouette;
-		- Consistency;
-		- Intuitive physics;
-		- Symmetry;
-	- Metrics: shape; (Chamfer distance) pose;
-	- Exp: ShapeNet, Tor4D, Kitti;
+- Joel Ruben Antony Moniz, Christopher Beckham, Simon Rajotte, Sina Honari, Christopher Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
 
 ## Depth Estimation
 - Single view:
@@ -142,9 +88,9 @@
 			- Forward-backward consistency check: depth consistency
 			- Depth supervision (if GT available)
 			- Camera motion (if GT available)
-			- Optical flow (if GT available)
-		<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="600"/>
-		<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="600"/>
+			- Optical flow (if GT available) \
+		<img src="/CV-3D/images/reconstruction/sfm-net1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/reconstruction/sfm-net2.png" alt="drawing" width="500"/>
 	- **SFM-Learner**: T Zhou, M Brown, N Snavely, D Lowe. Unsupervised Learning of Depth and Ego-Motion from Video. CVPR'17
 		- https://github.com/tinghuiz/SfMLearner (TF); https://github.com/ClementPinard/SfmLearner-Pytorch (pytorch)
 		- Input 2+ frames; output: depth; camera pose;
@@ -154,9 +100,9 @@
 		- Supervision:
 			- Photometric by view synthesis: inverse warp back to target frame; (L1)
 			- Explanability mask \* photometric loss
-			- Regularization: multi-scale smoothness loss;
-		<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="600"/>
-		<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="600"/>
+			- Regularization: multi-scale smoothness loss; \
+		<img src="/CV-3D/images/reconstruction/ssl-depth1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/reconstruction/ssl-depth2.png" alt="drawing" width="500"/>
 		<img src="/CV-3D/images/reconstruction/ssl-depth3.png" alt="drawing" width="400"/>
 	- C Pinard, L Chevalley, A Manzanera and D Filliat. Learning structure-from-motion from motion. ECCV'18
 		- Insight: depth-net has two inputs, STAB as preprocessing;
@@ -196,127 +142,93 @@
 		<img src="/CV-3D/images/reconstruction/ba-net2.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/ba-net3.png" alt="drawing" width="600"/>
 
-## Object 3D Reconstruction
-- Single-image:
-	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
-		- https://github.com/akar43/CategoryShapes
-	- Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang, and J. Xiao. 3D ShapeNets: A deep representation for volumetric shapes. CVPR'15
-		- Input: image; output: voxel;
-	- **PTN**: X Yan, J Yang, E Yumer, Y Guo, and H Lee. Perspective transformer nets: Learning single-view 3d object reconstruction without 3d supervision. NIPS'16
-		- Insight: encoder-decoder for 2d-3d, no 3d supervision, silhouette supervision from different views instead of gt;
-		- https://github.com/xcyan/ptnbhwd
-		- Input: image; output: voxel;
-		- Assumption: clean background;
-		- Encoder-decoder: view-invariant encoder for image h(I), decoder generates 3d v=g(h(I));
-		- Supervision: silhouette-based volumetric loss from space carving;
-		<img src="/CV-3D/images/reconstruction/per-trans-net.png" alt="drawing" width="600"/>
-	- D Rezende, S Eslami, S Mohamed. Unsupervised Learning of 3D Structure from Images. NIPS'16
-		- Key insight: **VAE** style; SSL; REINFORCE to back-prop through black-box renderer;
-		- Experiment: ShapeNet;
-		<img src="/CV-3D/images/reconstruction/unsup-3d.png" alt="drawing" width="600"/>
-	- **OGN**: M Tatarchenko, A Dosovitskiy, T Brox. Octree Generating Networks: Efficient Convolutional Architectures for High-resolution 3D Outputs. 2017
-		- Key: **Coarse to fine**;
-		- https://github.com/lmb-freiburg/ogn
-		- Input: image; output: voxel;
-		<img src="/CV-3D/images/reconstruction/ogn.png" alt="drawing" width="600"/>
-	- H Fan, H Su, and L Guibas. A point set generation network for 3d object reconstruction from a single image. CVPR'17
-		- Key insight: hourglass better; random variable;
-		- https://github.com/fanhqme/PointSetGeneration
-		- Input: image, random variable r; output: point cloud;
-		- Net-structure: encoder, predictor;
-		- Supervision: 1. Chamfer distance; 2. EMD with approximation;
-		<img src="/CV-3D/images/reconstruction/point-set-gen.png" alt="drawing" width="600"/>
-	- **HSP**: C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 3DV'17
-		- Insight: **coarse to fine**, 16^3 to 32^3 to ... 256^3; only nodes on boundary needs upsamplng;
-		- https://github.com/chaene/hsp
-		- Input: color, depth, partial volume; Ouptut: voxel (3 classes: free, **boundary**, occupied)
-		- CNN with deep-supervision on different resolution
-		- Most important part: predict layer l+1 based on layer l (e.g. from 16^3 to 32^3)
-			- 1. Feature Cropping: (b/2+2p)^3 region with p padding;
-			- 2. Upsampling: (b+2p)^3 region
-			- 3. Output generation: max boundary prediction reponse; above threshold, expand child;
-		<img src="/CV-3D/images/reconstruction/factor3d.png" alt="drawing" width="600"/>
-	- **DRC**: S Tulsiani, T Zhou, A Efros, J Malik. Multi-view Supervision for Single-view Reconstruction via Differentiable Ray Consistency.  PAMI'19
-		- Key insight: relax 3D GT requirement to 2D consistency!
-		- https://github.com/shubhtuls/drc (torch);
-		- Input: image (model) + multiple images (refine?); Output: voxel for 3d;
-		- Assume: camera poses known?
-		- Model: ray termination event;	Event: a ray intersect a voxel, previous voxels are all unoccupied
-		- Supervision:
-			- Depth, Foreground mask
-			- Per-ray consistency loss
-		- Experiment: ShapeNet; PASCAL 3D
-		<img src="/CV-3D/images/reconstruction/drc.png" alt="drawing" width="600"/>
-	- **MVC**: S Tulsiani, A Efros, J Malik. Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction. CVPR'18
-		- Key insight: **unknown-shape**, 
-		- https://github.com/shubhtuls/mvcSnP
-		- Input: single image; output: camera pose, 3D-shape;
-		- Training mode: (two images of an object as input)
-			- Shape from first view; (conanical view?)
-			- Pose from second view;
-		- Test mode: independent shape and pose;
-		<img src="/CV-3D/images/reconstruction/mvc.png" alt="drawing" width="600"/>
-	- DeformNet: A Kuryenkov, J Ji, A Garg, V Mehta, J Gwak, C Choy, S Savarese. DeformNet: Free-Form Deformation Network for 3D Shape Reconstruction from a Single Image. 2017
-		- Insight: first CNN retrive a **prototype**, then CNN to deform
-		- https://deformnet-site.github.io/DeformNet-website/
-		- Input: single image; output: point clouds;
-	- **3D-INN**: J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18
-		- Key insight: skeleton representation for 3D objects (so keypoints infers 3D);
-		- Input: single image; output:	2d keypoints as well as 3d structure;
-		- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;
-		<img src="/CV-3D/images/reconstruction/3d-inn.png" alt="drawing" width="600"/>
-	- **MarrNet**: J Wu, Y Wang, T Xue, X Sun, W Freeman, and J Tenenbaum. MarrNet: 3D Shape Reconstruction via 2.5D Sketches. NIPS'17
-		- Key insight: 3D-cues first (2.5-D: normal, depth, silhouette), then 3D shape
-		- http://marrnet.csail.mit.edu/
-		- https://github.com/jiajunwu/marrnet
-		- Input: image; output: voxel;
-		- Network: encoder (ResNet-18) - decoder (input normal image + depth image masked by silhouette);
-		- Supervision: (2D-3D Reprojection consistency)
-			- Depth map with voxel: L2;
-			- Surface normal; (surface orthogonal to normal should be 1)
-		<img src="/CV-3D/images/reconstruction/marrnet.png" alt="drawing" width="600"/>
-	- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
-		- https://github.com/ThibaultGROUEIX/AtlasNet
-		- Input: 2D image/Point Cloud; Output: Mesh;
-	- **ShapeHD**: J. Wu, C. Zhang, X. Zhang, Z. Zhang, W. T. Freeman, and J. B. Tenenbaum. Learning shape priors for single-view 3D completion and reconstruction. ECCV'18
-		- Key insigth: improve on MarrNet with naturalness (pretrained discriminator) to solve ambiguity, with Wasserstein-GAN loss;
-		- https://github.com/xiumingzhang/GenRe-ShapeHD
-		- Input: single view; Output: 3D completion/reconstruction;
-		<img src="/CV-3D/images/reconstruction/shapehd.png" alt="drawing" width="600"/>
-	- **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
-		- Insight: project to spherical map;
-		- https://github.com/xiumingzhang/GenRe-ShapeHD
-		<img src="/CV-3D/images/reconstruction/genre.png" alt="drawing" width="600"/>
-	- **Occupancy-Network**: L Mescheder, M Oechsle, M Niemeyer, S Nowozin, and A Geiger. Occupancy networks: Learning 3d reconstruction in function space. CVPR'19
-		- Insight: new 3D representation, could generate mesh at any resoltuion;
-		- https://github.com/autonomousvision/occupancy_networks
-		- Input image; output: **continuous decision boundary of a deep-NN**;
-		- Learn an occupancy function: R3 to [0,1];
-		- Surface at inference time: Multiresolution IsoSurface Extraction (MISE)
-	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
-- Multi-view:
-	- S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
-		- Estimate normal of depth map; then improve depth map fusion;
-	- **3d-r2n2**: C B Choy, D Xu, J Gwak, K Chen, and S Savarese. 3d-r2n2: A unified approach for single and multiview 3d object reconstruction. ECCV'16
-		- https://github.com/chrischoy/3D-R2N2
-		- Input: single/multiple images; output: voxel;
-		- Update model with RNN each time with a new image;
-			<img src="/CV-3D/images/reconstruction/3d-r2n2.png" alt="drawing" width="500"/>
-	- **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17.
-		- Insight: end-to-end multi-view stereo; geometry with color encoded in voxel with **unproject**;
-		- https://github.com/mjiUST/SurfaceNet
-		- Input: images with camera pose; Output: 3D voxel, with [0,1] for on surface or not;
-		- Turn images to CVC (color voxel cube)\
-		<img src="/CV-3D/images/reconstruction/surface-net1.png" alt="drawing" width="450"/>
-		<img src="/CV-3D/images/reconstruction/surface-net2.png" alt="drawing" width="450"/>
-	- **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine, NIPS'17
-		- Key insight: **unproject**;
-		- https://github.com/akar43/lsm
-		- Input: multiple images; Output: 32^3 Voxel 3D;
-		- Assumption: **camera pose known**;
-		- Cost volume;\
-		<img src="/CV-3D/images/stereo/lsm1.png" alt="drawing" width="500"/>
-		<img src="/CV-3D/images/stereo/lsm2.png" alt="drawing" width="500"/>
+## Stereo
+- Unclassified:
+	- C Lin, O Wang, B Russell, E Shechtman, V Kim, M Fisher, and S Lucey. Photometric mesh optimization for video-aligned 3d object reconstruction. CVPR'19
+- Legacy:
+	- Descriptors:
+		- CENSUS, BRIEF
+	- SGM;
+	- MVS:
+		- Voxel-based: (space-carving)
+			- K. N. Kutulakos and S. M. Seitz. A theory of shape by space carving. ICCV'99
+			- S. M. Seitz and C. R. Dyer. Photorealistic scene reconstruction by voxel coloring. IJCV'99
+		- Fusion-based:
+			- N. D. Campbell, G. Vogiatzis, C. Hernández, and R. Cipolla. Using multiple hypotheses to improve depth-maps for multiview stereo. ECCV'08
+			- E. Tola, C. Strecha, and P. Fua. Efficient large-scale multi-view stereo for ultra high-resolution image sets. MVA'12
+			- S. Galliani, K. Lasinger, and K. Schindler. Massively parallel multiview stereopsis by surface normal diffusion. ICCV'15
+- DL: patch-similarity:
+	- S. Zagoruyko and N. Komodakis. Learning to compare image patches via convolutional neural networks. CVPR'15
+	- J. Zbontar and Y. LeCun. Stereo matching by training a convolutional neural network to compare image patches. JMLR'16
+	- W. Luo, A. G. Schwing, and R. Urtasun. Efficient deep learning for stereo matching. CVPR'16
+	- P Knobelreiter, C Reinbacher, A Shekhovtsov, and T Pock. End-to-end training of hybrid cnn-crf models for stereo. CVPR'17
+	- W. Hartmann, S. Galliani, M. Havlena, L. V. Gool, K. Schindler. Learned multi-patch similarity. ICCV'17.
+		- Input: **> 2** image patches (32 x 32);
+		- Output: potential depth (discretized);
+		<img src="/CV-3D/images/stereo/multi-patch-sim.png" alt="drawing" width="600"/>
+		- Application in MVS (plane-sweep): discretize depth and iterate over all;
+	- **GC-Net**: A. Kendall, H. Martirosyan, S. Dasgupta, P. Henry, R. Kennedy, A. Bachrach, and A. Bry. End-to-end learning of geometry and context for deep stereo regression. ICCV'17
+		- Input: rectified stereo pair;
+		- Output: stereo;
+		- Cost volume;
+		- Conv-Deconv on cost volume;
+		- Differentiable arg-max;
+		<img src="/CV-3D/images/stereo/gc-net.png" alt="drawing" width="500"/>
+	- S Duggal, S Wang, W Ma, Rui Hu, and R Urtasun. Deeppruner: Learning efficient stereo matching via differentiable patchmatch. 2019
+- DL: affinity:
+	- **Sgm-net**: A Seki and M Pollefeys. Sgm-nets: Semi-global matching with neural networks. CVPR'17
+	- **SPN**: S. Liu, S. De Mello, J. Gu, G. Zhong, M.-H. Yang, and J. Kautz, Learning affinity via spatial propagation networks. NIPS'17
+		- https://github.com/danieltan07/spatialaffinitynetwork
+		- https://github.com/Liusifei/caffe-spn
+	- **CSPN (SOA)**: X Cheng, P Wang and R Yang. Learning Depth with Convolutional Spatial Propagation Network. PAMI'18
+		- https://github.com/XinJCheng/CSPN
+		<img src="/CV-3D/images/stereo/cspn.png" alt="drawing" width="600"/>
+	- **GA-Net (SOA)**: F Zhang, V Prisacariu, R Yang, Philip H.S. Torr. GA-Net: Guided Aggregation Net for End-to-end Stereo Matching. CVPR'19
+		- https://github.com/feihuzhang/GANet
+	- X Du, M El-Khamy, J Lee. AMNet: Deep Atrous Multiscale Stereo Disparity Estimation Networks. 2019
+	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
+		- https://github.com/ucbdrive/hd3
+	- **PSM-Net**: J Chang and Y Chen. Pyramid stereo matching network. CVPR'18
+	- Learning Unsupervised Multi-View Stereopsis via Robust Photometric Consistency, T. Khot, S. Agrawal, S. Tulsiani, C. Mertz, S. Lucey, M. Hebert. 2019.
+	- Chengzhou Tang and Ping Tan. BA-Net: Dense Bundle Adjustment Network. 2018
+	- **Unsupervised-Deep-VO**: Ruihao Li, Sen Wang, Zhiqiang Long, and Dongbing Gu. Undeepvo: Monocular visual odometry through unsupervised deep learning. In ICRA, 2018.
+- DL: PSV (plane-sweep algorithm):
+	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
+		- Problem: new view synthesis
+		- Input images with camera poses;
+		- Output: new 2d synthesized view;
+		- Preprocess: PSV (Plane-Sweep Volume)
+		<img src="/CV-3D/images/stereo/deep-stereo.png" alt="drawing" width="500"/>
+	- **DeepMVS**: P Huang, K Matzen, J Kopf, N Ahuja, and J Huang. DeepMVS: Learning Multi-view Stereopsis. CVPR'18
+		- https://github.com/phuang17/DeepMVS
+		- Input: an **arbitrary number** of images with known camera poses and calibration;
+		- Steps:
+			- 0. Images, camera pose and calibration (**COLMAP** to estimate);
+			- 1. Produce plane-sweep volumes;
+			- 2.1 Patch Matching
+			- 2.2 Encoder-decoder intra-volume feature aggregation;
+			- 2.3 Max-pooling to aggregate inter-volume and produce disparity map;
+			- 3. Refinement: dense-crf
+		- Dataset:
+			- DeMoN dataset: 640 x 480 resolution;
+			- **MVS-SYNTH**: 120 sequences synthetic (greatly helpful), each seq contains 100 images of 1920 x 1080 resolution, ground truth disparity map, extrinsic and intrinsic camera;
+			- ETH3D
+	- **DPSNet**: Sunghoon Im, Hae-Gon Jeon, Stephen Lin, In So Kweon. DPSNet: End-to-end Deep Plane Sweep Stereo, ICLR'19.
+		- Assume: intrinsic K; extrinsic (R, t) known
+		<img src="/CV-3D/images/stereo/dpsnet.png" alt="drawing" width="600"/>
+		<img src="/CV-3D/images/stereo/dpsnet2.png" alt="drawing" width="500"/>
+- DL: MVS:
+	- **MVSNet**: Y. Yao, Z. Luo, S. Li, T. Fang, L. Quan. MVSNet: Depth Inference for Unstructured Multi-view Stereo. ECCV'18.
+	- **Point-MVSNet**: R Chen, S Han, J Xu, H Su. Point-based Multi-view Stereo Network. ICCV'19.
+		- https://github.com/callmeray/PointMVSNet
+		- MVSNet for a low-resolution depth; 1/4 resolution, 48 or 96 depth plane;
+		- Cost metric based on variance;
+		- Dynamic feature fetching (extracted at different location after iterative refine);
+		- PointFlow for iterative refine;
+			- Edge conv: with kNN
+		- Supervision: L1-loss with ground truth for regression;
+		- Experiments: DTU; 
+		<img src="/CV-3D/images/stereo/point-mvs-net.png" alt="drawing" width="600"/>
 
 ## Depth/Shape Completion, AE (3D-3D)
 - Scene (Depth) Inpainting/Completion
@@ -343,14 +255,8 @@
 		- Assume a probabilistic model
 		- Model to optimize MLE;
 	- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
-- Object (Shape) Completion
-	- A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3D-encoder-predictor CNNs and shape synthesis. CVPR'17
-	- L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. ICCV'17
-	- G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17
-- AutoEncoder
-	- Q Tan, L Gao, Y Lai, J Yang and S Xia. Mesh-based Autoencoders for Localized Deformation Component Analysis. 2017
-		- Input: multiple mesh; output: new mesh synthesis (deformation);
-	- Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia
+- Angela Dai, Daniel Ritchie, Martin Bokeloh, Scott Reed, Jurgen Sturm, Matthias Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
+- Angela Dai, Christian Diller, Matthias Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
 
 ## Misc
 - X. Wang, D. Fouhey, and A. Gupta. Designing deep networks for surface normal estimation. CVPR'15

@@ -1,6 +1,9 @@
 # Benchmarks
 
-## Benchmarks
+## Unclassified
+- **Pix3d**: Xingyuan Sun, Jiajun Wu, Xiuming Zhang, Zhoutong Zhang, Chengkai Zhang, Tianfan Xue, Joshua B. Tenenbaum, and William T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
+
+## Objects
 - ShapeNet-Series:
 	- **ShapeNet**: Angel X Chang, Thomas Funkhouser, Leonidas Guibas, et al. Shapenet: An information-rich 3d model repository. 2015
 		- https://www.shapenet.org/
@@ -68,3 +71,13 @@ labeling from online repositories. TOG 2017
 - **AI2-THOR**;
 - **UnrealCV**;
 - **Gibson Environment**: Real-World Perception for Embodied Agents;
+- **Kitti**;
+- **Virtual Kitti**: A Gaidon, Q Wang, Y Cabon, E Vig. Virtual Worlds as Proxy for Multi-Object Tracking Analysis. CVPR'16
+	- https://github.com/VisualComputingInstitute/vkitti3D-dataset
+- Cityscape;
+- DeMon dataset: combination of SUN3D, ...
+- **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
+	- MVS benchmark;
+- **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
+- **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
+	- MVS benchmark;

@@ -75,26 +75,6 @@
 	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
 		<img src="/RL/images/algos/ppo-dist.png" alt="drawing" width="400"/>
 
-## Natural Gradient
-- About **Natural Gradient**:
-	- Relation with Gauss-Newton
-	- https://www.zhihu.com/question/266846405
-	- https://zhuanlan.zhihu.com/p/82934100
-- Legacy:
-	- S.-I. Amari. Natural gradient works efficiently in learning. Neural Computation, 10(2): 251–276, 1998.
-	- S.-i. Amari and A. Cichocki. Adaptive blind signal processing-neural network approaches. Proceedings of the IEEE, 86(10):2026–2048, 1998.
-	- S.-i. Amari and H. Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
-- Fisher Information Matrix:
-	- PSD (positive semi-definite);
-- J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature.
-	- Assumption: FC (si = Wi\* ai) + non-linear (ai = phi(si)), then DWi=gi x ai-1, Fisher:\
-		<img src="/RL/images/algos/k-fac1.png" alt="drawing" width="400"/>
-	- Approx:\
-		<img src="/RL/images/algos/k-fac2.png" alt="drawing" width="400"/>
-- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
-- James Martens. New insights and perspectives on the natural gradient method. 2017
-	- Geometric interpretation: the steepest change of KL(P(theta+d)||P(theta)), locally symmetric;
-
 ## Value + Policy, Actor-Critic
 - Basics: (Sergey Levine, CS-294)
 	- Actor: the policy

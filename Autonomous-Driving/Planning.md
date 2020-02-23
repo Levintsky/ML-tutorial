@@ -2,6 +2,34 @@
 
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
+	- Overall:\
+		<img src="/Autonomous-Driving/images/plan/survey.png" alt="drawing" width="500"/>
+		- A. Route planning: Dijkstra, A\*;
+		- B. Behavior decision making;
+		- C. Motion planning; (exact solution intractable)
+		- D. Control;
+	- Kinematic Single-Track model; (constraints: front wheel, rear wheel; no-slip; move in a plane;)
+	- Inertia Effects;
+	- Motion planning:
+		- Path planning: represented as a function σ(α) : [0,1] → X, where X is the configuration space of the vehicle. No prescription how this path should be followed and one can either choose a velocity profile for the path or delegate this task to lower layers of the decision hierarchy;\
+			- PSPACE-hard;
+			- Shortest obstacle-free path;
+			- Variational methods: optimization based;
+			- Graph-search based: discretize configuration;
+			- Incremental search method; incrementally build a reachability graph;
+			<img src="/Autonomous-Driving/images/plan/opt-path-plan.png" alt="drawing" width="350"/>
+		- Trajectory planning: the control execution time is explicitly considered;\
+			- PSPACE-hard;
+			<img src="/Autonomous-Driving/images/plan/opt-traj-plan.png" alt="drawing" width="350"/>
+		- Variational methods;
+			- Barrier methods: penalty / epsilon, could start from infeasible;
+			- Direct methods: finite dimensional subspace;
+			- 1. Numerical integrator with collocation;
+			- 2. Pseudo-spectral methods;
+		- Graph search models;
+			- Lane graph;
+			- Geometric method;
+			- Sampling based method;
 
 ## Problem Setup
 - Input: current status and context (self, every actor else, traffic light, ...)

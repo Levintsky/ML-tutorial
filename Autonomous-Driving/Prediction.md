@@ -37,10 +37,25 @@
 - Multimodal Trajectory Predictions for Autonomous Driving using Deep Convolutional Networks [ICRA'19, Pitts]
 
 ## Pure Prediction
+- **GPRF**: Kihwan Kim, Dongryeol Lee, Irfan Essa. Gaussian Process Regression Flow for Analysis of Motion Trajectories. ICCV'11
+	- http://www.cc.gatech.edu/cpl/projects/gprf/
+	- Framework:\
+		<img src="/Autonomous-Driving/images/prediction/gprf-1.png" alt="drawing" width="400"/>
+	- Input space x position (u, v, t); output y (yu, yv, yt) (yt: frame difference as a constant), with Gaussian process:\
+		<img src="/Autonomous-Driving/images/prediction/gprf-2.png" alt="drawing" width="400"/>\
+		<img src="/Autonomous-Driving/images/prediction/gprf-3.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/prediction/gprf-4.png" alt="drawing" width="400"/>
+	- Train k GPRF for each class;
+	- Classification of Trajectories: Similarity for Complete Trajectories;\
+		<img src="/Autonomous-Driving/images/prediction/gprf-5.png" alt="drawing" width="400"/>
+	- Prediction of Trajectories: Similarity for Complete Trajectories;\
+		<img src="/Autonomous-Driving/images/prediction/gprf-6.png" alt="drawing" width="400"/>
 - Mayank Bansal, Alex Krizhevsky, and Abhijit S. Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18
 - Multi future:
 	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. CoRR'18
 	- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
+	- **DSF**: Ye Yuan, Kris M. Kitani. Diverse Trajectory Forecasting with Determinantal Point Processes. ICLR'20 \
+		<img src="/Autonomous-Driving/images/prediction/dsf.png" alt="drawing" width="400"/>
 - **Multipath**: Yuning Chai, Benjamin Sapp, Mayank Bansal, and Dragomir Anguelov. Multipath: Multiple probabilistic anchor trajectory hypotheses for behavior prediction. 2019
 - Tianyang Zhao, Yifei Xu, Mathew Monfort, Wongun Choi, Chris Baker, Yibiao Zhao, Yizhou Wang, and Ying Nian Wu. Multi-agent tensor fusion for contextual trajectory prediction. CoRR'19
 - **MFP**: Yichuan Charlie Tang, Ruslan Salakhutdinov. Multiple Futures Prediction. NIPS'19

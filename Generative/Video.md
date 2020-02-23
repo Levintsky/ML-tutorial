@@ -33,5 +33,7 @@
 		<img src="/Generative/images/video/every-dance4.png" alt="drawing" width="500"/>
 	- Full objective:\
 		<img src="/Generative/images/video/every-dance5.png" alt="drawing" width="500"/>	
-- T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
 - D. Chen, J. Liao, L. Yuan, N. Yu, and G. Hua. Coherent online video style transfer. ICCV'17
+- **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
+	- https://tcwang0509.github.io/vid2vid/
+	- https://github.com/NVIDIA/vid2vid (pytorch)

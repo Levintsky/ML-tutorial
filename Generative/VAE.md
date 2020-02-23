@@ -1,8 +1,9 @@
 # Variational Auto Encoder
 
-## Basics from Large-Scale Variational Inference
-- Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
-- Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
+## Unclassified
+- Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18
+- Emile Mathieu, Charline Le Lan, Chris J. Maddison, Ryota Tomioka, Yee Whye Teh. Continuous Hierarchical Representations with Poincaré Variational Auto-Encoders. NIPS'19
+- Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen. D-VAE: A Variational Autoencoder for Directed Acyclic Graphs. NIPS'19
 
 ## Summaires
 - https://www.jianshu.com/p/bfa6b5947cd9
@@ -35,6 +36,7 @@
 	- Better disentangle
 	- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 - AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
+- Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
 	- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
 	- Inductive biases:
@@ -127,6 +129,3 @@
 - Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 - **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoen-coders for generating 3d point clouds.
 	- Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
-
-## Unclassified
-- Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18

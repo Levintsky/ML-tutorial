@@ -7,3 +7,4 @@
 	- Prune s% of the parameters, creating a mask m where Pm = (100 − s)%.
 	- To extract the winning ticket, reset the remaining parameters to their values in θ0, creating the untrained network.
 - Zhuang Liu, Mingjie Sun, Tinghui Zhou, Gao Huang, Trevor Darrell. Rethinking the Value of Network Pruning. ICLR 2019
+- Ari Morcos, Haonan Yu, Michela Paganini, Yuandong Tian. One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers. NIPS'19

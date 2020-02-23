@@ -12,17 +12,32 @@
 - **Does-not-Work-yet**:
 	- General feature learning
 
-## Images:
+## Unclassified
+- Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
+- **ReMixMatch**: David Berthelot, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel, Kihyuk Sohn. ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring. 2019
+	- CTAugment
+	- https://github.com/google-research/remixmatch
+	- CIFAR: 93.73% with 4,000 labels; 84.9% with 40;
+- **FixMatch**: Kihyuk Sohn, David Berthelot, Chun-Liang Li, Zizhao Zhang, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel. FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence. 2020
+	- https://github.com/google-research/fixmatch
+	- CIFAR: 94.9% with 250 labels, 88.6% with 40 (4 per class);
+
+## Images
 - Summaries:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
+- Context prediction:
+	- Unsupervised Visual Representation Learning by Context Prediction. ICCV 2015
+	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
 - Input two image patches, predict spatial relationship:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
-- Predict color from gray scale values
+- Predict color from gray scale values:
 	- Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
 - Predict image rotation:
 	- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
 - Clustering (pseudo-labels):
+	- **Pseudo-label**: Dong-Hyun Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
+		- Equivalent to  Entropy Regularization;
 	- Mathilde Caron, Piotr Bojanowski, Armand Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
 		- Extract CNN and run K-means
 		- Train on cluster id;
@@ -84,6 +99,7 @@
 	- R. Arandjelovic et al. Object that sound, ECCV 2018
 - R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15
 - Self-Supervised Video Representation Learning With Odd-One-Out Networks
+- Matthias Minderer, Chen Sun, Ruben Villegas, Forrester Cole, Kevin Murphy, Honglak Lee. Unsupervised learning of object structure and dynamics from videos. NIPS'19
 
 ## SOA
 - **CPC**:
@@ -91,8 +107,6 @@
 	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
 
 ## Tasks
-- Context prediction:
-	- Unsupervised Visual Representation Learning by Context Prediction. ICCV 2015
 - Jigsaw:
 	- Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV 2016
 

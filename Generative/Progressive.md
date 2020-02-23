@@ -58,6 +58,6 @@
 ## Inverse Graphics
 - Jampani, V., Nowozin, S., Loper, M., and Gehler, P. V. The informed sampler: A discriminative approach to bayesian inference in generative computer vision models. CVIU'15.
 - Tuan Anh Le, Atilim Gunes Baydin, and Frank D. Wood. Inference compilation and universal probabilistic programming. CoRR'16.	
-- Nair, V., Susskind, J., and Hinton, G. E. Analysis-by synthesis by learning to invert generative black boxes. In ICANN, 2008.
+- Nair, V., Susskind, J., and Hinton, G. E. Analysis-by synthesis by learning to invert generative black boxes. ICANN'08.
 - **Sketch**:
 	- Image-to-Markup Generation with Coarse-to-Fine Attention. ICML 2017
