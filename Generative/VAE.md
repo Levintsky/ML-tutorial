@@ -17,26 +17,58 @@
 ## VAE-Basics
 - A great codebase:
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
-- **VAE**: Diederik P Kingma and Max Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013.
+- **VAE**: Diederik P Kingma and Max Welling. Auto-encoding variational bayes. ICLR'14
 	- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
 	- **BCE** (Binary Cross Entropy) for reconstruction (mnist)\
 		<img src="/Generative/images/vae/vae-elbo.png" alt="drawing" width="500"/>
 		<img src="/Generative/images/vae/vae-elbo2.png" alt="drawing" width="500"/>
-- Semi-VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS 2014\
-	- Problem setup: some (x, y) pairs, some x only;
+- **DLGM**: Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML'14
+	- Graphical model:\
+		<img src="/Generative/images/vae/vae-dlgm-1.png" alt="drawing" width="350"/>
+	- Top-down generative process:\
+		<img src="/Generative/images/vae/vae-dlgm-2.png" alt="drawing" width="350"/>
+	- Reparametrization trick:\
+		<img src="/Generative/images/vae/vae-dlgm-3.png" alt="drawing" width="350"/>
+	- Algorithm:\
+		<img src="/Generative/images/vae/vae-dlgm-4.png" alt="drawing" width="350"/>
+- Semi-VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS'14
+	- Problem setup: some (x, y) pairs, some x only;\
 		<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="300"/>
 	- Formulation:\
 		<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
 - **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015\
 	<img src="/Generative/images/vae/cVAE.png" alt="drawing" width="450"/>
-- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'16
+- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
+	- Formulation:\
+		<img src="/Generative/images/vae/dvib-1.png" alt="drawing" width="450"/>
+	- The first term in RIB encourages Z to be predictive of Y;
+	- The second term encourages Z to "forget" X;
+	- Essentially it forces Z to act like a minimal sufficient statistic of X for predicting Y;
+	- Formulation: we assume p(Z|X,Y) = p(Z|X), corresponding to the Markov chain Y ↔ X ↔ Z. This restriction means that our representation Z cannot depend directly on the labels Y. This opens the door to **unsupervised representation learning**;
+	- I(z;y) lower-bound:\
+		<img src="/Generative/images/vae/dvib-2.png" alt="drawing" width="450"/>
+	- I(z;x) upper-bound:\
+		<img src="/Generative/images/vae/dvib-3.png" alt="drawing" width="450"/>
+	- Put together:\
+		<img src="/Generative/images/vae/dvib-4.png" alt="drawing" width="450"/>
+	- Results on mnist:\
+		<img src="/Generative/images/vae/dvib-5.png" alt="drawing" width="450"/>
 
 ## Disentangle
-- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR 2017
+- G. Desjardins, A. Courville, and Y. Bengio. Disentangling factors of variation via generative entangling. arxiv'12
+- S. Reed, K. Sohn, Y. Zhang, and H. Lee. Learning to disentangle factors of variation with manifold interaction. ICML'14
+- Z. Zhu, P. Luo, X. Wang, and X. Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
+- J. Yang, S. Reed, M.-H. Yang, and H.Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
+- R. Goroshin, M. Mathieu, and Y. LeCun. Learning to linearize under uncertainty. NIPS'15
+- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
 	- Better disentangle
 	- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
+	<img src="/Generative/images/vae/beta-vae.png" alt="drawing" width="450"/>
 - AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
-- Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
+	<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
+- **β-TCVAE**: Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
+	- https://github.com/rtqichen/beta-tcvae
+	- Mutual Information Gap (MIG)
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
 	- Fundamentally impossible without inductive biases: for any disentangled z, we can construct z2 fully entangled s.t. p(z2)=p(z), i.e., z and z2 are indistinguishable
 	- Inductive biases:
@@ -61,8 +93,7 @@
 
 ## Unclassified
 - **DeepMind**:
-	- Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML 2014
-	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. In ICML, 2016.
+	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. ICML'16.
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
 		- https://github.com/ericjang/draw
 		- https://github.com/chenzhaomin123/draw_pytorch
@@ -89,8 +120,6 @@
 	- IntroVAE: Introspective Variational Autoencoders for Photographic Image Synthesis
 	- Hamiltonian Variational Auto-Encoder
 	- Importance Weighting and Variational Inference
-	- beta-TCVAE: Chen, T. Q., Li, X., Grosse, R. B., and Duvenaud, D. K. **Isolating Sources of Disentanglement in Variational Autoencoders**
-		- Mutual Information Gap (MIG)
 	- Gaussian Process Prior Variational Autoencoders
 - Cian Eastwood, Christopher K. I. Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
 - DIP-VAE: Kumar, A., Sattigeri, P., and Balakrishnan, A. Variational inference of disentangled latent concepts from unlabeled observations. ICLR'17

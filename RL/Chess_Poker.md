@@ -32,26 +32,9 @@
 - Gerald Tesauro. Temporal difference learning and td-gammon. Communications of the ACM, 38(3):58–68, 1995.
 
 ## Poker (Texas Hod'em)
-- Imperfect information Game
-- **CFR** (Counterfactural Regret Minimization)
-	- A great summary (Ricson): http://modelai.gettysburg.edu/2013/cfr/
-	- Zinkevich, M., Johanson, M., Bowling, M., & Piccione, C. Regret minimization in games with incomplete information, NIPS 2008
-	- Lanctot, M., Waugh, K., Zinkevich, M., & Bowling, M, Monte Carlo sampling for regret minimization in extensive games, NIPS 2009
-	- Johanson, M., Bard, N., Lanctot, M., Gibson, R., & Bowling, M, Efficient Nash equilibrium approximation through Monte Carlo counterfactual regret minimization, 2012
-	- Johanson, M., Waugh, K., Bowling, M., & Zinkevich, M. Accelerating best response calculation in large extensive games, AAAI 2011
-	- Codes: https://github.com/tansey/pycfr
-	- A simple (Rock-Paper-Scissors) codes: https://hackernoon.com/artificial-intelligence-poker-and-regret-part-1-36c78d955720
-- Noam Brown, Tuomas Sandholm. (CMU)
-	- Safe and Nested Subgame Solving for Imperfect-Information Games, NIPS'17 best paper award
-	- Libratus: The Superhuman AI for No-Limit Poker, IJCAI 2017
-	- Reduced Space and Faster Convergence in Imperfect-Information Games via Pruning, ICML'17
-	- N Brown, T Sandholm, and B Amos. Depth-Limited Solving for Imperfect-Information Games. NIPS'18
-	- Tuomas Sandholm. Practical exact algorithm for trembling-hand equilibrium refinements in games. NIPS'18
-	- N Brown, A Lerer, S Gross, T Sandholm. Deep Counterfactual Regret Minimization. AAAI'19
-	- G Farina, C Kroer, N Brown, T Sandholm. Stable-Predictive Optimistic Counterfactual Regret Minimization. ICML'19
-	- Superhuman AI for multiplayer poker. Science'19
+- Check Game Theory;
 
-# Rubik's Cube
+## Rubik's Cube
 - Basics:
 	- How to solve the rubik’s cube - beginners method. https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/.
 - Mathematics:

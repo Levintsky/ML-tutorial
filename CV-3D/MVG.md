@@ -40,6 +40,7 @@
 	- **3D to 2D** (world-to-screen):
 		- P = K[R\|T]; x=PX=KEX;
 		- T = -Rc, with c as the camera center;
+		- R = [R-camx^T; R-camy^T; R-camz^T], row vector as the 
 	- Screen to world: X ~ E(-1) K(-1) x;
 	- Camera to camera (assume z known):\
 		<img src="/CV-3D/images/mvg/cam-cam.png" alt="drawing" width="400"/>
@@ -57,10 +58,11 @@
 	- Triangulation: determining a point's 3D position from a set of corresponding image locations and known camera positions is known as triangulation; Pj=Kj[Rj\|tj], where tj=-Rjcj and cj is ith camera center;
 		<img src="/CV-3D/images/mvg/triangulate.png" alt="drawing" width="400"/>
 	- Two-frame structure from motion:
-		- Calibrated: essential matrix;\
+		- Calibrated: essential matrix (rank deficient b/c Et=0), chirality (a positive distance along the viewing rays emanating from the camera)\
 			<img src="/CV-3D/images/mvg/essential-1.png" alt="drawing" width="400"/>\
-			<img src="/CV-3D/images/mvg/essential-2.png" alt="drawing" width="400"/>
-		- Fundamental:\
+			<img src="/CV-3D/images/mvg/essential-2.png" alt="drawing" width="400"/>\
+			<img src="/CV-3D/images/mvg/essential-3.png" alt="drawing" width="400"/>
+		- Projective (uncalibrated) reconstruction: Fundamental matrix\
 			<img src="/CV-3D/images/mvg/fundamental.png" alt="drawing" width="400"/>
 	- Factorization:
 - C. Wu. VisualSFM: A visual structure from motion system. http://ccwu.me/vsfm, 2011
@@ -98,7 +100,9 @@
 - Multiple view reconstruction
 - Bundle adjustment, auto-calibration, Dynamic SfM, Cheirality, Duality
 
-## Theory
+## Theory, Minimal-Problems
+- http://cmp.felk.cvut.cz/old_pages/mini/
 - David Nister. An Efficient Solution to the Five-Point Relative Pose Problem. PAMI'05
 - Joe Kileel. Minimal Problems for the Calibrated Trifocal Variety. 2016
-- Timothy Duff, Kathlen Kohn, Anton Leykin, Tomas Pajdla. PLMP - Point-Line Minimal Problems in Complete Multi-View Visibility. ICCV'19 best student paper award
+	- https://math.berkeley.edu/~jkileel/CalibratedMinimalProblems.html
+- Timothy Duff, Kathlen Kohn, Anton Leykin, Tomas Pajdla. PLMP- Point-Line Minimal Problems in Complete Multi-View Visibility. ICCV'19 best student paper award
