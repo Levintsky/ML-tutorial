@@ -39,20 +39,7 @@
 - **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015\
 	<img src="/Generative/images/vae/cVAE.png" alt="drawing" width="450"/>
 - **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
-	- Formulation:\
-		<img src="/Generative/images/vae/dvib-1.png" alt="drawing" width="450"/>
-	- The first term in RIB encourages Z to be predictive of Y;
-	- The second term encourages Z to "forget" X;
-	- Essentially it forces Z to act like a minimal sufficient statistic of X for predicting Y;
-	- Formulation: we assume p(Z|X,Y) = p(Z|X), corresponding to the Markov chain Y ↔ X ↔ Z. This restriction means that our representation Z cannot depend directly on the labels Y. This opens the door to **unsupervised representation learning**;
-	- I(z;y) lower-bound:\
-		<img src="/Generative/images/vae/dvib-2.png" alt="drawing" width="450"/>
-	- I(z;x) upper-bound:\
-		<img src="/Generative/images/vae/dvib-3.png" alt="drawing" width="450"/>
-	- Put together:\
-		<img src="/Generative/images/vae/dvib-4.png" alt="drawing" width="450"/>
-	- Results on mnist:\
-		<img src="/Generative/images/vae/dvib-5.png" alt="drawing" width="450"/>
+	- The negative loss for connection with VAE; (Check Basic-ML/Info-Theory)
 
 ## Disentangle
 - G. Desjardins, A. Courville, and Y. Bengio. Disentangling factors of variation via generative entangling. arxiv'12

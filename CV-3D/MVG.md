@@ -64,7 +64,9 @@
 			<img src="/CV-3D/images/mvg/essential-3.png" alt="drawing" width="400"/>
 		- Projective (uncalibrated) reconstruction: Fundamental matrix\
 			<img src="/CV-3D/images/mvg/fundamental.png" alt="drawing" width="400"/>
-	- Factorization:
+	- Factorization: M is 2M × 3 and the structure matrix S is 3 × N; SVD of rank 3;
+		<img src="/CV-3D/images/mvg/factor-1.png" alt="drawing" width="400"/>
+	- Bundle adjustment;
 - C. Wu. VisualSFM: A visual structure from motion system. http://ccwu.me/vsfm, 2011
 
 ## Misc

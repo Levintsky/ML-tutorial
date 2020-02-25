@@ -1,5 +1,13 @@
 # Low-Level Vision
 
+## Dense Motion Estimation, Registration
+- Rick Szeliski, Chap 8;
+	- Translational; Hierarchical; Fourier-based; Incremental;
+	- Parametric motion;
+	- Spline-based motion;
+	- Optical flow;
+	- Layered motion;
+
 ## Optical Flow
 - **FlowNet**: A Dosovitskiy, P Fischer, E Ilg, P Hausser, C Hazırbas, V Golkov. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
 	- FlowNetS: stacks two images as input

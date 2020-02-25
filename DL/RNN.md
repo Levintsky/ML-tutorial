@@ -34,17 +34,6 @@
 	- Algorithm:\
 		<img src="/DL/images/rnn/bibs-3.png" alt="drawing" width="400"/>
 
-## Dynamic System
-- Equilibrium Propagation
-	- B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv'16
-	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models
-	and backpropagation. 2017
-	- B. Scellier and Y. Bengio. Equivalence of equilibrium propagation and recurrent backpropagation. NC'19
-	- Maxence Ernoult, Julie Grollier, Damien Querlioz, Yoshua Bengio, Benjamin Scellier. Updates of Equilibrium Prop Match Gradients of Backprop Through Time in an RNN with Static Input. NIPS'19
-		- https://github.com/ernoult/updatesEPgradientsBPTT
-- **LMU**: Aaron Voelker, Ivana Kajić, Chris Eliasmith. Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks. NIPS'19
-	- https://github.com/abr/neurips2019
-
 ## Beam Search
 - Ronan Collobert, Awni Hannun, Gabriel Synnaeve. A fully differentiable beam search decoder. ICML'19
 - Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
