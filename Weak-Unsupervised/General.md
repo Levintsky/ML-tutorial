@@ -37,3 +37,11 @@
 
 ## Unclassified
 - Supervising Unsupervised Learning. NIPS'18
+
+## NIPS'19
+- Tam Nguyen, Maximilian Dax, Chaithanya Kumar Mummadi, Nhung Ngo, Thi Hoai Phuong Nguyen, Zhongyu Lou, Thomas Brox. DeepUSPS: Deep Robust Unsupervised Saliency Prediction via Self-supervision
+- Adam Bielski, Paolo Favaro. Emergence of Object Segmentation in Perturbed Generative Models
+- Christopher Beckham, Sina Honari, Alex Lamb, Vikas Verma, Farnoosh Ghadiri, R Devon Hjelm, Yoshua Bengio, Chris Pal. On Adversarial Mixup Resynthesis
+- Iordanis Kerenidis, Jonas Landman, Alessandro Luongo, Anupam Prakash. q-means: A quantum algorithm for unsupervised machine learning
+- Hongteng Xu, Dixin Luo, Lawrence Carin. Scalable Gromov-Wasserstein Learning for Graph Partitioning and Matching
+- Hugo Caselles-Dupré, Michael Garcia Ortiz, David Filliat. Symmetry-Based Disentangled Representation Learning requires Interaction with Environments

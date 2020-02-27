@@ -114,8 +114,29 @@
 	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
 - **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
+- YP Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NIPS'18
+	- Application: LDA;
+- Nicolas Brosse, Alain Durmus, Eric Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
 
 ## Unclassified
 - Fredrik Lindsten, Jouni Helske, Matti Vihola. Graphical model inference: Sequential Monte Carlo meets deterministic approximations. NIPS'18
 - Tao Sun, Yuejiao Sun, Wotao Yin. On Markov Chain Gradient Descent. NIPS'18
 - Yi HAO, Alon Orlitsky, Venkatadheeraj Pichapati. On Learning Markov Chains. NIPS'18
+
+## NIPS'19
+- Holden Lee, Oren Mangoubi, Nisheeth Vishnoi. Online sampling from log-concave distributions
+- Anna Wigren, Riccardo Sven Risuleo, Lawrence Murray, Fredrik Lindsten. Parameter elimination in particle Gibbs sampling
+- Ruqi Zhang, Christopher De Sa. Poisson-Minibatching for Gibbs Sampling with Convergence Rate Guarantees
+- Christopher Nemeth, Fredrik Lindsten, Maurizio Filippone, James Hensman. Pseudo-Extended Markov chain Monte Carlo
+- Difan Zou, Pan Xu, Quanquan Gu. Stochastic Gradient Hamiltonian Monte Carlo Methods with Recursive Variance Reduction
+- Adil SALIM, Dmitry Koralev, Peter Richtarik. Stochastic Proximal Langevin Algorithm: Potential Splitting and Nonasymptotic Rates
+- Xuechen Li, Yi Wu, Lester Mackey, Murat Erdogdu. Stochastic Runge-Kutta Accelerates Langevin Monte Carlo and Beyond
+- Ruoqi Shen, Yin Tat Lee. The Randomized Midpoint Method for Log-Concave Sampling
+- Kunal Talwar. Computational Separations between Sampling and Optimization
+- Niloy Biswas, Pierre E Jacob, Paul Vanetti. Estimating Convergence of Markov chains with L-Lag Couplings
+- Bo Dai, Zhen Liu, Hanjun Dai, Niao He, Arthur Gretton, Le Song, Dale Schuurmans. Exponential Family Estimation via Adversarial Dynamics Embedding
+- Michalis Titsias, Petros Dellaportas. Gradient-based Adaptive Markov Chain Monte Carlo
+- Guillaume Gautier, Rémi Bardenet, Michal Valko. On two ways to use determinantal point processes for Monte Carlo integration
+- Santosh Vempala, Andre Wibisono. Rapid Convergence of the Unadjusted Langevin Algorithm: Isoperimetry Suffices
+- Michael Zhu. Sample Adaptive MCMC
+- Kirill Neklyudov, Evgenii Egorov, Dmitry Vetrov. The Implicit Metropolis-Hastings Algorithm

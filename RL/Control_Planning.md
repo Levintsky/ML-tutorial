@@ -65,3 +65,25 @@
 ## Applications
 - Data center cooling using model-predictive control. NIPS'18 Tutorial
 
+## NIPS'19
+- Shangtong Zhang, Wendelin Boehmer, Shimon Whiteson. Generalized Off-Policy Actor-Critic
+- Sebastian Tschiatschek, Ahana Ghosh, Luis Haug, Rati Devidze, Adish Singla. Learner-aware Teaching: Inverse Reinforcement Learning with Preferences and Constraints
+- Naman Agarwal, Elad Hazan, Karan Singh. Logarithmic Regret for Online Control
+- Xingyu Lin, Harjatin Baweja, George Kantor, David Held. Adaptive Auxiliary Task Weighting for Reinforcement Learning
+- Pim de Haan, Dinesh Jayaraman, Sergey Levine. Causal Confusion in Imitation Learning
+- Hengyuan Hu, Denis Yarats, Qucheng Gong, Yuandong Tian, Mike Lewis. Hierarchical Decision Making by Generating and Following Natural Language Instructions
+- Xiangyuan Zhang, Kaiqing Zhang, Erik Miehling, Tamer Basar. Non-Cooperative Inverse Reinforcement Learning
+- Jack Umenberger, Mina Ferizbegovic, Thomas Schön, Håkan Hjalmarsson. Robust exploration in linear quadratic reinforcement learning
+- Francisco Garcia, Philip Thomas. A Meta-MDP Approach to Exploration for Lifelong Reinforcement Learning
+- Andrea Zanette, Alessandro Lazaric, Mykel J Kochenderfer, Emma Brunskill. Limiting Extrapolation in Linear Approximate Value Iteration
+- Alberto Maria Metelli, Amarildo Likmeta, Marcello Restelli. Propagating Uncertainty in Reinforcement Learning via Wasserstein Barycenters
+- Yu Bai, Tengyang Xie, Nan Jiang, Yu-Xiang Wang. Provably Efficient Q-Learning with Low Switching Cost
+- Ronald Ortner, Matteo Pirotta, Alessandro Lazaric, Ronan Fruit, Odalric-Ambrym Maillard. Regret Bounds for Learning State Representations in Reinforcement Learning
+- Matteo Turchetta, Felix Berkenkamp, Andreas Krause. Safe Exploration for Interactive Machine Learning
+- David Janz, Jiri Hron, Przemysław Mazur, Katja Hofmann, José Miguel Hernández-Lobato, Sebastian Tschiatschek. Successor Uncertainties: Exploration and Uncertainty in Temporal Difference Learning
+- Andrea Zanette, Mykel J Kochenderfer, Emma Brunskill. Almost Horizon-Free Structure-Aware Best Policy Identification with a Generative Model
+- Kamil Ciosek, Quan Vuong, Robert Loftin, Katja Hofmann. Better Exploration with Optimistic Actor Critic
+- Simon Du, Yuping Luo, Ruosong Wang, Hanrui Zhang. Provably Efficient Q-learning with Function Approximation via Distribution Shift Error Checking Oracle
+- Liangpeng Zhang, Ke Tang, Xin Yao. Explicit Planning for Efficient Exploration in Reinforcement Learning
+- Jian QIAN, Ronan Fruit, Matteo Pirotta, Alessandro Lazaric. Exploration Bonus for Regret Minimization in Discrete and Continuous Average Reward MDPs
+- Xiuyuan Lu, Benjamin Van Roy. Information-Theoretic Confidence Bounds for Reinforcement Learning

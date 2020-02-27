@@ -10,3 +10,8 @@
 - U Von Luxburg. A tutorial on spectral clustering. 2007
 - M Belkin, P Niyogi. Towards a theoretical foundation for Laplacian-based manifold methods. 2008
 - U Von Luxburg, M Belkin, O Bousquet. Consistency of spectral clustering. Annual of Statistics'08
+
+## NIPS'19
+- Gecia Bravo Hermsdorff, Lee Gunderson. A Unifying Framework for Spectrum-Preserving Graph Sparsification and Coarsening
+- Gail Weiss, Yoav Goldberg, Eran Yahav. Learning Deterministic Weighted Automata with Queries and Counterexamples
+- Lorenzo Dall'Amico, Romain Couillet, Nicolas Tremblay. Revisiting the Bethe-Hessian: Improved Community Detection in Sparse Heterogeneous Graphs
