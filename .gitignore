@@ -2,4 +2,6 @@
 *.log
 *.out
 *.gz
+tmp
+tmp2
 .DS_Store

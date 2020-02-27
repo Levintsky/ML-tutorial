@@ -123,5 +123,13 @@
 - Ignacio Rocco, Mircea Cimpoi, Relja Arandjelovic, Akihiko Torii, Tomas Pajdla, Josef Sivic. Neighbourhood Consensus Networks. NIPS'18
 - Ari Morcos, Maithra Raghu, Samy Bengio. Insights on representational similarity in neural networks with canonical correlation. NIPS'18
 
-## Kernel
+## Unclassified
 - Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
+
+## NIPS'19
+- Motonobu Kanagawa, Philipp Hennig. Convergence Guarantees for Adaptive Bayesian Quadrature Methods
+- Ulysse Marteau-Ferey, Francis Bach, Alessandro Rudi. Globally Convergent Newton Methods for Ill-conditioned Generalized Self-concordant Losses
+- Rahul Singh, Maneesh Sahani, Arthur Gretton. Kernel Instrumental Variable Regression
+- Jen Ning Lim, Makoto Yamada, Bernhard Schölkopf, Wittawat Jitkrittum. Kernel Stein Tests for Multiple Model Comparison
+- Sanjeev Arora, Simon Du, Wei Hu, Zhiyuan Li, Russ Salakhutdinov, Ruosong Wang. On Exact Computation with an Infinitely Wide Neural Net
+- Chieh Wu, Jared Miller, Yale Chang, Mario Sznaier, Jennifer Dy. Solving Interpretable Kernel Dimensionality Reduction

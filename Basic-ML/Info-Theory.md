@@ -39,3 +39,13 @@
 		- the compression phase is causally related to the excellent generalization performance of deep networks; 
 		- the compression phase occurs due to the diffusion-like behavior of stochastic gradient descen
 	- Andrew Michael Saxe, Yamini Bansal, Joel Dapello, Madhu Advani, Artemy Kolchinsky, Brendan Daniel Tracey, David Daniel Cox. On the Information Bottleneck Theory of Deep Learning. ICLR'18
+
+## NIPS'19
+- Aditya Gangrade, Praveen Venkatesh, Bobak Nazer, Venkatesh Saligrama. Efficient Near-Optimal Testing of Community Changes in Balanced Stochastic Block Models
+- Jayadev Acharya, Sourbh Bhadane, Piotr Indyk, Ziteng Sun. Estimating Entropy of Distributions in Constant Space
+- Jie Ding, Robert Calderbank, Vahid Tarokh. Gradient Information for Representation and Modeling
+- Dong Liu, Haochen Zhang, Zhiwei Xiong. On The Classification-Distortion-Perception Tradeoff
+- Lingxiao Wang, Zhuoran Yang, Zhaoran Wang. Statistical-Computational Tradeoff in Single Index Models
+- Saurabh Sihag, Ali Tajer. Structure Learning with Side Information: Sample Complexity
+- Benjamin Aubin, Bruno Loureiro, Antoine Maillard, Florent Krzakala, Lenka Zdeborová. The spiked matrix model with generative priors
+- Yihan Jiang, Hyeji Kim, Himanshu Asnani, Sreeram Kannan, Sewoong Oh, Pramod Viswanath. Turbo Autoencoder: Deep learning based channel codes for point-to-point communication channels

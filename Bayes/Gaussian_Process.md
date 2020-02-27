@@ -76,3 +76,12 @@
 - Orthogonally Decoupled Variational Gaussian Processes. NIPS'18
 - Infinite-Horizon Gaussian Processes. NIPS'18
 - Learning Gaussian Processes by Minimizing PAC-Bayesian Generalization Bounds. NIPS'18
+
+## NIPS'19
+- Haibin YU, Yizhou Chen, Bryan Kian Hsiang Low, Patrick Jaillet, Zhongxiang Dai. Implicit Posterior Variational Inference for Deep Gaussian Processes
+- Rui Li. Multivariate Sparse Coding of Nonstationary Covariances with Gaussian Processes
+- Siqi Liu, Milos Hauskrecht. Nonparametric Regressive Point Processes Based on Conditional Gaussian Processes
+- Ian Char, Youngseog Chung, Willie Neiswanger, Kirthevasan Kandasamy, Oak Nelson, Mark Boyer, Egemen Kolemen, Jeff Schneider. Offline Contextual Bayesian Optimization
+- Creighton Heaukulani, Mark van der Wilk. Scalable Bayesian dynamic covariance modeling with variational Wishart and inverse Wishart processes
+- Yusuke Tanaka, Toshiyuki Tanaka, Tomoharu Iwata, Takeshi Kurashima, Maya Okawa, Yasunori Akagi, Hiroyuki Toda. Spatially Aggregated Gaussian Processes with Multivariate Areal Outputs
+- Armin Lederer, Jonas Umlauft, Sandra Hirche. Uniform Error Bounds for Gaussian Process Regression with Application to Safe Control

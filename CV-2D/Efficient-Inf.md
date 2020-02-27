@@ -41,3 +41,12 @@
 	- M. Jaderberg, A. Vedaldi, and A. Zisserman. Speeding up convolutional neural networks with low rank expansions. 2014
 	- J. Jin, A. Dundar, and E. Culurciello. Flattened convolutional neural networks for feedforward acceleration.
 - W. Wen, C. Wu, Y. Wang, Y. Chen, and H. Li. Learning structured sparsity in deep neural networks. NIPS'16
+
+## NIPS'19
+- Weizhe Hua, Yuan Zhou, Christopher De Sa, Zhiru Zhang, G. Edward Suh. Channel Gating Neural Networks
+- Zhijian Liu, Haotian Tang, Yujun Lin, Song Han. Point-Voxel CNN for Efficient 3D Deep Learning
+- Zhonghui You, Kun Yan, Jinmian Ye, Meng Ma, Ping Wang. Gate Decorator: Global Filter Pruning Method for Accelerating Deep Convolutional Neural Networks
+- Georgios Detorakis, Sourav Dutta, Abhishek Khanna, Matthew Jerry, Suman Datta, Emre O Neftci. Inherent Weight Normalization in Stochastic Neural Networks
+- Shangyu Chen, Wenya Wang, Sinno Jialin Pan. MetaQuant: Learning to Quantize by Learning to Penetrate Non-differentiable Quantization
+- Shupeng Gui, Haotao N Wang, Haichuan Yang, Chen Yu, Zhangyang Wang, Ji Liu. Model Compression with Adversarial Robustness: A Unified Optimization Framework
+- Yixing Xu, Yunhe Wang, Hanting Chen, Kai Han, Chunjing XU, Dacheng Tao, Chang Xu. Positive-Unlabeled Compression on the Cloud

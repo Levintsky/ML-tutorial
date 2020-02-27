@@ -12,6 +12,17 @@
 - Yoshua Bengio. MetaGAN: An Adversarial Approach to Few-Shot Learning. NIPS'18
 - Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS'18
 
+## NIPS'19
+- Mikhail Khodak, Maria-Florina Balcan, Ameet Talwalkar. Adaptive Gradient-Based Meta-Learning Methods
+- Russell Mendonca, Abhishek Gupta, Rosen Kralev, Pieter Abbeel, Sergey Levine, Chelsea Finn. Guided Meta-Policy Search
+- LU LIU, Tianyi Zhou, Guodong Long, Jing Jiang, Chengqi Zhang. Learning to Propagate for Graph Meta-Learning
+- Yujia Xie, Haoming Jiang, Feng Liu, Tuo Zhao, Hongyuan Zha. Meta Learning with Relational Information for Short Sequences
+- Eunbyung Park, Junier Oliva. Meta-Curvature
+- Khurram Javed, Martha White. Meta-Learning Representations for Continual Learning
+- Aravind Rajeswaran, Chelsea Finn, Sham Kakade, Sergey Levine. Meta-Learning with Implicit Gradients
+- Jun Shu, Qi Xie, Lixuan Yi, Qian Zhao, Sanping Zhou, Zongben Xu, Deyu Meng. Meta-Weight-Net: Learning an Explicit Mapping For Sample Weighting
+- Shikun Liu, Andrew Davison, Edward Johns. Self-Supervised Generalisation with Meta Auxiliary Learning
+
 ## Legacy
 - Jurgen Schmidhuber. Evolutionary principles in self-referential learning. 1987
 - Devang K Naik and RJ Mammone. Meta-neural networks that learn by learning. IJCNN'92

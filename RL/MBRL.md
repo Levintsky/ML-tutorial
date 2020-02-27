@@ -122,3 +122,14 @@
 - **PILCO**: M P Deisenroth, C E Rasmussen. PILCO: A Model-Based and Data-Efficient Approach to Policy Search. ICML'11
 - **DDP**: Mayne, Jacobson. Differential dynamic programming. 1970
 - **iLQR**: Tassa, Erez, Todorov.  Synthesis and Stabilization of Complex Behaviors through Online Trajectory Optimization. 2012
+
+## NIPS'19
+- Marek Petrik, Reazul Hasan Russel. Beyond Confidence Regions: Tight Bayesian Ambiguity Sets for Robust MDPs
+- Bastian Alt, Adrian Šošić, Heinz Koeppl. Correlation Priors for Reinforcement Learning
+- Mikael Henaff. Explicit Explore-Exploit Algorithms in Continuous State Spaces
+- Daniel Freeman, David Ha, Luke Metz. Learning to Predict Without Looking Ahead: World Models Without Forward Prediction
+- Zhiao Huang, Fangchen Liu, Hao Su. Mapping State Space using Landmarks for Universal Goal Reaching
+- Rinu Boney, Norman Di Palo, Mathias Berglund, Alexander Ilin, Juho Kannala, Antti Rasmus, Harri Valpola. Regularizing Trajectory Optimization with Denoising Autoencoders
+- Yonathan Efroni, Nadav Merlis, Mohammad Ghavamzadeh, Shie Mannor. Tight Regret Bounds for Model-Based Reinforcement Learning with Greedy Policies
+- Michael Janner, Justin Fu, Marvin Zhang, Sergey Levine. When to Trust Your Model: Model-Based Policy Optimization
+- Hado van Hasselt, Matteo Hessel, John Aslanides. When to use parametric models in reinforcement learning?

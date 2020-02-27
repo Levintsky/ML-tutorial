@@ -69,6 +69,23 @@
 	- Bundle adjustment;
 - C. Wu. VisualSFM: A visual structure from motion system. http://ccwu.me/vsfm, 2011
 
+## Stereo
+- Rick Szeliski, Chap 11
+	- Epipolar geometry;
+		- Rectification: make the epipolar line horizontal;
+		- Rectified geometry: x'=x+fB/Z; y'=y; B: baseline;
+		- Plane sweep: assume calibrated; depth proposals + robust matching;
+			<img src="/CV-3D/images/mvg/plane-sweep-1.png" alt="drawing" width="400"/>\
+			<img src="/CV-3D/images/mvg/plane-sweep-2.png" alt="drawing" width="400"/>
+		- Sparse correspondence;
+		- Dense correspondence;
+			- Cost: SSD, SAD, MSE, MAD;
+		- Local methods:
+		- Global methods: MRF;
+		- Multi-view stereo;
+			- Volumetric and 3D surface reconstruction;
+			- Shape from silhouettes;
+
 ## Misc
 - Parameter estimation
 - Algorithm evaluation

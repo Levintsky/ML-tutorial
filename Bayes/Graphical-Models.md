@@ -90,8 +90,17 @@
 	- D. Tarlow, R. P. Adams, and R. S. Zemel. Randomized optimum models for structured prediction. AISTATS'12
 	- **MAP-perturbation**: S. Maji, T. Hazan, and T. Jaakkola. Active boundary annotation using random map perturbations. AAAI'14
 
-## Unclassified
+## NIPS'19
 - Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models. NIPS'19
 - Shanshan Wu, Sujay Sanghavi, Alexandros G. Dimakis. Sparse Logistic Regression Learns All Discrete Pairwise Graphical Models. NIPS'19
 - Lingrui Gan, Xinming Yang, Naveen Narisetty, Feng Liang. Bayesian Joint Estimation of Multiple Graphical Models. NIPS'19
 - Radu Marinescu, Rina Dechter. Counting the Optimal Solutions in Graphical Models. NIPS'19
+- Firoozeh Sepehr, Donatello Materassi. An Algorithm to Learn Polytree Networks with Hidden Nodes
+- Jonathan Kuck, Tri Dao, Hamid Rezatofighi, Ashish Sabharwal, Stefano Ermon. Approximating the Permanent by Sampling from Adaptive Partitions
+- Lingrui Gan, Xinming Yang, Naveen Narisetty, Feng Liang. Bayesian Joint Estimation of Multiple Graphical Models
+- Radu Marinescu, Rina Dechter. Counting the Optimal Solutions in Graphical Models
+- Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models
+- Pasha Khosravi, YooJung Choi, Yitao Liang, Antonio Vergari, Guy Van den Broeck. On Tractable Computation of Expected Predictions
+- Andy Shih, Guy Van den Broeck, Paul Beame, Antoine Amarilli. Smoothing Structured Decomposable Circuits
+- Shanshan Wu, Sujay Sanghavi, Alexandros Dimakis. Sparse Logistic Regression Learns All Discrete Pairwise Graphical Models
+- Sandeep Kumar, Jiaxi Ying, Jose Vinicius de Miranda Cardoso, Daniel Palomar. Structured Graph Learning Via Laplacian Spectral Constraints

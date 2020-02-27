@@ -39,3 +39,19 @@
 - L. Matignon, G. J. Laurent, and N. Le Fort-Piat. Hysteretic q-learning: an algorithm for decentralized reinforcement learning in cooperative multi-agent teams. IROS'07
 - L. Busoniu, R. Babuska, and B. De Schutter. A comprehensive survey of multiagent reinforce- ment learning. 2008
 - L. Panait and S. Luke. Cooperative multi-agent learning: The state of the art. AAMAS'05
+
+## NIPS'19
+- Nicolas Carion, Nicolas Usunier, Gabriel Synnaeve, Alessandro Lazaric. A Structured Prediction Approach for Generalization in Cooperative Multi-Agent Reinforcement Learning
+- Sai Qian Zhang, Qi Zhang, Jieyu Lin. Efficient Communication in Multi-Agent Reinforcement Learning via Variance Based Control
+- Xin Guo, Anran Hu, Renyuan Xu, Junzi Zhang. Learning Mean-Field Games
+- Deepak Pathak, Christopher Lu, Trevor Darrell, Phillip Isola, Alexei Efros. Learning to Control Self-Assembling Morphologies: A Study of Generalization via Modularity
+- Yali Du, Lei Han, Meng Fang, Ji Liu, Tianhong Dai, Dacheng Tao. LIIR: Learning Individual Intrinsic Reward in Multi-Agent Reinforcement Learning
+- Micah Carroll, Rohin Shah, Mark Ho, Tom Griffiths, Sanjit Seshia, Pieter Abbeel, Anca Dragan. On the Utility of Learning about Humans for Human-AI Coordination
+- Chao Qu, Shie Mannor, Huan Xu, Yuan Qi, Le Song, Junwu Xiong. Value Propagation for Decentralized Networked Deep Multi-agent Reinforcement Learning
+- Tom Eccles, Yoram Bachrach, Guy Lever, Angeliki Lazaridou, Thore Graepel. Biases for Emergent Communication in Multi-agent Reinforcement Learning
+- Fushan Li, Michael Bowling. Ease-of-Teaching and Language Structure from Emergent Communication
+- Jack Serrino, Max Kleiman-Weiner, David Parkes, Josh Tenenbaum. Finding Friend and Foe in Multi-Agent Games
+- Jiechuan Jiang, Zongqing Lu. Learning Fairness in Multi-Agent Systems
+- Anuj Mahajan, Tabish Rashid, Mikayel Samvelyan, Shimon Whiteson. MAVEN: Multi-Agent Variational Exploration
+- Shuyue Hu, Chin-wing Leung, Ho-fung Leung. Modelling the Dynamics of Multiagent Q-Learning in Repeated Symmetric Games: a Mean Field Theoretic Approach
+- Christian Schroeder de Witt, Jakob Foerster, Gregory Farquhar, Philip Torr, Wendelin Boehmer, Shimon Whiteson. Multi-Agent Common Knowledge Reinforcement Learning

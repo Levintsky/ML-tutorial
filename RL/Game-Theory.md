@@ -23,18 +23,30 @@
 	- Von Neumann's well-known minmax theorem states that the outcome is the same in either case so that
 
 ## Imperfect information Game
+- Sergiu Hart and Andreu Mas-Colell. A simple adaptive procedure leading to correlated equilibrium. Econometrica'00
 - **CFR** (Counterfactual Regret Minimization)
 	- A great summary (Ricson): http://modelai.gettysburg.edu/2013/cfr/
 	- https://zhuanlan.zhihu.com/p/30438383
 	- Zinkevich, M., Johanson, M., Bowling, M., & Piccione, C. Regret minimization in games with incomplete information, NIPS 2008
 	- Lanctot, M., Waugh, K., Zinkevich, M., & Bowling, M, Monte Carlo sampling for regret minimization in extensive games, NIPS 2009
-	- Johanson, M., Bard, N., Lanctot, M., Gibson, R., & Bowling, M, Efficient Nash equilibrium approximation through Monte Carlo counterfactual regret minimization, 2012
 	- Johanson, M., Waugh, K., Bowling, M., & Zinkevich, M. Accelerating best response calculation in large extensive games, AAAI 2011
+	- Johanson, M., Bard, N., Lanctot, M., Gibson, R., & Bowling, M, Efficient Nash equilibrium approximation through Monte Carlo counterfactual regret minimization, 2012
 	- Codes: https://github.com/tansey/pycfr
 	- A simple (Rock-Paper-Scissors) codes: https://hackernoon.com/artificial-intelligence-poker-and-regret-part-1-36c78d955720
 	- Todd W. Neller, Marc Lanctot. An Introduction to Counterfactual Regret Minimization. 2013
-- Noam Brown, Tuomas Sandholm. (CMU)
-	- Safe and Nested Subgame Solving for Imperfect-Information Games, NIPS'17 best paper award
+		- Basic CFR (one round):\
+			<img src="/RL/images/game-theory/cfr-1.png" alt="drawing" width="400"/>
+		- Multiple round: probability of reaching infoset + self-play\
+			<img src="/RL/images/game-theory/cfr-2.png" alt="drawing" width="400"/>
+- Unsafe subgame solving:
+	- Darse Billings, Neil Burch, Aaron Davidson, Robert Holte, Jonathan Schaeffer, Terence Schauenberg, and Duane Szafron. Approximating game-theoretic optimal strategies for full- scale poker. IJCAI'03
+	- Andrew Gilpin and Tuomas Sandholm. A competitive Texas Hold'em poker player via au- tomated abstraction and real-time equilibrium computation. AAAI'06
+	- Andrew Gilpin and Tuomas Sandholm. Better automated abstraction techniques for imperfect information games, with application to Texas Hold'em poker. AAMAS'07
+	- Sam Ganzfried and Tuomas Sandholm. Endgame solving in large imperfect-information games. AAMAS'15
+- Texas Hod'em
+	- Neil Burch, Michael Johanson, and Michael Bowling. Solving imperfect information games using decomposition. AAAI'14
+	- **CBR**: Matej Moravcik, Martin Schmid, Karel Ha, Milan Hladik, and Stephen Gaukrodger. Refining subgames in large imperfect information games. AAAI'16
+	- Noam Brown, Tuomas Sandholm. Safe and Nested Subgame Solving for Imperfect-Information Games, NIPS'17 best paper award
 	- Libratus: The Superhuman AI for No-Limit Poker, IJCAI 2017
 	- Reduced Space and Faster Convergence in Imperfect-Information Games via Pruning, ICML'17
 	- N Brown, T Sandholm, and B Amos. Depth-Limited Solving for Imperfect-Information Games. NIPS'18
