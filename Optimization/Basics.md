@@ -1,5 +1,8 @@
 # Basics of Optimization
 
+## Mirror Descent
+- Yuxin Chen: http://www.princeton.edu/~yc5/ele522_optimization/lectures/mirror_descent.pdf
+
 ## Regularization
 - M. Jordan. Stochastic Cubic Regularization for Fast Nonconvex Optimization. NIPS'18
 - NIPS'19
