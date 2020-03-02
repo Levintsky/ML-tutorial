@@ -52,6 +52,10 @@
 - Williams, C. K. I. (1999). Prediction with Gaussian processes: from linear regression to linear prediction and beyond. In M. I. Jordan (Ed.), Learn- ing in Graphical Models, pp. 599–621. MIT Press. 1999
 - MacKay, D. J. C. Information Theory, Inference and Learning Algorithms. 2003
 
+## GP as Optimizer
+- https://krasserm.github.io/2018/03/19/gaussian-processes/
+- https://zhuanlan.zhihu.com/p/86386926
+
 ## Theory
 - D R. Burt, C E. Rasmussen, M van der Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
 	- Reduce O(NM^2+M^3) to  and O(NM+M^2)

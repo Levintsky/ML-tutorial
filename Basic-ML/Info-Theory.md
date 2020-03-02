@@ -3,6 +3,17 @@
 ## Books
 - David JC MacKay. Information theory, inference and learning algorithms. Cambridge university press, 2003.
 
+## Basics
+- Markov Chain
+- Kullback–Leibler (KL) Divergence
+- Mutual Information: I(X; Y)
+- Data Processing Inequality (DPI): X->Y->Z, then I(X;Y)>=I(X;Z)
+- Reparametrization invariance: Two invertible functions f1, f2, then I(X;Y)=I(f1(X);f2(Y))
+- Information Plane Theorem:
+	- X-axis: The sample complexity of Ti is determined by the encoder mutual information I(X;Ti). Sample complexity refers to how many samples you need to achieve certain accuracy and generalization.
+	- Y-axis: The accuracy (generalization error) is determined by the decoder mutual information I(Ti;Y).\
+		<img src="/DL/images/info-theory/info-plane.png" alt="drawing" width="450"/>
+
 ## Classical
 - **IB**: N. Tishby, F.C. Pereira, and W. Biale. The information bottleneck method. Allerton'99
 - William Bialek, Ilya Nemenman, and Naftali Tishby. Predictability, complexity, and learning. Neural computation'01
@@ -49,3 +60,19 @@
 - Saurabh Sihag, Ali Tajer. Structure Learning with Side Information: Sample Complexity
 - Benjamin Aubin, Bruno Loureiro, Antoine Maillard, Florent Krzakala, Lenka Zdeborová. The spiked matrix model with generative priors
 - Yihan Jiang, Hyeji Kim, Himanshu Asnani, Sreeram Kannan, Sewoong Oh, Pramod Viswanath. Turbo Autoencoder: Deep learning based channel codes for point-to-point communication channels
+
+## Information Theory in DL
+- Resources:
+	- https://lilianweng.github.io/lil-log/2017/09/28/anatomize-deep-learning-with-information-theory.html
+	- Information Theory in Deep Learning (Youtube): https://www.youtube.com/watch?v=bLqJHjXihK8&feature=youtu.be
+- Two Optimization Phases:
+	- Among early epochs, the mean values are three magnitudes larger than the standard deviations. After a sufficient number of epochs, the error saturates and the standard deviations become much noisier afterward. The further a layer is away from the output, the noisier it gets, because the noises can get amplified and accumulated through the back-prop process (not due to the width of the layer).
+		<img src="/DL/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
+- Learning Theory:
+	- Old Generalization Bounds:
+		- Read https://mostafa-samir.github.io/ml-theory-pt1/ and https://mostafa-samir.github.io/ml-theory-pt2/ for ML theory;
+			<img src="/DL/images/info-theory/old-bound.png" alt="drawing" width="450"/>
+	- New Input compression bound:\
+			<img src="/DL/images/info-theory/new-bound.png" alt="drawing" width="450"/>
+- Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
+- Marylou Gabrié, Andre Manoel, Clément Luneau, Jean Barbier, Nicolas Macris, Florent Krzakala, Lenka Zdeborová. Entropy and mutual information in models of deep neural networks. NIPS'18

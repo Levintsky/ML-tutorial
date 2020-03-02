@@ -43,6 +43,7 @@
 
 ## Disentangle
 - G. Desjardins, A. Courville, and Y. Bengio. Disentangling factors of variation via generative entangling. arxiv'12
+	- First paper on deep disentangled representation learning;
 - S. Reed, K. Sohn, Y. Zhang, and H. Lee. Learning to disentangle factors of variation with manifold interaction. ICML'14
 - Z. Zhu, P. Luo, X. Wang, and X. Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
 - J. Yang, S. Reed, M.-H. Yang, and H.Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
@@ -51,6 +52,8 @@
 	- Better disentangle
 	- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 	<img src="/Generative/images/vae/beta-vae.png" alt="drawing" width="450"/>
+- DIP-VAE: Kumar, A., Sattigeri, P., and Balakrishnan, A. Variational inference of disentangled latent concepts from unlabeled observations. ICLR'17
+	- Extent beta-VAE by decomposing the KL-divergences into multiple terms, and only increase the weight on terms that analytically disentangles the models;
 - AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
 	<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
 - **β-TCVAE**: Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
@@ -62,6 +65,11 @@
 		- Gaussian encoder: mean, log-variance
 		- Bernoulli decoder: 10 latent dimension\
 		<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
+- **VITAE**: Nicki Skafte, Søren Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
+	- Insight: two latent codes zA, zP; then zP transform conanical view zA with a STN;
+		<img src="/Generative/images/vae/vitae.png" alt="drawing" width="400"/>
+	- Formulation:\
+		<img src="/Generative/images/vae/vitae-2.png" alt="drawing" width="400"/>
 
 ## Discrete
 - **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
@@ -109,7 +117,6 @@
 	- Importance Weighting and Variational Inference
 	- Gaussian Process Prior Variational Autoencoders
 - Cian Eastwood, Christopher K. I. Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
-- DIP-VAE: Kumar, A., Sattigeri, P., and Balakrishnan, A. Variational inference of disentangled latent concepts from unlabeled observations. ICLR'17
 - Text:
 	- Semeniuta, S., Severyn, A., and Barth, E. A hybrid convolutional variational autoencoder for text generation. 2017
 		- 1D-Conv
@@ -138,7 +145,6 @@
 	<img src="/Generative/images/vae/td-vae.png" alt="drawing" width="500"/>
 
 ## Analysis of VAE
-- Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
 - Carter, S. and Nielsen, M. Using Artificial Intelligence to Augment Human Intelligence. 2017
 
 ## VAE on 3D

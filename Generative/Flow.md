@@ -141,4 +141,4 @@ design.
 	- The algorithm:\
 		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
 - Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
-
+- Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019

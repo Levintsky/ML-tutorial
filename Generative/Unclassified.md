@@ -25,7 +25,6 @@
 - Hsin-Ying Lee, Xiaodong Yang, Ming-Yu Liu, Ting-Chun Wang, Yu-Ding Lu, Ming-Hsuan Yang, Jan Kautz. Dancing to Music
 - Zelda Mariet, Yaniv Ovadia, Jasper Snoek. DppNet: Approximating Determinantal Point Processes with Deep Networks
 - Renjie Liao, Yujia Li, Yang Song, Shenlong Wang, Will Hamilton, David Duvenaud, Raquel Urtasun, Richard Zemel. Efficient Graph Generation with Graph Recurrent Attention Networks
-- Nicki Skafte, Søren Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models
 - Ruho Kondo, Keisuke Kawano, Satoshi Koide, Takuro Kutsuna. Flow-based Image-to-Image Translation with Feature Disentanglement
 - Bingzhe Wu, Shiwan Zhao, Chaochao Chen, Haoyang Xu, Li Wang, Xiaolu Zhang, Guangyu Sun, Jun Zhou. Generalization in Generative Adversarial Networks: A Novel Perspective from Privacy Protection
 - Tuomas Kynkäänniemi, Tero Karras, Samuli Laine, Jaakko Lehtinen, Timo Aila. Improved Precision and Recall Metric for Assessing Generative Models
