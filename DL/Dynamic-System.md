@@ -9,6 +9,7 @@
 		- Most classical RK4;\
 			<img src = '/DL/images/dynamic-system/rk4.png' width = '400'>
 - Diffential equation, adjoint method:
+	- Pontryagin's maximum principle (Boltyanskii et al., 1960; Pontryagin, 1987)
 	- About adjoint method: https://blog.csdn.net/liangdaojun/article/details/100633277
 	- Adjoint sensitivity analysis for differential-algebraic equations: algorithms and software. JIAM J. Sci. Comput 2003
 - Fixed point:
@@ -20,6 +21,10 @@
 	- Nguyen, B. D., and McMechan, G. A. Five ways to avoid storing source wavefield snapshots in 2d elastic prestack reverse time migration. Geophysics'14
 		- Reversible numerical methods for ODEs have been studied in the context of hyperbolic differential equations;
 
+## Resources
+- Books:
+	- Dimitri P Bertsekas. Dynamic programming and optimal control, volume 1. Athena scientific Belmont, MA, 1995.
+
 ## Unclassified
 - **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
 	- Learned-PDE;
@@ -29,11 +34,11 @@
 - GP solver:
 	- Michael Schober, David Duvenaud, Philipp Hennig. Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 		- Gaussian Process to solve ODE;
-	- E, W. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
-		- First proposed connection between ResNet and ODE;
+	- Weinan E. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
+		- First proposed connection between ResNet and ODE; ResNet = Forward Euler;
 - Deep Learning as Discretized Differential Equations
 	- Forward Euler, or 1st-order Runge-Kutta (ResNet, RevNet, ResNeXt):
-		- Gomez, A. N.; Ren, M.; Urtasun, R.; and Grosse, R. B. The reversible residual network: Backpropagation without storing activations. NIPS'17
+		- **RevNet**: Gomez, A. N.; Ren, M.; Urtasun, R.; and Grosse, R. B. The reversible residual network: Backpropagation without storing activations. NIPS'17
 			<img src = '/DL/images/dynamic-system/rev-net.png' width = '400'>
 		- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
 			- https://web.stanford.edu/~yplu/proj/lm/
@@ -103,9 +108,9 @@
 - **LGQ**: Laurent Lessard, Benjamin Recht, Andrew Packard. Analysis and Design of Optimization Algorithms via Integral Quadratic Constraints. 2015
 - **MSA**: Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
 	- Same thing as Neural ODE; Neural ODE is strong in flow-based generative modeling;
-	- Formulation: f() could be a NN\
+	- Formulation: dX/dt=f(t,X,theta) could be a NN; first term: fitting; second term: regularization\
 		<img src = '/DL/images/dynamic-system/msa.png' width = '400'>
-	-  Pontryagin's Maximum Principle: existence of co-state process P\
+	-  **PMP** (Pontryagin's Maximum Principle): for optimally controlled status, existence of co-state process P\
 		<img src = '/DL/images/dynamic-system/msa-pmp.png' width = '400'>
 	- Algorithms:\
 		<img src = '/DL/images/dynamic-system/msa-1.png' width = '400'>\

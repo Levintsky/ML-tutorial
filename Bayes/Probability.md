@@ -1,6 +1,7 @@
 # Probability
 
 ## Discrete (Kevin Murphy 2.3)
+- Empirical distribution;
 - Binary:
 	- Bernoulli
 		- E(x) = p
@@ -42,9 +43,26 @@
 		<img src="/Bayes/images/prob/gamma-3.png" alt="drawing" width="450"/>
 	- Inverse Gamma:\
 		<img src="/Bayes/images/prob/igamma.png" alt="drawing" width="450"/>
+- Chi-square: a special case of gamma, e.g., X^2 - Gamma(1/2, 2)
+	- Definition:\
+		<img src="/Bayes/images/prob/chi-square-1.png" alt="drawing" width="400"/>
+	- Statistics:\
+		<img src="/Bayes/images/prob/chi-square-2.png" alt="drawing" width="300"/>
 - Beta: **conjugacy prior** of binomial \
 	<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="300"/>
+- T distribution: if the variation is estimated, the standarized var observes t-distribution?
+	- Definition:\
+		<img src="/Bayes/images/prob/t-dist-1.png" alt="drawing" width="400"/>
+	- Statistics:\
+		<img src="/Bayes/images/prob/t-dist-2.png" alt="drawing" width="300"/>
+- F distribution:
+	- Definition:\
+		<img src="/Bayes/images/prob/f-dist-1.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/prob/f-dist-2.png" alt="drawing" width="400"/>
+	- Statistics:\
+		<img src="/Bayes/images/prob/f-dist-3.png" alt="drawing" width="300"/>
+		<img src="/Bayes/images/prob/f-dist-4.png" alt="drawing" width="300"/>
 
 ## Gaussian (PRML, Chap 2; Kevin Murphy, Chap 4)
 - Definition: \
