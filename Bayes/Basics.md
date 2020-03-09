@@ -1,8 +1,10 @@
 # Bayesian Statistics
 
 ## Unclassified
-- NBC (Naive Bayes):\
-	<img src="/Bayes/images/basics/nbc.png" alt="drawing" width="400"/>
+- NBC (Naive Bayes): Kevin Murphy 3.5\
+	- Assumption: the features are conditionally **independent** given the class label;
+		<img src="/Bayes/images/basics/nbc.png" alt="drawing" width="400"/>
+	- The log-sum-exp trick: minus the baseline;
 
 ## Bayesian Statistics (Kevin Murphy Chap 5)
 - MAP estimation is not invariant to reparameterization

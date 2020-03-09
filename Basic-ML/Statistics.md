@@ -4,6 +4,9 @@
 - https://segmentfault.com/a/1190000004411616
 - https://www.zhihu.com/question/23149768
 
+## Books
+- Statistics. Freedman, Pisani & Purves.
+
 ## Classes
 - Stanford STATS 60: https://web.stanford.edu/class/stats60/
 
@@ -36,6 +39,16 @@
 	- Often, a P-value is used to assess significance of a hypothesis test.
 		- If the P-value is less than 5%, the result is statistically significant.
 		- If the P-value is less than 1%, the result is called highly significant.
+- T-test: SD+ instead of SD compared to Z-test;
+	- Most test statistics have the form t=Z/s, where Z and s are functions of the data.
+	- The **assumptions** underlying a t-test in its simplest form are that:
+		- X follows a **normal** distribution with mean mu and variance sig^2/n;
+		- s^2 follows a **chi-square** distribution with n−1 degrees of freedom. This assumption is met when the observations used for estimating s2 come from a normal distribution (and i.i.d for each group).
+		- Z and s are **independent**.
+		<img src="/Basic-ML/images/stat/t-test.png" alt="drawing" width="400"/>
+- Pearson's **chi-squared** test:
+	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;
+		<img src="/Basic-ML/images/stat/chi-squared-test.png" alt="drawing" width="400"/>
 
 ## More Gaussian
 - Distribution of mean
@@ -95,27 +108,10 @@
 <img src="/Basic-ML/images/stat/gaussian-test1.png" alt="drawing" width="600"/>
 <img src="/Basic-ML/images/stat/gaussian-test2.png" alt="drawing" width="600"/>
 
-	- **Z-test**: known sigma, test mu
-		- (mean-mu0)/(sigma/sqrt(n))
-	- **t-test**: known sigma, test mu
-<img src="/Basic-ML/images/stat/t-test.png" alt="drawing" width="500"/>
-
-	- t-test: difference of two normal with same unknown variance but different mean.
-<img src="/Basic-ML/images/stat/t-test2.png" alt="drawing" width="500"/>
-
 	- Testing of Variance
 		- Chi-square test: variance of some samples
 		- F-test: Given two set of samples from (mean1, var1), (mean2, var2), test if var1 >=< var2?
 - Distribution fitting test
-	- **Chi-square-test** of k discrete non-overlapping events of
-		- H0: x observes F(x)
-		- H1: x does not observe F(x)
-		- x observes chi-square(k-1) distribution
-<img src="/Basic-ML/images/stat/chi-square-test.png" alt="drawing" width="500"/>
-
-	- Chi-square test of dividing continuous events into k bins for a distribution with r parameters;
-<img src="/Basic-ML/images/stat/chi-square-test2.png" alt="drawing" width="500"/>
-
 - Skewness, Kurtosis
 	- 3rd and 4th moments
 <img src="/Basic-ML/images/stat/Skewness.png" alt="drawing" width="450"/>

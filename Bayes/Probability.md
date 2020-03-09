@@ -1,12 +1,11 @@
 # Probability
 
 ## Discrete (Kevin Murphy 2.3)
-- Empirical distribution;
 - Binary:
 	- Bernoulli
 		- E(x) = p
 		- V(x) = p(1-p)
-	- Binomial: conjugacy prior is Beta \
+	- Binomial: conjugacy prior is Beta;
 		- E(x) = np
 		- V(x) = np(1-p) \
 			<img src="/Bayes/images/prob/binomial.png" alt="drawing" width="300"/>
@@ -21,11 +20,9 @@
 	- Dirichlet: **conjugacy** of multinomial \
 		<img src="/Bayes/images/prob/dirichlet.png" alt="drawing" width="350"/>	
 - Poisson:
-	- Physical meaning: x ~ Binomial(n, p), n very large, n x p = labmda, then k appearancd observes Poisson
-	- p(k) = lambda^k exp(-lambda)/k!
-	- E(x) = lambda
-	- V(x) = lambda \
-	<img src="/Bayes/images/prob/poisson.png" alt="drawing" width="400"/>
+	- Physical meaning: x ~ Binomial(n, p), n very large, n x p = labmda, then k appearancd observes Poisson;
+		<img src="/Bayes/images/prob/poisson.png" alt="drawing" width="400"/>
+- Empirical distribution;
 
 ## Continuous (Kevin Murphy 2.4)
 - Uniform U(a, b)
@@ -73,8 +70,8 @@
 	<img src="/Bayes/images/prob/gaussian-eigen2.png" alt="drawing" width="400"/>
 - Conditional, precision matrix;
 	- Lambda = inv(Cov);\
-	<img src="/Bayes/images/prob/gaussian-joint1.png" alt="drawing" width="400"/>
-	<img src="/Bayes/images/prob/gaussian-joint2.png" alt="drawing" width="400"/>
+		<img src="/Bayes/images/prob/gaussian-joint1.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/prob/gaussian-joint2.png" alt="drawing" width="400"/>
 - Special case: joint 2-dim Gaussian distribution: \
 	<img src="/Bayes/images/prob/gaussian-2d.png" alt="drawing" width="400"/>
 - **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
@@ -108,7 +105,7 @@
 - Posterior inference (Kevin Murphy, Chap 4.6; focus on **Covariance**):
 	- x ~ Gamma; 1/x ~ Inverse-Gamma; single var case:\
 		<img src="/Bayes/images/prob/gaussian-inf-11.png" alt="drawing" width="400"/>
-	- Inverse of Wishart: I-Wishart;
+	- Inverse of Wishart: I-Wishart;\
 		<img src="/Bayes/images/prob/gaussian-inf-12.png" alt="drawing" width="400"/>
 	- Posterior of Covariance: Inverse-Wishart;
 	- Multi var, both mean and variance unknown: **NIW** (Normal-inverse-wishart);
@@ -173,7 +170,7 @@
 		<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="400"/>
 - Chebyshev\
 	<img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
-- Central Limit:
-	- X i.i.d., with mean, std
+- Central Limit Theorm:
+	- X i.i.d., with mean=mu, std=sigma, not necessarily Gaussian;
 	- (sum(x) - n mu) / sqrt(n)std close to N(0, 1)\
-		<img src="/Basic-ML/images/law-central-limit.png" alt="drawing" width="600"/>
+		<img src="/Bayes/images/prob/central-limit.png" alt="drawing" width="400"/>
