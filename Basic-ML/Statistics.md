@@ -28,6 +28,13 @@
 	- Standard Deviation
 	- Variance
 
+## Parameter Estimation
+- Parameter distribution summary:
+	<img src="/Basic-ML/images/stat/gaussian-sum.png" alt="drawing" width="600"/>
+- Bernoulli 0-1, n samples approximates as Gaussian:\
+	<img src="/Basic-ML/images/stat/bernoulli-ci1.png" alt="drawing" width="400"/>\
+	<img src="/Basic-ML/images/stat/bernoulli-ci2.png" alt="drawing" width="400"/>
+
 ## Hypothesis Testing
 - Z-scores:\
 	<img src="/Basic-ML/images/stat/z-score.png" alt="drawing" width="400"/>
@@ -49,58 +56,6 @@
 - Pearson's **chi-squared** test:
 	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;
 		<img src="/Basic-ML/images/stat/chi-squared-test.png" alt="drawing" width="400"/>
-
-## More Gaussian
-- Distribution of mean
-	- Suppose variance known, average of samples as an estimate of mean: Gaussian
-<img src="/Basic-ML/images/stat/gaussian-mean.png" alt="drawing" width="600"/>
-
-- Distribution of Variance
-	- Suppose X-bar and S^2 are sample mean and variance
-	- (n-1)S^2 / std^2 observes chi(n-1)
-	- X-bar and S^2 are independent
-<img src="/Basic-ML/images/stat/gaussian-var.png" alt="drawing" width="600"/>
-
-- Empirical of (x-mean)/std: t-distribution
-<img src="/Basic-ML/images/stat/gaussian-meanvar.png" alt="drawing" width="600"/>
-
-## Estimation
-- Confidence interval:
-	- p(theta1 < theta < theta2) = 1-alpha, out of interval: alpha
-	- alpha = 0.05, Gaussian: +/-1.96sigma
-- Estimate the interval of mean and variance of Gaussian
-	- Sigma known: Gaussian
-<img src="/Basic-ML/images/stat/gaussian-mean-est1.png" alt="drawing" width="200"/>
-
-	- Sigma unknown: t-distribution
-<img src="/Basic-ML/images/stat/gaussian-mean-est2.png" alt="drawing" width="200"/>
-<img src="/Basic-ML/images/stat/gaussian-mean-est3.png" alt="drawing" width="450"/>
-
-	- Variance estimation: chi
-<img src="/Basic-ML/images/stat/gaussian-var-est.png" alt="drawing" width="500"/>
-- Moment
-- MLE
-- Criteria
-	- Unbiased
-	- Smaller vaiance
-	- Convergence
-- Confidence Interval
-	- Gaussian
-		- std known, estimate mean: Gaussian
-<img src="/Basic-ML/images/stat/gaussian-mean-ci1.png" alt="drawing" width="200"/>
-
-		- std unknown, estimate mean: student-t
-<img src="/Basic-ML/images/stat/gaussian-mean-ci2.png" alt="drawing" width="600"/>
-
-		- estimate var: chi
-<img src="/Basic-ML/images/stat/gaussian-var-ci.png" alt="drawing" width="400"/>
-
-		- Difference of two Gaussian
-	- Bernoulli 0-1, n samples approximates as Gaussian
-<img src="/Basic-ML/images/stat/bernoulli-ci1.png" alt="drawing" width="500"/>
-<img src="/Basic-ML/images/stat/bernoulli-ci2.png" alt="drawing" width="600"/>
-
-- Single-side CI
 
 ## Hypothesis Testing
 - Type I, II error
