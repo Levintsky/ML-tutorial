@@ -4,13 +4,19 @@
 - https://gluebenchmark.com/leaderboard/
 
 ## Semi-supervised (SOA)
-- **ELMO**: Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer. Deep contextualized word representations. NAACL 2018
+- Legacy:
+	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
+	- Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH 2010
+	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
+	- Mikolov, T.; Kombrink, S.; Burget, L.; ernock, J.; and Khudanpur, S. 2011. Extensions of recurrent neural network language model. ICASSP 2011
+	- Sundermeyer, M.; Schluter, R.; and Ney, H. Lstm neural networks for language modeling. 2012
+- **ELMO**: Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer. Deep contextualized word representations. NAACL‘18
 	- https://allennlp.org/elmo
 	- ELMo (Embeddings from Language Models)
 	- bidirectional LSTM, predict next/last word
 - **Attention**: D Bahdanau, K Cho, and Y Bengio. Neural machine translation by jointly learning to align and translate. arxiv'14
-- Google NLP:
-	- **GMNT**: Y. Wu, M. Schuster, Z. Chen, Q.V. Le, M. Norouzi, et al. Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. 2016
+- Transformer/BERT series:
+	- **GMNT**: Y. Wu, M. Schuster, Z. Chen, Q.V. Le, M. Norouzi, et al. Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. 2016
 		<img src="/NLP/images/gmnt.png" alt="drawing" width="500"/>
 
 		- WordPiece for Korean, Japanese
@@ -38,7 +44,7 @@
 		- Fine-tunning:
 			- First token [CLS], finally used as classifier after FC and softmax;
 		<img src = '/Weak-Unsupervised/images/bert.png' width = '600px'>
-	- Parameter-Efficient Transfer Learning for NLP, 2019
+	- Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin de Laroussilhe, Andrea Gesmundo, Mona Attariyan, Sylvain Gelly. Parameter-Efficient Transfer Learning for NLP. ICML'19
 		- Adapter module
 	- Y You, J Li, J Hseu, X Song, J Demmel, C Hsieh. Reducing BERT Pre-Training Time from 3 Days to 76 Minutes. 2019
 		- Batch-size: 64k - 32k
@@ -49,7 +55,9 @@
 		- Fixed-length segment;
 		- Improved on Rami Al-Rfou et.al. 2018 [Character-level language modeling with deeper self-attention]
 		- Cached previous hidden states;
-- OpenAI:
+	- **XLNet**: Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le. XLNet: Generalized Autoregressive Pretraining for Language Understanding. 2019
+		- https://github.com/zihangdai/xlnet
+- OpenAI GPT Series:
 	- **GPT**: A Radford, K Narasimhan, T Salimans, I Sutskever. Improving Language Understanding by Generative Pre-Training. 2018
 		- https://github.com/openai/finetune-transformer-lm
 		- Causal Transformer;
@@ -70,15 +78,20 @@
 		- additional layer normalization: after the final self attention block
 		- 48 layers of transformer
 	- R Child, S Gray, A Radford, and I Sutskever. Generating long sequences with sparse transformers. 2019
-- Facebook:
-	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
-	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
-	- G Lample and A Conneau. Cross-lingual language model pretraining. 2019
-- Amazon:
-	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
-		<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
-		<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
-- Salesforce:
+- G Lample and A Conneau. Cross-lingual language model pretraining. 2019
+- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
+	<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
+	<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
+- NVIDIA:
+	- Megatron: https://github.com/NVIDIA/Megatron-LM
+
+## Character Level
+- **BPE**: 
+	- Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with subword units. 2015
+	- FastBPE: https://github.com/glample/fastBPE
+
+## Generation
+- Controlled Generation:
 	- **CTRL**: N Keskar, B McCann, L Varshney, C Xiong, R Socher. CTRL: A Conditional Transformer Language Model for Controllable Generation. 2019
 		- Insight: **conditional Transformer**; control code as first word without special treatment;
 		- https://github.com/salesforce/ctrl
@@ -89,14 +102,18 @@
 		- Sampling with temperature;
 		- Control codes: style by domain; more complex; specific task; zero-shot code-mixing;
 		- Trained on 256 core of TPU v3; 800k iterations with AdaGrad; batch-size=1024;
-- NVIDIA:
-	- Megatron: https://github.com/NVIDIA/Megatron-LM
-- Legacy:
-	- Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH 2010
-	- Mikolov, T.; Kombrink, S.; Burget, L.; ernock, J.; and Khudanpur, S. 2011. Extensions of recurrent neural network language model. ICASSP 2011
-	- Sundermeyer, M.; Schluter, R.; and Ney, H. Lstm neural networks for language modeling. 2012
-
-## Character Level
-- **BPE**: 
-	- Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with subword units. 2015
-	- FastBPE: https://github.com/glample/fastBPE
+	- Finetune with RL: Daniel M. Ziegler, Nisan Stiennon, Jeffrey Wu, Tom B. Brown, Alec Radford, Dario Amodei, Paul Christiano, and Geoffrey Irving. Fine-tuning language models from human preferences. arXiv'19
+	- Training with conditions:
+		- Yuta Kikuchi, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. Controlling output length in neural encoder-decoders. EMNLP'16
+		- Jessica Ficler and Yoav Goldberg. Controlling linguistic style aspects in neural language generation. 2017
+	- **SeqGAN**: L Yu, W Zhang, J Wang, and Y Yu. SeqGAN: Sequence generative adversarial nets with policy gradient. AAAI'17
+	- **PPLM**: Sumanth Dathathri, Andrea Madotto, Janice Lan, Jane Hung, Eric Frank, Piero Molino, Jason Yosinski, Rosanne Liu. Plug and Play Language Models: a Simple Approach to Controlled Text Generation. ICLR'20
+		- https://github.com/uber-research/pplm
+		- Insight: modify history in the direction to maximize both p(x) and p(a|x), then we get p(x|a);
+			<img src="/NLP/images/pplm.png" alt="drawing" width="400"/>
+- Steer (with a small NN?):
+	- Jiatao Gu, Graham Neubig, Kyunghyun Cho, and Victor OK Li. Learning to translate in real-time with neural machine translation. arxiv'16
+	- Jiatao Gu, Kyunghyun Cho, and Victor OK Li. Trainable greedy decoding for neural machine translation. arxiv'17
+	- Yun Chen, Victor OK Li, Kyunghyun Cho, and Samuel R Bowman. A stable and effective learning strategy for trainable greedy decoding. arxiv'18
+	- Nishant Subramani, Sam Bowman, and Kyunghyun Cho. Can unconditional language models recover arbitrary sentences? arxiv'19
+- Ari Holtzman, Jan Buys, Maxwell Forbes, Antoine Bosselut, David Golub, and Yejin Choi. Learning to write with cooperative discriminators. CoRR'18

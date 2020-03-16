@@ -1,7 +1,10 @@
 # CNN (with focus on Classification)
 
-## Classification, Network Design
-- **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS 2012.
+## Layer Design
+- Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
+
+## Network Design
+- **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
 - **NIN**: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
 - **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. 2014
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14

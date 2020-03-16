@@ -1,8 +1,5 @@
 # Optimization for Deep Learning
 
-## Loss Design
-- Visualizing the Loss Landscape of Neural Nets. NIPS'18
-
 ## Deep-Learning optimizers
 - Summaries:
 	- http://ruder.io/optimizing-gradient-descent/

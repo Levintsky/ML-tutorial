@@ -15,7 +15,6 @@
 - Jianlong Chang, xinbang zhang, Yiwen Guo, Gaofeng Meng, Shiming Xiang, Chunhong Pan. DATA: Differentiable ArchiTecture Approximation. NIPS'19
 - Yukang Chen, Tong Yang, Xiangyu Zhang, Gaofeng Meng, Xinyu Xiao, Jian Sun. DetNAS: Backbone Search for Object Detection. NIPS'19
 
-
 ## Applications
 -  Kary Ho, Andrew Gilbert, Hailin Jin, John Collomosse. Neural Architecture Search for Deep Image Prior. 2020
 

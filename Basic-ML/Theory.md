@@ -1,4 +1,4 @@
-# Theory
+# Learining Theory
 
 ## Resources
 - Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
@@ -10,6 +10,9 @@
 
 ## Mixture
 - Nearly tight sample complexity bounds for learning mixtures of Gaussians via sample compression schemes
+
+## Optimization
+- Chi Jin, Lydia T. Liu, Rong Ge, Michael I. Jordan. On the Local Minima of the Empirical Risk. NIPS'18
 
 ## Unclassified
 - Why Is My Classifier Discriminatory? NIPS'18

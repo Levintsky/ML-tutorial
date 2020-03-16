@@ -158,9 +158,13 @@
 	- https://www.boristhebrave.com/2018/04/15/marching-cubes-tutorial/
 	- https://www.boristhebrave.com/2018/04/15/marching-cubes-3d-tutorial/
 	- https://github.com/BorisTheBrave/mc-dc
-- Legacy: Poisson Surface Reconstruction
+- Legacy: **Poisson Surface Reconstruction**
+	- Assumption: **oriented normals**;
 	- M. M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface reconstruction. SGP'06
 	- M. M. Kazhdan and H. Hoppe. Screened poisson surface reconstruction. SIGGRAPH'13
+- Legacy: deform an initial mesh;
+	- Similar to active-contour, leads to local minima;
+	- Andrei Sharf, Thomas Lewiner, Ariel Shamir, Leif Kobbelt, and Daniel Cohen-Or. 2006. Competing fronts for coarse–to–fine surface reconstruction. CGF'06
 - Legacy:
 	- F. Bernardini, J. Mittleman, H. Rushmeier, C. Silva, and G. Taubin. The ball-pivoting algorithm for surface reconstruction. TVCG'99
 	- F. Calakli and G. Taubin. SSD: smooth signed distance surface reconstruction. CGF'11
@@ -192,6 +196,20 @@
 - Edward Smith, Scott Fujimoto, and David Meger. Multiview silhouette and depth decomposition for high resolution 3d object representation. NeurIPS'18
 - **Geometrics**: Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. ICML'19
 	- https://github.com/EdwardSmith1884/GEOMetrics
+- **DGP**: Francis Williams, Teseo Schneider, Claudio Silva, Denis Zorin, Joan Bruna, and Daniele
+Panozzo. 2019. Deep geometric prior for surface reconstruction. CVPR'19
+- **MeshCNN**: Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, Daniel Cohen-Or. MeshCNN: A Network with an Edge. SIGGRAPH'19
+	- https://ranahanocka.github.io/MeshCNN/
+	- https://github.com/ranahanocka/MeshCNN/
+	- https://docs.google.com/presentation/d/1yLZ6uyAujyF0MtFWofAMFgWQpWaDYqS8vkdge_lzk6g/edit#slide=id.g35f391192_00
+	- Insight: edges + affinity from meshes;
+	- Mesh-Conv:\
+		<img src="/CV-3D/images/3d_output/mesh-conv.png" alt="drawing" width="400"/>
+	- Mesh-Pool: remove edges to collapse (5 edges -> 2)\
+		<img src="/CV-3D/images/3d_output/mesh-pool-1.png" alt="drawing" width="400"/>
+		<img src="/CV-3D/images/3d_output/mesh-pool-2.png" alt="drawing" width="400"/>
+	- Mesh-Unpool:\
+		<img src="/CV-3D/images/3d_output/mesh-unpool.png" alt="drawing" width="400"/>
 - **Mesh R-CNN**: Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh R-CNN. ICCV'19
 	- https://gkioxari.github.io/meshrcnn/
 	- https://github.com/facebookresearch/meshrcnn
@@ -205,6 +223,13 @@
 		- 2. graph convolution, which propagates information along mesh edges;
 		- 3. vertex refinement， which updates vertex positions.
 	- Supevision: similar to **Geometrics**; sample points, Chamfer-Distance;
+- Point2Mesh: A Neural Self-Prior for Deformable Meshes. SIGGRAPH'20 submission
+	- Insight: coarse-to-fine MeshCNN:
+		<img src="/CV-3D/images/3d_output/point2mesh.png" alt="drawing" width="500"/>
+	- Loss: Mesh to Point Cloud Distance: Chamfer + differentiable sampler;
+	- Loss: Beam-gap loss: to handle narrow deep cavity;
+	- Implementation: iterative for K=1000 iterations by network, then pass to RWM [Huang'18] to generate manifold, watertight and non-interscting surface;
+	- Runtime (per iteration): 0.23/0.59/4.7 sec on 2k/6k/40k faces;
 
 ## Oct-Tree
 - Gernot Riegler, Ali Osman Ulusoy, and Andreas Geiger. Octnet: Learning deep 3d representations at high resolutions. CVPR'17

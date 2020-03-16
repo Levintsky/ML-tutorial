@@ -1,5 +1,13 @@
 # Dynamic System View
 
+## Unclassified
+- Rassi. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
+- Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
+- Lei Wu, Chao Ma, Weinan E. How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
+- **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
+	- Learned-PDE;
+- Sonoda, Sho and Murata, Noboru. Double continuum limit of deep neural networks. ICML Workshop'17
+
 ## Basics on Dynamic System
 - Classical solvers:
 	- Forward Euler (simplest RK);
@@ -17,18 +25,13 @@
 	- http://wwwf.imperial.ac.uk/metric/metric_public/numerical_methods/iteration/fixed_point_iteration.html
 - Dong, Bin, Jiang, Qingtang, and Shen, Zuowei. Image restoration: wavelet frame shrinkage, nonlinear evolution pdes, and beyond. Multiscale Modeling & Simulation'17
 	- Insight: Conv operator as differentiation;
-- Reversible:
+- Reversible ODE:
 	- Nguyen, B. D., and McMechan, G. A. Five ways to avoid storing source wavefield snapshots in 2d elastic prestack reverse time migration. Geophysics'14
 		- Reversible numerical methods for ODEs have been studied in the context of hyperbolic differential equations;
 
 ## Resources
 - Books:
 	- Dimitri P Bertsekas. Dynamic programming and optimal control, volume 1. Athena scientific Belmont, MA, 1995.
-
-## Unclassified
-- **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
-	- Learned-PDE;
-- Sonoda, Sho and Murata, Noboru. Double continuum limit of deep neural networks. ICML Workshop'17
 
 ## ML ODE Solver:
 - GP solver:
@@ -39,7 +42,14 @@
 - Deep Learning as Discretized Differential Equations
 	- Forward Euler, or 1st-order Runge-Kutta (ResNet, RevNet, ResNeXt):
 		- **RevNet**: Gomez, A. N.; Ren, M.; Urtasun, R.; and Grosse, R. B. The reversible residual network: Backpropagation without storing activations. NIPS'17
-			<img src = '/DL/images/dynamic-system/rev-net.png' width = '400'>
+			- https://github.com/renmengye/revnet-public
+			- Insight: modularized to make computation reversible: activation saving not required for bp;
+				<img src = '/DL/images/dynamic-system/rev-net-1.png' width = '400'>\
+				<img src = '/DL/images/dynamic-system/rev-net-2.png' width = '400'>
+			- The backprop: reconstruct the value first;\
+				<img src = '/DL/images/dynamic-system/rev-net-3.png' width = '400'>
+			- Chang Bo's insight from ODE:
+				<img src = '/DL/images/dynamic-system/rev-net.png' width = '400'>
 		- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
 			- https://web.stanford.edu/~yplu/proj/lm/
 			- Linear multi-step;

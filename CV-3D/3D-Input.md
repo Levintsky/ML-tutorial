@@ -117,6 +117,8 @@
 - Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. Structure-aware generative network for 3d-shape modeling. TOG'19
 
 ## Mesh
+- Legacy:
+	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
 - Graph-NN:
 	- J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
 	- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
@@ -136,8 +138,9 @@
 - H. B. Hamu, H. Maron, I. Kezurer, G. Avineri, and Y. Lipman. Multi-chart generative surface modeling. 2018
 - **MeshNet**: Y Feng, Y Feng, H You, X Zhao, Y Gao. MeshNet: Mesh Neural Network for 3D Shape Representation. AAAI'19 \
 	<img src="/CV-3D/images/3d_input/meshnet.png" alt="drawing" width="600"/>
-- Legacy:
-	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
+- **MeshCNN**: Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, Daniel Cohen-Or. MeshCNN: A Network with an Edge. SIGGRAPH'19
+	- https://ranahanocka.github.io/MeshCNN/
+	- https://github.com/ranahanocka/MeshCNN/
 
 ## Multiple 2D Images
 - Hang Su, Subhransu Maji, Evangelos Kalogerakis, Erik Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV'15

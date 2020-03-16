@@ -82,6 +82,7 @@
 		<img src="/Generative/images/inpaint/global-local.png" alt="drawing" width="400"/>
 - **Deep-Prior**: D Ulyanov, A Vedaldi, V Lempitsky. Deep Image Prior. CVPR'18
 	- https://dmitryulyanov.github.io/deep_image_prior
+	- Insight: prior comes from the network structure and net parameter initialization;
 	- Deep energy based, natural image should have low cost;
 	- Optimize image iteration by iteration;
 - Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas S Huang. Generative Image Inpainting with Contextual Attention. CVPR'18

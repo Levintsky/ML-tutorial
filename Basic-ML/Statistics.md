@@ -54,7 +54,7 @@
 		- Z and s are **independent**.
 		<img src="/Basic-ML/images/stat/t-test.png" alt="drawing" width="400"/>
 - Pearson's **chi-squared** test:
-	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;
+	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;\
 		<img src="/Basic-ML/images/stat/chi-squared-test.png" alt="drawing" width="400"/>
 
 ## Hypothesis Testing
