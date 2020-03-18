@@ -94,7 +94,6 @@ design.
 	- Aditya Grover, Manik Dhar, and Stefano Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
 - Recurrent:
 	- Junier Oliva, Avinava Dubey, Manzil Zaheer, Barnabas Poczos, Ruslan Salakhutdinov, Eric Xing, and Jeff Schneider. Transformation autoregressive networks. ICML'18
-- W Grathwohl, R Chen, J Bettencourt, I Sutskever, and D Duvenaud. Ffjord: Free-form continuous dynamics for scalable reversible generative models. ICLR'19
 - **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
 	- https://www.guandaoyang.com/PointFlow/
 	- https://github.com/stevenygd/PointFlow
@@ -116,29 +115,8 @@ design.
 - **RAD**: Laurent Dinh, Jascha Sohl-Dickstein, Razvan Pascanu, and Hugo Larochelle. A RAD approach to deep mixture models. ICLR'19
 
 ## Invertible
-- **Revnet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The reversible residual network: Backpropagation without storing activations. NIPS 2017
-	- Insight: resnet expensive to store activation in memory, revnet could calculate activation from next layer;
-	- Modularized: an auxiliary z = x1 + F(x2), the rev-block could only use stride=1 unlike resnet:\
-		<img src = '/Generative/images/flow/Revnet1.png' width = '450'>
-	- Forward and reverse:\
-		<img src = '/Generative/images/flow/Revnet2.png' width = '450'>
-	- Backward:\
-		<img src = '/Generative/images/flow/Revnet3.png' width = '450'>
 - Yunfei Teng, Anna Choromanska, and Mariusz Bojarski. Invertible autoencoder for domain adaptation. 2018
 - R.T. Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
 - Fangchang Ma, Ulas Ayaz, Sertac Karaman. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
-- Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
-- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
-	- A density model, main insight: free-form! A comparison:\
-		<img src = '/Generative/images/flow/i-resnet4.png' width = '400'>
-	- https://github.com/jhjacobsen/invertible-resnet
-	- With contractive g(), i.e., Lip(g(theta)) < 1:\
-		<img src = '/Generative/images/flow/i-resnet.png' width = '400'>
-	- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
-	- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
-	- For (1), (2), the approximate trick;
-	- For (3), truncated at n steps;
-	- The algorithm:\
-		<img src = '/Generative/images/flow/i-resnet3.png' width = '400'>
-- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
+- Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NIPS'19
 - Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019
