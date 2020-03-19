@@ -17,3 +17,6 @@ Quoc V Le. Qanet: Combining local convolution with global self-attention for rea
 - Awni Hannun, Carl Case, Jared Casper, Bryan Catanzaro, Greg Diamos, Erich Elsen, Ryan Prenger, Sanjeev Satheesh, Shubho Sengupta, Adam Coates, et al. Deep speech: Scaling up end-to-end speech recognition. 2014
 - Daniel S Park, William Chan, Yu Zhang, Chung-Cheng Chiu, Barret Zoph, Ekin D Cubuk, and
 Quoc V Le. Specaugment: A simple data augmentation method for automatic speech recognition. 2019
+
+## Dataset Reduction
+- Tongzhou Wang, Jun-Yan Zhu, Antonio Torralba, Alexei A. Efros. Dataset Distillation. ICLR'19 reject

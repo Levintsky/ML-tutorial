@@ -78,7 +78,8 @@
 		- Data augmentation: color distortion is critical;
 		- InfoNCE loss;
 		- Shuffle BN to solve information leakage (similar to MoCo);
-		- Large batch-size, longer training (1000 epochs);
+		- Large batch-size (4k - 8k, requires TPU support), longer training (1000 epochs);
+	- **MoCo-V2**: Xinlei Chen, Haoqi Fan, Ross Girshick, Kaiming He. Improved Baselines with Momentum Contrastive Learning. 2020
 - Weak detetection (Zhenheng):
 	- Image has only image level labeling (no bbox or segments);
 	- Hundreds of candidate proposals (can't penalize bbox reg-loss or classification loss);

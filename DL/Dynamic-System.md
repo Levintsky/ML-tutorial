@@ -168,9 +168,25 @@
 
 ## NN as ODE/PDE/Dynamic System, Equilibrium
 - Legacy:
+	- **Almeida-Pineda** algorithm;
+	- Almeida, L. B. A learning rule for asynchronous perceptrons with feedback in a combinatorial environment. ICNN'87
+	- Pineda, F. J. Generalization of back-propagation to recurrent neural networks. Physical review letters'87
+	- Patrice Y Simard, Mary B Ottaway, and Dana H Ballard. Fixed point analysis for recurrent networks. NIPS'89
 	- Cessac, B. A view of neural networks as dynamical systems. International Journal of Bifurcation and Chaos. 2010
-- Patrice Y Simard, Mary B Ottaway, and Dana H Ballard. Fixed point analysis for recurrent networks. NIPS'89
 - John Miller and Moritz Hardt. When recurrent models don't need to be recurrent. arXiv'18
+- **RBP**: Renjie Liao, Yuwen Xiong, Ethan Fetaya, Lisa Zhang, KiJung Yoon, Xaq Pitkow, Raquel Urtasun, Richard Zemel. Reviving and Improving Recurrent Back-Propagation. ICML'18
+	- https://github.com/lrjconan/RBP
+	- Insight: consider a class of RNNs whose **hidden state** converges to a steady state, with **Implicit Function Theorem**;
+	- Fix point of phi w.r.t. h;\
+		<img src = '/DL/images/dynamic-system/rbp-1.png' width = '400'>
+	- Derivative of output, y=G(x,wG,h) and loss L(y,yGT);\
+		<img src = '/DL/images/dynamic-system/rbp-2.png' width = '400'>
+	- RBP algorithm:\
+		<img src = '/DL/images/dynamic-system/rbp-3.png' width = '400'>
+	- **CG-RBP**: conjugate gradient on normal equations:\
+		<img src = '/DL/images/dynamic-system/rbp-4.png' width = '300'>
+	- Neumann series (Neumann-RBP): sum(I+A+A^2+...) Neumann series, truncated at K:\
+		<img src = '/DL/images/dynamic-system/rbp-5.png' width = '400'>
 - Equilibrium Propagation
 	- B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv'16
 	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models

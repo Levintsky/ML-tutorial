@@ -18,6 +18,7 @@
 	- Entity centric and attention based to capture object-level info;
 	- Net structure: CNN-RNN;\
 		<img src="/RL/images/multi-agent/hide-seek.png" alt="drawing" width="500"/>
+- Joseph Suarez, Yilun Du, Phillip Isola, Igor Mordatch. Neural MMO: A Massively Multiagent Game Environment for Training and Evaluating Intelligent Agents. ICLR 2019 reject
 
 ## DeepMind
 - M Jaderberg, W Czarnecki, I Dunning, L Marris, G Lever, A G Castañeda, C Beattie, N C. Rabinowitz, Ari S. Morcos, A Ruderman, N Sonnerat, T Green, L Deason, Joel Z. Leibo, D Silver, D Hassabis, K Kavukcuoglu, T Graepel. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
