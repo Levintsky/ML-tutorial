@@ -4,6 +4,8 @@
 - Léonard Blier, Yann Ollivier. The Description Length of Deep Learning models. NIPS'18
 
 ## Approximator
+- Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks, 4(2):
+251–257, 1991.
 - Hongzhou Lin, Stefanie Jegelka. ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
 
 ## Convergence

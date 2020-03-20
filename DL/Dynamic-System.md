@@ -2,6 +2,11 @@
 
 ## Unclassified
 - **LGQ**: Laurent Lessard, Benjamin Recht, Andrew Packard. Analysis and Design of Optimization Algorithms via Integral Quadratic Constraints. 2015
+- Bo Chang, Lili Meng, Eldad Haber, Frederick Tung, David Begert Multi-level residual networks from dynamical systems view. ICLR'18
+- Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
+- **DURR**: Xiaoshuai Zhang, Yiping Lu, Jiaying Liu, Bin Dong. Dynamically Unfolding Recurrent Restorer: A Moving Endpoint Control Method for Image Restoration. ICLR'19
+- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
+Modeling. NIPS'18
 - Rassi. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
 - Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
 - Lei Wu, Chao Ma, Weinan E. How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
@@ -32,6 +37,7 @@
 
 ## Resources
 - Books:
+	- Hairer and Peters. Solving ordinary differential equations I. Springer Berlin Heidelberg, 1987.
 	- Dimitri P Bertsekas. Dynamic programming and optimal control, volume 1. Athena scientific Belmont, MA, 1995.
 
 ## Neural ODE Series
@@ -60,39 +66,38 @@
 		<img src = '/DL/images/dynamic-system/ffjord-2.png' width = '400'>
 	- A comparison:\
 		<img src = '/DL/images/dynamic-system/ffjord-3.png' width = '400'>
-- Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
-	- A density model, main insight: free-form! A comparison:\
-		<img src = '/DL/images/dynamic-system/i-resnet4.png' width = '400'>
-	- https://github.com/jhjacobsen/invertible-resnet
-	- With contractive g(), i.e., Lip(g(theta)) < 1:\
-		<img src = '/DL/images/dynamic-system/i-resnet.png' width = '400'>
-	- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
-	- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
-	- For (1), (2), the approximate trick;
-	- For (3), truncated at n steps;
-	- The algorithm:\
-		<img src = '/DL/images/dynamic-system/i-resnet3.png' width = '400'>
-- Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
-- Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
+- **HollowNet**: Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
+	<img src = '/DL/images/dynamic-system/hollow-net.png' width = '400'>
 - **ANODE**: Emilien Dupont, Arnaud Doucet, Yee Whye Teh. Augmented Neural ODEs. NIPS'19
 	- https://github.com/EmilienDupont/augmented-neural-odes
-	- Insight: ODE preserves topology and is not able to present some functions;
+	- Insight: ODE preserves topology and is not able to present some functions; augment to higher-dimension to make it possible;
 	- E.g.1: f(1) = -1, f(-1) = 1; (cross each other)
 	- E.g.2: two circles; (not linear separable)
 	- Proposed method: augment with vector a;\
 		<img src = '/DL/images/dynamic-system/anode.png' width = '400'>
-- Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
+- **ODE-RNN**: Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
+	- Insight: ODE-RNN hybrid; ODE during time steps; RNN update with new observation;
+	- https://github.com/YuliaRubanova/latent_ode
+	- Exponential decay as RNN; could also be modeled as ODE as dh/dt = -tau t
+		<img src = '/DL/images/dynamic-system/ode-rnn-1.png' width = '400'>
+	- Algorithm:\
+		<img src = '/DL/images/dynamic-system/ode-rnn-2.png' width = '400'>
+- Xuechen Li, Ting-Kam Leonard Wong, Ricky T. Q. Chen, David Duvenaud. Scalable Gradients for Stochastic Differential Equations. AISTATS'20
+	- Insight: extend adjoint to **SDE**;\
+		<img src = '/DL/images/dynamic-system/sde-adjoint.png' width = '400'>
 
-## ML ODE Solver:
+## ML ODE/PDE/SDE Solver:
 - GP solver:
 	- Michael Schober, David Duvenaud, Philipp Hennig. Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 		- Gaussian Process to solve ODE;
 	- Weinan E. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
 		- First proposed connection between ResNet and ODE; ResNet = Forward Euler;
 - Deep Learning as Discretized Differential Equations
+	- Legacy:
+		- Isaac E Lagaris, Aristidis Likas, and Dimitrios I Fotiadis. Artificial neural networks for solving ordinary and partial differential equations. IEEE transactions on neural networks, 9(5):987–1000, 1998.
 	- Forward Euler, or 1st-order Runge-Kutta (ResNet, RevNet, ResNeXt):
 		- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
-			- Insight: view ResNet as ODE to address exploding/vanishing gradients; Condition of stable: real part of Jacobian's Eigenvalue <= 0;
+			- Insight: view ResNet as ODE to address exploding/vanishing gradients; Condition of stable: real part of Jacobian's Eigenvalue <= 0;\
 				<img src = '/DL/images/dynamic-system/stable-nn-1.png' width = '400'>
 			- Which requires constraint. The paper proposes an intrinsically stable method;
 			- Model: 1 Layer ResNet, inspired by Hamiltonian system;\
@@ -150,6 +155,26 @@
 				<img src = '/DL/images/dynamic-system/pde-net-3.png' width = '400'>
 			- Another view:\
 				<img src = '/DL/images/dynamic-system/pde-net.png' width = '350'>
+		- **i-ResNet**: Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
+			- Main insight: same as RevNet and flow-based methods. but **free-form**; A comparison:\
+				<img src = '/DL/images/dynamic-system/i-resnet-4.png' width = '400'>
+			- https://github.com/jhjacobsen/invertible-resnet
+			- With contractive g(), i.e., Lip(g(theta)) < 1, so **Spectral-Norm** layer added to make constraint always satisfied. Then backward Euler to compute x(t+1) from x(t) as fixed point:\
+				<img src = '/DL/images/dynamic-system/i-resnet-1.png' width = '400'>
+			- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
+				<img src = '/DL/images/dynamic-system/i-resnet-2.png' width = '400'>
+			- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
+			- For (1), (2), the approximate trick;
+			- For (3), truncated at n steps;
+			- The algorithm:\
+				<img src = '/DL/images/dynamic-system/i-resnet-3.png' width = '400'>
+		- **Residual-Flow**: Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
+			- Main insight: Unbiased Log Density Estimation for Maximum Likelihood Estimation with **Russian roulette**; flip a coin (Bernoulli) to decide when to stop; Improve on **i-ResNet**;
+			- https://github.com/rtqichen/residual-flows
+			- Forward: notice the importance sampling;\
+				<img src = '/DL/images/dynamic-system/res-flow-1.png' width = '400'>
+			- Backward:\
+				<img src = '/DL/images/dynamic-system/res-flow-2.png' width = '400'>
 	- Backward Euler Approx:
 		- **PolyNet**: Xingcheng Zhang, Zhizhong Li, Chen Change Loy, Dahua Lin. PolyNet: A Pursuit of Structural Diversity in Very Deep Networks. CVPR'17
 			- Insight: structural diversity; "polynomial" combination of Inception units;
@@ -165,6 +190,11 @@
 			- An ODE view:\
 				<img src = '/DL/images/dynamic-system/fractal-net.png' width = '400'>
 		- DenseNet:
+- Neural SDE:
+	- Junteng Jia and Austin R. Benson. Neural Jump Stochastic Differential Equations. arxiv'19
+	- Xuanqing Liu, Si Si, Qin Cao, Sanjiv Kumar, and Cho-Jui Hsieh. Neural sde: Stabilizing neural ode networks with stochastic noise. arxiv'19
+	- Belinda Tzen and Maxim Raginsky. Neural stochastic differential equations: Deep latent gaus- sian models in the diffusion limit. arxiv'19
+	- Belinda Tzen and Maxim Raginsky. Theoretical guarantees for sampling and inference in generative models with latent diffusions. COLT'19
 
 ## NN as ODE/PDE/Dynamic System, Equilibrium
 - Legacy:
@@ -187,6 +217,12 @@
 		<img src = '/DL/images/dynamic-system/rbp-4.png' width = '300'>
 	- Neumann series (Neumann-RBP): sum(I+A+A^2+...) Neumann series, truncated at K:\
 		<img src = '/DL/images/dynamic-system/rbp-5.png' width = '400'>
+- Shaojie Bai, J. Zico Kolter, Vladlen Koltun. Deep Equilibrium Models. NIPS'19
+	- https://github.com/locuslab/deq
+	- Model:\
+		<img src = '/DL/images/dynamic-system/deq-1.png' width = '350'>
+	- Back prop through fixed point;\
+		<img src = '/DL/images/dynamic-system/deq-2.png' width = '400'>
 - Equilibrium Propagation
 	- B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv'16
 	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models
@@ -198,34 +234,18 @@
 - **LMU**: Aaron Voelker, Ivana Kajić, Chris Eliasmith. Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks. NIPS'19
 	- https://github.com/abr/neurips2019
 
-## Dynamic Transformer
-- Shaojie Bai, J. Zico Kolter, Vladlen Koltun. Deep Equilibrium Models. NIPS'19
-	- https://github.com/locuslab/deq
-	- Model:\
-		<img src = '/DL/images/dynamic-system/deq-1.png' width = '350'>
-	- Back prop through fixed point;\
-		<img src = '/DL/images/dynamic-system/deq-2.png' width = '400'>
-
 ## Invert NN
 - Reconstruct p(x\|z) with prior on x
 	- Mahendran, A., and Vedaldi, A. Understanding deep image representations by inverting them. CVPR'15
 		- Insight: find x s.t. representation phi(x) match with prior regularization plus a regularization:
 			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
 	- Dosovitskiy, A., and Brox, T. Inverting visual representations with convolutional networks. CVPR'16
-		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP; 
+		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP;\
 			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
-		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;
+		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;	
 - Theory:
 	- Arora, S.; Liang, Y.; and Ma, T. Why are deep nets reversible: A simple theory, with implications for training. ICLR-Workshop'16
 	- Gilbert, A. C.; Zhang, Y.; Lee, K.; Zhang, Y.; and Lee, H. Towards understanding the invertibility of convolutional neural networks. IJCAI'17
 		- Theoretical connection between compressive sensing and neural network;
 		- Model-based CS, MB-RIP; assume higher dimension observation and Gaussian kernel;
 			<img src = '/DL/images/dynamic-system/mb-iht.png' width = '400'>
-
-## Neural ODE
-- Reversible:
-	- Bo Chang, Lili Meng, Eldad Haber, Frederick Tung, David Begert Multi-level residual networks from dynamical systems view. ICLR'18
-	- Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
-- **DURR**: Xiaoshuai Zhang, Yiping Lu, Jiaying Liu, Bin Dong. Dynamically Unfolding Recurrent Restorer: A Moving Endpoint Control Method for Image Restoration. ICLR'19
-- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
-Modeling. NIPS'18
