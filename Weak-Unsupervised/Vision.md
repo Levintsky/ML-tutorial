@@ -73,6 +73,13 @@
 			- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
 			- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
 			- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
+	- **SimCLR**: Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton. A Simple Framework for Contrastive Learning of Visual Representations. 2020
+		- https://github.com/ildoonet/pytorch-SimCLR
+		- Data augmentation: color distortion is critical;
+		- InfoNCE loss;
+		- Shuffle BN to solve information leakage (similar to MoCo);
+		- Large batch-size (4k - 8k, requires TPU support), longer training (1000 epochs);
+	- **MoCo-V2**: Xinlei Chen, Haoqi Fan, Ross Girshick, Kaiming He. Improved Baselines with Momentum Contrastive Learning. 2020
 - Weak detetection (Zhenheng):
 	- Image has only image level labeling (no bbox or segments);
 	- Hundreds of candidate proposals (can't penalize bbox reg-loss or classification loss);

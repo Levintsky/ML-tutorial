@@ -1,5 +1,13 @@
 # Low-Level Vision
 
+## Dense Motion Estimation, Registration
+- Rick Szeliski, Chap 8;
+	- Translational; Hierarchical; Fourier-based; Incremental;
+	- Parametric motion;
+	- Spline-based motion;
+	- Optical flow;
+	- Layered motion;
+
 ## Optical Flow
 - **FlowNet**: A Dosovitskiy, P Fischer, E Ilg, P Hausser, C Hazırbas, V Golkov. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
 	- FlowNetS: stacks two images as input
@@ -22,6 +30,7 @@
 ## Keypoints, Feature Matching
 - X. Han, T. Leung, Y. Jia, R. Sukthankar, and A. C. Berg. MatchNet: Unifying feature and metric learning for patch-based matching. CVPR'15
 - J Yang, S Wang, W Ma, A Barsan, J Martinez, R Urtasun. End-to-End Sparse Image Matching. Mini-18
+- Law, H., & Deng, J. CornerNet: Detecting objects as paired keypoints. IJCV'19
 
 ## Deblur, Deconv
 - Deep Non-Blind Deconvolution via Generalized Low-Rank Approximation. NIPS'18

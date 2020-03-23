@@ -22,41 +22,9 @@
 - Robert Ness, Kaushal Paneri, Olga Vitek. Integrating Markov processes with structural causal modeling enables counterfactual inference in complex systems.
 - Junzhe Zhang, Elias Bareinboim. Near-Optimal Reinforcement Learning in Dynamic Treatment Regimes.
 - Andrew Bennett, Nathan Kallus. Policy Evaluation with Latent Confounders via Optimal Balance.
-- 
-
-   
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #138
-Sample Efficient Active Learning of Causal Trees
-In Probabilistic Methods -- Causal Inference
-Kristjan Greenewald · Dmitriy Katz · Karthikeyan Shanmugam · Sara Magliacane · Murat Kocaoglu · Enric Boix Adsera · Guy Bresler
-   
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #139
-Selecting causal brain features with a single conditional independence test per feature
-In Probabilistic Methods -- Causal Inference
-Atalanti Mastakouri · Bernhard Schölkopf · Dominik Janzing
-   
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #140
-Specific and Shared Causal Relation Modeling and Mechanism-Based Clustering
-In Probabilistic Methods -- Causal Inference
-Biwei Huang · Kun Zhang · Pengtao Xie · Mingming Gong · Eric Xing · Clark Glymour
-   
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #141
-The Case for Evaluating Causal Models Using Interventional Measures and Empirical Data
-In Probabilistic Methods -- Causal Inference
-Amanda Gentzel · Dan Garant · David Jensen
-     
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #142
-Triad Constraints for Learning Causal Structure of Latent Variables
-In Probabilistic Methods -- Causal Inference
-Ruichu Cai · Feng Xie · Clark Glymour · Zhifeng Hao · Kun Zhang
-   
-Poster
-Tue Dec 10th 05:30 -- 07:30 PM @ East Exhibition Hall B + C #143
-Using Embeddings to Correct for Unobserved Confounding in Networks
-In Probabilistic Methods -- Causal Inference
-Victor Veitch · Yixin Wang · David Blei
+- Kristjan Greenewald, Dmitriy Katz, Karthikeyan Shanmugam, Sara Magliacane, Murat Kocaoglu, Enric Boix Adsera, Guy Bresler. Sample Efficient Active Learning of Causal Trees
+- Atalanti Mastakouri, Bernhard Schölkopf, Dominik Janzing. Selecting causal brain features with a single conditional independence test per feature
+- Biwei Huang, Kun Zhang, Pengtao Xie, Mingming Gong, Eric Xing, Clark Glymour. Specific and Shared Causal Relation Modeling and Mechanism-Based Clustering
+- Amanda Gentzel, Dan Garant, David Jensen. The Case for Evaluating Causal Models Using Interventional Measures and Empirical Data
+- Ruichu Cai, Feng Xie, Clark Glymour, Zhifeng Hao, Kun Zhang. Triad Constraints for Learning Causal Structure of Latent Variables
+- Victor Veitch, Yixin Wang, David Blei. Using Embeddings to Correct for Unobserved Confounding in Networks

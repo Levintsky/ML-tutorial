@@ -9,6 +9,7 @@
 	<img src="/Math/images/algebra/3d-rotate-1.png" alt="drawing" width="350"/>\
 	<img src="/Math/images/algebra/3d-rotate-2.png" alt="drawing" width="350"/>
 - Quaternion:
+	- Alyssa's notes: https://docs.google.com/document/d/1b9nHkjUYuhrQH21vDuim2odW1rHP25io-dkowuz2fHM/edit
 	- ii = jj = kk = ijk = -1
 	- Left product of q1:\
 		<img src="/Math/images/algebra/left-prod-1.png" alt="drawing" width="350"/>\

@@ -63,3 +63,13 @@
 	- Logloss log(1+exp(-yif(xi))): LogitBoost
 	- H(x) = sgn(h1(x)+h2(x)+h3(x)+...)
 - Zhihua Zhou. Multi-Layered Gradient Boosting Decision Trees. NIPS'18
+
+## NIPS'19
+- Xiao Li, Yu Wang, Sumanta Basu, Karl Kumbier, Bin Yu. A Debiased MDI Feature Importance Measure for Random Forests
+- Shen-Huan Lyu, Liang Yang, Zhi-Hua Zhou. A Refined Margin Distribution Analysis for Forest Representation Learning
+- Julaiti Alafate, Yoav S Freund. Faster Boosting with Smaller Memory
+- Allan Grønlund, Lior Kamma, Kasper Green Larsen, Alexander Mathiasen, Jelani Nelson. Margin-Based Generalization Lower Bounds for Boosted Classifiers
+- Bulat Ibragimov, Gleb Gusev. Minimal Variance Sampling in Stochastic Gradient Boosting
+- Igor Kuralenok, Vasilii Ershov, Igor Labutin. MonoForest framework for tree ensemble analysis
+- Corinna Cortes, Mehryar Mohri, Dmitry Storcheus. Regularized Gradient Boosting
+- Peilin Zhong, Yuchen Mo, Chang Xiao, Pengyu Chen, Changxi Zheng. Rethinking Generative Mode Coverage: A Pointwise Guaranteed Approach

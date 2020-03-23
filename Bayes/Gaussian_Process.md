@@ -52,6 +52,10 @@
 - Williams, C. K. I. (1999). Prediction with Gaussian processes: from linear regression to linear prediction and beyond. In M. I. Jordan (Ed.), Learn- ing in Graphical Models, pp. 599–621. MIT Press. 1999
 - MacKay, D. J. C. Information Theory, Inference and Learning Algorithms. 2003
 
+## GP as Optimizer
+- https://krasserm.github.io/2018/03/19/gaussian-processes/
+- https://zhuanlan.zhihu.com/p/86386926
+
 ## Theory
 - D R. Burt, C E. Rasmussen, M van der Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
 	- Reduce O(NM^2+M^3) to  and O(NM+M^2)
@@ -76,3 +80,12 @@
 - Orthogonally Decoupled Variational Gaussian Processes. NIPS'18
 - Infinite-Horizon Gaussian Processes. NIPS'18
 - Learning Gaussian Processes by Minimizing PAC-Bayesian Generalization Bounds. NIPS'18
+
+## NIPS'19
+- Haibin YU, Yizhou Chen, Bryan Kian Hsiang Low, Patrick Jaillet, Zhongxiang Dai. Implicit Posterior Variational Inference for Deep Gaussian Processes
+- Rui Li. Multivariate Sparse Coding of Nonstationary Covariances with Gaussian Processes
+- Siqi Liu, Milos Hauskrecht. Nonparametric Regressive Point Processes Based on Conditional Gaussian Processes
+- Ian Char, Youngseog Chung, Willie Neiswanger, Kirthevasan Kandasamy, Oak Nelson, Mark Boyer, Egemen Kolemen, Jeff Schneider. Offline Contextual Bayesian Optimization
+- Creighton Heaukulani, Mark van der Wilk. Scalable Bayesian dynamic covariance modeling with variational Wishart and inverse Wishart processes
+- Yusuke Tanaka, Toshiyuki Tanaka, Tomoharu Iwata, Takeshi Kurashima, Maya Okawa, Yasunori Akagi, Hiroyuki Toda. Spatially Aggregated Gaussian Processes with Multivariate Areal Outputs
+- Armin Lederer, Jonas Umlauft, Sandra Hirche. Uniform Error Bounds for Gaussian Process Regression with Application to Safe Control

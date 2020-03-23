@@ -64,3 +64,14 @@
 	- D. Batra, A. Kowdle, D. Parikh, J. Luo, and T. Chen. iCoseg: Interactive Co-segmentation with Intelligent Scribble Guidance. CVPR'10
 - Propagation across images:
 	- D. Küttel, M. Guillaumin, and V. Ferrari. Segmentation propagation in imagenet. ECCV'12
+
+## NIPS'19
+- Andreas Kirsch, Joost van Amersfoort, Yarin Gal. BatchBALD: Efficient and Diverse Batch Acquisition for Deep Bayesian Active Learning
+- Robert Pinsler, Jonathan Gordon, Eric Nalisnick, José Miguel Hernández-Lobato. Bayesian Batch Active Learning as Sparse Subset Approximation
+- Shali Jiang, Roman Garnett, Benjamin Moseley. Cost Effective Active Search
+- Michal Derezinski, Daniele Calandriello, Michal Valko. Exact sampling of determinantal point processes with sublinear time preprocessing
+- Fabio Vitale, Anand Rajagopalan, Claudio Gentile. Flattening a Hierarchical Clustering through Active Learning
+- Weishi Shi, Qi Yu. Integrating Bayesian and Discriminative Sparse Kernel Machines for Multi-class Active Learning
+- Blake Mason, Ardhendu Tripathy, Robert Nowak. Learning Nearest Neighbor Graphs from Noisy Distance Samples
+- Tomi Peltola, Mustafa Mert Çelikok, Pedram Daee, Samuel Kaski. Machine Teaching of Active Sequential Learners
+- Songbai Yan, Kamalika Chaudhuri, Tara Javidi. The Label Complexity of Active Learning from Observational Data

@@ -71,8 +71,8 @@
 	<img src="/DL/images/basics/vimco.png" alt="drawing" width="400"/>
 - Gumbel-Softmax
 	- About Gumbel distribution: pdf f(.) and cdf F(.)\
-		<img src="/DL/images/basics/gumbel-1.png" alt="drawing" width="400"/>
-		<img src="/DL/images/basics/gumbel-2.png" alt="drawing" width="300"/>
+		<img src="/DL/images/basics/gumbel-1.png" alt="drawing" width="400"/>\
+		<img src="/DL/images/basics/gumbel-2.png" alt="drawing" width="300"/>\
 		<img src="/DL/images/basics/gumbel-3.png" alt="drawing" width="300"/>
 	- Gumbel-Max trick:\
 		<img src="/DL/images/basics/gumbel-softmax.png" alt="drawing" width="450"/>
@@ -89,3 +89,4 @@
 		- https://casmls.github.io/general/2017/02/01/GumbelSoftmax.html
 		- https://www.zhihu.com/question/62631725
 		- https://blog.csdn.net/a358463121/article/details/80820878
+		- https://laurent-dinh.github.io/2016/11/22/gumbel-max.html
