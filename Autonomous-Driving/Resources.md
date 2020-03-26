@@ -20,6 +20,9 @@
 - Waymo
 - Intel: Vladen Koltun
 - NVIDIA (Simulator?)
+- Baidu
+- Pony
+- https://trustworthy.ai/
 
 ## Academia
 - Berkeley: Xinlei Pan, Yang Gao, Jinkyu Kim, Trevor Darrell, John Canny;
