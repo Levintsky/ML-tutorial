@@ -8,8 +8,9 @@
 	- d(x,y) >= 0; d(x,y) = d(y,x); d(x,z)+d(z,y) >= d(x,y);
 - Norm:
 	- ||x|| >= 0; ||alpha x|| = |alpha|\*||x||; ||x||+||y|| >= ||x+y||;
-- Banach space: a complete normed vector space;
-- Hilbert space: space with dot product
+- Banach space: a **complete** normed vector space;
+- Hilbert space: a **complete** space with dot product;
+	- Could be infinite dimensional;
 	- (x,y) = (y,x); ((ax1+bx2),y) = a(x1,y)+b(x2,y); (x, x) >= 0;
 	- Could be infinite dimension (a function);
 	- RKHS;
@@ -78,6 +79,7 @@
 		- **Darboux Theorem**: f is a 2-form, then exists basis {e1, e2, ...}, s.t. f=e1^e2+e3^e4+...
 		- **Cartan Corollary**:
 	- Exterior differential forms:
+		- A good summary: https://www.doubilee.com/cotspace/
 		- Cotangent space; cotangent vector: linear function of tangent vector\
 			<img src="/Math/images/geometry/cotangent.png" alt="drawing" width="400"/>
 		- Exterior derivative:\
