@@ -1,6 +1,9 @@
 # Mobile Vision, Fast
 
-## Mobile Vision
+## Sequential Inference
+- Yang Song, Chenlin Meng, Renjie Liao, Stefano Ermon. Nonlinear Equation Solving: A Faster Alternative to Feedforward Computation. 2020
+
+## CNN
 - Google:
 	- **MobileNet**: A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. CoRR 2017
 		- Depthwise separable

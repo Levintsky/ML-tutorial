@@ -53,19 +53,6 @@
 	- Maintain a balance between the generator and discriminator losses: E[LG(z)]=gammaE[L(x)]
 		<img src = '/Generative/images/gan/began.png' width = '500'>
 - W-GAN:
-	- Basics:
-		- Linear programming problem;\
-			<img src = '/Generative/images/gan/wgan-dual.png' width='400'>
-		- Weak duality: (z >= z-dual), z = (c, x) >= (Ay, x) = (y, b) = z-dual
-		- Strong duality: z = z-dual;
-			- 1. Farkas Theorem:
-			- 2. Contruct a problem related to oringal LP;
-		- Cost function:\
-			<img src = '/Generative/images/gan/wgan-dual-2.png' width='400'>
-		- Constraints: f(xi) + g(xj) <= Dij (Dii = 0 gives f(xi) + g(xi) <= 0)
-		- Since we optimize [p-r, p-fake] x [f, g], both f(xi), g(xi) should be large, we have g+f=0, or g=-f;
-		- Final cost: E(x-Pr)f(x) - E(x-P-fake)f(x);
-		- Constraint f(xi) + g(xj) <= Dij become f(xi) - f(xj) <= Dij. f(xi) + f(xj) >= -Dij, which becomes Lipschitz L <= 1.
 	- **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
 		- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
 		- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html

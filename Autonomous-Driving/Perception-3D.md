@@ -3,7 +3,7 @@
 ## Detection
 - BEV + Frontal (Fusion)
 	- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
-		- Input: BEV point-clouds, Front-view pc, 2D image;
+		- Input: BEV Lidar, Front-view Lidar, 2D image;
 		- Output: object class, 3D bounding boxes;
 		- Generates 3D object proposals from BEV map and project them to three views;
 		- Deep fusion network is used to combine region-wise features obtained via ROI pooling for each view;\
@@ -91,11 +91,6 @@
 		- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
 			<img src="/Autonomous-Driving/images/detection/continuous1.png" alt="drawing" width="500"/>
 			<img src="/Autonomous-Driving/images/detection/continuous2.png" alt="drawing" width="600"/>
-- Graph NN:
-	- D. Boscaini, J. Masci, E. Rodola, and M. Bronstein. Learning shape correspondence with anisotropic convolutional neural networks. NIPS'16
-	- X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. CVPR'17
-	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16.
-	- F. Monti, D. Boscaini, J. Masci, E. Rodola, J. Svoboda, and M. M. Bronstein. Geometric deep learning on graphs and manifolds using mixture model cnns. CVPR'17.
 
 ## Misc
 - FaF: Detection, Tracking and Motion Forecasting [CVPR'18, Wenjie];

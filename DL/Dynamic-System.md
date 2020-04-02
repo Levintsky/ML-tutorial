@@ -161,7 +161,7 @@ Modeling. NIPS'18
 			- https://github.com/jhjacobsen/invertible-resnet
 			- With contractive g(), i.e., Lip(g(theta)) < 1, so **Spectral-Norm** layer added to make constraint always satisfied. Then backward Euler to compute x(t+1) from x(t) as fixed point:\
 				<img src = '/DL/images/dynamic-system/i-resnet-1.png' width = '400'>
-			- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
+			- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.\
 				<img src = '/DL/images/dynamic-system/i-resnet-2.png' width = '400'>
 			- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
 			- For (1), (2), the approximate trick;
