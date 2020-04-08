@@ -5,6 +5,8 @@
 - PKU: http://www.math.pku.edu.cn/puremath/bkspy/kcsz/index.htm
 - Good summaries:
 	- Dahua Lin: https://www.douban.com/group/topic/11115261/
+- Good resources for books:
+	- http://archive.keyllo.com/L-%E6%95%B0%E5%AD%A6/
 
 ## Basics
 - Methods of Mathematical Physics;

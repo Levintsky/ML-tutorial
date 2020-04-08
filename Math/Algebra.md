@@ -3,6 +3,22 @@
 ## Good Resources
 - http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
 
+## Important Concepts
+- **Homomorphism** 同态:
+	- Two groups s.t. f(a+b)=f(a).f(b), where + . are group operators of the two groups;
+	- Identity element maps to identity;
+- **Isomorphism** 同构: Homomorphism with inverse mapping; bijection;
+- **Diffeomorphism** 微分同胚: an isomorphism of spaces equipped with a differential structure, typically differentiable manifolds;
+- **Homeomorphism, topological isomorphism** 同胚:
+	- f is a bijection (one-to-one and onto)
+	- f is continuous,
+	- the inverse function f^(-1) is continuous (f is an open mapping).
+- **Homotopy** 同伦: if one can be "continuously deformed" into the other, such a deformation being called a homotopy between the two functions;
+	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y such that
+		- H(x,0)=f(x)
+		- H(x,1)=g(x)
+- **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
+
 ## Algebra and Geometry
 - Set, relation, operator, structure;
 	- Power set, binary relation;
@@ -138,6 +154,25 @@
 		- Distributivity of multiplication over addition:
 			- a · (b + c) = (a · b) + (a · c).
 
+## Lie Group
+- Resources:
+	- https://yk-liu.github.io/2018/Lie-group-and-Lie-algebra-cn/
+	- http://karnikram.info/blog/lie/
+	- SLAM:
+		- https://zhuanlan.zhihu.com/p/33156814
+		- https://github.com/gaoxiang12/slambook
+- Lie group: a group whose elements are organized **continuously and smoothly**, as opposed to discrete groups:
+	- in which the group operations of **multiplication and inversion** are **smooth** maps. Smoothness of the group multiplication;
+	- GL(2): general linear group
+	- SL(2), SO(2): special linear group, determinant=1;
+	- SO(2), SO(3): rotation group
+- Lie algebra:
+	- Definition:
+		- Bilinearity;
+		- Alternativity: [x, x] = 0;
+		- Jacobi identity: [x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0;
+		- Anticommunity: [x,y]=-[y,x];
+	- Lie algebras are closely related to Lie groups, which are groups that are also smooth manifolds: any Lie group gives rise to a Lie algebra, which is its tangent space at the identity
 
 ## Quaternion
 - https://krasjet.github.io/quaternion/quaternion.pdf
@@ -173,7 +208,3 @@
 		<img src="/Math/images/algebra/qua-exp-2.png" alt="drawing" width="400"/>
 	- Interpolation: t=0, q0; t=1, q1. derive a smooth transition?
 		<img src="/Math/images/algebra/slerp.png" alt="drawing" width="400"/>\
-
-
-
-

@@ -1,6 +1,7 @@
 # Geometry
 
 ## Resources
+- Differential Manifold: https://www.youtube.com/watch?v=maxAFbPM-JA&list=PLTXfpSaASMberGS1wkbfUxZzhDkjC9K_S&index=1
 - Differential geometry coureses: https://www.youtube.com/watch?v=NS1EhHZGPZ0&list=PLUjcZXQwHFGZjLC4FlubdFCPaOO-ywWql
 
 ## Basics
@@ -43,22 +44,24 @@
 			- Path connectedness;
 - Differential structure:
 	- Differential structure;\
-		<img src="/Math/images/geometry/diff-structure.png" alt="drawing" width="400"/>
+		<img src="/Math/images/geometry/diff-structure.png" alt="drawing" width="500"/>
 	- Smooth function: Hausdauff space to R;
 	- **Partition of unity**: very useful to extend local to global;
-		- Partitions of unity are useful because they often allow one to **extend local constructions to the whole space**. They are also important in the interpolation of data, in signal processing, and the theory of spline functions.
-			<img src="/Math/images/geometry/pou.png" alt="drawing" width="400"/>
+		- Partitions of unity are useful because they often allow one to **extend local constructions to the whole space**. They are also important in the interpolation of data, in signal processing, and the theory of spline functions.\
+			<img src="/Math/images/geometry/pou.png" alt="drawing" width="500"/>
 	- Smooth mapping f(.): M -> N; with M, N two smooth manifolds;
 		- Suppose phi, psi mapping to Euclid, then exist psi.f.phi^(-1) is a smooth function in Euclid, then f(.) is;
 	- Tangent:
 		- **Tangent vector**: v is a linear mapping from C to R satisfying Lebniz;
-		- **Tangent space**:
+		- **Tangent space**:\
 			<img src="/Math/images/geometry/tangent-space.png" alt="drawing" width="400"/>
 		- **Basis** of the tangent space at a point;
-		- Tangent mapping: mapping of tangent vector from M to N;
+		- **Pushforward**: Tangent mapping: mapping of tangent vector from M to N;
+			- Tangent vector v in Tp(M), f() is a function on N, smooth mapping phi() from M to N defines pushforword phi(v) as phi(v)(f)=v(f(phi(.)));
 	- **Submanifold**;
 		- Immersed submanifolds: from M to N, m <= n,  full rank (rk=m);
 	- Smooth tangent field:
+		- Definition: define a tangent vector everywhere, the coefficient under the basis are smooth function;
 		- **Poisson bracket**:
 			- If we define product of two tangent vector as \[X, Y\], then Lebniz does not hold; so we define:
 				<img src="/Math/images/geometry/poisson-bracket.png" alt="drawing" width="400"/>
@@ -74,10 +77,13 @@
 		- Antisymmetric: For any u, v, f(u, v)=-f(v,u)
 		- Anti-symmetric operator; \[h\](x1,...,xr)=sum perm(u1,..,ur)(h(u1,..,ur)) / r!;
 		- Outer product of **exterior form** definition **^**: if f r-form, g s-form, then 
-			- **f ^ g** = (r+s)!/r!/s! [f, g]
+			- Definition: **f ^ g** = (r+s)!/r!/s! [f, g]
+			- Reflective: **f ^ g** = (-1)rs g^f
+			- Associative, disruptive;
 		- Basis of exterior form;
 		- **Darboux Theorem**: f is a 2-form, then exists basis {e1, e2, ...}, s.t. f=e1^e2+e3^e4+...
 		- **Cartan Corollary**:
+		- **Pullback**: 
 	- Exterior differential forms:
 		- A good summary: https://www.doubilee.com/cotspace/
 		- Cotangent space; cotangent vector: linear function of tangent vector\
@@ -114,7 +120,9 @@
 		- **Covariant derivative**: a way of specifying a derivative along tangent vectors of a manifold. Alternatively, the covariant derivative is a way of introducing and working with a connection on a manifold by means of a differential operator;
 			- https://zhuanlan.zhihu.com/p/116507127
 		- **Christoffel symbols**;
-			<img src="/Math/images/geometry/christoffel.png" alt="drawing" width="400"/>
+			- Good resources: https://zhuanlan.zhihu.com/p/71568731
+			- Definition:\
+				<img src="/Math/images/geometry/christoffel.png" alt="drawing" width="400"/>
 	- Divergence and Laplace operator;
 		- Laplace == 0, harmonic function;
 	- Hodge star operator;
