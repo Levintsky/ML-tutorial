@@ -19,6 +19,17 @@
 		- H(x,1)=g(x)
 - **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
 
+## Linear Algebra (Tsinghua)
+- Linear space;
+	- Coordinate X: alpha=[b1,b2,...,bn]X
+	- Transition matrix: basis1 A, basis2 B, A=BC, X=CY;
+		- A=BC, C: transition matrix for basis;
+		- Coordinates X,Y for A,B: AX=BCY, X=CY;
+	- Linear Transformation sigma(.):
+		- basis e1, e2, ..., matrix sigma(e1,e2,...)=[e1,e2,...]A
+		- Theorem: sigma(.) for coordinate X under basis (e1,e2,...) is Y=AX; b/c Y=sigma(X)=[e1,e2,...]AX;
+	- **Key**: Basis operation always right-mulitply, b/c it is column operation; coordinates always left multiply, b/c it is row operation;
+
 ## Algebra and Geometry
 - Set, relation, operator, structure;
 	- Power set, binary relation;
@@ -56,7 +67,6 @@
 	- Coordinate transform:
 		- if (b1, b2, ...)=(a1, a2, ...) A, then Y=inv(A) \* X;
 - Polynomial ring:
-
 - Determinant:
 	- Linear dependent: det == 0;
 	- Vandermonde
@@ -158,6 +168,7 @@
 - Resources:
 	- https://yk-liu.github.io/2018/Lie-group-and-Lie-algebra-cn/
 	- http://karnikram.info/blog/lie/
+	- http://staff.ustc.edu.cn/~wangzuoq/Courses/13F-Lie/Lie.html
 	- SLAM:
 		- https://zhuanlan.zhihu.com/p/33156814
 		- https://github.com/gaoxiang12/slambook

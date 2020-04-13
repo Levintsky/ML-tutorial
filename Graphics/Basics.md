@@ -1,0 +1,71 @@
+# Basics of Graphics
+
+## Resources
+- OpenGL: https://github.com/rougier/python-opengl
+
+## MIT Course by Justin Solomon
+- https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-837-computer-graphics-fall-2012/lecture-notes/
+- https://www.youtube.com/watch?v=t7g2oaNs-c8&list=PLQ3UicqQtfNuKZjdA3fY1_X9gXn13JLlW
+- Lec-00:
+	- Libraries: OpenGL, DirectX;
+	- Modeling
+		- Geometry
+		- Materials
+		- Light
+	- Animation
+	- Rendering
+	- Pipeline:
+		- 1. Ray Casting; 2. Rendering;
+		- 1. Transformation; 2. Clipping; 3. Rasterization; 4. Visibility;
+- Lec-01: Bézier Curves and Splines:
+	- General principle: control points;
+	- **Cubic Bezier Curve**;
+	- (1-t)^3, 3t(1-t)^2, 3t^2(1-t), t^3 for P1, P2, P3, P4;
+	- **General formulation: Q(t)=GBT(t)**;
+	- [x(t),y(t)]'=GBT; Geometry G=(P1,P2,P3,P4); Bernstein B=spline matrix; T=[1,t,t^2,t^3] canonical monomial basis;
+	- Subdivision of a Bezier Curve; De Casteljau Construction;
+- Lec-02: Curve Properties & Conversion, Surface Representations;
+	- Order of Continuity: C0, G1, C1, C2;
+	- **Cubic B-Splines**;
+	- **NURBS** (Generalized B-Splines): Non-Uniform Rational B-Spline;
+	- Representing Surfaces:
+		- 1. Triangle meshes; simple, but need not smooth; (need a lot to approximate smooth by tessellation);
+		- 2. Tensor Product Splines; **bilinear matrix product**: P(u,v)=T(u)'B'GBT, i.e. P(u,v)=(B1(u),..,B4(u)) (4x4 of 16 points) (B1(v),..,B4(v)); 
+		- 3. Subdivision surfaces;
+		- 4. Implicit surfaces, e.g. f(x,y,z)=0; Efficient boolean and check inside; hard to generate/sample point?
+		- 5. Procedural;
+	- Displacement Mapping;
+	- Corner cutting (Chaikin’s Algorithm) produces a quadratic B-Spline curve! (Magic!)
+- Lec-03: Coordinates and Transformations;
+	- Basis [b1,b2,b3], v=[b]c; c: coordinates;
+	- Another basis [a1,a2,a3]=[b]M, then coodinates in [a] is inv(M)c;
+	- **Frames**: origin plus basis;
+	- Transformation S in another frame: **inv(A)SA, similar transform**; transform to the frame, apply S, transform back;
+	- Non-commutative;
+	- Homogeneous coordinates;
+	- Perspective: non-linear transform;
+	- **Photo Tourism**: apply transforms in a lot of photos without 3D reconstruction;
+	- Tangent space: v-new=Mv **Covariant**;
+	- Normal: n-new=inv(M)n **Contravariant**;
+- Lec-04: Hierarchical Modeling;
+	- Scene graph;
+	- Traversal: stack;
+	- **Articulated models**: rigid parts connected by joints;
+	- **Forward kinematics**:
+		- Given the skeleton parameters p (position of the root and the joint angles) and the position of the point in local coordinates vs, what is the position of the point in the world coordinates vw?
+		- Not too hard, just apply transform accumulated from the root.
+	- Inverse kinematics;
+		- Given the current position of the point and the desired new position in world coordinates, what are the skeleton parameters p that take the point to the desired position?
+	- **Style-Based IK**: Grochow, Martin, Hertzmann, Popovic: Style-Based Inverse Kinematics, ACM SIGGRAPH 2004;
+	- **Mesh-Based IK**: Sumner, Zwicker, Gotsman, Popovic: Mesh-Based Inverse Kinematics, ACM SIGGRAPH 2005
+- Lec-06: Animation, Skinning/Enveloping;
+	- Principles of Traditional Animation Applied to 3D Computer Graphics. SIGGRAPH'87;
+	- **Squash**: flatten an object or character by pressure or by its own power;
+	- **Stretch**: used to increase the sense of speed and emphasize the squash by contrast;
+	- Types of Animation (overview)
+		- Keyframing:
+		- Procedural: Describes the motion algorithmically; Express animation as a function of small number of parameters;
+		- Physically-based: Anthony C. Fang and Nancy S. Pollard. Efficient Synthesis of Physically Valid Human Motion, TOG'03
+	- Animation Controls;
+	- Character Animation using skinning/enveloping;
+		- Skeletal Subspace Deformation (SSD): also named vertex blending, matrix palette skinning, linear blend skinning;

@@ -3,10 +3,72 @@
 ## Resources
 - Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
 
+## PAC Basics
+- Generalization error: E(h, D)
+- Empirical error: E^(h,D)
+- Inequalities:
+	- Jensen: f() convex, then f(E(x)) <= E(f(x))
+	- Hoeffding: m sample, P(|E^x-Ex|>=eps) <= exp(-2m eps^2)
+	- McDiarmid: suppose sup|f(x1,..xi,..)-f(x1,..xi',..)|<=c, then p(|f(x)-f(xi')|>=eps)<=exp(-2eps^2/sum_i(ci^2))
+- Algorithm: L
+- Concept: C: X to Y;
+- Mapping: h: X to Y;
+- Hypothesis space: H, containing all h;
+- Separable/consistent: all correct
+- Non-separable/consistent:
+- PAC-identify: 0 < eps, delta < 1, P(E(h)<=eps)>=1-delta, then L can identify concept C from H;
+- PAC-learnable: exist algorithm L, poly s.t. m>=poly(1/eps, 1/delta, |x|, |c|), L can PAC-identify C;
+	- Insight: L can identify C, with error at most eps, with prob 1-delta;
+- PAC-learning algirthm;
+- Sample Compexity: minimum m, s.t. m>=poly();
+- Case 1: separable:
+	- m >= (ln|H| + ln(1/delta))/eps, O(1/m) convergence;
+	- Intuition, a bad h() with generalization error > eps, but do well on training set is at most exp(-m eps);
+- Case 2: non-separable:
+	- p(E^(h)-E(h)>=eps)<= exp(-2m eps^2) (Hoeffding)
+	- Agnostic PAC learnable: suppose h' best in hypothesis space, then L can learn P(E(h)-E(h')<=eps)>=1-delta;
+- VC-dimension:
+	- Growth function: all number of possibilities pi(H,m)=max{|(h(x1),...,h(xm)|h in H}
+	- Dichotomy:
+	- Shattering: m samples, at most 2^m possibilites. Every assignment: dichotomy, pi(H,m)=2^m, then D is shattered;
+	- VC-dim: max m s.t. pi(H,m)=2^m;
+	- Theorem: VC(H)=d, then P(E(h)-E^(h)) has a bound;
+	- VC dimentionality is **distribution independent**;
+- Rademacher complexity:
+	- A tighter bound (distribution dependent);
+	- Given z1, ..., zm, E_sig (sup_h (sig1 h(x1)+sig2 h(x2)+...)/m), where sig is a random variable half +1, half -1;
+- Stability:
+	- Three costs: l(L,D) generalization; l^(L,D) empirical; l(L,D-i) leave-one-out;
+	- beta-uniform stability: |l(L,D)-l(L,D-i)| <= beta;
+	- ERM (empirical-risk-minimization)
+	- Theorem: algorithm L ERM and beta-stable, then hypothesis H learnable;
+
 ## PAC-Bayes
 - Currently the best theory to explain NN generalization;
-- David McAllester. Some PAC-Bayesian theorems. Machine Learning 1999
-	- First paper on PAC-Bayes;
+- Legacy:
+	- Shawe-Taylor J, Williamson R C. A PAC analysis of a Bayesian estimator[C]//Proceedings of the tenth annual conference on Computational learning theory. ACM, 1997
+	- David McAllester. Some PAC-Bayesian theorems. COLT'98
+		- Concept space observes any distribution D;
+		- Prior in hypothesis space H;
+		- Measure of C and H space;
+		- U: a subspace of H;
+		- P(E(U)<=...)>=1-delta; E(U) is generalization error;
+	- David McAllester. Some PAC-Bayesian theorems. Machine Learning'99
+		- First paper on PAC-Bayes;
+	- McAllester D A. PAC-Bayesian model averaging. COLT'99
+	- McAllester D A. PAC-Bayesian stochastic model selection. Machine Learning'03
+	- Seeger M. Pac-bayesian generalisation error bounds for gaussian process classification. JMLR'03
+	- Shawe-Taylor J, Langford J. PAC-Bayes & margins. NIPS'03
+	- Langford J. Tutorial on practical prediction theory for classification. JMLR'05
+	- Germain P, Lacasse A, Laviolette F, et al. PAC-Bayesian learning of linear classifiers. ICML'09
+	- Catoni O. PAC-Bayesian supervised classification: the thermodynamics of statistical learning. arxiv'07
+- For NN:
+	- PL Bartlett, DJ Foster, MJ Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17
+	- N Golowich, A Rakhlin, O Shamir. Size-independent sample complexity of neural networks
+	- Behnam Neyshabur, Srinadh Bhojanapalli, Nathan Srebro. A pac-bayesian approach to spectrally-normalized margin bounds for neural networks. ICLR'18
+	- Y Li, Y Liang. Learning overparameterized neural networks via stochastic gradient descent on structured data. NIPS'18
+	- R Novak, Y Bahri, DA Abolafia, J Pennington. Sensitivity and generalization in neural networks: an empirical study. arxiv'18
+	- Z Allen-Zhu, Y Li, Y Liang. Learning and generalization in overparameterized neural networks, going beyond two layers. NIPS'19
 
 ## Mixture
 - Nearly tight sample complexity bounds for learning mixtures of Gaussians via sample compression schemes

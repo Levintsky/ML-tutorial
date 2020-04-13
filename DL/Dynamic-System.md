@@ -55,11 +55,11 @@ Modeling. NIPS'18
 		- Gaussian Process to solve ODE;
 - Deep Learning as Discretized Differential Equations:
 	- Legacy: Isaac E Lagaris, Aristidis Likas, and Dimitrios I Fotiadis. Artificial neural networks for solving ordinary and partial differential equations. IEEE transactions on neural networks, 9(5):987–1000, 1998.
-- ODE
 	- Weinan E. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
-		- Insight: First proposed connection between ResNet and ODE; ResNet = Forward Euler;
+		- Insight: first proposed connection between ResNet and ODE; ResNet = Forward Euler;
+- ODE:
 	- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
-		- Insight: view ResNet as ODE to address exploding/vanishing gradients; Condition of stable: real part of Jacobian's Eigenvalue <= 0;\
+		- Insight: **Hamilton-inspired**, ResNet as ODE to address exploding/vanishing gradients; Condition of stable: real part of Jacobian's Eigenvalue <= 0;\
 			<img src = '/DL/images/dynamic-system/stable-nn-1.png' width = '400'>
 		- Which requires constraint. The paper proposes an intrinsically stable method;
 		- Model: 1 Layer ResNet, inspired by Hamiltonian system;\
@@ -81,21 +81,21 @@ Modeling. NIPS'18
 		- Previous model comparison:\
 			<img src = '/DL/images/dynamic-system/lm-net-1.png' width = '400'>
 		- LM-ResNet:\
-			<img src = '/DL/images/dynamic-system/lm-net-2.png' width = '400'>\
-			<img src = '/DL/images/dynamic-system/lm-net-3.png' width = '400'>
+			<img src = '/DL/images/dynamic-system/lm-net-2.png' width = '350'>\
+			<img src = '/DL/images/dynamic-system/lm-net-3.png' width = '300'>
 	- Bao Wang, Binjie Yuan, Zuoqiang Shi, Stanley J. Osher. ResNets Ensemble via the Feynman-Kac Formalism to Improve Natural and Robust Accuracies. 2018
 	- **Forward Euler**, or 1st-order Runge-Kutta (ResNet, RevNet, ResNeXt):
 		- **RevNet**: Gomez, A. N.; Ren, M.; Urtasun, R.; and Grosse, R. B. The reversible residual network: Backpropagation without storing activations. NIPS'17
 			- https://github.com/renmengye/revnet-public
-			- Insight: modularized to make computation reversible: activation saving not required for bp;
+			- Insight: modularized to make computation reversible: activation saving not required for bp;\
 				<img src = '/DL/images/dynamic-system/rev-net-1.png' width = '400'>\
 				<img src = '/DL/images/dynamic-system/rev-net-2.png' width = '400'>
 			- The backprop: reversibleconstruct the value first;\
 				<img src = '/DL/images/dynamic-system/rev-net-3.png' width = '400'>
 			- Chang Bo's insight from ODE: dX/dt=f1(Y,t), dY/dt=f2(X,t);
 		- Bo Chang, Lili Meng, Eldad Haber, Frederick Tung, David Begert Multi-level residual networks from dynamical systems view. ICLR'18
-			- Insight: multi-grid\
-			<img src = '/DL/images/dynamic-system/multi-level-resnet.png' width = '400'>
+			- Insight: multi-grid ODE; allow adding new layers if current time resolution not sufficient for modeling;
+				<img src = '/DL/images/dynamic-system/multi-level-resnet.png' width = '400'>
 		- **MSA**: Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
 			- Same formulation as Neural ODE; Neural ODE is strong in flow-based generative modeling;
 			- Formulation: dX/dt=f(t,X,theta) could be a NN; first term: fitting; second term: regularization\
@@ -147,6 +147,8 @@ Modeling. NIPS'18
 		- The algorithm:\
 			<img src = '/DL/images/dynamic-system/multi-scale-2.png' width = '400'>
 	- Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
+		- https://www.youtube.com/watch?v=G2n2nJnh5kc&t=1391s
+		- https://www.youtube.com/watch?v=1mVycBKb1TE
 	- **PDE-Net**: Zichao Long, Yiping Lu, Xianzhong Ma, Bin Dong. PDE-Net: Learning PDEs from Data. ICML'18
 		- https://github.com/ZichaoLong/PDE-Net
 		- Insight: two objectives at the same time:

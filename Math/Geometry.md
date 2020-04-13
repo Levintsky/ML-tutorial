@@ -46,6 +46,8 @@
 	- Differential structure;\
 		<img src="/Math/images/geometry/diff-structure.png" alt="drawing" width="500"/>
 	- Smooth function: Hausdauff space to R;
+	- **Chart**: allowable coordinate transformation;
+	- **Atlas**: 
 	- **Partition of unity**: very useful to extend local to global;
 		- Partitions of unity are useful because they often allow one to **extend local constructions to the whole space**. They are also important in the interpolation of data, in signal processing, and the theory of spline functions.\
 			<img src="/Math/images/geometry/pou.png" alt="drawing" width="500"/>
@@ -66,6 +68,15 @@
 			- If we define product of two tangent vector as \[X, Y\], then Lebniz does not hold; so we define:
 				<img src="/Math/images/geometry/poisson-bracket.png" alt="drawing" width="400"/>
 		- Smooth tangent-vector field; coeffecient of differential operator smooth on manifold;
+	- **Integral Curve**: C(t) is called integral curve of f, if its tangent vector equals v;
+	- **One-parameter group of diffeomorphisms**: definition;
+		- 1. phi(t): M to M is diffeomorphism for any t;
+		- 2. phi(t).phi(s)=phi(t+s);
+	- **Tensor of type (k,l)**: a mapping from dual1 x dual2 x ... x dk x v1 x .. x vl to R;
+	- type(1, 1) as a linear transformation: from dual to dual, or from v to v;
+	- **contraction**; T(d, v), is a matrix, same trace with different basis;
+	- **Metric tensor field**: Symmetric, non-degenerate type (0,2) tensor field;
+		- ds^2=g(u,v)du x dv (tensor product)
 - Exterior derivative:
 	- Good resources:
 		- https://zhuanlan.zhihu.com/p/43228423
