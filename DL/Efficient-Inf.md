@@ -1,6 +1,9 @@
 # Mobile Vision, Fast
 
-## Mobile Vision
+## Sequential Inference
+- Yang Song, Chenlin Meng, Renjie Liao, Stefano Ermon. Nonlinear Equation Solving: A Faster Alternative to Feedforward Computation. 2020
+
+## CNN
 - Google:
 	- **MobileNet**: A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. CoRR 2017
 		- Depthwise separable
@@ -36,7 +39,7 @@
 	- M. Rastegari, V. Ordonez, J. Redmon, and A. Farhadi. Xnornet: Imagenet classification using binary convolutional neural networks. ECCV'16
 	- J. Wu, C. Leng, Y. Wang, Q. Hu, and J. Cheng. Quantized convolutional neural networks for mobile devices. CVPR'16
 	- A. Zhou, A. Yao, Y. Guo, L. Xu, and Y. Chen. Incremental network quantization: Towards lossless cnns with lowprecision weights. 2017
-	-  S. Zhou, Y. Wu, Z. Ni, X. Zhou, H. Wen, and Y. Zou. Dorefa-net: Training low bitwidth convolutional neural networks with low bitwidth gradients. 2016
+	- S. Zhou, Y. Wu, Z. Ni, X. Zhou, H. Wen, and Y. Zou. Dorefa-net: Training low bitwidth convolutional neural networks with low bitwidth gradients. 2016
 - Factorization:
 	- M. Jaderberg, A. Vedaldi, and A. Zisserman. Speeding up convolutional neural networks with low rank expansions. 2014
 	- J. Jin, A. Dundar, and E. Culurciello. Flattened convolutional neural networks for feedforward acceleration.

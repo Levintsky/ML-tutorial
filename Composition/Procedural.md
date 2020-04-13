@@ -1,4 +1,4 @@
-## Procedural Modeling
+# Procedural Modeling
 
 ## Brief Overview
 - Problem Definition: Generate something with grammars/programs/templates/compositional model to explain/modify/generate an object

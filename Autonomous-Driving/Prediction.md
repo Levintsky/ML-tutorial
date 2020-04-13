@@ -19,7 +19,7 @@
 	- **Two-stream + Late fusion**: predict probability of being a vehicle; predict bounding box into the future;
 	- Predicts: detection scores for vehicle and background classes, high level action probabilities corresponding to discrete intention, and bounding box regressions in the current and future time steps to represent the intended trajectory;\
 		<img src="/Autonomous-Driving/images/prediction/intentnet.png" alt="drawing" width="600"/>
-- SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. 2019
+- Sergio Casas, Cole Gulino, Renjie Liao, Raquel Urtasun. SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. 2019
 	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.\
 		<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
 - M Liang, B Yang, R Hu, Y Chen, R Urtasun. Learning Lane Graph Representations for Structured Prediction.
@@ -31,10 +31,10 @@
 		- Lane graph connection: predecessor, successor, left/right neighbor;
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
-- DeepSignals: Predicting Intent of Drivers Through Visual Attributes [ICRA’19, D Frossard]
+- Davi Frossard, Eric Kee Raquel Urtasun. DeepSignals: Predicting Intent of Drivers Through Visual Attributes. ICRA’19
+	- CNN + LSTM
 - Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
 - PnP with Radar [Benson Guo];
-- Multimodal Trajectory Predictions for Autonomous Driving using Deep Convolutional Networks [ICRA'19, Pitts]
 
 ## Pure Prediction
 - **GPRF**: Kihwan Kim, Dongryeol Lee, Irfan Essa. Gaussian Process Regression Flow for Analysis of Motion Trajectories. ICCV'11
@@ -52,8 +52,8 @@
 		<img src="/Autonomous-Driving/images/prediction/gprf-6.png" alt="drawing" width="400"/>
 - Mayank Bansal, Alex Krizhevsky, and Abhijit S. Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18
 - Multi future:
-	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. CoRR'18
 	- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
+	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. ICRA'19
 	- **DSF**: Ye Yuan, Kris M. Kitani. Diverse Trajectory Forecasting with Determinantal Point Processes. ICLR'20 \
 		<img src="/Autonomous-Driving/images/prediction/dsf.png" alt="drawing" width="400"/>
 - **Multipath**: Yuning Chai, Benjamin Sapp, Mayank Bansal, and Dragomir Anguelov. Multipath: Multiple probabilistic anchor trajectory hypotheses for behavior prediction. 2019
