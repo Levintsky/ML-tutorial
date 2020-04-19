@@ -194,6 +194,10 @@
 - Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium. 2017
 - Nagarajan, V. and Kolter, J. Z. Gradient descent GAN optimization is locally stable. 2017
 - Arjovsky, M. and Bottou, L. Towards Principled Methods for Training Generative Adversarial Networks. 2017
+- Lars Mescheder, Sebastian Nowozin, Andreas Geiger. The Numerics of GANs. NIPS'17
+	- https://github.com/LMescheder/TheNumericsOfGANs
+	- Insight: a game theory perspective, Simultaneous Gradient Ascent;
+	- Consensus Optimization;
 - W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. ICLR'18
 	- View: a divergence between the training distribution and the model distribution obtains its minimum value at equilibrium
 	- This paper: too restrictive

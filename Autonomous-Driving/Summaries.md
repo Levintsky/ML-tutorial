@@ -16,7 +16,7 @@
 		- BEV + image, image result unproject to Lidar
 	- Multi-Task Multi-censor [Ming, CVPR'19]: 2D, 3D detection, ground, depth-completion;
 	- LaserNet [CVPR'19]: range view; FCN + adaptive-NMS;
-	- DeepSignals [ICRA’19, D Frossard]: image to prediction;
+	- DeepSignals [ICRA'19, D Frossard]: image to prediction;
 		- CNN + LSTM;
 	- SPAGNN [19]: stage-1 detection + stage-2 GNN-prediction;
 	- Discrete residual flow [Jain, A.]: Pedestrian prediction;

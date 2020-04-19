@@ -69,3 +69,41 @@
 	- Animation Controls;
 	- Character Animation using skinning/enveloping;
 		- Skeletal Subspace Deformation (SSD): also named vertex blending, matrix palette skinning, linear blend skinning;
+- Lec-07: Particle Systems and ODEs;
+	- Physically based; focused on **particle system**;
+	- More advanced versions of behavior: flocks, crowds;
+    - **Cloth**: Selle. A, Su, J., Irving, G. and Fedkiw, R., Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction," IEEE TVCG 15, 339-350 (2009).
+    - **Fluid**: Smoothed Particle Hydrodynamics (SPH)
+    - **Fluid**: Navier-Stokes Equations;
+    - Properties:
+    	- Particle motion influenced by external force fields and internal forces between particles
+		- Particles created by generators or emitters
+			- With some randomness
+		- Particles often have lifetimes
+		- Particles are often independent
+		- Treat as **points** for dynamics, but rendered as anything you want
+		- https://processing.org/examples/simpleparticlesystem.html
+	- Phase space:
+	- Euler's Method: inaccurate, will diverge for circular case (step-size does not help!);
+	- Midpoint, Trapezoid, Runge-Kutta;
+	- N-body system: generally n^2;
+		- **Fast Multipole Method**, Greengard and Rokhlin, J Comput Phys 73, p. 325 (1987)
+	- Dampling: f=-dv;
+	- Spatial fields: wind, attractors, ...
+	- Flocks (Boids);
+		- Each bird modeled as a complex particle (boid);
+			- Separation, alignment, cohesion;
+			- http://processing.org/learning/topics/flocking.html
+	- Star Trek 2: one of the earlies particle systems;
+		- Particle Modeling [Reeves 1983]: The entire lifetime of the particle is drawn at once;
+- Lec-08: Particle Systems and ODE Solvers II, Mass-Spring Modeling
+	- 2nd order method: trapezoid method
+		- f0 = f(X0, t0);
+		- f1 = f(X0+h, t0+h);
+		- X(t0+h) = X0 + h(f0+f1)/2;
+		- 2nd order means error goes down with h^2, the equation is still 1-st order!
+	- Spring-mass:
+		- Cloth: Deformation constraints in a mass-spring model to describe rigid cloth behaviour;
+	- Robert Bridson, Ronald Fedkiw & John Anderson: Robust Treatment of Collisions, Contact and Friction for Cloth Animation SIGGRAPH 2002
+	- Selle. A, Su, J., Irving, G. and Fedkiw, R., "Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction," IEEE TVCG 15, 339-350 (2009).
+	- Selle, A., Lentine, M. and Fedkiw, R., "A Mass Spring Model for Hair Simulation", SIGGRAPH 2008, ACM TOG 27, 64.1-64.11 (2008).

@@ -1,8 +1,22 @@
 # Animation
 
+## Physics Based
+- ODE, PDE: http://graphics.pixar.com/pbm2001/
+- William Reeves: Particle systems— a technique for modeling a class of fuzzy objects, Proc. SIGGRAPH 1983
+- Runge-Kutta:
+	- Witkin, Baraff, Kass: Physically-based Modeling Course Notes, SIGGRAPH 2001
+- Fluid:
+	- **SPH** (Smoothed Particle Hydrodynamics)
+		- Losasso, F., Talton, J., Kwatra, N. and Fedkiw, R., Two-way Coupled SPH and Particle Level Set Fluid Simulation, IEEE TVCG 14, 797-804 (2008).
+	- R. Bridson, J. Hourihan, and M. Nordenstam. Curl noise for procedural fluid flow. SIGGRAPH'07
+		- Lennard-Jones force: Repulsive + attractive force;
+- Gravity: n-Body problem;
+	- **Fast Multipole Method**, Greengard and Rokhlin, J Comput Phys 73, p. 325 (1987)
+- http://processing.org/learning/topics/smokeparticlesystem.html
+
 ## Modeling the skilled movement of articulated figures
 - Kinematics:
-	- Alla Safonova and Jessica K Hodgins. 2007. Construction and optimal search of in- terpolated motion graphs. TOG'07
+	- Alla Safonova and Jessica K Hodgins. 2007. Construction and optimal search of interpolated motion graphs. TOG'07
 	- Yongjoon Lee, Kevin Wampler, Gilbert Bernstein, Jovan Popović, and Zoran Popović. Motion Fields for Interactive Character Locomotion. SIGGRAPH Asia 2010
 	- Yuting Ye and C. Karen Liu. 2010b. Synthesis of Responsive Motion Using a Dynamic Model. CGF'10
 	- Sergey Levine, Jack M. Wang, Alexis Haraux, Zoran Popović, and Vladlen Koltun. 2012. Continuous Character Control with Low-Dimensional Embeddings. TOG'12

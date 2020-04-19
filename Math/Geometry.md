@@ -16,6 +16,10 @@
 	- Could be infinite dimension (a function);
 	- RKHS;
 
+## Classical
+- https://zhuanlan.zhihu.com/p/41583624
+- https://www.zhihu.com/question/41683915
+
 ## Differential Manifold
 - Topology structure:
 	- n-dimensional Euclidean space: inner-product;
@@ -46,8 +50,9 @@
 	- Differential structure;\
 		<img src="/Math/images/geometry/diff-structure.png" alt="drawing" width="500"/>
 	- Smooth function: Hausdauff space to R;
-	- **Chart**: allowable coordinate transformation;
-	- **Atlas**: 
+	- **Chart**: allowable coordinate transformation; compatibility of two charts;
+	- **Atlas**: set of chart;
+	- **Trivial Manifold**: could be covered with one coordinate system;
 	- **Partition of unity**: very useful to extend local to global;
 		- Partitions of unity are useful because they often allow one to **extend local constructions to the whole space**. They are also important in the interpolation of data, in signal processing, and the theory of spline functions.\
 			<img src="/Math/images/geometry/pou.png" alt="drawing" width="500"/>
@@ -64,19 +69,23 @@
 		- Immersed submanifolds: from M to N, m <= n,  full rank (rk=m);
 	- Smooth tangent field:
 		- Definition: define a tangent vector everywhere, the coefficient under the basis are smooth function;
-		- **Poisson bracket**:
+		- **Poisson bracket**: also commutator;
 			- If we define product of two tangent vector as \[X, Y\], then Lebniz does not hold; so we define:
 				<img src="/Math/images/geometry/poisson-bracket.png" alt="drawing" width="400"/>
 		- Smooth tangent-vector field; coeffecient of differential operator smooth on manifold;
 	- **Integral Curve**: C(t) is called integral curve of f, if its tangent vector equals v;
+		- Uniqueness;
 	- **One-parameter group of diffeomorphisms**: definition;
 		- 1. phi(t): M to M is diffeomorphism for any t;
 		- 2. phi(t).phi(s)=phi(t+s);
 	- **Tensor of type (k,l)**: a mapping from dual1 x dual2 x ... x dk x v1 x .. x vl to R;
 	- type(1, 1) as a linear transformation: from dual to dual, or from v to v;
-	- **contraction**; T(d, v), is a matrix, same trace with different basis;
+	- **Contraction**: (k,l) tensor to (k-1,l-1);
+		- T(d, v), is a matrix, same trace with different basis;
 	- **Metric tensor field**: Symmetric, non-degenerate type (0,2) tensor field;
 		- ds^2=g(u,v)du x dv (tensor product)
+	- **Contravariant**: tangent;
+	- **Covariant**: dual
 - Exterior derivative:
 	- Good resources:
 		- https://zhuanlan.zhihu.com/p/43228423
@@ -141,6 +150,55 @@
 		- In a space V with inner-product, Hodge-star operator is a linear operator of Exterior algebra (^(V)).
 		- Divergence with Hodge star operator;
 		- Laplace with Hodge star operator;
+
+## Differential Geometry (General Relativity, Liang)
+- Chap 3, Intrinsic geometry:
+	- Differential Operator:
+		- Definition: a mapping from (k,l) to (k,l+1)\
+			<img src="/Math/images/geometry/diff-operator.png" alt="drawing" width="400"/>
+		- Difference between two gradient: a (2, 1) type\
+			<img src="/Math/images/geometry/diff-grad.png" alt="drawing" width="300"/>
+			<img src="/Math/images/geometry/grad-3-1-4.png" alt="drawing" width="150"/>
+			<img src="/Math/images/geometry/grad-3-1-5.png" alt="drawing" width="150"/>
+		- Relation between normal differential operator:\
+			<img src="/Math/images/geometry/grad-3-1-6.png" alt="drawing" width="300"/>
+			<img src="/Math/images/geometry/grad-3-1-7.png" alt="drawing" width="200"/>
+		- Define [u,v] without f:\
+			<img src="/Math/images/geometry/grad-3-1-9.png" alt="drawing" width="150"/>
+		- Covariant derivative:
+	- Parallel transport:
+		- Definition: gradient of the vector along the gamma(t) curve is 0\
+			<img src="/Math/images/geometry/parallel-transport.png" alt="drawing" width="350"/>
+		- Grad a is called **Connection**;\
+			<img src="/Math/images/geometry/transport-2.png" alt="drawing" width="300"/>
+		- Connection with metric, condition **inner-product preserving**:\
+			<img src="/Math/images/geometry/transport-3.png" alt="drawing" width="300"/>
+		- Christoffel symbol:\
+			<img src="/Math/images/geometry/transport-4.png" alt="drawing" width="300"/>
+		- Parallel transport makes vector differentiable:\
+			<img src="/Math/images/geometry/transport-5.png" alt="drawing" width="300"/>
+	- Geodisic:
+		- Definition:\
+			<img src="/Math/images/geometry/geodisic-1.png" alt="drawing" width="350"/>
+		- Parametrization makes curve geodesic: **affine parameter**;\
+			<img src="/Math/images/geometry/geodisic-2.png" alt="drawing" width="350"/>
+		- Theorem: **Arc-length is an affine parameter**;
+	- Riemann Curvature:
+		- Torsion-free Gradient: commutative for type (0, 0), not for other type;\
+			<img src="/Math/images/geometry/curv-1.png" alt="drawing" width="350"/>
+		- Definition: maps from type-(0, 1) to type-(0, 2):\
+			<img src="/Math/images/geometry/curv-2.png" alt="drawing" width="350"/>
+			<img src="/Math/images/geometry/curv-3.png" alt="drawing" width="350"/>
+			<img src="/Math/images/geometry/curv-4.png" alt="drawing" width="350"/>
+		- Theorem: Riemann curvature is 0 for Euclid and Minkowski space (pseudo-Euclidean);
+		- For 6 numbers, only 1 dof: **Ricci Tensor**:\
+			<img src="/Math/images/geometry/curv-5.png" alt="drawing" width="350"/>
+		- **Weyl Tensor**:\
+			<img src="/Math/images/geometry/curv-6.png" alt="drawing" width="350"/>
+		- Curvature from metric;\
+			<img src="/Math/images/geometry/curv-7.png" alt="drawing" width="350"/>
+	- Intrinsic v.s. extrinsic curvature;
+		- Parallel transport for vector is **path-dependent** for space with curvature;
 
 ## Differential Topology
 - Differential Topology: http://www.jasoncantarella.com/wordpress/courses/math-4220/

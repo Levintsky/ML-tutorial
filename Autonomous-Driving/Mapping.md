@@ -16,6 +16,8 @@
 	<img src="/Autonomous-Driving/images/mapping/hran1.png" alt="drawing" width="400"/>
 	- Structured loss:\
 	<img src="/Autonomous-Driving/images/mapping/hran2.png" alt="drawing" width="400"/>
+- M. Bai, G. Mattyus, N. Homayounfar, S. Wang, S. K. Lakshmikanth, R. Urtasun. Deep Multi-Sensor Lane Detection. IROS'18
+- J Liang, N Homayounfar, WC Ma, S Wang, R Urtasun. Convolutional Recurrent Network for Road Boundary Extraction. CVPR'19
 
 ## Crosswalk
 - J. Liang, R. Urtasun. End-to-End Deep Structured Models for Drawing Crosswalks. ECCV'18
