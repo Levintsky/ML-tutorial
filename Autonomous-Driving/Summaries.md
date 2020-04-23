@@ -21,6 +21,7 @@
 	- SPAGNN [19]: stage-1 detection + stage-2 GNN-prediction;
 	- Discrete residual flow [Jain, A.]: Pedestrian prediction;
 		- Occupancy based (generally bbox + trajectory are more popular);
+	- Multi modality: Sergio & Simon;
 - Waymo:
 	- MultiPath ['19]
 - Apple:
@@ -28,6 +29,9 @@
 		- Key idea: voxel; within each voxel: VFE; RPN-based detection;
 	- Multiple Futures Prediction. [NIPS'19]
 - PointRCNN [X Wang, CVPR'19]
+
+## Planning:
+- Uber: PLT;
 
 ## Segmentation
 - LidarSeg:

@@ -15,6 +15,42 @@
 	- (x,y) = (y,x); ((ax1+bx2),y) = a(x1,y)+b(x2,y); (x, x) >= 0;
 	- Could be infinite dimension (a function);
 	- RKHS;
+- Classical:
+	- Fundamental I, II:\
+		<img src="/Math/images/geometry/classic-1.png" alt="drawing" width="350"/>
+	- Curvature:\
+		<img src="/Math/images/geometry/classic-2.png" alt="drawing" width="350"/>
+	- Rayleigh quotient:\
+		<img src="/Math/images/geometry/classic-3.png" alt="drawing" width="350"/>
+	- Gaussian Curvature:\
+		<img src="/Math/images/geometry/classic-4.png" alt="drawing" width="350"/>
+- Modern:
+	- Fundamental I, II:\
+		<img src="/Math/images/geometry/modern-1.png" alt="drawing" width="350"/>
+	- **Compatability** conditions: change differential order, separate tangent and normal;\
+		<img src="/Math/images/geometry/modern-2.png" alt="drawing" width="350"/>
+	- Riemann curvature from compatability condition I:\
+		<img src="/Math/images/geometry/modern-3.png" alt="drawing" width="350"/>
+	- Dof, Gaussian curvature is intrinsic:\
+		<img src="/Math/images/geometry/modern-4.png" alt="drawing" width="350"/>
+- Geodisic from shortest path:
+	- Definition:\
+		<img src="/Math/images/geometry/geo-1-1.png" alt="drawing" width="350"/>
+	- Calculus of variation:\
+		<img src="/Math/images/geometry/geo-1-2.png" alt="drawing" width="350"/>\
+		<img src="/Math/images/geometry/geo-1-3.png" alt="drawing" width="350"/>
+	- Riemann connection:\
+		<img src="/Math/images/geometry/geo-1-4.png" alt="drawing" width="350"/>
+	- Same result as Christoffel Symbol:\
+		<img src="/Math/images/geometry/geo-1-5.png" alt="drawing" width="350"/>
+- Geodisic from curvature:\
+	<img src="/Math/images/geometry/geo-2-1.png" alt="drawing" width="350"/>
+- Curvature and moving frame:
+	- Local coordinate (u, v) with orthogonal basis (e1, e2):\
+		<img src="/Math/images/geometry/moving-frame-1.png" alt="drawing" width="350"/>\
+		<img src="/Math/images/geometry/moving-frame-2.png" alt="drawing" width="350"/>\
+		<img src="/Math/images/geometry/moving-frame-3.png" alt="drawing" width="350"/>
+	- Geodesic curvature: if it is zero, the curve is geodesic;
 
 ## Classical
 - https://zhuanlan.zhihu.com/p/41583624

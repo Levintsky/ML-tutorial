@@ -120,6 +120,10 @@
 		<img src="/Generative/images/inpaint/sn-patchgan.png" alt="drawing" width="500"/>
 - Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model from a Single Natural Image. ICCV'19 best paper
 
+## Composition
+- **ST-GAN**: Chen-Hsuan Lin, Ersin Yumer, Oliver Wang, Eli Shechtman, Simon Lucey. ST-GAN: Spatial Transformer Generative Adversarial Networks for Image Compositing. CVPR'18
+- Samaneh Azadi, Deepak Pathak, Sayna Ebrahimi, Trevor Darrell. Compositional GAN: Learning Image-Conditional Binary Composition. IJCV'20
+
 ## User-Guided
 - J.-Y. Zhu, P. Krähenbühl, E. Shechtman, and A. A. Efros. Generative visual manipulation on the natural image manifold. ECCV'16.
 - R Zhang, J Zhu, P Isola, X Geng, A Lin, T Yu, and A Efros. Real-time user-guided image colorization with learned deep priors. 2017
