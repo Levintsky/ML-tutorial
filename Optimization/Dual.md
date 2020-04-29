@@ -44,21 +44,6 @@
 - Applications:
 	- SVM;
 
-## Primal Dual
-- Resources:
-	- Shenlong's slides;
-- Mainly used for non-differentiable problem (l1);
-	- f(x)+g(x), f() convex differntiable; g() convex non-differntiable, cheap proximal operator;
-- **ADMM**: D. Gabay and B. Mercier. A dual algorithm for the solution of nonlinear variational problems via finite element approximation. Computers & Mathematics with Applications, 1976
-- S Boyd. Alternating Direction Method of Multipliers. 2011
-- A. Chambolle and T. Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. JMIV'11
-- N. Parikh and S. Boyd. Proximal algorithms. Foundations and Trends in optimization, 2014.
-- https://huixuan.wordpress.com/2015/01/02/primal-dual-algorithm%E7%9A%84%E7%B2%97%E6%B5%85%E8%A7%A3%E9%87%8A/
-- Problem: H(x) = F(Kx)+G(x), K is kernel;
-- Fenchel duality with auxiliary y: L(x,y)= < y, Kx > - F\*(y) + G(x), where F\*(y)=sup_z {< z, y> - F(z)}
-- Algorithm:\
-	<img src="/Optimization/images/dual/primal-dual.png" alt="drawing" width="400"/>
-
 ## Strong Duality
 - Linear programming:
 	- Wasserstein metric (Wasserstein or Kantorovich–Rubinstein metric or distance):

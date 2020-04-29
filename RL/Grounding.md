@@ -1,4 +1,9 @@
-# Grounded Language Learning
+# Grounding Language/Programs
+
+## Program Guided
+- Shao-Hua Sun, Te-Lin Wu, Joseph J. Lim. Program Guided Agent. ICLR'20
+	- Input: perception (2D) + DSL program;
+	- Output: action;
 
 ## Navigation
 - H Yu, H Zhang, W Xu. A Deep Compositional Framework for Human-like Language Acquisition in Virtual Environment. 2017
@@ -13,5 +18,4 @@
 
 ## Language Grounding
 - https://github.com/devendrachaplot/DeepRL-Grounding
-
 - Value Prediction Network, NIPS 2017, https://github.com/junhyukoh/value-prediction-network

@@ -1,8 +1,11 @@
 # Geometry
 
 ## Resources
-- Differential Manifold: https://www.youtube.com/watch?v=maxAFbPM-JA&list=PLTXfpSaASMberGS1wkbfUxZzhDkjC9K_S&index=1
-- Differential geometry coureses: https://www.youtube.com/watch?v=NS1EhHZGPZ0&list=PLUjcZXQwHFGZjLC4FlubdFCPaOO-ywWql
+- Courses:
+	- Differential Manifold: https://www.youtube.com/watch?v=maxAFbPM-JA&list=PLTXfpSaASMberGS1wkbfUxZzhDkjC9K_S&index=1
+	- Differential geometry coureses: https://www.youtube.com/watch?v=NS1EhHZGPZ0&list=PLUjcZXQwHFGZjLC4FlubdFCPaOO-ywWql
+- Nice intuition:
+	- Su, Jianlin: https://spaces.ac.cn/archives/3963
 
 ## Basics
 - Distance:

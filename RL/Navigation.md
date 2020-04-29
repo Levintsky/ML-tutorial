@@ -40,7 +40,7 @@
 - Good summaries:
 	- https://zhuanlan.zhihu.com/p/25515755
 	- https://zhuanlan.zhihu.com/p/24478944
-- Value Iteration Network. NIPS'16
+- **VIN**: Aviv Tamar, Yi Wu, Garrett Thomas, Sergey Levine, Pieter Abbeel. Value Iteration Network. NIPS'16
 	<img src="/RL/images/navigation/vin1.png" alt="drawing" width="600"/>
 	<img src="/RL/images/navigation/vin2.png" alt="drawing" width="600"/>
 - **GVIN**: S Niu, S Chen, H Guo, C Targonski, M Smith, J Kovačević. Generalized Value Iteration Networks: Life Beyond Lattices. AAAI'18

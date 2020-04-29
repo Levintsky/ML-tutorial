@@ -14,9 +14,13 @@
 	- **Fast Multipole Method**, Greengard and Rokhlin, J Comput Phys 73, p. 325 (1987)
 - http://processing.org/learning/topics/smokeparticlesystem.html
 
+## Unclassified
+- **MANN**: He Zhang, Sebastian Starke, Taku Komura, Jun Saito. Mode-Adaptive Neural Networks for Quadruped Motion Control. SIGGRAPH'18
+	- Could be used in pedestrian simulation;
+
 ## Modeling the skilled movement of articulated figures
 - Kinematics:
-	- Alla Safonova and Jessica K Hodgins. 2007. Construction and optimal search of interpolated motion graphs. TOG'07
+	- Alla Safonova and Jessica K Hodgins. Construction and optimal search of interpolated motion graphs. TOG'07
 	- Yongjoon Lee, Kevin Wampler, Gilbert Bernstein, Jovan Popović, and Zoran Popović. Motion Fields for Interactive Character Locomotion. SIGGRAPH Asia 2010
 	- Yuting Ye and C. Karen Liu. 2010b. Synthesis of Responsive Motion Using a Dynamic Model. CGF'10
 	- Sergey Levine, Jack M. Wang, Alexis Haraux, Zoran Popović, and Vladlen Koltun. 2012. Continuous Character Control with Low-Dimensional Embeddings. TOG'12
