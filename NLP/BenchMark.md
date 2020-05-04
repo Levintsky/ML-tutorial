@@ -25,3 +25,8 @@
 
 ## Misc
 - Hector Levesque, Ernest Davis, and Leora Morgenstern. The winograd schema challenge. PKDD'12
+
+## Deeper Understanding
+- Rowan Zellers, Ari Holtzman, Elizabeth Clark, Lianhui Qin, Ali Farhadi, Yejin Choi. Evaluating Machines by their Real-World Language Use. 2020
+	- Benchmark: Giving helpful advice;
+	- http://rowanzellers.com/advice/
