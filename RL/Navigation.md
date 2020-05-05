@@ -3,8 +3,15 @@
 ## Core Problems
 - Exploration
 
-## SOA and Misc
+## SOA
 - T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
+- Devendra Singh Chaplot, Dhiraj Gandhi, Saurabh Gupta, Abhinav Gupta, Ruslan Salakhutdinov. Learning to Explore using Active Neural SLAM. ICLR'20
+	- https://github.com/devendrachaplot/Neural-SLAM
+	- https://www.cs.cmu.edu/~dchaplot/projects/neural-slam.html
+	- Insight: combination of classics and deep learning, analytical path planners with learned SLAM module;
+	- Winner of the CVPR 2019 Habitat PointGoal Navigation Challenge;
+
+## Unclassified
 - Speaker-Follower Models for Vision-and-Language Navigation. NIPS'18
 
 ## Navigation Challenge and Benchmark
