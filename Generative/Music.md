@@ -32,10 +32,12 @@
 - C Hawthorne, A Stasyuk, Adam Roberts, Ian Simon, Cheng-Zhi Anna Huang, Sander Dieleman, Erich Elsen, Jesse Engel, Douglas EckEnabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset. ICLR'19
 
 ## DeepMind
-- Dieleman, S., van den Oord, A., and Simonyan, K. The chal- lenge of realistic music generation: modelling raw audio at scale. NIPS'18
+- Dieleman, S., van den Oord, A., and Simonyan, K. The challenge of realistic music generation: modelling raw audio at scale. NIPS'18
 
 ## OpenAI
 - MuseNet
+- Jukebox: based on **VQ-VAE**
+	- https://github.com/openai/jukebox
 
 ## Unclassified
 - Hang Chu, Raquel Urtasun, Sanja Fidler. Song From PI: A Musically Plausible Network for Pop Music Generation. ICLR'17

@@ -7,7 +7,18 @@
 <img src="/Graphics/images/render/diff_render2.jpg" alt="drawing" width="400"/>
 
 ## Classics
-- Ray Casting;
+- Concepts:
+	- Ray tracing: a framework, not an algorithm;
+	- Path tracing: ray tracing + Monte Carlo;
+		- Sample according to BRDF;
+	- Ray Casting:
+		- First step of ray tracing;
+		- also used in volumetric rendering;
+	- Ray marching: always used in volumetric;
+		- https://www.zhihu.com/search?type=content&q=ray%20marching
+	- https://www.zhihu.com/question/29863225/answer/70728387
+	- Volumetric render: https://www.zhihu.com/search?type=content&q=volumetric%20rendering
+	- **IBMR** (Image-based modeling and rendering): Render a new view from some images;
 - CSG:
 	- Easy with ray casting;
 	- Hard for explicit surface as a triangle mesh;
@@ -62,6 +73,13 @@
 	- Rely on a set of two-dimensional images of a scene to generate a three-dimensional model and then render some novel views of this scene;
 	- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996
 	- A. Fitzgibbon, Y. Wexler, and A. Zisserman. Image-based rendering using image-based priors. IJCV'05
+- Path Tracing, Monte Carlo:
+	- James T. Kajiya. Rendering equation. SIGGRAPH'83
+	- David S. Immel, Michael F. Cohen, Donald P Greenberg. A radiosity method for non-diffuse environments. SIGGRAPH'86
+	- Systematically sample light sources at each hit
+		- Don't just wait the rays will hit it by chance
+	- Photon mapping: https://www.zhihu.com/search?type=content&q=photon%20map
+	- Eric Veach, Leonidas John Guibas. Optimally combining sampling techniques for Monte Carlo rendering. SIGGRAPH'95
 
 ## Differentiable Rendering
 - Resources:

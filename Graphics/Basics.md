@@ -107,3 +107,6 @@
 	- Robert Bridson, Ronald Fedkiw & John Anderson: Robust Treatment of Collisions, Contact and Friction for Cloth Animation SIGGRAPH 2002
 	- Selle. A, Su, J., Irving, G. and Fedkiw, R., "Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction," IEEE TVCG 15, 339-350 (2009).
 	- Selle, A., Lentine, M. and Fedkiw, R., "A Mass Spring Model for Hair Simulation", SIGGRAPH 2008, ACM TOG 27, 64.1-64.11 (2008).
+- Lec-17: Sampling, Aliasing, Mipmaps;
+	- Mitchell, Don and Arun Netravali. Reconstruction Filters in Computer Graphics. SIGGRAPH'88
+	- **MIP Mapping**: multum in parvo which means many in a small place
