@@ -3,10 +3,20 @@
 ## Legacy
 - Antonio Ricci. A constructive geometry for computer graphics. The Computer Journal'73
 - **MetaBalls**: J. F. Blinn. A generalization of algebraic surface drawing. TOG'82
+	- Insight: union of exponential decaying balls; also named blobby model;
+	- F(x,y,z)=D(x,y,z)-T, where D(x,y,z) = sum bi exp(-ai ri)
 - **Soft-object**: Geoff Wyvill, Craig McPheeters, and Brian Wyvill. Data structure for soft objects. In Advanced Computer Graphics'86
+	- Insight: construction of a function, whose iso-surfaces could represent any shape;
+	- Union of **polynomial** C(r) = 2 r^3/R^3 - 3r^2/R^2 + 1, r < R
 - **Conv-surface**: Jules Bloomenthal and Ken Shoemake. Convolution surfaces. SIGGRAPH'91
+	- Insight: generalize sum to integral;
+	- Integral of continuous implicit functions f(S,p)=int(exp(s-p)^2ds);
 - **Blobby-model**: Shigeru Muraki. Volumetric shape description of range data using blobby model. SIGGRAPH'91
-- **Unity-implicit**: Yutaka Ohtake, Alexander Belyaev, Marc Alexa, Greg Turk, and Hans-Peter Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
+	- More generalized version of meta balls;
+- **POU**: Babuska Caloz and Osborn J. E. Special finite element methods for a class of second order elliptic problems with rough coefficients. SIAM J. Numerical Analysis'94
+- **MPU**: Yutaka Ohtake, Alexander Belyaev, Marc Alexa, Greg Turk, and Hans-Peter Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
+	- Given a set of scattered points P equipped with normals N, we approximate the signed distance function f (x) from P;
+	- adaptive octree-based subdivision to the bounding cube;
 
 ## Template as Implicit Functions
 - **SIF**: Kyle Genova, Forrester Cole, Daniel Vlasic, Aaron Sarna, William T. Freeman, Thomas Funkhouser. Learning Shape Templates with Structured Implicit Functions. ICCV'19

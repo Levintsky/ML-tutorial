@@ -10,7 +10,7 @@
 		- orientation: MLP -> bins x 2 for sin, cos
 		- confidence: MLP -> bins, loss: cross-entropy
 		- dimension: MLP -> 3, loss: MSE
-	- Experiments: Kitti, PASCAL-3D;
+	- Experiments: Kitti, PASCAL-3D;\
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin1.png" alt="drawing" width="400"/>
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin2.png" alt="drawing" width="400"/>
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin3.png" alt="drawing" width="400"/>
@@ -42,11 +42,6 @@
 	- Check mapping for details;
 - Deep Parametric Continuous Convolutional Neural Networks [CVPR’18, Shenlong]
 - SurfConv: Bridging 3D and 2D Convolution for RGBD Images [CVPR’18, H Chu]
-- DeepRoadMapper: Extracting Road Topology From Aerial Images [ICCV’17, G Mattyus]
 
 ## Misc
 - Mengye Ren, Andrei Pokrovsky, Bin Yang, and Raquel Urtasun. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 
-
-## Lane Detection
-- M. Bai, G. Mattyus, N. Homayounfar, S. Wang, S. K. Lakshmikanth, R. Urtasun. Deep Multi-Sensor Lane Detection. IROS'18
-- J Liang, N Homayounfar, WC Ma, S Wang, R Urtasun. Convolutional Recurrent Network for Road Boundary Extraction. CVPR'19

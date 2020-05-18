@@ -2,6 +2,7 @@
 
 ## Good Resources
 - http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
+- https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
 
 ## Important Concepts
 - **Homomorphism** 同态:

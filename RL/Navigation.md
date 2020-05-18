@@ -3,8 +3,15 @@
 ## Core Problems
 - Exploration
 
-## SOA and Misc
+## SOA
 - T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
+- Devendra Singh Chaplot, Dhiraj Gandhi, Saurabh Gupta, Abhinav Gupta, Ruslan Salakhutdinov. Learning to Explore using Active Neural SLAM. ICLR'20
+	- https://github.com/devendrachaplot/Neural-SLAM
+	- https://www.cs.cmu.edu/~dchaplot/projects/neural-slam.html
+	- Insight: combination of classics and deep learning, analytical path planners with learned SLAM module;
+	- Winner of the CVPR 2019 Habitat PointGoal Navigation Challenge;
+
+## Unclassified
 - Speaker-Follower Models for Vision-and-Language Navigation. NIPS'18
 
 ## Navigation Challenge and Benchmark
@@ -40,7 +47,7 @@
 - Good summaries:
 	- https://zhuanlan.zhihu.com/p/25515755
 	- https://zhuanlan.zhihu.com/p/24478944
-- Value Iteration Network. NIPS'16
+- **VIN**: Aviv Tamar, Yi Wu, Garrett Thomas, Sergey Levine, Pieter Abbeel. Value Iteration Network. NIPS'16
 	<img src="/RL/images/navigation/vin1.png" alt="drawing" width="600"/>
 	<img src="/RL/images/navigation/vin2.png" alt="drawing" width="600"/>
 - **GVIN**: S Niu, S Chen, H Guo, C Targonski, M Smith, J Kovačević. Generalized Value Iteration Networks: Life Beyond Lattices. AAAI'18

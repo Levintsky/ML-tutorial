@@ -1,6 +1,6 @@
 # Depth, Stereo, Scene Flow, Mapping, ...
 
-## Scene Flow:
+## Scene Flow
 - Input: two stereo pairs
 - Output: 3D motion (mostly from ego-car, dynamic objects)
 - Assume: all cameras calibrated with known intrinsics;
@@ -20,17 +20,20 @@
 - Depth: Learning Joint 2D-3D Representations for Depth Completion [Yun Chen]
 
 ## Stereo
-- Stereo: Differentiable Deep PatchMatch for  Efficient Stereo Matching [Shivam]
+- Stereo: Differentiable Deep PatchMatch for Efficient Stereo Matching [Shivam]
+- Shela Qiu: Monocular stereo;
+	- Global coarse depth;
+	- Then bounding box -> refinement;
 
 ## Mapping
 - Convolutional Recurrent Network for Road Boundary Extraction [Justin Liang]
-- End-to-End Deep Structured Models for Drawing Crosswalks [ECCV’18, Justin Liang]
+- End-to-End Deep Structured Models for Drawing Crosswalks [ECCV'18, Justin Liang]
 - Learning to Map by Discovering Lane Topology [Namdar]
-- 3D-LaneNet: End-to-End 3D Multiple Lane Detection [ICCV’19, Namdar]
+- 3D-LaneNet: End-to-End 3D Multiple Lane Detection [ICCV'19, Namdar]
 - Globally consistent map [Joey Yu];
 - Deep structured 3D Estimation [Mini-Conf];
 	- Input: stereo images, LiDAR; Output: Pose, Shape
-- Robust Dense Mapping for Large-Scale Dynamic Environments [ICRA’18, Barsan]
+- Robust Dense Mapping for Large-Scale Dynamic Environments [ICRA'18, Barsan]
 
 ## Localization:
 - Image Localization [Julieta Martinez]
