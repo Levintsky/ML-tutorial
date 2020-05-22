@@ -1,6 +1,22 @@
 # AutoML, Architecture Search
 
-## A Summary
+## Basics
+- 1. RL-based;
+- 2. Evolution;
+- 3. ENAS/DART; (weight-sharing)
+- Successful nice ideas:
+	- **AutoAugment**: Ekin Dogus Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le. AutoAugment: Learning augmentation policies from data. CVPR'19
+- Metric:
+	- GPU-hours;
+- Most successful application:
+	- On mobile: **MnasNet** in industry;
+	- MobileNetV3;
+	- Song Han: ProxylessNAS: Direct Neural Architecture Search on Target Task and Hardware
+	- FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search
+- Tradeoff:
+	- EfficientNet, EfficientDet;
+
+## Summary
 - M Wistuba, A Rawat, Te Pedapati. A Survey on Neural Architecture Search. 2019
 - https://github.com/hibayesian/awesome-automl-papers
 - https://github.com/markdtw/awesome-architecture-search
@@ -15,11 +31,6 @@
 - Catherine Wong, Neil Houlsby, Yifeng Lu, Andrea Gesmundo. Transfer Learning with Neural AutoML. NIPS'18
 - Jianlong Chang, xinbang zhang, Yiwen Guo, Gaofeng Meng, Shiming Xiang, Chunhong Pan. DATA: Differentiable ArchiTecture Approximation. NIPS'19
 - Yukang Chen, Tong Yang, Xiangyu Zhang, Gaofeng Meng, Xinyu Xiao, Jian Sun. DetNAS: Backbone Search for Object Detection. NIPS'19
-
-## Applications
--  Kary Ho, Andrew Gilbert, Hailin Jin, John Collomosse. Neural Architecture Search for Deep Image Prior. 2020
-
-## FAIR
 - Saining Xie, Kaiming He. Exploring Randomly Wired Neural Networks for Image Recognition. ICCV'19
 	- Network generators: g(theta), g: residual, theta: layers, ...
 	- Randomly wired NN (ER/BA/WS)
@@ -31,28 +42,60 @@
 	- Experiments (ImageNet 1000, 1.28M train, 50k val):
 		- Baselines: MobileNet, ShuffleNet;
 
-## Google
-- **RL**:
-	- **NasNet**: Zoph, Le: Neural architecture search with reinforcement learning, ICLR'17
-		- Based on Policy-Gradient
-	- Zoph, Le. Learning transferable architectures for scalable image recognition. 2017
+## RL
+- Basics
+	<img src="/AutoML-Meta/images/automl-rl.jpg" alt="drawing" width="500"/>
+- **NasNet**: Zoph, Le: Neural architecture search with reinforcement learning, ICLR'17
+	- Based on Policy-Gradient
+- Zoph, Le. Learning transferable architectures for scalable image recognition. 2017
 		- https://github.com/tensorflow/models/tree/master/research/slim/nets/nasnet
 		- Normal cell, reduction-cell
-	- H Pham, M. Guan, B. Zoph, Q. Le (ENAS): 2018 Efficient neural architecture search via parameter sharing
-		- **Much Faster**
-		- Key contribution: Parameter sharing
-		- Penn TreeBank: 55.8 Perplexity, CIFAR-10: 2.89%
-		- https://github.com/melodyguan/enas/tree/2734eb2657847f090e1bc5c51c2b9cbf0be51887
-		- https://github.com/carpedm20/ENAS-pytorch
-- **Evolution**:
-	- Real, E.; Moore, S.; Selle, A.; Saxena, S.; Suematsu, Y. L.; Le, Q.; and Kurakin, A. 2017. Large-scale evolution of image classifiers. ICML'17
-	- E. Real, Q. Le, (AmoebaNet): 2018 Regularized evolution for image classifier architecture search.
-	- **The Evolved Transformer**: David R. So, Chen Liang, Quoc V. Le. The Evolved Transformer. 2019
-		- PDH (progressive dynamic hurdles);
-		- WMT 2014, Eng-Deu, Eng-Fre, ..., 0.7 BLEU improvement over Transformer on Eng-Deu;
+- Baker, B.; Gupta, O.; Naik, N.; and Raskar, R (MetaQNN). Designing neural network architectures using reinforcement learning. ICLR'17
+	- https://github.com/bowenbaker/metaqnn
+	- Q-learning based: e-greedy, experience replay;
+	- Action space: adding different layers, stopping;
+- **EAS**: H Cai, T Chen: Efficient architecture search by network transformation, AAAI 2018
+	- Initialize with DenseNet, evolve by widen and deepen
+	- CIFAR-10: 4.23%, SVHN 1.73%
+	- https://github.com/han-cai/eas
+- **PathLevel-EAS**: H Cai, S Han: Path-Level Network Transformation for Efficient Architecture Search, ICML'18
+	- https://github.com/han-cai/PathLevel-EAS
+- Zhong, Zhao, Yan, Junjie, and Liu, Cheng-Lin. Practical network blocks design with q-learning. AAAI, 2018.
+
+## Evolution
+- Basics:
+	- Component and Logics:
+		- Initialization
+		- Parent selection
+		- Recombination
+		- Mutation
+		- Survivor Selection
+	<img src="/AutoML-Meta/images/automl-evo.jpg" alt="drawing" width="500"/>
+	<img src="/AutoML-Meta/images/automl-ea2.jpg" alt="drawing" width="500"/>
+- Real, E.; Moore, S.; Selle, A.; Saxena, S.; Suematsu, Y. L.; Le, Q.; and Kurakin, A. 2017. Large-scale evolution of image classifiers. ICML'17
+- AmoebaNet: E. Real, Q. Le: 2018 Regularized evolution for image classifier architecture search.
+- **The Evolved Transformer**: David R. So, Chen Liang, Quoc V. Le. The Evolved Transformer. 2019
+	- PDH (progressive dynamic hurdles);
+	- WMT 2014, Eng-Deu, Eng-Fre, ..., 0.7 BLEU improvement over Transformer on Eng-Deu;
+
+## Parameter Sharing (Important Trick!)
+- **ENAS**: H Pham, M. Guan, B. Zoph, Q. Le: 2018 Efficient neural architecture search via parameter sharing
+	- **Much Faster**
+	- Key contribution: Parameter sharing
+	- Penn TreeBank: 55.8 Perplexity, CIFAR-10: 2.89%
+	- https://github.com/melodyguan/enas/tree/2734eb2657847f090e1bc5c51c2b9cbf0be51887
+	- https://github.com/carpedm20/ENAS-pytorch
+- DARTS: Differentiable Architecture Search
+	- 2.83% error CIFAR, 73.1% ImageNet top-1
+	- 56.1 Perplexity PTB
+	- https://github.com/quark0/darts
+
+## Applications
+- Kary Ho, Andrew Gilbert, Hailin Jin, John Collomosse. Neural Architecture Search for Deep Image Prior. 2020
+
+## Google	
 - **Constrained Search Space**:
 	- Prajit Ramachandran, Barret Zoph, and Quoc V. Le. Searching for activation functions. ICLR'18
-	- Ekin Dogus Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V. Le. AutoAugment: Learning augmentation policies from data. CVPR'19
 - DeepMind:
 	- Brock, Andrew, Lim, Theodore, Ritchie, James M., and Weston, Nick. SMASH: one-shot model architecture search through hypernetworks. ICLR, 2018.
 
@@ -82,37 +125,12 @@
 	- Arvind K. Sujeeth, HyoukJoong Lee, Kevin J. Brown, Hassan Chafi, Michael Wu, Anand R. Atreya, Kunle Olukotun, Tiark Rompf, and Martin Odersky. Optiml: An implicitly parallel domain-specific language for machine learning. ICML 2011
 
 ## Optimization Approaches
-- RL
-	<img src="/AutoML-Meta/images/automl-rl.jpg" alt="drawing" width="500"/>
-
-	- Baker, B.; Gupta, O.; Naik, N.; and Raskar, R (MetaQNN). Designing neural network architectures using reinforcement learning. ICLR 2017
-		- https://github.com/bowenbaker/metaqnn
-		- Q-learning based: e-greedy, experience replay;
-		- Action space: adding different layers, stopping;
-	- **EAS**: H Cai, T Chen: Efficient architecture search by network transformation, AAAI 2018
-		- Initialize with DenseNet, evolve by widen and deepen
-		- CIFAR-10: 4.23%, SVHN 1.73%
-		- https://github.com/han-cai/eas
-	- H Cai, S Han (PathLevel-EAS): Path-Level Network Transformation for Efficient Architecture Search, ICML 2018
-		- https://github.com/han-cai/PathLevel-EAS
-	- Zhong, Zhao, Yan, Junjie, and Liu, Cheng-Lin. Practical network blocks design with q-learning. AAAI, 2018.
-
-- Evolution:
-	<img src="/AutoML-Meta/images/automl-evo.jpg" alt="drawing" width="500"/>
-	<img src="/AutoML-Meta/images/automl-ea2.jpg" alt="drawing" width="500"/>
-
-	- Component and Logics:
-		- Initialization
-		- Parent selection
-		- Recombination
-		- Mutation
-		- Survivor Selection
-	- H Liu, K Simonyan, et.al. Hierarchical representations for efficient architecture search, ICLR 2018
-	- Baker, Bowen, Otkrist, Gupta, Raskar, Ramesh, and Naik, Nikhil. Accelerating neural architecture search using performance prediction. Arxiv, 1705.10823, 2017b.
-	- Lingxi Xie and Alan Yuille. Genetic CNN. ICCV'17
-		- https://github.com/aqibsaeed/Genetic-CNN
-	- AutoKeras 2018: Efficient Neural Architecture Search with Network Morphism
-	- Ye-Hoon Kim, Bhargava Reddy, Sojung Yun, and Chanwon Seo. Nemo : Neuro-evolution with multiobjective optimization of deep neural network for speed and accuracy. ICML'17 Workshop
+- H Liu, K Simonyan, et.al. Hierarchical representations for efficient architecture search, ICLR 2018
+- Baker, Bowen, Otkrist, Gupta, Raskar, Ramesh, and Naik, Nikhil. Accelerating neural architecture search using performance prediction. Arxiv, 1705.10823, 2017b.
+- Lingxi Xie and Alan Yuille. Genetic CNN. ICCV'17
+	- https://github.com/aqibsaeed/Genetic-CNN
+- AutoKeras 2018: Efficient Neural Architecture Search with Network Morphism
+- Ye-Hoon Kim, Bhargava Reddy, Sojung Yun, and Chanwon Seo. Nemo : Neuro-evolution with multiobjective optimization of deep neural network for speed and accuracy. ICML'17 Workshop
 - Surrogate Model-Based Optimization (SMBO)
 	<img src="/AutoML-Meta/images/smbo.jpg" alt="drawing" width="500"/>
 
@@ -129,12 +147,6 @@
 	- Measure Network distance from graph theory
 	- https://github.com/kirthevasank/nasbot
 - Bowen Baker, Otkrist Gupta, Ramesh Raskar, Nikhil Naik. Accelerating Neural Architecture Search using Performance Prediction. ICLR 2018 Workshop
-
-## Differential
-- DARTS: Differentiable Architecture Search
-	- 2.83% error CIFAR, 73.1% ImageNet top-1
-	- 56.1 Perplexity PTB
-	- https://github.com/quark0/darts
 
 ## Legacy
 - Evolution:
