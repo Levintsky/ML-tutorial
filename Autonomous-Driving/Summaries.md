@@ -8,7 +8,6 @@
 	- MV3D: BEV detection;
 - Uber:
 	- Pixor [Bin, CVPR'18]: 1-stage detection;
-		- BEV, resnet, output 2d orientated bbox;
 	- FaF [Wenjie, CVPR'18]: detection + tracking + prediction;
 	- IntentNet [S Casas, ICRA'18]:
 		- Improve on FaF with HD Map input, two-stream;

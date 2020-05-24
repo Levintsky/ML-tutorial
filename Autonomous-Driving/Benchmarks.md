@@ -9,8 +9,8 @@
 	- Evaluate: SLAM, optical flow, stereo, road segmentation.
 - **Cityscapes**: M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and B. Schiele. The cityscapes dataset for semantic urban scene understanding. CVPR'16
 	- Focus on semantic and instance segmentation;
-- Shenlong Wang, Min Bai, Gellert Mattyus, Hang Chu, Wenjie Luo, Bin Yang, Justin Liang, Joel Cheverie, Sanja Fidler, Raquel Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
-- TOR4D: Uber internal;
+- **TorontoCity**: Shenlong Wang, Min Bai, Gellert Mattyus, Hang Chu, Wenjie Luo, Bin Yang, Justin Liang, Joel Cheverie, Sanja Fidler, Raquel Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
+- Uber in-house;
 - **ApolloScape**:
 	- http://apolloscape.auto/
 	- 146,997 frames

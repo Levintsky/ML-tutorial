@@ -1,7 +1,15 @@
 # Planning
 
 ## Summary
-- Uber: PLT;
+- Problem:
+	- Input: current status and context (self, every actor else, traffic light, ...)
+	- Output: a feasible trajectory
+- Formulation:
+	- Cost/optimzation-based:
+		- first: propose a cost c(tau) combining everything you require (linear combination w1c1(tau)+w2c2(tau)+ ..., linear weight learnable by struct-SVM); when inference, LQR or method to propose trajectory minimize the cost;
+	- MPC (model-predictive control, solutions first); use model to propose a lot of solutions, pick the one with the lowest cost
+	- Imitation learning/supervised learning;
+		- End-to-end: ALVINN; NVIDIA; EndRun;
 
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
@@ -34,12 +42,6 @@
 			- Geometric method;
 			- Sampling based method;
 
-## Problem Setup
-- Input: current status and context (self, every actor else, traffic light, ...)
-- Output: a feasible trajectory
-	- Solution 1: Cost first: propose a cost c(tau) combining everything you require (Abbas version: linear combination w1c1(tau)+w2c2(tau)+ ..., linear weight learnable by struct-SVM); when inference, LQR or method to propose trajectory minimize the cost;
-	- Solution 2: MPC (model-predictive control, solutions first); use model to propose a lot of solutions, pick the one with the lowest cost
-
 ## Unclassified
 - **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
 	- https://github.com/modestyachts/robust-control-from-vision
@@ -47,23 +49,13 @@
 	- Model: MBRL (LQR)
 	- Evaluated on synthetic example CARLA
 
-## End-to-End
-- ALVINN
-- NVIDIA
-- EndRun
-
 ## Dataset for Imitation Learning
 - J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
 - J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
 
 ## Misc
 - A-star search:
-	- Z Ajanovic, B Lacevic, B Shyrokau, M Stolz, and M Horn. Search-based optimal motion planning for automated driving. IROS'18
-- Optimization:
-	- P Bender, O Tas, J Ziegler, and C Stiller. The combinatorial aspect of motion planning: Maneuver variants in structured environments. IV'15
-	- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
-	- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
-	- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
+	- Z Ajanovic, B Lacevic, B Shyrokau, M Stolz, and M Horn. Search-based optimal motion planning for automated driving. IROS'18	
 - Behavior planning:
 	- T Gu, J Dolan, and J Lee. On-road trajectory planning for general autonomous driving with enhanced tunability. Intelligent Autonomous Systems'16
 		- Multi-phase decision making: long range traffic-free first;
@@ -79,66 +71,69 @@
 	- M Werling, J Ziegler, S Kammel, and S Thrun. Optimal trajectory generation for dynamic street scenarios in a frenet frame. ICRA'10
 		- Parallel sampling:
 
+## Optimization Based
+- P Bender, O Tas, J Ziegler, and C Stiller. The combinatorial aspect of motion planning: Maneuver variants in structured environments. IV'15
+- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
+- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
+- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
+- **PLT-Planner**: PLT (Path, Lateral, Time)
+	- Improves upon PT solver;
+	- Largely a framework: sample rollouts - cost rollouts - pick minimum cost;
+	- Rollout generation:
+		- Spatial path + velocity profile + steering quantities; exectubale
+	- Interactive: (policy + cost); intelligent mode for driver, constant for pedestrains;
+		- Actors react to accomodate for av's action (policy): retimed waypoints (only consider them changing velocity)
+		- Actions induce burden;
+	- Ignore rules: filter out actors following behind AV;
+		- Failure in lane changes and merges;
+- A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
+	- Behavior planning, Trajectory planning;
+	- Input: desired route, state of the world (av state, map, detected object);
+	- Output: high-level behavior b; trajectory tau;
+	- Unified cost function: a weighted combination of manual designed cost:
+		- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
+		- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
+		- Headway: keep a safe longitudinal distance from leading car, depending on speed;
+		- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
+		- Route: penalize the number of lane-changes that is required to converge to the route
+		- Cost-to-go: he deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
+		- Speed limit, travel distance and dynamics;
+	- Inference:
+		- Behabioral planner (tau, b): Frenet frame; position s and lateral offset d separately; (not very precise)
+		- Trajectory planner (u): BFGS solver;
+	- Learning:
+		- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
+		- Imitation loss
+		- Weight decay (L2 regularizer)
+	- Experiments:
+		- Datasets: ManualDrive, TOR-4D;
+		- Evaluation: similarity to human; passenger comfort (average jerk and lateral acceleration); spatiotemporal overlap;
+		- Baselines: Oracle ACC; PT;
+
 ## Imitation Learning
 - **Alvinn**: Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
 - Nathan D Ratliff, J Andrew Bagnell, and Martin A Zinkevich. Maximum margin planning. ICML'06
-- Uber:
-	- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
-		- Idea: holistic model, combine detection and planning;
-		- Input: raw LiDAR, HD map; H x W x (ZT' + M)
-			- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
-			- HD map: H x W x M (M channels: road, intersection, lanes, ...)
-		- Output: 3D detections and their future trajectories;
-		- Output: space-time cost volume that represents the goodness
-		- Network:
-			- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
-			- Perception Head: follow SSD, 12 anchors each location;
-			- Cost Volume Head: same resolution as BEV,
-			- Efficient Inference: NP-hard, sampling;
-		- Learning:
-			- Perception loss: bounding box, regression,
-			- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
-		- Output Parameterization: Clothoid curve; sampling;
-		- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
-		<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
-	- **PLT-Planner**: PLT (Path, Lateral, Time)
-		- https://drive.google.com/open?id=1F9Yv2fwNGxuTboE8aSHue_gCaSssXu0I
-		- https://docs.google.com/presentation/d/1fRycSFv1boK-9WLR7mxUdNy6V0Ug8ylrDjUs5ww7A80/edit#slide=id.p
-		- Improves upon PT solver;
-		- Largely a framework: sample rollouts - cost rollouts - pick minimum cost;
-		- Rollout generation:
-			- Spatial path + velocity profile + steering quantities; exectubale
-		- Interactive: (policy + cost); intelligent mode for driver, constant for pedestrains;
-			- Actors react to accomodate for av's action (policy): retimed waypoints (only consider them changing velocity)
-			- Actions induce burden;
-		- Ignore rules: filter out actors following behind AV;
-			- Failure in lane changes and merges;
-	- **Current**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
-		- Behavior planning, Trajectory planning;
-		- Input: desired route, state of the world (av state, map, detected object);
-		- Output: high-level behavior b; trajectory tau;
-		- Unified cost function: a weighted combination of manual designed cost:
-			- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
-			- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
-			- Headway: keep a safe longitudinal distance from leading car, depending on speed;
-			- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
-			- Route: penalize the number of lane-changes that is required to converge to the route
-			- Cost-to-go: he deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
-			- Speed limit, travel distance and dynamics;
-		- Inference:
-			- Behabioral planner (tau, b): Frenet frame; position s and lateral offset d separately; (not very precise)
-			- Trajectory planner (u): BFGS solver;
-		- Learning:
-			- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
-			- Imitation loss
-			- Weight decay (L2 regularizer)
-		- Experiments:
-			- Datasets: ManualDrive, TOR-4D;
-			- Evaluation: similarity to human; passenger comfort (average jerk and lateral acceleration); spatiotemporal overlap;
-			- Baselines: Oracle ACC; PT;
-	- Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
-		- No HD-Maps
-		- With HD-Maps as supervision;
+- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
+	- Idea: holistic model, combine detection and planning;
+	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
+		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
+		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
+	- Output: 3D detections and their future trajectories;
+	- Output: space-time cost volume that represents the goodness
+	- Network:
+		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
+		- Perception Head: follow SSD, 12 anchors each location;
+		- Cost Volume Head: same resolution as BEV,
+		- Efficient Inference: NP-hard, sampling;
+	- Learning:
+		- Perception loss: bounding box, regression,
+		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
+	- Output Parameterization: Clothoid curve; sampling;
+	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
+	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
+- Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
+	- No HD-Maps
+	- With HD-Maps as supervision;
 - NVIDIA:
 	- **PilotNet**: M Bojarski, D Del Testa, D Dworakowski, B Firner, B Flepp, P Goyal, L D. Jackel, M Monfort, U Muller, J Zhang, X Zhang, J Zhao, K Zieba. End to End Learning for Self-Driving Cars. 2016
 		- Imitation learning from human data; trained just for bc; drift (1m from center) reset in simulator;
@@ -148,37 +143,33 @@
 	- M Bojarski, P Yeres, A Choromanska, K Choromanski, B Firner, L Jackel, and U Muller. Explaining how a deep neural network trained with end-to-end learning steers a car. 2017
 		- Visualize salient object for pilotnet
 		<img src="/Autonomous-Driving/images/plan/e2e-ad3.png" alt="drawing" width="500"/>
-- Waymo:
-	- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
-		- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
+- **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
+	- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet1.png" alt="drawing" width="600"/>
-
-		- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
+	- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet2.png" alt="drawing" width="600"/>
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet3.png" alt="drawing" width="600"/>
-
-		- System Design
+	- System Design
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet4.png" alt="drawing" width="600"/>
-
-		- Output: driving trajectory (consumed by controler)
-		- **Imitation Learning**: direct: hard; reward shaping;
-		- Loss design:
-			- Agent position, heading and box prediction;
-			- Meta prediction: speed, subpixel
-		- Beyond pure imitation: avoid drift, bad behavior (collisions and off-road driving)
-			- Loss design: collision loss; on-road loss; geometry loss (always follows geometry independent of speed)
-	- K Refaat, K Ding, N Ponomareva and S Ross. Agent Prioritization for Autonomous Navigation. 2019
-		- Input: ROI 80 x 80 centered on AV;
-		- **Data Generation**: automatic; simulation on real-world logged data;
-		- **Data representation**:
-		- **Hybrid approach**: CNN + GBDT
-		- Ranking CNN;
-		- Rank loss: log(1+exp(sj-si)) to rank agent j and i;
-		- Ranking model:
-			- 1. GBDT: with Engineered or CNN features;
-			- 2. Pairwise loss function from CNN;
-		- Evalution: Normalized Discounted Cumulative Gain (NDCG);
-		- Best performer: **Pairwise CNN + Pairwise GBDT**;
+	- Output: driving trajectory (consumed by controler)
+	- **Imitation Learning**: direct: hard; reward shaping;
+	- Loss design:
+		- Agent position, heading and box prediction;
+		- Meta prediction: speed, subpixel
+	- Beyond pure imitation: avoid drift, bad behavior (collisions and off-road driving)
+		- Loss design: collision loss; on-road loss; geometry loss (always follows geometry independent of speed)
+- K Refaat, K Ding, N Ponomareva and S Ross. Agent Prioritization for Autonomous Navigation. 2019
+	- Input: ROI 80 x 80 centered on AV;
+	- **Data Generation**: automatic; simulation on real-world logged data;
+	- **Data representation**:
+	- **Hybrid approach**: CNN + GBDT
+	- Ranking CNN;
+	- Rank loss: log(1+exp(sj-si)) to rank agent j and i;
+	- Ranking model:
+		- 1. GBDT: with Engineered or CNN features;
+		- 2. Pairwise loss function from CNN;
+	- Evalution: Normalized Discounted Cumulative Gain (NDCG);
+	- Best performer: **Pairwise CNN + Pairwise GBDT**;
 - Berkeley:
 	- H Xu, Y Gao, F Yu, and T Darrell. End-to-end learning of driving models from large-scale video datasets. CVPR'17
 		- Input: camera
@@ -248,10 +239,9 @@ Przemysław Mazur, Sean Micklethwaite, Nicolas Griffiths, Amar Shah, Alex Kendal
 	- RNN planner: GRU with ELU; (GAIL GRU, GAIL MLP, BC GRU, and BC MLP)
 	- Policy optimizer: TRPO;
 	- Given (s1, a1), (s2, a2),..., (sT, aT) sampled from real/fake for discriminator D, D as reward
-	<img src="/Autonomous-Driving/images/plan/gail-ad1.png" alt="drawing" width="400"/>
-	<img src="/Autonomous-Driving/images/plan/gail-ad2.png" alt="drawing" width="400"/>
-	<img src="/Autonomous-Driving/images/plan/gail-ad3.png" alt="drawing" width="400"/>
-
+		<img src="/Autonomous-Driving/images/plan/gail-ad1.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/plan/gail-ad2.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/plan/gail-ad3.png" alt="drawing" width="400"/>
 	- NGSIM dataset
 
 ## Planning under Uncertainty

@@ -3,23 +3,6 @@
 ## Sequential Inference
 - Yang Song, Chenlin Meng, Renjie Liao, Stefano Ermon. Nonlinear Equation Solving: A Faster Alternative to Feedforward Computation. 2020
 
-## CNN
-- Google:
-	- **MobileNet**: A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. CoRR 2017
-		- Depthwise separable
-		- Input: DF x DF x M, output: DF x DF x N, kernel size: DK
-		- Traditional: DK^2 * M * N * DF^2
-		- DS:
-			- DK x DK x 1 kernel: DK^2 * M * DF^2
-			- 1 x 1 x N kernel: M * N * DF^2
-	- **MobileNet-V2**: M. Sandler, A. G. Howard, M. Zhu, A. Zhmoginov, and L. Chen. Inverted residuals and linear bottlenecks: Mobile networks for classification, detection and segmentation. CVPR 2018
-		- SSDLite, Mobile DeepLabv3
-		- Linear bottlenecks
-		- Inverted Residuals
-- **ShuffleNet**: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR 2018
-	- Traditional Bottleneck: ReLU[x + (conv1x1 BN-ReLU DWconv3x3 BN-ReLU conv1x1 BN)]
-	- ShuffleNet: ReLU[x + (**Gconv**1x1 BN-ReLU **Channel-Shuffle** DWconv3x3 BN-ReLU **Gconv**1x1 BN)]
-
 ## Fast
 - Separable:
 	-  F. Chollet. Xception: Deep learning with depthwise separable convolutions. CVPR'17

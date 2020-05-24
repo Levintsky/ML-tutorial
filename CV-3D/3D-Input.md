@@ -76,6 +76,11 @@
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
 		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
 		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
+	- S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
+		- key idea: exploit **parameterized kernel** functions that span the full continuous vector space
+		- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
+			<img src="/Autonomous-Driving/images/detection/continuous1.png" alt="drawing" width="500"/>
+			<img src="/Autonomous-Driving/images/detection/continuous2.png" alt="drawing" width="600"/>
 	- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
 		- 1 weighting: of the input features associated with the points, 
 		- 2.permutation: into a latent and potentially canonical order

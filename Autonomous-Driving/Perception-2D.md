@@ -16,6 +16,10 @@
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin3.png" alt="drawing" width="400"/>
 
 ## Segmentation
+- **MultiNet**: Marvin Teichmann, Michael Weber, Marius Zollner, Roberto Cipolla and Raquel Urtasun. MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving. IV'18
+	- https://github.com/MarvinTeichmann/MultiNet
+	- The encoder is shared amongst the three tasks
+	- Joint classification, detection and semantic segmentation via a unified architecture;
 - **DARNet**: Dominic Cheng, Renjie Liao, Sanja Fidler, Raquel Urtasun. DARNet: Deep Active Ray Network for Building Segmentation. CVPR'19
 - **UPSNet**: Y Xiong, R Liao, H Zhao, R Hu, M Bai, E Yumer, R Urtasun. UPSNet: A Unified Panoptic Segmentation Network. CVPR'19
 	- Problem setup: semantic seg + instance seg (Mask R-CNN);
