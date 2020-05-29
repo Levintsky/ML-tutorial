@@ -24,8 +24,10 @@
 		- Estimate sample density distribution;
 		- https://github.com/viscom-ulm/MCCNN
 	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
-- **Grid-Cell**: still within regular grid;
+- **Grid-Cell**: still keep the regular grid/voxel structure;
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
+		- https://github.com/trucleduc/PointGrid
+		- Insight: still keep the voxel grid; exactly 4 points in the cell;
 		- Preprocessing: normalize to [-1, 1]
 		- Each grid cell: **exactly K=4 points** in 16 x 16 x 16, each cell 3K-dim feature; if originally >= K points, sample; < K, sample with replacement
 		<img src="/CV-3D/images/3d_input/pointgrid.png" alt="drawing" width="500"/>
@@ -36,20 +38,11 @@
 		<img src="/CV-3D/images/3d_input/splatnet1.png" alt="drawing" width="450"/>
 		<img src="/CV-3D/images/3d_input/splatnet2.png" alt="drawing" width="500"/>
 		<img src="/CV-3D/images/3d_input/splatnet3.png" alt="drawing" width="600"/>
-	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
-		- Irregular grid;
-		- http://sites.skoltech.ru/compvision/kdnets/
-		- Construction: Work with Kd-tree; (top-down, every node split the axis with largest span);
-		- Non-leaf nodes: Recursive bottom-up, Recursive-NN;
-		- Properties: Layerwise parameter sharing; Hierarchical representation; Partial invariance to jitter; Non-invariance to rotations; Role of kd-tree structure;
-		- Experiments: MNIST 2D points; ModelNet;
-		<img src="/CV-3D/images/3d_input/kd-network1.png" alt="drawing" width="500"/>
-		<img src="/CV-3D/images/3d_input/kd-network2.png" alt="drawing" width="400"/>
-		<img src="/CV-3D/images/3d_input/kd-network3.png" alt="drawing" width="500"/>
 - **Unordered**:
 	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
 		<img src="/CV-3D/images/3d_input/pointnet.png" alt="drawing" width="600"/>
 	- **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
+		- Insight: FP-sampling + grouping + MLP + [FPN];
 		- **Classification mode**: [SA module x 3] + FC_layers;
 		- **Semantic Segmentation mode**: [SA-module x3] + [FP-modules x4] + [Conv1d x2]
 		- SA module #1, #2: xyz, features = model(xyz, features=None), xyz: (B, 2048, 3)
@@ -72,10 +65,20 @@
 		```	
 		- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
 		<img src="/CV-3D/images/3d_input/pointnet++.png" alt="drawing" width="600"/>
-- **Attention**:
+- Local neighborhood, by **Attention** or GNN:
+	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
+		- Irregular grid;
+		- http://sites.skoltech.ru/compvision/kdnets/
+		- Construction: Work with Kd-tree; (top-down, every node split the axis with largest span);
+		- Non-leaf nodes: Recursive bottom-up, Recursive-NN;
+		- Properties: Layerwise parameter sharing; Hierarchical representation; Partial invariance to jitter; Non-invariance to rotations; Role of kd-tree structure;
+		- Experiments: MNIST 2D points; ModelNet;
+		<img src="/CV-3D/images/3d_input/kd-network1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/kd-network2.png" alt="drawing" width="400"/>
+		<img src="/CV-3D/images/3d_input/kd-network3.png" alt="drawing" width="500"/>
 	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
-		- Feature of point pi: Histogram of pj-pi (24 bins = 3 radius x 8 angle)
-		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
+		- First layer feature (manual): Histogram of pj-pi (24 bins = 3 radius x 8 angle);
+			<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
 	- S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
 		- key idea: exploit **parameterized kernel** functions that span the full continuous vector space
 		- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
@@ -87,7 +90,6 @@
 		- https://github.com/yangyanli/PointCNN
 		<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
-- **Graph**:
 	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
 		<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
 	- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19

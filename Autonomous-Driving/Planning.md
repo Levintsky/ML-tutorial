@@ -86,20 +86,49 @@
 		- Actions induce burden;
 	- Ignore rules: filter out actors following behind AV;
 		- Failure in lane changes and merges;
-- A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. 2019
-	- Behavior planning, Trajectory planning;
-	- Input: desired route, state of the world (av state, map, detected object);
-	- Output: high-level behavior b; trajectory tau;
+- **NMP**: W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
+	- Idea: holistic model, combine detection and planning;
+	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
+		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
+		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
+	- Output: 3D detections and their future trajectories;
+	- Output: space-time cost volume that represents the goodness
+		- T x H x W;
+	- Network:
+		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
+		- Perception Head: follow SSD, 12 anchors each location;
+		- Cost Volume Head: same resolution as BEV,
+		- Efficient Inference: NP-hard, sampling;
+	- Learning:
+		- Perception loss: bounding box, regression,
+		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
+	- Output Parameterization: Clothoid curve; sampling;
+	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
+	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
+- **PLT-Planner**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. IROS'19
+	- Insight: Behavior planning + Trajectory planning;
+	- Input:
+		- desired route
+		- state of the world
+			- sdv state
+			- map
+			- detected object (multimodal with probability)
+	- Output:
+		- high-level behavior **b**: a driving path sdv should follow;
+			- B(W): considering keep-lane, left-lane-change, and right-lane-change maneuvers
+		- trajectory **tau**;
+			- f(tau, b, W; w)
 	- Unified cost function: a weighted combination of manual designed cost:
 		- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
 		- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
 		- Headway: keep a safe longitudinal distance from leading car, depending on speed;
 		- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
 		- Route: penalize the number of lane-changes that is required to converge to the route
-		- Cost-to-go: he deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
+		- Cost-to-go: the deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
 		- Speed limit, travel distance and dynamics;
 	- Inference:
-		- Behabioral planner (tau, b): Frenet frame; position s and lateral offset d separately; (not very precise)
+		- Behabioral planner (tau, b): represented by Frenet frame; position s and lateral offset d separately; (not very precise)
+			- Evaluate cost function f();
 		- Trajectory planner (u): BFGS solver;
 	- Learning:
 		- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
@@ -113,24 +142,6 @@
 ## Imitation Learning
 - **Alvinn**: Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
 - Nathan D Ratliff, J Andrew Bagnell, and Martin A Zinkevich. Maximum margin planning. ICML'06
-- W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
-	- Idea: holistic model, combine detection and planning;
-	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
-		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
-		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
-	- Output: 3D detections and their future trajectories;
-	- Output: space-time cost volume that represents the goodness
-	- Network:
-		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
-		- Perception Head: follow SSD, 12 anchors each location;
-		- Cost Volume Head: same resolution as BEV,
-		- Efficient Inference: NP-hard, sampling;
-	- Learning:
-		- Perception loss: bounding box, regression,
-		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
-	- Output Parameterization: Clothoid curve; sampling;
-	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
-	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
 - Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
 	- No HD-Maps
 	- With HD-Maps as supervision;
@@ -145,13 +156,13 @@
 		<img src="/Autonomous-Driving/images/plan/e2e-ad3.png" alt="drawing" width="500"/>
 - **ChauffeurNet**: M Bansal, A Krizhevsky, A Ogale. ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst. 2018
 	- Inputs (mid-level): W x H roadmap, traffic lights, speed limit, route (google map style), current agent box, dynamic boxes, past agent poses, future agent poses
+	- Output: driving trajectory (consumed by controler)
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet1.png" alt="drawing" width="600"/>
 	- Net: RNN for planning; p(t+dt) = ChauffeurNet(I, p(t)), p: points on trajectory; and 1-step of RNN: pk,Bk = AgentRNN(k,F,Mk−1,Bk−1)
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet2.png" alt="drawing" width="600"/>
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet3.png" alt="drawing" width="600"/>
 	- System Design
 		<img src="/Autonomous-Driving/images/plan/chauffeurnet4.png" alt="drawing" width="600"/>
-	- Output: driving trajectory (consumed by controler)
 	- **Imitation Learning**: direct: hard; reward shaping;
 	- Loss design:
 		- Agent position, heading and box prediction;

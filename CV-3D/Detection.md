@@ -17,7 +17,6 @@
 		- Viewpoint Conditioned Keypoint Likelihood
 		<img src="/CV-3D/images/detection/viewpts_keypts.png" alt="drawing" width="500"/>
 - Pat Marion, Peter R. Florence, Lucas Manuelli, and Russ Tedrake. Labelfusion: A pipeline for generating ground truth labels for real rgbd data of cluttered scenes. ICRA'18
-- Wenjie Luo, Bin Yang, and Raquel Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
 - Supasorn Suwajanakorn, Noah Snavely, Jonathan Tompson, and Mohammad Norouzi. Discovery of latent 3d keypoints via end-to-end geometric reasoning. NIPS'18
 - Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
 - 6D pose of known rigid objects:
@@ -35,18 +34,8 @@
 - S. Song and J. Xiao. Sliding shapes for 3d object detection in depth images. ECCV'14
 - S. Song and J. Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. ECCV'16
 - B. Li. 3d fully convolutional network for vehicle detection in point cloud. IROS'16
-- **VeloFCN**: B. Li, T. Zhang, and T. Xia. Vehicle detection from 3d lidar using fully convolutional network. arxiv'16
 
 ## 2D-3D Fusion
-- A Mousavian, D Anguelov, J Flynn, J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
-- **PointFusion**: D Xu, D Anguelov, A Jain. PointFusion: Deep Sensor Fusion for 3D Bounding Box Estimation. CVPR'18\
-	<img src="/CV-3D/images/detection/pointfusion.png" alt="drawing" width="600"/>
-	- Input: RGB + 3D point cloud
-	- Output: 3 x 8 corner points
-	- Global fusion (baseline): (1 x 3072) -> MLP (512, 128, 128) -> 1x8x3 (L1-loss)
-	- Dense fusion:
-	- STN
-	- Experiments: KITTI, AP-3D
 - **Frustum PointNet**: C Qi, W Liu, C Wu, H Su, L Guibas. Frustum PointNets for 3D Object Detection from RGB-D Data, CVPR'18
 	- RGB-D
 	- 2D-detection: 2D bounding boxes;

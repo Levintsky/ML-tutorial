@@ -10,8 +10,6 @@
 - AlexNet;
 - **cutout**: DeVries, T. and Taylor, G. W. Improved regularization of convolutional neural networks with cutout. arxiv'17
 	- useful on CIFAR-10 and not on ImageNet
-- Ekin D Cubuk, Barret Zoph, Dandelion Mane, Vijay Vasudevan, and Quoc V Le. Autoaugment:
-Learning augmentation policies from data. 2018
 - Lopes, R. G., Yin, D., Poole, B., Gilmer, J., and Cubuk, E. D. Improving robustness without sacrificing accu- racy with patch gaussian augmentation. arXiv'19
 - **RandAugment**: Ekin D. Cubuk, Barret Zoph, Jonathon Shlens, and Quoc V. Le. Randaugment: Practical automated data augmentation with a reduced search space. 2019
 	- https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet
@@ -26,8 +24,7 @@ Learning augmentation policies from data. 2018
 		<img src = '/DL/images/augment/aff-div.png' width = '400'>
 
 ## NLP
-- Adams Wei Yu, David Dohan, Minh-Thang Luong, Rui Zhao, Kai Chen, Mohammad Norouzi, and
-Quoc V Le. Qanet: Combining local convolution with global self-attention for reading comprehension. 2018
+- Adams Wei Yu, David Dohan, Minh-Thang Luong, Rui Zhao, Kai Chen, Mohammad Norouzi, and Quoc V Le. Qanet: Combining local convolution with global self-attention for reading comprehension. 2018
 
 ## Speech
 - Awni Hannun, Carl Case, Jared Casper, Bryan Catanzaro, Greg Diamos, Erich Elsen, Ryan Prenger, Sanjeev Satheesh, Shubho Sengupta, Adam Coates, et al. Deep speech: Scaling up end-to-end speech recognition. 2014

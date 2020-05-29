@@ -13,8 +13,7 @@
 		<img src = '/DL/images/dynamic-system/durr-2.png' width = '400'>\
 		<img src = '/DL/images/dynamic-system/durr-3.png' width = '400'>
 	- Application: denoising;
-- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal
-Modeling. NIPS'18
+- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal Modeling. NIPS'18
 - Rassi. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
 - Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
 - Lei Wu, Chao Ma, Weinan E. How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18

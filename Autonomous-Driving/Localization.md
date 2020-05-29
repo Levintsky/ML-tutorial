@@ -22,7 +22,7 @@
 	- LiDAR: HD-Map/ICP for structure, ? for regression, PointNetVLAD/PCAN/LPD-Net for retrieval
 
 ## SLAM
-- Asynchronous Multi-View SLAM. Mini-19
+- Asynchronous Multi-View SLAM.
 	- Extend SLAM to **asynchronous** multiple cameras;
 	- Asynchronous BA;
 	- New frame tracking;

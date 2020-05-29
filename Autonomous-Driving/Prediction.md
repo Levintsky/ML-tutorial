@@ -135,6 +135,12 @@ motion trajectory prediction: A survey. ArXiv, abs/1905.06113, 2019.
 		- Multi future;
 	- S. Park, B. Kim, C. M. Kang, C. C. Chung, and J. W. Choi. Sequence-to-sequence prediction of vehicle trajectory via LSTM encoder-decoder architecture. arxiv'18
 
+## Interaction
+- V2VNet: Vehicle-to-vehicle communication to improve PnP performance [Johnson Wang]
+	- Sender SDV: CNN, compress send; Receiver SDV: GNN;
+- Interaction Transformer for Prediction [Luke Li]
+	- Recurrent interaction process;
+
 ## Game Theory
 - M. Tan. Multi-agent reinforcement learning: Independent vs. cooperative agents. ICML'93
 - C. Claus and C. Boutilier. The dynamics of reinforcement learning in cooperative multiagent systems. AAAI'98

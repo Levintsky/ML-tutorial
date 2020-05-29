@@ -173,8 +173,14 @@
 	- 3. Track-level fusion: track before detect;
 
 ## Detection from 3D Point-Clouds
-- 2D as a referral:
-	- D Xu, D Anguelov, and A Jain. Pointfusion: Deep sensor fusion for 3d bounding box estimation. CoRR'17
+- **PointFusion**: D Xu, D Anguelov, A Jain. PointFusion: Deep Sensor Fusion for 3D Bounding Box Estimation. CVPR'18\
+	<img src="/CV-3D/images/detection/pointfusion.png" alt="drawing" width="600"/>
+	- Input: RGB + 3D point cloud
+	- Output: 3 x 8 corner points
+	- Global fusion (baseline): (1 x 3072) -> MLP (512, 128, 128) -> 1x8x3 (L1-loss)
+	- Dense fusion:
+	- STN
+	- Experiments: KITTI, AP-3D
 - Voxelize:
 	- S Song and J Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
 
