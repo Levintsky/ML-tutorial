@@ -44,14 +44,6 @@
 	- Short-cut: ReLU after adding shortcut;
 - **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR 2018
 	- https://github.com/bamos/densenet.pytorch
-- **EfficientNet**: Mingxing Tan, Quoc V. Le. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
-	- Baseline (MNAS): mobile inverted bottleneck convolution (MBConv)
-	- Width scaling
-	- Depth scaling
-	- Resolution scaling
-	- Compound scaling
-	<img src="/CV/images/efficientnet-baseline.jpg" alt="drawing" width="500"/>
-	<img src="/CV/images/efficientnet-performance.jpg" alt="drawing" width="500"/>
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 
 ## Fine-Grained

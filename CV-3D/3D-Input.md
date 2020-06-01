@@ -80,10 +80,12 @@
 		- First layer feature (manual): Histogram of pj-pi (24 bins = 3 radius x 8 angle);
 			<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
 	- S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
-		- key idea: exploit **parameterized kernel** functions that span the full continuous vector space
+		- key idea: exploit **parameterized kernel** functions that span the full continuous vector space, **learn a kernel** with MLP;
+			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
+			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
 		- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
-			<img src="/Autonomous-Driving/images/detection/continuous1.png" alt="drawing" width="500"/>
-			<img src="/Autonomous-Driving/images/detection/continuous2.png" alt="drawing" width="600"/>
+			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
+			<img src="/CV-3D/images/3d_input/continuous2.png" alt="drawing" width="600"/>
 	- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
 		- 1 weighting: of the input features associated with the points, 
 		- 2.permutation: into a latent and potentially canonical order
@@ -108,14 +110,18 @@
 	- https://github.com/dimatura/voxnet
 - C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16
 - N Sedaghat, M Zolfaghari, E Amiri, T Brox. Orientation-boosted voxel nets for 3D object recognition. BMVC'17
-- B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR'18
-	- SSCN (submanifold sparse Conv Net)
-	- https://github.com/facebookresearch/SparseConvNet
-	- SSCN(m, n, f, s): m input, n output, f filter-size, s stride;
-	- Implementation: a hash table (https://github.com/sparsehash/sparsehash) and a matrix;
-	- **Sparse Voxelized**: applied on Submanifold FCN and U-Nets;
-	- CPU-only;
-	- Experiments: ShapeNet; NYU depth;
+- Sparse conv:
+	- Ben Graham. Sparse 3D convolutional neural networks. 2015
+		- https://github.com/btgraham/SparseConvNet
+	- **Octnet**: G. Riegler, A. O. Ulusoys, and A. Geiger. Octnet: Learning Deep 3D Representations at High Resolutions. arxiv'16
+	- B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR'18
+		- SSCN (submanifold sparse Conv Net)
+		- https://github.com/facebookresearch/SparseConvNet
+		- SSCN(m, n, f, s): m input, n output, f filter-size, s stride;
+		- Implementation: a hash table (https://github.com/sparsehash/sparsehash) and a matrix;
+		- **Sparse Voxelized**: applied on Submanifold FCN and U-Nets;
+		- CPU-only;
+		- Experiments: ShapeNet; NYU depth;
 - Oct-tree:
 	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
 	- P.-S. Wang, Y. Liu, Y.-X. Guo, C.-Y. Sun, and X. Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
@@ -131,7 +137,7 @@
 	- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
 	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16 
 	- M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst. Geometric deep learning: Going beyond euclidean data. SPM'17
-	- N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature- steered graph convolutions for 3d shape analysis. CVPR'18
+	- N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature-steered graph convolutions for 3d shape analysis. CVPR'18
 		- https://github.com/nitika-verma/FeaStNet
 		- https://pdfs.semanticscholar.org/2b19/17cda67f8a741680300a45123eeecae10ce2.pdf
 - K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
