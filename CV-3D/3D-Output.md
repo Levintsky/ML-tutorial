@@ -4,11 +4,10 @@
 - Representations:
 	- Point clouds;
 	- Voxel;
-	- Oct-tree;
 	- Mesh;
-	- Primitives;
-	- Implicit functions;
-	- 2.5D;
+	- Oct-tree;
+	- Templates: Primitives; Implicit functions;
+	- Depth; 2.5D;
 - Supervision:
 	- **Chamfer distance** (a strong baseline)
 		- Sum of closest point distances
@@ -26,7 +25,6 @@
 	- Photometric;
 
 ## Unclassified
-- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
 - **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR'16
 	- Shape prior
 	- https://github.com/mdfirman/voxlets
@@ -37,6 +35,7 @@
 	- https://github.com/EdwardSmith1884/Multi-View-Silhouette-and-Depth-Decomposition-for-High-Resolution-3D-Object-Representation
 
 ## Legacy (Non-DL)
+- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
 - A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
 	- https://github.com/akar43/CategoryShapes
 - Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
@@ -263,12 +262,12 @@ Panozzo. 2019. Deep geometric prior for surface reconstruction. CVPR'19
 		- Insight: point-based SDF;
 		- https://github.com/facebookresearch/DeepSDF
 		- Formulation: given a point x, a NN with latent code z as a classifier \
-			<img src="/CV-3D/images/3d_output/deep-sdf1.png" alt="drawing" width="350"/>
+			<img src="/CV-3D/images/3d_output/deepsdf-1.png" alt="drawing" width="350"/>
 		- Autoencoder: \
-			<img src="/CV-3D/images/3d_output/deep-sdf2.png" alt="drawing" width="400"/>
+			<img src="/CV-3D/images/3d_output/deepsdf-2.png" alt="drawing" width="400"/>
 		- Auto-decoder (encoder-less) training and inference: \
-			<img src="/CV-3D/images/3d_output/deep-sdf3.png" alt="drawing" width="400"/>
-			<img src="/CV-3D/images/3d_output/deep-sdf4.png" alt="drawing" width="400"/>
+			<img src="/CV-3D/images/3d_output/deepsdf-3.png" alt="drawing" width="400"/>
+			<img src="/CV-3D/images/3d_output/deepsdf-4.png" alt="drawing" width="400"/>
 - Indicator:
 	- **OccNet**: Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and Andreas Geiger. Occupancy networks: Learning 3d reconstruction in function space. CVPR'19
 		- Insight: new 3D representation, could generate mesh at any resoltuion;

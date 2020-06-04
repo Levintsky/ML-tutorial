@@ -9,9 +9,9 @@
 - **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. 2014
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
 - **GoogleNet**: C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich (GoogleNet): Going deeper with convolutions. CVPR'15
-		- Inception-V1
-		- Winner-of-ILSVRC-2014;
-		- https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7
+	- Inception-V1
+	- Winner-of-ILSVRC-2014;
+	- https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7
 - **Incpetion-V2**: Sergey Ioffe, Christian Szegedy. Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML'15
 - **Inception-V3**: Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna. Rethinking the Inception Architecture for Computer Vision. CVPR'16
 - **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR 2016
@@ -44,6 +44,14 @@
 	- Short-cut: ReLU after adding shortcut;
 - **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR 2018
 	- https://github.com/bamos/densenet.pytorch
+- **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
+	- https://github.com/hujie-frank/SENet
+	- Winner of ILSVR'17
+	- Model:\
+		<img src="/CV-2D/images/cnn/senet-1.png" alt="drawing" width="400"/>
+	- Module:\
+		<img src="/CV-2D/images/cnn/senet-2.png" alt="drawing" width="300"/>
+		<img src="/CV-2D/images/cnn/senet-3.png" alt="drawing" width="300"/>
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 
 ## Fine-Grained
@@ -54,13 +62,3 @@
 
 ## Pooling, Aggregation
 - R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016
-
-## Attention
-- V Mnih, N Heess, A Graves, et al. Recurrent models of visual attention. NIPS'14
-- J Ba, V Mnih, and K Kavukcuoglu. Multiple object recognition with visual attention. arxiv'14
-- T Xiao, Y Xu, K Yang, J Zhang, Y Peng, and Z Zhang. The application of two-level attention models in deep convolutional neural network for fine-grained image classification. CVPR'15
-- M Chung, S Cho. Cram: Clued recurrent attention model. arxiv'18
-- J Fu, H Zheng, and T Mei. Look closer to see better: Recurrent attention convolutional neural network for fine-grained image recognition. CVPR'17
-- A Ablavatski, S Lu, and J Cai. Enriched deep recurrent visual attention model for multiple object recognition. WACV'17
-- H Zheng, J Fu, T Mei, and J Luo. Learning multi-attention convolutional neural network for fine-grained image recognition. ICCV'17
-- F Wang, M Jiang, C Qian, S Yang, C Li, H Zhang, X Wang, and X Tang. Residual attention network for image classification. arxiv'17

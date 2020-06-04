@@ -20,7 +20,7 @@
 - C Wu, N Singhal, and P Krahenbuhl. Video compression through image interpolation. ECCV'18
 - A Habibian, T Rozendaal, J Tomczak, and Taco S. Cohen. Video compression with rate-distortion autoencoders. ICCV'19.
 - H Liu, T Chen, M Lu, Q Shen, and Z Ma. Neural Video Compression using Spatio-Temporal Priors. 2019
-- J Liu, S Wang, W Ma, R Urtasun. An Entropy-focused Baseline for Video Compression. Mini-10
+- J Liu, S Wang, W Ma, R Urtasun. An Entropy-focused Baseline for Video Compression.
 	- I-frame (reference, by image compression) by SOA auto-encoder;
 	- p-frame, B-frame
 

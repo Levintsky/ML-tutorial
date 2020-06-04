@@ -194,8 +194,9 @@
 	- Measure Network distance from graph theory
 	- https://github.com/kirthevasank/nasbot
 
-## Random Search
+## Design Space
 - H2O: https://github.com/h2oai/h2o-3
+- Insight: Anti AutoML;
 - Saining Xie, Kaiming He. Exploring Randomly Wired Neural Networks for Image Recognition. ICCV'19
 	- Network generators: g(theta), g: residual, theta: layers, ...
 	- Randomly wired NN (ER/BA/WS)
@@ -206,6 +207,12 @@
 		- Stages: progressive downsample;
 	- Experiments (ImageNet 1000, 1.28M train, 50k val):
 		- Baselines: MobileNet, ShuffleNet;
+- I. Radosavovic, J. Johnson, S. Xie, W.-Y. Lo, and P. Dollar. On network design spaces for visual recognition. ICCV'19
+- **RegNet**: Ilija Radosavovic, Raj Prateek Kosaraju, Ross Girshick, Kaiming He, Piotr Dollar. Designing Network Design Spaces. CVPR'20
+	- https://github.com/facebookresearch/pycls
+	- AnyNetX;
+	- Does not use SE and Swish;
+	- Auto-AutoML, better result than;
 
 ## Automated ML for other Algorithms
 - autoxgboost: Janek Thomas, Stefan Coors and Bernd Bischl (2018). Automatic Gradient Boosting. ICMLW'18

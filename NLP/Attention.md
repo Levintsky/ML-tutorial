@@ -90,6 +90,9 @@
 	- additional layer normalization: after the final self attention block
 	- 48 layers of transformer
 - R Child, S Gray, A Radford, and I Sutskever. Generating long sequences with sparse transformers. 2019
+- **GPT-3**: Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, Dario Amodei. Language Models are Few-Shot Learners. 2020
+	- https://github.com/openai/gpt-3
+	- 175B parameters, 45T training data;
 
 ## Position Encoding
 - Original in transformer:\
