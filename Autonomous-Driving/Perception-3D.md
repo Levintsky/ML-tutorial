@@ -102,6 +102,14 @@
 	- **SPAGNN**: Sergio Casas, Cole Gulino, Renjie Liao, Raquel Urtasun. SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. ICRA'20
 		- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.\
 			<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
+	- **STINet**: Zhishuai Zhang, Jiyang Gao, Junhua Mao, Yukai Liu, Dragomir Anguelov, Congcong Li. STINet: Spatio-Temporal-Interactive Network for Pedestrian Detection and Trajectory Prediction. CVPR'20
+		- Problem: preception + tracking (previous frames) + prediction from BEV for pedestrian;
+		- Model: T-RPN\
+			<img src="/Autonomous-Driving/images/detection/stinet-1.png" alt="drawing" width="500"/>
+		- Backbone: ResUNet\
+			<img src="/Autonomous-Driving/images/detection/stinet-2.png" alt="drawing" width="400"/>
+		- Past + trajejory as feature, GNN for interaction:\
+			<img src="/Autonomous-Driving/images/detection/stinet-3.png" alt="drawing" width="400"/>
 - Frontal view:
 	- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
 		- Input: H x D x W pc;

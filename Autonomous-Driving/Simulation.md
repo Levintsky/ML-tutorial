@@ -19,9 +19,9 @@
 			- Background: Median filter; guided filter; Poisson editting for completion;
 			- Moving objects: randomly initialize object in lanes with direction consistent;
 		- **AADS-PC**: simulate the Velodyne outputs with ApolloScape-PC;
-		- **Trajectories Synthesis**:
-			<img src="/Autonomous-Driving/images/simulator/aads1.png" alt="drawing" width="600"/>
-			<img src="/Autonomous-Driving/images/simulator/aads2.png" alt="drawing" width="600"/>
+		- **Trajectories Synthesis**:\
+			<img src="/Autonomous-Driving/images/simulation/aads1.png" alt="drawing" width="600"/>
+			<img src="/Autonomous-Driving/images/simulation/aads2.png" alt="drawing" width="600"/>
 - Microsoft
 	- **AirSim**: S. Shah, D. Dey, C. Lovett, A. Kapoor, AirSim: High-fidelity visual and physical simulation for autonomous vehicles. Field and Service Robotics. 5, 621–635 (2018).
 - NVIDIA:
@@ -36,6 +36,13 @@
 		- Unravel into 2D; GAN/VAE/...
 		- https://github.com/pclucas14/lidar_generation
 - Image simulation:
+	- **SurfelGAN**: Zhenpei Yang, Yuning Chai, Dragomir Anguelov, Yin Zhou, Pei Sun, Dumitru Erhan, Sean Rafferty, Henrik Kretzschmar. SurfelGAN: Synthesizing Realistic Sensor Data for Autonomous Driving. CVPR'20
+		- Problem setup: input surfel; output image;
+			<img src="/Autonomous-Driving/images/simulation/surfel-gan-1.png" alt="drawing" width="500"/>
+		- Model: Cycle-GAN with supervised pair and unpaired data;\
+			<img src="/Autonomous-Driving/images/simulation/surfel-gan-2.png" alt="drawing" width="500"/>
+		- Loss: paired supervision + Generative + discriminative:\
+			<img src="/Autonomous-Driving/images/simulation/surfel-gan-3.png" alt="drawing" width="350"/>
 	- Frieda Rong, Shenlong. Image Simulation by Geometry-Aware Composition.
 		- **Adding objects**
 		- Separate static and dynamic modeling;

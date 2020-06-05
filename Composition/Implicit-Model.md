@@ -29,7 +29,7 @@
 	- Algorithm framework:\
 		<img src = '/Composition/images/3d/dsif.png' width = '500'>
 - Boyang Deng, Kyle Genova, Soroosh Yazdani, Sofien Bouaziz, Geoffrey Hinton, Andrea Tagliasacchi. CvxNet: Learnable Convex Decomposition. 2020
-	- Problem setup: a set of convex implicit functions by NN;
+	- Problem setup: a set of convex implicit functions by NN;\
 		<img src = '/Composition/images/3d/cvx-net-1.png' width = '400'>
 	- Formulation: a set of classifier:\
 		<img src = '/Composition/images/3d/cvx-net-2.png' width = '400'>\

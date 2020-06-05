@@ -104,7 +104,10 @@
 			- Kinetics: 71.8% (ip-CSN, res-101), 71.3% (ir-CSN, res-101), 70.6% (ResNet3D); 78.5% top1, 93.4% top5 with Sports1M pretrain
 			- Sports1M: 75.5%, 92.7% (ir-CSN res-152)
 		<img src="/CV-2D/images/video/csn1.png" alt="drawing" width="450"/>
-		<img src="/CV-2D/images/video/csn2.png" alt="drawing" width="450"/>	
+		<img src="/CV-2D/images/video/csn2.png" alt="drawing" width="450"/>
+	- Chao-Yuan Wu, Ross Girshick, Kaiming He, Christoph Feichtenhofer, Philipp Krähenbühl. A Multigrid Method for Efficiently Training Video Models. CVPR'20
+	- Fanyi Xiao, Yong Jae Lee, Kristen Grauman, Jitendra Malik, Christoph Feichtenhofer. Audiovisual SlowFast Networks for Video Recognition. arxiv'20
+	- **X3D**: Christoph Feichtenhofer. X3D: Expanding Architectures for Efficient Video Recognition. CVPR'20
 - RNN, LSTM:
 	- Jeffrey Donahue, Lisa Anne Hendricks, Sergio Guadarrama, Marcus Rohrbach, Subhashini Venugopalan, Kate Saenko, and Trevor Darrell. Long-term recurrent convolutional networks for visual recognition and description. CVPR'15
 	- Joe Yue-Hei Ng, Matthew Hausknecht, Sudheendra Vijayanarasimhan, Oriol Vinyals, Rajat Monga, and George Toderici. Beyond short snippets: Deep networks for video classification. CVPR'15
@@ -112,9 +115,6 @@
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
 	- Z Zhang, Dazhi Cheng, X Zhu, S Lin, and J Dai. Integrated Object Detection and Tracking with Tracklet-Conditioned Detection. 2018
-- Instructional:
-	- J. Malmaud, J. Huang, V. Rathod, N. Johnston, A. Rabinovich, and K. Murphy. What’s cooking? interpreting cooking videos using text, speech and vision. NAACL 2015
-	- J.-B. Alayrac, P. Bojanowski, N. Agrawal, J. Sivic, I. Laptev, and S. Lacoste-Julien. Unsupervised learning from narrated instruction videos. CVPR'16
 - **P3D**: Z. Qiu, T. Yao, , and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
 - **ARTNet**: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
 - K. Hara, H. Kataoka, and Y. Satoh. Can spatiotemporal 3d cnns retrace the history of 2d cnns and imagenet? CVPR 2018
@@ -125,6 +125,9 @@
 - Y. Aytar, C. Vondrick, and A. Torralba. Soundnet: Learning sound representations from unlabeled video. NIPS 2016.
 - A. Owens, P. Isola, J. McDermott, A. Torralba, E. H. Adelson, and W. T. Freeman. Visually indicated sounds. CVPR 2016
 - A. Owens, J. Wu, J. H. McDermott, W. T. Freeman, and A. Torralba. Ambient sound provides supervision for visual learning. ECCV 2016
+- Instructional:
+	- J. Malmaud, J. Huang, V. Rathod, N. Johnston, A. Rabinovich, and K. Murphy. What's cooking? interpreting cooking videos using text, speech and vision. NAACL 2015
+	- J.-B. Alayrac, P. Bojanowski, N. Agrawal, J. Sivic, I. Laptev, and S. Lacoste-Julien. Unsupervised learning from narrated instruction videos. CVPR'16
 
 ## Video Caption
 - Video caption: https://github.com/xiadingZ/video-caption.pytorch
