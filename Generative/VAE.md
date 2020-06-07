@@ -54,7 +54,7 @@
 	<img src="/Generative/images/vae/beta-vae.png" alt="drawing" width="450"/>
 - DIP-VAE: Kumar, A., Sattigeri, P., and Balakrishnan, A. Variational inference of disentangled latent concepts from unlabeled observations. ICLR'17
 	- Extent beta-VAE by decomposing the KL-divergences into multiple terms, and only increase the weight on terms that analytically disentangles the models;
-- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18
+- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18\
 	<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
 - **β-TCVAE**: Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
 	- https://github.com/rtqichen/beta-tcvae
@@ -129,8 +129,8 @@
 
 ## Autoregressive
 - **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR, 2017.
-<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="500"/>
-<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="300"/>
+<img src="/Generative/images/autor/pixel-vae1.png" alt="drawing" width="450"/>
+<img src="/Generative/images/autor/pixel-vae2.png" alt="drawing" width="250"/>
 
 ## Recurrent
 - Good summaries:
@@ -141,7 +141,7 @@
 - Neural Variational Inference for Text Processing, ICML'16
 - Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16
 - A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues, AAAI'17
-- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019
+- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019\
 	<img src="/Generative/images/vae/td-vae.png" alt="drawing" width="500"/>
 
 ## Analysis of VAE

@@ -7,22 +7,22 @@
 - Markov Chain
 - Kullback–Leibler (KL) Divergence;
 - F-divergence: more general:\
-	<img src="/DL/images/info-theory/f-div1.png" alt="drawing" width="400"/>\
-	<img src="/DL/images/info-theory/f-div2.png" alt="drawing" width="350"/>
+	<img src="/Basic-ML/images/info-theory/f-div1.png" alt="drawing" width="400"/>\
+	<img src="/Basic-ML/images/info-theory/f-div2.png" alt="drawing" width="350"/>
 - Mutual Information: I(X; Y)
 	- I(X;Z) = H(X) - H(X|Z);
 	- Connection with KL:\
-		<img src="/DL/images/info-theory/mi.png" alt="drawing" width="350"/>
+		<img src="/Basic-ML/images/info-theory/mi.png" alt="drawing" width="350"/>
 	- DV or Donsker-Varadhan representation: dual form;\
-		<img src="/DL/images/info-theory/dv.png" alt="drawing" width="350"/>
+		<img src="/Basic-ML/images/info-theory/dv.png" alt="drawing" width="350"/>
 	- Proof by construction: when G=P, gap is zero;\
-		<img src="/DL/images/info-theory/dv-dual.png" alt="drawing" width="450"/>
+		<img src="/Basic-ML/images/info-theory/dv-dual.png" alt="drawing" width="450"/>
 	- Data Processing Inequality (DPI): X->Y->Z, then I(X;Y)>=I(X;Z)
 	- Reparametrization invariance: Two invertible functions f1, f2, then I(X;Y)=I(f1(X);f2(Y))
 - Information Plane Theorem:
 	- X-axis: The sample complexity of Ti is determined by the encoder mutual information I(X;Ti). Sample complexity refers to how many samples you need to achieve certain accuracy and generalization.
 	- Y-axis: The accuracy (generalization error) is determined by the decoder mutual information I(Ti;Y).\
-		<img src="/DL/images/info-theory/info-plane.png" alt="drawing" width="450"/>
+		<img src="/Basic-ML/images/info-theory/info-plane.png" alt="drawing" width="450"/>
 
 ## Classical
 - **IB**: N. Tishby, F.C. Pereira, and W. Biale. The information bottleneck method. Allerton'99
@@ -110,12 +110,12 @@
 	- Information Theory in Deep Learning (Youtube): https://www.youtube.com/watch?v=bLqJHjXihK8&feature=youtu.be
 - Two Optimization Phases:
 	- Among early epochs, the mean values are three magnitudes larger than the standard deviations. After a sufficient number of epochs, the error saturates and the standard deviations become much noisier afterward. The further a layer is away from the output, the noisier it gets, because the noises can get amplified and accumulated through the back-prop process (not due to the width of the layer).
-		<img src="/DL/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
+		<img src="/Basic-ML/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
 - Learning Theory:
 	- Old Generalization Bounds:
 		- Read https://mostafa-samir.github.io/ml-theory-pt1/ and https://mostafa-samir.github.io/ml-theory-pt2/ for ML theory;
-			<img src="/DL/images/info-theory/old-bound.png" alt="drawing" width="450"/>
+			<img src="/Basic-ML/images/info-theory/old-bound.png" alt="drawing" width="450"/>
 	- New Input compression bound:\
-			<img src="/DL/images/info-theory/new-bound.png" alt="drawing" width="450"/>
+			<img src="/Basic-ML/images/info-theory/new-bound.png" alt="drawing" width="450"/>
 - Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
 - Marylou Gabrié, Andre Manoel, Clément Luneau, Jean Barbier, Nicolas Macris, Florent Krzakala, Lenka Zdeborová. Entropy and mutual information in models of deep neural networks. NIPS'18

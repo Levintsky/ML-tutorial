@@ -5,7 +5,7 @@
 	- Multi-marginal Wasserstein GAN. NIPS'19
 - **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
 - Michael Arbel, Dougal J. Sutherland, Mikolaj Binkowski, Arthur Gretton. On gradient regularizers for MMD GANs. NIPS'18
-- Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai1, Jia Zhu, Jian Yin. Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
+- Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai, Jia Zhu, Jian Yin. Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
 - Chenshen Wu, Luis Herranz, Xialei Liu, Yaxing Wang, Joost van de Weijer, Bogdan Raducanu. Memory Replay GANs: Learning to Generate New Categories without Forgetting. NIPS'18
 - Chang Xiao, Peilin Zhong, Changxi Zheng. BourGAN: Generative Networks with Metric Embeddings. NIPS'18
 - Xiaojie Wang, Rui Zhang, Yu Sun, Jianzhong Qi. KDGAN: Knowledge Distillation with Generative Adversarial Networks. NIPS'18
