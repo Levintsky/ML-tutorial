@@ -11,6 +11,9 @@
 - J Lee, S Cho, and S Beack. Context-adaptive entropy model for end-to-end optimized image compression. ICLR'19
 - H Liu, T Chen, P Guo, Q Shen, X Cao, Y Wang, and Z Ma. Non-local Attention Optimized Deep Image Compression. 2019.
 
+## Stereo
+- Jerry Liu, Shenlong Wang, Raquel Urtasun. DSIC: Deep Stereo Image Compression. ICCV'19
+
 ## Video Compression
 - Legacy:
 	- T Wiegand, G Sullivan, G Bjontegaard, and A Luthra. Overview of the h.264/avc video coding standard. TCSVT'03
@@ -27,3 +30,6 @@
 ## Point Cloud Compression
 - L Huang, S Wang, J Liu, R Urtasun. Deep Point Cloud Compression. Mini-6
 	- Octree
+- Temporal:
+	- C Tu, E Takeuchi, A Carballo, K Takeda. Real-Time Streaming Point Cloud Compression for 3D LiDAR Sensor Using U-Net
+	

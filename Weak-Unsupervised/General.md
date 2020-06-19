@@ -16,11 +16,11 @@
 - **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
 	- Insight: an encoder g_enc(x_t)=z_t, as well as c_t (info accumulated until t), given some {z_t+k, z_j1, z_j2, ...}, z_t+k as positive and others uniformly sampled as negative, do classification **InfoNCE**;
 	- Architecture\
-		<img src = '/Weak-Unsupervised/images/cpc.png' width = '400px'>
+		<img src = '/Weak-Unsupervised/images/cpc.png' width = '400'>
 	- Prediction\
-		<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400px'>
+		<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400'>
 	- Loss: InfoNCE\
-		<img src = '/Weak-Unsupervised/images/cpc3.png' width = '500px'>
+		<img src = '/Weak-Unsupervised/images/cpc3.png' width = '400'>
 	- Application in vision:
 		- ResNet-101: g-enc\
 			<img src = '/Weak-Unsupervised/images/cpc4.png' width = '500px'>

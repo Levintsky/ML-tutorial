@@ -44,7 +44,7 @@
 - SVM: for Lagrange Dual, check opt.pdf
 - Large margin classifier:\
 	<img src="/Basic-ML/images/svm/svm-1.png" alt="drawing" width="400"/>
-- Lagrange dual, notice we have negative a since we maximize w.r.t. a:
+- Lagrange dual, notice we have negative a since we maximize w.r.t. a:\
 	<img src="/Basic-ML/images/svm/svm-2.png" alt="drawing" width="400"/>
 - Optimize the dual problem:\
 	<img src="/Basic-ML/images/svm/svm-3.png" alt="drawing" width="400"/>

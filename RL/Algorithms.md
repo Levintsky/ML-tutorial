@@ -1,6 +1,28 @@
 # RL Algorithms
 
-## Summaries
+## Basics
+- PG:
+	- Log-trick, IS
+	- TRPO:
+		- Bound distribution change;
+		- Bound objective value;
+		- Natural gradient to bound pi(a|s) change;
+- AC:
+	- Loss := |Adv(s,a)|^2 - sum Adv(s,a)log pi(a|s)
+	- Adv := r(s,a) + gamma V(s') - V(s)
+	- GAE: 
+- Q-learning
+	- BV: Q(s,a) = r(s,a) + max_a' Q(s',a'), contraction by gamma;
+	- Non-tabular: V = pi B V, with pi(.) as NN fitting;
+	- Exploration: epsilon, greedy, Boltzmann;
+	- Target-network, replay buffer;
+	- Over-estimate: Double-Q, multi-step;
+- Continuous Q-learning:
+	- Sampling: CEM, CMA-ES;
+	- Easily to optimize: NAF (normalized advantage function);
+	- Learn an optimizer: DDPG;
+
+## Resources
 - https://spinningup.openai.com/en/latest/spinningup/keypapers.html
 - https://github.com/navneet-nmk/pytorch-rl
 - https://github.com/sweetice/Deep-reinforcement-learning-with-pytorch
@@ -72,7 +94,7 @@
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
 	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017\
 		<img src="/RL/images/algos/ppo.png" alt="drawing" width="400"/>
-	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
+	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17\
 		<img src="/RL/images/algos/ppo-dist.png" alt="drawing" width="400"/>
 
 ## Value + Policy, Actor-Critic
@@ -82,55 +104,54 @@
 	- Reduce variance of policy gradient
 	<img src="/RL/images/algos/ac1.png" alt="drawing" width="500"/>
 	<img src="/RL/images/algos/ac2.png" alt="drawing" width="500"/>
-- A generatl framework (for Implementation):
+- A general framework (for Implementation):
 	- Phase 1: collect data (act/sample, no gradient!)
-	```python
-	def act(self, inputs, rnn_hxs, masks, deterministic=False):
-		value, actor_features, rnn_hxs = self.base(inputs, rnn_hxs, masks)
-		# Discrete if discrete; Diag-Gaussian if continuous
-		dist = self.dist(actor_features)
-		if deterministic:
-			action = dist.mode()
-		else:
-			action = dist.sample()
-		action_log_probs = dist.log_probs(action)
-		dist_entropy = dist.entropy().mean()
-		return value, action, action_log_probs, rnn_hxs
-	```
+```python
+def act(self, inputs, rnn_hxs, masks, deterministic=False):
+	value, actor_features, rnn_hxs = self.base(inputs, rnn_hxs, masks)
+	# Discrete if discrete; Diag-Gaussian if continuous
+	dist = self.dist(actor_features)
+	if deterministic:
+		action = dist.mode()
+	else:
+		action = dist.sample()
+	action_log_probs = dist.log_probs(action)
+	dist_entropy = dist.entropy().mean()
+	return value, action, action_log_probs, rnn_hxs
+```
 	- 1.1 Environment step forward;
-	```python 
-	obs, reward, done, infos = envs.step(action)
-	# st, at, st+1, vt, rt, mt
-	rollouts.insert(obs, recurrent_hidden_states, action,
-					action_log_prob, value, reward, masks, bad_masks)
-	```
+```python 
+obs, reward, done, infos = envs.step(action)
+# st, at, st+1, vt, rt, mt
+rollouts.insert(obs, recurrent_hidden_states, action,
+				action_log_prob, value, reward, masks, bad_masks)
+```
 	- Phase 2: Learning of both actor and critic (A2C/PPO/...): 
 	- 2.1 Critic target: Estimated with (GAE/n-step)
-	```python
-	next_value = actor_critic.get_value(
-		rollouts.obs[-1], rollouts.recurrent_hidden_states[-1],
-		rollouts.masks[-1]).detach()
-	rollouts.compute_returns(next_value, args.use_gae, args.gamma,
-		args.gae_lambda, args.use_proper_time_limits)
-	```
+```python
+next_value = actor_critic.get_value(
+	rollouts.obs[-1], rollouts.recurrent_hidden_states[-1],
+	rollouts.masks[-1]).detach()
+rollouts.compute_returns(next_value, args.use_gae, args.gamma,
+	args.gae_lambda, args.use_proper_time_limits)
+```
 	- 2.2 Loss function and Update: value loss (adv ^ 2) + action-loss (adv * log pi(a|s))
-	```python
-	def update(self, rollouts):
-		values = values.view(num_steps, num_processes, 1)
-		action_log_probs = action_log_probs.view(num_steps, num_processes, 1)
-		advantages = rollouts.returns[:-1] - values
-		value_loss = advantages.pow(2).mean()
-		action_loss = -(advantages.detach() * action_log_probs).mean()
-	```
+```python
+def update(self, rollouts):
+	values = values.view(num_steps, num_processes, 1)
+	action_log_probs = action_log_probs.view(num_steps, num_processes, 1)
+	advantages = rollouts.returns[:-1] - values
+	value_loss = advantages.pow(2).mean()
+	action_loss = -(advantages.detach() * action_log_probs).mean()
+```
 	- 2.3 After-update:
-	```python
-	def after_update(self):
-		self.obs[0].copy_(self.obs[-1])
-		self.recurrent_hidden_states[0].copy_(self.recurrent_hidden_states[-1])
-		self.masks[0].copy_(self.masks[-1])
-		self.bad_masks[0].copy_(self.bad_masks[-1])
-	```
-
+```python
+def after_update(self):
+	self.obs[0].copy_(self.obs[-1])
+	self.recurrent_hidden_states[0].copy_(self.recurrent_hidden_states[-1])
+	self.masks[0].copy_(self.masks[-1])
+	self.bad_masks[0].copy_(self.bad_masks[-1])
+```
 - Legacy
 	- Sutton, McAllester, Singh, Mansour (1999). Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation
 - Recent:
@@ -138,8 +159,8 @@
 		<img src="/RL/images/algos/dpg.png" alt="drawing" width="450"/>
 	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 		- Hogwild
-	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
-		<img src="/RL/images/gae.png" alt="drawing" width="600"/>
+	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16\
+		<img src="/RL/images/algos/gae.png" alt="drawing" width="400"/>
 	- **ACER**: Ziyu Wang, Victor Bapst, Nicolas Heess, Volodymyr Mnih, Remi Munos, Koray Kavukcuoglu, Nando de Freitas. Sample Efficient Actor-Critic with Experience Replay. ICLR'17
 		- AC with off-policy, IS;
 		- Available in OpenAI baselines;

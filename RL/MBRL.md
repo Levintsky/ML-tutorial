@@ -1,11 +1,40 @@
 # Model-based RL
 
-## From Spinningup
-- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
-- Model given: AlphaGo, Exit;
+## Resources:
+- From Spinningup
+	- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
+	- Model given: AlphaGo, Exit;
+- https://zhuanlan.zhihu.com/p/72642285
 
-## Sergey Levine
-- Known dynamics (lec-11)\
+## Basics
+- Version 0.5: collect random samples, train dynamics, plan
+	- Pro: simple, no iterative procedure
+	- Con: distribution mismatch problem
+- Version 1.0: iteratively collect data, replan, collect data
+	- Pro: simple, solves distribution mismatch
+	- Con: open loop plan might perform poorly, esp. in stochastic domains
+- Version 1.5: iteratively collect data using **MPC** (replan at each step)
+	- Pro: robust to small model errors
+	- Con: computationally expensive, but have a planning algorithm available
+- Version 2.0: backpropagate directly into policy
+	- Pro: computationally cheap at runtime
+	- Con: can be numerically unstable, especially in stochastic domains (more on this later)
+- Learn model and plan (without policy)
+	- Iteratively collect more data to overcome distribution mismatch
+	- Replan every time step (MPC) to mitigate small model errors
+	- Learn policy
+- Backpropagate into policy (e.g., PILCO) – simple but potentially unstable
+	- Imitate optimal control in a constrained optimization framework (e.g., GPS)
+	- Imitate optimal control via DAgger-like process (e.g., PLATO)
+	- Use model-free algorithm with a model (Dyna, etc.)
+- Efficiency:
+	- gradient-free methods (e.g. NES, CMA, etc.)
+	- fully online methods (e.g. A3C)
+	- policy gradient methods (e.g. TRPO)
+	- replay buffer value estimation methods (Q-learning, DDPG, NAF, SAC, etc.)
+	- model-based deep RL (e.g. PETS, guided policy search)
+	- model-based "shallow" RL (e.g. PILCO)
+- Known dynamics (294, lec-11)\
 	<img src="/RL/images/mbrl/mbrl1.png" alt="drawing" width="500"/>
 - Linear case:
 	- LQR: linear transition, quadratic cost\
@@ -15,7 +44,7 @@
 - Nonlinear case: DDP/iterative LQR
 	- iLQR\
 		<img src="/RL/images/mbrl/mbrl4.png" alt="drawing" width="550"/>
-- Learn dynamics (lec-12)
+- Learn dynamics (294, lec-12)
 	- Uncertainty-aware models
 	- Aleatoric or statistical uncertainty
 	- Epistemic or model uncertainty
@@ -23,12 +52,35 @@
 	- Bootstrap ensembles p(theta|D)
 	- Moment matching (project to Gaussian)
 
+## Learn a Model for Data Generation
+- Shixiang Gu, Timothy Lillicrap, Ilya Sutskever, Sergey Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
+- Gabriel Kalweit, Joschka Boedecker. Uncertainty-driven Imagination for Continuous Deep Reinforcement Learning CoRL2017.
+	- Insight: model could be inaccurate!
+	- Experience Replay Buffer divided into 2 categories:
+		- traditional replay buffer
+		- imaginary replay buffer
+- **ME-TRPO**: Kurutach. Model-Ensemble Trust-Region Policy Optimization. ICLR'18
+
+## Learn a Model for Planning
+- Model for Better Value Estimation
+	- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
+		- Insight: approximate, few-step simulation of a reward- dense environment
+		- Problem setup: continuous state and action;
+		- RL: AC, on-policy; (IS not required)\
+			<img src="/RL/images/mbrl/mve.png" alt="drawing" width="550"/>
+	- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
+- Learn a model as context:
+	- **I2A**: T Weber, S Racanière, D Reichert, L Buesing, A Guez, D Rezende, A Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
+		- Framework:\
+			<img src="/RL/images/mbrl/i2a-1.png" alt="drawing" width="550"/>
+			<img src="/RL/images/mbrl/i2a-2.png" alt="drawing" width="550"/>
+		- Game: Sokoban;
+	- **VPN**: Vladimir Feinberg, Alvin Wan, Ion Stoica, Michael I. Jordan, Joseph E. Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
+		- https://github.com/junhyukoh/value-prediction-network
+- **MuZero**: Julian Schrittwieser, Ioannis Antonoglou, Thomas Hubert, Karen Simonyan, Laurent Sifre, Simon Schmitt, Arthur Guez, Edward Lockhart, Demis Hassabis, Thore Graepel, Timothy Lillicrap, David Silver. Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. 2019
+	- MuZero = VPN (learn abstract states + dynamics) + AlphaZero-planning (MCTS)
+
 ## Learn a Model
-- **I2A**: T Weber, S Racanière, D Reichert, L Buesing, A Guez, D Rezende, A Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
-	- Framework:\
-		<img src="/RL/images/mbrl/i2a-1.png" alt="drawing" width="550"/>
-		<img src="/RL/images/mbrl/i2a-2.png" alt="drawing" width="550"/>
-	- Game: Sokoban;
 - World Model
 	- **Navigation**: Z Guo, M G Azar, B Piot, B A. Pires, T Pohlen, R Munos. Neural Predictive Belief Representations, ICLR'19
 		- 1-step frame prediction
@@ -42,7 +94,7 @@
 	- Game: CarRacing, 
 	- https://worldmodels.github.io \
 		<img src="/RL/images/mbrl/r-world.png" alt="drawing" width="550"/>
-- Ł Kaiser, M Babaeizadeh, P Miłos, B Osinski, R H Campbell, K Czechowski, D Erhan, C Finn, P Kozakowski, S Levine, R Sepassi, G Tucker, H Michalewski. Model Based Reinforcement Learning for Atari. 2019
+- Ł Kaiser, M Babaeizadeh, P Miłos, B Osinski, R H Campbell, K Czechowski, D Erhan, C Finn, P Kozakowski, S Levine, R Sepassi, G Tucker, H Michalewski. Model Based Reinforcement Learning for Atari. ICLR'20
 	- SimPLe\
 		<img src="/RL/images/mbrl/mbrl-atari1.png" alt="drawing" width="550"/>
 	- https://ai.googleblog.com/2019/03/simulated-policy-learning-in-video.html
@@ -104,17 +156,10 @@
 - **MBMF**: Somil Bansal Roberto Calandra Kurtland Chua Sergey Levine Claire Tomlin. MBMF: Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
 	- Learn a probabilistic dynamics model and leveraging it as a prior for the intertwined model-free optimization;\
 		<img src="/RL/images/mbrl/mbmf.png" alt="drawing" width="550"/>
-- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
-	- Insight: approximate, few-step simulation of a reward- dense environment
-	- Problem setup: continuous state and action;
-	- RL: AC, on-policy; (IS not required)\
-		<img src="/RL/images/mbrl/mve.png" alt="drawing" width="550"/>
-- **ME-TRPO**: Kurutach. Model-Ensemble Trust-Region Policy Optimization. 2018
 - **PETS**: K Chua, R Calandra, R McAllister, S Levine. Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models. NIPS'18
 	- **SOA**!
 	- https://github.com/kchua/handful-of-trials \
 		<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
-- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
 - **MB-MPO**: Clavera. Model-Based Reinforcement Learning via Meta-Policy Optimization. 2018
 - **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M J. Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
 
@@ -131,5 +176,6 @@
 - Zhiao Huang, Fangchen Liu, Hao Su. Mapping State Space using Landmarks for Universal Goal Reaching
 - Rinu Boney, Norman Di Palo, Mathias Berglund, Alexander Ilin, Juho Kannala, Antti Rasmus, Harri Valpola. Regularizing Trajectory Optimization with Denoising Autoencoders
 - Yonathan Efroni, Nadav Merlis, Mohammad Ghavamzadeh, Shie Mannor. Tight Regret Bounds for Model-Based Reinforcement Learning with Greedy Policies
-- Michael Janner, Justin Fu, Marvin Zhang, Sergey Levine. When to Trust Your Model: Model-Based Policy Optimization
+- **MBPO**: Michael Janner, Justin Fu, Marvin Zhang, Sergey Levine. When to Trust Your Model: Model-Based Policy Optimization
+	- https://zhuanlan.zhihu.com/p/105645139
 - Hado van Hasselt, Matteo Hessel, John Aslanides. When to use parametric models in reinforcement learning?

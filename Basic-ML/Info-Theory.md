@@ -69,7 +69,7 @@
 			<img src="/Basic-ML/images/info-theory/mine-1.png" alt="drawing" width="450"/>
 		- Algorithm:\
 			<img src="/Basic-ML/images/info-theory/mine-2.png" alt="drawing" width="350"/>
-		- Application: maximize MI to improve GAN on mode-collapse;
+		- Application: maximize MI to improve GAN on mode-collapse;\
 			<img src="/Basic-ML/images/info-theory/mine-3.png" alt="drawing" width="350"/>
 - SSL:
 	- **DIM**: R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Phil Bachman, Adam Trischler, Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19

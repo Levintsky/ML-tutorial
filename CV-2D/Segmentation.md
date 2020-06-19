@@ -73,6 +73,9 @@
 	- Model:\
 		<img src="/CV-2D/images/segmentation/solo.png" alt="drawing" width="500"/>
 	- Supervision: category (focal loss) + mask (Dice Loss)
+- PointRend: Alexander Kirillov, Yuxin Wu, Kaiming He, Ross Girshick. PointRend: Image Segmentation as Rendering. CVPR'20
+	- Insight: coarse-to-fine and focus on undecided points (with MLP);
+		<img src="/CV-2D/images/segmentation/pointrend.png" alt="drawing" width="500"/>
 
 ## Panoptic
 - Problem definition:

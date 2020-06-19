@@ -1,7 +1,12 @@
-# Control and Planning
+# Optimal Control and Planning
 
-## Sergey Levine
-- MCTS (lec-10)
+## Basics
+- Discrete MCTS (EECS-294, lec-10)
+	- UCT
+- Linear case: LQR
+	- Linear known dynamics, quadratic cost function;
+	- DDP backward;
+	- iLQR: locally approximate via Taylor expansion;
 - Control as an Inference (lec-15)
 
 ## Monte-Carlo Tree Search
@@ -21,7 +26,11 @@
 ## Control as Inference
 - A graphical model\
 	<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
-- Backward message: beta(st, at) = p(Ot:T) given (st, at). i.e., given what will happen after t, what is the optimality if we should take (st at).\
+- Forward message: p(st\|O 1:t-1)
+	- Given optimality before, where I am in state space;
+- Backward message: beta(st, at) = p(Ot:T\|st, at).
+	- beta(st): marginalize at with some p(at\|st) action prior;
+	- Given what will happen after t, what is the optimality if we should take (st at).\
 	<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
 	<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>
 	<img src="/RL/images/control/control-infer4.png" alt="drawing" width="600"/>
@@ -61,9 +70,6 @@
 
 ## Theory
 - On the Sample Complexity of the Linear Quadratic Regulator
-
-## Applications
-- Data center cooling using model-predictive control. NIPS'18 Tutorial
 
 ## NIPS'19
 - Shangtong Zhang, Wendelin Boehmer, Shimon Whiteson. Generalized Off-Policy Actor-Critic

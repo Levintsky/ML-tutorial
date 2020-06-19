@@ -7,6 +7,7 @@
 	- VeloFCN [Tian Xia]	
 	- MV3D: BEV detection;
 - Uber:
+	- https://zhuanlan.zhihu.com/p/78247999
 	- Pixor [Bin, CVPR'18]: 1-stage detection;
 	- FaF [Wenjie, CVPR'18]: detection + tracking + prediction;
 	- IntentNet [S Casas, ICRA'18]:

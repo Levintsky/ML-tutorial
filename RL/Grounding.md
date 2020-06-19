@@ -18,4 +18,3 @@
 
 ## Language Grounding
 - https://github.com/devendrachaplot/DeepRL-Grounding
-- Value Prediction Network, NIPS 2017, https://github.com/junhyukoh/value-prediction-network

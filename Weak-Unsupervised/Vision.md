@@ -14,13 +14,6 @@
 
 ## Unclassified
 - Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
-- **ReMixMatch**: David Berthelot, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel, Kihyuk Sohn. ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring. 2019
-	- CTAugment
-	- https://github.com/google-research/remixmatch
-	- CIFAR: 93.73% with 4,000 labels; 84.9% with 40;
-- **FixMatch**: Kihyuk Sohn, David Berthelot, Chun-Liang Li, Zizhao Zhang, Nicholas Carlini, Ekin D. Cubuk, Alex Kurakin, Han Zhang, Colin Raffel. FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence. 2020
-	- https://github.com/google-research/fixmatch
-	- CIFAR: 94.9% with 250 labels, 88.6% with 40 (4 per class);
 
 ## Images
 - Summaries:

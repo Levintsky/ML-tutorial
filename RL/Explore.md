@@ -114,7 +114,7 @@ def bonus(self, observation):
 		<img src="/RL/images/hrl/vic2.png" alt="drawing" width="500"/>
 	- Put together to learn options Omega:\
 		<img src="/RL/images/hrl/vic3.png" alt="drawing" width="400"/>
-	- Instrinsic control with implicit options (action as options):
+	- Intrinsic control with implicit options (action as options):\
 		<img src="/RL/images/hrl/vic4.png" alt="drawing" width="400"/>
 	- Experiments: grid world;
 - Carlos Florensa, Yan Duan, and Pieter Abbeel. Stochastic neural networks for hierarchical reinforcement learning. 2017

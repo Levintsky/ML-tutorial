@@ -12,7 +12,7 @@
 - Sampling-importance-resampling (SIR):
 	- Hard to determine k in rejection sampling;
 	- Stage 1: sample z1, z2, ..., zL from q(z);
-	- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...);
+	- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...);\
 		<img src="/Basic-ML/images/sample/is-2.png" alt="drawing" width="400"/>
 - Monte Carlo EM: sample Z to estimate Q(theta, theta-old)\
 	<img src="/Basic-ML/images/sample/mc-em.png" alt="drawing" width="400"/>
