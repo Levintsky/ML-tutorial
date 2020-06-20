@@ -71,7 +71,7 @@
 - Determinant:
 	- Linear dependent: det == 0;
 	- Vandermonde
-	- Cramer's rule;
+	- Cramer's rule;\
 		<img src="/Math/images/algebra/cramer.png" alt="drawing" width="400"/>
 	- Binet-Cauchy formula;\
 		<img src="/Math/images/algebra/binet-cauchy.png" alt="drawing" width="400"/>
@@ -90,7 +90,7 @@
 		- Cyclic subspace; I, f, ff, ...
 		- If A's minimum polynomial can be factorized to 1st order products, then it has Jordan norm form; (not working for complex eigen cases)
 		- If both matrices have the same Jordan form, then they are similar;
-	- **Hamilton-Cayley**:
+	- **Hamilton-Cayley**:\
 		<img src="/Math/images/algebra/hamilton-cayley.png" alt="drawing" width="400"/>
 	- Real symmetric matrix:
 		- All eigenvalues are real;
@@ -218,5 +218,5 @@
 	- Bijective? No, q and -q is the same rotation; 2-1 Surjective Homomorphism;
 		<img src="/Math/images/algebra/qua-exp-1.png" alt="drawing" width="400"/>\
 		<img src="/Math/images/algebra/qua-exp-2.png" alt="drawing" width="400"/>
-	- Interpolation: t=0, q0; t=1, q1. derive a smooth transition?
-		<img src="/Math/images/algebra/slerp.png" alt="drawing" width="400"/>\
+	- Interpolation: t=0, q0; t=1, q1. derive a smooth transition?\
+		<img src="/Math/images/algebra/slerp.png" alt="drawing" width="400"/>

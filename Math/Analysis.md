@@ -23,7 +23,7 @@
 		- Osculating plane: plane extended by T and N
 		- B is the **binormal** unit vector, the cross product of T and N. B=TxN
 		- Then we have **Frenet-Serret Equation**:\
-			<img src="/Math/images/analysis/frenet-serret.png" alt="drawing" width="350"/>
+			<img src="/Math/images/analysis/frenet–serret.png" alt="drawing" width="350"/>
 	- Arc length; s=int(a_b) sqrt(1+(dy/dx)^2)dx
 	- Curvature: (1) The change of angle (deviation from a straight line) w.r.t. arc-length; (2) The curvature is the reciprocal of radius of curvature: k=1/R. k=|r'xr''| / |r'|^3;
 	- Torsion of a curve: deviation from osculating plane; change of B (angle) w.r.t. arc-length;

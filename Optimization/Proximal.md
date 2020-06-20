@@ -41,7 +41,7 @@
 		- d(x, y) >= 0 implies f(x) convex;
 		- **Assymetry**: in general D(x,y) != D(y,x);
 	- Common Bregman divergence:\
-		<img src="/Optimization/images/distance/bregman.png" alt="drawing" width="400"/>
+		<img src="/Optimization/images/distance/bregman.jpg" alt="drawing" width="400"/>
 	- Legacy:
 		- Banerjee, Arindam, Xin Guo, and Hui Wang. On the optimality of conditional expectation as a Bregman predictor. IEEE Transactions on Information Theory'05
 		- Banerjee, Arindam, et al. Clustering with Bregman divergences. JMLR'05

@@ -26,13 +26,13 @@
 		<img src="/Optimization/images/submodular/submodbox-1.png" alt="drawing" width="400"/>
 	- Relevance by EdgeBox score;
 	- Diversity:
-		- Sliding window + NMS heuristics: infinite penalty for overlapping, no reward for diversity (submodular but not monotone, gain can be negative);
+		- Sliding window + NMS heuristics: infinite penalty for overlapping, no reward for diversity (submodular but not monotone, gain can be negative);\
 			<img src="/Optimization/images/submodular/nms.png" alt="drawing" width="400"/>
 		- ESS: one object at a time, then suppress it and redo; monotone and submodular if r(.) is positive; Equivalent to subtracts the score contribution coming from the intersection region;
 			<img src="/Optimization/images/submodular/nms.png" alt="drawing" width="400"/>
 		- Proposed:\
 			<img src="/Optimization/images/submodular/submodbox-2.png" alt="drawing" width="400"/>
-	- Solution: lazy-greedy with branch-and-bound tree;
+	- Solution: lazy-greedy with branch-and-bound tree;\
 		<img src="/Optimization/images/submodular/submodbox-3.png" alt="drawing" width="400"/>
 
 ## Unclassified

@@ -28,8 +28,10 @@
 	<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
 - Forward message: p(st\|O 1:t-1)
 	- Given optimality before, where I am in state space;
-- Backward message: beta(st, at) = p(Ot:T\|st, at).
-	- beta(st): marginalize at with some p(at\|st) action prior;
+- Backward message:
+	- soft Q(s, a) or beta(st, at) = p(Ot:T\|st, at).
+	- soft V(s) or beta(st): marginalize at with some p(at\|st) action prior;
+	- Then Q(st, at) = r(st, at) + log E_st+1(exp(V(st+1)))
 	- Given what will happen after t, what is the optimality if we should take (st at).\
 	<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
 	<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>

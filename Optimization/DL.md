@@ -1,18 +1,5 @@
 # Optimization for Deep Learning
 
-## Deep-Learning optimizers
-- Summaries:
-	- http://ruder.io/optimizing-gradient-descent/
-
-## Variance Reduction:
-- UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
-- SEGA: Variance Reduction via Gradient Sketching. NIPS'18
-- Stochastic Expectation Maximization with Variance Reduction. NIPS'18
-
-## Large-Scale
-- R Anil, V Gupta, T Koren, and Y Singer. Memory-efficient adaptive optimization for large-scale learning. 2019
-- Frank Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
-
 ## Unclassified
 - Noam Shazeer and Mitchell Stern. Adafactor: Adaptive learning rates with sublinear memory cost. 2018
 - Provably Correct Automatic Sub-Differentiation for Qualified Programs. NIPS'18

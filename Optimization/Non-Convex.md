@@ -4,6 +4,11 @@
 - Lipchitz condition:
 	- https://zhuanlan.zhihu.com/p/27554191
 
+## Variance Reduction
+- UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
+- SEGA: Variance Reduction via Gradient Sketching. NIPS'18
+- Stochastic Expectation Maximization with Variance Reduction. NIPS'18
+
 ## Unclassified
 - Haowei He, Gao Huang, Yang Yuan. Asymmetric Valleys: Beyond Sharp and Flat Local Minima
 - Mahesh Chandra Mukkamala, Peter Ochs. Beyond Alternating Updates for Matrix Factorization with Inertial Bregman Proximal Gradient Algorithms
