@@ -19,7 +19,6 @@
 
 ## MRF/CRF Style
 - S. Wang, A. Schwing, and R. Urtasun. Efficient inference of continuous markov random fields with polynomial potentials. NIPS'14
-- Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille . Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs. ICLR'15
 - L. Chen, A. Schwing, A. Yuille, and R. Urtasun. Learning deep structured models. ICML'15
 	- Problem formulation:\
 		<img src="/Composition/images/structure/deep-struct.png" alt="drawing" width="450"/>

@@ -1,13 +1,17 @@
 # CNN (with focus on Classification)
 
 ## Layer Design
-- Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
+- **CoordConv**: Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
+- Pooling, Aggregation
+	- R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016
+- Conv:
+	- Dilated: increase receptive field;
 
 ## Network Design
 - **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
 - **NIN**: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
-- **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. 2014
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
+- **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. ICLR'15
 - **GoogleNet**: C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich (GoogleNet): Going deeper with convolutions. CVPR'15
 	- Inception-V1
 	- Winner-of-ILSVRC-2014;
@@ -35,16 +39,17 @@
 		- Res1 (64) - Res2 (down 112 x 28 x 28) - Res3 (down 256 x 14 x 14, down) - Res4 (down 512 x 7 x 7)
 		- Average-pool (7x7) - fc1000
 - **Inception-V4**: Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, Alex Alemi. Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning; 2016
-- **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR 2017
-	- ImageNet 2nd 2016
-	- **Grouped-Convolution**
+- **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR'17
+	- Insight: **Grouped-Convolution**
+	- 2nd of ILSVR'16
 	- i. same spatial size: same hyper-parameter;
 	- ii. down-sample by 2, width increase by 2; (each layer similar computation)
 	- Conv - Batch-Norm - ReLU;
 	- Short-cut: ReLU after adding shortcut;
-- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR 2018
+- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR'18
 	- https://github.com/bamos/densenet.pytorch
 - **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
+	- Insight: channel-wise scaling (learn by MLP);
 	- https://github.com/hujie-frank/SENet
 	- Winner of ILSVR'17
 	- Model:\
@@ -59,6 +64,3 @@
 	- https://github.com/HaoMood/bilinear-cnn
 - Kaiyu Yue, Ming Sun, Yuchen Yuan, Feng Zhou, Errui Ding, Fuxin Xu. Compact Generalized Non-local Network. NIPS'18
 	- https://github.com/KaiyuYue/cgnl-network.pytorch
-
-## Pooling, Aggregation
-- R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016

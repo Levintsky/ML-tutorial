@@ -13,11 +13,11 @@
 ## Image Formation
 - Rick Szeliski, Chap 2.2;
 - BRDF (Bidirectional Reflectance Distribution Function)
-	- Incident: vi; reflected: vr; most surfaces: isotropic;
+	- Incident: vi; reflected: vr; most surfaces: isotropic;\
 		<img src="/CV-2D/images/basics/brdf-1.png" alt="drawing" width="400"/>
 	- http://www1.cs.columbia.edu/CAVE/software/curet/
 - Diffuse (Lambertian or matte reflection):
-	- scatters light uniformly in all directions; most normally associate with shading;
+	- scatters light uniformly in all directions; most normally associate with shading;\
 		<img src="/CV-2D/images/basics/diffuse-1.png" alt="drawing" width="350"/>\
 		<img src="/CV-2D/images/basics/diffuse-2.png" alt="drawing" width="400"/>
 - Specular reflection: specular (gloss or highlight) reflection;
@@ -25,7 +25,7 @@
 	<img src="/CV-2D/images/basics/reflect-2.png" alt="drawing" width="400"/>\
 	<img src="/CV-2D/images/basics/reflect-3.png" alt="drawing" width="400"/>
 - Phong shading: ambient + diffuse + reflect;\
-	<img src="/CV-2D/images/basics/phong.jpg" alt="drawing" width="400"/>
+	<img src="/CV-2D/images/basics/phong.png" alt="drawing" width="400"/>
 - Optics:
 	- Chromatic aberration;
 	- Vignetting;
@@ -34,7 +34,7 @@
 	- Fill factor;
 	- Chip size;
 	- Analog gain;
-	<img src="/CV/images/basics/optics.png" alt="drawing" width="400"/>
+	<img src="/CV-2D/images/basics/optics.png" alt="drawing" width="400"/>
 
 ## Image Processing
 - Rick Szeliski, Chap 3;

@@ -2,23 +2,15 @@
 
 ## Unclassified
 - Dahua Lin. Trajectory Convolution for Action Recognition. NIPS'18
+- A summary: https://zhuanlan.zhihu.com/p/149340496
 
 ## Benchmarks
 - Google:
-	- **Sports-1M**: Andrej Karpathy; George Toderici; Sanketh Shetty; Thomas Leung; Rahul Sukthankar; Li Fei-Fei. Large-scale Video Classification with Convolutional Neural Networks. CVPR 2014;
-		- 1 Million videos, 487 classes x (1k-3k) videos per class; test: 70% training, 10% val, 20% testing;
-		- 360 x 640 resolution
 	- **YouTube-8M**: Sami Abu-El-Haija, Nisarg Kothari, Joonseok Lee, Paul Natsev, George Toderici, Balakrishnan Varadarajan, Sudheendra Vijayanarasimhan. YouTube-8M: A Large-Scale Video Classification Benchmark
 		- https://research.google.com/youtube8m/
 		- 6.1 Million, 350,000 hours
 		- 2.6 billion audio/visual features
 		- 3,862 classes (from knowledge graph: https://developers.google.com/knowledge-graph/)
-	- **Kinetics**: Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset, CVPR 2017
-		- 240k train, 20k val, 400 action classes, 10s each clip;
-		- Classification;
-		- De-duplicate: word synonymy; class by class, a clip per video + inception-V1 feature after average pooling, 25 sampled frames, cosine similarity matrix;
-		- Dataset bias: gender
-		- Baseline: ConvNet + LSTM, Two-Stream, 3D ConvNets
 	- W. Kay, J. Carreira, K. Simonyan, B. Zhang, C. Hillier, S. Vijayanarasimhan, F. Viola, T. Green, T. Back, P. Natsev, et al. The kinetics human action video dataset. 2017
 	- **AVA**: C. Gu, C. Sun, D. A. Ross, C. Vondrick, C. Pantofaru, Y. Li, S. Vijayanarasimhan, G. Toderici, S. Ricco, R. Sukthankar, et al. AVA: A video dataset of spatio-temporally localized atomic visual actions. CVPR 2018
 		- https://research.google.com/ava/index.html
@@ -29,20 +21,29 @@
 	- **Something something**: Goyal, R., Kahou, S.E., Michalski, V., Materzynska, J., Westphal, S., Kim, H., Haenel, V., Fruend, I., Yianilos, P., Mueller-Freitag, M., et al.: The something something video database for learning and evaluating visual common sense. ICCV 2017
 		- Need to understand physical interactions
 	- **Activitynet**: F. Caba Heilbron, V. Escorcia, B. Ghanem, and J. C. Niebles. Activitynet: A large-scale video benchmark for human activity understanding. CVPR 2015
-	- **Charades**: Sigurdsson, G.A., Varol, G., Wang, X., Farhadi, A., Laptev, I., Gupta, A.: Hollywood in homes: Crowdsourcing data collection for activity understanding. ECCV 2016
-- **HMDB-51**: H. Kuehne, H. Jhuang, E. Garrote, T. Poggio, and T. Serre. HMDB: a large video database for human motion recognition. ICCV 2011
+	- **Charades**: Sigurdsson, G.A., Varol, G., Wang, X., Farhadi, A., Laptev, I., Gupta, A.: Hollywood in homes: Crowdsourcing data collection for activity understanding. ECCV'16
+- **Cooking**: David Chen, William Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL'11
+	- 2,089 videos; 85,550 English descriptions
+- **HMDB-51**: H. Kuehne, H. Jhuang, E. Garrote, T. Poggio, and T. Serre. HMDB: a large video database for human motion recognition. ICCV'11
 	- 51 categories, 7,000 annotated
 - **UCF-101**: K. Soomro, A. R. Zamir, and M. Shah. Ucf101: A dataset of 101 human actions classes from videos in the wild. 2012
 	- 101 categories, 13k clips, 27 hours
-- **MPII-Pose**: M. Andriluka, L. Pishchulin, P. Gehler, and B. Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR 2014
+- **MPII-Pose**: M. Andriluka, L. Pishchulin, P. Gehler, and B. Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
 	- 25k images, 40k people
 	- 410 human activities
-- **ACT**: X. Wang, A. Farhadi, and A. Gupta. Actions transformations. CVPR 2016
-- M. Monfort, A. Andonian, B. Zhou, K. Ramakrishnan, S.A. Bargal, Y. Yan, L. Brown, Q. Fan, D. Gutfreund, C. Vondrick, et al. Moments in time dataset: one million videos for event understanding. TPAMI, 2019.
+- **Sports-1M**: Andrej Karpathy; George Toderici; Sanketh Shetty; Thomas Leung; Rahul Sukthankar; Li Fei-Fei. Large-scale Video Classification with Convolutional Neural Networks. CVPR 2014;
+	- 1 Million videos, 487 classes x (1k-3k) videos per class; test: 70% training, 10% val, 20% testing;
+	- 360 x 640 resolution
+- **ACT**: X. Wang, A. Farhadi, and A. Gupta. Actions transformations. CVPR'16
+- **Kinetics**: Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset, CVPR 2017
+	- 240k train, 20k val, 400 action classes, 10s each clip;
+	- Classification;
+	- De-duplicate: word synonymy; class by class, a clip per video + inception-V1 feature after average pooling, 25 sampled frames, cosine similarity matrix;
+	- Dataset bias: gender
+	- Baseline: ConvNet + LSTM, Two-Stream, 3D ConvNets
 - **Slac**: H. Zhao, Z. Yan, H. Wang, L. Torresani, and A. Torralba. Slac: A sparsely labeled dataset for action classification and localization. 
-- **YouCook II**: L. Zhou, C. Xu, and J. J. Corso. Towards automatic learning of procedures from web instructional videos. AAAI 2018
-- **Cooking**: David Chen, William Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL 2011
-	- 2,089 videos; 85,550 English descriptions
+- **YouCook II**: L. Zhou, C. Xu, and J. J. Corso. Towards automatic learning of procedures from web instructional videos. AAAI'18
+- M. Monfort, A. Andonian, B. Zhou, K. Ramakrishnan, S.A. Bargal, Y. Yan, L. Brown, Q. Fan, D. Gutfreund, C. Vondrick, et al. Moments in time dataset: one million videos for event understanding. PAMI'19
 
 ## Legacy, Hand-Designed
 - P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV'05
@@ -58,8 +59,8 @@
 	- X Wang, R Girshick, A Gupta, K He. Non-local Neural Networks, CVPR'18
 		- Video classification
 		- THW 512 dimension, attention with every other location
-		- Softmax sum;
-		<img src="/CV-2D/images/video/non-local.png" alt="drawing" width="500"/>
+		- Softmax sum;\
+		<img src="/CV-2D/images/video/non-local.png" alt="drawing" width="400"/>
 	- **CPNet**: Xingyu Liu, Joon-Young Lee, Hailin Jin. Learning Video Representations from Correspondence Proposals. CVPR'19 oral
 		- Insight: hard attention by kNN;
 		- https://github.com/xingyul/cpnet
@@ -67,13 +68,11 @@
 			<img src="/CV-2D/images/video/cpnet-1.png" alt="drawing" width="400"/>
 		- Correspondence Embedding layer:\
 			<img src="/CV-2D/images/video/cpnet-2.png" alt="drawing" width="400"/>
-	- C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV'19
+	- **SlowFast**: C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV'19
 		- Slow pathway: 2 fps;
 		- Fast pathway: 16 fps; lightweight computation; (same net, small hyper)
 		<img src="/CV-2D/images/video/slowfast.png" alt="drawing" width="500"/>
-	- New attention:
-		- https://github.com/takatosp1/pytorch-CycleGAN-and-pix2pix/commit/d10e1f6b090ee5efb1fa5418c47ba16389f4d4b4#diff-ac5552fd6a3c08ad22387efbe42d137d
-	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
+	- **VideoBERT**: C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
 		- Vector-quantization: S3D for feature extraction;
 		- WordPiece for text (ASR API);
 		- BLEU-4 1.42 to 5.42 on YouCook II;

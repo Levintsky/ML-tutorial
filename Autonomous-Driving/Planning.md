@@ -5,11 +5,85 @@
 	- Input: current status and context (self, every actor else, traffic light, ...)
 	- Output: a feasible trajectory
 - Formulation:
-	- Cost/optimzation-based:
-		- first: propose a cost c(tau) combining everything you require (linear combination w1c1(tau)+w2c2(tau)+ ..., linear weight learnable by struct-SVM); when inference, LQR or method to propose trajectory minimize the cost;
+	- Cost-learning: learn a cost c(tau), s.t. trajectory minimize c(tau) imitate expert;
+		- Sampling/optimization based optimizer;
+	- Imitation learning/supervised learning
+		- Similar to cost learning, with explicit policy;
 	- MPC (model-predictive control, solutions first); use model to propose a lot of solutions, pick the one with the lowest cost
-	- Imitation learning/supervised learning;
-		- End-to-end: ALVINN; NVIDIA; EndRun;
+	- End-to-end: ALVINN; NVIDIA; EndRun;
+- Dataset for Imitation Learning
+	- J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
+	- J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
+
+## Cost-Learning (Optimization Based)
+- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
+- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
+- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
+- P Bender, O Tas, J Ziegler, and C Stiller. The combinatorial aspect of motion planning: Maneuver variants in structured environments. IV'15
+- Uber:\
+	<img src="/Autonomous-Driving/images/plan/neural-planner.png" alt="drawing" width="400"/>
+- **NMP**: W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
+	- Idea: holistic model, combine detection and planning;
+	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
+		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
+		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
+	- Output: 3D detections and their future trajectories;
+	- Output: space-time cost volume that represents the goodness
+		- T x H x W;
+	- Network:
+		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
+		- Perception Head: follow SSD, 12 anchors each location;
+		- Cost Volume Head: same resolution as BEV,
+		- Efficient Inference: NP-hard, sampling;
+	- Learning:
+		- Perception loss: bounding box, regression,
+		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
+	- Output Parameterization: Clothoid curve; sampling;
+	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
+	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
+- **PLT-Planner**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. IROS'19
+	- Insight: Behavior planning + Trajectory planning;
+		- PLT = Path, Lateral, Time; (Improves upon PT solver);
+		- Largely a framework: sample rollouts - cost rollouts - pick minimum cost;
+		- Rollout generation:
+			- Spatial path + velocity profile + steering quantities; exectubale
+		- Interactive: (policy + cost); intelligent mode for driver, constant for pedestrains;
+			- Actors react to accomodate for av's action (policy): retimed waypoints (only consider them changing velocity)
+			- Actions induce burden;
+		- Ignore rules: filter out actors following behind AV;
+			- Failure in lane changes and merges;
+	- Input:
+		- desired route
+		- state of the world
+			- sdv state
+			- map
+			- detected object (multimodal with probability)
+	- Output:
+		- high-level behavior **b**: a driving path sdv should follow;
+			- B(W): considering keep-lane, left-lane-change, and right-lane-change maneuvers
+		- trajectory **tau**;
+			- f(tau, b, W; w)
+	- Unified cost function: a weighted combination of manual designed cost:
+		- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
+		- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
+		- Headway: keep a safe longitudinal distance from leading car, depending on speed;
+		- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
+		- Route: penalize the number of lane-changes that is required to converge to the route
+		- Cost-to-go: the deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
+		- Speed limit, travel distance and dynamics;
+	- Inference:
+		- Behabioral planner (tau, b): represented by Frenet frame; position s and lateral offset d separately; (not very precise)
+			- Evaluate cost function f();
+		- Trajectory planner (u): BFGS solver;
+	- Learning:
+		- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
+		- Imitation loss
+		- Weight decay (L2 regularizer)
+	- Experiments:
+		- Datasets: ManualDrive, TOR-4D;
+		- Evaluation: similarity to human; passenger comfort (average jerk and lateral acceleration); spatiotemporal overlap;
+		- Baselines: Oracle ACC; PT;
+- **DSDNet**: Wenyuan Zeng, Shenlong Wang, Renjie Liao, Yun Chen, Bin Yang, and Raquel Urtasun. DSDNet: Deep Structured self-Driving Network. arxiv'20
 
 ## Survey
 - B Paden, M Čáp, S Yong, D Yershov, and E Frazzoli. A Survey of Motion Planning and Control Techniques for Self-driving Urban Vehicles. 2016
@@ -49,10 +123,6 @@
 	- Model: MBRL (LQR)
 	- Evaluated on synthetic example CARLA
 
-## Dataset for Imitation Learning
-- J. Colyar and J. Halkias, US highway 80 dataset, Federal Highway Administration (FHWA), 2006
-- J. Colyar and J. Halkias, US highway 101 dataset, Federal Highway Administration (FHWA), 2007
-
 ## Misc
 - A-star search:
 	- Z Ajanovic, B Lacevic, B Shyrokau, M Stolz, and M Horn. Search-based optimal motion planning for automated driving. IROS'18	
@@ -70,74 +140,6 @@
 	- M Pivtoraiko, R Knepper, and A Kelly. Differentially constrained mobile robot motion planning in state lattices. 2009
 	- M Werling, J Ziegler, S Kammel, and S Thrun. Optimal trajectory generation for dynamic street scenarios in a frenet frame. ICRA'10
 		- Parallel sampling:
-
-## Optimization Based
-- P Bender, O Tas, J Ziegler, and C Stiller. The combinatorial aspect of motion planning: Maneuver variants in structured environments. IV'15
-- M Buehler, K Iagnemma, and S Singh. The DARPA urban challenge: autonomous vehicles in city traffic. 2009
-- M Montemerlo, J Becker, S Bhat, H Dahlkamp, D Dolgov, S Ettinger, D Haehnel, T Hilden, G Hoffmann, B Huhnke, et al. Junior: The stanford entry in the urban challenge. Journal of field Robotics. 2008
-- J Ziegler, P Bender, T Dang, and C Stiller. Trajectory planning for bertha—a local, continuous method. IV'14
-- **PLT-Planner**: PLT (Path, Lateral, Time)
-	- Improves upon PT solver;
-	- Largely a framework: sample rollouts - cost rollouts - pick minimum cost;
-	- Rollout generation:
-		- Spatial path + velocity profile + steering quantities; exectubale
-	- Interactive: (policy + cost); intelligent mode for driver, constant for pedestrains;
-		- Actors react to accomodate for av's action (policy): retimed waypoints (only consider them changing velocity)
-		- Actions induce burden;
-	- Ignore rules: filter out actors following behind AV;
-		- Failure in lane changes and merges;
-- **NMP**: W Zeng, W Luo, S Suo, A Sadat, B Yang, S Casas, R Urtasun. End-to-end Interpretable Neural Motion Planner. CVPR'19
-	- Idea: holistic model, combine detection and planning;
-	- Input: raw LiDAR, HD map; H x W x (ZT' + M)
-		- LiDAR: past 10 frames; compensate ego-motion; (follow **IntentNet**) H x W x ZT'
-		- HD map: H x W x M (M channels: road, intersection, lanes, ...)
-	- Output: 3D detections and their future trajectories;
-	- Output: space-time cost volume that represents the goodness
-		- T x H x W;
-	- Network:
-		- Backbone: {2, 2, 3, 6, 5} Conv2D layers with filter number {32, 64, 128, 256, 256}, filter size 3x3 and stride 1. (follow **Pixor** detection)
-		- Perception Head: follow SSD, 12 anchors each location;
-		- Cost Volume Head: same resolution as BEV,
-		- Efficient Inference: NP-hard, sampling;
-	- Learning:
-		- Perception loss: bounding box, regression,
-		- Planning loss: max-margin loss (ground truth v.s. randomly sampled negative)
-	- Output Parameterization: Clothoid curve; sampling;
-	- Sampling: sample a set of diverse physically possible trajectories and choose the one with the minimum learned cost;
-	<img src="/Autonomous-Driving/images/plan/e2e-planner.png" alt="drawing" width="600"/>
-- **PLT-Planner**: A Sadat, M Ren, A Pokrovsky, Y Lin, E Yumer, R Urtasun. Jointly Learnable Behavior and Trajectory Planning for Self-Driving Vehicles. IROS'19
-	- Insight: Behavior planning + Trajectory planning;
-	- Input:
-		- desired route
-		- state of the world
-			- sdv state
-			- map
-			- detected object (multimodal with probability)
-	- Output:
-		- high-level behavior **b**: a driving path sdv should follow;
-			- B(W): considering keep-lane, left-lane-change, and right-lane-change maneuvers
-		- trajectory **tau**;
-			- f(tau, b, W; w)
-	- Unified cost function: a weighted combination of manual designed cost:
-		- Obstacle: safety-distance, weighted by speed (if AV stopps, ok to be close);
-		- Driving-path and lane boundary (should not go out of the lane boundary and should stay close to the center of the lane)
-		- Headway: keep a safe longitudinal distance from leading car, depending on speed;
-		- Yield: penalizes the squared longitudinal violation distance weighted by the pedestrian prediction probability.
-		- Route: penalize the number of lane-changes that is required to converge to the route
-		- Cost-to-go: the deceleration needed for slowing-down to possible upcomming speed-limits and use the square of the violation of the comfortable deceleration as cost-to-go.
-		- Speed limit, travel distance and dynamics;
-	- Inference:
-		- Behabioral planner (tau, b): represented by Frenet frame; position s and lateral offset d separately; (not very precise)
-			- Evaluate cost function f();
-		- Trajectory planner (u): BFGS solver;
-	- Learning:
-		- Max-margin loss: penalizes trajectories that have small cost and are different from the human driving trajectory; learn linear weight with structured SVM;
-		- Imitation loss
-		- Weight decay (L2 regularizer)
-	- Experiments:
-		- Datasets: ManualDrive, TOR-4D;
-		- Evaluation: similarity to human; passenger comfort (average jerk and lateral acceleration); spatiotemporal overlap;
-		- Baselines: Oracle ACC; PT;
 
 ## Imitation Learning
 - **Alvinn**: Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89

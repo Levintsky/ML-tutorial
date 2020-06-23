@@ -2,6 +2,11 @@
 
 ## Benchmarks
 - German Ros, Laura Sellart, Joanna Materzynska, David Vazquez, and Antonio M. Lopez. The synthia dataset: A large collection of synthetic images for semantic segmentation of urban scenes. CVPR'16
+- Panoptic:
+	- Cityscapes: 5000 street view images;
+	- ADE20k:
+	- Mapillary Vistas;
+	- COCO:
 
 ## Basics
 - Rick Szeliski (Chap 5)
@@ -35,8 +40,17 @@
 	- https://github.com/wkentaro/pytorch-fcn
 	- https://github.com/shelhamer/fcn.berkeleyvision.org
 	- Pyramid (like SSD)
-- **DeepLab v3**: L Chen, G Papandreou, F Schroff, H Adam. Rethinking Atrous Convolution for Semantic Image Segmentation. 2017
-	- https://github.com/tensorflow/models/tree/master/research/deeplab
+- DeepLab series:
+	- **DeepLab-v1**: Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille. Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs. ICLR'15
+		- VGG-16 + dilated-conv + 8x bilinear upsampling + CRF + FCN (multi-scale)
+		- https://github.com/kazuto1011/deeplab-pytorch/tree/master/libs/models
+	- **DeepLab-v2**: Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, Alan L. Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs. 2017
+		- ASPP（Atrous Spacial Pyramid Pooling
+		- ResNet;
+	- **DeepLab-v3**: L Chen, G Papandreou, F Schroff, H Adam. Rethinking Atrous Convolution for Semantic Image Segmentation. 2017
+		- https://github.com/tensorflow/models/tree/master/research/deeplab
+		- Multigrid;
+	- **DeepLab-v3+**: Liang-Chieh Chen, Yukun Zhu, George Papandreou, Florian Schroff, Hartwig Adam. Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation. ECCV'18
 - **PSP**: H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid Scene Parsing Network. CVPR'17
 - ResNet-DUC: P Wang, P Chen, Y Yuan, D Liu, Z Huang, X Hou, G Cottrell. Understanding Convolution for Semantic Segmentation. WAVC'18
 	- **Dilated Conv**
@@ -83,13 +97,8 @@
 	- Stuff: semantic (sky, grassland, road)
 	- Metric: PQ (panoptic quality):\
 		<img src="/CV-2D/images/segmentation/pq.png" alt="drawing" width="350"/>
-- Dataset:
-	- Cityscapes: 5000 street view images;
-	- ADE20k:
-	- Mapillary Vistas;
-	- COCO:
 - Alexander Kirillov, Kaiming He, Ross Girshick, Carsten Rother, Piotr Dollár. Panoptic Segmentation. CVPR'19
-	- Mask-RCNN for instance and semantic for stuff;
+	- Mask-RCNN for instance and semantic for stuff;\
 		<img src="/CV-2D/images/segmentation/panoptic-fpn.png" alt="drawing" width="500"/>
 
 ## Level Set

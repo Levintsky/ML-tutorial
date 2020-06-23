@@ -2,6 +2,14 @@
 
 ## Problem Definition
 - Point clouds + HD-map;
+- HD-Map:\
+	<img src="/Autonomous-Driving/images/localization/hd-map.png" alt="drawing" width="400"/>
+- Sensors (input):\
+	<img src="/Autonomous-Driving/images/localization/sensor.png" alt="drawing" width="400"/>
+- State space (output):\
+	<img src="/Autonomous-Driving/images/localization/state-space.png" alt="drawing" width="400"/>
+- Approaches:\
+	<img src="/Autonomous-Driving/images/localization/algs.png" alt="drawing" width="400"/>
 
 ## Alg
 - J Levinson, M Montemerlo, and S Thrun. Map-based precision vehicle localization in urban environments. RSS'07

@@ -22,8 +22,8 @@
 		- Decoder: (Linear - ReLU) x 3;
 		- Decoder output reshaped as N x N, loss with ground truth Adj-GT;
 		- Additional loss of KL-Div on mu, sigma;
-	- Testing: directly sampling;
-	<img src="/Graph/images/gcn-vae.png" alt="drawing" width="500"/>
+	- Testing: directly sampling;\
+		<img src="/Graph/images/gcn-vae.png" alt="drawing" width="500"/>
 - Q Liu, M Allamanis, M Brockschmidt, and A Gaunt. Constrained Graph Variational Autoencoders for Molecule Design. NIPS'18
 - Brute-Force VAE: M Simonovsky, N Komodakis. GraphVAE: Towards Generation of Small Graphs Using Variational Autoencoders. ICANN'18
 - T. Ma, J. Chen, and C. Xiao, Constrained generation of semantically valid graphs via regularizing variational autoencoders. NIPS'18

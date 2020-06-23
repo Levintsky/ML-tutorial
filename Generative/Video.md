@@ -14,8 +14,7 @@
 	- A generator GI produces a frame, x, using the content and the motion vectors {zC, z(k)}
 	- The discriminators, DI and DV, are trained on real and fake images and videos, respectively, sampled from the training set v and the generated set v.
 	<img src="/Generative/images/video/mocogan.png" alt="drawing" width="500"/>
-
-- **pix2pixHD**: T Wang, M Liu, J Zhu, A Tao, J Kautz, and B Catanzaro. 2017. High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs.
+- **pix2pixHD**: T Wang, M Liu, J Zhu, A Tao, J Kautz, and B Catanzaro. High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs. CVPR'17
 
 ## Misc
 - C Chan, S Ginosar, T Zhou, A Efros. **Everybody Dance Now**. 2018
@@ -34,6 +33,6 @@
 	- Full objective:\
 		<img src="/Generative/images/video/every-dance5.png" alt="drawing" width="500"/>	
 - D. Chen, J. Liao, L. Yuan, N. Yu, and G. Hua. Coherent online video style transfer. ICCV'17
-- **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
+- **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis. NeurIPS'18
 	- https://tcwang0509.github.io/vid2vid/
 	- https://github.com/NVIDIA/vid2vid (pytorch)

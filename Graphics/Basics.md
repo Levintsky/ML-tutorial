@@ -72,7 +72,7 @@
 - Lec-07: Particle Systems and ODEs;
 	- Physically based; focused on **particle system**;
 	- More advanced versions of behavior: flocks, crowds;
-    - **Cloth**: Selle. A, Su, J., Irving, G. and Fedkiw, R., Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction," IEEE TVCG 15, 339-350 (2009).
+    - **Cloth**: Selle. A, Su, J., Irving, G. and Fedkiw, R., Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction. TVCG'09
     - **Fluid**: Smoothed Particle Hydrodynamics (SPH)
     - **Fluid**: Navier-Stokes Equations;
     - Properties:
@@ -105,8 +105,8 @@
 	- Spring-mass:
 		- Cloth: Deformation constraints in a mass-spring model to describe rigid cloth behaviour;
 	- Robert Bridson, Ronald Fedkiw & John Anderson: Robust Treatment of Collisions, Contact and Friction for Cloth Animation SIGGRAPH 2002
-	- Selle. A, Su, J., Irving, G. and Fedkiw, R., "Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction," IEEE TVCG 15, 339-350 (2009).
-	- Selle, A., Lentine, M. and Fedkiw, R., "A Mass Spring Model for Hair Simulation", SIGGRAPH 2008, ACM TOG 27, 64.1-64.11 (2008).
+	- Selle. A, Su, J., Irving, G. and Fedkiw, R. Robust High-Resolution Cloth Using Parallelism, History-Based Collisions, and Accurate Friction. TVCG'09
+	- Selle, A., Lentine, M. and Fedkiw, R. A Mass Spring Model for Hair Simulation. SIGGRAPH'08
 - Lec-17: Sampling, Aliasing, Mipmaps;
 	- Mitchell, Don and Arun Netravali. Reconstruction Filters in Computer Graphics. SIGGRAPH'88
 	- **MIP Mapping**: multum in parvo which means many in a small place

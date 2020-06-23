@@ -1,8 +1,15 @@
 # Detection
 
 ## Basics
-- Metrics
+- Evaluation:
+	- Average Precision (AP):
+		- PR-curve: Precision against recall;
+		- ROC: true positive rate (TPR) against the false positive rate (FPR)\
+			<img src="/CV-2D/images/detection/Roccurves.png" alt="drawing" width="350"/>
+			<img src="/CV-2D/images/detection/precision-recall.png" alt="drawing" width="350"/>
 	- mAP (average of the maximum precisions at different recall values)
+		- PR-Curve by averaging IOU of 0.5 to 0.95:\
+			<img src="/CV-2D/images/detection/pr-curve.png" alt="drawing" width="350"/>
 - Benchmarks
 	- **PASCAL-VOC**: M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. IJCV'10
 	- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
@@ -10,6 +17,29 @@
 ## Summaries
 - A very good blog (Lilian Weng, OpenAI): https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
 - One stage: https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
+
+## Detectron
+- Detectron v1: https://github.com/facebookresearch/Detectron
+	- Fast R-CNN;
+	- Faster R-CNN;
+	- Residual-Net;
+	- R-FCN;
+	- ResNext;
+	- FPN CVPR'17;
+	- Georgia Gkioxari, Ross Girshick, Piotr Dollár, and Kaiming He. Detecting and Recognizing Human-Object Interactions. Tech report, arXiv'17
+	- Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour. Tech report, arXiv'17
+	- Focal-loss ICCV'17;
+	- Mask R-CNN;
+	- Non-Local Neural Networks;
+	- Ronghang Hu, Piotr Dollár, Kaiming He, Trevor Darrell, and Ross Girshick. Learning to Segment Every Thing. Tech report, arXiv'17.
+	- Ilija Radosavovic, Piotr Dollár, Ross Girshick, Georgia Gkioxari, and Kaiming He. Data Distillation: Towards Omni-Supervised Learning. Tech report, arXiv, Dec. 2017.
+- Detectron v2: https://github.com/facebookresearch/detectron2
+	- DensePose: Dense Human Pose Estimation In The Wild
+	- Scale-Aware Trident Networks for Object Detection
+	- TensorMask: A Foundation for Dense Object Segmentation
+	- Mesh R-CNN
+	- PointRend: Image Segmentation as Rendering
+	- Momentum Contrast for Unsupervised Visual Representation Learning
 
 ## Two-Stage
 - RCNN family:\
@@ -37,7 +67,7 @@
 	- **COCO: mAP 35.9%**
 	<img src="/CV-2D/images/detection/fast-RCNN.png" alt="drawing" width="600"/>
 	<img src="/CV-2D/images/detection/fast-RCNN-eqn.png" alt="drawing" width="500"/>
-- **Faster R-CNN**: S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. NIPS 2015 
+- **Faster R-CNN**: S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. NIPS'15 
 	- https://github.com/mahyarnajibi/fast-rcnn-torch
 	- https://github.com/chenyuntc/simple-faster-rcnn-pytorch
 	- Two stages:
@@ -73,7 +103,6 @@
 	- Speed: 5fps\
 	<img src="/CV-2D/images/detection/mask-rcnn.png" alt="drawing" width="500"/>
 	<img src="/CV-2D/images/detection/mask-rcnn-eqn.png" alt="drawing" width="500"/>
-- **Detectron**: https://github.com/facebookresearch/Detectron
 - **RetinaNet**: Tsung-Yi Lin Priya Goyal Ross Girshick Kaiming He Piotr Dollar. Focal Loss for Dense Object Detection. ICCV 2017
 	- Insight: solve difficulty imbalance;
 	- Reduce loss for well-classified classes; focus on harder classes;
@@ -89,15 +118,18 @@
 
 ## One-stage detector:
 - **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
-		<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="600"/>
-		<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="600"/>
-	- Improves YOLO by using default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
-	- Multiscale;
+	- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+	- Multiscale: FPN;
+		<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
+		<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
 - **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
 - YOLO:
+	- Summaries:
+		- https://zhuanlan.zhihu.com/p/136382095
+		- https://zhuanlan.zhihu.com/p/94986199
 	- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
 		- http://pjreddie.com/darknet/
-	- **YOLO**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
+	- **YOLOv1**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
 		- https://pjreddie.com/darknet/yolo/
 		- Pretrain CNN.
 		- S x S cells, each cell predict the object if the object center is in the cell. (S=7, B=2, C=20 in Yolo-v1)
@@ -111,26 +143,35 @@
 			<img src="/CV-2D/images/detection/yolo1-2.png" alt="drawing" width="500"/>
 		- Learning:\
 			<img src="/CV-2D/images/detection/yolo1-3.png" alt="drawing" width="500"/>
-	- **YOLO9000**: J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
+	- **YOLOv2** (YOLO9000): J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
+		- Improves over v1:\
+			<img src="/CV-2D/images/detection/yolo-v2.jpg" alt="drawing" width="400"/>	
 		- Better:
-			- Batch normalization
-			- Multi-scale training: finetune on 448 x 448
-			- Anchor boxes: input 416 x 416, 32 downsampling, output 13 x 13
-			- Dimension Clusters
+			- Batch normalization: mAP +2.4
+			- High-resolution: mAP +3.7
+			- Multi-scale training (finetune on 448 x 448): 
+			- Anchor boxes: recall to 88%, mAP -0.2
+				- Input 416 x 416, 32 downsampling, output 13 x 13
+			- Dimension Clusters (K=5): IoU from 58.7 (K=5) to 67.2 K=9);
 			- Direct location prediction
-			- Multi-Scale training
+			- Fine-grained features (passthrough layer): mAP +1.0\
+				<img src="/CV-2D/images/detection/pass-through-1.jpg" alt="drawing" width="300"/>\
+				<img src="/CV-2D/images/detection/pass-through-2.jpg" alt="drawing" width="300"/>
 		- Faster:
 			- VGG-16, DarkNet-19
 		- Stronger
-			- Hierarchical classification
+			- Hierarchical classification\
 		<img src="/CV-2D/images/detection/yolo2.png" alt="drawing" width="400"/>
 	- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
+		- Insight: add FPN, ResNet, binary cross-entropy;
 		- 320 x 320: 22ms
 		- Logistic regression:
 		- Class prediction:
 		- No hard negative mining;
 		- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
-		<img src="/CV-2D/images/detection/yolo3.png" alt="drawing" width="200"/>
+		<img src="/CV-2D/images/detection/yolo3.png" alt="drawing" width="150"/>
+	- **YOLOv4**: Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. YOLOv4: Optimal Speed and Accuracy of Object Detection. 2020
+		- https://github.com/AlexeyAB/darknet
 - Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
 - MSRA:
 	- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
