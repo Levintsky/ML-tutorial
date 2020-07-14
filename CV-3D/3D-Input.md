@@ -24,6 +24,8 @@
 		- Estimate sample density distribution;
 		- https://github.com/viscom-ulm/MCCNN
 	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
+	- Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian- Yi Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
+	- Matan Atzmon, Haggai Maron, and Yaron Lipman. Point convolutional neural networks by extension operators. arxiv'18
 - **Grid-Cell**: still keep the regular grid/voxel structure;
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
 		- https://github.com/trucleduc/PointGrid

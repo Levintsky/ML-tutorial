@@ -1,6 +1,32 @@
 # 3D Detection and Segmentation
 
-## 3D Bounding Box from Images
+## Benchmarks
+- **SUN RGB-D**: Shuran Song, Samuel P Lichtenberg, and Jianxiong Xiao. Sun rgb-d: A rgb-d scene understanding benchmark suite. CVPR'15
+	- 10,355 training, 2,860 testing;
+- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
+
+## Misc
+- Sliding Shapes:
+	- Shuran Song and Jianxiong Xiao. Sliding shapes for 3d ob- ject detection in depth images. ECCV'14
+	- Shuran Song and Jianxiong Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
+- Template-based:
+	- Liangliang Nan, Ke Xie, and Andrei Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
+	- Yangyan Li, Angela Dai, Leonidas Guibas, and Matthias Nießner. Database-assisted object retrieval for real-time 3d reconstruction. CSG'15
+	- Or Litany, Tal Remez, Daniel Freedman, Lior Shapira, Alex Bronstein, and Ran Gal. CVIU'17
+- Zhile Ren and Erik B Sudderth. Three-dimensional object detection and layout prediction using clouds of oriented gradients. CVPR'16
+- Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. arxiv'18
+- Li Yi, Wang Zhao, He Wang, Minhyuk Sung, and Leonidas Guibas. Gspn: Generative shape proposal network for 3d instance segmentation in point cloud. arxiv'18
+- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. arxiv'18
+
+## BEV
+- Check AV;
+
+## RGB-D 3D Bounding Box from Images
+- Dahua Lin, Sanja Fidler, and Raquel Urtasun. Holistic scene understanding for 3d object detection with rgbd cameras. ICCV'13
+- Reduce search space by 2D:
+	- Byung-soo Kim, Shili Xu, and Silvio Savarese. Accurate localization of 3d objects from rgb-d data using segmenta- tion hypotheses. CVPR'13
+	- Jean Lahoud and Bernard Ghanem. 2d-driven 3d object detection in rgb-d images. CVPR'17
+	- Charles R Qi, Wei Liu, Chenxia Wu, Hao Su, and Leonidas J Guibas. Frustum pointnets for 3d object detection from rgb-d data. CVPR'18
 - Viewpoint-dependent detector, pose estimation by clustering 3D:
 	- Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Data-driven 3d voxel patterns for object category recognition. CVPR'15
 		- Input: 2D images

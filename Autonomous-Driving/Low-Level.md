@@ -20,23 +20,7 @@
 - Depth: Learning Joint 2D-3D Representations for Depth Completion [Yun Chen]
 
 ## Stereo
-- Stereo: Differentiable Deep PatchMatch for Efficient Stereo Matching [Shivam]
+- Shivam Duggal, Shenlong Wang, Wei-Chiu Ma, Rui Hu, Raquel Urtasun. DeepPruner: Learning Efficient Stereo Matching via Differentiable PatchMatch. ICCV'19
 - Shela Qiu: Monocular stereo;
 	- Global coarse depth;
 	- Then bounding box -> refinement;
-
-## Mapping
-- Convolutional Recurrent Network for Road Boundary Extraction [Justin Liang]
-- End-to-End Deep Structured Models for Drawing Crosswalks [ECCV'18, Justin Liang]
-- Learning to Map by Discovering Lane Topology [Namdar]
-- 3D-LaneNet: End-to-End 3D Multiple Lane Detection [ICCV'19, Namdar]
-- Globally consistent map [Joey Yu];
-- Deep structured 3D Estimation [Mini-Conf];
-	- Input: stereo images, LiDAR; Output: Pose, Shape
-- Robust Dense Mapping for Large-Scale Dynamic Environments [ICRA'18, Barsan]
-
-## Localization:
-- Image Localization [Julieta Martinez]
-- Ground Intensity LiDAR Localization with Compressed Maps [Xinkai Wei]
-- Learning to Map [Xinkai Wei]
-- Learning to Localize through Compressed Binary Maps [Xinkai Wei]

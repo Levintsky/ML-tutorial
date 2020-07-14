@@ -11,7 +11,7 @@
 - Approaches:\
 	<img src="/Autonomous-Driving/images/localization/algs.png" alt="drawing" width="400"/>
 
-## Alg
+## Algorithms
 - J Levinson, M Montemerlo, and S Thrun. Map-based precision vehicle localization in urban environments. RSS'07
 - E Javanmardi, M Javanmardi, Y Gu, and S Kamijo. Autonomous vehicle self-localization based on probabilistic planar surface map and multi-channel LiDAR in urban area. ITSC'18
 - **GILL**: I Barsan, S Wang, A Pokrovsky, and R Urtasun. Learning to localize using a lidar intensity map. CoRL'18
@@ -35,3 +35,8 @@
 	- Asynchronous BA;
 	- New frame tracking;
 	- Exp: comparison with orb-slam;
+
+## Unclassified
+- Image Localization [Julieta Martinez]
+- Ground Intensity LiDAR Localization with Compressed Maps [Xinkai Wei]
+- Learning to Map [Xinkai Wei]

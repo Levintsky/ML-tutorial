@@ -20,6 +20,7 @@
 - J Liang, N Homayounfar, WC Ma, S Wang, R Urtasun. Convolutional Recurrent Network for Road Boundary Extraction. CVPR'19
 
 ## Crosswalk
+- Convolutional Recurrent Network for Road Boundary Extraction [Justin Liang]
 - J. Liang, R. Urtasun. End-to-End Deep Structured Models for Drawing Crosswalks. ECCV'18
 	- Input: image + LiDAR;
 	- Output: polygons;\
@@ -38,3 +39,11 @@
 	- Final output: contour for instance segmentation;
 	- Initial polygon: manual, or automatic;
 	<img src="/Autonomous-Driving/images/mapping/dsac.png" alt="drawing" width="400"/>
+
+## Unclassified
+- Learning to Map by Discovering Lane Topology [Namdar]
+- 3D-LaneNet: End-to-End 3D Multiple Lane Detection [ICCV'19, Namdar]
+- Globally consistent map [Joey Yu];
+- Deep structured 3D Estimation [Mini-Conf];
+	- Input: stereo images, LiDAR; Output: Pose, Shape
+- Robust Dense Mapping for Large-Scale Dynamic Environments [ICRA'18, Barsan]

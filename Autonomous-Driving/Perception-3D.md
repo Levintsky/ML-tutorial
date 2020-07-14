@@ -35,11 +35,25 @@
 		- Detector;
 		- https://github.com/kujason/avod \
 			<img src="/Autonomous-Driving/images/detection/avod.png" alt="drawing" width="600"/>
+	- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
+		- Input: H x D x W pc;
+		- Key idea: voxel; within each voxel: VFE; RPN-based detection;
+		- Backbone: feature-learning + Conv-middle layer + RPN;
+			- Divides the point cloud into equally spaced 3D voxels;
+			- encodes each voxel via stacked VFE layers;
+			- then 3D convolution further aggregates local voxel features, transforming the point cloud into a high-dimensional volumetric representation;\
+			<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
+		- 1. PointNet for each voxel;
+		- 2. 3D-Conv on voxels;
+		- VFE-layer:\
+			<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="450"/>
+		- 3. RPN consumes the volumetric representation and yields the detection result;
+		- Experiments: 3D detection from Lidar on KITTI;
 	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
+		- Insight: unproject image onto Lidar to improve performance;
 		- Input: image + BEV; output: 3D bounding box;
 		- Lidar: VeloFCN, 3DFCN, DPT;
-		- Image + LiDAR: F-Pointnet; (generally project lidar onto image);
-		- Key idea: project image onto Lidar;\
+		- Image + LiDAR: F-Pointnet; (generally project lidar onto image);\
 			<img src="/Autonomous-Driving/images/detection/cont-fusion.png" alt="drawing" width="450"/>
 		- Continuous fusion layer:\
 			<img src="/Autonomous-Driving/images/detection/cont-fusion2.png" alt="drawing" width="450"/>
@@ -110,21 +124,6 @@
 			<img src="/Autonomous-Driving/images/detection/stinet-2.png" alt="drawing" width="400"/>
 		- Past + trajejory as feature, GNN for interaction:\
 			<img src="/Autonomous-Driving/images/detection/stinet-3.png" alt="drawing" width="400"/>
-- Frontal view:
-	- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
-		- Input: H x D x W pc;
-		- Key idea: voxel; within each voxel: VFE; RPN-based detection;
-		- Backbone: feature-learning + Conv-middle layer + RPN;
-			- Divides the point cloud into equally spaced 3D voxels;
-			- encodes each voxel via stacked VFE layers;
-			- then 3D convolution further aggregates local voxel features, transforming the point cloud into a high-dimensional volumetric representation;\
-			<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
-		- 1. PointNet for each voxel;
-		- 2. 3D-Conv on voxels;
-		- VFE-layer:\
-			<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="450"/>
-		- 3. RPN consumes the volumetric representation and yields the detection result;
-		- Experiments: 3D detection from Lidar on KITTI;
 - Canonical view:
 	- **PointRCNN**: S Shi, X Wang, H Li. PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud. CVPR'19
 		- Two stages: RCNN detection for 3D point clouds;
