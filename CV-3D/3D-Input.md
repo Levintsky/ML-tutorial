@@ -13,6 +13,26 @@
 	- 2D as 3D;
 - **PVCNN**: Zhijian Liu, Haotian Tang, Yujun Lin, Song Han. Point-Voxel CNN for Efficient 3D Deep Learning. NIPS'19
 
+## Hybrid
+- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
+	- Input: H x D x W pc;
+	- Key idea: voxel; within each voxel: VFE; RPN-based detection;
+	- Backbone: feature-learning + Conv-middle layer + RPN;
+		- Divides the point cloud into equally spaced 3D voxels;
+		- encodes each voxel via stacked VFE layers;
+		- then 3D convolution further aggregates local voxel features, transforming the point cloud into a high-dimensional volumetric representation;\
+		<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
+	- 1. PointNet for each voxel;
+	- 2. 3D-Conv on voxels;
+	- VFE-layer:\
+		<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="450"/>
+	- 3. RPN consumes the volumetric representation and yields the detection result;
+	- Experiments: 3D detection from Lidar on KITTI;
+- Yan Yan, Yuxing Mao, and Bo Li. Second: Sparsely embedded convolutional detection. Sensors'18
+- **Pointpillars**: Alex H. Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
+- Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
+- **std**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, and Jiaya Jia. Std: Sparse-to-dense 3d object detector for point cloud. ICCV'19
+
 ## Point Clouds
 - Unclassified:
 	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
@@ -26,6 +46,16 @@
 	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
 	- Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian- Yi Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
 	- Matan Atzmon, Haggai Maron, and Yaron Lipman. Point convolutional neural networks by extension operators. arxiv'18
+	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
+		- Irregular grid;
+		- http://sites.skoltech.ru/compvision/kdnets/
+		- Construction: Work with Kd-tree; (top-down, every node split the axis with largest span);
+		- Non-leaf nodes: Recursive bottom-up, Recursive-NN;
+		- Properties: Layerwise parameter sharing; Hierarchical representation; Partial invariance to jitter; Non-invariance to rotations; Role of kd-tree structure;
+		- Experiments: MNIST 2D points; ModelNet;
+		<img src="/CV-3D/images/3d_input/kd-network1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/kd-network2.png" alt="drawing" width="400"/>
+		<img src="/CV-3D/images/3d_input/kd-network3.png" alt="drawing" width="500"/>
 - **Grid-Cell**: still keep the regular grid/voxel structure;
 	- **PointGrid**: T. Le and Y. Duan. PointGrid: A deep network for 3D shape understanding. CVPR 2018
 		- https://github.com/trucleduc/PointGrid
@@ -40,72 +70,76 @@
 		<img src="/CV-3D/images/3d_input/splatnet1.png" alt="drawing" width="450"/>
 		<img src="/CV-3D/images/3d_input/splatnet2.png" alt="drawing" width="500"/>
 		<img src="/CV-3D/images/3d_input/splatnet3.png" alt="drawing" width="600"/>
-- **Unordered**:
-	- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
-		<img src="/CV-3D/images/3d_input/pointnet.png" alt="drawing" width="600"/>
-	- **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
-		- Insight: FP-sampling + grouping + MLP + [FPN];
-		- **Classification mode**: [SA module x 3] + FC_layers;
-		- **Semantic Segmentation mode**: [SA-module x3] + [FP-modules x4] + [Conv1d x2]
-		- SA module #1, #2: xyz, features = model(xyz, features=None), xyz: (B, 2048, 3)
-			- Gather operation: **FPS** (furtherest point sampling), from N points, select N' < N centers as new_xyz (B, N', 3)
-			- Group-Query-MLP x 3 (with different radius)
-				- Group and Query: to (B, d, N', nS), dim: feature dim; each N' centers will be assigned nS=16 members
-				- Shared MLPs: with dim like [d, 32, 32, 64], output (B, 64, N', nS), implement FC with 2D-Conv with kernel-size (1, 64)
-				- Max-pooling along last dimension (B, 64, 512)
-			- After SA-1: xyz=(B, 512, 3), feat=(B, 320, 512)
-			- After SA-2: xyz=(B, 128, 3), feat=(B, 640, 128)
-		- SA module #3:
-			- No gather operation: new_xyz=None
-			- GroupAll: (B, 643, 1, nS), 643=640+3, nS=128
-			- Shared MLPs: (B, 1024, 1)
-		- FC_layers: [1024, 512, 256, nClass]
-		- Finally a 256-dim feature
-		- FPN-modules are used to **interpolate features back**;
-		```python
-		feat[i-1] = self.FP_modules[i](xyz[i-1], xyz[i], feat[i-1], feat[i])
-		```	
-		- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
-		<img src="/CV-3D/images/3d_input/pointnet++.png" alt="drawing" width="600"/>
-- Local neighborhood, by **Attention** or GNN:
-	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
-		- Irregular grid;
-		- http://sites.skoltech.ru/compvision/kdnets/
-		- Construction: Work with Kd-tree; (top-down, every node split the axis with largest span);
-		- Non-leaf nodes: Recursive bottom-up, Recursive-NN;
-		- Properties: Layerwise parameter sharing; Hierarchical representation; Partial invariance to jitter; Non-invariance to rotations; Role of kd-tree structure;
-		- Experiments: MNIST 2D points; ModelNet;
-		<img src="/CV-3D/images/3d_input/kd-network1.png" alt="drawing" width="500"/>
-		<img src="/CV-3D/images/3d_input/kd-network2.png" alt="drawing" width="400"/>
-		<img src="/CV-3D/images/3d_input/kd-network3.png" alt="drawing" width="500"/>
-	- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
-		- First layer feature (manual): Histogram of pj-pi (24 bins = 3 radius x 8 angle);
-			<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
-	- S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
-		- key idea: exploit **parameterized kernel** functions that span the full continuous vector space, **learn a kernel** with MLP;
-			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
-			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
-		- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
-			<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
-			<img src="/CV-3D/images/3d_input/continuous2.png" alt="drawing" width="600"/>
-	- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
-		- 1 weighting: of the input features associated with the points, 
-		- 2.permutation: into a latent and potentially canonical order
-		- https://github.com/yangyanli/PointCNN
-		<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
-		<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
-	- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
-		<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
-	- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
-		- Graph **changes by layer**: compute nn on the fly;
-		- EdgeConv-layer:
-			- Dynamic Graph construction: Each node has k nearest neighbors in feature space, form k-edges; 
-			- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
-			- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
-			- Aggregation: maxpool edges with the same node, maps the feature back;
-	- X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia'18	
 
-## Voxel
+## Unordered Set:
+- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
+	<img src="/CV-3D/images/3d_input/pointnet.png" alt="drawing" width="600"/>
+- **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
+	- Insight: FP-sampling + grouping + MLP + [FPN];
+	- **Classification mode**: [SA module x 3] + FC_layers;
+	- **Semantic Segmentation mode**: [SA-module x3] + [FP-modules x4] + [Conv1d x2]
+	- SA module #1, #2: xyz, features = model(xyz, features=None), xyz: (B, 2048, 3)
+		- Gather operation: **FPS** (furtherest point sampling), from N points, select N' < N centers as new_xyz (B, N', 3)
+		- Group-Query-MLP x 3 (with different radius)
+			- Group and Query: to (B, d, N', nS), dim: feature dim; each N' centers will be assigned nS=16 members
+			- Shared MLPs: with dim like [d, 32, 32, 64], output (B, 64, N', nS), implement FC with 2D-Conv with kernel-size (1, 64)
+			- Max-pooling along last dimension (B, 64, 512)
+		- After SA-1: xyz=(B, 512, 3), feat=(B, 320, 512)
+		- After SA-2: xyz=(B, 128, 3), feat=(B, 640, 128)
+	- SA module #3:
+		- No gather operation: new_xyz=None
+		- GroupAll: (B, 643, 1, nS), 643=640+3, nS=128
+		- Shared MLPs: (B, 1024, 1)
+	- FC_layers: [1024, 512, 256, nClass]
+	- Finally a 256-dim feature
+	- FPN-modules are used to **interpolate features back**;
+	```python
+	feat[i-1] = self.FP_modules[i](xyz[i-1], xyz[i], feat[i-1], feat[i])
+	```	
+	- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
+		<img src="/CV-3D/images/3d_input/pointnet++.png" alt="drawing" width="600"/>
+- Manzil Zaheer, Satwik Kottur, Siamak Ravanbakhsh, Barnabas Poczos, Ruslan R Salakhutdinov, and Alexander J Smola. Deep sets. NIPS'17
+
+## Attention, GNN, Kernel
+- Legacy:
+	- J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
+	- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
+	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16 
+	- M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst. Geometric deep learning: Going beyond euclidean data. SPM'17
+	- N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature-steered graph convolutions for 3d shape analysis. CVPR'18
+		- https://github.com/nitika-verma/FeaStNet
+		- https://pdfs.semanticscholar.org/2b19/17cda67f8a741680300a45123eeecae10ce2.pdf
+- X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. ICCV'17
+- **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
+	<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
+- Loic Landrieu and Martin Simonovsky. Large-scale point cloud semantic segmentation with superpoint graphs. CVPR'18
+- **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
+	- First layer feature (manual): Histogram of pj-pi (24 bins = 3 radius x 8 angle);
+		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
+- S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
+	- key idea: exploit **parameterized kernel** functions that span the full continuous vector space, **learn a kernel** with MLP;
+		<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
+	- Gaussian kernel: K. T. Schutt, P. Kindermans, H. Sauceda, S. Chmiela, A. Tkatchenko, and K. Muller. Schnet: A continuous-filter convolutional neural network for modeling quantum interactions. 2017\
+		<img src="/CV-3D/images/3d_input/continuous1.png" alt="drawing" width="500"/>
+		<img src="/CV-3D/images/3d_input/continuous2.png" alt="drawing" width="600"/>
+- X. Wang, B. Zhou, H. Fang, X. Chen, Q. Zhao, and K. Xu. Learning to group and label fine-grained shape components. SIGGRAPH Asia'18	
+- Y. Li, R. Bu, M. Sun, and B. Chen. PointCNN: Convolution on X-transformed points. NIPS'18
+	- 1 weighting: of the input features associated with the points, 
+	- 2.permutation: into a latent and potentially canonical order
+	- https://github.com/yangyanli/PointCNN
+	<img src="/CV-3D/images/3d_input/pointcnn1.png" alt="drawing" width="600"/>
+	<img src="/CV-3D/images/3d_input/pointcnn2.png" alt="drawing" width="600"/>
+- **DGCNN**: Y Wang, Y Sun, Z Liu, S Sarma, M Bronstein, and J Solomon. Dynamic Graph CNN for Learning on Point Clouds. TOG'19
+	- Graph **changes by layer**: compute nn on the fly;
+	- EdgeConv-layer:
+		- Dynamic Graph construction: Each node has k nearest neighbors in feature space, form k-edges; 
+		- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
+		- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
+		- Aggregation: maxpool edges with the same node, maps the feature back;
+- Yin Bi,Aaron Chadha, Alhabib Abbas, Eirina Bourtsoulatze, and Yiannis Andreopoulos. Graph-based object classification for neuromorphic vision sensing. ICCV'19
+
+## Voxel, Sparse Conv
 - **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes. CVPR'15
 	- Predict next best angle (most uncertain by max entropy diff)
 - D Maturana and S Scherer. VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition. IROS 2015
@@ -134,14 +168,6 @@
 ## Mesh
 - Legacy:
 	- M. Tarini, K. Hormann, P. Cignoni, and C. Montani. Polycube-maps. TOG'04
-- Graph-NN:
-	- J. Bruna, W. Zaremba, A. Szlam, and Y. LeCun. Spectral networks and locally connected networks on graphs. 2013
-	- K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
-	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16 
-	- M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Vandergheynst. Geometric deep learning: Going beyond euclidean data. SPM'17
-	- N. Verma, E. Boyer, and J. Verbeek. Feastnet: Feature-steered graph convolutions for 3d shape analysis. CVPR'18
-		- https://github.com/nitika-verma/FeaStNet
-		- https://pdfs.semanticscholar.org/2b19/17cda67f8a741680300a45123eeecae10ce2.pdf
 - K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. SIGGRAPH'15
 - A. Sinha, J. Bai, and K. Ramani. Deep learning 3d shape surfaces using geometry images. ECCV'16
 - T. Bagautdinov, C. Wu, J. Saragih, P. Fua, and Y. Sheikh. Modeling facial geometry using compositional vaes.
