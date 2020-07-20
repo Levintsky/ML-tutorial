@@ -110,10 +110,23 @@
 		- https://github.com/nitika-verma/FeaStNet
 		- https://pdfs.semanticscholar.org/2b19/17cda67f8a741680300a45123eeecae10ce2.pdf
 - X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. ICCV'17
+	- Insight: Loopy-bp and mean-field inference is a special case of GNN;
+		- Geometry for graph connection;
+		- 2D-CNN for node feature;
+	- GNN with (x, y, z) with KNN (K=64);
+	- Update: RNN/LSTM style h(t+1) = q[h(t), m(t)];
 - **FoldingNet**: Y. Yang, C. Feng, Y. Shen, and D. Tian. Foldingnet: Interpretable unsupervised learning on 3d point clouds. CVPR'18 \
 	<img src="/CV-3D/images/3d_input/foldingnet.png" alt="drawing" width="600"/>
-- Loic Landrieu and Martin Simonovsky. Large-scale point cloud semantic segmentation with superpoint graphs. CVPR'18
+- **SPG**: Loic Landrieu and Martin Simonovsky. Large-scale point cloud semantic segmentation with superpoint graphs. CVPR'18
+	- Insight: superpoint;
+	- https://github.com/loicland/superpoint_graph
+	- Graph construction:
+		- Superpoint cluster generation: energy-based;
+		- Edge: Voronoi super edge;
+		- Node feature: pointnet (MLP);
+		- GNN iteration: GRU;
 - **3D-Transformer**: S Xie, S Liu, Z Chen, Z Tu. Attentional ShapeContextNet for Point Cloud Recognition. CVPR'18
+	- Insight: Transformer (fc graph);
 	- First layer feature (manual): Histogram of pj-pi (24 bins = 3 radius x 8 angle);
 		<img src="/CV-3D/images/3d_input/3d-transformer.png" alt="drawing" width="600"/>
 - S Wang, S Suo, W Ma, A Pokrovsky, R Urtasun. Deep Parametric Continuous Convolutional Neural Networks. CVPR'18
@@ -137,7 +150,6 @@
 		- Node interaction by edge: Collect features from neighboring nodes, do f-f'; (?, d, 1024, k)
 		- Channel-wise Conv - BN - LReLU (implemented by Conv2d);
 		- Aggregation: maxpool edges with the same node, maps the feature back;
-- Yin Bi,Aaron Chadha, Alhabib Abbas, Eirina Bourtsoulatze, and Yiannis Andreopoulos. Graph-based object classification for neuromorphic vision sensing. ICCV'19
 
 ## Voxel, Sparse Conv
 - **ModelNet**: Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang and J. Xiao. 3D ShapeNets: A Deep Representation for Volumetric Shapes. CVPR'15
