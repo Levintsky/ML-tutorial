@@ -1,5 +1,9 @@
 # Kernel, Embedding, Metric Learning
 
+## Unclassified
+- A. Rahimi and B. Recht. Random features for large-scale kernel machines. NIPS'08
+- Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
+
 ## Tutorials, Books
 - Ralf Herbrich. Learning Kernel Classifiers. 2001
 - Bernhard Scholkopf, Alexander J. Smola. Learning with kernels. 2002
@@ -117,14 +121,6 @@
 			<img src="/Basic-ML/images/svm/latent-svm-3.png" alt="drawing" width="400"/>
 		- A hard EM alg:\
 			<img src="/Basic-ML/images/svm/latent-svm-4.png" alt="drawing" width="400"/>
-
-## NN
-- Tobias Plötz, Stefan Roth. Neural Nearest Neighbors Networks. NIPS'18
-- Ignacio Rocco, Mircea Cimpoi, Relja Arandjelovic, Akihiko Torii, Tomas Pajdla, Josef Sivic. Neighbourhood Consensus Networks. NIPS'18
-- Ari Morcos, Maithra Raghu, Samy Bengio. Insights on representational similarity in neural networks with canonical correlation. NIPS'18
-
-## Unclassified
-- Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
 
 ## NIPS'19
 - Motonobu Kanagawa, Philipp Hennig. Convergence Guarantees for Adaptive Bayesian Quadrature Methods

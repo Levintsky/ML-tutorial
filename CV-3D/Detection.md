@@ -3,37 +3,113 @@
 ## Benchmarks
 - **SUN RGB-D**: Shuran Song, Samuel P Lichtenberg, and Jianxiong Xiao. Sun rgb-d: A rgb-d scene understanding benchmark suite. CVPR'15
 	- 10,355 training, 2,860 testing;
-- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
+- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
+- **Matterport3D**: Chang, Angel and Dai, Angela and Funkhouser, Thomas and Halber, Maciej and Niessner, Matthias and Savva, Manolis and Song, Shuran and Zeng, Andy and Zhang, Yinda. Matterport3D: Learning from RGB-D Data in Indoor Environments. 3DV'17
+	- RGB-D indoor Environment;
+
+## Unclassified
+- **ICCV**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, and Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
 
 ## Misc
-- Sliding Shapes:
-	- Shuran Song and Jianxiong Xiao. Sliding shapes for 3d ob- ject detection in depth images. ECCV'14
-	- Shuran Song and Jianxiong Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
 - Template-based:
 	- Liangliang Nan, Ke Xie, and Andrei Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
 	- Yangyan Li, Angela Dai, Leonidas Guibas, and Matthias Nießner. Database-assisted object retrieval for real-time 3d reconstruction. CSG'15
 	- Or Litany, Tal Remez, Daniel Freedman, Lior Shapira, Alex Bronstein, and Ran Gal. CVIU'17
-- Zhile Ren and Erik B Sudderth. Three-dimensional object detection and layout prediction using clouds of oriented gradients. CVPR'16
-- Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. arxiv'18
-- Li Yi, Wang Zhao, He Wang, Minhyuk Sung, and Leonidas Guibas. Gspn: Generative shape proposal network for 3d instance segmentation in point cloud. arxiv'18
-- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. arxiv'18
+- B. Li. 3d fully convolutional network for vehicle detection in point cloud. IROS'16
+	- 3D Box from Depth
 
-## BEV
-- Check AV;
+## Input
+- Point-cloud only;
+- RGBD:
+	- Dahua Lin, Sanja Fidler, and Raquel Urtasun. Holistic scene understanding for 3d object detection with rgbd cameras. ICCV'13
+	- **3D-SIS**: Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. CVPR'19
 
-## RGB-D 3D Bounding Box from Images
-- Dahua Lin, Sanja Fidler, and Raquel Urtasun. Holistic scene understanding for 3d object detection with rgbd cameras. ICCV'13
-- Reduce search space by 2D:
-	- Byung-soo Kim, Shili Xu, and Silvio Savarese. Accurate localization of 3d objects from rgb-d data using segmenta- tion hypotheses. CVPR'13
+## Backbones
+- Legacy (human-designed):
+	- **COG**: Cloud of Orientated Gradient feature
+		- Zhile Ren and Erik B Sudderth. Three-dimensional object detection and layout prediction using clouds of oriented gradients. CVPR'16
+		- Zhile Ren and Erik B Sudderth. 3D Object Detection with Latent Support Surfaces. CVPR'18
+- PointNet, 3D-Conv, GNN, BEV-2D-Conv
+- 3D-Conv:
+	- Sliding Shapes:
+		- Shuran Song and Jianxiong Xiao. Sliding shapes for 3d object detection in depth images. ECCV'14
+		- Shuran Song and Jianxiong Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
+	- Martin Engelcke, Dushyant Rao, Dominic Zeng Wang, Chi Hay Tong, and Ingmar Posner. Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks. ICRA'17
+	- Bo Li. 3D Fully Convolutional Network for Vehicle Detection in Point Cloud. IROS'17
+	- **SECOND**: Yan Yan, Yuxing Mao and Bo Li. SECOND: Sparsely Embedded Convolutional Detection. Sensors'18
+	- **3D-SIS**: Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. CVPR'19
+	- **PartA2-Net**: Shi, Shaoshuai and Wang, Zhe and Shi, Jianping and Wang, Xiaogang and Li, Hongsheng. From Points to Parts: 3D Object Detection from Point Cloud with Part-aware and Part-aggregation Network. PAMI'20
+		- 3D-conv, compress height, 2d-conv;
+	- **3D-MPA**: Francis Engelmann, Martin Bokeloh, Alireza Fathi, Bastian Leibe, Matthias Nießner. Multi Proposal Aggregation for 3D Semantic Instance Segmentation. CVPR'20
+	- Mahyar Najibi, Guangda Lai, Abhijit Kundu, Zhichao Lu, Vivek Rathod, Thomas Funkhouser, Caroline Pantofaru, David Ross, Larry S. Davis, Alireza Fathi. DOPS: Learning to Detect 3D Objects and Predict their 3D Shapes. CVPR'20
+		- 3D-sparse U-Net;
+		- GNN;
+- PointNet:
+	- Qiangui Huang, Weiyue Wang, and Ulrich Neumann. Recurrent Slice Networks for 3D Segmentation of Point Clouds. CVPR'18
+	- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
+	- **Gspn**: Li Yi, Wang Zhao, He Wang, Minhyuk Sung, and Leonidas Guibas. Gspn: Generative shape proposal network for 3d instance segmentation in point cloud. CVPR'19
+		- https://github.com/ericyi/GSPN
+	- **STD**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
+- GNN/Attention:
+	- **MLCVNet**: Qian Xie, Yu-Kun Lai, Jing Wu, Zhoutao Wang, Yiming Zhang, Kai Xu, and Jun Wang. MLCVNet: Multi-Level Context VoteNet for 3D Object Detection. CVPR'20
+	- **Point-GNN**: Weijing Shi and Ragunathan (Raj) Rajkumar. Graph Neural Network for 3D Object Detection in a Point Cloud. CVPR'20
+- Frontal/BEV 2D backbone:
+	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17	
+	- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
+	- **Pixor**: B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
+	- **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
+	- **HDNET**: B. Yang, M. Liang, R. Urtasun. HDNET: Exploiting HD Maps for 3D Object Detection. CoRL'18
+	- **Complex-YOLO**: Martin Simon, Stefan Milz†, Karl Amende, Horst-Michael Gross. Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object Detection on Point Clouds. 2018
+	- **Pointpillars**: Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
+- **Fusion for RGBD** Feature fusion (2D paste to 3D or vice versa):
+	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
+	- **MTMF**: M Liang, B Yang, Y Chen, R Hu, R Urtasun. Multi-Task Multi-Sensor Fusion for 3D Object Detection. CVPR'19
+
+## Proposal
+- 2-stage (RPN), 1-stage;
+- 1-stage, vote for center, then center for box;
+	- **SECOND**: Yan Yan, Yuxing Mao and Bo Li. SECOND: Sparsely Embedded Convolutional Detection. Sensors'18
+	- **Complex-YOLO**: Martin Simon, Stefan Milz†, Karl Amende, Horst-Michael Gross. Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object Detection on Point Clouds. 2018
+		- E-RPN (Euler): complex number for angle;
+	- **HGNet**: Jintai Chen, Biwen Lei, Qingyu Song, Haochao Ying, Danny Z. Chen, Jian Wu. A Hierarchical Graph Network for 3D Object Detection on Point Clouds. CVPR'20
+		- GNN backbone, GNN module relation, 1-stage output;
+	- **SESS**: Na Zhao, Tat-Seng Chua, Gim Hee Lee. SESS: Self-Ensembling Semi-Supervised 3D Object Detection. CVPR'20
+	- **H3DNet**: Zaiwei Zhang, Bo Sun, Haitao Yang, and Qixing Huang. H3DNet: 3D Object Detection Using Hybrid Geometric Primitives. ECCV'20
+		- Extend from VoteNet, predict corner and edge;
+		- Proposals from SDF;
+- Fancier: interaction between proposals by PointNet/GNN;
+	- **3D-MPA**: Francis Engelmann, Martin Bokeloh, Alireza Fathi, Bastian Leibe, Matthias Nießner. Multi Proposal Aggregation for 3D Semantic Instance Segmentation. CVPR'20
+- 2-Stage, RPN:
+	- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
+		- 10k point, each predict a box;
+		- RPN-based refinement;
+	- **STD**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
+- **RGBD-only** (based on 2D detection):
+	- Byung-soo Kim, Shili Xu, and Silvio Savarese. Accurate localization of 3d objects from rgb-d data using segmentation hypotheses. CVPR'13
 	- Jean Lahoud and Bernard Ghanem. 2d-driven 3d object detection in rgb-d images. CVPR'17
 	- Charles R Qi, Wei Liu, Chenxia Wu, Hao Su, and Leonidas J Guibas. Frustum pointnets for 3d object detection from rgb-d data. CVPR'18
+
+## RGB-D Detection
 - Viewpoint-dependent detector, pose estimation by clustering 3D:
 	- Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Data-driven 3d voxel patterns for object category recognition. CVPR'15
 		- Input: 2D images
-		- Output: 3DVP, occlusion
-		<img src="/CV-3D/images/detection/3dvp1.png" alt="drawing" width="400"/>
-		<img src="/CV-3D/images/detection/3dvp2.png" alt="drawing" width="600"/>
+		- Output: 3DVP, occlusion\
+			<img src="/CV-3D/images/detection/3dvp1.png" alt="drawing" width="400"/>
+			<img src="/CV-3D/images/detection/3dvp2.png" alt="drawing" width="600"/>
 	- Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Subcategory-aware convolutional neural networks for object proposals and detection. WACV'17
+
+## Output/Supervision
+- Consistency after transformation:
+	- **SESS**: Na Zhao Tat-Seng Chua Gim Hee Lee. SESS: Self-Ensembling Semi-Supervised 3D Object Detection. CVPR'20
+- Segmentation
+	- Evangelos Kalogerakis, Melinos Averkiou, Subhransu Maji, and Siddhartha Chaudhuri. 3d shape segmentation with projective convolutional networks. CVPR'17
+	- **3DMV**: Angela Dai and Matthias Nießner. 3dmv: Joint 3d-multiview prediction for 3d semantic scene segmentation. 2018
+	- **3D-SIS**: Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. CVPR'19
+	- Pham, Q.H., Nguyen, T., Hua, B.S., Roig, G., Yeung, S.K.: Jsis3d: Joint semantic instance segmentation of 3d point clouds with multi-task pointwise networks and multi-value conditional random fields. CVPR'19
+	- Wang, X., Liu, S., Shen, X., Shen, C., Jia, J.: Associatively segmenting instances and semantics in point clouds.
+- Analysis-by-Synthesis:
+	- **Gspn**: Li Yi, Wang Zhao, He Wang, Minhyuk Sung, and Leonidas Guibas. Gspn: Generative shape proposal network for 3d instance segmentation in point cloud. CVPR'19
+		- c-VAE to generate the object;
 
 ## 3D Object Pose, Keypoints
 - R-CNN (ROI, then pose regression):
@@ -44,7 +120,6 @@
 		<img src="/CV-3D/images/detection/viewpts_keypts.png" alt="drawing" width="500"/>
 - Pat Marion, Peter R. Florence, Lucas Manuelli, and Russ Tedrake. Labelfusion: A pipeline for generating ground truth labels for real rgbd data of cluttered scenes. ICRA'18
 - Supasorn Suwajanakorn, Noah Snavely, Jonathan Tompson, and Mohammad Norouzi. Discovery of latent 3d keypoints via end-to-end geometric reasoning. NIPS'18
-- Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
 - 6D pose of known rigid objects:
 	- Yu Xiang, Tanner Schmidt, Venkatraman Narayanan, and Dieter Fox. Posecnn: A convolutional neural network for 6d object pose estimation in cluttered scenes. RSS'18
 	- Xinke Deng, Arsalan Mousavian, Yu Xiang, Fei Xia, Timothy Bretl, and Dieter Fox. Poserbpf: A rao-blackwellized particle filter for 6d object pose tracking. RSS'19
@@ -55,18 +130,6 @@
 	- Problem setup: input: stereo camera with known parameters; output 3D keypoints;
 	- Algorithm:\
 		<img src="/CV-3D/images/detection/tod-1.png" alt="drawing" width="400"/>
-
-## 3D Box from Depth
-- S. Song and J. Xiao. Sliding shapes for 3d object detection in depth images. ECCV'14
-- S. Song and J. Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. ECCV'16
-- B. Li. 3d fully convolutional network for vehicle detection in point cloud. IROS'16
-
-## 2D-3D Fusion
-- **Frustum PointNet**: C Qi, W Liu, C Wu, H Su, L Guibas. Frustum PointNets for 3D Object Detection from RGB-D Data, CVPR'18
-	- RGB-D
-	- 2D-detection: 2D bounding boxes;
-	- 3D-frustum: FPN; pointnet classification for each point; T-net (STN)
-	<img src="/CV-3D/images/3d_input/frustum-pointnet.png" alt="drawing" width="600"/>
 
 ## Active Learning
 - Li Yi, Vladimir G. Kim, Duygu Ceylan, I-Chao Shen, Mengyan Yan, Hao Su, Cewu Lu, Qixing Huang, Alla Sheffer, Leonidas Guibas. A Scalable Active Framework for Region Annotation in 3D Shape Collections. SIGGRAPH Asia'18

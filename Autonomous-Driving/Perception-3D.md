@@ -18,6 +18,9 @@
 	- Different from 2D, BEV/3D signal does not have large scale variation;
 	- Multi-scale is very important in 2D detection;
 
+## Survey
+- Eduardo Arnold, Omar YAl-Jarrah, Mehrdad Dianati, Saber Fallah, David Oxtoby, and Alex Mouzakitis. A Survey on 3D Object Detection Methods for Autonomous Driving Applications. T-ITS'19
+
 ## Detection
 - BEV + Frontal (Fusion)
 	- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
@@ -134,7 +137,7 @@
 		- 0. Range view;
 		- 1. FCN (class probability for each LIDAR point)
 		- 2. Mean-shift clustering for points; adaptive-NMS;
-	<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
+		<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
 
 ## Lidar Segmentation
 - C. Zhang,W. Luo, and R. Urtasun. Efficient convolutions for real-time semantic segmentation of 3d point clouds. 3DV'18

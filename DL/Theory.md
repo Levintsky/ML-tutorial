@@ -3,10 +3,14 @@
 ## Unclassified
 - Léonard Blier, Yann Ollivier. The Description Length of Deep Learning models. NIPS'18
 
-## Approximator
-- Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks, 4(2):
-251–257, 1991.
+## Universal Approximator
+- Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks, 4(2): 251–257, 1991.
 - Hongzhou Lin, Stefanie Jegelka. ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
+- M. Leshno, V. Lin, A. Pinkus, and S. Schocken. Multilayer feedforward networks with a non- polynomial activation function can approximate any function. NN'93
+
+## Mean-Field/Optimal-Transport Theory
+- Chizat, Lenaic, and Francis Bach. On the global convergence of gradient descent for over-parameterized models using optimal transport. NIPS'18
+- Mei, Song, Theodor Misiakiewicz, and Andrea Montanari. Mean-field theory of two-layers neural networks: dimension-free bounds and kernel limit. arXiv'19
 
 ## Convergence
 - Over-Parametrization:

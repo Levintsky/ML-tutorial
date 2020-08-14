@@ -65,6 +65,7 @@
 - Andreas Damianou and Neil Lawrence. Deep gaussian processes. AISTATS'13
 - David Duvenaud, Oren Rippel, Ryan Adams, and Zoubin Ghahramani. Avoiding pathologies in very deep networks. AISTATS'14
 - Thang Bui, Daniel Herna ́ndez-Lobato, Jose Hernandez-Lobato, Yingzhen Li, and Richard Turner. Deep gaussian processes for regression using approximate expectation propagation. ICML'16
+- J. H. Lee, Y. Bahri, R. Novak, S. S. Schoenholz, J. Pennington, and J. Sohl-Dickstein. Deep neural networks as gaussian processes. ICLR'18
 
 ## Connection with Neural Network
 - Radford M. Neal. Priors for infinite networks. 1994

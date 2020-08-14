@@ -13,9 +13,13 @@
 - Image: Scene-graph;
 
 ## Unclassified
+- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
+- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
+- Link Prediction Based on Graph Neural Networks. NIPS'18
+- Hierarchical Graph Representation Learning with Differentiable Pooling (Jure Leskovec). NIPS'18
+- LinkNet: Relational Embedding for Scene Graph. NIPS'18
 - Yin Li, Abhinav Gupta. Beyond Grids: Learning Graph Representations for Visual Recognition. NIPS'18
-- **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are
-Graph Neural Networks? ICLR'19
+- **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. 2019. How Powerful are Graph Neural Networks? ICLR'19
 - Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman. Provably Powerful Graph Networks. NIPS'19
 
 ## Legacy
@@ -86,7 +90,7 @@ Graph Neural Networks? ICLR'19
 - P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
 	<img src="/Graph/images/gcn-attention.png" alt="drawing" width="500"/>
 - J. Zhang, X. Shi, J. Xie, H. Ma, I. King, and D.-Y. Yeung, Gaan: Gated attention networks for learning on large and spatiotemporal graph. UAI'18
-- J. B. Lee, R. Rossi, and X. Kong, “Graph classification using structural attention. KDD'18
+- J. B. Lee, R. Rossi, and X. Kong, Graph classification using structural attention. KDD'18
 - S. Abu-El-Haija, B. Perozzi, R. Al-Rfou, and A. A. Alemi, Watch your step: Learning node embeddings via graph attention. NIPS'18
 
 ## Graph Auto-Encoders
@@ -127,17 +131,10 @@ Graph Neural Networks? ICLR'19
 		- Combine self-attention in computer vision
 - Z Xinyi, L Chen. Capsule Graph Neural Network. ICLR'19
 	- https://docs.google.com/presentation/d/1g48ETPJGzi8xDAWEB53KiYxUCWVHwOBQCePvK5c10Ow/edit#slide=id.g2645f83e45_0_0
+- Guohao Li, Matthias Muller, Ali Thabet, and Bernard Ghanem. DeepGCNs: Can GCNs Go as Deep as CNNs? ICCV'19
 
 ## Applications
 - Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018
-- Raposo, D., Santoro, A., Barrett, D., Pascanu, R., Lillicrap, T., and Battaglia, P. (2017). Discovering
-objects and their relations from entangled scene representations. ICLR Workshop 2017
+- Raposo, D., Santoro, A., Barrett, D., Pascanu, R., Lillicrap, T., and Battaglia, P. Discovering objects and their relations from entangled scene representations. ICLR Workshop 2017
 - Garcia, V. and Bruna, J. Few-shot learning with graph neural networks. ICLR 2017
 - Bordes, A., Usunier, N., Garcia-Duran, A., Weston, J., and Yakhnenko, O. Translating embeddings for modeling multi-relational data. NIPS 2013
-
-## Unclassified
-- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
-- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
-- Link Prediction Based on Graph Neural Networks. NIPS'18
-- Hierarchical Graph Representation Learning with Differentiable Pooling (Jure Leskovec). NIPS'18
-- LinkNet: Relational Embedding for Scene Graph. NIPS'18

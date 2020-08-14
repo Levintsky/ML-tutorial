@@ -30,3 +30,13 @@
 - Yuan Cao, Quanquan Gu. Tight Sample Complexity of Learning One-hidden-layer Convolutional Neural Networks
 - Jingjing Xu, Xu Sun, Zhiyuan Zhang, Guangxiang Zhao, Junyang Lin. Understanding and Improving Layer Normalization
 - Janice Lan, Rosanne Liu, Hattie Zhou, Jason Yosinski. LCA: Loss Change Allocation for Neural Network Training
+
+## Loss Surface
+- A. Choromanska, M. Henaff, M. Mathieu, G. B. Arous, and Y. LeCun. The Loss Surfaces of Multilayer Networks. JMLR'15
+- J. Pennington and Y. Bahri. Geometry of neural network loss surfaces via random matrix theory. ICML'16
+- S. Mei, A. Montanari, and P.-M. Nguyen. A mean field view of the landscape of two-layer neural networks. PNAS'18
+- L. Sagun, U. Evci, V. U. Gu ̈ney, Y. Dauphin, and L. Bottou. Empirical analysis of the hessian of over-parametrized neural networks. CoRR'17
+
+## Saddle Point
+- Y. N. Dauphin, R. Pascanu, C. Gulcehre, K. Cho, S. Ganguli, and Y. Bengio. Identifying and attacking the saddle point problem in high-dimensional non-convex optimization. NIPS'14
+- R. Pascanu, Y. N. Dauphin, S. Ganguli, and Y. Bengio. On the saddle point problem for non-convex optimization. arxiv'14
