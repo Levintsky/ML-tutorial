@@ -7,14 +7,22 @@
 - **Matterport3D**: Chang, Angel and Dai, Angela and Funkhouser, Thomas and Halber, Maciej and Niessner, Matthias and Savva, Manolis and Song, Shuran and Zeng, Andy and Zhang, Yinda. Matterport3D: Learning from RGB-D Data in Indoor Environments. 3DV'17
 	- RGB-D indoor Environment;
 
-## Unclassified
-- **ICCV**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, and Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
+## Codebase
+- Libraries:
+	- OpenPCDet: https://github.com/open-mmlab/OpenPCDet
+		- Support: PointRCNN, second, pointpillar, Part-A2, PV-RCNN;
+		- spconv
+	- Minkowski Engine:
+- 3D-SIS: https://github.com/Sekunde/3D-SIS
+- SECOND: https://github.com/traveller59/second.pytorch
+- Tensorflow:
+	- GSPN: https://github.com/ericyi/GSPN
 
 ## Misc
 - Template-based:
 	- Liangliang Nan, Ke Xie, and Andrei Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
 	- Yangyan Li, Angela Dai, Leonidas Guibas, and Matthias Nießner. Database-assisted object retrieval for real-time 3d reconstruction. CSG'15
-	- Or Litany, Tal Remez, Daniel Freedman, Lior Shapira, Alex Bronstein, and Ran Gal. CVIU'17
+	- **ASIST**: Or Litany, Tal Remez, Daniel Freedman, Lior Shapira, Alex Bronstein, and Ran Gal. ASIST: Automatic Semantically Invariant Scene Transformation. CVIU'17
 - B. Li. 3d fully convolutional network for vehicle detection in point cloud. IROS'16
 	- 3D Box from Depth
 

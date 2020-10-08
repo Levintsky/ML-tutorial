@@ -44,6 +44,7 @@
 ## Two-Stage
 - RCNN family:\
 	<img src="/CV-2D/images/detection/rcnn-family-summary.png" alt="drawing" width="650"/>
+- D. Erhan, C. Szegedy, A. Toshev, and D. Anguelov. Scalable object detection using deep neural networks. CVPR'14
 - **R-CNN**: R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. CVPR'14
 	- Pretrain CNN;
 	- **Selective search**: 2000 proposals;
@@ -56,6 +57,7 @@
 	- **ImageNet 200: 31.4%**
 	<img src="/CV-2D/images/detection/RCNN.png" alt="drawing" width="600"/>
 	<img src="/CV-2D/images/detection/RCNN-eqn.png" alt="drawing" width="400"/>
+- **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
 - **Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV'15
 	- **Selective search**
 	- Backbone CNN, last max-pooling to RoIPooling;
@@ -89,6 +91,7 @@
 	<img src="/CV-2D/images/detection/faster-RCNN.png" alt="drawing" width="600"/>
 	<img src="/CV-2D/images/detection/faster-RCNN-eqn.png" alt="drawing" width="500"/>
 - **R-FCN**: J. Dai, Y. Li, K. He, and J. Sun. R-fcn: Object detection via region-based fully convolutional networks. NIPS'16
+- A. Shrivastava, R. Sukthankar, J. Malik, and A. Gupta. Beyond skip connections: Top-down modulation for object detection. arxiv'16
 - **FPN**: T.-Y. Lin, P. Dollar, R. Girshick, K. He, B. Hariharan, and S. Belongie. Feature pyramid networks for object detection. CVPR'17
 	<img src="/CV-2D/images/detection/fpn.png" alt="drawing" width="500"/>
 - **Mask R-CNN**: Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick. Mask R-CNN. ICCV'17
@@ -103,26 +106,22 @@
 	- Speed: 5fps\
 	<img src="/CV-2D/images/detection/mask-rcnn.png" alt="drawing" width="500"/>
 	<img src="/CV-2D/images/detection/mask-rcnn-eqn.png" alt="drawing" width="500"/>
-- **RetinaNet**: Tsung-Yi Lin Priya Goyal Ross Girshick Kaiming He Piotr Dollar. Focal Loss for Dense Object Detection. ICCV 2017
+
+## One-stage detector
+- J. Huang, V. Rathod, C. Sun, M. Zhu, A. Korattikara, A. Fathi, I. Fischer, Z. Wojna, Y. Song, S. Guadarrama, and K. Murphy. Speed/accuracy trade-offs for modern convolutional object detectors. CVPR'17
+- **RetinaNet**: Tsung-Yi Lin Priya Goyal Ross Girshick Kaiming He Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
 	- Insight: solve difficulty imbalance;
 	- Reduce loss for well-classified classes; focus on harder classes;
 	- Foreground/background imbalance;
 	- gamma=1: normal Cross-Entropy, in paper, alpha=0.25, gamma=2 is used;
 	<img src="/CV-2D/images/detection/focal-loss.png" alt="drawing" width="500"/>
-- Proposals:
-	- **Selective Search**: J. R. Uijlings, K. E. van de Sande, T. Gevers, and A. W. Smeulders. Selective search for object recognition. IJCV 2013
-	- **EdgeBoxes**:  C. L. Zitnick and P. Dollar. Edge boxes: Locating object proposals from edges. ECCV 2014
-	- **DeepMask**:
-		- P. O. Pinheiro, R. Collobert, and P. Dollar. Learning to segment object candidates. NIPS'15
-		- P. O. Pinheiro, T.-Y. Lin, R. Collobert, and P. Dollar. Learning to refine object segments. ECCV'16
-
-## One-stage detector:
-- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
-	- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
-	- Multiscale: FPN;
-		<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
-		<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
-- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
+- SSD:
+	- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
+		- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+		- Multiscale: FPN;
+			<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
+			<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
+	- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
 - YOLO:
 	- Summaries:
 		- https://zhuanlan.zhihu.com/p/136382095
@@ -173,5 +172,25 @@
 	- **YOLOv4**: Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. YOLOv4: Optimal Speed and Accuracy of Object Detection. 2020
 		- https://github.com/AlexeyAB/darknet
 - Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
-- MSRA:
-	- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
+
+## Proposals, Hard Negative Mining, ...
+- Proposals:
+	- K.-K. Sung and T. Poggio. Learning and Example Selection for Object and Pattern Detection. 1994
+	- **Selective Search**: J. R. Uijlings, K. E. van de Sande, T. Gevers, and A. W. Smeulders. Selective search for object recognition. IJCV 2013
+	- **EdgeBoxes**: C. L. Zitnick and P. Dollar. Edge boxes: Locating object proposals from edges. ECCV 2014
+	- **DeepMask**:
+		- P. O. Pinheiro, R. Collobert, and P. Dollar. Learning to segment object candidates. NIPS'15
+		- P. O. Pinheiro, T.-Y. Lin, R. Collobert, and P. Dollar. Learning to refine object segments. ECCV'16
+- Hard negative mining:
+	- P. F. Felzenszwalb, R. B. Girshick, and D. McAllester. Cascade object detection with deformable part models. CVPR'10
+	- S. Bell, C. L. Zitnick, K. Bala, and R. Girshick. Inside-outside net: Detecting objects in context with skip pooling and recurrent neural networks. CVPR'16
+	- A. Shrivastava, A. Gupta, and R. Girshick. Training region-based object detectors with online hard example mining. CVPR'16
+- Loss design:
+	- Focal loss (RetinaNet);
+
+## Between Object
+- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
+
+## Legacy Features
+- **HOG**: N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. CVPR'05
+- P. Dollar, Z. Tu, P. Perona, and S. Belongie. Integral channel features. BMVC'09
