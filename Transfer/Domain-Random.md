@@ -65,6 +65,8 @@
 			<img src="/RL/images/transfer/meta-sim2.png" alt="drawing" width="500"/>
 			<img src="/RL/images/transfer/meta-sim3.png" alt="drawing" width="600"/>
 			<img src="/RL/images/transfer/meta-sim4.png" alt="drawing" width="500"/>
+		- Jeevan Devaranjan, Amlan Kar, Sanja Fidler. Meta-Sim2: Unsupervised Learning of Scene Structure for Synthetic Data Generation. ECCV'20
+		- D Li, A Kar, N Ravikumar, AF Frangi, S Fidler. Federated Simulation for Medical Imaging. MICCAI'20
 	- Match Real Data Distribution
 		- **SimOpt**: Y Chebotar, A Handa, V Makoviychuk, M Macklin, J Issac, N Ratliff, D Fox. Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience. 2019
 			- https://sites.google.com/view/simopt

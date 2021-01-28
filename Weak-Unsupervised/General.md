@@ -1,7 +1,55 @@
 # Unsupervised, Weak-Supervised, SSL
 
-## Resources
-- NIPS'18 Tutorial: https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
+## Tutorials
+- NIPS'18 Tutorial by M. A. Ranzato and A. Graves. Deep unsupervised learning.
+	- https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
+	- Edwards & Storkey, Towards a Neural Statistician, (2017)
+		- one must take seriously the idea of working with datasets, rather than datapoints, as the key objects to model.
+	- **Work**:
+		- image translation
+		- image generation in some domains
+	- **Sort-of-Work**:
+		- SSL in some applications
+	- **Does-not-Work-yet**:
+		- General feature learning
+- **Tutorial**: ECCV'2020
+	- Deepak Pathak: https://youtu.be/fUMpC_hoedA
+		- RL: intrinsic motivation/curiosity;
+			- Predict consequences of action;
+			- Bad prediction: high curiosity;
+	- Alexei Efros: https://youtu.be/iTbfEXFwDJc
+		- Optimistic view: PASCAL VOC -> ImageNet -> MS COCO -> LVIS;
+		- No-fixed dataset: data-augmentation?
+		- Continual learning? Catastrophic forgetting?
+		- **Test-time training (TTT)**
+			- A Jabri, A Owens, A Efros. Space-Time Correspondence as a Contrastive Random Walk. NeurIPS'20
+				- Task: play video forward then backward, should end at the same point;
+				- https://ajabri.github.io/videowalk/
+				- https://github.com/ajabri/videowalk
+	- Stella Yu: https://youtu.be/F5mt4z-w_Mk
+		- Metric learning?
+		- Non-parametric softmax instance;
+	- Ishan Misra: https://youtu.be/gbziPIn9uDI
+		- Multi-view invariance, grouping;
+		- **PIRL**: Ishan Misra, Laurens van der Maaten. Self-Supervised Learning of Pretext-Invariant Representations. CVPR'20
+			- Invariant to pretext task;
+		- AVID-CMA: Pedro Morgado, Nuno Vasconcelos, Ishan Misra. Audio-Visual Instance Discrimination with Cross-Modal Agreement. arxiv'20
+			- Task: in same video, audio/video match in time?
+			- https://github.com/facebookresearch/AVID-CMA
+		- **SWAV**: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NeurIPS'20
+			- Task: same image, two augmentation zt, zs and their query codes qt, qs, loss as l(zt, qs) + l(zs, qt);
+			- https://github.com/facebookresearch/swav
+	- Carl Doersch: https://youtu.be/RWCc0nZOSBw
+		- **BYOL**: Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, Michal Valko. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
+			- https://github.com/deepmind/deepmind-research/tree/master/byol
+			- step 1: no-negative;
+			- step 2: stop-gradient; (freeze target network)
+				- import to avoid collapse;
+			- step 3: prediction; **predict the other representation?**
+		- **CrossTransformer**:
+	- Paolo Favaro: https://youtu.be/APwHDZZcLuY
+		- Short-cut: predict from local features;
+		- Build global features: distinguish between objects;
 
 ## Augment Consistency
 - **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019

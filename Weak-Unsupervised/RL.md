@@ -21,8 +21,15 @@
 
 ## Intrinsic Reward
 - Curious Agent
-	- Pathak et. al. Curiosity-driven Exploration by Self-supervised Prediction (2017)
+	- Pathak et. al. Curiosity-driven Exploration by Self-supervised Prediction. ICML'17
+		- https://pathak22.github.io/noreward-rl/index.html#sourceCode
 		- **Prediction Error**: choose actions to maximise prediction error in observations.
+	- Deepak Pathak, Dhiraj Gandhi, Abhinav Gupta. Self-Supervised Exploration via Disagreement. ICML'19
+		- https://pathak22.github.io/exploration-by-disagreement/index.html#sourceCode
+	- Ramanan Sekar, Oleh Rybkin, Kostas Daniilidis, Pieter Abbeel, Danijar Hafner, Deepak Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
+		- https://github.com/ramanans1/plan2explore
+	- Wenlong Huang, Igor Mordatch, Deepak Pathak. One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control. ICML'20
+		- https://github.com/huangwl18/modular-rl/
 - Baldi et. al., Bayesian Surprise Attracts Human Attention. (2005)
 - Prediction Gain: Bellemare et. al. (Unifying Count-Based Exploration and Intrinsic Motivation. 2016)
 - Complexity Gain: Graves et. al. Automated Curriculum learning For Neural Networks. (2017)

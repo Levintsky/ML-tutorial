@@ -5,8 +5,12 @@
 	- B. Lake, R. Salakhutdinov, J. Gross, and J. Tenenbaum. One shot learning of simple visual concepts. 2011
 	- B. M. Lake, R. R. Salakhutdinov, and J. Tenenbaum. Oneshot learning by inverting a compositional causal process. NIPS 2013
 
-## Unclassified
+## Metric Learning
+- Jake Snell, Kevin Swersky, Richard Zemel. Prototypical Networks for Few-shot Learning. NeurIPS'17
 - TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS'18
+- SEN: A Novel Dissimilarity Measure for Prototypical Few Shot Learning Networks. ECCV'20
+
+## Unclassified
 - Ruixiang ZHANG, Tong Che, Zoubin Ghahramani, Yoshua Bengio, Yangqiu Song. MetaGAN: An Adversarial Approach to Few-Shot Learning. NIPS'18
 
 ## NIPS'19
