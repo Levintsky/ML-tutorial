@@ -114,10 +114,11 @@
 	- Application: 3D objects from single images; 3D-GAN;\
 		<img src="/Graphics/images/render/dib-r.png" alt="drawing" width="500"/>
 - Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, Yaser Sheikh. Neural Volumes: Learning Dynamic Renderable Volumes From Images Paper Abstract Author Preprint Paper Video. SIGGRAPH'19
-- Justus Thies, Michael Zollhofer Matthias Niessner. Deferred Neural Rendering: Image Synthesis using Neural Textures. SIGGRAPH'19
+- Justus Thies, Michael Zollhofer, Matthias Niessner. Deferred Neural Rendering: Image Synthesis using Neural Textures. SIGGRAPH'19
 - Lingjie Liu, Weipeng Xu, Michael Zollhoefer, Hyeongwoo Kim, Florian Bernard, Marc Habermann, Wenping Wang, Christian Theobalt. Neural Rendering and Reenactment of Human Actor Videos. SIGGRAPH'19
 - Shih-En Wei, Jason Saragih, Tomas Simon, Adam W. Harley, Stephen Lombardi, Michal Perdoch, Alexander Hypes, Dawei Wang, Hernan Badino, Yaser Sheikh. VR Facial Animation via Multiview Image Translation. SIGGRAPH'19
 - Ohad Fried, Ayush Tewari, Michael Zollhofer, Adam Finkelstein, Eli Shechtman, Dan B Goldman, Kyle Genova, Zeyu Jin, Christian Theobalt, Maneesh Agrawala. Text-based Editing of Talking-head Video. SIGGRAPH'19
+- Yuxuan Zhang, Wenzheng Chen, Huan Ling, Jun Gao, Yinan Zhang, Antonio Torralba, Sanja Fidler. Image gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. 2020
 
 ## Applications
 - 3D face reconstruction:

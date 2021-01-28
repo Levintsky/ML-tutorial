@@ -58,6 +58,8 @@
 	- **Gspn**: Li Yi, Wang Zhao, He Wang, Minhyuk Sung, and Leonidas Guibas. Gspn: Generative shape proposal network for 3d instance segmentation in point cloud. CVPR'19
 		- https://github.com/ericyi/GSPN
 	- **STD**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
+	- **3DSSD**: Zetong Yang, Yanan Sun, Shu Liu, Jiaya Jia. 3DSSD: Point-based 3D Single Stage Object Detector. CVPR'20
+		- https://github.com/Jia-Research-Lab/3DSSD
 - GNN/Attention:
 	- **MLCVNet**: Qian Xie, Yu-Kun Lai, Jing Wu, Zhoutao Wang, Yiming Zhang, Kai Xu, and Jun Wang. MLCVNet: Multi-Level Context VoteNet for 3D Object Detection. CVPR'20
 	- **Point-GNN**: Weijing Shi and Ragunathan (Raj) Rajkumar. Graph Neural Network for 3D Object Detection in a Point Cloud. CVPR'20
@@ -69,6 +71,8 @@
 	- **HDNET**: B. Yang, M. Liang, R. Urtasun. HDNET: Exploiting HD Maps for 3D Object Detection. CoRL'18
 	- **Complex-YOLO**: Martin Simon, Stefan Milz†, Karl Amende, Horst-Michael Gross. Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object Detection on Point Clouds. 2018
 	- **Pointpillars**: Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
+	- **CenterPoint**: Tianwei Yin, Xingyi Zhou, Philipp Krähenbühl. Center-based 3D Object Detection and Tracking. NIPS'20
+		- https://github.com/tianweiy/CenterPoint
 - **Fusion for RGBD** Feature fusion (2D paste to 3D or vice versa):
 	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
 	- **MTMF**: M Liang, B Yang, Y Chen, R Hu, R Urtasun. Multi-Task Multi-Sensor Fusion for 3D Object Detection. CVPR'19

@@ -18,7 +18,7 @@
 	- https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7
 - **Incpetion-V2**: Sergey Ioffe, Christian Szegedy. Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML'15
 - **Inception-V3**: Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna. Rethinking the Inception Architecture for Computer Vision. CVPR'16
-- **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR 2016
+- **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR'16
 	- downample: conv1x1 (stride=2) - BN
 	- Basic block:
 		- x -> Conv3x3 - BN - ReLU - Conv3x3 - BN -> out
@@ -39,6 +39,7 @@
 		- Res1 (64) - Res2 (down 112 x 28 x 28) - Res3 (down 256 x 14 x 14, down) - Res4 (down 512 x 7 x 7)
 		- Average-pool (7x7) - fc1000
 - **Inception-V4**: Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, Alex Alemi. Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning; 2016
+- **Hourglass**: Newell, A., Yang, K., and Deng, J. Stacked hourglass networks for human pose estimation. ECCV'16
 - **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR'17
 	- Insight: **Grouped-Convolution**
 	- 2nd of ILSVR'16

@@ -7,6 +7,14 @@
 - **Squeezenet**: Forrest N. Iandola, Matthew W. Moskewicz, Khalid Ashraf, Song Han, William J. Dally, and Kurt Keutzer. Squeezenet: Alexnet-level accuracy with 50x fewer parameters and <1mb model size. CoRR'16
 - Gao Huang, Shichen Liu, Laurens van der Maaten, and Kilian Q. Weinberger. Condensenet: An efficient densenet using learned group convolutions. CoRR'16
 - Bichen Wu, Alvin Wan, Xiangyu Yue, Peter H. Jin, Sicheng Zhao, Noah Golmant, Amir Gholaminejad, Joseph Gonzalez, and Kurt Keutzer. Shift: A zero flop, zero parameter alternative to spatial convolutions.
+- Azalia Mirhoseini, Hieu Pham, Quoc V. Le, Benoit Steiner, Rasmus Larsen, Yuefeng Zhou, Naveen Kumar, Mohammad Norouzi, Samy Bengio, and Jeff Dean. Device placement optimization with reinforcement learning. ICML'17
+- Jin-Dong Dong, An-Chieh Cheng, Da-Cheng Juan, Wei Wei, and Min Sun. Dpp-net: Device-aware progressive search for pareto-optimal neural architectures. ECCV'18
+	- Cell-based search
+- Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization. NIPS'18
+	- Place different OPs on different GPUs
+	- Cross Entropy
+	- RL with PPO
+- Multiple Instance Learning for Efficient Sequential Data Classification on Resource-constrained Devices. NIPS'18
 
 ## Mobile
 - MobileNet Series:
@@ -61,21 +69,13 @@
 		- Depth scaling
 		- Resolution scaling
 		- Compound scaling
-		<img src="/CV/images/efficientnet-baseline.jpg" alt="drawing" width="500"/>
-		<img src="/CV/images/efficientnet-performance.jpg" alt="drawing" width="500"/>
-- **ShuffleNet**: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR 2018
+		<img src="/CV-2D/images/efficientnet-baseline.jpg" alt="drawing" width="500"/>
+		<img src="/CV-2D/images/efficientnet-performance.jpg" alt="drawing" width="500"/>
+- **ShuffleNet**: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR'18
 	- Traditional Bottleneck: ReLU[x + (conv1x1 BN-ReLU DWconv3x3 BN-ReLU conv1x1 BN)]
 	- ShuffleNet: ReLU[x + (**Gconv**1x1 BN-ReLU **Channel-Shuffle** DWconv3x3 BN-ReLU **Gconv**1x1 BN)]
-- **FBNet**: Bichen Wu, Xiaoliang Dai, Peizhao Zhang, Yanghan Wang, Fei Sun, Yiming Wu, Yuandong Tian, Peter Vajda, Yangqing Jia, Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
-
-## Device Placement
-- Azalia Mirhoseini, Hieu Pham, Quoc V. Le, Benoit Steiner, Rasmus Larsen, Yuefeng Zhou, Naveen Kumar, Mohammad Norouzi, Samy Bengio, and Jeff Dean. Device placement optimization with reinforcement learning. ICML'17
-
-## Misc
-- Jin-Dong Dong, An-Chieh Cheng, Da-Cheng Juan, Wei Wei, and Min Sun. Dpp-net: Device-aware progressive search for pareto-optimal neural architectures. ECCV'18
-	- Cell-based search
-- Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization. NIPS'18
-	- Place different OPs on different GPUs
-	- Cross Entropy
-	- RL with PPO
-- Multiple Instance Learning for Efficient Sequential Data Classification on Resource-constrained Devices. NIPS'18
+- **FBNet**:
+	- ChamNet: Towards Efficient Network Design through Platform-Aware Model Adaptation. 2018
+	- V1: Bichen Wu, Xiaoliang Dai, Peizhao Zhang, Yanghan Wang, Fei Sun, Yiming Wu, Yuandong Tian, Peter Vajda, Yangqing Jia, Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
+	- **FBNetV2**: Alvin Wan, Xiaoliang Dai, Peizhao Zhang, Zijian He, Yuandong Tian, Saining Xie, Bichen Wu, Matthew Yu, Tao Xu, Kan Chen, Peter Vajda, Joseph E. Gonzalez. FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
+		- https://github.com/facebookresearch/mobile-vision

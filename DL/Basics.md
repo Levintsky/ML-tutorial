@@ -81,7 +81,7 @@
 	- C. J. Maddison, A. Mnih, and Y. Whye Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
 		- Independently discover the same trick;
 	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
-		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When tau approaches 0, equivalent to Gumbel:
+		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When tau approaches 0, equivalent to Gumbel:\
 			<img src="/DL/images/basics/gumbel-softmax2.png" alt="drawing" width="500"/>
 		- True Gumbel-softmax distribution:\
 			<img src="/DL/images/basics/gumbel-softmax-true.png" alt="drawing" width="500"/>

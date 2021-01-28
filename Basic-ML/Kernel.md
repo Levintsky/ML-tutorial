@@ -122,6 +122,9 @@
 		- A hard EM alg:\
 			<img src="/Basic-ML/images/svm/latent-svm-4.png" alt="drawing" width="400"/>
 
+## Metric Learning
+- Ismail Elezi, Sebastiano Vascon, Alessandro Torcinovich, Marcello Pelillo, Laura Leal-Taixe. The Group Loss for Deep Metric Learning. ECCV'20
+
 ## NIPS'19
 - Motonobu Kanagawa, Philipp Hennig. Convergence Guarantees for Adaptive Bayesian Quadrature Methods
 - Ulysse Marteau-Ferey, Francis Bach, Alessandro Rudi. Globally Convergent Newton Methods for Ill-conditioned Generalized Self-concordant Losses

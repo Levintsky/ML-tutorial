@@ -38,6 +38,7 @@ Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Infere
 		- Inference: modeling parameters to infer unkonwn quantities within a model;
 		- Representation learning;
 		- RL: imitation learning; Yannick Schroecker, Mel Vecerik, and Jon Scholz. Generative predecessor models for sample-efficient imitation learning. ICLR'19
+- Survey: Ivan Kobyzev, Simon Prince, Marcus Brubaker. Normalizing flows: An introduction and review of current methods. PAMI'20
 
 ## Problem Definition
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!

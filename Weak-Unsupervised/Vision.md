@@ -1,30 +1,18 @@
 # Weakly-Supervsied Learning
 
-## Tutorial
-- **Tutorial**: M. A. Ranzato and A. Graves. Deep unsupervised learning. NIPS Tutorial, 2018
-- Edwards & Storkey, Towards a Neural Statistician, (2017)
-	- one must take seriously the idea of working with datasets, rather than datapoints, as the key objects to model.
-- **Work**:
-	- image translation
-	- image generation in some domains
-- **Sort-of-Work**:
-	- SSL in some applications
-- **Does-not-Work-yet**:
-	- General feature learning
-
 ## Unclassified
 - Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
 
-## Images
+## Images Tasks
 - Summaries:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
-- Context prediction:
+- **Context/Jigsaw** prediction:
 	- Unsupervised Visual Representation Learning by Context Prediction. ICCV 2015
 	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
-- Input two image patches, predict spatial relationship:
+- **Spatial relationship&** for two image patches;
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
-- Predict color from gray scale values:
+- **Colorization**:
 	- Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
 - Predict image rotation:
 	- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
@@ -55,7 +43,7 @@
 		- Conclusion 2: larger amount of pretrain -> better target domain accuracy;
 		- Conclusion 3: the smaller the label noise (hashtags are noisy) -> better target accuracy;
 	- A Joulin, L van der Maaten, A Jabri, N Vasilache. Learning Visual Features from Large Weakly Supervised Data. ECCV 2016
-- Exemplar:
+- **Contrastive** Exemplar:
 	- **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
 		- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
 		- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
@@ -80,21 +68,22 @@
 	- Half mAP
 
 ## Videos
-- Predict video forward or backward
+- **Frame** prediction forward or backward
 	- D. Wei et al. Self-supervision using the arrow of time, CVPR 2018
 	- I. Misra, C. L. Zitnick, and M. Hebert. Shuffle and Learn: Unsupervised Learning using Temporal Order Verification. ECCV'16
 		- Predict shuffle;
-- Predict motion/ego-motion/motion-mask:
+	- Vondrick et al NIPS'16, CVPR'17
+	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS 2017
+- Predict motion/flow/ego-motion/motion-mask:
 	- P. Agrawal, J. Carreira, and J. Malik. Learning to see by moving. ICCV'15
 	- D. Jayaraman and K. Grauman. Learning image representations tied to egomotion. ICCV'15
+	- Walker et al. ECCV'16
 	- D. Pathak, R. Girshick, P. Dollar, T. Darrell, and B. Hariharan. Learning features by watching objects move. CVPR'17
-- Tracking:
+- **Tracking**:
 	- X. Wang and A. Gupta. Unsupervised learning of visual representations using videos. ICCV'15
-- Coloring videos
+- **Coloring** videos
 	- C. Vondrik et al. Tracking emerges from colorizing videos, ECCV 2018
-- Predict future frame
-	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS 2017
-- Predict one modality from the other
+- **Multi-modality** prediction from each other
 	- V. de Sa, Learning classification from unlabeled data, NIPS 1994
 	- R. Arandjelovic et al. Object that sound, ECCV 2018
 - R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15

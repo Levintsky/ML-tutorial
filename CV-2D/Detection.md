@@ -12,11 +12,15 @@
 			<img src="/CV-2D/images/detection/pr-curve.png" alt="drawing" width="350"/>
 - Benchmarks
 	- **PASCAL-VOC**: M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. IJCV'10
+	- **ILSVRC2012**: ImageNet
 	- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
 
 ## Summaries
 - A very good blog (Lilian Weng, OpenAI): https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
 - One stage: https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
+
+## Misc
+- Y. Zhu, C. Zhao, J. Wang, X. Zhao, Y. Wu, and H. Lu. Couplenet: Coupling global structure with local parts for object detection. ICCV'17
 
 ## Detectron
 - Detectron v1: https://github.com/facebookresearch/Detectron
@@ -44,7 +48,11 @@
 ## Two-Stage
 - RCNN family:\
 	<img src="/CV-2D/images/detection/rcnn-family-summary.png" alt="drawing" width="650"/>
-- D. Erhan, C. Szegedy, A. Toshev, and D. Anguelov. Scalable object detection using deep neural networks. CVPR'14
+- **MultiBox**: D. Erhan, C. Szegedy, A. Toshev, and D. Anguelov. Scalable object detection using deep neural networks. CVPR'14
+	- Bounding box: normalized w.r.t. image dimension to achieve invariance;
+	- Confidence:
+	- Propose K boxes for M gt, K >> M; assignment;
+	- K clusters/centroids by clustering, only predict residual;
 - **R-CNN**: R. Girshick, J. Donahue, T. Darrell, and J. Malik. Rich feature hierarchies for accurate object detection and semantic segmentation. CVPR'14
 	- Pretrain CNN;
 	- **Selective search**: 2000 proposals;
@@ -59,7 +67,7 @@
 	<img src="/CV-2D/images/detection/RCNN-eqn.png" alt="drawing" width="400"/>
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
 - **Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV'15
-	- **Selective search**
+	- **Selective search** for proposals;
 	- Backbone CNN, last max-pooling to RoIPooling;
 	- RoIPool to a fixed spatial extent W x H (7x7);
 	- Faster, better accuracy;
@@ -72,10 +80,10 @@
 - **Faster R-CNN**: S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. NIPS'15 
 	- https://github.com/mahyarnajibi/fast-rcnn-torch
 	- https://github.com/chenyuntc/simple-faster-rcnn-pytorch
-	- Two stages:
 	- Stage 0: Pretrain CNN
 	- Stage 0.1: backbone CNN (VGG, ResNet, conv1, 2, 3), output 14 x 14 feature map
-	- Stage 1: Train **RPN** (binary attention)
+	- Two stages:
+		- Stage 1: Train **RPN** (binary attention)
 		- Two heads classification (3 scales x 3 ratios);
 		- IoU > 0.7: positive; < 0.3: negative;
 		- Bbox Regression loss for delta: Anchor k -> 4k; (x, y, w, h), WHk anchors in total;
@@ -91,7 +99,17 @@
 	<img src="/CV-2D/images/detection/faster-RCNN.png" alt="drawing" width="600"/>
 	<img src="/CV-2D/images/detection/faster-RCNN-eqn.png" alt="drawing" width="500"/>
 - **R-FCN**: J. Dai, Y. Li, K. He, and J. Sun. R-fcn: Object detection via region-based fully convolutional networks. NIPS'16
-- A. Shrivastava, R. Sukthankar, J. Malik, and A. Gupta. Beyond skip connections: Top-down modulation for object detection. arxiv'16
+	- https://github.com/daijifeng001/r-fcn
+	- Position-sensitive score maps; k x k (3 x 3);
+		- per-ROI-pooling on each k x k;
+	- Backbone: resnet-101;
+	- Model:\
+		<img src="/CV-2D/images/detection/r-fcn.png" alt="drawing" width="450"/>
+	- Pascal-VOC: 83.6% mAP
+- **TDM**: A. Shrivastava, R. Sukthankar, J. Malik, and A. Gupta. Beyond skip connections: Top-down modulation for object detection. arxiv'16
+	- Insight: very similar to FPN;
+	- Model:\
+		<img src="/CV-2D/images/detection/tdm.png" alt="drawing" width="450"/>
 - **FPN**: T.-Y. Lin, P. Dollar, R. Girshick, K. He, B. Hariharan, and S. Belongie. Feature pyramid networks for object detection. CVPR'17
 	<img src="/CV-2D/images/detection/fpn.png" alt="drawing" width="500"/>
 - **Mask R-CNN**: Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick. Mask R-CNN. ICCV'17
@@ -106,10 +124,19 @@
 	- Speed: 5fps\
 	<img src="/CV-2D/images/detection/mask-rcnn.png" alt="drawing" width="500"/>
 	<img src="/CV-2D/images/detection/mask-rcnn-eqn.png" alt="drawing" width="500"/>
+- H. Lee, S. Eum, and H. Kwon. Me r-cnn: Multi-expert r-cnn for object detection. arxiv'17
+- **Light-head r-cnn**: Li, Z., Peng, C., Yu, G., Zhang, X., Deng, Y., and Sun, J. Light-head r-cnn: In defense of two-stage object detector. arxiv'17
+- **Cascade r-cnn**: Z. Cai and N. Vasconcelos. Cascader-cnn: Delving into high quality object detection. CVPR'18
+	- Sequence of detectors with increasing IOU threshold;
+- **RepMet**: Leonid Karlinsky, Joseph Shtok, Sivan Harary, Eli Schwartz, Amit Aides, Rogerio Feris, Raja Giryes, Alex M. Bronstein. RepMet: Representative-based metric learning for classification and one-shot object detection. CVPR'19
+	- SOTA performance;
+- **CoAE**: Ting-I Hsieh, Yi-Chen Lo, Hwann-Tzong Chen, Tyng-Luh Liu. One-Shot Object Detection with Co-Attention and Co-Excitation. NuerIPS'19
 
 ## One-stage detector
 - J. Huang, V. Rathod, C. Sun, M. Zhu, A. Korattikara, A. Fathi, I. Fischer, Z. Wojna, Y. Song, S. Guadarrama, and K. Murphy. Speed/accuracy trade-offs for modern convolutional object detectors. CVPR'17
-- **RetinaNet**: Tsung-Yi Lin Priya Goyal Ross Girshick Kaiming He Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
+- **RON**: T. Kong, F. Sun, A. Yao, H. Liu, M. Lu, and Y. Chen. Ron: Reverse connection with objectness prior networks for object detection. CVPR'17
+	- Reverse connection + objectness prior;
+- **RetinaNet**: Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
 	- Insight: solve difficulty imbalance;
 	- Reduce loss for well-classified classes; focus on harder classes;
 	- Foreground/background imbalance;
@@ -122,6 +149,9 @@
 			<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
 			<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
 	- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
+		- Use deconv op
+	- **R-SSD**: J. Jeong, H. Park, and N. Kwak. Enhancement of ssd by concatenating feature maps for object detection. arxiv'17
+		- Pooling + Deconv to combine low/high level features;
 - YOLO:
 	- Summaries:
 		- https://zhuanlan.zhihu.com/p/136382095
@@ -171,7 +201,33 @@
 		<img src="/CV-2D/images/detection/yolo3.png" alt="drawing" width="150"/>
 	- **YOLOv4**: Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. YOLOv4: Optimal Speed and Accuracy of Object Detection. 2020
 		- https://github.com/AlexeyAB/darknet
-- Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
+- **RefineDet**: S. Zhang, L. Wen, X. Bian, Z. Lei, and S. Z. Li. Single-shot refinement neural network for object detection. CVPR'18
+	- Refine bbox twice
+- **EfficientDet**: Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
+- **Keypoint-based**:
+	- **DeNet**: L. Tychsen-Smith and L. Petersson. Denet: Scalable real-time object detection with directed sparse sampling. ICCV'17
+		- 2-stage detector without ROI;
+		- Detect: top-left, top-right, bottom-left, bottom-right;
+		- Enumerate combinations;
+	- Newell, A., Huang, Z., and Deng, J. Associative embedding: End-to-end learning for joint detection and grouping. NIPS'17
+		- Embedding to decide which joint belongs to which person;
+	- **PLN**: Wang, X., Chen, K., Huang, Z., Yao, C., and Liu, W. Point linking network for object detection. arxiv'17
+	- X. Lu, B. Li, Y. Yue, Q. Li, and J. Yan. Grid r-cnn. 2018.
+	- **Cornernet**: H. Law and J. Deng. Cornernet: Detecting objects as paired keypoints. ECCV'18
+		- https://github.com/princeton-vl/CornerNet
+		- Two heatmaps for top-left and bottom-right corners;
+		- Embedding decides if two corners belong to the same obj;
+		- Corner pooling: max along border;
+	- **CenterNet**: Kaiwen Duan, Song Bai, Lingxi Xie, Honggang Qi, Qingming Huang, Qi Tian. CenterNet: Keypoint Triplets for Object Detection. ICCV'19
+		- Improve on CornerNet by Triplet instead of pair;
+		- Generate top-k bounding boxes similar to CornerNet;
+		- Size matters:
+			- Smaller central regions: low recall for small boxes;
+			- Larger central regions: low precision for large boxes;
+		- Center pooling: max-pool both direction;
+- One-shot:
+	- **OS2D**: OS2D: One-Stage One-Shot Object Detection by Matching Anchor Features
+		- https://github.com/aosokin/os2d
 
 ## Proposals, Hard Negative Mining, ...
 - Proposals:
@@ -187,8 +243,15 @@
 	- A. Shrivastava, A. Gupta, and R. Girshick. Training region-based object detectors with online hard example mining. CVPR'16
 - Loss design:
 	- Focal loss (RetinaNet);
+	- Tychsen-Smith, L. and Petersson, L. Improving object localization with fitness nms and bounded iou loss. arxiv'17
+	- **Ranked List Loss**: Xinshao Wang, Yang Hua, Elyor Kodirov, Neil M. Robertson. Ranked List Loss for Deep Metric Learning. CVPR'19
 
-## Between Object
+## Context, Between Object
+- Context:
+	- S. Gidaris and N. Komodakis. Object detection via a multi-region and semantic segmentation-aware cnn model. ICCV'15
+	- S. Bell, C. Lawrence Zitnick, K. Bala, and R. Girshick. Inside-outside net: Detecting objects in context with skip pooling and recurrent neural networks. CVPR'16
+	- A. Shrivastava and A. Gupta. Contextual priming and feedback for faster r-cnn. ECCV'16
+	- X. Zeng, W. Ouyang, B. Yang, J. Yan, and X. Wang. Gated bi-directional cnn for object detection. ECCV'16
 - H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
 
 ## Legacy Features
