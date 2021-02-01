@@ -28,10 +28,6 @@
 		<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="450"/>
 	- 3. RPN consumes the volumetric representation and yields the detection result;
 	- Experiments: 3D detection from Lidar on KITTI;
-- Yan Yan, Yuxing Mao, and Bo Li. Second: Sparsely embedded convolutional detection. Sensors'18
-- **Pointpillars**: Alex H. Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
-- Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
-- **std**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, and Jiaya Jia. Std: Sparse-to-dense 3d object detector for point cloud. ICCV'19
 
 ## Point Clouds
 - Unclassified:
@@ -44,7 +40,7 @@
 		- Estimate sample density distribution;
 		- https://github.com/viscom-ulm/MCCNN
 	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
-	- Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian- Yi Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
+	- Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian-Yi Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
 	- Matan Atzmon, Haggai Maron, and Yaron Lipman. Point convolutional neural networks by extension operators. arxiv'18
 	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
 		- Irregular grid;

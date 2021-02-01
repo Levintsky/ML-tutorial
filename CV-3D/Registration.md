@@ -4,7 +4,7 @@
 - **FlyingThings3D**: N. Mayer, E. Ilg, P. Husser, P. Fischer, D. Cremers, A. Dosovitskiy, and T. Brox. A large dataset to train convolutional networks for disparity, optical flow, and scene flow estimation. CVPR'16
 
 ## Legacy
-- ICP
+- ICP (Iterative closest point)
 
 ## Scene-Flow
 - Problem definition: 3D motion field of points in the scene;

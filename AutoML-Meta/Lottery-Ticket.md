@@ -16,5 +16,5 @@
 ## Sub-Network Finding
 - H. Zhou, J. Lan, R. Liu, and J. Yosinski. Deconstructing lottery tickets: Zeros, signs, and the supermask. NIPS'19
 	- The existence of Supermasks, masks that can be applied to an untrained, randomly initialized network to produce a model with performance far better than chance
-- V. Ramanujan, M. Wortsman, A. Kembhavi, A. Farhadi, and M. Rastegari. What’s hidden in a ran- domly weighted neural network? arxiv'19
+- V. Ramanujan, M. Wortsman, A. Kembhavi, A. Farhadi, and M. Rastegari. What’s hidden in a randomly weighted neural network? arxiv'19
 	- Conjecture: a sufficiently over-parameterized neural network with random initialization contains a subnetwork that achieves competitive accuracy

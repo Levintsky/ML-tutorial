@@ -11,7 +11,7 @@
 - J Lee, S Cho, and S Beack. Context-adaptive entropy model for end-to-end optimized image compression. ICLR'19
 - H Liu, T Chen, P Guo, Q Shen, X Cao, Y Wang, and Z Ma. Non-local Attention Optimized Deep Image Compression. 2019.
 
-## Stereo
+## Stereo Compression
 - Jerry Liu, Shenlong Wang, Raquel Urtasun. DSIC: Deep Stereo Image Compression. ICCV'19
 
 ## Video Compression

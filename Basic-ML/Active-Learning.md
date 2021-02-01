@@ -24,7 +24,7 @@
 	- S. Vijayanarasimhan and K. Grauman. Active frame selection for label propagation in videos. ECCV'12
 	- C. Vondrick, D. Patterson, and D. Ramanan, Efficiently scaling up crowdsourced video annotation. IJCV'13
 - Structured:
-	- B. Settles and M. Craven, An analysis of active learning strategies for sequence labeling tasks. EMNLP'08
+	- B. Settles and M. Craven. An analysis of active learning strategies for sequence labeling tasks. EMNLP'08
 		- Tree/chain
 	- A. Culotta and A. McCallum, Reducing labeling effort for structured prediction tasks. AAAI'05
 		- Tree/chain

@@ -73,7 +73,10 @@
 	- I. Misra, C. L. Zitnick, and M. Hebert. Shuffle and Learn: Unsupervised Learning using Temporal Order Verification. ECCV'16
 		- Predict shuffle;
 	- Vondrick et al NIPS'16, CVPR'17
-	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS 2017
+	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS'17
+	- **CPC**:
+		- Olivier J Hénaff, Ali Razavi, Carl Doersch, SM Eslami, and Aaron van den Oord. Data-efficient image recognition with contrastive predictive coding. 2019
+		- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
 - Predict motion/flow/ego-motion/motion-mask:
 	- P. Agrawal, J. Carreira, and J. Malik. Learning to see by moving. ICCV'15
 	- D. Jayaraman and K. Grauman. Learning image representations tied to egomotion. ICCV'15
@@ -89,11 +92,6 @@
 - R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15
 - Self-Supervised Video Representation Learning With Odd-One-Out Networks
 - Matthias Minderer, Chen Sun, Ruben Villegas, Forrester Cole, Kevin Murphy, Honglak Lee. Unsupervised learning of object structure and dynamics from videos. NIPS'19
-
-## SOA
-- **CPC**:
-	- Olivier J Hénaff, Ali Razavi, Carl Doersch, SM Eslami, and Aaron van den Oord. Data-efficient image recognition with contrastive predictive coding. 2019
-	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
 
 ## Tasks
 - Jigsaw:

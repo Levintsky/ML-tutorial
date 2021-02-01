@@ -16,12 +16,11 @@
 	- Nonparametric;
 
 ## DBSCAN
-- Ester, M., H. P. Kriegel, J. Sander, and X. Xu. A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. In: Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, Portland, OR, AAAI Press, pp. 226-231. 1996
-- Schubert, E., Sander, J., Ester, M., Kriegel, H. P., & Xu, X. (2017). DBSCAN revisited, revisited: why and how you should (still) use DBSCAN. ACM Transactions on Database Systems (TODS), 42(3), 19.
+- Ester, M., H. P. Kriegel, J. Sander, and X. Xu. A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. In: Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, Portland, OR, AAAI'96
+- Schubert, E., Sander, J., Ester, M., Kriegel, H. P., & Xu, X. DBSCAN revisited, revisited: why and how you should (still) use DBSCAN. TODS'17
 
 ## Information Theory
-- J. S. Bridle, A. J. Heading, and D. J. MacKay. Unsupervised classifiers, mutual information and
-'phantom targets'. NIPS'92
+- J. S. Bridle, A. J. Heading, and D. J. MacKay. Unsupervised classifiers, mutual information and 'phantom targets'. NIPS'92
 - D. Barber and F. V. Agakov. Kernelized infomax clustering. NIPS'05
 - A. Krause, P. Perona, and R. G. Gomes. Discriminative clustering by regularized information maximization. NIPS'10
 

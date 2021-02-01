@@ -142,7 +142,7 @@
 	- Foreground/background imbalance;
 	- gamma=1: normal Cross-Entropy, in paper, alpha=0.25, gamma=2 is used;
 	<img src="/CV-2D/images/detection/focal-loss.png" alt="drawing" width="500"/>
-- SSD:
+- SSD (anchor-based):
 	- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
 		- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
 		- Multiscale: FPN;
@@ -152,7 +152,7 @@
 		- Use deconv op
 	- **R-SSD**: J. Jeong, H. Park, and N. Kwak. Enhancement of ssd by concatenating feature maps for object detection. arxiv'17
 		- Pooling + Deconv to combine low/high level features;
-- YOLO:
+- YOLO (anchor-free):
 	- Summaries:
 		- https://zhuanlan.zhihu.com/p/136382095
 		- https://zhuanlan.zhihu.com/p/94986199
@@ -219,6 +219,8 @@
 		- Embedding decides if two corners belong to the same obj;
 		- Corner pooling: max along border;
 	- **CenterNet**: Kaiwen Duan, Song Bai, Lingxi Xie, Honggang Qi, Qingming Huang, Qi Tian. CenterNet: Keypoint Triplets for Object Detection. ICCV'19
+		- **Anchor-free**
+		- A very good summary: https://zhuanlan.zhihu.com/p/66048276
 		- Improve on CornerNet by Triplet instead of pair;
 		- Generate top-k bounding boxes similar to CornerNet;
 		- Size matters:
