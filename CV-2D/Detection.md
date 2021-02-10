@@ -1,6 +1,9 @@
 # Detection
 
 ## Basics
+- Problem setup:
+	- Input: 2D image;
+	- Output: bounding box/key-point;
 - Evaluation:
 	- Average Precision (AP):
 		- PR-curve: Precision against recall;
@@ -12,17 +15,35 @@
 			<img src="/CV-2D/images/detection/pr-curve.png" alt="drawing" width="350"/>
 - Benchmarks
 	- **PASCAL-VOC**: M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. IJCV'10
+		- 80 categories;
+		- 115K training/val, 5k test;
 	- **ILSVRC2012**: ImageNet
 	- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
-
-## Summaries
-- A very good blog (Lilian Weng, OpenAI): https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
-- One stage: https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
+- Popular approaches:
+	- Backbone: ResNet, ResNeXt, VGG, HRNet, RegNet, Res2Net, ResNeSt
+		- Group Normalization, Weight Standardization, Mixed Precision (FP16) Training
+	- Detectors:
+		- Two-stage: RPN, Fast R-CNN, Faster R-CNN, Mask R-CNN, Cascade R-CNN, Cascade Mask R-CNN, Mask Scoring R-CNN, Double-Head R-CNN, Libra R-CNN, Dynamic R-CNN, CascadeRPN
+		- Single-stage: SSD, RetinaNet, YOLOv3, Generalized Focal Loss
+	- Unknown: GHM, Hybrid Task Cascade, Guided Anchoring, FCOS, RepPoints, Foveabox, FreeAnchor, NAS-FPN, ATSS, FSAF, PAFPN, PointRend, CARAFE, DCNv2, OHEM, Soft-NMS, Generalized Attention, GCNet, InstaBoost, GRoIE, DetectoRS, CornerNet, Side-Aware Boundary Localization, PAA, YOLACT, CentripetalNet, VFNet, DETR, SCNet
+- Good repos:
+	- https://github.com/open-mmlab/mmdetection
+	- A very good blog (Lilian Weng, OpenAI): https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
+	- One stage: https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html
 
 ## Misc
 - Y. Zhu, C. Zhao, J. Wang, X. Zhao, Y. Wu, and H. Lu. Couplenet: Coupling global structure with local parts for object detection. ICCV'17
 
-## Detectron
+## Backbone
+- ResNet
+- ResNeXt
+- VGG
+- HRNet
+- RegNet
+- Res2Net
+- ResNeSt
+
+## Toolboxes
 - Detectron v1: https://github.com/facebookresearch/Detectron
 	- Fast R-CNN;
 	- Faster R-CNN;
@@ -44,6 +65,7 @@
 	- Mesh R-CNN
 	- PointRend: Image Segmentation as Rendering
 	- Momentum Contrast for Unsupervised Visual Representation Learning
+- OpenMMLab:
 
 ## Two-Stage
 - RCNN family:\
@@ -65,8 +87,7 @@
 	- **ImageNet 200: 31.4%**
 	<img src="/CV-2D/images/detection/RCNN.png" alt="drawing" width="600"/>
 	<img src="/CV-2D/images/detection/RCNN-eqn.png" alt="drawing" width="400"/>
-- **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
-- **Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV'15
+- **RPN/Fast R-CNN**: R. Girshick. Fast R-CNN. ICCV'15
 	- **Selective search** for proposals;
 	- Backbone CNN, last max-pooling to RoIPooling;
 	- RoIPool to a fixed spatial extent W x H (7x7);
