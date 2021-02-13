@@ -24,8 +24,13 @@
 		- Group Normalization, Weight Standardization, Mixed Precision (FP16) Training
 	- Detectors:
 		- Two-stage: RPN, Fast R-CNN, Faster R-CNN, Mask R-CNN, Cascade R-CNN, Cascade Mask R-CNN, Mask Scoring R-CNN, Double-Head R-CNN, Libra R-CNN, Dynamic R-CNN, CascadeRPN
-		- Single-stage: SSD, RetinaNet, YOLOv3, Generalized Focal Loss
-	- Unknown: GHM, Hybrid Task Cascade, Guided Anchoring, FCOS, RepPoints, Foveabox, FreeAnchor, NAS-FPN, ATSS, FSAF, PAFPN, PointRend, CARAFE, DCNv2, OHEM, Soft-NMS, Generalized Attention, GCNet, InstaBoost, GRoIE, DetectoRS, CornerNet, Side-Aware Boundary Localization, PAA, YOLACT, CentripetalNet, VFNet, DETR, SCNet
+		- Single-stage: Generalized Focal Loss
+			- Anchor-based: SSD, RetinaNet,
+			- Anchor-free: YOLO-series, FCOS, 
+			- Mixture: ATSS,
+	- Loss Design:
+		- GIoU
+	- Unknown: GHM, Hybrid Task Cascade, Guided Anchoring, RepPoints, Foveabox, FreeAnchor, NAS-FPN, FSAF, PAFPN, PointRend, CARAFE, DCNv2, OHEM, Soft-NMS, Generalized Attention, GCNet, InstaBoost, GRoIE, DetectoRS, CornerNet, Side-Aware Boundary Localization, PAA, YOLACT, CentripetalNet, VFNet, DETR, SCNet
 - Good repos:
 	- https://github.com/open-mmlab/mmdetection
 	- A very good blog (Lilian Weng, OpenAI): https://lilianweng.github.io/lil-log/2017/10/29/object-recognition-for-dummies-part-1.html
@@ -35,7 +40,10 @@
 - Y. Zhu, C. Zhao, J. Wang, X. Zhao, Y. Wu, and H. Lu. Couplenet: Coupling global structure with local parts for object detection. ICCV'17
 
 ## Backbone
-- ResNet
+- Legacy:
+	- **HOG**: N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. CVPR'05
+	- P. Dollar, Z. Tu, P. Perona, and S. Belongie. Integral channel features. BMVC'09
+- **ResNet**:
 - ResNeXt
 - VGG
 - HRNet
@@ -43,29 +51,131 @@
 - Res2Net
 - ResNeSt
 
-## Toolboxes
-- Detectron v1: https://github.com/facebookresearch/Detectron
-	- Fast R-CNN;
-	- Faster R-CNN;
-	- Residual-Net;
-	- R-FCN;
-	- ResNext;
-	- FPN CVPR'17;
-	- Georgia Gkioxari, Ross Girshick, Piotr Dollár, and Kaiming He. Detecting and Recognizing Human-Object Interactions. Tech report, arXiv'17
-	- Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour. Tech report, arXiv'17
-	- Focal-loss ICCV'17;
-	- Mask R-CNN;
-	- Non-Local Neural Networks;
-	- Ronghang Hu, Piotr Dollár, Kaiming He, Trevor Darrell, and Ross Girshick. Learning to Segment Every Thing. Tech report, arXiv'17.
-	- Ilija Radosavovic, Piotr Dollár, Ross Girshick, Georgia Gkioxari, and Kaiming He. Data Distillation: Towards Omni-Supervised Learning. Tech report, arXiv, Dec. 2017.
-- Detectron v2: https://github.com/facebookresearch/detectron2
-	- DensePose: Dense Human Pose Estimation In The Wild
-	- Scale-Aware Trident Networks for Object Detection
-	- TensorMask: A Foundation for Dense Object Segmentation
-	- Mesh R-CNN
-	- PointRend: Image Segmentation as Rendering
-	- Momentum Contrast for Unsupervised Visual Representation Learning
-- OpenMMLab:
+## Loss Function
+- Focal-loss (**RetinaNet**): Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
+	- Insight: solve difficulty imbalance;
+	- Reduce loss for well-classified classes; focus on harder classes;
+	- Foreground/background imbalance;
+	- gamma=1: normal Cross-Entropy, in paper, alpha=0.25, gamma=2 is used;
+	<img src="/CV-2D/images/detection/focal-loss.png" alt="drawing" width="500"/>
+- **GIoU**: Hamid Rezatofighi, Nathan Tsoi, JunYoung Gwak, Amir Sadeghian, Ian D. Reid, and Silvio Savarese. Generalized intersection over union: A metric and a loss for bounding box regression. CVPR'19
+
+## One-stage detector
+- **Anchor-based**:
+	- **RetinaNet**: Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
+	- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
+		- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+		- Multiscale: FPN;
+	- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
+		- Use deconv op
+	- **R-SSD**: J. Jeong, H. Park, and N. Kwak. Enhancement of ssd by concatenating feature maps for object detection. arxiv'17
+		- Pooling + Deconv to combine low/high level features;
+- **Anchor-free**
+	- keypoint-based:
+		- **DeNet**: L. Tychsen-Smith and L. Petersson. Denet: Scalable real-time object detection with directed sparse sampling. ICCV'17
+			- 2-stage detector without ROI;
+			- Detect: top-left, top-right, bottom-left, bottom-right;
+			- Enumerate combinations;
+		- Newell, A., Huang, Z., and Deng, J. Associative embedding: End-to-end learning for joint detection and grouping. NIPS'17
+			- Embedding to decide which joint belongs to which person;
+		- **PLN**: Wang, X., Chen, K., Huang, Z., Yao, C., and Liu, W. Point linking network for object detection. arxiv'17
+		- X. Lu, B. Li, Y. Yue, Q. Li, and J. Yan. Grid r-cnn. 2018.
+		- **Cornernet**: H. Law and J. Deng. Cornernet: Detecting objects as paired keypoints. ECCV'18
+			- https://github.com/princeton-vl/CornerNet
+			- Two heatmaps for top-left and bottom-right corners;
+			- Embedding decides if two corners belong to the same obj;
+			- Corner pooling: max along border;
+		- **Cornernet-lite**: Hei Law, Yun Teng, Olga Russakovsky, and Jia Deng. Cornernet-lite: Efficient keypoint based object detection. CoRR'19
+		- **ExtremeNet**: Xingyi Zhou, Jiacheng Zhuo, and Philipp Krahenbuhl. Bottom-up object detection by grouping extreme and center points. CVPR'19
+			- Detect top-most, left-most, bottom-most, right-most and center;
+	- Center-based:
+		- Lichao Huang, Yi Yang, Yafeng Deng, and Yinan Yu. Densebox: Unifying landmark localization with end to end object detection. CoRR'15
+		- **Foveabox**: Tao Kong, Fuchun Sun, Huaping Liu, Yuning Jiang, and Jianbo Shi. Foveabox: Beyond anchor-based object detector. CoRR'19
+		- **GA-RPN**: Jiaqi Wang, Kai Chen, Shuo Yang, Chen Change Loy, and Dahua Lin. Region proposal by guided anchoring. CVPR'19
+		- **CSP**: Wei Liu, Shengcai Liao, Weiqiang Ren, Weidong Hu, and Yinan Yu. High-level semantic feature detection: A new perspective for pedestrian detection. CVPR'19
+		- **FSAF**: Chenchen Zhu, Yihui He, and Marios Savvides. Feature selective anchor-free module for single-shot object detection. CVPR'19
+		- **FCOS**: Zhi Tian, Chunhua Shen, Hao Chen, and Tong He. FCOS: fully convolutional one-stage object detection. ICCV'19
+		- **YOLO**-series;
+			- YOLO. CVPR'16
+			- YOLO9000: CVPR'17
+		- **CenterNet**: Kaiwen Duan, Song Bai, Lingxi Xie, Honggang Qi, Qingming Huang, Qi Tian. CenterNet: Keypoint Triplets for Object Detection. ICCV'19
+			- A very good summary: https://zhuanlan.zhihu.com/p/66048276
+			- Improve on CornerNet by Triplet instead of pair;
+			- Generate top-k bounding boxes similar to CornerNet;
+			- Size matters:
+				- Smaller central regions: low recall for small boxes;
+				- Larger central regions: low precision for large boxes;
+			- Center pooling: max-pool both direction;
+- Mix:
+	- **ATSS**: Shifeng Zhang, Cheng Chi, Yongqiang Yao, Zhen Lei, Stan Z. Li. Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection. CVPR'19
+		- Adding group-norm, GIoU-loss, GT Box, Centerness, Scalar bring RetinaNet from mAP=32.5to 37.0 (FCOS=37.8);
+		- Way to select positive matters!
+			- RetinaNet: IoU;
+			- FCOS: first spatial, then scale;
+- J. Huang, V. Rathod, C. Sun, M. Zhu, A. Korattikara, A. Fathi, I. Fischer, Z. Wojna, Y. Song, S. Guadarrama, and K. Murphy. Speed/accuracy trade-offs for modern convolutional object detectors. CVPR'17
+- **RON**: T. Kong, F. Sun, A. Yao, H. Liu, M. Lu, and Y. Chen. Ron: Reverse connection with objectness prior networks for object detection. CVPR'17
+	- Reverse connection + objectness prior;
+- SSD (anchor-based):
+	- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
+		- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
+		- Multiscale: FPN;
+			<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
+			<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
+- YOLO (anchor-free):
+	- Summaries:
+		- https://zhuanlan.zhihu.com/p/136382095
+		- https://zhuanlan.zhihu.com/p/94986199
+	- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
+		- http://pjreddie.com/darknet/
+	- **YOLOv1**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
+		- https://pjreddie.com/darknet/yolo/
+		- Pretrain CNN.
+		- S x S cells, each cell predict the object if the object center is in the cell. (S=7, B=2, C=20 in Yolo-v1)
+		- Each cell:
+			- Location of B Bboxes: B=5 predictions (x, y, w, h, confidence)
+			- Confidence score: p = p(object) * IoU(pred, truth)
+			- Each grid cell makes 1 prediction: p(class = ci | contains an object). Regardless of bounding boxes number b.
+		- Final output: S x S x B bounding boxes; each box 4 coord-prediction, 1 confidence, 1 confidence (7 x 7 x 30);
+		- Model:\
+			<img src="/CV-2D/images/detection/yolo1-1.png" alt="drawing" width="500"/>
+			<img src="/CV-2D/images/detection/yolo1-2.png" alt="drawing" width="500"/>
+		- Learning:\
+			<img src="/CV-2D/images/detection/yolo1-3.png" alt="drawing" width="500"/>
+	- **YOLOv2** (YOLO9000): J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
+		- Improves over v1:\
+			<img src="/CV-2D/images/detection/yolo-v2.jpg" alt="drawing" width="400"/>	
+		- Better:
+			- Batch normalization: mAP +2.4
+			- High-resolution: mAP +3.7
+			- Multi-scale training (finetune on 448 x 448): 
+			- Anchor boxes: recall to 88%, mAP -0.2
+				- Input 416 x 416, 32 downsampling, output 13 x 13
+			- Dimension Clusters (K=5): IoU from 58.7 (K=5) to 67.2 K=9);
+			- Direct location prediction
+			- Fine-grained features (passthrough layer): mAP +1.0\
+				<img src="/CV-2D/images/detection/pass-through-1.jpg" alt="drawing" width="300"/>\
+				<img src="/CV-2D/images/detection/pass-through-2.jpg" alt="drawing" width="300"/>
+		- Faster:
+			- VGG-16, DarkNet-19
+		- Stronger
+			- Hierarchical classification\
+		<img src="/CV-2D/images/detection/yolo2.png" alt="drawing" width="400"/>
+	- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
+		- Insight: add FPN, ResNet, binary cross-entropy;
+		- 320 x 320: 22ms
+		- Logistic regression:
+		- Class prediction:
+		- No hard negative mining;
+		- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
+		<img src="/CV-2D/images/detection/yolo3.png" alt="drawing" width="150"/>
+	- **YOLOv4**: Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. YOLOv4: Optimal Speed and Accuracy of Object Detection. 2020
+		- https://github.com/AlexeyAB/darknet
+- **RefineDet**: S. Zhang, L. Wen, X. Bian, Z. Lei, and S. Z. Li. Single-shot refinement neural network for object detection. CVPR'18
+	- Refine bbox twice
+- **EfficientDet**: Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
+- One-shot:
+	- **OS2D**: OS2D: One-Stage One-Shot Object Detection by Matching Anchor Features
+		- https://github.com/aosokin/os2d
 
 ## Two-Stage
 - RCNN family:\
@@ -153,105 +263,6 @@
 	- SOTA performance;
 - **CoAE**: Ting-I Hsieh, Yi-Chen Lo, Hwann-Tzong Chen, Tyng-Luh Liu. One-Shot Object Detection with Co-Attention and Co-Excitation. NuerIPS'19
 
-## One-stage detector
-- J. Huang, V. Rathod, C. Sun, M. Zhu, A. Korattikara, A. Fathi, I. Fischer, Z. Wojna, Y. Song, S. Guadarrama, and K. Murphy. Speed/accuracy trade-offs for modern convolutional object detectors. CVPR'17
-- **RON**: T. Kong, F. Sun, A. Yao, H. Liu, M. Lu, and Y. Chen. Ron: Reverse connection with objectness prior networks for object detection. CVPR'17
-	- Reverse connection + objectness prior;
-- **RetinaNet**: Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollar. Focal Loss for Dense Object Detection. ICCV'17
-	- Insight: solve difficulty imbalance;
-	- Reduce loss for well-classified classes; focus on harder classes;
-	- Foreground/background imbalance;
-	- gamma=1: normal Cross-Entropy, in paper, alpha=0.25, gamma=2 is used;
-	<img src="/CV-2D/images/detection/focal-loss.png" alt="drawing" width="500"/>
-- SSD (anchor-based):
-	- **SSD**: W. Liu, D. Anguelov, D. Erhan, C. Szegedy, and S. Reed. SSD: Single shot multibox detector. ECCV'16
-		- Default k bounding boxes: each cell output (c+4)k, c classes + 4 offsets
-		- Multiscale: FPN;
-			<img src="/CV-2D/images/detection/ssd.png" alt="drawing" width="500"/>\
-			<img src="/CV-2D/images/detection/ssd-eqn.png" alt="drawing" width="500"/>
-	- **DSSD**: C.-Y. Fu, W. Liu, A. Ranga, A. Tyagi, and A. C. Berg. DSSD: Deconvolutional single shot detector. 2016
-		- Use deconv op
-	- **R-SSD**: J. Jeong, H. Park, and N. Kwak. Enhancement of ssd by concatenating feature maps for object detection. arxiv'17
-		- Pooling + Deconv to combine low/high level features;
-- YOLO (anchor-free):
-	- Summaries:
-		- https://zhuanlan.zhihu.com/p/136382095
-		- https://zhuanlan.zhihu.com/p/94986199
-	- **Darknet**: J. Redmon. Darknet: Open source neural networks in c.
-		- http://pjreddie.com/darknet/
-	- **YOLOv1**: J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Unified, real-time object detection. CVPR 2016
-		- https://pjreddie.com/darknet/yolo/
-		- Pretrain CNN.
-		- S x S cells, each cell predict the object if the object center is in the cell. (S=7, B=2, C=20 in Yolo-v1)
-		- Each cell:
-			- Location of B Bboxes: B=5 predictions (x, y, w, h, confidence)
-			- Confidence score: p = p(object) * IoU(pred, truth)
-			- Each grid cell makes 1 prediction: p(class = ci | contains an object). Regardless of bounding boxes number b.
-		- Final output: S x S x B bounding boxes; each box 4 coord-prediction, 1 confidence, 1 confidence (7 x 7 x 30);
-		- Model:\
-			<img src="/CV-2D/images/detection/yolo1-1.png" alt="drawing" width="500"/>
-			<img src="/CV-2D/images/detection/yolo1-2.png" alt="drawing" width="500"/>
-		- Learning:\
-			<img src="/CV-2D/images/detection/yolo1-3.png" alt="drawing" width="500"/>
-	- **YOLOv2** (YOLO9000): J. Redmon and A. Farhadi. YOLO9000: Better, faster, stronger. CVPR 2017
-		- Improves over v1:\
-			<img src="/CV-2D/images/detection/yolo-v2.jpg" alt="drawing" width="400"/>	
-		- Better:
-			- Batch normalization: mAP +2.4
-			- High-resolution: mAP +3.7
-			- Multi-scale training (finetune on 448 x 448): 
-			- Anchor boxes: recall to 88%, mAP -0.2
-				- Input 416 x 416, 32 downsampling, output 13 x 13
-			- Dimension Clusters (K=5): IoU from 58.7 (K=5) to 67.2 K=9);
-			- Direct location prediction
-			- Fine-grained features (passthrough layer): mAP +1.0\
-				<img src="/CV-2D/images/detection/pass-through-1.jpg" alt="drawing" width="300"/>\
-				<img src="/CV-2D/images/detection/pass-through-2.jpg" alt="drawing" width="300"/>
-		- Faster:
-			- VGG-16, DarkNet-19
-		- Stronger
-			- Hierarchical classification\
-		<img src="/CV-2D/images/detection/yolo2.png" alt="drawing" width="400"/>
-	- **YOLOv3**: J. Redmon and A. Farhadi. Yolov3: An incremental improvement. 2018
-		- Insight: add FPN, ResNet, binary cross-entropy;
-		- 320 x 320: 22ms
-		- Logistic regression:
-		- Class prediction:
-		- No hard negative mining;
-		- Things do not work: Anchor box x,y offset; Linear x,y instead of logistic; focal loss; dual IoU threshold;
-		<img src="/CV-2D/images/detection/yolo3.png" alt="drawing" width="150"/>
-	- **YOLOv4**: Alexey Bochkovskiy, Chien-Yao Wang, Hong-Yuan Mark Liao. YOLOv4: Optimal Speed and Accuracy of Object Detection. 2020
-		- https://github.com/AlexeyAB/darknet
-- **RefineDet**: S. Zhang, L. Wen, X. Bian, Z. Lei, and S. Z. Li. Single-shot refinement neural network for object detection. CVPR'18
-	- Refine bbox twice
-- **EfficientDet**: Mingxing Tan, Ruoming Pang, Quoc V. Le. EfficientDet: Scalable and Efficient Object Detection. 2019
-- **Keypoint-based**:
-	- **DeNet**: L. Tychsen-Smith and L. Petersson. Denet: Scalable real-time object detection with directed sparse sampling. ICCV'17
-		- 2-stage detector without ROI;
-		- Detect: top-left, top-right, bottom-left, bottom-right;
-		- Enumerate combinations;
-	- Newell, A., Huang, Z., and Deng, J. Associative embedding: End-to-end learning for joint detection and grouping. NIPS'17
-		- Embedding to decide which joint belongs to which person;
-	- **PLN**: Wang, X., Chen, K., Huang, Z., Yao, C., and Liu, W. Point linking network for object detection. arxiv'17
-	- X. Lu, B. Li, Y. Yue, Q. Li, and J. Yan. Grid r-cnn. 2018.
-	- **Cornernet**: H. Law and J. Deng. Cornernet: Detecting objects as paired keypoints. ECCV'18
-		- https://github.com/princeton-vl/CornerNet
-		- Two heatmaps for top-left and bottom-right corners;
-		- Embedding decides if two corners belong to the same obj;
-		- Corner pooling: max along border;
-	- **CenterNet**: Kaiwen Duan, Song Bai, Lingxi Xie, Honggang Qi, Qingming Huang, Qi Tian. CenterNet: Keypoint Triplets for Object Detection. ICCV'19
-		- **Anchor-free**
-		- A very good summary: https://zhuanlan.zhihu.com/p/66048276
-		- Improve on CornerNet by Triplet instead of pair;
-		- Generate top-k bounding boxes similar to CornerNet;
-		- Size matters:
-			- Smaller central regions: low recall for small boxes;
-			- Larger central regions: low precision for large boxes;
-		- Center pooling: max-pool both direction;
-- One-shot:
-	- **OS2D**: OS2D: One-Stage One-Shot Object Detection by Matching Anchor Features
-		- https://github.com/aosokin/os2d
-
 ## Proposals, Hard Negative Mining, ...
 - Proposals:
 	- K.-K. Sung and T. Poggio. Learning and Example Selection for Object and Pattern Detection. 1994
@@ -277,6 +288,26 @@
 	- X. Zeng, W. Ouyang, B. Yang, J. Yan, and X. Wang. Gated bi-directional cnn for object detection. ECCV'16
 - H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
 
-## Legacy Features
-- **HOG**: N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. CVPR'05
-- P. Dollar, Z. Tu, P. Perona, and S. Belongie. Integral channel features. BMVC'09
+## Toolboxes
+- Detectron v1: https://github.com/facebookresearch/Detectron
+	- Fast R-CNN;
+	- Faster R-CNN;
+	- Residual-Net;
+	- R-FCN;
+	- ResNext;
+	- FPN CVPR'17;
+	- Georgia Gkioxari, Ross Girshick, Piotr Dollár, and Kaiming He. Detecting and Recognizing Human-Object Interactions. Tech report, arXiv'17
+	- Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour. Tech report, arXiv'17
+	- Focal-loss ICCV'17;
+	- Mask R-CNN;
+	- Non-Local Neural Networks;
+	- Ronghang Hu, Piotr Dollár, Kaiming He, Trevor Darrell, and Ross Girshick. Learning to Segment Every Thing. Tech report, arXiv'17.
+	- Ilija Radosavovic, Piotr Dollár, Ross Girshick, Georgia Gkioxari, and Kaiming He. Data Distillation: Towards Omni-Supervised Learning. Tech report, arXiv, Dec. 2017.
+- Detectron v2: https://github.com/facebookresearch/detectron2
+	- DensePose: Dense Human Pose Estimation In The Wild
+	- Scale-Aware Trident Networks for Object Detection
+	- TensorMask: A Foundation for Dense Object Segmentation
+	- Mesh R-CNN
+	- PointRend: Image Segmentation as Rendering
+	- Momentum Contrast for Unsupervised Visual Representation Learning
+- OpenMMLab:
