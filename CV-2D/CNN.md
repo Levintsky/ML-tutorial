@@ -65,6 +65,7 @@
 - Basics:
 	- Required for position-sensitive tasks (semantic segmentation, human pose estimation, and object detection);
 	- Low-resolution only: OverFeat, FCN;
+- **FCN**: J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks for semantic segmentation. CVPR'15
 - **U-Net**: O Ronneberger, P Fischer, T Brox: Convolutional Networks for Biomedical Image Segmentation, MICCAI'15
 - **deconv-net**: H. Noh, S. Hong, and B. Han. Learning deconvolution network for semantic segmentation. ICCV'15
 - **Hourglass**: Newell, A., Yang, K., and Deng, J. Stacked hourglass networks for human pose estimation. ECCV'16

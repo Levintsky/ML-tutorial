@@ -19,6 +19,9 @@
 		- 115K training/val, 5k test;
 	- **ILSVRC2012**: ImageNet
 	- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
+- Downstream tasks:
+	- People/pedestrian detection/counting;
+	- 
 - Popular approaches:
 	- Backbone: ResNet, ResNeXt, VGG, HRNet, RegNet, Res2Net, ResNeSt
 		- Group Normalization, Weight Standardization, Mixed Precision (FP16) Training
@@ -89,12 +92,17 @@
 		- **ExtremeNet**: Xingyi Zhou, Jiacheng Zhuo, and Philipp Krahenbuhl. Bottom-up object detection by grouping extreme and center points. CVPR'19
 			- Detect top-most, left-most, bottom-most, right-most and center;
 	- Center-based:
-		- Lichao Huang, Yi Yang, Yafeng Deng, and Yinan Yu. Densebox: Unifying landmark localization with end to end object detection. CoRR'15
+		- **Densebox**: Lichao Huang, Yi Yang, Yafeng Deng, and Yinan Yu. Densebox: Unifying landmark localization with end to end object detection. CoRR'15
 		- **Foveabox**: Tao Kong, Fuchun Sun, Huaping Liu, Yuning Jiang, and Jianbo Shi. Foveabox: Beyond anchor-based object detector. CoRR'19
 		- **GA-RPN**: Jiaqi Wang, Kai Chen, Shuo Yang, Chen Change Loy, and Dahua Lin. Region proposal by guided anchoring. CVPR'19
 		- **CSP**: Wei Liu, Shengcai Liao, Weiqiang Ren, Weidong Hu, and Yinan Yu. High-level semantic feature detection: A new perspective for pedestrian detection. CVPR'19
 		- **FSAF**: Chenchen Zhu, Yihui He, and Marios Savvides. Feature selective anchor-free module for single-shot object detection. CVPR'19
 		- **FCOS**: Zhi Tian, Chunhua Shen, Hao Chen, and Tong He. FCOS: fully convolutional one-stage object detection. ICCV'19
+			- https://github.com/tianzhi0549/FCOS/
+			- FCN as backbone + feature-pyramid neck;
+			- Anchor-free: every pixel in a gt-box only predict 4d distance to edges (l, r, t, b) and class c;
+			- Overlapping boxes: always choose smallest as positive;
+			- Centerness + nms to tackle low-quality boxes predicted from edge pixels?
 		- **YOLO**-series;
 			- YOLO. CVPR'16
 			- YOLO9000: CVPR'17
@@ -113,6 +121,7 @@
 			- RetinaNet: IoU;
 			- FCOS: first spatial, then scale;
 - J. Huang, V. Rathod, C. Sun, M. Zhu, A. Korattikara, A. Fathi, I. Fischer, Z. Wojna, Y. Song, S. Guadarrama, and K. Murphy. Speed/accuracy trade-offs for modern convolutional object detectors. CVPR'17
+	- Faster R-CNN by G-RMI?
 - **RON**: T. Kong, F. Sun, A. Yao, H. Liu, M. Lu, and Y. Chen. Ron: Reverse connection with objectness prior networks for object detection. CVPR'17
 	- Reverse connection + objectness prior;
 - SSD (anchor-based):

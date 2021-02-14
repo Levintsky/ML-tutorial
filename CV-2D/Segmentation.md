@@ -54,9 +54,11 @@
 - **PSP**: H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid Scene Parsing Network. CVPR'17
 - ResNet-DUC: P Wang, P Chen, Y Yuan, D Liu, Z Huang, X Hou, G Cottrell. Understanding Convolution for Semantic Segmentation. WAVC'18
 	- **Dilated Conv**
+- A Probabilistic U-Net for Segmentation of Ambiguous Images. NIPS'18
 - Z Cheng, Y Wu, Z Xu, T Lukasiewicz, W Wang. Segmentation Is All You Need. 2019
 	- No bounding-box, NMS, anchor;
-- A Probabilistic U-Net for Segmentation of Ambiguous Images. NIPS'18
+- Tong He, Chunhua Shen, Zhi Tian, Dong Gong, Changming Sun, and Youliang Yan. Knowledge adaptation for efficient semantic segmentation. CVPR'19
+- Yifan Liu, Ke Chen, Chris Liu, Zengchang Qin, Zhenbo Luo, and Jingdong Wang. Structured knowledge distillation for semantic segmentation. CVPR'19
 
 ## Instance Segmentation
 - Proposals:
