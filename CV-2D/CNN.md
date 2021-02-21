@@ -4,6 +4,7 @@
 - **CoordConv**: Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 - Strided-Conv;
 - Dilated-Conv;
+	- Fisher Yu and Vladlen Koltun. Multi-scale context aggregation by dilated convolutions. arxiv'15
 	- L. Chen, G. Papandreou, I. Kokkinos, K. Murphy, and A. L. Yuille. Deeplab: Semantic image segmentation with deep convolutional. PAMI'18
 	- H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid scene parsing network. CVPR'17
 - Pooling, Aggregation
