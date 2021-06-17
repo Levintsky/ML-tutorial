@@ -66,6 +66,7 @@
 - David Duvenaud, Oren Rippel, Ryan Adams, and Zoubin Ghahramani. Avoiding pathologies in very deep networks. AISTATS'14
 - Thang Bui, Daniel Herna ́ndez-Lobato, Jose Hernandez-Lobato, Yingzhen Li, and Richard Turner. Deep gaussian processes for regression using approximate expectation propagation. ICML'16
 - J. H. Lee, Y. Bahri, R. Novak, S. S. Schoenholz, J. Pennington, and J. Sohl-Dickstein. Deep neural networks as gaussian processes. ICLR'18
+- **Gpytorch**: Jacob R Gardner, Geoff Pleiss, David Bindel, Kilian Q Weinberger, and Andrew Gordon Wilson. Gpytorch: Blackbox matrix-matrix gaussian process inference with gpu acceleration.
 
 ## Connection with Neural Network
 - Radford M. Neal. Priors for infinite networks. 1994
@@ -76,6 +77,10 @@
 	- Exact equivalence between infinitely wide deep networks and GPs
 	- Focus on exact Bayesian inference for regression tasks
 	- https://github.com/brain-research/nngp
+- Jaehoon Lee, Yasaman Bahri, Roman Novak, Sam Schoenholz, Jeffrey Pennington, and Jascha Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
+- Alexander G de G Matthews, Mark Rowland, Jiri Hron, Richard E Turner, and Zoubin Ghahramani. Gaussian process behaviour in wide deep neural networks. arxiv'18
+- **CNN**: Adrià Garriga-Alonso, Carl Edward Rasmussen, and Laurence Aitchison. Deep convolutional networks as shallow gaussian processes. ICLR'19
+- Roman Novak, Lechao Xiao, Jaehoon Lee, Yasaman Bahri, Greg Yang, Jiri Hron, Daniel A. Abolafia, Jeffrey Pennington, and Jascha Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19
 
 ## Unclassified
 - Orthogonally Decoupled Variational Gaussian Processes. NIPS'18

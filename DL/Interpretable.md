@@ -1,5 +1,35 @@
 # Explain NN
 
+## Tutorial
+- NeurIPS'20: https://explainml-tutorial.github.io/
+	- Explain pre-built models in a **post-hoc** manner
+		- Marco Tulio Ribeiro, Sameer Singh, Carlos Guestrin. Why Should I Trust You?: Explaining the Predictions of Any Classifier. KDD'16
+		- Marco Tulio Ribeiro, Sameer Singh, Carlos Guestrin. Anchors: High-Precision Model-Agnostic Explanations. AAAI'18
+		- Himabindu Lakkaraju, Ece Kamar, Rich Caruana, Jure Leskovec. Faithful and Customizable Explanations of Black Box Models. AEIS'19
+	- **Local** versus **Global** Explanations
+	- Approaches for Post hoc Explainability:
+		- Local:
+			- Feature Importance:
+				- LIME: Sparse, Linear Explanations;
+				- SHAP: Shapley Values as Importance;
+			- Rule based:
+			- Saliency Maps: visualize the gradient w.r.t. the input data;
+				- Learning Important Features Through Propagating Activation Differences. 2019
+				- Noise-adding Methods of Saliency Map as Series of Higher Order Partial Derivative. 2018
+				- Path integral;
+				- Modified Backprop: Jost Tobias Springenberg, Alexey Dosovitskiy, Thomas Brox, Martin Riedmiller. Striving for Simplicity: The All Convolutional Net. 2015
+			- Prototypes/Example Based;
+				- Influence Functions: Which training data points have the most influence on the test loss?
+				- Cook's distance: Robust statistics for assessing the effect of a sample on regression parameters;
+				- Pang Wei Koh, Percy Liang. Understanding Black-box Predictions via Influence Functions. ICML'17
+			- Counterfactuals: What features need to be changed and by how much to flip a model's prediction
+		- Global:
+			- Collection of Local Explanations;
+				- Network Dissection: Quantifying Interpretability of Deep Visual Representations;
+			- Representation Based;
+			- Model Distillation;
+			- Summaries of Counterfactuals;
+
 ## Interpretability
 - David Alvarez-Melis, Tommi S. Jaakkola. Towards Robust Interpretability with Self-Explaining Neural Networks. NIPS'18
 - Wenbo Guo, Sui Huang, Yunzhe Tao, Xinyu Xing, Lin Lin. Explaining Deep Learning Models -- A Bayesian Non-parametric Approach. NIPS'18

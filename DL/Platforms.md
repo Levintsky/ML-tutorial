@@ -16,6 +16,14 @@
 	- Martín Abadi, Paul Barham, Jianmin Chen, Zhifeng Chen, Andy Davis, Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Geoffrey Irving, Michael Isard, et al. TensorFlow: A system for large-scale machine learning. OSDI'16
 	- **Debug**: Augustus Odena, Ian Goodfellow. TensorFuzz: Debugging Neural Networks with Coverage-Guided Fuzzing. ICML'19
 	- **Supercomputer**: Mesh-TensorFlow: Deep Learning for Supercomputers. NIPS'18
+- Keras:
+	- François Chollet et al. Keras. https://keras.io, 2015
+- Chainer:
+	- Seiya Tokui, Kenta Oono, Shohei Hido, and Justin Clayton. Chainer: a next-generation open source framework for deep learning. NIPS Workshop'15
+	- Takuya Akiba, Keisuke Fukuda, and Shuji Suzuki. ChainerMN: Scalable Distributed Deep Learning Framework. NeurIPS Workshop'17
+- Jax:
+	- James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal Maclau- rin, and Skye Wanderman-Milne. JAX: composable transformations of Python+NumPy programs, 2018a. URL http://github.com/google/jax
+	- James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal Maclau- rin, and Skye Wanderman-Milne. Stax, a flexible neural net specification library in jax, 2018b. URL https://github.com/google/jax/blob/master/jax/experimental/stax.py
 
 ## Distributed ML
 - Optimization/Statistical Learning view (convergence analysis):

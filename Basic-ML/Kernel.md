@@ -1,8 +1,18 @@
 # Kernel, Embedding, Metric Learning
 
-## Unclassified
+## Classical
 - A. Rahimi and B. Recht. Random features for large-scale kernel machines. NIPS'08
+
+## Deep Learning
+- Y. Cho and L. K. Saul. Kernel methods for deep learning. NIPS'09
+- **NTK**: Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: Convergence and generalization in neural networks. NIPS'18
+- Jaehoon Lee, Yasaman Bahri, Roman Novak, Sam Schoenholz, Jeffrey Pennington, and Jascha Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
 - Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
+- Lenaic Chizat, Edouard Oyallon, and Francis Bach. On lazy training in differentiable programming. arXiv preprint arXiv:1812.07956, 2019
+- **GNN**: Simon S Du, Kangcheng Hou, Russ R Salakhutdinov, Barnabas Poczos, Ruosong Wang, and Keyulu Xu. Graph neural tangent kernel: Fusing graph neural networks with graph kernels. NeurIPS'19
+- Greg Yang. Scaling limits of wide neural networks with weight sharing: Gaussian process behavior, gradient independence, and neural tangent kernel derivation. arxiv'19
+- Jiri Hron, Yasaman Bahri, Jascha Sohl-Dickstein, Roman Novak. Infinite attention: NNGP and NTK for deep attention networks. ICML'20
+- Soufiane Hayou, Arnaud Doucet, and Judith Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019
 
 ## Tutorials, Books
 - Ralf Herbrich. Learning Kernel Classifiers. 2001

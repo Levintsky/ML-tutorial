@@ -22,7 +22,7 @@
 ## Learning-based
 - Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
 - A. Kendall, M. Grimes, and R. Cipolla. PoseNet: A convolutional network for real-time 6-DOF camera relocalization. ICCV'15
-- Shubham Tulsiani, Joao Carreira and Jitendra Malik. Pose Induction for Novel Object Categories. ICCV 2015
+- Shubham Tulsiani, Joao Carreira and Jitendra Malik. Pose Induction for Novel Object Categories. ICCV'15
 	- Input: images, output three Euler Angles
 	- SCT (Similar Class Transfer): 
 		- Train a CNN for each class (shared base layers, output heads)
@@ -36,3 +36,5 @@
 - R Clark, M Bloesch, J Czarnowski, S Leutenegger, and A Davison. Learning to solve nonlinear least squares for monocular stereo. ECCV'18
 	- solve nonlinear least squares in two-view SfM using a LSTM-RNN
 - Z Lv, F Dellaert, J Rehg, A Geiger. Taking a Deeper Look at the Inverse Compositional Algorithm. 2019
+- **SVD**: Jake Levinson, Carlos Esteves, Kefan Chen, Noah Snavely, Angjoo Kanazawa, Afshin Rostamizadeh, Ameesh Makadia. An Analysis of SVD for Deep Rotation Estimation. NeurIPS'20
+	- https://youtu.be/jgN2SJTVokI
