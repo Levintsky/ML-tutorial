@@ -13,5 +13,4 @@
 - Li, Zhiyuan, et al. Enhanced Convolutional Neural Tangent Kernels. arxiv'19
 
 ## Unclassified
-- Y. Cho and L. K. Saul. Kernel methods for deep learning. NIPS'09
 - M. Belkin, S. Ma, and S. Mandal. To understand deep learning we need to understand kernel learning. arXiv'18

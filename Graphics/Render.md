@@ -102,6 +102,11 @@
 - T.-M. Li, M. Aittala, F. Durand, and J. Lehtinen. Differentiable monte carlo ray tracing through edge sampling. Siggraph Asia'18
 	- https://github.com/BachiLi/redner
 	- https://people.csail.mit.edu/tzumao/diffrt/
+- **3d-rcnn**: Abhijit Kundu, Yin Li, and James M. Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
+	- https://abhijitkundu.info/projects/3D-RCNN/
+	- Input: 2D image;
+	- Output: 3D scene;
+	- Supervision: differentiable rendering loss;
 - **Soft-Ras**: Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
 	- https://github.com/ShichenLiu/SoftRas
 	- Insight: soft assign pixel to faces, making the rasterization differentiable by soft aggregation:

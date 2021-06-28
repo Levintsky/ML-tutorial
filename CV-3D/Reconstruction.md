@@ -264,6 +264,5 @@
 - Deep Marching Cubes: Learning Explicit Surface Representations. CVPR'18
 - Learning Category-Specific Mesh Reconstruction from Image Collections. 2018
 - Pixels, voxels, and views: A study of shape representations for single view 3D object shape prediction. CVPR'18
-- 3D-RCNN: Instance-level 3D Object Reconstruction via Render-and-Compare. CVPR'18
 - Learning View Priors for Single-view 3D Reconstruction. CVPR'19
 - CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
