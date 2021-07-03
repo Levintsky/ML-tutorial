@@ -7,6 +7,7 @@
 - David F. Fouhey, Abhinav Gupta, and Martial Hebert. Data-driven 3D primitives for single image understanding. ICCV'13
 - Shubham Tulsiani and Jitendra Malik. Viewpoints and keypoints. CVPR'15
 - Derek Hoiem, Alexei A. Efros, and Martial Hebert.Geometric context from a single image. ICCV'15
+- Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
 
 ## Geometry-based
 - Keypoint matching:

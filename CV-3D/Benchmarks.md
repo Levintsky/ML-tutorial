@@ -1,20 +1,11 @@
 # Benchmarks
 
-## Unclassified
-- **Pix3d**: Xingyuan Sun, Jiajun Wu, Xiuming Zhang, Zhoutong Zhang, Chengkai Zhang, Tianfan Xue, Joshua B. Tenenbaum, and William T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
-
 ## Objects
 - ShapeNet-Series:
 	- **ShapeNet**: Angel X Chang, Thomas Funkhouser, Leonidas Guibas, et al. Shapenet: An information-rich 3d model repository. 2015
 		- https://www.shapenet.org/
 		- 55 classes, 51,300 unique 3D models (ShapeNetCore)
 		- Part label available
-	- **ModelNet**: Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
-		- http://3dshapenets.cs.princeton.edu/
-		- 30 x 30 x 30 voxels
-		- 662 classes, 151,128 CAD models (3D)
-		- ModelNet10: 4899 models from 10 categories 
-		- ModelNet40: 12311 models from 40 categories, all are uniformly orientated
 	- **PartNet**: Kaichun Mo, Shilin Zhu, Angel X. Chang, Li Yi, Subarna Tripathi, Leonidas J. Guibas, Hao Su. PartNet: A Large-scale Benchmark for Fine-grained and Hierarchical Part-level 3D Object Understanding. CVPR'19
 		- https://cs.stanford.edu/~kaichun/partnet/
 		- https://github.com/daerduoCarey/partnet_anno_system (Online annotation system)
@@ -24,60 +15,160 @@
 		- Based on ShapeNet-Core
 		- Hierarchical labeling
 		- Compare 4 SOA
-- **PASCAL-3D**: Yu Xiang, Roozbeh Mottaghi, and Silvio Savarese. Beyond pascal: A benchmark for 3d object detection in the wild. In WACV, 2014.
-	- 12 categories, 3k+ objects
-- **IKEA**: Joseph J. Lim, Hamed Pirsiavash, and Antonio Torralba. Parsing ikea objects: Fine pose estimation. ICCV 2013.
-	- http://ikea.csail.mit.edu/
-	- Goal: evaluate fine pose estimation based on 3D models
-	- 759 images, 219 3D-models
-- **ObjectNet3D**: Yu Xiang, Wonhui Kim, Wei Chen, Jingwei Ji, Christopher Choy, Hao Su, Roozbeh Mottaghi, Leonidas Guibas, Silvio Savarese. A Large Scale Database for 3D Object Recognition, ECCV 2016
-- Other 3D benchmarks:
+- Clean obj benchmarks (no background), CAD:
 	- Trimble 3D Warehouse: https://3dwarehouse.sketchup.com/
 	- Yobi3D: https://yobi3d.com
-	- P. Shilane, P. Min, M. Kazhdan, and T. Funkhouser. The princeton shape benchmark. In Shape Modeling Applications, 2004
-		- 6,670 CAD models, 161 categories
-	- FAUST: Dataset and evaluation for 3D mesh registration, CVPR 2014
-	- **LabelMe 3d**: B. C. Russell and A. Torralba. Building a database of 3d scenes from user annotations. In CVPR, 2009
-	- P. Shilane, P. Min, M. Kazhdan, and T. Funkhouser. The princeton shape benchmark. In Shape Modeling Applications 2004. 
-	- **NYU-D** N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor segmentation and support inference from rgbd images. ECCV 2012
-- Robotic Grasping 3d:
-	- Benchmarking in manipulation research: The YCB object and model set and benchmarking protocols, RAM 2015
-- RGB-D:
+	- **Princeton**: P. Shilane, P. Min, M. Kazhdan, and T. Funkhouser. The princeton shape benchmark. In Shape Modeling Applications, 2004
+		- https://shape.cs.princeton.edu/benchmark/
+		- 1,814 3D polygonal models collected from the World Wide Web;
+		- Each 3D model contains a (.off) file, a model information file (e.g., the URL from where it came), and a JPEG image file with a thumbnail view of the model.
+	- **IKEA**: Joseph J. Lim, Hamed Pirsiavash, and Antonio Torralba. Parsing ikea objects: Fine pose estimation. ICCV'13
+		- http://ikea.csail.mit.edu/
+		- Goal: evaluate fine pose estimation based on 3D models
+		- 759 images, 219 3D-models;
+	- **ModelNet**: Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
+		- http://3dshapenets.cs.princeton.edu/
+		- 30 x 30 x 30 voxels
+		- 662 classes, 151,128 CAD models (3D)
+		- ModelNet10: 4899 models from 10 categories 
+		- ModelNet40: 12,311 models from 40 categories, all are uniformly orientated;
+	- Zhou, Qingnan and Jacobson. Thingi10K: A Dataset of 10,000 3D-Printing Models (2016).
+		- https://ten-thousand-models.appspot.com/
+		- 10k models from thingiverse.com;
+	- **ABC**: Sebastian Koch, Albert Matveev, Zhongshi Jiang, Francis Williams, Alexey Artemov, Evgeny Burnaev, Marc Alexa, Denis Zorin, Daniele Panozzo. ABC: A Big CAD Model Dataset For Geometric Deep Learning. CVPR'19
+		- https://cs.nyu.edu/~zhongshi/publication/abc-dataset/
+		- https://deep-geometry.github.io/abc-dataset/
+		- a collection of one million CAD models;
+		- Each model: **explicitly parametrized curves and surfaces**, providing ground truth for differential quantities, patch segmentation, geometric feature detection, and shape reconstruction;
+	- Mikaela Angelina Uy, Quang-Hieu Pham, Binh-Son Hua, Duc Thanh Nguyen, Sai-Kit Yeung. ScanObjectNN: A New Benchmark Dataset and Classification Model on Real-World Data. ICCV'19
+		- https://hkust-vgd.github.io/scanobjectnn/
+		- **Indoor** with clean obj or with background;
+		- Benchmark for classification task;
+	- **Fusion 360**: Karl D. D. Willis and Yewen Pu and Jieliang Luo and Hang Chu and Tao Du and Joseph G. Lambourne and Armando Solar-Lezama and Wojciech Matusik. Fusion 360 Gallery Dataset. TOG'21
+		- https://github.com/AutodeskAILab/Fusion360GalleryDataset
+		- Submitted by users of the CAD package Autodesk Fusion 360
+	- Kim, Jungtaek and Chung, Hyunsoo and Lee, Jinhwi and Cho, Minsu and Park, Jaesik. Combinatorial {3D} Shape Generation via Sequential Assembly. NeurIPSW'20
+		- https://github.com/POSTECH-CVLab/Combinatorial-3D-Shape-Generation
+		- Sequential assembly with geometric primitives (2x4 jigsaw puzzles)
+- **LabelMe 3d**: B. C. Russell and A. Torralba. Building a database of 3d scenes from user annotations. CVPR'09
+- RGB-D/With background:
+	- **PASCAL-3D+**: Yu Xiang, Roozbeh Mottaghi, and Silvio Savarese. Beyond pascal: A benchmark for 3d object detection in the wild. In WACV, 2014.
+		- https://cvgl.stanford.edu/projects/pascal3d
+		- Extended from PASCAL;
+		- 12 rigid categories: aeroplane, bicycle, boat, bottle, bus, car, chair, diningtable, motorbike, sofa, train and tvmonitor;
+		- 3k+ objects
+		- Label process: match downloaded 3D-CAD to images, with landmark matching labeled;
+	- **ObjectNet3D**: Yu Xiang, Wonhui Kim, Wei Chen, Jingwei Ji, Christopher Choy, Hao Su, Roozbeh Mottaghi, Leonidas Guibas, Silvio Savarese. A Large Scale Database for 3D Object Recognition, ECCV'16
+		- https://cvgl.stanford.edu/projects/objectnet3d/
+		- Extended from ImageNet;
+		- 100 categories, 90,127 images, 201,888 objects in these images and 44,147 3D shapes;
+		- Same as Pascal3d+, asked to match most similar 3d-cad;
 	- M. Firman. Rgbd datasets: Past, present and future. In CVPR Workshop, 2016
 	- S. Choi and Q. Zhou and S. Miller and V. Koltun. A Large Dataset of Object Scans, 2016
+		- http://redwood-data.org/3dscan/
 		- 10K scans of RGBD, in .PLY format.
 	- T. Hodan, P. Haluza, S. Obdrzalek, J. Matas, M. Lourakis, and X. Zabulis. T-less: An rgb-d dataset for 6d pose estimation of texture-less objects. In WACV, 2017
 	- K. Lai, L. Bo, X. Ren, and D. Fox. A large-scale hierarchical multi-view rgb-d object dataset. ICRA 2011
-- X. Puig, K. Ra, M. Boben, J. Li, T. Wang, S. Fidler, and A. Torralba. Virtualhome: Simulating household activities
-via programs. CVPR 2018
+- X. Puig, K. Ra, M. Boben, J. Li, T. Wang, S. Fidler, and A. Torralba. Virtualhome: Simulating household activities via programs. CVPR 2018
 - C. Yan, D. Misra, A. Bennnett, A. Walsman, Y. Bisk, and Y. Artzi. Chalet: Cornell house agent learning environment. 2018
-- L. Yi, L. Guibas, A. Hertzmann, V. G. Kim, H. Su, and E. Yumer. Learning hierarchical shape segmentation and
-labeling from online repositories. TOG 2017
+- L. Yi, L. Guibas, A. Hertzmann, V. G. Kim, H. Su, and E. Yumer. Learning hierarchical shape segmentation and labeling from online repositories. TOG'17
 - L. Yi, V. G. Kim, D. Ceylan, I. Shen, M. Yan, H. Su, C. Lu, Q. Huang, A. Sheffer, L. Guibas, et al. A scalable active framework for region annotation in 3D shape collections. TOG 2016
+- **Pix3D**: Xingyuan Sun, Jiajun Wu, Xiuming Zhang, Zhoutong Zhang, Chengkai Zhang, Tianfan Xue, Joshua B. Tenenbaum, and William T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
+	- Data: Images/3D pairs (2D-3D alignment);
+		- 595 3D shapes;
+		- 10,069 pairs;
+	- Data source: extending IKEA and iPAD;
+	- Realistic;
+	- https://github.com/xingyuansun/pix3d
+	- http://pix3d.csail.mit.edu/
 
 ## 3D Scenes
-- **NYU Depth Dataset V2**: 2012
-	- indoor scene, 1449 densely labeled pairs of RGB-D (Kinect)
-- **SUNRGB-D**:
-	- 10,355 training, 2,860 testing;
-- **SceneNN**: 2016
-	- 100+ indoor scene meshes;
-- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
-- **Matterport3D**: RGB-D indoor Environment;
-- **SUNCG**:
-- **MINOS: Multimodal Indoor Simulator**: 2017;
-- **Facebook House3D**: A Rich and Realistic 3D Environment 2017;
-- **HoME**;
-- **AI2-THOR**;
-- **UnrealCV**;
-- **Gibson Environment**: Real-World Perception for Embodied Agents;
-- **Kitti**;
+- Indoor realistic:
+	- Open Surfaces:
+		- http://opensurfaces.cs.cornell.edu/publications/opensurfaces/
+		- 22,213 scans, labeled with materials
+		- Sean Bell and Paul Upchurch and Noah Snavely and Kavita Bala. Open Surfaces: A Richly Annotated Catalog of Surface Appearance. SIGGRAPH'13
+		- Sean Bell, Kavita Bala, Noah Snavely. Intrinsic Images in the Wild. SIGGRAPH'14
+			- Intrinsic image decomposition separates an image into a reflectance layer and a shading layer;
+		- Sean Bell, Paul Upchurch, Noah Snavely, Kavita Bala. Material Recognition in the Wild with the Materials in Context Database. CVPR'15
+		- Balazs Kovacs, Sean Bell, Noah Snavely, Kavita Bala. Shading Annotations in the Wild. CVPR'17
+	- **NYU Depth Dataset V2**: N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor segmentation and support inference from rgbd images. ECCV'12
+		- https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html
+		- Indoor scene, 1449 densely labeled pairs of RGB-D (**Kinect**)
+		- 464 new scenes taken from 3 cities
+		- 407,024 new unlabeled frames
+		- Each object is labeled with a class and an instance number (cup1, cup2, cup3, etc)
+	- Rent3D: Floor-Plan Priors for Monocular Layout Estimation.
+		- https://www.cs.toronto.edu/~fidler/projects/rent3D.html
+	- **SceneNN**: Binh-Son Hua, Quang-Hieu Pham, Duc Thanh Nguyen, Minh-Khoi Tran, Lap-Fai Yu, Sai-Kit Yeung. SceneNN: a Scene Meshes Dataset with aNNotations. 3DV'16
+		- 100+ indoor scene meshes;
+		- http://www.scenenn.net
+	- **SUNRGB-D**: S. Song, S. Lichtenberg, and J. Xiao. SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite. CVPR'15
+		- http://rgbd.cs.princeton.edu/challenge.html
+		- 10,355 training, 2,860 testing;
+		- Sensors: 4 types: Intel RealSense 3D Camera for tablets, Asus Xtion LIVE PRO for laptops, and Microsoft Kinect versions 1 and 2 for desktop;
+		- Calibration: standard library (J.-Y. Bouguet. Camera calibration toolbox for matlab. 2004)
+		- GT label:
+			- 2D polygon: Amazon Mechanical Turk, LabelMe-style;
+			- 3D: bev;
+	- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
+		- 2.5 million, >1,500 scans, annotated camera pose, surface reconstruction, instance-level semantic segmentation;
+		- iPad RGB camera, 30Hz, depth 640 × 480, color at 1296 × 968 pixels;
+		- GT acquisition:
+			- Reconstruction: volumetric fusion (bundle fusion), then Voxel-Hashing + Marching Cube;
+			- Instance-segmentation: normal-based graph-cut (over-seg), then user click to cluster; CAD retrieval for object detection?
+	- **Matterport3D**: Angel Chang, Angela Dai, Thomas Funkhouser, Maciej Halber, Matthias Nießner, Manolis Savva, Shuran Song, Andy Zeng, Yinda Zhang. Matterport3D: Learning from RGB-D Data in Indoor Environments. 3DV'17
+		- RGB-D indoor Environment;
+		- https://github.com/niessner/Matterport
+	- **SUNCG**: Shuran Song, Fisher Yu, Andy Zeng, Angel X. Chang, Manolis Savva, Thomas Funkhouser. Semantic Scene Completion from a Single Depth Image. CVPR'17
+		- https://sscnet.cs.princeton.edu/
+		- Focus on **semantic scene completion**, a task for producing a complete 3D voxel representation of volumetric occupancy and semantic labels for a scene from a single-view depth map observation;
+	- **InteriorNet**: Wenbin Li, Sajad Saeedi, John McCormac, Ronald Clark, Dimos Tzoumanikas, Qing Ye, Yuzhong Huang, Rui Tang and Stefan Leutenegger. InteriorNet: Mega-scale Multi-sensor Photo-realistic Indoor Scenes Dataset. BMVC'18
+		- https://interiornet.org/
+	- **Structured3D**: Jia Zheng, Junfei Zhang, Jing Li, Rui Tang, Shenghua Gao, Zihan Zhou. Structured3D: A Large Photo-realistic Dataset for Structured 3D Modeling
+		- https://structured3d-dataset.org/
+	- 3D-FRONT: 3D Furnished Rooms with layOuts and semaNTics [Link]
+		- Contains 10,000 houses (or apartments) and ~70,000 rooms with layout information.
+- Indoor synthetic/cg/simulated/game:
+	- **MINOS: Multimodal Indoor Simulator**: 2017;
+		- Task: navigation;
+	- **Facebook House3D**: A Rich and Realistic 3D Environment 2017;
+		- Built on SUNCG;
+	- **HoME**: Simon Brodeur, Ethan Perez, Ankesh Anand, Florian Golemo, Luca Celotti, Florian Strub, Jean Rouat, Hugo Larochelle, Aaron Courville. HoME: a Household Multimodal Environment. NIPS'17
+		- https://home-platform.github.io/
+	- **AI2-THOR**: Eric Kolve, Roozbeh Mottaghi, Winson Han, Eli VanderBilt, Luca Weihs, Alvaro Herrasti, Daniel Gordon, Yuke Zhu, Abhinav Gupta, Ali Farhadi. AI2-THOR: An Interactive 3D Environment for Visual AI. 2017
+		- Simulation, robotics;
+	- **UnrealCV**: Weichao Qiu, Fangwei Zhong, Yi Zhang, Siyuan Qiao,Zihao Xiao, Tae Soo Kim, Yizhou Wang, Alan Yuille. UnrealCV: Virtual Worlds for Computer Vision. ACMMM'17
+		- https://unrealcv.org/
+	- **Gibson Environment**: Real-World Perception for Embodied Agents;
+		- http://gibsonenv.stanford.edu/
+		- Built on real indoor scenes;
+	- **3D-FUTURE**: Huan Fu, Rongfei Jia, Lin Gao, Mingming Gong, Binqiang Zhao, Steve Maybank, Dacheng Tao. 3D-FUTURE: 3D FUrniture shape with TextURE. arxiv'20
+		- https://tianchi.aliyun.com/specials/promotion/alibaba-3d-future?spm=5176.14208320.0.0.66293cf7asRnrR
+		- 20,240 indoor rendered images and 16,563 (+6571) 3D furniture models,
+	- 3ThreeDWorld(TDW): A High-Fidelity, Multi-Modal Platform for Interactive Physical Simulation [Link]
+- Outdoor/car/urban:
+	- **Kitti**;
+	- Cityscape;
+	- **SEMANTIC3D.NET**: Timo Hackel and N. Savinov and L. Ladicky and Jan D. Wegner and K. Schindler and M. Pollefeys. SEMANTIC3D.NET: A new large-scale point cloud classification benchmark. 
+		- http://www.semantic3d.net/
 - **Virtual Kitti**: A Gaidon, Q Wang, Y Cabon, E Vig. Virtual Worlds as Proxy for Multi-Object Tracking Analysis. CVPR'16
 	- https://github.com/VisualComputingInstitute/vkitti3D-dataset
-- Cityscape;
 - DeMon dataset: combination of SUN3D, ...
 - **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
 	- MVS benchmark;
 - **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
 - **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
 	- MVS benchmark;
+
+## 3D Human
+- **FAUST**: Federica Bogo, Javier Romero, Matthew Loper, Michael J. Black. FAUST: Dataset and evaluation for 3D mesh registration, CVPR'14
+	- http://faust.is.tue.mpg.de/
+	- Human scans
+- **VOCASET**: Daniel Cudeiro, Timo Bolkart, Cassidy Laidlaw, Anurag Ranjan and Michael J. Black. VOCASET: Speech-4D Head Scan Dataset. CVPR'19
+	- https://voca.is.tue.mpg.de/
+	- 4D face datasets, 29 min, 60fps, 12 speakers;
+
+## Robotics
+- Benchmarking in manipulation research: The YCB object and model set and benchmarking protocols, RAM 2015
+	- Grasping;
