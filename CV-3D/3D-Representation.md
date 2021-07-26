@@ -43,9 +43,13 @@
 - Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 	- VAE
 - Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. ICLR'19
-- **Pointflow**: Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointflow: 3d point cloud generation with continuous normalizing flows. ICCV'19
-	- CNF based model;
 - Ruihui Li, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. PU-GAN: A point cloud upsampling adversarial network. ICCV'19
+- **CNF**:
+	- **Pointflow**: Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointflow: 3d point cloud generation with continuous normalizing flows. ICCV'19
+		- CNF based model;
+	- Shitong Luo, Wei Hu. Diffusion Probabilistic Models for 3D Point Cloud Generation. CVPR'21
+		- https://github.com/luost26/diffusion-point-cloud
+		- MCMC
 
 ## 2. Voxel
 - Completion:
@@ -247,6 +251,14 @@ Panozzo. 2019. Deep geometric prior for surface reconstruction. CVPR'19
 	- Loss: Beam-gap loss: to handle narrow deep cavity;
 	- Implementation: iterative for K=1000 iterations by network, then pass to RWM [Huang'18] to generate manifold, watertight and non-interscting surface;
 	- Runtime (per iteration): 0.23/0.59/4.7 sec on 2k/6k/40k faces;
+- Cheng Lin, Changjian Li, Yuan Liu, Nenglun Chen, Yi-King Choi, Wenping Wang. Point2Skeleton: Learning Skeletal Representations from Point Clouds. CVPR'21
+	- Input: point cloud, Output: skeleton
+	- Skeleton: medial axis transform (MAT)
+	- Model:
+		- Graph initialization: topological and recovery priors;
+		- GAE link prediction: graph latent by self supervision
+		- Mesh generation: use GAE prediction to refine the initial graph;
+	- https://github.com/clinplayer/Point2Skeleton
 
 ## 4. Templates/Primitives (Also check composition folder)
 - Legacy:
@@ -416,6 +428,8 @@ Panozzo. 2019. Deep geometric prior for surface reconstruction. CVPR'19
 		- CNF-based;
 	- **DIT-Net**: Yu Deng, Jiaolong Yang, Xin Tong. Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence. CVPR'21
 		- https://github.com/microsoft/DIF-Net
+- Sampling technique:
+	- Wang Yifan, Shihao Wu, Cengiz Öztireli, Olga Sorkine-Hornung. Iso-Points: Optimizing Neural Implicit Surfaces With Hybrid Representations. CVPR'21
 - **DISN**: Qiangeng Xu, Weiyue Wang, Duygu Ceylan, Radomir Mech, and Ulrich Neumann. Disn: Deep implicit surface network for high-quality single-view 3d reconstruction. 2019
 - **DSIF**: Kyle Genova, Forrester Cole, Avneesh Sud, Aaron Sarna, and Thomas A. Funkhouser. Deep structured implicit functions. CoRR, abs/1912.06126, 2019
 - **Pifu**: Shunsuke Saito, , Zeng Huang, Ryota Natsume, Shigeo Morishima, Angjoo Kanazawa, and Hao Li. Pifu: Pixel-aligned implicit function for high-resolution clothed human digitization. ICCV'19
@@ -432,7 +446,6 @@ Panozzo. 2019. Deep geometric prior for surface reconstruction. CVPR'19
 - Matthew Tancik, Pratul P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan T. Barron, and Ren Ng. Fourier features let networks learn high frequency functions in low dimensional domains. NeurIPS'20
 - Vincent Sitzmann, Julien NP Martel, Alexander W Bergman, David B Lindell, and Gordon Wetzstein. Implicit neural representations with periodic activation functions. NeurIPS'20
 - Latest:
-	- Wang Yifan, Shihao Wu, Cengiz Öztireli, Olga Sorkine-Hornung. Iso-Points: Optimizing Neural Implicit Surfaces With Hybrid Representations. CVPR'21
 	- Moritz Ibing, Isaak Lim, Leif Kobbelt. 3D Shape Generation With Grid-Based Implicit Functions. CVPR'21
 
 ## 2.5D, Depth, Skeleton, 3D-Aware 2D Cues...

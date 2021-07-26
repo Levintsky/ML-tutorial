@@ -1,5 +1,10 @@
 # Video Understanding
 
+## Resources
+- Dahua Lin:
+	- https://drive.google.com/file/d/1hX6myOOpRF1hT0Qcb4Vje7EVsUGTeZF_/view
+	- https://youtu.be/gxh4tT0JD_A
+
 ## Unclassified
 - Dahua Lin. Trajectory Convolution for Action Recognition. NIPS'18
 - A summary: https://zhuanlan.zhihu.com/p/149340496

@@ -84,9 +84,3 @@
 	- S. Saxena and J. Verbeek. Convolutional neural fabrics. NIPS'16
 	- **PSPNet**: H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid scene parsing network. CVPR'17
 	- DeepLab V2/V3: atrous spatial pyramid pooling;
-
-## Fine-Grained
-- **Bilinear**: T Lin, A RoyChowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV'15
-	- https://github.com/HaoMood/bilinear-cnn
-- Kaiyu Yue, Ming Sun, Yuchen Yuan, Feng Zhou, Errui Ding, Fuxin Xu. Compact Generalized Non-local Network. NIPS'18
-	- https://github.com/KaiyuYue/cgnl-network.pytorch

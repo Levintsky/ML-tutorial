@@ -62,6 +62,8 @@
 		- https://github.com/Jia-Research-Lab/3DSSD
 - GNN/Attention:
 	- **MLCVNet**: Qian Xie, Yu-Kun Lai, Jing Wu, Zhoutao Wang, Yiming Zhang, Kai Xu, and Jun Wang. MLCVNet: Multi-Level Context VoteNet for 3D Object Detection. CVPR'20
+		- https://github.com/NUAAXQ/MLCVNet
+		- Indoor
 	- **Point-GNN**: Weijing Shi and Ragunathan (Raj) Rajkumar. Graph Neural Network for 3D Object Detection in a Point Cloud. CVPR'20
 - Frontal/BEV 2D backbone:
 	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17	
@@ -87,6 +89,7 @@
 		- GNN backbone, GNN module relation, 1-stage output;
 	- **SESS**: Na Zhao, Tat-Seng Chua, Gim Hee Lee. SESS: Self-Ensembling Semi-Supervised 3D Object Detection. CVPR'20
 	- **H3DNet**: Zaiwei Zhang, Bo Sun, Haitao Yang, and Qixing Huang. H3DNet: 3D Object Detection Using Hybrid Geometric Primitives. ECCV'20
+		- https://github.com/zaiweizhang/H3DNet
 		- Extend from VoteNet, predict corner and edge;
 		- Proposals from SDF;
 - Fancier: interaction between proposals by PointNet/GNN;
