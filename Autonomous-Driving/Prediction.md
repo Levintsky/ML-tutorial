@@ -19,9 +19,29 @@
 	- K-mode output: loss for with the closest to ground truth;
 
 ## PnP Together
-- **FaF**
-- **IntentNet**
-- **SPAGNN**
+- **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
+	- Insight: **PIXOR** + tracking + prediction;
+	- Input: 4D tensor from BEV 3D LiDAR (144 × 80m / 0.2m/bin), previous 5 timesteps;
+	- Output: 1. 3D detection; 2. tracking; 3. motion forecasting; (predict next 1 sec; no intent;)
+	- Model:
+		- Early/late fusion on 5 frames: tradeoff between speed (early is fast) and accuracy;
+		- SSD-like one-stage detection: multi-boxes each location; different aspect ratio;
+		- Tracking by detection: decoding tracklets;
+	- Supervision:
+		- Binary cross-entropy classification loss;
+		- Regression-loss: find correspondence first (IoU > 0.4 with ground truth), 
+	<img src="/Autonomous-Driving/images/prediction/faf.png" alt="drawing" width="500"/>
+- **IntentNet**: S Casas, W Luo, R Urtasun. IntentNet: Learning to Predict Intention from Raw Sensor Data. CoRL'18
+	- Insight: **Improve on FaF with HDMap**;
+	- Input: 1. 3D point cloud; (BEV) stack time on height; 2. dynamic maps;
+	- Output: 1. trajectory regression; (a sequence of bounding boxes); 2. high level actions (keep lane, turn left/right, left/right lane change, stopping, stopped, parked)
+	- Output head: 1. detection branch; (anchors) 2. intention branch; 3. intention as an embedding for motion estimation/regression;
+	- **Two-stream + Late fusion**: predict probability of being a vehicle; predict bounding box into the future;
+	- Predicts: detection scores for vehicle and background classes, high level action probabilities corresponding to discrete intention, and bounding box regressions in the current and future time steps to represent the intended trajectory;\
+		<img src="/Autonomous-Driving/images/prediction/intentnet.png" alt="drawing" width="600"/>
+- **SPAGNN**: Sergio Casas, Cole Gulino, Renjie Liao, Raquel Urtasun. SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. ICRA'20
+	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.\
+		<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
 - M Liang, B Yang, R Hu, Y Chen, R Urtasun. Learning Lane Graph Representations for Structured Prediction.
 	- Main take-away: use lane graph rather than rasterize;
 	- Input: lane graph, BEV Lidar, camera images;
@@ -37,8 +57,19 @@
 	- Model: CNN + LSTM;
 - Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
 - PnP with Radar [Benson Guo];
+- Lingyun Li, Bin Yang, Ming Liang, Mengye Ren, Wenyuan Zeng, Sean Segal, Raquel Urtasun. End-to-end Contextual Perception and Prediction with Interaction Transformer. IROS'20
+	- Insight: use transformer to improve SPAGNN
 
 ## Pedestrian
+- PnP:
+	- **STINet**: Zhishuai Zhang, Jiyang Gao, Junhua Mao, Yukai Liu, Dragomir Anguelov, Congcong Li. STINet: Spatio-Temporal-Interactive Network for Pedestrian Detection and Trajectory Prediction. CVPR'20
+		- Problem: preception + tracking (previous frames) + prediction from BEV for pedestrian;
+		- Model: T-RPN\
+			<img src="/Autonomous-Driving/images/detection/stinet-1.png" alt="drawing" width="500"/>
+		- Backbone: ResUNet\
+			<img src="/Autonomous-Driving/images/detection/stinet-2.png" alt="drawing" width="400"/>
+		- Past + trajejory as feature, GNN for interaction:\
+			<img src="/Autonomous-Driving/images/detection/stinet-3.png" alt="drawing" width="400"/>
 - Legacy:
 	- B. D. Ziebart, N. Ratliff, G. Gallagher, C. Mertz, K. Peterson, J. A. Bagnell, M. Hebert, A. K. Dey, and S. Srinivasa. Planning-based prediction for pedestrians. IROS'09
 - A. Alahi, K. Goel, V. Ramanathan, A. Robicquet, L. Fei-Fei, and S. Savarese. Social LSTM: Human Trajectory Prediction in Crowded Spaces. CVPR'16

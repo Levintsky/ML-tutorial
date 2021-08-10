@@ -38,7 +38,7 @@
 		- Zhile Ren and Erik B Sudderth. Three-dimensional object detection and layout prediction using clouds of oriented gradients. CVPR'16
 		- Zhile Ren and Erik B Sudderth. 3D Object Detection with Latent Support Surfaces. CVPR'18
 - PointNet, 3D-Conv, GNN, BEV-2D-Conv
-- 3D-Conv:
+- 3D/Sparse-Conv:
 	- Sliding Shapes:
 		- Shuran Song and Jianxiong Xiao. Sliding shapes for 3d object detection in depth images. ECCV'14
 		- Shuran Song and Jianxiong Xiao. Deep sliding shapes for amodal 3d object detection in rgb-d images. CVPR'16
@@ -52,6 +52,8 @@
 	- Mahyar Najibi, Guangda Lai, Abhijit Kundu, Zhichao Lu, Vivek Rathod, Thomas Funkhouser, Caroline Pantofaru, David Ross, Larry S. Davis, Alireza Fathi. DOPS: Learning to Detect 3D Objects and Predict their 3D Shapes. CVPR'20
 		- 3D-sparse U-Net;
 		- GNN;
+	- **GSDN**: JunYoung Gwak, Christopher Choy, Silvio Savarese. Generative Sparse Detection Networks for 3D Single-shot Object Detection. ECCV'20
+		- https://github.com/jgwak/GSDN
 - PointNet:
 	- Qiangui Huang, Weiyue Wang, and Ulrich Neumann. Recurrent Slice Networks for 3D Segmentation of Point Clouds. CVPR'18
 	- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
@@ -66,23 +68,41 @@
 		- Indoor
 	- **Point-GNN**: Weijing Shi and Ragunathan (Raj) Rajkumar. Graph Neural Network for 3D Object Detection in a Point Cloud. CVPR'20
 - Frontal/BEV 2D backbone:
-	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17	
+	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
+		- Input: image + BEV; output: bounding boxes;
+		- BEV: [-40, 40] x [0, 70]
+		- VGG feature extractor: for both BEV and frontal images + FPN to map back;
 	- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
+		- Input: BEV Lidar + Front-view Lidar + 2D image;
+		- Output: object class, 3D bounding boxes;
 	- **Pixor**: B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
+		- Input: BEV; 800 x 700 x 36 (70m x 80m, rasterized by 0.1m bin)
+		- Backbone:
+			- 16x downsample, add more layers for details;
+			- Similar to FPN, combine feature of different resolution with skip;
 	- **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
 	- **HDNET**: B. Yang, M. Liang, R. Urtasun. HDNET: Exploiting HD Maps for 3D Object Detection. CoRL'18
+		- Extend Pixor with HD-Map, which has z0 (ground-level)
+		- Then z-z0 as input feature;
 	- **Complex-YOLO**: Martin Simon, Stefan Milz, Karl Amende, Horst-Michael Gross. Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object Detection on Point Clouds. 2018
 	- **Pointpillars**: Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
 	- **CenterPoint**: Tianwei Yin, Xingyi Zhou, Philipp Krähenbühl. Center-based 3D Object Detection and Tracking. NIPS'20
 		- https://github.com/tianweiy/CenterPoint
-- **Fusion for RGBD** Feature fusion (2D paste to 3D or vice versa):
+- **Fusion** 2D/3D:
 	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
+		- Unproject 2d image feature to 3d lidar point;
 	- **MTMF**: M Liang, B Yang, Y Chen, R Hu, R Urtasun. Multi-Task Multi-Sensor Fusion for 3D Object Detection. CVPR'19
 
 ## Proposal
 - 2-stage (RPN), 1-stage;
 - 1-stage, vote for center, then center for box;
 	- **SECOND**: Yan Yan, Yuxing Mao and Bo Li. SECOND: Sparsely Embedded Convolutional Detection. Sensors'18
+	- **Pixor**: B Yang, W Luo, and R Urtasun. Pixor: Real-time 3d object detection from point clouds. CVPR'18
+		- 2D-oriented bounding box {θ, xc, yc, w, l}, per-pixel prediction;
+		- Head: upsample x2 twice,
+			- 200 x 175 x 1: cross entropy + 200 x 175 x6 {cosθ, sinθ, dx, dy, w, l}
+		- Learning: Focal loss on classification for class imbalance;
+		- Inference: NMS;
 	- **Complex-YOLO**: Martin Simon, Stefan Milz†, Karl Amende, Horst-Michael Gross. Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object Detection on Point Clouds. 2018
 		- E-RPN (Euler): complex number for angle;
 	- **HGNet**: Jintai Chen, Biwen Lei, Qingyu Song, Haochao Ying, Danny Z. Chen, Jian Wu. A Hierarchical Graph Network for 3D Object Detection on Point Clouds. CVPR'20
@@ -95,6 +115,10 @@
 - Fancier: interaction between proposals by PointNet/GNN;
 	- **3D-MPA**: Francis Engelmann, Martin Bokeloh, Alireza Fathi, Bastian Leibe, Matthias Nießner. Multi Proposal Aggregation for 3D Semantic Instance Segmentation. CVPR'20
 - 2-Stage, RPN:
+	- **MV3D**: X Chen, H Ma, J Wan, B Li, T Xia. Multi-View 3D Object Detection Network for Autonomous Driving. CVPR'17
+		- Generates 3D object proposals from BEV map and project them to three views;
+		- Deep fusion network is used to combine region-wise features obtained via ROI pooling for each view;
+	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
 	- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
 		- 10k point, each predict a box;
 		- RPN-based refinement;

@@ -5,6 +5,8 @@
 - Voxel;
 - Mesh;
 - Multi-view images;
+- Fusion:
+	- Both image + lidar as input;
 
 ## Unclassified
 - L. Yi, H. Su, X. Guo, and L. J. Guibas. SyncSpecCNN: Synchronized spectral CNN for 3D shape segmentation. CVPR'17
