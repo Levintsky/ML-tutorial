@@ -15,22 +15,6 @@
 	- 2D as 3D;
 - **PVCNN**: Zhijian Liu, Haotian Tang, Yujun Lin, Song Han. Point-Voxel CNN for Efficient 3D Deep Learning. NIPS'19
 
-## Hybrid
-- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
-	- Input: H x D x W pc;
-	- Key idea: voxel; within each voxel: VFE; RPN-based detection;
-	- Backbone: feature-learning + Conv-middle layer + RPN;
-		- Divides the point cloud into equally spaced 3D voxels;
-		- encodes each voxel via stacked VFE layers;
-		- then 3D convolution further aggregates local voxel features, transforming the point cloud into a high-dimensional volumetric representation;\
-		<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="600"/>
-	- 1. PointNet for each voxel;
-	- 2. 3D-Conv on voxels;
-	- VFE-layer:\
-		<img src="/Autonomous-Driving/images/detection/voxel-net.png" alt="drawing" width="450"/>
-	- 3. RPN consumes the volumetric representation and yields the detection result;
-	- Experiments: 3D detection from Lidar on KITTI;
-
 ## Point Clouds
 - Unclassified:
 	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
@@ -219,8 +203,7 @@
 	- Experiments: SOA on Synthia dataset semantic segmentation;
 
 ## RGBD
-- Saurabh Gupta, Ross Girshick, Pablo Arbelaez, and Jitendra Malik. Learning rich features from rgb-d images for object detection and segmentatio. ECCV'14
-- Shuran Song and Jianxiong Xiao. Deep Sliding Shapes for amodal 3D object detection in RGB-D images. CVPR'16
+- Saurabh Gupta, Ross Girshick, Pablo Arbelaez, and Jitendra Malik. Learning rich features from rgb-d images for object detection and segmentation. ECCV'14
 
 ## Implicit Functions
 - Legacy:
@@ -231,9 +214,6 @@
 	- **3D-EPN**: A. Dai, C. R. Qi, and M. Nießner,  Shape completion using 3d-encoder-predictor cnns and shape synthesis, CVPR'17
 		- https://github.com/angeladai/cnncomplete
 	- D. Stutz and A. Geiger. Learning 3d shape completion from laser scan data with weak supervision. CVPR'18
-- Point-based SDF:
-	- **DeepSDF**: J Park, P Florence, J Straub, R Newcombe, S Lovegrove. DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation. 2019
-		- https://github.com/facebookresearch/DeepSDF
 - I Cherabier, J Schonberger, M Oswald, M Pollefeys, A Geiger. Learning Priors for Semantic 3D Reconstruction. ECCV'18
 
 ## 2D-3D Fusion

@@ -32,12 +32,15 @@
 	- Dahua Lin, Sanja Fidler, and Raquel Urtasun. Holistic scene understanding for 3d object detection with rgbd cameras. ICCV'13
 	- **3D-SIS**: Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. CVPR'19
 
-## Backbones
+## Input and Backbones
+- Summary:
+	- PointNet, 3D-Conv, GNN, BEV-2D-Conv
+	- 2D: Camera intrinsic and extrinsic info;
+	- Hybrid: voxelnet (pointnet + conv3d)
 - Legacy (human-designed):
 	- **COG**: Cloud of Orientated Gradient feature
 		- Zhile Ren and Erik B Sudderth. Three-dimensional object detection and layout prediction using clouds of oriented gradients. CVPR'16
 		- Zhile Ren and Erik B Sudderth. 3D Object Detection with Latent Support Surfaces. CVPR'18
-- PointNet, 3D-Conv, GNN, BEV-2D-Conv
 - 3D/Sparse-Conv:
 	- Sliding Shapes:
 		- Shuran Song and Jianxiong Xiao. Sliding shapes for 3d object detection in depth images. ECCV'14
@@ -45,6 +48,8 @@
 	- Martin Engelcke, Dushyant Rao, Dominic Zeng Wang, Chi Hay Tong, and Ingmar Posner. Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks. ICRA'17
 	- Bo Li. 3D Fully Convolutional Network for Vehicle Detection in Point Cloud. IROS'17
 	- **SECOND**: Yan Yan, Yuxing Mao and Bo Li. SECOND: Sparsely Embedded Convolutional Detection. Sensors'18
+	- C. Zhang,W. Luo, and R. Urtasun. Efficient convolutions for real-time semantic segmentation of 3d point clouds. 3DV'18
+		- Model: voxelize + ResNet;
 	- **3D-SIS**: Ji Hou, Angela Dai, and Matthias Nießner. 3D-SIS: 3d semantic instance segmentation of rgb-d scans. CVPR'19
 	- **PartA2-Net**: Shi, Shaoshuai and Wang, Zhe and Shi, Jianping and Wang, Xiaogang and Li, Hongsheng. From Points to Parts: 3D Object Detection from Point Cloud with Part-aware and Part-aggregation Network. PAMI'20
 		- 3D-conv, compress height, 2d-conv;
@@ -88,10 +93,17 @@
 	- **Pointpillars**: Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. CVPR'19
 	- **CenterPoint**: Tianwei Yin, Xingyi Zhou, Philipp Krähenbühl. Center-based 3D Object Detection and Tracking. NIPS'20
 		- https://github.com/tianweiy/CenterPoint
+- Range view (cylindrical range images? also 2D?):
+	- **VeloFCN**: B Li, T Zhang, and T Xia. Vehicle detection from 3D lidar using fully convolutional network. RSS'16
+	- **LaserNet**: G Meyer, A Laddha, E Kee, C Vallespi-Gonzalez, Carl K. Wellington. LaserNet: An Efficient Probabilistic 3D Object Detector for Autonomous Driving. CVPR'19
 - **Fusion** 2D/3D:
 	- M Liang, B Yang, S Wang, and R Urtasun. Deep continuous fusion for multi-sensor 3d object detection. ECCV'18
 		- Unproject 2d image feature to 3d lidar point;
 	- **MTMF**: M Liang, B Yang, Y Chen, R Hu, R Urtasun. Multi-Task Multi-Sensor Fusion for 3D Object Detection. CVPR'19
+- Hybrid:
+	- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
+		- PointNet for each voxel, encode each voxel with VFE-layer;
+		- 3D-Conv on voxels;
 
 ## Proposal
 - 2-stage (RPN), 1-stage;
@@ -119,6 +131,7 @@
 		- Generates 3D object proposals from BEV map and project them to three views;
 		- Deep fusion network is used to combine region-wise features obtained via ROI pooling for each view;
 	- **AVOD**: J Ku, M Mozifian, J Lee, A Harakeh, and S L Waslander. Joint 3d proposal generation and object detection from view aggregation. CoRR'17
+	- **VoxelNet**: Y Zhou, O Tuzel. VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection. CVPR'18
 	- **Pointrcnn**: Shaoshuai Shi, Xiaogang Wang, and Hongsheng Li. Pointrcnn: 3d object proposal generation and detection from point cloud. CVPR'19
 		- 10k point, each predict a box;
 		- RPN-based refinement;
@@ -127,6 +140,8 @@
 	- Byung-soo Kim, Shili Xu, and Silvio Savarese. Accurate localization of 3d objects from rgb-d data using segmentation hypotheses. CVPR'13
 	- Jean Lahoud and Bernard Ghanem. 2d-driven 3d object detection in rgb-d images. CVPR'17
 	- Charles R Qi, Wei Liu, Chenxia Wu, Hao Su, and Leonidas J Guibas. Frustum pointnets for 3d object detection from rgb-d data. CVPR'18
+- Segmentation output:
+	- C. Zhang,W. Luo, and R. Urtasun. Efficient convolutions for real-time semantic segmentation of 3d point clouds. 3DV'18
 
 ## RGB-D Detection
 - Viewpoint-dependent detector, pose estimation by clustering 3D:

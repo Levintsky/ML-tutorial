@@ -21,34 +21,11 @@
 ## Survey
 - Eduardo Arnold, Omar YAl-Jarrah, Mehrdad Dianati, Saber Fallah, David Oxtoby, and Alex Mouzakitis. A Survey on 3D Object Detection Methods for Autonomous Driving Applications. T-ITS'19
 
-## Detection
-- BEV + Frontal (Fusion)
-	- Y Chen, M Liang, B Yang, R Urtasun. Bi-directional Multi-Sensor Fusion for 3D Perception.
-		- Input: RGB, LiDAR;
-		- MMF: 3D-BEV + 2D;
-		- FuseNet: 3D + 2D for depth completion (Uber);
-		- Ours: Voxel + 2D;
-		- Tasks:
-- Range view (cylindrical range images?):
-	- **VeloFCN**: B Li, T Zhang, and T Xia. Vehicle detection from 3D lidar using fully convolutional network. RSS'16
-	- **LaserNet**: G Meyer, A Laddha, E Kee, C Vallespi-Gonzalez, Carl K. Wellington. LaserNet: An Efficient Probabilistic 3D Object Detector for Autonomous Driving. CVPR'19
-		- 0. Range view;
-		- 1. FCN (class probability for each LIDAR point)
-		- 2. Mean-shift clustering for points; adaptive-NMS;
-		<img src="/Autonomous-Driving/images/detection/laser-net.png" alt="drawing" width="600"/>
-
-## Lidar Segmentation
-- C. Zhang,W. Luo, and R. Urtasun. Efficient convolutions for real-time semantic segmentation of 3d point clouds. 3DV'18
-	- Model: voxelize + ResNet;
-
 ## Misc
-- OSIS: Identifying Unknown Instances [Kelvin Wong, Shenlong]
+- Kelvin Wong, Shenlong Wang, Mengye Ren, and Raquel Urtasun. Identifying Unknown Instances for Autonomous Driving. CoRL'19
 	- Unseen: deer, ... detect and group the point-clouds
-- Exemplar memory module for rare-seen object recognition [Mengfei Liu];
 
 ## Detection From 2D
-- May need (estimate)
-	- Camera intrinsic and extrinsic info;
 - B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
 	- Insight: estimate depth first, then 3D detection;
 - Geometry constraint:

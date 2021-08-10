@@ -1,4 +1,21 @@
-# Mobile Vision, Fast
+# Model Compression
+
+## Basics
+- Generally:
+	- Efficient inference in NeurIPS;
+- Goal:
+	- Faster
+	- Smaller
+- Approaches:
+	- Down-sizing: distillation, nas;
+	- Operator factorization: matrix svd;
+	- Value quantization;
+	- Value compression;
+	- Parameter sharing;
+	- Sparisification;
+		- https://htor.inf.ethz.ch/sparsity-in-dl/
+		- Torsten Hoefler, Dan Alistarh, Tal Ben-Nun, Nikoli Dryden, Alexandra Peste. Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks. 2021
+- Applications: Mobile Deployment
 
 ## Sequential Inference
 - Yang Song, Chenlin Meng, Renjie Liao, Stefano Ermon. Nonlinear Equation Solving: A Faster Alternative to Feedforward Computation. 2020
