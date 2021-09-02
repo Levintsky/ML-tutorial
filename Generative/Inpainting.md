@@ -19,6 +19,9 @@
 - I. Talmi, R. Mechrez, and L. Zelnik-Manor. Template matching with deformable diversity similarity. CVPR'17
 	- relative distance measure
 
+## SOTA
+- Shengyu Zhao, Jonathan Cui, Yilun Sheng, Yue Dong, Xiao Liang, Eric I Chang, Yan Xu. Large Scale Image Completion via Co-Modulated Generative Adversarial Networks. ICLR'21
+
 ## Legacy
 - **ZNCC**: Dirk Padfield. Masked object registration in the fourier domain. TIP'12
 	- masked zero-normalized cross correlation;

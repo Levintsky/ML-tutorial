@@ -12,7 +12,7 @@
 	- Value quantization;
 	- Value compression;
 	- Parameter sharing;
-	- Sparisification;
+	- Sparsification;
 		- https://htor.inf.ethz.ch/sparsity-in-dl/
 		- Torsten Hoefler, Dan Alistarh, Tal Ben-Nun, Nikoli Dryden, Alexandra Peste. Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks. 2021
 - Applications: Mobile Deployment

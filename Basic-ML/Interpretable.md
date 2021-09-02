@@ -1,4 +1,37 @@
-# Explain NN
+# Explain/Interpretable
+
+## Basics
+- Types of explanations:
+	- Feature-based:
+		- M. Ribeiro et al., "Why Should I Trust You?": Explaining the Predictions of Any Classifier, KDD, 2016.
+		- S. Lundberg and S. Lee, A Unified Approach to Interpreting Model Predictions, NeurIPS, 2017.
+		- M. Sundararajan, Axiomatic Attribution for Deep Networks, ICML, 2017.
+	- Training-based:
+		- P. Koh and P. Liang, Understanding Black-box Predictions via Influence Functions, ICML'17
+	- Concept-based: (attributes?)
+		- B. Kim et al., Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV), ICML'18
+	- Surrogate models:
+		- A. Alaa and M. van der Shaar, Demystifying Black-box Models with Symbolic Metamodels, NeurIPS, 2019
+	- Natural language (In ICML'21 tutorial)
+		- SNLI: S. Bowman et al., A large annotated corpus for learning natural language inference, EMNLP, 2015.
+			- 550k train, 10k test;
+		- M. Marelli et al., A SICK cure for the evaluation of compositional distributional semantic models, LREC, 2014.
+		- A. Williams et al., A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference, NAACL, 2018.
+		- S. Gururangan et al., Annotation Artifacts in Natural Language Inference Data, NAACL, 2019.
+		- A. Bosselut et al., COMET: Commonsense transformers for automatic knowledge graph construction. ACL, 2019.
+		- Oana-Maria Camburu, Brendan Shillingford, Pasquale Minervini, Thomas Lukasiewicz, Phil Blunsom. Make Up Your Mind! Adversarial Generation of Inconsistent Natural Language Explanations. ACL'20
+		- M. Lewis et al., BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension. ACL, 2020.
+		- NILE: Kumar and Talukdar. NILE: Natural Language Inference with Faithful Natural Language Explanations. ACL'20
+		- Majumder et al., Rationale-Inspired Natural Language Explanations with Commonsense. 2021
+	- With vision:
+		- Y. Chen et al., UNITER: Universal image-text representation learning, ECCV, 2020.
+		- J. Park et al., VisualCOMET: Reasoning about the dynamic context of a still image. ECCV, 2020.
+		- A. Radford et al., Language Models are Unsupervised Multitask Learners, 2019.
+		- Attibutes based:
+			- Attribute Prototype Network for Zero-Shot Learning; Xu, Xian, Wang, Schiele, Akata at NeurIPS 2020
+		- Textual Explanations for Self-Driving Vehicles; Kim, Rohrbach, Darrell, Canny, Akata at ECCV 2018
+		- Transformer: Natural Language Rationales with Full-Stack Visual Reasoning: From Pixels to Semantic Frames to Commonsense Graphs; Marasovic, Bhagavatula, Park, Bras, Smith, Choi at EMNLP 2020
+		- Learning Decision Trees Recurrently Through Communication; Alaniz, Marcos, Schiele, Akata at CVPR 2021
 
 ## Tutorial
 - NeurIPS'20: https://explainml-tutorial.github.io/
@@ -29,6 +62,20 @@
 			- Representation Based;
 			- Model Distillation;
 			- Summaries of Counterfactuals;
+- ICML'21: Natural-XAI: Explainable AI with Natural Language Explanations.
+	- Audience friendly:
+		- H. Kaur et al., Interpreting Interpretability: Understanding Data Scientists' Use of Interpretability Tools for Machine Learning, Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, 2020.
+		- T. Miller, Explanation in Artificial Intelligence:Insights from the Social Sciences, Elsevier, 2019.
+		- M. Druzdzel, Qualitative Verbal Explanations in Bayesian Belief Networks, Artificial Intelligence and Simulation of Behaviour Quarterly, Special issue on Bayesian belief networks, 1996.
+	- 4 Challenges: faithfulness, zero/few-shot learning, automatic evaluation, NLE for any task;
+	- Faithfulness:
+		- S. Kumar and P. Talukdar, NILE: Natural Language Inference with Faithful Natural Language Explanations, ACL, 2020.
+		- P. Hase et al., Leakage-Adjusted Simulatability: Can Models Generate Non-Trivial Explanations of Their Behavior in Natural Language?, ACL, 2020.
+		- O. Camburu et al., Make Up Your Mind! Adversarial Generation of Inconsistent Natural Language Explanations, ACL, 2020.
+	- Few shot: S. Narang et al., WT5?! Training Text-to-Text Models to Explain their Predictions, 2020
+	- Automatic Eval:
+		- O. Camburu et al., e-SNLI: Natural Language Inference with Natural Language Explanations, NeurIPS, 2018.
+		- M. Kayser et al., e-ViL: A Dataset and Benchmark for Natural Language Explanations inVision-Language Tasks, 2021.
 
 ## Interpretability
 - David Alvarez-Melis, Tommi S. Jaakkola. Towards Robust Interpretability with Self-Explaining Neural Networks. NIPS'18

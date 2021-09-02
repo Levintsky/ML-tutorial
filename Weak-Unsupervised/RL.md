@@ -1,5 +1,25 @@
 # Reinforcement Learning
 
+## Tutorial
+- ICML'21: Aravind Srinivas, Pieter Abbeel. Unsupervised Learning for Reinforcement Learning
+- Count-based Exploration: Bellemare DeepMind
+- Curiosity (Pathak, Efros), Random Network Distillation (OpenAI), Go-Explore (Uber AI)
+- Forms of Unsupervised Learning:
+	- Generative
+		- Density model (PixelCNN, GPT-x, Bigan)
+		- Masked auto-encoding (BERT, Electra)
+	- Non-generative (contrastive like)
+		- Siamese (SimCLR, MoCo, AMDIM, BYOL, SimSiam, DINO, Barlow Twins)
+		- Contrastive prediction (CPC)
+- UL for RL:
+	- Learn world models; Dyna (fake rollouts), Model-Based RL
+	- Non-Generative (Contrastive-like)
+	- Use as an auxiliary task to speed up (sample-efficiency) RL
+		- Refer to Mordatch/Hamrick Tutorial (ICML 20’)
+		- DALL-E: Creating Images from Text
+		- SCAN: Learning Abstract Hierarchical Compositional Visual Concepts (DeepMind Blog)
+		- UNREAL
+
 ## DeepMind
 - https://deepmind.com/blog/unsupervised-learning/
 - Re-imagining intelligence
@@ -11,6 +31,7 @@
 - **UNREAL**: M. Jaderberg et. al., Reinforcement Learning with Unsupervised Auxiliary Tasks. (2016)
 	- Pixel control: maximizse change in pixel intensity
 	- Reward prediction
+- Dream to Control: Learning behaviors by latent imagination - Hafner et al 2019
 - **ToMnet**: N C. Rabinowitz, F Perbet, H. Francis Song, C Zhang, S. M. A Eslami, M Botvinick. Machine Theory of Mind. ICML'18
 	<img src = '/Weak-Unsupervised/images/tomnet.png' width = '500px'>
 
