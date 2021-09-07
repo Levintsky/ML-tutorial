@@ -215,6 +215,12 @@
 		<img src="/CV-3D/images/3d_output/ogn.png" alt="drawing" width="600"/>
 	- Gernot Riegler, Ali Osman Ulusoy, Horst Bischof, and Andreas Geiger. Octnetfusion: Learning depth fusion from data. 3DV'17
 	- **Adaptive O-CNN**: Peng-Shuai Wang, Chun-Yu Sun, Yang Liu, and Xin Tong. Adaptive O-CNN: a patch-based deep representation of 3d shapes. SIGGRAPH Asia'18
+- From other info:
+	- **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
+		- Insight: project to spherical map;
+		- Input: single image;
+		- https://github.com/xiumingzhang/GenRe-ShapeHD
+		<img src="/CV-3D/images/3d_output/genre.png" alt="drawing" width="600"/>
 
 ## 3. Mesh
 - Legacy:
@@ -287,6 +293,8 @@
 		- https://github.com/nywang16/Pixel2Mesh
 		<img src="/CV-3D/images/3d_output/pixel2mesh-1.png" alt="drawing" width="500"/>
 		<img src="/CV-3D/images/3d_output/pixel2mesh-2.png" alt="drawing" width="500"/>
+	- **Geometrics**: Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. ICML'19
+		- https://github.com/EdwardSmith1884/GEOMetrics
 	- **Pixel2mesh++**: Chao Wen, Yinda Zhang, Zhuwen Li, and Yanwei Fu. Pixel2mesh++: Multi-view 3d mesh generation via deformation. ICCV'19
 		- https://github.com/walsvid/Pixel2MeshPlusPlus
 		- Extension of Pixel2mesh;
@@ -305,6 +313,9 @@
 			- 2. graph convolution, which propagates information along mesh edges;
 			- 3. vertex refinement， which updates vertex positions.
 		- Supevision: similar to **Geometrics**; sample points, Chamfer-Distance;
+	- Charlie Nash, Yaroslav Ganin, S. M. Ali Eslami, and Peter W. Battaglia. PolyGen: An autoregressive generative model of 3d meshes. ICML'19
+		- https://github.com/deepmind/deepmind-research/tree/master/polygen
+		- **Transformer** on points and faces;
 - Retrieval:
 	- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
 		- Check CAD/template-based method;
@@ -317,31 +328,24 @@
 		- Input point cloud or image encoded by a NN as feature f(x)
 		- Then, f(x) and points sampled on a rectangle reconstruct an atlas on shape x;
 			- Multiple MLP for multiple patches (Atlas);
-- **GenRe**: X Zhang, Z Zhang, C Zhang, J Tenenbaum, W Freeman and J Wu. Learning to Reconstruct Shapes from Unseen Classes. NIPS'18
-	- Insight: project to spherical map;
-	- Input: single image;
-	- https://github.com/xiumingzhang/GenRe-ShapeHD
-	<img src="/CV-3D/images/3d_output/genre.png" alt="drawing" width="600"/>
-- **Geometrics**: Edward J Smith, Scott Fujimoto, Adriana Romero, and David Meger. Geometrics: Exploiting geometric structure for graph-encoded objects. ICML'19
-	- https://github.com/EdwardSmith1884/GEOMetrics
-- **DGP**: Francis Williams, Teseo Schneider, Claudio Silva, Denis Zorin, Joan Bruna, and Daniele Panozzo. Deep geometric prior for surface reconstruction. CVPR'19
-- Charlie Nash, Yaroslav Ganin, S. M. Ali Eslami, and Peter W. Battaglia. PolyGen: An autoregressive generative model of 3d meshes. ICML'19
-- Thiemo Alldieck, Gerard Pons-Moll, Christian Theobalt, and Marcus Magnor. Tex2shape: Detailed full human body geometry from a single image. ICCV'19
-- Rana Hanocka, Gal Metzer, Raja Giryes, Daniel Cohen-Or. Point2Mesh: A Neural Self-Prior for Deformable Meshes. SIGGRAPH'20
-	- Insight: coarse-to-fine MeshCNN:
-		<img src="/CV-3D/images/3d_output/point2mesh.png" alt="drawing" width="500"/>
-	- Loss: Mesh to Point Cloud Distance: Chamfer + differentiable sampler;
-	- Loss: Beam-gap loss: to handle narrow deep cavity;
-	- Implementation: iterative for K=1000 iterations by network, then pass to RWM [Huang'18] to generate manifold, watertight and non-interscting surface;
-	- Runtime (per iteration): 0.23/0.59/4.7 sec on 2k/6k/40k faces;
-- Cheng Lin, Changjian Li, Yuan Liu, Nenglun Chen, Yi-King Choi, Wenping Wang. Point2Skeleton: Learning Skeletal Representations from Point Clouds. CVPR'21
-	- Input: point cloud, Output: skeleton
-	- Skeleton: medial axis transform (MAT)
-	- Model:
-		- Graph initialization: topological and recovery priors;
-		- GAE link prediction: graph latent by self supervision
-		- Mesh generation: use GAE prediction to refine the initial graph;
-	- https://github.com/clinplayer/Point2Skeleton
+- Mesh from point cloud;
+	- **DGP**: Francis Williams, Teseo Schneider, Claudio Silva, Denis Zorin, Joan Bruna, and Daniele Panozzo. Deep geometric prior for surface reconstruction. CVPR'19
+		- Similar to deep-image-prior;
+	- Rana Hanocka, Gal Metzer, Raja Giryes, Daniel Cohen-Or. Point2Mesh: A Neural Self-Prior for Deformable Meshes. SIGGRAPH'20
+		- Insight: coarse-to-fine MeshCNN:
+			<img src="/CV-3D/images/3d_output/point2mesh.png" alt="drawing" width="500"/>
+		- Loss: Mesh to Point Cloud Distance: Chamfer + differentiable sampler;
+		- Loss: Beam-gap loss: to handle narrow deep cavity;
+		- Implementation: iterative for K=1000 iterations by network, then pass to RWM [Huang'18] to generate manifold, watertight and non-interscting surface;
+		- Runtime (per iteration): 0.23/0.59/4.7 sec on 2k/6k/40k faces;
+	- Cheng Lin, Changjian Li, Yuan Liu, Nenglun Chen, Yi-King Choi, Wenping Wang. Point2Skeleton: Learning Skeletal Representations from Point Clouds. CVPR'21
+		- https://github.com/clinplayer/Point2Skeleton
+		- Input: point cloud, Output: skeleton
+		- Skeleton: medial axis transform (MAT)
+		- Model:
+			- Graph initialization: topological and recovery priors;
+			- GAE link prediction: graph latent by self supervision
+			- Mesh generation: use GAE prediction to refine the initial graph;
 
 ## 4. Templates/Primitives (Also check composition folder)
 - Legacy:
@@ -526,6 +530,9 @@
 				- Basic building modules: Conformal toric charts;
 					-  H. Maron, M. Galun, N. Aigerman, M. Trope, N. Dym, E. Yumer, V. G. KIM, and Y. Lipman. Convolutional neural networks on surfaces via seamless toric covers. SIGGRAPH, 2017
 				- Dataset: human body and anatomical bone surfaces (teeth)
+			- **Tex2shape**: Thiemo Alldieck, Gerard Pons-Moll, Christian Theobalt, and Marcus Magnor. Tex2shape: Detailed full human body geometry from a single image. ICCV'19
+				- https://github.com/thmoa/tex2shape
+				- SMPL + barycentric coord;
 			- Keyang Zhou, Bharat Lal Bhatnagar, and Gerard Pons-Moll. Unsupervised shape and pose disentanglement for 3d meshes. ECCV'20
 				- https://github.com/kzhou23/shape_pose_disent
 				- SMPL-based;
