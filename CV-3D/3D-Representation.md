@@ -374,14 +374,23 @@
 				- Size, orientation, position, convex, symmetric, assembles;
 				- Primitives: planes, cuboids/boxes, spheres/cylinders/cones, ellipsoids/tori/...
 			- Approaches: Ransac, Hough Transform, Clustering; (region growing, ...), Assembling Primitives;
-	- Cosegmentation:
+	- Cosegmentation: **cross-shape consistency**;
 		- A. Golovinskiy and T. Funkhouser. Learning Consistent Segmentation of 3D Models. CG'09
 			- Problem: segment a set of models;
-			- Energy based: a graph, similar parts across shapes should have consistent assignment;
+			- Energy based: a graph, similar parts **across shapes** should have consistent assignment;
 		- Qi-Xing Huang, Vladlen Koltun, and Leonidas J. Guibas. Joint shape segmentation with linear programming. TOG'11
+			- Unsupervised cosegmentation;
+			- Stage 1: initial segment on each shape; (superpixels or clustering)
+			- Stage 2: pairwise segmentation: energy-based, seg(S1)+seg(S2)+consistency(S1, S2);
+			- Stage 3: multiway joint segmentation;
 		- Mehmet Ersin Yümer and Levent Burak Kara. Co-abstraction of shape collections. TOG'12
+			- Problem definition: abstract (lower-res) of a set of shapes;
 		- Vladimir G. Kim, Wilmot Li, Niloy J. Mitra, Siddhartha Chaudhuri, Stephen DiVerdi, and Thomas A. Funkhouser. Learning part-based templates from large collections of 3d shapes. TOG'13
-			- Jointly learn parts from multiple shapes
+			- Task: given a template with gt segmentation labels, segment other shapes;
+			- Jointly solving for model deformations, part segmentation, and inter-model correspondence;
+			- 1. if no template provided, create auto template;
+			- 2. Fit each shape with each template;
+			- 3. Refine template;
 		- **BAE-Net**: Zhiqin Chen, Kangxue Yin, Matthew Fisher, Siddhartha Chaudhuri, and Hao Zhang. BAE-Net: Branched autoencoder for shape co-segmentation. CVPR'19
 			- https://github.com/czq142857/BAE-NET
 			- Task: unsupervised co-segmentation;
@@ -390,20 +399,50 @@
 			- Supervision: unsupervised, reconstruction loss;
 		- **Superquadrics**: Despoina Paschalidou, Ali Osman Ulusoy, and Andreas Geiger. Superquadrics revisited: Learning 3d shape parsing beyond cuboids. CVPR'19
 			- https://github.com/paschalidoud/superquadric_parsing
+		- **AtlasNetV2**: Theo Deprelle, Thibault Groueix, Matthew Fisher, Vladimir Kim, Bryan Russell, and Mathieu Aubry. Learning elementary structures for 3d shape generation and matching. NeurIPS'19
+			- https://github.com/TheoDEPRELLE/AtlasNetV2
+			- Assume all 3D data similar to a common template (also a.k.a. elemental structures);
+				- Assume each shape made up of elem-struct E1, E2, ... with shape-dependent adjustment modules p1, p2, ...;
+				- **if E1, E2, ... are squares or sphere: AtlasNet**
+				- **if an instance shape Z as elem-struct: 3D-CODED**
+			- Initial template from sampling on surface;
+			- Learn to MLP-mapping or translate;
+			- Supervision:
+				- Correspondence error if gt deformation available and all points aligned;
+				- otherwise CD;
+		- **Neural Parts**: Despoina Paschalidou, Angelos Katharopoulos, Andreas Geiger, Sanja Fidler. Neural Parts: Learning Expressive 3D Shape Abstractions With Invertible Neural Networks. CVPR'21
+			- https://paschalidoud.github.io/neural_parts
+			- https://github.com/paschalidoud/neural_parts
+			- Task: input image + 3D mesh, output a part template;
+			- each part: a learned homeomorphism learned by INN;
+			- Insight: part emerge without labels, temporal consistency;
 	- Supervised:
+		- Generative: given shapes with part labels, learn space to sample new shapes;
+			- Charlie Nash and Chris KI Williams. The shape variational autoencoder: A deep generative model of part-segmented 3d objects. CGF'17, SGP'17
+				- Task: given shapes with part labels, learn latent z;
+			- Hao Wang, Nadav Schor, Ruizhen Hu, Haibin Huang, Daniel Cohen-Or, and Hui Huang. Global-to-local generative model for 3d shapes. SIGGRAPH Asia'18
+			- Rundi Wu, Yixin Zhuang, Kai Xu, Hao Zhang, and Baoquan Chen. PQ-NET: A generative part seq2seq network for 3D shapes. CVPR'20
+				- https://github.com/ChrisWu1997/PQ-NET
+				- Sequentially, one part at a time by GRU;
+		- Compose/Assembly/Placement:
+			- Anastasia Dubrovina, Fei Xia, Panos Achlioptas, Mira Shalah, Raphael Groscot, Leonidas Guibas. Composite Shape Modeling via Latent Space Factorization. ICCV'19
+				- Input: 3D;
+				- Output: editable object by manipulating semantic space;
+				- Backbone:
+					- Input 3D voxel -> 3D-CNN -> partition unity to 1;
+					- Each part feature -> decoder -> STN -> obj;
+			- **CompoNet**: Nadav Schor, Oren Katzir, Hao Zhang, and Daniel Cohen-Or. CompoNet: Learning to generate the unseen by part synthesis and composition. ICCV'19
+				- https://github.com/nschor/CompoNet
+				- Model:
+					- Part synthesis unit: VAE for each part separately;
+					- Part composition unit: compose the part;
+			- Jialei Huang, Guanqi Zhan, Qingnan Fan, Kaichun Mo, Lin Shao, Baoquan Chen, Leonidas J. Guibas, Hao Dong. Generative 3D Part Assembly via Dynamic Graph Learning. NeurIPS'20
+				- https://hyperplane-lab.github.io/Generative-3D-Part-Assembly/
+				- https://github.com/hyperplane-lab/Generative-3D-Part-Assembly
+				- Task: given part point cloud, predict assembly;
+				- GNN for relation reasoning, pooling for equivalent parts (4 legs)...
 		- **3d-prnn**: Chuhang Zou,Ersin Yumer, Jimei Yang, Duygu Ceylan,and Derek Hoiem. 3d-prnn: Generating shape primitives with recurrent neural networks. ICCV'17
 		- **SFPN**: Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, and Leonidas J. Guibas. Supervised fitting of geometric primitives to 3d point clouds. CVPR'19
-		- Anastasia Dubrovina, Fei Xia, Panos Achlioptas, Mira Shalah, Raphael Groscot, Leonidas Guibas. Composite Shape Modeling via Latent Space Factorization. ICCV'19
-			- Input: 3D;
-			- Output: editable object by manipulating semantic space;
-			- Backbone:
-				- Input 3D voxel -> 3D-CNN -> partition unity to 1;
-				- Each part feature -> decoder -> STN -> obj;
-		- **CompoNet**: Nadav Schor, Oren Katzir, Hao Zhang, and Daniel Cohen-Or. CompoNet: Learning to generate the unseen by part synthesis and composition. ICCV'19
-			- https://github.com/nschor/CompoNet
-			- Model:
-				- Part synthesis unit: VAE for each part separately;
-				- Part composition unit: compose the part;
 		- **Sagnet**: Zhijie Wu, Xiang Wang, Di Lin, Dani Lischinski, Daniel Cohen-Or, and Hui Huang. Sagnet: Structure-aware generative network for 3d-shape modeling. SIGGRAPH'19
 			- https://github.com/zhijieW94/SAGNet
 			- Model:
@@ -415,44 +454,35 @@
 	- Hierarchical/Recursive/Graph/Scene-graph:
 		- James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
 		- Yanzhen Wang, Kai Xu, Jun Li, Hao Zhang, Ariel Shamir, Ligang Liu, Zhi-Quan Cheng, and Yueshan Xiong. Symmetry Hierarchy of Man-Made Objects. CGF'11
-		- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
-		- **GRASS**. Jun Li, Kai Xu, Siddhartha Chaudhuri, Ersin Yumer, Hao Zhang, Leonidas Guibas. GRASS: Generative Recursive Autoencoders for Shape Structures. SIGGRAPH 2017
-			- Regularity/symmetry;
-			- https://github.com/kevin-kaixu/grass_pytorch
-		- **Im2Struct**: Chengjie Niu, Jun Li, Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
-			- https://github.com/chengjieniu/Im2Struct
-			- Recursive NN to iteratively predict primitives;
-		- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
-		- **StructureNet**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. 2019
-		- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
-		- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
-		- **GNN**: Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
+			- Symmetry hierarchy: 3D geometry is hierarchically grouped by either attachment or symmetric relationships;
+		- Recursive NN:
+			- **GRASS**. Jun Li, Kai Xu, Siddhartha Chaudhuri, Ersin Yumer, Hao Zhang, Leonidas Guibas. GRASS: Generative Recursive Autoencoders for Shape Structures. SIGGRAPH 2017
+				- Regularity/symmetry;
+				- https://github.com/kevin-kaixu/grass_pytorch
+			- **Im2Struct**: Chengjie Niu, Jun Li, Kai Xu. Im2Struct: Recovering 3D Shape Structure from a Single RGB Image. CVPR'18
+				- https://github.com/chengjieniu/Im2Struct
+				- Recursive NN to iteratively predict primitives;
+			- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
+			- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
+		- GNN:
+			- **StructureNet**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. SIGGRPAH Asia'19
+				- Train a graph-VAE s.t. graph -> z -> graph
+				- Embed image/3d to same space as z;
+			- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
+			- Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
+				- GNN: edge defined by spatial locality of each indoor scene obj;
+				- Sequential generative model: Predict one new obj at a time;
 		- Despoina Paschalidou, Luc Gool, and Andreas Geiger. Learning unsupervised hierarchical part decomposition of 3d objects from a single rgb image. CVPR'20
 			- https://github.com/paschalidoud/hierarchical_primitives
 			- 3 Networks:
-				- Partition network: binary partition, each part with feature;
+				- Partition network: **binary** partition, each part with feature;
 				- Structure network: inside/outside assignment;
 				- Geometry network: superquadratics fitting;
-	- Siddhartha Chaudhuri and Vladlen Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
-	- Charlie Nash and Chris KI Williams. The shape variational autoencoder: A deep generative model of part-segmented 3d objects. CGF'17
-	- Hao Wang, Nadav Schor, Ruizhen Hu, Haibin Huang, Daniel Cohen-Or, and Hui Huang. Global-to-local generative model for 3d shapes. SIGGRAPH Asia'18
-	- Jialei Huang, Guanqi Zhan, Qingnan Fan, Kaichun Mo, Lin Shao, Baoquan Chen, Leonidas J. Guibas, Hao Dong. Generative 3D Part Assembly via Dynamic Graph Learning. NeurIPS'20
-		- https://hyperplane-lab.github.io/Generative-3D-Part-Assembly/
-		- https://github.com/hyperplane-lab/Generative-3D-Part-Assembly
-		- Task: given part point cloud, predict assembly;
-		- GNN for relation reasoning, pooling for equivalent parts (4 legs)...
-	- Rundi Wu, Yixin Zhuang, Kai Xu, Hao Zhang, and Baoquan Chen. PQ-NET: A generative part seq2seq network for 3D shapes. CVPR'20
-		- https://github.com/ChrisWu1997/PQ-NET
-		- Sequentially, one part at a time by GRU;
-		- Assumes part given together with shape;
-	- **AtlasNetV2**: Theo Deprelle, Thibault Groueix, Matthew Fisher, Vladimir Kim, Bryan Russell, and Mathieu Aubry. Learning elementary structures for 3d shape generation and matching. NeurIPS'19
-		- https://github.com/TheoDEPRELLE/AtlasNetV2
-		- Assume all 3D data similar to a common template;
-		- Learn to MLP-mapping or translate;
-		- correspondence error if gt available, otherwise CD;
-	- Despoina Paschalidou, Angelos Katharopoulos, Andreas Geiger, Sanja Fidler. Neural Parts: Learning Expressive 3D Shape Abstractions With Invertible Neural Networks. CVPR'21
-		- https://paschalidoud.github.io/neural_parts
-		- https://github.com/paschalidoud/neural_parts
+	- Applications:
+		- Siddhartha Chaudhuri and Vladlen Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
+			- Given a query simple shape, suggest creativity (interactive generative model)
+			- Fast match by signature;
+			- Search and suggest parts with low correspondence;
 - **CAD** (retrieval, Morphable):
 	- **Morphable model**:
 		- Legacy:
