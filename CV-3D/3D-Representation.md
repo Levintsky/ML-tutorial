@@ -256,6 +256,9 @@
 	- F. Bernardini, J. Mittleman, H. Rushmeier, C. Silva, and G. Taubin. The ball-pivoting algorithm for surface reconstruction. TVCG'99
 	- F. Calakli and G. Taubin. SSD: smooth signed distance surface reconstruction. CGF'11
 - Direct mesh by downsample, upsample:
+	- Qingyang Tan, Lin Gao, Yu-Kun Lai, Jie Yang,and Shihong Xia. Mesh-based autoencoders for localized deformation component analysis. AAAI'18
+		- https://github.com/aldehydecho/convMesh
+	- Qingyang Tan, Lin Gao, Yu-Kun Lai, and Shihong Xia. Meshvae: Variational autoencoders for deforming 3d mesh models. CVPR'18
 	- **Coma**: A. Ranjan, T. Bolkart, S. Sanyal, and M. J. Black. Generating 3D faces using convolutional mesh autoencoders. ECCV'18
 		- https://coma.is.tue.mpg.de/
 	- **MeshCNN**: Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, Daniel Cohen-Or. MeshCNN: A Network with an Edge. SIGGRAPH'19
@@ -284,7 +287,7 @@
 		- Input: image; Output mesh;
 		- Model:
 			- Encoder: image -> 2D-CNN to get latent feature shared by three output modules;
-			- Output: 1. camera pose; 2. deformation; 3. texture;
+			- Output: 1. camera pose; 2. deformation for each vertice; 3. texture;
 		- Supervision: mask + keypoitn + texture;
 		<img src="/CV-3D/images/3d_output/cmr.png" alt="drawing" width="550"/>
 	- **Pixel2mesh**: Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. ECCV'18
@@ -421,6 +424,11 @@
 			- Charlie Nash and Chris KI Williams. The shape variational autoencoder: A deep generative model of part-segmented 3d objects. CGF'17, SGP'17
 				- Task: given shapes with part labels, learn latent z;
 			- Hao Wang, Nadav Schor, Ruizhen Hu, Haibin Huang, Daniel Cohen-Or, and Hui Huang. Global-to-local generative model for 3d shapes. SIGGRAPH Asia'18
+			- **SDM-NET**: Lin Gao, Jie Yang, Tong Wu, Yu-Jie Yuan, Hongbo Fu, Yu-Kun Lai, and Hao(Richard) Zhang. SDM-NET: Deep generative network for structured deformable mesh. TOG'19
+				- http://geometrylearning.com/sdm-net/
+				- Two level:
+					- Part level: part VAE;
+					- Structure level: SP VAE; concatenate part feature in a consistent order; decode as part;
 			- Rundi Wu, Yixin Zhuang, Kai Xu, Hao Zhang, and Baoquan Chen. PQ-NET: A generative part seq2seq network for 3D shapes. CVPR'20
 				- https://github.com/ChrisWu1997/PQ-NET
 				- Sequentially, one part at a time by GRU;
@@ -472,6 +480,9 @@
 			- Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
 				- GNN: edge defined by spatial locality of each indoor scene obj;
 				- Sequential generative model: Predict one new obj at a time;
+			- **DSM-Net**: Jie Yang, Kaichun Mo, Yu-Kun Lai, Leonidas J. Guibas, and Lin Gao. DSM-Net: Disentangled structured mesh net for controllable generation of fine geometry, 2020.
+				- http://geometrylearning.com/dsg-net/
+				- Graph-VAE;
 		- Despoina Paschalidou, Luc Gool, and Andreas Geiger. Learning unsupervised hierarchical part decomposition of 3d objects from a single rgb image. CVPR'20
 			- https://github.com/paschalidoud/hierarchical_primitives
 			- 3 Networks:
@@ -484,7 +495,7 @@
 			- Fast match by signature;
 			- Search and suggest parts with low correspondence;
 - **CAD** (retrieval, Morphable):
-	- **Morphable model**:
+	- **Morphable model** given a CAD:
 		- Legacy:
 			- 3DMM: Volker Blanz and Thomas Vetter. A morphable model for the synthesis of 3D faces. In 26th Annual Conference on Computer Graphics and Interactive Techniques'99
 				- Human face;
@@ -497,6 +508,7 @@
 				- https://github.com/ranahanocka/ALIGNet
 				- Input: source, **partial** target;
 				- Learn a masked-autoencoder;
+			- **cmr**: Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
 			- Dominic Jack, Jhony K. Pontes, Sridha Sridharan, Clinton Fookes, Sareh Shirazi, Frederic Maire, Anders Eriksson. Learning Free-Form Deformations for 3D Object Reconstruction. ACCV'18
 				- https://github.com/jackd/template_ffd
 				- Input: image, some templates;
@@ -522,6 +534,8 @@
 				- Supervision:
 					- CD, EMD between deformed mesh and target;
 					- Symmetry loss;
+			- Eloi Mehr, Ariane Jourdan, Nicolas Thome, Matthieu Cord, and Vincent Guitteny. DiscoNet: Shapes learning on disconnected manifolds for 3d editing. ICCV'19
+				- https://github.com/Fasjeit/DiscoNet
 			- **DeformSyncNet**: Minhyuk Sung, Zhenyu Jiang, Panos Achlioptas, Niloy J. Mitra, and Leonidas J. Guibas. DeformSyncNet: Deformation transfer via synchronized shape deformation spaces. SIGGRAPH Asia'20
 				- https://github.com/Steve-Tod/DeformSyncNet
 				- Problem definition: 
@@ -534,21 +548,30 @@
 						- y = x + F(x)(E(y)-E(x))
 			- **Neural cages**: Wang Yifan, Noam Aigerman, Vladimir Kim, Siddhartha Chaudhuri, and Olga Sorkine-Hornung. Neural cages for detail-preserving 3d deformations. CVPR'20
 				- https://github.com/yifita/deep_cage
-		- Deform handles:
+			- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
+				- https://github.com/liuf1990/Implicit_Dense_Correspondence
+				- Learn a latent space z s.t. enc(x)=z;
+				- Learn a SEF f(.) and its inverse g(.):
+					- f(p, zA) maps p to template relative space;
+					- q = g(f(p, zA), zB)
+		- Deform **handles**:
 			- **biharmonic coordinates**: Yu Wang, Alec Jacobson, Jernej Barbic, and Ladislav Kavan. Linear subspace design for real-time shape deformation.  SIGGRAPH'15
 			- **DeepMetaHandles**: Minghua Liu, Minhyuk Sung, Radomir Mech, Hao Su. DeepMetaHandles: Learning Deformation Meta-Handles of 3D Meshes with Biharmonic Coordinates. CVPR'21
 				- https://github.com/Colin97/DeepMetaHandles
-		- Qingyang Tan, Lin Gao, Yu-Kun Lai, Jie Yang,and Shihong Xia. Mesh-based autoencoders for localized deformation component analysis. AAAI'18
-			- https://github.com/aldehydecho/convMesh
-		- Qingyang Tan, Lin Gao, Yu-Kun Lai, and Shihong Xia. Meshvae: Variational autoencoders for deforming 3d mesh models. CVPR'18
-		- Jie Yang, Kaichun Mo, Yu-Kun Lai, Leonidas J. Guibas, and Lin Gao. DSM-Net: Disentangled structured mesh net for controllable generation of fine geometry, 2020.
-		- Articulated objects (Human):
+		- Deform parts:
+			- Thibault Groueix, Matthew Fisher, Vladimir G. Kim, Bryan C. Russell, and Mathieu Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. Eurographics'19
+		- Articulated objects (like SMPL for Human) or **learned template/graph**:
 			- Allen, B., Curless, B., Popovic, Z.: Articulated body deformation from range scan data. SIGGRAPH'02
 			- Brett Allen, Brian Curless, Zoran Popovic. The space of human body shapes: reconstruction and parameterization from range scans. TOG'03
 			- Dragomir Anguelov, Praveen Srinivasan,Daphne Koller, Sebastian Thrun, Jim Rodgers, and James Davis. SCAPE: shape completion and animation of people. TOG'05
 			- Allen, B., Curless, B., Popovic, Z.: Learning a correlated model of identity and pose-dependent body shape variation for real-time synthesis. Symposium on Computer Animation'06
 			- Silvia Zuffi and Michael J. Black. The stitched puppet: A graphical model of 3d human shape and pose. CVPR'15
 			- Matthew Loper, Naureen Mahmood, Javier Romero, Gerard Pons-Moll, and Michael J. Black. SMPL: a skinned multi-person linear model. TOG'15
+			- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
+				- Task: input image, cad models of the same category, output camera pose and 3D recon;
+				- Build a LDC graph;
+				- Step 1: estimate a coarse camera pose and select the CAD model from the LDC graph to best register the 2D landmarks;
+				- Step 2: refine the camera position and deform the best CAD model by linear combination with its neighbors in the LDC graph to fit both the landmarks and the silhouette.
 			- A. Kanazawa, M. J. Black, D. W. Jacobs, and J. Malik. End-to-end recovery of human shape and pose. CVPR'18
 			- **3d-coded**: Thibault Groueix, Matthew Fisher, Vladimir G. Kim, Bryan C. Russell, and Mathieu Aubry. 3d-coded: 3d correspondences by deep deformation. ECCV'18
 				- http://imagine.enpc.fr/~groueixt/3D-CODED/
@@ -568,42 +591,44 @@
 				- SMPL-based;
 				- Separate pose and shape branch;
 				- Self-consistency + cross-consistency constraint;
+	- **Learn** a template:
+		- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
+			- https://github.com/akar43/CategoryShapes
+			- Task: input some images, output camera poses and 3d model;
+			- Training phase:
+				- Annotated image collection (segmetnation)
+				- viewpoint estimation (rotation, translation and scale): NRSfM (non-rigid) [10] from Silhouettes and keypoints
+				- 3D shape from Silhouettes
+				- mean-shape and deformation models: snakes/visual hull;
+			- Inference phase:
+				- segmentation;
+				- predict viewpoint (rotation matrix) and subcategory for the object using a CNN;
+				- rotate to canonical box for mean shape and deformation;
+		- Zerong Zheng, Tao Yu, Qionghai Dai, Yebin Liu. Deep Implicit Templates for 3D Shape Representation. CVPR'21
+			- https://github.com/ZhengZerong/DeepImplicitTemplates
+			- Not just DeepSDF, deep SDF + warping;
+	- Retrieval:
+		- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
 	- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
 		- Non-DL, retrieve a similar mesh;
 		- task: input depth map, output completed obj;
-	- A Kar, S Tulsiani, J Carreira, J Malik. Category-Specific Object Reconstruction from a Single Image. CVPR'15
-		- https://github.com/akar43/CategoryShapes
-		- Task: input some images, output camera poses and 3d model;
-		- NRSfM [10] to jointly estimate the two;
-	- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
-	- A. Kanazawa, S. Tulsiani, A. A. Efros, and J. Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
-		- Morphable mesh;
-	- **SDM-NET**: Lin Gao, Jie Yang, Tong Wu, Yu-Jie Yuan, Hongbo Fu, Yu-Kun Lai, and Hao(Richard) Zhang. SDM-NET: Deep generative network for structured deformable mesh. TOG'19
-	- Eloi Mehr, Ariane Jourdan, Nicolas Thome, Matthieu Cord, and Vincent Guitteny. DiscoNet: Shapes learning on disconnected manifolds for 3d editing. ICCV'19
-	- Thibault Groueix, Matthew Fisher, Vladimir G. Kim, Bryan C. Russell, and Mathieu Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. Eurographics'19
-	- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
-		- https://github.com/liuf1990/Implicit_Dense_Correspondence
 	- **Shapeflow**: Chiyu Jiang, Jingwei Huang, Andrea Tagliasacchi, and Leonidas Guibas. Shapeflow: Learnable deformations among 3D shapes. NeurIPS'20
 		- https://github.com/maxjiang93/ShapeFlow
 		- CNF-based;
 	- **DIT-Net**: Yu Deng, Jiaolong Yang, Xin Tong. Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence. CVPR'21
 		- https://github.com/microsoft/DIF-Net
-	- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
 - **CSG**:
 	- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
 	- **CSGNet**: Gopal Sharma, Rishabh Goyal, Difan Liu, Evangelos Kalogerakis, Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. CVPR'18
 - **Chart**: Heli Ben-Hamu, Haggai Maron, Itay Kezurer, Gal Avineri, and Yaron Lipman. Multi-chart generative surface modeling. TOG'18
 - **SIF**: Kyle Genova, Forrester Cole, Daniel Vlasic, Aaron Sarna, William T Freeman, and Thomas Funkhouser. Learning shape templates with structured implicit functions. ICCV'19
 	- https://github.com/google/ldif
-- Latest:
-	- Zerong Zheng, Tao Yu, Qionghai Dai, Yebin Liu. Deep Implicit Templates for 3D Shape Representation. CVPR'21
-		- https://github.com/ZhengZerong/DeepImplicitTemplates
 
 ## 5. Implicit Functions (N-SDF)
 - Legacy:
 	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
 	- **RBF**: Jonathan C. Carr, Richard K. Beatson, Jon B. Cherrie, Tim J. Mitchell, W. Richard Fright, Bruce C. McCallum, and Tim R. Evans. Reconstruction and representation of 3d objects with radial basis functions. SIGGRAPH'01
-	- Greg Turk and James F. O’Brien. Modelling with implicit surfaces that interpolate. TOG'02
+	- Greg Turk and James F. O'Brien. Modelling with implicit surfaces that interpolate. TOG'02
 	- **Unity implicits**: Yutaka Ohtake, Alexander Belyaev, Marc Alexa, Greg Turk, and Hans-Peter Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
 	- Chen Shen, James F. O'Brien, and Jonathan Richard Shewchuk. Interpolating and approximating implicit surfaces from polygon soup. TOG'04
 - Render for implicit models:

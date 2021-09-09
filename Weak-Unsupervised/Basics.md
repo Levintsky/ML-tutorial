@@ -12,7 +12,7 @@
 		- SSL in some applications
 	- **Does-not-Work-yet**:
 		- General feature learning
-- **Tutorial**: ECCV'2020
+- **Tutorial**: ECCV'20
 	- Deepak Pathak: https://youtu.be/fUMpC_hoedA
 		- RL: intrinsic motivation/curiosity;
 			- Predict consequences of action;
@@ -50,6 +50,8 @@
 	- Paolo Favaro: https://youtu.be/APwHDZZcLuY
 		- Short-cut: predict from local features;
 		- Build global features: distinguish between objects;
+- **Tutorial**: ICML'21
+	- https://icml.cc/media/icml-2021/Slides/10843_QHaHBNU.pdf
 
 ## Augment Consistency
 - **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019

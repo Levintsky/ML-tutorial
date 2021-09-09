@@ -11,44 +11,114 @@
 	- Non-generative (contrastive like)
 		- Siamese (SimCLR, MoCo, AMDIM, BYOL, SimSiam, DINO, Barlow Twins)
 		- Contrastive prediction (CPC)
-- UL for RL:
-	- Learn world models; Dyna (fake rollouts), Model-Based RL
-	- Non-Generative (Contrastive-like)
-	- Use as an auxiliary task to speed up (sample-efficiency) RL
-		- Refer to Mordatch/Hamrick Tutorial (ICML 20’)
-		- DALL-E: Creating Images from Text
-		- SCAN: Learning Abstract Hierarchical Compositional Visual Concepts (DeepMind Blog)
-		- UNREAL
+
+## UL/Represention Learning for RL:
+- Learn world models; Dyna (fake rollouts), Model-Based RL
+- Non-Generative (Contrastive-like)
+- Use as an auxiliary task to speed up (sample-efficiency) RL
+	- Refer to Mordatch/Hamrick Tutorial (ICML 20’)
+	- DALL-E: Creating Images from Text
+	- SCAN: Learning Abstract Hierarchical Compositional Visual Concepts (DeepMind Blog)
+	- UNREAL
+- Generative UL
+	- **UNREAL**: M. Jaderberg et. al., Reinforcement Learning with Unsupervised Auxiliary Tasks. (2016)
+		- Pixel control: maximizse change in pixel intensity
+		- Reward prediction
+	- DARLA: Improving Zero-Shot Transfer in Reinforcement Learning (Higgins et al 2017)
+	- World Models (Ha & Schmidhuber, 2018)
+		- G Wayne, C Hung, D Amos, M Mirza, A Ahuja, A Grabska-Barwinska, J Rae, P Mirowski, J Z. Leibo, A Santoro, M Gemici, M Reynolds, T Harley, J Abramson, S Mohamed, D Rezende, D Saxton, A Cain, C Hillier, D Silver, K Kavukcuoglu, M Botvinick, D Hassabis, T Lillicrap. Unsupervised Predictive Memory in a Goal-Directed Agent
+	- **ToMnet**: N C. Rabinowitz, F Perbet, H. Francis Song, C Zhang, S. M. A Eslami, M Botvinick. Machine Theory of Mind. ICML'18
+		<img src = '/Weak-Unsupervised/images/tomnet.png' width = '500px'>
+		- **Predict other agent** 1. immediate action (policy); 2. consumed object (goal); 3. trajectory (successor representation).
+		- VAE on character embedding: generate mean and variance;
+		- DVIB for penalty
+		<img src = '/Weak-Unsupervised/images/tomnet2.png' width = '500px'>
+	- Learning to summarize from human feedback (Stiennon et al 2020)
+- Contrastive
+	- CPC: Contrastive Predictive Coding (Van den Oord et al 2018)
+	- Aravind Srinivas, Michael Laskin, Pieter Abbeel. CURL: Contrastive Unsupervised Representations for Reinforcement Learning. ICML'20
+	- DrQ: Image Augmentation is all you need - (Kostrikov & Yarats et al 2020),
+	- RAD: Reinforcement Learning with Augmented Data (Laskin et al 2020)
+	- **SPR**: Max Schwarzer, Ankesh Anand, Rishab Goel, R Devon Hjelm, Aaron Courville, Philip Bachman. Data-Efficient Reinforcement Learning with Self-Predictive Representations. ICLR'21
+		- CPC-like, but executed in BYOL fashion- Decoupling Representation Learning from Reinforcement Learning (Stooke et al 2021)
+		- Significant improvement
+	- Reinforcement Learning with Prototypical Representations (Yarats et al 2021)
+	- Pre-training representations for data-efficient RL (Schwarzer & Rajkumar et al 2021)
+		- Significant improvement
+	- Adam Stooke, Kimin Lee, Pieter Abbeel, Michael Laskin. Decoupling Representation Learning from Reinforcement Learning. ICML'21
+- Applications (in robotics)
+	- Deep Spatial Autoencoders for Visuomotor Learning (Finn et al 2015)
+	- TCN: Time Contrastive Networks (Sermanet et al 2018)
+	- FERM: A Framework for Efficient Robotic Manipulation (Zhan et al 2020)
+- Augmentation + RL
+	- Misha Laskin, Kimin Lee, Adam Stooke, Lerrel Pinto, Pieter Abbeel, Aravind Srinivas. Reinforcement Learning with Augmented Data. NeurIPS'20
+	- Denis Yarats, Ilya Kostrikov, Rob Fergus. Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels. ICLR'21
+
+## Reward-Free RL
+- Reward-Free Pre-Training:
+	- Pre-train without task reward available
+	- Leverage pre-training to learn faster once task reward is available
+- Intrinsic reward:
+	- Three types:
+		- Knowledge-based: Surprise / unpredictability / how much learned about world from experience
+		- Competence-based: Empowerment / Skills
+		- Data-based: Entropy (i.e. coverage) of data collected
+	- Legacy:
+		- J Schmidhuber, Curious model-building control systems. IJCNN'91
+		- Oudeyer and Kaplan. What is Intrinsic Motivation? A Typology of Computational Approaches. 2007
+	- Knowledge-based:
+		- Error in Learned Dynamics Model: Surprise / unpredictability / how much learned about world from experience
+		- Stadie, Levine, Abbeel, 2015; Achiam, Sastry, 2017
+		- Pathak et. al. Curiosity-driven Exploration by Self-supervised Prediction. ICML'17
+			- https://pathak22.github.io/noreward-rl/index.html#sourceCode
+			- **Prediction Error**: choose actions to maximise prediction error in observations.
+		- Yuri Burda, Harri Edwards, Deepak Pathak, Amos Storkey, Trevor Darrell, Alexei A. Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
+			- Deeper dive on feature space?
+			- https://pathak22.github.io/large-scale-curiosity/
+		- Ramanan Sekar, Oleh Rybkin, Kostas Daniilidis, Pieter Abbeel, Danijar Hafner, Deepak Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
+			- https://github.com/ramanans1/plan2explore
+			- Planning in the Latent Space, Intrinsic Reward := Latent Disagreement
+		- Epistemic Uncertainty 
+			- Planning to be Surprised [Sun, Gomez, Schmidhuber, 2011]
+			- VIME: Variational Information Maximization Exploration [Houthooft, Chen, Duan, Schulman, De Turck, Abbeel, 2017]
+			- Deepak Pathak, Dhiraj Gandhi, Abhinav Gupta. Self-Supervised Exploration via Disagreement. ICML'19
+				- https://pathak22.github.io/exploration-by-disagreement/index.html#sourceCode
+		- Aleatoric Uncertainty
+	- Competence;
+		- Empowerment: Measures the optionality a (perfect) agent can create over its future;
+		- [Klyubin, Polani, Nehaniv, 2005: Empowerment: A Universal Agent-Centric Measure of Control] Salge, Glackin, Polani, 2013: Empowerment: An Introduction
+		- Maximize MI: SSN4HRL, VIC, DIAYN, VALOR, DISCERN;
+		- MUSIC: Mutual Info State Intrinsic Control [Zhao, Gao, Abbeel, Tresp, Xu, 2021]
+		- Asymmetric Self-Play (ASP)
+			- Key Idea: two-player game, Alice challenges Bob, which encourages Alice to try new things (explore) and Bob to acquire skill
+		- OpenAI et al 2021: Asymmetric Self-Play for Automatic Goal Discovery in Robotic Manipulation
+	- Data-based: Entropy (i.e. coverage) of data collected
+		- Tabular MDPs: Count-based Exploration Bonus. [Strehl & Littman, 2008]
+		- Pseudo-count:
+			- Bellemare et al 2016: Unifying Count-based Exploration and Intrinsic Motivation
+			- Ostrovski et al 2017: Count-Based Exploration with Neural Density Models
+			- Tang et al 2017: #exploration
+			- Burda et al 2018: RND
+		- Directly Optimizing Entropy of Data Collected
+			- MEPOL – Mutti, Pratissoli, Restelli, 2020
+			- Singh, H., et al., 2003. Nearest neighbor estimates of entropy. American journal of mathematical and management sciences
+				- Distribution Store N number of visited states
+				- Compute the distance between each state and its K-NN 
+			- APT: Active Pre-Training
+			- Never Give Up: Learning Directed Exploration Strategies, Badia et al, 2020
+				- Short-term exploration through particle-based entropy
+				- Long-term exploration through RND
 
 ## DeepMind
 - https://deepmind.com/blog/unsupervised-learning/
 - Re-imagining intelligence
 	- https://deepmind.com/blog/agents-imagine-and-plan/
 - https://deepmind.com/blog/reinforcement-learning-unsupervised-auxiliary-tasks/
-- https://deepmind.com/research/publications/neural-predictive-belief-representations/
-- **World Model**:
-	- G Wayne, C Hung, D Amos, M Mirza, A Ahuja, A Grabska-Barwinska, J Rae, P Mirowski, J Z. Leibo, A Santoro, M Gemici, M Reynolds, T Harley, J Abramson, S Mohamed, D Rezende, D Saxton, A Cain, C Hillier, D Silver, K Kavukcuoglu, M Botvinick, D Hassabis, T Lillicrap. Unsupervised Predictive Memory in a Goal-Directed Agent
-- **UNREAL**: M. Jaderberg et. al., Reinforcement Learning with Unsupervised Auxiliary Tasks. (2016)
-	- Pixel control: maximizse change in pixel intensity
-	- Reward prediction
+- https://deepmind.com/research/publications/neural-predictive-belief-representations/	
 - Dream to Control: Learning behaviors by latent imagination - Hafner et al 2019
-- **ToMnet**: N C. Rabinowitz, F Perbet, H. Francis Song, C Zhang, S. M. A Eslami, M Botvinick. Machine Theory of Mind. ICML'18
-	<img src = '/Weak-Unsupervised/images/tomnet.png' width = '500px'>
-
-	- Predict 1. immediate action (policy); 2. consumed object (goal); 3. trajectory (successor representation).
-	- VAE on character embedding: generate mean and variance;
-	- DVIB for penalty
-	<img src = '/Weak-Unsupervised/images/tomnet2.png' width = '500px'>
 
 ## Intrinsic Reward
 - Curious Agent
-	- Pathak et. al. Curiosity-driven Exploration by Self-supervised Prediction. ICML'17
-		- https://pathak22.github.io/noreward-rl/index.html#sourceCode
-		- **Prediction Error**: choose actions to maximise prediction error in observations.
-	- Deepak Pathak, Dhiraj Gandhi, Abhinav Gupta. Self-Supervised Exploration via Disagreement. ICML'19
-		- https://pathak22.github.io/exploration-by-disagreement/index.html#sourceCode
-	- Ramanan Sekar, Oleh Rybkin, Kostas Daniilidis, Pieter Abbeel, Danijar Hafner, Deepak Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
-		- https://github.com/ramanans1/plan2explore
 	- Wenlong Huang, Igor Mordatch, Deepak Pathak. One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control. ICML'20
 		- https://github.com/huangwl18/modular-rl/
 - Baldi et. al., Bayesian Surprise Attracts Human Attention. (2005)
