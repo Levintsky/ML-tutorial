@@ -325,6 +325,8 @@
 - Mesh from other representations (with differentiable op):
 	- Y. Liao, S. Donne, and A. Geiger. Deep marching cubes: Learning explicit surface representations. CVPR'18
 		- Differentiable Marching Cubes;
+	- **NMC**: Zhiqin Chen and Hao Zhang, Neural Marching Cubes. TOG'21
+		- https://github.com/czq142857/NMC
 - Piecewise surface:
 	- **AtlasNet**. T. Groueix, M. Fisher, V. G. Kim, B. C. Russell, and M. Aubry. Atlasnet: A papier-mache approach to learning 3d surface generation. CVPR'18
 		- https://github.com/ThibaultGROUEIX/AtlasNet
@@ -369,6 +371,7 @@
 			- Problem: completion and reconstruction;
 			- primitives as guidance, energy-based optimization;
 	- Ransac and fitting:
+		- Attene, M., Falcidieno, B., Spagnuolo, M.: Hierarchical mesh segmentation based on fitting primitives. VC'06
 		- R. Schnabel, R. Wahl, and R. Klein. Efficient ransac for point-cloud shape detection. CGF'07
 		- **Fitting**: Narunas Vaskevicius and Andreas Birk. Revisiting superquadric fitting: A numerically stable formulation. PAMI'17
 		- **Globfit**: Yangyan Li, Xiaokun Wu, Yiorgos Chrysanthou, Andrei Sharf, Daniel Cohen-Or, and Niloy J. Mitra. Globfit: consistently fitting primitives by discovering global relations. TOG'11
@@ -381,7 +384,7 @@
 		- A. Golovinskiy and T. Funkhouser. Learning Consistent Segmentation of 3D Models. CG'09
 			- Problem: segment a set of models;
 			- Energy based: a graph, similar parts **across shapes** should have consistent assignment;
-		- Qi-Xing Huang, Vladlen Koltun, and Leonidas J. Guibas. Joint shape segmentation with linear programming. TOG'11
+		- Qi-Xing Huang, Vladlen Koltun, and Leonidas J. Guibas. co-segm. TOG'11
 			- Unsupervised cosegmentation;
 			- Stage 1: initial segment on each shape; (superpixels or clustering)
 			- Stage 2: pairwise segmentation: energy-based, seg(S1)+seg(S2)+consistency(S1, S2);
@@ -400,6 +403,18 @@
 	- Unsupervised part discovery:
 		- Shubham Tulsiani, Hao Su, Leonidas J. Guibas, Alexei A. Efros, Jitendra Malik. Learning Shape Abstractions by Assembling Volumetric Primitives. CVPR'17
 			- Supervision: unsupervised, reconstruction loss;
+		- **CSGNet**: Gopal Sharma, Rishabh Goyal, Difan Liu, Evangelos Kalogerakis, Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. CVPR'18
+			- https://github.com/hippogriff/CSGNet
+		- Yonglong Tian, Andrew Luo, Xingyuan Sun, Kevin Ellis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Infer and Execute 3D Shape Programs. ICLR'19
+			- http://shape2prog.csail.mit.edu/
+			- https://github.com/HobbitLong/shape2prog
+			- Problem setup: input voxels; output programs;
+			- Program generator: Block-LSTM + step-LSTM;
+			- Program executor: NPI at block-level, trained with large amount of synthetic;
+			- Supervision: reconstruction;
+			- Key 1: program generator needed a lot of pretrain on large synthetic (block-level LSTM); manually designed program to generate, 
+			- Key 2: executor trained on part-level separately; to make generator-executor differentiable;
+			- Key 3: the domain gap between the synthetic and ShapeNet is still large;
 		- **Superquadrics**: Despoina Paschalidou, Ali Osman Ulusoy, and Andreas Geiger. Superquadrics revisited: Learning 3d shape parsing beyond cuboids. CVPR'19
 			- https://github.com/paschalidoud/superquadric_parsing
 		- **AtlasNetV2**: Theo Deprelle, Thibault Groueix, Matthew Fisher, Vladimir Kim, Bryan Russell, and Mathieu Aubry. Learning elementary structures for 3d shape generation and matching. NeurIPS'19
@@ -419,6 +434,7 @@
 			- Task: input image + 3D mesh, output a part template;
 			- each part: a learned homeomorphism learned by INN;
 			- Insight: part emerge without labels, temporal consistency;
+		- Fenggen Yu, Zhiqin Chen, Manyi Li, Aditya Sanghi, Hooman Shayani, Ali Mahdavi-Amiri, Hao Zhang. CAPRI-Net: Learning Compact CAD Shapes with Adaptive Primitive Assembly. 2021
 	- Supervised:
 		- Generative: given shapes with part labels, learn space to sample new shapes;
 			- Charlie Nash and Chris KI Williams. The shape variational autoencoder: A deep generative model of part-segmented 3d objects. CGF'17, SGP'17
@@ -426,6 +442,7 @@
 			- Hao Wang, Nadav Schor, Ruizhen Hu, Haibin Huang, Daniel Cohen-Or, and Hui Huang. Global-to-local generative model for 3d shapes. SIGGRAPH Asia'18
 			- **SDM-NET**: Lin Gao, Jie Yang, Tong Wu, Yu-Jie Yuan, Hongbo Fu, Yu-Kun Lai, and Hao(Richard) Zhang. SDM-NET: Deep generative network for structured deformable mesh. TOG'19
 				- http://geometrylearning.com/sdm-net/
+				- http://geometrylearning.com/sdm-net/file/sdm-code.zip
 				- Two level:
 					- Part level: part VAE;
 					- Structure level: SP VAE; concatenate part feature in a consistent order; decode as part;
@@ -433,6 +450,10 @@
 				- https://github.com/ChrisWu1997/PQ-NET
 				- Sequentially, one part at a time by GRU;
 		- Compose/Assembly/Placement:
+			- Siddhartha Chaudhuri, Evangelos Kalogerakis, Leonidas Guibas, and Vladlen Koltun. Probabilistic reasoning for assembly-based 3d modeling. TOG'11
+				- Bayesian Network with a library of things;
+			- Kalogerakis, E., Chaudhuri, S., Koller, D., Koltun, V.: A probabilistic model for component-based shape synthesis. TOG'12
+			- Zheng, Y., Cohen-Or, D., Averkiou, M., Mitra, N.J.: Recurring part arrangements in shape collections. CGF'14
 			- Anastasia Dubrovina, Fei Xia, Panos Achlioptas, Mira Shalah, Raphael Groscot, Leonidas Guibas. Composite Shape Modeling via Latent Space Factorization. ICCV'19
 				- Input: 3D;
 				- Output: editable object by manipulating semantic space;
@@ -449,8 +470,12 @@
 				- https://github.com/hyperplane-lab/Generative-3D-Part-Assembly
 				- Task: given part point cloud, predict assembly;
 				- GNN for relation reasoning, pooling for equivalent parts (4 legs)...
-		- **3d-prnn**: Chuhang Zou,Ersin Yumer, Jimei Yang, Duygu Ceylan,and Derek Hoiem. 3d-prnn: Generating shape primitives with recurrent neural networks. ICCV'17
+		- **3d-prnn**: Chuhang Zou, Ersin Yumer, Jimei Yang, Duygu Ceylan,and Derek Hoiem. 3d-prnn: Generating shape primitives with recurrent neural networks. ICCV'17
+			- https://github.com/zouchuhang/3D-PRNN
 		- **SFPN**: Lingxiao Li, Minhyuk Sung, Anastasia Dubrovina, Li Yi, and Leonidas J. Guibas. Supervised fitting of geometric primitives to 3d point clouds. CVPR'19
+			- Input: N x 3 point clouds; output: K (24 at maximum) primitives, (4 types: plane, cylinder, sphere, cone);
+			- Key 1: membership reordering with Hungarian Matching;
+			- Key 2: make RANSAC and Least-Square differentiable; separate models for each primitive;
 		- **Sagnet**: Zhijie Wu, Xiang Wang, Di Lin, Dani Lischinski, Daniel Cohen-Or, and Hui Huang. Sagnet: Structure-aware generative network for 3d-shape modeling. SIGGRAPH'19
 			- https://github.com/zhijieW94/SAGNet
 			- Model:
@@ -471,13 +496,21 @@
 				- https://github.com/chengjieniu/Im2Struct
 				- Recursive NN to iteratively predict primitives;
 			- **SCORES**: Chenyang Zhu, Kai Xu, Siddhartha Chaudhuri, Renjiao Yi, Hao Zhang. SCORES: Shape Composition with Recursive Substructure Priors. SIGGRAPH Asia'18
+				- https://github.com/BigkoalaZhu/SCORES
+				- Problem setup: input two source shapes a,b, rough placement c; output optimized structure d;
 			- **GRAINS**: Manyi Li, Akshay Gadi Patil, Kai Xu, Siddhartha Chaudhuri, Owais Khan, Ariel Shamir, ChangheTu, Baoquan Chen, Daniel Cohen-Or, and Hao Zhang. GRAINS: Generative recursive autoencoders for indoor scenes. TOG'19
+				- https://github.com/ManyiLi12345/GRAINS
+				- Tree-VAE;
 		- GNN:
 			- **StructureNet**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, Leonidas J. Guibas. StructureNet: Hierarchical Graph Networks for 3D Shape Generation. SIGGRPAH Asia'19
 				- Train a graph-VAE s.t. graph -> z -> graph
 				- Embed image/3d to same space as z;
 			- **StructEdit**: Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy J. Mitra, Leonidas Guibas. StructEdit: Learning Structural Shape Variations. 2019
+				- https://github.com/daerduoCarey/structedit
+				- Problem setup: 3D shape analogy; Source Si, target Sj;
+				- Insight: extension of StructureNet;
 			- Kai Wang, Yu-an Lin, Ben Weissmann, Manolis Savva, Angel X. Chang, and Daniel Ritchie. PlanIT: Planning and Instantiating Indoor Scenes with Relation Graph and Spatial Prior Networks. SIGGRAPH'19
+				- https://github.com/brownvc/planit
 				- GNN: edge defined by spatial locality of each indoor scene obj;
 				- Sequential generative model: Predict one new obj at a time;
 			- **DSM-Net**: Jie Yang, Kaichun Mo, Yu-Kun Lai, Leonidas J. Guibas, and Lin Gao. DSM-Net: Disentangled structured mesh net for controllable generation of fine geometry, 2020.
@@ -496,6 +529,10 @@
 			- Search and suggest parts with low correspondence;
 - **CAD** (retrieval, Morphable):
 	- **Morphable model** given a CAD:
+		- Unclassified:
+			- **Shapeflow**: Chiyu Jiang, Jingwei Huang, Andrea Tagliasacchi, and Leonidas Guibas. Shapeflow: Learnable deformations among 3D shapes. NeurIPS'20
+				- https://github.com/maxjiang93/ShapeFlow
+				- CNF-based;
 		- Legacy:
 			- 3DMM: Volker Blanz and Thomas Vetter. A morphable model for the synthesis of 3D faces. In 26th Annual Conference on Computer Graphics and Interactive Techniques'99
 				- Human face;
@@ -558,6 +595,10 @@
 			- **biharmonic coordinates**: Yu Wang, Alec Jacobson, Jernej Barbic, and Ladislav Kavan. Linear subspace design for real-time shape deformation.  SIGGRAPH'15
 			- **DeepMetaHandles**: Minghua Liu, Minhyuk Sung, Radomir Mech, Hao Su. DeepMetaHandles: Learning Deformation Meta-Handles of 3D Meshes with Biharmonic Coordinates. CVPR'21
 				- https://github.com/Colin97/DeepMetaHandles
+		- Deform **SDF**:
+			- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
+			- **DIT-Net**: Yu Deng, Jiaolong Yang, Xin Tong. Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence. CVPR'21
+				- https://github.com/microsoft/DIF-Net
 		- Deform parts:
 			- Thibault Groueix, Matthew Fisher, Vladimir G. Kim, Bryan C. Russell, and Mathieu Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. Eurographics'19
 		- Articulated objects (like SMPL for Human) or **learned template/graph**:
@@ -609,17 +650,12 @@
 			- Not just DeepSDF, deep SDF + warping;
 	- Retrieval:
 		- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
-	- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
-		- Non-DL, retrieve a similar mesh;
-		- task: input depth map, output completed obj;
-	- **Shapeflow**: Chiyu Jiang, Jingwei Huang, Andrea Tagliasacchi, and Leonidas Guibas. Shapeflow: Learnable deformations among 3D shapes. NeurIPS'20
-		- https://github.com/maxjiang93/ShapeFlow
-		- CNF-based;
-	- **DIT-Net**: Yu Deng, Jiaolong Yang, Xin Tong. Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence. CVPR'21
-		- https://github.com/microsoft/DIF-Net
-- **CSG**:
-	- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
-	- **CSGNet**: Gopal Sharma, Rishabh Goyal, Difan Liu, Evangelos Kalogerakis, Subhransu Maji. CSGNet: Neural Shape Parser for Constructive Solid Geometry. CVPR'18
+		- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
+			- Non-DL, retrieve a similar mesh;
+			- task: input depth map, output completed obj;
+- Procedural:
+	- **CSG**:
+		- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
 - **Chart**: Heli Ben-Hamu, Haggai Maron, Itay Kezurer, Gal Avineri, and Yaron Lipman. Multi-chart generative surface modeling. TOG'18
 
 ## 5. Implicit Functions (N-SDF)
@@ -711,7 +747,7 @@
 	- Estimate **normal** of depth map; then improve depth map fusion;
 - **3D-INN**: J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18
 	- Key insight: skeleton representation for 3D objects (so keypoints infers 3D);
-	- Input: single image; output:	2d keypoints as well as 3d structure;
+	- Input: single image; output: 2d keypoints as well as 3d structure;
 	- Keypoint detection (CNN) -> keypoint refinement (mini-network like auto-encoder) -> 3D interpreter -> Projection Layer;\
 	<img src="/CV-3D/images/3d_output/3d-inn.png" alt="drawing" width="600"/>
 - **MarrNet**: J Wu, Y Wang, T Xue, X Sun, W Freeman, and J Tenenbaum. MarrNet: 3D Shape Reconstruction via 2.5D Sketches. NIPS'17
