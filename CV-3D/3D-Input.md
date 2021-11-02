@@ -15,6 +15,13 @@
 	- 2D as 3D;
 - **PVCNN**: Zhijian Liu, Haotian Tang, Yujun Lin, Song Han. Point-Voxel CNN for Efficient 3D Deep Learning. NIPS'19
 
+## Manual Design
+- FPFH: R. B. Rusu, N. Blodow, and M. Beetz. Fast point feature histograms (fpfh) for 3d registration. ICRA'09
+- Point-Pair: B. Drost and S. Ilic. 3d object detection and localization using multimodal point pair features. '12
+- SHOT: S. Salti, F. Tombari, and L. Di Stefano. Shot: Unique signatures of histograms for surface and texture description. CVIU'14
+- SDF-based:
+	- Y. Li, A. Dai, L. Guibas, and M. Nießner. Database-assisted object retrieval for real-time 3D reconstruction. CGF'15
+
 ## Point Clouds
 - Unclassified:
 	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18

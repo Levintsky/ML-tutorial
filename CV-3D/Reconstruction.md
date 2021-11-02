@@ -1,7 +1,119 @@
 # 3D Reconstruction
 
-## Unclassified
-- Joel Ruben Antony Moniz, Christopher Beckham, Simon Rajotte, Sina Honari, Christopher Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
+## Basics
+- Problem definition:
+	- Shape from X:
+		- Shape from shading: Photometric stereo: control light sources;
+		- Shape from texture: Assume: regular textures;
+		- Shape from focus: from blur;
+	- SLAM:
+		- Input: real-time ordered images;
+		- Output: 6-DOF camera (localization); 3D-reconstruction (mapping);
+	- SfM:
+		- Input: unordered images; no time constraint;
+		- Output: camera pose; sparse 3D points;
+	- Visual Odometry:
+		- Input: images from single/multiple cameras;
+		- Output: camera path only (x, y, z, theta1, 2, 3) Euler Angles
+		- Local consistency, can be a building block of a V-SLAM;
+	- MVS:
+		- Input: images, known camera poses;
+		- Output: dense 3D reconstruction;
+- Resources
+	- https://github.com/openMVG/awesome_3DReconstruction_list
+	- **COLMAP** (SOA): Structure-from-Motion Revisited. CVPR'16
+	- **COLMAP** (SOA): Pixelwise View Selection for Unstructured Multi-View Stereo. ECCV'16
+		- https://colmap.github.io/
+
+## Realtime Dense Geometry
+- Stühmer, Gumhold, Cremers, DAGM 2010
+
+## SFM
+- Basics:
+	- 1. Feature extraction;
+	- 2. Feature matching;
+	- 3. Graph construction (one node for each image/camera?)
+	- 4. Loop consistency, bundle adjustment;
+	- Generally **sparse** reconstruction;
+	- Offline;
+- Build Rome in a Day (UW)
+	- Feature matching, epipolar geometry: {f, h, R, t}
+		- Matching efficiency (pairwise costly!): scalable recognition with a vocabulary tree (CVPR’06, David Nister);
+		- Erroneous matches: Loop consistency: Christopher Zach CVPR’10: R12 * R23* R31 = I
+- Software case study: OpenSfM (in Python)
+	- Input: images; output: camera pose (para, position), sparse 3D points;
+	- HA-HOG; (rgb2gray, cv2 -> features.extract_features, save at ./features);
+	- Mask features? (a few hundreds out of 4000+)
+	- Matching image pairs; Pair matching (8 processes)
+	- Merge features onto tracks; (create_tracks.py, take matches, create ./tracks.csv)
+	- Incremental reconstruction;
+	- Triangulation;
+	- Ceres solver;
+	- Undistort the image;
+	- Compute neighbors;
+	- Clean/Prune/Merge depthmap;
+	- Start a server to visualize;
+
+## MVS
+- Basics:
+	- Input: calibrated images;
+	- Output: **dense** 3D reconstruction;
+- Y Furukawa, C Hernández. Multi-View Stereo: A Tutorial. 2015
+	- Collect images;
+	- Camera parameter for each image;
+	- Reconstruct 3D geometry;
+	- Bundle adjustment: fuse more info (GPS, IMU, ...) in your cost function;
+	- Camera parameter known?
+		- Known: 1D search, with epipolar constraint;
+		- Unknown: 2D search, optical flow first?
+	- Photo consistency: SSD, SAD, NCC, Census, Rank, MI;
+	- Space Carving: remove all voxels not photo-consistent;
+	- Visual hull?
+	- Region growing MVS;
+	- Depth-map fusion for MVS;
+	- Fast multi-frame stereo scene flow with motion segmentation;
+- Google Street View: Capturing the World at Street Level
+	- Chevy van: side- and front facing laser scanner; 2 x high-speed video cameras; 8 x camera (Rosette configuration);
+- Pose optimization: http://code.google.com/p/gpo/wiki/GPO
+- Align the pose to the road network;
+
+## Depth Fusion
+- Basics:
+	- Input: a bunch of depth images (noisy with holes)
+	- Output: nice depth;
+	- Real-time (with GPU);
+	- Support object moving (scene change);
+	- RGB not used in KinectFusion;
+- Legacy:
+	- Brian Curless and Marc Levoy. A Volumetric Method for Building Complex Models from Range Images. '96
+- Pose alignment + 3D:
+	- J. Chen, D. Bautembach, and S. Izadi. Scalable real-time volumetric surface reconstruction.
+- **KinectFusion**: R Newcombe, S Izadi, O Hilliges, D Molyneaux, D Kim, A Davison, P Kohli, J Shotton, S Hodges, A Fitzgibbon. KinectFusion: Real-Time Dense Surface Mapping and Tracking, ISMAR 2011;
+	- Key novelty: 30Hz tracking;
+	- https://blog.csdn.net/tanmengwen/article/details/9231297
+	- https://docs.opencv.org/master/d8/d1f/classcv_1_1kinfu_1_1KinFu.html (opencv)
+	- Real-time volumetric reconstruction; 6DOF pose;
+	- Input: 640 x 480 depth maps; output voxels;
+	- Steps:
+		- 1. Surface measurement (pre-processing): depth map to dense vertex map, normal map;
+		- 2. Sensor pose estimation: live sensor tracking with multi-scale ICP; energy minization with good init and try to match surface and normal;
+		- 3. Surface reconstruction update: global scene fusion, produce TSDF on voxel space;
+		- 4. Surface prediction: ray-casting on new TSDF; close the loop between mapping and localisation;
+	<img src="/CV-3D/images/reconstruction/kinect-fusion.png" alt="drawing" width="500"/>
+- J. Chen, D. Bautembach, and S. Izadi. Scalable real-time volumetric surface reconstruction. TOG'12
+	- Improve on KinectFusion by octree, to make voxel sdf more efficient;
+- **Voxel-Block-Hashing**: M Nießner, M Zollhofer, S Izadi, M Stamminger. Real-time 3D Reconstruction at Scale using Voxel Hashing. SIGGRAPH'13
+	<img src="/CV-3D/images/reconstruction/voxel-hashing1.png" alt="drawing" width="500"/>
+	<img src="/CV-3D/images/reconstruction/voxel-hashing2.png" alt="drawing" width="500"/>
+- **ElasticFusion**:
+	- T. Whelan, S. Leutenegger, R. F. Salas-Moreno, B. Glocker and A. J. Davison. ElasticFusion: Dense SLAM Without A Pose Graph. RSS '15
+	- T. Whelan, R. F. Salas-Moreno, B. Glocker, A. J. Davison and S. Leutenegger. ElasticFusion: Real-Time Dense SLAM and Light Source Estimation. IJRR '16
+	- https://github.com/mp3guy/ElasticFusion
+- O. Kahler, V. A. Prisacariu, C. Y. Ren, X. Sun, P. Torr, and D. Murray. Very high frame rate volumetric integration of depth images on mobile devices. TVCG'15
+- **SemanticFusion**: SemanticFusion: Dense 3D Semantic Mapping with Convolutional Neural Networks. 2016
+	- Combine ElasticFusion and CNN;
+	- https://github.com/seaun163/semanticfusion
+	<img src="/CV-3D/images/reconstruction/semanticfusion.png" alt="drawing" width="500"/>
 
 ## Depth Estimation
 - Single view:
@@ -141,6 +253,7 @@
 		<img src="/CV-3D/images/reconstruction/ba-net.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/ba-net2.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/ba-net3.png" alt="drawing" width="600"/>
+- Joel Ruben Antony Moniz, Christopher Beckham, Simon Rajotte, Sina Honari, Christopher Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
 
 ## Stereo
 - Unclassified:
@@ -230,8 +343,11 @@
 		- Experiments: DTU; 
 		<img src="/CV-3D/images/stereo/point-mvs-net.png" alt="drawing" width="600"/>
 
-## Depth/Shape Completion, AE (3D-3D)
+## Scene/Shape Completion
+- Shape Completion:
+	- A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3d-encoder-predictor cnns and shape synthesis
 - Scene (Depth) Inpainting/Completion
+	- S. Song, F. Yu, A. Zeng, A. X. Chang, M. Savva, and T. Funkhouser. Semantic scene completion from a single depth image.
 	- **DeepLiDAR**: J. Qiu, Z. Cui, Y. Zhang, X. Zhang, S. Liu, B. Zeng and M. Pollefeys. DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image.
 		- https://github.com/JiaxiongQ/DeepLiDAR
 	- W. Van Gansbeke, D. Neven, B. De Brabandere and L. Van Gool: Sparse and noisy LiDAR completion with RGB guidance and uncertainty. International Conference on Machine Vision Applications (MVA) 2019.
@@ -255,8 +371,8 @@
 		- Assume a probabilistic model
 		- Model to optimize MLE;
 	- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
-- Angela Dai, Daniel Ritchie, Martin Bokeloh, Scott Reed, Jurgen Sturm, Matthias Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
-- Angela Dai, Christian Diller, Matthias Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
+	- Angela Dai, Daniel Ritchie, Martin Bokeloh, Scott Reed, Jurgen Sturm, Matthias Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
+	- Angela Dai, Christian Diller, Matthias Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
 
 ## Misc
 - X. Wang, D. Fouhey, and A. Gupta. Designing deep networks for surface normal estimation. CVPR'15

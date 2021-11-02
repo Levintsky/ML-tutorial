@@ -1,5 +1,13 @@
 # Benchmarks
 
+## Devices
+- Microsoft Kinect
+	- Internal devices: InfraRed camera + RGB + laser;
+- Intel Real Sense
+- Google Tango
+- iPad
+- Faro
+
 ## Objects
 - ShapeNet-Series:
 	- **ShapeNet**: Angel X Chang, Thomas Funkhouser, Leonidas Guibas, et al. Shapenet: An information-rich 3d model repository. 2015
@@ -81,6 +89,11 @@
 	- Realistic;
 	- https://github.com/xingyuansun/pix3d
 	- http://pix3d.csail.mit.edu/
+
+## Object/Scene
+- Retrieval: obj in scene -> CAD:
+	- Armen Avetisyan, Manuel Dahnert, Angela Dai, Manolis Savva, Angel X. Chang, Matthias Nießner. Scan2CAD: Learning CAD Model Alignment in RGB-D Scans.
+		- https://github.com/skanti/Scan2CAD
 
 ## 3D Scenes
 - Indoor realistic:

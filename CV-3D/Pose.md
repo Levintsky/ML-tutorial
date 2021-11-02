@@ -1,6 +1,7 @@
-# 3D Pose Estimation
+# 3D Camera Pose Estimation
 
 ## Tutorials
+- VO: https://avisingh599.github.io/vision/visual-odometry-full/
 - S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV 2017
 
 ## Unclassified
@@ -8,12 +9,94 @@
 - Shubham Tulsiani and Jitendra Malik. Viewpoints and keypoints. CVPR'15
 - Derek Hoiem, Alexei A. Efros, and Martial Hebert.Geometric context from a single image. ICCV'15
 - Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
+- Dense RGB-D Tracking:
+	- Benchmark: Sturm, Engelhard, Endres, Burgard, Cremers, IROS 2012
+	- Steinbrücker, Sturm, Cremers (2011)
+	- Direct stereo: Comport, Malis, Rives, ICRA 2007
+	- Non-quadratic penalizers; Kerl, Sturm, Cremers, ICRA 2013
+		- Combines color consistency and geometry consistency
+
+## Visual Odometry/SLAM (Simultaneous Localization And Mapping)
+- Basics:
+	- Input: lidar (Lidar SLAM), one image (monocular SLAM), multi-image (stereo pair in Quadrifocal VO);
+	- Output: 
+		- Also do 3D reconstruction (very sparse);
+		- Focus more on localizing ego-motion of a camera and robot;
+	- General steps of Lidar-SLAM:
+		- Step 1. Map initialization
+		- Step 2. Pose Tracking: ICP (Iterative closest point), optimize for camera pose;
+		- Step 3. Map optimization: occupancy grid map;
+		- Iterate 2 and 3.
+		<img src="/CV/images/low-level/icp.png" alt="drawing" width="450"/>
+	- General steps of VSLAM:
+		- Step 1. Initialization; (essential matrix, triangulation)
+		- Step 2. Pose estimation: (feature tracking, pose-only BA)
+		- Visual SLAM by SfM
+		- PTAM (Parallel Tracking and Mapping)
+			- Real time camera pose tracking
+			- An offline thread for map maintenance: when key frame comes, do a BA
+		- Relocalization: Tracking can lose due to various reasons
+		- Robustness Techniques: Drifting
+- SLAM:
+	- SLAM: Orb-slam2, DSO as starting point for 3D reconstruction reading.
+	- Filtering-based SLAM: Kalman/particle;
+	- SSM (State-Space Method)
+	- Key-frame based:
+		- Bootstrap: an initial 3D map; (2-view geometry)
+		- Normal mode: assume 3D map available, incremental camera motion; track points, PnP (Perspective n Points);
+		- Recovery mode: assume 3D map available, but tracking failed; Relocalize camera pose w.r.t. Previously reconstructed map;
+		- BA;
+	- MonoFusion: real-time 3D reconstruction of small scene;
+		- Dense 3D reconstruction by single camera;
+		- Sparse feature tracking for 6DoF; (key frame based BA);
+		- Dense stereo matching for each two key frames;
+		- Depth fusion by SDF-based volumetric integration.
+	- **PTAM** (Parallel Tracking and Mapping), Separate thread
+		- Mapping thread: stereo-init; wait for key frames; add new map points; optimize map; map maintenance; (slow)
+		- Tracking thread: Pre-process frame; project points; measure points; update camera pose; draw graphics (optional, only in fine stage);
+	- DTAM (Dense tracking and mapping);
+	- Semi-Dense SLAM;
+	- LSD-SLAM;
+	- S-LSD-SLAM;
+	- MobileFusion:
+		- Real-time volumetric surface reconstruction and dense 6DoF camera tracking running;
+		- RGB camera, scan objects;
+		- Point-based 3D models, 3D surface model;
+		- Dense 6DoF tracking, key-frame selection, dense per-frame stereo matching;
+		- Depth maps fused volumetrically akin to KinectFusion;
+	- ORB-SLAM: real-time monocular SLAM;
+		- Feature-based real-time mono SLAM;
+		- Same feature for tracking/mapping/relocalization/loop-closing;
+		- Robust to motion clutter, wide baseline, ...
+		- Real-time loop closing based on optimization of pose graph called the Essential Graph;
+	- ORB-SLAM2: stereo cameras (RGB-D); three threads
+		- Tracking to localize the camera; minimize reprojection error by motion only BA;
+		- Local mapping to manage local map and optimize it;
+		- Loop closing by pose-graph optimization; launches 4th thread to perform full BA;
+	- Application in AR/VR;
+		- Project Tango (Google): Visual-inertial odometry; SLAM; RGB-D sensor;
+		- Hololens (Microsoft); RGB-D sensor;
+		- Magic Leap;
+		- Voforia (Qualcomm); monocular SLAM;
+		- Apple (Metaio)
+		- Oculus;
+- Classical:
+	- feat, feat-match, motion-estimation, dense reconstruction
+	- suboptimal, lack robustness
+- Direct:
+	- No feat abstraction;
+	- Steinbrücker, Sturm, Cremers, 2011 and Kerl, Sturm, Cremers, 2013 the camera motion of an RGB-D camera without feature extraction;
+	- Newcombe, Lovegrove, Davison, ICCV 2011; dense geometry + motion;
+- Loop Closure and Global Consistency
+- Dense Tracking and Mapping
+- Large Scale Direct Monocular SLAM:
+	- Engel, Sturm, Cremers ICCV 2013 and Engel, Schöps, Cremers ECCV 2014; camera motion + semi-dense geometry;
 
 ## Geometry-based
 - Keypoint matching:
 	- M. Aubry, D. Maturana, A. A. Efros, B. C. Russell, and J. Sivic. Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models. CVPR'14
 	- A. Collet, M. Martinez, and S. S. Srinivasa. The moped framework: Object recognition and pose estimation for manipulation. IJRS'11
-	- M.Zhu,K.G.Derpanis,Y.Yang,S.Brahmbhatt,M.Zhang, C. Phillips, M. Lecce, and K. Daniilidis. Single image 3d object detection and pose estimation for grasping. ICRA'14
+	- M. Zhu, K. G. Derpanis, Y. Yang, S. Brahmbhatt, M. Zhang, C. Phillips, M. Lecce, and K. Daniilidis. Single image 3d object detection and pose estimation for grasping. ICRA'14
 - Align with ground truth:
 	- V. Ferrari, T. Tuytelaars, and L. Van Gool. Simultaneous object recognition and segmentation from single or multiple model views. IJCV'06
 	- F. Rothganger, S. Lazebnik, C. Schmid, and J. Ponce. 3d object modeling and recognition using local affine-invariant image descriptors and multi-view spatial constraints. IJCV'06
