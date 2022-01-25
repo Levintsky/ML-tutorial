@@ -94,6 +94,11 @@
 - Retrieval: obj in scene -> CAD:
 	- Armen Avetisyan, Manuel Dahnert, Angela Dai, Manolis Savva, Angel X. Chang, Matthias Nießner. Scan2CAD: Learning CAD Model Alignment in RGB-D Scans.
 		- https://github.com/skanti/Scan2CAD
+- Shrec:
+	- **ObjectNN**: Binh-Son Hua, Quang-Trung Truong, Minh-Khoi Tran, Quang-Hieu Pham, Asako Kanezaki, Tang Lee, HungYueh Chiang, Winston Hsu, Bo Li, Yijuan Lu, Henry Johan, Shoki Tashiro, Masaki Aono, Minh-Triet Tran, Viet-Khoi Pham, Hai-Dang Nguyen, Vinh-Tiep Nguyen, Quang-Thang Tran, Thuyen V. Phan, Bao Truong, Minh N. Do, Anh-Duc Duong, Lap-Fai Yu, Duc Thanh Nguyen, Sai-Kit Yeung. SHREC'17: RGB-D to CAD Retrieval with ObjectNN Dataset. EuroGraphics'17
+		- http://103.24.77.34/scenenn/home/
+		- query: 1,667 from SceneNN;
+		- Target: 3,308 CAD from shapenet;
 
 ## 3D Scenes
 - Indoor realistic:

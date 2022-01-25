@@ -1,4 +1,4 @@
-# Ensemble Learning
+# Boosting, Ensemble Learning
 
 ## Combining Models (PRML Chap 14)
 - AdaBoost: training and prediction\

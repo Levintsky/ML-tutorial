@@ -319,9 +319,9 @@
 	- Charlie Nash, Yaroslav Ganin, S. M. Ali Eslami, and Peter W. Battaglia. PolyGen: An autoregressive generative model of 3d meshes. ICML'19
 		- https://github.com/deepmind/deepmind-research/tree/master/polygen
 		- **Transformer** on points and faces;
-- Retrieval:
-	- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
-		- Check CAD/template-based method;
+	- CAD-Deform: Vladislav Ishimtsev, Alexey Bokhovkin, Alexey Artemov, Savva Ignatyev, Matthias Niessner, Denis Zorin. CAD-Deform: Deformable Fitting of CAD Models to 3D Scans. ECCV'20
+		- Energy-based;
+		- https://github.com/alexeybokhovkin/CAD-Deform
 - Mesh from other representations (with differentiable op):
 	- Y. Liao, S. Donne, and A. Geiger. Deep marching cubes: Learning explicit surface representations. CVPR'18
 		- Differentiable Marching Cubes;
@@ -361,7 +361,6 @@
 	- A. Bodis-Szomoru, H. Riemenschneider, and L. Van Gool. Fast, approximate piecewise-planar modeling based on sparse structure-from-motion and superpixels. CVPR'14
 	- Noa Fish, Melinos Averkiou, Oliver van Kaick, Olga Sorkine-Hornung, Daniel Cohen-Or, and Niloy J. Mitra. Meta-representation of shape families. TOG'14
 	- Adrien Kaiser, José Alonso Ybáñez Zepeda, and Tamy Boubekeur. A survey of simple geometric primitives detection methods for captured 3d data. CGF'19
-
 - **Morphable model** given a CAD:
 	- Unclassified:
 		- **Shapeflow**: Chiyu Jiang, Jingwei Huang, Andrea Tagliasacchi, and Leonidas Guibas. Shapeflow: Learnable deformations among 3D shapes. NeurIPS'20
@@ -483,12 +482,50 @@
 		- https://github.com/ZhengZerong/DeepImplicitTemplates
 		- Not just DeepSDF, deep SDF + warping;
 - Retrieval:
-	- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
+	- Kai Xu, Hanlin Zheng, Hao Zhang, Daniel Cohen-Or, Ligang Liu, and Yueshan Xiong. Photo-inspired model-driven 3d object modeling. SIGGRAPH'11
+		- Input: target image, source set of 3D models (with consistent parts labels);
+		- Retrieval: manual or auto;
+		- Deformation: component-wise controller (cuboid or cylinder);
+			- Optimization: silhouette + symmetry;
+	- Liangliang Nan, Ke Xie, and Andrei Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
+		- Deform every source and find the best fit to the target (time-consuming)
+		- Problem: input 3D scan of indoor scene, output recognition and reconstruction;
+		- Key-idea: a controlled region growing process which searches for meaningful objects in the scene by accumulating surface patches with high classification likelihood
+		- Preprocessing: over-segment, connected graph,
+		- Model: manual feature, random-forest classifier, segmentation and classification with region growing; temlate fitting with deformation;
 	- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
 		- Non-DL, retrieve a similar mesh;
 		- task: input depth map, output completed obj;
+	- Yangyan Li, Hao Su, Charles Ruizhongtai Qi, Noa Fish, Daniel Cohen-Or, and Leonidas J. Guibas. Joint embeddings of shapes and images via cnn image purification. SIGGRAPH Asia'15
+		- **Strong baseline** for retrieval;
+	- Adriana Schulz, Ariel Shamir, Ilya Baran, David I. W. Levin, Pitchaya Sitthi-Amorn, and Wojciech Matusik. Retrieval on parametric shape collections. TOG'17
+		- Parametric representation (points + tangent planes), retrieval before deforming;
+		- Problem: query shape s, source parametric;
+		- Traditional: fit every source and find best;
+		- This paper: approximate in an embedding space;
+	- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
+		- Check CAD/template-based method;
+	- **SceneCAD**: Armen Avetisyan, Tatiana Khanova, Christopher Choy, Denver Dash, Angela Dai, Matthias Nießner. SceneCAD: Predicting Object Alignments and Layouts in RGB-D Scans. ECCV'20
+		- https://github.com/skanti/SceneCAD
+		- Simultaneously predict layout and objects-cad alignment;
+		- GNN;
+	- Mikaela Angelina Uy, Jingwei Huang, Minhyuk Sung, Tolga Birdal, and Leonidas Guibas. Deformation-Aware 3D model embedding and retrival. ECCV'20
+		- **Strong baseline** for retrieval;
+		- Retrieve and optimize ARAP loss;
+		- **ARAP**: Takeo Igarashi, Tomer Moscovich, and John F. Hughes. Asrigid-as-possible shape manipulation. SIGGRAPH'05
+	- Yue Zhong, Yulia Gryaditskaya, Honggang Zhang, Yi-Zhe Song. Deep Sketch-Based Modeling: Tips and Tricks. 3DV'20
+		- Sketch domain;
+	- Mikaela Angelina Uy, Vladimir G. Kim, Minhyuk Sung, Noam Aigerman, Siddhartha Chaudhuri, Leonidas Guibas. Joint Learning of 3D Shape Retrieval and Deformation. CVPR'21
+		- Insight: retrieve top K (unsupervised?), and then deform them;
+		- https://joint-retrieval-deformation.github.io/
+		- https://github.com/mikacuy/joint_learning_retrieval_deformation
+	- Tianyu Zhao, Qiaojun Feng, Sai Jadhav, Nikolay Atanasov. CORSAIR: Convolutional Object Retrieval and Symmetry-AIded Registration. '21
+		- https://acsweb.ucsd.edu/~qif007/CORSAIR/
+	- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
 
 ## 4.2 Parts/Primitives
+- Unclassified:
+	- Siddhartha Chaudhuri, Daniel Ritchie, Jiajun Wu, Kai Xu, and Hao Zhang. Learning to generate 3D structure. Eurographics State-of-the-Art Reports (STAR), 2020.
 - Legacy:
 	- L. G. Roberts. Machine perception of three-dimensional solids. PhD thesis, Massachusetts Institute of Technology, 1963
 	- Donald D Hoffman and Whitman A Richards. Parts of recognition. Cognition, 18(1-3):65–96, 1984
@@ -759,6 +796,10 @@
 	- **SRN**: Vincent Sitzmann, Michael Zollhofer, and Gordon Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. NeurIPS'19
 		- https://github.com/vsitzmann/scene-representation-networks
 	- **NERF**: Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
+		- Insight: overfit a function mlp(x,y,z,theta,phi) to explain the scene;
+		- Key techniques to improve novel view synthesis performance:
+			- Positional encoding;
+			- Multi-resolution;
 - Sampling technique:
 	- Wang Yifan, Shihao Wu, Cengiz Öztireli, Olga Sorkine-Hornung. Iso-Points: Optimizing Neural Implicit Surfaces With Hybrid Representations. CVPR'21
 - Matthew Tancik, Pratul P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan T. Barron, and Ren Ng. Fourier features let networks learn high frequency functions in low dimensional domains. NeurIPS'20
