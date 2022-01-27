@@ -100,12 +100,4 @@
 - Learned Position Encoding: Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. Convolutional Sequence to Sequence Learning. 2017
 
 ## BERT for RL
-- **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning. 
-
-## Attention for Detection
-- Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko. End-to-End Object Detection with Transformers. ECCV'20
-	- https://github.com/facebookresearch/detr
-	- CNN ResNet-50 backbone - encoder (with modified position enc) - decoder (learned-fixed-queries) - FFN;
-		<img src="/NLP/images/detr-1.png" alt="drawing" width="450"/>	
-		<img src="/NLP/images/detr-2.png" alt="drawing" width="450"/>	
-		<img src="/NLP/images/detr-3.png" alt="drawing" width="450"/>	
+- **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning.

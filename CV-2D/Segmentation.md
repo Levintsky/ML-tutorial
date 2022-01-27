@@ -5,6 +5,10 @@
 - Panoptic:
 	- Cityscapes: 5000 street view images;
 	- ADE20k:
+		- Bolei Zhou, Hang Zhao, Xavier Puig, Sanja Fidler, Adela Barriuso and Antonio Torralba. Scene Parsing through ADE20K Dataset. Computer Vision and Pattern Recognition CVPR'17
+		- Bolei Zhou, Hang Zhao, Xavier Puig, Tete Xiao, Sanja Fidler, Adela Barriuso and Antonio Torralba. Semantic Understanding of Scenes through ADE20K Dataset. IJCV
+		- http://groups.csail.mit.edu/vision/datasets/ADE20K/
+		- 25k images, 19.6 instances, 10.6 object classes each image;
 	- Mapillary Vistas;
 	- COCO:
 

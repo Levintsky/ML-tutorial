@@ -15,3 +15,11 @@
 - Dynamic Network Model from Partial Observations (Jure Leskovec)
 - Graph Convolutional Policy Network for Goal-Directed Molecular Graph Generation (Jure Leskovec)
 - **Discovery of Latent 3D Keypoints via End-to-end Geometric Reasoning (Google Brain)**
+
+## Misc
+- Trieu H Trinh and Quoc V Le. A simple method for commonsense reasoning. 2018
+- Nazneen Fatema Rajani, Bryan McCann, Caiming Xiong, and Richard Socher. Explain yourself! leveraging language models for commonsense reasoning. 2019
+
+## Tue Tutorial
+- Embedding Logical Queries on Knowledge Graphs
+- **GLoMo: Unsupervised Learning of Transferable Relational Graphs (FAIR)**

@@ -67,6 +67,18 @@
 	- **STD**: Zetong Yang, Yanan Sun, Shu Liu, Xiaoyong Shen, Jiaya Jia. STD: Sparse-to-Dense 3D Object Detector for Point Cloud. ICCV'19
 	- **3DSSD**: Zetong Yang, Yanan Sun, Shu Liu, Jiaya Jia. 3DSSD: Point-based 3D Single Stage Object Detector. CVPR'20
 		- https://github.com/Jia-Research-Lab/3DSSD
+	- **3Detr**: Ishan Misra, Rohit Girdhar, Armand Joulin. An End-to-End Transformer Model for 3D Object Detection. ICCV'21
+		- https://github.com/facebookresearch/3detr
+		- Encoder:
+			- Atomic layer: linear embed src to k, q, v, where k, q has pos-enc; then residual layer src+attn(); (optional: followed by linear, dropout, norm);
+			- Encoder: clones of atomic, support mask (by fps);
+		- Decoder:
+			- Atomic layer: linear embed src to k, q, v, where k, q has pos-enc; then residual layer src+attn(); (optional: followed by linear, dropout, norm);
+			- Decoder: N point feat, B query, predict B features then 3D bounding boxes;
+		- Pipeline:
+			- Run Encoder to get enc_xyz, enc_feat;
+			- Get query embeddings by fps to get query_xyz, query_embed;
+			- Position embedding: enc_pos with sine, cos to get enc_pos;
 - GNN/Attention:
 	- **MLCVNet**: Qian Xie, Yu-Kun Lai, Jing Wu, Zhoutao Wang, Yiming Zhang, Kai Xu, and Jun Wang. MLCVNet: Multi-Level Context VoteNet for 3D Object Detection. CVPR'20
 		- https://github.com/NUAAXQ/MLCVNet

@@ -1,14 +1,10 @@
-# Combinatorial Optimization
+# Convex Optimization
 
-## DL
-- Po-Wei Wang, Priya L. Donti, Bryan Wilder, Zico Kolter. SATNet: Bridging deep learning and logical reasoning using a differentiable satisfiability solver. ICML'19
+## Neural Convex Layers
+- **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
+	- https://github.com/cvxgrp/cvxpylayers (support both pytorch and tf)
 
 ## NIPS'19
-- Nathaniel Lahn, Deepika Mulchandani, Sharath Raghvendra. A Graph Theoretic Additive Approximation of Optimal Transport
-- Changyong Oh, Jakub Tomczak, Efstratios Gavves, Max Welling. Combinatorial Bayesian Optimization using the Graph Cartesian Product
-- Maxime Gasse, Didier Chetelat, Nicola Ferroni, Laurent Charlin, Andrea Lodi. Exact Combinatorial Optimization with Graph Convolutional Neural Networks
-- Emre Yolcu, Barnabas Poczos. Learning Local Search Heuristics for Boolean Satisfiability
-- Xinyun Chen, Yuandong Tian. Learning to Perform Local Rewriting for Combinatorial Optimization
 - Hao Yu. A Communication Efficient Stochastic Multi-Block Alternating Direction Method of Multipliers
 - Jiajin Li, SEN HUANG, Anthony Man-Cho So. A First-Order Algorithmic Framework for Wasserstein Distributionally Robust Logistic Regression
 - Bin Shi, Simon Du, Weijie Su, Michael Jordan. Acceleration via Symplectic Discretization of High-Resolution Differential Equations

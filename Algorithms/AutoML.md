@@ -77,10 +77,21 @@
 		- Baselines: MobileNet, ShuffleNet;
 - I. Radosavovic, J. Johnson, S. Xie, W.-Y. Lo, and P. Dollar. On network design spaces for visual recognition. ICCV'19
 - **RegNet**: Ilija Radosavovic, Raj Prateek Kosaraju, Ross Girshick, Kaiming He, Piotr Dollar. Designing Network Design Spaces. CVPR'20
-	- https://github.com/facebookresearch/pycls
-	- AnyNetX;
+	- https://github.com/facebookresearch/pycls	
+	- Search space, with control;
+		- ResNet-like block: 4-dof, width, num-of-blocks, group size, bottleneck ratio);
+		- AnyNet-B: all stage with same bottleneck ratio? no loss;
+		- AnyNet-C: all stage with same group width? g>1 best;
+		- AnyNet-D: each stage with increasing width;
+		- AnyNet-E: each stage with increasing depth;
+	- Search approach:
+		- Grid search: 500 models, 10 epochs;
+		- Draw EDF, fit the trend;
 	- Does not use SE and Swish;
-	- Auto-AutoML, better result than;
+	- Conclusion:
+		- Best depth: 20 blocks (60 layers);
+		- Best bottlenck ratio: 1.0 (no bottleneck?)
+		- Best width multiplier: 2.5;
 
 ## Search Approach
 - DNAS (differentiable):
