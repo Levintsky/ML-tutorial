@@ -32,7 +32,7 @@
 			- Anchor-free: YOLO-series, FCOS, 
 			- Mixture: ATSS,
 	- Loss Design:
-		- GIoU
+		- **GIoU**: Rezatofighi, H., Tsoi, N., Gwak, J., Sadeghian, A., Reid, I., Savarese, S.: Generalized intersection over union. CVPR'19
 	- Unknown: GHM, Hybrid Task Cascade, Guided Anchoring, RepPoints, Foveabox, FreeAnchor, NAS-FPN, FSAF, PAFPN, PointRend, CARAFE, DCNv2, OHEM, Soft-NMS, Generalized Attention, GCNet, InstaBoost, GRoIE, DetectoRS, CornerNet, Side-Aware Boundary Localization, PAA, YOLACT, CentripetalNet, VFNet, DETR, SCNet
 - Good repos:
 	- https://github.com/open-mmlab/mmdetection

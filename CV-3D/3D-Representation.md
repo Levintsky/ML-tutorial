@@ -730,6 +730,8 @@
 	- John C. Hart. Sphere tracing: A geometric method for the antialiased ray tracing of implicit surfaces. 1996
 	- **Surface-Finding**: Sarah F. Frisken, Ronald N. Perry, Alyn P. Rockwood, and Thouis R. Jones. Adaptively sampled distance fields: A general representation of shape for computer graphics. 2000
 - Generalized Neural-SDF or indicator function:
+	- Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. ECCV, 2020.
+	- Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. NeurIPS'19
 	- Union of piecewise SDF/indicator (parts?):
 		- Boyang Deng, Kyle Genova, Soroosh Yazdani, Sofien Bouaziz, Geoffrey Hinton, Andrea Tagliasacchi. CvxNet: Learnable Convex Decomposition. CVPR'20
 			- https://cvxnet.github.io/
@@ -791,15 +793,7 @@
 - Matching, N-SDF across frames/shapes;
 	- Michael Niemeyer, Lars M. Mescheder, Michael Oechsle, and Andreas Geiger. Occupancy flow: 4d reconstruction by learning particle dynamics. ICCV'19
 		- CNF;
-	- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
-- 3D-Field:
-	- **SRN**: Vincent Sitzmann, Michael Zollhofer, and Gordon Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. NeurIPS'19
-		- https://github.com/vsitzmann/scene-representation-networks
-	- **NERF**: Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
-		- Insight: overfit a function mlp(x,y,z,theta,phi) to explain the scene;
-		- Key techniques to improve novel view synthesis performance:
-			- Positional encoding;
-			- Multi-resolution;
+	- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20	
 - Sampling technique:
 	- Wang Yifan, Shihao Wu, Cengiz Öztireli, Olga Sorkine-Hornung. Iso-Points: Optimizing Neural Implicit Surfaces With Hybrid Representations. CVPR'21
 - Matthew Tancik, Pratul P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan T. Barron, and Ren Ng. Fourier features let networks learn high frequency functions in low dimensional domains. NeurIPS'20
