@@ -37,7 +37,7 @@
 		- x -> Conv (stride=2) - BN - ReLU - conv - BN -> out
 		- x = ReLU(downsample(x) + out)
 	- Bottleneck block
-		- x -> Conv1x1 (BN, ReLU) - Conv3x3 (BN, ReLU) - Conv (BN) -> out
+		- x -> Conv1x1 channel-large (BN, ReLU) - Conv3x3 channel-small (BN, ReLU) - Conv channel-large (BN) -> out
 		- x = ReLU(x + out)
 	- Bottleneck block (downsample)
 		- x -> Conv1x1 (stride=2, BN, ReLU) - Conv3x3 (BN, ReLU) - Conv1x1 (BN) -> out
@@ -59,18 +59,13 @@
 	- ii. down-sample by 2, width increase by 2; (each layer similar computation)
 	- Conv - Batch-Norm - ReLU;
 	- Short-cut: ReLU after adding shortcut;
-- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR'18
-	- https://github.com/bamos/densenet.pytorch
-	- ImageNet: top-1 79.2%, top-5 94.7%;
 - **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
 	- Insight: channel-wise scaling (learn by MLP);
 	- https://github.com/hujie-frank/SENet
 	- Winner of ILSVR'17
-	- Model:\
-		<img src="/CV-2D/images/cnn/senet-1.png" alt="drawing" width="400"/>
-	- Module:\
-		<img src="/CV-2D/images/cnn/senet-2.png" alt="drawing" width="300"/>
-		<img src="/CV-2D/images/cnn/senet-3.png" alt="drawing" width="300"/>
+- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR'18
+	- https://github.com/bamos/densenet.pytorch
+	- ImageNet: top-1 79.2%, top-5 94.7%;
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 - Jingdong Wang, Ke Sun, Tianheng Cheng, Borui Jiang, Chaorui Deng, Yang Zhao, Dong Liu, Yadong Mu, Mingkui Tan, Xinggang Wang, et al. Deep high-resolution representation learning for visual recognition. PAMI'20
 	- High-resolution, multi-branch, fuse;

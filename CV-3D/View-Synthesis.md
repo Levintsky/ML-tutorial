@@ -46,6 +46,9 @@
 	- Eric R Chan, Marco Monteiro, Petr Kellnhofer, Jiajun Wu, and Gordon Wetzstein. pi-GAN: Periodic implicit generative adversarial networks for 3d-aware image synthesis. arxiv'20
 	- Michael Niemeyer and Andreas Geiger. Giraffe: Representing scenes as compositional generative neural feature fields. arxiv'20
 	- Katja Schwarz, Yiyi Liao, Michael Niemeyer, and Andreas Geiger. GRAF: Generative radiance fields for 3d-aware image synthesis. arxiv'20
+		- Insight: Generative model + NERF
+			- Traditional: z-sampling -> image/voxel;
+			- Proposed: z-sampling -> RF, RF + camera-pose -> image;
 	- Alex Trevithick and Bo Yang. Grf: Learning a general radiance field for 3d scene representation and rendering. arxiv'20
 		- Similar to IBRNet, but use absolute coord;
 	- **SGN**: Terrance DeVries, Miguel Angel Bautista, Nitish Srivastava, Graham W. Taylor, Joshua M. Susskind. Unconstrained Scene Generation with Locally Conditioned Radiance Fields. ICCV'21
@@ -56,6 +59,8 @@
 ## Explicit
 - For combination:
 	- Alpha-Compositing: Thomas Porter and Tom Duff. Compositing digital images. Computer graphics and interactive techniques, 1984.
+	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
+	- S. M. Seitz and C. R. Dyer. View morphing. 1996
 - Voxels:
 	- **Refer to Voxels in 3D-represenation**;
 	- Nima Khademi Kalantari, Ting-Chun Wang, and Ravi Ramamoorthi. Learning-based view synthesis for light field cameras. ACM TOG, 2016
@@ -66,6 +71,7 @@
 	- Lingjie Liu, Jiatao Gu, Kyaw Zaw Lin, Tat-Seng Chua, and Christian Theobalt. Neural sparse voxel fields. arxiv'20
 	- Philipp Henzler, Niloy J. Mitra, and Tobias Ritschel. Learning a neural 3d texture space from 2d exemplars. CVPR'20
 - Layered/Multiplane
+	- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
 	- John Flynn, Ivan Neulander, James Philbin, and Noah Snavely. Deepstereo: Learning to predict new views from the world's imagery. CVPR'16
 	- **LDI**: Shubham Tulsiani, Richard Tucker, Noah Snavely. Layer-structured 3D Scene Inference via View Synthesis. ECCV'18
 		- https://shubhtuls.github.io/lsi/
@@ -109,8 +115,8 @@
 	- Francesco Pittaluga, Sanjeev JKoppal, Sing Bing Kang, and Sudipta N Sinha. Revealing scenes by inverting structure from motion reconstructions. CVPR'19
 - Peter Hedman, Julien Philip, True Price, Jan-Michael Frahm, George Drettakis, and Gabriel Brostow. Deep blending for free-viewpoint image-based rendering. SIGGRAPH Asia'18
 	- Generate 2 MVS, then CNN to blend;
-		- Michal Jancosek and Tomas Pajdla. Multi-view reconstruction preserving weakly-supported surfaces. CVPR, 2011
-		- Johannes L Schonberger and Jan-Michael Frahm. Structure- from-motion revisited. CVPR, 2016
+		- Michal Jancosek and Tomas Pajdla. Multi-view reconstruction preserving weakly-supported surfaces. CVPR'11
+		- Johannes L Schonberger and Jan-Michael Frahm. Structure-from-motion revisited. CVPR, 2016
 - **IBRNet**: Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul Srinivasan, Howard Zhou, Jonathan T Barron, Ricardo Martin-Brualla, Noah Snavely, and Thomas Funkhouser. Ibrnet: Learning multi-view image-based rendering. CVPR'21
 
 ## Unclassified
@@ -151,8 +157,3 @@
 	- https://github.com/ysymyth/3D-SDN
 	- Algorithm:\
 		<img src = '/Composition/images/2d/3d-sdn.png' width = '400'>
-
-## Legacy:
-- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
-- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
-- S. M. Seitz and C. R. Dyer. View morphing. 1996
