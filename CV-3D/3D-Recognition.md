@@ -147,10 +147,13 @@
 	- https://github.com/dimatura/voxnet
 - C R Qi, H Su, M Niessner, A Dai, M Yan, and L J Guibas. Volumetric and multi-view cnns for object classification on 3d data. CVPR'16
 - N Sedaghat, M Zolfaghari, E Amiri, T Brox. Orientation-boosted voxel nets for 3D object recognition. BMVC'17
+- Octree (in training):
+	- **Octnet**: G. Riegler, A. O. Ulusoys, and A. Geiger. Octnet: Learning Deep 3D Representations at High Resolutions. arxiv'16
+	- **HSP**: C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 3DV'17
+	- Peng-Shuai Wang, Yang Liu, Yu-Xiao Guo, Chun-Yu Sun, and Xin Tong. O-cnn: Octree-based convolutional neural networks for 3d shape analysis. TOG'17
 - Sparse conv:
 	- Ben Graham. Sparse 3D convolutional neural networks. 2015
 		- https://github.com/btgraham/SparseConvNet
-	- **Octnet**: G. Riegler, A. O. Ulusoys, and A. Geiger. Octnet: Learning Deep 3D Representations at High Resolutions. arxiv'16
 	- B. Graham, M. Engelcke, and L. van der Maaten. 3D semantic segmentation with submanifold sparse convolutional networks. CVPR'18
 		- SSCN (submanifold sparse Conv Net)
 		- https://github.com/facebookresearch/SparseConvNet
