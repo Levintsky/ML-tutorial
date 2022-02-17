@@ -1,6 +1,8 @@
 # Parts/Primitives
 
-## Unclassified:
+## Unclassified
+- A. Jain, T. Thormahlen, T. Ritschel, and H.-P. Seidel. Exploring shape variations by 3d-model decomposition and part-based recombination. CGF'12
+- Haibin Huang, Evangelos Kalogerakis, Benjamin Marlin. Analysis and synthesis of 3D shape families via deep-learned generative models of surfaces. Eurographics 2015
 - Siddhartha Chaudhuri, Daniel Ritchie, Jiajun Wu, Kai Xu, and Hao Zhang. Learning to generate 3D structure. Eurographics State-of-the-Art Reports (STAR), 2020.
 
 ## Legacy
@@ -59,6 +61,9 @@
 	- Task: unsupervised co-segmentation;
 
 ## Unsupervised part discovery
+- Li Yi, Haibin Huang, Difan Liu, Evangelos Kalogerakis, Hao Su, Leonidas Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia 2018
+	- Deep Matching (Point Net)
+	- Motion Discovery, Part Co-segmentation
 - Shubham Tulsiani, Hao Su, Leonidas J. Guibas, Alexei A. Efros, Jitendra Malik. Learning Shape Abstractions by Assembling Volumetric Primitives. CVPR'17
 	- Supervision: unsupervised, reconstruction loss;
 	- Each part (z, q, t): z, shape; q rotation; t translation;
@@ -187,18 +192,18 @@
 		- Geometry network: superquadratics fitting;
 
 ## Applications:
-	- Siddhartha Chaudhuri and Vladlen Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
-		- Given a query simple shape, suggest creativity (interactive generative model)
-		- Fast match by signature;
-		- Search and suggest parts with low correspondence;
-	- Functionality:
-		- R. Hu, W. Li, O. Van Kaick, A. Shamir, H. Zhang, and H. Huang. Learning to predict part mobility from a single static snapshot. TOG 2017
-		- R. Hu, Z. Yan, J. Zhang, O. van Kaick, A. Shamir, H. Zhang, and H. Huang. Predictive and generative neural networks for object functionality. CGF 2018
-	- Physics:
-		- Yilun Du, Zhijian Liu, Hector Basevi, Aleš Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Exploit Stability for 3D Scene Parsing. NIPS'18
+- Siddhartha Chaudhuri and Vladlen Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
+	- Given a query simple shape, suggest creativity (interactive generative model)
+	- Fast match by signature;
+	- Search and suggest parts with low correspondence;
+- Functionality:
+	- R. Hu, W. Li, O. Van Kaick, A. Shamir, H. Zhang, and H. Huang. Learning to predict part mobility from a single static snapshot. TOG 2017
+	- R. Hu, Z. Yan, J. Zhang, O. van Kaick, A. Shamir, H. Zhang, and H. Huang. Predictive and generative neural networks for object functionality. CGF 2018
+- Physics:
+	- Yilun Du, Zhijian Liu, Hector Basevi, Aleš Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Exploit Stability for 3D Scene Parsing. NIPS'18
 
 ## Procedural:
-	- **CSG**:
-		- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
+- **CSG**:
+	- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
 
 ## **Chart**: Heli Ben-Hamu, Haggai Maron, Itay Kezurer, Gal Avineri, and Yaron Lipman. Multi-chart generative surface modeling. TOG'18

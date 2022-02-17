@@ -12,7 +12,11 @@
 	- CNN-RNN (problem: not order-invariant);
 	- Fusion network;
 
-## Legacy (Non-DL):
+## Misc
+- A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3D-encoder-predictor CNNs and shape synthesis. CVPR'17
+	- https://github.com/angeladai/cnncomplete
+
+## Legacy (Non-DL)
 - **Voxlet**: Michael Firman, Oisin Mac Aodha, Simon Julier, Gabriel J. Brostow. Structured Prediction of Unobserved Voxels From a Single Depth Image. CVPR'16
 	- https://github.com/mdfirman/voxlets
 	- Input depth image (no-rgbd), output voxel binary occupancy;
@@ -47,6 +51,7 @@
 - Andrew Brock, Theodore Lim, James M Ritchie, and Nick Weston. Generative and discriminative voxel modeling with convolutional neural networks. 3D Deep Learning Workshop at NIPS'16
 	- VAE;
 	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
+- Interactive 3D modeling with a generative adversarial network, 3D Vision 2017
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV'17
 	- https://github.com/matheusgadelha/PrGAN
 	- Input: latent code 200-dim;

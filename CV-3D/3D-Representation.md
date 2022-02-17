@@ -23,9 +23,16 @@
 	- Infer cues:
 		- 2.5-D: - H. G. Barrow and J. M. Tenenbaum, Recovering intrinsic scene characteristics from images, Computer Vision Systems, 1978
 
+## Floor Plan
+- A. X. Chang, M. Savva, and C. D. Manning. Learning spatial knowledge for text to 3d scene generation. EMNLP'14
+- A. Chang, W. Monroe, M. Savva, C. Potts, and C. D. Manning. Text to 3d scene generation with rich lexical grounding. ACL'15
+
 ## 2.5D, Depth, Skeleton, 3D-Aware 2D Cues...
 - Depth:
+	- G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17
 	- Wei Yin, Yifan Liu, Chunhua Shen, and Youliang Yan. Enforcing geometric constraints of virtual normal for depth prediction. ICCV'19
+- Amir Arsalan Soltani, Haibin Huang, Jiajun Wu, Tejas D. Kulkarni, Joshua B. Tenenbaum. Synthesizing 3D Shapes via Modeling Multi-View Depth Maps and Silhouettes with Deep Generative Networks. CVPR'17
+	- https://github.com/Amir-Arsalan/Synthesize3DviaDepthOrSil
 - S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
 	- Estimate **normal** of depth map; then improve depth map fusion;
 - **3D-INN**: J Wu, T Xue, J Lim, Y Tian, J Tenenbaum, A Torralba, and W Freeman. Single Image 3D Interpreter Network, ECCV'16, IJCV'18

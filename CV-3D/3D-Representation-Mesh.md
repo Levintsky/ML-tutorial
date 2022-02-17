@@ -5,6 +5,9 @@
 	- Voronoi diagram;
 	- Delaunay triangulation;
 
+## Misc
+- L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. ICCV'17
+
 ## Legacy: Marching Cubes;
 - Given function defining +/- as outside inside, output the surface (mesh);
 - Insight: go through each cube independently, lookup table (2 ^ 8 = 256 cases), handle the surface accordingly by lookup, adapt to find a better surface;

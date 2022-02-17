@@ -5,7 +5,11 @@
 	- Synthesize a novel view from a different view point;
 	- More general: 3D-aware 2D generation;
 	- Roughly 3D Representation + Rendering; (a lot of trickes shared by 3d-representation);
-- Approaches:
+- Common techniques:
+	- Ray tracing (a framework, not an algorithm);
+	- IBMR (Image-based modeling and rendering): Render a new view from some images;
+	- Reflection, refraction:
+- Approaches of novel view synthesis:
 	- Direct output or from optical flow;
 	- 3D voxel or mesh first;
 	- Single depth;
@@ -13,6 +17,7 @@
 - Generally 2D rendered by volumetric rendering;
 	- James T Kajiya and Brian P Von Herzen. Ray tracing volume densities. ACM SIGGRAPH'84
 	- Robert A Drebin, Loren Carpenter, and Pat Hanrahan. Volume rendering. SIGGRAPH'88
+	- https://www.zhihu.com/search?type=content&q=volumetric%20rendering
 - Good Tutorials:
 	- CVPR'20:
 		- https://youtu.be/LCTYRqW-ne8
@@ -21,8 +26,69 @@
 		- https://youtu.be/otly9jcZ0Jg
 		- https://youtu.be/aboFl5ozImM
 	- ICCV'21 workshop: https://unsup3d.github.io/
+- Neural rendering basics:
+	- Regress it: code - (2dnet) - 2d-img; e.g.GQN
+	- Make it real: code/3d-mesh/points - (CG) - 2d - (encoder-decoder)- 2d-img; DVP or DNR;
+	- Regress & render: code - (2dnet) - 3dmesh/points/volume - (cg) - 2d img
+	- step, sample & blend: 3d-space - (mlp) - (cg) - 2d-img;
+	- Loss design:
+		- Statistical: perceptual loss;
+		- Adversarial;
 
-## Mesh-based (Surface)
+## Rendering Basics
+- Ray tracing:
+	- Path tracing: ray tracing + Monte Carlo;
+		- Sample according to BRDF;
+	- Ray Casting:
+		- First step of ray tracing;
+		- also used in volumetric rendering;
+	- Ray marching: always used in volumetric;
+		- https://www.zhihu.com/search?type=content&q=ray%20marching
+	- https://www.zhihu.com/question/29863225/answer/70728387
+	- James T. Kajiya. Rendering equation. SIGGRAPH'83
+	- David S. Immel, Michael F. Cohen, Donald P Greenberg. A radiosity method for non-diffuse environments. SIGGRAPH'86
+	- Systematically sample light sources at each hit
+		- Don't just wait the rays will hit it by chance
+	- Photon mapping: https://www.zhihu.com/search?type=content&q=photon%20map
+	- Eric Veach, Leonidas John Guibas. Optimally combining sampling techniques for Monte Carlo rendering. SIGGRAPH'95
+- Color
+	- Lambertian: (ideal matte, diffusely reflecting surface), same color regardless of observer's angle of view;
+	- Reflection, refraction:
+		- Douglas Enright, Stephen Marschner, Ronald Fedkiw. Animation and Rendering of Complex Water Surfaces. SIGGRAPH'02
+		- Glossy Reflection: multiple reflection rays; polished surface;
+- Hierarchical (kd-tree):
+	- BVH (Bounding Volume Hierarchy);
+	- Pros and cons of kd-tree:
+		- Pros: Simple code, Efficient traversal, Can conform to data;
+		- Cons: costly construction, not great if you work with moving objects;
+	- Most people use the Surface Area Heuristic (SAH)
+		- MacDonald and Booth. Heuristic for ray tracing using space subdivision. Visual Computer'90
+	- Warren Hunt, William R. Mark, Gordon Stoll. Fast kd-tree Construction with an Adaptive Error-Bounded Heuristic. IRT'06
+	- Kun Zhou, Qiming Hou, Rui Wang, Baining Guo. Real-Time KD-Tree Construction on Graphics Hardware. SIGGRAPH Asia'08
+	- Hard core efficiency: Ingo Wald's PhD thesis: http://www.sci.utah.edu/~wald/PhD/
+- Differentiable:
+	- Resources:
+		- **Kaolin**: https://github.com/NVIDIAGameWorks/kaolin
+		- **Tensorflow**: https://www.tensorflow.org/graphics/api_docs/python/tfg/rendering
+		- **pytorch3d**: https://github.com/facebookresearch/pytorch3d
+	- **Neural-Renderer**: Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
+		- Problem: 1. single 2D image to mesh; 2. Mesh Editing;
+		- Insight: differentiable; approximate GD; first mesh generative model;
+		- http://hiroharu-kato.com/projects_en/neural_renderer.html
+		- https://github.com/daniilidis-group/neural_renderer
+		- Supervision: silhouette loss + smoothness loss;
+		- Assumption: deform an existing mesh (not from scratch); preprocessed segmentation;
+	- **Soft-Ras**: Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
+		- https://github.com/ShichenLiu/SoftRas
+		- Insight: soft assign pixel to faces, making the rasterization differentiable by soft aggregation;
+	- **DIB-R**: Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
+		- https://nv-tlabs.github.io/DIB-R/
+		- Insight: Barycentric interpolation based;
+		- Applied Soft-Ras weighting to soft assign pixel;
+		- Lighting: support Phong, Lambertian, Sphere Harmonics;
+		- Application: 3D objects from single images; 3D-GAN;
+
+## Mesh-based (Surface) View-Synthesis
 - Topology-preserving;
 - Pros and Cons:
 	- Easy to render;
@@ -35,15 +101,18 @@
 	- Chris Buehler, Michael Bosse, Leonard McMillan, Steven Gortler, and Michael Cohen. Unstructured lumigraph rendering. SIGGRAPH'01
 
 ## Image Based Rendering: Multi Images/Warping/Alpha-Blending
+- Insight: Rely on a set of two-dimensional images of a scene to generate a three-dimensional model and then render some novel views of this scene;
 - Legacy:
+	- Alpha-Compositing: Thomas Porter and Tom Duff. Compositing digital images. Computer graphics and interactive techniques, 1984.
 	- Shenchang Eric Chen and Lance Williams. View interpolation for image synthesis. SIGGRAPH'93.
+	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
+	- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996
+	- S. M. Seitz and C. R. Dyer. View morphing. 1996
 	- Marc Levoy and Pat Hanrahan. Light field rendering. SIGGRAPH'96
 		- Blending weight based on ray proximity;
 	- Jonathan Shade, Steven Gortler, Li-wei He, and Richard Szeliski. Layered depth images. SIGGRAPH'98
 	- Daniel N Wood, Daniel I Azuma, Ken Aldinger, Brian Curless, Tom Duchamp, David H Salesin, and Werner Stuetzle. Surface light fields for 3d photography. SIGGRAPH'00
-	- Alpha-Compositing: Thomas Porter and Tom Duff. Compositing digital images. Computer graphics and interactive techniques, 1984.
-	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
-	- S. M. Seitz and C. R. Dyer. View morphing. 1996
+	- A. Fitzgibbon, Y. Wexler, and A. Zisserman. Image-based rendering using image-based priors. IJCV'05
 - Proxy geometry:
 	- Gaurav Chaurasia, Sylvain Duchene, Olga Sorkine-Hornung, and George Drettakis. Depth synthesis and local warps for plausible image-based navigation. ACM TOG'13
 	- Peter Hedman, Tobias Ritschel, George Drettakis, and Gabriel Brostow. Scalable inside-out image-based rendering. TOG'16
@@ -189,7 +258,7 @@
 	- David B Lindell, Julien NP Martel, and Gordon Wetzstein. Autoint: Automatic integration for fast neural volume rendering. CVPR'21
 		- http://www.computationalimaging.org/publications/
 		- Modifies Nerf s.t. fewer samples required;
-			- Grad net for fast integral?
+			- Grad net for fast integral;
 		- Lower quality;
 	- Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten	Kreis, Charles Loop, Derek Nowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler. Neural geometric level of detail: Real-time rendering with implicit 3D shapes. CVPR'21
 		- octree;

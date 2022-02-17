@@ -1,9 +1,14 @@
 # Point Cloud
 
-## Basics:
+## Basics
 - Directly map from latent space z to nx3 dim as n points; (most AE)
 - Fold a 2D surface/rectangle (folding net)
 - Deform a Gaussian ball (CNF, pointflow)
+
+## Upsampling
+- Wang Yifan, Shihao Wu, Hui Huang, Daniel Cohen-Or, and Olga Sorkine-Hornung. Patch-based progressive 3d point set upsampling. arXiv preprint arXiv:1811.11286, 2018
+- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Ec-net: an edge-aware point set consolidation network. ECCV'18
+- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Pu-net: Point cloud upsampling network. CVPR'18
 
 ## Misc
 - **PSGN**: H Fan, H Su, and L Guibas. A point set generation network for 3d object reconstruction from a single image. CVPR'17
