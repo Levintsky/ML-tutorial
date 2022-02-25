@@ -7,8 +7,6 @@
 	- RBM
 - **MADE**: M Germain, K Gregor, I Murray, and H Larochelle. MADE: Masked autoencoder for distribution estimation. ICML'15.
 - Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
-
-## Google
 - Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., and Ku, A. Image transformer. ICML'18
 	- code available in tensor2tensor
 	- Block of local attention
@@ -18,8 +16,6 @@
 		- 1D local attention
 		- 2D local attention: raster-scan of sub-blocks, within each sub-block, raster-scan again for pixels
 		<img src="/Generative/images/autor/image-transformer2.png" alt="drawing" width="400"/>
-
-## DeepMind
 - **PixelRNN** A Oord, N Kalchbrenner and K Kavukcuoglu. Pixel recurrent neural networks. ICML'16.
 - **PixelCNN**, A Oord, N Kalchbrenner, L Espeholt, O Vinyals, A Graves, et al. Conditional image generation with pixelcnn decoders, NIPS'16
 	- Gated CNN (split the output, one as signal one as sigmoid gate, then element-wise product)
@@ -97,7 +93,6 @@
 		    ul_list += [ul]
 		return u_list, ul_list
 		```
-
 - **PixelSNAIL**: Chen, X., Mishra, N., Rohaninejad, M., and Abbeel, P. Pixelsnail: An improved autoregressive generative model. ICML'18
 	- https://github.com/neocxi/pixelsnail-public
 	- Use the technique **SNAIL** proposed in [N Mishra, M Rohaninejad, X Chen, and P Abbeel. A simple neural attentive meta-learner. In NIPS 2017 Workshop on Meta-Learning, 2017.]

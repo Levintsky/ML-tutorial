@@ -232,6 +232,8 @@
 	- Pratul P. Srinivasan, Boyang Deng, Xiuming Zhang, Matthew Tancik, Ben Mildenhall, and Jonathan T. Barron. Nerv: Neural reflectance and visibility fields for relighting and view synthesis. CVPR'21
 		- Problem setup: to enable **relighting**;
 		- Neural Visibility Field;
+	- Michelle Guo, Alireza Fathi, Jiajun Wu, Thomas Funkhouser. Object-Centric Neural Scene Rendering. arxiv'20
+		- https://www.shellguo.com/osf/
 - NERF acceleration:
 	- Add a prior (image cnn features!):
 		- **GRF**: Alex Trevithick and Bo Yang. Grf: Learning a general radiance field for 3d scene representation and rendering. ICCV'21

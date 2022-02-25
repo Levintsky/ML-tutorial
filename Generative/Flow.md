@@ -6,8 +6,7 @@
 - https://blog.evjang.com/2018/01/nf1.html
 - https://blog.evjang.com/2018/01/nf2.html
 - http://akosiorek.github.io/ml/2018/04/03/norm_flows.html
-- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed
-Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
 	- Expressive power: universal representation is possible under reasonable conditions (proved with Autogressive flows);
 	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
 		<img src = '/Generative/images/flow/survey1.png' width = '400'>

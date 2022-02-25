@@ -70,7 +70,6 @@
 	- V. Deschaintre, M. Aittala, F. Durand, G. Drettakis, and A. Bousseau. Single-image svbrdf capture with a renderingaware deep network. TOG'18
 	- G. Liu, D. Ceylan, E. Yumer, J. Yang, and J.-M. Lien. Material editing using a physically based rendering network. ICCV'17
 - 3D reconstruction:
-	- D. J. Rezende, S. A. Eslami, S. Mohamed, P. Battaglia, M. Jaderberg, and N. Heess. Unsupervised learning of 3d structure from images. NIPS'16
 	- O. Nalbach, E. Arabadzhiyska, D. Mehta, H.-P. Seidel, and T. Ritschel. Deep shading: convolutional neural networks for screen space shading. CGF'17
 	- P. Henderson and V. Ferrari. Learning to generate and reconstruct 3d meshes with only 2d supervision. BMVC'18
 	- A. Kundu, Y. Li, and J. M. Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
