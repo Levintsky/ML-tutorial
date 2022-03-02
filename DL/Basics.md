@@ -50,7 +50,7 @@
 ## Regularization
 - Xavier Gastaldi. Shake-Shake regularization. 2017
 
-## Reparametrization Trick
+## Differentiable Sampling (Reparametrization Trick)
 - Make sampling process differentiable;
 - **Score-function**: the gradient of the log-likelihood function with respect to the parameter vector;
 - Reinforce: unbiased but high variance\
@@ -72,15 +72,21 @@
 	<img src="/DL/images/basics/muprop.png" alt="drawing" width="400"/>
 - **VIMCO**: A. Mnih and D. J. Rezende. Variational inference for monte carlo objectives. arXiv'16
 	<img src="/DL/images/basics/vimco.png" alt="drawing" width="400"/>
-- Gumbel-Softmax
-	- About Gumbel distribution: pdf f(.) and cdf F(.)\
-		<img src="/DL/images/basics/gumbel-1.png" alt="drawing" width="400"/>\
-		<img src="/DL/images/basics/gumbel-2.png" alt="drawing" width="300"/>\
-		<img src="/DL/images/basics/gumbel-3.png" alt="drawing" width="300"/>
-	- Gumbel-Max trick:\
-		<img src="/DL/images/basics/gumbel-softmax.png" alt="drawing" width="450"/>
-	- Proof:\
-		<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
+- Gumbel-Softmax:
+	- Basics: differentiable sample y s.t. y={v1, v2, ...} with prob {alpha1, alpha2, ...}
+	- Gumble distribution:
+		- pdf: f(x) = exp(-(x+exp(-x)))
+		- cdf: F(x) = exp(-exp(-x))
+		- To sample from gumble, **G=-log(-log(U))**, with U ~ Uniform(0, 1)
+		- **Key insight**: With prob {alpha1, alpha2, ...}, Gumble var {g1, g2, ...}, then if we let ind=argmax(log alpha_k + gk), then p(ind=k)=alpha_k;
+		- Proof: with uk=log a_k+gk, p(ind=k)=int prod p(uj < uk) f(uk) duk, where p(uj < uk) can be obtained from Gumbel cdf F(x)
+			<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
+	- Differentiable sampling:
+		- argmax is not differentiable;
+		- we can use f(x, tau) = softmax(x/tau), for vector x=(x1, x2, ...)
+		- then y as a weighted sum of {v1, v2} with prob f(x, tau)
+		- y is both differentiable w.r.t. {v1, v2, ...} and {alpha1, alpha2, ...}
+		- when tau approaches 0, sampling behavior is exact;
 	- C. J. Maddison, A. Mnih, and Y. Whye Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
 		- Independently discover the same trick;
 	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
