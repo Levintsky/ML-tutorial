@@ -1,5 +1,45 @@
 # Differential Equation
 
+## Basics
+- ODE:
+	- F(x, y1, y2, ...), each yi=yi(x) is only function of x
+	- F(x, y, y', y''), high-order;
+		- n-th order, n general solution? (for linear homogeneous)
+	- Total differential equation (also exact differential equation, perfect differential equation)
+		- Integral factor;
+	- Variable separation: P(x, y) = X(x) Y(y)
+	- Reparametrize;
+	- Homogeneous: P(x,y)dx + Q(x,y)dy = 0
+		- Bernoulli Eqn;
+		- Riccati;
+	- Existence and Uniqueness;
+		- Picard: exist & unique;
+		- Osgood condition;
+		- Peano existnce;
+		- Extension of solution;
+	- Singular solution;
+- PDE:
+	- Always (mathematical methods for physics);
+	- Linear 2nd-order PDE;
+		- D'Ambert, Laplacian, Wave-eqn, Heat-eqn, Hermholtz Eqn, Poisson Eqn, Schrondinger, Klein-Gordon;
+	- Variable separation;
+	- Sphere coords: Legendre;
+	- Cylinder coords: Bessel;
+	- Green function: impulse response of inhomegeneous PDE;
+- SDE:
+	- Basics: dx(t) = - nabla U(x(t)) dt + sigma dBt
+	- First term: force (conservative from potential); second: Brownian motion;
+	- Fokker-Planck equation (also Kolmogorov forward eqn, statistical mechanics):
+		- Describe probability p(x, t);
+		- dXt = mu(Xt, t)dt + sigma(Xt, t) dWt
+		- mu() drift; D(Xt, t) = sigma()^2 / 2, diffusion coefficient;
+		- partial p(x, t)/partial t = - partial mu(x,t)p(x,t) / partial x + partial^2 D(x,t)p(x,t) / partial x^2
+	- Ito's Lemma, dXt = mu_t dt + sigma_t dBt; f(x, t) 2nd-order differentiable;
+		- df = ()dt + ()dBt
+	- Geometric Brownian motion:
+		- dSt = mu St dt + sigma St dBt
+		- Black-Scholes Model; pricing model for options;
+
 ## Theory of Differential Equations: Classical and Qualitative
 - First-order:
 	- Basic results;
