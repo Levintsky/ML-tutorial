@@ -5,18 +5,9 @@
 	- F(x, y1, y2, ...), each yi=yi(x) is only function of x
 	- F(x, y, y', y''), high-order;
 		- n-th order, n general solution? (for linear homogeneous)
-	- Total differential equation (also exact differential equation, perfect differential equation)
-		- Integral factor;
-	- Variable separation: P(x, y) = X(x) Y(y)
 	- Reparametrize;
 	- Homogeneous: P(x,y)dx + Q(x,y)dy = 0
-		- Bernoulli Eqn;
-		- Riccati;
 	- Existence and Uniqueness;
-		- Picard: exist & unique;
-		- Osgood condition;
-		- Peano existnce;
-		- Extension of solution;
 	- Singular solution;
 - PDE:
 	- Always (mathematical methods for physics);
@@ -46,20 +37,228 @@
 		- Black-Scholes Model; pricing model for options;
 
 ## ODE
-- Series Solution to ODE:
-	- e.g. y'' + p(x)y' + q(x)y=r(x)
-	- Let y(x)=sum an(x-x0)^n;
-	- Make p(x), q(x), r(x) power series of (x-x0)^n too;
-	- Take derivative, and make coefficient every order to zero;
-	- Typical eg **Legendre Eqn**: (1-x2)y''-2xy'+l(l+1)y=0
-- Frobenius Method:
-	- Regular singular point: x0,
-	- Typical eg **Bessel Eqn**:
+- Ding TongRen Chap 2: basic integral approach;
+	- Exact differential equation:
+		- P(x,y)dx+Q(x,y)dy=0
+		- Exist Phi(x,y) s.t. dPhi(x,y)=Pdx+Qdy
+		- Solution: Phi(x,y)=C
+		- Theorem 2.1: P(x,y)dx+Q(x,y)dy= exact equivalent to P_y=Q_x
+	- Variable separation: P(x, y)=X1(x)Y1(y), Q(x, y)=X2(x)Y2(y)
+		- X1/X2 dx+ Y2/Y1 dy = 0
+		- int(X1/X2 dx)+int(Y2/Y1 dy)=C
+	- 1st-order linear: y'+p(x)y=q(x)
+		- q(.)=0 homogeneous;
+		- General: y=C exp(-int(p(x)dx))
+		- Specific: times mu(x)=exp(int(p(x)dx)) on both side;
+			- y=exp(-int(p(x)dx)) int(q(x) exp(int(p(x)dx))dx)
+		- mu: **Integral factor**;
+	- Basic transform:
+		- e.g. y=ux, u=x+y, ...
+		- **Bernoulli Eqn**: y'+p(x)y=q(x)y^n
+			- times (1-n)y^(-n), then z=y^(1-n)
+			- Then z'(x)+(1-n)p(x)z=(1-n)q(x), 1-st order rather than n-th!
+		- **Riccati Eqn**: y'=f(x,y)
+			- f(x,y)=p(x)y^2+q(x)y+r(x), could be **simplest non-linear** ode for 2nd order
+			- Theorem 2.2: given specific sol phi1(x), we can get general sol by integration;
+				- Let y=u+phi1(x)
+				- u'= (2p(x)phi1(x)+q(x))u+p(x)u^2 (Bernoulli)
+			- Theorem 2.3: y'+ay^2=bx^m, a,b,m constant, when m=0,-2, -4k/(2k+1), -4k/(2k-1), solvable by var-separation;
+	- Integral factor: times mu(x,y) to get exact eqn;
+		- Finding mu **equivalent to solving PDE** P(x,y)mu_y-Q(x,y)mu_x=(Q_x-P_y)mu
+		- Theorem 2.4: if mu=mu(x), then G(x)=(P_y-Q_x)/Q only depends on x, mu(x)=exp(int(G(x)dx))
+		- Theorem 2.5: if mu=mu(y), then H(y)=(Q_x-P_y)/P only depends on y, mu(y)=exp(int(H(y)dy))
+		- Theorem 2.6： if mu(x,y) is an integral factor, s.t. muPdx+muQdy=dPhi(x,y), then mu()g(Phi()) is also an integral factor;
+- Ding TongRen Chap 3: Existence and Uniqueness;
+	- Eqn: y'=f(x,y), y(x0)=y0;
+		- Let x,y around (x0,y0), region R s.t. |x-x0| <=a, |y-x0| <=b;
+		- Let M=max|f(x,y)|
+		- h=min(a,b/M)
+	- **Theorem 3.1 Picard**: exist & unique; f(x,y) continuous on region R;
+		- Proof (exist): define a solution by simple integral;
+		- Proof (unique): Picard series, uniform converges;
+	- Osgood condition: |f(x,y1)-f(x,y2)| <= F(|y1-y2|), F() continuous, with int(1/F(r))dr goes to infinity;
+	- **Theorem 3.2 Osgood**: (unique) for a curve passes a specific point (x0, y0);
+		- Proof: by contraction, let y1() and y2() be two solutions, r(x)=y1-y2, r'(x)<=F(r), int(1/Fdr)<=int(dx), left part goes to infinity, contraction;
+	- Peano existence;
+		- **Euler method**: 1st order approx, cut into small segment and sum as integral;
+		- **Ascoli Corollary**: series f1(x), f2(x), ... , bounded |fn(x)|<=K, we can find a subseries fn1(x), fn2(x), ..., uniform converge;
+		- Corollary: Euler series has a uniformly converged subseries;
+		- **Theorem 3.3 Peano Existence**: y'=f(x,y), (x0,y0), at least one sol exists;
+	- Extension of solution;
+		- Theorem 3.4: y'=f(x,y) passing P0=(x0,y0) solution can be extended to boundary;
+		- Theorem 3.5: y'=f(x,y) in region S, x in (a,b), y unbounded, |f(x,y)|<= A(x)|y|+B(x) always holds, solution can be extended to boundary x in (a,b);
+	- Comparison Theorem:
+		- Theorem 3.6: f(x,y) < F(x,y), y1'=f(x,y), y2'=F(x,y) passes the same (x0,y0), then
+			- x > x0, y2(x)>y1(x)
+			- x < x0, y1(x)>y2(x)
+		- Theorem 3.7: exists sigma < h, x in (x0-sigma, x0+sigma), sol achieves minimum and maximum;
+- Ding TongRen Chap 4: Singular solution;
+	- **Implicit eqn: F(x,y,y')=0**;
+		- E.g. y=f(x,p) p=dy/dx;
+			- p=f_x(x,p)+f_p(x,p)dp/dx (Explicit eqn)
+			- General solution: p=u(x,C), y=f(x,u(x,C))
+				- parametrization: x=v(p,C), y=f(v(p,C),p);
+			- Specific solution: p=w(x), y=f(x,w(x))
+				- parametrization: x=z(p), y=f(z(p),p);
+		- **Clairaut eqn**: y=xp+f(p), f''(p) != 0;
+			- (x+f'(p))dp/dx=0
+			- Case I: dp/dx=0, p=C, y=Cx+f(C) (general sol);
+			- Case II: x=-f'(p), y=-f'(p)p+f(p) (specific sol);
+				- x=-f'(p) inverse p=w(x)
+				- y=xw(x)+f(w(x))
+				- At any x=x0, C0=w(x0), y=C0x+f(C0), we can find a general sol tangent with specific sol at x0, but specific sol can't be derived from general sol;
+		- Parametrization:
+			- F(x,p)=0, p=dy/dx
+			- Let y=g(t), p=h(t), then dx=dy/p, x=int(g'(t)/h(t)dt)+C;
+			- Implicit func: F(x,y,p)=0
+				- Parametrise a surface as: x=f(u,v), y=g(u,v), p=h(u,v)
+				- Because dy=pdx, we have explicit func: g_u du + g_v dv = h(u,v)(f_u du+f_v dv)
+				- General sol: v=Q(u, C), x=f(u,Q(u,C)), y=g(u,Q(u,C)), C: integral constant;
+				- Specific sol: v=S(u), x=f(u,S(u)), y=g(u,S(u))
+	- **Singular solution**: F(x,y,y')=0, solution 1: y=f1(x), if another solution f2(x) exists and tangent to f1() at Q, then f1(x) is singular;
+		- **Theorem 4.1 (p-discriminant)**: F(x,y,p)=0, F_p(x,y,p)=0, eliminate p, we have eqn: delta(x,y)=0; any singular eqn: delta(x,y)=0;
+		- E.g. xp^2-2yp+9x=0
+			- y=9x/2p+xp/2, p=Cx, y=9/2C+Cx^2/2 (general sol)
+			- p-discriminant: xp^2-2yp+9x=0, 2xp-2y=0; y=3x or y=-3x (specific sol)
+		- e.g. Clairaut eqn: y=xp+f(p)
+			- xp+f(p)-y=0; x+f'(p)=0;
+	- **Envelope**:
+		- Tangent with a solution everywhere;
+		- Theorem 4.3: F(x,y,dy/dx)=0, then envelope y=psi(x) is a singular solution;
+		- Theorem 4.4: Gamma curve family as an envelope, then it satisfies C-discriminant: V(x,y,C)=0, V_C(x,y,C)=0
+		- Theorem 4.5: C-discriminant: V(x,y,C)=0, V'(x,y,C)=0, we get continuous curve: x=phi(C), y=psi(C), with C defined in some region, and non-degenerate condition (phi'(C), psi'(C))!=(0,0), (V_x,V_y)!=(0,0), then the curve is an envelope;
+- Ding TongRen Chap 5: Higher-order;
+	- Autonomous ODE: F(y,y', y''')=0 does not include x;
+		- Let z=dy/dx, 1-order lower;
+	- Phase plane, phase graph;
+		- No need to get general solution; just some curve family;
+	- N-th order linear ODE: dny/dxn=F(x,y,y',...,dn-1y/dxn-1)
+		- Let y1=y, y2=dy/dx, yn=dn-1y/dxn-1
+		- dyn/dx=F(x,y1,...,yn)
+		- **Linear ODE**: f1, f2, ...fn linear function of y1, ... yn, i.e., fk(x,y1,y2,...,yn)=sum a_ik(x)y_i+ek(x);
+			- Vector-form: dy/dx=A(x)y+e(x)
+	- IVP, continuity:
+		- Theorem 5.1: n-dim func f(x,y,lambda) continuous on G, and Lipschitz |f(.,y1,.)-f(.,y2,.)|<=L|y1-y2| then y=phi(x,lambda) conitnuous on region D;
+- Ding TongRen Chap 6: first order linear differentialequation system:
+	- dyi/dx=sum a_ij(x)yj + fi(x), or vector-form dy/dx=A(x)y+f(x)
+		- f(x)=0: y'=A(x)y, homogenious;
+		- otherwise: non-homogenious;
+		- Corollary 6.1: (superstition) y1(x), y2(x) as solutions for a homogenious eqn, then y=C1y1(x)+C2y2(x) also a solution;
+		- Corollary 6.2: solution space is of y'=A(x)y is n-dim;
+		- **Theorem 6.1**: y'=A(x)y has n linearly-independent solution, with general solution: y=c1 f1(x)+c2 f2(x)+...
+		- **Wronsky Determinant**;
+		- Corollary 6.3: Wronsky satisfies W(x)=W(x0)exp(int_x0_x(tr(A))dx)
+		- **Theorem 6.2**: y'=A(x)y linearly independent iff W(x)!=0
+	- y'=Ay+f(x), A: constant;
+		- Property:
+			- if AB=BA, exp(A+B)=exp(A)exp(B)
+			- exp(A)^(-1)=exp(-A)
+			- A non-singular, exp(P A inv(P))=P exp(A) inv(P)
+		- **Theorem 6.4**: Phi(x)=exp(xA), general solution for homogenious;
+		- Non-homogenious: y=C exp(xA)+int_x0_x exp((x-s)A)f(s)ds
+		- Jordan normal form;
+		- y=exp(lambda x)r, iff lambda, r is eigenvalue, eigenvector of A;
+		- **Theorem 6.5**: A has n different eigenvalues, Phi(x) solution matrix should be (exp(lambda1 x)r1, exp(lambda2 x)r2);
+		- Repeating eigenvalue:
+			- General solution: y=exp(lambda x)(r0+x r1+x^2/2! r2+...+x^(ni-1)/(ni-1)! r^(ni-1))
+			- A r0=lambda r0
+			- r1 = (A-lambda I)r0
+			- r2 = (A-lambda I)r1
+			- ...
+		- **Theorem 6.6**: A has s eigenvalues, with multiplicity n1, ..., ns Phi(x) solution matrix should be (exp(lambda1 x)P1(x), exp(lambda2 x)P2(x));
+			- where P=r0+ x/1! r1 + x^2/2! r2 + ... + x^ni-1 / (ni-1)! r^(ni-1)
+- Ding TongRen Chap 7: series solution;
+	- IVP: dy/dx=f(x,y), y(x0)=y0
+	- **Cauchy Theorem**: f(x,y) can be expanded as power series of (x-x0) and (y-y0), then analytic solution of IVP exists and is unique;
+	- Power series solution:
+		- e.g. y'' + p(x)y' + q(x)y=r(x)
+		- y''+p(x)y'+q(x)y=0, p(x), q(x) analytic around x0;
+		- Theorem 7.2: existence of convergent power series solution;
+	- Legendre polynomial:
+		- Power series solution to **Legendre Eqn**: (1-x2)y''-2xy'+l(l+1)y=0
+			- Let y=sum ak x^k
+			- (k+2)(k+1)C_k+2 + (l+k+1)(n-k)C_k=0;
+			- x={-1,1} singular points;
+		- y = C0 y0(x) + C1 y1(x);
+			- n even: y0 n-th order poly Pn(x);
+			- n odd: y1 n-th order poly Pn(x);
+		- **Rodrigues**: Pn(x)=dn/dxn (x^2-1)^n / 2^n / n!
+		- **Orthogonal**: int_-1_1 Pn(x)Pm(x)dx = 2/(2n+1) delta(m-n);
+		- Generalised Fourier: f(x) expanded as sum of anPn(x);
+		- **Theorem**: if (1-x^2)^(-1/4)f(x) absolutely integralable from -1 to +1, and one of the following 3 conditions satsifies:
+			- Dirichlet condition: piecewise monotonic;
+			- Dini condition: exist h>0, s.t. int_0_h |f(x0+t)+f(x0-t)-f(x0+0)-f(x0-0)|/h dt exists;
+			- Holder condition: continuous on x0, |f(x0+t)-f(x0)|<=L t^alpha, alpha<=1 (alpha=1 is Lipschitz)
+	- Generalised power series solution (Frobenius Method):
+		- (x-x0)^2 p(x)y''+(x-x0)q(x)y'+r(x)y=0;
+			- P(x), Q(x), R(x) polynomial of x
+			- Regular singular point: x0;
+		- **Theorem 7.3**: for regular singular point, exists solution y=sum C_k x^(k+r), s.t. we can solve C_k and r;
+		- let q(x)/p(x) as sum an(x-x0)^k, r(x)/p(x) as sum bn(x-x0)^k
+			- **Indicial Eqn**: r(r-1)+a0 r + b0=0
+		- **Bessel Eqn**: x^2y''+xy'+(x^2-n^2)y=0
+			- (r+n)(r-n)=0
+			- Case I: r=n
+				- (2n+k)k C_k + C_k-2=0
+				- y=Jn(x)=sum (-1)^k (x/2)^(2k+n) / Gamma(n+k+1) / Gamma(k+1)
+			- Case II: r=-n
+				- Case II.1: 2n is not an integer; J-n(x)
+				- Case II.2: 2n is an integer;
+					- Case II.2.1: 2n is odd; still J-n(x)
+					- Case II.2.2: 2n is even; Neumann function;
 	- Gamma Function and Properties:
-- Strum-Liouville Theory: **completeness** and **orthogonal**
-	- (p(x)y')' + q(x)y = - lambda w(x) y
+- Ding TongRen Chap 8: qualitative analysis, branch theory;
+	- Dynamic system: dx/dt=v(x)
+		- Phase space;
+	- Stability;
+		- Let dx/dt=f(x,t) has solution phi(t)
+		- **Asymptotic stability**: Given eps>0, delta>0 exists, s.t.
+			- if |x0-phi(t0)|< delta
+			- then |x(t,t0,x0)-phi(t)|< eps
+		- dx/dt=A(t)x+N(t,x)
+		- dx/dt=A(t)x homogenious
+		- Theorem: for homogenious eqn, A(t) constant, then for solution x=0:
+			- if all eigenvalues are negative: asymptotic stable;
+			- 0 eigenvalue Jordan all 1-order: stable;
+			- positive, 0-eigenvalue with >1 order: unstable;
+	- **Lyapunov's second method**:
+		- Assume dx/dt=f(x) has equilibrium at x=0;
+		- Consider a function V, (Lyapunov function, generalised energy function):
+			- V(x)=0 iff x=0
+			- V(x)>0 iff x!=0
+			- dV/dt=sum V_xi fi(x) <= 0 for all x!=0
+		- Difficulty: how to find Lyapunov function;
+	- 2D dynamic system: singular point, limit cycle;
+		- dx/dt=Ax, x=(x,y) 2d; A = (a, b; c, d)
+		- Theorem 8.5: let p=-tr(A)=-a-d, q=det(A)=ad-bc, then:
+			- q<0, (0, 0) saddle point;
+			- q>0, p^2>4q;
+			- q>0, p^2=4q;
+			- q>0, p^2<4q;
+			- q>0, p=0
+		- Limit cycle:
+			- **Poincare-Bendixson theorem**: Ring D defined between curve L1 and L2; no singular points on D,L1,L2;
+- Ding TongRen Chap 9: Sturm-Liouville Theory;
+- Ding TongRen Chap 10: First integrals;
+	- Def: dyi/dx=f(x,y1,...,yn)
+		- V(x,y1,...,yn) is not constant, but constant along the integral curve of the above eqn;
+		- Then, V(x,y1,...,yn)=C is called first Integral;
+		- **Intuition: integral once and get order down by 1**?
+	- Works for higher order (y', y'', ...) and multi-output (y1, y2, ...)
+	- **Theorem 10.1**: Phi(x,y1,...,yn) continuous differentiable, Phi() is first integral iff 
+		- Phi_x+Phi_y1 f1+Phi_y2 f2+...=0
+		- we define dyi/dx=fi(x,y1,...,yn)
+	- **Theorem 10.3**: dyi/dx=f(x,y1,..,yn) has n different first integral Phi_i(x,y1,...,yn)=C_i, then general solution could be:
+		- y1=phi1(x,C1,...,Cn)
+		- y2=phi2(x,C1,...,Cn)
+		- where c1, c2, ..., cn: any constant;
+	- **Theorem 10.4**: Existence of first integral, at P0=(x0,y10,y20,...,yn0) has n independent first integrals;
+	- **Theorem 10.5**: at most n independent first integrals;
+	- **Theorem 10.6**: any first integral can be expressed as y=phi(x,C1,...,Cn)
+- Sturm-Liouville Theory: **completeness** and **orthogonal**
+	- (p(x)y')' + q(x)y = -lambda w(x) y, x in (a, b), with homogenious boundary condition;
 	- Any linear 2nd-order ODE can be converted to this form, e.g. Legendre, Bessel, ...
-	- Lambda: to be determined (eigen value) l1, l2, ...
+	- Lambda: to be determined lambda1, lambda2, ... (**infinite eigen values** if p(x),p'(x),q(x) continuous with 1st-order singular point only), all eigen values **positive**;
 	- Corresponding eigenvector: g1(x), g2(x), ...
 	- Theory int_(a, b) yn ym w(x) = delta(m-n)
 - Green function:
@@ -84,9 +283,16 @@
 - Classic:
 	- Laplacian: Lap(u) = 0
 	- Heat-eqn, diffusion: Lap(u) = c u_t
+		- u(r, t)=T(t)v(r)
+		- T'+ck^2T=0, exp(-k^2ct)
+		- Hermholtz: Lap(v)+k^2 v = 0
 	- Wave-eqn (vibrating string, D'alembert equation?): Lap(u) = c u_tt
+		- u(r,t)=T(t)v(r);
+		- T(t): sin/cos or exponential (depending on eigenvalue);
+		- Hermholtz: v(r)
 	- Poisson Eqn: Lap(u) = f(x)
-	- Hermholtz Eqn, Schrondinger, Klein-Gordon;
+	- Hermholtz Eqn: Lap(u)+k^2 u=0
+	- Schrondinger, Klein-Gordon;
 - Categories:
 	- A u_xixj + B u_xi + cu + f = 0
 	- A, b, c, f only function of (x1, x2,...), linear;
@@ -121,7 +327,29 @@
 		- Phi'' = -m^2 Phi, m integer
 		- lambda sin(theta)^2 + sin(theta)/Theta d/dtheta(sin(theta)Theta')=m^2
 			- set x = cos(theta),
-			- ((1-x^2)d2/dx2 - 2x d/dx + l(l+1)) Theta(x)=0 (Legendre)
+			- **Legendre Eqn**: ((1-x^2)d2/dx2 - 2x d/dx + l(l+1)) Theta(x)=0
+	- Cylinder Laplacian:
+		- u = R(r)Phi(phi)Z(z)
+		- Phi''+lambda Phi=0, lambda = m^2, Phi(phi)=Acos(m phi)+Bsin(m phi)
+		- Z''-muZ=0
+		- R''+R'/r+(mu-m2/r2)R=0
+		- Case I:
+			- mu=0: Z: linear; R: ln(r) or r^m (for m=0 or m!=0)
+		- Case II: mu>0: let x=sqrt(mu)r
+			- **Bessel Eqn**: R''(x)+R'(x)/x+(1-m2/x2)R(x)=0
+			- Z: exp(sqrt(mu)z), exp(-sqrt(mu)z)
+		- Case III: mu<0, x=sqrt(-mu)r
+			- R''(x)+R'(x)/x-(1+m2/x2)R(x)=0
+	- Hermholtz: Lap(v)+k^2 v=0
+		- Spherical: v(r, theta, phi)
+			- Phi: sin/cos
+			- Theta: Legendre eqn;
+			- l-order spherical Bessel: r^2 R''+2r R'+(k^2r^2-l(l+1))R=0
+				- Can be converted to Bessel;
+		- Cylinder: v=R(r)Phi(phi)Z(z)
+			- Phi''+lambda Phi=0
+			- Z''+nu^2 Z=0
+			- **Bessel eqn**: R''+R'/r+(k^2-nu^2-lambda/r^2)R=0 
 
 ## Theory of Differential Equations: Classical and Qualitative
 - First-order:
