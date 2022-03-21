@@ -317,7 +317,7 @@
 		- e.g. u_tt - c u_xx = f
 		- Fourier series;
 	- Inhomegenious boundary condition:
-	- Poisson Eqn: Lap(u) = f(x), f() is independent of x;
+	- Poisson Eqn: Lap(u) = f(x), f() is independent of t;
 		- Find a specific solution, ignoring boundary condition;
 		- General fo homogenious;
 - Common 2nd order PDE:
@@ -350,6 +350,37 @@
 			- Phi''+lambda Phi=0
 			- Z''+nu^2 Z=0
 			- **Bessel eqn**: R''+R'/r+(k^2-nu^2-lambda/r^2)R=0 
+- Green Function:
+	- Green Formula;
+	- Lap(u)=f(r)
+		- BC I (Dirichlet problem): u=phi(.) on boundary;
+		- BC II (Neumann problem): u_n=phi(.) on boundary (gradient along normal);
+		- BC III: alpha u_n + beta u=phi(.)
+- Integral Transform;
+	- Apply Fourier transform, solve, inverse;
+		- Heat eqn: u_t - a^2 u_xx=0, bc u|t=0=phi(x)
+			- Fourier: U' + k^2 a^2 U=0
+			- U|t=0 = Phi(k)
+			- U(t,k) = Phi(k)exp(-k^2a^2t)
+			- Inverse transform;
+	- Laplace Transform;
+- Conformal Mapping:
+	- Conformal Condition: w=f(z) analytic and z0, f'(z0)!=0
+		- Curve A, B as z_A(t), z_B(t): B0-A0
+		- Curve A', B' after transform w=f(z): B0-A0+(arg(df/dz_B)-arg(df/dz_A))
+	- **Intuition: change complex boundary to simple**:
+		- psi=psi(z), z=z(psi)
+			- psi=psi(x,y)
+			- nita=nita(x,y)
+		- Laplacian: u_xx + u_yy=0
+			- new Laplacian: complex;
+			- if psi(z) is analytic
+			- |psi'(z)|^2 (u_psi_psi+u_nita_nita)=0
+	- Linear mapping: psi(z)=az+b;
+	- Power: psi(z)=z^n, psi(z)=z^(1/n)
+	- Exponential: exp(z)
+	- Inverse: psi=R^2/z
+	- Fraction: (az+b)/(cz+d)
 
 ## Theory of Differential Equations: Classical and Qualitative
 - First-order:

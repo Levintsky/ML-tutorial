@@ -3,7 +3,7 @@
 ## Gradient, Diffentiation
 - Function composition
 - Fermat Theorem: x0 is a stationary point of f(x), if f'(x)=0;
-- Mean value theorem: closed interval [a, b], exists a c s.t. f'(c)=(f(b)-f(a))/(b-a)
+- Mean value theorem: closed interval a, b, exists a c s.t. f'(c)=(f(b)-f(a))/(b-a)
 - L'Hopital's Rule
 
 ## Integral
