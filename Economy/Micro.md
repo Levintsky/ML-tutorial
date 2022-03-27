@@ -1,0 +1,275 @@
+# Economy
+
+## Mankiw Part I: Introduction
+- Chap-1: 10 Principles
+	- Trade-off;
+	- Opportunity cost;
+	- Rational assumption;
+	- Incentives;
+	- Trade makes everyone better off;
+	- Market is usually good to organize economy;
+	- Govenment can improve sometimes (externality);
+	- Living standard depends on production/service ability;
+	- Amount of currency goes up, price goes up;
+	- Inflation and unemployment trade-off;
+- Chap-2: Think like an Economist
+	- Observation - theory - obs;
+	- Circle graph;
+		- Production:
+			- Company provides salary to family;
+			- Family provides labor to company;
+		- Consumption:
+			- Family provides money to company;
+			- Company provides product and service to family;
+	- As consultant for policy:
+		- Descriptive: xxx leads to xxx
+		- Prescriptive: xxx should xxx
+	- Joseph Schumpeter: Innovative disruption;
+	- Different opinions betweeen economists;
+- Chap-3: Interdependence and the Gains from Trade:
+	- Comparative Advantage;
+	- David Ricardo, Adam Smith;
+
+## Mankiw Part II: How Market works?
+- Chap-4: Supply and Demand
+	- Competitive market
+		- A market in which there are many buyers and many sellers so that each has a negligible impact on the market price;
+	- Equilibrium;
+- Chap-5: Elasticity
+	- d(percentage-demand)/d(percentage-price)
+- Chap-6: Supply, Demand, and Government Policies
+	- Control on Prices
+		- Surplus, shortage;
+	- Taxes: tax wedge;
+		- Either supply/demand side will pay for the tax, the less elastic side pays more;
+
+## Mankiw Part III: Markets and Welfare
+- Chap-7: Consumers, Producers, and the Efficiency of Markets
+	- Consumer surplus: marginal buyer;
+	- Producer surplus: 
+	- Market efficiency:
+		- Max surplus at equilibrium price;
+	- Market failure;
+		- Externality;
+- Chap-8: Application: The Costs of Taxation
+	- Deadweight loss;
+- Chap-9: Application: International Trade
+	- THE GAINS AND LOSSES OF AN EXPORTING COUNTRY
+	- THE GAINS AND LOSSES OF AN IMPORTING COUNTRY
+
+## Mankiw Part IV: the Economics of The Public Sector
+- Chap-10: Externalities;
+	- the uncompensated impact of one person’s actions on the well-being of a bystander
+		- Pollution;
+		- Tech innovation;
+	- Public policies: command-and-control, regulation;
+	- Private policies: Coase Theorem;
+- Chap-11: Public Goods and Common Resources;
+	- Excludable, Rival in Consumption?
+	- Private Goods: YY
+	- Natual Monopolies: YN
+	- Common Resources: NY
+		- Clean Air
+	- Public Goods: NN
+		- National defense, basic research, fighting poverty;
+		- Free rider;
+	- Tragedy of Commons;
+- Chap-12: The Design of the Tax System
+	- Federal tax:
+		- Individual income tax;
+		- Social insurance;
+		Corportate income;
+	- Federal spending:
+		- Social Security: 21%
+		- National defense: 20%
+		- Medicare: 14%
+		- Income security: 13%
+		- Health: 10%
+		- Net interest 9%
+	- State and local government:
+		- Sales taxes
+		- Property taxes
+		- Individual income taxes
+		- Corporate income taxes From federal government
+		- Other
+	- State and local government spending:
+		- Education
+		- Public welfare
+		- Highway
+		- Other
+	- Budget deficit/surplus;
+	- Deadweight loss;
+	- Average/marginal tax rate;
+	- Fairness:
+		- Lump-sum tax: same amount for everyone;
+		- Benefits principle: based on benefits they receive;
+		- Ability to pay;
+	- Proporional/progressive/regressive;
+
+## Mankiw Part V: Firm Behavior and the Organization of Industry
+- Chap-13: The Cost of Production
+	- Profit = Total revenue - total cost;
+	- Economic profit = revenue - explicit cost - implicit cost
+	- Accounting profit = revenue - explicit cost
+	- Average and marginal cost
+		- average fixed cost (independent on Q)
+		- average variable cost (depends on Q)
+		- marginal cost
+	- average total cost: ATC=TC/Q
+	- MC = dTC/dQ
+	- efficient scale: the quantity of output that minimizes average total cost
+	- Costs in short run/long run:
+		- Factory size: fixed in short run, variable in long run;
+	- Economies and diseconomies of scale;
+	- Sunk cost;
+- Chap-14: Firms in Competitive Markets
+	- competitive market:
+		- Many buyers, sellers;
+		- Similar product;
+	- Max-profit:
+		- Price = marginal cost;
+		- Long-run decision: exit if TR < TC
+		- Profit = TR - TC = (P-ATC)Q
+	- Supply Curve in a competitive market;
+		- Short term;
+		- Long term: profitable, incentive for new firms to join; At the end of this process of entry and exit, firms that remain in the market must be making zero economic profit;
+		- Supply: dPrice/dQ = 0
+Chap-15 Monopoly;
+	- monopoly: a firm that is the sole seller of a product with- out close substitutes
+	- natural monopoly: a single firm can supply a good or service to an entire market at a smaller cost than could two or more firms;
+		- dcost/dQ < 0
+	- Demand curve;
+		- Competitive: dPrice/dQ = 0
+		- Monopoly: dPrice/dQ < 0
+	- Max-profit:
+		- Marginal Cost = Marginal Revenue;
+		- Monopolist profit = (P-ATC)Q
+		- P>MR=MC, (P=MR=MC for competition);
+		- The slope of dMR/dQ < dPrice/dQ < 0, so always supply < max-utility;
+	- Welfare cost of monopoly:
+		- Wedge: deadweight loss;
+	- Price discrimination;
+		- Can achieve max-utility if we know everyone's utility of the product;
+	- Public policy toward monopolies;
+		- Increasing competition with antitrust laws;
+		- Regulation: price = MC
+			- For natural monopoly: lose money;
+- Chap-16: Monopolistic Competition;
+	- Oligopoly: a market structure in which only a few sellers offer similar or identical products;
+	- Monopolistic competition: a market structure in which many firms sell products that are similar but not identical
+	- Short run; (P-ATC)Q
+	- Long run; P=MR=ATC>MC, Q < efficient scale (still short);
+	- Efficient scale: P=MC
+- Summary (comparison):
+	- Perfect competition / Monopolistic competition / monopoly;
+	- Max profit: MR=MC / MR=MC / MR=MC
+	- Profittable short run: Y / Y / Y
+	- Price taker? Y (P=MC) / N (P>MC) / N (P>MC)
+	- Welfare-maximization? Y / N / N
+	- Number of firms: Many / Many / One
+	- Profittable long run: N / N / Y
+- Chap-17: Oligopoly;
+	- Game theory;
+	- Markets with a few sellers;
+	- Competition, monopolies and cartels;
+		- collusion: an agreement among firms in a market about quantities to produce or prices to charge
+		- cartel: a group of firms acting in unison
+		- Nash equilibrium
+	- Economics of Cooperation;
+		- Prisoners' dilemma;
+		- Dominant strategy: high production;
+		- Best: all low production;
+	- Public policy toward oligopolies;
+		- Restraint of trade and the antitrust laws;
+
+## Mankiw Part VI: The Economics of Labor Markets
+- Chap-18: The Markets for the Factors of Production
+	- factors of production the inputs used to produce goods and services
+		- production function: Q=Q(Input)
+		- marginal product of labor: dQ/dInput
+		- diminishing marginal product: d2Q/dInput2<0
+	- What causes the labor demand curve to shift?
+		- Output price;
+		- Technological change; Luddite Revolt;
+	- What causes the labor supply curve to shift?
+		- Trade-off between work and leisure;
+		- Changes in tastes; e.g. women go to work;
+		- changes in alternative opportunities;
+		- Immigration;
+	- Equilibrium: Wage-LaborQ;
+	- Other factors:
+		- Land and capital;
+- Chap-19: Earnings and Discrimination
+	- Some determinants of equilibrium wages;
+		- Compensation differentials: a difference in wages that arises to offset the nonmonetary characteristics of different jobs;
+			- Night shift, more dangerous job gets more salary;
+		- Human capital: the accumulation of investments in people, such as education and on-the-job training
+			- Higher education;
+		- Ability effort and chance;
+		- An alternative view of education: signaling;
+		- Superstar phenomenon:
+		- Above-Equilibrium: minimum-wage laws, unions and efficiency wages;
+			- Efficiency wages: above equilibrium to increase productivity;
+	- Economics of discrimination;
+		- Measure;
+		- By Employer;
+		- By customers and government;
+- Chap-20: Income Inequality and Poverty;
+	- Measure of inequality;
+		- Poverty rate, poverty line;
+		- Problems in measure:
+			- In-kind transfers: Transfers to the poor given in the form of goods and services rather than cash;
+			- The Economic Life Cycle;
+			- Transitory v.s. Permanent income;
+			- Economic mobility;
+	- Political philosophy of redistributing income;
+		- Utilitarianism: maximize total utility of everyone;
+			- utility: a measure of happiness or satisfaction
+		- liberalism: the political philosophy according to which the government should choose policies deemed just, as evaluated by an impartial observer behind a veil of ignorance;
+			- maximin criterion the claim that the government should aim to maximize the well-being of the worst-off person in society
+			- social insurance:	government policy aimed at protecting people against the risk of adverse events
+		- Libertarianism: the political philosophy according to which the government should pun- ish crimes and enforce voluntary agreements but not redistribute income
+	- Policies to reduce poverty;
+		- Minimum-wage laws;
+		- Welfare;
+		- Negative income tax;
+		- Antipoverty programs, work incentives;
+
+## Mankiw Part VII: Topics for Future Study
+- Chap-21: The Theory of Consumer Choice
+	- Budget constraint: what the consumer can afford;
+	- Preferences: what the consumer wants?
+		- Indifferent curve;
+		- Marginal rate of substitution;
+	- Four Properties of Indifferent curve;
+		- High preferred to low curve;
+		- downward sloping: dq1/dq2<0
+		- curves does not cross;
+		- convex: dq1^2/d2q2>0
+	- Perfect complements;
+	- Optimization: what the consumer chooses?
+		- Income effect;
+		- Substitution effect;
+	- Three applications:
+		- Giffen good: a good for which an increase in the price raises the quantity demanded
+			- potato price increases? less meat and more potatoes;
+		- How do wages affect labor supply?
+		- Interest rates?
+- Chap-22: Frontiers of Microeconomics:
+	- Asymmetric info:
+		- principals, agents, moral hazard;
+		- Adverse selection;
+		- Signaling to convey private info;
+		- Screening:
+	- Political economy: the study of government using the analytic methods of economics;
+		- Condorcet paradox: the failure of majority rule to produce transitive preferences for society;
+		- Arrow's impossibility theorem: a mathematical result showing that, under certain assumed conditions, there is no scheme for aggregating individual preferences into a valid set of social preference:
+			- Unanimity: If everyone prefers A to B, then A should beat B.
+			- Transitivity: If A beats B, and B beats C, then A should beat C.
+			- Independence of irrelevant alternatives: The ranking between any two outcomes A and B should not depend on whether some third outcome C is also available.
+			- No dictators: There is no person who always gets his way, regardless of everyone else's preferences.
+		- Median voter is king;
+			- median voter theorem: a mathematical result showing that if voters are choosing a point along a line and each voter wants the point closest to his most preferred point, then majority rule will pick the most preferred point of the median voter;
+		- Politicians are people too;
+	- Behavioral economics: the subfield of economics that integrates the insights of psychology
+		- People aren't always rational;

@@ -23,6 +23,8 @@
 			- https://ocw.mit.edu/courses/chemical-engineering/10-34-numerical-methods-applied-to-chemical-engineering-fall-2015/
 		- Khan https://youtu.be/O3ahEHAX-KU
 - SDE:
+	- Resources:
+		- MIT: https://ocw.mit.edu/courses/mathematics/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/lecture-notes/
 	- Basics: dx(t) = - nabla U(x(t)) dt + sigma dBt
 	- First term: force (conservative from potential); second: Brownian motion;
 	- Fokker-Planck equation (also Kolmogorov forward eqn, statistical mechanics):

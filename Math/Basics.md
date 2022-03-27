@@ -8,6 +8,8 @@
 - Good resources for books:
 	- https://www.zhihu.com/question/366915371
 	- http://archive.keyllo.com/L-%E6%95%B0%E5%AD%A6/
+- Almost everything:
+	- https://ocw.mit.edu/courses/mathematics/
 
 ## Basics
 - Methods of Mathematical Physics;

@@ -1,0 +1,181 @@
+# Macro
+
+## Mankiw Part I: Introduction
+- Chap-1: The Science of Macroeconomics;
+	- 1-1 What Macroeconomists Study
+	- 1-2 How Economists Think
+		- Exogenenous variable x
+		- Endogenous variable y
+		- y=f(x)
+		- Micro: firms/households;
+		- Nobel marcoeconomists: Milton Friedman (1976), James Tobin (1981), Franco Modigliani (1985), Robert Solow (1987), Robert Lucas (1995), George Akerlof (2001), Edward Prescott (2004), Edmund Phelps (2006);
+- Chap-2: Data of Macroeconomics:
+	- 2-1: Measuring the Value of Economic Activity: Gross Domestic Product
+		- Income, Expenditure, and the Circular Flow
+		- Stocks and Flows
+		- Rules for Computing GDP;
+		- Real GDP Versus Nominal GDP;
+		- The GDP Deflator: Normal/Real
+		- Chain-Weighted Measures of Real GDP
+		- The Components of Expenditure: Y=C+I+G+NX
+			- Consumption (C)
+			- Investment (I)
+			- Government purchases (G)
+			- Net exports (NX).
+		- Seasonal adjustment;
+	- 2-2: Measuring the Cost of Living: The Consumer Price Index
+		- The Price of a Basket of Goods
+		- The CPI Versus the GDP Deflator
+		- Does the CPI Overstate Inflation?
+	- 2-3: Measuring Joblessness: The Unemployment Rate
+		- The Household Survey
+		- Trends in Labor-Force Participation
+		- The Establishment Survey
+	- 2-4: Conclusion: From Economic Statistics to Economic Models
+
+## Mankiw Part II: Classical Theory: The conomy in the Long Run
+- Chap-3: National Income: Where It Comes From and Where It Goes
+	- Circular flow;
+	- 3-1 What Determines the Total Production of Goods and Services?
+		- K: capital
+		- L: labor
+		- f(K, L)
+			- Cobb–Douglas pro- duction function: f=A K^alpha L^(1-alpha)
+	- 3-2 How Is National Income Distributed to the Factors of Production?
+		- Factor Prices
+		- The Decisions Facing the Competitive Firm
+		- The Firm's Demand for Factors
+		- The Division of National Income
+	- 3-3 What Determines the Demand for Goods and Services?
+		- C, I, G, NX
+	- 3-4 What Brings the Supply and Demand for Goods and Services Into Equilibrium?
+		- Equilibrium in the Financial Markets: The Supply and Demand for Loanable Funds
+		- Changes in Saving: The Effects of Fiscal Policy
+		- Changes in Investment Demand
+- Chap-4: Money and Inflation
+	- 4-1: What Is Money?
+		- store of value / unit of account / medium of exchange
+		- The Development of Fiat Money
+		- How the Quantity of Money Is Controlled: central bank, fed res, open-market operations
+		- How the Quantity of Money Is Measured: C, M1, M2
+	- 4-2: The Quantity Theory of Money
+		- Money Velocity = Price Transactions
+		- From Transactions to Income
+		- The Money Demand Function and the Quantity Equation
+			- (M/P)^d=kY
+		- The Assumption of Constant Velocity
+		- Money, Prices, and Inflation
+	- 4-3: Seigniorage: The Revenue from Printing Money
+	- 4-4: Inflation and Interest Rates
+		- Fisher effect: i=r+pi, i nominal r, pi inflation;
+	- 4-5: The Nominal Interest Rate and the Demand for Money
+		- L(i,Y)=(M/P)^d
+	- 4-6: The Social Costs of Inflation
+		- The Layman's View and the Classical Response
+	- 4-7: Hyperinflation
+	- 4-8: Classical Dichotomy: real/nominal;
+- Chap-5: The Open Economy;
+	- 5-1: The International Flows of Capital and Goods;
+		- Y=C+I+G+X
+		- Y-C-G=I+NX (left national saving)
+		- S-I=NX (left: net capital outflow, right: trade balance)
+	- 5-2: Saving and Investment in a Small Open Economy
+		- Capital Mobility and the World Interest Rate
+		- How Policies Influence the Trade Balance?
+			- Fiscal expansion (increase in government purchase, cut in tax): trade deficit
+			- Fiscal expansion abroad: trade surplus
+			- Shift in investment schedule;
+			- Evaluating Economic Policy
+		- The U.S. Trade Deficit
+	- 5-3: Exchange Rates;
+		- Nominal and Real Exchange Rates;
+		- The Nominal Exchange Rate The nominal exchange rate is the relative price of the currencies of two countries;
+		- The Real Exchange Rate The real exchange rate is the relative price of the goods of two countries
+		- dNX/deps < 0 (eps: real exchange rate)
+		- eps=e P/p (adjusted by price)
+		- Trend: dexchange/dinflation>0
+	- Conclusion: The United States as a Large Open Economy
+	- Summary:
+		- Loanable Funds: S=I+CF,
+		- Supply constant
+		- d(I+CF)/dr < 0, higher interest rate -> lower demand;
+		- Net capital outflow CF: dCF(r)/dr < 0
+		- Net exports NX=CF: dNX/dr < 0
+		- e.g. Reduction in S, supply line shifts left, r+, CF-, eps+
+		- e.g. Increase in Invest demand, demand shifts right, r+, CF-, eps+
+		- e.g. protectionist, supply/demand/CF/r remains unchanged, import restriction increase net export, NX(eps) moves right, exchange rate eps+
+- Chap-6: Unemployment
+	- 6-1: Job Loss, Job Finding, and the Natural Rate of Unemployment
+		- L=E+U
+		- Equilibrium: fU=sE (finding job=losing job)
+		- U/L=s/s+f
+	- 6-2: Job Search and Frictional Unemployment
+		- The unemployment caused by the time it takes workers to search for a job is called frictional unemployment.
+		- Causes of Frictional Unemployment:
+			- sectorial shift;
+		- Public Policy and Frictional Unemployment
+			- unemployment insurance
+	- 6-3: Real-Wage Rigidity and Structural Unemployment
+		- Wage rigidity
+		- Minimum-Wage Laws
+		- Efficiency Wages
+	- 6-4: Labor-Market Experience: The United States
+		- The Duration of Unemployment
+		- Variation in the Unemployment Rate Across Demographic Groups
+		- Trends in Unemployment
+		- Transitions Into and Out of the Labor Force
+	- 6-5: Labor-Market Experience: Europe
+		- The Rise in European Unemployment
+		- Unemployment Variation Within Europe
+		- The Rise of European Leisure
+
+## Mankiw Part III: Growth Theory: The Economy in the Very Long Run
+- Chap-7: Economic Growth I: Capital Accumulation and Population Growth
+	- 7-1: The Accumulation of Capital
+		- The Supply and Demand for Goods
+		- The Demand for Goods and the Consumption Function
+		- Growth in the Capital Stock and the Steady State
+		- Approaching the Steady State: A Numerical Example
+		- How Saving Affects Growth
+	- 7-2: The Golden Rule Level of Capital
+	- 7-3: Population Growth
+		- The Effects of Population Growth
+		- Alternative Perspectives on Population Growth
+			- The Malthusian Model
+- Chap-8: Economic Growth II: Technology, Empirics, and Policy
+	- 8-1: Technological Progress in the Solow Model
+		- The Efficiency of Labor
+		- The Steady State With Technological Progress
+	- 8-2: From Growth Theory to Growth Empirics
+		- Balanced Growth
+		- Convergence
+		- Factor Accumulation Versus Production Efficiency
+	- 8-3: Policies to Promote Growth
+		- Changing the Rate of Saving
+		- Allocating the Economy's Investment
+		- Encouraging Technological Progress
+	- 8-4: Beyond the Solow Model: Endogenous Growth Theory
+		- The Basic Model
+		- A Two-Sector Model
+		- The Microeconomics of Research and Development
+		- The Process of Creative Destruction
+	- 8-5: Conclusion
+
+## Mankiw Part IV: Business Cycle Theory: The Economy in the Short Run
+- Chap-9: Introduction to Economic Fluctuations
+	- 9-1: The Facts About the Business Cycle
+		- GDP and Its Components
+		- Unemployment and Okun's Law
+	- 9-2: Time Horizons in Macroeconomics
+		- How the Short Run and Long Run Differ
+		- The Model of Aggregate Supply and Aggregate Demand
+	- 9-3: Aggregate Demand
+		- The Quantity Equation as Aggregate Demand
+		- Shifts in the Aggregate Demand Curve
+	- 9-4: Aggregate Supply
+		- The Long Run: The Vertical Aggregate Supply Curve
+		- The Short Run: The Horizontal Aggregate Supply Curve
+		- From the Short Run to the Long Run
+	- 9-5: Stabilization Policy
+		- Shocks to Aggregate Demand
+		- Shocks to Aggregate Supply
