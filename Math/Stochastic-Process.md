@@ -1,5 +1,17 @@
 # Stochastic Process
 
+## Basics
+- A stochastic process is a collection of random variables indexed by time.
+- Stationary: P(X_k+h-X_h) and P(X_h) is the same;
+- Markov Chain: P(X_n+1=i|Xn, Xn-1, ..., X0)=P(X_n+1=i|Xn)
+	- Transition prob: Pij = P(Xn+1=j|Xn=i) 
+	- Transition matrix: column sum-to-1;
+	- A stationary distribution: pi=Api
+- Martingale: E(Xt+1|Ft)=Xt
+	- Our expectated gain in the process is zero at all times
+	- Random walk is a martingale;
+- Stopping time: Given a stochastic process {X0, X1, }, a non-negative integer-valued random variable tau is called a stopping time if for every integer k >=0,  the event tau <= k depends only on the events X0, X1, · · · , Xk.
+
 ## Point Process
 - http://www.stat.columbia.edu/~liam/teaching/neurostat-fall19/uri-eden-point-process-notes.pdf
 - Definition:

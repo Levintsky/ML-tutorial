@@ -14,7 +14,50 @@
 - Integration by substitution
 
 ## Multivariable calculus
-- Partial derivative;
+- https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm
+- 1. Vectors and Matrices
+	- Vectors, dot product, lengths and angles, areas/volumes and determinants
+	- Equation of planes: (P1, P2, P3) a plane, a new point P, det(P1P2,P1P3, P1P)=0
+	- Curves: Q(t)=(x(t), y(t), z(t))
+		- e.g. cycloid: (a theta-a sin(theta), a-a cos(theta))
+	- Kepler's second law: constant rate of swept area; cross(r, v)=C
+		- d(cross(r,v))/dt=0, a||r, acceleration or force parallel to radius;
+- 2. Partial derivative;
+	- Level curves, contour plots;
+	- Critical point: fx=0, fy=0, (local min, max or saddle)
+	- Chain rule, gradient and directional derivative;
+	- Lagrange multiplier: nabla(f)=nabla(g)
+		- nabla(f)=lambda nabla(g)
+- 3. Double Integral:
+	- Change of variable: dudv=|ux uy;vx vy|dxdy
+	- Vector field, work and line integral;
+	- Fundamental theory of line integral: F=nabla(f), potential, F: gradient field of f;
+		- int F dr= f(p1)-f(p2), path independent
+		- Conservative field, energy preserving;
+		- F=(M, N), My=Nx iff conservative, proof: fxy=fyx
+		- curl(F)=0 conservative;
+		- curl(M,N)=Nx-My, measures 2x angular velocity of rotational component;
+			- F=(-y, x), curl(F)=2
+	- Green Theorem:
+		- C: closed curve, clockwise;
+		- int_C Fdr = int int curl(F)dA
+		- Proof int_C Mdx = int int -My dA, cut into vertical simple regions, then sum;
+			- Each small region satisfy the eqn, and addible;
+		- Special case: int_C xdy = Area(R)
+		- Flux: int_C (F, n) ds = int_C -Ndx + Mdy = int int div(F) dA
+- 4. Triplet integrals and surface integrals in 3-d space;
+	- Triplet integral;
+	- Polar coord: x=rsin(phi)cos(theta), y=rsin(phi)sin(theta), z=rcos(phi)
+		- dV = r^2 sin(phi) dr dphi dtheta
+	- Flux and divergence theorem:
+		- Divergence Theorem (Gauss-Green): int int_S F dS = int int int div(F) dV
+		- div(F): source rate, amount of flux generated
+		- Heat eqn: u_t = k Lap(u)
+	- Line integral:
+		- Curl in 3d: F = (X,Y,Z)
+		- curl(F)=(Zy-Yz)i+(Xz-Zx)j+(Yx-Xy)k
+		- F conservative, curl(F)=0
+		- Stokes' Theorem: int_C F dr= int int curl(F) n dS (C closed curve, S any surface bounded by C)
 - Implicit Function Theorem;
 - Application in geometry:
 	- Frenet–Serret formulas;
