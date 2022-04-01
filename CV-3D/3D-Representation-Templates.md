@@ -131,6 +131,13 @@
 	- https://github.com/ZhengZerong/DeepImplicitTemplates
 	- Not just DeepSDF, deep SDF + warping;
 
+## E2E
+- **3d-rcnn**: Abhijit Kundu, Yin Li, and James M. Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
+	- https://abhijitkundu.info/projects/3D-RCNN/
+	- Input: 2D image;
+	- Output: 3D scene;
+	- Supervision: differentiable rendering loss;
+
 ## Retrieval
 - Kai Xu, Hanlin Zheng, Hao Zhang, Daniel Cohen-Or, Ligang Liu, and Yueshan Xiong. Photo-inspired model-driven 3d object modeling. SIGGRAPH'11
 	- Input: target image, source set of 3D models (with consistent parts labels);
