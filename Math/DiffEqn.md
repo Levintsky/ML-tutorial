@@ -25,15 +25,11 @@
 - SDE:
 	- Resources:
 		- MIT: https://ocw.mit.edu/courses/mathematics/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/lecture-notes/
-	- Basics: dx(t) = - nabla U(x(t)) dt + sigma dBt
-	- First term: force (conservative from potential); second: Brownian motion;
 	- Fokker-Planck equation (also Kolmogorov forward eqn, statistical mechanics):
 		- Describe probability p(x, t);
 		- dXt = mu(Xt, t)dt + sigma(Xt, t) dWt
 		- mu() drift; D(Xt, t) = sigma()^2 / 2, diffusion coefficient;
 		- partial p(x, t)/partial t = - partial mu(x,t)p(x,t) / partial x + partial^2 D(x,t)p(x,t) / partial x^2
-	- Ito's Lemma, dXt = mu_t dt + sigma_t dBt; f(x, t) 2nd-order differentiable;
-		- df = ()dt + ()dBt
 	- Geometric Brownian motion:
 		- dSt = mu St dt + sigma St dBt
 		- Black-Scholes Model; pricing model for options;
@@ -412,3 +408,13 @@
 
 ## Laplace Transform
 - Applicable for linear forms;
+
+## SDE
+- MIT 18.642
+- Ito's Lemma
+	- Basics: dx(t) = - nabla U(x(t)) dt + sigma dBt
+	- First term: force (conservative from potential); second: Brownian motion;
+	- dXt = mu_t dt + sigma_t dBt; f(x, t) 2nd-order differentiable;
+		- df = ()dt + ()dBt
+	- Geometric Brownian motion: dSt = mu St dt + sigma St dBt
+		- Black-Scholes Model; pricing model for options;

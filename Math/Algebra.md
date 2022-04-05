@@ -4,6 +4,203 @@
 - http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
 - https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
 
+## Linear Algebra (MIT 18.700)
+- https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/pages/syllabus/
+- Textbook: Axler, Sheldon, 2nd edition
+- Chap-1: vector-space;
+	- Complex numbers;
+	- A list of length n, n-tuple, coordinate;
+	- Addition, scalar multiplication;
+	- Unique additive identity; unique additive inverse;
+- Chap-2: Finite-dimension vector space;
+	- Span and Linear Independence;
+	- Bases;
+	- Theo: Every linearly independent list of vectors in a finite- dimensional vector space can be extended to a basis of the vector space.
+	- Theo: Any two bases of a finite-dimensional vector space have the same length.
+	- Theo: dim(U1+U2)=dim(U1)+dim(U2)-dim(U1 int U2)
+- Chap-3: Linear Maps;
+	- Additivity: T(u+v)=Tu+Tv
+	- Homogeniety: T(av)=aTv
+	- Null spaces and ranges;
+		- null(T)={v; Tv=0}; also kernel;
+	- **Injective (one-to-one)**: T:V->W; Tu=Tv iff u=v;
+	- Range: given T in L(V, W), def range(T)={Tv;v in V}; also image;
+	- **Surjective (onto)**: range(T)=W;
+	- Theo: dim(V)=dim(null(T)) + dim(range(T))
+	- Matrix of a linear map;
+		- Invertibility;
+		- Isomorphic of two vector space: existence of invertible linear map;
+		- dim(L(V, W))=dim(V)dim(W)
+- Chap-4: polynomials;
+	- Degree;
+	- Theo (Division Algorithm): Suppose p, q ∈ P(F), with p != 0. Then there exist polynomials s, r ∈ P(F) such that q=sp+r; deg(r) < deg(p)
+	- Fundamental Theorem of Algebra: Every nonconstant polynomial with complex coefficients has a root.
+		- Proof (by contradiction): if p has no root, 1/p analytical, p(z) goes to infty as z approaches infty, and 1/p(z) approaches 0; 1/p has to be constant to be bounded (Liouville's theory), p is constant;
+	- Corollary: p(z) = c(z − λ1) . . . (z − λm),
+- Chap-5: Eigenvalues and Eigenvectors;
+	- Invariant supaspace;
+	- Tu=λu; eigenvalue, eigenvector;
+	- Theo: Let T ∈ L(V ). Suppose λ1, ... , λm are distinct eigenvalues of T and v1, ... , vm are corresponding nonzero eigenvectors. Then (v1, ... , vm) is linearly independent.
+	- Theo: Every operator on a finite-dimensional, nonzero, complex vector space has an eigenvalue.
+		- Proof: (v,Tv, ..., T^nv) linearly independent, a0v+a1Tv+...=0, replace T with eigenvalue, funda theo of algebra;
+	- Theo: Suppose V is a complex vector space and T ∈ L(V). Then T has an upper-triangular matrix with respect to some basis of V.
+	- Proposition: If T ∈ L(V ) has dim V distinct eigenvalues, then T has a diagonal matrix with respect to some basis of V.
+- Chap-6: Inner-product spaces;
+	- Cauchy-Schwarz: |(u,v)|<= |u| |v|
+	- Triangle Inequality: |u+v| <= |u| + |v|
+	- Orthonormal bases;
+	- Linear functionals and adjoints;
+	- Theorem: Suppose φ is a linear functional on V. Then there is a unique vector v ∈ V such that φ(u) = ⟨u, v⟩
+	- Adjoint: (Tv,w)=(v,T'w), T': adjoint
+- Chap-7: Operators on Inner-Product Spaces
+	- Self-Adjoint and Normal Operators
+		- Operator T in L(v), if T=T', self-adjoint;
+	- Proposition: Every eigenvalue of a self-adjoint operator is real.
+	- An operator on an inner-product space is called **normal** if it commutes with its adjoint; in other words, T ∈ L(V) is normal if TT'=T'T
+	- **The Spectral Theorem**: Suppose that V is a complex inner-product space and T ∈ L(V). Then V has an **orthonormal basis** consisting of **eigenvectors of T** if and only if **T is normal**.
+	- Lemma: Lemma: Suppose T ∈ L(V ) is self-adjoint. If α, β ∈ R are such that α2 < 4β, then T^2+αT+βI is invertible.
+	- Lemma: Suppose T ∈ L(V) is self-adjoint. Then T has an eigenvalue.
+	- **Real Spectral Theorem**: Suppose that V is a real inner-product space and T ∈ L(V). Then V has an orthonormal basis consisting of eigenvectors of T if and only if T is self-adjoint.
+		- Proof: if orthonormal, T has a diagonal matrix under the basis, T=T'.
+		- Proof: if self-adjoint, by induction, find any eigenvector u, then span.
+	- Positive Operators: self-adjoint, (Tv, v)>=0;
+	- Isometry: S in L(V), |Sv|=|v| for all v in V.
+	- Singular value:
+		- Singular-Value Decomposition: Suppose T ∈ L(V) has singular values s1, . . . , sn. Then there exist orthonormal bases (e1, . . . , en) and (f1,...,fn) of V such that
+			- Tv = s1(v,e1)f1 +···+sn(v,en)fn
+- Chap-8: Operators on Complex Vector Spaces
+	- Generalized Eigenvectors: (T-λI)^j v = 0
+	- Multiplicity;
+	- **Cayley-Hamilton Theorem**: Suppose that V is a complex vector space and T ∈ L(V). Let q denote the characteristic polynomial of T . Then q(T ) = 0.
+	- Decomposition of an Operator:
+	- Nilpotent matrix: N^k=0
+	- Square Roots:
+		- Recall that a square root of an operator T ∈ L(V) is an operator S ∈ L(V) such that S^2 = T.
+		- Lemma: Suppose N ∈ L(V) is nilpotent. Then I + N has a square root.
+		- Theorem: Suppose V is a complex vector space. If T ∈ L(V) is invertible, then T has a square root.
+	- Minimal polynomial:
+		- a0 +a1z+a2z^2 +···+am−1z^m−1 +z^m is called the minimal polynomial of T.
+		- Theorem: Let T ∈ L(V) and let q ∈ P(F). Then q(T) = 0 if and only if the minimal polynomial of T divides q.
+	- Jordan form:
+		- The: Suppose V is a complex vector space. If T ∈ L(V), then there is a basis of V that is a Jordan basis for T .
+- Chap-9: Operators on Real Vector Spaces:
+	- Block Upper-Triangular Matrices:
+	- Theorem: Suppose V is a real vector space and T ∈ L(V). Then there is a basis of V with respect to which T has a block upper-triangular matrix;
+	- The Characteristic Polynomial:
+- Chap-10: Trace and Determinant
+	- Change of basis;
+	- Trace:
+		- tr(AB)=tr(BA)
+		- (u1, ..., un), (v1, ..., vn) are bases of V, then tr(T, {u})=tr(T, {v})
+		- Theo: tr(T)=tr(M(T))
+		- Corollary: There do not exist operators S , T ∈ L(V) such that ST−TS=I.
+			- Proof: tr(TS-ST)=0
+	- Determinant:
+		- For T ∈ L(V), we define the determinant of T, denoted detT, to be (−1)^(dim V) times the constant term in the characteristic polynomial of T.
+		- Theo: Suppose T ∈ L(V). Then the characteristic polynomial of T equals det(zI−T).
+		- Theo: det(AB) = det(BA) = (det A)(det B).
+		- Proposition: Suppose that V is an inner-product space. If S ∈ L(V) is an isometry, then |detS| = 1.
+
+## Modern Algebra (MIT 18.703)
+- https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
+- Textbook: Herstein, I. N. Abstract Algebra.
+- 1. Things Familiar and Less Familiar
+	- A Few Preliminary Remarks
+	- Set Theory
+	- Mappings
+	- A(S) (The Set of 1-1 Mappings of S onto Itself)
+	- The Integers
+	- Mathematical Induction
+	- Complex Numbers
+- 2. Groups
+	- Definitions and Examples of Groups
+		- Set A(S) of all 1-1 mappings of S onto itself;
+		- Closure: f, g in A(S), then fg in A(s);
+		- Associativity: f, g, h, f(gh)=(fg)h
+		- Existence of unit: fi=if=f
+		- Existence of inverse: f, f^(-1), ff^(-1)=f^(-1)f=i
+		- Finite group;
+		- Abelian: ab=ba;
+			- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
+			- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg!=gf
+	- Some Simple Remarks
+		- Identity unique;
+		- Inverse unique;
+		- inv(inv(a))=a
+		- inv(ab)=inv(b)inv(a)
+	- Subgroups
+		- Nonempty subset H of a group G;
+		- Cyclic subgroup: {a^i} i all integer;
+		- for a in G, C(a)={g in G|ga=ag}, centralizer;
+		- Z(G)={z in G|zx=xz for all x in G}, center;
+	- Lagrange's Theorem
+		- Equivalence relation:
+			- Reflexity: x ~ x
+			- Symmetry: a ~ b, then b ~ a;
+			- Transitivity: a ~ b, b ~ c, then a ~ c;
+		- H subgroup of G, a ~ b if ab^(-1) in H; then ~ is equivalence;
+			- a ~ b iff a in Hb={hb|h in H}, Hb: a right coset of H in G;
+		- a ~ b if there exists x in G, s.t. b = x^(-1)ax (conjugacy)
+		- \[a\] the class of a;
+		- Congruence modulo n;
+		- Theo: ~ partisions S into equivalence classes;
+		- **Theo (Lagrange's Theorem). If G is a finite group and H is a subgroup of G, then the order of H divides the order of G.**
+			- Proof: partition in Ha, |G|=|H|n
+		- Theo: A group G of prime order is cyclic.
+		- Def: order o(a), least positive integer m, s.t. a^m=e
+		- Theo: If G is finite and a E G, then o(a)| |G| 
+		- Theo: If G is a finite group of order n, then a^n = e for all a in G.
+		- Theo: Zn forms a cyclic group under the addition \[a\] + \[b\] = \[a + b\].
+		- Def: The **Euler phi-function**, phi(n), is defined by phi(1) = 1 and, for n > 1, phi(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
+		- Theo: Un forms an abelian group, under the product \[a\]\[b\] = \[ab\], of order phi(n), where phi(n) is the Euler phi-function.
+		- **Theo (Euler). If a is an integer relatively prime to n, then a^phi(n) == 1 mod n.**
+		- **Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) ==1 mod p.**
+			- For any integer b, b^p == b mod p.
+	- Homomorphisms and Normal Subgroups
+		- Def: Let G, G' be two groups; then the mapping phi: G -> G' is a **homomorphism** if phi(ab) = phi(a)phi(b) for all a, b in G.
+		- Def: The homomorphism q;: G ~ G' is called a **monomorphism** if phi() is 1-1. A monomorphism that is onto is called an **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
+		- Def: Two groups G and G' are said to be isomorphic if there is an isomorphism of G onto G'.
+		- **Theo(Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S), for an appropriate S.**
+		- If phi() is homomorphism of G into G', then:
+			- phi(e)=e'
+			- phi(a^-1)=phi(a)^-1
+		- Def: image of phi, phi(G)={phi(a)|a in G}.
+		- Def: Ker(phi)={a in G|phi(a)=e'}, measures the lack of 1-1'ness.
+		- Corollary. If phi is a homomorphism of G into G', then phi is a monomorphism if and only if Ker phi == (e).
+		- Def: The subgroup N of G is said to be a **normal subgroup** of G if a^(-1)Na in N for every a in G. 正规子群
+		- Theo: N is normal subgroup of G iff every left coset of N in G is a right coset of N in G.
+	- Factor Groups
+	- The Homomorphism Theorems
+	- Cauchy's Theorem
+	- Direct Products 92
+	- Finite Abelian Groups (Optional)
+	- Conjugacy and Sylow's Theorem (Optional)
+- 3. The Symmetric Group
+	- 1 Preliminaries
+	- 2 Cycle Decomposition
+	- 3 Odd and Even Permutations
+- 4. Ring Theory
+	- Definitions and Examples
+	- Some Simple Results
+	- Ideals, Homomorphisms, and Quotient Rings
+	- Maximal Ideals
+	- Polynomial Rings
+	- Polynomials over the Rationals
+	- Field of Quotients of an Integral Domain
+- 5. Field
+	- Examples of Fields 176
+	- A Brief Excursion into V ector Spaces Field Extensions 191
+	- Finite Extensions 198 Constructibility 201
+	- Roots of Polynomials 207
+- 6. Special Topics (Optional)
+	- The Simplicity of An
+	- Finite Fields I
+	- Finite Fields II: Existence
+	- Finite Fields III: Uniqueness
+	- Cyclotomic Polynomials
+	- Liouville's Criterion
+	- The Irrationality of pi
+
 ## Important Concepts
 - **Homomorphism** 同态:
 	- Two groups s.t. f(a+b)=f(a).f(b), where + . are group operators of the two groups;

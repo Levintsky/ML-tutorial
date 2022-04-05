@@ -4,6 +4,16 @@
 - Tsinghua: https://www.tsinghua.edu.cn/publish/newthu/newthu_cnt/education/pdf/bkzy_24.pdf
 - PKU: http://www.math.pku.edu.cn/puremath/bkspy/kcsz/index.htm
 - MIT: https://ocw.mit.edu/courses/mathematics/
+	- 18.0x Lower level and specialty subjects
+	- 18.1x Analysis
+	- 18.2x Discrete applied mathematics
+	- 18.3x Continuous applied mathematics
+	- 18.4x Theoretical computer science
+	- 18.5x Logic and set theory
+	- 18.6x Probability and statistics
+	- 18.7x Algebra and number theory
+	- 18.8x Laboratory subjects
+	- 18.9x Topology and geometry, and specialty subjects
 - MIT: https://math.mit.edu/academics/undergrad/roadmaps.php
 	- I. Algebra
 	- II. Analysis & Geometry
@@ -29,7 +39,15 @@
 	- Methods of Mathematical Physics;
 	- Mathematical Experiment;
 
-## I. Algebra
+## 0. Lower-Level
+- 18.065 (Matrix Methods), 
+- 18.06, 18.062 (Math for CS), 
+- 18.03 DE, 18.05 Intro Prob and Stat, 18.06, 18.05 (Matrix Methods), 
+- 18.03 DE, 18.06, 18.04, 18.05 Intro Prob and Stat, 18.062 (Math for CS), 18.05 (Matrix Methods), 
+- 18.03 DE, 18.04, 18.06/18.700 (Lin Algebra), 
+- 18.05 Intro Prob and Stat, 18.062 (Math for CS), 18.05 (Matrix Methods), 
+
+## I. Algebra (18.7xx)
 - MIT:
 	- Stage 1: 18.700+18.703 (Lin+Modern Algebra), 18.700+18.701+18.702 (Algebra I, II)
 	- Stage 2: 18.704 (Sem), 18.715 (Intro Rep Theo), 18.721 (Intro Algebraic Geo), 18.782 (Intro Arithmetic Geo)
@@ -52,11 +70,11 @@
 - Lie Group and Lie Algebras;
 - Representation Theory for Group and Algebra;
 
-## II. Analysis
+## II. Analysis (18.1xx)
 - MIT:
-	- Stage 1: 18.100 (Analysis), 18.700/18.701 (Algebra I, II)
+	- Stage 1: 18.100 (Analysis)
 	- Stage 2: 18.101 (Analysis II), 18.102 Intro Fourier, 18.103 (Fourier Analysis), 18.104 (Sem Number Theo), 18.112 Complex Func, 18.152 PDE, 18.950 Diff Geo, 18.994 (Sem)
-	- Stage 3: 18.125 (Measure and Integration), 18.155 (Diff Analysis), 18.156 (Diff Analysis II), 18.952 (Theo of Diff Forms), 18.965 (Geo of Manifolds I), 18.966 (Geo of Manifolds II)
+	- Stage 3: 18.125 (Measure and Integration), 18.155 (Diff Analysis), 18.156 (Diff Analysis II),
 - Calculus;
 	- 数学分析, 卓里奇;
 	- 数学分析新讲, 张筑生;
@@ -79,24 +97,24 @@
 	- 中文: https://www.youtube.com/watch?v=FUydOEWz7IM&list=PLRywWEDIJejgykmzLjPcGW8I1YgFg-1yS
 	- Ecole-Central: https://www.youtube.com/watch?v=reumVbH41Vc&list=PLSpInro6Ys2IHve6oN9h005zmwfLnOSp1&index=1
 
-## III. Logic
+## III. Logic (18.5xx)
 - MIT:
-	- Stage 1: 18.510 (Intro Math Logic and Set Theo), 18.701 (Algebra I) or 18.700+18.703 (Lin+Modern Algebra)
+	- Stage 1: 18.510 (Intro Math Logic and Set Theo);
 	- Stage 2: 18.400 (Comp and Complexity Theo), 18.404 (Theo of Comp), 18.504 (Sem in Logic)
 	- Stage 3: 18.515 (Math Logic, not offered regularly)
 The MIT Philosophy department also offers subjects in logic: 24.241–24.245 and 24.711. Also consider logic classes at Harvard.
 
-## IV: Number Theory
+## IV: Number Theory (18.7xx)
 - MIT:
-	- Stage 1: 18.700+18.703 (Lin+Modern Algebra) or 18.701+18.702 (Algebra I, II), 18.781 (Theo of Numbers)
+	- Stage 1: 18.781 (Theo of Numbers)
 	- Stage 2: 18.704 (Sem in Algebra), 18.721 (Intro Algebraic Geo), 18.782 (Intro Arithmetic Geo), 18.784 (Sem in Number Theo)
 	- Stage 3: 18.705 (Commutative Algebra), 18.725 (Algebraic Geo I), 18.783 (Elliptic Curves), 18.785 (Number Theo I)
 
-## V: Probability and Statistics
+## V: Probability and Statistics (18.6xx)
 - MIT:
-	- Stage 1: 18.065 (Matrix Methods), 18.100 (Analysis), 18.600 (Prob and Rand Var), 18.700/18.701 (Lin Algebra)
-	- Stage 2: 18.102 (Intro Fourier Analysis), 18.103 (Fourier Analysis), 18.112 Complex Func, 18.200 (Principles of Disc Applied Math), 18.211 (Comb Analysis), 18.615 (Intro Stochastic Proc), 18.642 Math in Finance, 18.650 (Fund of Stat)
-	- Stage 3: 18.125 (Measure and Integration), 18.675 (Theo of Prob), 18.676 (Stochastic Calculus), 18.677 (Topics in Stochastic Proc), 18.338 (Eig of Rand Matrices), 18.416 (Randized Alg), 18.424 (Sem in Info Theo), 18.655 (Math Stat), 18.657 (Topics in Stat)
+	- Stage 1: 18.600 (Prob and Rand Var)
+	- Stage 2:  18.615 (Intro Stochastic Proc), 18.642 Math in Finance, 18.650 (Fund of Stat)
+	- Stage 3: 18.675 (Theo of Prob), 18.676 (Stochastic Calculus), 18.677 (Topics in Stochastic Proc), 18.338 (Eig of Rand Matrices), 18.416 (Rand Alg), 18.424 (Sem in Info Theo), 18.655 (Math Stat), 18.657 (Topics in Stat)
 - Probability and Statistics;
 	- 概率论引论, 汪仁官;
 - Stochastic Process;
@@ -109,11 +127,11 @@ The MIT Philosophy department also offers subjects in logic: 24.241–24.245 and
 		- Statistical Inference, Casella & Berger
 	- All of Statistics: A Concise Course in Statistical Inference; Larry A. Wasserman.
 
-## VI. Geometry
+## VI. Geometry (18.9xx)
 - MIT:
-	- Stage 1: 18.100 (Analysis), 18.112 Complex Func, 18.701+18.702 (Algebra I, II) or 18.700+18.703 (Lin+Modern Algebra), 18.900 (Geo and Topology in the Plane), 18.950 (Diff Geo)
-	- Stage 2: 18.101 (Analysis II), 18.102 (Intro Fourier Analysis), 18.901 (Intro Topology), 18.904 (Sem in Topology), 18.952 (Theo of Diff Forms), 18.994 (Sem)
-	- Stage 3: 18.116 (Riemann Surfaces), 18.155 (Diff Analysis I), 18.721 (Intro Algebraic Geo), 18.755 (Lie Groups and Lie Algebras II), 18.782 (Intro Arithmetic Geo), 18.905 (Algebraic Topology I), 18.906 (Algebraic Topology II), 18.965 (Geo of Manifolds I), 18.966 (Geo of Manifolds II)
+	- Stage 1: 18.900 (Geo and Topology in the Plane), 18.950 (Diff Geo)
+	- Stage 2: 18.901 (Intro Topology), 18.904 (Sem in Topology), 18.952 (Theo of Diff Forms), 18.994 (Sem in Geo)
+	- Stage 3: 18.116 (Riemann Surfaces), 18.721 (Intro Algebraic Geo), 18.755 (Lie Groups and Lie Algebras II), 18.782 (Intro Arithmetic Geo), 18.905 (Algebraic Topology I), 18.906 (Algebraic Topology II), 18.965 (Geo of Manifolds I), 18.966 (Geo of Manifolds II)
 - Analytic Geometry;
 	- 解析几何, 尤承业;
 - Differentiable Manifold;
@@ -139,24 +157,24 @@ The MIT Philosophy department also offers subjects in logic: 24.241–24.245 and
 	- Milnor: Topology from the Differentiable Viewpoint;
 - Riemannian Geometry;
 
-## VII. Combinatorics
-- Stage 1: 18.100 (Analysis), 18.200 (Principles of Disc Applied Math), 18.400 (Comp and Complexity Theo), 18.600 (Prob and Rand Var), 18.701+18.702 (Algebra I, II) or 18.700+18.703 (Lin+Modern Algebra), 18.900 (Geo and Topology in the Plane)
-- Stage 2: 18.204 (Sem in Disc Math), 18.211 (Comb Analysis), 18.212 (Algebraic Comb), 18.112 Complex Func, 18.404 (Theo of Comp), 18.410 (Design and Analysis of Alg), 18.453 (Comb Opt, 18.721 (Intro Algebraic Geo), 18.781 (Theo of Numbers), 18.901 (Intro Topology), 18.950 (Diff Geo)
-- Stage 3: 18.217 (Comb Theo), 18.218 (Topics in Comb), 18.225 (Graph Theo and Additive Comb), 18.226 (Prob Methods in Comb), 18.338 (Eig of Rand Matrices), 18.455 (Adv Comb Opt), 18.615 (Intro Stochastic Proc), 18.705 (Commutative Algebra), 18.715 (Intro Rep Theo), 18.725 (Algebraic Geo I), 18.745 (Lie Groups and Lie Algebras I)
+## VII. Combinatorics (18.4x)
+- Stage 1: 18.200 (Principles of Disc Applied Math), 18.400 (Comp and Complexity Theo),
+- Stage 2: 18.204 (Sem in Disc Math), 18.211 (Comb Analysis), 18.212 (Algebraic Comb), 18.404 (Theo of Comp), 18.410 (Design and Analysis of Alg), 18.453 Comb Opt, 18.721 (Intro Algebraic Geo), 18.781 (Theo of Numbers),
+- Stage 3: 18.217 (Comb Theo), 18.218 (Topics in Comb), 18.225 (Graph Theo and Additive Comb), 18.226 (Prob Methods in Comb), 18.338 (Eig of Rand Matrices), 18.455 (Adv Comb Opt), 18.705 (Commutative Algebra), 18.715 (Intro Rep Theo), 18.725 (Algebraic Geo I), 18.745 (Lie Groups and Lie Algebras I)
 
-## VIII. Computer Science
-- Stage 1: 18.06/18.700 (Lin Algebra), 18.062 (Math for CS), 18.200 (Principles of Disc Applied Math), 18.330 (Intro Numerical Analysis), 18.600 (Prob and Rand Var), 18.650 (Fund of Stat), 18.701 (Algebra I)
+## VIII. Computer Science (18.2x Disc Math + 18.4x Theo CS)
+- Stage 1: 18.200 (Principles of Disc Applied Math), 18.330 (Intro Numerical Analysis)
 - Stage 2: 18.204 (Sem in Disc Math), 18.211 (Comb Analysis), 18.400 (Comp and Complexity Theo), 18.404 (Theo of Comp), 18.410 (Design and Analysis of Alg), 18.424 (Sem in Info Theo), 18.434 (Sem in Theo CS), 18.453 (Comb Opt)
 - Stage 3: 18.337 (Parallel Comp and Sci ML), 18.415 Adv Alg, 18.416 (Rand Alg), 18.425 (Cryptography and Cryptanalysis), 18.435 (Quantum Comp), 18.437 Distributed Alg, 18.455 (Adv Comb Opt), 18.783 (Elliptic Curves)
 
 ## IX. Economics and Finance
-- Stage 1: 18.03 DE, 18.05 Intro Prob and Stat, 18.06/18.700 (Lin Algebra), 18.05 (Matrix Methods), 18.300 Principles of Continuum Applied Math, 18.330 (Intro Numerical Analysis), 18.600 (Prob and Rand Var), 18.650 (Fund of Stat)
-- Stage 2: 18.100 Analysis, 18.152 PDE, 18.303 Lin PDE, 18.453 (Comb Opt), 18.642 Math in Finance
-- Stage 3: 18.103 Fourier Analysis, 18.125 Measure and Integration, 18.675 Theo of Prob, 18.676 Stochastic Calculus, 18.677, 18.335 Intro Numerical Methods, 18.337 (Parallel Comp and Sci ML), 18.338 Eig of Rand Matrices, 18.352 NonLin Dyn: The Natural Environment, 18.353 NonLin Dyn: Chaos, 18.355 Fluid Mech, 18.615 (Intro Stochastic Proc), 18.655 Math Stat
+- Stage 1: 18.300 Principles of Continuum Applied Math, 18.330 (Intro Numerical Analysis)
+- Stage 2: 18.303 Lin PDE, 18.642 Math in Finance
+- Stage 3: 18.677, 18.335 Intro Numerical Methods, 18.337 (Parallel Comp and Sci ML), 18.338 Eig of Rand Matrices, 18.352 NonLin Dyn: The Natural Environment, 18.353 NonLin Dyn: Chaos, 18.355 Fluid Mech, 18.655 Math Stat
 
 ## X. Computational Science and Engineering
-- Stage 1: 18.03 DE, 18.06/18.700 (Lin Algebra), 18.04, 18.05 Intro Prob and Stat, 18.062 (Math for CS), 18.05 (Matrix Methods), 18.200 (Principles of Disc Applied Math), 18.303 Lin PDE: Analysis and Numerics, 18.330 (Intro Numerical Analysis), 18.600 (Prob and Rand Var), 18.650 (Fund of Stat), 18.S190 Special Subject in EE & CS, 18.S191 Intro Comp Thinking
-- Stage 2: 18.100 Analysis, 18.404 Theo of Comp, 18.434 (Sem in Theo CS), 18.410 (Design and Analysis of Alg), 18.701 (Algebra I)
+- Stage 1: 18.200 (Principles of Disc Applied Math), 18.303 Lin PDE: Analysis and Numerics, 18.330 (Intro Numerical Analysis), 18.S190 Special Subject in EE & CS, 18.S191 Intro Comp Thinking
+- Stage 2: 18.404 Theo of Comp, 18.434 (Sem in Theo CS), 18.410 (Design and Analysis of Alg), 18.701 (Algebra I)
 - Stage 3: 18.335 Intro Numerical Methods, 18.336, 18.337 (Parallel Comp and Sci ML), 18.338 Eig of Rand Matrices, 18.367 Waves and Imaging, 18.415 Adv Alg, 18.437 Distributed Alg
 - Scientific computation;
 - Mathematical modeling;
@@ -165,9 +183,9 @@ The MIT Philosophy department also offers subjects in logic: 24.241–24.245 and
 	- 数值分析基础, 关治, 陆金甫;
 
 ## XI. Physical Applied Math
-- Stage 1: 18.03 DE, 18.04, 18.06/18.700 (Lin Algebra), 18.300 Principles of Continuum Applied Math, 18.303 Lin PDE, 18.330 (Intro Numerical Analysis), 18.352 NonLin Dyn, 18.353 NonLin Dyn: Chaos, 18.354 NonLin Dyn: Continuum Systems, 18.600 (Prob and Rand Var), 18.650 (Fund of Stat)
-- Stage 2: 18.100 Analysis, 18.112 Complex Func, 18.152 PDE, 18.384 Phy Math, 18.417 Intro Comp Molecular Biology
-- Stage 3: 18.102 Intro Fourier Analysis, 18.103 Fourier Analysis, 18.305 Adv Analytic Methods in Sci and Eng, 18.306 Adv PDE, 18.335 Intro Numerical Methods, 18.355 Fluid Mech, 18.357 Interfacial Phenomena, 18.367 Waves and Imaging, 18.369 Math Methods in Nano, 18.376 Wave Propagation, 18.377 NonLin Dyn and Waves
+- Stage 1: 18.300 Principles of Continuum Applied Math, 18.303 Lin PDE, 18.330 (Intro Numerical Analysis), 18.352 NonLin Dyn, 18.353 NonLin Dyn: Chaos, 18.354 NonLin Dyn: Continuum Systems, 18.600 (Prob and Rand Var)
+- Stage 2: 18.384 Phy Math, 18.417 Intro Comp Molecular Biology
+- Stage 3: 18.305 Adv Analytic Methods in Sci and Eng, 18.306 Adv PDE, 18.335 Intro Numerical Methods, 18.355 Fluid Mech, 18.357 Interfacial Phenomena, 18.367 Waves and Imaging, 18.369 Math Methods in Nano, 18.376 Wave Propagation, 18.377 NonLin Dyn and Waves
 - ODE;
 	- The theory of DE: classical and qualitative; Walter G.Kelly & Allan C.Peterson;
 - PDE, Mathematical physics;
@@ -182,7 +200,7 @@ The MIT Philosophy department also offers subjects in logic: 24.241–24.245 and
 - Stochastic Differential Equation:
 	- MIT: https://ocw.mit.edu/courses/mathematics/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/video-lectures/
 
-## XII. Statistics and Data Science
-- Stage 1: 18.05 Intro Prob and Stat, 18.06/18.700 (Lin Algebra), 18.062 (Math for CS), 18.05 (Matrix Methods), 18.100 Analysis, 18.200 (Principles of Disc Applied Math), 18.330 (Intro Numerical Analysis), 18.600 (Prob and Rand Var), 18.650 (Fund of Stat), 18.701 (Algebra I)
-- Stage 2: 18.102 Intro Fourier, 18.112 Complex Func, 18.204 (Sem in Disc Math), 18.642 Math in Finance
-- Stage 3: 18.125 Measure and Integration, 18.675 Theo of Prob, 18.676 Stochastic Calculus, 18.335 Intro Numerical Methods, 18.338 Eig of Rand Matrices, 18.615 (Intro Stochastic Proc), 18.657
+## XII. Statistics and Data Science (18.6x)
+- Stage 1: 18.200 (Principles of Disc Applied Math), 18.330 (Intro Numerical Analysis)
+- Stage 2: 18.204 (Sem in Disc Math),
+- Stage 3: 18.335 Intro Numerical Methods, 18.338 Eig of Rand Matrices, 18.657
