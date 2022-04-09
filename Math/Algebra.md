@@ -33,7 +33,7 @@
 		- dim(L(V, W))=dim(V)dim(W)
 - Chap-4: polynomials;
 	- Degree;
-	- Theo (Division Algorithm): Suppose p, q ∈ P(F), with p != 0. Then there exist polynomials s, r ∈ P(F) such that q=sp+r; deg(r) < deg(p)
+	- Theo (Division Algorithm): Suppose p, q ∈ P(F), with p ≠ 0. Then there exist polynomials s, r ∈ P(F) such that q=sp+r; deg(r) < deg(p)
 	- Fundamental Theorem of Algebra: Every nonconstant polynomial with complex coefficients has a root.
 		- Proof (by contradiction): if p has no root, 1/p analytical, p(z) goes to infty as z approaches infty, and 1/p(z) approaches 0; 1/p has to be constant to be bounded (Liouville's theory), p is constant;
 	- Corollary: p(z) = c(z − λ1) . . . (z − λm),
@@ -54,7 +54,7 @@
 	- Adjoint: (Tv,w)=(v,T'w), T': adjoint
 - Chap-7: Operators on Inner-Product Spaces
 	- Self-Adjoint and Normal Operators
-		- Operator T in L(v), if T=T', self-adjoint;
+		- Operator T ∈ L(v), if T=T', self-adjoint;
 	- Proposition: Every eigenvalue of a self-adjoint operator is real.
 	- An operator on an inner-product space is called **normal** if it commutes with its adjoint; in other words, T ∈ L(V) is normal if TT'=T'T
 	- **The Spectral Theorem**: Suppose that V is a complex inner-product space and T ∈ L(V). Then V has an **orthonormal basis** consisting of **eigenvectors of T** if and only if **T is normal**.
@@ -64,7 +64,7 @@
 		- Proof: if orthonormal, T has a diagonal matrix under the basis, T=T'.
 		- Proof: if self-adjoint, by induction, find any eigenvector u, then span.
 	- Positive Operators: self-adjoint, (Tv, v)>=0;
-	- Isometry: S in L(V), |Sv|=|v| for all v in V.
+	- Isometry: S ∈ L(V), |Sv|=|v| ∀ v ∈ V.
 	- Singular value:
 		- Singular-Value Decomposition: Suppose T ∈ L(V) has singular values s1, . . . , sn. Then there exist orthonormal bases (e1, . . . , en) and (f1,...,fn) of V such that
 			- Tv = s1(v,e1)f1 +···+sn(v,en)fn
@@ -104,6 +104,7 @@
 ## Modern Algebra (MIT 18.703)
 - https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
 - Textbook: Herstein, I. N. Abstract Algebra.
+- Textbook: Abstract Algebra Theory and Applications. Thomas W. Judson
 - 1. Things Familiar and Less Familiar
 	- A Few Preliminary Remarks
 	- Set Theory
@@ -115,14 +116,14 @@
 - 2. Groups
 	- Definitions and Examples of Groups
 		- Set A(S) of all 1-1 mappings of S onto itself;
-		- Closure: f, g in A(S), then fg in A(s);
+		- Closure: f, g ∈ A(S), then fg ∈ A(s);
 		- Associativity: f, g, h, f(gh)=(fg)h
 		- Existence of unit: fi=if=f
 		- Existence of inverse: f, f^(-1), ff^(-1)=f^(-1)f=i
 		- Finite group;
 		- Abelian: ab=ba;
 			- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
-			- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg!=gf
+			- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg≠gf
 	- Some Simple Remarks
 		- Identity unique;
 		- Inverse unique;
@@ -131,16 +132,16 @@
 	- Subgroups
 		- Nonempty subset H of a group G;
 		- Cyclic subgroup: {a^i} i all integer;
-		- for a in G, C(a)={g in G|ga=ag}, centralizer;
-		- Z(G)={z in G|zx=xz for all x in G}, center;
+		- for a ∈ G, C(a)={g ∈ G|ga=ag}, centralizer;
+		- Z(G)={z ∈ G|zx=xz ∀ x ∈ G}, center;
 	- Lagrange's Theorem
 		- Equivalence relation:
 			- Reflexity: x ~ x
 			- Symmetry: a ~ b, then b ~ a;
 			- Transitivity: a ~ b, b ~ c, then a ~ c;
-		- H subgroup of G, a ~ b if ab^(-1) in H; then ~ is equivalence;
-			- a ~ b iff a in Hb={hb|h in H}, Hb: a right coset of H in G;
-		- a ~ b if there exists x in G, s.t. b = x^(-1)ax (conjugacy)
+		- H subgroup of G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
+			- a ~ b iff a ∈ Hb={hb|h in H}, Hb: a right coset of H in G;
+		- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax (conjugacy)
 		- \[a\] the class of a;
 		- Congruence modulo n;
 		- Theo: ~ partisions S into equivalence classes;
@@ -149,49 +150,315 @@
 		- Theo: A group G of prime order is cyclic.
 		- Def: order o(a), least positive integer m, s.t. a^m=e
 		- Theo: If G is finite and a E G, then o(a)| |G| 
-		- Theo: If G is a finite group of order n, then a^n = e for all a in G.
+		- Theo: If G is a finite group of order n, then a^n = e ∀ a ∈ G.
 		- Theo: Zn forms a cyclic group under the addition \[a\] + \[b\] = \[a + b\].
-		- Def: The **Euler phi-function**, phi(n), is defined by phi(1) = 1 and, for n > 1, phi(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
-		- Theo: Un forms an abelian group, under the product \[a\]\[b\] = \[ab\], of order phi(n), where phi(n) is the Euler phi-function.
-		- **Theo (Euler). If a is an integer relatively prime to n, then a^phi(n) == 1 mod n.**
+		- Def: The **Euler φ-function**, φ(n), is defined by φ(1) = 1 and, for n > 1, phi(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
+		- Theo: Un forms an abelian group, under the product \[a\]\[b\] = \[ab\], of order φ(n), where φ(n) is the Euler φ-function.
+		- **Theo (Euler). If a is an integer relatively prime to n, then a^φ(n) == 1 mod n.**
 		- **Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) ==1 mod p.**
 			- For any integer b, b^p == b mod p.
 	- Homomorphisms and Normal Subgroups
-		- Def: Let G, G' be two groups; then the mapping phi: G -> G' is a **homomorphism** if phi(ab) = phi(a)phi(b) for all a, b in G.
-		- Def: The homomorphism q;: G ~ G' is called a **monomorphism** if phi() is 1-1. A monomorphism that is onto is called an **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
+		- Def: Let G, G' be two groups; then the mapping φ: G -> G' is a **homomorphism** if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
+		- Def: The homomorphism φ: G ~ G' is called a **monomorphism** if φ() is 1-1. A monomorphism that is onto is called an **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
 		- Def: Two groups G and G' are said to be isomorphic if there is an isomorphism of G onto G'.
-		- **Theo(Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S), for an appropriate S.**
-		- If phi() is homomorphism of G into G', then:
-			- phi(e)=e'
-			- phi(a^-1)=phi(a)^-1
-		- Def: image of phi, phi(G)={phi(a)|a in G}.
-		- Def: Ker(phi)={a in G|phi(a)=e'}, measures the lack of 1-1'ness.
-		- Corollary. If phi is a homomorphism of G into G', then phi is a monomorphism if and only if Ker phi == (e).
-		- Def: The subgroup N of G is said to be a **normal subgroup** of G if a^(-1)Na in N for every a in G. 正规子群
-		- Theo: N is normal subgroup of G iff every left coset of N in G is a right coset of N in G.
-	- Factor Groups
+		- **Theo 2.5.1 (Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S), the set of 1-1 mappings of the set S onto itself, for an appropriate S.**
+		- If φ() is homomorphism of G into G', then:
+			- φ(e)=e'
+			- φ(a^-1)=φ(a)^-1
+		- Def: image of φ, φ(G)={φ(a)|a φ G}.
+		- Def: Ker(φ)={a φ G|φ(a)=e'}, measures the lack of 1-1'ness.
+		- Corollary. If φ is a homomorphism of G into G', then φ is a monomorphism if and only if Ker φ == (e).
+		- Def: The subgroup N of G is said to be a **normal subgroup** of G if a^(-1)Na ∈ N for every a ∈ G. 正规子群
+		- Theo: N <| G iff every left coset of N in G is a right coset of N in G.
+	- Factor Groups (also Quotient group?)
+		- let M = {\[a\]|a ∈ G}, where \[a\]={x ∈ G|xa^(-1) ∈ N}=Na.
+			- \[a\]\[b\]=\[ab\]=\[a'b'\]=\[a'\]\[b'\], this product of classes does not depend on the particular representatives we use for the classes.
+		- Theo: If N <| G and G/N = {\[a\]|a ∈ G} = {Na|a ∈ G},
+			- then G/N is a group relative to the operation \[a\]\[b\]=\[ab\].
+		- Theo: If N <| G, then there is a homomorphism ψ of G onto G/N such that Ker(ψ), the kernel of ψ, is N.
+		- Theo: If G is a finite group and N <| G, then |G/N|=|G|/|N|.
+		- Theo 2.6.4: If G is a finite abelian group of order |G| and p is a prime that divides |G|, then G has an element of order p.
+		- e.g. G={T_a,b|a≠0, b real}, N={T_1,b|b real} <| G. T_a,b and T_a,0 are in the same left coset of N in G. Identifying T_a,b as T_a,0. G/N multiplication is like nonzero real numbers under multiplication.
+		- e.g. G={real, +}, Z={Z,+} <| G, G/Z as \[0,1\], a circle.
 	- The Homomorphism Theorems
+		- Theo (First Homomorphism Theorem). Let φ be a homomorphism of G onto G' with kernel K. Then G' ~ G/K, the isomorphism between these being effected by the map 
+			- ψ: G/K to G', defined by ψ(Ka) = φ(a).
+		- Theo (Correspondence Theorem). Let the map φ: G -> G' be a homomorphism of G onto G' with kernel K. If H' is a subgroup of G' and if
+			- H = {a ∈ G|φ(a) ∈ H'},
+			- then H is a subgroup of G, H ⊃ K and H/K ~ H'. Finally, if H' is subnormal G', then H is subnormal of G.
+		- Theo: (Second Homomorphism Theorem). Let H be a subgroup of a group G and N <| G. Then HN = {hn | h ∈ H, n ∈ N} is a subgroup of G, H n N is a normal subgroup of H, and H/(H n N) ~ (HN)/N.
+		- Theo 2.7.4: (Third Homomorphism Theorem). If the map φ: G ~ G' is a homomorphism of G onto G' with kernel K then, if N' <| G' and N = {a ∈ G |φ(a) ∈ N'}, we conclude that G/N ~ G'/N'. Equivalently, G/N ~ (G/K)/(N/K).
 	- Cauchy's Theorem
-	- Direct Products 92
+		- Extends Theo 2.6.4 to non-abelian group;
+		- **Theo 2.8.2 (Cauchy). If p is a prime and p divides the order of G, then G contains an element of order p.**
+		- Lemma 2.8.3: Let G be a group of order pq, where p, q are primes and p > q. If a ∈ G is of order p and A is the subgroup of G generated by a, then A <| G.
+		- Lemma 2.8.4. If a EGis of order m and bEG is of order n, where m and n are relatively prime and ab == ba, then c == ab is of order mn.
+		- Theo 2.8.5. Let G be a group of order pq, where p, q are primes and p>q. If q is not dividable by p-1, then G must be cyclic.
+	- Direct Products
+		- Def: If G1, G2,..., Gn are n groups, then their (external) direct product is the set of all ordered n-tuples;
+		- Def: The group G is said to be the (internal) direct product of its **normal subgroups** N1, N2, ... ,Nn if every a ∈ G has a unique representation in the form a=a1 a2...an where each ai ∈ Ni for i=1,2,...,n.
+		- Lemma 2.9.2. Let G be a group, M, N normal subgroups of G such that M ∩ N = (e). Then, given m ∈ M and n ∈ N, mn=nm.
+		- Lemma 2.9.3. If G is the internal direct product of its normal subgroups N1, N2,... , Nn, then, for i≠j, Ni ∩ Nj = (e).
+		- Theo 2.9.4. Let G be a group with normal subgroups N1, N2,  ,Nn. Then the mapping ψ(a1, a2, ... , an) = a1a2 ... an is an isomorphism from N1 X N2 X ... X Nn (external direct product) onto G if and only if G is the internal direct product of N1, N2, ••• , Nn.
 	- Finite Abelian Groups (Optional)
+		- **Theo 2.10.3 (Fundamental Theorem on Finite Abelian Groups). A finite abelian group is the direct product of cyclic groups.**
 	- Conjugacy and Sylow's Theorem (Optional)
+		- Def: b = x^(-1) a x, equivalence
+		- Def. If a ∈ G, then C(a), the centralizer of a ∈ G, is defined by C(a) == {x ∈ G |xa == ax}.
+		- Lemma 2.11.1. For a ∈ G, C(a) is a subgroup of G.
+		- Def: **index** i_G(C(a)), the **number of right coset** (G finite group).
+		- Theo 2.11.2. Let G be a finite group and a ∈ G; then the number of distinct conjugates of a ∈ G equals the index of C(a) ∈ G.
+		- **Theo 2.11.3 (The Class Equation)**. If G is a finite group, then
+			- |G| = ∑i_G(C(a)) = ∑|G|/|C(a)| where the sum runs over one a from each conjugacy class.
+		- Theo 2.11.4. If G is a group of order p^n, where p is a prime, then Z(G), the center of G, is not trivial (i.e., there exists an element a ≠ e ∈ G s.t. ax= xa ∀ x ∈ G).
+		- Theo 2.11.5. If G is a group of order p^2, where p is a prime, then G is abelian.
+		- Theo 2.11.6. If G is a group of order p^n, p a prime, then G contains a normal subgroup of order p^n-1.
+		- **Theo 2.11.7 (Sylow's Theorem)**. Suppose that G is a group of order p^n m, where p is a prime and p not dividable by m. Then G has a subgroup of order p^n.
 - 3. The Symmetric Group
 	- 1 Preliminaries
+		- Consider only A (S) for S a finite set
+		- If S has n elements, A(S) the symmetric group of degree n, and denote it by Sn
+		- elements of Sn are called permutations, we do it from right to left.
 	- 2 Cycle Decomposition
+		- Def: σ(i1)=i2, σ(i2)=i3, ..., σ=(i1, i2, ..., ik)
+		- k-cycle and an m-cycle: disjoint if no integer in common;
+		- Lemma 3.2.1. If σ, τ ∈ Sn are disjoint cycles, then στ = στ.
+		- **Theo 3.2.2: Every permutation in Sn is the product of disjoint cycles.**
+		- Lemma 3.2.3. If τ ∈ Sn is a k-cycle, then the order of τ is k; that is, τ^j=e, and τ^j≠e, for 0 < j < k
+		- Theo 3.2.4. Let U ∈ Sn have its cycle decomposition into disjoint cycles of length m1 m2, .. , mk. Then the order of σ is the least common multiple of ml, m2, ... , mk.
+		- Theo 3.2.5. Every permutation in Sn is the product of transpositions.
+			- Change two obj at a time;
+		- e.g. rotate a square (1,2,3,4);
+		- e.g. rotate a non-square (1), (14)(23), (12)(34), (13)(24)
+		- e.g. equilateral triangle: S3
+		- e.g. hexagon: (123456), order 12;
 	- 3 Odd and Even Permutations
+		- S3:
+			- f(x1, x2, x3)=(x1 - x2)(x1-x3)(x2-x3)
+			- S3 σ=(1,2,3), σ(f(x))=(x_σ1-x_σ2)(x_σ1-x_σ3)(x_σ2-x_σ3)
+			- τ^2=e
+		- Parity: (-1)^t=(-1)^k, then t and k have the same parity;
+			- The parity of the number of transpositions in such a decomposition of σ might be unique
+		- Def: The permutation σ ∈ Sn is an odd permutation if σ is the product of an odd number of transpositions, and is an even permutation if σ is the product of an even number of transpositions.
+		- Theo 3.3.1. A permutation in Sn is either an odd or an even permutation, but cannot be both.
+		- An: set of all even permutations, **alternating group** of degree n.
+		- Theo 3.3.2. An, the alternating group of degree n, is a **normal subgroup** of Sn.
+		- Theo 3.3.3. For n > 1, An is a normal subgroup of Sn of order n!/2.
 - 4. Ring Theory
 	- Definitions and Examples
+		- Def: A nonempty set R is said to be a **ring** if in R there are two operations + and . such that:
+			- a, b ∈ R, then a+b ∈ R (closure)
+			- a+b=b+a (abelian)
+			- (a+b)+c=a+(b+c) (associative)
+			- existence of 0, s.t. a+0=a
+			- existence of b, s.t. a+b=0
+			- a, b ∈ R, a.b ∈ R
+			- a.(b.c)=(a.b).c
+			- a.(b+c)=a.b+a.c, (b+c).a=b.a+c.a
+		- A ring with unit, (not always true, e.g. group {0} only without 1.)
+		- a.b=0 iff a=0 or b=0, (not always true), **domain** if satisfied;
+		- **commutative rings**, if a.b=b.a
+		- Def: A commutative ring R is an **integral domain** if a.b = 0 in R implies that a=0 or b=O.
+		- Def: A ring R with unit is said to be a **division ring** if for every a≠0 in R there is an element b ∈ R (usually written as a^(-1)) such that a.a^(-1)= a^(-1).a= 1.
+		- **Noncommutative division rings exist, e.g. quaternions**;
+		- Def: A ring R is said to be a **field** if R is a **commutative division ring**.
+		- Z: integral domain;
+		- Q (rational numbers): field;
+		- R: field;
+		- C: field;
+		- Z6: integral domain; commutative ring with unit; not an integral domain, \[2\]\[3\]=\[0\]
+		- Def: An element a ≠ 0 in a ring R is a **zero-divisor** in R if ab = 0 for some b≠ 0 in R.
+		- Zp, p prime. Zp is a commutative ring with 1, and a finite field.
+		- Def: If R is a ring, then a **subring** of S ⊂ R which is a ring if the operations ab and a + b are just the operations of R applied to the elements a, b ∈ S.
+		- e.g. Q, rational numbers. reduced form: a=m/n, coprime. subset: denorminator not divisible by a fixed prime p.
+		- e.g. R, all real-valued continuous functions. f, g ∈ R, (f+g)(x)=f(x)g(x), (f.g)(x)=f(x)g(x). R: commutative ring, but not integral domain (e.g. two non-zero functions with different support)
+		- e.g. square matrix; ring;
+		- e.g. quaternions:
+			- (a0, a1, a2, a3), i, j, k, ij=k, jk=i, ki=j, i^2=j^2=k^2=-1;
+			- the quaternions form a noncommutative division ring;
 	- Some Simple Results
+		- Lemma 4.2.1. Let R be any ring and let a, b ∈ R. Then
+			- a0 = 0a = 0
+			- a(-b)=(-a)b = -(ab)
+			- (-a)(-b) = ab
+			- If 1 ∈ R, then (-1)a = -a
+		- Lemma 4.2.2. In any ring R, (a+b)^2 = a^2 + b^2 + ab + ba for a, b in R.
+		- Lemma 4.2.3. If R is a system with 1 satisfying all the axioms of a ring, except possibly a+b = b+a for a, b E R, then R is a ring.
+			- Prove: need to show a+b=b+a, distributive law on left and right (a+b)(1+1)=a+b+a+b=a+a+b+b, then b+a=a+b.
+		- Lemma 4.2.4. A Boolean ring is commutative.
 	- Ideals, Homomorphisms, and Quotient Rings
+		- Def. The mapping φ: R -> R' of the ring R into the ring R' is a **homomorphism** if
+			- φ(a + b) = φ(a) + φ(b);
+			- φ(ab) = φ(a)φ(b) ∀ a, b ∈ R.
+		- Def Let R be a ring. A nonempty subset I of R is called an **ideal** of R if:
+			- I is an **additive subgroup** of R.
+			- Given r ∈ R, a ∈ I, then ra ∈ I and ar ∈ I.
+		- Left ideal: a set L: additive subgroup, r ∈ R, a ∈ L, ra ∈ L. Similarly, right ideal;
+		- Lemma 4.3.1. If φ: R ~ R' is a homomorphism, then Ker(φ) is an ideal of R.
+		- K: ideal of R. R/K exists; merely the set of all cosets a+K for a ∈ R.
+		- Theo 4.3.2. Let K be an ideal of R. Then the quotient group R/K as an additive group is a ring under the multiplication (a + K)(b + K) = ab+K. Furthermore, the map φ: R->R/K defined by φ(a)=a+K for a ∈ R is a homomorphism of R onto R/K having K as its kernel. So R/K is a homomorphic image of R.
+		- **Theo 4.3.3 (First Homomorphism Theorem)**. Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. Then R' ~ R/K; in fact, the mapping ψ: R/K -> R' defined by ψ(a+K) = φ(a) defines an isomorphism of R/K onto R'.
+		- **Theo 4.3.4 (Correspondence Theorem)**. Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R', let I={a ∈ R|φ(a) ∈ I'}. Then I is an ideal of R, I⊃K and I/K~ I'. This sets up a 1-1 correspondence between all the ideals of R' and those ideals of R that contain K.
+		- **Theo 4.3.5 (Second Homomorphism Theorem)**. Let A be a subring of a ring R and I an ideal of R. Then A+I={a+i|a∈A, i∈I} is a subring of R, I is an ideal of A+I, and (A+I)/I ~ A/(A∩I).
+		- **Theo 4.3.6 (Third Homomorphism Theorem)**. Let the mapping φ:R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R' and I = {a∈R|φ(a)∈I'}, then R/I ~ R'/I'. Equivalently, if K is an ideal of R and I⊃K is an ideal of R, then R/I ~ (R/K)/(I/K).
+		- e.g. Z ring of integers, In (multiples of n) is an ideal of Z. φ(a)=\[a\].
+		- e.g. a field only has the trivial ideals (0) and itself.
+		- e.g. R: ring of rational numbers with denominator not divisble by p (p fixed prime). I: elements in R numerator divisilbe by p; I is an ideal of R, R/I ~ /Zp.
+		- e.g. R: real-valued continuous functions on \[0, 1\], I={f∈R|f(0.5)=0}, I is an ideal of R. R/I ~ real field: g(x)=f(x)-f(0.5). α+I, α real. Kernel φ=I
 	- Maximal Ideals
+		- Lemma 4.4.1. Let R be a commutative ring with unit whose only ideals are (0) and itself. Then R is a field.
+		- Defi. A proper ideal M of R is a **maximal ideal** of R if the only ideals of R that contain Mare M itself and R.
+		- Theo 4.4.2. Let R be a commutative ring with 1, and let M be a maximal ideal of R. Then R/M is a field.
+		- Theo 4.4.3. If R is a commutative ring with 1 and M an ideal of R such that R/M is a field, then M is a maximal ideal of R.
 	- Polynomial Rings
+		- Ring ofpolynomials in x over F: F\[x\]
+		- Equality, addition, multiplication;
+		- Lemma 4.5.1. F\[x\] is a commutative ring with unit.
+		- Def. If p(x) = a0 + a1x + ... + anx^n and an ≠ 0, then the **degree** of p(x), denoted by degp(x), is n.
+		- Lemma 4.5.2. If p(x), q(x) are nonzero elements of F\[x\], then deg(p(x)q(x)) = degp(x) + deg q(x).
+		- Lemma 4.5.3. If p(x), q(x) ∈ F\[x\] and p(x) + q(x) ≠ 0, then deg(p(x) + q(x)) <= max(degp(x), deg q(x)).
+		- Lemma 4.5.4. F\[x\] is an integral domain.
+		- Theo 4.5.5 (Division Algorithm). Given the polynomials f(x), g(x) ∈ F\[x\], where g(x) ≠ 0, then
+			- f(x) = q(x)g(x) + r(x),
+			- where q(x), r(x) ∈ F\[x\] and r(x) = 0 or deg r(x) < deg g(x).
+		- Theo 4.5.6. If I ≠ (0) is an ideal of F\[x\], then I = {f(x)g(x)|f(x) ∈ F\[x\]}; that is, I consists of all multiples of the fixed polynomial g(x) by the elements of F\[x\].
+		- Def. An integral domain R is called a **principal ideal** domain if every ideal I in R is of the form I={xa|x ∈ R} for some a ∈ I.
+		- Def. f(x) ∈ F\[x\] is a **monic polynomial** if the coefficient of its highest power is 1.
+		- Def. Suppose f(x), g(x) ∈ F\[x\], with g(x) ≠ O. We say that **g(x) divides f(x)**, written as **g(x)|f(x)**, if f(x) = a(x)g(x) for some a(x) ∈ F\[x\].
+		- Definition. For any two polynomials f(x) and g(x) ∈ F\[x\] (not both 0), the polynomial d(x) ∈ F\[x\] is the **greatest common divisor** of f(x), g(x) if d (x) is a monic polynomial such that:
+			- (a) d(x)|f(x) and d(x)|g(x).
+			- (b) If h(x)|f(x) and h(x)|g(x), then h(x)|d(x).
+		- Theo 4.5.7. Given f(x) and g(x) ≠ 0 in F\[x\], then their greatest common divisor d(x) ∈ F\[x\] exists; moreover, d(x) = a(x)f(x) + b(x)g(x) for some a(x), b(x) ∈ F\[x\].
+			- Proof: I be the set of all r(x)f(x)+s(x)g(x) as r(x), s(x) runs freely over F\[x\], then I is an ideal of R. (verify additive subgroup, multiplication closure)
+		- Uniqueness of d(x), only one identity?
+		- Lemma 4.5.8. If f(x) ≠ 0, g(x) ≠ 0 are in F\[x\] and f(x)|g(x) and g(x)|f(x), then f(x)=ag(x), where a ∈ F.
+		- Def. The polynomials f(x), g(x) in F\[x\] are said to be relatively prime if their greatest common divisor is 1.
+		- **Theo 4.5.9. If f(x), g(x) ∈ F\[x\] are relatively prime, then a(x)f(x) + b(x)g(x) = 1 for some a(x), b(x) ∈ F\[x\]. Conversely, if a(x)f(x) + b(x)g(x) = 1 for some a(x), b(x) ∈ F\[x\], then f(x) and g(x) are relatively prime.**
+		- Theo 4.5.10. If q(x) and f(x) are relatively prime and if q(x)|f(x)g(x), then q(x)|g(x).
+		- Def. The polynomial p (x) ∈ F\[x\] is **irreducible** if p (x) is of positive degree and given any polynomialf(x) in F\[x\], then either p(x)|f(x) or p(x) is relatively prime to f(x).
+		- Note that the irreducibility of a polynomial depends on the field F. For instance, the polynomial x^2 - 2 is irreducible in Q\[x\], but not in R\[x\].
+		- Corollary to Theo 4.5.10. If p(x) is irreducible in F\[x\] and p(x)|at(x)a2(x)...ak(x), where at(x), ... , ak(x) are in F\[x\], then p(x)|ai(x) for some i.
+		- Theo 4.5.12. Let f(x) ∈ F\[x\] be of positive degree. Then either f(x) is irreducible in F\[x\] or f(x) is the product of irreducible polynomials in F\[x\].
+		- Definition. An integral domain R is a **Euclidean ring** if there is a function d from the nonzero elements of R to the nonnegative integers that satisfies:
+			- (a) For a ≠ 0, b ≠ 0 ∈ R, d(a) <= d(ab).
+			- (b) Given a≠0, b≠0, there exist q and r ∈ R such that b=qa+r, where r=0 or d(r) < d( a).
 	- Polynomials over the Rationals
+		- Lemma 4.6.1. Let f(x) ∈ Q\[x\]; then
+			- f(x)=u/m(a0 x^n + a1 x^n-1 + ...), where u,m,n,a0, ...,an are integers, and the a0, a1,... an have no common factor greater than 1 (i.e., are relatively prime) and (u, m) = 1
+		- Lemma 4.6.2. If R is any ring and I an ideal of R, then I\[x\], the polynomial ring in x over I, is an ideal of R\[x\]. Furthermore, R\[x\]/I\[x\] ~ (R/I)\[x\], the polynomial ring in x over R/I.
+		- Corollary. Let Z be the ring of integers, p a prime number in Z, and I=(p), the ideal of Z generated by p. Then Z\[x\]/I\[x\] ~ Zp\[x\].
+		- **Theo 4.6.3 (Gauss' Lemma). If f(x) ∈ Z\[x\] is a monic polynomial and f(x) = a(x)b(x), where a(x) and b(x) are in Q\[x\]. Then f(x) = a1(x)b1(x), where a1(x), b1(x) are monic polynomials in Z\[x\] and deg a1(x) = deg a(x), deg b1(x) = deg b(x).**
+		- **Theo 4.6.4 (The Eisenstein Criterion)**. Let f(x) = x^n + a1 x^n- 1 + ... + an be a nonconstant polynomial with integer coefficients. Suppose that there is some prime p such that p|a1, p|a2, ... ,p|an, but p^2 does not divide an. Then
+			- f(x) is irreducible in Q\[x\].
 	- Field of Quotients of an Integral Domain
+		- (a,b) ~ (c,d) for (a,b), (c,d) in S, if and only if ad=bc.
+		- Theo 4.7.1. Let D be an integral domain. Then there exists a field F ⊃ D which consists of all fractions alb, as defined above, of elements in D.
+		- The field F is called **the field of quotients** of D. When D = Z, then F is isomorphic to the field Q of rational numbers. Also, if D is the domain of even integers, then F is also the entire field Q.
+		- Lemma 5.6.1. If a ∈ L is a root of the polynomial f(x) ∈ F\[x\] of degree n, where L is an extension field of F, then f(x) factors in L\[x\] as f(x)=(x-a)q(x), where q(x) is of degree n-1 in L\[x\]. Conversely, if f(x)=(x-a)q(x), with f(x), q(x), and a as above, then a is a root of f(x) in L.
+		- Theo 5.6.2. Let f(x) in F\[x\] have degree n; then f(x) can have at most n roots in any extension, K, of F.
+		- Def. If K is an extension of F, then the element a in K is a **root of multiplicity** k > 0 of f(x), where f(x) is in F\[x\], if f(x) = (x-a)^kq(x) for some q(x) in K\[x\] and x-a does not divide q(x) (or, equivalently, where q(a) ≠ 0).
+		- Theo 5.6.3. Let f(x) in F\[x\] be monic of degree n and suppose that K is an extension of F in which f(x) has n roots, counting a root of multiplicity k as k roots. If these roots in K are a1, a2, ... , am each having multiplicity k1, k2,... , km respectively, then f(x) factors in K\[x\] as f(x)=(x-a1)^k1(x-a2)^k2...(x-am)^km
+		- Def. We say that f(x) in F\[x\] splits into linear factors over (or in) K if f(x) has the factorization in K\[x\] given in Theorem 5.6.3.
+		- Theo 5.6.4. Let F be a finite field having q elements. Then x^q - x factors in F\[x\] as
+			- x^q-x = x(x-a1)(x-a2) •••(x-a_q-1), where a1, a2, a_q-1 are the nonzero elements of F.
+		- **Corollary. In Z_p\[x\], the polynomial x^(p-1)-1 factors as**
+			- **x^(p-1)-1=(x-1)(x-2)...(x-(p-1)).**
+		- **Corollary (Wilson's Theorem). If p is a prime, then (p-1)!=-1 mod p.**
+		- Theo 5.6.5. Let F be a field and f(x) a polynomial of positive degree n in F\[x\]. Then there exists a finite extension K of F, with \[K:F\] <= n, in which f(x) has a root.
+		- Theo 5.6.6. Let f(x) ∈ F\[x\] be of degree n. Then there exists an extension K of F of degree at most n! over F such that f(x) has n roots, counting multiplicities, in K. Equivalently, f(x) splits into linear factors over K.
+			- Proof: by induction. n=1, f(x)=α+βx, x=-α/β, K=F, \[K:F\]=1.
+			- Suppose result is true up to k. \[K:F\]=\[K:K1\]\[K1:F\]<=(k+1)k!=(k+1)!
 - 5. Field
-	- Examples of Fields 176
-	- A Brief Excursion into V ector Spaces Field Extensions 191
-	- Finite Extensions 198 Constructibility 201
-	- Roots of Polynomials 207
+	- Examples of Fields
+		- Let's recall that a field F is a commutative ring with unit element 1 such that for every nonzero a ∈ F there is an element a^(-1) ∈ F such that aa^(-1) = 1.
+		- Q, the field of rational numbers.
+		- R, the field of real numbers.
+		- C, the field of complex numbers.
+		- F= {a+bi|a,b ∈ Q} ⊂ C
+		- F= {a+b sqrt(2)|a,b ∈ Q} ⊂ R
+		- Let F be any field and let F\[x\] be the ring of polynomials in x over F. This field of quotients of F\[x\] is denoted by F(x) and is called the field of rational functions in x over F.
+		- Zp , the integers modulo the prime p, is a (finite) field.
+		- If D is any integeral domain, then it has a field of quotients, by Theorem 4.7.1, which consists of all the fractions a/b, where a and b are in D and b ≠ O.
+		- If R is a commutative ring with unit element 1 and M is a maximal ideal of R, then Theorem 4.4.2 tells us that R/M is a field.
+		- Def. A field F is said to have (or, to be of) **characteristic** p ≠ 0 if for some positive integer p, px = 0 for all x ∈ F, and no positive integer smaller than p enjoys this property.
+		- If a field F is not of characteristic p ≠ 0 for any positive integer p, we call it a field of characteristic O. So Q, R, C are fields of characteristic 0, while Z3 is of characteristic 3.
+		- Theorem 5.1.1. The characteristic of a field is either 0 or a prime number.
+		- Corollary. If D is an integral domain, then its characteristic is either 0 or a prime number.
+	- A Brief Excursion into Vector Spaces
+		- Def. A **vector space** V over a field F is an **abelian group** under "+" such that for every a ∈ F and every v ∈ V there is an element av ∈ V, and such that:
+			- 1. a(v1+v2) = a v1 + a v2, for a ∈ F, v1,v2 ∈ V.
+			- 2. (α+β)v = αv+βv, for a,β ∈ F, v ∈ V.
+			- 3. α(βv)= (αβ)v, for α, β ∈ F, v ∈ V.
+			- 4. 1v = v for all v ∈ V, where 1 is the unit element of F.
+		- Def. A **subspace** of a vector space V is a nonempty subset W of V such that aw ∈ W and w1 + w2 ∈ W for all a in F and W, w1, w2 ∈ W.
+		- Lemma 5.2.1. If V is a vector space over the field F, then, for every a ∈ F and every u ∈ V:
+			- (a) αO = 0, where 0 is the zero-element of V.
+			- (b) Ou = 0, where the first 0 is the zero in F.
+			- (c) αu = 0 implies that α = 0 or u = 0.
+			- (d) (-α)u = -(αu).
+		- Def. Let F be a field; then the n-tuple (β1,... , βn), where the βi are in F, and not all of them are 0, is said to be a **nontrivial solution** in F to the system of homogeneous linear equations: alpha β=0.
+		- Theo 5.2.2. If n > r, that is, if the number of variables (unknowns) exceeds the number of equations, then it has a nontrivial solution in F.
+		- Def. Let V be a vector space over F and let v1, v2,... , vn be in V. The element v ∈ V is said to be a **linear combination** of v1, v2, ... , vn if v = a1v1 +...+an vn for some a1,..., an in F.
+		- Def. The vector space V over F is **finite dimensional** over F if V= (v1,...,vn) for some v1,...,vn in V, that is, if V is spanned over F by a finite set of elements.
+		- Def. Let V be a vector space over F; then the elements v1,... , vn in V are said to be **linearly independent** over F if α1v1 + ... + αnvn = 0, where α1,... , αn are in F, implies that α1 = α2 = ... = αn = O.
+		- Lemma 5.2.3. If V is a vector space over F and v1,... , vn in V are linearly independent over F, then every element v ∈ (v1,... , vn) has a unique representation as
+			- v = α1v1 + α2v2 + ... + αnvn, with α1, ..., αn in F.
+		- Def. If V is a finite-dimensional vector space over F, then the **dimension** of V over F, written dim_F(V), is n, the number of elements in a minimal generating set for V over F.
+		- Lemma 5.2.4. If V is finite dimensional over F of dimension n and if the elements v1,... ,vn of V generate V over F, then v1,... , vn are linearly independent over F.
+		- Def. Let V be a finite-dimensional vector space over F; then v1,... ,vn is a **basis** of V over F if the elements v1...,vn span V over F and are linearly independent over F.
+		- Theo 5.2.5. Suppose that V is finite dimensional over F. Then any two bases of V over F have the same number of elements, and this number is exactly dim_F(V).
+		- Theo 5.2.6. Let V be a vector space over F such that dim_F(V) = n. If m > n, then any m elements of V are linearly dependent over F.
+		- Theo 5.2.7. Let V be a vector space over F with dim_F(V) = n. Then any n linearly independent elements of V form a basis of V over F.
+	- Field Extensions
+		- Our attention now turns to a relationship between two fields K and F, where K ⊃ F. We call K an **extension** (or extension field) of F, and call F a **subfield** of K.
+		- We say that K is a **finite extension** of F if, viewed as a vector space over F, dim_F(K) is finite. We shall write dim_F(K) as \[K: F\] and call it the degree of K over F.
+		- Theo 5.3.1. Let L ⊃ K ⊃ F be three fields such that both \[L:K\] and \[K:F\] are finite. Then L is a finite extension of F and \[L:F\] = \[L:K\]\[K:F\].
+		- Corollary. If L ⊃ K ⊃ F are three fields such that \[L:F\] is finite, then \[K:F\] is finite and divides \[L:F\].
+		- Theo 5.3.2. Suppose that K is a finite extension of F of degree n. Then, given any element u in K there exist elements α0, α1,... , αn in F, not all zero, such that
+			- α0 + α1u + ... + αn u^n = 0
+		- Def. If K ⊃ F are fields, then a ∈ K is said to be **algebraic over** F if there exists a polynomial p(x) ≠ 0 in F\[x\] such that p(a) = 0.
+		- If K is an extension of F such that every element of K is algebraic over F, we call K an **algebraic extension** of F. In these terms Theorem 5.3.2 can be restated as: If K is a **finite extension** of F, then K is an **algebraic extension** of F.
+		- An element of K that is **not algebraic over** F is said to be **transcendental** over F.
+		- e.g. e and π: transcendental over Q.
+		- Def. A complex number is said to be an **algebraic number** if it is algebraic over Q.
+		- Theo 5.3.3. Let D be an integral domain with 1 which is a finite-dimensional vector space over a field F. Then D is a field.
+		- Def. The element a in the extension K of F is said to be **algebraic of degree n** if there is a polynomial p(x) in F\[x\] of degree n such that p(a) = 0, and no nonzero polynomial of lower degree in F\[x\] has this property.
+		- Lemma 5.3.4. Let a ∈ K be algebraic over F with minimal polynomial p(x) in F\[x\]. Then p(x) is irreducible in F\[x\].
+		- Def. F(a) is called the field or extension obtained by **adjoining a to F**.
+		- Theo 5.3.5. Let K ⊃ F and suppose that a in K is algebraic over F of degree n. Then F(a), the field obtained by adjoining a to F, is a finite extension of F, and
+			- \[F(a):F\] = n.
+	- Finite Extensions
+		- K ⊃ F, E(K) be the set of all elements in K that are algebraic over F. Certainly, F ⊂ E(K).
+		- Theo 5.4.1. E(K) is a subfield of K.
+			- Proof: show a, b ∈ K algebraic over F, then a±b, ab, a/b are all algebraic over F.
+		- Corollary. If a and b in K are algebraic over F of degrees m and n, respectively, then a±b, ab, and a/b (if b ≠ 0) are algebraic over F of degree at most mn.
+		- Theo 5.4.2. The algebraic numbers form a subfield of C.
+		- Theo 5.4.3. If u in K is algebraic over E(K), then u is in E(K).
+		- There is a famous theorem due to Gauss, often referred to as the **Fundamental Theorem of Algebra**, which asserts (in terms of extension) that the only finite extension of C, the field of complex numbers, is C itself.
+		- The field of algebraic numbers is algebraically closed.
+	- Constructibility
+		- Q1: Can one duplicate a cube using just straight-edge and compass? (By duplicating a cube, we mean doubling its volume.)
+		- Q2: Can one trisect an arbitrary angle using just straight-edge and compass?
+		- 1. If a and b are constructible lengths, then so is a + b.
+		- 2. If a and b are constructible lengths, then so is ab.
+		- 3. If a and b are constructible and b ≠ 0, then a/b is constructible.
+		- Def. The real number a is said to be a **constructible number** if |a|, the absolute value of a, is a constructible length.
+		- **Theo 5.5.1. The constructible numbers form a subfield of the field of real numbers.**
+		- By the **plane of K0** we shall mean the set of all points (a, b) in the real Euclidean plane whose coordinates a and b are in K0. Straight line through (a, b) and (c, d): (y-b)/(x-a) = (b-d)/(a-c), so is of the form ux+vy+w=0, where u, v, and w are in K0.
+		- Given a **circle** whose radius r is in K0 and whose center (a, b) is in the plane of K0, then its equation is (x-a)^2 + (y-b)^2 = r^2, which we see, on expanding , is of the form X^2+y^2+dx+ey+f= 0, where d, e, and f are in K0. The intersection point (c, d) lies in the plane of K1 where \[K1:K0\] = 1 or 2
+		- Intersection of circle and line: let the x coord as s, c^2 + s1 c + s2 = 0, s1, s2 in K0, c = (-s1±sqrt(s1^2-4s2))/2, K1=K0(sqrt(s)). If sqrt(s) ∈ K0, then K1=K0, otherwise \[K1:K0\]=2.
+		- Intersection of two circles: x^2+y^2+dx+ey+f=0, x^2+y^2+gx+hy+k=0, (d-g)x+(e-h)y+(f-k)=O. If the two circles intersect in the real plane, their points of intersection lie in the plane of an extension of Ko of degree 1 or 2.
+		- Contruct a contructable length a, extend \[L1:Q\]= 1 or 2, then extend \[L2:L1\]= 1 or 2. A finite sequence Q= L0 ⊂ L1 ⊂ ...⊂Ln of fields, where each \[Li:Li-1\] = 1 or 2 and where a is in Ln.
+		- \[Q(a):Q\] must **divide a power of 2**, hence \[Q(a):Q\]=2^m for some nonnegative integer m.
+		- Theo 5.5.2. In order that the real number a be constructible, it is necessary that \[Q(a):Q\] be a power of 2. Equivalently, the minimal polynomial of a over Q must have degree a power of 2.
+		- **Theo 5.5.3. It is impossible to duplicate a cube of volume 1 by straight-edge and compass.**
+			- Given a real number b such that b^3 = 2, then its minimal polynomial over 0 is p(x) = x^3 - 2, nonic and irreducible over Q.
+		- Trisect an angle: cos(20) not constructible. cos(3φ)=4cos^3(φ)-3. b=cos(20), let c=2b, then c^3-3c-1=0, irreducible over Q.
+		- **Theo 5.5.4. It is impossible to trisect 60 by straight-edge and compass.**
+		- Lindemann proved in 1882 that π is in fact **transcendental**, so certainly is **not algebraic**.
+	- Roots of Polynomials
+		- f(a) = α0 + α1a +...+ αn a^n
+		- Def. The element a ∈ K is a **root** of the polynomial f(x) ∈ F\[x\] if f(a) = O.
 - 6. Special Topics (Optional)
 	- The Simplicity of An
 	- Finite Fields I
@@ -212,20 +479,20 @@
 	- f is continuous,
 	- the inverse function f^(-1) is continuous (f is an open mapping).
 - **Homotopy** 同伦: if one can be "continuously deformed" into the other, such a deformation being called a homotopy between the two functions;
-	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y such that
+	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x \[0, 1\] to Y from the product of the space X with the unit interval \[0,1\] to Y such that
 		- H(x,0)=f(x)
 		- H(x,1)=g(x)
 - **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
 
 ## Linear Algebra (Tsinghua)
 - Linear space;
-	- Coordinate X: alpha=[b1,b2,...,bn]X
+	- Coordinate X: alpha=\[b1,b2,...,bn\]X
 	- Transition matrix: basis1 A, basis2 B, A=BC, X=CY;
 		- A=BC, C: transition matrix for basis;
 		- Coordinates X,Y for A,B: AX=BCY, X=CY;
-	- Linear Transformation sigma(.):
-		- basis e1, e2, ..., matrix sigma(e1,e2,...)=[e1,e2,...]A
-		- Theorem: sigma(.) for coordinate X under basis (e1,e2,...) is Y=AX; b/c Y=sigma(X)=[e1,e2,...]AX;
+	- Linear Transformation σ(.):
+		- basis e1, e2, ..., matrix σ(e1,e2,...)=\[e1,e2,...\]A
+		- Theorem: σ(.) for coordinate X under basis (e1,e2,...) is Y=AX; b/c Y=σ(X)=\[e1,e2,...\]AX;
 	- **Key**: Basis operation always right-mulitply, b/c it is column operation; coordinates always left multiply, b/c it is row operation;
 
 ## Algebra and Geometry
@@ -238,7 +505,7 @@
 		- well-ordered set: Poset with minimum;
 		- Mathematical induction;
 	- Mapping:
-		- Injection; (x1!=x2, y1!=y2)
+		- Injection; (x1≠x2, y1≠y2)
 		- Surjection; (for any y, there is a x, s.t. f(x)=y)
 		- Bijection; (injection + surjection)
 		- Inverse mapping;
@@ -248,12 +515,12 @@
 	- Linear subspace; linearly dependent;
 	- Basis, dimension, rank;
 	- Coordinate;
-	- Dim(W1) + Dim(W2) = dim(W1+W2) + dim(W1 intersect W2)
+	- Dim(W1) + Dim(W2) = dim(W1+W2) + dim(W1 ∩ W2)
 	- Inner-product space:
 		- Euclid space; Cauchy-Schwarz inequality;
 	- Orthogonal basis
 - Linear mapping;
-	- Image: for all x, image is the set of y=f(x) 
+	- Image: ∀ x, image is the set of y=f(x) 
 	- Kernel: all pre-image of 0
 	- Isomorphism of linear space;
 - Matrix;
@@ -261,7 +528,7 @@
 	- Matrix product: associative, linear, distributive;
 	- Invertible, inverse;
 	- Transpose;
-	- Normal matrix; (equivalence) Exist PAQ=B, iif rank(A)=rank(B);
+	- Normal matrix; (equivalence) ∃ PAQ=B, iif rank(A)=rank(B);
 	- Coordinate transform:
 		- if (b1, b2, ...)=(a1, a2, ...) A, then Y=inv(A) \* X;
 - Polynomial ring:
@@ -300,7 +567,7 @@
 	- f under basis alpha is A, (alpha1,...,alpha_n)=(beta,...)P, then f under basis beta is B=P'AP
 	- Matrix **congruence**: P'AP=B
 	- All symmetric f can be diagonalized;
-	- All antisymmetric f can be divided to [0, 1;-1, 0];
+	- All antisymmetric f can be divided to \[0, 1;-1, 0\];
 	- Witt's theorem;
 - Metric linear space:
 	- Unitary spaces (for complex numbers); (alpha, beta)=alpha beta\*
@@ -324,7 +591,7 @@
 		- Closure: for a, b in G, a.b in G.
 		- Associativity: (a.b).c=a.(b.c)
 		- Identity: e.a=a.e
-		- Inverse: for a in G, exist b, s.t. a.b=b.a=e
+		- Inverse: for a in G, ∃ b, s.t. a.b=b.a=e
 		- Group homomorphism:
 			- G -> H: injective (G, .), (H, \*)
 			- a(g.k) = a(g) \* a(k)
@@ -340,11 +607,11 @@
 		- R is abelian group under +:
 			- Associative: (a+b)+c=a+(b+c)
 			- Commutative: a+b=b+a
-			- Additive identity: Exist 0, s.t., 0+a=a
+			- Additive identity: ∃ 0, s.t., 0+a=a
 			- Additive inverse: -a, s.t. a+(-a)=0
 		- R is monoid under multiplication
 			- Associative: (a.b).c=a.(b.c)
-			- Identity: exist 1, s.t., a.1=1.a=a
+			- Identity: ∃ 1, s.t., a.1=1.a=a
 		- Multiplication is distributive with respect to addition:
 			- a ⋅ (b + c) = (a · b) + (a · c)
 			- (b + c) · a = (b · a) + (c · a)
