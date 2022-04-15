@@ -3,6 +3,9 @@
 ## Good Resources
 - http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
 - https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
+- https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
+- Textbook: Herstein, I. N. Abstract Algebra.
+- Textbook: Abstract Algebra Theory and Applications. Thomas W. Judson
 
 ## Linear Algebra (MIT 18.700)
 - https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/pages/syllabus/
@@ -101,516 +104,24 @@
 		- Theo: det(AB) = det(BA) = (det A)(det B).
 		- Proposition: Suppose that V is an inner-product space. If S ∈ L(V) is an isometry, then |detS| = 1.
 
-## Modern Algebra (MIT 18.703)
-- https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
-- Textbook: Herstein, I. N. Abstract Algebra.
-- Textbook: Abstract Algebra Theory and Applications. Thomas W. Judson
-- 1. Things Familiar and Less Familiar
-	- A Few Preliminary Remarks
-	- Set Theory
-	- Mappings
-	- A(S) (The Set of 1-1 Mappings of S onto Itself)
-	- The Integers
-	- Mathematical Induction
-	- Complex Numbers
-- 2. Groups
-	- Definitions and Examples of Groups
-		- Set A(S) of all 1-1 mappings of S onto itself;
-		- 闭合性，结合律，单位元，逆元存在 (Closure, Associativity, unit, inverse)
-		- Finite group;
-		- Abelian: ab=ba;
-			- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
-			- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg≠gf
-	- Some Simple Remarks
-		- 单位元 逆元唯一；左右消去律成立;
-		- Cayley table (凯雷表), 
-		- inv(inv(a))=a
-		- inv(ab)=inv(b)inv(a)
-	- 子群 Subgroups
-		- Nonempty subset H of a group G;
-		- 循环群 Cyclic subgroup: {a^i} i all integer; (循环子群,包含a的最小群)
-			- **循环群都abelian**; 循环群的子群都循环, 生成员b=a^k, 则阶数n/gcd(n,k)
-			- T = {z ∈ C : |z| = 1}, C的子群，生成员 primitive nth root of unity cis(2π/n).
-		- for a ∈ G, C(a)={g ∈ G|ga=ag}, 中心化子 centralizer;
-		- Z(G)={z ∈ G|zx=xz ∀ x ∈ G}, center;
-		- Groups action 集操作
-		- def. Let X be a set and G be a group. A **(left) action** of G on X is a map G × X → X given by (g, x) -> gx, where
-			- ex=x for all x ∈ X;
-			- (g1g2)x = g1(g2x) for all x ∈ X and all g1,g2 ∈ G.
-		- X: **G-set**
-		- Def. If G acts on a set X and x,y ∈ X, then x is said to be **G-equivalent** to y if there exists a g ∈ G such that gx = y. We write x ~ G y or x ~ y if two elements are G-equivalent. 只要存在g, 使gx=y即可.
-		- Def. If X is a G-set, then each partition of X associated with G-equivalence is called an **orbit** of X under G. We will denote the orbit that contains an element x of X by Ox.
-		- Def. Now suppose that G is a group acting on a set X and let g be an element of G. The **fixed point set** of g in X, denoted by Xg, is the set of all x ∈ X such that gx = x. We can also study the group elements g that fix a given x ∈ X. 
-		- Def. This set is more than a subset of G, it is a subgroup. This subgroup is called the **stabilizer subgroup** or **isotropy subgroup** of x.
-	- Lagrange's Theorem
-		- 阶(order) 元素个数;
-		- 等价关系(Equivalence): 自反 Reflexity， 对称 Symmetry, 传递 Transitivity
-		- H subgroup of G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
-			- a ~ b iff a ∈ Hb={hb|h in H}, Hb: 右陪集 right coset of H in G;
-			- 5条件等价: g1H=g2H; Hg1^(-1)=Hg2^(-1); g1H ⊂ g2H; g2 ∈ g1H; g^(−1)g2 ∈ H.
-			- index: 左陪集个数 \[G:H\]
-			- Theo: 左陪集个数=右陪集个数. (证明:构造一一映射 φ(gH) = Hg^−1)
-		- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax (conjugacy) 共轭
-		- \[a\] the class of a;
-		- Congruence modulo n;
-		- Theo 2.4.1: ~ partisions S into equivalence classes;
-		- **Theo 2.4.2 (Lagrange's Theorem). If G is a finite group and H is a subgroup of G, then the order of H divides the order of G.**
-			- Proof: partition in Ha, |G|=|H|n
-			- **Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;**
-		- **Theo 2.4.3: A group G of prime order is cyclic.**
-			- Proof: 包含a(非e)的子群只能是自身，a是生成员，循环群。
-		- Def: order o(a), least positive integer m, s.t. a^m=e
-		- Theo 2.4.4: If G is finite and a ∈ G, then o(a)| |G| 
-		- Theo 2.4.5: If G is a finite group of order n, then a^n = e ∀ a ∈ G.
-		- Theo 2.4.6: Zn forms a cyclic group under the addition \[a\] + \[b\] = \[a + b\].
-		- Theo 6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
-		- Def: The **Euler φ-function**, φ(n), is defined by φ(1) = 1 and, for n > 1, φ(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
-		- Theo 2.4.7: Un forms an abelian group, under the product \[a\]\[b\] = \[ab\], of order φ(n), where φ(n) is the Euler φ-function.
-		- **Theo 2.4.8 (Euler). If a is an integer relatively prime to n, then a^φ(n) == 1 mod n.**
-		- **Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) ==1 mod p.**
-			- For any integer b, b^p = b mod p.
-	- 同态 Homomorphisms 正规子群 Normal Subgroups
-		- Def: Let G, G' be two groups; then the mapping φ: G -> G' is a **homomorphism** if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
-		- Def: The 同态 φ: G ~ G' is called a **monomorphism** if φ() is 1-1. A monomorphism that is onto is called an 同构 **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
-		- Def: Two groups G and G' are said to be isomorphic if there is an isomorphism of G onto G'.
-		- 同构映射保持: 单位元, 逆元, 元素个数, abelian, cyclic, 子群;
-		- Theo: All cyclic groups of infinite order are isomorphic to Z.
-		- Theo: If G is a cyclic group of order n, then G is isomorphic to Zn.
-		- Corollary: If G is a group of order p, where p is a prime number, then G is isomorphic to Zp.
-		- S3, Z6不同构, S3 nonabelian;
-		- **Theo 2.5.1 (Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S)** 每个群都等价于某种置换.
-		- If φ() is homomorphism of G into G', then:
-			- φ(e)=e'
-			- φ(a^-1)=φ(a)^-1
-		- Def: image of φ, φ(G)={φ(a)|a φ G}.
-		- Def: Ker(φ)={a φ G|φ(a)=e'}, measures the lack of 1-1'ness.
-		- Corollary. If φ is a homomorphism of G into G', then φ is a monomorphism if and only if Ker φ = (e).
-		- Def: The subgroup N of G is said to be a **normal subgroup** of G if a^(-1)Na ∈ N for every a ∈ G. 正规子群
-			- e.g. Abel群的任何子群;
-			- e.g. S3中 H={(1), (123), (132)}
-			- 3条件等价:
-				- The subgroup N is normal in G.
-				- For all g ∈ G, g N g^−1 ⊂ N.
-				- For all g ∈ G, g N g^−1 = N.
-		- Theo: 正规子群等价于任何左陪集也是右陪集 N <| G iff every left coset of N in G is a right coset of N in G.
-		- 单群: simple groups. 没有非平凡正规子群.
-		- Lemma: 任何交错群An可由3-cycle产生;
-			- Proof: 一对对换可有3-cycle产生:
-				- (a,b)(a,b)=1;
-				- (a,b)(c,d)=(a,c,b)(a,c,d)
-				- (a,b)(a,c)=(a,c,b)
-		- **Lemma: N是An正规子群 n ≥ 3. 如果N包含3-cycle, 则N = An.**
-			- Proof: 假定包含(i,j,k) 由正规性
-				- \[(i,j)(a,k)](i,j,a)^2\[(i,j)(a,k)\]^−1 =(i,j,k)
-				- 必包含(i,j,k), 由上一Lemma可生成整个An
-		- Lemma: For n ≥ 5, every nontrivial normal subgroup N of An contains a 3-cycle.
-		- **Theo: 5阶及以上交错群为单群。 The alternating group, An, is simple for n ≥ 5.**
-	- 因子群/商群 Factor Groups (also Quotient group)
-		- let M = {\[a\]|a ∈ G}, where \[a\]={x ∈ G|xa^(-1) ∈ N}=Na.
-			- \[a\]\[b\]=\[ab\]=\[a'b'\]=\[a'\]\[b'\], this product of classes does not depend on the particular representatives we use for the classes.
-		- Theo: 陪集构成群 If N <| G and G/N = {\[a\]|a ∈ G} = {Na|a ∈ G},
-			- then G/N is a group relative to the operation \[a\]\[b\]=\[ab\].
-		- Theo: If N <| G, then there is a homomorphism ψ of G onto G/N such that Ker(ψ), the kernel of ψ, is N.
-		- Theo: If G is a finite group and N <| G, then |G/N|=|G|/|N|.
-		- Theo 2.6.4: If G is a finite abelian group of order |G| and p is a prime that divides |G|, then G has an element of order p.
-		- e.g. G={T_a,b|a≠0, b real}, N={T_1,b|b real} <| G. T_a,b and T_a,0 are in the same left coset of N in G. Identifying T_a,b as T_a,0. G/N multiplication is like nonzero real numbers under multiplication.
-		- e.g. G={real, +}, Z={Z,+} <| G, G/Z as \[0,1\], a circle.
-	- The Homomorphism Theorems
-		- Theo: 核构成正规子群. φ : G → H be a group homomorphism. Then the kernel of φ is a normal subgroup of G.
-		- Theo (First Homomorphism Theorem). 对核的商群同构于映射后的群. Let φ be a homomorphism of G onto G' with kernel K. Then G' ~ G/K, the isomorphism between these being effected by the map 
-			- ψ: G/K to G', defined by ψ(Ka) = φ(a).
-		- Theo (Correspondence Theorem). 映射后的群G'的子群H'的原像H是G的子群 若H'正规则原像正规. Let the map φ: G -> G' be a homomorphism of G onto G' with kernel K. If H' is a subgroup of G' and if
-			- H = {a ∈ G|φ(a) ∈ H'},
-			- then H is a subgroup of G, H ⊃ K and H/K ~ H'. Finally, if H' is subnormal G', then H is subnormal of G.
-		- Theo: (Second Homomorphism Theorem).H是G的子群,N是G的正规子群,则HN为子群,HnN为正规子群. Let H be a subgroup of a group G and N <| G. Then HN = {hn | h ∈ H, n ∈ N} is a subgroup of G, H n N is a normal subgroup of H, and H/(H n N) ~ (HN)/N.
-		- Theo 2.7.4: (Third Homomorphism Theorem). If the map φ: G ~ G' is a homomorphism of G onto G' with kernel K then, if N' <| G' and N = {a ∈ G |φ(a) ∈ N'}, we conclude that G/N ~ G'/N'. Equivalently, G/N ~ (G/K)/(N/K).
-		- Aut(G): 所有automorphism的集合. 构成群, 是置换群的子群, Aut(G) ≤ SG.
-	- Cauchy's Theorem
-		- Extends Theo 2.6.4 to non-abelian group;
-		- **Theo 2.8.2 (Cauchy). If p is a prime and p divides the order of G, then G contains an element of order p.**
-		- Lemma 2.8.3: Let G be a group of order pq, where p, q are primes and p > q. If a ∈ G is of order p and A is the subgroup of G generated by a, then A <| G.
-		- Lemma 2.8.4. If a ∈ G is of order m and b ∈ G is of order n, where m and n are relatively prime and ab == ba, then c == ab is of order mn.
-		- Theo 2.8.5. Let G be a group of order pq, where p, q are primes and p>q. If q is not dividable by p-1, then G must be cyclic.
-	- Direct Products
-		- Def: 外直积; (小群造大群)
-		- Def: 内直积 (大群拆小群) **normal subgroups** N1, N2, ... ,Nn if every a ∈ G has a unique representation in the form a=a1 a2...an where each ai ∈ Ni for i=1,2,...,n.
-			- e.g. U(8) 是{1,3}, {1,5}的内积;
-			- G是H, K的内积, 则G同构于GxH;
-		- Lemma 2.9.2. Let G be a group, M, N normal subgroups of G such that M ∩ N = (e). Then, given m ∈ M and n ∈ N, mn=nm.
-		- Lemma 2.9.3. If G is the internal direct product of its normal subgroups N1, N2,... , Nn, then, for i≠j, Ni ∩ Nj = (e).
-		- Theo 2.9.4. Let G be a group with normal subgroups N1, N2,  ,Nn. Then the mapping ψ(a1, a2, ... , an) = a1a2 ... an is an isomorphism from N1 X N2 X ... X Nn (external direct product) onto G if and only if G is the internal direct product of N1, N2, ••• , Nn.
-	- Finite Abelian Groups (Optional)
-		- **Theo 2.10.3 (Fundamental Theorem on Finite Abelian Groups). A finite abelian group is the direct product of cyclic groups.**
-	- Conjugacy and Sylow's Theorem (Optional)
-		- Def: b = x^(-1) a x, equivalence
-		- Def. If a ∈ G, then C(a), the **centralizer** of a ∈ G, is defined by C(a) == {x ∈ G |xa = ax}. 中心化子: 对某元素a可交换
-		- Lemma 2.11.1. For a ∈ G, C(a) is a subgroup of G.
-		- Def: **index** i_G(C(a)), the **number of right coset** (G finite group).
-		- Theo 2.11.2. Let G be a finite group and a ∈ G; then the number of distinct conjugates of a ∈ G equals the index of C(a) ∈ G.
-		- Def. a group G to be a **p-group** if every element in G has as its order a power of p, p is a prime.
-		- **Theo 2.11.3 (The Class Equation)**. If G is a finite group, then
-			- |G| = ∑i_G(C(a)) = ∑|G|/|C(a)| where the sum runs over one a from each conjugacy class.
-		- Theo 2.11.4. G p-group, then Z(G), the center of G, is not trivial (i.e., there exists an element a ≠ e ∈ G s.t. ax= xa ∀ x ∈ G). 存在不平凡中心
-		- Theo 2.11.5. If G is a group of order p^2, where p is a prime, then G is abelian.
-		- Theo 2.11.6. G p-group, then G contains a normal subgroup of order p^n-1.
-		- **Theo 2.11.7 (First Sylow's Theorem)**. Suppose that G is a group of order p^n m, where p is a prime and p not dividable by m. Then G has a subgroup of order p^n.
-		- Theo (Second Sylow Theorem). Let G be a finite group and p a prime dividing |G|. Then all Sylow p-subgroups of G are conjugate. That is, if P1 and P2 are two Sylow p-subgroups, there exists a g ∈ G such that g P1 g^(−1) = P2.
-		- **Theo (Third Sylow Theorem). Let G be a finite group and let p be a prime dividing the order of G. Then the number of Sylow p-subgroups is congruent to 1 (mod p) and divides |G|.**
-	- 矩阵群:
-		- GL: 所有可逆. SL: 行列式为1.
-		- 正交群: O(n)
-	- 群的结构: 找到所有群的同构群
-		- 有限Abel群: (Fundamental Theorem of Finite Abelian Groups) 所有有限Abel群同构于Z_p^α的外直积, p为质数
-			- Proof: we define a group G to be a p-group if every element in G has as its order a power of p.
-			- Proof: (Lemma) Let G be a finite abelian group of order n. If p is a prime that divides n, then G contains an element of order p.
-			- Proof: (Lemma) A finite abelian group is a p-group if and only if its order is a power of p.
-			- Proof: (Lemma) Let G be a finite abelian group of order n = p^α1 ···p^αk, where where p1,...,pk are distinct primes and α1,α2,...,αk are positive integers. Then G is the internal direct product of subgroups G1, G2, . . . , Gk, where Gi is the subgroup of G consisting of all elements of order pri for some integer r.
-			- Proof: (Lemma) Let G be a finite abelian p-group and suppose that g ∈ G has maximal order. Then G is isomorphic to ⟨g⟩ × H for some subgroup H of G.
-		- Solvable group 可解群:
-			- A **subnormal series** of a group G is a finite sequence of subgroups G = Hn ⊃ Hn−1 ⊃···⊃ H1 ⊃ H0 ={e}, where Hi is a normal subgroup of Hi+1. If each subgroup Hi is normal in G, then the series is called a **normal series**
-			- e.g. Z ⊃ 9Z ⊃ 45Z ⊃ 180Z ⊃ {0},
-			- e.g. **A subnormal series need not be a normal series**. D4 ⊃ {(1), (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)} ⊃ {(1), (1 2)(3 4)} ⊃ {(1)}. subgroup {(1), (1 2)(3 4)} is not normal in D4.
-			- Def. A subnormal (normal) series {Kj} is a **refinement** of a subnormal (normal) series {Hi} if {Hi} ⊂ {Kj}. That is, each Hi is one of the Kj.
-			- Def. A subnormal series {Hi} of a group G is a **composition series** if all the factor groups are simple. (none of the factor groups of the series contains a normal subgroup)
-			- Def. A normal series {Hi} of G is a **principal series** if all the factor groups are simple.
-			- e.g. Z60 ⊃⟨3⟩⊃⟨15⟩⊃⟨30⟩⊃{0}, 对应 Z3, Z5, Z2, Z2
-			- e.g. Sn ⊃ An ⊃ {(1)}
-			- e.g. Not every group has a composition series or a principal series. Suppose that
-				- {0}=H0 ⊂H1 ⊂...⊂Hn−1 ⊂Hn =Z
-				- Then H1 must be of the form kZ for some k ∈ N. In this case H1/H0 ∼= kZ is an infinite cyclic group with many nontrivial proper normal subgroups.
-			- **Theo: (Jordan-Hölder). Any two composition series of G are isomorphic.**
-			- Def. A group G is **solvable** if it has a subnormal series {Hi} such that all of the factor groups Hi+1/Hi are abelian. Solvable groups will play a fundamental role when we study **Galois theory** and the solution of polynomial equations.
-			- e.g. solvable S4 ⊃ A4 ⊃ {(1),(12)(34),(13)(24),(14)(23)} ⊃ {(1)}
-			- e.g. not solvable Sn ⊃ An ⊃ {(1)}
-- 3. The Symmetric Group (对称群)
-	- 1 Preliminaries
-		- Consider only A(S) for S a finite set
-		- 置换群Sn: S有n个元素, A(S) the symmetric group of degree n;
-		- Sn的元素 置换 permutations(right to left).
-	- 2 Cycle Decomposition
-		- Def: σ(i1)=i2, σ(i2)=i3, ..., σ=(i1, i2, ..., ik)
-		- k-cycle and an m-cycle: disjoint if no integer in common;
-		- Lemma 3.2.1. If σ, τ ∈ Sn are disjoint cycles, then στ = στ.
-		- **Theo 3.2.2: 每个置换可化为不相交轮换的积.**
-		- Lemma 3.2.3. If τ ∈ Sn is a k-cycle, then the order of τ is k; that is, τ^j=e, and τ^j≠e, for 0 < j < k
-		- Theo 3.2.4. Let U ∈ Sn have its cycle decomposition into disjoint cycles of length m1 m2, .. , mk. Then the order of σ is the least common multiple of ml, m2, ... , mk.
-		- Theo 3.2.5. 每个置换可化为对换的积.
-		- e.g. rotate a square (1,2,3,4);
-		- e.g. rotate a non-square (1), (14)(23), (12)(34), (13)(24)
-		- e.g. equilateral triangle: S3
-		- e.g. hexagon: (123456), order 12;
-	- 3 Odd and Even Permutations
-		- S3:
-			- f(x1, x2, x3)=(x1 - x2)(x1-x3)(x2-x3)
-			- S3 σ=(1,2,3), σ(f(x))=(x_σ1-x_σ2)(x_σ1-x_σ3)(x_σ2-x_σ3)
-			- τ^2=e
-		- Parity: (-1)^t=(-1)^k, then t and k have the same parity;
-			- The parity of the number of transpositions in such a decomposition of σ might be unique
-		- Def: The permutation σ ∈ Sn is an odd permutation if σ is the product of an odd number of transpositions, and is an even permutation if σ is the product of an even number of transpositions.
-		- Theo 3.3.1. A permutation in Sn is either an odd or an even permutation, but cannot be both.
-		- An 所有偶置换: **交错群 alternating group** of degree n.
-		- Theo 3.3.2. An, the alternating group of degree n, is a **normal subgroup** of Sn.
-		- Theo 3.3.3. For n > 1, An is a normal subgroup of Sn of order n!/2.
-	- Dihedral group 二面体群 Dn;
-		- rigid motion of a n-sided polygon: order 2n;
-		- 包含: r^n=1 s^2=1, **srs=r^-1**
-		- The Motion Group of a Cube: 6x4=24 (某个面朝上4种x6个面)
-			- Theo The group of rigid motions of a cube is S4.
-- 4. Ring Theory
-	- Definitions and Examples
-		- Def: A nonempty set R is said to be a **ring** if in R there are two operations + and . such that:
-			- 加法 Abel群 (closure, abelian, associative)
-			- 乘法: 闭合 结合律 a, b ∈ R, a.b ∈ R, a.(b.c)=(a.b).c
-			- 加乘: 分配律 a.(b+c)=a.b+a.c, (b+c).a=b.a+c.a
-		- A ring with unit, (not always true, e.g. group {0} only without 1.)
-		- a.b=0 iff a=0 or b=0, (not always true), **domain** if satisfied;
-		- 交换环 **commutative rings**, if a.b=b.a
-		- Def: 整环 **integral domain** A commutative ring if a.b = 0 in R implies that a=0 or b=O.
-		- Def: 除环 **division ring** A ring R with **unit**, if for every a≠0 in R there is an element b ∈ R (usually written as a^(-1)) such that a.a^(-1)= a^(-1).a= 1.
-		- 除环不一定可交换, e.g. quaternions;
-		- Def: 域 **field** A ring R, **commutative division ring**.
-		- Z: integral domain;
-		- Q (rational numbers): field;
-		- R: field;
-		- C: field;
-		- Z6: integral domain; commutative ring with unit; not an integral domain, \[2\]\[3\]=\[0\]
-		- Def: **zero-divisor** An element a ≠ 0 in a ring R, if ab = 0 for some b ≠ 0 in R.
-		- Zp, p prime. Zp is a commutative ring with 1, and a finite field.
-		- Def: If R is a ring, then a **subring** of S ⊂ R which is a ring if the operations ab and a + b are just the operations of R applied to the elements a, b ∈ S.
-		- e.g. Q, rational numbers. reduced form: a=m/n, coprime. subset: denorminator not divisible by a fixed prime p.
-		- e.g. R, all real-valued continuous functions. f, g ∈ R, (f+g)(x)=f(x)g(x), (f.g)(x)=f(x)g(x). R: commutative ring, but not integral domain (e.g. two non-zero functions with different support)
-		- e.g. square matrix; ring;
-		- e.g. quaternions:
-			- (a0, a1, a2, a3), i, j, k, ij=k, jk=i, ki=j, i^2=j^2=k^2=-1;
-			- the quaternions form a noncommutative division ring;
-		- **Theo: 有限整环是域**;
-			- Proof: 取非0集 构造映射 用左消去律证明逆总存在.
-		- Def. 特征 **characteristic** 最小的正整数n使得nr=0 (记 r+r+r...=nr.)
-	- Some Simple Results
-		- Lemma 4.2.1. Let R be any ring and let a, b ∈ R. Then
-			- a0 = 0a = 0
-			- a(-b)=(-a)b = -(ab)
-			- (-a)(-b) = ab
-			- If 1 ∈ R, then (-1)a = -a
-		- Lemma 4.2.2. In any ring R, (a+b)^2 = a^2 + b^2 + ab + ba for a, b in R.
-		- Lemma 4.2.3. If R is a system with 1 satisfying all the axioms of a ring, except possibly a+b = b+a for a, b E R, then R is a ring.
-			- Prove: need to show a+b=b+a, distributive law on left and right (a+b)(1+1)=a+b+a+b=a+a+b+b, then b+a=a+b.
-		- Lemma 4.2.4. A Boolean ring is commutative.
-	- 环同态 理想 Ideals, Homomorphisms, and Quotient Rings
-		- Def. 环同态 **homomorphism** 加乘都保 The mapping φ: R -> R' of the ring R into the ring R': 
-			- φ(a + b) = φ(a) + φ(b);
-			- φ(ab) = φ(a)φ(b) ∀ a, b ∈ R.
-		- Def. kernel 核, ker φ = {r ∈ R : φ(r) = 0}.
-		- Def. 理想 **ideal** 加法子群 乘法吸收 Let R be a ring. A nonempty subset I of R if:
-			- I is an **additive subgroup** of R.
-			- Given r ∈ R, a ∈ I, then ra ∈ I and ar ∈ I.
-		- Def. 左理想 右理想 左乘/右乘可吸收 Left ideal: a set L: additive subgroup, r ∈ R, a ∈ L, ra ∈ L. Similarly, right ideal;
-		- Def. 主理想. R 含幺交换环, then an ideal of the form ⟨a⟩ = {ar:r ∈ R} is called a principal ideal.
-		- Lemma 4.3.1. If φ: R ~ R' is a homomorphism, then Ker(φ) is an ideal of R.
-		- K: ideal of R. R/K exists; merely the set of all cosets a+K for a ∈ R.
-		- Theo 4.3.2. Let K be an ideal of R. Then the quotient group R/K as an additive group is a ring under the multiplication (a + K)(b + K) = ab+K. Furthermore, the map φ: R->R/K defined by φ(a)=a+K for a ∈ R is a homomorphism of R onto R/K having K as its kernel. So R/K is a homomorphic image of R.
-			- Def. 因子环 商环 
-		- **Theo 4.3.3 (First Homomorphism Theorem)**. 同态核的原像是理想, 对此理想的商环同构于新环 Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. Then R' ~ R/K; in fact, the mapping ψ: R/K -> R' defined by ψ(a+K) = φ(a) defines an isomorphism of R/K onto R'.
-		- **Theo 4.3.4 (Correspondence Theorem)**. Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R', let I={a ∈ R|φ(a) ∈ I'}. Then I is an ideal of R, I⊃K and I/K~ I'. This sets up a 1-1 correspondence between all the ideals of R' and those ideals of R that contain K.
-		- **Theo 4.3.5 (Second Homomorphism Theorem)**. 子环对理想的商环 Let A be a subring of a ring R and I an ideal of R. Then A+I={a+i|a∈A, i∈I} is a subring of R, I is an ideal of A+I, and (A+I)/I ~ A/(A∩I).
-		- **Theo 4.3.6 (Third Homomorphism Theorem)**. Let the mapping φ:R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R' and I = {a∈R|φ(a)∈I'}, then R/I ~ R'/I'. Equivalently, if K is an ideal of R and I⊃K is an ideal of R, then R/I ~ (R/K)/(I/K).
-		- e.g. Z ring of integers, In (multiples of n) is an ideal of Z. φ(a)=\[a\].
-		- e.g. a field only has the trivial ideals (0) and itself.
-		- e.g. R: ring of rational numbers with denominator not divisble by p (p fixed prime). I: elements in R numerator divisilbe by p; I is an ideal of R, R/I ~ /Zp.
-		- e.g. R: \[0, 1\]上连续实函数, I={f∈R|f(0.5)=0}理想. R/I ~ real field: g(x)=f(x)-f(0.5). α+I, α real. Kernel φ=I
-	- 最大理想 Maximal Ideals
-		- Lemma 4.4.1. Let R be a commutative ring with unit whose only ideals are (0) and itself. Then R is a field.
-		- Def. 最大理想 **maximal ideal** A proper ideal M of R if the only ideals of R that contain M are M itself and R.
-		- **Theo 4.4.2. Let R be a commutative ring with 1, and let M be a maximal ideal of R. Then R/M is a field.** 环/最大理想=域 充分
-		- **Theo 4.4.3. If R is a commutative ring with 1 and M an ideal of R such that R/M is a field, then M is a maximal ideal of R.** 环/最大理想=域 必要
-		- e.g. Z/pZ = Zp是域
-		- Def. 主理想 A proper ideal P in a commutative ring R is called a **prime ideal** if whenever ab ∈ P , then either a∈P or b∈P.
-		- e.g. P = {0, 2, 4, 6, 8, 10} is an ideal in Z12, maximal and prime;
-		- Proposition 16.38 Let R be a commutative ring with identity 1, where 1 ≠ 0. Then P is a prime ideal in R if and only if R/P is an integral domain.
-	- Polynomial Rings 多项式环
-		- Ring of polynomials in x over F: F\[x\], Z\[x\]
-		- Def. degree, Equality, addition, multiplication;
-		- Lemma 4.5.1. F\[x\] 含幺交换
-		- Theo Let R 含幺交换环 and α ∈ R. Then we have a ring homomorphism φα : R\[x\] -> R defined by
-			- φα(p(x)) = p(α) = an α^n +···+ a1α + a0,
-			- where p(x) = an x^n + · · · + a1x + a0.
-			- The map φα : R\[x\] → R is called the **evaluation homomorphism** at α.
-			- Proof: 加法乘法闭合.
-		- Def. If p(x) = a0 + a1x + ... + anx^n and an ≠ 0, then the **degree** of p(x), denoted by degp(x), is n.
-		- Lemma 4.5.2. If p(x), q(x) are nonzero elements of F\[x\], then deg(p(x)q(x)) = degp(x) + deg q(x).
-		- Lemma 4.5.3. If p(x), q(x) ∈ F\[x\] and p(x) + q(x) ≠ 0, then deg(p(x) + q(x)) <= max(degp(x), deg q(x)).
-		- Lemma 4.5.4. F\[x\] is an integral domain.
-		- Theo 4.5.5 (**Division Algorithm**). f(x), g(x) ∈ F\[x\], where g(x) ≠ 0, then
-			- f(x) = q(x)g(x) + r(x),
-			- where q(x), r(x) ∈ F\[x\] and r(x) = 0 or deg r(x) < deg g(x).
-		- Def. f(x) ∈ F\[x\] is a **monic polynomial** if the coefficient of its highest power is 1.
-		- Def. **greatest common divisor**. f(x) and g(x) ∈ F\[x\] (not both 0), d(x) ∈ F\[x\] is a monic polynomial such that:
-			- (a) d(x)|f(x) and d(x)|g(x).
-			- (b) If h(x)|f(x) and h(x)|g(x), then h(x)|d(x).
-			- Uniqueness of d(x), only one identity?
-		- Def. **g(x)|f(x)** f(x), g(x) ∈ F\[x\], g(x)≠O. We say that **g(x) divides f(x)**.
-		- Theo 4.5.7. Given f(x) and g(x) ≠ 0 in F\[x\], then their greatest common divisor d(x) ∈ F\[x\] exists; moreover, d(x) = a(x)f(x) + b(x)g(x) for some a(x), b(x) ∈ F\[x\].
-			- Proof: I be the set of all r(x)f(x)+s(x)g(x) as r(x), s(x) runs freely over F\[x\], then I is an ideal of R. (verify additive subgroup, multiplication closure)
-		- Lemma 4.5.8. If f(x) ≠ 0, g(x) ≠ 0 are in F\[x\] and f(x)|g(x) and g(x)|f(x), then f(x)=ag(x), where a ∈ F.
-		- Def. **relatively prime**. f(x), g(x) ∈ F\[x\], gcd(f(x), g(x))=1.
-		- **Theo 4.5.9. If f(x), g(x) ∈ F\[x\] are relatively prime iff a(x)f(x) + b(x)g(x) = 1 for some a(x), b(x) ∈ F\[x\].**
-		- Theo 4.5.10. If q(x) and f(x) are relatively prime and if q(x)|f(x)g(x), then q(x)|g(x).
-		- Def. 不可约 **irreducible** The polynomial p(x) ∈ F\[x\] is of positive degree and given any polynomial f(x) in F\[x\], then either p(x)|f(x) or p(x) is relatively prime to f(x).
-		- 不可约取决于域F. x^2 - 2 Q\[x\]不可约, R\[x\]可约.
-		- Corollary to Theo 4.5.10. If p(x) is irreducible in F\[x\] and p(x)|at(x)a2(x)...ak(x), where at(x), ... , ak(x) are in F\[x\], then p(x)|ai(x) for some i.
-		- Theo 4.5.12. Let f(x) ∈ F\[x\] be of positive degree. Then either f(x) is irreducible in F\[x\] or f(x) is the product of irreducible polynomials in F\[x\].
-	- 多项式环中的理想
-		- **Theo 4.5.6. If I ≠ (0) is an ideal of F\[x\], then I = {f(x)g(x)|f(x) ∈ F\[x\]};**.
-		- Theo. F是域, then every ideal in F\[x\]主理想.
-		- Theo. F是域,p(x) ∈ F\[x\]. p(x)产生最大理想 iff p(x)不可约.
-			- Proof: p(x)=q(x)r(x), 则理想< q(x) >是更大的理想.
-	- Polynomials over the Rationals
-		- Lemma 4.6.1. Let f(x) ∈ Q\[x\]; then
-			- f(x)=u/m(a0 x^n + a1 x^n-1 + ...), u/m互素整数 a0, a1,... an互素整数.
-		- Lemma 4.6.2. If R is any ring and I an ideal of R, then I\[x\], the polynomial ring in x over I, is an ideal of R\[x\]. Furthermore, R\[x\]/I\[x\] ~ (R/I)\[x\], the polynomial ring in x over R/I.
-		- Corollary. Let Z be the ring of integers, p a prime number in Z, and I=(p), the ideal of Z generated by p. Then Z\[x\]/I\[x\] ~ Zp\[x\].
-		- **Theo 4.6.3 (Gauss' Lemma). f(x) ∈ Z\[x\] monic, f(x) = a(x)b(x), where a(x) and b(x) 有理数域. 则可化为 f(x) = a1(x)b1(x), where a1(x), b1(x) monic polynomials in Z\[x\] and deg a1(x) = deg a(x), deg b1(x) = deg b(x).**
-			- 推论: 整数monic多项式的有理根必为整数根.
-		- **Theo 4.6.4 (The Eisenstein Criterion)**. Let f(x) = x^n + a1 x^n- 1 + ... + an ∈ Z\[x\]. Suppose that there is some prime p such that p|a1, p|a2, ... ,p|an, but p^2 does not divide an. Then
-			- f(x) is irreducible in Q\[x\].
-			- Proof: 假设可分成2有理, 根据Gauss Lemma可分成Z\[x\]. 两项必有一常数项不整除p. 对a1, a2,...不满足.
-	- Field of Quotients of an Integral Domain
-		- (a,b) ~ (c,d) for (a,b), (c,d) in S, if and only if ad=bc.
-		- Theo 4.7.1. Let D be an integral domain. Then there exists a field F ⊃ D which consists of all fractions a|b, as defined above, of elements in D.
-		- Principal Ideal Domains 主理想域
-			- Def. A **unit** in R is an element that has a multiplicative inverse.
-			- Def. Two elements a and b in R are said to be **associates** if there exists a unit u in R such that a = ub.
-			- Def. **ufd** 分解唯一 An integral domain D is a **unique factorization domain**, ufdif D satisfies the following criteria:
-				- 1. Let a∈D such that a≠0 and a is not a unit. Then a can be written as the product of irreducible elements in D.
-				- 2. Let a=p1...pr=q1...qs, where the pi's and the qi's are irreducible. Then r = s and there is a π ∈ Sr such that pi and qπ(j) are associates for j = 1,...,r.
-			- e.g. 不是所有integer domain都是ufd, Z\[sqrt(3)i\]不是. 4=2.2=(1+sqrt(3)i)(1-sqrt(3)i)
-			- Def. **pid**. An integral domain in which every ideal is principal is called a **principal ideal domain**.
-			- Lemma 18.11 Let D be an integral domain and let a, b ∈ D. Then
-				- a|b if and only if ⟨b⟩⊂⟨a⟩.
-				- a and b are associates iff ⟨b⟩ = ⟨a⟩.
-				- a is a unit in D iff ⟨a⟩=D.
-			- Theo: Let D be a pid and ⟨p⟩ be a nonzero ideal in D. Then ⟨p⟩ is a maximal ideal if and only if p is irreducible.
-				- Proof (max-ideal -> irreducible): a|p, then ⟨a⟩ is a bigger ideal.
-				- Proof (irreducible -> max-ideal): ⟨p⟩ ⊂ ⟨a⟩ ⊂ D, a|p, 则a是unit或a p associate.
-			- Lemma. Let D be a pid. Let I1,I2,... be a set of ideals such that I1 ⊂ I2 ⊂ ···. Then there exists an integer N such that In = IN for all n ≥ N.
-				- Proof: pid则有a ∈ D可生成I. 若In包含a, 则n之后都相等.
-			- Def. 交换环满足上述条件 **ascending chain condition** or **ACC**, **Noetherian rings**.
-			- **Theo Every pid is a ufd**.
-			- **Corollary. Let F be a field. Then F\[x\] is a ufd.**
-			- Def. 欧氏环**Euclidean ring** An integral domain R 函数ν: D \ {0} → N that satisfies:
-				- (a) For a ≠ 0, b ≠ 0 ∈ R, ν(a) <= ν(ab).
-				- (b) a, b≠0, there exist q and r ∈ R such that b=qa+r, where r=0 or ν(r) < ν(a).
-				- ν is called a **Euclidean valuation**
-			- e.g. Absolute value on Z is a Euclidean valuation.
-			- e.g. Let F be a field. Then the **degree** of a polynomial in F\[x\] is a Euclidean valuation.
-			- e.g. Z\[i\] = {a + bi : a, b ∈ Z}, a^2 + b^2. 模长不行 因为要保整数.
-			- **Theo 18.21 Every Euclidean domain is a principal ideal domain.**
-				- Proof: I中取b使得ν(b)最小, a=bq+r, 则ν(r)更小或r=0.
-			- Def. **content**, **primitive**. D is uid, D\[x\] p(x)=anx^n +···+a1x+a0.
-				- content: gcd(an, an-1, ..., a0)
-				- primitive: gcd(an, an-1, ..., a0)=1
-			- Theo (Gauss's Lemma). Let D be a **ufd** and let f(x) and g(x) be primitive polynomials in D\[x\]. Then f(x)g(x) is primitive.
-			-  Lemma. Let D be a **ufd**, and let p(x) and q(x) be in D\[x\]. Then the content of p(x)q(x) is equal to the product of the contents of p(x) and q(x).
-			- Corollary. Let D be a ufd and F its field of fractions. A primitive polynomial p(x) in D\[x\] is irreducible in F\[x\] if and only if it is irreducible in D\[x\].
-			- Theo. If D is a ufd, then D\[x\] is a ufd.
-		- The field F is called **the field of quotients** of D. When D = Z, then F is isomorphic to the field Q of rational numbers. Also, if D is the domain of even integers, then F is also the entire field Q.
-		- Lemma 5.6.1. If a ∈ L is a root of the polynomial f(x) ∈ F\[x\] of degree n, where L is an extension field of F, then f(x) factors in L\[x\] as f(x)=(x-a)q(x), where q(x) is of degree n-1 in L\[x\]. Conversely, if f(x)=(x-a)q(x), with f(x), q(x), and a as above, then a is a root of f(x) in L.
-		- Theo 5.6.2. Let f(x) in F\[x\] have degree n; then f(x) can have at most n roots in any extension, K, of F.
-		- Def. If K is an extension of F, then the element a in K is a **root of multiplicity** k > 0 of f(x), where f(x) is in F\[x\], if f(x) = (x-a)^kq(x) for some q(x) in K\[x\] and x-a does not divide q(x) (or, equivalently, where q(a) ≠ 0).
-		- Theo 5.6.3. Let f(x) in F\[x\] be monic of degree n and suppose that K is an extension of F in which f(x) has n roots, counting a root of multiplicity k as k roots. If these roots in K are a1, a2, ... , am each having multiplicity k1, k2,... , km respectively, then f(x) factors in K\[x\] as f(x)=(x-a1)^k1(x-a2)^k2...(x-am)^km
-		- Def. We say that f(x) in F\[x\] splits into linear factors over (or in) K if f(x) has the factorization in K\[x\] given in Theorem 5.6.3.
-		- Theo 5.6.4. Let F be a finite field having q elements. Then x^q - x factors in F\[x\] as
-			- x^q-x = x(x-a1)(x-a2) •••(x-a_q-1), where a1, a2, a_q-1 are the nonzero elements of F.
-		- **Corollary. In Z_p\[x\], the polynomial x^(p-1)-1 factors as**
-			- **x^(p-1)-1=(x-1)(x-2)...(x-(p-1)).**
-		- **Corollary (Wilson's Theorem). If p is a prime, then (p-1)!=-1 mod p.**
-		- Theo 5.6.5. Let F be a field and f(x) a polynomial of positive degree n in F\[x\]. Then there exists a finite extension K of F, with \[K:F\] <= n, in which f(x) has a root.
-		- Theo 5.6.6. Let f(x) ∈ F\[x\] be of degree n. Then there exists an extension K of F of degree at most n! over F such that f(x) has n roots, counting multiplicities, in K. Equivalently, f(x) splits into linear factors over K.
-			- Proof: by induction. n=1, f(x)=α+βx, x=-α/β, K=F, \[K:F\]=1.
-			- Suppose result is true up to k. \[K:F\]=\[K:K1\]\[K1:F\]<=(k+1)k!=(k+1)!
-- 5. Field
-	- Examples of Fields
-		- Let's recall that a field F is a commutative ring with unit element 1 such that for every nonzero a ∈ F there is an element a^(-1) ∈ F such that aa^(-1) = 1.
-		- Q, the field of rational numbers.
-		- R, the field of real numbers.
-		- C, the field of complex numbers.
-		- F= {a+bi|a,b ∈ Q} ⊂ C
-		- F= {a+b sqrt(2)|a,b ∈ Q} ⊂ R
-		- Let F be any field and let F\[x\] be the ring of polynomials in x over F. This field of quotients of F\[x\] is denoted by F(x) and is called the field of rational functions in x over F.
-		- Zp , the integers modulo the prime p, is a (finite) field.
-		- If D is any integeral domain, then it has a field of quotients, by Theorem 4.7.1, which consists of all the fractions a/b, where a and b are in D and b ≠ O.
-		- If R is a commutative ring with unit element 1 and M is a maximal ideal of R, then Theorem 4.4.2 tells us that R/M is a field.
-		- Def. A field F is said to have (or, to be of) **characteristic** p ≠ 0 if for some positive integer p, px = 0 for all x ∈ F, and no positive integer smaller than p enjoys this property.
-		- If a field F is not of characteristic p ≠ 0 for any positive integer p, we call it a field of characteristic O. So Q, R, C are fields of characteristic 0, while Z3 is of characteristic 3.
-		- Theorem 5.1.1. The characteristic of a field is either 0 or a prime number.
-		- Corollary. If D is an integral domain, then its characteristic is either 0 or a prime number.
-	- A Brief Excursion into Vector Spaces
-		- Def. A **vector space** V over a field F: is an "+" **abelian** group with a **scalar product** αv with α ∈ F:
-			- 1. a(v1+v2) = a v1 + a v2, for a ∈ F, v1,v2 ∈ V.
-			- 2. (α+β)v = αv+βv, for a,β ∈ F, v ∈ V.
-			- 3. α(βv)= (αβ)v, for α, β ∈ F, v ∈ V.
-			- 4. 1v = v for all v ∈ V, where 1 is the unit element of F.
-		- Def. A **subspace**: nonempty subset W of V, + and scalar product are still closure.
-		- Lemma 5.2.1. If V is a vector space over the field F, then, for every a ∈ F and every u ∈ V:
-			- (a) αO = 0, where 0 is the zero-element of V.
-			- (b) Ou = 0, where the first 0 is the zero in F.
-			- (c) αu = 0 implies that α = 0 or u = 0.
-			- (d) (-α)u = -(αu).
-		- Def. **nontrivial solution**. F: a field; then the n-tuple (β1,... , βn), where the βi ∈ F, and not all of them are 0, s.t. the system of homogeneous linear equations: alpha β=0.
-		- Theo 5.2.2. If n > r, that is, if the number of variables (unknowns) exceeds the number of equations, then it has a nontrivial solution in F.
-		- Def. **linear combination**. **finite dimensional**. **linearly independent**. **dimension**. **basis**.
-		- Lemma 5.2.3. 线性独立则分解展开唯一.
-		- Lemma 5.2.4. If V is finite dimensional over F of dimension n and if the elements v1,... ,vn of V generate V over F, then v1,... , vn are linearly independent over F.
-		- Theo 5.2.5. Suppose that V is finite dimensional over F. Then any two bases of V over F have the same number of elements, and this number is exactly dim_F(V).
-		- Theo 5.2.6. Let V be a vector space over F such that dim_F(V) = n. If m > n, then any m elements of V are linearly dependent over F.
-		- Theo 5.2.7. Let V be a vector space over F with dim_F(V) = n. Then any n linearly independent elements of V form a basis of V over F.
-	- 域扩张 Field Extensions
-		- Our attention now turns to a relationship between two fields K and F, where K ⊃ F. We call K an **extension** (or extension field) of F, and call F a **subfield** of K.
-		- Def. **finite extension**. dim_F(K) is finite. We shall write dim_F(K) as \[K: F\] and call it the degree of K over F.
-		- Theo 5.3.1. Let L ⊃ K ⊃ F with finite extension, then **\[L:F\] = \[L:K\]\[K:F\]**.
-		- Corollary. If L ⊃ K ⊃ F are three fields such that \[L:F\] is finite, then \[K:F\] is finite and divides \[L:F\].
-		- Theo 5.3.2. Let F be a field and let p(x) be a nonconstant polynomial in F\[x\]. Then there exists an extension field E of F and an element α ∈ E such that p(α) = 0.
-			- Proof. suppose p(x) not reducible E=F\[x\]/⟨p(x)⟩ is the desired field.
-		- Def. **algebraic over**. If K ⊃ F are fields, then a ∈ K s.t. p(x) ≠ 0 in F\[x\] and p(a) = 0.
-		- If K is an extension of F such that every element of K is algebraic over F, we call K an **algebraic extension** of F. In these terms Theorem 5.3.2 can be restated as: If K is a **finite extension** of F, then K is an **algebraic extension** of F.
-		- Def. **transcendental**. An element of K that is **not algebraic over** F.
-		- e.g. e and π: transcendental over Q.
-		- Def. **algebraic number**: A complex number algebraic over Q.
-		- Theo. Let E ⊃ F and α ∈ E. Then α is transcendental over F iff F(α) is isomorphic to F(x), the field of fractions of F\[x\].
-			- Proof: F\[x\] → E be the evaluation homomorphism for α. transcendental不能有非0核 同构.
-		- Theo. Let E ⊃ F and α ∈ E with α algebraic over F. Then there is a unique irreducible monic polynomial p(x) ∈ F\[x\] of smallest degree such that p(α) = 0.
-			- Def. **minimal polynomial for α over F**. The degree of p(x) is the **degree of α** over F.
-		- Theo 5.3.3. Let D be an integral domain with 1 which is a finite-dimensional vector space over a field F. Then D is a field.
-		- Def. The element a in the extension K of F is said to be **algebraic of degree n** if there is a polynomial p(x) in F\[x\] of degree n such that p(a) = 0, and no nonzero polynomial of lower degree in F\[x\] has this property.
-		- Lemma 5.3.4. Let a ∈ K be algebraic over F with minimal polynomial p(x) in F\[x\]. Then p(x) is irreducible in F\[x\].
-		- Def. F(a) is called the field or extension obtained by **adjoining a to F**.
-		- Theo 5.3.5. Let K ⊃ F and suppose that a in K is algebraic over F of degree n. Then F(a), the field obtained by adjoining a to F, is a finite extension of F, and
-			- \[F(a):F\] = n.
-		- Theo Let E = F(α) be a simple extension of F , where α ∈ E is algebraic over F . Suppose that the degree of α over F is n. Then every element β ∈ E can be expressed uniquely in the form
-			- β = b0 + b1α + · · · + bn−1α^(n−1), for bi ∈ F.
-	- Finite Extensions
-		- K ⊃ F, E(K) be the set of all elements in K that are algebraic over F. Certainly, F ⊂ E(K).
-		- Theo 5.4.1. E(K) is a subfield of K.
-			- Proof: show a, b ∈ K algebraic over F, then a±b, ab, a/b are all algebraic over F.
-		- Corollary. If a and b in K are algebraic over F of degrees m and n, respectively, then a±b, ab, and a/b (if b ≠ 0) are algebraic over F of degree at most mn.
-		- Theo 5.4.2. The algebraic numbers form a subfield of C.
-		- Theo 5.4.3. If u in K is algebraic over E(K), then u is in E(K).
-		- There is a famous theorem due to Gauss, often referred to as the **Fundamental Theorem of Algebra**, which asserts (in terms of extension) that the only finite extension of C, the field of complex numbers, is C itself.
-		- The field of algebraic numbers is algebraically closed.
-		- Theo. Every finite extension field E of a field F is an algebraic extension.
-			- Proof: \[E : F\] = n, then 1,α,...,α^n linearly dependent (n+1) items. Let p(α)=an α^n +an−1 α^n−1 +···+a1α+a0 =0. then p(x) satisfies.
-		- Corollary. Let E ⊃ F. If α ∈ E is algebraic over F with minimal polynomial p(x) and β ∈ F(α) with minimal polynomial q(x), then deg q(x) divides deg p(x).
-		- Theo: Let E ⊃ F. Then the following statements are equivalent:
-			- E is a **finite** extension of F.
-			- There exists a finite number of algebraic elements α1,...,αn ∈ E such that E = F(α1,...,αn).
-			- There exists a sequence of fields, E = F(α1,...,αn) ⊃ F(α1,...,αn−1) ⊃ ··· ⊃ F(α1) ⊃ F, where each field F(α1,...,αi) is algebraic over F(α1,...,αi−1).
-	- 分裂域 Splitting field
-		- def. **splitting field** E. Let F be a field and p(x)=a0+a1x+···+anx^n be a nonconstant polynomial in F\[x\]. If there exist elements α1, . . . , αn in E such that E = F(α1,...,αn) and p(x)=(x− α1)(x − α2)...(x − αn).
-		- A polynomial p(x) ∈ F\[x\] **splits** in E if it is the product of linear factors in E\[x\].
-		- e.g. Let p(x) = x^4 + 2x^2 − 8 be in Q\[x\]. Q(√2, i) is a splitting field for p(x).
-		- Theo Let p(x) ∈ F\[x\] be a nonconstant polynomial. Then there exists a splitting field E for p(x).
-	- 几何构造/尺规作图 Constructibility
-		- Q1: Can one duplicate a cube using just straight-edge and compass? (By duplicating a cube, we mean doubling its volume.)
-		- Q2: Can one trisect an arbitrary angle using just straight-edge and compass?
-		- a and b constructible, then so is a + b, ab, a/b (b ≠ 0)
-		- Def. The real number a is said to be a **constructible number** if |a|, the absolute value of a, is a constructible length.
-		- **Theo 5.5.1. The constructible numbers form a subfield of the field of real numbers.**
-		- By the **plane of K0** we shall mean the set of all points (a, b) in the real Euclidean plane whose coordinates a and b are in K0. 直线 (a, b), (c, d): (y-b)/(x-a) = (b-d)/(a-c), so is of the form ux+vy+w=0, where u, v, and w are in K0.
-		- Given a **circle** whose radius r is in K0, center (a, b), then(x-a)^2 + (y-b)^2 = r^2, 形如  X^2+y^2+dx+ey+f= 0. The intersection point (c, d) lies in the plane of K1 where \[K1:K0\] = 1 or 2
-		- 直线圆相交: 形如 F(sqrt(α)). \[K1:K0\]=1 or 2.
-		- 圆圆相交: x^2+y^2+dx+ey+f=0, x^2+y^2+gx+hy+k=0, 直线(d-g)x+(e-h)y+(f-k)=O. \[K1:K0\]=1 or 2
-		- Contruct a contructable length a, extend \[L1:Q\]= 1 or 2, then extend \[L2:L1\]= 1 or 2. A finite sequence Q= L0 ⊂ L1 ⊂ ...⊂Ln of fields, where each \[Li:Li-1\] = 1 or 2 and where a is in Ln.
-		- \[Q(a):Q\] must **divide a power of 2**, hence \[Q(a):Q\]=2^m for some nonnegative integer m. 每次扩张不变or翻倍.
-		- Theo 5.5.2. In order that the real number a be constructible, it is necessary that \[Q(a):Q\] be a power of 2. Equivalently, the minimal polynomial of a over Q must have degree a power of 2.
-		- **Theo 5.5.3. It is impossible to duplicate a cube of volume 1 by straight-edge and compass.**
-			- Given a real number b such that b^3 = 2, then its minimal polynomial over 0 is p(x) = x^3 - 2, nonic and irreducible over Q.
-		- Trisect an angle: cos(20) not constructible. cos(3φ)=4cos^3(φ)-3. b=cos(20), let c=2b, then c^3-3c-1=0, irreducible over Q.
-		- **Theo 5.5.4. It is impossible to trisect 60 by straight-edge and compass.**
-		- Lindemann proved in 1882 that π is in fact **transcendental**, so certainly is **not algebraic**.
-	- Roots of Polynomials
-		- f(a) = α0 + α1a +...+ αn a^n
-		- Def. The element a ∈ K is a **root** of the polynomial f(x) ∈ F\[x\] if f(a) = O.
-	- 有限域
-		- **characteristic**: 最小正整数p, s.t. pα = 0.
-		- If F is a finite field, then the characteristic of F is p, where p is prime.
-		- If F is a finite field of characteristic p, then the order of F is pn for some n ∈ N.
-		- Lemma 22.3 **Freshman's Dream**. Let p be prime and D be an integral domain of characteristic p. Then
-			- a^(p^n) +b^(p^n) =(a+b)^(p^n)
-		- Def. **separable**. A polynomial f(x) ∈ F\[x\] of degree n, if it has n **distinct** roots in the splitting field of f(x).
-		- Lemma 22.5 Let F be a field and f(x) ∈ F\[x\]. Then f(x) is separable iff f(x) and f'(x) are relatively prime.
-		- Theo For every prime p and every positive integer n, there exists a finite field F with p^n elements. Furthermore, any field of order p^n is isomorphic to the splitting field of x^(p^n)−x over Zp.
-			- Proof: let f(x) = x^(p^n) − x, 则zeros构成F的subfield (check a+b, ab, -a闭合)
-			- Proof (converse): field E, 证所有元素满足f(x)=0
-		- Def. **Galois field** The unique finite field with pn elements is called the Galois field of order p^n. We will denote this field by GF(pn).
-		- Theo. Every subfield of the Galois field GF(pn) has pm elements, where m divides n. Conversely, if m | n for m > 0, then there exists a unique subfield of GF(p^n) isomorphic to GF(p^m).
-- 6. Special Topics (Optional)
-	- The Simplicity of An
-	- Finite Fields I
-	- Finite Fields II: Existence
-	- Finite Fields III: Uniqueness
-	- Cyclotomic Polynomials
-	- Liouville's Criterion
-	- The Irrationality of pi
+## 1. Things Familiar and Less Familiar (MIT 18.703)
+- **Diffeomorphism** 微分同胚: an isomorphism of spaces equipped with a differential structure, typically differentiable manifolds;
+- **Homeomorphism, topological isomorphism** 同胚:
+	- f is a bijection (one-to-one and onto)
+	- f is continuous,
+	- the inverse function f^(-1) is continuous (f is an open mapping).
+- **Homotopy** 同伦: if one can be "continuously deformed" into the other, such a deformation being called a homotopy between the two functions;
+	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x \[0, 1\] to Y from the product of the space X with the unit interval \[0,1\] to Y such that
+		- H(x,0)=f(x)
+		- H(x,1)=g(x)
+- **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
+- A Few Preliminary Remarks
+- Set Theory
+- Mappings
+- A(S) (The Set of 1-1 Mappings of S onto Itself)
+- The Integers
+- Mathematical Induction
+- Complex Numbers
 - (AATA Chap-19) Lattices and Boolean Algebras
 	- Lattices
 		- def. **poset**, **Partially Ordered Sets**. reflexive, antisymmetric, transitive.
@@ -622,70 +133,606 @@
 			- The least upper bound of a, b ∈ L is called the **join** of a and b and is denoted by a ∨ b.
 			- The greatest lower bound of a, b ∈ L is called the **meet** of a and b and is denoted by a ∧ b.
 		- Axiom 19.12 **Principle of Duality**. Any statement that is true for all lattices remains true when ≼ is replaced by ≽ and ∨ and ∧ are interchanged throughout the statement.
-- (AATA Chap-23) Galois Theory
-	- Field Automorphisms
-		- Prop: The set of all automorphisms of a field F is a group under composition of functions.
-		- Prop: Let E be a field extension of F. Then the set of all automorphisms of E that fix F elementwise is a group; that is, the set of all automorphisms σ : E → E such that σ(α)=α for all α∈F is a group.
-		- Def. Let field E ⊃ F. The full group of automorphisms of E by **Aut(E)**. We define the **Galois group** of E over F to be the group of automorphisms of E that fix F elementwise:
-			- G(E/F) = {σ ∈ Aut(E): σ(α) = α for all α ∈ F}.
-		- e.g. Complex conjugation;
-		- Prop Let field E ⊃ F and f(x) ∈ F\[x\]. Then any automorphism in G(E/F) defines a permutation of the roots of f(x) that lie in E.
-		- Def. **conjugate**. Let E be an algebraic extension of a field F. Two elements α, β ∈ E over F if they have the **same minimal polynomial**.
-		- e.g. sqrt(2) and -sqrt(2) in Q.
-		- Prop. If α and β are conjugate over F, there exists an isomorphism σ : F (α) → F(β) such that σ is the identity when restricted to F.
-		- Theo Let f(x) be a polynomial in F\[x\] and suppose that E is the splitting field for f(x) over F. If f(x) has no repeated roots, then |G(E/F)| = \[E : F\].
-		- Corollary. Let F be a finite field with a finite extension E such that \[E : F\] = k. Then G(E/F) is cyclic of order k.
-	- Separable Extensions
-		- Let f(x) be an irreducible polynomial over F. If the characteristic of F is 0, then f(x) is separable. If the characteristic of F is p and f(x) ≠ g(x^p) for some g(x) in F\[x\], then f(x) is also separable.
-		- Def. **primitive element**. α ∈ E such that E = F(α)
-		- e.g. Q(sqrt(3), sqrt(5))=Q(sqrt(3)+sqrt(5)), Q(5^(1/3),sqrt(5)i) = Q(5^(1/6)i).
-		- Theo 23.13. **Primitive Element Theorem**. Let E be a finite separable extension of a field F. Then there exists an α ∈ E such that E = F(α).
-	- The Fundamental Theorem
-		- Prop. Let {σi : i ∈ I} ⊂ Aut(F) over field F. Then F{σi} ={a∈F : σi(a)=a for all σi} is a subfield of F. 域内对一些自同构的所有不动点构成子域.
-			- Proof: 对+, -, x, inv()闭合.
-		- Corollary. Let F be a field and let G be a subgroup of Aut(F). Then F_G = {α ∈ F : σ(α) = α for all σ ∈ G} is a subfield.
-		- Prop. Let E be a splitting field over F of a separable polynomial. Then E_G(E/F) = F.
-		- Lemma 23.18 Let G ⊂ Aut(E) be a finite group, let F = E_G. Then \[E:F\] ≤ |G|.
-		- Def. 域的正规扩张. Let E be an algebraic extension of F. If every irreducible polynomial in F\[x\] with a root in E has all of its roots in E, then E is called a **normal extension** of F; that is, every irreducible polynomial in F\[x\] containing a root in E is the product of linear factors in E\[x\].
-		- Theo 23.19. Finite ext E ⊃ F. Then the following statements are equivalent:
-			- E is a finite, normal, separable extension of F.
-			- E is a splitting field over F of a separable polynomial.
-			- F = E_G for some finite group G of automorphisms of E.
-		- Corollary 23.20. Let K ⊃ F s.t. F = K_G for some finite group of automorphisms G of K. Then G = G(K/F).
-		- Theo 23.23 **Fundamental Theorem of Galois Theory**. Let F be a finite field or a field of characteristic zero. If E is a finite normal extension of F with Galois group G(E/F), then the following statements are true.
-			- The map K → G(E/K) is a bijection of subfields K of E containing F with the subgroups of G(E/F).
-			- If F ⊂ K ⊂ E, then \[E : K\] = |G(E/K)| and \[K : F\] = \[G(E/F) : G(E/K)\].
-			- F ⊂ K ⊂ L ⊂ E iff {id} ⊂ G(E/L) ⊂ G(E/K) ⊂ G(E/F).
-			- K is a normal extension of F if and only if G(E/K) is a normal subgroup of G(E/F). In this case, G(K/F) ~ G(E/F) / G(E/K).
-	- Applications
-		- Def. An extension field E of a field F is an **extension by radicals** if there exists a chain of subfields, F = F0 ⊂ F1 ⊂ F2 ⊂···⊂ Fr = E. we have Fi = Fi−1(αi) and αni ∈ Fi−1 for some positive integer ni.
-		- Def. A polynomial f(x) is **solvable by radicals** over F if the splitting field K of f(x) over F is contained in an extension of F by radicals.
-		- We shall prove that a **polynomial is solvable by radicals if its Galois group is solvable**. A group G is solvable if it has a subnormal series {Hi} such that all of the factor groups Hi+1/Hi are abelian.
-		- Lemma 23.28 Let F be a field of characteristic zero and E be the splitting field of x^n−a over F with a ∈ F. Then G(E/F) is a solvable group.
-			- Proof: στ = τσ, i.e. G(E/F) is abelian.
-		- Lemma 23.29 Let F be a field of characteristic zero and let F =F0 ⊂F1 ⊂F2 ⊂···⊂Fr =E, a radical extension of F. Then there exists a normal radical extension F =K0 ⊂K1 ⊂K2 ⊂···⊂Kr =K, such that K that contains E and Ki is a normal extension of Ki−1. 根式拓展序列有正规版.
-		- Theo 23.30 Let f (x) be in F\[x\], where char(F)=0. If f(x) is solvable by radicals, then the Galois group of f(x) over F is solvable.
-			- Proof: 根式拓展正规序列 (23.29), F = F0 ⊂ F1 ⊂ ··· ⊂ Fn = E. 由Theo23.23, G(E/Fi)是G(E/Fi−1)正规子群, {id} ⊂ G(E/Fn−1) ⊂ · · · ⊂ G(E/F1) ⊂ G(E/F). 根式拓展的正规序列 等价于最大域对每一个序列元素做商之后倒排是伽罗华可解群.
-	- Insolvability of the Quintic 五阶不可解
-		- Lemma 23.31 If p is prime, then any subgroup of Sp that contains a transposition and a cycle of length p must be all of Sp.
-		- e.g. f(x) = x^5 − 6x^3 − 27x − 3 (不可约)
-			- 3实根，俩复根, 所有解G(K/Q)是S5. 复根共轭a+bi → a−bi还是解 含有对换; 实根α\[Q(α):Q\]=5, 含5阶循环群. S5无正规子列 不可解.
-		- Theo 23.34 Fundamental Theorem of Algebra. The field of complex numbers is algebraically closed; that is, every polynomial in C\[x\] has a root in C.
 
-## Important Concepts
-- **Homomorphism** 同态:
-	- Two groups s.t. f(a+b)=f(a).f(b), where + . are group operators of the two groups;
-	- Identity element maps to identity;
-- **Diffeomorphism** 微分同胚: an isomorphism of spaces equipped with a differential structure, typically differentiable manifolds;
-- **Homeomorphism, topological isomorphism** 同胚:
-	- f is a bijection (one-to-one and onto)
-	- f is continuous,
-	- the inverse function f^(-1) is continuous (f is an open mapping).
-- **Homotopy** 同伦: if one can be "continuously deformed" into the other, such a deformation being called a homotopy between the two functions;
-	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x \[0, 1\] to Y from the product of the space X with the unit interval \[0,1\] to Y such that
-		- H(x,0)=f(x)
-		- H(x,1)=g(x)
-- **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
+## 2. Groups (MIT 18.703)
+- Definitions and Examples of Groups
+	- Set A(S) of all 1-1 mappings of S onto itself;
+	- 闭合性，结合律，单位元，逆元存在 (Closure, Associativity, unit, inverse)
+	- Finite group;
+	- Abelian: ab=ba;
+		- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
+		- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg≠gf
+	- Def. **Semigroup**: Associative: (a.b).c=a.(b.c)
+		- e.g. 乘法
+	- e.g. 特殊线性群 GL(n, C): invertible. SL(n, C): det(.)=1; Zn 整数加法群;
+- Some Simple Remarks
+	- 单位元/逆元唯一. 左右消去律成立;
+	- Cayley table (凯雷表), 
+	- inv(inv(a))=a
+	- inv(ab)=inv(b)inv(a)
+- 子群 Subgroups
+	- Nonempty subset H of a group G;
+	- Def. 循环群 Cyclic subgroup: {a^i} i all integer; (循环子群,包含a的最小群)
+		- **循环群都abelian**; 循环群的子群都循环, 生成员b=a^k, 则阶数n/gcd(n,k)
+		- T = {z ∈ C : |z| = 1}, C的子群，生成员 primitive nth root of unity cis(2π/n).
+- Groups action 群在集合上操作
+	- def. 左操作 **(left) action** Let X be a set and G be a group. A  of G on X is a map G × X → X given by (g, x) -> gx, where
+		- ex=x for all x ∈ X;
+		- (g1g2)x = g1(g2x) for all x ∈ X and all g1,g2 ∈ G.
+	- 群到Sn的同态: 置换表示; 群到矩阵的表示: 线性表示;
+	- X is called **G-set**.
+	- Def. **G-equivalent** x,y ∈ X, exists g ∈ G such that gx = y. We write x ~ Gy or x ~ y. 只要存在g, 使gx=y即可.
+	- Def. G-轨道 **orbit**: x ∈ X. \[x\]=Gx. 元素变化只能在等价类的轨道内.
+	- Def. 不动点集 **fixed point set** Xg, x ∈ X s.t. gx = x. We can also study the group elements g that fix a given x ∈ X. 
+	- Def. This set is more than a subset of G, it is a subgroup. This subgroup is called the **stabilizer subgroup** or **isotropy subgroup** of x.
+- Lagrange's Theorem
+	- def. 阶(order) 元素个数;
+	- def. 等价关系(Equivalence): 自反 Reflexity， 对称 Symmetry, 传递 Transitivity
+	- H subgroup of G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
+		- a ~ b iff a ∈ Hb={hb|h in H}, Hb: 右陪集 right coset of H in G;
+		- 5条件等价: g1H=g2H; Hg1^(-1)=Hg2^(-1); g1H ⊂ g2H; g2 ∈ g1H; g^(−1)g2 ∈ H.
+		- Def. 指数 index: 左陪集个数 \[G:H\]
+		- Theo: 左陪集个数=右陪集个数. (证明:构造一一映射 φ(gH) = Hg^−1)
+	- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax (conjugacy) 共轭
+	- \[a\] the class of a;
+	- Def. Congruence modulo n;
+	- Theo 2.4.1: ~ partisions S into equivalence classes;
+	- **Theo 2.4.2 (Lagrange's Theorem)**. 群阶数等于子群阶数乘陪集个数. If G is a finite group and H is a subgroup of G, then the order of H divides the order of G. 
+		- Proof: partition in Ha, |G|=|H|n
+		- **Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;**
+	- **Theo 2.4.3: A group G of prime order is cyclic.** 素数阶群都Abel而且循环群. 同构于Zp
+		- Proof: 包含a(非e)的子群只能是自身，a是生成员，循环群
+	- Def: **order** o(a), least positive integer m, s.t. a^m=e
+	- e.g. Nonabelian群至少6阶, i.e., S3.
+	- Theo 2.4.4: If G is finite and a ∈ G, then o(a)| |G| 
+	- Theo 2.4.5: If G is a finite group of order n, then a^n = e ∀ a ∈ G.
+	- Theo 2.4.6: Zn forms a cyclic group under the addition \[a\] + \[b\] = \[a + b\].
+	- Theo 6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
+	- Def: The **Euler φ-function**, φ(n), is defined by φ(1) = 1 and, for n > 1, φ(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
+	- Theo 2.4.7: Un forms an abelian group, under the product \[a\]\[b\] = \[ab\], of order φ(n), where φ(n) is the Euler φ-function.
+	- **Theo 2.4.8 (Euler). If a is an integer relatively prime to n, then a^φ(n) = 1 mod n.**
+	- **Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) =1 mod p.**
+		- For any integer b, b^p = b mod p.
+- 同态 Homomorphisms 正规子群 Normal Subgroups
+	- Def: **homomorphism** 映射后保计算关系. φ: G -> G' if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
+	- Def: **monomorphism** φ: G ~ G' is 1-1. A monomorphism that is onto is called an 同构 **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
+	- Def: **isomorphic** Two groups G and G',  if there is an isomorphism of G onto G'.
+	- 同构映射保持: 单位元, 逆元, 元素个数, abelian, cyclic, 子群;
+	- Theo: 无限阶循环群同构于Z.
+	- Theo: n阶循环群同构于Zn.
+	- Corollary: If G is a group of order p, where p is a prime number, then G is isomorphic to Zp.
+	- S3, Z6不同构, S3 nonabelian;
+	- **Theo 2.5.1 (Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S)** 每个群都等价于某种置换.
+	- If φ() is homomorphism of G into G', 保单位元和逆元
+	- Def: 象**image** of φ, φ(G)={φ(a)|a φ G}.
+	- Def: 核**kernel** Ker(φ)={a ∈ G|φ(a)=e'}, measures the lack of 1-1'ness.
+	- Corollary. If φ is a homomorphism of G into G', then φ is a monomorphism if and only if Ker φ = (e).
+	- Def: 正规子群 **normal subgroup**. The subgroup N of G, a^(-1)Na ∈ N for every a ∈ G. 对所有元素自共轭.
+		- e.g. Abel群的任何子群;
+		- e.g. S3中 H={(1), (123), (132)}
+		- 3条件等价:
+			- The subgroup N is normal in G.
+			- For all g ∈ G, g N g^−1 ⊂ N.
+			- For all g ∈ G, g N g^−1 = N.
+	- Theo: 正规子群等价于任何左陪集也是右陪集 N <| G iff every left coset of N in G is a right coset of N in G.
+	- Def: 单群: simple groups. 没有非平凡正规子群.
+		- e.g. 素数阶循环群Zp.
+	- Lemma: 任何交错群An可由3-cycle产生;
+		- Proof: 一对对换可有3-cycle产生:
+			- (a,b)(a,b)=1;
+			- (a,b)(c,d)=(a,c,b)(a,c,d)
+			- (a,b)(a,c)=(a,c,b)
+	- **Lemma: N是An正规子群 n ≥ 3. 如果N包含3-cycle, 则N = An.**
+		- Proof: 假定包含(i,j,k) 由正规性
+			- \[(i,j)(a,k)](i,j,a)^2\[(i,j)(a,k)\]^−1 =(i,j,k)
+			- 必包含(i,j,k), 由上一Lemma可生成整个An
+	- Lemma: For n ≥ 5, every nontrivial normal subgroup N of An contains a 3-cycle.
+	- **Theo: 5阶及以上交错群为单群。 The alternating group, An, is simple for n ≥ 5.**
+- 因子群/商群 Factor Groups (also Quotient group)
+	- Def. 中心化子 centralizer. for a ∈ G, C(a)={g ∈ G|ga=ag}; 是群;
+		- 群G的关于子群M的正规化子: N_G(M)
+	- Def. 中心 center Z(G)={z ∈ G|zx=xz ∀ x ∈ G}; 集大小反应交换程度;
+	- Theo: 与M共轭子集个数=\[G:N_G(M)\], i.e. G对中心化子M的陪集个数.
+	- Theo: p prime, G: p^n order, then G有不平凡center.
+	- Theo: p prime, p-order, p^2-order群一定Abel.
+	- let M = {\[a\]|a ∈ G}, where \[a\]={x ∈ G|xa^(-1) ∈ N}=Na.
+		- \[a\]\[b\]=\[ab\]=\[a'b'\]=\[a'\]\[b'\], this product of classes does not depend on the particular representatives we use for the classes.
+	- Theo: 陪集构成群 If N <| G and G/N = {\[a\]|a ∈ G} = {Na|a ∈ G},
+		- then G/N is a group relative to the operation \[a\]\[b\]=\[ab\].
+	- Theo: If N <| G, then there is a homomorphism ψ of G onto G/N such that Ker(ψ), the kernel of ψ, is N.
+	- Theo: If G is a finite group and N <| G, then |G/N|=|G|/|N|.
+	- Theo 2.6.4: If G is a finite abelian group of order |G| and p is a prime that divides |G|, then G has an element of order p.
+	- e.g. G={T_a,b|a≠0, b real}, N={T_1,b|b real} <| G. T_a,b and T_a,0 are in the same left coset of N in G. Identifying T_a,b as T_a,0. G/N multiplication is like nonzero real numbers under multiplication.
+	- e.g. G={real, +}, Z={Z,+} <| G, G/Z as \[0,1\], a circle.
+- The Homomorphism Theorems
+	- Theo: 核构成正规子群. φ : G → H be a group homomorphism. Then the kernel of φ is a normal subgroup of G.
+	- Theo (First Homomorphism Theorem). 对核的商群同构于映射后的群. Let φ be a homomorphism of G onto G' with kernel K. Then G' ~ G/K, the isomorphism between these being effected by the map 
+		- ψ: G/K to G', defined by ψ(Ka) = φ(a).
+	- Theo (Correspondence Theorem). 映射后的群G'的子群H'的原像H是G的子群 若H'正规则原像正规. Let the map φ: G -> G' be a homomorphism of G onto G' with kernel K. If H' is a subgroup of G' and if
+		- H = {a ∈ G|φ(a) ∈ H'},
+		- then H is a subgroup of G, H ⊃ K and H/K ~ H'. Finally, if H' is subnormal G', then H is subnormal of G.
+	- Theo: (Second Homomorphism Theorem).H是G的子群,N是G的正规子群,则HN为子群,HnN为正规子群. Let H be a subgroup of a group G and N <| G. Then HN = {hn | h ∈ H, n ∈ N} is a subgroup of G, H n N is a normal subgroup of H, and H/(H n N) ~ (HN)/N.
+	- Theo 2.7.4: (Third Homomorphism Theorem). If the map φ: G ~ G' is a homomorphism of G onto G' with kernel K then, if N' <| G' and N = {a ∈ G |φ(a) ∈ N'}, we conclude that G/N ~ G'/N'. Equivalently, G/N ~ (G/K)/(N/K).
+	- Aut(G): 所有automorphism的集合. 构成群, 是置换群的子群, Aut(G) ≤ SG.
+- Cauchy's Theorem
+	- Extends Theo 2.6.4 to non-abelian group;
+	- **Theo 2.8.2 (Cauchy). If p is a prime and p divides the order of G, then G contains an element of order p.**
+	- Lemma 2.8.3: Let G be a group of order pq, where p, q are primes and p > q. If a ∈ G is of order p and A is the subgroup of G generated by a, then A <| G.
+	- Lemma 2.8.4. If a ∈ G is of order m and b ∈ G is of order n, where m and n are relatively prime and ab = ba, then c = ab is of order mn.
+	- Theo 2.8.5. Let G be a group of order pq, where p, q are primes and p>q. If q is not dividable by p-1, then G must be cyclic.
+- Direct Products
+	- Def: 外直积; (小群造大群)
+	- Def: 内直积 (大群拆小群) **normal subgroups** N1, N2, ... ,Nn if every a ∈ G has a unique representation in the form a=a1 a2...an where each ai ∈ Ni for i=1,2,...,n.
+		- e.g. U(8) 是{1,3}, {1,5}的内积;
+		- G是H, K的内积, 则G同构于GxH;
+	- Lemma 2.9.2. Let G be a group, M, N normal subgroups of G such that M ∩ N = (e). Then, given m ∈ M and n ∈ N, mn=nm.
+	- Lemma 2.9.3. If G is the internal direct product of its normal subgroups N1, N2,... , Nn, then, for i≠j, Ni ∩ Nj = (e).
+	- Theo 2.9.4. Let G be a group with normal subgroups N1, N2,  ,Nn. Then the mapping ψ(a1, a2, ... , an) = a1a2 ... an is an isomorphism from N1 X N2 X ... X Nn (external direct product) onto G if and only if G is the internal direct product of N1, N2,... , Nn.
+- Finite Abelian Groups (Optional)
+	- **Theo 2.10.3 (Fundamental Theorem on Finite Abelian Groups). A finite abelian group is the direct product of cyclic groups.**
+- 希洛夫定理 Conjugacy and Sylow's Theorem (Optional)
+	- Def: b = x^(-1) a x, equivalence
+	- Def. **centralizer** of a ∈ G, is defined by C(a) = {x ∈ G |xa = ax}. 中心化子: 对某元素a可交换
+	- Lemma 2.11.1. For a ∈ G, C(a) is a subgroup of G.
+	- Def: 指数 **index** i_G(C(a)), the **number of right coset** (G finite group).
+	- Theo 2.11.2. Let G be a finite group and a ∈ G; then the number of distinct conjugates of a ∈ G equals the index of C(a) ∈ G.
+	- Def. p-群 **p-group** 所有元素 order p^n, p is a prime.
+	- Def. 希洛夫 p-子群. G群有p^n m个元素. p质数 与m互素. p^n阶子群: 希洛夫 p-子群
+	- **Theo 2.11.3 (The Class Equation)**. If G is a finite group, then
+		- |G| = ∑i_G(C(a)) = ∑|G|/|C(a)| where the sum runs over one a from each conjugacy class.
+	- Theo 2.11.4. G p-group, then Z(G), the center of G, is not trivial (i.e., there exists an element a ≠ e ∈ G s.t. ax= xa ∀ x ∈ G). 存在不平凡中心
+	- Theo 2.11.5. If G is a group of order p^2, where p is a prime, then G is abelian.
+	- Theo 2.11.6. G p-group, then G contains a normal subgroup of order p^n-1.
+	- **Theo 2.11.7 (First Sylow's Theorem)**. 对每个质数p. G的希洛夫p-子群|p^n|存在.
+	- Theo (Second Sylow Theorem). G的希洛夫p-子群彼此共轭. if P1 and P2 are two Sylow p-subgroups, there exists a g ∈ G such that g P1 g^(−1) = P2.
+	- **Theo (Third Sylow Theorem).** G的希洛夫p-子群个数 = 1 mod(p), divides |G|.
+	- Theo. 设P为G的某个希洛夫p-子群, 则G的希洛夫p-子群个数=\[G:N_G(P)\]
+- 矩阵群:
+	- GL: 所有可逆. SL: 行列式为1.
+	- 正交群: O(n)
+- 群的结构: 找到所有群的同构群
+	- 有限Abel群: (Fundamental Theorem of Finite Abelian Groups) 所有有限Abel群同构于Z_p^α的外直积, p为质数
+		- Proof: we define a group G to be a p-group if every element in G has as its order a power of p.
+		- Proof: (Lemma) Let G be a finite abelian group of order n. If p is a prime that divides n, then G contains an element of order p.
+		- Proof: (Lemma) A finite abelian group is a p-group if and only if its order is a power of p.
+		- Proof: (Lemma) Let G be a finite abelian group of order n = p^α1 ···p^αk, where where p1,...,pk are distinct primes and α1,α2,...,αk are positive integers. Then G is the internal direct product of subgroups G1, G2, . . . , Gk, where Gi is the subgroup of G consisting of all elements of order pri for some integer r.
+		- Proof: (Lemma) Let G be a finite abelian p-group and suppose that g ∈ G has maximal order. Then G is isomorphic to ⟨g⟩ × H for some subgroup H of G.
+	- Solvable group 可解群:
+		- Def. 次正规子列 **subnormal series**: G = Hn ⊃ Hn−1 ⊃···⊃ H1 ⊃ H0 ={e}, Hi对Hi+1正规.
+		- Def. 正规子列 **normal series** Hi对G正规.
+		- e.g. Z ⊃ 9Z ⊃ 45Z ⊃ 180Z ⊃ {0},
+		- e.g. **次正规子列未必正规**. D4 ⊃ {(1), (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)} ⊃ {(1), (1 2)(3 4)} ⊃ {(1)}. subgroup {(1), (1 2)(3 4)} is not normal in D4.
+		- Def. A subnormal (normal) series {Kj} is a **refinement** of a subnormal (normal) series {Hi} if {Hi} ⊂ {Kj}. That is, each Hi is one of the Kj.
+		- Def. A subnormal series {Hi} of a group G is a **composition series** if all the factor groups are simple. (none of the factor groups of the series contains a normal subgroup)
+		- Def. A normal series {Hi} of G is a **principal series** if all the factor groups are simple.
+		- e.g. Z60 ⊃⟨3⟩⊃⟨15⟩⊃⟨30⟩⊃{0}, 对应 Z3, Z5, Z2, Z2
+		- e.g. Sn ⊃ An ⊃ {(1)}
+		- e.g. Not every group has a composition series or a principal series. Suppose that
+			- {0}=H0 ⊂H1 ⊂...⊂Hn−1 ⊂Hn =Z
+			- Then H1 must be of the form kZ for some k ∈ N. In this case H1/H0 ∼= kZ is an infinite cyclic group with many nontrivial proper normal subgroups.
+		- **Theo: (Jordan-Hölder). Any two composition series of G are isomorphic.**
+		- Def. A group G is **solvable** if it has a subnormal series {Hi} such that all of the factor groups Hi+1/Hi are abelian. Solvable groups will play a fundamental role when we study **Galois theory** and the solution of polynomial equations.
+		- e.g. solvable S4 ⊃ A4 ⊃ {(1),(12)(34),(13)(24),(14)(23)} ⊃ {(1)}
+		- e.g. not solvable Sn ⊃ An ⊃ {(1)}
+
+## 3. The Symmetric Group (对称群)
+- 1 Preliminaries
+	- Consider only A(S) for S a finite set
+	- def. 对称群(所有置换) Sn: S有n个元素, A(S) the symmetric group of degree n; |Sn|=n!
+	- Sn的元素 置换 permutations(right to left). Sn的子群置换群
+- 2 Cycle Decomposition
+	- Def: σ(i1)=i2, σ(i2)=i3, ..., σ=(i1, i2, ..., ik)
+	- k-cycle and an m-cycle: disjoint if no integer in common;
+	- Lemma 3.2.1. If σ, τ ∈ Sn are disjoint cycles, then στ = στ.
+	- **Theo 3.2.2: 每个置换可化为不相交轮换的积.**
+	- Lemma 3.2.3. If τ ∈ Sn is a k-cycle, then the order of τ is k; that is, τ^j=e, and τ^j≠e, for 0 < j < k
+	- Theo 3.2.4. Let U ∈ Sn have its cycle decomposition into disjoint cycles of length m1 m2, .. , mk. Then the order of σ is the least common multiple of ml, m2, ... , mk.
+	- Theo 3.2.5. 每个置换可化为对换的积.
+	- e.g. rotate a square (1,2,3,4);
+	- e.g. rotate a non-square (1), (14)(23), (12)(34), (13)(24)
+	- e.g. equilateral triangle: S3
+	- e.g. hexagon: (123456), order 12;
+- 3 奇/偶置换Odd and Even Permutations
+	- S3:
+		- f(x1, x2, x3)=(x1 - x2)(x1-x3)(x2-x3)
+		- S3 σ=(1,2,3), σ(f(x))=(x_σ1-x_σ2)(x_σ1-x_σ3)(x_σ2-x_σ3)
+		- τ^2=e
+	- Parity: (-1)^t=(-1)^k, then t and k have the same parity;
+		- The parity of the number of transpositions in such a decomposition of σ might be unique
+	- Def: 奇置换, 偶置换, σ ∈ Sn 由奇/偶数次对换得到的置换.
+	- Theo 3.3.1. A permutation in Sn is either an odd or an even permutation, but cannot be both.
+	- Def. An 所有偶置换: **交错群 alternating group** of degree n.
+	- Theo 3.3.2. An, the alternating group of degree n, is a **normal subgroup** of Sn.
+	- Theo 3.3.3. For n > 1, An is a normal subgroup of Sn of order n!/2.
+	- Def. 型 (Sn的分类). 记轮换个数. e.g. S7的子群(123)(45)记为(2,1,1,0,0,0,0)
+	- Theo. Sn中两置换共轭 iff 他们有相同的型. (对a,b, 可找到c使得 a=cbc^-1)
+	- Theo. n>=5, An是单群.
+		- Proof: 先证正规子群N必包含长度为3的轮换. 分析最小置换.
+		- Case 0: 对换odd不属于An.
+		- Case 1: 4元素形如a=(a1,a2)(a3,a4), 令b=(a3,a4,a5), a1=bab^-1=(a1,a2)(a4,a5)∈N, a a1=b∈N
+		- Case 2: 设N中元素至少一次变5个
+		- Case 2.1: 包含>=4轮换, a=(a1,a2,a3,a4,...), 令b=(a2,a3,a4)∈An, a1=bab^-1∈N, a1^(-1)a最多变4个 与假设矛盾;
+		- Case 2.2: 轮换最大长度3, σ=(a1,a2,a3)(a4,a5,...), b=(a2,a3,a4)∈An, bσb^(-1)σ<=4变动 ∈ N 与假设矛盾;
+		- Case 2.3: 对换的积 σ=(a1,a2)(a3,a4)..., b=(a2,a3,a4)∈An, bσb^(-1)σ<=4变动 ∈ N 与假设矛盾;
+		- 若有1个长度3的轮换, 则所有长度3的轮换 ∈ N. (型相同 共轭)
+		- 所有3轮换生成An. N=An
+- Dihedral group 二面体群 Dn;
+	- rigid motion of a n-sided polygon: order 2n;
+	- 包含: r^n=1 s^2=1, **srs=r^-1**
+	- The Motion Group of a Cube: 6x4=24 (某个面朝上4种x6个面)
+		- Theo The group of rigid motions of a cube is S4.
+
+## 4. Ring Theory
+- Definitions and Examples
+	- Def: **ring** R there are two operations + and . such that:
+		- 加法: Abel群 (closure, abelian, associative)
+		- 乘法: 半群 (闭合 结合律) a, b ∈ R, a.b ∈ R, a.(b.c)=(a.b).c
+		- 加乘分配律: a.(b+c)=a.b+a.c, (b+c).a=b.a+c.a
+	- A ring with unit, (not always true, e.g. group {0} only without 1.)
+	- a.b=0 iff a=0 or b=0, (not always true), **domain** if satisfied;
+	- Def: 交换环 **commutative rings**, a.b=b.a
+	- Def: 整环 **integral domain** A commutative ring if a.b = 0 in R implies that a=0 or b=O.
+	- Def: 除环 **division ring** A ring R with **unit**, if for every a≠0 in R there is an element b ∈ R (usually written as a^(-1)) such that a.a^(-1)= a^(-1).a= 1.
+	- 除环不一定可交换, e.g. 四元数 quaternions;
+	- Def: 域 **field** 可交换除环.
+	- Z: integral domain;
+	- Q/R/C: field;
+	- Aut(Q), Aut(R)只能是自己, Aut(C)可以是共轭等...
+	- Z6: integral domain; commutative ring with unit; not an integral domain, \[2\]\[3\]=\[0\]
+	- Def: **zero-divisor** An element a ≠ 0 in a ring R, if ab = 0 for some b ≠ 0 in R.
+	- Zp, p prime. Zp is a commutative ring with 1, and a finite field.
+	- Def: 子环 **subring** R ring, S ⊂ R 对加乘闭合.
+	- e.g. R, all real-valued continuous functions. f, g ∈ R, (f+g)(x)=f(x)g(x), (f.g)(x)=f(x)g(x). R: commutative ring, but not integral domain (e.g. two non-zero functions with different support)
+	- e.g. square matrix; ring;
+	- e.g. 四元数 quaternions:
+		- (a0, a1, a2, a3), i, j, k, ij=k, jk=i, ki=j, i^2=j^2=k^2=-1;
+		- the quaternions form a noncommutative division ring;
+	- **Theo: 有限整环是域**;
+		- Proof: 取非0集 构造映射 用左消去律证明逆总存在.
+	- Def. 特征 **characteristic** 最小的正整数n使得nr=0 (记 r+r+r...=nr.) 否则特征为0
+- Some Simple Results
+	- Lemma 4.2.1. Let R be any ring and let a, b ∈ R. Then
+		- a0 = 0a = 0
+		- a(-b)=(-a)b = -(ab)
+		- (-a)(-b) = ab
+		- If 1 ∈ R, then (-1)a = -a
+	- Lemma 4.2.2. In any ring R, (a+b)^2 = a^2 + b^2 + ab + ba for a, b in R.
+	- Lemma 4.2.3. If R is a system with 1 satisfying all the axioms of a ring, except possibly a+b = b+a for a, b E R, then R is a ring.
+		- Prove: need to show a+b=b+a, distributive law on left and right (a+b)(1+1)=a+b+a+b=a+a+b+b, then b+a=a+b.
+	- Lemma 4.2.4. A Boolean ring is commutative.
+- 环同态 理想 Ideals, Homomorphisms, and Quotient Rings
+	- Def. 环同态 **homomorphism** 加乘都保 The mapping φ: R -> R' of the ring R into the ring R': 
+		- φ(a + b) = φ(a) + φ(b);
+		- φ(ab) = φ(a)φ(b) ∀ a, b ∈ R.
+	- Def. kernel 核, ker φ = {r ∈ R : φ(r) = 0}.
+	- Theo. 子环条件. I是R子环, R/I对加法商群, 保乘法 iff r ∈ R, a ∈ I, then ra ∈ I and ar ∈ I.
+	- Def. 理想 **ideal** 加法子群 乘法吸收 Let R be a ring. A nonempty subset I of R if:
+		- I is an **additive subgroup** of R.
+		- Given r ∈ R, a ∈ I, then ra ∈ I and ar ∈ I.
+	- Def. 左理想 右理想 左乘/右乘可吸收 Left ideal: a set L: additive subgroup, r ∈ R, a ∈ L, ra ∈ L. Similarly, right ideal;
+	- Def. 主理想. R 含幺交换环, then an ideal of the form ⟨a⟩ = {ar:r ∈ R} is called a principal ideal.
+	- Lemma 4.3.1. If φ: R ~ R' is a homomorphism, then Ker(φ) is an ideal of R.
+	- K: ideal of R. R/K exists; merely the set of all cosets a+K for a ∈ R.
+	- Theo 4.3.2. K为R的理想. 商群R/K加法群是环, 保乘法(a + K)(b + K) = ab+K. Furthermore, the map φ: R->R/K defined by φ(a)=a+K for a ∈ R is a homomorphism of R onto R/K having K as its kernel. So R/K is a homomorphic image of R.
+		- Def. 因子环 商环 
+	- **Theo 4.3.3**. 第一同构定理. R到R'环同态的核K是R中理想, 商环R/K同构于r+ker(φ).
+		- Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. Then R' ~ R/K; in fact, the mapping ψ: R/K -> R' defined by ψ(a+K) = φ(a) defines an isomorphism of R/K onto R'.
+	- **Theo 4.3.4 (Correspondence Theorem)**. Let the mapping φ: R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R', let I={a ∈ R|φ(a) ∈ I'}. Then I is an ideal of R, I⊃K and I/K~ I'. This sets up a 1-1 correspondence between all the ideals of R' and those ideals of R that contain K.
+	- **Theo 4.3.5**. 第二同构定理. I, J是R理想. I/(I∩J) ~ (I+J)/J
+		- Let A be a subring of a ring R and I an ideal of R. Then A+I={a+i|a∈A, i∈I} is a subring of R, I is an ideal of A+I, and (A+I)/I ~ A/(A∩I).
+	- **Theo 4.3.6**. 第三同构定理. I, J是R理想. I⊂J, (R/I)/(J/I) ~ R/J.
+		- Let the mapping φ:R -> R' be a homomorphism of R onto R' with kernel K. If I' is an ideal of R' and I = {a∈R|φ(a)∈I'}, then R/I ~ R'/I'. Equivalently, if K is an ideal of R and I⊃K is an ideal of R, then R/I ~ (R/K)/(I/K).
+	- e.g. Z ring of integers, In (multiples of n) is an ideal of Z. φ(a)=\[a\].
+	- e.g. a field only has the trivial ideals (0) and itself.
+	- e.g. R: ring of rational numbers with denominator not divisble by p (p fixed prime). I: elements in R numerator divisilbe by p; I is an ideal of R, R/I ~ /Zp.
+	- e.g. R: \[0, 1\]上连续实函数, I={f∈R|f(0.5)=0}理想. R/I ~ real field: g(x)=f(x)-f(0.5). α+I, α real. Kernel φ=I
+- 最大理想 Maximal Ideals
+	- Lemma 4.4.1. Let R be a commutative ring with unit whose only ideals are (0) and itself. Then R is a field.
+	- Def. 最大理想 **maximal ideal** 包含理想M的理想只有M和R.
+	- **Theo 4.4.2. Let R be a commutative ring with 1, and let M be a maximal ideal of R. Then R/M is a field.** 环/最大理想=域 充分
+	- **Theo 4.4.3. If R is a commutative ring with 1 and M an ideal of R such that R/M is a field, then M is a maximal ideal of R.** 环/最大理想=域 必要
+	- e.g. Z/pZ = Zp是域
+	- Def. 主理想 A proper ideal P in a commutative ring R is called a **prime ideal** if whenever ab ∈ P , then either a∈P or b∈P.
+	- e.g. P = {0, 2, 4, 6, 8, 10} is an ideal in Z12, maximal and prime;
+	- Proposition 16.38 Let R be a commutative ring with identity 1, where 1 ≠ 0. Then P is a prime ideal in R if and only if R/P is an integral domain.
+- Polynomial Rings 多项式环
+	- Ring of polynomials in x over F: F\[x\], Z\[x\]
+	- Def. degree, Equality, addition, multiplication;
+	- Lemma 4.5.1. F\[x\] 含幺交换
+	- Theo Let R 含幺交换环 and α ∈ R. Then we have a ring homomorphism φα : R\[x\] -> R defined by
+		- φα(p(x)) = p(α) = an α^n +···+ a1α + a0,
+		- where p(x) = an x^n + · · · + a1x + a0.
+		- The map φα : R\[x\] → R is called the **evaluation homomorphism** at α.
+		- Proof: 加法乘法闭合.
+	- Def. If p(x) = a0 + a1x + ... + anx^n and an ≠ 0, then the **degree** of p(x), denoted by degp(x), is n.
+	- Lemma 4.5.2. If p(x), q(x) are nonzero elements of F\[x\], then deg(p(x)q(x)) = degp(x) + deg q(x).
+	- Lemma 4.5.3. If p(x), q(x) ∈ F\[x\] and p(x) + q(x) ≠ 0, then deg(p(x) + q(x)) <= max(degp(x), deg q(x)).
+	- Lemma 4.5.4. F\[x\] is an integral domain.
+	- Theo 4.5.5 余数定理 Division Algorithm. f(x), g(x) ∈ F\[x\], where g(x) ≠ 0, then
+		- f(x) = q(x)g(x) + r(x),
+		- where q(x), r(x) ∈ F\[x\] and r(x) = 0 or deg r(x) < deg g(x).
+	- Def. **monic polynomial**. f(x) ∈ F\[x\], the coefficient of its highest power is 1.
+	- Def. **greatest common divisor**. f(x) and g(x) ∈ F\[x\] (not both 0), d(x) ∈ F\[x\] is a monic polynomial such that:
+		- (a) d(x)|f(x) and d(x)|g(x).
+		- (b) If h(x)|f(x) and h(x)|g(x), then h(x)|d(x).
+		- Uniqueness of d(x), only one identity?
+	- Def. **g(x)|f(x)** f(x), g(x) ∈ F\[x\], g(x)≠O. We say that **g(x) divides f(x)**.
+	- Theo 4.5.7. Given f(x) and g(x) ≠ 0 in F\[x\], then their greatest common divisor d(x) ∈ F\[x\] exists; moreover, d(x) = a(x)f(x) + b(x)g(x) for some a(x), b(x) ∈ F\[x\].
+		- Proof: I be the set of all r(x)f(x)+s(x)g(x) as r(x), s(x) runs freely over F\[x\], then I is an ideal of R. (verify additive subgroup, multiplication closure)
+	- Lemma 4.5.8. If f(x) ≠ 0, g(x) ≠ 0 are in F\[x\] and f(x)|g(x) and g(x)|f(x), then f(x)=ag(x), where a ∈ F.
+	- Def. **relatively prime**. f(x), g(x) ∈ F\[x\], gcd(f(x), g(x))=1.
+	- **Theo 4.5.9. If f(x), g(x) ∈ F\[x\] are relatively prime iff a(x)f(x) + b(x)g(x) = 1 for some a(x), b(x) ∈ F\[x\].**
+	- Theo 4.5.10. If q(x) and f(x) are relatively prime and if q(x)|f(x)g(x), then q(x)|g(x).
+	- Def. 不可约 **irreducible** The polynomial p(x) ∈ F\[x\] is of positive degree and given any polynomial f(x) in F\[x\], then either p(x)|f(x) or p(x) is relatively prime to f(x).
+	- 不可约取决于域F. x^2 - 2 Q\[x\]不可约, R\[x\]可约.
+	- Corollary to Theo 4.5.10. If p(x) is irreducible in F\[x\] and p(x)|at(x)a2(x)...ak(x), where at(x), ... , ak(x) are in F\[x\], then p(x)|ai(x) for some i.
+	- Theo 4.5.12. Let f(x) ∈ F\[x\] be of positive degree. Then either f(x) is irreducible in F\[x\] or f(x) is the product of irreducible polynomials in F\[x\].
+- 多项式环中的理想
+	- **Theo 4.5.6. If I ≠ (0) is an ideal of F\[x\], then I = {f(x)g(x)|f(x) ∈ F\[x\]};**.
+	- Theo. F是域, then every ideal in F\[x\]主理想.
+	- Theo. F是域,p(x) ∈ F\[x\]. p(x)产生最大理想 iff p(x)不可约.
+		- Proof: p(x)=q(x)r(x), 则理想< q(x) >是更大的理想.
+- Polynomials over the Rationals
+	- Lemma 4.6.1. Let f(x) ∈ Q\[x\]; then
+		- f(x)=u/m(a0 x^n + a1 x^n-1 + ...), u/m互素整数 a0, a1,... an互素整数.
+	- Lemma 4.6.2. If R is any ring and I an ideal of R, then I\[x\], the polynomial ring in x over I, is an ideal of R\[x\]. Furthermore, R\[x\]/I\[x\] ~ (R/I)\[x\], the polynomial ring in x over R/I.
+	- Corollary. Let Z be the ring of integers, p a prime number in Z, and I=(p), the ideal of Z generated by p. Then Z\[x\]/I\[x\] ~ Zp\[x\].
+	- **Theo 4.6.3 (Gauss' Lemma). f(x) ∈ Z\[x\] monic, f(x) = a(x)b(x), where a(x) and b(x) 有理数域. 则可化为 f(x) = a1(x)b1(x), where a1(x), b1(x) monic polynomials in Z\[x\] and deg a1(x) = deg a(x), deg b1(x) = deg b(x).**
+		- 推论: 整数monic多项式的有理根必为整数根.
+	- **Theo 4.6.4 (The Eisenstein Criterion)**. Let f(x) = x^n + a1 x^n- 1 + ... + an ∈ Z\[x\]. Suppose that there is some prime p such that p|a1, p|a2, ... ,p|an, but p^2 does not divide an. Then
+		- f(x) is irreducible in Q\[x\].
+		- Proof: 假设可分成2有理, 根据Gauss Lemma可分成Z\[x\]. 两项必有一常数项不整除p. 对a1, a2,...不满足.
+- 整环的商域 Field of Quotients of an Integral Domain
+	- (a,b) ~ (c,d) for (a,b), (c,d) in S, if and only if ad=bc.
+	- Theo. 如上的(a,b)对, b≠0是域.
+	- Theo 4.7.1. Let D be an integral domain. Then there exists a field F ⊃ D which consists of all fractions a|b, as defined above, of elements in D.
+	- Principal Ideal Domains 主理想域
+		- Def. A **unit** in R is an element that has a multiplicative inverse.
+		- Def. **associates**, a, b ∈ R, 存在unit u ∈ R s.t. a = ub.
+		- Def. **unique factorization domain, ufd** 分解唯一. 整环D是ufd如果满足:
+			- 1. Let a∈D such that a≠0 and a is not a unit. Then a can be written as the product of irreducible elements in D.
+			- 2. Let a=p1...pr=q1...qs, where the pi's and the qi's are irreducible. Then r = s and there is a π ∈ Sr such that pi and qπ(j) are associates for j = 1,...,r.
+		- e.g. 不是所有integer domain都是ufd, Z\[sqrt(3)i\]不是. 4=2.2=(1+sqrt(3)i)(1-sqrt(3)i)
+		- Def. 主理想整环 **principal ideal domain, pid**. An integral domain in which every ideal is principal.
+		- Lemma 18.11 Let D be an integral domain and let a, b ∈ D. Then
+			- a|b if and only if ⟨b⟩⊂⟨a⟩.
+			- a and b are associates iff ⟨b⟩ = ⟨a⟩.
+			- a is a unit in D iff ⟨a⟩=D.
+		- Theo: Let D be a pid and ⟨p⟩ be a nonzero ideal in D. Then ⟨p⟩ is a maximal ideal if and only if p is irreducible.
+			- Proof (max-ideal -> irreducible): a|p, then ⟨a⟩ is a bigger ideal.
+			- Proof (irreducible -> max-ideal): ⟨p⟩ ⊂ ⟨a⟩ ⊂ D, a|p, 则a是unit或a p associate.
+		- Lemma. Let D be a pid. Let I1,I2,... be a set of ideals such that I1 ⊂ I2 ⊂ ···. Then there exists an integer N such that In = IN for all n ≥ N.
+			- Proof: pid则有a ∈ D可生成I. 若In包含a, 则n之后都相等.
+		- Def. 交换环满足上述条件 **ascending chain condition** or **ACC**, **Noetherian rings**.
+		- **Theo Every pid is a ufd**.
+		- **Corollary. Let F be a field. Then F\[x\] is a ufd.**
+		- Def. 欧氏环 **ED, Euclidean ring** An integral domain R 函数ν: D \ {0} → N that satisfies:
+			- (a) For a ≠ 0, b ≠ 0 ∈ R, ν(a) <= ν(ab).
+			- (b) a, b≠0, there exist q and r ∈ R such that b=qa+r, where r=0 or ν(r) < ν(a).
+			- ν is called a **Euclidean valuation**
+		- e.g. Absolute value on Z is a Euclidean valuation.
+		- e.g. Let F be a field. Then the **degree** of a polynomial in F\[x\] is a Euclidean valuation.
+		- e.g. Z\[i\] = {a + bi : a, b ∈ Z}, a^2 + b^2. 模长不行 因为要保整数.
+		- **Theo 18.21 Every Euclidean domain is a pid.**
+			- Proof: I中取b使得ν(b)最小, a=bq+r, 则ν(r)更小或r=0.
+		- Def. 容量 **content**, 本原多项式**primitive**. D is ufd, D\[x\] p(x)=anx^n +···+a1x+a0.
+			- content: gcd(an, an-1, ..., a0)
+			- primitive: gcd(an, an-1, ..., a0)=1
+		- Theo (Gauss's Lemma). Let D be a **ufd** and let f(x) and g(x) be primitive polynomials in D\[x\]. Then f(x)g(x) is primitive.
+		- Lemma. Let D be a **ufd**, and let p(x) and q(x) be in D\[x\]. Then the content of p(x)q(x) is equal to the product of the contents of p(x) and q(x).
+		- Corollary. Let D be a ufd and F its field of fractions. A primitive polynomial p(x) in D\[x\] is irreducible in F\[x\] if and only if it is irreducible in D\[x\].
+		- Theo. If D is a ufd, then D\[x\] is a ufd.
+	- The field F is called **the field of quotients** of D. When D = Z, then F is isomorphic to the field Q of rational numbers. Also, if D is the domain of even integers, then F is also the entire field Q.
+	- Lemma 5.6.1. If a ∈ L is a root of the polynomial f(x) ∈ F\[x\] of degree n, where L is an extension field of F, then f(x) factors in L\[x\] as f(x)=(x-a)q(x), where q(x) is of degree n-1 in L\[x\]. Conversely, if f(x)=(x-a)q(x), with f(x), q(x), and a as above, then a is a root of f(x) in L.
+	- Theo 5.6.2. Let f(x) in F\[x\] have degree n; then f(x) can have at most n roots in any extension, K, of F.
+	- Def. If K is an extension of F, then the element a in K is a **root of multiplicity** k > 0 of f(x), where f(x) is in F\[x\], if f(x) = (x-a)^kq(x) for some q(x) in K\[x\] and x-a does not divide q(x) (or, equivalently, where q(a) ≠ 0).
+	- Theo 5.6.3. Let f(x) in F\[x\] be monic of degree n and suppose that K is an extension of F in which f(x) has n roots, counting a root of multiplicity k as k roots. If these roots in K are a1, a2, ... , am each having multiplicity k1, k2,... , km respectively, then f(x) factors in K\[x\] as f(x)=(x-a1)^k1(x-a2)^k2...(x-am)^km
+	- Def. We say that f(x) in F\[x\] splits into linear factors over (or in) K if f(x) has the factorization in K\[x\] given in Theorem 5.6.3.
+	- Theo 5.6.4. Let F be a finite field having q elements. Then x^q - x factors in F\[x\] as
+		- x^q-x = x(x-a1)(x-a2) •••(x-a_q-1), where a1, a2, a_q-1 are the nonzero elements of F.
+	- **Corollary. In Z_p\[x\], the polynomial x^(p-1)-1 factors as**
+		- **x^(p-1)-1=(x-1)(x-2)...(x-(p-1)).**
+	- **Corollary (Wilson's Theorem). If p is a prime, then (p-1)!=-1 mod p.**
+	- Theo 5.6.5. Let F be a field and f(x) a polynomial of positive degree n in F\[x\]. Then there exists a finite extension K of F, with \[K:F\] <= n, in which f(x) has a root.
+	- Theo 5.6.6. Let f(x) ∈ F\[x\] be of degree n. Then there exists an extension K of F of degree at most n! over F such that f(x) has n roots, counting multiplicities, in K. Equivalently, f(x) splits into linear factors over K.
+		- Proof: by induction. n=1, f(x)=α+βx, x=-α/β, K=F, \[K:F\]=1.
+		- Suppose result is true up to k. \[K:F\]=\[K:K1\]\[K1:F\]<=(k+1)k!=(k+1)!
+
+## 5. Field
+- Examples of Fields
+	- Let's recall that a field F is a commutative ring with unit element 1 such that for every nonzero a ∈ F there is an element a^(-1) ∈ F such that aa^(-1) = 1.
+	- Q, R, C;
+	- F= {a+bi|a,b ∈ Q} ⊂ C
+	- F= {a+b sqrt(2)|a,b ∈ Q} ⊂ R
+	- Let F be any field and let F\[x\] be the ring of polynomials in x over F. This field of quotients of F\[x\] is denoted by F(x) and is called the field of rational functions in x over F.
+	- Zp , the integers modulo the prime p, is a (finite) field.
+	- If D is any integeral domain, then it has a field of quotients, by Theorem 4.7.1, which consists of all the fractions a/b, where a and b are in D and b ≠ O.
+	- R 含幺交换环, M 最大理想, then Theorem 4.4.2 tells us that R/M is a field.
+	- Def. 特征**characteristic** A field F, p ≠ 0 正整数 p, px = 0 for all x ∈ F.
+	- No such positive integer p: **characteristic O**. e.g. Q, R, C: Char0, while Z3: Char3.
+	- Theorem 5.1.1. The characteristic of a field is either 0 or a prime number.
+	- Corollary. If D is an integral domain, then its characteristic is either 0 or a prime number.
+- A Brief Excursion into Vector Spaces
+	- Def. A **vector space** V over a field F: is an "+" **abelian** group with a **scalar product** αv with α ∈ F:
+		- 1. a(v1+v2) = a v1 + a v2, for a ∈ F, v1,v2 ∈ V.
+		- 2. (α+β)v = αv+βv, for a,β ∈ F, v ∈ V.
+		- 3. α(βv)= (αβ)v, for α, β ∈ F, v ∈ V.
+		- 4. 1v = v for all v ∈ V, where 1 is the unit element of F.
+	- Def. A **subspace**: nonempty subset W of V, + and scalar product are still closure.
+	- Lemma 5.2.1. If V is a vector space over the field F, then, for every a ∈ F and every u ∈ V:
+		- (a) αO = 0, where 0 is the zero-element of V.
+		- (b) Ou = 0, where the first 0 is the zero in F.
+		- (c) αu = 0 implies that α = 0 or u = 0.
+		- (d) (-α)u = -(αu).
+	- Def. **nontrivial solution**. F: a field; then the n-tuple (β1,... , βn), where the βi ∈ F, and not all of them are 0, s.t. the system of homogeneous linear equations: alpha β=0.
+	- Theo 5.2.2. If n > r, that is, if the number of variables (unknowns) exceeds the number of equations, then it has a nontrivial solution in F.
+	- Def. **linear combination**. **finite dimensional**. **linearly independent**. **dimension**. **basis**.
+	- Lemma 5.2.3. 线性独立则分解展开唯一.
+	- Lemma 5.2.4. If V is finite dimensional over F of dimension n and if the elements v1,... ,vn of V generate V over F, then v1,... , vn are linearly independent over F.
+	- Theo 5.2.5. Suppose that V is finite dimensional over F. Then any two bases of V over F have the same number of elements, and this number is exactly dim_F(V).
+	- Theo 5.2.6. Let V be a vector space over F such that dim_F(V) = n. If m > n, then any m elements of V are linearly dependent over F.
+	- Theo 5.2.7. Let V be a vector space over F with dim_F(V) = n. Then any n linearly independent elements of V form a basis of V over F.
+- 域扩张 Field Extensions
+	- Def. 扩张 子域**extension** **subfield**. K ⊃ F.
+	- Def. 有限扩张 **finite extension**. dim_F(K) is finite. We shall write dim_F(K) as \[K: F\] and call it the degree of K over F.
+	- Theo 5.3.1. Let L ⊃ K ⊃ F with finite extension, then **\[L:F\] = \[L:K\]\[K:F\]**.
+	- Corollary. L ⊃ K ⊃ F \[L:F\]有限, then \[K:F\]|\[L:F\].
+	- Theo 5.3.2. p(x) ∈ F\[x\]. 存在F的扩张域E, α ∈ E s.t. p(α) = 0.
+		- Proof. suppose p(x)不可约 E=F\[x\]/⟨p(x)⟩ is the desired field.
+	- Def. **algebraic over**. If K ⊃ F are fields, then a ∈ K s.t. p(x) ≠ 0 in F\[x\] and p(a) = 0.
+	- Def. 代数扩张 **algebraic extension**. K ⊃ F是扩张, 且是某F\[x\]的根. Theorem 5.3.2: K ⊃ F有限扩张, 则K是F代数扩张.
+	- Def. 超越 **transcendental**. An element of K that is **not algebraic over** F.
+		- e.g. e and π: transcendental over Q.
+	- Def. 代数数 **algebraic number**: A complex number algebraic over Q.
+	- Theo. Let E ⊃ F and α ∈ E. α在F上超越 iff F(α)同构于F(x), the field of fractions of F\[x\].
+		- Proof: F\[x\] → E be the evaluation homomorphism for α. transcendental不能有非0核 同构.
+	- Theo. Let E ⊃ F and α ∈ E with α algebraic over F. 则存在唯一不可约monic p(x) ∈ F\[x\] of smallest degree s.t. p(α) = 0.
+		- Def. 极小多项式**minimal polynomial for α over F**. The degree of p(x) is the **degree of α** over F.
+	- Theo 5.3.3. Let D be an integral domain with 1 which is a finite-dimensional vector space over a field F. Then D is a field.
+	- Def. The element a in the extension K of F is said to be **algebraic of degree n** if there is a polynomial p(x) in F\[x\] of degree n such that p(a) = 0, and no nonzero polynomial of lower degree in F\[x\] has this property.
+	- Lemma 5.3.4. Let a ∈ K be algebraic over F with minimal polynomial p(x) in F\[x\]. Then p(x) is irreducible in F\[x\].
+	- Def. F(a) is called the field or extension obtained by **adjoining a to F**.
+	- Theo 5.3.5. Let K ⊃ F and suppose that a in K is algebraic over F of degree n. Then F(a), the field obtained by adjoining a to F, is a finite extension of F, and
+		- \[F(a):F\] = n.
+	- Def. 单扩张 **simple extension** 添加一个元素.
+		- e.g. Q(sqrt(2)+sqrt(3)) = Q(sqrt(2), sqrt(3))
+	- Theo Let E = F(α) be a simple extension of F , where α ∈ E is algebraic over F . Suppose that the degree of α over F is n. Then every element β ∈ E can be expressed uniquely in the form
+		- β = b0 + b1α + ... + bn−1α^(n−1), for bi ∈ F.
+- 有限扩张 Finite Extensions
+	- K ⊃ F, E(K) be the set of all elements in K that are algebraic over F. Certainly, F ⊂ E(K).
+	- Theo 5.4.1. E(K) is a subfield of K.
+		- Proof: show a, b ∈ K algebraic over F, then a±b, ab, a/b are all algebraic over F.
+	- Corollary. If a and b in K are algebraic over F of degrees m and n, respectively, then a±b, ab, and a/b (if b ≠ 0) are algebraic over F of degree at most mn.
+	- Theo 5.4.2. The algebraic numbers form a subfield of C.
+	- Theo 5.4.3. If u in K is algebraic over E(K), then u is in E(K).
+	- There is a famous theorem due to Gauss, often referred to as the **Fundamental Theorem of Algebra**, which asserts (in terms of extension) that the only finite extension of C, the field of complex numbers, is C itself.
+	- The field of algebraic numbers is algebraically closed.
+	- Theo. Every finite extension field E of a field F is an algebraic extension.
+		- Proof: \[E : F\] = n, then 1,α,...,α^n linearly dependent (n+1) items. Let p(α)=an α^n +an−1 α^n−1 +···+a1α+a0 =0. then p(x) satisfies.
+	- Corollary. Let E ⊃ F. If α ∈ E is algebraic over F with minimal polynomial p(x) and β ∈ F(α) with minimal polynomial q(x), then deg q(x) divides deg p(x).
+	- Theo: Let E ⊃ F. Then the following statements are equivalent:
+		- E is a **finite** extension of F.
+		- There exists a finite number of algebraic elements α1,...,αn ∈ E such that E = F(α1,...,αn).
+		- There exists a sequence of fields, E = F(α1,...,αn) ⊃ F(α1,...,αn−1) ⊃ ··· ⊃ F(α1) ⊃ F, where each field F(α1,...,αi) is algebraic over F(α1,...,αi−1).
+- 分裂域 Splitting field
+	- def. 分裂域 **splitting field** E原域F多项式的根式展开无重根. 域F, 多项式系数原域p(x)=a0+a1x+···+anx^n ∈ F\[x\]. 若存在E中α1, ... ,αn, s.t. E = F(α1,...,αn) and p(x)=(x−α1)(x−α2)...(x − αn)∈ F\[x\].
+	- def. 分裂 **splits**. A polynomial p(x) ∈ F\[x\] in E is the product of linear factors in E\[x\].
+	- e.g. Let p(x) = x^4 + 2x^2 − 8 be in Q\[x\]. Q(sqrt(2), i) is a splitting field for p(x).
+	- Theo. Let p(x) ∈ F\[x\] be a nonconstant polynomial. Then there exists a splitting field E for p(x).
+- 几何构造/尺规作图 Constructibility
+	- Q1: Can one duplicate a cube using just straight-edge and compass? (By duplicating a cube, we mean doubling its volume.)
+	- Q2: Can one trisect an arbitrary angle using just straight-edge and compass?
+	- a and b constructible, then so is a + b, ab, a/b (b ≠ 0)
+	- Def. The real number a is said to be a **constructible number** if |a|, the absolute value of a, is a constructible length.
+	- **Theo 5.5.1. The constructible numbers form a subfield of the field of real numbers.**
+	- By the **plane of K0** we shall mean the set of all points (a, b) in the real Euclidean plane whose coordinates a and b are in K0. 直线 (a, b), (c, d): (y-b)/(x-a) = (b-d)/(a-c), so is of the form ux+vy+w=0, where u, v, and w are in K0.
+	- Given a **circle** whose radius r is in K0, center (a, b), then(x-a)^2 + (y-b)^2 = r^2, 形如  X^2+y^2+dx+ey+f= 0. The intersection point (c, d) lies in the plane of K1 where \[K1:K0\] = 1 or 2
+	- 直线圆相交: 形如 F(sqrt(α)). \[K1:K0\]=1 or 2.
+	- 圆圆相交: x^2+y^2+dx+ey+f=0, x^2+y^2+gx+hy+k=0, 直线(d-g)x+(e-h)y+(f-k)=O. \[K1:K0\]=1 or 2
+	- Contruct a contructable length a, extend \[L1:Q\]= 1 or 2, then extend \[L2:L1\]= 1 or 2. A finite sequence Q= L0 ⊂ L1 ⊂ ...⊂Ln of fields, where each \[Li:Li-1\] = 1 or 2 and where a is in Ln.
+	- \[Q(a):Q\] must **divide a power of 2**, hence \[Q(a):Q\]=2^m for some nonnegative integer m. 每次扩张不变or翻倍.
+	- Theo 5.5.2. In order that the real number a be constructible, it is necessary that \[Q(a):Q\] be a power of 2. Equivalently, the minimal polynomial of a over Q must have degree a power of 2.
+	- **Theo 5.5.3. It is impossible to duplicate a cube of volume 1 by straight-edge and compass.**
+		- Given a real number b such that b^3 = 2, then its minimal polynomial over 0 is p(x) = x^3 - 2, nonic and irreducible over Q.
+	- Trisect an angle: cos(20) not constructible. cos(3φ)=4cos^3(φ)-3. b=cos(20), let c=2b, then c^3-3c-1=0, irreducible over Q.
+	- **Theo 5.5.4. It is impossible to trisect 60 by straight-edge and compass.**
+	- Lindemann proved in 1882 that π is in fact **transcendental**, so certainly is **not algebraic**.
+- Roots of Polynomials
+	- f(a) = α0 + α1a +...+ αn a^n
+	- Def. The element a ∈ K is a **root** of the polynomial f(x) ∈ F\[x\] if f(a) = O.
+- 有限域
+	- **characteristic**: 最小正整数p, s.t. pα = 0.
+	- If F is a finite field, then the characteristic of F is p, where p is prime.
+	- If F is a finite field of characteristic p, then the order of F is pn for some n ∈ N.
+	- Lemma 22.3 **Freshman's Dream**. Let p be prime and D be an integral domain of characteristic p. Then
+		- a^(p^n) +b^(p^n) =(a+b)^(p^n)
+	- Def. 可分 **separable**. A polynomial f(x) ∈ F\[x\] of degree n, if it has n **distinct** roots in the splitting field of f(x).
+	- Lemma 22.5 Let F be a field and f(x) ∈ F\[x\]. Then f(x) is separable iff f(x) and f'(x) are relatively prime.
+	- Theo For every prime p and every positive integer n, there exists a finite field F with p^n elements. Furthermore, any field of order p^n is isomorphic to the splitting field of x^(p^n)−x over Zp.
+		- Proof: let f(x) = x^(p^n) − x, 则zeros构成F的subfield (check a+b, ab, -a闭合)
+		- Proof (converse): field E, 证所有元素满足f(x)=0
+	- Def. **Galois field** The unique finite field with pn elements is called the Galois field of order p^n. We will denote this field by GF(pn).
+	- Theo. Every subfield of the Galois field GF(pn) has pm elements, where m divides n. Conversely, if m | n for m > 0, then there exists a unique subfield of GF(p^n) isomorphic to GF(p^m).
+
+## 6. Special Topics (Optional)
+- The Simplicity of An
+- Finite Fields I
+- Finite Fields II: Existence
+- Finite Fields III: Uniqueness
+- Cyclotomic Polynomials
+- Liouville's Criterion
+- The Irrationality of pi
+
+## (AATA Chap-23) Galois Theory
+- Field Automorphisms
+	- Prop: Aut(F)集构成群.
+	- Prop: 域扩张时锁原域元素的Aut子集构成群.
+	- Def. **Galois group G(E/F)** 域扩张时Aut锁原域元素的变换构成的群. Let field E ⊃ F. The full group of automorphisms of E by **Aut(E)**. We define:
+		- G(E/F) = {σ ∈ Aut(E): σ(α) = α for all α ∈ F}.
+	- Def. G-固定子域 Inv(G): G是Aut(E)子群, Inv(G)={a ∈ E|σ(a)=a for all σ ∈ G}.
+	- e.g. Complex conjugation;
+	- Prop Let field E ⊃ F and f(x) ∈ F\[x\]. G(E/F)定义E中根置换.
+	- Def. **conjugate**. Let E be an algebraic extension of a field F. Two elements α, β ∈ E over F if they have the **same minimal polynomial**.
+	- e.g. sqrt(2) and -sqrt(2) in Q.
+	- Prop. If α and β are conjugate over F, there exists an isomorphism σ : F (α) → F(β) such that σ is the identity when restricted to F.
+	- Theo Let f(x) be a polynomial in F\[x\] and suppose that E is the splitting field for f(x) over F. If f(x) has no repeated roots, then |G(E/F)| = \[E : F\].
+	- Corollary. Let F be a finite field with a finite extension E such that \[E : F\] = k. Then G(E/F) is cyclic of order k.
+- 可分扩张 Separable Extensions
+	- Def. 可分 separable. f(x)在F上不可约, 若F特征为0, f(x)可分. If the characteristic of F is p and f(x) ≠ g(x^p) for some g(x) in F\[x\], then f(x) is also separable.
+	- Def. **primitive element**. α ∈ E such that E = F(α)
+	- e.g. Q(sqrt(3), sqrt(5))=Q(sqrt(3)+sqrt(5)), Q(5^(1/3),sqrt(5)i) = Q(5^(1/6)i).
+	- Theo 23.13. **Primitive Element Theorem**. Let E be a finite separable extension of a field F. Then there exists an α ∈ E such that E = F(α).
+	- Def. 完全域. 不可约多项式都可分. (无重根)
+- The Fundamental Theorem
+	- Prop. Let {σi : i ∈ I} ⊂ Aut(F) over field F. Then F{σi} ={a∈F : σi(a)=a for all σi} is a subfield of F. 域内对一些自同构的所有不动点构成子域.
+		- Proof: 对+, -, x, inv()闭合.
+	- Corollary. Let F be a field and let G be a subgroup of Aut(F). Then F_G = {α ∈ F : σ(α) = α for all σ ∈ G} is a subfield.
+	- Prop. Let E be a splitting field over F of a separable polynomial. Then E_G(E/F) = F.
+	- Lemma 23.18 Let G ⊂ Aut(E) be a finite group, let F = E_G. Then \[E:F\] ≤ |G|.
+	- Def. **域的正规扩张**: E/F代数扩张 F\[x\]中不可约多项式在E上有根 则在E上分裂.
+	- Theo 23.19. 有限扩张E ⊃ F, 以下等价:
+		- E是F有限正则可分扩张.
+		- E是F可分多项式的分裂域.
+		- 存在有限群G=Aut(E)使得F=E_G.
+	- Corollary 23.20. Let K ⊃ F s.t. F = K_G被某群G=Aut(K)锁, 则G = G(K/F).
+	- Theo 23.23 **伽罗华基本定理**. E ⊃ F有限正规扩张, Galois group G(E/F), 所有子群构成Γ, K为中间域 F ⊂ K ⊂ E, Σ为所有中间域集合, 则域扩张与伽罗华群收缩一一对应, 则:
+		- 映射: Gal(E/.): K → G(E/K)和不动点Inv: Γ->K 互为可逆双射.
+		- \[E : K\] = |G(E/K)| and \[K : F\] = \[G(E/F) : G(E/K)\].
+		- F ⊂ K ⊂ L ⊂ E iff {id} ⊂ G(E/L) ⊂ G(E/K) ⊂ G(E/F).
+		- 域正规扩张K ⊃ F iff 伽罗华群正规子群G(E/K)<|G(E/F). In this case, G(K/F) ~ G(E/F)/G(E/K).
+- Applications
+	- Def. 根式扩张 **extension by radicals**. E ⊃ F, 存在子域列 F = F0 ⊂ F1 ⊂ F2 ⊂···⊂ Fr = E. we have Fi = Fi−1(αi) and αni ∈ Fi−1 for some positive integer ni.
+	- Def. 根式可解 **solvable by radicals** over F, F中f(x)分裂域K包含于F的根式扩张.
+	- e.g. x^n-1在Q上根式可解. Q(ω). ω=exp(i2π/n)
+	- Lemma 23.28 0特征域F的x^n−a, a∈F, 分裂域E. Then G(E/F) is a solvable group.
+		- Proof: 另σ按w转i次, τ旋转j次. ξ为一个根, E=F(ξ). στ(ξ) = τσ(ξ), i.e. G(E/F) is abelian.
+		- 令K = K(ω), F ⊂ K ⊂ E.
+	- Lemma 23.29 0特征域F, 根式扩张列F =F0 ⊂F1 ⊂F2 ⊂···⊂Fr =E, 存在正规根式扩张列 F =K0 ⊂K1 ⊂K2 ⊂···⊂Kr =K, s.t K包含E.
+	- Theo 23.30 Let f(x) be in F\[x\], where char(F)=0. f(x)根式可解, 则伽罗华群f(x) over F可解.
+		- Proof: 根式拓展正规序列 (23.29), F = F0 ⊂ F1 ⊂ ··· ⊂ Fn = E. 由Theo23.23, G(E/Fi)是G(E/Fi−1)正规子群, {id} ⊂ G(E/Fn−1) ⊂ ... ⊂ G(E/F1) ⊂ G(E/F). 根式拓展的正规序列 等价于最大域对每一个序列元素做商之后倒排是伽罗华可解群.
+- Insolvability of the Quintic 五阶不可解
+	- Lemma 23.31 p质数, Sp中包含对换和p循环的子群只能是Sp自身.
+	- Def. 判别式 discriminant. f(x)=(x-r1)...(x-rn), F ⊂ E, Gal(f)=Gal(E/F)Sn的子群.
+		- D=Π(ri-rj), i < j Vandermonde determinant;
+		- Gal(E/F) ∩ An 对应中间域F(D), 奇置换D变号, 行列式奇交换
+		- 重根 D=0
+		- d=D^2可完全由多项式系数表示 (不需要根)
+		- E为F上分裂域, E=F(sqrt(d))
+		- 二次多项式, d=p1^2-4p2, d ∈ F^2, Gal(f)={1}; d ∉ F^2, Gal(f)=S2;
+		- Corollary. f(x) ∈ F\[x\], f(x)=(x-r1)(x-r2)...(x-rn)分裂域E, ri ∈ E, 则f(x)在F\[x\]上不可约 iff Gal(f)在{r1,...,rn}上传递.
+		- 三次多项式形如f(x)=x^3+px+q, d(f)=-4p^3-27q^2, 根据引理不可约传递只有A3,S3满足. 若d ∈ F^2, Gal(f)=A3; d ∉ F^2, Gal(f)=S3;
+		- 四次多项式, f(x)=x^4 - p1x^3 + p2 x^2 -p3x + p4 ∈ F\[x\]
+			- 传递子群5种, S4, A4, D4(正方形对称群), C4循环群, W={1, (12),(34),(13)(24),(14)(23)}
+			- 令α=r1r2+r3r4; β=r1r3+r2r4; γ=r1r4+r2r3;
+			- F(α, β, γ)固定子群为Gal(f) ∩ W. F(α, β, γ)是g(x)=(x-α)(x-β)(x-γ)在F上的分裂域. m = \[F(α, β, γ): F\]
+			- m=6 Gal(f)=S4; m=3, A4; m=1, W.
+			- m=2, F(α, β, γ)不可约, D4; 可约, C4.
+	- e.g. f(x) = x^5 − 6x^3 − 27x − 3 (不可约)
+		- 3实根，俩复根, 另K为f(x)分裂域, G(K/Q)的伽罗华群是S5. 
+		- 一对复根,复根共轭σ : a+bi → a−bi还是解, G(K/Q)含有对换;
+		- 实根α, 则子域Q(α)满足\[Q(α):Q\]=5, \[K:Q\]=G(K/Q)可被5整除, G(K/Q)含5阶循环群.(习题21.5.28 若α为不可约monic n-阶多项式p(x)∈F\[x\]的根. 则\[F(α):F\]=n.)
+		- S5无正规子列 不可解.
+	- Theo 23.34 Fundamental Theorem of Algebra. 复数域C代数闭合.
 
 ## Linear Algebra (Tsinghua)
 - Linear space;
@@ -736,7 +783,7 @@
 		- if (b1, b2, ...)=(a1, a2, ...) A, then Y=inv(A) \* X;
 - Polynomial ring:
 - Determinant:
-	- Linear dependent: det == 0;
+	- Linear dependent: det = 0;
 	- Vandermonde
 	- Cramer's rule;\
 		<img src="/Math/images/algebra/cramer.png" alt="drawing" width="400"/>
@@ -787,51 +834,6 @@
 	- First fundamental form: I;
 	- Second fundamental form: II;
 
-## Abstract Algebra
-- Group;
-	- **Group**:
-		- A set with binary operation (G, .)
-		- Closure: for a, b in G, a.b in G.
-		- Associativity: (a.b).c=a.(b.c)
-		- Identity: e.a=a.e
-		- Inverse: for a in G, ∃ b, s.t. a.b=b.a=e
-		- Group homomorphism:
-			- G -> H: injective (G, .), (H, \*)
-			- a(g.k) = a(g) \* a(k)
-		- Orthogonal group: O(n)
-			- (Ax, Ay) = (a, b), det(R) = +/- 1
-			- Special orthognal group SO(n): det(R) = +1
-			- Special Euclidean group SE(n)
-	- Semigroup;
-		- Associative: (a.b).c=a.(b.c)
-- Ring and Field;
-	- **Ring**:
-		- A set R with two binary operation: +, .
-		- R is abelian group under +:
-			- Associative: (a+b)+c=a+(b+c)
-			- Commutative: a+b=b+a
-			- Additive identity: ∃ 0, s.t., 0+a=a
-			- Additive inverse: -a, s.t. a+(-a)=0
-		- R is monoid under multiplication
-			- Associative: (a.b).c=a.(b.c)
-			- Identity: ∃ 1, s.t., a.1=1.a=a
-		- Multiplication is distributive with respect to addition:
-			- a ⋅ (b + c) = (a · b) + (a · c)
-			- (b + c) · a = (b · a) + (c · a)
-	- **Field**:
-		- Associativity of addition and multiplication:
-			- a + (b + c) = (a + b) + c
-			- a · (b · c) = (a · b) · c.
-		- Commutativity of addition and multiplication:
-			- a + b = b + a
-			- a · b = b · a
-		- Additive and multiplicative identity:
-			- there exist two different elements 0 and 1 in F such that a + 0 = a and a · 1 = a
-		- Additive inverses: for every a in F, there exists an element in F, denoted −a, called the additive inverse of a, such that a + (−a) = 0.
-		- Multiplicative inverses: for every a ≠ 0 in F, there exists an element in F, denoted by a−1 or 1/a, called the multiplicative inverse of a, such that a · a^(−1) = 1.
-		- Distributivity of multiplication over addition:
-			- a · (b + c) = (a · b) + (a · c).
-
 ## Lie Group
 - Resources:
 	- https://yk-liu.github.io/2018/Lie-group-and-Lie-algebra-cn/
@@ -848,9 +850,9 @@
 - Lie algebra:
 	- Definition:
 		- Bilinearity;
-		- Alternativity: [x, x] = 0;
-		- Jacobi identity: [x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0;
-		- Anticommunity: [x,y]=-[y,x];
+		- Alternativity: \[x, x\] = 0;
+		- Jacobi identity: \[x,\[y,z\]\]+\[y,\[z,x\]\]+\[z,\[x,y\]\]=0;
+		- Anticommunity: \[x,y\]=-\[y,x\];
 	- Lie algebras are closely related to Lie groups, which are groups that are also smooth manifolds: any Lie group gives rise to a Lie algebra, which is its tangent space at the identity
 
 ## Quaternion
