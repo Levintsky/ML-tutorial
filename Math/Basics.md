@@ -38,6 +38,15 @@
 - Misc
 	- Methods of Mathematical Physics;
 	- Mathematical Experiment;
+- Todo: https://ocw.mit.edu/search/?q=math&t=Mathematical%20Analysis
+	- Analysis: 18.100c 实分析, 18.102 泛函, 103 Fourier, 18.104分析在数论中的应用, 112 复变, 155 微分形式, 18.156 PDE/Fourier;
+	- Algebra: 18.712 表示论, 725代数几何,
+	- Geo: 18.950 diff-Geo; 18.952 diff-form; 966几何流形,
+	- Prob: 445 stoch-proc, 18.615 stoch-proc; 650统计应用, 
+	- Opt: 18.253 凸优化, 6.079,
+	- Cont: **303**, 18.305 工程科学中高级分析, 306 adv-pde, 327 wavelet, 338 random matrix theo, 385 chaos, 314 组合分析, 307 积分方程,
+	- Disc: 409 alg, 433 comb-opt, 6.080,
+	- Learning: 6.438 inf-alg, 6.867, 18.657, 18.409, 18.465, 15.097, 9.520 统计学习理论,
 
 ## 0. Lower-Level
 - 18.065 (Matrix Methods), 
