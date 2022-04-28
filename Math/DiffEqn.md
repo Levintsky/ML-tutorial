@@ -43,12 +43,12 @@
 		- Theorem 2.1: P(x,y)dx+Q(x,y)dy= exact equivalent to P_y=Q_x
 	- Variable separation: P(x, y)=X1(x)Y1(y), Q(x, y)=X2(x)Y2(y)
 		- X1/X2 dx+ Y2/Y1 dy = 0
-		- int(X1/X2 dx)+int(Y2/Y1 dy)=C
+		- ∫(X1/X2 dx) + ∫(Y2/Y1 dy)=C
 	- 1st-order linear: y'+p(x)y=q(x)
 		- q(.)=0 homogeneous;
-		- General: y=C exp(-int(p(x)dx))
-		- Specific: times mu(x)=exp(int(p(x)dx)) on both side;
-			- y=exp(-int(p(x)dx)) int(q(x) exp(int(p(x)dx))dx)
+		- General: y=C exp(-∫(p(x)dx))
+		- Specific: times mu(x)=exp(∫(p(x)dx)) on both side;
+			- y=exp(-∫(p(x)dx)) ∫(q(x) exp(∫(p(x)dx))dx)
 		- mu: **Integral factor**;
 	- Basic transform:
 		- e.g. y=ux, u=x+y, ...
@@ -63,8 +63,8 @@
 			- Theorem 2.3: y'+ay^2=bx^m, a,b,m constant, when m=0,-2, -4k/(2k+1), -4k/(2k-1), solvable by var-separation;
 	- Integral factor: times mu(x,y) to get exact eqn;
 		- Finding mu **equivalent to solving PDE** P(x,y)mu_y-Q(x,y)mu_x=(Q_x-P_y)mu
-		- Theorem 2.4: if mu=mu(x), then G(x)=(P_y-Q_x)/Q only depends on x, mu(x)=exp(int(G(x)dx))
-		- Theorem 2.5: if mu=mu(y), then H(y)=(Q_x-P_y)/P only depends on y, mu(y)=exp(int(H(y)dy))
+		- Theorem 2.4: if mu=mu(x), then G(x)=(P_y-Q_x)/Q only depends on x, mu(x)=exp(∫(G(x)dx))
+		- Theorem 2.5: if mu=mu(y), then H(y)=(Q_x-P_y)/P only depends on y, mu(y)=exp(∫(H(y)dy))
 		- Theorem 2.6： if mu(x,y) is an integral factor, s.t. muPdx+muQdy=dPhi(x,y), then mu()g(Phi()) is also an integral factor;
 - Ding TongRen Chap 3: Existence and Uniqueness;
 	- Eqn: y'=f(x,y), y(x0)=y0;
@@ -74,9 +74,9 @@
 	- **Theorem 3.1 Picard**: exist & unique; f(x,y) continuous on region R;
 		- Proof (exist): define a solution by simple integral;
 		- Proof (unique): Picard series, uniform converges;
-	- Osgood condition: |f(x,y1)-f(x,y2)| <= F(|y1-y2|), F() continuous, with int(1/F(r))dr goes to infinity;
+	- Osgood condition: |f(x,y1)-f(x,y2)| <= F(|y1-y2|), F() continuous, with ∫(1/F(r))dr goes to infinity;
 	- **Theorem 3.2 Osgood**: (unique) for a curve passes a specific point (x0, y0);
-		- Proof: by contraction, let y1() and y2() be two solutions, r(x)=y1-y2, r'(x)<=F(r), int(1/Fdr)<=int(dx), left part goes to infinity, contraction;
+		- Proof: by contraction, let y1() and y2() be two solutions, r(x)=y1-y2, r'(x)<=F(r), ∫(1/Fdr)<=∫(dx), left part goes to infinity, contraction;
 	- Peano existence;
 		- **Euler method**: 1st order approx, cut into small segment and sum as integral;
 		- **Ascoli Corollary**: series f1(x), f2(x), ... , bounded |fn(x)|<=K, we can find a subseries fn1(x), fn2(x), ..., uniform converge;
@@ -107,7 +107,7 @@
 				- At any x=x0, C0=w(x0), y=C0x+f(C0), we can find a general sol tangent with specific sol at x0, but specific sol can't be derived from general sol;
 		- Parametrization:
 			- F(x,p)=0, p=dy/dx
-			- Let y=g(t), p=h(t), then dx=dy/p, x=int(g'(t)/h(t)dt)+C;
+			- Let y=g(t), p=h(t), then dx=dy/p, x=∫(g'(t)/h(t)dt)+C;
 			- Implicit func: F(x,y,p)=0
 				- Parametrise a surface as: x=f(u,v), y=g(u,v), p=h(u,v)
 				- Because dy=pdx, we have explicit func: g_u du + g_v dv = h(u,v)(f_u du+f_v dv)

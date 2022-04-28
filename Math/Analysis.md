@@ -8,7 +8,7 @@
 
 ## Integral
 - Antiderivative: Also: primitive function, primitive integral or indefinite integral
-- Integration by parts: int u(dv) = int (duv) - int v(du)
+- Integration by parts: ∫u(dv) = ∫(duv) - ∫v(du)
 - Definite integral;
 - Fundamental theorem of calculus (Newton-Lebniz): int_(a,b)f(t)dt=F(b)-F(a)
 - Integration by substitution
@@ -32,7 +32,7 @@
 	- Change of variable: dudv=|ux uy;vx vy|dxdy
 	- Vector field, work and line integral;
 	- Fundamental theory of line integral: F=nabla(f), potential, F: gradient field of f;
-		- int F dr= f(p1)-f(p2), path independent
+		- ∫F dr= f(p1)-f(p2), path independent
 		- Conservative field, energy preserving;
 		- F=(M, N), My=Nx iff conservative, proof: fxy=fyx
 		- curl(F)=0 conservative;
@@ -40,24 +40,24 @@
 			- F=(-y, x), curl(F)=2
 	- Green Theorem:
 		- C: closed curve, clockwise;
-		- int_C Fdr = int int curl(F)dA
-		- Proof int_C Mdx = int int -My dA, cut into vertical simple regions, then sum;
+		- ∮ Fdr = ∫∫ curl(F)dA
+		- Proof ∮ Mdx = -∫∫My dA, cut into vertical simple regions, then sum;
 			- Each small region satisfy the eqn, and addible;
-		- Special case: int_C xdy = Area(R)
-		- Flux: int_C (F, n) ds = int_C -Ndx + Mdy = int int div(F) dA
+		- Special case: ∮ xdy = Area(R)
+		- Flux: ∮(F, n) ds = ∮ -Ndx + Mdy = ∫∫ div(F) dA
 - 4. Triplet integrals and surface integrals in 3-d space;
 	- Triplet integral;
 	- Polar coord: x=rsin(phi)cos(theta), y=rsin(phi)sin(theta), z=rcos(phi)
 		- dV = r^2 sin(phi) dr dphi dtheta
 	- Flux and divergence theorem:
-		- Divergence Theorem (Gauss-Green): int int_S F dS = int int int div(F) dV
+		- Divergence Theorem (Gauss-Green): ∯F dS = ∫∫∫ div(F) dV
 		- div(F): source rate, amount of flux generated
 		- Heat eqn: u_t = k Lap(u)
 	- Line integral:
 		- Curl in 3d: F = (X,Y,Z)
 		- curl(F)=(Zy-Yz)i+(Xz-Zx)j+(Yx-Xy)k
 		- F conservative, curl(F)=0
-		- Stokes' Theorem: int_C F dr= int int curl(F) n dS (C closed curve, S any surface bounded by C)
+		- Stokes' Theorem: ∮ F dr= ∫∫ curl(F) n dS (C closed curve, S any surface bounded by C)
 - Implicit Function Theorem;
 - Application in geometry:
 	- Frenet–Serret formulas;
@@ -67,7 +67,7 @@
 		- B is the **binormal** unit vector, the cross product of T and N. B=TxN
 		- Then we have **Frenet-Serret Equation**:\
 			<img src="/Math/images/analysis/frenet–serret.png" alt="drawing" width="350"/>
-	- Arc length; s=int(a_b) sqrt(1+(dy/dx)^2)dx
+	- Arc length; s=∫(a_b) sqrt(1+(dy/dx)^2)dx
 	- Curvature: (1) The change of angle (deviation from a straight line) w.r.t. arc-length; (2) The curvature is the reciprocal of radius of curvature: k=1/R. k=|r'xr''| / |r'|^3;
 	- Torsion of a curve: deviation from osculating plane; change of B (angle) w.r.t. arc-length;
 	- A good summary: https://zhuanlan.zhihu.com/p/74380868
@@ -77,8 +77,8 @@
 	- Polar coordinate system: r dr dtheta;
 	- Sphere coordinate system: r^2 sin(phi) dr dphi dtheta;
 - Curve integral;
-	- Scalar function scalar arc-length (Type I): int f(x,y)ds
-	- Vector function, inner product (Type II): int f(x,y,z)(dx,dy,dz) = int X x'(t) + Y y'(t) dt
+	- Scalar function scalar arc-length (Type I): ∫ f(x,y)ds
+	- Vector function, inner product (Type II): ∫ f(x,y,z)(dx,dy,dz) = ∫ X x'(t) + Y y'(t) dt
 	- Green formula: integral in a ring\
 		<img src="/Math/images/analysis/green-formula.png" alt="drawing" width="350"/>
 - Surface Integral:
@@ -131,10 +131,10 @@
 		<img src="/Math/images/analysis/fubini.png" alt="drawing" width="400"/>
 - Derivative and Antiderivative;
 	- Vitali cover;
-	- **Lebesgue**: if f(x) monotonically increasing on [a,b], then the set of non-differentiable point set has 0-measure, and int f'(x)dx <= f(b) - f(a).
+	- **Lebesgue**: if f(x) monotonically increasing on [a,b], then the set of non-differentiable point set has 0-measure, and ∫f'(x)dx <= f(b) - f(a).
 	- **Bounded Variation**, or BV;
 	- **Absolute Continuity** implies BV;
-	- **Fundamental theorem of calculus**: for absolute continous function f(x), int f'(x)dx=f(x)-f(a)
+	- **Fundamental theorem of calculus**: for absolute continous function f(x), ∫f'(x)dx=f(x)-f(a)
 	- Integral by part;
 	- u-substitution;
 - Lp space;

@@ -20,7 +20,7 @@
 	- Bases;
 	- Theo: Every linearly independent list of vectors in a finite- dimensional vector space can be extended to a basis of the vector space.
 	- Theo: Any two bases of a finite-dimensional vector space have the same length.
-	- Theo: dim(U1+U2)=dim(U1)+dim(U2)-dim(U1 int U2)
+	- Theo: dim(U1+U2)=dim(U1)+dim(U2)-dim(U1 ∩ U2)
 - Chap-3: Linear Maps;
 	- Additivity: T(u+v)=Tu+Tv
 	- Homogeniety: T(av)=aTv

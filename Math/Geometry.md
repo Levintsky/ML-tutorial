@@ -12,6 +12,11 @@
 	- Differential geometry coureses: https://www.youtube.com/watch?v=NS1EhHZGPZ0&list=PLUjcZXQwHFGZjLC4FlubdFCPaOO-ywWql
 - Nice intuition:
 	- Su, Jianlin: https://spaces.ac.cn/archives/3963
+- Fast summaries:
+	- I: E=(x_u, x_u), F=(x_u, x_v), G= (x_v, x_v)
+	- II: e=(x_uu, n), f=(x_uv, n), g= (x_vv, n)
+	- Curvature of v: k = (v,IIv)/(v, Iv)
+	- Christofel symbol: 坐标系导数x_uu, x_uv, x_v, n_u, n_v在(x_u, x_v, N)的表达;
 
 ## MIT 18.900
 - Chap-1: 多边形 polygon
@@ -126,7 +131,7 @@
 	- Def. interior of a simple closed curve.
 	- The Isoperimetric Inequality:
 		- 给定周长l, 最大面积?
-		- A=-int_a_b y(t)x'(t)dt=int x(t)y'(t)dt=1/2 int(xy'-yx')dt
+		- A=-∫y(t)x'(t)dt=∫x(t)y'(t)dt=1/2∫(xy'-yx')dt
 		- Theo 1. l^2 - 4πA ≥ 0
 	- Theo of turning tangents: simple闭曲线rotation index为+/-1, 决定于方向.
 	- Theo (4-vertex) 闭曲线必有至少4个极值点 k'(t)=0
@@ -165,8 +170,15 @@
 	- 令E(u0, v0)=(X_u, X_u), F=(X_u, X_v), G=(X_v, X_v)
 		- Quadratic form: I_p = E(u')^2 + 2Fu'v' + G(v')^2
 	- 弧长: ds^2 = E(du)^2 + 2Fdudv + G(dv)^2
-	- 面积: A(R) = int |x_u ^ x_v| dudv
-	- Insight: 本质上变动(du, dv)的Taylor一阶展开 α = X_udu + X_vdv, 在切平面. E F G描述展开系数.
+	- 面积: A(R) = ∫|x_u ^ x_v| dudv
+	- Insight: Metric tensor (度量张量) g=(E F;F G),
+		- 本质上变动(du, dv)的Taylor一阶展开 α = X_udu + X_vdv, 在切平面. E F G描述展开系数.
+		- dFp = d(x,y,z)/d(u,v): 3 x 2 Jacobi matrix J, 2x2乘积J^TJ=g
+		- 长度: 一个切向量w的长度 |w|^2 = E(du')^2 + 2F (u'v') + G (v')^2
+		- 夹角: 两曲线α, β, 切线w1=J(u_α, v_α), w2=J(u_β, v_β)
+			- (w1, w2) = (u_α, v_α)^T J^T J (u_β, v_β) = (u_α, v_α)^T (E F;F G) (u_β, v_β)
+			- cosθ = (w1, w2)/|w1|/|w2|
+		- 面积: dA = |r_u ^ r_v|dudv = sqrt(det(g))dudv
 - 2-6 Orientation of Surfaces;
 	- Def. orientable. 可以被同一定向的面铺满.
 	- e.g. 可定向: 球面, 
@@ -188,21 +200,26 @@
 	- differentiable field of unit normal: N(q)=x_u^x_v/|x_u^x_v| q ∈ x(U)
 	- def. 高斯映射 **Gauss map**. 可定向曲面到单位球面S2的映射.
 	- S ⊂ R3上的curve α(t)在单位球面S2上曲线 N(t). N'(0)对应法线变化速度. dNp: how N pulls away from N(p) in the neighborhood of p.
-	- Prop 1: dNp: Tp(S) -> Tp(S) of the Gauss map is a self-adjoint linear map.
-		- Proof: self-adjoint, (dNp(w1),w2)=(w1,dNp(w2)) for basis {w1, w2}.
+	- Prop 1: 高斯映射的微分dNp: Tp(S) -> Tp(S)是线性自伴算符.
+		- Proof: (dNp(w1),w2)=(w1,dNp(w2)) for basis {w1, w2}.
 	- def. **Second fundamental form**: quadratic form IIp, defined in Tp(S) by IIp(v)=-(dNp(v),v).
 		- (N(s), α'(s))=0 切向量法向量垂直
-		- (N, α'')=-(N', α') 第二基本形式, 切向量二阶导在法线投影.
+		- (N, α'')=-(N', α') 第二基本形式,为α'的二次型,切向量二阶导在法线投影.
 	- def. 法曲率. 正则曲面S上取曲线C. k为C在p点的curvature, 令cosθ=(n, N)曲线法向量和曲面法向量夹角. kn=kcosθ为**normal curvature**.
 		- 法曲率取值与定向无关,随定向变号.
 		- IIp(α'(0))=kn(p) 曲面切向量的第二基本形式等于曲线的法曲率.
 	- Prop2 (Meusnier) 所有过p有相同切线的曲线有相同的法曲率.
-	- def. **maximum normal curvature** k1, **minimum normal** curvature k2. The corresponding directions of min, max e1, e2: **principal directions**.
+	- def. IIp的极大极小特征值-k1, -k2: 极大曲率, 极小曲律 k1, 对应方向: 主方向 **principal directions**: {e1, e2}正交基. (二次型对称实矩阵, basis正交)
+	- Euler: 任给一单位切向量v, 按主方向分解
+		- kn = IIp(v) = -(dNp(v), v)
+		-    = -(dNp(e1 cosθ+e2 sinθ), e1 cosθ+e2 sinθ)
+		-    = (e1k1cosθ+e2k2sinθ, e1 cosθ+e2 sinθ)
+		-    = k1cos^2θ + k2sin^2θ
 	- def. regular connected curve: 所有点的切线都是principal direction.
 	- Prop3 (Olinde Roderigues) regular connected curve充要条件: N'(t)=λ(t)α(t) 法线变化与切线同向.
 	- Def. dNp: Tp(S) -> Tp(S)可微高斯映射. dNp的行列式: **Gaussian curvature** K; negative of half of the trace of dNp: **mean curvature**.
 		- K=k1k2, H=(k1+k2)/2
-	- Def.
+	- Def. 几何直观
 		- Elliptic: det(dNp) > 0
 		- Hyperbolic: det(dNp) < 0
 		- Parabolic: det(dNp) = 0, dNp≠0
@@ -221,17 +238,21 @@
 		- (dNp(w1), w2) = (w1, dNp(w2)) = 0
 		- 充要条件: 若两正交basis (e1, e2), 满足dNp(e1)=-k1e1, dNp(e2)=-k2e2, θ, φ为r1 r2与e1交角, 共轭 iff k1 cosθ cosφ = -k2 sinθ sinφ
 	- Insight:
-		- 第二基本形式: 本质上变动(du, dv)Taylor二阶展开 α = X_udu + X_vdv + 1/2 (X_uu du^2 + 2X_uv dudv + X_vv dv^2, n)n, 二阶项在法向n上投影. e, f, g描述X_uu, X_uv, X_vv在n方向投影系数.
+		- 第二基本形式: 本质上变动(du, dv)Taylor二阶展开
+			- α = X_udu + X_vdv + 1/2 (X_uu du^2 + 2X_uv dudv + X_vv dv^2, n)n
+			- dNp = (e1, e2) (-k1 0; 0, k2)
+		- 二阶项在法向n上投影.e, f, g描述X_uu, X_uv, X_vv在n方向投影系数.
 		- 法曲率: Tp(S)上取切向量v=x1 dX/du1 + x2 dX/du2, κ(v)=II(v, v)/I(v, v)
 - 3-3 The Gauss Map in Local Coordinates
-	- 曲面法向量N=x_u^x_v/|x_u^x_v|, 记p点曲线α(t)切线α'=x_u u' + x_v v'
-	- Weingarten映射: 找到矩阵W=(a11, a12, a21, a22), s.t. X, Y ∈ Tp(S), I(X, WY)=II(X,Y)成立, i.e.
-		- N_u = a11 x_u + a21 x_v
-		- N_v = a12 x_u + a22 x_v
 	- IIp(α') = -(N', α') = e(u')^2 + 2f u'v' + g(v')^2
 		- e = (N, x_uu)
 		- f = (N, x_uv)
 		- g = (N, x_vv)
+	- 曲面法向量N=x_u^x_v/|x_u^x_v|, 记p点曲线α(t)切线α'=x_u u' + x_v v'
+	- Weingarten映射: 找到矩阵W=(a11, a12, a21, a22), s.t. X, Y ∈ Tp(S), I(X, WY)=II(X,Y)成立, i.e.
+		- N_u = a11 x_u + a21 x_v
+		- N_v = a12 x_u + a22 x_v
+		- dNp在(x_u, x_v)下的二次型是W=(a11, a12, a21, a22)
 	- 第一基本形式带入 E=(x_u, x_u), F=(x_u, x_v), G=(x_v, x_v)
 	- Equation of Weingarten: 第-二基本形式系数表达N_u, N_v在x_u x_v下的投影
 		- a11, a21 = - (e f) (E F)^-1
@@ -239,10 +260,13 @@
 	- Weingarten映射矩阵W=(a11, a12, a21, a22)性质:
 		- Gaussian curvature: K=det(aij) = det(II)/det(I) = (eg-f^2)/(EG-F^2)
 		- dN(v) = -kv = -kIv for v ∈ Tp(S), then k^2 - 2Hk + K = 0
+		- k = H ± sqrt(H^2-K)
 		- W的eigenvalue, eigenvector: 主方向和对应的主曲率λ=κ(X)
 		- 渐近线: e(u')^2 + 2fu'v' + g(v')^2 = 0. 渐近线存在iff eg-f^2 <= 0. 椭圆曲线没有.
 		- 若f=F=0, 主曲率e/E, g/G, K=eg/EG, H=1/2 (eG-gE)/EG
 	- Prop. Elliptic point: 存在临域所有点在切平面同侧; hyperbolic: 异侧.
+	- Insight:
+		- 高斯曲率 Kp ~ A'/A S2上面积与原S比值
 - 3-4 Vector Fields
 	- Theo 1. 向量场w在开集U ⊂ R2, 存在唯一曲线α: I->U, s.t. α'(t)=w(α(t))
 	- Theo 2. 同theo1. α(q, 0)=q, α_t(q,t)=w(α(q,t)), α()可微.
@@ -250,6 +274,7 @@
 - 3-5 Ruled Surfaces and Minimal Surfaces
 	- Def. 直纹曲面/ruled surface. 单参数曲线{α(t), w(t)}, x(t, v) = α(t) + vw(t).
 	- Def. 极小曲面/Minimal surface. mean curvature H=(k1+k2)/2处处为0.
+		- prop. x: U -> R^3正则参数曲面, D是U上带边区域. x极小 iff A'(0)=0.
 
 ## de Carmo, Chap-4 The Intrinsic Geometry of Surfaces
 - 4-1 Introduction
@@ -262,6 +287,8 @@
 	- 4-7: 测地线;
 - 4-2 Isometries; Conformal Maps;
 	- def. 微分同胚. diffeomorphism φ: S -> S'. s.t. (w1, w2)p = (dφ_p(w1), dφ_p(w2))φ(p). S, S'同构.
+		- 同胚Homeomorphism = 映射, 逆映射连续
+		- 微分同胚 = 同胚 + 映射, 逆映射可微
 	- def. local isometry. 临域内同构.
 	- e.g. cylinder, plane. local isometry. 局部保内积.
 	- Prop. 假设存在 x: U->S, x':U->S', s.t. E=E', F=F',G=G'.则φ: x'.x^-1: x(U)->S' local isometry.
@@ -288,17 +315,115 @@
 			- Ai, Bi, Ci是E,F,G,e,f,g及其导数的函数, 令Ai=0, Bi=0, Ci=0;
 		- d(Γ^1_12)/du - d(Γ^1_12)/dv + Γ^1_12 Γ^2_11 + Γ^2_12 Γ^2_12 - Γ^2_11 Γ^2_22 - Γ^1_11Γ^2_12 = -E (eg-f^2)/(EG-F^2)=-EK
 	- Theo (Theorema Egregium, Gauss) Gaussian curvature K在local isometry下不变.
-	- Theo (Bonnet) E,F,G,e,f,g可微函数, s.t. E>0, G>0, Gauss-Codazzi equations, EG-F^2>0. 
-		- 存在临域微分同胚x:U->x(U) ⊂ R3, I和II满足E,F,G,e,f,g.
+	- Theo (Bonnet) E,F,G,e,f,g可微函数, s.t. E>0, G>0, Gauss-Codazzi equations, EG-F^2>0, 可构造性: 
+		- 存在临域微分同胚x: U->x(U) ⊂ R3, I和II满足E,F,G,e,f,g.
 		- U连通if x':U->x'(U) ⊂ R3是另一微分同胚, 与x差一个平移和正交旋转.
+	- Gauss-Mainardi-Codazzi eqn:
+		- e_v = E_v/2 (e/E + e/G)
+		- g_u = G_u/2 (e/E + e/G)
+	- Insight: helicoid可形变成catenoid, 过程中高斯曲率K处处不变. 平面无法在不拉伸紧缩的情况下变成球面.
 - 4-4 Parallel Transport; Geodesics;
-	- def. covariant derivative.
+	- def. covariant derivative: 把(dw/dt)(0)正交投影到Tp(S)上. 记做(Dw/dt)(0). 协变导数内蕴, 与曲线α(t)选择无关.
+		- 曲线α(t)=x(u(t), v(t)), 上每个点定义一个切向量w(t)
+		- w(t)=a(u, v)x_u + b(u, v)x_v 其中u=u(t), v=v(t)
+		- dw/dt=a(x_uu u'+x_uv v')+b(x_vu u'+x_vv v')+a'x_u+b'x_v
+		- Dw/dt为dw/dt在Tp(S)上投影. 带入sec4-1中x_uu, x_uv, x_vv的Christoffel Symbol:
+		- Dw/dt = (a'+Γ^1_11 au'+Γ^1_12 av' + Γ^1_12 bu'+ Γ^1_22 bv')x_u
+		-       + (b'+Γ^2_11 au'+Γ^2_12 av' + Γ^2_12 bu'+ Γ^2_22 bv')x_v
+		- Def. 协变导数. (Dw/dt)(t), t ∈ I.
+		- Insight: α曲线, α'(t)速度, α''(t)加速度, 协变导数Dα'/dt: α''在S上投影.
+	- Dw/dt只依赖于y=(u',v')切线，与α无关. surface的性质由Christoffel Symbol表达(I形式).
+	- Def. **join**. α: \[0, l\] -> S, restriction of a differntial mapping into S. α(0)=p, α(l)=q, then α joins p, q.
+	- Def. 可微. α: I -> S. w(t) ∈ T_α(t)(S) assigns to each t ∈ I. w(t)=a x_u+b x_v是t的可微函数.
+	- Def. 平行 **Parallel**, c: I -> S, Dw/dt=0 for every t ∈ I. 路径上处处协变导数为0, 导数只在N法向.
+	- Prop 1. α: I -> S上两平行向量. 内积(w(t), v(t)), 模|w(t)|, |v(t)|为常数.
+	- Def. 平移 **Parallel transport**. w(t0), w(t1), if there is a parallel vector field along α.
+	- Def 7. Parametrized piecewise regular curve. α逐段正则.
+	- Def 8. Geodesic. γ: I -> S, γ'(t) is parallel along γ for t ∈ I.
+		- t as s (arc length). α''(s)=kn normal to the tangent plane.
+	- e.g.
+		- Great circle. 球面过球心大圆环
+		- Cylinder: x(u, v) = (cos(u), sin(u), v). Expand as a plane: still straight line.
+	- Def. 协变导数w的**algebraic value** at t. w: 可微单位向量场沿 α: I -> S 映射到可定向S. w(t) unit, (dw/dt)(t) is normal to w(t), therefore: Dw/dt = λ(N ^ w(t)), λ=λ(t), denoted by \[Dw/dt\]
+		- Lemma 2: v, w可微单位向量场沿 α: I -> S, |w(t)|=|v(t)|=1, t ∈ I, 则
+			- \[Dw/dt\] - \[Dv/dt\] = dφ/dt
+	- Def. 测地曲率 **geodesic curvature** of C at p: α(s) algebraic value of \[Dα'(s)/ds\]=kg.
+		- k^2 = kg^2 + kn^2
+		- kg = (α', n^α)
+		- kn = (N, dT/ds)
+		- e.g. 纬度φ的小圆弧. sin^2φ=kn^2 + kg^2. kg^2=sin^2φcos^2φ, normal curvature: kn^2=sin^4φ
+	- Insight: 曲面上曲线有曲率向量,
+		- 法曲率kn: 往曲面的法线N投影, i.e. 维持曲线在曲面上的曲率;
+		- 测地曲率kg: k往切平面Tp(S)做投影, i.e., 偏离测地线的曲率.
+		- e.g. 平面上直线, kn=kg=0, 弯曲成圆柱, kn>0, kg=0.
+	- Prop 2. 平移存在&唯一.
+	- Prop 3. x(u, v)正交参数化(F=0), w(t)可微unit向量场沿x(u(t), v(t)), 则
+		- \[Dw/dt\] = 1/(2sqrt(EG)) (G_u dv/dt - E_v du/dt) + dφ/dt
+		- φ是x_u到w(t)的夹角.
+	- Prop 4 (Liouville). α(s)弧长参数化曲线, x(u, v)正交Tp(S), φ(s)为x_u和α'(s)夹角, 则
+		- kg = (kg)1 cosφ + (kg)2 sinφ + dφ/ds
+		- 其中(kg)1, (kg)2为v=C和u=C的测地曲率.
+	- Prop 5. 给定1点p ∈ S, 向量w ∈ Tp(S), w≠0. 存在局部参数化ε的**测地线**γ: (-ε,ε)->S, s.t. γ(0), γ'(0)=w.
+	- 理解: w=u'(t)x_u+v'(t)x_v, w沿曲线平行(测地线), 带入Dw/dt=0中w=ax_u+bx_v, a=u', b=v'得微分方程:
+		- u''+Γ^1_11(u')^2+Γ^1_12 u'v' + Γ^1_12 u'v'+ Γ^1_22 (v')^2 = 0
+		- v''+Γ^2_11(u')^2+Γ^2_12 u'v' + Γ^2_12 u'v'+ Γ^2_22 (v')^2 = 0
+		- e.g 旋转平面: (f(v)cosu, f(v)sinu, g(v)) 带入微分方程
+			- u=const, v=v(s) 测地线; 侧面轮廓线
+			- v=const, f'=0 测地线; 旋转线
+		- e.g. paraboloid z=x^2+y^2;
+			- r cosθ = const = |c|
 - 4-5 Gauss-Bonnet Theorem and its Applications;
+	- Tp(S)上三角形内角 φ1+φ2+φ3 - π = ∫∫ K dσ
+	- convex, 内角和>π; concave, <π.
+	- Def. Simple, closed, piecewise regular, parametrized curve:
+		- α(0)=α(l), 闭合
+		- t1≠t2 then α(t1)≠α(t2), 不自相交
+		- 0 = t0 < t1 < t2, ... < tk =l, 分段可微正则.
+	- Theorem of Turning Tangents: (φ:x_u到α'(t)内角, θ顶点处切向跳跃)
+		- ∑ φ(ti+1)-φ(ti) + ∑ θi = ±2π
+		- 左边第一项: 末端切向与x_u夹角与起点的切向与x_u夹角差.
+		- 符号取决于顺时针逆时针.
+	- **Theorem (Gauss-bonnet, Local)**: x: U->S be an orthogonal parametrization (F=0)
+		- ∑ ∫kg(s)ds + ∫∫ K dσ + ∑ θi = 2π
+		- Proof: prop-3 取弧长参数s
+		- kg(s)ds = 1/(2sqrt(EG)) (G_u dv - E_v du) + dφ
+		- 左右积分. 左边分段积分.
+		- 右边第一项(G_u dv - E_v du)格林公式 ∫∫ K dσ
+	- Prop 1. 正则曲面可三角剖分.
+	- Prop 2. 可定向曲面三角剖分, 共享邻边反向, 外边界同向.
+	- Prop 3. χ(R)与剖分方式无关.
+		- Def. 欧拉示性数 Euler-Poincare characteristic.
+			- χ = F - E + V. 面数-边数+顶点数
+		- 球,n面体... χ=2; 一个洞 0; 两个洞 -2;
+	- Def. 亏格. genus. g = (2-χ(S)) / 2 几个洞
+	- **Theorem (Gauss-bonnet, Global)**: R ⊂ S, 正则区域由C1, ..., Cn分段正则单连通曲线构成R的边界, Ci正定向, θi外角:
+		- ∑ ∫kg(s)ds + ∫∫ K dσ + ∑ θi = 2π χ(R)
+	- Poincare-Hopf Theorem: 曲面上向量场的孤立0点, index(source)=+1, index(sink)=+1, 
+		- ∑ index_v(xi)=χ(M), 左边对critical point求和.
+	- Insight理解
+		- 平面版本: 切线起始终止夹角 Δθ = ∫k ds ∵ 曲率定义
+		- Gauss-Bonnet: 3维版, 一个向量平移一周回来的夹角 Δθ = ∫∫K dσ
+		- ∑ ∫k ds + ∑ θi = 2π ∵ 切线转角定理: 曲率闭合积分 + 切线夹角(跳变)
 - 4-6 The Exponential Map. Geodesic Polar Coordinates;
+	- 沿v方向按照测地线走t距离, γ(t, v). γ(t, λv)=γ(λt, v)
+	- def. 指数映射: 单位时间 走||v||距离, exp_p(v):=γ(1, v)
+	- Prop 1. Given p ∈ S, 存在ε>0, s.t. exp_p在Bε(Tp(S)上半径ε)可微.
+	- Prop 2. 指数映射exp_p: Bε ⊂ Tp(S) -> S 微分同胚.
+	- Normal coordinate: q=exp_p(w), w=ue1+ve2
+	- Geodesic Polar Coord:
+	- Prop 3. Let x: U-l -> V-L测地指数映射. E=E(ρ, θ), F=F(ρ, θ), G=G(ρ, θ)第一基本形式I满足:
+		- E=1, F=0, lim_ρ->0 G=0, lim_ρ->0 sqrt(G)=1,
+	- Theorem (Minding) 高斯曲率相同的两正则曲面同胚.
 - 4-7 Further properties of geodesics; convex neighborhoods
+	- Prop 4. 凸临域存在. p ∈ S. 存在c > 0, s.t. Bc(p)凸 (任两点可由唯一最小测地线连通)
 
 ## de Carmo, Chap-5 Global Differential Geometry
 - 5-1 Introduction
+	- 5-2 球体是刚体, (同胚于球面的是球面);
+	- 5-3 完备表面, hopf-rinow;
+	- 5-4 弧长1阶2阶变分;
+	- 5-5 Jacobi field: 测地线γ附近测地线偏离γ速度;
+	- 5-6 完备单连通高斯曲率<=0曲面同胚于平面; 完备高斯曲率>0曲面同胚于球面;
 - 5-2 The Rigidity of the Sphere
 - 5-3 Complete Surfaces. Theorem of Hopf-Rinow
 - 5-4 First and Second Variations of Arc Length; Bonnet's Theorem;
@@ -314,7 +439,7 @@
 - Distance:
 	- d(x,y) >= 0; d(x,y) = d(y,x); d(x,z)+d(z,y) >= d(x,y);
 - Norm:
-	- ||x|| >= 0; ||alpha x|| = |alpha|\*||x||; ||x||+||y|| >= ||x+y||;
+	- ||x|| >= 0; ||αx|| = |α|\*||x||; ||x||+||y|| >= ||x+y||;
 - Banach space: a **complete** normed vector space;
 - Hilbert space: a **complete** space with dot product;
 	- Could be infinite dimensional;
@@ -322,10 +447,6 @@
 	- Could be infinite dimension (a function);
 	- RKHS;
 - Classical:
-	- Fundamental I, II:\
-		<img src="/Math/images/geometry/classic-1.png" alt="drawing" width="350"/>
-	- Curvature:\
-		<img src="/Math/images/geometry/classic-2.png" alt="drawing" width="350"/>
 	- Rayleigh quotient:\
 		<img src="/Math/images/geometry/classic-3.png" alt="drawing" width="350"/>
 	- Gaussian Curvature:\
