@@ -336,7 +336,7 @@
 		- Case II: mu>0: let x=sqrt(mu)r
 			- **Bessel Eqn**: R''(x)+R'(x)/x+(1-m2/x2)R(x)=0
 			- Z: exp(sqrt(mu)z), exp(-sqrt(mu)z)
-		- Case III: mu<0, x=sqrt(-mu)r
+		- Case III: μ<0, x=sqrt(-μ)r
 			- R''(x)+R'(x)/x-(1+m2/x2)R(x)=0
 	- Hermholtz: Lap(v)+k^2 v=0
 		- Spherical: v(r, theta, phi)
@@ -345,21 +345,21 @@
 			- l-order spherical Bessel: r^2 R''+2r R'+(k^2r^2-l(l+1))R=0
 				- Can be converted to Bessel;
 		- Cylinder: v=R(r)Phi(phi)Z(z)
-			- Phi''+lambda Phi=0
+			- Phi''+λ Phi=0
 			- Z''+nu^2 Z=0
 			- **Bessel eqn**: R''+R'/r+(k^2-nu^2-lambda/r^2)R=0 
 - Green Function:
 	- Green Formula;
 	- Lap(u)=f(r)
-		- BC I (Dirichlet problem): u=phi(.) on boundary;
-		- BC II (Neumann problem): u_n=phi(.) on boundary (gradient along normal);
-		- BC III: alpha u_n + beta u=phi(.)
+		- BC I (Dirichlet problem): u=φ(.) on boundary;
+		- BC II (Neumann problem): u_n=φ(.) on boundary (gradient along normal);
+		- BC III: α u_n + β u=phi(.)
 - Integral Transform;
 	- Apply Fourier transform, solve, inverse;
-		- Heat eqn: u_t - a^2 u_xx=0, bc u|t=0=phi(x)
+		- Heat eqn: u_t - a^2 u_xx=0, bc u|t=0=φ(x)
 			- Fourier: U' + k^2 a^2 U=0
-			- U|t=0 = Phi(k)
-			- U(t,k) = Phi(k)exp(-k^2a^2t)
+			- U|t=0 = Φ(k)
+			- U(t,k) = Φ(k)exp(-k^2a^2t)
 			- Inverse transform;
 	- Laplace Transform;
 - Conformal Mapping:
@@ -367,17 +367,17 @@
 		- Curve A, B as z_A(t), z_B(t): B0-A0
 		- Curve A', B' after transform w=f(z): B0-A0+(arg(df/dz_B)-arg(df/dz_A))
 	- **Intuition: change complex boundary to simple**:
-		- psi=psi(z), z=z(psi)
-			- psi=psi(x,y)
-			- nita=nita(x,y)
+		- ψ=ψ(z), z=z(psi)
+			- ψ=ψ(x,y)
+			- η=η(x,y)
 		- Laplacian: u_xx + u_yy=0
 			- new Laplacian: complex;
 			- if psi(z) is analytic
-			- |psi'(z)|^2 (u_psi_psi+u_nita_nita)=0
-	- Linear mapping: psi(z)=az+b;
-	- Power: psi(z)=z^n, psi(z)=z^(1/n)
+			- |ψ'(z)|^2 (uψψ+uηη)=0
+	- Linear mapping: ψ(z)=az+b;
+	- Power: ψ(z)=z^n, ψ(z)=z^(1/n)
 	- Exponential: exp(z)
-	- Inverse: psi=R^2/z
+	- Inverse: ψ=R^2/z
 	- Fraction: (az+b)/(cz+d)
 
 ## Theory of Differential Equations: Classical and Qualitative
@@ -412,9 +412,11 @@
 ## SDE
 - MIT 18.642
 - Ito's Lemma
-	- Basics: dx(t) = - nabla U(x(t)) dt + sigma dBt
+	- Basics: dx(t) = - ∇U(x(t)) dt + σ dBt
 	- First term: force (conservative from potential); second: Brownian motion;
-	- dXt = mu_t dt + sigma_t dBt; f(x, t) 2nd-order differentiable;
-		- df = ()dt + ()dBt
-	- Geometric Brownian motion: dSt = mu St dt + sigma St dBt
-		- Black-Scholes Model; pricing model for options;
+	- dXt = μt dt + σt dBt; f(x, t) 2nd-order differentiable of X, t;
+		- df = (∂f/∂t + μt∂f/∂x + σt^2/2 ∂2f/∂x2)dt + (σt∂f/∂x)dBt
+	- Geometric Brownian motion: dSt = μSt dt + σSt dBt
+	- Black-Scholes Model; pricing model for options;
+		- A derivative of value V(S, t), S: stock price;
+		- ∂V/∂t + σ^2/2 ∂2f/∂S2 + rS∂f/∂S - rV = 0 

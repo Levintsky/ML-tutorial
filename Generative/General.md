@@ -45,29 +45,6 @@
 - ICML'19 best paper: not possbile for disentabled representation;
 - Discrete: VQ-VAE, VQ-VAE2;
 
-## Diffusion Process
-- Basics:
-	- x0 (original signal)
-	- Denoising: p() xT - ... - xt - xt-1 - x0
-		- Prob model: p(x0:T)=p(xT) prod p(xt-1|xt); i.e., denoising process;
-		- p(xt-1|x) = N(xt-1; mu(xt, t), Sigma(xt, t))
-	- Adding noise: q() x0 - x1 - x2 - ... - xT as the approximate posterior q()
-		- Forward pass (diffusion process), q(x1:T|x0)=prod q(xt|xt-1);
-		- Model: q(xt|xt-1)=N(xt; sqrt(1-beta_t)xt-1, beta_t)
-		- beta can be constant or learned by reparametrization trick;
-	- Goal: maximise p(x0;theta) = int p(x0:T) dx1:T
-		- ELBO: E(-log p(x0)) = Eq(-log p(x0:T)/q(x1:T|x0))
-		- q(xt|x0) ~ N(xt; sqrt(alpha't)x0, (1-alpha't)I), because of Gaussian additive!
-	- Training:
-		- Optimize any term of Lt-1=KL(q(xt-1|x0, xt) || p(xt-1|xt))
-		- Fit p(xt-1|xt,x0) with mean given x0, xt
-	- Inference:
-		- Start from XT, xt-1=xt+sigmat z, z ~ N(0, 1) Langevin dynamics;
-- Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
-- Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
-	- https://github.com/hojonathanho/diffusion
-	- High-quality result with Langevin dynamics;
-
 ## Energy/Optimization-Based
 - Basics: generate signals with lower energy;
 - J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016

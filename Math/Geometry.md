@@ -12,6 +12,15 @@
 	- Differential geometry coureses: https://www.youtube.com/watch?v=NS1EhHZGPZ0&list=PLUjcZXQwHFGZjLC4FlubdFCPaOO-ywWql
 - Nice intuition:
 	- Su, Jianlin: https://spaces.ac.cn/archives/3963
+- History:
+	- Gauss
+	- Riemann
+	- Beltrami, Christoffel, Lipschtz;
+	- Klein;
+	- Wilczynski, Fubini;
+	- Blaschke;
+	- Elie Cartan;
+	- S Chern;
 - Fast summaries:
 	- I: E=(x_u, x_u), F=(x_u, x_v), G= (x_v, x_v)
 	- II: e=(x_uu, n), f=(x_uv, n), g= (x_vv, n)
@@ -434,6 +443,87 @@
 - 5-9 Jacobi's Theorems
 - 5-10 abstract Surfaces: Further Generalizations;
 - 5-11 Hilbert's Theorem
+
+## Tu, Chap-1 Euclidean Spaces
+- 1 Smooth Functions on a Euclidean Space
+	- 1.1 C∞ Versus Analytic Functions
+		- Def. C^k function.
+		- Def. real-analytic
+	- 1.2 Taylor's Theorem with Remainder
+- 2 Tangent Vectors in Rn as Derivations
+	- 2.1 The Directional Derivative
+	- 2.2 Germs of Functions
+		- Def. Germs. The equivalence class of (f,U), (g, V), f=g on W ⊂ U∩V.
+	- 2.3 Derivations at a Point
+		- Def. derivation at p or a point-derivation of C∞p. Dv: C^∞p → R, s.t. Dv(fg) = (Dvf)g(p) + f(p)Dvg (Lebniz)
+		- Theorem 2.2. The linear map φ : Tp(Rn) → Dp(Rn) defined in (2.3) is an isomorphism of vector spaces.
+	- 2.4 Vector Fields
+		- Def 2.4. R commutative ring with identity, then a (left) R-module. 环上加标量乘.
+		- Def 2.5. R-module homomorphism. Let A and A' be R-modules.
+	- 2.5 Vector Fields as Derivations
+- 3 The Exterior Algebra of Multicovectors
+	- 3.1 Dual Space
+		- Def. dual space V∨ of V, all real-valued linear functions on V. V∨=Hom(V, R).
+		- αi(ej)=δji
+	- 3.2 Permutations
+	- 3.3 Multilinear Functions
+	- 3.4 The Permutation Action on Multilinear Functions
+	- 3.5 The Symmetrizing and Alternating Operators
+		- Symmetric: Sf = ∑σf.
+		- Alternating: Af = ∑(sgnσ)σf.
+	- 3.6 The Tensor Product
+		- (f⊗g)(v1,...,vk+l) = f(v1,...,vk)g(vk+1,...,vk+l).
+		- (f⊗g)⊗h = f ⊗(g⊗h).
+	- 3.7 The Wedge Product
+		- def. wedge/exterior product. for f ∈ Ak(V) and g ∈ Al(V), 
+			- f∧g= 1/k!l! A(f⊗g);
+	- 3.8 Anticommutativity of the Wedge Product
+		- f∧g = (−1)^kl g∧f.
+	- 3.9 Associativity of the Wedge Product
+		- Let k-covector f and an l-covector g:
+			- f∧g= 1/k!l! A(f⊗g).
+		- Lemma 3.24. Suppose f is a k-linear function and g an l-linear function on a vector space V . Then
+			- (i) A(A(f) ⊗ g) = k!A(f ⊗ g),
+			- (ii) A(f⊗A(g))=l!A(f⊗g).
+		- Prop 3.25 (f∧g)∧h = f∧(g∧h).
+		- Corollary 3.26 f∧g∧h= 1/k!l!m! A(f⊗g⊗h).
+		- Prop 3.27 (Wedge product of 1-covectors). If α1,...,αk are linear functions on a vector space V and v1,...,vk ∈ V , then
+			- (α1 ∧···∧αk)(v1,...,vk) = det(αi(vj)).
+	- 3.10 A Basis for k-Covectors
+		- Lemma 3.28. Let e1,...,en be a basis for a vector space V and let α1,...,αn be its dual basis in V∨. I=(1≤i1 <···< ik ≤n) and J=(1≤ j1 <···< jk ≤n), then αI(eJ)=δJI.
+		- Prop 3.29. The alternating k-linear functions αI , I=(i1 < · · · < ik ), form a basis for the space Ak(V) of alternating k-linear functions on V.
+		- Corollary. 3.30 dim=C(n,k)
+		- Corollary 3.31. If k > dimV , then Ak(V) = 0.
+- 4. Differential Forms on Rn
+	- Insight: exterior derivative, independent of coordinates, intrinsic to a manifold; Differential forms extend Grassmann's exterior algebra from the tangent space at a point globally to an entire manifold;
+	- 4.1 Differential 1-Forms and the Differential of a Function
+		- covector field or a differential 1-form
+		- (df)p(Xp) = Xpf
+	- 4.2 Differential k-Forms
+		- ω∧τ =∑ (aIbJ) dxI∧dxJ.
+	- 4.3 Differential Forms as Multilinear Functions on Vector Fields
+	- 4.4 The Exterior Derivative
+		- Def 4.5. For k≥1, if ω=∑aIdxI ∈ Ωk(U), then
+			- dω=∑daI∧dxI =∑I(∑j ∂aI/∂xj)∧dxI ∈ Ωk+1(U).
+		- Def 4.6 a∈Ak and b ∈ Al, then
+			- D(ab) = (Da)b + (−1)^k aDb.
+		- Prop 4.7
+			- d(ω∧τ) = (dω)∧τ+(−1)^degω ω∧dτ.
+			- d^2=0
+			- If f∈C∞(U) and X∈X(U),then(df)(X)=Xf.
+		- Prop 4.8 (Characterization of the exterior derivative). The three properties of Proposition 4.7 uniquely characterize exterior differentiation on an open set U in Rn; that is, if D: Ω∗(U) → Ω∗(U) is (i) an antiderivation of degree 1 such that (ii)D2 =0 and(iii) (Df)(X)=Xf for f ∈C∞(U) and X∈X(U), then D=d.
+	- 4.5 Closed Forms and Exact Forms
+		- A k-form ω on U is **closed** if dω = 0; it is **exact** if there is a (k − 1)-form τ such that ω = dτ on U. Since d(dτ) = 0, **every exact form is closed**.
+	- 4.6 Applications to Vector Calculus
+		- Prop A. curl(gradf) = (0, 0, 0)
+		- Prop B. div(curl(P Q R)) = 0
+		- Prop C. On R3, a vector field F is the gradient of some scalar function f iff curlF = 0.
+		- F=(-y/x^2+y^2, x/x^2+y^2, 0)
+			- curl(F)=0, F is not gradient of any C∞.
+		- It turns out that whether Proposition C is true for a region U depends only on the topology of U. One measure of the failure of a closed k-form to be exact is the quotient vector space
+			- Hk(U) := {closed k-forms on U}/{exact k-forms on U }
+		- def. kth de Rham cohomology of U
+	- 4.7 Convention on Subscripts and Superscripts
 
 ## Basics
 - Distance:

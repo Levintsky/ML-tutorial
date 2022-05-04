@@ -1,0 +1,102 @@
+# Diffusion Process
+
+## Basics
+- x0 (original signal)
+- Denoising: p() xT - ... - xt - xt-1 - x0
+	- Prob model: p(x0:T)=p(xT) prod p(xt-1|xt); i.e., denoising process;
+	- p(xt-1|x) = N(xt-1; μ(xt, t), Σ(xt, t))
+- Adding noise: q() x0 - x1 - x2 - ... - xT as the approximate posterior q()
+	- Forward pass (diffusion process), q(x1:T|x0)=prod q(xt|xt-1);
+	- Model: q(xt|xt-1)=N(xt; sqrt(1-β_t)xt-1, β_t)
+	- beta can be constant or learned by reparametrization trick;
+- Goal: maximise p(x0;θ) = int p(x0:T) dx1:T
+	- ELBO: E(-log p(x0)) = Eq(-log p(x0:T)/q(x1:T|x0))
+	- q(xt|x0) ~ N(xt; sqrt(α't)x0, (1-α't)I), because of Gaussian additive!
+- Training:
+	- Optimize any term of Lt-1=KL(q(xt-1|x0, xt) || p(xt-1|xt))
+	- Fit p(xt-1|xt,x0) with mean given x0, xt
+- Inference:
+	- Start from XT, xt-1=xt+Σt z, z ~ N(0, 1) Langevin dynamics;
+
+## Diffusion Model
+- Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
+	- Forward (adding noise): with diffusion kernel Tπ
+		- π(y) = ∫dy' Tπ(y|y';β)π(y')
+		- q(xt|xt−1)= Tπ(xt|xt−1; βt)
+	- Reverse trajectory: denoising;
+		- p(xT) = π(xT)
+		- p(x0···T) = p(xT)∏t=1..T p(xt−1|xt).
+	- Training loss: log likelihood
+		- L = ∫dx0 q(x0) logp(x0)
+		- L = ∫dx0 q(x0) log(∫dx1...T q(x1...T|x0) p(xT) ∏t=1..Tp(xt-1|xt)/q(xt|xt-1))
+		- L >= ∫dx0..T q(x0..T) log(p(xT) ∏t=1..Tp(xt-1|xt)/q(xt|xt-1)) (Jensen: φ(E(x))>=E(φ(x)) for concave functions log)
+		- L>=K, lower bound: L ≥ K = −Σt=2..T ∫dx0 dxt q(x0, xt) . KL(q(xt-1|xt,x0)||p(xt-1|xt)) + Hq(XT|X0) - Hq(X1|X0) - Hp(XT)
+			- KL, entropy has closed form;
+		- Training: maximize K, w.r.t. all Markov transitions p(xt-1|xt);
+	- Training a specific transition;
+		- p(x0), denoising posterior p'(x0) ∝ p(x0)r(x0);
+			- p'(y|xt) ∝ p(y|xt)r(y) = N(y; μ, Σ)r(y)
+			- p'(xt)=p(xt)r(xt)/Zt; Zt normalizing constant;
+			- E(y) ~ (y-μ)Σ^-1(y-μ)/2 + Er(y); (y very small perturbation, so Taylor Expansion)
+			- g=∂Er(y')/∂y'|y'=μ, E(y)=(y-μ+Σg)Σ^-1(y-μ+Σg)/2
+			- p(xt-1|xt) ~ N(xt-1; fμ(xt,t)+fΣ(xt,t) ∂logr(xt-1)/∂xt-1|xt-1=fμ(xt,t), fΣ(xt,t))
+		- **Perturbed model transition should obey equilibrium**: p'(xt) = ∫dxt+1 p'(xt|xt+1)p'(xt+1);
+		- r(x): hopefully multipied with a Gaussian/binomial in closed form;
+- Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
+	- https://github.com/hojonathanho/diffusion
+	- Forward:
+		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; sqrt(1−βt)xt−1, βtI)
+	- Reverse:
+		- pθ(x0:T) := p(xT)∏pθ(xt−1|xt), pθ(xt−1|xt):=N(xt−1; μθ(xt, t), Σθ(xt, t))
+	- Loss:
+		- E(-logpθ(x0)) <= Eq(-logp(x0..T)/q(x1:T|x0)) = Eq(-logp(xT)-Σlog pθ(xt-1|xt)/q(xt|xt-1))
+	- Let αt:=1−βt and α't:=∏s=1..t αs
+		- q(xt|x0) = N(xt; sqrt(α't)x0, (1−α't)I)
+		- q(xt−1|xt,x0) = N(xt−1;μ't(xt,x0),β'tI),
+			- with μt(xt,x0):=sqrt(α't−1)βt/(1-α't)x0 + sqrt(αt)(1−α't−1)/(1-α't)xt, 
+			- β't=(1−α't−1)βt/(1-α't)
+		- Loss for one-step: Lt−1 = Eq(|μ't(xt,x0)−μθ(xt,t)|^2/2σt2) + C
+			- Reparametrize: xt(x0, ε) = sqrt(α't)x0 + sqrt(1−α't)ε for ε∼N(0, I)
+	- Practice:
+		- Training: sgd
+	- High-quality result with Langevin dynamics;
+- Yang Song and Stefano Ermon. Improved Techniques for Training Score-Based Generative Models. arxiv'20
+- Alex Nichol and Prafulla Dhariwal. Improved Denoising Diffusion Probabilistic Models. arxiv'21
+	- upsampling;
+- Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image Super-Resolution via Iterative Refinement. 2021
+	- upsampling + Gaussian blur;
+- Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Models.
+	- BSR noise;
+- Kai Zhang, Jingyun Liang, Luc Van Gool, and Radu Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
+	- BSR noise;
+- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+	- https://github.com/openai/glide-text2im.
+	- CLIP-guidance v.s. classifier-free guidance:
+	- µθ(xt|c) = µθ(xt|c) + sΣθ(xt|c)∇xt(f(xt)g(c))
+- **DALL-E-2**: Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
+	- CLIP: zi (ViT), zt (GPT-3), trained with SAM
+	- Encoder: p(zi|y), predict zi based on caption y;
+		- CLIP + DALL-E dataset
+		- Prior 1: AR with quantization; PCA + SAM?
+		- Prior 2: DDPM without ε;
+	- Decoder: zi(64x64) - 256x256 - 1024x1024
+		- Stage 1: Gaussian blur;
+		- Stage 2: BSR degradation;
+		- unconditional ADMNet;
+- **SAM**: Pierre Foret, Ariel Kleiner, Hossein Mobahi, and Behnam Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
+
+## Video Generation
+- **ADMNet**: Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+	- Guided diffusion (Class-conditional):
+		- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
+		- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
+	- DDIM technique to get xT
+- Jonathan Ho, Chitwan Saharia, William Chan, David J. Fleet, Mohammad Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
+- Jonathan Ho and Tim Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
+	- Guided diffusion (Class-free):
+	- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
+		- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
+	- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
+		- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
+	- Final equation:
+		- εθ(xt|c) = εθ(xt|∅) + s (εθ(xt|c) − εθ(xt|∅))

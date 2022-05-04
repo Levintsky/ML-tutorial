@@ -1,11 +1,40 @@
-## Vision + Language
+# Multimodal Learning
 
-## Multimodal Learning
-- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
-- Gunnar A. Sigurdsson, Jean-Baptiste Alayrac, Aida Nematzadeh, Lucas Smaira, Mateusz Malinowski, João Carreira, Phil Blunsom, Andrew Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
-	- Extend VideoBert to multilingual
-- Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS 2018
-- IBM, Dialog-based Interactive Image Retrieval, NIPS 2018
+## Dataset
+- Large Vision + Language 
+	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
+	- Mert Bulent Sariyildiz, Julien Perez, and Diane Larlus. Learning Visual Representations with Caption Annotations. 2020
+	- Yuhao Zhang, Hang Jiang, Yasuhide Miura, Christopher D. Manning, and Curtis P. Langlotz. Contrastive Learning of Medical Visual Representations from Paired Images and Text. 2020
+	- Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
+	- Norman Mu, Alexander Kirillov, David Wagner, and Saining Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
+	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
+
+## Text-based Generation
+- Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS'18
+- **DALL-E**: Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-Shot Text-to-Image Generation. 2021
+	- https://github.com/openai/DALL-E
+	- Stage 1: dVAE, 256x256-dVAE-32x32x8192 tokens; train φ and θ;
+	- Stage 2: concatenate 256 BPE-encoded text tokens with the 32 × 32 = 1024 image tokens, and train an autoregressive transformer pψ(y, z).
+	- x: image; y: caption; z: latent;
+	- ln pθ,ψ(x, y) >= Ez∼qφ(z|x) ln pθ(x|y,z)−βKL(qφ(y,z|x), pψ(y,z))
+		- Latent distribution qφ(z|x): 32x32 dVAE, K=8192 tokens, with Gumbel trick;
+		- Image distribution pθ(x|y,z): Log-laplace NLL loss;
+		- Text token joint distribution: pψ(y, z); 12-billion parameter sparse transformer
+- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+	- https://github.com/openai/glide-text2im.
+	- CLIP-guidance v.s. classifier-free guidance;
+
+## Embedding, Feature Learning
+- Embedding:
+	- **CLIP**: Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
+- Video:
+	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
+	- Gunnar A. Sigurdsson, Jean-Baptiste Alayrac, Aida Nematzadeh, Lucas Smaira, Mateusz Malinowski, João Carreira, Phil Blunsom, Andrew Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
+		- Extend VideoBert to multilingual
+- Retrieval:
+	- IBM, Dialog-based Interactive Image Retrieval, NIPS'18
+- Downstream tasks:
+	- Sheng Shen, Liunian Harold Li, Hao Tan, Mohit Bansal, Anna Rohrbach, Kai-Wei Chang, Zhewei Yao, and Kurt Keutzer. How Much Can CLIP Benefit Vision-and-Language Tasks?
 
 ## Vision + Action
 - Speaker-Follower Models for Vision-and-Language Navigation (NIPS 2018)

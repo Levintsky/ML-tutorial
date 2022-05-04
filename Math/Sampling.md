@@ -5,7 +5,7 @@
 
 ## Sampling Methods (PRML Bishop Chap 11)
 - Rejection sampling:
-	- p'(z) easy to evaluate, but normalization Z unknown so true p(z)=p'(z)/Z unknown, kq(z) >= p'(z). Sample a z0 from q(z), sample u0 from [0,kq(z0)], if u0 > p'(z) accept.
+	- p'(z) easy to evaluate, but normalization Z unknown so true p(z)=p'(z)/Z unknown, kq(z) >= p'(z). Sample a z0 from q(z), sample u0 from \[0,kq(z0)\], if u0 > p'(z) accept.
 - Adaptive rejection sampling:
 - Importance Sampling: used to evaluate expectation;\
 	<img src="/Basic-ML/images/sample/is.png" alt="drawing" width="400"/>
@@ -42,7 +42,7 @@
 	- x ~ q(x), u ~ U(0, 1), accept x if u > p(x)/Mq(x)
 - **Importance Sampling** (especially when we want to sample more from a rare event)
 	- Evaluate E(f(x)), where x ~ p(x), empirical: (f(x1) + f(x2) + ... + f(xN)) / N;
-	- Sample x ~ q(x), evaluate E[f(x)p(x)/q(x)]
+	- Sample x ~ q(x), evaluate E\[f(x)p(x)/q(x)\]
 - **Particle filtering**:
 	- Sequential importance sampling for p(z1:t|y1:t)
 	- A set of weighted particles w(ts)
@@ -61,12 +61,23 @@
 	<img src="/Basic-ML/images/sample/gibbs.png" alt="drawing" width="400"/>
 
 ## MCMC (Kevin Murphy Chap 24)
-- Gibbs sampling:
-	- Basic idea: p(x1|x2, x3), then x2, x3
-	- Save all samples, evaluate probability
-	- Discard some initial points until **burn-in**
-- Collapsed Gibbs sampling:
-	- analytically integrate out some of the unknown quantities, and just sample the rest
+- 24.2 Gibbs sampling:
+	- Basic idea: p(x1'|x2, x3), then p(x2'|x1, x3), p(x3'|x1, x2)
+		- e.g. pairwise-MRF: p(xt|x-t, θ) ∝ ∏s∈nbr(t) ψst(xs,xt)
+		- Save all samples, evaluate posterior
+		- Discard some initial points until **burn-in**
+	- 24.2.4 Collapsed Gibbs sampling:
+		- Analytically integrate out some of the unknown quantities, and just sample the rest
+		- Insight: sample z and integrate out θ, will make estimate much lower variance; integration always more robust than sampling?
+		- Theorem 24.2.1 (**Rao-Blackwell**). Let z and θ be dependent random variables, and f(z,θ) be some scalar function. Then
+			- Varz,θ\[f(z, θ)\]≥varz\[Eθ\[f(z,θ)|z\]\]
+	- 24.2.6 BUGS and JAGS
+		- BUGS (Lunn et al. 2000), which stands for "Bayesian updating using Gibbs Sampling", widely used in biostatistics and social science;
+		- JAGS (Plummer 2003), which stands for "Just Another Gibbs Sampler".
+	- 24.2.7 The Imputation Posterior (IP) algorithm
+		- Insight: MCMC version of EM; group variables into hidden variables z and parameters θ; posterior p(θ|D); sample z?
+	- 24.2.8 Blocking Gibbs sampling
+		- Insight: one variable at a time? too slow; multiple;
 - **Metropolis Hastings** algorithm
 	- At each step, propose to move from the current state x to a new state x' with probability q(x'|x)
 	- If symmetric q(x'|x)=q(x|x'), accept with r = min(1, p(x')/p(x))

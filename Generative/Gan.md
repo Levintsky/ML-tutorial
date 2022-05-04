@@ -1,5 +1,9 @@
 # General Adversarial Net
 
+## GAN Inversion
+- Jun-Yan Zhu, Philipp Krahenbuhl, Eli Shechtman, and Alexei A. Efros. Generative Visual Manipulation on the Natural Image Manifold. ECCV'18
+- Weihao Xia, Yulun Zhang, Yujiu Yang, Jing-Hao Xue, Bolei Zhou, and Ming-Hsuan Yang. GAN Inversion: A Survey. 2021
+
 ## Unclassified
 - NIPS'19 oral:
 	- Multi-marginal Wasserstein GAN. NIPS'19

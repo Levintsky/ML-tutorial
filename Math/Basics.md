@@ -30,6 +30,10 @@
 	- XII. Statistics and Data Science
 - Good summaries:
 	- Dahua Lin: https://www.douban.com/group/topic/11115261/
+	- Basic Axioms/assumptions:
+		- Topology: Baire Category Theorem;
+		- Real Analysis: Legesgue 不可测集的存在性;
+		- Functional: Hahn-Banach Extension Theorem, Banach-Steinhaus Theorem (Uniform boundedness principle), Open Mapping Theorem, Closed Graph Theorem;
 - Good resources for books:
 	- https://www.zhihu.com/question/366915371
 	- http://archive.keyllo.com/L-%E6%95%B0%E5%AD%A6/
@@ -55,6 +59,8 @@
 - 18.03 DE, 18.06, 18.04, 18.05 Intro Prob and Stat, 18.062 (Math for CS), 18.05 (Matrix Methods), 
 - 18.03 DE, 18.04, 18.06/18.700 (Lin Algebra), 
 - 18.05 Intro Prob and Stat, 18.062 (Math for CS), 18.05 (Matrix Methods), 
+- 18.085 Computational Science and Engineering I;
+- 18.086 Computational Science and Engineering II;
 
 ## I. Algebra (18.7xx)
 - MIT:
