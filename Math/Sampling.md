@@ -4,34 +4,62 @@
 - A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
 ## Sampling Methods (PRML Bishop Chap 11)
-- Rejection sampling:
-	- p'(z) easy to evaluate, but normalization Z unknown so true p(z)=p'(z)/Z unknown, kq(z) >= p'(z). Sample a z0 from q(z), sample u0 from \[0,kq(z0)\], if u0 > p'(z) accept.
-- Adaptive rejection sampling:
-- Importance Sampling: used to evaluate expectation;\
-	<img src="/Basic-ML/images/sample/is.png" alt="drawing" width="400"/>
-- Sampling-importance-resampling (SIR):
-	- Hard to determine k in rejection sampling;
-	- Stage 1: sample z1, z2, ..., zL from q(z);
-	- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...);\
-		<img src="/Basic-ML/images/sample/is-2.png" alt="drawing" width="400"/>
-- Monte Carlo EM: sample Z to estimate Q(theta, theta-old)\
-	<img src="/Basic-ML/images/sample/mc-em.png" alt="drawing" width="400"/>
-- IP algorithm\
-	<img src="/Basic-ML/images/sample/ip.png" alt="drawing" width="400"/>
-- Slice Sampling;
-- HMC (Hamilton Monte Carlo);
-	- z state; r = dz / dtau, momentum;\
-		<img src="/Basic-ML/images/sample/hmc-1.png" alt="drawing" width="350"/>\
-		<img src="/Basic-ML/images/sample/hmc-2.png" alt="drawing" width="400"/>\
-		<img src="/Basic-ML/images/sample/hmc-3.png" alt="drawing" width="350"/>
-	- Liouville's Theorem: volume preservation;\
-		<img src="/Basic-ML/images/sample/hmc-4.png" alt="drawing" width="400"/>
-	- Numerical integration over time: Leapfrog algorithm:\
-		<img src="/Basic-ML/images/sample/hmc-5.png" alt="drawing" width="400"/>
-	- Hybrid Monte Carlo: Metropolis to handle numerical error;\
-		<img src="/Basic-ML/images/sample/hmc-6.png" alt="drawing" width="400"/>
-- Estimate partion function of p(z) = exp(-E(z)): sample from another distribution of energy G(z):
-	<img src="/Basic-ML/images/sample/partition.png" alt="drawing" width="400"/>
+- Goal: evaluate E\[f\]=∫f(z)p(z)dz
+	- Approximate with f=1/L ∑l=1..L f(zl)
+	- Var(f)=1/L E\[(f-E(f))^2\]
+- 11.1 Basic Sampling Algorithm
+	- y=f(z), then p(y)=p(z)|dz/dy|
+	- 11.1.2 Rejection sampling:
+		- Insight: sample q(z) and reject to sample p(z)
+		- e.g. unnormalized p'(z) easy to evaluate, but true p(z)=p'(z)/Z is hard, b/c normalization Z unknown;
+		- With envelope kq(z) >= p'(z), sample z0 from q(z), accept with prob p'(z)/kq(z0).
+	- 11.1.3 Adaptive rejection sampling: piecewise tight envelope;
+	- 11.1.4 Importance Sampling: used to evaluate expectation;
+		- E(f) ~ ∑l=1..L p(z)f(z) ideally sample from regions p(z)f(z) large;
+		- E(f) = ∫f(z)p(z)dz = ∫f(z)p(z)/q(z) q(z)dz, so we can sample from q(z) and weight by **importance weights** rl=p(zl)/q(zl)
+			- E(f) ~ 1/L ∑l=1..L r(zl)f(zl)
+		- In case of unnormalized p(z)=p'(z)/Zp, and q(z)=q'(z)/Zq
+			- E(f) ~ Zq/Zp 1/L ∑l=1..L r'(zl)f(zl)
+			- Zp/Zq ~ 1/L ∑l=1..L r'(zl)
+	- 11.1.5 Sampling-importance-resampling (SIR):
+		- Insight: to handle hard to determine k in rejection sampling;
+		- Stage 1: sample z1, z2, ..., zL from q(z);
+		- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...);\
+			<img src="/Basic-ML/images/sample/is-2.png" alt="drawing" width="400"/>
+	- 11.6 Monte Carlo EM
+		- Traditional EM (M-step): Q(θ, θold)=∫p(Z|X, θold)lnp(Z,X|θ)dZ
+		- MCEM, sample z instead of integrate: Q(θ, θold) ~ 1/L∑l=1..L lnp(Zl,X|θ)
+		- IP (imputation-posterior): full-Bayesian, θ is a distribution and requires sampling too;
+- 11.2 MCMC
+	- Insight: to sample p(z), sample q(z'|z); e.g. p(z)=p'(z)/Z with Z hard to compute;
+	- Metropolis: q(za|zb)=q(zb|za), accept z2 with probability min(1, p'(z2)/p'(z1)). If accepted, new state as z2, otherwise discard z1;
+	- 11.2.1 Markov Chain: p(z(m+1)) = ∑p(z(m+1)|zm)p(zm)
+		- Def. MC, a series of random variables z1, ..., zm:
+			- p(zm+)|z1, . . . , zm) = p(zm+1|zm).
+		- Detailed balance: p(z)T(z,z')=p(z')T(z',z)
+		- Def. MC respects detailed balance: **reversible**;
+	- 11.2.2 The Metropolis-Hastings algorithm;
+- 11.3 Gibbs Sampling: Check Kevin-Murphy;
+- 11.4 Slice Sampling: Check Kevin-Murphy;
+- 11.5 HMC (Hamilton Monte Carlo);
+	- q state; p=dz/dτ, momentum, let K=∑pi^2, H=E(q)+K(p) then we have:
+		- dpi/dτ=-∂H/∂qi, dqi/dτ=∂H/∂pi;
+	- Energy conservation: dH/dτ=0;
+	- Volume conservation (Liouville's Theorem): (q, p), let vector field V=(dq/dτ, dp/dτ) has 0 divergence;
+		- div(V)=∑(-∂^2H/∂qi∂pi+-∂^2H/∂pi∂qi)=0;
+	- H constant during sampling, need another gibbs sampling in phase space, sample new p with q fixed;
+	- In practice: numerical integration over time: Leapfrog algorithm:
+		- p(τ+ε/2)=p(τ)-ε/2 ∂E(q(τ))/∂qi
+		- q(τ+ε)=q(τ)+εp(τ+ε/2)
+		- p(τ+ε)=p(τ+ε/2)-ε/2 ∂E(q(τ+ε))/∂qi
+	- 11.5.2 Hybrid Monte Carlo: Metropolis to handle numerical error;
+		- Accept with probability min(1, exp(H(q,p)-H(q',p')))
+- 11.6 Estimate partion function
+	- p(z) = exp(-E(z))/Ze
+	- Sample from another distribution exp(-G(z))/ZG of energy G(z):
+		- Ze/ZG = ∑z exp(-E(z)) / ∑z exp(-G(z))
+		- Ze/ZG = ∑z exp(-E(z)+G(z))exp(-G(z)) / ∑z exp(-G(z))
+		- Ze/ZG = E_G(z)(exp(-E+G)) ~ ∑l exp(-E(zl)+G(zl))
 
 ## Sampling
 - Sampling from Standard Distributions
@@ -51,14 +79,6 @@
 	- For proposal q, we restrict as: q(z1:t|y1:t)=q(zt|z1:t-1,y1:t)q(z1:t-1|y1:t-1)
 	- Weight: w(ts) = w(ts-1) p(yt|zts)p(zts|zt-1s)/q(zts|zs1:t-1,y1:t)
 	- For degeneration, do resampling
-- MCMC:
-	- Markov Chain:\
-		<img src="/Basic-ML/images/sample/markov-chain.png" alt="drawing" width="400"/>
-	- We use Markov Chain to sample:\
-		<img src="/Basic-ML/images/sample/mh-1.png" alt="drawing" width="400"/>\
-		<img src="/Basic-ML/images/sample/mh-2.png" alt="drawing" width="400"/>
-- Gibbs sampling: replacing one variable at a time; sampling from **conditional distribution**: a special case of MCMC with acceptance p=1.\
-	<img src="/Basic-ML/images/sample/gibbs.png" alt="drawing" width="400"/>
 
 ## MCMC (Kevin Murphy Chap 24)
 - 24.2 Gibbs sampling:
@@ -78,26 +98,63 @@
 		- Insight: MCMC version of EM; group variables into hidden variables z and parameters θ; posterior p(θ|D); sample z?
 	- 24.2.8 Blocking Gibbs sampling
 		- Insight: one variable at a time? too slow; multiple;
-- **Metropolis Hastings** algorithm
-	- At each step, propose to move from the current state x to a new state x' with probability q(x'|x)
-	- If symmetric q(x'|x)=q(x|x'), accept with r = min(1, p(x')/p(x))
-	- Assymetric r = min(1, p(x')q(x|x')/p(x)q('x|x))
-	- Gibbs sampling is a special case of MH;\
-		<img src="/Basic-ML/images/sample/mh.png" alt="drawing" width="350"/>
+- 24.3 **Metropolis Hastings** algorithm
+	- MCMC fails on large-curvature area;
+	- Insight: At each step, propose to move from the current state x to a new state x' with probability q(x'|x), q proposal distribution, or kernel;
+		- If symmetric q(x'|x)=q(x|x'), accept with r = min(1, p(x')/p(x))
+		- Assymetric r = min(1, p(x')q(x|x')/p(x)q('x|x))
+	- 24.3.2 Gibbs sampling is a special case of MH with acceptance rate 100%;
+	- 24.3.3 Proposal distribution
+		- Gaussian
+		- Mixture: convex combintation of some basics;
 	- Data-driven MCMC (Tu, Zhu)
 		- Proposal also data-driven
 		- q(x'|x,D) = pi0 q0(x'|x) + sum pik qk(xk'|fk(D))
 		- q0: a standard data-independent proposal (random walk)
 		- qk proposes changes to kth part
-- Speed and accuracy
-	- Burn-in phase: when more stable
-- Auxiliary variable MCMC: Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x)=sum_z(p(x,z))
-	- Slice-sampling: introduce auxiliary height h;\
-		<img src="/Basic-ML/images/sample/slice-mc.png" alt="drawing" width="350"/>
-	- Swendsen-Wang;
-	- HMC: exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
-		<img src="/Basic-ML/images/sample/hmc.png" alt="drawing" width="400"/>
-	- Gibbs sampling velocity;
+- 24.4 Speed and accuracy
+	- 24.4.1 Burn-in phase: when more stable
+	- 24.4.2 Mixing rates of Markov chains
+	- 24.4.3 Practical convergence diagnostics
+		- Quantitatively Estimated potential scale reduction (EPSR)
+	- 24.4.4 Accuracy of MCMC
+		- samples are highly correlated
+		- μf = E(fs); Var_MCMC(μf)=VarMC(f)
+		- Autocorrelation function (ACF) measures correlation of recent t samples;
+	- 24.4.5 How many chains?
+- 24.5 Auxiliary variable MCMC
+	- Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x)=sum_z(p(x,z))
+	- 24.5.2 Slice-sampling
+		- Insight: introduce auxiliary height h to improve large moves;
+		- Given last sample xi target density f(x), sample ui+1 on U(0, f(x)) , then sample next xi+1 s.t. f(x)>=ui+1. (Try to find another high prob)
+	- 24.5.3 Swendsen-Wang;
+		- Ising model with energy (eJ e^-J;e^-J eJ), highly correlated; mix-in slow;
+		- Insight: introduce z, s.t. g(x,z=0)=(e^-J e^-J;e^-J e^-J) and g(x,z=1)=(eJ-e^-J 0;0 eJ-e^-J), easier to sample and converge;
+	- 24.5.4 HMC (hybrid MCMC or Hamiltonian MCMC)
+		- Insight: extending MC-MH (MH fails with high-dimension, large exploration space); **Inform** Effective Markov Transitions with a vector field;
+			- Mimic a satellite around a gravitational planet; Add **right amount of momentum** to make it circle (no collapse or fly out);
+		- Probability: auxiliary momentum parameters, pn, qn->(qn,pn);
+		- π(q,p) = π(p|q)π(q), let π(q, p) = exp(−H(q,p))
+		- H(q,p) ≡ −logπ(q,p) = −logπ(p|q)−logπ(q) ≡ K(p,q) + V(q)
+		- Right amount of vector field, explore the typical set;
+			- dq/dt = ∂H/∂p = ∂K/∂p
+			- dp/dt = -∂H/∂q = -∂K/∂q - ∂V/∂q
+		- Idealized HMC (infinite of choices for momentum p):
+			- Get on phase space first: p ∼ π(p|q);
+			- Integrating Hamilton's equations for some time: (q,p) → φt(q,p)
+		- Efficient HMC:
+			- Natural Geometry: H^−1(E) = {q,p|H(q,p) = E}, π(q,p)=π(θE|E)π(E);
+			- Optimizing the Choice of Kinect Energy;
+				- Euclidean-Gaussian: ∆(q,q')=(q−q')Tg(q−q');
+				- Riemannian-Gaussian: π(p|q) = N(p|0,Σ(q)),
+			- Optimizing the Choice of Integration Time: leap-frog;
+		- exp(-E(x)), introduce velocity v, exp(-E(x)-K(v)), i.e., exp(-H(x,v));
+		- Gibbs sampling velocity;
+- 24.6 Annealing methods
+	- 24.6.1 Simulated annealing
+	- 24.6.2 Annealed importance sampling
+	- 24.6.3 Parallel tempering
+- 24.7 Approximating the marginal likelihood
 
 ## MCMC with Mini-Batch
 - Physics Background:
