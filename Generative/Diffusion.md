@@ -42,7 +42,7 @@
 			- p(xt-1|xt) ~ N(xt-1; fμ(xt,t)+fΣ(xt,t) ∂logr(xt-1)/∂xt-1|xt-1=fμ(xt,t), fΣ(xt,t))
 		- **Perturbed model transition should obey equilibrium**: p'(xt) = ∫dxt+1 p'(xt|xt+1)p'(xt+1);
 		- r(x): hopefully multipied with a Gaussian/binomial in closed form;
-- Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
+- **DDPM**: Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
 	- https://github.com/hojonathanho/diffusion
 	- Forward:
 		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; sqrt(1−βt)xt−1, βtI)
@@ -60,43 +60,68 @@
 	- Practice:
 		- Training: sgd
 	- High-quality result with Langevin dynamics;
-- Yang Song and Stefano Ermon. Improved Techniques for Training Score-Based Generative Models. arxiv'20
-- Alex Nichol and Prafulla Dhariwal. Improved Denoising Diffusion Probabilistic Models. arxiv'21
+- Yang Song and Stefano Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
+- **DDIM**: Jiaming Song, Chenlin Meng, and Stefano Ermon. Denoising diffusion implicit models. ICLR'21
+	- Extend DDPM to non-Markov case:
+		- qσ(x1:T|x0) := qσ(xT|x0)∏qσ(xt−1|xt, x0)
+	- Inference process:
+		- qσ(xt−1|xt,x0)=N(sqrt(αt−1)x0 + sqrt(1−αt−σt^2)(xt-sqrt(αt)x0)/sqrt(1−αt), σt^2I)
+		- Mean and variance carefully chosen, s.t. qσ(xt|x0) ~ N(sqrt(αt)x0, (1-αt)I)
+		- **Forward**: Bayesian
+			- qσ(xt|xt-1, x0) = qσ(xt-1|xt,x0)qσ(xt|x0) / qσ(xt-1|x0)
+			- Non-Markov, b/c xt depends on both xt-1 and x0
+		- **Reverse**: estimate x0 first, then qσ(xt-1|xt,x0) with run inference estimated x0
+			- Estimate x0: fθ,t(xt) := (xt − sqrt(1−αt)εθ,t(xt))/sqrt(αt)
+			- p(xt-1|xt) = N(fθ,t(xt), σ^2I), if t=1;
+			- p(xt-1|xt) = qσ(xt-1|xt, fθ,t(xt)), otherwise;
+- Alex Nichol and Prafulla Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
 	- upsampling;
+	- https://github.com/openai/improved-diffusion
+- **SAM**: Pierre Foret, Ariel Kleiner, Hossein Mobahi, and Behnam Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
+- **Analytic-DPM**: Fan Bao, Chongxuan Li, Jun Zhu, Bo Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
+
+## Condition/Guidance
+- Classifier:
+	- **ADMNet**: Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+		- Guided diffusion (Class-conditional):
+			- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
+			- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
+		- DDIM technique to get xT (non-Markov prediction);
+- Classifier-free (implicit):
+	- Jonathan Ho and Tim Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
+		- Guided diffusion (Class-free):
+		- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
+			- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
+		- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
+			- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
+		- Final equation:
+			- εθ(xt|c) = εθ(xt|∅) + s (εθ(xt|c) − εθ(xt|∅))
+- Text-based (Embedding):
+	- CLIP: given text c, image x, (f(x), g(c)) as guidance;
+	- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+		- https://github.com/openai/glide-text2im.
+		- CLIP-guidance v.s. classifier-free guidance:
+		- µθ(xt|c) = µθ(xt|c) + sΣθ(xt|c)∇xt(f(xt)g(c))
+- **DALL-E-2**: Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
+	- Image caption pair (x, y), embedding (zi, zt);
+		- CLIP: zi (ViT), zt (GPT-3), trained with SAM;
+	- Prior: P(zi|y), predict image embedding zi based on caption y;
+		- CLIP + DALL-E dataset
+		- Prior 1: AR with quantization; PCA + SAM?
+		- Prior 2: DDPM without ε;
+	- Decoder: P(x|y) = P(x,zi|y) = P(x|zi, y)P(zi|y), introduce the latent zi with prior;
+		- Decoder: zi(64x64) - 256x256 - 1024x1024
+		- Stage 1 (GLIDE): Gaussian blur;
+		- Stage 2 (upsampler): BSR degradation, unconditional ADMNet;
+
+## Super-resolution
 - Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image Super-Resolution via Iterative Refinement. 2021
 	- upsampling + Gaussian blur;
 - Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Models.
 	- BSR noise;
 - Kai Zhang, Jingyun Liang, Luc Van Gool, and Radu Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
 	- BSR noise;
-- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
-	- https://github.com/openai/glide-text2im.
-	- CLIP-guidance v.s. classifier-free guidance:
-	- µθ(xt|c) = µθ(xt|c) + sΣθ(xt|c)∇xt(f(xt)g(c))
-- **DALL-E-2**: Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
-	- CLIP: zi (ViT), zt (GPT-3), trained with SAM
-	- Encoder: p(zi|y), predict zi based on caption y;
-		- CLIP + DALL-E dataset
-		- Prior 1: AR with quantization; PCA + SAM?
-		- Prior 2: DDPM without ε;
-	- Decoder: zi(64x64) - 256x256 - 1024x1024
-		- Stage 1: Gaussian blur;
-		- Stage 2: BSR degradation;
-		- unconditional ADMNet;
-- **SAM**: Pierre Foret, Ariel Kleiner, Hossein Mobahi, and Behnam Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
 
 ## Video Generation
 - **ADMNet**: Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
-	- Guided diffusion (Class-conditional):
-		- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
-		- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
-	- DDIM technique to get xT
 - Jonathan Ho, Chitwan Saharia, William Chan, David J. Fleet, Mohammad Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
-- Jonathan Ho and Tim Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
-	- Guided diffusion (Class-free):
-	- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
-		- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
-	- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
-		- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
-	- Final equation:
-		- εθ(xt|c) = εθ(xt|∅) + s (εθ(xt|c) − εθ(xt|∅))

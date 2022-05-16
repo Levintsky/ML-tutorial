@@ -11,6 +11,12 @@
 - Aggregation via Separation: Boosting Facial Landmark Detector With Semi-Supervised Style Translation. ICCV'19
 - Few-Shot Unsupervised Image-to-Image Translation. ICCV'19
 
+## Loss
+- GAN:
+	- Y. Taigman, A. Polyak, and L. Wolf. Unsupervised cross-domain image generation. ICLR'17.
+		- LD = max EDs log(1-D(G(x))) + EDt log(D(x))
+		- Lconst = EDs d(f(x), f(G(x)))
+
 ## Tutorial
 - Y Jing, Y Yang, Z Feng, J Ye, Y Yu, and M Song. Neural Style Transfer: A Review. TVCG 2018
 	- https://www.jiqizhixin.com/articles/2018-05-15-5
@@ -21,6 +27,9 @@
 ## Unclassified
 - **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis, 2018
 - Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, Jan Kautz. Context-Aware Synthesis and Placement of Object Instances. NIPS'18
+- **SPADE**: T Park, M Liu, T Wang, J Zhu. Semantic Image Synthesis with Spatially-Adaptive Normalization. CVPR'19
+	- Key: different scale and bias for different semantic layer!
+	- https://github.com/NVLabs/SPADE
 
 ## Classic
 - **CRN**: Q Chen, V Koltun. Photographic Image Synthesis with Cascaded Refinement Networks. ICCV'17

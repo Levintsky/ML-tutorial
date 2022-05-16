@@ -10,6 +10,13 @@
 	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
 
 ## Text-based Generation
+- Shizhan Zhu, Sanja Fidler, Raquel Urtasun, Dahua Lin, Chen Change Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
+	- Problem setup: input image + text; output new image (focus on fashion);\
+		<img src = '/Generative/images/gan/prada1.png' width = '400'>
+	- Model: two GANS:\
+		<img src = '/Generative/images/gan/prada2.png' width = '400'>
+- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
+- Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
 - Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS'18
 - **DALL-E**: Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-Shot Text-to-Image Generation. 2021
 	- https://github.com/openai/DALL-E

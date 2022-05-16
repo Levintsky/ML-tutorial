@@ -10,7 +10,7 @@
 - Antiderivative: Also: primitive function, primitive integral or indefinite integral
 - Integration by parts: ∫u(dv) = ∫(duv) - ∫v(du)
 - Definite integral;
-- Fundamental theorem of calculus (Newton-Lebniz): int_(a,b)f(t)dt=F(b)-F(a)
+- Fundamental theorem of calculus (Newton-Lebniz): ∫a..b f(t)dt=F(b)-F(a)
 - Integration by substitution
 
 ## Multivariable calculus
@@ -26,12 +26,12 @@
 	- Level curves, contour plots;
 	- Critical point: fx=0, fy=0, (local min, max or saddle)
 	- Chain rule, gradient and directional derivative;
-	- Lagrange multiplier: nabla(f)=nabla(g)
-		- nabla(f)=lambda nabla(g)
+	- Lagrange multiplier: ∇f=∇g
+		- ∇f=λ ∇g
 - 3. Double Integral:
 	- Change of variable: dudv=|ux uy;vx vy|dxdy
 	- Vector field, work and line integral;
-	- Fundamental theory of line integral: F=nabla(f), potential, F: gradient field of f;
+	- Fundamental theory of line integral: F=∇f, potential, F: gradient field of f;
 		- ∫F dr= f(p1)-f(p2), path independent
 		- Conservative field, energy preserving;
 		- F=(M, N), My=Nx iff conservative, proof: fxy=fyx
@@ -126,7 +126,7 @@
 	- **Convergence of measures**;
 	- Measurable function v.s. continuous;
 - Lebesgue Integral;
-	- Theorem: f(x) finite defined on [a,b], f(x) Riemann integralable iff discontinuous point on f(x) is a zero-measure set.
+	- Theorem: f(x) finite defined on \[a,b\], f(x) Riemann integralable iff discontinuous point on f(x) is a zero-measure set.
 	- Fubini's Theorem: Relation between Multiple integral with iterated integral;
 		<img src="/Math/images/analysis/fubini.png" alt="drawing" width="400"/>
 - Derivative and Antiderivative;
@@ -181,4 +181,4 @@
 		<img src="/Math/images/analysis/fredholm-2.png" alt="drawing" width="400"/>
 - **Uniform boundedness principle** or **Banach–Steinhaus theorem**;
 - **Open mapping theorem** or **Banach–Schauder theorem**: if a continuous linear operator between Banach spaces is surjective then it is an open map. 
-- **Closed graph theorem**: If X and Y are Banach spaces, and T : X -> Y is a linear operator, then T is continuous if and only if its graph is closed in X × Y
+- **Closed graph theorem**: If X and Y are Banach spaces, and T : X -> Y is a linear operator, then T is continuous if and only if its graph is closed in X×Y

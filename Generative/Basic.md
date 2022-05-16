@@ -47,9 +47,11 @@
 
 ## Energy/Optimization-Based
 - Basics: generate signals with lower energy;
-- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
-- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
+- Energy-based:
+	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
+	- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
+- Score-based:
+	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
 
 ## Autoregressive/Progressive
 - Basics: Generate result piece by piece;
@@ -70,6 +72,10 @@
 - IAF, NAF, Flow++;
 - Continuous flow:
 	- Neural ODE, PointFlow, occflow;
+
+## Implicit
+- Only defines generating process, likelihood-free;
+- Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
 
 ## Theory and Analysis
 - Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18

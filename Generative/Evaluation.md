@@ -5,13 +5,9 @@
 	- Quality: the Inception-v3 to every generated image to get the conditional label distribution p(y|x), should be low-entropy
 	- Diversity: KL()
 - **FID (Fréchet Inception Distance)**: proposed in M Heusel, H Ramsauer, T Unterthiner, B Nessler, G Klambauer, and S Hochreiter. GANs trained by a two time-scale update rule converge to a local nash equilibrium.
-	- FID: compare the statistics of two Gaussian;
-	```python
-	m1, s1 = compute_statistics(path, model, bsize)
-	m2, s2 = compute_statistics(path, model, bsize)
-	frechet_dist(m1, s1, m2, s2)
-	```
-	<img src = '/Generative/images/fid.png' width = '400'>
+	- FID: Wasserstein metric between two multidimensional Gaussian distributions (μ1, Σ1) and (μ2, Σ2)
+		- Inception V3 used to get real image (μ1, Σ1) and generated (μ2, Σ2)
+	- FID := |μ1-μ2|^2 + tr(Σ1+Σ2-2(Σ1^(.5)Σ2 Σ1^(.5))^.5)
 
 ## Unclassified
 - Alexander A. Alemi, Ian Fischer. GILBO: One Metric to Measure Them All. NIPS'18

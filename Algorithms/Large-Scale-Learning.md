@@ -18,3 +18,7 @@
 - Vayer Titouan, Rémi Flamary, Nicolas Courty, Romain Tavenard, Laetitia Chapel. Sliced Gromov-Wasserstein
 - Nikolas Ioannou, Celestine Mendler-Dünner, Thomas Parnell. SySCD: A System-Aware Parallel Coordinate Descent Algorithm
 - Yanping Huang, Youlong Cheng, Ankur Bapna, Orhan Firat, Dehao Chen, Mia Chen, HyoukJoong Lee, Jiquan Ngiam, Quoc V Le, Yonghui Wu, zhifeng Chen. GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism
+
+## NLP
+- J. Kaplan, S. McCandlish, T. Henighan, T. B. Brown, B. Chess, R. Child, S. Gray, A. Radford, J. Wu, and D. Amodei. Scaling laws for neural language models. arxiv'20
+- J. Hoffmann, S. Borgeaud, A. Mensch, E. Buchatskaya, T. Cai, E. Rutherford, D. d. L. Casas, L. A. Hendricks, J. Welbl, A. Clark, et al. Training compute-optimal large language models. arxiv'22
