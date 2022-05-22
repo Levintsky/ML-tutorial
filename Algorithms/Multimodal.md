@@ -1,5 +1,7 @@
 # Multimodal Learning
 
+Natural Language Descriptions of Deep Visual Features 
+
 ## Dataset
 - Large Vision + Language 
 	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
@@ -55,9 +57,18 @@
 ## Image/Video Caption
 - Good Tutorials
 	- https://www.leiphone.com/news/201805/aQXoPMX51DD1C7VC.html
-- Benchmark
+- Metrics:
+	- BLEU, METEOR, ROUGE-L, CIDEr
+- Benchmarks:
 	- MSCOCO
 	- http://www.sohu.com/a/313942390_651893?sec=wd
+	- **Visual genome**: Connecting language and vision using crowd-sourced dense image annotations.
+	- Visual Dialog. CVPR 2017
+		- https://visualqa.org/challenge.html
+	- GQA:
+		- Yuke Zhu, Oliver Groth, Michael Bernstein, Li Fei-Fei. Visual7W: Grounded Question Answering in Images. 2017
+		- https://cbmm.mit.edu/research/projects-thrust/vision-and-language/grounded-question-answering
+		- Object-level grounding;
 - Unclassified
 	- Partially-Supervised Image Captioning. NIPS'18
 	- Dahua Lin. A Neural Compositional Paradigm for Image Captioning. NIPS'18
@@ -80,56 +91,32 @@
 	- Novel Visual Concept (NVC) dataset https://github.com/mjhucla/NVC-Dataset
 		- TF-mRNN: https://github.com/mjhucla/TF-mRNN
 		- mRNN-CR: https://github.com/mjhucla/mRNN-CR
-
-# VQA, Image/Video Caption
-
-## Metrics
-- BLEU
-- METEOR
-- ROUGE-L
-- CIDEr
-
-## Benchmark
-- **CLEVR**
-- **Visual genome**: Connecting language and vision using crowd-sourced dense image annotations.
-- Visual Dialog. CVPR 2017
-	- https://visualqa.org/challenge.html
-- GQA:
-	- Yuke Zhu, Oliver Groth, Michael Bernstein, Li Fei-Fei. Visual7W: Grounded Question Answering in Images. 2017
-	- https://cbmm.mit.edu/research/projects-thrust/vision-and-language/grounded-question-answering
-	- Object-level grounding;
-
-## Unclassified
-- Learning Conditioned Graph Structures for Interpretable Visual Question Answering. NIPS'18
-- Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering. NIPS'18
-- Jin-Hwa Kim, Jaehyun Jun, Byoung-Tak Zhang. Bilinear Attention Networks. NIPS'18
-
-## VQA
-- MSR:
+- VQA:
+	- Misc:
+		- Learning Conditioned Graph Structures for Interpretable Visual Question Answering. NIPS'18
+		- Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering. NIPS'18
+		- Jin-Hwa Kim, Jaehyun Jun, Byoung-Tak Zhang. Bilinear Attention Networks. NIPS'18
 	- Vqa: Visual question answering. ICCV 2015.
-- **FAIR**:
 	- Devi, Dhruv: Visual Dialog. CVPR 2017
 		- https://visualqa.org/challenge.html
 	- A-star best performer:
 		- LSTM for the question to encode a vector;
 		- Vector as query, do attention, softmax, sum on CNN spatial feature;
 		- Vector produces all answers (VQA has an answer set);
-- Stanford:
 	- **MAC**: D Hudson, C Manning. Compositional Attention Networks for Machine Reasoning. ICLR'18
 		- MAC recurrent unit
-- Berkeley:
 	- **MCB**: A Fukui, D H Park, D Yang, A Rohrbach, T Darrell, M Rohrbach. Multimodal Compact Bilinear Pooling for VQA. EMNLP'16
-- **SOA**: P Anderson, X He, C Buehler, D Teney, M Johnson, S Gould, L Zhang. Bottom-up and top-down attention for image captioning and visual question answering. CVPR'18
-	- Faster RCNN + ResNet-101
-- **MUREL**. Remi Cadene, Hedi Ben-younes, Matthieu Cord, Nicolas Thome. MUREL: Multimodal Relational Reasoning for Visual Question Answering. 2019
-	- https://github.com/Cadene/murel.bootstrap.pytorch
-- Baselines:
-	- https://github.com/Cyanogenoid/pytorch-vqa
-- Counting:
-	- Learning to Count Objects in Natural Images for Visual Question Answering, ICLR 2018
-		- https://github.com/Cyanogenoid/vqa-counting
-- Attention:
-	- Z. Yang, X. He, J. Gao, L. Deng, and A. J. Smola. Stacked attention networks for image question answering. CVPR'16
+	- **SOA**: P Anderson, X He, C Buehler, D Teney, M Johnson, S Gould, L Zhang. Bottom-up and top-down attention for image captioning and visual question answering. CVPR'18
+		- Faster RCNN + ResNet-101
+	- **MUREL**. Remi Cadene, Hedi Ben-younes, Matthieu Cord, Nicolas Thome. MUREL: Multimodal Relational Reasoning for Visual Question Answering. 2019
+		- https://github.com/Cadene/murel.bootstrap.pytorch
+	- Baselines:
+		- https://github.com/Cyanogenoid/pytorch-vqa
+	- Counting:
+		- Learning to Count Objects in Natural Images for Visual Question Answering, ICLR 2018
+			- https://github.com/Cyanogenoid/vqa-counting
+	- Attention:
+		- Z. Yang, X. He, J. Gao, L. Deng, and A. J. Smola. Stacked attention networks for image question answering. CVPR'16
 
 ## Reasoning
 - **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16

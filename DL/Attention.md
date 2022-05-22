@@ -1,5 +1,21 @@
 # Attention Model
 
+## Attention Layers
+- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NIPS'17
+	- A very good intro: http://jalammar.github.io/illustrated-transformer/
+	- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
+	- https://github.com/Kyubyong/transformer
+	- Pytorch: https://github.com/jadore801120/attention-is-all-you-need-pytorch
+		<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
+		<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
+- Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal Modeling. NIPS'18
+	- Insight: non-local attention has damping effect (eigenvalue decreases during training);
+	- Change formulation to make up the damping;
+- Paul Michel, Omer Levy, Graham Neubig. Are Sixteen Heads Really Better than One?. NeurIPS'19
+	- https://github.com/pmichel31415/are-16-heads-really-better-than-1
+	- At test time, a lot of head can be removed;
+	- Greedy alg for pruning;
+
 ## NIPS'19
 - Yi Tay, Anh Tuan Luu, Aston Zhang, Shuohang Wang, Siu Cheung Hui. Compositional De-Attention Networks
 - Simao Herdade, Armin Kappeler, Kofi Boakye, Joao Soares. Image Captioning: Transforming Objects into Words
@@ -24,22 +40,10 @@
 	- https://zhuanlan.zhihu.com/p/109992475
 - Legacy:
 	- D Bahdanau, K Cho, and Y Bengio. Neural machine translation by jointly learning to align and translate. arxiv'14
-	- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NIPS'17
-		- A very good intro: http://jalammar.github.io/illustrated-transformer/
-		- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
-		- https://github.com/Kyubyong/transformer
-		- Pytorch: https://github.com/jadore801120/attention-is-all-you-need-pytorch
-			<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
-			<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
 	- **ELMO**: Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer. Deep contextualized word representations. NAACL'18
 		- https://allennlp.org/elmo
 		- ELMo (Embeddings from Language Models)
 		- bidirectional LSTM, predict next/last word
-- Atomic layer:
-	- Paul Michel, Omer Levy, Graham Neubig. Are Sixteen Heads Really Better than One?. NeurIPS'19
-		- https://github.com/pmichel31415/are-16-heads-really-better-than-1
-		- At test time, a lot of head can be removed;
-		- Greedy alg for pruning;
 - Rami Al-Rfou, Dokook Choe, Noah Constant, Mandy Guo, Llion Jones. Character-Level Language Modeling with Deeper Self-Attention. AAAI'19
 - Self-supervised learning:
 	- **BERT**: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. ACL'19
@@ -212,5 +216,3 @@
 
 ## Attention in RL
 - **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning.
-
-## 

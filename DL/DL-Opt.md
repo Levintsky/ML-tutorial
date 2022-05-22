@@ -40,3 +40,25 @@
 ## Saddle Point
 - Y. N. Dauphin, R. Pascanu, C. Gulcehre, K. Cho, S. Ganguli, and Y. Bengio. Identifying and attacking the saddle point problem in high-dimensional non-convex optimization. NIPS'14
 - R. Pascanu, Y. N. Dauphin, S. Ganguli, and Y. Bengio. On the saddle point problem for non-convex optimization. arxiv'14
+
+## SGD Dynamics
+- SGD prefers flat minima, flatter minima seem to generalize  better:
+	- S. Hochreiter and J. Schmidhuber. Flat minima. NC'97
+	- N. S. Keskar, D. Mudigere, J. Nocedal, M. Smelyanskiy, and P. T. P. Tang. On large-batch training for deep learning: Generalization gap and sharp minima. ICLR'17
+	- Lei Wu, Zhanxing Zhu, and Weinan E. Towards understanding generalization of deep learning: Perspective of loss landscapes. arxiv'17
+- Learning rate and batch size:
+	- Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, large minibatch sgd: training imagenet in 1 hour. arxiv'17
+	- Elad Hoffer, Itay Hubara, and Daniel Soudry. Train longer, generalize better: closing the generalization gap in large batch training of neural networks. NIPS'17
+	- Stanisław Jastrz˛ebski, Zachary Kenton, Devansh Arpit, Nicolas Ballas, Asja Fischer, Yoshua Bengio, and Amos Storkey. Three factors influencing minima in sgd. arxiv'17
+		- the ratio between the learning rate and the batch size η/B is a key factor for flatness;
+	- Zhanxing Zhu, Jingfeng Wu, Bing Yu, Lei Wu, and Jinwen Ma. The anisotropic noise in stochastic gradient descent: Its behavior of escaping from minima and regularization effects. arxiv'18
+		- the specific non-isotropic structure of the noise is important for SGD to find flat minima;
+		- minima found by GD (gradient decent) can be unstable for SGD;
+- Convergence:
+	- Lei Wu, Chao Ma, Weinan E. How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
+		- GD to SGD: escape from minimum and converge to another;
+		- Def3. Sharpness, non-uniformity. Let H = 1/nΣHi, Σ=1/nΣi=1..n Hi^2-H^2, We define a = max(H) to be the sharpness, and s = max(Σ^1/2) to be the non-uniformity, respectively.
+
+## Beyond SGD
+- S. Günther, L. Ruthotto, J.B. Schroder, E.C. Cyr, N.R. Gauger. Layer-Parallel Training of Deep Residual Neural Networks. 2019
+	- Training layer-parallel rather than sequential, with inexact gradient info;

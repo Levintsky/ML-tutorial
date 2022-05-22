@@ -1,6 +1,7 @@
 # Energy/Score-based Model
 
 ## Energy-based
+- Erik Nijkamp, Mitch Hill, Song-Chun Zhu, Ying Nian Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
 
 ## Score-based
 - Basics: denote p_data(x) as p'

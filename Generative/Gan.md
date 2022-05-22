@@ -25,6 +25,19 @@
 - ClothFlow: A Flow-Based Model for Clothed Person Generation. ICCV'19
 - Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
 - DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer. ICCV'19
+- Inference:
+	- V Dumoulin, I Belghazi, B Poole, A Lamb, M Arjovsky, O Mastropietro, and A Courville. Adversarially learned inference.
+- Domain adaptation:
+	- Y Ganin and V Lempitsky. Unsupervised domain adaptation by backpropagation. ICML'15
+- Others:
+	- M. Liu and O. Tuzel. Coupled generative adversarial networks. In NIPS, 2016
+- GAN + AE (Reconstruction ability):
+	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
+		- q(z|x) and p(z) adversarial loss (encoded latent)
+		- Reconstruction loss:\
+			<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
+- Graphical Generative Adversarial Networks. NIPS'18
+- Yair Weiss. On GANs and GMMs. NIPS'18
 
 ## Loss Function
 - GAN: I Goodfellow, J Pouget-Abadie, M Mirza, B Xu, D Warde-Farley, S Ozair, A Courville, and Y Bengio. Generative adversarial nets. NIPS'14.
@@ -106,7 +119,6 @@
 ## Techniques
 - T Salimans, I Goodfellow, W Zaremba, V Cheung, A Radford, and X Chen. Improved techniques for training gans. NIPS 2016
 	- https://github.com/openai/improved_gan
-	- **Perception Score** as evaluation
 	- Feature matching: immediate layer of discriminator
 	- Minibatch discrimination
 	- History averaging
@@ -157,23 +169,7 @@
 	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. In CVPR, 2017.
 	- C. K. Sønderby, J. Caballero, L. Theis, W. Shi, and F. Huszár. Amortised map inference for image super-resolution. In ICLR, 2017.
 
-## Unclassified	
-- Inference:
-	- V Dumoulin, I Belghazi, B Poole, A Lamb, M Arjovsky, O Mastropietro, and A Courville. Adversarially learned inference.
-- Domain adaptation:
-	- Y Ganin and V Lempitsky. Unsupervised domain adaptation by backpropagation. ICML'15
-- Others:
-	- M. Liu and O. Tuzel. Coupled generative adversarial networks. In NIPS, 2016
-- GAN + AE (Reconstruction ability):
-	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
-		- q(z|x) and p(z) adversarial loss (encoded latent)
-		- Reconstruction loss:\
-			<img src = '/Generative/images/gan/pixel-gan.png' height = '100px'>
-- Graphical Generative Adversarial Networks. NIPS'18
-- Yair Weiss. On GANs and GMMs. NIPS'18
-
 ## Feature Learning
-- Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
 - Deepak: Unsupervised Feature Learning by Image Inpainting using GANs, CVPR 2016
 	- https://github.com/pathak22/context-encoder
 

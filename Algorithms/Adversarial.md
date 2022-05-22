@@ -23,6 +23,7 @@
 	- Imagine binary classifcation: f(x) and y (+/-1)
 	- Insight: create a new dataset, manipulate x (originally cat), s.t., turns it into a dog with cat-looking with dog-robust-feature and labled it as a dog in the new dataset;
 - A Game Theoretic Approach to Class-wise Selective Rationalization. NIPS'19
+- Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
 
 ## Attack
 - Optimization-based:

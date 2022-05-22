@@ -1,0 +1,245 @@
+# Numerical Analysis
+
+## Basics
+- Numerical analysis is the story of how functions, derivatives, integrals, and differential equations are handled as strings of numbers in the computer;
+- At the heart of numerical analysis is an understanding of the speed of convergence of Taylor, Fourier, and other series expansions
+
+## MIT 18-330
+- https://ocw.mit.edu/courses/18-330-introduction-to-numerical-analysis-spring-2012/pages/syllabus/
+- Chap 1: Series and sequences
+	- 1.1 Convergence vs. divergence
+		- Def. convergence of a sequence, ε-close to a number b:
+			- for all n>=N. |aj−b| ≤ ε
+		- Def. N-th partial sum ∑0..n aj
+		- Harmonic series: 1 + 1/2 + 1/3 + ...
+		- ∑n^(-q), Riemann zeta function ζ(q), diverge at q=1, converge at q>1.
+		- Absolutely convergent: ∑|aj|
+		- Theo 1: (Alternating series test) Consider the series:
+			- ∑(-1)^j aj
+			- aj>0. if (aj) converges to zero, then the series is convergent;
+		- Theo 2: Absolutely convergent, rearrangement -> same result;
+		- Def 4. Big O notation
+- Chap 2: Integrals as sums and derivatives as differences
+	- 2.1 Numerical integration
+		- ∫0..1 f(x)dx
+		- ∫xj-1..xj f(x)dx = hf(xj-1) + O(h^2)
+		- = hf(xj-1) + f'(xj-1) h^2/2 + O(h^3)
+		- = h/2(f(xj-1) + f(xj)) + O(h^3) (trapezoid)
+	- 2.2 Numerical differentiation
+		- ∆+u = (uj+1-uj)/h, ∆- = (uj-uj-1)/h, error O(h)
+		- ∆0u = (uj+1-uj-1)/2h, error O(h^2)
+		- ∆2u = (uj+1+uj-1-2uj)/h^2, error O(h^2)
+- Chap 3: Interpolation
+	- 3.1 Polynomial interpolation
+		- ∑n=0..N an xj^n = yj
+		- Vandermonde matrix fitting;
+		- Lemma 1. (Lagrange elementary polynomials) Let {xj, j = 0,... , N} be a collection of disjoint numbers. For each k = 0, ... , N, there exists a unique degree-N polynomial Lk(x) s.t.
+			- Lk(xj)=δjk
+			- Proof: let Lk(x)=Π(x-xk)/Π(xj-xk)
+		- Theo 4 (Lagrange): Let {xj, j=0,..., N} be a collection of disjoint real numbers. Let {yj, j=0,... , N} be a collection of real numbers. Then there exists a unique pN ∈ PN such that
+			- pN(xj) = yj
+			- pN(x) = ∑ykLk(x)
+	- 3.2 Polynomial rules for integration
+		- 3.2.1 Polynomial rules
+			- Trpezoidal:
+				- ∫0..h u(x)dx = h(u(0)+u(h))/2+ O(h^3). Triangle for each interval;
+				- ∫0..1 u(x)dx = h∑(u(j-1)+u(j))/2+ O(h^2).
+			- Simpson: parabola for (-h,0,h) with y=(u(x-1),u(x0), u(x1))
+				- Fitting: p2(x) = u(−h)L−1(x) + u(0)L0(x) + u(h)L1(x), (Lagrange, 2nd-order each interval)
+				- u(x)=p2(x) +u'''(x+h)x(x-h), residual
+				- ∫-h..h u(x)dx=h(u(-h)+4u(0)+u(h))/3 + O(h^4)
+	- 3.3 Polynomial rules for differentiation
+		- Insight: fit with polynomial first, then use polynominal derivative;
+		- p1(x) = u(0)L0(x) + u(h)L1(x), u'(0)-p1'(0)=O(h)
+		- p2(x), u'(0)-p2'(0)=O(h^2)
+	- 3.4 Piecewise polynomial interpolation
+		- 3.4.1 Linear spline
+			- Theo 7. linear spline residual O(h^2)
+		- 3.4.2 Cubic splines
+			- deg-3 poly s.t. at each point: value, 1st and 2nd order derivative all agree;
+			- Two dof:
+				- Natural splines: s''(x0)=x''(xN)=0
+				- Clamped: s'(x0)=p0, s'(xN)=pN
+				- Periodic: s'(x0)=s'(xN), s''(x0)=s''(xN)
+			- Let σj = s''(xj), hj=xj-xj-1
+				- s''(x)=(xj-x)hj σj-1 + (x-xj-1)/hj σj, 2nd-order linear in each interval;
+				- s(x)=(xj-x)^3/6hj σj-1 + (x-xj-1)^3/6hj σj + αj(x-xj-1)+βj(xj-x)
+			- B-spline: a spline function that has minimal support with respect to a given degree, smoothness, and domain partition;
+				- s(x) = ∑ck φk(x)
+				- φk(x)=S3(x-xk-2), supported on (xk-2,xk+2)
+				- S3(x) = x+^3 − 4(x−h)+^3 + 6(x−2h)+^3 − 4(x − 3h)+^3 + (x−4h)+^3
+				- Bell-shaped, φk(xk)=1, φk(xk±1)=1/4, φk(x)=0 outside (xk-2,xk+2);
+				- ck solved by a linear system;
+- Chap 4: Nonlinear equations
+	- Try to find x s.t. f(x)=0;
+	- 4.1 Root finding
+		- Method 1: bisection.
+			- εn ~ 2^(-n)
+		- Method 2: Newton-Raphson: find a tangent line;
+			- xn+1 = xn - f(xn)/f'(xn)
+			- |εn+1| <= Cε^2
+		- Method 3: the secant method.
+			- derivative not available, approximate with fn,n-1=(fn-fn-1)/(xn-xn-1)
+			- xn+1 = xn - f(xn)/fn,n-1
+			- |εn+1| <= C|εn||εn-1|
+	- 4.2 Optimization problems
+		- Problem setup: minF(x)
+		- Single var: xn+1 = xn - F'(xn)/F''(xn)
+		- Newton: xn+1 = xn − (∇∇F(xn))^−1 ∇F(xn).
+			- (∇∇F)ij = ∂^2F/∂xi∂xj
+		- xn+1 = xn - α∇F(xn)
+- Chap 5: Methods for ODE
+	- 5.1 IVP
+		- y'(t) = f(y(t), t)
+		- Picard;
+	- 5.2 Numerical methods for Initial-Value Problems
+		- Forward Euler (a.k.a. explicit Euler).
+			- yn+1 = yn + h f(tn, yn).
+		- Backward Euler (a.k.a. implicit Euler). since you don't know yn+1.
+			- yn+1 = yn + h f(tn+1, yn+1).
+		- Trapezoidal (a.k.a. midpoint) rule (implicit).
+			- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1)) .
+		- Improved Euler, Runge-Kutta 2 (explicit). get a surrogate yn+1' first;
+			- yn+1' = yn + h f(tn, yn)
+			- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1))
+		- Runge-Kutta 4 (explicit)
+			- yn+1 = yn + h(k1 + 2k2 + 2k3 + k4),
+			- k1 = f(tn, yn), k2 = f(tn+h/2, yn+k1),
+			- k3 = f(tn+h/2, yn+h/2 k2), k4 = f(tn + h, yn + hk3).
+		- 5.2.1 Convergence
+			- yn+1 = Ψ(tn, yn, h),
+			- Local: en+1(h) = Ψ(tn, y(tn), h) − y(tn+1),
+			- Global: En(h) = yn − y(tn).
+			- Def 6. Consistency. lim(h->0) en(h)/h = 0
+			- Def 7. (Order) Ψ is of order p if en(h) ~ O(h^p+1)
+			- local error ~ O(h^p+1), then global tends to O(h^p)
+			- Forward/backward Euler: order 1;
+			- Midpoint, RK-2: order 2;
+			- RK-4: order 4;
+		- 5.2.2 Stability
+			- Def 8. (Linear stability) Suppose y'=λy for some λ ∈ C. Then the numerical method Ψ is linearly stable if yn → 0 as n → ∞.
+				- Re(λ) < 0;
+			- e.g. forward Euler: yn+1 = yn + hλyn = (1 + hλ)yn. y->0 provided |1 + hλ| < 1.
+			- e.g. backward: yn+1 = yn/(1-hλ). stability zone: Re(λ)<0
+			- e.g. Trapezoidal: yn+1/yn=(1+hλ/2)/(1-hλ/2), Re(λ)<0
+			- Multi-dimension vector var: A=∇y f(y,t), dy/dt=Ay(t), y(t)=y(0)exp(tA); Re(λ)<0;
+		- 5.2.3 Miscellaneous
+			- Deffered correction: uniform grid, lower order fitting first, then correct;
+			- Error: δ(t) = y(t) − πn(t); πn(.) n-th order interpolation;
+			- δ'(t) = f(y(t),t) − π'n(t)
+	- 5.3 Boundary-value problems
+		- Solve for u(x), s.t.:
+			- u''(x) = f(x), x ∈ \[0,1\], u(0)=a, u(1)=b; (Dirichlet)
+			- u''(x) = f(x), x ∈ \[0,1\], u'(0)=a, u'(1)=b; (Neumann)
+			- u''(x) = f(x), x ∈ \[0,1\], u(0)=u(1); (periodic)
+		- Shooting method for ODE;
+		- PDE: K matrix of shifting (-1, 2, -1), KU=F, solve U;
+		- Def 9. The local truncation error (LTE) of a numerical scheme KU = F, error made when evaluating the numerical scheme: KU=F+τ
+			- e.g. We know -(u(xj+1)-2u(xj)+u(xj-1))/h^2=f(xj)+O(h^2);
+			- LTE is O(h^2)
+		- Def 10. Actual error.
+		- 5.3.1 Matrix norms and eigenvalues
+			- Def 11. spectral norm or 2-norm. |A|=max|Ax|/|x| with vector 2-norm.
+				- |Ax|<=|A| |x|
+			- Theo 9. Let A=A'. Then |A| = max|λi(A)|.
+		- 5.3.2 Properties of the matrix K
+			- e = inv(K)τ
+			- Eigen value and vector of K.
+				- v(0)=v(1)=0, vn(x)=sin(nπx)
+		- 5.3.3 Other boundary conditions and other equations
+- Chap-6: Fourier analysis
+	- 6.1 The Fourier transform
+		- Def. Integrability. ∫|f(x)|dx < ∞ in the sense of Lebesgue integration. f ∈ L1(R) for the space of integrable functions.
+		- Def. FT, IFT
+			- F(k) = ∫-∞..∞ exp(-ikx)f(x)dx
+			- f(x) = 1/2π ∫-∞..∞ exp(ikx)F(k)dk
+		- Differentiaion: F(f'(x)) -> ikF(k)
+		- Translation: g(x)=f(x+a) -> exp(ika)F(k)
+		- Gaussian: F(exp(-x^2/2)) = sqrt(2π)exp(-k^2/2)
+		- Dirac: F(δ(x)) = 1;
+		- Conv: F(conv(f, g)) = F(k)G(k)
+	- 6.2 Sampling and restriction
+		- Insight: SFT/ISFT for discrete time, FS/IFS for restricted interval (-π, π) (or periodic time).
+		- Def. Aliases.
+		- Def 16. (SFT) Let xj = hj, fj = f(xj). Semidiscrete Fourier transform: (let fj=f(xj)
+			- F(k) = h ∑j=-∞..∞ exp(-ikxj)fj
+		- ISFT: fj = 1/2π ∫-π/h..π/h exp(ikx)F(k)dk
+		- Def 17. Fourier series (FS):
+			- F(k) = ∫-π..π exp(-ikx)f(x)dx
+		- IFS: f(x) = 1/2π ∑k=-∞..∞ exp(ikx)F(k)
+	- 6.3 DFT, FFT
+		- DFT: both time and freq domain sampled and restricted;
+		- xj=jh, j=1..N with periodicity
+		- k ∈ (-π/h, π/h)
+		- Def. DFT. F(k) = h (∑j=1..N exp(-ikjh)fj), with k=-N/2, ..., N/2
+		- IDFT: fj = 1/2π ∑k=-N/2+1..N/2 exp(ikjx)F(k), j=1,...,N
+		- Naive: O(N^2)
+		- FFT: O(NlogN)
+	- 6.4 Smoothness and truncation
+		- Insight: **Smoother f(x) makes F(k) decays fast**
+		- Def. Lp, p-norm. ∫-∞..∞ |f(x)|^p dx < ∞.
+		- L∞: esssup|f(x)| < ∞.
+		- Theo 12. (Parseval's identity). Let f, g ∈ L1(R) ∩ L2(R). Then:
+			- ∫-∞..∞ f(x) g(x)+ dx = 1/2π ∫-∞..∞ f(k) g(k)+ dk
+		- Theo 13. (Plancherel's identity). Let f, g ∈ L1(R) ∩ L2(R). Then:
+			- ∫-∞..∞ |f(x)|^2 dx = 1/2π ∫-∞..∞ |f(k)|^2 dk
+		- Def. TV. 
+			- |f|tv = ∫-∞..∞ |f'(x)| dx
+		- Def. BV(R): TV for function not C1.
+		- decay for large |k| corresponds to smoothness in x:
+		- F(k) ∈ L1(R) decay, then f ∈ L∞ and f is continuous.
+		- F(k)(1+|k|^p) ∈ L1(R) decay, then f ∈ Cp.
+		- f(x) ∈ BV(R) (smoothness), then F(k) <= |f|tv|k|^(-1) (decay).
+		- F(k) ∈ L2(R) for 0 <= k < p, f(p)(x) ∈ BV(R). (smoothness), then ∃ C > 0, s.t. |F(k)|<=|k|^(-p-1) (decay)
+		- e.g. s(x) = 1/2 χ-1..1(x) rectangle-shaped
+			- S(k) = sin(k)/k
+			- s2 = conv(s, s), S2(k)=(sin(k)/k)^2
+			- Any number of autoconvolutions: family of B-splines.
+	- 6.5 Chebyshev expansions
+- Chap-7 Spectral Interpolation, Differentiation, Quadrature
+	- 7.1 Interpolation
+		- 7.1.1 Bandlimited interpolation
+		- SFT (semidiscrete Fourier): xj=jh, j ∈ Z.
+			- F(k)=h ∑j∈Z exp(-ikxj)fj
+			- fj = 1/2π ∫-π/h..π/h exp(ikxj)F(k)dk
+		- e.g. fj=δ0j (1 if j=0; 0 otherwise)
+			- F(k)=h for k in (-π/h, π/h)
+			- p(x) = sinc(πx/h)
+		- e.g. fj = ∑k∈Z δjk fk
+			- p(x) = ∑k∈Z fk sinc(π(x-xk)/h)
+		- Theo 14. (Poisson summation formula, FT version)
+			- U(k) = ∫R exp(-ikx)u(x) dx (FT) k ∈ R
+			- V(k) = h ∑k∈Z exp(-ikxj) u(xj) (SFT), k ∈ (-π/h, π/h)
+			- V(k) = ∑m∈Z U(k+m2π/h), k ∈ (-π/h, π/h)
+		- Theo 15. (Error of bandlimited interpolation) Let u have p ≥ 1 derivatives in L(R). Let vj = u(xj) at xj=jh, j ∈ Z. Denote by p(x) the bandlimited interpolant formed form vj. Then, as h → 0,
+			- |U(k)-P(k)| = O(h^p)
+		- 7.1.2 Chebyshev interpolation
+			- Smooth function f(x) defined in (-1, 1)
+			- Let x = cosθ, g(θ)=f(cosθ)
+			- Take θj = πj/N, j=1,...,2N
+			- q(θ) = 1/2π ∑k=-N..N exp(ikθ)G(k)
+			- G(k) = π/N ∑j=0..2N-1 exp(-ikθj)g(θj)
+			- q(θ) = ∑k=0..N cos(kθ)ck
+			- sample points xj = cos(θj). They are called Chebyshev points
+	- 7.2 Differentiation
+		- 7.2.1 Bandlimited differentiation
+		- Obtain SFT V(k) of vj=u(xj)
+		- Multiply V(k) by ik;
+		- ISFT of W(k)=ikV(k) to get wj;
+		- Theo 17. sup|wj-u'(xj)| = O(h^p-2)
+	- 7.3 Integration
+		- 7.3.1 Spectral integration
+		- Insight: the idea of spectral integration is to integrate a bandlimited interpolant.
+		- u(θ), θ ∈ (0, 2π), vj=u(θ), θj=jh, h=2π/N. j=1...N
+		- V(k) = h ∑j=1..N exp(-ikθj)vj, (DFT)
+		- p(θ) = 1/2π ∑k=-N/2..N/2 exp(ikθ)V(k)
+		- Integrating p(θ) instead of u(θ)
+		- ∫0..2π p(θ)dθ = h ∑j=1..N u(θj) **Trapezoidal**
+		- Theo 18. u has p derivatives in L(0, 2π) with (0, 2π) is considered a periodic interval:
+			- ∫0..2π u(θ)dθ - h ∑j=1..N u(θj) = O(h^p)
+		- 7.3.2 Chebyshev integration
+		- Let x ∈ (-1, 1) for f(x) otherwise rescale x.
+		- ∫-1..1 p(x)dx = ∑n>=0 an ∫-1..1 Tn(x)dx
+		- ∫-1..1 Tn(x)dx = ∫0..π cos(nθ)sinθdθ
+		- Estimate an
+		- ∫-1..1 Tn(x)dx = 0 (n odd); 2/(1-n^2) (n even).

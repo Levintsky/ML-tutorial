@@ -43,6 +43,9 @@
 - GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
 - Important! change of variable theorem: 
 
+## Misc
+- Jonathan Ho, Evan Lohn, Pieter Abbeel. Compression with Flows via Local Bits-Back Coding. NIPS'19
+
 ## Normalizing Flows
 - **Normalizing flows** or **Planar Flows**: D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
 	- Transforms a simple distribution into a complex one by applying a sequence of invertible transformation functions.\
