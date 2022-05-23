@@ -243,3 +243,10 @@
 		- ∫-1..1 Tn(x)dx = ∫0..π cos(nθ)sinθdθ
 		- Estimate an
 		- ∫-1..1 Tn(x)dx = 0 (n odd); 2/(1-n^2) (n even).
+
+## Trick in Practice
+- About the fast trace estimation trick:
+	- About trace for flow generative: https://blog.csdn.net/hanss2/article/details/85331863
+	- M.F. Hutchinson. A stochastic estimator of the trace of the influence matrix for laplacian smoothing splines. 1989.
+		- First paper on the trace estimation trick;
+	- https://zhuanlan.zhihu.com/p/51514687

@@ -13,6 +13,10 @@
 	- Runge-Kutta method;
 		- Most classical RK4;\
 			<img src = '/DL/images/dynamic-system/rk4.png' width = '400'>
+- Nice survey:
+	- Lars Ruthotto and Eldad Haber. Deep neural networks motivated by partial differential equations. 2018
+	- https://www.youtube.com/watch?v=G2n2nJnh5kc&t=1391s
+	- https://www.youtube.com/watch?v=1mVycBKb1TE
 - Optimal Control, Diffential equation, adjoint method:
 	- Pontryagin's maximum principle (Boltyanskii et al., 1960; Pontryagin, 1987)
 		<img src = '/DL/images/dynamic-system/msa-pmp.png' width = '400'>
@@ -43,6 +47,12 @@
 		- Insight: Runge-Kutta;\
 			<img src = '/DL/images/dynamic-system/fractal-net-2.png' width = '400'>
 		- An ODE view: xn+1 = k1 xn + k2(k3 xn + f1(xn)) + f2(k3 xn+f1(xn))
+	- **Multiscale** Haber, E.; Ruthotto, L.; and Holtham, E. Learning across scales-multiscale methods for convolution neural networks. AAAI'17
+		- Supervised learning from optimal control formulation:
+			- min 1/m∑j=1..m S(g(hWy+μ), cj) + R(W, μ, s, b)
+			- s.t. yk+1 = yk + δt σ(yk, θ)
+		- The algorithm:
+			- Solve optimal control problem on mesh i, then go to a finer level;
 	- Dense could be viewed as RK;
 	- Eldad Haber and Lars Ruthotto. Stable architectures for deep neural networks. Inverse Problems 2017
 		- Insight: **Hamilton-inspired**, ResNet as ODE to address exploding/vanishing gradients;
@@ -60,6 +70,9 @@
 			<img src = '/DL/images/dynamic-system/rev-ode-3.png' width = '350'>
 		- Whole model:\
 			<img src = '/DL/images/dynamic-system/rev-ode-4.png' width = '500'>
+	- Bo Chang, Lili Meng, Eldad Haber, Frederick Tung, David Begert Multi-level residual networks from dynamical systems view. ICLR'18
+		- Insight: multi-grid ODE; allow adding new layers if current time resolution not sufficient for modeling;
+			<img src = '/DL/images/dynamic-system/multi-level-resnet.png' width = '400'>
 	- **LM-ResNet**: Yiping Lu, Aoxiao Zhong, Quanzheng Li, and Bin Dong. Beyond finite layer neural networks: Bridging deep architectures and numerical differential equations. ICML'18
 		- Insight: inspired by connection between ODE-solver and network model, proposed mixture of two skips;
 		- https://web.stanford.edu/~yplu/proj/lm/
@@ -74,6 +87,16 @@
 		- y1 = z1,         x1 = z1 - F(x2);
 		- The backprop: reversible construct the value first;\
 			<img src = '/DL/images/dynamic-system/rev-net-3.png' width = '400'>
+	- **i-ResNet**: Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
+			- Main insight: same as RevNet and flow-based methods. but **free-form**;
+			- https://github.com/jhjacobsen/invertible-resnet
+			- With contractive g(), i.e., Lip(g(θ)) < 1, so **Spectral-Norm** layer added to make constraint always satisfied. Then backward Euler to compute x(t+1) from x(t) as fixed point:
+				- Iterate n times xi+1 = y - g(xi), with x0=y;
+			- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
+				- tr(ln(I+Jg(x))) = ∑k (-1)^k+1 tr(Jg)/k;
+			- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
+			- For (1), (2), the approximate trick;
+			- For (3), truncated at n steps;
 	- **Residual-Flow**: Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
 		- Main insight: improves on RealNVP to allow **free-form** and get unbiased Log Density Estimation for MLE with **Russian roulette** vJv to estimate trace(J); similar to FFJORD;
 		- Flip a coin (Bernoulli) to decide when to stop; Improve on **i-ResNet**;
@@ -84,7 +107,18 @@
 			- ∂log det(I+Jg(x,θ))/∂θ = En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k)), very expensive to save O(mn)
 		- BP:
 			- ∂L/∂θ = ∂L/∂log det(I+Jg(x,θ)) . ∂log det(I+Jg(x,θ))/∂θ
+	- EnResNet: Bao Wang, Binjie Yuan, Zuoqiang Shi, Stanley J. Osher. ResNets Ensemble via the Feynman-Kac Formalism to Improve Natural and Robust Accuracies. NIPS'19
+		- Insight:
+			- Modify ResNets by injecting a variance specified Gaussian noise, and it results in a special type of neural stochastic ODE.
+			- We average over the production of multiple jointly trained modified ResNets to get the final prediction;
+		- https://github.com/BaoWangMath/EnResNet
+		- Original: xl+1 = xl + F(xl)
+		- Proposed: xl+1 = xl + F(xl) + σN(0,1)
 - ODE-inspired network structure (continuous):
+	- Sonoda, Sho and Murata, Noboru. Double continuum limit of deep neural networks. ICML Workshop'17
+		- ∂φt(x)/∂t = ∇Vt(φt(x)), x ∈ R
+		- φt(x) = x + ∫0..t ∇Vt(φt(x))ds, intractable
+		- dµt/dt = −grad F(µt),
 	- **MSA**: Qianxiao Li, Long Chen, Cheng Tai, Weinan E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
 		- Insight: co-state (adjoint)
 		- Formulation: for each data (x1,...,xT) dX/dt=f(t,X,θ) parametrized by a NN; Loss function fitting on each data sample + regularization;
@@ -132,6 +166,23 @@
 			- Both error scales at O(dt)
 		- ANODE:
 			- Checkpointing: save activation; O(L)
+	- **FFJORD**: Will Grathwohl, Ricky T. Q. Chen, Jesse Bettencourt, Ilya Sutskever, David Duvenaud. FFJORD: Free-form Continuous Dynamics for Scalable Reversible Generative Models. ICLR'19
+		- https://github.com/rtqichen/ffjord/
+		- Insight: normalizing flow + trace estimation trick;
+		- Formulation:
+			- z0 = ∫t1..t0 f(z(t), t; θ)dt, z(t1)=x
+			- logp(x)-logpz0(z0) = ∫t1..t0 -Tr(∂f/∂zt)dt, logp(x)-logp(zt1)=0
+		- Implementation:
+			- augment NODE (z) to (z, logpt), forward-backward OTD;
+	- **IMEXnet**: Eldad Haber, Keegan Lensink, Eran Treister, Lars Ruthotto. IMEXnet - A Forward Stable Deep Neural Network. ICML'19
+		- Mix of explicit and implicit (forward/backward?)
+		- dY/dt = f(Y, θ)+LY - LY; L: invertible matrix;
+		- Yj+1 = (I+hL)^-1 (Yj + hLYj + hf(Yj,θj))
+	- **LMU**: Aaron Voelker, Ivana Kajić, Chris Eliasmith. Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks. NIPS'19
+		- https://github.com/abr/neurips2019
+		- ODE-style cell: θdm(t)/dt = Am(t) + Bu(t)
+		- ht = f(Wx xt + Wh ht-1 + Wm mt)
+		- ut = ex xt + eh ht-1 + em mt-1
 	- ANODEV2: Tianjun Zhang, Zhewei Yao, Amir Gholami, Kurt Keutzer, Joseph Gonzalez, George Biros, Michael Mahoney. ANODEV2: A Coupled Neural ODE Evolution Framework. NIPS'19
 		- Insight: allow the network weight θ(t) to evolve with time;
 			- z(1) = z(0) + ∫0..1 f(z(t), θ(t))dt
@@ -155,12 +206,17 @@
 		- E.g.2: two circles; (not linear separable)
 		- Proposed method: augment with vector a;
 			- d\[h;a\]/dt = f(\[h;a\], t), with h(0)=x, a(0)=a
-	- Yulia Rubanova, Tian Qi Chen, David Duvenaud. Latent Ordinary Differential Equations for Irregularly-Sampled Time Series. NIPS'19
+	- **ODE-RNN**: Yulia Rubanova, Ricky T. Q. Chen, David Duvenaud. Latent ODEs for Irregularly-Sampled Time Series. NIPS'19
+		- Insight: ODE-RNN hybrid; ODE during time steps; RNN update with new observation;
+		- https://github.com/YuliaRubanova/latent_ode
+		- Algorithm:
+			- hi' = ODESolve(fθ, hi-1, (ti-1, ti)), to get ODE from ti-1 to ti
+			- hi = RNNCell(hi', xi), update with new input
 - Dynamic with physical inductive-bias:
 	- **DeLaN**: Michael Lutter, Christian Ritter & Jan Peters. Deep Lagrangian Networks: Using Physics as Model Prior for Deep Learning. ICLR'19
 		- Background:
 			- q: generalized coord, q': velocity;
-			- T=q'H(q)q'/2: kinetic;
+			- T = q'H(q)q'/2: kinetic;
 			- V: potential with dV/dq=g(q);
 			- τ: general force;
 			- Lagrange L=T-V; 
@@ -199,7 +255,7 @@
 		- Insight: analyze why HNN outperforms NODE, with 3 reasons (energy cons, symplectic, 2nd-order)
 		- HNN: dz/dt = J∇H, with J as antisymmetric matrix;
 		- Reason 1 (Energy conservation): not the reason b/c numeric error accumulates;
-			- dH(z)/dt=∇H(z)dz/dt=∇H J ∇H=0 (b/c J antisymmetric)
+			- dH(z)/dt = ∇H(z)dz/dt = ∇H J ∇H = 0 (b/c J antisymmetric)
 		- Reason 2 (Symplectic vector Field): not the reason, symplectic regularization has negligible influence;
 			- J matrix is preserved by the dynamics;
 			- (JDF)'=JDF, b/c J=-J'
@@ -213,6 +269,20 @@
 ## Neural PDE
 - **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
 	- Learned-PDE;
+- PDE-inspired:
+	- **PDE-Net**: Zichao Long, Yiping Lu, Xianzhong Ma, Bin Dong. PDE-Net: Learning PDEs from Data. ICML'18
+		- https://github.com/ZichaoLong/PDE-Net
+		- Insight: two objectives at the same time:
+			- To accurately predict **dynamics** of complex systems:
+				- du/dt = F(x, y, u_x, u_y, u_xx, u_xy, u_yy, ...)
+			- To uncover the underlying hidden PDE models (previous PDEs are human designed)
+		- Architecture design:
+			- One δt-block (not learned?):
+				- u(t+1,.) = D0 u(u,.) + Δt F(x, y, D00u, D10u, D01u, D20u, D02u,...)
+				- with D0, D00: average operators; D01,... approximate differential operators;
+			- Multi δt-block (shared weights), with loss at each step;
+		- Application: dicovering hidden PDE;
+- Parabolic/hyperbolic CNNs, IMEX-Net; Lean ResNet;
 
 ## Neural SDE
 - Xuechen Li, Ting-Kam Leonard Wong, Ricky T. Q. Chen, David Duvenaud. Scalable Gradients for Stochastic Differential Equations. AISTATS'20
@@ -222,6 +292,9 @@
 - Xuanqing Liu, Si Si, Qin Cao, Sanjiv Kumar, and Cho-Jui Hsieh. Neural sde: Stabilizing neural ode networks with stochastic noise. arxiv'19
 - Belinda Tzen and Maxim Raginsky. Neural stochastic differential equations: Deep latent gaussian models in the diffusion limit. arxiv'19
 - Belinda Tzen and Maxim Raginsky. Theoretical guarantees for sampling and inference in generative models with latent diffusions. COLT'19
+- **HollowNet**: Ricky T. Q. Chen, David Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
+	<img src = '/DL/images/dynamic-system/hollow-net.png' width = '400'>
+
 ## ML-Solver
 - Use ML (could be neural net) to solve a given ODE/PDE;
 - General:
@@ -247,11 +320,40 @@
 ## Dynamic Equilibrium, Fixed Point
 - Insight: directly solve for the eqiulibrium condition;
 - Legacy:
+	- **Almeida-Pineda** algorithm;
+		- Almeida, L. B. A learning rule for asynchronous perceptrons with feedback in a combinatorial environment. ICNN'87
+		- Pineda, F. J. Generalization of back-propagation to recurrent neural networks. Physical review letters'87
 	- Patrice Y Simard, Mary B Ottaway, and Dana H Ballard. Fixed point analysis for recurrent networks. NIPS'89
+	- Cessac, B. A view of neural networks as dynamical systems. International Journal of Bifurcation and Chaos. 2010
 - John Miller and Moritz Hardt. When recurrent models don't need to be recurrent. arXiv'18
+- **RBP**: Renjie Liao, Yuwen Xiong, Ethan Fetaya, Lisa Zhang, KiJung Yoon, Xaq Pitkow, Raquel Urtasun, Richard Zemel. Reviving and Improving Recurrent Back-Propagation. ICML'18
+	- Insight: consider a class of RNNs whose **hidden state** converges to a steady state, with **Implicit Function Theorem**;
+	- https://github.com/lrjconan/RBP
+	- Fix point of Ψ w.r.t. h: Ψ(w,h) = h - F(x, w, h)
+		- ∂Ψ/∂w = ∂h/∂w - dF/dw = (I-∂F/∂h)∂h/∂w - ∂F/∂w = 0, at equilibrium h;
+	- Derivative of output, y=G(x,wG,h) and loss L(y,yGT);
+		- ∂L/∂w = ∂L/∂y ∂G/∂w
+		- ∂L/∂w = ∂L/∂y ∂y/∂h (I-∂F/∂h)^-1 ∂F/∂w
+	- original RBP (Pineda 1987; Almeida, 1987) introduce auxiliary var z:
+		- z = (I-∂F/∂h)^-1 (∂L/∂y ∂y/∂h)T
+	- RBP algorithm:
+		- Iteratively update z until z converges: |zi - zi-1| < ε
+	- **CG-RBP**: conjugate gradient on normal equations:
+		- (I-∂F/∂h)(I-∂F/∂h)T z = (I-∂F/∂h)(∂L/∂y ∂y/∂h)^T
+	- Neumann series (Neumann-RBP): sum(I+A+A^2+...) Neumann series, truncated at K:
+		- g = (I+J+J^2+...+J^K)v
+		- ∂L/∂w = gT ∂F/∂w
 - **DEQ**: Shaojie Bai, J. Zico Kolter, Vladlen Koltun. Deep Equilibrium Models. NIPS'19
 	- https://github.com/locuslab/deq
 	- Insight: given input x1:T, an RNN-cell iterate z1:T=f(z1:T, x:1:T; θ) with indinite depth:
 		- Directly solve for fixed point z'=f(z', x:1:T; θ)
 	- Theorem of backprop through fixed point:\
 		<img src = '/DL/images/dynamic-system/deq-2.png' width = '400'>
+- Equilibrium Propagation
+	- B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv'16
+	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models
+	and backpropagation. 2017
+		- A biologically inspired equilibrium propagation framework for an energy-based model whose prediction is the fixed-point of the energy dynamics at its local minimum;
+	- B. Scellier and Y. Bengio. Equivalence of equilibrium propagation and recurrent backpropagation. NC'19
+	- Maxence Ernoult, Julie Grollier, Damien Querlioz, Yoshua Bengio, Benjamin Scellier. Updates of Equilibrium Prop Match Gradients of Backprop Through Time in an RNN with Static Input. NIPS'19
+		- https://github.com/ernoult/updatesEPgradientsBPTT

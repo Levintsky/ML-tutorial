@@ -629,8 +629,8 @@
 	- **Integral Curve**: C(t) is called integral curve of f, if its tangent vector equals v;
 		- Uniqueness;
 	- **One-parameter group of diffeomorphisms**: definition;
-		- 1. phi(t): M to M is diffeomorphism for any t;
-		- 2. phi(t).phi(s)=phi(t+s);
+		- 1. φ(t): M to M is diffeomorphism for any t;
+		- 2. φ(t)φ(s)=φ(t+s);
 	- **Tensor of type (k,l)**: a mapping from dual1 x dual2 x ... x dk x v1 x .. x vl to R;
 	- type(1, 1) as a linear transformation: from dual to dual, or from v to v;
 	- **Contraction**: (k,l) tensor to (k-1,l-1);

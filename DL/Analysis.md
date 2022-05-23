@@ -106,3 +106,11 @@
 
 ## Sample Complexity
 - Simon Du. How Many Samples are Needed to Estimate a Convolutional Neural Network? NIPS'18
+
+## Invert
+- Theory:
+	- Arora, S.; Liang, Y.; and Ma, T. Why are deep nets reversible: A simple theory, with implications for training. ICLR-Workshop'16
+	- Gilbert, A. C.; Zhang, Y.; Lee, K.; Zhang, Y.; and Lee, H. Towards understanding the invertibility of convolutional neural networks. IJCAI'17
+		- Theoretical connection between compressive sensing and neural network;
+		- Model-based CS, MB-RIP; assume higher dimension observation and Gaussian kernel;
+			<img src = '/DL/images/dynamic-system/mb-iht.png' width = '400'>

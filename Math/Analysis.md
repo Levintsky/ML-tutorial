@@ -19,7 +19,7 @@
 	- Vectors, dot product, lengths and angles, areas/volumes and determinants
 	- Equation of planes: (P1, P2, P3) a plane, a new point P, det(P1P2,P1P3, P1P)=0
 	- Curves: Q(t)=(x(t), y(t), z(t))
-		- e.g. cycloid: (a theta-a sin(theta), a-a cos(theta))
+		- e.g. cycloid: (aθ-a sin(θ), a-a cos(θ))
 	- Kepler's second law: constant rate of swept area; cross(r, v)=C
 		- d(cross(r,v))/dt=0, a||r, acceleration or force parallel to radius;
 - 2. Partial derivative;
@@ -47,8 +47,8 @@
 		- Flux: ∮(F, n) ds = ∮ -Ndx + Mdy = ∫∫ div(F) dA
 - 4. Triplet integrals and surface integrals in 3-d space;
 	- Triplet integral;
-	- Polar coord: x=rsin(phi)cos(theta), y=rsin(phi)sin(theta), z=rcos(phi)
-		- dV = r^2 sin(phi) dr dphi dtheta
+	- Polar coord: x=rsin(φ)cos(θ), y=rsin(φ)sin(θ), z=rcos(φ)
+		- dV = r^2 sin(φ) drdφdθ
 	- Flux and divergence theorem:
 		- Divergence Theorem (Gauss-Green): ∯F dS = ∫∫∫ div(F) dV
 		- div(F): source rate, amount of flux generated
@@ -74,8 +74,8 @@
 - Local maximum/minium:
 	- Minimum: Gradient zero, Hessian positive-definite;
 - Multiple integral;
-	- Polar coordinate system: r dr dtheta;
-	- Sphere coordinate system: r^2 sin(phi) dr dphi dtheta;
+	- Polar coordinate system: r dr dθ;
+	- Sphere coordinate system: r^2 sin(φ) drdφdθ;
 - Curve integral;
 	- Scalar function scalar arc-length (Type I): ∫ f(x,y)ds
 	- Vector function, inner product (Type II): ∫ f(x,y,z)(dx,dy,dz) = ∫ X x'(t) + Y y'(t) dt

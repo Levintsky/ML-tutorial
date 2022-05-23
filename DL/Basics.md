@@ -169,3 +169,13 @@
 
 ## Equivarance
 - Maurice Weiler, Mario Geiger, Max Welling, Wouter Boomsma, Taco Cohen. 3D Steerable CNNs: Learning Rotationally Equivariant Features in Volumetric Data. NIPS'18
+
+## Invert NN
+- Reconstruct p(x\|z) with prior on x
+	- Mahendran, A., and Vedaldi, A. Understanding deep image representations by inverting them. CVPR'15
+		- Insight: find x s.t. representation phi(x) match with prior regularization plus a regularization:
+			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
+	- Dosovitskiy, A., and Brox, T. Inverting visual representations with convolutional networks. CVPR'16
+		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP;\
+			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
+		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;	
