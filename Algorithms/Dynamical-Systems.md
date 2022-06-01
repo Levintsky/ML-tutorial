@@ -88,15 +88,15 @@
 		- The backprop: reversible construct the value first;\
 			<img src = '/DL/images/dynamic-system/rev-net-3.png' width = '400'>
 	- **i-ResNet**: Jens Behrmann, Will Grathwohl, Ricky T. Q. Chen, David Duvenaud, Jörn-Henrik Jacobsen. Invertible Residual Networks. ICML'19
-			- Main insight: same as RevNet and flow-based methods. but **free-form**;
-			- https://github.com/jhjacobsen/invertible-resnet
-			- With contractive g(), i.e., Lip(g(θ)) < 1, so **Spectral-Norm** layer added to make constraint always satisfied. Then backward Euler to compute x(t+1) from x(t) as fixed point:
-				- Iterate n times xi+1 = y - g(xi), with x0=y;
-			- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
-				- tr(ln(I+Jg(x))) = ∑k (-1)^k+1 tr(Jg)/k;
-			- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
-			- For (1), (2), the approximate trick;
-			- For (3), truncated at n steps;
+		- Main insight: same as RevNet and flow-based methods. but **free-form**;
+		- https://github.com/jhjacobsen/invertible-resnet
+		- With contractive g(), i.e., Lip(g(θ)) < 1, so **Spectral-Norm** layer added to make constraint always satisfied. Then backward Euler to compute x(t+1) from x(t) as fixed point:
+			- Iterate n times xi+1 = y - g(xi), with x0=y;
+		- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
+			- tr(ln(I+Jg(x))) = ∑k (-1)^k+1 tr(Jg)/k;
+		- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
+		- For (1), (2), the approximate trick;
+		- For (3), truncated at n steps;
 	- **Residual-Flow**: Ricky T. Q. Chen, Jens Behrmann, David Duvenaud, Jörn-Henrik Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
 		- Main insight: improves on RealNVP to allow **free-form** and get unbiased Log Density Estimation for MLE with **Russian roulette** vJv to estimate trace(J); similar to FFJORD;
 		- Flip a coin (Bernoulli) to decide when to stop; Improve on **i-ResNet**;
@@ -250,7 +250,7 @@
 			- Euler-Lagrange eqn: d(∂L/∂q')dt=∂L/∂q
 			- Denote: (∇q∇q'^T L)ij = ∂^2L/∂qi∂qj
 			- d^2q/dt^2 = (∇q∇q'^T L)^-1 (∇qL-(∇q∇q'^T L)q')
-		- Sovling EL with JAX;
+		- Solving EL with JAX;
 	- Nate Gruver, Marc Finzi, Samuel Stanton, Andrew Gordon Wilson. Deconstructing the Inductive Biases of Hamiltonian Neural Networks. ICLR'22
 		- Insight: analyze why HNN outperforms NODE, with 3 reasons (energy cons, symplectic, 2nd-order)
 		- HNN: dz/dt = J∇H, with J as antisymmetric matrix;
@@ -267,6 +267,10 @@
 		- Experiments: verified on Mojoco;
 
 ## Neural PDE
+- Generally 3 approaches:
+	- Forward pathwise: memory O(1), time O(LD)
+	- Backprop through solver: memory O(L), time O(L)
+	- Stochastic adjoint (ours): memory O(1), time O(Llog L)
 - **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
 	- Learned-PDE;
 - PDE-inspired:

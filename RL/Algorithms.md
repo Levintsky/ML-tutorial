@@ -6,15 +6,15 @@
 	- TRPO:
 		- Bound distribution change;
 		- Bound objective value;
-		- Natural gradient to bound pi(a|s) change;
+		- Natural gradient to bound π(a|s) change;
 - AC:
-	- Loss := |Adv(s,a)|^2 - sum Adv(s,a)log pi(a|s)
-	- Adv := r(s,a) + gamma V(s') - V(s)
+	- Loss := |Adv(s,a)|^2 - sum Adv(s,a)logπ(a|s)
+	- Adv := r(s,a) + γV(s') - V(s)
 	- GAE: 
 - Q-learning
-	- BV: Q(s,a) = r(s,a) + max_a' Q(s',a'), contraction by gamma;
-	- Non-tabular: V = pi B V, with pi(.) as NN fitting;
-	- Exploration: epsilon, greedy, Boltzmann;
+	- BV: Q(s,a) = r(s,a) + max_a' Q(s',a'), contraction by γ;
+	- Non-tabular: V = πBV, with π(.) as NN fitting;
+	- Exploration: ε, greedy, Boltzmann;
 	- Target-network, replay buffer;
 	- Over-estimate: Double-Q, multi-step;
 - Continuous Q-learning:
@@ -61,13 +61,22 @@
 	- Evolutionary: ES;
 
 ## Policy Gradient
-- Basic PG (from Sergey Levine CS-294)\
-	<img src="/RL/images/algos/pg.png" alt="drawing" width="600"/>
-
-	- **Baseline for variance reduction**:\
-		<img src="/RL/images/algos/pg-baseline.png" alt="drawing" width="600"/>
-	- **IS, off-policy PG**:\
-		<img src="/RL/images/algos/pg-is.png" alt="drawing" width="600"/>
+- Basic PG (from Sergey Levine CS-294):
+	- θ = argmax E..τ\~p(θ) Σr(st, at), maximize J(θ)
+		- Insight: reward depends on trajectory;
+	- Trick: π(τ;θ)∇logπ(τ;θ) = ∇π(τ;θ)
+	- PG: ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ = E..τ\~p(θ) ∇logπ(τ;θ)r(τ)
+		- Insight: increase the probability of high reward trajectory;
+	- Baseline for variance reduction:
+		- E ∇logπ(τ;θ)b = 0, with 0 mean, so we can use any b in ∇logπ(r-b);
+		- Get the baseline b to minimize Var(∇J(θ)); dVar/db=0;
+		- b = E(g(τ)^2 r(τ)) / E(g(τ)^2), with g(τ)=∇logπ(τ;θ);
+	- IS, off-policy PG:
+		- Insight: we have trajectory of τ ~ p(θ) and try to optimize J(θ');
+		- Weight each trajectory τ ~ p(θ) with p(θ')/p(θ), which is also π(τ;θ')/π(τ;θ);
+		- PG of θ' becomes: weighted(Σ∇logπ)(Σr(st,at)) under τ ~ p(θ);
+		- Keep up-to t and ignore future, we get TRPO;
+		- Σ∇logπ(τ;θ') (Πt'=1..t π(θ')/π(θ)) (Σt'=t..T r(st,at))
 - Advantages:
 	- On-Policy
 	- Better Convergence
@@ -80,15 +89,20 @@
 - Recent:
 	- **GPS**: S, Levine & Koltun. Guided policy search: deep RL with importance sampled policy gradient.  ICML'13. (unrelated to later discussion of guided policy search)
 	- **TRPO**: J Schulman, S Levine, P Moritz, M Jordan, P Abbeel. Trust region policy optimization. ICML'15
-		- **Trick-1**: make new expectation as old plus Advantage; J(pi')=J(pi)+E(Adv(s,a)), notice the expectation is under new policy pi';\
-			<img src="/RL/images/algos/trpo1.png" alt="drawing" width="500"/>
+		- **Trick-1**: make new expectation as old plus Advantage; J(π')=J(π)+E(Adv(s,a)), notice the expectation is under new policy π';
+			- J(θ')-J(θ) = E..τ\~p(;θ') (Σt=0..∞ γ^t Adv(st, at;πθ))
+			- Utility diff: sample from new trajectory, expectation of old advantage function;
 		- **Trick-2**: not able to get expectation under new policy? IS, Expectation under p[f(x)] versus Expecation under q(x) q[q/p f(x)]
-		- **Trick-3**: bound the difference between pi'(s) and pi(s), |pi'(s)-pi(s)| < eps easier to bound with KL-divergence;\
-			<img src="/RL/images/algos/trpo2.png" alt="drawing" width="600"/>
-			<img src="/RL/images/algos/trpo3.png" alt="drawing" width="600"/>
-		- **Trick-4**: First order approx for utility J(.), natural gradient for update;\
-			<img src="/RL/images/algos/trpo4.png" alt="drawing" width="400"/>
-			<img src="/RL/images/algos/trpo5.png" alt="drawing" width="400"/>		
+		- **Trick-3**: bound the difference between π'(s) and π(s) to make p(st;θ) and p(st;θ') closed, |π'(s)-π(s)| < ε easier to bound with KL-divergence;
+			- p(s;θ') = (1-ε)^t p(s;θ) + (1-ε)^t p(s;other); still takes the same action with θ';
+			- |p(s;θ')-p(s;θ)| <= 2εt; (Taylor Expansion)
+			- J(θ')-J(θ) Sample from old trajectory instead will result in at most Σ..t 2εtC loss, with constant C bounded by O(Trmax) or O(rmax/1-γ);
+		- **Trick-4**: First order approx for utility J(.), natural gradient for update;
+			- θ' = argmaxθ' Σt E..st\~p(st;θ)[E..at\~π(at|st;θ)[π(;θ')/π(;θ) γ^t A(st,at;πθ')]]; traj, policy all sampled from old, IS advantage for new;
+			- s.t. KL(π(at|st;θ')||π(at|st;θ')) < ε; constrained optimization;
+			- Utility approx: argmax ∇..θ A(θ)(θ'-θ), s.t. KL(π(θ'),π(θ)) < ε;
+				- We know KL(π(θ'),π(θ)) ~ 1/2 (θ'-θ)F(θ'-θ), with F as Fisher;
+			- θ' = θ + αF^(-1)∇..θ J(θ), with α=sqrt(2ε/∇J F ∇J), largest step within trust-region;
 		- https://zhuanlan.zhihu.com/p/26308073
 		- In summary: Theoretical Guarantee of monotonic improvement if KL constraint satisfied; Surrogate loss; Line search to make the best stepsize update;
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
@@ -99,64 +113,27 @@
 
 ## Value + Policy, Actor-Critic
 - Basics: (Sergey Levine, CS-294)
-	- Actor: the policy
-	- Critic: value function
-	- Reduce variance of policy gradient
-	<img src="/RL/images/algos/ac1.png" alt="drawing" width="500"/>
-	<img src="/RL/images/algos/ac2.png" alt="drawing" width="500"/>
+	- Actor: the policy π(st|at;θ)
+	- Critic: value function, Advantage A(s,a)=Q(s,a)-V(s)
+		- Value V can be supervised by V=E[Q]
+	- Reduce variance of policy gradient: update with A(s,a)∇logπ
 - A general framework (for Implementation):
 	- Phase 1: collect data (act/sample, no gradient!)
-```python
-def act(self, inputs, rnn_hxs, masks, deterministic=False):
-	value, actor_features, rnn_hxs = self.base(inputs, rnn_hxs, masks)
-	# Discrete if discrete; Diag-Gaussian if continuous
-	dist = self.dist(actor_features)
-	if deterministic:
-		action = dist.mode()
-	else:
-		action = dist.sample()
-	action_log_probs = dist.log_probs(action)
-	dist_entropy = dist.entropy().mean()
-	return value, action, action_log_probs, rnn_hxs
-```
+		- Given input x, neural net to get V(x), π(a|x), entropy H(π), and intermediate value such as h of RNN;
+		- If deterministic, take action a argmax π(a|x), otherwise sample;
 	- 1.1 Environment step forward;
-```python 
-obs, reward, done, infos = envs.step(action)
-# st, at, st+1, vt, rt, mt
-rollouts.insert(obs, recurrent_hidden_states, action,
-				action_log_prob, value, reward, masks, bad_masks)
-```
+		- Take action a, get reward, observation;
 	- Phase 2: Learning of both actor and critic (A2C/PPO/...): 
-	- 2.1 Critic target: Estimated with (GAE/n-step)
-```python
-next_value = actor_critic.get_value(
-	rollouts.obs[-1], rollouts.recurrent_hidden_states[-1],
-	rollouts.masks[-1]).detach()
-rollouts.compute_returns(next_value, args.use_gae, args.gamma,
-	args.gae_lambda, args.use_proper_time_limits)
-```
-	- 2.2 Loss function and Update: value loss (adv ^ 2) + action-loss (adv * log pi(a|s))
-```python
-def update(self, rollouts):
-	values = values.view(num_steps, num_processes, 1)
-	action_log_probs = action_log_probs.view(num_steps, num_processes, 1)
-	advantages = rollouts.returns[:-1] - values
-	value_loss = advantages.pow(2).mean()
-	action_loss = -(advantages.detach() * action_log_probs).mean()
-```
-	- 2.3 After-update:
-```python
-def after_update(self):
-	self.obs[0].copy_(self.obs[-1])
-	self.recurrent_hidden_states[0].copy_(self.recurrent_hidden_states[-1])
-	self.masks[0].copy_(self.masks[-1])
-	self.bad_masks[0].copy_(self.bad_masks[-1])
-```
+		- 2.1 Critic target: Estimated with (GAE/n-step) V(st+1)
+		- 2.2 Loss function and Update: value-loss  + action-loss;
+			- L = adv^2 - adv log π(a|s)
+		- 2.3 After-update: update mask, observation, and RNN-state (optional);
 - Legacy
 	- Sutton, McAllester, Singh, Mansour (1999). Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation
 - Recent:
-	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14\
-		<img src="/RL/images/algos/dpg.png" alt="drawing" width="450"/>
+	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14
+		- ∇..φ J(φ)=E[∇..aQ(s,a;π) ∇..φπ(s;φ)]
+		- where Q(s,a;π)=E[Rt|s,a]
 	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16\
@@ -171,13 +148,13 @@ def after_update(self):
 		- Problem setup: Continuous control;
 		- Algorithm: off-policy actor-critic;
 		- https://github.com/vitchyr/rlkit
-		- Formulation: J(pi) = sum r(st,at) + alpha H(pi(.|st))
+		- Formulation: J(π) = sum r(st,at) + α H(π(.|st))
 		- Lemma 1: formulation equivalent with soft Bellman (converge when infinity);
-		- Lemma 2: project back to pi' = argmin KL(pi'(.|st), exp(Q(pi-old))/Z-old) guarantees improvement;
+		- Lemma 2: project back to π' = argmin KL(π'(.|st), exp(Q(π-old))/Z-old) guarantees improvement;
 		- Theory 3: soft policy iteration + projection converge to optimal;
-		- Policy update: policy-loss = alpha log(pi) - Q(s, pi(s))
-		- Value update: target value = r + gamma q_target(s', pi(s'))
-		- With V(.;psi), V(.;psi') as value network (original and target), Q(s,a;theta), pi(.|s,phi), SAC alg:\
+		- Policy update: policy-loss = α log(π) - Q(s, π(s))
+		- Value update: target value = r + α q_target(s', π(s'))
+		- With V(.;ψ), V(.;ψ') as value network (original and target), Q(s,a;theta), π(.|s,φ), SAC alg:\
 			<img src="/RL/images/algos/sac.png" alt="drawing" width="400"/>
 
 ## Value Function, Q-learning
@@ -310,8 +287,8 @@ def after_update(self):
 - PCL:
 	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
 		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches:
-		- Entropy O(s,pi)=O-old(s,pi) + H(s,pi) with **discounted entropy regularizer**\
-		- H(s, pi) = entropy(pi|s) - gamma \* entropy(pi|s')
+		- Entropy O(s,π)=O-old(s,π) + H(s,π) with **discounted entropy regularizer**\
+		- H(s, π) = entropy(π|s) - gamma \* entropy(π|s')
 		- Theory: correctness with control inference;\
 			<img src="/RL/images/algos/pcl.png" alt="drawing" width="600"/>
 	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
