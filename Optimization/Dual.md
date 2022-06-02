@@ -20,24 +20,26 @@
 ## Lagrange Dual
 - Bishop, PRML, Appendix E;
 	- Maximize f(x1, x2) s.t. g(x1, x2) = 0;
-	- Equality constraint: partial derivative of f and g must be parallel (lambda);
-		<img src="/Optimization/images/dual/lagrange-dual-1.png" alt="drawing" width="400"/>
-	- Inequality constraint: g(x) >= 0; g(x) > 0 inactive constraint, g(x) = 0, active; introduce lambda \* g(x):
-		<img src="/Optimization/images/dual/lagrange-dual-2.png" alt="drawing" width="400"/>
+	- Equality constraint: g(x)=0, partial derivative of f and g must be parallel (λ);
+		- L(x,λ) = f(x) + λg(x)
+		- ∇f + λ∇g = 0; parallel;
+	- Inequality constraint: g(x) >= 0; g(x) > 0 inactive constraint, g(x) = 0, active; introduce λg(x):
+		- g(x) >= 0;
+		- λ >= 0 
+		- λg(x) = 0;
 - Lagrange dual (https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/lecture7.pdf)
-	- Primal problem: minimization with Lagrange multiplier\
-		<img src="/Optimization/images/dual/l-dual-1.png" alt="drawing" width="400"/>
-		<img src="/Optimization/images/dual/l-dual-2.png" alt="drawing" width="400"/>\
-	- Then, primal problem:\
-		<img src="/Optimization/images/dual/l-dual-3.png" alt="drawing" width="400"/>
-	- Dual problem:\
-		<img src="/Optimization/images/dual/l-dual-4.png" alt="drawing" width="400"/>\
-		<img src="/Optimization/images/dual/l-dual-5.png" alt="drawing" width="400"/>
-	- Weak duality theorem:\
-		<img src="/Optimization/images/dual/l-dual-6.png" alt="drawing" width="400"/>
+	- Primal problem: minimization with Lagrange multiplier:
+		- minf0(x), s.t. fi(x) <= 0;
+		- L(x, λ) = f0(x) + Σλifi(x)
+	- Then, primal problem: p = min_x max_λ L(x, λ)
+	- Dual problem: d = max_λg(λ) = max_λ min_x L(x, λ)
+	- Weak duality theorem: p >= d;
 	- Strong duality for convex problem (such as SVM), gap is 0;
-	- KKT condition: if satisfying, then gap is 0:\
-		<img src="/Optimization/images/dual/l-dual-7.png" alt="drawing" width="400"/>
+	- KKT condition: if satisfying, then gap is 0:
+		- fi(x) <= 0; primal feasible;
+		- λi >= 0; dual feasible;
+		- λifi(x) = 0; complementary slackness;
+		- ∇L = 0
 - Conic dual (https://inst.eecs.berkeley.edu/~ee227a/fa10/login/l_dual_conic.html):
 	- SP duality
 	- SOCP duality; (Examples: largest eigenvalue, non-convex quadratic problem, minimum distance to an affine subspace; robust least-square; relaxed SVM);
