@@ -1,5 +1,61 @@
 # Bandit
 
+## Resources
+- http://iosband.github.io/2015/07/28/Beat-the-bandit.html
+- https://github.com/bgalbraith/bandits
+- Book: Csaba Szepesvari and Tor Lattimore. Bandit Algorithms. 2020
+
+## Stanford-cs234 (lec-10)
+- A tuple of (A, R)
+	- Q(a) = E[r|a]
+	- V\* = max_a Q(a)
+	- Regret: lt = E[V\*-Q(at)]
+	- total regret: Lt = E[ΣV\*-Q(at)] = ΣE[Nt(a)]∆a (visit times gap)
+	- Goal: maximize cumulative Σrt or minimize total regret;
+- Greedy: could stuck on suboptimal;
+	- Estimate ri with MC;
+	- Greedy to select the highest value;
+- ε-greedy
+- Theory (Lai and Robbins): Asymptotic total regret is at least logarithmic in number of steps:
+	- limt->∞ Lt = logt Σ ∆a/KL(Ra|Ra\*)
+- UCB:
+	- Estimate upper bound Ut(a), s.t. Q(a) < Ut(a) with high probability;
+	- Theory (Hoeffding's Inequality) X1,..., Xn i.i.d in [0,1], Xn' as sample mean, then:
+		- P(E[x] > Xn'+u) <= exp(-2nu^2)
+	- Estimate Q(a)' and Q(a) close enough:
+		- P(|Q(a)-Q(a)'|>=sqrt(Clogt/N(a))) <= δ/T
+	- Number of time a non-optimal arm is pulled at most O(logT) times:
+		- Q(a)+sqrt(Clogt/N(a))) >= Q(a\*)+sqrt(Clogt/N(a\*))) >= Q(a\*)
+		- Q(a) + 2sqrt(Clogt/N(a))) >= Q(a\*)
+		- Nt(a) <= 4ClogT/∆a^2
+	- UCB: a = argmax μa + sqrt(2lnT/N(a))
+- Optimistic initialization:
+	- Initialize Q(a) high;
+	- Update: Q(at) += 1/N(at)(rt-Qt)
+- Probably Approximately Correct: mostly based on optimism or Thompson Sampling;
+	- Choose ε-optimal, s.t. p(Q(a)>=Q(a\*)-ε) > 1-δ
+	- Polynomial in the problem parameters (#actions,)
+- Bayesian Bandit:
+	- Knowledge about prior p(R), p[R|ht], ht=(a1,r1,...)
+	- Posterior guided exploration;
+	- p(φi|ri) = p(ri|φi)p(φi)/p(ri) = p(ri|φi)p(φi)/∫p(ri|φi)p(φi)dφi
+	- Conjugate (exponential family);
+	- e.g. known binary reward 0,1, sampled from Bernoulli θ, Beta(α,β);
+- Probability matching:
+	- π(a|ht) = p(Q(a)>Q(a'), ∀a'≠a|ht)
+	- Thompson sampling:
+		- Sample a reward Ra from posterior;
+		- Q(a)=E[Ra]
+		- at = argmax Q(a)
+		- Observe r
+		- Update posterior p(Ra|r) with Bayesian;
+	- Thompson sampling implements probability matching:
+		- π(a|ht) = E[1(a=argmaxQ(a))]
+	- Bayesian regret;
+- Contexutal bandit:
+	- Ra,s(r) = P(r|a,s), (multi-arm doesn't have s);
+	- r = θφ(s, a) + ε
+
 ## NIPS'19
 - Soumya Basu, Rajat Sen, Sujay Sanghavi, Sanjay Shakkottai. Blocking Bandits
 - Aadirupa Saha, Aditya Gopalan. Combinatorial Bandits with Relative Feedback

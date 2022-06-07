@@ -1,4 +1,4 @@
-# RL Algorithms
+# (Model-Free) RL Algorithms
 
 ## Basics
 - PG:
@@ -18,60 +18,66 @@
 	- Exploration: ε, greedy, Boltzmann;
 	- Target-network, replay buffer;
 	- Over-estimate: Double-Q, multi-step;
+	- PER, dueling-network;
 - Continuous Q-learning:
 	- Sampling: CEM, CMA-ES;
 	- Easily to optimize: NAF (normalized advantage function);
 	- Learn an optimizer: DDPG;
 
-## Resources
-- https://spinningup.openai.com/en/latest/spinningup/keypapers.html
-- https://github.com/navneet-nmk/pytorch-rl
-- https://github.com/sweetice/Deep-reinforcement-learning-with-pytorch
-- Chinese:
-	- https://zhuanlan.zhihu.com/sharerl
-	- https://zhuanlan.zhihu.com/p/68205048
-- Open-AI Baselines:
-	- https://github.com/openai/baselines
-	- A2C, ACER, ACKTR / DDPG / DQN / GAIL / HER
-	- PPO1 (Multi-CPU using MPI), PPO2 (Optimized for GPU), TRPO
-- **rlkit**
-	- https://github.com/vitchyr/rlkit
-	- RIG, TDMs, HER, DQN, SAC, TD3
-- Pytorch libraries:
-	- DQN Adventure: https://github.com/higgsfield/RL-Adventure
-	- Ye Yuan (CMU): https://github.com/Khrylx/PyTorch-RL
-	- Shangtong Zhang: https://github.com/ShangtongZhang/DeepRL
-	- Ilya Kostrikov (NYU): https://github.com/ikostrikov
-	- Rainbow: https://github.com/Kaixhin/Rainbow
-	- A3C LSTM: https://github.com/dgriff777/rl_a3c_pytorch
-- Tensorflow libraries:
-	- https://github.com/brendanator/atari-rl
-	- https://github.com/steveKapturowski/tensorflow-rl
-	- https://github.com/tensorflow/agents
-- Shane Gu: https://github.com/shaneshixiang/rllabplusplus
-- Berkeley RL: https://github.com/rll/rllab
-- GA3C: https://github.com/NVlabs/GA3C
-- Model-free RL from Spinningup:
-	- DQN: DQN, DRQN; Duel DQN; PER; Rainbow;
-	- PG: A3C, TRPO, GAE, PPO, ACKTR, ACER, SAC;
-	- DPG: DPG, DDPG, TD3;
-	- Distributional: C51, QR-DQN, IQN, Dopamine;
-	- Action-dependent: Q-prop, Stein control, mirage;
-	- PCL: PCL, Trust-PCL;
-	- Other continuous combine pg and q: PGQL, Reactor, IPG, equivalence between...;
-	- Evolutionary: ES;
+## Pessimistic
+- Assume pessimistic for insufficient overlap/support (s,a) space;
+- Yao Liu, Adith Swaminathan, Alekh Agarwal, Emma Brunskill. Provably Good Batch Off-Policy Reinforcement Learning Without Great Exploration. NIPS'20
+	- Filtration function: ξ(s,a;μ,b) = 1(μ(s,a)>b)
+	- Bellman op: Tf(s,a) = r(s,a) + γEs'[max_a' ξ(s',a')f(s',a')]; (0 for insufficient data)
+	- Error bound;
+- Model-based Offline batch RL:
+	- Learn a model penalize model uncertainty during planning;
+	- Empirically very promising on D4RL tasks;
+	- MOPO: Tianhe Yu, Garrett Thomas, Lantao Yu, Stefano Ermon, James Zou, Sergey Levine, Chelsea Finn, Tengyu Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
+	- Rahul Kidambi, Aravind Rajeswaran, Praneeth Netrapalli, Thorsten Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
+- PS Thomas, B Castro da Silva, AG Barto, S Giguere. Preventing undesirable behavior of intelligent machines. Science'19
+	- Optimizing while ensuring solution won't exhibit undesirable behavior;
+- Blossom Metevier, Stephen Giguere, Sarah Brockman, Ari Kobren, Yuriy Brun, Emma Brunskill, Philip S. Thomas. Offline Contextual Bandits with High Probability Fairness Guarantees. NIPS'19
+	- Fairness constraint:
+		- gf(θ) = 1/|F|Σ(RI(f) - E[R|f]) - εf
+		- gm(θ) = 1/|M|Σ(RI(m) - E[R|m]) - εm
+
+## Misc (NIPS'18)
+- Policy Gradient:
+	- Evolution-Guided Policy Gradient in Reinforcement Learning
+	- Dual Policy Iteration
+- Off-policy:
+	- Is Q-Learning Provably Efficient? (Berkeley)
+	- Breaking the Curse of Horizon: Infinite-Horizon Off-Policy Estimation
+	- Policy Optimization via Importance Sampling
+	- Representation Balancing MDPs for Off-policy Policy Evaluation
+	- A Deep Bayesian Policy Reuse Approach Against Non-Stationary Agents
+	- Q-learning with Nearest Neighbors
+- Value Function:
+	- Transfer of Value Functions via Variational Methods
+	- Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion (Honglak Lee)
+- Confounding-Robust Policy Improvement (Cornell)
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294):
 	- θ = argmax E..τ\~p(θ) Σr(st, at), maximize J(θ)
 		- Insight: reward depends on trajectory, increase the probability of high-reward trajectory;
-	- Trick: π(τ;θ)∇logπ(τ;θ) = ∇π(τ;θ)
-	- PG: ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ = E..τ\~p(θ) ∇logπ(τ;θ)r(τ)
+	- PG:
+		- ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ
+		- ∇J(θ) = E..τ\~p(θ)[∇logπ(τ;θ)r(τ)]
+		- With trick: π(τ;θ)∇logπ(τ;θ) = ∇π(τ;θ)
+		- Loss in practice: L = -E[logπ(τ;θ)r(τ)]
 		- Insight: increase the probability of high reward trajectory;
+	- Policy:
+		- Softmax: φ(s,a)'θ, π(s,a;θ) = softmax(φ(s,a)θ)
+			- Score function: ∇logπ(s,a)=φ(s,a)-E[φ(s,.)]
+		- Gaussian: mean μ(s)=φ(s)θ, fixed σ^2
+			- ∇logπ(s,a) = φ(s)(a-μ(s))/σ^2;
 	- Baseline for variance reduction:
 		- E ∇logπ(τ;θ)b = 0, with 0 mean, so we can use any b in ∇logπ(r-b);
 		- Get the baseline b to minimize Var(∇J(θ)); dVar/db=0;
 		- b = E(g(τ)^2 r(τ)) / E(g(τ)^2), with g(τ)=∇logπ(τ;θ);
+		- State-wise: b(st) (actor-critic)
 	- IS, off-policy PG:
 		- Insight: we have trajectory of τ ~ p(θ) and try to optimize J(θ');
 		- Weight each trajectory τ ~ p(θ) with p(θ')/p(θ), which is also π(τ;θ')/π(τ;θ);
@@ -93,7 +99,7 @@
 		- ∇J = Σs,a ρ(s;π)∇π(a;s)R(s,a)
 		- Proposed: ∇J = F(θ)^(-1) ∇J
 	- Sham Kakade, John Langord. Approximately Optimal Approximate Reinforcement Learning. ICML'02
-		- Insight: conservative mixture π-new=(1-α)π+απ' has theoretical guarantee;
+		- Insight: **conservative mixture π-new=(1-α)π+απ' has theoretical guarantee**;
 		- Def. μ restart distribution: draws next state from μ.
 		- Discounted future state distribution: ρ(s;π) = (1-γ)Σ[γ^t p(st=s;π)]
 		- Desired: more uniformly from explotary μ as J(π;μ) = E..s\~μ[V(s;π)]
@@ -158,7 +164,7 @@
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
 		- Adv(st,at) = r(st,at)+γV(st+1)-V(s), low variance but high-bias, b/c value net could be wrong;
-		- Adv(st,at) = Σ_t' γ^(t'-t)r(st',at') -V(st), no bias but high variance, b/c single traj;
+		- Adv(st,at) = Σ_t' γ^(t'-t)r(st',at')-V(st), no bias but high variance, b/c single traj;
 		- Eligibility traces & n-steps, combine the two;
 			- Adv(st,at) = Σ_t..t+n γ^(t'-t)r(st',at') + γ^nV(st+n) -V(st)
 		- Insight of GAE: weighted combine of different n: Adv_GAE(st,at)=Σwn Adv_n
@@ -188,10 +194,28 @@
 		- Collect some samples;
 		- Fit a model for estimated return: Q(s,a;π) = r(s,a) + γE_s'\~p(s'|s,a)[V(s;π)]
 		- V(s;π) = max_a Q(s,a;π)
-	- Online Q-iteration:
-		- take action ai and observe (si,ai,si',ri), (off-policy, could be any action)
-		- Target: yi = r(si,ai) + γmax_a'Q(si',ai';φ)
-		- Fitting: φ -= α dQ(si,ai)/dφ (Q(si,ai;φ)-yi)
+	- Online Q-iteration (SARSA, TD): eval current policy;
+		- Take action ai ~ π; (off-policy if not π)
+		- Observe (si,ai,si',ri);
+		- Update Q(si,ai) += α(rt+γQ(st+1,at+1)-Q(st,at))
+		- Update π as ε-greedy: π = argmax_aQ(s,a) with prob 1-ε else random;
+	- Q-learning (off-policy): only diff with SARSA is Q-update;
+		- Q(si,ai) += α(rt+γmax_a Q(st+1,a)-Q(st,at));
+		- **Biased** due to max-op proof: Mannor, Simester, Sun and Tsitsiklis. Bias and Variance Approximation in Value Function Estimates. Management Science 2007
+		- Double Q-learnign to remove bias;
+	- Value Fitting:
+		- Q-fit:
+			- Target (Q-learning): yi = r(si,ai) + γmax_a'Q(si',ai';φ)
+			- Target (MC): y=Gt
+			- Target (SARSA): y=r+γQ(st+1,at+1)
+			- Fitting: φ -= α dQ(si,ai)/dφ (Q(si,ai;φ)-yi)
+		- V-fit:
+			- L = E_s|V(s;π)-V(s;π,θ)|
+			- V(s) += α(r+γV(s')-V(s)); TD(0)
+			- Proof: for linear function approximator V=ws, converge;
+		- Importance sampling in policy evaluation:
+			- V(s;π) ~ Σi=1..Nτ\~π' p(τ|π,s)/p(τ|π',s) Rτ
+			- Don't need the dynamic model, just weight by π;
 	- Exploration:
 		- π(at|st) = 1-ε if at = argmax_a Q(st,at;φ); and random uniform other actions;
 		- π(at|st) ∝ exp(Q(st,at;φ))
@@ -225,9 +249,10 @@
 	- **DRQN**: Matthew Hausknecht, Peter Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
 		- Could bootstrap from start of the episode or random point;
 	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
-		- Prioritizing with TD-error
-		- Implement with a heap;
-	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, ICML'16
+		- Prioritizing with TD-error (with a heap):
+			- pi = |r+γmax_a' Q(si+1,a';w−) − Q(si,ai;w)|
+			- P(i) = pi^β / Σpi^β
+	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, best-paper ICML'16
 		- Indictive bias with neural net: two heads for value function;
 			- One for state value;
 			- One for state-dependent action advantage function;
@@ -245,6 +270,7 @@
 		- PCQL: Q-learning (model-free)
 - Continuous:
 	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+		- Insight: non-deterministic policy; gradient w.r.t. reparametrization;
 		- SVG(0): model free\
 			<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
 		- SVG(1): one-step dynamics\
@@ -254,14 +280,17 @@
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
 		- https://github.com/ghliu/pytorch-ddpg
-		- A deep variant of DPG\
-			<img src="/RL/images/algos/ddpg.png" alt="drawing" width="500"/>
+		- A deep variant of DPG:
+			- max_a Q(s,a;φ) = Q(s,argmax_a Q(s,a;φ);φ)
+			- Train another net to get a=μ(s;θ) to maximize Q(s,.);
+			- θ = argmax_θ Q(s,μ(s;θ);φ)
+			- Target: yj = rj + γmax_a Q(sj',μ(sj';θ);φ)
 		- 1. ddpg class;
 			- Actor, actor-target, actor optimizer
 			- Critic, critic-target, critic optimizer
 		- 2. Collect experience: record (s, a, s', r)
 		- 3. Learning
-			- value loss (critic): Q(s, a; theta1) with target r + gamma Q-target(s', actor-target(s'))
+			- value loss (critic): Q(s, a; θ1) with target r + γQ-target(s', actor-target(s'))
 			- policy loss (actor): -Q(s, actor(s))
 	- D Kalashnikov, A Irpan, P Pastor, J Ibarz, A Herzog, E Jang, D Quillen, E Holly, M Kalakrishnan, V Vanhoucke, S Levine. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
 - **Overestimation**:
@@ -269,7 +298,6 @@
 	- **Double Q-Learning**: Van Hasselt, H. Double q-learning. NIPS'10
 	- **Double DQN**: H v Hasselt, A Guez, D Silver. Deep Reinforcement Learning with Double Q-learning. NIPS'15
 		- Two networks, one to choose action, the other to compute Q(s,a)
-		<img src="/RL/images/algos/double-q.png" alt="drawing" width="500"/>
 	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
 		- https://github.com/sfujim/TD3
 		- Clipped Double Q-learning: actor x1,  critic x2 (not the target), target also has two critic;
@@ -310,7 +338,7 @@
 	- Rawlik, K., Toussaint, M., and Vijayakumar, S. On stochastic optimal control and reinforcement learning by approximate inference. RSS'12
 	- Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. UAI'16
 	- Haarnoja, T., Tang, H., Abbeel, P., and Levine, S. Reinforcement learning with deep energy-based policies. ICML'17
-	- O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
+	- O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
 	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
 	- PCL: NIPS'17
 	- SAC: 2018
@@ -319,20 +347,20 @@
 		- Taylor approx of DPG/DDPG for value function, mixture of DPG/DDPG
 		- https://github.com/shaneshixiang/rllabplusplus
 		<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
-	- **Stein-Control-Variate**: Hao Liu, Yihao Feng, Yi Mao, Dengyong Zhou, Jian Peng, Qiang Liu. Action-depedent Control Variates for Policy Optimization via Stein’s Identity. ICLR'18
+	- **Stein-Control-Variate**: Hao Liu, Yihao Feng, Yi Mao, Dengyong Zhou, Jian Peng, Qiang Liu. Action-depedent Control Variates for Policy Optimization via Stein's Identity. ICLR'18
 	- The Mirage of Action-Dependent Baselines in Reinforcement Learning.
 		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
 		- Claims V(s,a) style does not reduce variance
 - PCL:
 	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
 		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches:
-		- Entropy O(s,π)=O-old(s,π) + H(s,π) with **discounted entropy regularizer**\
-		- H(s, π) = entropy(π|s) - gamma \* entropy(π|s')
+		- Entropy O(s,π)=O-old(s,π) + H(s,π) with **discounted entropy regularizer**;
+		- H(s, π) = H(π|s) - γ entropy(π|s')
 		- Theory: correctness with control inference;\
 			<img src="/RL/images/algos/pcl.png" alt="drawing" width="600"/>
 	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
 - PG + Q-Learning:
-	- O’Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
+	- O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
 	- **Reactor**: Audrunas Gruslys, Will Dabney, Mohammad Gheshlaghi Azar, Bilal Piot, Marc Bellemare, Remi Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
 	- **IPG**: 	Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning
 	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
@@ -340,25 +368,37 @@
 
 ## Evoluation Strategy
 - https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html
-- **CMA-ES**: Nikolaus Hansen and Andreas Ostermeier. Completely derandomized self-adaptation in evolution strategies. Evolutionary computation, 9(2):159–195, 2001
-	- a population of parameter vectors (“genotypes”) is perturbed "mutated" 
-	- and their objective function value (“fitness”) is evaluated.
-	- The highest scoring parameter vectors are then recombined to form the population for the next generation, and this procedure is iterated until the objective is fully optimized;
-	- Successful in optimization in low-medium dimension;
-- **NES**:
-	- Daan Wierstra, Tom Schaul, Jan Peters, and Juergen Schmidhuber. Natural evolution strategies. 2008
-	- Daan Wierstra, Tom Schaul, Tobias Glasmachers, Yi Sun, Jan Peters, and Jürgen Schmidhuber. Natural evolution strategies. JMLR'14
-- **ES**: Tim Salimans, Jonathan Ho, Xi Chen, Szymon Sidor, Ilya Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+- Basics:
+	- Check Optimization/Black-Box.
+- **ES-RL**: Tim Salimans, Jonathan Ho, Xi Chen, Szymon Sidor, Ilya Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+	- NES as a gradient-free optimizer to find optimal policy θ;
+	- Let θ ~ N(θ', σ^2 I)
+	- Sample to get ∇f(θ):
+		- ∇E[f(θ)] = ∫p(ε) ∇logp(ε) ∇F(θ+σε)dε, reparametrizatio trick, ε ~ N(0, I)
+		- ∇E[f(θ)] = 1/σ E[ε F(θ+σε)]
 	- ES and parallel version:
-		<img src="/RL/images/algos/es1.png" alt="drawing" width="450"/>
-		<img src="/RL/images/algos/es2.png" alt="drawing" width="450"/>
 	- Adaptive stepsize does not help;
-	- Comparison with PG:\
-		<img src="/RL/images/algos/es3.png" alt="drawing" width="400"/>
+	- Comparison with PG:
+		- PG: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(a;θ))
+		- ES: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(θ';θ))
 	- Experiments: 3D humanoid walking in 10 minute, competitive on Atari;
-- Legacy:
-	- I. Rechenberg and M. Eigen. Evolutionsstrategie: Optimierung Technischer Systeme nach Prinzipien der Biologischen Evolution. 1973
-	- H.-P. Schwefel. Numerische optimierung von computer-modellen mittels der evolutionsstrategie. 1977
-	- Juergen Schmidhuber and Jieyu Zhao. Direct policy search and uncertain policy evaluation. 1998
-	- Sebastian Risi and Julian Togelius. Neuroevolution in games: State of the art and open challenges. 2015
-- **Evolved Policy Gradients (OpenAI)**
+- Edoardo Conti, Vashisht Madhavan, Felipe Petroski Such, Joel Lehman, Kenneth O. Stanley, Jeff Clune. Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NIPS'18
+	- NES-based on **novelty**, not only evaluation score;
+	- b(π): domain-specific behavior characterization; (could be location for locomotion, ...)
+	- N(θ, A) = 1/λ Σ|b(π) - bi-knn|, find KNN in Action set A;
+	- ∇E[f(θ)] = 1/σ E[ε N(θ+σε,A)]
+- NSRAdapt-ES (NSRA-ES): perf + novelty in es search;
+	- θ = θ + α 1/σ Σ_i εi((1-w)N(θ+ε,A) + wF(θ+ε))
+- ERL: Shauharda Khadka, Kagan Tumer. Evolution-Guided Policy Gradient in Reinforcement Learning. NIPS'18
+	- Combine Cross Entropy Method (CEM) with DDPG or TD3.
+- CEM-RL: Aloïs Pourchot, Olivier Sigaud. CEM-RL: Combining evolutionary and gradient-based methods for policy search. ICLR'19
+	- The mean actor of the CEM population π is initialized with a random actor network;
+	- The critic network Q is initialized too, updated by DDPG/TD3;
+	- Repeat:
+		- sample population of actors ~ N(π, Σ);
+		- Half of population evaluated, fitness score used as cumulative reward R;
+		- The other half updated together with critic;
+		- New π, Σ computed using elite samples;
+- PBT:
+	- Max Jaderberg, Valentin Dalibard, Simon Osindero, Wojciech M. Czarnecki, Jeff Donahue, Ali Razavi, Oriol Vinyals, Tim Green, Iain Dunning, Karen Simonyan, Chrisantha Fernando, Koray Kavukcuoglu. Population Based Training of Neural Networks. NIPS'17
+	- POET: Rui Wang, Joel Lehman, Jeff Clune, Kenneth O. Stanley. Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions. 19

@@ -10,8 +10,11 @@
 - Control as an Inference (lec-15)
 
 ## Monte-Carlo Tree Search
-- Approach\
-	<img src="/RL/images/mcts/mcts.png" alt="drawing" width="400"/>
+- Approach:
+	- Find a leaf sl using TreePolicy(s1)
+	- Evaluate the leaf using DefaultPolicy(sl)
+	- Update all values in tree between s1 and sl, take best action from s1;
+	- UCT: Score(st) = Q(st)/N(st) + 2C sqrt(2lnN(st-1)/N(st))
 - Legacy
 	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
 	- S. Gelly and D. Silver. Combining online and offline knowledge in uct. ICML, 2007.
@@ -44,9 +47,9 @@
 - Policy gradient with soft optimality\
 	<img src="/RL/images/control/soft-pg.png" alt="drawing" width="600"/>
 - Graphical models:
-	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
 	- Ziebart. (2010). Modeling interaction via the principle of maximal causal entropy: connection between soft optimality and maximum entropy modeling.
-	- Rawlik, Toussaint, Vijaykumar. (2013). On stochastic optimal control and reinforcement learning by approximate inference: temporal difference style algorithm with soft optimality.
+	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
+	- Rawlik, Toussaint, Vijaykumar. On stochastic optimal control and reinforcement learning by approximate inference: temporal difference style algorithm with soft optimality. RSS'12
 - Modern soft optimality
 	- Haarnoja, Tang, Abbeel, L., Reinforcement Learning with Deep Energy-Based Policies. ICML'17
 	- Nachum, Norouzi, Xu, Schuurmans. (2017). Bridging the gap between value and policy based reinforcement learning.

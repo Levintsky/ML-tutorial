@@ -78,24 +78,6 @@
 		- PSD (positive semi-definite);
 	- Differential manifold on probability measure;
 
-## Low-Rank Approximation
-- Martens, James. Deep learning via hessian-free optimization. ICML'10
-- **KFAC**: J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature. ICML'15
-	- Kronecker approximation to Fisher
-	- Assumption: FC (si = Wi\* ai) + non-linear (ai = φ(si)), then DWi=gi x ai-1, Fisher:\
-		<img src="/Optimization/images/2nd/k-fac1.png" alt="drawing" width="400"/>
-	- Approx:\
-		<img src="/Optimization/images/2nd/k-fac2.png" alt="drawing" width="400"/>
-- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
-	- Follow-up on KFAC for convolutions
-- Instability:
-	- Byrd, R., Hansen, S., Nocedal, J., and Singer, Y. A stochastic quasi-newton method for large-scale optimization. SIAM Journal on Optimization'16
-- Estimate the metric:
-	- Pascanu, Razvan and Bengio, Yoshua. Revisiting natural gradient for deep networks. ICLR'14
-	- KFAC. ICML'15
-	- **PRONG**: G. Desjardins, K. Simonyan, R. Pascanu, et.al. Natural neural networks. NIPS'15
-		- Whitening each layer.
-
 ## SVGD
 - Qiang Liu, Dilin Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
 	- https://github.com/DartML/Stein-Variational-Gradient-Descent

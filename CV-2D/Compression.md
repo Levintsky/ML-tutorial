@@ -1,7 +1,7 @@
 # Compression
 
 ## Image Compression
-- G Toderici, S O’Malley, S Hwang, and D Vincent. Variable rate image compression with recurrent neural networks. ICLR'16
+- G Toderici, S O'Malley, S Hwang, and D Vincent. Variable rate image compression with recurrent neural networks. ICLR'16
 - O Rippel and L Bourdev. Real-time adaptive image compression. ICML'17
 - J Balle, V Laparra, and E P. Simoncelli. End-to-end optimized image compression. ICLR'17
 - L Theis, W Shi, A Cunningham, and F Huszar. Lossy image compression with compressive autoencoders. ICLR'17

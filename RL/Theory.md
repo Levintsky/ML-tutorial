@@ -1,5 +1,22 @@
 # Theory
 
+## Theory on Batch RL
+- Jinglin Chen, Nan Jiang. Information-Theoretic Considerations in Batch Reinforcement Learning. ICML'19
+
+## Theory on Imitation Learning
+- Wen Sun, Arun Venkatraman, Geoffrey J. Gordon, Byron Boots, J. Andrew Bagnell. Deeply AggreVaTeD: Differentiable Imitation Learning for Sequential Prediction. ICML'17
+
+## Theory on Exploration + Tabular MDP
+- Tabular MDP: minimax results;
+	- Azar, Mohammad Gheshlaghi, Ian Osband, and Remi Munos. Minimax regret bounds for reinforcement learning. ICML'17 (regret)
+	- Dann, C., Li, L., Wei, W., and Brunskill, E. Policy certificates: Towards accountable reinforcement learning. ICML'19 (PAC)
+- Instance-dependence bounds for tabular MDPs
+	- Zanette and Brunskill. Tighter problem-dependent regret bounds in reinforcement learning without domain knowledge using value function bounds. ICML'19
+	- Simchowitz and Jamieson. Non-asymptotic gap-dependent regret bounds for tabular MDPs. NeurIPS'19.
+- Strong theoretical bounds for RL with function approximation:
+	- Jin, Yang, Wang, and Jordan. Provably efficient reinforcement learning with linear function approximation. COLT'20.
+	- Many others, including our work (lead by Andrea Zanette), and Mengdi Wang's lab.
+
 ## Theory Analysis
 - Richard S. Sutton, David McAllester, Satinder Singh, Yishay Mansour. Policy Gradient Methods for Reinforcement Learning with Function Approximation. NIPS'00.
 	- Contributions: Established policy gradient theorem and showed convergence of policy gradient algorithm for arbitrary policy classes.

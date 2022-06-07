@@ -213,6 +213,17 @@
 ## Vision: others
 - Rendering:
 	- Joshua Tobin, Wojciech Zaremba, Pieter Abbeel. Geometry-Aware Neural Rendering. NeurIPS'19
+- Recurrent attention:
+	- V Mnih, N Heess, A Graves, et al. Recurrent models of visual attention. NIPS'14
+	- J Fu, H Zheng, and T Mei. Look closer to see better: Recurrent attention convolutional neural network for fine-grained image recognition. CVPR'17
+- Unclassified:
+	- J Ba, V Mnih, and K Kavukcuoglu. Multiple object recognition with visual attention. arxiv'14
+	- T Xiao, Y Xu, K Yang, J Zhang, Y Peng, and Z Zhang. The application of two-level attention models in deep convolutional neural network for fine-grained image classification. CVPR'15
+	- M Chung, S Cho. Cram: Clued recurrent attention model. arxiv'18
+	- A Ablavatski, S Lu, and J Cai. Enriched deep recurrent visual attention model for multiple object recognition. WACV'17
+	- H Zheng, J Fu, T Mei, and J Luo. Learning multi-attention convolutional neural network for fine-grained image recognition. ICCV'17
+	- F Wang, M Jiang, C Qian, S Yang, C Li, H Zhang, X Wang, and X Tang. Residual attention network for image classification. arxiv'17
+	- Yunpeng Chen, Yannis Kalantidis, Jianshu Li, Shuicheng Yan, Jiashi Feng. A2-Nets: Double Attention Networks. NIPS'18
 
 ## Attention in RL
 - **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning.

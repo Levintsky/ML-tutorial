@@ -1,6 +1,10 @@
 # Multimodal Learning
 
-Natural Language Descriptions of Deep Visual Features 
+## Platform
+- **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
+	- Tasks: Embodied QA, Language grounding, navigation;
+	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
+	- Habitat-API: https://github.com/facebookresearch/habitat-api
 
 ## Dataset
 - Large Vision + Language 
@@ -118,7 +122,7 @@ Natural Language Descriptions of Deep Visual Features
 	- Attention:
 		- Z. Yang, X. He, J. Gao, L. Deng, and A. J. Smola. Stacked attention networks for image question answering. CVPR'16
 
-## Reasoning
+## Visual Reasoning
 - **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
 	- Compositional reasoning;
 - Justin Johnson, Judy Hoffman, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C. Lawrence Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
@@ -133,6 +137,19 @@ Natural Language Descriptions of Deep Visual Features
 	- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 
 	- Finally, they execute the program on the structural scene representation to obtain the final answer
 	- 99.8% on CLEVR
-
-## Reasoning
 - **VCR**: Visual Commonsense Reasoning. CVPR'19
+
+## RL + Language
+- Program Guided
+	- Shao-Hua Sun, Te-Lin Wu, Joseph J. Lim. Program Guided Agent. ICLR'20
+		- Input: perception (2D) + DSL program;
+		- Output: action;
+- Navigation
+	- H Yu, H Zhang, W Xu. A Deep Compositional Framework for Human-like Language Acquisition in Virtual Environment. 2017
+	- K M Hermann, F Hill, S Green, F Wang, R Faulkner, H Soyer, D Szepesvari, W M Czarnecki, M Jaderberg, D Teplyashin, M Wainwright, C Apps, D Hassabis, P Blunsom. Grounded Language Learning in a Simulated 3D World
+		- Instruction based
+		<img src="/RL/images/navigation/language-based.png" alt="drawing" width="500"/>
+- Deep Reinforcement Learning with a Natural Language Action Space
+- Gated-Attention Architectures for Task-Oriented Language Grounding
+- Language Understanding for Text-based Games using Deep Reinforcement Learning, EMNLP 2015
+- https://github.com/devendrachaplot/DeepRL-Grounding

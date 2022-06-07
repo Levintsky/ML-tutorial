@@ -6,16 +6,27 @@
 
 ## Classics
 - lec-17, 18 (CS-294, Sergey Levine)
-- Approach 1: **UCB** (Upper Confidence Bounds)\
-	<img src="/RL/images/xx/xx-ucb.png" alt="drawing" width="500"/>
-- Approach 2: **Thompson Sampling**:\
-	<img src="/RL/images/xx/thompson-sampling.png" alt="drawing" width="500"/>
+- Approach 1: **UCB** (Upper Confidence Bounds)
+	- Intuition: try each arm until you are sure it's not great:
+		- a = argmax μa + sqrt(2lnT/N(a))
+		- Reg(T) ~ O(logT), provably as good as any algorithm
+- Approach 2: **Thompson Sampling**:
 	- An easy tutorial: https://github.com/andrecianflone/thompson/blob/master/thompson.ipynb
 	- O Chapelle, L Li. An Empirical Evaluation of Thompson Sampling, NIPS'11
 	- Russo, Daniel, Benjamin Van Roy, Abbas Kazerouni, and Ian Osband. A Tutorial on Thompson Sampling. 2017
-- Approach 3: Information Gain:\
-	<img src="/RL/images/xx/xx-ig.png" alt="drawing" width="500"/>
+- Approach 3: Information Gain:
 	- D Russo, B V Roy. Learning to Optimize via Information-Directed Sampling. NIPS'14
+		- IG(z,y|a) = E_y[H(p(z))-H(p(z)|y)|a], how much we learn about z from action a;
+		- y = ra, z = θa (parameters of model p(ra))
+		- g(a) = IG(θa,ra|a), information gain about a;
+		- ∆a = E[r(a\*)-r(a)], expected suboptimality of a;
+		- Choose a based on argmin_a ∆a^2/g(a),
+			- Numerator ∆a^2: don't take suboptimal actions you know;
+			- Denominator g(a): dont' take action you won't learn anything;
+- In Q-learning:
+	- ∆w = α(r(s)+γmaxQˆ(s',a';w)−Qˆ(s,a;w))∇wQˆ(s,a;w)
+	- ∆w = α(r(s)+r(s,a)+γmaxQˆ(s',a';w)−Qˆ(s,a;w))∇wQˆ(s,a;w)
+		- r(s,a): uncertainty;
 - Summary\
 	<img src="/RL/images/xx/xx-sum.png" alt="drawing" width="500"/>
 
@@ -41,7 +52,7 @@ def bonus(self, observation):
 - Pseudo-count:
 	- **CTS**: M G. Bellemare, S Srinivasan, G Ostrovski, T Schaul, D Saxton, R Munos. Unifying Count-Based Exploration and Intrinsic Motivation, NIPS'16
 		- CTS model (Bellemare, M., Veness, J., and Talvitie, E. (2014). Skip context tree switching. ICML'14);
-		- Enhance the reward r with rareness of next state N(s), r'=r+beta/sqrt(N(s)+eps):
+		- Enhance the reward r with rareness of next state N(s), r'=r+β/sqrt(N(s)+ε):
 			<img src="/RL/images/xx/xx-pseudo.png" alt="drawing" width="500"/>
 	- **PixelCNN**: Georg Ostrovski, Marc G. Bellemare, Aaron van den Oord, Remi Munos. Count-Based Exploration with Neural Density Models. ICML'17
 	- **Hash**: H Tang, R Houthooft, D Foote, A Stooke, X Chen, Y Duan, J Schulman, F D Turck, P Abbeel. #Exploration: A Study of Count-Based Exploration for Deep Reinforcement Learning. NIPS'17\
@@ -55,15 +66,20 @@ def bonus(self, observation):
 		<img src="/RL/images/xx/xx-ex2-2.png" alt="drawing" width="400"/>
 	- Put together:\
 		<img src="/RL/images/xx/xx-ex2-3.png" alt="drawing" width="400"/>
-- Thompson Sampling
-	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16\
-		<img src="/RL/images/xx/xx-bootstrap1.png" alt="drawing" width="600"/>
-		<img src="/RL/images/xx/xx-bootstrap2.png" alt="drawing" width="600"/>
-		<img src="/RL/images/xx/xx-bootstrap3.png" alt="drawing" width="600"/>
-
-## Multi-Arm Bandit
-- http://iosband.github.io/2015/07/28/Beat-the-bandit.html
-- https://github.com/bgalbraith/bandits
+- Thompson Sampling:
+	- Mandel, Liu, Brunskill, Popovic. Thompson sampling over representation & parameters. IJCAI'16
+	- I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16
+		- Train C DQN agents using bootstrapped samples; (expensive to train C nn);
+		- Shared network Q with K outputs {Qk}k=1..K, masking distribution M:
+			- Initial state s0;
+			- k ~ Uniform(1,..,K); (choose a head)
+			- for t=1..T do
+				- Pick a = argmaxQk(st,a); (pick based on the head)
+				- st+1, rt;
+				- Sample bootstrap mask mt ~ M;
+				- Add (st,at,rt+1,st+1,mt) to replay buffer;
+  	- Azizzadenesheli, Anandkumar. Efficient Exploration through Bayesian Deep Q-Networks. NeurIPS workshop 2017
+  		- Use deep NN with last layer as Bayesian linear regression;
 
 ## Unclassified
 - Stadie, Levine, Abbeel (2015). Incentivizing Exploration in Reinforcement Learning with Deep Predictive Models.

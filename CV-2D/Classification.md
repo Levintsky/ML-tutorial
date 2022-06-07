@@ -90,8 +90,11 @@
 		- https://github.com/Markin-Wang/FFVT
 		- 91.6%
 	- CAL: Yongming Rao, Guangyi Chen, Jiwen Lu, Jie Zhou. Counterfactual Attention Learning for Fine-Grained Visual Categorization and Re-identification. ICCV'21
+		- Insight: a counterfactual attention for FG classification;
+			- What if we attend to something else? Y_effect = E[Y(A,X)-Y(A',X)]
+			- Loss = Lce(Y_effect, y) + L-old;
 		- https://github.com/raoyongming/cal
-		- 90.6%
+		- CUB: 90.6%
 	- Ju He, Jie-Neng Chen, Shuai Liu, Adam Kortylewski, Cheng Yang, Yutong Bai, Changhu Wang. TransFG: A Transformer Architecture for Fine-grained Recognition. AAAI'22
 		- https://github.com/TACJu/TransFG
 		- CUB: 91.7%

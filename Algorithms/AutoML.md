@@ -40,6 +40,7 @@
 - Catherine Wong, Neil Houlsby, Yifeng Lu, Andrea Gesmundo. Transfer Learning with Neural AutoML. NIPS'18
 - Jianlong Chang, xinbang zhang, Yiwen Guo, Gaofeng Meng, Shiming Xiang, Chunhong Pan. DATA: Differentiable ArchiTecture Approximation. NIPS'19
 - Yukang Chen, Tong Yang, Xiangyu Zhang, Gaofeng Meng, Xinyu Xiao, Jian Sun. DetNAS: Backbone Search for Object Detection. NIPS'19
+- Adam Gaier & David Ha. Weight Agnostic Neural Networks. arXiv preprint arXiv:1906.04358 (2019).
 
 ## Search Space
 - Search whole neural net:

@@ -6,6 +6,20 @@
 	- Model given: AlphaGo, Exit;
 - https://zhuanlan.zhihu.com/p/72642285
 
+## Unclassified
+- Strehl, A. L., Li, L., & Littman, M. L. Incremental model-based learners with formal learning-time guarantees. UAI'06
+- **MBIE-EB**: Alexander L Strehl, Michael L Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
+	- Init: ε, δ, m;
+	- n(s,a,s')=0, rc(s,a)=0, n(s,a)=0, Q(s,a)=1/(1−γ);
+	- Loop:
+		- at = argmax Q(st,a);
+		- Observe rt and state st+1;
+		- Update stat n(s,a), n(s,a,s'), rc(s,a);
+		- Update model: R(st,at) and T(s'|s,a)
+		- Set Q(s, a) as exploration based reward by looping until convergence:
+			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/sqrt(n(s,a))
+- **Recurrent World Models Facilitate Policy Evolution (Google Brain)**. NIPS'18
+
 ## Basics
 - Version 0.5: collect random samples, train dynamics, plan
 	- Pro: simple, no iterative procedure
