@@ -74,9 +74,9 @@
 		- Gaussian: mean μ(s)=φ(s)θ, fixed σ^2
 			- ∇logπ(s,a) = φ(s)(a-μ(s))/σ^2;
 	- Baseline for variance reduction:
-		- E ∇logπ(τ;θ)b = 0, with 0 mean, so we can use any b in ∇logπ(r-b);
-		- Get the baseline b to minimize Var(∇J(θ)); dVar/db=0;
-		- b = E(g(τ)^2 r(τ)) / E(g(τ)^2), with g(τ)=∇logπ(τ;θ);
+		- E[∇logπ(τ;θ)b] = 0, so we can use any b in ∇logπ(r-b);
+		- min_b Var(∇J(θ)) -> dVar/db=0;
+			- b = E[g(τ)^2 r(τ)]/E[g(τ)^2], with g(τ)=∇logπ(τ;θ);
 		- State-wise: b(st) (actor-critic)
 	- IS, off-policy PG:
 		- Insight: we have trajectory of τ ~ p(θ) and try to optimize J(θ');
@@ -134,8 +134,14 @@
 		- Let rt(θ) = π(at|st;θ)/π(at|st;θ-old), so rt(θ-old)=1;
 		- Lcpi(θ) = E[π(at|st;θ)/π(at|st;θ-old)At]=E[rt(θ)At], IS-advantage;
 		- Lclip(θ) = E[min(rt(θ)At, clip(rt(θ),1-ε,1+ε)At)], clip IS in (1-ε,1+ε)
-	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17\
-		<img src="/RL/images/algos/ppo-dist.png" alt="drawing" width="400"/>
+	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
+		- Insight: adaptive KL-penalty;
+		- J(θ) = Σ At π(at|st,θ)/π-old - λ KL(π-old|π)
+		- Update value network V(;φ)
+		- If KL(π-old|π) > β-high KL-target: 
+			- λ=αλ
+		- If KL(π-old|π) < β-low KL-target: 
+			- λ=λ/α
 
 ## Value + Policy, Actor-Critic
 - Basics: (Sergey Levine, CS-294)
@@ -173,19 +179,6 @@
 		- Available in OpenAI baselines;
 	- **ACKTR**: Yuhuai Wu, Elman Mansimov, Shun Liao, Roger Grosse, Jimmy Ba. Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
 		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
-	- **SAC**: Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S. Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor. ICML'18
-		- Insight: succeed while as random as possible; 1. separate network for policy and value; 2. off-policy AC; 3. Entropy max;
-		- Problem setup: Continuous control;
-		- Algorithm: off-policy actor-critic;
-		- https://github.com/vitchyr/rlkit
-		- Formulation: J(π) = sum r(st,at) + α H(π(.|st))
-		- Lemma 1: formulation equivalent with soft Bellman (converge when infinity);
-		- Lemma 2: project back to π' = argmin KL(π'(.|st), exp(Q(π-old))/Z-old) guarantees improvement;
-		- Theory 3: soft policy iteration + projection converge to optimal;
-		- Policy update: policy-loss = α log(π) - Q(s, π(s))
-		- Value update: target value = r + α q_target(s', π(s'))
-		- With V(.;ψ), V(.;ψ') as value network (original and target), Q(s,a;theta), π(.|s,φ), SAC alg:\
-			<img src="/RL/images/algos/sac.png" alt="drawing" width="400"/>
 
 ## Value Function, Q-learning
 - Basics (Sergey Levine, CS-294):
@@ -221,7 +214,7 @@
 		- π(at|st) ∝ exp(Q(st,at;φ))
 - Theory:
 	- Define operator B: BV=max_a ra + γTaV, with Ta as the state transition dynamics;
-	- Optimal V\* is a fixed point: V\* = BV\*
+	- Optimal V∗ is a fixed point: V∗ = BV∗
 	- B is a contraction |BV1-BV2| <= γ|V1-V2|, w.r.t. ∞-norm;
 	- Non-tabular case:
 		- Define operator ∏ (projection): ∏V=argmin_V∈Ω 1/2|V'(s)-V(s)|^2
@@ -270,13 +263,12 @@
 		- PCQL: Q-learning (model-free)
 - Continuous:
 	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
-		- Insight: non-deterministic policy; gradient w.r.t. reparametrization;
-		- SVG(0): model free\
-			<img src="/RL/images/svg0.png" alt="drawing" width="500"/>
-		- SVG(1): one-step dynamics\
-			<img src="/RL/images/svg1.png" alt="drawing" width="500"/>
-		- SVG(inf)\
-			<img src="/RL/images/svg-inf.png" alt="drawing" width="500"/>
+		- Insight: non-deterministic policy; gradient w.r.t. reparametrization (sample from noise);
+			- e.g. y = f(x, ξ), where ξ ~ ρ(.);
+			- ∇xE_p(y|x)[g(y)] = E_ρ(ξ)[gyfx] ≈ 1/MΣgyfx|ξ=ξi (MC estimator)
+		- SVG(0): model free, sample noise;
+		- SVG(1): one-step dynamics p(s'|s,a)
+		- SVG(∞)
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
 		- https://github.com/ghliu/pytorch-ddpg
@@ -300,22 +292,38 @@
 		- Two networks, one to choose action, the other to compute Q(s,a)
 	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
 		- https://github.com/sfujim/TD3
-		- Clipped Double Q-learning: actor x1,  critic x2 (not the target), target also has two critic;
-		- For value iteration: y = r + min(Q1(s', a'), Q2(s', a'))
+		- Clipped Double Q-learning:
+			- Deterministic actor π(;φ);
+			- Two critic x2 Q(;θ1), Q(;θ2);
+		- For value iteration: target always pick the minimum
+			- y = r + γmin_i=1,2(Qi(s',a'))
 		- Delayed Policy update: at lower frequency;
-		- Sync actor/critic target with current at even lower frequency;\
-			<img src="/RL/images/algos/TD3.png" alt="drawing" width="400"/>
+		- Sync actor/critic target with current at even lower frequency;
+- Experience replay:
+	- **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+		- Insight: enhance state with augmented goals;
+		- Given:
+			- off-policy RL alg A; (DQN, DDPG, ...)
+			- Strategy S for sampling goals: e.g. S(s0,...,sT) = m(sT)
+			- reward: SxAxG -> R, e.g. R(s,a,g)=-[fg(s)=0]
+		- Alg:
+			- for t=0..T-1
+				- sample at ~ π(st||g), get new state st+1;
+			- for t=0..T-1
+				- rt := r(st,at,g)
+				- store (st||g, at, rt, st+1||g) in buffer;
+				- Sample a set of additional goals G
+				- for each goal g' ∈ G; 
+					- get r', store transition;
+			- Learning;
 - Bias:
 	- **SBEED**: Bo Dai, Albert Shaw, Lihong Li, Lin Xiao, Niao He, Zhen Liu, Jianshu Chen, Le Song. SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation. ICML'18
 		- Value iteration does not have a cost function to optimize, it is just a fixed point iteration;
 		- Key idea: use conjugate of the square function to avoid the bias introduced in square function;
 		- Tradeoff: introduce a mini-max formulation;
-		<img src="/RL/images/algos/sbeed.png" alt="drawing" width="400"/>
 	- Yihao Feng, Lihong Li, Qiang Liu. A Kernel Loss for Solving the Bellman Equation. NIPS'19
 
 ## Unclassified
-- **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
-	<img src="/RL/images/algos/her.png" alt="drawing" width="500"/>
 - Paulo Rauber, Avinash Ummadisingu, Filipe Mutz, Juergen Schmidhuber. Hindsight policy gradients. ICLR'19
 - O'Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
@@ -332,16 +340,6 @@
 	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
-- Max Entropy:
-	- Ziebart, B. D., Maas, A. L., Bagnell, J. A., and Dey, A. K. Maximum entropy inverse reinforcement learning. AAAI'08
-	- Toussaint, M. Robot trajectory optimization using approximate inference. ICML'09
-	- Rawlik, K., Toussaint, M., and Vijayakumar, S. On stochastic optimal control and reinforcement learning by approximate inference. RSS'12
-	- Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. UAI'16
-	- Haarnoja, T., Tang, H., Abbeel, P., and Levine, S. Reinforcement learning with deep energy-based policies. ICML'17
-	- O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
-	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
-	- PCL: NIPS'17
-	- SAC: 2018
 - Action Dependent: (in AC, value function should be state-dependent)
 	- **Q-Prop**: S Gu, T Lillicrap, Z Ghahramani, R E. Turner, S Levine. Sample-efficient policy-gradient with an off-policy critic: policy gradient with Q-function control variate. ICLR'17
 		- Taylor approx of DPG/DDPG for value function, mixture of DPG/DDPG
@@ -351,20 +349,9 @@
 	- The Mirage of Action-Dependent Baselines in Reinforcement Learning.
 		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
 		- Claims V(s,a) style does not reduce variance
-- PCL:
-	- **PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Bridging the gap between value and policy based reinforcement learning, NIPS'17
-		- combine the unbiasedness and stability of on-policy training with the data efficiency of off-policy approaches:
-		- Entropy O(s,π)=O-old(s,π) + H(s,π) with **discounted entropy regularizer**;
-		- H(s, π) = H(π|s) - γ entropy(π|s')
-		- Theory: correctness with control inference;\
-			<img src="/RL/images/algos/pcl.png" alt="drawing" width="600"/>
-	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
 - PG + Q-Learning:
-	- O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
 	- **Reactor**: Audrunas Gruslys, Will Dabney, Mohammad Gheshlaghi Azar, Bilal Piot, Marc Bellemare, Remi Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
 	- **IPG**: 	Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning
-	- Schulman, J., Abbeel, P., and Chen, X. Equivalence between policy gradients and soft Q-learning. 2017
-		- Theoretical link;
 
 ## Evoluation Strategy
 - https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html

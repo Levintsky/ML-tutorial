@@ -27,35 +27,78 @@
 	- Thomas Anthony, Zheng Tian, and David Barber. Thinking fast and slow with deep learning and tree search, 2017.
 
 ## Control as Inference
-- A graphical model\
-	<img src="/RL/images/control/control-infer1.png" alt="drawing" width="500"/>
-- Forward message: p(st\|O 1:t-1)
+- Basic idea: planning as inference;
+	- A graphical model: p(Ot|st,at) ∝ exp(r(st,at))
+	- Check HMM forward-backward algorithm (message-passing);
+- Forward message:
+	- Posterior αt = p(st|O1:t-1)
 	- Given optimality before, where I am in state space;
 - Backward message:
-	- soft Q(s, a) or beta(st, at) = p(Ot:T\|st, at).
-	- soft V(s) or beta(st): marginalize at with some p(at\|st) action prior;
-	- Then Q(st, at) = r(st, at) + log E_st+1(exp(V(st+1)))
-	- Given what will happen after t, what is the optimality if we should take (st at).\
-	<img src="/RL/images/control/control-infer2.png" alt="drawing" width="600"/>
-	<img src="/RL/images/control/control-infer3.png" alt="drawing" width="600"/>
-	<img src="/RL/images/control/control-infer4.png" alt="drawing" width="600"/>
-- Forward message: alpha(st) = p(st) given O1:t-1\
-	<img src="/RL/images/control/control-infer5.png" alt="drawing" width="600"/>
-	<img src="/RL/images/control/control-infer6.png" alt="drawing" width="600"/>
-- Q-learning with soft optimality\
-	<img src="/RL/images/control/soft-q.png" alt="drawing" width="600"/>
-- Policy gradient with soft optimality\
-	<img src="/RL/images/control/soft-pg.png" alt="drawing" width="600"/>
+	- Given what will happen after t, what is the optimality if we should take (st at).
+	- for t=T-1 to 1:
+		- β(st,at) = p(Ot|st,at)E_st+1[β(st+1)]
+		- β(st) = E_at[β(st,at)]
+	- soft Q(s, a) or β(st, at) = p(Ot:T|st, at): backward likelihood
+	- soft V(s) or β(st): marginalize at with some p(at|st) action prior;
+	- Q(st,at) = logβ(st,at) = r(st, at) + logE[exp(V(st+1))]
+	- V(st) = logβ(st) = log∫exp(Q(st,at))dat
+	- Policy: π(at|st, O1:T) = β(st,at)/β(st)
+- Forward message: αt(st) = p(st) given O1:t-1;
+	- p(st|O1:T) ∝ αt(st)βt(st)
+- Variational lower bound:
+	- logp(x) >= Eq(z)[logp(x,z)-logq(z)]
+		- gap is KL(q(z)|p(z))
+	- Let observation: x=O1:T, z=(s1:T, a1:T)
+	- logp(O1:T) >= Eq(s,a)[Σr(st,at)-logq(at|st)], (b/c r(st,at)=logp(Ot|st,at))
+	-  = Σt Eq(st,at)[r(st,at)+H(q(at|st))] (max-entropy)
+- Q-learning with soft optimality
+	- Take ai and observe (si,ai,si',ri), add to buffer R;
+	- Sample minibatch {sj,aj,sj',rj} from R;
+	- Target yj = rj + γsoftmax_aj'Q(sj',aj';φ') with target network Q(;φ')
+	- Regression bp: φ -= αΣ_j dQ(sj,aj;φ)/dφ (Q(sj,aj;φ)-yj)
+	- Update target net φ' every N-step or Polyak;
+- Policy gradient with soft optimality:
+	- J(θ) = Σt Eπ[r(st,at)]+Eπ[H(π(at|st))]
 - Graphical models:
-	- Ziebart. (2010). Modeling interaction via the principle of maximal causal entropy: connection between soft optimality and maximum entropy modeling.
-	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
+	- Ziebart, B. D., Maas, A. L., Bagnell, J. A., and Dey, A. K. Maximum entropy inverse reinforcement learning. AAAI'08
+	- Toussaint, M. Robot trajectory optimization using approximate inference. ICML'09
+	- Ziebart. Modeling interaction via the principle of maximal causal entropy: connection between soft optimality and maximum entropy modeling. 2010
 	- Rawlik, Toussaint, Vijaykumar. On stochastic optimal control and reinforcement learning by approximate inference: temporal difference style algorithm with soft optimality. RSS'12
+	- H Kappen, V Gomez, M Opper. Optimal control as a graphical model inference problem: frames control as an inference problem in a graphical model. AAAI'13
 - Modern soft optimality
+	- O'Donoghue, B., Munos, R., Kavukcuoglu, K., and Mnih, V. PGQ: Combining policy gradient and Q-learning. 2016
+	- Fox, R., Pakman, A., and Tishby, N. Taming the noise in reinforcement learning via soft updates. UAI'16
 	- Haarnoja, Tang, Abbeel, L., Reinforcement Learning with Deep Energy-Based Policies. ICML'17
-	- Nachum, Norouzi, Xu, Schuurmans. (2017). Bridging the gap between value and policy based reinforcement learning.
-	- Schulman, Abbeel, Chen. (2017). Equivalence between policy gradients and soft Q-learning.
- 	- Haarnoja, Zhou, Abbeel, L. (2018). Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor.
-	- Levine. (2018). Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review
+	- **PCL**: Nachum, Norouzi, Xu, Schuurmans. Bridging the gap between value and policy based reinforcement learning. NIPS'17
+		- soft q-learning; n-step as path-consistent;
+	- Schulman, Abbeel, Chen. Equivalence between policy gradients and soft Q-learning. 2017
+ 	- SAC: Haarnoja, Zhou, Abbeel, L. Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor. ICML'18
+	 	- Insight: succeed while as random as possible; 1. separate network for policy and value; 2. off-policy AC; 3. Entropy max;
+			- Problem setup: Continuous control;
+			- Algorithm: off-policy actor-critic;
+			- https://github.com/vitchyr/rlkit
+			- Formulation: J(π) = Σr(st,at) + αH(π(.|st))
+			- Theory (soft policy to soft AC):
+				- Lemma 1: formulation equivalent with soft Bellman (converge when t→∞);
+				- Lemma 2: π-old ∈ Π and let π-new = argmin_(π∈Π)KL(π'(.|st), exp(Q(π-old))/Z-old), then guarantees Q(st,at;π-new) >= Q(st,at;π-old);
+				- Theory 1: soft policy eval + iteration with π ∈ Π converge to optimal π∗;
+			- Value-loss: Jv(ψ) = E_(st∼D)[1/2(V(st;ψ)-V^)^2];
+				- Target V^ = E_at[Q(st,at;θ)−logπφ(at|st)]
+			- Q-loss: E[1/2(Q(st,at;θ)-Q^(st,at))^2]
+				- Target Q^ = r(st, at) + γE[V(st+1;ψ')]
+			- Policy-loss 
+				- Jπ = E_st[KL(π(.|s,φ)|exp(Q(st,.;θ)))]
+			- Value update: target value = r + α q_target(s', π(s'))
+			- With V(.;ψ), V(.;ψ') as value network (original and target), Q(s,a;θ), π(.|s,φ), SAC alg:
+				- Collect (st,at,rt,st+1):
+					- at ~ π(at|s,φ)
+					- st+1 ~ p(st+1|st,at)
+				- SGD Learning:
+					- ψ -= λ∇Jv(ψ)
+					- θ -= λ∇Jq(θ)
+					- φ -= λ∇Jπ(φ)
+	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
+	- Levine. Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review. 18
 
 ## Legacy
 - Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes, 2007

@@ -1,7 +1,28 @@
 # Graphical Models
 
+## Basics
+- DGM:
+	- Bayesian net:
+	- Learning:
+	- Inference:	
+- UGM:
+	- MRF, CRF;
+	- Learning:
+	- Inference:
+- Inference:
+	- Exact inference:
+		- VE;
+		- Factor graph;
+		- Sum-product/max-product;
+	- Variational inference (check VI);
+- Markov:
+	- HMM:
+		- Inference:
+			- Maginal each state: forward/backward, (message-passing)
+			- Most likely whole sequence: Viterbi
+
 ## Directed Graphical Models
-- **PRML, Chap 8.1, 8.2**
+- PRML: Chap 8.1, 8.2
 - Concepts
 	- Markov blanket
 - Bayesian network:
@@ -17,32 +38,31 @@
 		- blocked definition ((a) the arrows on the path meet either head-to-tail or tail-to-tail at the node, and the node is in the set C, or (b) the arrows meet head-to-head at the node, and neither the node, nor any of its descendants, is in the set C.)
 - **Kevin Murphy, Chap 10**;
 - Examples: Naive Bayes Classifier; HMM; QMR (quick medical reference); Gaussian Bayes Net;
-- Inference;\
-	<img src="/Bayes/images/gm/dgm-inf.png" alt="drawing" width="350"/>
-- Learning;
-	- With complete data:\
-		<img src="/Bayes/images/gm/dgm-nbc.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/gm/dgm-inf-2.png" alt="drawing" width="400"/>
+- Inference:
+	- p(x_h|x_v,θ) = p(x_h,x_v|θ)/p(x_v|θ) 
+	- = p(x_h,x_v|θ) / Σx_h' p(x_h',x_v|θ); (normalize)
+- Learning:
+	- With complete data:
+		- Assume prior factorizes: p(θ) = ∏t=1..V p(θt)
+		- Posterior also factorizes: p(θ|D) = ∏t=1..V p(Dt|θt)p(θt)
 	- With missing data/latent, not convex;\
 		<img src="/Bayes/images/gm/d-sep.png" alt="drawing" width="400"/>
 
 ## Undirected Graphical Models
 - PRML, Chap 8.3
-	- MRF:\
-		<img src="/Bayes/images/gm/mrf-1.png" alt="drawing" width="400"/>
+	- MRF: p(x) = 1/Z ∏ ψc(xc)
 	- CRF
 	- M. Schmidt. UGM: A Matlab toolbox for probabilistic undirected graphical models.
 		- http://www.cs.ubc.ca/~schmidtm/Software/UGM.html. 
 - Kevin Murphy, Chap 19
 	- Hammersley-Clifford Theorem; Gibbs distribution; energy-based model;
 	- Examples: Ising; Hopfield networks; Potts model (generalized Ising to multiple states);
-		- Gaussian MRF;
-			<img src="/Bayes/images/gm/gauss-mrf.png" alt="drawing" width="400"/>
+		- Gaussian MRF: 
 	- Learning:
-		- Exponential family:\
-			<img src="/Bayes/images/gm/exp-1.png" alt="drawing" width="300"/>\
-			<img src="/Bayes/images/gm/exp-2.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/gm/exp-3.png" alt="drawing" width="250"/>
+		- Exponential family:
+			- p(y|θ) = 1/Z(θ) exp[Σ θ_c φ_c(y)]
+			- l(θ) = 1/N Σlogp(yi|θ) = 1/N Σ_i[Σ_c θφ(y)-logZ(θ)]
+			- ∂l/∂θc = [1/N Σ_i φ_c(yi)] - E[φ_c(yi)]
 		- Pseudo-likelihood:\
 			<img src="/Bayes/images/gm/pseudo-likelihood.png" alt="drawing" width="400"/>
 		- Stochastic maximum likelihood:\
@@ -89,6 +109,46 @@
 	- G. Papandreou and A. L. Yuille, Perturb-and-map random fields: Using discrete optimization to learn and sample from energy models. ICCV'11
 	- D. Tarlow, R. P. Adams, and R. S. Zemel. Randomized optimum models for structured prediction. AISTATS'12
 	- **MAP-perturbation**: S. Maji, T. Hazan, and T. Jaakkola. Active boundary annotation using random map perturbations. AAAI'14
+
+## Markov and HMM (Kevin Murphy Chap 17)
+- 1. Intro;
+- 2. Markov models:
+	- p(X1:T) = p(X1) ∏p(Xt|Xt-1)
+	- 2.1 Transition matrix A;
+	- n-step: A(n), A(1)=A, A(m+n)=A(m)A(n);
+	- 2.2 Language modeling:
+		- p(Xt=k) unigram;
+		- p(Xt=k|Xt-1=j): bigram;
+		- p(Xt=k|Xt-1=j, Xt-2=i): trigram;
+		- n-gram;
+		- MLE: π^ = Nj/ΣNj, Ajk^ = Njk/Σ_k Njk;
+		- Backoff smoothing: Dirichlet;
+	- 2.3 stationary distribution
+		- π=πA
+- 3. HMM
+	- Hidden state z1:T
+	- p(z1:T,x1:T) = [p(z1)∏p(zt|zt-1)] [∏p(xt|zt)]
+	- Obs model:
+		- B(k,l) = p(xt=l|zt=k,θ); discrete
+		- p(xt|z=k,θ) = N(xt|μk, Σk)
+- 4. HMM inference
+	- 4.2 Forward algorithm
+		- p(zt=j|x1:t−1) = Σp(zt=j|zt−1=i)p(zt−1=i|x1:t−1)
+		- Forward posterior:
+			- αt(j) = p(zt=j|x1:t) = p(zt=j|xt, x1:t−1) 
+			- = 1/Z p(xt|zt=j)p(zt=j|x1:t−1)
+			- αt ∝ ψt ⊙ (Ψ αt−1)
+			- with ψt(j) = p(xt|zt = j) as local evidence, Ψ(i,j) = p(zt = j|zt−1 = i)
+	- 4.3 Forward-backward algorithm
+		- Posterior of a state given all obs:
+			- p(z=j|x1:T) ∝ p(zt=j,x_t+1:T|x1:t) 
+			- ∝ p(zt=j|x1:t) p(x_t+1:T|zt=j)
+		- First item: αt
+		- Second item: βt(j) := p(xt+1:T|zt=j)
+		- Posterior: γt(j) ∝ αt(j)βt(j)
+		- βt−1 = Ψ(ψt ⊙ βt)
+	- 4.4 Viterbi (whole sequence)
+		- z∗ = argmax_z2:T p(z1:T|x1:T)
 
 ## NIPS'19
 - Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models. NIPS'19

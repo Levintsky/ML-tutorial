@@ -159,7 +159,7 @@
 	- A General Method for Amortizing Variational Filtering. NIPS'18
 	- Stefan Webb, Adam Golinski, Robert Zinkov, N. Siddharth, Tom Rainforth, Yee Whye Teh, Frank Wood. Faithful Inversion of Generative Models for Effective Amortized Inference. NIPS'18
 
-## NIPS'19
+## NIPS'18
 - Mohammad Emtiyaz Khan, Alexander Immer, Ehsan Abedi, Maciej Korzepa. Approximate Inference Turns Deep Networks into Gaussian Processes
 - Marcel Hirt, Petros Dellaportas, Alain Durmus. Copula-like Variational Inference
 - Justin Domke, Daniel Sheldon. Divide and Couple: Using Monte Carlo Variational Objectives for Posterior Approximation

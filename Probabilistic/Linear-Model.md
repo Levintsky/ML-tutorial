@@ -1,0 +1,194 @@
+# Linear Classifier
+
+## Basics
+- Fisher
+- Linear regression:
+	- MLE (L2)
+	- Bias/Variance trade-off;
+	- Bayesian (prior, posterior, predictive);
+- Linear classifier (Logistic Regression):
+	- MLE, IRLS, Newton/BFGS;
+	- Bayesian (Laplacian Approx), BIC, probit-approx for predictive;
+	- Online learning: perceptron;
+	- Fisher
+
+## Linear Regression (Kevin Murphy, Chap 7; Bishop, Chap 3)
+- 7.1 Introduction;
+	- y(x,w) = Σwjφj(x) = wφ(x)
+	- (Bishop) Multiple output target t, with Moore-Penrose pseudo-inverse:
+		- p(t|x,w,β) = N(t|y(x,w), β^-1)
+		- lnp(t|x,w,β) = Nlnβ/2 - Nln(2π)/2 - βE(w) with E(w) as MSE fitting error;
+		- Pseudo-inverse: (Φ'Φ)^(-1)Φ'
+- 7.2 Model specification:
+	- p(y|x,θ) = N(y|wx, σ^2)
+	- p(y|x,θ) = N(y|wφ(x), σ^2), basis function;
+- 7.3 MLE:
+	- l(θ) = Σlogp(yi|xi,θ)
+	- OLS (ordinary least squares):
+		- NLL(w) = 1/2 (y-Xw)'(y-Xw) = 1/2 w'(X'X)w - w'(X'y)
+		- w = (X'X)^(-1)X'y
+	- Geometric interpretation: residual y-y^ orthogonal to span of X;
+		- y' = X w^ = X (X'X)^(-1) X'y
+- 7.4 Robust linear regression:
+	- L1-norm
+	- Huber-loss
+- 7.5 Ridge-regression:
+	- J(w) = 1/N Σ(yi-(w0+wxi))^2 + λ|w|^2
+	- w = (λI+X'X)^(-1) X'y
+	- 7.5.2 Numerical stability:
+		- Avoid inverting matrix
+		- Cholesky decomposition
+		- QR decomposition
+	- 7.5.3 Connection with PCA
+		- Let X = USV (SVD)
+		- y^ = Σ_j uj Sjj uj' y
+		- dof(λ) = Σ_j σj^2/(σj^2+λ)
+- 7.6 Bayesian linear regression
+	- 7.6.1 Posterior (known σ^2):
+		- p(y|X,w,μ,σ^2) ~ N(y|μ+Xw,σ^2I) for all observed y;
+		- Conjugate prior (Gaussian): p(w) ~ p(w|w0,V0);
+		- w0 = 0, V ~ τI: Ridge regression;
+	- 7.6.2 Posterior predictive: (test x)
+		- p(y|x,D,σ^2) = ∫N(y|xw,σ^2)N(w|w,Vn)dw
+		- ~ N(y|wx,σ(x)^2)
+		- σ(x)^2 = σ^2 + x Vn x; var of obs and weight w;
+	- 7.6.3 Bayesian inf with unknown σ^2:
+		- Conjugate prior: p(w,σ^2) = N(w0,σ^2V0)IG(σ^2|a0,b0)
+		- Posterior:
+			- p(σ^2|D) ~ IG(aN, bN)
+			- p(w|D) ~ T(wN, bN/aNVN, 2aN), student-t;
+		- Predictive of new test y: p(y|x,D) ~ T(xw, bN/aN(Im+XVnX'), 2aN); student-t;
+	- Bishop 3.3: non-diagonal Var
+		- Prior: p(w) ~ N(m0, S0)
+		- Posterior: p(w) ~ N(mN, SN)
+		- m = SN(S^(−1)m0 + βΦ't), β: precision;
+		- SN^(-1) = S0^(-1) + βΦ'Φ
+		- Predictive: p(t|D,α,β) = ∫p(t|w,β)p(w|D,α,β)dw
+		- p(t|D,α,β) ~ N(mNφ(x), σN^2(x))
+			- with σN^2(x) = 1/β + φ'(x)SN φ(x)
+		- 3.3.3 Equivalent kernel;
+			- Express weight by training D={x};
+			- y(x,m) = mφ(x) = Σβφ'(x)Sφ(x)t = Σk(x,xn)tn
+			- Kernel maxtrix: k(x1,x2) = βφ'(x1)Sφ(x2)
+- Bishop 3.2: Bias and Variance trade-off,
+	- let h(x) = E[t|x], the true mean of t(x); bias measures diff y(x;D) from h; variance of a solution measures its vary around its own average;
+	- E[{y(x;D)-h(x)}^2] = (bias)^2 + Evar
+		- (bias)^2 = {E_D[y(x;D)]-h(x)}^2; diff y(x;D) from h
+		- Variance: Ev = E_D[{y(x;D)-E[y(x;D)]}^2]
+	- Loss: E[L] = ∫{y(x)-h(x)}^2p(x)dx + ∫{h(x)-t}^2p(x,t)dxdt = (Eb)^2 + Ev + noise
+		- Noise = ∫{h(x)-t}^2 p(x,t)dxdt
+	- In practice, train L different models yi(x);
+		- y^(x) = 1/L Σyi(x)
+		- (bias)^2 = 1/N Σ{y^(xn)-h(xn)}^2; over all x
+		- Variance = 1/NL ΣΣ{yi(x)-y^(x)}^2; over all i, x;
+- Bishop 3.4 Bayesian Model comparison:
+	- L models {Mi}, i = 1, ..., L.
+	- **Bayes factor**: p(D|Mi)/p(D|Mj)
+- Bishop 3.5 Evidence approximation:
+	- Empirical Bayes:
+		- Hyperparameters α, β(w ~ N(0, α^-1), y ~ N(xw, β^-1))
+		- Marginalized LE p(t|α, β)
+		- Marginalize over w, implicit optimization for α, β respetively;
+
+## Logistic Regression (Kevin Murphy, Chap 8; Bishop, Chap44)
+- 8.1 Intro
+- 8.2 Model: p(y|x, w) ~ Ber(y, σ(wx))
+- 8.3 Fitting
+	- 8.3.1 MLE: loss, gradient and Hessian
+		- NLL(w) = Σlog(1+exp(-yi w'xi))
+		- g = df(w)/dw = X'(μ-y)
+		- H = X'SX
+	- 8.3.2 SGD
+		- Avoid zigzag: momentum
+	- 8.3.3 Newton's method
+	- 8.3.4 IRLS (Iterated reweighted Least Square)
+		- Apply Newton's method for logistic regression;
+		- w -= H^(-1)g
+	- 8.3.5 Quasi-Newton: BFGS;
+		- Assumption: Hessian as Diagonal + low-rank approx;
+		- Approximate Bk ~ Hk;
+			- Bk+1 = Bk + ykyk/yksk - (Bksk)(Bksk)'/skBksk
+			- sk = θk - θk-1
+			- yk = gk - gk-1
+		- Ck ~ Hk^(-1):
+			- Ck+1 = (I-skyk'/yksk')Ck(I-skyk'/yksk') _ sksk'/yk'sk
+	- 8.3.6 l2 regularization
+	- 8.3.7 Multiclass: softmax
+- 8.4 Bayesian logistic:
+	- **Lapalace approx**: Find a Gaussian approximation q(z) which is centred on a **mode** of the distribution p(z);
+		- p(θ|D) = 1/Z exp(-E(θ)), with E(θ) as energy function;
+		- E(θ) = -logp(θ,D) ≈ E(θ∗) + (θ-θ∗)g + 1/2 (θ-θ∗)H(θ-θ∗), Taylor expansion around mode θ∗;
+		- H = ∇^2 E(θ)|θ∗
+		- Approximate p^(θ|D) ≈ exp(-E(θ∗)) exp[-1/2(θ-θ∗)H(θ-θ∗)] ~ N(θ|θ∗, H^(-1));
+	- 8.4.2 BIC:
+		- log p(D) ≈ log p(D|θ∗) + log p(θ∗) − 1/2log|H|
+	- 8.4.3 Gaussian
+		- p(w|D) ≈ N(w|w^, H^-1)
+		- w^ = argminE(w)
+	- 8.4.4 Approx posterior prective
+		- p(y|x, D) = ∫p(y|x, w)p(w|D)dw
+		- p(y = 1|x, D) ≈ p(y = 1|x, E[w]), Bayesian point with E[w];
+		- MC: p(y=1|x,D) ≈ Σσ(wx) with w sampled from posterior;
+		- Probit approx, moderated output
+			- Sigmoid is similar to probit function (Gaussian cdf) erf(a)
+- 8.5 Online learning, regret minimization;
+	- Regret: 1/k Σf(θ,zt) - min1/kΣf(θ∗,zt)
+	- SGD:
+		- Running mean: θ^ = 1/k Σθt
+		- Polyak averaging: θk = θk-1 - 1/k(θk-1-θk)
+	- Sufficient converge condition (Robbins-Monroe):
+		- Ση = ∞, Ση^2 < ∞ (e.g. η ~ 1/k)
+	- Per-parameter: adagrad with moving variance s;
+		- θ = θ - ηg/(τ+sqrt(s))
+	- Perceptron: iterate each item, 
+		- w = w - η∇E(w) = w + ηφt
+		- if y ≠ y^, θ += yixi
+		- The perceptron convergence theorem: 
+			- if there exists an exact solution (training set linearly separable),
+			- Perceptron algorithm is guaranteed to find an exact solution in a finite number of steps
+- 8.6 Generative v.s. discriminative models
+	- D: p(y|x, w)
+	- G: p(x, y|w)
+- Bishop 4.1: Fisher
+	- m1, m2 as class mean, get direction w (mapping to 1-dim) such that the between class have high variance and within class has low variance:
+		- J(w) = wSBw / wSWw
+		- Between class: SB = (m2-m1)(m2-m1)'
+		- Within class: SW = ΣΣ(xi-mci)(xi-mci)'
+		- w ∝ SW^(-1)(m2-m1)
+
+## Generalized Linear Models, Exponential Family (Kevin Murphy, Chap 9)
+- Exponential Family:
+	- p(x|θ) = 1/Z(θ) h(x) exp[θφ(x)] = h(x)exp[θφ(x)-A(θ)]
+	- A(θ) = logZ(θ)
+- Log-Partition function:
+	- dA/dθ = E[φ(x)]
+	- ∇^2 A(θ) = cov[φ(x)]
+- **Pitman-Koopman-Darmois theorem** states that, under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics. 
+- **Maxent**:
+	- The principle of maximum entropy or maxent says we should pick the distribution with maximum entropy (closest to uniform),
+	- s.t. the constraints that the moments of the distribution match the empirical:
+		- Σ_x fk(x)p(x) = Fk
+	- Maximize entropy s.t. prob and moment matching constraint:
+		- J(p, λ) = -Σp(x)log(x) + λ0(1-Σp(x)) + Σ_k λk(Fk-Σp(x)fk(x))
+		- ∂J/∂p(x) = -1 - logp(x) - λ0 - Σ_k λkfk(x) = 0
+		- p(x) ∝ exp(- Σλkfk(x)): Gibbs distribution;
+- Probit regression:\
+	<img src="/Bayes/images/lr/probit.png" alt="drawing" width="400"/>
+- Multi-task learning; different tasks with own parameters share a same prior. Model trained on fewer data could borrow from group with more data;\
+	<img src="/Bayes/images/lr/mtl.png" alt="drawing" width="450"/>
+
+## Latent Linear Models (Kevin Murphy, Chap 12)
+- Factor Analysis (FA)
+- PCA
+- ICA (Independent Component Analysis)
+
+## Sparse Linear Models (Kevin Murphy, Chap 13)
+- Spike and Slab model
+- Bayesian Variable Selection:
+	- OMP (Orthogonal Matching Pursuit) 
+	- MP (Matching Pursuit)
+	- LASSO
+	- LARS
+
+## Unclassified
+- Alexander Munteanu, Chris Schwiegelshohn, Christian Sohler, David P. Woodruff. On Coresets for Logistic Regression. NIPS'18

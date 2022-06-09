@@ -106,7 +106,7 @@
 		- Memory efficient bp: ∂log det(I+Jg(x,θ))/∂θ
 			- ∂log det(I+Jg(x,θ))/∂θ = En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k)), very expensive to save O(mn)
 		- BP:
-			- ∂L/∂θ = ∂L/∂log det(I+Jg(x,θ)) . ∂log det(I+Jg(x,θ))/∂θ
+			- ∂L/∂θ = ∂L/∂log det(I+Jg(x,θ)) ∂log det(I+Jg(x,θ))/∂θ
 	- EnResNet: Bao Wang, Binjie Yuan, Zuoqiang Shi, Stanley J. Osher. ResNets Ensemble via the Feynman-Kac Formalism to Improve Natural and Robust Accuracies. NIPS'19
 		- Insight:
 			- Modify ResNets by injecting a variance specified Gaussian noise, and it results in a special type of neural stochastic ODE.

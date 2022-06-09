@@ -50,11 +50,12 @@
 
 ## Frequentist Statistics (Kevin Murphy Chap 6)
 - The parameter is viewed as fixed and the data as random, which is the exact opposite of the Bayesian approach;
-- Sampling distribution:\
-	<img src="/Probabilistic/images/basics/sample-dist.png" alt="drawing" width="400"/>
+- Sampling distribution:
+	- θ^ = θ^mle(D), D ~ θ\*.
+	- θ^ -> N(θ\*, I(θ\*)^-1) as N -> ∞
 - Frequentist decision theory:
-	<img src="/Probabilistic/images/basics/freq-decision.png" alt="drawing" width="400"/>
-- Not only is the frequentist definition unnatural, it cannot even be computed, because true theta is unknown. Consequently, we cannot compare different estimators in terms of their frequentist risk. We discuss various solutions to this below.
+	- ρ(a|D, π) := E_p(θ|D,π)[L(θ,a)] = ∫L(θ,a)p(θ|D,π)dθ
+- Not only is the frequentist definition unnatural, it cannot even be computed, because true θ is unknown. Consequently, we cannot compare different estimators in terms of their frequentist risk. We discuss various solutions to this below.
 	- Option 1: Bayes risk;
 	- Option 2: Minimax risk;
 	- Admissible estimator: An estimator is said to be admissible if it is not strictly dominated by any other estimator;

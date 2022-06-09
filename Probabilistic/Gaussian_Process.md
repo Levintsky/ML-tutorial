@@ -13,7 +13,6 @@
 	- https://zhuanlan.zhihu.com/p/86386926
 	- BoTorch (Bayesian Optimzation for Pytorch): https://botorch.org/
 
-
 ## Textbooks 
 - Kevin Murphy's textbook
 	- A GP defines a **prior over functions**, which can be converted into a posterior over functions once we have seen some data. Although it might seem difficult to represent a distrubtion over a function, it turns out that we only need to be able to define a distribution over the function’s values at a finite, but arbitrary, set of points, say (x1,...,xN). 
@@ -27,28 +26,28 @@
 - Applications:
 	- kriging (Cressie, 1993)
 	- ARMA (autoregressive moving average) models, Kalman filters, and radial basis function network;
-- Notations: y(x) = dot(w, phi(x)), p(w) ~ N(0, alpha^(-1)I):\
-	<img src="/Bayes/images/gp/gp-1.png" alt="drawing" width="400"/>
-- GP for regression with noise: tn = yn + eps-n, y is noise free, t: noisy observation; marginal distribution of t:
-	<img src="/Bayes/images/gp/gp-2.png" alt="drawing" width="300"/>\
-	<img src="/Bayes/images/gp/gp-3.png" alt="drawing" width="400"/>
-- Predict t-N+1 with x-N+1:\
-	<img src="/Bayes/images/gp/gp-4.png" alt="drawing" width="250"/>\
-	<img src="/Bayes/images/gp/gp-5.png" alt="drawing" width="250"/>\
-	<img src="/Bayes/images/gp/gp-6.png" alt="drawing" width="450"/>
-- Hyper-paramter learning: e.g., noise beta;\
-	<img src="/Bayes/images/gp/gp-7.png" alt="drawing" width="400"/>
-	<img src="/Bayes/images/gp/gp-8.png" alt="drawing" width="450"/>
-- ARD (Automatic relevance determination):\
-	<img src="/Bayes/images/gp/ard-1.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/gp/ard-2.png" alt="drawing" width="400"/>
+- Notations: y(x) = wφ(x), p(w) ~ N(0, α^(-1)I):
+	- E[y] = ΦE[w]=0
+	- cov[y] = E[yy'] = 1/α ΦΦ'
+- GP for regression with noise: tn = yn + εn, y is noise free, t: noisy observation; marginal distribution of t:
+	- p(t|y) = N(t|y, β^(-1)I)
+	- C(xn,xm) = k(xn, xm) + β^(-1)δnm
+- Predict t-N+1 with x-N+1:
+	- p(t_N+1) = N(t_N+1|0, C_N+1)
+	- C_N+1 = [CN k; k' c]; (covariance)
+	- p(aN+1|tN) = ∫p(aN+1|a_1:N)p(aN|tN)da1:N
+- Hyper-paramter learning: e.g., noise β;
+	- lnp(t|θ) = -1/2ln|C| - 1/2 tC^(-1)t - N/2ln(2π)
+	- ∂lnp(t|θ)/∂θi = -1/2 Tr(C^(-1)∂C/∂θi) + 1/2tC^(-1)∂C/∂θiC^(-1)
+- ARD (Automatic relevance determination):
+	- k(x,x') = θ0 exp{-1/2 Σηi(xi-xi')^2}
+	- k(x,x') = θ0 exp{-1/2 Σ_i=1..D ηi(xi-xi')^2} + θ2 + θ3Σ_i=1..D xnixmi
 - GP for classification:
-	- Notation: logit a(x), logistic sigmoid y=simga(a):\
-		<img src="/Bayes/images/gp/gp-cls-1.png" alt="drawing" width="300"/>\
-		<img src="/Bayes/images/gp/gp-cls-2.png" alt="drawing" width="300"/>\
-		<img src="/Bayes/images/gp/gp-cls-3.png" alt="drawing" width="300"/>\
-		<img src="/Bayes/images/gp/gp-cls-4.png" alt="drawing" width="300"/>\
-		<img src="/Bayes/images/gp/gp-cls-5.png" alt="drawing" width="400"/>
+	- Notation: logit a(x), logistic sigmoid y=σ(a):
+		- p(t|a) = σ(a)^t (1-σ(a))^(1-t)
+		- p(a_N+1) = N(a_N+1|0, C_N+1)
+		- C(xn, xm) = k(xn,xm) + νδnm
+		- p(t_N+1=1|tn) = ∫p(t_N+1=1|a_N+1)p(a_N+1)da_N+1, with p(t_N+1=1|a_N+1) = σ(a_N+1)
 	- Another way: Laplacian approximation:\
 		<img src="/Bayes/images/gp/gp-cls-6.png" alt="drawing" width="400"/>\
 		<img src="/Bayes/images/gp/gp-cls-7.png" alt="drawing" width="400"/>\
