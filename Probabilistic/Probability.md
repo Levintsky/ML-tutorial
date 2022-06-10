@@ -1,14 +1,39 @@
 # Probability
 
+## Basics
+- Discrete
+	- Binomial <> Beta
+	- Multinomial <> Dirichlet
+	- Poisson
+	- Empirical
+- Continuous
+	- Uniform
+	- Exponential
+	- Laplace
+	- Gamma
+		- Exponential, Erlang, χ-Square are all speical case of Gamma;
+	- Inverse-Gamma;
+	- student-t: if var is unknown and estimated, then (x-μ)/σ^ ~ t()
+	- F-distribution;
+- Gaussian:
+	- Posterior (single variable):
+		- μ with known variance, Gaussian
+		- μ known, precision λ=1/σ^2 ~ Gamma
+		- Mean and precision unknown: Gaussian-Gamma
+		- x ~ N(μ, τ^-1) with Gam(τ|a, b),
+			- with τ integrated as p(x|μ, a, b): student-t;
+	- Posterior (multi-variable):
+		- Mean and precision unknown: Gaussian-Wishart
+
 ## Discrete (Kevin Murphy 2.3)
 - Binary:
 	- Bernoulli
 		- E(x) = p
 		- V(x) = p(1-p)
 	- Binomial: conjugacy prior is Beta;
+		- Bin(m|N,μ) = C(N,m)μ^m(1-μ)^(N-m)
 		- E(x) = np
-		- V(x) = np(1-p) \
-			<img src="/Bayes/images/prob/binomial.png" alt="drawing" width="300"/>
+		- V(x) = np(1-p)
 		- Beta: **conjugacy prior** of binomial \
 			<img src="/Bayes/images/prob/beta1.png" alt="drawing" width="350"/>\
 			<img src="/Bayes/images/prob/beta2.png" alt="drawing" width="350"/>
@@ -28,19 +53,19 @@
 - Uniform U(a, b)
 	- E(x) = (a+b)/2
 	- V(x) = (b-a)^2/12
-- Exponential: p(x) = exp(-x/theta) / theta
-	- E(x) = theta
-	- V(x) = theta^2
+- Exponential: p(x) = exp(-x/θ)/θ
+	- E(x) = θ
+	- V(x) = θ^2
 - Laplace:\
 	<img src="/Bayes/images/prob/laplace.png" alt="drawing" width="400"/>
 - Gamma:\
 	<img src="/Bayes/images/prob/gamma-1.png" alt="drawing" width="300"/>\
 	<img src="/Bayes/images/prob/gamma-2.png" alt="drawing" width="300"/>
-	- Exponential, Erlang and Chi-square are special case of Gamma:
+	- Exponential, Erlang and χ-square are special case of Gamma:
 		<img src="/Bayes/images/prob/gamma-3.png" alt="drawing" width="450"/>
 	- Inverse Gamma:\
 		<img src="/Bayes/images/prob/igamma.png" alt="drawing" width="450"/>
-- Chi-square: a special case of gamma, e.g., X^2 - Gamma(1/2, 2)
+- Chi-square: a special case of Γ, e.g., X^2 ~ Γ(1/2, 2)
 	- Definition:\
 		<img src="/Bayes/images/prob/chi-square-1.png" alt="drawing" width="400"/>
 	- Statistics:\
@@ -64,24 +89,24 @@
 ## Gaussian (PRML, Chap 2; Kevin Murphy, Chap 4)
 - Definition: \
 	<img src="/Bayes/images/prob/gaussian.png" alt="drawing" width="400"/>
-- Eigen value and vector of covariance matrix; with y=U(x-mu) \
+- Eigen value and vector of covariance matrix; with y=U(x-μ) \
 	<img src="/Bayes/images/prob/gaussian-eigen0.png" alt="drawing" width="200"/>\
 	<img src="/Bayes/images/prob/gaussian-eigen1.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/prob/gaussian-eigen2.png" alt="drawing" width="400"/>
 - Conditional, precision matrix;
-	- Lambda = inv(Cov);\
+	- Λ = inv(Cov);\
 		<img src="/Bayes/images/prob/gaussian-joint1.png" alt="drawing" width="400"/>\
 		<img src="/Bayes/images/prob/gaussian-joint2.png" alt="drawing" width="400"/>
 - Special case: joint 2-dim Gaussian distribution: \
 	<img src="/Bayes/images/prob/gaussian-2d.png" alt="drawing" width="400"/>
-- **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(mu, Simga) with precision matrix Lambda, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
+- **Gaussian Bayes Theorem**: x, y=Ax+b, x ~ N(μ, Σ) with precision matrix Λ, y ~ N(Ax+b, L^-1), with L as the precision matrix; then analyzing variable z = [x;y], we could have:
 	<img src="/Bayes/images/prob/gaussian-bayes-the.png" alt="drawing" width="400"/>
 - MLE for Gaussian: \
 	<img src="/Bayes/images/prob/gaussian-mle.png" alt="drawing" width="200"/>
 - Posterior inference (PRML, Chap 2; focus on **Precision**):
-	- Single var, variance known, for mean mu as **Gaussian**(mu0, sigma0): \
+	- Single var, variance known, for mean μ as **Gaussian**(μ0, sigma0): \
 		<img src="/Bayes/images/prob/gaussian-inf-1.png" alt="drawing" width="400"/>
-	- Single var, mean known, infer **precision** lambda=1/sigma^2 as **Gamma**(a, b): \
+	- Single var, mean known, infer **precision** λ=1/σ^2 as **Gamma**(a, b): \
 		<img src="/Bayes/images/prob/gaussian-inf-2.png" alt="drawing" width="400"/>
 		- Gamma distribution:
 			- E(x) = a / b
@@ -92,14 +117,14 @@
 	- Single var, both mean and precision unknown: **Gaussian-Gamma**;
 		- Likelihood: \
 			<img src="/Bayes/images/prob/gaussian-inf-5.png" alt="drawing" width="400"/>
-		- Prior take the same form with (c, d, beta); \
+		- Prior take the same form with (c, d, β); \
 			<img src="/Bayes/images/prob/gaussian-inf-6.png" alt="drawing" width="400"/>
-		- With mu0 = c/beta, a = 1 + beta/2, b = d - c^2/2beta; \
+		- With μ0 = c/β, a = 1 + β/2, b = d - c^2/2β; \
 			<img src="/Bayes/images/prob/gaussian-inf-7.png" alt="drawing" width="400"/>
 	- Multi var, both mean and precision unknown; **Gaussian-Wishart**\
 		<img src="/Bayes/images/prob/wishart.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-8.png" alt="drawing" width="400"/>
-	- We know x ~ N(mu, tau^-1) has conjagate Gamma prior Gam(tau|a, b). We integrate out precision tau, marginal distribution of p(x\|mu, a, b) is a **student-t** distribution: \
+	- We know x ~ N(μ, τ^-1) has conjagate Gamma prior Gam(τ|a, b). We integrate out precision τ, marginal distribution of p(x|μ, a, b) is a **student-t** distribution: \
 		<img src="/Bayes/images/prob/gaussian-inf-9.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/prob/gaussian-inf-10.png" alt="drawing" width="400"/>
 - Posterior inference (Kevin Murphy, Chap 4.6; focus on **Covariance**):
@@ -127,16 +152,16 @@
 ## Periodic
 - On a circle: average angle \
 	<img src="/Bayes/images/prob/periodic-1.png" alt="drawing" width="200"/>
-- Definition: distribution with period 2pi \
+- Definition: distribution with period 2π \
 	<img src="/Bayes/images/prob/periodic-2.png" alt="drawing" width="200"/>
-- With (x1, x2) and (mu1, mu2) as prior, we have: \
+- With (x1, x2) and (μ1, μ2) as prior, we have: \
 	<img src="/Bayes/images/prob/periodic-3.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/prob/periodic-4.png" alt="drawing" width="400"/>
 - Mises distribution:\
 	<img src="/Bayes/images/prob/periodic-5.png" alt="drawing" width="400"/>
 
 ## Exponential Family
-- Definition: h(x)g(eta)exp{eta \* u(x)}; \
+- Definition: h(x)g(η)exp{ηu(x)}; \
 	<img src="/Bayes/images/prob/exp-family-1.png" alt="drawing" width="300"/>
 - General form for a lot of distributions: Bernoulli, Gaussian;
 - Sufficient statistics: u(x); \
@@ -150,7 +175,7 @@
 - Covariance Matrix
 	- Cov(X, Y) = E[(X-EX)(Y-EY)]
 - Pearson correlation coefficient
-	- rho(X, Y) = cov(X, Y) / std(X)std(Y)
+	- ρ(X, Y) = cov(X, Y) / std(X)std(Y)
 - Marginal distribution
 - Conditional distribution
 - Distribution
@@ -161,7 +186,7 @@
 
 ## Measure Distance between Distributions
 - KL
-- f-duvergence
+- f-divergence
 - IPM
 
 ## Bounds, Theory
@@ -171,6 +196,6 @@
 - Chebyshev\
 	<img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
 - Central Limit Theorm:
-	- X i.i.d., with mean=mu, std=sigma, not necessarily Gaussian;
-	- (sum(x) - n mu) / sqrt(n)std close to N(0, 1)\
+	- X i.i.d., with mean=μ, std=σ, not necessarily Gaussian;
+	- (Σx-nμ)/sqrt(n)std close to N(0, 1)\
 		<img src="/Bayes/images/prob/central-limit.png" alt="drawing" width="400"/>

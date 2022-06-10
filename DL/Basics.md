@@ -99,6 +99,8 @@
 		- https://www.zhihu.com/question/62631725
 		- https://blog.csdn.net/a358463121/article/details/80820878
 		- https://laurent-dinh.github.io/2016/11/22/gumbel-max.html
+- Michael Figurnov, Shakir Mohamed, Andriy Mnih. Implicit Reparameterization Gradients. NIPS'18
+- Wonyeol Lee, Hangyeol Yu, Hongseok Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
 
 ## Capsule
 - Resources

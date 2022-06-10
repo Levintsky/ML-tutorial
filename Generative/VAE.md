@@ -1,5 +1,13 @@
 # Variational Auto Encoder
 
+## Basics
+- ELBO: logp(x) ≥ E_q(z)[logp(x,z)-logq(z)]
+	- LatentGMM/...: p(x,z) = p(x)p(z|x)
+	- = E_q(z)[logp(x,z)] + H(q(z))
+- VAE: logp(x) ≥ L = E_q(z|x)[logp(x|z)] - KL(q(z|x)||p(z))
+	- Main diff: p(x,z) = p(x|z)p(z), b/c p(z|x) intractable;
+	- Gap: KL(q(z|x)||p(z|x))
+
 ## Unclassified
 - Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18
 - Emile Mathieu, Charline Le Lan, Chris J. Maddison, Ryota Tomioka, Yee Whye Teh. Continuous Hierarchical Representations with Poincaré Variational Auto-Encoders. NIPS'19
@@ -73,10 +81,12 @@
 
 ## Discrete
 - **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
-	- VAE with discrete latent variables, K-means style codebook;\
-		<img src="/Generative/images/vae/vq-vae1-1.png" alt="drawing" width="450"/>
-	- Formulation:\
-		<img src="/Generative/images/vae/vq-vae1-2.png" alt="drawing" width="450"/>
+	- VAE with discrete latent variables, K-means style codebook;
+		- q(z=ek|x) = I(k=argmin|ze(x)-ei|)
+	- L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
+		- First term: x-domain reconstruction loss;
+		- 2nd term: VQ-loss;
+		- 3rd term: commitment loss; encoder output stay close to the embedding space, avoid fluctuating between codes;
 - **VQ-VAE-2**: Ali Razavi, Aäron van den Oord, Oriol Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
 	- a two-level hierarchical VQ-VAE combined with self-attention autoregressive model.
 	- Stage 1 is to train a hierarchical VQ-VAE: The design of hierarchical latent variables intends to separate local patterns (i.e., texture) from global information (i.e., object shapes). The training of the larger bottom level codebook is conditioned on the smaller top level code too, so that it does not have to learn everything from scratch.
