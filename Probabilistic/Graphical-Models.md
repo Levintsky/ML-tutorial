@@ -111,8 +111,8 @@
 	- **MAP-perturbation**: S. Maji, T. Hazan, and T. Jaakkola. Active boundary annotation using random map perturbations. AAAI'14
 
 ## Markov and HMM (Kevin Murphy Chap 17)
-- 1. Intro;
-- 2. Markov models:
+- 17.1 Intro;
+- 17.2 Markov models:
 	- p(X1:T) = p(X1) ∏p(Xt|Xt-1)
 	- 2.1 Transition matrix A;
 	- n-step: A(n), A(1)=A, A(m+n)=A(m)A(n);
@@ -125,21 +125,21 @@
 		- Backoff smoothing: Dirichlet;
 	- 2.3 stationary distribution
 		- π=πA
-- 3. HMM
+- 17.3 HMM
 	- Hidden state z1:T
 	- p(z1:T,x1:T) = [p(z1)∏p(zt|zt-1)] [∏p(xt|zt)]
 	- Obs model:
 		- B(k,l) = p(xt=l|zt=k,θ); discrete
 		- p(xt|z=k,θ) = N(xt|μk, Σk)
-- 4. HMM inference
-	- 4.2 Forward algorithm
+- 17.4 HMM inference
+	- 17.4.2 Forward algorithm
 		- p(zt=j|x1:t−1) = Σp(zt=j|zt−1=i)p(zt−1=i|x1:t−1)
 		- Forward posterior:
 			- αt(j) = p(zt=j|x1:t) = p(zt=j|xt, x1:t−1) 
 			- = 1/Z p(xt|zt=j)p(zt=j|x1:t−1)
 			- αt ∝ ψt ⊙ (Ψ αt−1)
 			- with ψt(j) = p(xt|zt = j) as local evidence, Ψ(i,j) = p(zt = j|zt−1 = i)
-	- 4.3 Forward-backward algorithm
+	- 17.4.3 Forward-backward algorithm
 		- Posterior of a state given all obs:
 			- p(z=j|x1:T) ∝ p(zt=j,x_t+1:T|x1:t) 
 			- ∝ p(zt=j|x1:t) p(x_t+1:T|zt=j)
@@ -147,8 +147,57 @@
 		- Second item: βt(j) := p(xt+1:T|zt=j)
 		- Posterior: γt(j) ∝ αt(j)βt(j)
 		- βt−1 = Ψ(ψt ⊙ βt)
-	- 4.4 Viterbi (whole sequence)
+	- 17.4.4 Viterbi (most probable sequence)
 		- z∗ = argmax_z2:T p(z1:T|x1:T)
+		- Still forward-backward, but do dynamic programming;
+		- Keep track of best so far up to t-1;
+		- δt(j) = max δt−1(i)ψ(i, j)φt(j)
+	- 17.4.5 Forwards filtering, backwards sampling
+		- zs1:T ∼ p(z1:T|x1:T)
+		- One-step back posterior:
+			- p(zt=i|zt+1=j,x1:T)=φt+1(j)ψ(i,j)αt(i)/αt+1(j)
+- 17.5 Learning for HMMs
+	- 17.5.1 Training with fully obs data
+	- 17.5.2 EM for HMMs (the Baum-Welch algorithm)
+		- E-step: latent zt marginal:
+			- γi,t(j) = p(zt=j|xi,1:Ti, θ)
+			- ξi,t(j, k) = p(zt−1=j, zt=k|xi,1:Ti, θ)
+		- M-step:
+			- Transition for discrete: Ajk = E[N_jk]/ΣE_k'[N_jk']
+			- μ, Σ for Gaussian;
+	- 17.5.3 Bayesian fitting
+		- VBEM: posterior rather than MAP
+	- 17.5.4 Discriminative training
+		- Implicit from generative model
+	- 17.5.5 Model selection
+		- Choosing the number of hidden states
+		- Structure learning: learning a **sparse** transition matrix
+- 17.6 Generalizations of HMMs
+	- 17.6.1 Variable duration (semi-Markov) HMMs
+		- 17.6.1.1 HSMM as augmented HMMs
+	- 17.6.2 Hierarchical HMMs
+	- 17.6.3 Input-output HMMs
+	- 17.6.4 Auto-regressive and buried HMMs
+	- 17.6.5 Factorial HMM
+	- 17.6.6 Coupled HMM and the influence model
+	- 17.6.7 Dynamic Bayesian networks (DBNs)
+
+## 18 State space models
+- 18.1 Introduction
+	- zt = g(at, zt−1, εt)
+	- ot = h(zt, at, δt)
+	- Important special case: all linear-Gaussian (LG-SSM):
+		- Transition: zt = Atzt−1 + Btat + εt
+		- Observation: ot = Ctzt + Dtat + δt
+		- εt ∼ N(0,Qt), δt ∼ N(0,Rt)
+- 18.2 Applications of SSMs
+	- 18.2.1 SSMs for object tracking
+	- 18.2.2 Robotic SLAM
+	- 18.2.3 Online parameter learning using recursive least squares
+	- 18.2.4 SSM for time series forecasting
+		- ARMA
+- 18.3 Inference in LG-SSM
+	- 18.3.1 The Kalman filtering algorithm
 
 ## NIPS'19
 - Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models. NIPS'19
