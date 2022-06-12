@@ -14,7 +14,7 @@
 ## Latest
 - A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
-## Sampling Methods (PRML Bishop Chap 11)
+## Sampling Methods (PRML Chap 11, Kevin Murphy Chap 2.7)
 - Goal: evaluate E\[f\]=∫f(z)p(z)dz
 	- Approximate with f=1/L ∑l=1..L f(zl)
 	- Var(f)=1/L E\[(f-E(f))^2\]

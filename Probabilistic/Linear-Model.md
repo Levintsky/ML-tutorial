@@ -11,6 +11,19 @@
 	- Bayesian (Laplacian Approx), BIC, probit-approx for predictive;
 	- Online learning: perceptron;
 	- Fisher
+	- Probit regression:
+		- Approx sigmoid with Gaussian erf (probit function);
+- GLM, exponential family;
+	- learning: ∇θlogp(D|θ) = φ(D) − NE[φ(X)]; moment matching;
+	- Max-entropy -> exp family;
+- Latent linear
+	- FA: obs x=Wz, infer W, z
+	- PCA: obs x=Wz, z Gaussian, min|x-Wz'|^2
+	- ICA: obs x=Wz, z-Non-Gaussian;
+		- fast-ICA (Newton's method)
+- Sparse linear model
+	- L1-norm;
+	- Optimization: Lasso; Coord-descent; proximal methods;
 
 ## Linear Regression (Kevin Murphy, Chap 7; Bishop, Chap 3)
 - 7.1 Introduction;
@@ -90,14 +103,14 @@
 		- Marginalized LE p(t|α, β)
 		- Marginalize over w, implicit optimization for α, β respetively;
 
-## Logistic Regression (Kevin Murphy, Chap 8; Bishop, Chap44)
+## Logistic Regression (Kevin Murphy, Chap 8; PRML-Chap-4)
 - 8.1 Intro
 - 8.2 Model: p(y|x, w) ~ Ber(y, σ(wx))
 - 8.3 Fitting
 	- 8.3.1 MLE: loss, gradient and Hessian
 		- NLL(w) = Σlog(1+exp(-yi w'xi))
-		- g = df(w)/dw = X'(μ-y)
-		- H = X'SX
+		- g = df(w)/dw = X'(μ-y), with μ=σ(wx)
+		- H = X'SX, with diag(μi(1−μi))
 	- 8.3.2 SGD
 		- Avoid zigzag: momentum
 	- 8.3.3 Newton's method
@@ -125,12 +138,20 @@
 	- 8.4.3 Gaussian
 		- p(w|D) ≈ N(w|w^, H^-1)
 		- w^ = argminE(w)
-	- 8.4.4 Approx posterior prective
+	- 8.4.4 Approx posterior predictive
 		- p(y|x, D) = ∫p(y|x, w)p(w|D)dw
 		- p(y = 1|x, D) ≈ p(y = 1|x, E[w]), Bayesian point with E[w];
 		- MC: p(y=1|x,D) ≈ Σσ(wx) with w sampled from posterior;
 		- Probit approx, moderated output
-			- Sigmoid is similar to probit function (Gaussian cdf) erf(a)
+			- Gaussian approx posterior:
+				- p(w|D) ≈ N (w|mN, VN)
+				- p(y=1|x, D) ≈ ∫σ(wx)p(w|D)dw = ∫σ(a)N (a|μ_a, σa^2)da
+				- a = wx, μ_a=E[a], σa^2 = var[a] = xVNx
+			- Probit function (Gaussian cdf) erf(a):
+				- Φ(a) = ∫N(x|0,1)dx
+				- Probit really similar to Sigmoid σ(.); Approx with it!
+			- Rescale s.t. σ(.) and Φ(.) has the same slope at origin;
+			- Advantage: we can convolve with Gaussian analytically;
 - 8.5 Online learning, regret minimization;
 	- Regret: 1/k Σf(θ,zt) - min1/kΣf(θ∗,zt)
 	- SGD:
@@ -157,38 +178,170 @@
 		- w ∝ SW^(-1)(m2-m1)
 
 ## Generalized Linear Models, Exponential Family (Kevin Murphy, Chap 9)
-- Exponential Family:
+- 9.1 Introduction
+- 9.2 Exponential Family:
 	- p(x|θ) = 1/Z(θ) h(x) exp[θφ(x)] = h(x)exp[θφ(x)-A(θ)]
-	- A(θ) = logZ(θ)
-- Log-Partition function:
-	- dA/dθ = E[φ(x)]
-	- ∇^2 A(θ) = cov[φ(x)]
-- **Pitman-Koopman-Darmois theorem** states that, under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics. 
-- **Maxent**:
-	- The principle of maximum entropy or maxent says we should pick the distribution with maximum entropy (closest to uniform),
-	- s.t. the constraints that the moments of the distribution match the empirical:
-		- Σ_x fk(x)p(x) = Fk
-	- Maximize entropy s.t. prob and moment matching constraint:
-		- J(p, λ) = -Σp(x)log(x) + λ0(1-Σp(x)) + Σ_k λk(Fk-Σp(x)fk(x))
-		- ∂J/∂p(x) = -1 - logp(x) - λ0 - Σ_k λkfk(x) = 0
-		- p(x) ∝ exp(- Σλkfk(x)): Gibbs distribution;
-- Probit regression:\
-	<img src="/Bayes/images/lr/probit.png" alt="drawing" width="400"/>
-- Multi-task learning; different tasks with own parameters share a same prior. Model trained on fewer data could borrow from group with more data;\
-	<img src="/Bayes/images/lr/mtl.png" alt="drawing" width="450"/>
+	- A(θ) = logZ(θ); Log-Partition function
+	- 9.2.2 Examples
+		- Bernoulli, Multinoulli, Univariate Gaussian
+	- 9.2.3 Log partition function
+		- dA/dθ = E[φ(x)]
+		- ∇^2 A(θ) = cov[φ(x)]
+	- 9.2.4 MLE
+		- **Pitman-Koopman-Darmois theorem**: under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics.
+		- ∇θlogp(D|θ) = φ(D) − NE[φ(X)]; moment matching;
+	- 9.2.5 Bayes for the exponential family
+		- Likelihood: p(D|η) ∝ exp(NηTs − NA(η))
+		- Prior: p(θ|ν0, τ0) ∝ g(θ)^ν0 exp(η(θ)τ0)
+		- Posterior: p(θ|ν0+N, τ0+SN)
+	- 9.2.6 Maximum entropy derivation
+		- The principle of maximum entropy or maxent says we should pick the distribution with maximum entropy (closest to uniform),
+		- s.t. the constraints that the moments of the distribution match the empirical:
+			- Σ_x fk(x)p(x) = Fk
+		- Maximize entropy s.t. prob and moment matching constraint:
+			- J(p, λ) = -Σp(x)log(x) + λ0(1-Σp(x)) + Σ_k λk(Fk-Σp(x)fk(x))
+			- ∂J/∂p(x) = -1 - logp(x) - λ0 - Σ_k λkfk(x) = 0
+			- p(x) ∝ exp(- Σλkfk(x)): Gibbs distribution;
+- 9.3 Generalized linear models (GLMs)
+	- 9.3.2 ML and MAP estimation
+	- 9.3.3 Bayesian inference
+		- MCMC
+- 9.4 Probit regression
+	- Logistic: p(y=1|xi, w) = σ(wxi)
+	- General: p(y=1|xi, w) = g^−1(wT xi), with g^(-1) maps [−∞, ∞] to [0,1]. Φ(η): standard cdf: probit regression;
+	- 9.4.1 ML/MAP estimation using gradient-based optimization
+		- μi = wxi, yi^={-1,+1}
+		- gradient gi = dlogp(y^|wx)/dw = x yφ(wx)/Φ(yiwxi)
+			- φ(.) normal pdf, Φ(.) cdf;
+		- Hessian Hi = d^2logp(y^|wx)/dw^2
+	- 9.4.2 Latent variable interpretation
+		- RUM
+	- 9.4.3 Ordinal probit regression
+	- 9.4.4 Multinomial probit models
+- 9.5 Multi-task learning
+	- Different tasks with own parameters share a same prior. Model trained on fewer data could borrow from group with more data;
+	- logp(D|β) + logp(β) = Σ[logp(Dj|βj) + |βj−β∗|2] - ||β∗||^2 / 2σ∗^2
 
 ## Latent Linear Models (Kevin Murphy, Chap 12)
-- Factor Analysis (FA)
-- PCA
-- ICA (Independent Component Analysis)
+- 12.1 Factor Analysis (FA)
+	- p(zi) = N(zi|μ0, Σ0)
+	- p(xi|zi, θ) = N (Wzi+μ, Ψ)
+	- 12.1.1 FA is a low rank parameterization of an MVN
+		- Marginal: p(xi|θ) = N(xi|Wμ0+μ, Ψ+WΣ0W')
+	- 12.1.2 Inference
+		- p(zi|xi, θ) = N(zi|mi, Σi)
+		- Σi ~ [Σ0^−1 + W'Ψ^(−1)W]^−1
+		- mi ~ Σi(W'Ψ^(−1)(xi−μ) + Σ0^(−1)μ0)
+	- 12.1.3 Unidentifiability
+	- 12.1.4 Mixtures of factor analysers
+		- p(xi|zi,qi=k,θ) = N(xi|μk +Wkzi,Ψ), extra: qi
+		- p(zi|θ) = N(zi|0, I)
+		- p(qi|θ) = Cat(qi|π)
+	- 12.1.5 EM for factor analysis models
+	- 12.1.6 Fitting FA models with missing data
+- 12.2 PCA
+	- 12.2.1 Classical PCA: statement of the theorem
+		- J(W, Z) = 1/N Σ|xi-xi^|^2, where xi = Wzi
+	- 12.2.2 Proof
+	- 12.2.3 Singular value decomposition (SVD)
+		- X = USV'
+	- 12.2.4 Probabilistic PCA
+		- logp(X|W,σ^2) = -N/2log|C| - 1/2Σ xiC^(-1)xi = -N/2log|C| + tr(C^-1Σ^)
+	- 12.2.5 EM algorithm for PCA
+		- E step: Z^ = (W'W)^(−1)W'X
+		- M step: W^ = X^Z'(ZZ')^(-1)
+- 12.3 Choosing the number of latent dimensions
+	- 12.3.1 Model selection for FA/PPCA
+- 12.4 PCA for categorical data
+- 12.5 PCA for paired and multi-view data
+	- 12.5.1 Supervised PCA (latent factor regression)
+		- p(zi) ~ N(0, IL)
+		- p(yi|zi) ~ N(wy'zi +μy, σy^2)
+		- p(xi|zi) ~ N(Wx'zi +μx, σx2^ID)
+	- 12.5.2 Partial least squares
+- 12.6 ICA (Independent Component Analysis)
+	- xt = Wzt + εt, W: mixing matrix;
+	- Prior: p(zt)=∏pj(ztj), any form; PCA: i.i.d. Gaussian;
+	- 12.6.1 Maximum likelihood estimation
+		- Assume observed x is centered and whitened, obs x noise-free;
+		- i.e. E[xx']=I, let V=W^(-1)
+		- px(Wzt) = pz(Vxt)|det(V)|
+		- Assume T i.i.d. samples with same W(V):
+			- 1/Tlogp(D|V) = log|det(V)| + 1/T ΣΣlogpj(vjxt)
+		- NLL(V) = ΣE[Gj(zj)]
+	- 12.6.2 The FastICA algorithm (Hyvarinen and Oja 2000)
+		- Fast ICA = Approximate Newton
+		- G(z) = −logp(z), g(z) = dG(z)/dz
+		- f(v) = E[G(vx)] + λ(1−v'v)
+		- ∇f(v) = E[xg(vx)] - βv
+		- H(v) = E[xx'g'(vx)] - βI
+		- v∗ := E[xg(v'x)] − E[g'(v'x)]v
+	- 12.6.3 Using EM
+	- 12.6.4 Other estimation principles
+		- Maximizing non-Gaussianity
+		- Minimizing mutual information
+		- Maximizing mutual information (infomax)
 
 ## Sparse Linear Models (Kevin Murphy, Chap 13)
-- Spike and Slab model
-- Bayesian Variable Selection:
-	- OMP (Orthogonal Matching Pursuit) 
-	- MP (Matching Pursuit)
-	- LASSO
-	- LARS
+- 13.1 Intro
+- 13.2 Bayesian variable selection
+	- γj = 1 if feature j is "relevant", and let γj = 0 otherwise.
+	- f(γ) := −[logp(D|γ) + logp(γ)]
+	- 13.2.1 Spike and Slab model
+		- Posterior p(γ|D) ∝ p(γ)p(D|γ)
+	- 13.2.2 From the Bernoulli-Gaussian model to l0 regularization
+		- p(γ, w) ∝ N(w|0, σ2I)π^|γ|0 (1− π)^(D−|γ|0)
+		- f(w) = |y−Xw|^2 + λ|w|0
+	- 13.2.3 Algorithms
+		- Greedy search: matching pursuit, ...
+		- Stochastic search: MCMC
+		- EM and VI
+- 13.3 l1 regularization: basics
+	- f(w) = RSS(w) + λ|w|1
+	- 13.3.1 Why does l1 regularization yield sparse solutions?
+	- 13.3.2 Optimality conditions for lasso
+	- 13.3.3 Comparison of least squares, lasso, ridge and subset selection
+		- MLE: w^ols = wy
+		- Ridge w = w^ols/(1+λ)
+		- Lasso w = sign(w^ols)(|w^ols|-λ/2)+
+		- Subset selection: w = w^ols if rank(w^ols)<=K else 0
+	- 13.3.4 Regularization path
+	- 13.3.5 Model selection
+	- 13.3.6 Bayesian inference for linear models with Laplace priors
+- 13.4 l1 regularization: algorithms
+	- 13.4.1 Coordinate descent
+		- wj∗ =argminf(w+zej)−f(w); one-coord at a time;
+	- 13.4.2 LARS and other homotopy methods
+		- Active set of coords rather than just one coord;
+	- 13.4.3 Proximal and gradient projection methods
+		- f(x) = L(x) + R(x);
+			- L: convex, differentiable;
+			- R: convex, non-differentiable; e.g. L1-norm
+		- prox_R(xt) = argmin_z R(z)+ 1/2|z−xt|^2
+		- Proximal operators
+			- proxR(x) = soft(x, λ) soft thresholding for L1;
+			- hard thresholding for L0;
+		- Proximal gradient method
+			- Key idea: approx L(.) with quadratic near xt;
+			- xt+1 = argmin_z R(z)+L(xt)+gk'(z−xt)+ 1/2tk |z−xt|^2, with gk=∇L(θk)
+			- xt+1 = argmin[tkR(z)+1/2|z−ut|^2] = proxτtR(ut)
+			- with ut = −τtgt, gt = ∇L(xt)
+		- Nesterov
+	- 13.4.4 EM for lasso
+- 13.5 l1 regularization: extensions
+	- 13.5.1 Group Lasso
+	- 13.5.2 Fused lasso
+	- 13.5.3 Elastic net (ridge + lasso)
+- 13.6 Non-convex regularizers
+	- 13.6.1 Bridge regression
+	- 13.6.2 Hierarchical adaptive lasso
+	- 13.6.3 Other hierarchical priors
+- 13.7 Automatic relevance determination (ARD)/sparse Bayesian learning (SBL)
+- 13.8 Sparse coding
+	- non-negative matrix factorization, NMF
+	- min_W,z Σ|xi-Wzi|+λ|z|
+	- 13.8.3 Compressed sensing
+	- 13.8.4 Image inpainting and denoising
 
 ## Unclassified
 - Alexander Munteanu, Chris Schwiegelshohn, Christian Sohler, David P. Woodruff. On Coresets for Logistic Regression. NIPS'18

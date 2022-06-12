@@ -3,8 +3,8 @@
 ## Basics
 - DGM:
 	- Bayesian net:
-	- Learning:
-	- Inference:	
+	- Inference: counting p(x_h|x_v,θ) = p(x_h,x_v|θ)/p(x_v|θ)
+	- Learning: NLL, non-convex if latent;
 - UGM:
 	- MRF, CRF;
 	- Learning:
@@ -19,34 +19,47 @@
 	- HMM:
 		- Inference:
 			- Maginal each state: forward/backward, (message-passing)
-			- Most likely whole sequence: Viterbi
+			- Most likely whole sequence: Viterbi (DP)
+		- Learning: Baum-Welch
+	- Spate Space Model:
+		- Inference Kalman
+		- Learning: Baum-Welch
 
-## Directed Graphical Models
-- PRML: Chap 8.1, 8.2
-- Concepts
-	- Markov blanket
-- Bayesian network:
-	- LR:\
-		<img src="/Bayes/images/gm/gm-lr.png" alt="drawing" width="400"/>
-	- Linear Gaussian Models:\
-		<img src="/Bayes/images/gm/gm-lgm-1.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/gm/gm-lgm-2.png" alt="drawing" width="400"/>
-- Conditional Independence
-	- Explain away;
-		<img src="/Bayes/images/gm/gm-ind.png" alt="drawing" width="400"/>
-	- d-separation: all paths are blocked; A ind B \| C;
-		- blocked definition ((a) the arrows on the path meet either head-to-tail or tail-to-tail at the node, and the node is in the set C, or (b) the arrows meet head-to-head at the node, and neither the node, nor any of its descendants, is in the set C.)
-- **Kevin Murphy, Chap 10**;
-- Examples: Naive Bayes Classifier; HMM; QMR (quick medical reference); Gaussian Bayes Net;
-- Inference:
+## Directed Graphical Models (PRML: Chap 8.1, 8.2; Kevin Murphy Chap-10)
+- 10.1 Introduction
+	- 10.1.1 Chain rule
+	- 10.1.2 Conditional independence
+		- X⊥Y|Z ⇐⇒ p(X, Y |Z) = p(X|Z)p(Y|Z)
+	- 10.1.3 Graphical models
+	- 10.1.4 Graph terminology
+	- 10.1.5 Directed graphical models
+- 10.2 Examples
+	- 10.2.1 Naive Bayes Classifier;
+	- 10.2.2 MM, HMM;
+	- 10.2.3 QMR (quick medical reference);
+	- 10.2.4 Genetic linkage analysis
+	- 10.2.5 Directed Gaussian graphical models
+- 10.3 Inference:
 	- p(x_h|x_v,θ) = p(x_h,x_v|θ)/p(x_v|θ) 
 	- = p(x_h,x_v|θ) / Σx_h' p(x_h',x_v|θ); (normalize)
-- Learning:
-	- With complete data:
-		- Assume prior factorizes: p(θ) = ∏t=1..V p(θt)
-		- Posterior also factorizes: p(θ|D) = ∏t=1..V p(Dt|θt)p(θt)
-	- With missing data/latent, not convex;\
-		<img src="/Bayes/images/gm/d-sep.png" alt="drawing" width="400"/>
+- 10.4 Learning:
+	- θ = argmax log p(x_i,v|θ) + logp(θ)
+	- 10.4.1 Plate notation
+	- 10.4.2 With complete data:
+		- Prior: p(θ) = ∏t=1..V p(θt)
+		- Posterior: p(θ|D) = ∏t=1..V p(Dt|θt)p(θt)
+	- 10.4.3 With missing data/latent, not convex;
+- 10.5 Conditional independence properties of DGMs
+	- I-map;
+	- 10.5.1 d-separation and the Bayes Ball algorithm (global Markov properties)
+		- 1. P contains a chain, s→m→t or s←m←t, where m ∈ E.
+		- 2. P contains a tent or fork, s↙m↘t, where m ∈ E.
+		- 3. P contains a collider or v-structure, s ↘m↙ t, where m ∉ E and nor is any descendant of m.
+	- 10.5.2 Other Markov properties of DGMs
+		- t ⊥ nd(t) \ pa(t)|pa(t)
+		- t ⊥ pred(t) \ pa(t)|pa(t)
+	- 10.5.3 Markov blanket and full conditionals
+- 10.6 Influence (decision) diagrams
 
 ## Undirected Graphical Models
 - PRML, Chap 8.3
@@ -182,7 +195,7 @@
 	- 17.6.6 Coupled HMM and the influence model
 	- 17.6.7 Dynamic Bayesian networks (DBNs)
 
-## 18 State space models
+## 18 State space models (Kevin Murphy Chap 18)
 - 18.1 Introduction
 	- zt = g(at, zt−1, εt)
 	- ot = h(zt, at, δt)
@@ -198,6 +211,45 @@
 		- ARMA
 - 18.3 Inference in LG-SSM
 	- 18.3.1 The Kalman filtering algorithm
+		- p(zt|o1:t, a1:t) = N(zt|μt, Σt)
+		- Prediction step: p(zt|o1:t-1, a1:t) ~ N(zt|μt|t-1, Σt|t-1)
+			- zt|μt|t-1 = Atμt−1 + Btat
+			- Σt|t-1 = AtΣt−1ATt + Qt
+		- Measurement step
+			- p(zt|o1:t, a1:t) ∝ p(ot|zt, at)p(zt|o1:t−1, a1:t) ~ N(zt|μt, Σt)
+			- μt = μt|t−1 + Kt rt,
+				- Observaton residualrt=ot−oˆt
+				- o^ = E[ot|o1:t−1, a1:t] = Ctμt|t−1 + Dtut
+			- Kt: Kalman gain matrix
+				- Kt = Σt|t-1 Ct St^(-1)
+				- St = Ct Σt|t-1 Ct' + Rt
+		- Marginal likelihood of the sequence:
+			- log p(o1:T|a1:T ) = Σ_t log p(ot|o1:t−1, a1:t)
+			- p(ot|o1:t−1,a1:t) = N(ot|Ctμt|t−1, St)
+		- Predictive: p(ot|o1:t−1, a1:t) ~ N(yt|Cμt|t−1 , CΣt|t−1 CT + R)
+	- 18.3.2 The Kalman smoothing algorithm
+		- Consider the future to reduce uncertainty
+		- p(zt|o1:T) ~ N(μt|T, Σt|T)
+		- μt|T = μt|t + Jt(μt+1|T − μt+1|t)
+		- Σt|T = Σt|t + Jt(Σt+1|T − Σt+1|t)JTt
+		- with Jt = Σt|t A't+1 Σt+1|t^(−1)
+- 18.4 Learning for LG-SSM
+	- Also systems identification in control theory
+	- 18.4.1 Identifiability and numerical stability
+	- 18.4.2 Training with fully observed data
+	- 18.4.3 EM for LG-SSM
+		- Baum-Welch
+- 18.5 Approximate online inference for non-linear, non-Gaussian SSMs
+	- 18.5.1 Extended Kalman filter (EKF)
+		- Nonlinear models, Gaussian noise;
+		- zt = g(at, zt−1) + N(0, Qt)
+		- ot = h(zt) + N(0, Rt)
+		- EKF: linearize g and h with 1st-order Taylor
+	- 18.5.2 Unscented Kalman filter (UKF)
+	- 18.5.3 Assumed density filtering (ADF)
+		- Boyen-Koller algorithm for online inference in DBNs
+		- Gaussian approximation for online inference in GLMs
+- 18.6 Hybrid discrete/continuous SSMs
 
 ## NIPS'19
 - Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models. NIPS'19

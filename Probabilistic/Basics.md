@@ -1,7 +1,12 @@
 # Bayesian Statistics
 
-## Unclassified
-- NBC (Naive Bayes): Kevin Murphy 3.5
+## Basic Concepts (Kevin Murphy Chap-3)
+- 3.2 Bayesian concept learning
+	- 3.2.1 Likelihood
+	- 3.2.2 Prior
+	- 3.2.3 Posterior
+	- 3.2.4 Posterior predictive distribution
+- 3.5 NBC (Naive Bayes)
 	- Assumption: the features are conditionally **independent** given the class label;
 		- p(x|y=c,θ)=Πp(xj|y=c,θjc)
 	- The log-sum-exp trick: minus the baseline;

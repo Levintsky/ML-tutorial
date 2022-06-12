@@ -19,40 +19,62 @@
 - Bernhard Scholkopf, Alexander J. Smola. Learning with kernels. 2002
 - John Shawe-Taylor and Nello Cristianini. Kernel Methods for Pattern Analysis. 2004
 
-## Kernel Methods
+## Kernel Methods (PRML, Chap 6, Kevin Murphy Chap 14)
+- 14.1 Introduction
+- 14.2 Kernel functions;
+	- κ(x,x') ∈ R
+	- 14.2.1 RBF: κ(x, x^) = exp(−1/2(x−x^)'Σ^(−1)(x−x^)
+	- 14.2.2 Kernels for comparing documents
+		- Cosine similarity
+		- tf-idf
+	- 14.2.3 Mercer kernels
+		- Gram matrix positive definite kernel;
+		- Mercer theo: kij = φ(xi)'φ(xj)
+	- 14.2.4 Linear kernels
+	- 14.2.5 Matern kernels (commonly used in GP)
+		- k(r) = 2^(1−ν)/Γ(ν) (√2νr/l)^ν Kν(√2νr/l)
+		- κ(r) = exp(−r/l) if ν=1/2
+	- 14.2.6 String;
+	- 14.2.7 Pyramid match kernels;
+	- 14.2.8 Kernels derived from probabilistic generative models
+		- κ(xi,xj) = ∫p(x|xi)^ρ p(x|xj)^ρdx
+	- Fisher kernel;
+		- κ(x, x^) = g(x)'F^(−1)g(x^)
+		- F = ∇∇logp(x|θ)|θˆ
+- 14.3 Using kernels inside GLMs
+	- 14.3.1 Kernel machines
+	- 14.3.2 L1VMs, RVMs, and other sparse vector machines
+- 14.4 Kernel trick;
+	- 14.4.1 Kernel NN;
+	- 14.4.2 Kernel K-medoids; (kernelized K-means)
+	- 14.4.3 Kernel ridge regression;
+		- Primal: J(w) = (y−Xw)'(y−Xw) + λ|w|^2
+		- Optimal: w = (X'X+λI)^(−1)X'y=(Σxixi'+λI)^(−1)X'y
+		- Dual:
+			- Dual variable: α := (K + λI)^(−1)y
+			- f(x) = w(x) = Σαiκ(x,xi)
+	- 14.4 Kernel PCA;
+		- PCA: S=(1/N)X'X (dxd)
+		- XX' (NxN): let U, Λ be eigen of XX': (XX')U = UΛ
+			- (X'X)(X'U) = (X'U)Λ
+			- eigenvector of X'X is V=X'U and Λ
+			- Normalized V=X'UΛ^(-1/2)
+		- KPCA: S=(1/N)Σ_i φiφi', let Φ=[φ1,φ2,...,φN]
+			- eigenvector: V=(Φ'U)Λ^(-1/2)
+			- a new test vector x∗ with φ∗:
+				- φ∗'Vkpca = φ∗'ΦUΛ^(−1/2) = k∗'UΛ^(−1/2)
+				- k∗ = [κ(x∗,x1),...,κ(x∗,xN)]
+			- Make the data φ zero-mean;
+		- In practice alg:
+			- Centerize K as K^;
+			- [U, Λ]=eig(K^);
+			- Normalize vi=ui/λi
+			- Centerize K∗ as K∗^;
+			- Z∗ = K∗^V[:,:L]
+	- 14.5 SVM
 - PRML, Chap 6
-	- Many linear models for regression and classification can be reformulated in terms of a dual representation in which kernel arrises:\
-		<img src="/Basic-ML/images/kernel/kernel-1.1.png" alt="drawing" width="400"/>
-	- Then, for a we have:\
-		<img src="/Basic-ML/images/kernel/kernel-1.2.png" alt="drawing" width="400"/>
-	- For prediction:\
-		<img src="/Basic-ML/images/kernel/kernel-1.3.png" alt="drawing" width="400"/>
-	- Constructing Kernels:\
-		<img src="/Basic-ML/images/kernel/kernel-2.1.png" alt="drawing" width="400"/>\
-		<img src="/Basic-ML/images/kernel/kernel-2.2.png" alt="drawing" width="400"/>\
-	- Kernel between sets:\
-		<img src="/Basic-ML/images/kernel/kernel-2.3.png" alt="drawing" width="200"/>
-	- Kernels of generative models:\
-		<img src="/Basic-ML/images/kernel/kernel-2.4.png" alt="drawing" width="250"/>\
-		<img src="/Basic-ML/images/kernel/kernel-2.5.png" alt="drawing" width="300"/>\
-		<img src="/Basic-ML/images/kernel/kernel-2.6.png" alt="drawing" width="400"/>
 	- Radial Basis Function:\
 		<img src="/Basic-ML/images/kernel/nadaraya-watson.png" alt="drawing" width="400"/>
-- Kevin Murphy (Chap 14)
-	- Kernel functions;
-		- RBF;
-		- **Mercer** kernels: Gram matrix positive definite kernel;
-		- Linear;
-		- Matern;
-		- String;
-		- Pyramid match;
-		- Kernel from generative models;
-		- Fisher;
-	- Kernel trick;
-		- Kernel NN;
-		- Kernel K-medoids;
-		- Kernel ridge regression;
-		- Kernel PCA;
 
 ## Sparse Kernel Machines (PRML, Chap 7)
 - SVM: for Lagrange Dual, check opt.pdf

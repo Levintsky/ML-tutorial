@@ -1,29 +1,5 @@
 # Information Theory in Machine Learning
 
-## Books
-- David JC MacKay. Information theory, inference and learning algorithms. Cambridge university press, 2003.
-
-## Basics
-- Markov Chain
-- Kullback–Leibler (KL) Divergence;
-- F-divergence: more general:\
-	<img src="/Basic-ML/images/info-theory/f-div1.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/info-theory/f-div2.png" alt="drawing" width="350"/>
-- Mutual Information: I(X; Y)
-	- I(X;Z) = H(X) - H(X|Z);
-	- Connection with KL:\
-		<img src="/Basic-ML/images/info-theory/mi.png" alt="drawing" width="350"/>
-	- DV or Donsker-Varadhan representation: dual form;\
-		<img src="/Basic-ML/images/info-theory/dv.png" alt="drawing" width="350"/>
-	- Proof by construction: when G=P, gap is zero;\
-		<img src="/Basic-ML/images/info-theory/dv-dual.png" alt="drawing" width="450"/>
-	- Data Processing Inequality (DPI): X->Y->Z, then I(X;Y)>=I(X;Z)
-	- Reparametrization invariance: Two invertible functions f1, f2, then I(X;Y)=I(f1(X);f2(Y))
-- Information Plane Theorem:
-	- X-axis: The sample complexity of Ti is determined by the encoder mutual information I(X;Ti). Sample complexity refers to how many samples you need to achieve certain accuracy and generalization.
-	- Y-axis: The accuracy (generalization error) is determined by the decoder mutual information I(Ti;Y).\
-		<img src="/Basic-ML/images/info-theory/info-plane.png" alt="drawing" width="450"/>
-
 ## Classical
 - **IB**: N. Tishby, F.C. Pereira, and W. Biale. The information bottleneck method. Allerton'99
 - William Bialek, Ilya Nemenman, and Naftali Tishby. Predictability, complexity, and learning. Neural computation'01
