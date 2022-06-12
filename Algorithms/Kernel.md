@@ -72,9 +72,38 @@
 			- Centerize K∗ as K∗^;
 			- Z∗ = K∗^V[:,:L]
 	- 14.5 SVM
-- PRML, Chap 6
-	- Radial Basis Function:\
-		<img src="/Basic-ML/images/kernel/nadaraya-watson.png" alt="drawing" width="400"/>
+		- J(w, λ) = ΣL(yi, yˆi) + λ|w|2
+		- 14.5.1 SVMs for regression
+			- Huber like regression loss;
+			- J(w, λ) = Σ(ξi+, ξi-) + λ|w|2
+			- Optimal solution has form: wˆ = Σ αi xi (Schoelkopf and Smola 2002)
+			- yˆ(x) = wˆ0 + Σαi κ(xi, x)
+		- 14.5.2 SVMs for classification
+			- Hinge loss: Lnll(y, η) = −logp(y|x, w) = log(1+e−yη) (logistic)
+			- L(y, η) = max(0, 1−yη) = (1−yη)+
+			- J(w, λ) = 1/2|w|2 + CΣ(1−yη)+ equivalent to Σξ
+			- yˆ(x) = sgn(wˆ0 + Σαi κ(xi, x))
+			- Large margin learning: x=x⊥+rw/|w|, then f(x)=rw'w/|w|
+			- ν-SVM classifier: CΣξ (C=1/(νN))
+			- Probabilistic output
+			- SVMs for multi-class classification
+		- 14.5.3 Choosing C
+		- 14.5.4 Summary of key points
+		- 14.5.5 A probabilistic interpretation of SVMs
+- 14.6 Comparison of discriminative kernel methods
+- 14.7 Kernels for building generative models
+	- 14.7.1 Smoothing kernels
+		- ∫κ(x)dx = 1, ∫xκ(x)dx = 0, ∫x^2κ(x)dx > 0
+	- 14.7.2 Kernel density estimation (KDE)
+		- p(x) = 1/N Σκ(x-xi)
+	- 14.7.3 From KDE to KNN
+	- 14.7.4 Kernel regression
+		- f(x) = Σwi(x)yi (kernel regression, kernel smoothing, or the Nadaraya-Watson mode)
+		- wi(x) = κ(x-xi)/Σκ(x-xi)
+	- 14.7.5 Locally weighted regression
+		- f(x) = Σyiκ(x,xi)
+		- min_β(x^) Σ_i κ(x^,xi)[yi-β(x^)φ(xi)]
+		- β(x∗) = (ΦT D(x∗)Φ)−1ΦT D(x∗)y
 
 ## Sparse Kernel Machines (PRML, Chap 7)
 - SVM: for Lagrange Dual, check opt.pdf
@@ -153,9 +182,6 @@
 			<img src="/Basic-ML/images/svm/latent-svm-3.png" alt="drawing" width="400"/>
 		- A hard EM alg:\
 			<img src="/Basic-ML/images/svm/latent-svm-4.png" alt="drawing" width="400"/>
-
-## Metric Learning
-- Ismail Elezi, Sebastiano Vascon, Alessandro Torcinovich, Marcello Pelillo, Laura Leal-Taixe. The Group Loss for Deep Metric Learning. ECCV'20
 
 ## NIPS'19
 - Motonobu Kanagawa, Philipp Hennig. Convergence Guarantees for Adaptive Bayesian Quadrature Methods

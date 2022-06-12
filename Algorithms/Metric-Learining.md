@@ -13,3 +13,6 @@
 - Ranking/Margin/Contrastive/Triplet/Hinge loss;
 - Raia Hadsell, Sumit Chopra, and Yann LeCun. Dimensionality reduction by learning an invariant mapping. CVPR'06
 	- First paper on contrastive learning;
+
+## Metric Learning
+- Ismail Elezi, Sebastiano Vascon, Alessandro Torcinovich, Marcello Pelillo, Laura Leal-Taixe. The Group Loss for Deep Metric Learning. ECCV'20
