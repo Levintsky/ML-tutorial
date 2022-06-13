@@ -1,5 +1,10 @@
 # Bayesian Statistics
 
+## Basics
+- Super-Gaussian distributions: kurt(z) > 0; natural signals (images) with filtering;
+	- kurt(z) := μ4/σ^4 - 3
+- Skewed distribution: skew(z) = μ3/σ^3
+
 ## Basic Concepts (Kevin Murphy Chap-3)
 - 3.2 Bayesian concept learning
 	- 3.2.1 Likelihood

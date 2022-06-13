@@ -1,4 +1,4 @@
-# Linear Classifier
+# Linear Model
 
 ## Basics
 - Fisher
@@ -18,7 +18,7 @@
 	- Max-entropy -> exp family;
 - Latent linear
 	- FA: obs x=Wz, infer W, z
-	- PCA: obs x=Wz, z Gaussian, min|x-Wz'|^2
+	- PCA: obs x=Wz, z Gaussian, minimize reconstruction error;
 		- y = L^(-1/2)U'(x-E[x])
 	- ICA: obs x=Wz, z-Non-Gaussian;
 		- fast-ICA (Newton's method, assuming all distribution known and same)
@@ -226,7 +226,7 @@
 ## Latent Linear Models (Kevin Murphy, Chap 12)
 - 12.1 Factor Analysis (FA)
 	- p(zi) = N(zi|μ0, Σ0)
-	- p(xi|zi, θ) = N (Wzi+μ, Ψ)
+	- p(xi|zi, θ) = N(Wzi+μ, Ψ)
 	- 12.1.1 FA is a low rank parameterization of an MVN
 		- Marginal: p(xi|θ) = N(xi|Wμ0+μ, Ψ+WΣ0W')
 	- 12.1.2 Inference
@@ -250,7 +250,7 @@
 		- logp(X|W,σ^2) = -N/2log|C| - 1/2Σ xiC^(-1)xi = -N/2log|C| + tr(C^-1Σ^)
 	- 12.2.5 EM algorithm for PCA
 		- E step: Z^ = (W'W)^(−1)W'X
-		- M step: W^ = X^Z'(ZZ')^(-1)
+		- M step: W^ = X^Z'(ZZ')^(-1), σ
 - 12.3 Choosing the number of latent dimensions
 	- 12.3.1 Model selection for FA/PPCA
 - 12.4 PCA for categorical data
