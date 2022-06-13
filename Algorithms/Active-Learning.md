@@ -33,8 +33,8 @@
 	- Qing Sun, Ankit Laddha, Dhruv Batra. Active Learning for Structured Probabilistic Models with Histogram Approximation. CVPR'15
 		- Insight: a variational approach with Histogram Approximation for Gibbs distribution to approximate entropy;
 			<img src="/Basic-ML/images/active/hist-approx.png" alt="drawing" width="400"/>
-		- Assumption: CRF with unary and binary, S(y) = sum phi(yu) + sum phi(yu, yv), target: to learn weight w in the log-linear model s.t. (w, phi(x, y)); find the one with largest entropy to label:\
-			<img src="/Basic-ML/images/active/crf-entropy.png" alt="drawing" width="350"/>
+		- Assumption: CRF with unary and binary, S(y) = Σφ(yu) + Σφ(yu, yv), target: to learn weight w in the log-linear model s.t. (w, φ(x, y)); find the one with largest entropy to label:
+			- H(p) = -E_p(y|x)[log(P(y|x))]
 		- Approximate with sample entropy: with M-best proposals\
 			<img src="/Basic-ML/images/active/sample-entropy.png" alt="drawing" width="400"/>\
 			<img src="/Basic-ML/images/active/sample-entropy-2.png" alt="drawing" width="400"/>
@@ -45,7 +45,7 @@
 			<img src="/Basic-ML/images/active/hist-entropy-3.png" alt="drawing" width="400"/>
 		- Parameter Learning w: MLE, marginals via sum-product loop BP;
 - Ask for labels:
-	- S. Vijayanarasimhan and K. Grauman, What’s it going to cost you? Predicting effort vs. informativeness for multilabel image annotations. CVPR'09
+	- S. Vijayanarasimhan and K. Grauman, What's it going to cost you? Predicting effort vs. informativeness for multilabel image annotations. CVPR'09
 	- B. Siddiquie and A. Gupta, Beyond active noun tagging: Modeling contextual interactions for multi-class active learning. CVPR'10
 	- A. Parkash and D. Parikh. Attributes for classifier feedback. ECCV'12
 

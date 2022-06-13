@@ -1,63 +1,141 @@
 # Gaussian Process
 
+## Basics
+- Problem: p(y∗|x∗,X,y) with Gaussian kernel priors;
+- GP for regression:
+	- Conditional Guassian: μ1|2 = Σ1|2(Λ11μ1 - Λ12(x2-μ2))
+		- μ ~ k∗K^(-1)y
+	- f∗ = k∗Ky^(-1)y = Σαiκ(xi, x∗), with α=Ky^(-1)y
+	- Parameter learning: posterior with GD;
+- GP for classification:
+	- p(yi|xi) = σ(yif(xi)), f ∼ GP(0, κ)
+	- Extra term of logp(y|f) in NLL;
+- Connections:
+	- GP ~ Bayesian linear learning with same kernel;
+	- GP ~ NN with infinite width;
+	- RKHS
+
 ## Good Summaries
-- https://katbailey.github.io/post/gaussian-processes-for-dummies/
-- http://www.gaussianprocess.org/
-- https://distill.pub/2019/visual-exploration-gaussian-processes/
 - Tutorials
 	- MacKay, D. J. C. (1998). Introduction to Gaussian processes. In C. M. Bishop (Ed.), Neural Networks and Machine Learning, pp. 133–166. Springer. 1998
 	- Williams, C. K. I. (1999). Prediction with Gaussian processes: from linear regression to linear prediction and beyond. In M. I. Jordan (Ed.), Learning in Graphical Models, pp. 599–621. MIT Press. 1999
 	- MacKay, D. J. C. Information Theory, Inference and Learning Algorithms. 2003
+	- C Rasmussen, C Williams. Gaussian Processes for Machine Learning. 2006
 - GP for Optimization
 	- https://krasserm.github.io/2018/03/19/gaussian-processes/
 	- https://zhuanlan.zhihu.com/p/86386926
 	- BoTorch (Bayesian Optimzation for Pytorch): https://botorch.org/
-
-## Textbooks 
 - Kevin Murphy's textbook
-	- A GP defines a **prior over functions**, which can be converted into a posterior over functions once we have seen some data. Although it might seem difficult to represent a distrubtion over a function, it turns out that we only need to be able to define a distribution over the function’s values at a finite, but arbitrary, set of points, say (x1,...,xN). 
-	- A GP assumes that p(f(x1),...,f(xN)) is jointly Gaussian, with some mean μ(x) and covariance ∑(x) given by ∑ij=k(xi,xj)
-	, where k is a positive definite kernel function. The key idea is that if 
-	xi and xj are deemed by the kernel to be similar, then we expect the output of the function at those points to be similar, too.
 	- https://github.com/probml/pmtk3
-- C Rasmussen, C Williams. Gaussian Processes for Machine Learning. 2006
+- Good resources:
+	- https://katbailey.github.io/post/gaussian-processes-for-dummies/
+	- http://www.gaussianprocess.org/
+	- https://distill.pub/2019/visual-exploration-gaussian-processes/
 
-## PRML Bishop, Chap 6.4
+## GP (Kevin Murphy Chap 15, PRML Bishop, Chap 6.4)
+- 15.1 Introduction
+	- p(y∗|x∗,X,y) = ∫p(y∗|f,x∗)p(f|X,y)df
+	- A GP defines a **prior over functions**;
+	- Assumption: p(f(x1),...,f(xN)) is jointly Gaussian, mean μ(x), covariance ∑ij=k(xi,xj)
+- 15.2 GPs for regression
+	- f(x) ∼ GP(m(x), κ(x, x'))
+	- m(x) = E[f(x)]
+	- κ(x,x') = E[(f(x)−m(x))(f(x')−m(x'))']
+	- p(f|X) = N(f|μ, K), with Kij = κ(xi,xj) and μ = (m(x1),...,m(xN)).
+	- 15.2.1 Predictions using noise-free observations
+		- f ~ N(μ, [K K∗])
+		- f∗ ~ N(μ∗, [K∗ K∗∗])
+		- Posterior: conditional Gaussian p(f∗|X∗,X,f) = N(f∗|μ∗,Σ∗)
+			- μ∗ = μ(X∗) + K∗' K^(−1)(f − μ(X))
+			- Σ∗ = K∗∗ - K∗' K^(−1)K∗
+		- SE (squared exponential) kernel: κ(x, x') = σf^2 exp(−1/2l^2(x−x')^2)
+	- 15.2.2 Predictions using noisy observations
+		- Observed y is noisy: y = f(x) + ε
+		- cov[y|X] = K + σy^2I := Ky, replace K with Ky in noise-free;
+		- p(f∗|x∗,X,y) = N(f|k∗'Ky^(−1)y, k∗∗−k∗'Ky^(−1)k∗)
+		- Estimated f∗ = k∗Ky^(-1)y = Σαiκ(xi, x∗), with α=Ky^(-1)y
+	- 15.2.3 Effect of the kernel parameters
+	- 15.2.4 Estimating the kernel parameters
+		- MLE for marginal: p(y|X) = ∫p(y|f,X)p(f|X)df
+		- Prior: p(y|X) ~ N(f|0, K)
+		- p(y|f) = Πi N(yi|fi, σi^2)
+		- logp(y|X)=logN(y|0,K) = −1/2yKy^(−1)y − 1/2log|K| − Nlog(2π)
+		- First term: data fit; 2nd: complexity
+		- ∂logp(y|X)/∂θj = 1/2 tr((αα'-Ky^(-1))∂Ky/∂θj)
+	- 15.2.5 Computational and numerical issues
+		- Input: x, y, K, k∗, σy, estimate f∗, var[f∗], logp(y)
+		- L = cholesky(K+σy^2I)
+		- α = (L')^(-1) (L^(-1)y)
+		- E[f∗] = k∗'α
+		- v = (L)^-1 k∗;
+		- var[f∗]=κ(x∗,x∗)−v'v;
+		- logp(y|X)=−1/2y'α − Σ_i logLii − N/2log(2π)
+	- 15.2.6 Semi-parametric GPs*
+		- f(x) = β'φ(x) + r(x), with r(x) ∼ GP(0,κ(x,x'))
+- 15.3 GPs meet GLMs
+	- 15.3.1 Binary classification
+		- p(yi|xi) = σ(yif(xi)), f ∼ GP(0, κ)
+		- Posterior: l(f) = logp(y|f) + logp(f|X) 
+		-      = logp(y|f) − 1/2yK^(−1)y − 1/2log|K| − Nlog(2π)
+		- Loss: J(f) := −l(f)
+			- g = −∇logp(y|f) + K^(−1)f
+			- H = −∇∇logp(y|f) + K^(−1) = W + K^(−1)
+			- p(f|X,y) ≈ N(fˆ, (K^−1 +W)^−1)
+		- Computing the posterior predictive
+			- E[f∗|x∗,X,y] = k∗'K^(−1)E[f|X, y] ≈ k∗'K^(−1)fˆ
+		- Marginal likelihood:
+			- logp(y|X) ≈ logp(y|fˆ) − 1/2fˆ'K^(−1)fˆ − 1/2log|K| − 1/2log|K^−1+W|
+		- Numerically stable computation
+	- 15.3.2 Multi-class classification
+- 15.4 Connection with other methods
+	- 15.4.1 Linear models compared to GPs
+		- Bayesian linear regression is equivalent to a GP with covariance function κ(x, x') = x'Σx
+	- 15.4.2 Linear smoothers compared to GPs
+		- f(x∗) = ∑wi(x∗)yi
+		- GP: wi(x∗) = [(K+σy^2I)^(−1)k∗]i
+	- 15.4.3 SVMs compared to GPs
+		- J(f) = 2f'f + CΣ_i(1−yifi)+
+		- J(f) = 2f'f - Σ_ilogp(yi|fi)
+		- No such likelihood (KM Chap 14.5.5)
+	- 15.4.4 L1VM and RVMs compared to GPs
+	- 15.4.5 Neural networks compared to GPs
+		- p(y|x, θ) = Ber(y|σ(wσ(Vx)))
+		- Assume v i.i.d. Gaussian,
+		- Eθ[f(x)] = 0
+		- Eθ[f(x)f(x')] = σb^2 + H σv^2 Eu[g(x;u)g(x;u)']
+	- 15.4.6 Smoothing splines compared to GPs
+		- Def (Hilbert space): Inner product space containing Cauchy sequence limits.
+			- f(.) is a function, f(x)∈R is a point;
+			- f(x) = f(.)'φ(x)
+			- k(.,y)=φ(y), (k(·,y), φ(x))H=k(x,y)
+			- Reproducing proberty: (kernel trick)
+				- (f(·), k(.,x))H = f(x)
+				- (k(.,x), k(.,y)) = k(x,y)
+			- f(x) = (f, φ(x))H = Σ_i fi sqrt(λi)ei(x)
+		- Mercer: κ(x, x') = Σλiφi(x)φi(x') for positive definite kernel;
+		- φi: orthonormal basis for function space;
+		- Hk = {f: f(x) = Σfiφi(x), Σfi^2/λi < ∞} RKHS
+		- Inner product defined: (f,g)H = Σfigi/λi
+		- Norm: |f|H = Σfi^2/λi
+		- Optimization problem: J(f)=1/2σy^2 Σ(yi-f(xi))^2 + 1/2|f|H^2
+			- with Hilbert function norm prior;
+		- Solution must have the form f(x)=Σαiκ(xi, x) (representation theorem);
+- 15.5 GP latent variable model
+	- GP-LVM
+- 15.6 Approximation methods for large datasets
 - Applications:
 	- kriging (Cressie, 1993)
 	- ARMA (autoregressive moving average) models, Kalman filters, and radial basis function network;
-- Notations: y(x) = wφ(x), p(w) ~ N(0, α^(-1)I):
-	- E[y] = ΦE[w]=0
-	- cov[y] = E[yy'] = 1/α ΦΦ'
-- GP for regression with noise: tn = yn + εn, y is noise free, t: noisy observation; marginal distribution of t:
-	- p(t|y) = N(t|y, β^(-1)I)
-	- C(xn,xm) = k(xn, xm) + β^(-1)δnm
-- Predict t-N+1 with x-N+1:
-	- p(t_N+1) = N(t_N+1|0, C_N+1)
-	- C_N+1 = [CN k; k' c]; (covariance)
-	- p(aN+1|tN) = ∫p(aN+1|a_1:N)p(aN|tN)da1:N
-- Hyper-paramter learning: e.g., noise β;
-	- lnp(t|θ) = -1/2ln|C| - 1/2 tC^(-1)t - N/2ln(2π)
-	- ∂lnp(t|θ)/∂θi = -1/2 Tr(C^(-1)∂C/∂θi) + 1/2tC^(-1)∂C/∂θiC^(-1)
 - ARD (Automatic relevance determination):
 	- k(x,x') = θ0 exp{-1/2 Σηi(xi-xi')^2}
 	- k(x,x') = θ0 exp{-1/2 Σ_i=1..D ηi(xi-xi')^2} + θ2 + θ3Σ_i=1..D xnixmi
-- GP for classification:
-	- Notation: logit a(x), logistic sigmoid y=σ(a):
-		- p(t|a) = σ(a)^t (1-σ(a))^(1-t)
-		- p(a_N+1) = N(a_N+1|0, C_N+1)
-		- C(xn, xm) = k(xn,xm) + νδnm
-		- p(t_N+1=1|tn) = ∫p(t_N+1=1|a_N+1)p(a_N+1)da_N+1, with p(t_N+1=1|a_N+1) = σ(a_N+1)
-	- Another way: Laplacian approximation:\
-		<img src="/Bayes/images/gp/gp-cls-6.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/gp/gp-cls-7.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/gp/gp-cls-8.png" alt="drawing" width="400"/>
-- Connection with NN: for a broad class of prior distributions over w, the distribution of functions generated by a neural network will tend to a Gaussian process in the limit M approaches infitnity;
-	- Neal, R. M. Bayesian Learning for Neural Networks. Springer. Lecture Notes in Statistics 118. 1996
 
 ## Theory
 - D R. Burt, C E. Rasmussen, M van der Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
 	- Reduce O(NM^2+M^3) to  and O(NM+M^2)
+- GP ~ NN:
+	- Neal, R. M. Bayesian Learning for Neural Networks. Springer. Lecture Notes in Statistics 118. 1996
+		- Connection with NN: for a broad class of prior distributions over w, the distribution of functions generated by a neural network will tend to a Gaussian process in the limit M approaches infinity;
 
 ## Deep GP
 - Neil D Lawrence and Andrew J Moore. Hierarchical gaussian process latent variable models. ICML'07

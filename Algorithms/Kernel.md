@@ -1,18 +1,9 @@
 # Kernel, Embedding, Metric Learning
 
-## Classical
-- A. Rahimi and B. Recht. Random features for large-scale kernel machines. NIPS'08
-
-## Deep Learning
-- Y. Cho and L. K. Saul. Kernel methods for deep learning. NIPS'09
-- **NTK**: Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: Convergence and generalization in neural networks. NIPS'18
-- Jaehoon Lee, Yasaman Bahri, Roman Novak, Sam Schoenholz, Jeffrey Pennington, and Jascha Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
-- Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
-- Lenaic Chizat, Edouard Oyallon, and Francis Bach. On lazy training in differentiable programming. arXiv preprint arXiv:1812.07956, 2019
-- **GNN**: Simon S Du, Kangcheng Hou, Russ R Salakhutdinov, Barnabas Poczos, Ruosong Wang, and Keyulu Xu. Graph neural tangent kernel: Fusing graph neural networks with graph kernels. NeurIPS'19
-- Greg Yang. Scaling limits of wide neural networks with weight sharing: Gaussian process behavior, gradient independence, and neural tangent kernel derivation. arxiv'19
-- Jiri Hron, Yasaman Bahri, Jascha Sohl-Dickstein, Roman Novak. Infinite attention: NNGP and NTK for deep attention networks. ICML'20
-- Soufiane Hayou, Arnaud Doucet, and Judith Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019
+## Basics
+- Kernel functions:
+	- RBF, Mercer, linear, ...
+	- Kernel Trick: NN, ridge regression, PCA, SVM;
 
 ## Tutorials, Books
 - Ralf Herbrich. Learning Kernel Classifiers. 2001
@@ -74,7 +65,7 @@
 	- 14.5 SVM
 		- J(w, λ) = ΣL(yi, yˆi) + λ|w|2
 		- 14.5.1 SVMs for regression
-			- Huber like regression loss;
+			- Huber like regression loss: E(y(x)-t) = (|y(x)-t|-ε)+
 			- J(w, λ) = Σ(ξi+, ξi-) + λ|w|2
 			- Optimal solution has form: wˆ = Σ αi xi (Schoelkopf and Smola 2002)
 			- yˆ(x) = wˆ0 + Σαi κ(xi, x)
@@ -103,31 +94,9 @@
 	- 14.7.5 Locally weighted regression
 		- f(x) = Σyiκ(x,xi)
 		- min_β(x^) Σ_i κ(x^,xi)[yi-β(x^)φ(xi)]
-		- β(x∗) = (ΦT D(x∗)Φ)−1ΦT D(x∗)y
+		- β(x∗) = (Φ'D(x∗)Φ)^(−1) Φ'D(x∗)y
 
 ## Sparse Kernel Machines (PRML, Chap 7)
-- SVM: for Lagrange Dual, check opt.pdf
-- Large margin classifier:\
-	<img src="/Basic-ML/images/svm/svm-1.png" alt="drawing" width="400"/>
-- Lagrange dual, notice we have negative a since we maximize w.r.t. a:\
-	<img src="/Basic-ML/images/svm/svm-2.png" alt="drawing" width="400"/>
-- Optimize the dual problem:\
-	<img src="/Basic-ML/images/svm/svm-3.png" alt="drawing" width="400"/>
-- Tradeoff: For a fixed set of basis functions whose number M is smaller than the number N of data points, the move to the dual problem appears disadvantageous. However, it allows the model to be reformulated using kernels, and so the maximum margin classifier can be applied efficiently to feature spaces whose dimensionality exceeds the number of data points, including infinite feature spaces.
-- Prediction:\
-	<img src="/Basic-ML/images/svm/svm-4.png" alt="drawing" width="400"/>
-- Relaxed version, with KKT condition:\
-	<img src="/Basic-ML/images/svm/svm-5.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/svm/svm-6.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/svm/svm-7.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/svm/svm-8.png" alt="drawing" width="400"/>\
-	<img src="/Basic-ML/images/svm/svm-9.png" alt="drawing" width="400"/>
-- Relation with logistic regression: hinge-loss;\
-	<img src="/Basic-ML/images/svm/svm-10.png" alt="drawing" width="400"/>
-- Multiclass SVM;
-	- Train K separate; Vapnik 1998
-- SVM for regression:\
-	<img src="/Basic-ML/images/svm/svm-11.png" alt="drawing" width="400"/>
 - Computational learning theory:
 	- The goal of the PAC framework is to understand how large a data set needs to be in order to give good generalization;
 - Relevance Vector Machines:
@@ -183,7 +152,21 @@
 		- A hard EM alg:\
 			<img src="/Basic-ML/images/svm/latent-svm-4.png" alt="drawing" width="400"/>
 
-## NIPS'19
+## Classical
+- A. Rahimi and B. Recht. Random features for large-scale kernel machines. NIPS'08
+
+## Deep Learning
+- Y. Cho and L. K. Saul. Kernel methods for deep learning. NIPS'09
+- **NTK**: Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: Convergence and generalization in neural networks. NIPS'18
+- Jaehoon Lee, Yasaman Bahri, Roman Novak, Sam Schoenholz, Jeffrey Pennington, and Jascha Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
+- Neal Jean, Sang Michael Xie, Stefano Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18
+- Lenaic Chizat, Edouard Oyallon, and Francis Bach. On lazy training in differentiable programming. arXiv preprint arXiv:1812.07956, 2019
+- **GNN**: Simon S Du, Kangcheng Hou, Russ R Salakhutdinov, Barnabas Poczos, Ruosong Wang, and Keyulu Xu. Graph neural tangent kernel: Fusing graph neural networks with graph kernels. NeurIPS'19
+- Greg Yang. Scaling limits of wide neural networks with weight sharing: Gaussian process behavior, gradient independence, and neural tangent kernel derivation. arxiv'19
+- Jiri Hron, Yasaman Bahri, Jascha Sohl-Dickstein, Roman Novak. Infinite attention: NNGP and NTK for deep attention networks. ICML'20
+- Soufiane Hayou, Arnaud Doucet, and Judith Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019
+
+## NIPS'18
 - Motonobu Kanagawa, Philipp Hennig. Convergence Guarantees for Adaptive Bayesian Quadrature Methods
 - Ulysse Marteau-Ferey, Francis Bach, Alessandro Rudi. Globally Convergent Newton Methods for Ill-conditioned Generalized Self-concordant Losses
 - Rahul Singh, Maneesh Sahani, Arthur Gretton. Kernel Instrumental Variable Regression

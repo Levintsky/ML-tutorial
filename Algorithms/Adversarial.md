@@ -1,4 +1,4 @@
-# Attack, Adversarial
+# Attack/Adversarial, Adversarial Learning
 
 ## Tutorial
 - B Biggio, F Roli. Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning. 2018
@@ -63,7 +63,7 @@
 	- H Qiu, C Xiao, L Yang, X Yan, H Lee, B Li. SemanticAdv: Generating Adversarial Examples via Attribute-Conditional Image Editing. ICLR'20 reject
 	- Ameya Joshi, Amitangshu Mukherjee, Soumik Sarkar, Chinmay Hegde. Semantic Adversarial Attacks: Parametric Transformations That Fool Deep Classifiers. ICLR'20
 
-## 3D
+## Application in 3D
 - Attack:
 	- C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
 		- https://github.com/xiangchong1/3d-adv-pc

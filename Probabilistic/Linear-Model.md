@@ -19,8 +19,9 @@
 - Latent linear
 	- FA: obs x=Wz, infer W, z
 	- PCA: obs x=Wz, z Gaussian, min|x-Wz'|^2
+		- y = L^(-1/2)U'(x-E[x])
 	- ICA: obs x=Wz, z-Non-Gaussian;
-		- fast-ICA (Newton's method)
+		- fast-ICA (Newton's method, assuming all distribution known and same)
 - Sparse linear model
 	- L1-norm;
 	- Optimization: Lasso; Coord-descent; proximal methods;
@@ -239,7 +240,7 @@
 		- p(qi|θ) = Cat(qi|π)
 	- 12.1.5 EM for factor analysis models
 	- 12.1.6 Fitting FA models with missing data
-- 12.2 PCA
+- 12.2 PCA (Also PRML, Chap-12)
 	- 12.2.1 Classical PCA: statement of the theorem
 		- J(W, Z) = 1/N Σ|xi-xi^|^2, where xi = Wzi
 	- 12.2.2 Proof

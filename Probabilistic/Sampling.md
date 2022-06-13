@@ -35,8 +35,7 @@
 	- 11.1.5 Sampling-importance-resampling (SIR):
 		- Insight: to handle hard to determine k in rejection sampling;
 		- Stage 1: sample z1, z2, ..., zL from q(z);
-		- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...);\
-			<img src="/Basic-ML/images/sample/is-2.png" alt="drawing" width="400"/>
+		- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...); wl = p(zl)/q(zl) / ∑p(zl)/q(zl)
 	- 11.6 Monte Carlo EM
 		- Traditional EM (M-step): Q(θ, θold)=∫p(Z|X, θold)lnp(Z,X|θ)dZ
 		- MCEM, sample z instead of integrate: Q(θ, θold) ~ 1/L∑l=1..L lnp(Zl,X|θ)

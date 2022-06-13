@@ -1,23 +1,11 @@
 # Continuous Latent Variables
 
+## Basics
+- For standard PCA, check Probability/Linear-Model
+
 ## PCA, ICA
 - PRML, Chap 12
-	- PCA:
-		- Maximum variation;
-		- Minimum error;
-		- Whitening;\
-			<img src="/Bayes/images/pca/whiten.png" alt="drawing" width="400"/>
 	- Probabilistic PCA:
-		- expressed as the maximum likelihood solution of a probabilistic latent variable model;
-			<img src="/Bayes/images/pca/pca-1.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-2.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-3.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-4.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-5.png" alt="drawing" width="250"/>
-		- MLE-PCA:\
-			<img src="/Bayes/images/pca/pca-6.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-7.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/pca-8.png" alt="drawing" width="400"/>
 		- EM-PCA:\
 			<img src="/Bayes/images/pca/em-pca1.png" alt="drawing" width="400"/>\
 			<img src="/Bayes/images/pca/em-pca2.png" alt="drawing" width="400"/>
@@ -27,34 +15,7 @@
 				<img src="/Bayes/images/pca/em-pca4.png" alt="drawing" width="400"/>
 		- Bayesian PCA:\
 			<img src="/Bayes/images/pca/bayes-pca.png" alt="drawing" width="400"/>
-		- Factor analysis: different in that the variance of x is diagonal rather than isotropic:
-			<img src="/Bayes/images/pca/factor-analysis-1.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/factor-analysis-2.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/factor-analysis-3.png" alt="drawing" width="400"/>
-	- Kernel PCA: N samples, M-dim features;
-		- Feature space (M x M):\
-			<img src="/Bayes/images/pca/k-pca-1.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/k-pca-2.png" alt="drawing" width="400"/>
-		- Sample space (N x N):\
-			<img src="/Bayes/images/pca/k-pca-3.png" alt="drawing" width="400"/>\
-			<img src="/Bayes/images/pca/k-pca-4.png" alt="drawing" width="400"/>
-		- Prediction:\
-			<img src="/Bayes/images/pca/k-pca-5.png" alt="drawing" width="400"/>
-		- Normalization (feature 0 mean):\
-			<img src="/Bayes/images/pca/k-pca-6.png" alt="drawing" width="400"/>
-			<img src="/Bayes/images/pca/k-pca-7.png" alt="drawing" width="400"/>
 - Latent Linear Model (Kevin Murphy, Chap 12);
-	- Factor Analysis: problem definition: infer latent z; learn W\
-		<img src="/Bayes/images/pca/fa-def.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/fa-def2.png" alt="drawing" width="400"/>
-	- Mixture of FA: a latent discrete indicator q\
-		<img src="/Bayes/images/pca/mixture-fa.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/mixture-fa2.png" alt="drawing" width="400"/>
-	- EM for mixuter FA:
-		- E-step: infer q and z;\
-			<img src="/Bayes/images/pca/mixture-fa-em1.png" alt="drawing" width="400"/>
-		- M-step: learning;\
-			<img src="/Bayes/images/pca/mixture-fa-em2.png" alt="drawing" width="400"/>
 	- PCA (check PCA.md)
 	- PPCA: factor analysis;
 	- Categorical PCA: logistic normal;\
@@ -79,19 +40,10 @@
 	- Autoassociative neural network;
 	- Modeling nonlinear manifold;
 - Kevin Murphy, 12.6
-	- Problem definition: z, independent non-Gaussian variance=1;
-		<img src="/Bayes/images/pca/ica-def.png" alt="drawing" width="400"/>
-	- MLE: problem definition:\
-		<img src="/Bayes/images/pca/ica-mle.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/ica-mle-2.png" alt="drawing" width="400"/>
-	- FastICA (Hyvarinen and Oja 2000): assume all source distributions are **known** and are the **same**;
-		<img src="/Bayes/images/pca/fast-ica-1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/pca/fast-ica-2.png" alt="drawing" width="400"/>
 	- Modeling source distribution:
 		- Super-Gaussian distributions: kurt(z) > 0; natural signals (images) with filtering;
-			<img src="/Bayes/images/pca/kurt.png" alt="drawing" width="200"/>
-		- Skewed distribution:\
-			<img src="/Bayes/images/pca/skew.png" alt="drawing" width="200"/>
+			- kurt(z) := μ4/σ^4 - 3
+		- Skewed distribution: skew(z) = μ3/σ^3
 - Example:
 ```python
 # mix s1 and s2, and get 

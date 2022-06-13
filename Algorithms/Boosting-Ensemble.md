@@ -49,7 +49,7 @@
 - X. He, J. Pan, O. Jin, T. Xu, B. Liu, T. Xu, Y. Shi, A. Atallah, R. Herbrich, S. Bowers, and J. Q. n. Candela. Practical lessons from predicting clicks on ads at facebook. ADKDD'14
 - **XG-Boost**: Tianqi Chen, Carlos Guestrin. XGBoost: A Scalable Tree Boosting System, KDD 2016
 	- https://github.com/dmlc/xgboost
-	- y = sum fk(x), f in F (CART)
+	- y = Σfk(x), f ∈ F(CART)
 	- Loss (regression + complexity):\
 		<img src="/Basic-ML/images/ensemble/boosting1.png" alt="drawing" width="600"/>
 	- Loss of adding a new tree:\
@@ -64,7 +64,7 @@
 	- H(x) = sgn(h1(x)+h2(x)+h3(x)+...)
 - Zhihua Zhou. Multi-Layered Gradient Boosting Decision Trees. NIPS'18
 
-## NIPS'19
+## NIPS'18
 - Xiao Li, Yu Wang, Sumanta Basu, Karl Kumbier, Bin Yu. A Debiased MDI Feature Importance Measure for Random Forests
 - Shen-Huan Lyu, Liang Yang, Zhi-Hua Zhou. A Refined Margin Distribution Analysis for Forest Representation Learning
 - Julaiti Alafate, Yoav S Freund. Faster Boosting with Smaller Memory

@@ -34,10 +34,10 @@ de Montréal, Département d’informatique et de recherche opérationnelle, 199
 - **MAML**: Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ICML'17
 	- https://github.com/cbfinn/maml (tensorflow)
 	- https://github.com/katerakelly/pytorch-maml (pytorch)
-	- A bi-level optimization problem\
-		<img src = '/AutoML-Meta/images/maml1.png' width='400'>
-	- Inner level: SGD\
-		<img src = '/AutoML-Meta/images/maml2.png' width='400'>
+	- A bi-level optimization problem
+		- θ = argminF(θ), where F(θ)=1/M ΣL(Alg(θ, Dtr), Dte)
+	- Inner level: SGD
+		- φi := Alg(θ, Dtr) = θ - α∇θ L(θ, Dtr)
 - Chelsea Finn and Sergey Levine. Meta-learning and universality: Deep representations and
 gradient descent can approximate any learning algorithm. 2017
 - Maruan Al-Shedivat, Trapit Bansal, Yuri Burda, Ilya Sutskever, Igor Mordatch, and Pieter
