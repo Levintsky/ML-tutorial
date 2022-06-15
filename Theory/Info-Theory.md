@@ -10,32 +10,49 @@
 - Stephanie E Palmer, Olivier Marre, Michael J Berry, and William Bialek. Predictive information in a sensory population. PNAS'15
 
 ## Deep Learning
-- N. Tishby and N. Zaslavsky. Deep learning and the information bottleneck principle. In IEEE Information Theory Workshop, 2015
-- Alessandro Achille and Stefano Soatto. Information dropout: Learning optimal representations through noisy computation. 2016.
-- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
-	- Formulation:\
-		<img src="/Basic-ML/images/info-theory/dvib-1.png" alt="drawing" width="450"/>
-	- The first term in RIB encourages Z to be predictive of Y;
-	- The second term encourages Z to "forget" X;
-	- Essentially it forces Z to act like a minimal sufficient statistic of X for predicting Y;
-	- Formulation: we assume p(Z|X,Y) = p(Z|X), corresponding to the Markov chain Y ↔ X ↔ Z. This restriction means that our representation Z cannot depend directly on the labels Y. This opens the door to **unsupervised representation learning**;
-	- I(z;y) lower-bound:\
-		<img src="/Basic-ML/images/info-theory/dvib-2.png" alt="drawing" width="450"/>
-	- I(z;x) upper-bound:\
-		<img src="/Basic-ML/images/info-theory/dvib-3.png" alt="drawing" width="450"/>
-	- Put together:\
-		<img src="/Basic-ML/images/info-theory/dvib-4.png" alt="drawing" width="450"/>
-	- Results on mnist: different classes;\
-		<img src="/Basic-ML/images/info-theory/dvib-5.png" alt="drawing" width="450"/>
-	- Connection with VAE: no Y, just index i=1/N, each item a class, then:\
-		<img src="/Basic-ML/images/info-theory/dvib-6.png" alt="drawing" width="450"/>
-- Gabriel Pereyra, George Tuckery, Jan Chorowski, and Lukasz Kaiser. Regularizing neural networks by penalizing confident output predictions. ICLRW'17
-- Theory on DL:
+- Feature Learning, IB:
+	- N. Tishby and N. Zaslavsky. Deep learning and the information bottleneck principle. In IEEE Information Theory Workshop, 2015
+	- Alessandro Achille and Stefano Soatto. Information dropout: Learning optimal representations through noisy computation. 2016.
+	- Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
+	- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
+		- Insight: x->z->y, z as info-bottleneck
+			- Hopefully z has high MI with target y, but low MI with input x; (max-ent principle)
+			- Essentially it forces Z to act like a minimal sufficient statistic of X for predicting Y;
+		- Formulation:
+			- Input X, enc Z, goal/target y
+			- max_θ I(Z,Y;θ) s.t. I(X,Z;θ) <= Ic
+			- Goal: maximize R = I(Z,Y;θ) − βI(Z, X; θ)
+		- Assumption: Y ↔ X ↔ Z
+			- p(Z|X,Y) = p(Z|X), makes unsupervised learning possible;
+			- I(Z, Y) = E_yz[log[p(y,z)/p(y)p(z)]] = E_yz[log[p(y|z)/p(y)]]
+				- where p(y|z) = E_x[p(y|x)p(z|x)/p(z)]
+				- Approximate p(y|z) with q(y|z)
+				- I(Z,Y) >= E_yz[log[q(y|z)/p(y)]] = E_yz[log(q(y|z))] + H(y), gap: KL(p(y|z),q(y|z))
+			- I(Z, X) = E_xz[log[p(z|x)/p(z)]] = E_xz[logp(z|x)] + H(z)
+				- Approximate p(z) with r(z)
+				- I(Z,X) <= E_xz[logp(z|x)] + E_xz[logr(z)], gap KL(p(z)|r(z))
+			- Loss: I(Z,Y;θ) − βI(Z, X; θ) with ELBO;
+			- L ≈ 1/N Σn E_z|xn[logq(yn|z) - βlog[p(z|xn)/r(z)]]
+				- encoder: p(z|x) = N(z|fµe(x), fΣe(x)),
+			- p(z|x)dz = p(ε)dε
+				- JIB = 1/N Σn Eε[−logq(yn|f(xn, ε))] + βKL[p(Z|xn), r(Z)].
+		- Connection with VAE: no Y, just index i=1/N, each item a class, then:
+			- max I(Z, X) − βI(Z, xi),
+- Training behavior:
+	- Resources:
+		- https://lilianweng.github.io/lil-log/2017/09/28/anatomize-deep-learning-with-information-theory.html
+		- Information Theory in Deep Learning (Youtube): https://www.youtube.com/watch?v=bLqJHjXihK8&feature=youtu.be
+	- Two Optimization Phases:
+		- Among early epochs, the mean values are three magnitudes larger than the standard deviations.
+		- After a sufficient number of epochs, the error saturates and the standard deviations become much noisier afterward.
+		- The further a layer is away from the output, the noisier it gets, because the noises can get amplified and accumulated through the back-prop process (not due to the width of the layer).
+			<img src="/Basic-ML/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
 	- R. Shwartz-Ziv and N. Tishby. Opening the black box of deep neural networks via information. arXiv preprint arXiv:1703.00810, 2017
 		- Deep networks undergo two distinct phases consisting of an initial fitting phase and a subsequent compression phase;
 		- the compression phase is causally related to the excellent generalization performance of deep networks; 
 		- the compression phase occurs due to the diffusion-like behavior of stochastic gradient descen
 	- Andrew Michael Saxe, Yamini Bansal, Joel Dapello, Madhu Advani, Artemy Kolchinsky, Brendan Daniel Tracey, David Daniel Cox. On the Information Bottleneck Theory of Deep Learning. ICLR'18
+- Gabriel Pereyra, George Tuckery, Jan Chorowski, and Lukasz Kaiser. Regularizing neural networks by penalizing confident output predictions. ICLRW'17
 - IM Estimation:
 	- Nowozin, S., Cseke, B., and Tomioka, R. f-gan: Training generative neural samplers using variational divergence minimization. NIPS'16
 	- **MINE**: Ishmael Belghazi, Aristide Baratin, Sai Rajeswar, Sherjil Ozair, Yoshua Bengio, Aaron Courville, and R Devon Hjelm. Mine: mutual information neural estimation. ICML'18
@@ -81,17 +98,10 @@
 - Yihan Jiang, Hyeji Kim, Himanshu Asnani, Sreeram Kannan, Sewoong Oh, Pramod Viswanath. Turbo Autoencoder: Deep learning based channel codes for point-to-point communication channels
 
 ## Information Theory in DL
-- Resources:
-	- https://lilianweng.github.io/lil-log/2017/09/28/anatomize-deep-learning-with-information-theory.html
-	- Information Theory in Deep Learning (Youtube): https://www.youtube.com/watch?v=bLqJHjXihK8&feature=youtu.be
-- Two Optimization Phases:
-	- Among early epochs, the mean values are three magnitudes larger than the standard deviations. After a sufficient number of epochs, the error saturates and the standard deviations become much noisier afterward. The further a layer is away from the output, the noisier it gets, because the noises can get amplified and accumulated through the back-prop process (not due to the width of the layer).
-		<img src="/Basic-ML/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
 - Learning Theory:
 	- Old Generalization Bounds:
 		- Read https://mostafa-samir.github.io/ml-theory-pt1/ and https://mostafa-samir.github.io/ml-theory-pt2/ for ML theory;
 			<img src="/Basic-ML/images/info-theory/old-bound.png" alt="drawing" width="450"/>
 	- New Input compression bound:\
 			<img src="/Basic-ML/images/info-theory/new-bound.png" alt="drawing" width="450"/>
-- Alemi, A. A., Poole, B., Fischer, I., Dillon, J. V., Saurous, R. A., and Murphy, K. An information-theoretic analysis of deep latent-variable models. 2017
 - Marylou Gabrié, Andre Manoel, Clément Luneau, Jean Barbier, Nicolas Macris, Florent Krzakala, Lenka Zdeborová. Entropy and mutual information in models of deep neural networks. NIPS'18
