@@ -41,6 +41,8 @@
 
 ## Misc
 - Y. Zhu, C. Zhao, J. Wang, X. Zhao, Y. Wu, and H. Lu. Couplenet: Coupling global structure with local parts for object detection. ICCV'17
+- Zheng Ge, Songtao Liu, Feng Wang, Zeming Li, Jian Sun. YOLOX: Exceeding YOLO Series in 2021. CVPR'21
+	- https://github.com/Megvii-BaseDetection/YOLOX
 
 ## Backbone
 - Legacy:

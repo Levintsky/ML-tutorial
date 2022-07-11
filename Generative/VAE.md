@@ -1,10 +1,11 @@
 # Variational Auto Encoder
 
 ## Basics
-- ELBO: logp(x) ≥ E_q(z)[logp(x,z)-logq(z)]
+- ELBO: logp(x) ≥ E_q(z)[logp(x,z)-logq(z)] (check VI)
 	- LatentGMM/...: p(x,z) = p(x)p(z|x)
 	- = E_q(z)[logp(x,z)] + H(q(z))
-- VAE: logp(x) ≥ L = E_q(z|x)[logp(x|z)] - KL(q(z|x)||p(z))
+- VAE: q(z) as q(z|x), p(x,z) as p(z)p(x|z) in ELBO
+	- logp(x) ≥ L = E_q(z|x)[logp(x|z)] - KL(q(z|x)||p(z))
 	- Main diff: p(x,z) = p(x|z)p(z), b/c p(z|x) intractable;
 	- Gap: KL(q(z|x)||p(z|x))
 
@@ -27,25 +28,41 @@
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
 - **VAE**: Diederik P Kingma and Max Welling. Auto-encoding variational bayes. ICLR'14
 	- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
-	- **BCE** (Binary Cross Entropy) for reconstruction (mnist)\
-		<img src="/Generative/images/vae/vae-elbo.png" alt="drawing" width="500"/>
-		<img src="/Generative/images/vae/vae-elbo2.png" alt="drawing" width="500"/>
+	- **BCE** (Binary Cross Entropy) for reconstruction (mnist)
 - **DLGM**: Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML'14
 	- Graphical model:\
 		<img src="/Generative/images/vae/vae-dlgm-1.png" alt="drawing" width="350"/>
-	- Top-down generative process:\
-		<img src="/Generative/images/vae/vae-dlgm-2.png" alt="drawing" width="350"/>
-	- Reparametrization trick:\
-		<img src="/Generative/images/vae/vae-dlgm-3.png" alt="drawing" width="350"/>
-	- Algorithm:\
-		<img src="/Generative/images/vae/vae-dlgm-4.png" alt="drawing" width="350"/>
+	- Top-down generative process: from hL -> h1 -> v;
+		- ξl ~ N(ξl|0, I), l=1, ..., L
+		- hL = GL ξL
+		- hl = Tl(hl+1) + Gl ξl, l=1, ..., L-1
+		- v ~ π(v|T0(h1))
+	- Reparametrization trick: p(v, h) = p(v, ξ)
+	- Algorithm: data V NxD;
+		- Sample mini-batch v;
+		- Bottom up: ξn ~ q(ξn|vn)
+			- q(ξ|V, θ) = Πn Πl N(ξn,l|μl(vn), Cl(vn))
+		- Top down: h ~ h(ξ)
+			- hl = Tl(hl+1) + Gl ξl
+		- Upgrade gradient, SGD:
+			- ∇θg F(v) = -Eq[∇θg logp(V|h)] + 1/κ θg
+			- ∇μl F(v) = -Eq[∇ξl logp(v|h(ξ))] + μl
+			- Let C = RR'
+			- ∇Rl F(v) = -1/2 Eq[εl,j ∇ξl logp(v|h(ξ))] + 1/2 ∇Rl[TrCn,l - log|Cn,l|]
+			- ∇θr F(v) = ∇μF(v) ∂μ/∂θr + Tr(∇RF(v) ∂R/∂θr)
 - Semi-VAE: Kingma, D.P., Jimenez Rezende, D., Mohamed, S., Welling, M.: Semi-supervised learning with deep generative models. NIPS'14
-	- Problem setup: some (x, y) pairs, some x only;\
-		<img src="/Generative/images/vae/vae-semi1.png" alt="drawing" width="300"/>
-	- Formulation:\
-		<img src="/Generative/images/vae/vae-semi2.png" alt="drawing" width="500"/>
-- **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS 2015\
-	<img src="/Generative/images/vae/cVAE.png" alt="drawing" width="450"/>
+	- Problem setup: some (x, y) pairs, some x only;
+	- Formulation:
+		- Generative: p(x|y, z)
+		- Recognition: q(z,y|x) = q(y|x)q(z|x,y)
+	- Formulation:
+		- Known y: logp(x,y) >= Eq(z|x,y)[logpθ(x|y, z) + logpθ(y) + logp(z) − logqφ(z|x, y)] = −L(x, y);
+		- Unknown y: logp(x) >= Eq(y,z|x)[log pθ(x|y, z) + log pθ(y) + log p(z) − log qφ(y, z|x)]
+			- = Σy q(y|x)(-L(x,y)) + H(q(y|x))
+- **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS'15
+	- Insight: condition everything on class c;
+	- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
+- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. ICML'16
 - **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
 	- The negative loss for connection with VAE; (Check Basic-ML/Info-Theory)
 
@@ -61,7 +78,7 @@
 	- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 	<img src="/Generative/images/vae/beta-vae.png" alt="drawing" width="450"/>
 - DIP-VAE: Kumar, A., Sattigeri, P., and Balakrishnan, A. Variational inference of disentangled latent concepts from unlabeled observations. ICLR'17
-	- Extent beta-VAE by decomposing the KL-divergences into multiple terms, and only increase the weight on terms that analytically disentangles the models;
+	- Extend β-VAE by decomposing the KL-divergences into multiple terms, and only increase the weight on terms that analytically disentangles the models;
 - AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18\
 	<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
 - **β-TCVAE**: Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
@@ -82,9 +99,12 @@
 ## Discrete
 - **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
 	- VAE with discrete latent variables, K-means style codebook;
-		- q(z=ek|x) = I(k=argmin|ze(x)-ei|)
+		- Encoder: E(.): x -> e;
+		- Decoder: D(.): e -> x;
+		- Quantization: q(z=ek|x) = I(k=argmin|ze(x)-ei|)
+			- Pick ei from codebook s.t. closest to E(x);
 	- L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
-		- First term: x-domain reconstruction loss;
+		- 1st term: x-domain reconstruction loss;
 		- 2nd term: VQ-loss;
 		- 3rd term: commitment loss; encoder output stay close to the embedding space, avoid fluctuating between codes;
 - **VQ-VAE-2**: Ali Razavi, Aäron van den Oord, Oriol Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
@@ -98,7 +118,6 @@
 
 ## Unclassified
 - **DeepMind**:
-	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. ICML'16.
 	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
 		- https://github.com/ericjang/draw
 		- https://github.com/chenzhaomin123/draw_pytorch

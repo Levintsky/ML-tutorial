@@ -38,12 +38,35 @@
 	- CLIP-guidance v.s. classifier-free guidance;
 
 ## Embedding, Feature Learning
-- Embedding:
-	- **CLIP**: Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
-- Video:
-	- C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
+- Protocol:
+	- BERT-based:
+		- VilBert, VisualBERT, VL-BERT, UNITER, OSCAR, VideoBERT, ActBERT, Unicoder-VL, LXMERT, MERLOT, HERO, ALBEF, ...
+	- Dual-encoder contrastive:
+		- CLIP, ALIGN, CoCa, Florence, MIL-NCE, BASIC, LiT, FILIP, MMV;
+	- VL models;
+		- SimVLM, Virtex, MAGMA, Frozen, VisualGPT, ClipClap, VC-GPT, CM3, BLIP, Uni-Perceiver, VL-BART, VL-T5, VLM, Flamingo;
+- BERT-style:
+	- **ViLBERT**: Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee. ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks. NeurIPS'19
+	- **VideoBERT**: C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
 	- Gunnar A. Sigurdsson, Jean-Baptiste Alayrac, Aida Nematzadeh, Lucas Smaira, Mateusz Malinowski, João Carreira, Phil Blunsom, Andrew Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
 		- Extend VideoBert to multilingual
+	- Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang. VisualBERT: A Simple and Performant Baseline for Vision and Language.
+	- Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai. VL-BERT: Pre-training of Generic Visual-Linguistic Representations. ICLR'20
+	- Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu. UNITER: UNiversal Image-TExt Representation Learning. ECCV'20
+	- Xiujun Li, Xi Yin, Chunyuan Li, Pengchuan Zhang, Xiaowei Hu, Lei Zhang, Lijuan Wang, Houdong Hu, Li Dong, Furu Wei, Yejin Choi, Jianfeng Gao. Oscar: Object-Semantics Aligned Pre-training for Vision-Language Tasks
+- Dual-encoder contrastive:
+	- **CLIP**: Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
+	- **ALIGN**: Chao Jia, Yinfei Yang, Ye Xia, Yi-Ting Chen, Zarana Parekh, Hieu Pham, Quoc V. Le, Yunhsuan Sung, Zhen Li, Tom Duerig. ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
+	- CoCa: Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, Yonghui Wu. CoCa: Contrastive Captioners are Image-Text Foundation Models.
+	- **Florence**: Lu Yuan, Dongdong Chen, Yi-Ling Chen, Noel Codella, Xiyang Dai, Jianfeng Gao, Houdong Hu, Xuedong Huang, Boxin Li, Chunyuan Li, Ce Liu, Mengchen Liu, Zicheng Liu, Yumao Lu, Yu Shi, Lijuan Wang, Jianfeng Wang, Bin Xiao, Zhen Xiao, Jianwei Yang, Michael Zeng, Luowei Zhou, Pengchuan Zhang. Florence: A New Foundation Model for Computer Vision.
+	- **MIL-NCE**: Antoine Miech, Jean-Baptiste Alayrac, Lucas Smaira, Ivan Laptev, Josef Sivic, Andrew Zisserman. End-to-End Learning of Visual Representations from Uncurated Instructional Videos.
+		- https://www.di.ens.fr/willow/research/mil-nce/
+- Visual LM: vision+prefix -> predict postfix text;
+	- **VirTex**: Karan Desai, Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. CVPR'21
+	- **SimVLM**: Zirui Wang, Jiahui Yu, Adams Wei Yu, Zihang Dai, Yulia Tsvetkov, Yuan Cao. SimVLM: Simple Visual Language Model Pretraining with Weak Supervision. ICLR'22
+	- MAGMA – Multimodal Augmentation of Generative Models through Adapter-based Finetuning.
+	- Jun Chen, Han Guo, Kai Yi, Boyang Li, Mohamed Elhoseiny. VisualGPT: Data-efficient Adaptation of Pretrained Language Models for Image Captioning. CVPR'22
+	- **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
 - Retrieval:
 	- IBM, Dialog-based Interactive Image Retrieval, NIPS'18
 - Downstream tasks:

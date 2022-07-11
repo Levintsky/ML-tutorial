@@ -9,6 +9,8 @@
 	- MRF, CRF;
 	- Learning:
 	- Inference:
+	- CRF (discriminative MRF)
+	- Structured/Latent SVM;
 - Inference:
 	- Exact inference:
 		- VE;
@@ -61,27 +63,97 @@
 	- 10.5.3 Markov blanket and full conditionals
 - 10.6 Influence (decision) diagrams
 
-## Undirected Graphical Models
+## Undirected Graphical Models (PRML, Chap 8.3, Kevin Murphy, Chap 19)
 - PRML, Chap 8.3
 	- MRF: p(x) = 1/Z ∏ ψc(xc)
 	- CRF
 	- M. Schmidt. UGM: A Matlab toolbox for probabilistic undirected graphical models.
 		- http://www.cs.ubc.ca/~schmidtm/Software/UGM.html. 
 - Kevin Murphy, Chap 19
-	- Hammersley-Clifford Theorem; Gibbs distribution; energy-based model;
-	- Examples: Ising; Hopfield networks; Potts model (generalized Ising to multiple states);
-		- Gaussian MRF: 
-	- Learning:
-		- Exponential family:
-			- p(y|θ) = 1/Z(θ) exp[Σ θ_c φ_c(y)]
-			- l(θ) = 1/N Σlogp(yi|θ) = 1/N Σ_i[Σ_c θφ(y)-logZ(θ)]
-			- ∂l/∂θc = [1/N Σ_i φ_c(yi)] - E[φ_c(yi)]
-		- Pseudo-likelihood:\
-			<img src="/Bayes/images/gm/pseudo-likelihood.png" alt="drawing" width="400"/>
-		- Stochastic maximum likelihood:\
-			<img src="/Bayes/images/gm/batch-ml.png" alt="drawing" width="400"/>
+- 19.1 Introduction
+- 19.2 Conditional independence properties of UGMs
+	- 19.2.1 Key properties
+		- The set of nodes that renders a node t conditionally independent of all the other nodes in the graph is called t's Markov blanket: mb(t)
+		- t ⊥ V \ cl(t)|mb(t)
+		- cl(t) := mb(t) ∪ {t} is the closure of node t;
+	- 19.2.2 An undirected alternative to d-separation
+	- 19.2.3 Comparing directed and undirected graphical models
+- 19.3 Parameterization of MRFs
+	- 19.3.1 Hammersley-Clifford Theorem
+	- 19.3.2 Representing potential functions
+- 19.4 Examples of MRFs
+	- 19.4.1 Ising model
+		- logp(y) = −Σwst ys yt = −1/2y'Wy
+		- logp(y) = −Σwst ys yt −Σbsys = −1/2y'Wy + by (bias term, external field)
+	- 19.4.2 Hopfield networks
+	- 19.4.3 Potts model
+		- generalized Ising to multiple states
+	- 19.4.4 Gaussian MRFs
+		- p(y|θ) ∝ exp[ηy − 1/2y'Λy]
+	- 19.4.5 Markov logic networks
+- 19.5 Learning
+	- 19.5.1 Training maxent models using gradient methods
+		- p(y|θ)= 1/Z(θ) exp[Σ_c θc'φc(y)]
+		- ∂l/∂θc = [1/N Σ_i φ_c(yi)] - E[φ_c(yi)]
+	- 19.5.2 Training partially observed maxent models
+		- p(y, h|θ) = 1/Z(θ) exp[Σ_c θc' φc(h, y)]
+	- 19.5.3 Approximate methods for computing the MLEs of MRFs
+	- 19.5.4 Pseudo-likelihood:
+		- Product of full conditionals (compositive likelihood)
+	- 19.5.5 Stochastic maximum likelihood: (minibatch)
+		- ∇l(θ) = 1/N Σ_i[φ(yi) − E[φ(y)]] with batchsize B;
+		- For E[φ(y)] sample y from p(y|θk), then MC estimator with S samples;
+	- 19.5.6 Feature induction for maxent models
+	- 19.5.7 Iterative proportional fitting (IPF)
+- 19.6 Conditional random fields (CRFs)
+	- Also a discriminative random field (Kumar and Hebert 2003), is just a version of an MRF where all the clique potentials are conditioned on input features
+		- p(y|x, w) = 1/Z(x,w) ∏c ψc(yc|x, w)
+		- x: feature, y: label;
+	- 19.6.2 Applications of CRFs
+		- Pos-tagging: ψt(yt|xt) discrimininative (NN, RVM); ψst(ys,yt): language bigram;
+		- Noun phrase chunking;
+		- NER;
+		- Stereo vision;
+	- 19.6.3 CRF training
+		- l(w) = 1/N Σlogp(yi|xi, w) = 1/N Σi[Σc wc' φc(yi, xi) − log Z(w, xi)]
+		- ∂l/∂wc = 1/N Σi[φc(yi, xi) - E[φc(y, xi)]]
+- 19.7 Structural SVMs
+	- 19.7.1 SSVMs: a probabilistic view
+		- REL(w) = −logp(w) + Σi[log[Σy L(yi, y)p(y|xi, w)]]
+		- p(y|x,w) = exp(wφ(x,y)) / Z(x,w)
+		- p(w) = exp[-E(w)]/Z
+		- Regard sum-log as a softmax
+		- REL(w) ~ −E(w) + Σi[max_y[L(yi,y)+wφ(xi,y)] - wφ(xi,yi)]
+	- 19.7.3 Cutting plane methods for fitting SSVMs
+	- 19.7.4 Online algorithms for fitting SSVMs
+	- 19.7.5 Latent structural SVMs
+		- p(y,h|x,w) = exp(wφ(x,y,h)) / Z(x,w)
+		- Z(x,w) = Σy,h exp[wφ(x,y,h)]
+		- REL(w) ~ −E(w) + Σi[max_y,h[L(yi,y,h)+wφ(xi,y,h)]] - Σi max_h[wφ(xi,yi,h)]
+		- Solvable by CCCP;
 
-## Inference in Graphical Models (PRML, Chap 8.4)
+## Inference in Graphical Models (PRML, Chap 8.4, Kevin Murphy Chap-20)
+- 20.1 Introduction
+- 20.2 Belief propagation for trees
+	- 20.2.1 Serial protocol
+		- p(x|v) = 1/Z(v) ∏s ψs(xs) ∏s,t ψs,t(xs, xt)
+		- Collect evidence bottom-up;
+			- bel-t(xt) = p(xt|vt−) = 1/Zt ψt(xt) ∏c m−c→t(xt)
+			- m−s→t(xt) = Σs ψst(xs, xt) bel−s(xs)
+		- Root (with all the evidence)
+			- bel(xr) = p(xr|v) = p(xt|vr−) ∝ ψr(xr) ∏c m−c→r(xr)
+		- Message down:
+			- bel(xs) = p(xs|v) ∝ bel−s (xs) m+t→s(xt)
+		- Also: sum-product;
+	- 20.2.2 Parallel protocol
+	- 20.2.3 Gaussian BP
+	- 20.2.4 Other BP variants
+- 20.3 The variable elimination algorithm
+	- Max-product
+- 20.4 The junction tree algorithm
+- 20.5 Computational intractability of exact inference in the worst case
+	- 20.5.1 Approximate inference
+
 - Exact inference:
 	- Variable elimination;
 	- Factor graph;

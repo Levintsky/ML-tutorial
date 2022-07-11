@@ -1,5 +1,15 @@
 # Boosting, Ensemble Learning
 
+## Basics
+- Basic learner:
+	- CART, MART
+- Ensemble:
+	- Bagging: random forest, ...
+	- Boosting: greedy (Ada, Grad, ...)
+		- XGBoost;
+	- Mixture of expert;
+- LambdaMart;
+
 ## Adaptive Basis Function Models (Kevin-Murphy-Chap-16)
 - 16.1 Introduction
 	- f(x) = w0 + Σwmφm(x)

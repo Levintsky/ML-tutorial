@@ -11,10 +11,10 @@
 
 ## PRML (Chapter 5)
 - Feed-forward:
-	- Notation: aj = sum_i w_ji xi + wj0;
+	- Notation: aj = Σi w_ji xi + wj0;
 	- Weight space symmetry: tanh(-a) = -tanh(a);
-	- Target regression: p(t|w, x) = N(y(x, w), beta^(-1)), with beta as the precision;
-	- Cross entropy loss: -sum t_k ln y_k(x, w), with softmax;
+	- Target regression: p(t|w, x) = N(y(x, w), β^(-1)), with β as the precision;
+	- Cross entropy loss: -Σ t_k ln y_k(x, w), with softmax;
 - Training:
 	- SGD, Hessian;
 - Error backprop: Jacobian matrix;
@@ -53,8 +53,9 @@
 ## Differentiable Sampling (Reparametrization Trick)
 - Make sampling process differentiable;
 - **Score-function**: the gradient of the log-likelihood function with respect to the parameter vector;
-- Reinforce: unbiased but high variance\
-	<img src="/DL/images/basics/reinforce.png" alt="drawing" width="400"/>
+	- s(θ) = ∂logL(θ)/∂θ; L: likelihood;
+- Reinforce: unbiased but high variance:
+	- ∇θ Ez[f(z)] = Ez[f(z) ∇θlogp(z;θ)]
 - Variance reduction: control-variate baseline\
 	<img src="/DL/images/basics/var-reduce.png" alt="drawing" width="400"/>
 - **DARN**: K. Gregor, I. Danihelka, A. Mnih, C. Blundell, and D. Wierstra. Deep autoregressive networks. arxiv'13
@@ -73,14 +74,20 @@
 - **VIMCO**: A. Mnih and D. J. Rezende. Variational inference for monte carlo objectives. arXiv'16
 	<img src="/DL/images/basics/vimco.png" alt="drawing" width="400"/>
 - Gumbel-Softmax:
-	- Basics: differentiable sample y s.t. y={v1, v2, ...} with prob {alpha1, alpha2, ...}
-	- Gumble distribution:
+	- Basics: differentiable sample y s.t. y={v1, v2, ...} with prob {α1, α2, ...}
+	- Gumbel distribution:
 		- pdf: f(x) = exp(-(x+exp(-x)))
 		- cdf: F(x) = exp(-exp(-x))
-		- To sample from gumble, **G=-log(-log(U))**, with U ~ Uniform(0, 1)
-		- **Key insight**: With prob {alpha1, alpha2, ...}, Gumble var {g1, g2, ...}, then if we let ind=argmax(log alpha_k + gk), then p(ind=k)=alpha_k;
-		- Proof: with uk=log a_k+gk, p(ind=k)=int prod p(uj < uk) f(uk) duk, where p(uj < uk) can be obtained from Gumbel cdf F(x)
-			<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
+		- To sample from gumbel, **G=-log(-log(U))**, with U ~ Uniform(0, 1)
+	- **Key insight**: sample {z1, z2, ...} with prob {α1, α2, ...}:
+		- Sample Gumbel var {g1, g2, ...} ~ -log(-log(u));
+		- Let ind = argmax(log α_k + gk)
+		- Then p(ind=k) = α_k;
+	- Proof: with uk=log α_k+gk,
+		- p(ind=k) = ∫ Πp(uj < uk) f(uk) duk
+		- p(uj < uk) ~ Gumbel cdf F(x);
+		- f(uk) ~ Gumbel pdf;
+		<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
 	- Differentiable sampling:
 		- argmax is not differentiable;
 		- we can use f(x, tau) = softmax(x/tau), for vector x=(x1, x2, ...)
@@ -173,9 +180,19 @@
 - Maurice Weiler, Mario Geiger, Max Welling, Wouter Boomsma, Taco Cohen. 3D Steerable CNNs: Learning Rotationally Equivariant Features in Volumetric Data. NIPS'18
 
 ## Invert NN
-- Reconstruct p(x\|z) with prior on x
+- Invertible/reversible:
+	- D. Maclaurin, D. K. Duvenaud, and R. P. Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
+		- made use of the reversible nature of SGD to tune hyperparameters via GD;
+	- NICE: unit determinant Jacobian;
+		- y1 = x1;
+		- y2 = x2 + F(x1);
+	- Real NVP:
+		- y1 = x1;
+		- y2 = x2 exp(F(x1)) + G(x1)
+	- **RevNet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The Reversible Residual Network: Backpropagation Without Storing Activations. NIPS'17
+- Reconstruct p(x|z) with prior on x
 	- Mahendran, A., and Vedaldi, A. Understanding deep image representations by inverting them. CVPR'15
-		- Insight: find x s.t. representation phi(x) match with prior regularization plus a regularization:
+		- Insight: find x s.t. representation φ(x) match with prior regularization plus a regularization:
 			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
 	- Dosovitskiy, A., and Brox, T. Inverting visual representations with convolutional networks. CVPR'16
 		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP;\

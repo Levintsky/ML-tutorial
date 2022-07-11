@@ -3,7 +3,11 @@
 ## Basics
 - VI, ELBO:
 	- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
-	- ELBO(q) = E(log p(z, x)) - E(log q(z))
+	- logp(x) <= ELBO(q) = E_q(z)[log p(z, x)] - H(q)
+		- logp(x) = log[∫p(x,z)dz]
+		- = log[∫p(x,z)q(z)/q(z)dz]
+		- = log[E_q(z)[logp(x,z)/q(z)]]
+		- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
 	- Special case: mean field;
 		- qj(xj) ~ exp(E_-qj[logp(x)]); marginalize out other var xi with qi(.);
 - VBEM: infer z and learn θ; p(θ,z1..N|D) ~ q(θ)Πqi(zi)
@@ -88,7 +92,7 @@
 	- Wu Lin, Mohammad Emtiyaz Khan, Mark Schmid. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
 	- Belhal Karimi, Hoi-To Wai, Eric Moulines, Marc Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
 
-## VI (Kevin Murphy, Chap-21)
+## VI (Kevin Murphy, Chap-21, 22)
 - 21.1 Intro
 - 21.2 VI
 	- KL(p|q) = Σ_x p(x)log(p/q); (intractable, b/c Expectation over p(x))
@@ -134,11 +138,52 @@
 		- Variational M-step: logq(θ) by integral q(z)
 - 21.7 Variational message passing and VIBES
 	- One can then sweep over the graph, updating nodes one at a time, in a manner similar to Gibbs sampling. This is known as variational message passing or VMP (Winn and Bishop 2005)
-21.8 Local variational bounds
+- 21.8 Local variational bounds
 	- Variational logistic regression
 		- p(y|X,w) = Πexp(yiηi-lse(ηi)), with ηi=Xiwi
 			- log-sum-exp or lse(ηi)=log(1+Σexp(Σηim))
 		- Not conjugate to Gaussian prior;
+- 22.1 Introduction
+- 22.2 Loopy belief propagation: algorithmic issues
+	- 22.2.1 A brief history
+	- 22.2.2 LBP on pairwise models
+		- Initialize message ms→t=1, beliefs bel(xs)=1;
+		- ms→t(xt) = Σs[ψs(xs)ψst(xs, xt) ∏u mu→s(xs)]
+		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
+	- 22.2.3 LBP on a factor graph
+	- 22.2.4 Convergence
+		- Damping: 
+		- TRP, TRW
+	- 22.2.5 Accuracy of LBP
+- 22.3 Loopy belief propagation: theoretical issues
+	- 22.3.1 UGMs represented in exponential family form
+	- 22.3.2 The marginal polytope
+		- The space of allowable μ vectors is called the marginal polytope, and is denoted M(G), where G is the structure of the graph defining the UGM.
+	- 22.3.3 Exact inference as a variational optimization problem
+		- L(q) = −KL(q||p)+logZ = Eq[logp'(x)]+H(q) ≤ logZ
+		- maxμ∈M θ'μ + H(μ)
+	- 22.3.4 Mean field as a variational optimization problem
+		- inner approximation: MF(G) ⊆ M(G), some edges (sufficient stat) are set as zero;
+	- 22.3.5 LBP as a variational optimization problem
+		- Σx τs(xs) = 1; normalization constraint;
+		- Σt τs(xs, xt) = τs(xs); marginalization constraint.
+		- L(G) := {τ ≥ 0 : (1) holds ∀s ∈ V and (2) holds ∀(s, t) ∈ E}
+	- 22.3.6 Loopy BP vs mean field
+- 22.4 Extensions of belief propagation
+	- 22.4.1 Generalized belief propagation
+	- 22.4.2 Convex belief propagation
+- 22.5 Expectation propagation
+	- 22.5.1 EP as a variational inference problem
+	- 22.5.2 Optimizing the EP objective using moment matching
+	- 22.5.3 EP for the clutter problem
+- 22.6 MAP state estimation
+	- 22.6.1 Linear programming relaxation
+		- argmax_x∈X m θφ(x) = argmax_μ∈M(G) θ'μ
+	- 22.6.2 Max-product belief propagation
+	- 22.6.3 Graphcuts
+		- Submodular: Euv(1, 1) + Euv(0, 0) ≤ Euv(1, 0) + Euv(0, 1)
+	- 22.6.4 Experimental comparison of graphcuts and BP
+	- 22.6.5 Dual decomposition
 
 ## Approximate Inference (PRML-Chap-10, Kevin-Murphy-Chap-21)
 - Basics: Many problems can be expressed in terms of an optimization problem in which the quantity being optimized is a functional. This is done by restricting the range of functions over which the optimization is performed. Our goal is to find an approximation for the posterior distribution p(Z|X) as well as for the model evidence p(X).
