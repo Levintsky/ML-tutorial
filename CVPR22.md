@@ -144,7 +144,7 @@ Chen, Belinda Zeng, Trishul Chilimbi, Junzhou Huang
 - Spatially-Adaptive Multilayer Selection for GAN Inversion and Editing, Gaurav Parmar, Yijun Li, Jingwan Lu, Richard Zhang, Jun-Yan Zhu, Krishna Kumar Singh
 
 ## 3D
-- PnP:
+- PnP, pose-estimation:
 	- Homography Loss for Monocular 3D Object Detection, Jiaqi Gu, Bojian Wu, Lubin Fan, Jianqiang Huang, Shen Cao, Zhiyu Xiang, Xian-Sheng Hua
 	- EPro-PnP: Generalized End-to-End Probabilistic Perspective-N-Points for Monocular Object Pose Estimation, Hansheng Chen, Pichao Wang, Fan Wang, Wei Tian, Lu Xiong, Hao Li
 	- Projective Manifold Gradient Layer for Deep Rotation Regression, Jiayi Chen, Yingda Yin, Tolga Birdal, Baoquan Chen, Leonidas J. Guibas, He Wang
@@ -180,7 +180,6 @@ Chen, Belinda Zeng, Trishul Chilimbi, Junzhou Huang
 Georgia Gkioxari, Nikhila Ravi, Justin Johnson
 - -SfT: Shape-From-Template With a Physics-Based Deformation Model, Navami Kairanda, Edith Tretschk, Mohamed Elgharib, Christian Theobalt, Vladislav Golyanik
 - ROCA: Robust CAD Model Retrieval and Alignment From a Single Image, Can Gümeli, Angela Dai, Matthias Nießner
-- Learning To Solve Hard Minimal Problems, Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla
 - Neural 3D Scene Reconstruction With the Manhattan- World Assumption, Haoyu Guo, Sida Peng, Haotong Lin, Qianqian Wang, Guofeng Zhang, Hujun Bao, Xiaowei Zhou
 - Input-Level Inductive Biases for 3D Reconstruction, Wang Yifan, Carl Doersch, Relja Arandjelović, João Carreira, Andrew Zisserman
 - RGB-Depth Fusion GAN for Indoor Depth Completion, Haowen Wang, Mingyuan Wang, Zhengping Che, Zhiyuan Xu, Xiuquan Qiao, Mengshi Qi, Feifei Feng, Jian Tang

@@ -1,13 +1,81 @@
 # 3D Camera Pose Estimation
 
-## Tutorials
-- VO: https://avisingh599.github.io/vision/visual-odometry-full/
-- S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV 2017
+## Basics
+- Perspective-n-Point
+	- Given: camera coord uv-c, 3D world coord XYZ-w, intrinsics K;
+	- Output: 6-DOF camera pose;
+- Tutorials
+	- VO: https://avisingh599.github.io/vision/visual-odometry-full/
+	- S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation, ICCV 2017
+
+## PnP
+- https://zhuanlan.zhihu.com/p/399140251
+- DLT:
+	- https://zhuanlan.zhihu.com/p/58648937?edition=yidianzixun
+	- s[u,v,1] = P3x4 [X,Y,Z,1]
+	- Let P3x4 := [t1; t2; t3]
+	- Because s = (t3, XYZ1)
+	- u = t1 XYZ1/t3 XYZ1 -> t1 XYZ1 - t3 XYZ1 u =0
+	- v = t2 XYZ1/t3 XYZ1 -> t2 XYZ1 - t3 XYZ1 v =0
+	- [XYZ1' 0 -u XYZ1'] [t1;t2;t3] = 0
+	- [0 XYZ1' -v XYZ1']
+	- With all points, SVD;
+- P3P: Law of cosines;
+	- https://www.cnblogs.com/mafuqiang/p/8302663.html
+	- Camera center: O;
+	- Camera 3 pts: oa, ob, oc;
+	- World: OA, OB, OC;
+	- Let x=OA/OC, y=OB/OC, v=AB^2/OC^2, uv=BC^2/OC^2, wv=AC^2/OC^2
+	- By Law of cosines:
+		- x^2 + y^2 - 2xycos(a,b) = v (1)
+		- y^2 + 1 - 2ycos(b,c) = uv
+		- x^2 + 1 - 2xcos(c,a) = wv
+	- Eliminate v with (1):
+		- (1-u)y^2 - ux^2 -cos(b,c)y + 2uxycos(a,b) + 1 = 0
+		- (1-w)x^2 - wy^2 -cos(c,a)x + 2wxycos(a,b) + 1 = 0
+	- Known:
+		- cos(a,b), cos(b,c), cos(c,a): calibrated camera;
+		- u = BC^2/AB^2, w = AC^2/AB^2: known world coord;
+	- Solve x, y, we get XYZ in camera coord;
+	- ICP to get R|t;
+- EPnP:
+	- Find 4 control points (by PCA?)
+	- World coord: pi-w = Σj αij cj-w with Σj αij=1
+	- Camera coord: pi-c = Σj αij cj-c with Σj αij=1
+		- Requires Σj αij=1 to satisfy;
+	- αij can be derived easily;
+	- Solve: 4 control points in camera coord: xj-c, yj-c;
+	- Σj αij fx xj-c + αij(cx-ui)zj-c = 0
+	- Σj αij fy yj-c + αij(cx-ui)zj-c = 0
+- BA:
+	- T = argmin 1/2 Σ|pi-c - 1/wi KTP-w|^2
+
+## BA
+- Optimality in Noisy Real World Conditions
+	- 8-points: closed form, elegant; not robust to noise;
+- Basics: Jointly estimate camera parameters and 3D coordinates
+	- Minimize reprojection error from 3D to each camera;
+	- Given: 2D coord xij on each image i
+	- Solve: 3D coord Xj; m camera pose: {Ri,Ti}i=1..m
+	- E({Ri,Ti}, {Xj}) = Σi Σj θij|xij - π(Ri,Ti, Xj)|^2
+		- θij: visibility for Xj in image i;
+- Optimizer:
+	- Gradient Descent
+	- Least Squares Estimation
+	- Newton Methods
+	- The Gauss-Newton Algorithm
+	- The Levenberg-Marquardt Algorithm: damped Gauss-Newton
+		- xt+1 = xt + Δ
+		- Levenberg: Δ = -(J'J + λI)^(-1) J'r
+		- Marquardt: Δ = -(J'J + λdiag(J'J))^(-1) J'r
+- Good summaries:
+	- Snavely, Seitz, Szeliski, Modeling the world from Internet photo collections, IJCV 2008.
+	- **PTAM**: Klein, Murray, Parallel Tracking and Mapping (PTAM) for Small AR Workspaces, ISMAR 2007
 
 ## Unclassified
 - David F. Fouhey, Abhinav Gupta, and Martial Hebert. Data-driven 3D primitives for single image understanding. ICCV'13
 - Shubham Tulsiani and Jitendra Malik. Viewpoints and keypoints. CVPR'15
-- Derek Hoiem, Alexei A. Efros, and Martial Hebert.Geometric context from a single image. ICCV'15
+- Derek Hoiem, Alexei A. Efros, and Martial Hebert. Geometric context from a single image. ICCV'15
 - Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
 - Dense RGB-D Tracking:
 	- Benchmark: Sturm, Engelhard, Endres, Burgard, Cremers, IROS 2012

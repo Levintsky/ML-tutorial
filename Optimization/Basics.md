@@ -4,6 +4,13 @@
 - Gurobi
 - Mosek
 
+## Learning to Optimize
+- Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla. Learning To Solve Hard Minimal Problems. CVPR'22
+	- homotopy continuation (HC) + ML
+	- Learn to initialize g(.)
+	- Applications:
+		- 5pt
+
 ## Regularization
 - M. Jordan. Stochastic Cubic Regularization for Fast Nonconvex Optimization. NIPS'18
 - NIPS'19
