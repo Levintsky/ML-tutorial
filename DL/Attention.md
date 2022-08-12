@@ -1,14 +1,44 @@
 # Attention Model
 
+## Tutorials
+- Vanilla:
+	- A very good intro: http://jalammar.github.io/illustrated-transformer/
+	- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
+	- https://github.com/Kyubyong/transformer
+	- Pytorch: https://github.com/jadore801120/attention-is-all-you-need-pytorch
+- Basics:
+	- MHA: x = x + mha(x), followed by a layer-norm (optional);
+		- k, q, v = linear(x)
+		- attn = softmax(kq)
+		- out = linear(attn v)
+	- Feedforward: x = x + ff(x)
+		- ff: x -> FC -> GeLU -> FC -> layer-norm;
+- Position encoding:
+	- Important since set op shuffle-invariant;
+	- Fourier;
+	- Relative pos bias;
+	- Could be added or concat:
+		- x = x + pos-enc
+			- e.g. Swin: Attn(K,Q,V) = softmax(qk/d+B)V
+			- B: learnable bias;
+		- x = [x; pos-enc]
+- Task token:
+	- Used in BERT and VIT;
+
 ## Attention Modules
-- Layers:
+- Attention layers:
 	- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NIPS'17
-		- A very good intro: http://jalammar.github.io/illustrated-transformer/
-		- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
-		- https://github.com/Kyubyong/transformer
-		- Pytorch: https://github.com/jadore801120/attention-is-all-you-need-pytorch
-			<img src="/NLP/images/transformer1.png" alt="drawing" width="500"/>
-			<img src="/NLP/images/transformer2.png" alt="drawing" width="600"/>
+	- Cross attention:
+		- **Perceiver**: Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew Zisserman, Oriol Vinyals, Joao Carreira. Perceiver: General Perception with Iterative Attention. ICML'21
+			- Q from low-dim latent space: (n, d)
+			- KV from high-dim image space: (N, D)
+			- kqv-step:
+				- Map both to same dim C, (n,C), (N,D)
+				- Attention softmax: (n, N)
+				- Value: (n, C)
+			- Linear (C, d): (n, d)
+		- **LSTR**: Mingze Xu, Yuanjun Xiong, Hao Chen, Xinyu Li, Wei Xia, Zhuowen Tu, Stefano Soatto. Long Short-Term Transformer for Online Action Detection. NeurIPS'21
+			- https://xumingze0308.github.io/projects/lstr/
 - Activation:
 	- **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
 		- Insight: channel-wise scaling (learn by MLP);
@@ -21,8 +51,15 @@
 	- Original in transformer:\
 		<img src="/NLP/images/pos-enc.png" alt="drawing" width="500"/>	
 	- Learned Position Encoding: Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. Convolutional Sequence to Sequence Learning. 2017
+	- Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, L., Shazeer, N., Ku, A., and Tran, D. Image Transformer. ICML'18
+		- Fourier;
 	- Xiangxiang Chu, Bo Zhang, Zhi Tian, Xiaolin Wei, and Huaxia Xia. Do we really need explicit position encodings for vision transformers? arxiv'21
 		- https://github.com/Meituan-AutoML/CPVT
+	- Relative position encoding (as in Swin):
+		- Han Hu, Jiayuan Gu, Zheng Zhang, Jifeng Dai, and Yichen Wei. Relation networks for object detection. CVPR'18
+		- Han Hu, Zheng Zhang, Zhenda Xie, and Stephen Lin. Local relation networks for image recognition. ICCV'19
+		- Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter J. Liu. Exploring the limits of transfer learning with a unified text-to-text transformer. JMLR'20
+		- Hangbo Bao, Li Dong, Furu Wei, Wenhui Wang, Nan Yang, Xiaodong Liu, Yu Wang, Jianfeng Gao, Songhao Piao, Ming Zhou, et al. Unilmv2: Pseudo-masked language models for unified language model pre-training. ICML'20
 
 ## Analysis
 - Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal Modeling. NIPS'18
@@ -107,16 +144,17 @@
 	- Minghao Yin, Zhuliang Yao, Yue Cao, Xiu Li, Zheng Zhang, Stephen Lin, and Han Hu. Disentangled non-local neural networks. ECCV'20
 		- Unary attention (SE-Net based) + binary attention (pairwise);
 	- **BoTNet**: Aravind Srinivas, Tsung-Yi Lin, Niki Parmar, Jonathon Shlens, Pieter Abbeel, and Ashish Vaswani. Bottleneck transformers for visual recognition. arxiv'21
+	- Tete Xiao, Mannat Singh Eric Mintun, Trevor Darrell, Piotr Dollár, Ross Girshick. Early Convolutions Help Transformers See Better. NeurIPS'21
 - Pure attention & ViT series:
 	- Prajit Ramachandran, Niki Parmar, Ashish Vaswani, Irwan Bello, Anselm Levskaya, and Jon Shlens. Stand-alone self-attention in vision models. NIPS'19
 		- Attention only, no CNN;
 		- ImageNet: 77%, not bad;
+	- Irwan Bello, Barret Zoph, Ashish Vaswani, Jonathon Shlens, and Quoc V. Le. Attention augmented convolutional networks, ICCV'19
 	- Hengshuang Zhao, Jiaya Jia, and Vladlen Koltun. Exploring self-attention for image recognition. CVPR'20
 		- Compare two SA:
-			- Pairwise: yi = sum alpha(xi, xj) beta(xj), treat as set, permutation-invariant;
-			- Patchwise: yi = sum alpha(X_Ri)j beta(xj), not set or perm-inv, strictly more powerful;
+			- Pairwise: yi = ∑ alpha(xi, xj) beta(xj), treat as set, permutation-invariant;
+			- Patchwise: yi = ∑ alpha(X_Ri)j beta(xj), not set or perm-inv, strictly more powerful;
 		- ImageNet: 77.1% patchwise;
-	- Irwan Bello, Barret Zoph, Ashish Vaswani, Jonathon Shlens, and Quoc V. Le. Attention augmented convolutional networks, 2020
 	- **ViT**: Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby. An image is worth 16x16 words: Transformers for image recognition at scale. ICLR'21
 		- https://github.com/google-research/vision_transformer
 		- ImageNet: top-1 77.9%(ViT-B), 76.5%(ViT-L);
@@ -141,21 +179,23 @@
 		- Larger patches (sentences);
 	- **PVT**: Wenhai Wang, Enze Xie, Xiang Li, Deng-Ping Fan, Kaitao Song, Ding Liang, Tong Lu, Ping Luo, and Ling Shao. Pyramid vision transformer: A versatile backbone for dense prediction without convolutions. arxiv'21
 		- https://github.com/whai362/PVT
-- **Swin Transformer**: Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV'21
-	- MARR prize winner; beats old SOTA a lot on all detection and segmentation tasks;
-	- Key insight:
-		- Shifted window: always linear to image size (ViT square), cyclic shift to speed up;
-		- Multi-scale by patch merging;
-		- Relative position bias;
-	- For object detection:
-		- HTC++, instaboost, multi-scale training, soft-NMS;
-	- https://github.com/microsoft/Swin-Transformer
-	- https://youtu.be/udY0GlYXXbE
-	- Perf:
-		- ImageNet: top-1 81.3%(Swin-T), 84.5%(Swin-L), better than EffNet, RegNet, ViT, DeiT;
-		- COCO (mini-val): AP-box 58.0%, AP-Mask 50.4%, better than Cascade R-CNN, ATSS, RepPoint, Sparse R-CNN;
-		- COCO (test): AP-box 58.7%, AP-Mask 51.1%
-		- ADE20K Seg: 53.5 mIoU, 62.8 test score, based on UperNet (mmseg);
+- CNN-style attention:
+	- Cordonnier, J.-B., Loukas, A., and Jaggi, M. On the relationship between self-attention and convolutional layers. ICLR'20
+	- **Swin Transformer**: Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV'21
+		- MARR prize winner; beats old SOTA a lot on all detection and segmentation tasks;
+		- Key insight:
+			- Shifted window: always linear to image size (ViT square), cyclic shift to speed up;
+			- Multi-scale by patch merging;
+			- Relative position bias;
+		- For object detection:
+			- HTC++, instaboost, multi-scale training, soft-NMS;
+		- https://github.com/microsoft/Swin-Transformer
+		- https://youtu.be/udY0GlYXXbE
+		- Perf:
+			- ImageNet: top-1 81.3%(Swin-T), 84.5%(Swin-L), better than EffNet, RegNet, ViT, DeiT;
+			- COCO (mini-val): AP-box 58.0%, AP-Mask 50.4%, better than Cascade R-CNN, ATSS, RepPoint, Sparse R-CNN;
+			- COCO (test): AP-box 58.7%, AP-Mask 51.1%
+			- ADE20K Seg: 53.5 mIoU, 62.8 test score, based on UperNet (mmseg);
 - **Vision: Head**
 	- Han Hu, Jiayuan Gu, Zheng Zhang, Jifeng Dai, and Yichen Wei. Relation networks for object detection. CVPR'18
 		- https://github.com/msracver/Relation-Networks-for-Object-Detection
@@ -190,3 +230,12 @@
 
 ## Attention in RL
 - **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning.
+
+## Multimodal Attention
+- Arandjelovic, R. and Zisserman, A. Objects that sound. ECCV'18
+- Alayrac, J.-B., Recasens, A., Schneider, R., Arandjelovic,
+R., Ramapuram, J., De Fauw, J., Smaira, L., Dieleman,
+S., and Zisserman, A. Self-supervised multimodal versatile networks. NeurIPS'20
+- Chen, Y.-C., Li, L., Yu, L., El Kholy, A., Ahmed, F., Gan,
+Z., Cheng, Y., and Liu, J. UNITER: Learning UNiversal
+Image-TExt Representations. ECCV'20

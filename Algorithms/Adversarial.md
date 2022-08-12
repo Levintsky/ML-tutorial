@@ -17,7 +17,7 @@
 ## Unclassified
 - Ke Li, Tianhao Zhang, Jitendra Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
 
-# Adversarial Learning
+## Adversarial Learning
 - Andrew Ilyas, Shibani Santurkar, Dimitris Tsipras, Logan Engstrom, Brandon Tran, Aleksander Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19
 	- Some features are robust, some are non-robust
 	- Imagine binary classifcation: f(x) and y (+/-1)
@@ -26,6 +26,8 @@
 - Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
 
 ## Attack
+- Battista Biggio, Blaine Nelson and Pavel Laskov. Poisoning Attacks against Support Vector Machines. ICML'12
+	- ICML'22 Test of Time Award
 - Optimization-based:
 	- **SOA**: N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
 	- Y Liu, X Chen, C Liu, and D Song. Delving into transferable adversarial examples and black-box attacks. ICLR'17

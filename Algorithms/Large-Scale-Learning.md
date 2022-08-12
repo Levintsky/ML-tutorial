@@ -1,5 +1,10 @@
 # Large-Scale ML
 
+## Tutorial
+- Hao Zhang, Lianmin Zheng, Zhuohan Li, Ion Stoica. Welcome to the "Big Model" Era: Techniques and Systems to Train and Serve Bigger Models. ICML'22
+	- https://sites.google.com/view/icml-2022-big-model/home
+
+
 ## NIPS'19
 - Sulaiman Alghunaim, Kun Yuan, Ali H Sayed. A Linearly Convergent Proximal Gradient Algorithm for Decentralized Optimization
 - Edgar Dobriban, Sifan Liu. Asymptotics for Sketching in Least Squares Regression

@@ -7,7 +7,6 @@
 - http://www.cs.washington.edu/education/courses/558/06sp/ 14 http://graphics.cs.cmu.edu/courses/15-463/
 
 ## Textbooks
-- Richard Hartley, Andrew Zisserman. Multiple view geometry in computer vision.
 - Richard Szeliski. Computer Vision: Algorithms and Applications. 2010
 
 ## Image Formation

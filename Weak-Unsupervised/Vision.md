@@ -7,6 +7,8 @@
 - Summaries:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
+- AutoEncoder: Quoc Le, Marc'Aurelio Ranzato, Rajat Monga, Matthieu Devin, Kai Chen, Greg Corrado, Jeff Dean, Andrew Ng. Building high-level features using large scale unsupervised learning. ICML'12
+	- ICML'22 Test of time award
 - **Context/Jigsaw** prediction:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
 		- **Spatial relationship** for two image patches;

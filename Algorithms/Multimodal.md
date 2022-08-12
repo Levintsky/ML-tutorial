@@ -1,12 +1,26 @@
 # Multimodal Learning
 
-## Platform
+## Basics
+- Tasks:
+	- Multimodal feature learning;
+		- CLIP, ...
+	- VQA, image captioning;
+	- Text-guided image manipulation/generation;
+	- Text-guided RL/navigation;
+- Model:
+	- Contrastive learning: (CLIP, ...)
+	- Cross-modality guided manipulation;
+		- Latent optimization (GAN):
+			- Optimize z s.t. cross-modality agree;
+	- Low-shot learning:
+		- PointCLIP CVPR'22
+
+## Platform & Dataset
 - **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
 	- Tasks: Embodied QA, Language grounding, navigation;
 	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
 	- Habitat-API: https://github.com/facebookresearch/habitat-api
-
-## Dataset
+- Dataset
 - Large Vision + Language 
 	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
 	- Mert Bulent Sariyildiz, Julien Perez, and Diane Larlus. Learning Visual Representations with Caption Annotations. 2020
@@ -14,28 +28,6 @@
 	- Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
 	- Norman Mu, Alexander Kirillov, David Wagner, and Saining Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
 	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
-
-## Text-based Generation
-- Shizhan Zhu, Sanja Fidler, Raquel Urtasun, Dahua Lin, Chen Change Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
-	- Problem setup: input image + text; output new image (focus on fashion);\
-		<img src = '/Generative/images/gan/prada1.png' width = '400'>
-	- Model: two GANS:\
-		<img src = '/Generative/images/gan/prada2.png' width = '400'>
-- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
-- Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
-- Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS'18
-- **DALL-E**: Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-Shot Text-to-Image Generation. 2021
-	- https://github.com/openai/DALL-E
-	- Stage 1: dVAE, 256x256-dVAE-32x32x8192 tokens; train φ and θ;
-	- Stage 2: concatenate 256 BPE-encoded text tokens with the 32 × 32 = 1024 image tokens, and train an autoregressive transformer pψ(y, z).
-	- x: image; y: caption; z: latent;
-	- ln pθ,ψ(x, y) >= Ez∼qφ(z|x) ln pθ(x|y,z)−βKL(qφ(y,z|x), pψ(y,z))
-		- Latent distribution qφ(z|x): 32x32 dVAE, K=8192 tokens, with Gumbel trick;
-		- Image distribution pθ(x|y,z): Log-laplace NLL loss;
-		- Text token joint distribution: pψ(y, z); 12-billion parameter sparse transformer
-- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
-	- https://github.com/openai/glide-text2im.
-	- CLIP-guidance v.s. classifier-free guidance;
 
 ## Embedding, Feature Learning
 - Protocol:
@@ -71,6 +63,51 @@
 	- IBM, Dialog-based Interactive Image Retrieval, NIPS'18
 - Downstream tasks:
 	- Sheng Shen, Liunian Harold Li, Hao Tan, Mohit Bansal, Anna Rohrbach, Kai-Wei Chang, Zhewei Yao, and Kurt Keutzer. How Much Can CLIP Benefit Vision-and-Language Tasks?
+
+## Low-Shot Learning
+- **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
+- Renrui Zhang, Ziyu Guo, Wei Zhang, Kunchang Li, Xupeng Miao, Bin Cui, Yu Qiao, Peng Gao, Hongsheng Li. PointCLIP: Point Cloud Understanding by CLIP. CVPR'22
+	- 3D PC project to 2D image;
+	- CLIP to optimize text to get class;
+- Zero-shot detection on images. ECCV'22
+
+## Text-based Generation
+- Latent space mixture to manipulate one domain:
+	- Basics:
+		- e.g. Text-based image inpainting/generation/...
+		- Encode time: concatenate enc(Text)
+		- Supervision time:
+	- Shizhan Zhu, Sanja Fidler, Raquel Urtasun, Dahua Lin, Chen Change Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
+		- Problem setup: input image + text; output new image (focus on fashion);
+		- Model:
+			- Image -> Enc() -> z1;
+			- Text -> Enc() -> z2;
+			- [z1, z2, zNoise] -> decoder -> I;
+		- Supervision: Style-Gan like;
+	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
+	- Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
+	- Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS'18
+	- **StyleCLIP**: Or Patashnik, Zongze Wu, Eli Shechtman, Daniel Cohen-Or, Dani Lischinski. StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery. ICCV'21 oral
+		- https://github.com/orpatashnik/StyleCLIP
+		- Approach 1: optimize latent w, s.t.
+			- CLIP(G(w), text) close + regularization (close to original w and a face recognition)
+		- Approach 2: latent mapper
+			- w -> Mt(.) -> Δw
+			- G(w+Δw) a real image, s.t. CLIP(.,text), L2(w,w0), Lid(.) all satisfy;
+		- Approach 3: global direction;
+			- Align: 
+- **DALL-E**: Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-Shot Text-to-Image Generation. 2021
+	- https://github.com/openai/DALL-E
+	- Stage 1: dVAE, 256x256-dVAE-32x32x8192 tokens; train φ and θ;
+	- Stage 2: concatenate 256 BPE-encoded text tokens with the 32 × 32 = 1024 image tokens, and train an autoregressive transformer pψ(y, z).
+	- x: image; y: caption; z: latent;
+	- ln pθ,ψ(x, y) >= Ez∼qφ(z|x) ln pθ(x|y,z)−βKL(qφ(y,z|x), pψ(y,z))
+		- Latent distribution qφ(z|x): 32x32 dVAE, K=8192 tokens, with Gumbel trick;
+		- Image distribution pθ(x|y,z): Log-laplace NLL loss;
+		- Text token joint distribution: pψ(y, z); 12-billion parameter sparse transformer
+- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+	- https://github.com/openai/glide-text2im.
+	- CLIP-guidance v.s. classifier-free guidance;
 
 ## Vision + Action
 - Speaker-Follower Models for Vision-and-Language Navigation (NIPS 2018)
