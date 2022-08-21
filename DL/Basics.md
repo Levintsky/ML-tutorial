@@ -49,7 +49,8 @@
 	- Esteves, C., Allen-Blanchette, C., Makadia, A., and Daniilidis, K. Learning SO(3) equivariant representations with spherical CNNs. ECCV'18
 
 ## Activation
-- **ReLU**: xI(x>0)
+- **ReLU**: Nair, V. and Hinton, G. E. Rectified linear units improve restricted boltzmann machines. ICML'10
+	- xI(x>0)
 - **Leaky-ReLU**;
 - **GeLU**: Dan Hendrycks, Kevin Gimpel. Gaussian Error Linear Units (GELUs). '16
 	- Smoother than ReLU;
@@ -170,20 +171,39 @@
 - Wonyeol Lee, Hangyeol Yu, Hongseok Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
 
 ## Data Augmentation
-- Unclassified
-	- **mixup**: Zhang, H., Cisse, M., Dauphin, Y. N., and Lopez-Paz, D. mixup: Beyond empirical risk minimization. arXiv'17
 - Legacy
-	- Bellegarda, J. R., de Souza, P. V., Nadas, A. J., Nahamoo, D., Picheny, M. A., and Bahl, L. R. Robust speaker adaptation using a piecewise linear acoustic mapping. In ICASSP-92
+	- Bellegarda, J. R., de Souza, P. V., Nadas, A. J., Nahamoo, D., Picheny, M. A., and Bahl, L. R. Robust speaker adaptation using a piecewise linear acoustic mapping. ICASSP'92
+- Mixup:
+	- Insight: convex linear combination:
+		- x˜ = λxi + (1−λ)xj 
+		- y˜ = λyi + (1−λ)yj 
+	- **mixup**: Zhang, H., Cisse, M., Dauphin, Y. N., and Lopez-Paz, D. mixup: Beyond empirical risk minimization. ICLR'18
+		- https://github.com/facebookresearch/mixup-cifar10
+	- Guo, H., Mao, Y., and Zhang, R. Augmenting data with
+	mixup for sentence classification: An empirical study. arxiv'19
+		- Two strategy proposed: Interpolate on word or sentence embedding;
+	- Guo, H., Mao, Y., and Zhang, R. Mixup as locally linear out-of-manifold regularization. AAAI'19
+		- H := argmin{LD(H) + LD′(H)}
+	- Verma, V., Lamb, A., Beckham, C., Najafi, A., Mitliagkas, I., Lopez-Paz, D., and Bengio, Y. Manifold mixup: Better representations by interpolating hidden states. ICLR'19
+		- Predict less confidently on interpolations of hidden representations.
+		- https://github.com/vikasverma1077/manifold_mixup
+		- 1. Select a random layer k (could be input);
+		- 2. Two minibatches (x,y), (x', y')
+		- 3. Input mixup from layer k, mixing λ ∼ Beta(α, α);
+		- 4. Forwarded (g˜k(x), y˜) used as output;
+	- Guo, H. Nonlinear mixup: Out-of-manifold data augmentation for text classification. AAAI'20
+		- Nonlinear interpolation for both data and label;
+	- Zhang, L., Deng, Z., Kawaguchi, K., Ghorbani, A., and Zou, J. How does mixup help with robustness and generalization? ICLR'21
+		- Insight: prove adversarial robustness and generalization;
 - Vision
 	- AlexNet;
 	- **cutout**: DeVries, T. and Taylor, G. W. Improved regularization of convolutional neural networks with cutout. arxiv'17
 		- useful on CIFAR-10 and not on ImageNet
-	- Lopes, R. G., Yin, D., Poole, B., Gilmer, J., and Cubuk, E. D. Improving robustness without sacrificing accu- racy with patch gaussian augmentation. arXiv'19
+	- Lopes, R. G., Yin, D., Poole, B., Gilmer, J., and Cubuk, E. D. Improving robustness without sacrificing accuracy with patch gaussian augmentation. arXiv'19
 	- **RandAugment**: Ekin D. Cubuk, Barret Zoph, Jonathon Shlens, and Quoc V. Le. Randaugment: Practical automated data augmentation with a reduced search space. 2019
 		- https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet
 		- Transformation: identity, autoContrast, equalize, rotate, solarize, color, posterize, contrast, brightness, sharpness, shear-x, shear-y, translate-x, translate-y;
-		- Scale 0 - 10 augmentation magnitude;\
-			<img src = '/DL/images/augment/randaugment.png' width = '400'>
+		- Scale 0 - 10 augmentation magnitude;
 	- Raphael Gontijo-Lopes, Sylvia J. Smullin, Ekin D. Cubuk, Ethan Dyer. Affinity and Diversity: Quantifying Mechanisms of Data Augmentation. 2020
 		- Define Affinity and Diversity: affinity = accuracy gap on validation; diversity = training loss gap;\
 			<img src = '/DL/images/augment/affinity.png' width = '400'>

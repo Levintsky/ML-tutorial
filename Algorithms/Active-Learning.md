@@ -1,15 +1,51 @@
 # Active Learning
 
-## Active Learning
-- Basics:
+## Basics
+- Problem Definition:
 	- Find data most uncertain; how to measure uncertainty and generate MAP? check Bayes/CRF;
-- Legacy:
-	- D. MacKay, Information-based objective functions for active data selection. Neural Computation'92
-		- Expected informativeness
-	- Y. Freund, H. Seung, E. Shamir, and N. Tishby. Selective sampling using the query by committee algorithm. ML'97
-		- A committee of classifiers;
-	- S. Tong and D. Koller, Support vector machine active learning with applications to text classification. JMLR'02
-		- SVM;
+- Typical heuristics:
+	- Start with a pool of unlabeled data
+	- Pick a few points at random and get their labels
+	- Repeat
+		- Fit a classifier to the labels seen so far
+		- Query the unlabeled point that is closest to the boundary
+		- (or most uncertain, or most likely to decrease overall uncertainty,...)
+- Techniques:
+	- Adaptive query:
+		- Case I: Exploiting (cluster) structure in data;
+		- Case II: Efficient search through hypothesis space;
+- Tutorial:
+	- ICML'19: https://hunch.net/~active_learning/
+
+## Legacy
+- D. MacKay, Information-based objective functions for active data selection. Neural Computation'92
+	- Expected informativeness
+- Y. Freund, H. Seung, E. Shamir, and N. Tishby. Selective sampling using the query by committee algorithm. ML'97
+	- A committee of classifiers;
+- S. Tong and D. Koller, Support vector machine active learning with applications to text classification. JMLR'02
+	- SVM;
+
+## Cluster Based
+- Basics:
+	- Assume distance/neighborhood known, propagate labels;
+- Xiaojin Zhu, John Lafferty and Zoubin Ghahramani, Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions, ICML 2003 workshop
+- Sanjoy Dasgupta and Daniel Hsu. Hierarchical sampling for active learning. ICML 2008.
+
+## Efficient search through hypothesis space
+- Basics:
+	- Assume we have multiple classifier hypothesis, add new data+label, remove unsatisfied hypothesis;
+	- Supervised: for misclassification error ≤ ε, need ≈ 1/ε labeled points.
+- Separable data:
+	- David Cohn, Les Atlas and Richard Ladner. Improving generalization with active learning, Machine Learning 15(2):201-221, 1994.
+	- Yoav Freund, H. Sebastian Seung, Eli Shamir, and Naftali Tishby, Selective Sampling Using the Query by Committee Algorithm, Machine Learning, 28, 133-168, 1997.
+	- Sanjoy Dasgupta, Coarse sample complexity bounds for active learning. NIPS 2005.
+- General data:
+	- Nina Balcan, Alina Beygelzimer, John Langford, Agnostic Active Learning. ICML 2006
+	- Hanneke, S. A Bound on the Label Complexity of Agnostic Active Learning. ICML 2007.
+	- Sanjoy Dasgupta, Daniel J. Hsu, and Claire Monteleoni. A general agnostic active learning algorithm. NIPS 2007.
+	- Alina Beygelzimer, Sanjoy Dasgupta, and John Langford, Importance Weighted Active Learning, ICML 2009.
+- Algorithms:
+	- A^2 algorithm;
 
 ## Application in Computer Vision
 - Scene classification:

@@ -29,7 +29,7 @@
 - A. Golovinskiy and T. Funkhouser. Learning Consistent Segmentation of 3D Models. CG'09
 	- Problem: segment a set of models;
 	- Energy based: a graph, similar parts **across shapes** should have consistent assignment;
-- Qi-Xing Huang, Vladlen Koltun, and Leonidas J. Guibas. oint-Shape Segmentation with Linear Programming. TOG'11
+- Qi-Xing Huang, Vladlen Koltun, and Leonidas J. Guibas. Joint-Shape Segmentation with Linear Programming. TOG'11
 	- Unsupervised cosegmentation;
 	- Stage 1: initial segment on each shape; (superpixels or clustering)
 	- Stage 2: pairwise segmentation: energy-based, seg(S1)+seg(S2)+consistency(S1, S2);

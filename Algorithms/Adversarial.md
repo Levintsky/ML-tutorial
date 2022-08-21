@@ -1,18 +1,26 @@
-# Attack/Adversarial, Adversarial Learning
+# Adversarial Robostness
 
-## Tutorial
-- B Biggio, F Roli. Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning. 2018
-- https://zhuanlan.zhihu.com/p/32037178
-- https://www.jiqizhixin.com/articles/2018-03-05-4
-- https://zhuanlan.zhihu.com/p/57733228
-- https://medium.com/onfido-tech/adversarial-attacks-and-defences-for-convolutional-neural-networks-66915ece52e7
-
-## Basic Concepts
-- White-box attack
-- Poison attack (add poison data in training)
+## Basics
+- Traditional risk:
+	- R = E[l(f(x), y)]
+- Adversarial risk:
+	- R_adv = E[max_δ[l(f(x+δ), y)]], worst case for δ ∈ Δ(x)
+- Adversarial learning:
+	- Train with (x+δ, y)
+- Attack:
+	- Targeted/untargeted: misclassify as a wrong label;
+	- White-box attack
+	- Poison attack (add poison data in training)
 - Defense:
 	- Reactive
 	- Proactive
+- Tutorial
+	- B Biggio, F Roli. Wild Patterns: Ten Years After the Rise of Adversarial Machine Learning. 2018
+	- https://zhuanlan.zhihu.com/p/32037178
+	- https://www.jiqizhixin.com/articles/2018-03-05-4
+	- https://zhuanlan.zhihu.com/p/57733228
+	- https://medium.com/onfido-tech/adversarial-attacks-and-defences-for-convolutional-neural-networks-66915ece52e7
+	- https://adversarial-ml-tutorial.org/
 
 ## Unclassified
 - Ke Li, Tianhao Zhang, Jitendra Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
@@ -64,16 +72,10 @@
 	- L Jain, W Wu, S Chen, U Jang, V Chandrasekaran, S Seshia, S Jha. Generating Semantic Adversarial Examples with Differentiable Rendering. ICLR'20 reject
 	- H Qiu, C Xiao, L Yang, X Yan, H Lee, B Li. SemanticAdv: Generating Adversarial Examples via Attribute-Conditional Image Editing. ICLR'20 reject
 	- Ameya Joshi, Amitangshu Mukherjee, Soumik Sarkar, Chinmay Hegde. Semantic Adversarial Attacks: Parametric Transformations That Fool Deep Classifiers. ICLR'20
-
-## Application in 3D
-- Attack:
+- Application in 3D
 	- C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
 		- https://github.com/xiangchong1/3d-adv-pc
 		- adversarial point perturbation or adversarial point generation
-- Defense:
-	- H Zhou, K Chen, W Zhang, H Fang, W Zhou, N Yu. DUP-Net: Denoiser and Upsampler Network for 3D Adversarial Point Clouds Defense. ICCV'19
-		- 1. Remove outlier by local filtering;
-		- 2. Upsampling: L Yu, X Li, C Fu, D Cohen-Or, P Heng. PU-Net: Point Cloud Upsampling Network. CVPR'18
 
 ## Robustness/Defense
 - N Papernot, P McDaniel, X Wu, S Jha, A Swami. Distillation as a Defense to Adversarial Perturbations against Deep Neural Networks. 2016
@@ -85,3 +87,7 @@
 	- CAAD defense champion;
 	- https://github.com/facebookresearch/ImageNet-Adversarial-Training
 	- Non-local means (best), mean-filter, median filter, bilateral filter;
+- Application in 3D:
+	- H Zhou, K Chen, W Zhang, H Fang, W Zhou, N Yu. DUP-Net: Denoiser and Upsampler Network for 3D Adversarial Point Clouds Defense. ICCV'19
+		- 1. Remove outlier by local filtering;
+		- 2. Upsampling: L Yu, X Li, C Fu, D Cohen-Or, P Heng. PU-Net: Point Cloud Upsampling Network. CVPR'18

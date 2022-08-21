@@ -7,29 +7,59 @@
 	- Data augmentation: successful nice ideas
 	- Activation functions;
 - Search approach:
-	- RL-based;
-	- Evolution;
-	- ENAS/DART; (weight-sharing)
-	- Bayesian optimization;
+	- RL-based; (long time)
+	- Evolution, Bayesian optimization: 
+		- e.g. SMAC, BOHB
+	- ENAS/DART;
 	- Random search;
-- Metric:
-	- GPU-hours;
+- Common techniques:
+	- Acceleration:
+		- ENAS/DART; (weight-sharing, differentiable)
+	- Surrogates: Evaluate a subset of architectures, fit a model and predict others;
+		- XGBoost, GCN, ...
+- Metric: final performance, learning curve, GPU-hours;
 - Benchmark:
 	- https://openml.github.io/automlbenchmark/results.html
-- Most successful application:
-	- On mobile: **MnasNet** in industry;
-	- MobileNetV3;
+	- **101**: Chris Ying, Aaron Klein, Eric Christiansen, Esteban Real, Kevin Murphy, Frank Hutter. NAS-Bench-101: Towards Reproducible Neural Architecture Search. ICML'19
+	- **1-Shot**: Arber Zela, Julien Siems, Frank Hutter. NAS-Bench-1Shot1: Benchmarking and Dissecting One-shot Neural Architecture Search. ICLR'20
+	- **201**: Xuanyi Dong, Yi Yang. NAS-Bench-201: Extending the Scope of Reproducible Neural Architecture Search. ICLR'20
+		- Learning curve;
+	- **NATS-Bench**: Xuanyi Dong, Lu Liu, Katarzyna Musial, Bogdan Gabrys. NATS-Bench: Benchmarking NAS Algorithms for Architecture Topology and Size. PAMI'21
+		- Architecture size;
+	- **301**: Arber Zela, Julien Niklas Siems, Lucas Zimmer, Jovita Lukasik, Margret Keuper, Frank Hutter. Surrogate NAS Benchmarks: Going Beyond the Limited Search Spaces of Tabular NAS Benchmarks. ICLR'22
+	- Hardware cost:
+		- LatBench. Łukasz Dudziak, Thomas Chau, Mohamed S. Abdelfattah, Royson Lee,, Hyeji Kim, Nicholas D. Lane. BRP-NAS: Prediction-based NAS using GCNs. NeurIPS'20
+		- HW-NASBench. Chaojian Li, Zhongzhi Yu, Yonggan Fu, Yongan Zhang, Yang Zhao, Haoran You, Qixuan Yu, Yue Wang, Cong Hao, Yingyan Lin. HW-NAS-Bench: Hardware-Aware Neural Architecture Search Benchmark
+	- ASR: Abhinav Mehrotra, Alberto Gil C. P. Ramos, Sourav Bhattacharya, Łukasz Dudziak, Ravichander Vipperla, Thomas Chau, Mohamed S Abdelfattah, Samin Ishtiaq, Nicholas Donald Lane. NAS-Bench-ASR: Reproducible Neural Architecture Search for Speech Recognition. ICLR'21
+	- NLP: Nikita Klyuchnikov, Ilya Trofimov, Ekaterina Artemova, Mikhail Salnikov, Maxim Fedorov, Evgeny Burnaev. NAS-Bench-NLP: Neural Architecture Search Benchmark for Natural Language Processing. 
+- Applications:
+	- Most successful On mobile: **MnasNet** in industry;
+		- MobileNetV3;
 	- Song Han: ProxylessNAS: Direct Neural Architecture Search on Target Task and Hardware
 	- FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search
 - Tradeoff:
 	- EfficientNet, EfficientDet;
+- Resources:
+	- https://www.automl.org/talks/
+	- Book: Automated Machine Learning
+	- https://github.com/hibayesian/awesome-automl-papers
+	- https://github.com/markdtw/awesome-architecture-search
+- Tutorial:
+	- NIPS'18 (Frank Hutter): https://nips.cc/Conferences/2018/Schedule?showEvent=10979
+	- CVPR'22: https://www.dropbox.com/s/wanxfwu0vsczvkw/Frank_Hutter_Keynote_CVPR_NAS_Workshop_2022__NAS_Benchmarks.pdf?dl=0
+- Challenges:
+	- Liam Li, Ameet Talwalkar. Random Search and Reproducibility for Neural Architecture Search. UAI'20
+		- Poor perf compared to random search;
+		- Poor reproducibility;
+	- Antoine Yang, Pedro M. Esperança, Fabio M. Carlucci. NAS evaluation is frustratingly hard. ICLR'20
+		- Training pipeline matters much more than architecture.
+	- Marius Lindauer, Frank Hutter. Best Practices for Scientific Research on Neural Architecture Search. JMLR'20
+		- Poor scientific practice:
+			- Inavailability of code;
+			- Incomparable training code, search space, eval schemes;
 
 ## Summary
 - M Wistuba, A Rawat, Te Pedapati. A Survey on Neural Architecture Search. 2019
-- https://github.com/hibayesian/awesome-automl-papers
-- https://github.com/markdtw/awesome-architecture-search
-- NIPS Tutorial: https://nips.cc/Conferences/2018/Schedule?showEvent=10979
-	- Frank Hutter
 - Zhihu:
 	- https://zhuanlan.zhihu.com/p/71547478
 	- https://zhuanlan.zhihu.com/p/42924585

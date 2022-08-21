@@ -1,20 +1,20 @@
 # Implicit Functions (N-SDF)
 
 ## Legacy:
-	- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
-	- **RBF**: Jonathan C. Carr, Richard K. Beatson, Jon B. Cherrie, Tim J. Mitchell, W. Richard Fright, Bruce C. McCallum, and Tim R. Evans. Reconstruction and representation of 3d objects with radial basis functions. SIGGRAPH'01
-	- Greg Turk and James F. O'Brien. Modelling with implicit surfaces that interpolate. TOG'02
-	- **Unity implicits**: Yutaka Ohtake, Alexander Belyaev, Marc Alexa, Greg Turk, and Hans-Peter Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
-	- Chen Shen, James F. O'Brien, and Jonathan Richard Shewchuk. Interpolating and approximating implicit surfaces from polygon soup. TOG'04
+- B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
+- **RBF**: Jonathan C. Carr, Richard K. Beatson, Jon B. Cherrie, Tim J. Mitchell, W. Richard Fright, Bruce C. McCallum, and Tim R. Evans. Reconstruction and representation of 3d objects with radial basis functions. SIGGRAPH'01
+- Greg Turk and James F. O'Brien. Modelling with implicit surfaces that interpolate. TOG'02
+- **Unity implicits**: Yutaka Ohtake, Alexander Belyaev, Marc Alexa, Greg Turk, and Hans-Peter Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
+- Chen Shen, James F. O'Brien, and Jonathan Richard Shewchuk. Interpolating and approximating implicit surfaces from polygon soup. TOG'04
 
 ## Render for implicit models:
-	- Marching Cube;
-	- John C. Hart. Sphere tracing: A geometric method for the antialiased ray tracing of implicit surfaces. 1996
-	- **Surface-Finding**: Sarah F. Frisken, Ronald N. Perry, Alyn P. Rockwood, and Thouis R. Jones. Adaptively sampled distance fields: A general representation of shape for computer graphics. 2000
+- Marching Cube;
+- John C. Hart. Sphere tracing: A geometric method for the antialiased ray tracing of implicit surfaces. 1996
+- **Surface-Finding**: Sarah F. Frisken, Ronald N. Perry, Alyn P. Rockwood, and Thouis R. Jones. Adaptively sampled distance fields: A general representation of shape for computer graphics. 2000
 
-## Generalized Neural-SDF or indicator function:
-- Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. ECCV, 2020.
+## Generalized Neural-SDF or indicator Function:
 - Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. NeurIPS'19
+- Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. ECCV'20.
 - Union of piecewise SDF/indicator (parts?):
 	- Boyang Deng, Kyle Genova, Soroosh Yazdani, Sofien Bouaziz, Geoffrey Hinton, Andrea Tagliasacchi. CvxNet: Learnable Convex Decomposition. CVPR'20
 		- https://cvxnet.github.io/
@@ -81,7 +81,7 @@ Atzmon, Basri Ronen, and Yaron Lipman. Multiview neural surface reconstruction b
 	- CNF;
 - Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20	
 
-## Sampling technique:
+## Sampling Technique
 - Wang Yifan, Shihao Wu, Cengiz Öztireli, Olga Sorkine-Hornung. Iso-Points: Optimizing Neural Implicit Surfaces With Hybrid Representations. CVPR'21
 
 ## Misc
