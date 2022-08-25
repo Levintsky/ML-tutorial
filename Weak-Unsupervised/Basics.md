@@ -56,7 +56,10 @@
 ## Augment Consistency
 - **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
 	- https://github.com/google-research/uda
-	<img src = '/Weak-Unsupervised/images/uda.png' width = '400px'>
+	- Semi-supervised learning:
+		- Labeled: l(p(y|x), y)
+		- Unlabeled: consistency between augmented data:
+			- p(y|x), p(y|x')
 
 ## Google Brain
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
@@ -65,8 +68,6 @@
 ## InfoNCE
 - **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
 	- Insight: an encoder g_enc(x_t)=z_t, as well as c_t (info accumulated until t), given some {z_t+k, z_j1, z_j2, ...}, z_t+k as positive and others uniformly sampled as negative, do classification **InfoNCE**;
-	- Architecture\
-		<img src = '/Weak-Unsupervised/images/cpc.png' width = '400'>
 	- Prediction\
 		<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400'>
 	- Loss: InfoNCE\
@@ -88,7 +89,7 @@
 ## Unclassified
 - Supervising Unsupervised Learning. NIPS'18
 
-## NIPS'19
+## NIPS'18
 - Tam Nguyen, Maximilian Dax, Chaithanya Kumar Mummadi, Nhung Ngo, Thi Hoai Phuong Nguyen, Zhongyu Lou, Thomas Brox. DeepUSPS: Deep Robust Unsupervised Saliency Prediction via Self-supervision
 - Adam Bielski, Paolo Favaro. Emergence of Object Segmentation in Perturbed Generative Models
 - Christopher Beckham, Sina Honari, Alex Lamb, Vikas Verma, Farnoosh Ghadiri, R Devon Hjelm, Yoshua Bengio, Chris Pal. On Adversarial Mixup Resynthesis

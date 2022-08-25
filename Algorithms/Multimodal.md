@@ -14,35 +14,45 @@
 			- Optimize z s.t. cross-modality agree;
 	- Low-shot learning:
 		- PointCLIP CVPR'22
+- Tutorial:
+	- Image + text: https://lilianweng.github.io/posts/2022-06-09-vlm/
 
 ## Platform & Dataset
 - **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
 	- Tasks: Embodied QA, Language grounding, navigation;
 	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
 	- Habitat-API: https://github.com/facebookresearch/habitat-api
-- Dataset
 - Large Vision + Language 
 	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
 	- Mert Bulent Sariyildiz, Julien Perez, and Diane Larlus. Learning Visual Representations with Caption Annotations. 2020
 	- Yuhao Zhang, Hang Jiang, Yasuhide Miura, Christopher D. Manning, and Curtis P. Langlotz. Contrastive Learning of Medical Visual Representations from Paired Images and Text. 2020
 	- Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
+	- **ALIGN**: Chao Jia, Yinfei Yang, Ye Xia, Yi-Ting Chen, Zarana Parekh, Hieu Pham, Quoc V. Le, Yunhsuan Sung, Zhen Li, Tom Duerig. Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
 	- Norman Mu, Alexander Kirillov, David Wagner, and Saining Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
 	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
 
 ## Embedding, Feature Learning
-- Protocol:
+- Model:
 	- BERT-based:
 		- VilBert, VisualBERT, VL-BERT, UNITER, OSCAR, VideoBERT, ActBERT, Unicoder-VL, LXMERT, MERLOT, HERO, ALBEF, ...
 	- Dual-encoder contrastive:
 		- CLIP, ALIGN, CoCa, Florence, MIL-NCE, BASIC, LiT, FILIP, MMV;
 	- VL models;
 		- SimVLM, Virtex, MAGMA, Frozen, VisualGPT, ClipClap, VC-GPT, CM3, BLIP, Uni-Perceiver, VL-BART, VL-T5, VLM, Flamingo;
+	- Learning protocol:
+		- Jointly training image and text: VisualBERT, SimVLM;
+		- Learn image embedding as (Frozen) LM Prefix: Frozen, ClipClap;
+		- Cross-attention: VisualGPT, VisualCPT, MERLOT, Flamingo;
 - BERT-style:
 	- **ViLBERT**: Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee. ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks. NeurIPS'19
 	- **VideoBERT**: C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
+	- **VisualBERT**: Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang. VisualBERT: A Simple and Performant Baseline for Vision and Language. arxiv'19
+		- https://github.com/uclanlp/visualbert
+		- Insight:
+			- Both image and text embedding input to a transformer;
+			- Masked language model as task; 
 	- Gunnar A. Sigurdsson, Jean-Baptiste Alayrac, Aida Nematzadeh, Lucas Smaira, Mateusz Malinowski, João Carreira, Phil Blunsom, Andrew Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
 		- Extend VideoBert to multilingual
-	- Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang. VisualBERT: A Simple and Performant Baseline for Vision and Language.
 	- Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai. VL-BERT: Pre-training of Generic Visual-Linguistic Representations. ICLR'20
 	- Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu. UNITER: UNiversal Image-TExt Representation Learning. ECCV'20
 	- Xiujun Li, Xi Yin, Chunyuan Li, Pengchuan Zhang, Xiaowei Hu, Lei Zhang, Lijuan Wang, Houdong Hu, Li Dong, Furu Wei, Yejin Choi, Jianfeng Gao. Oscar: Object-Semantics Aligned Pre-training for Vision-Language Tasks
@@ -55,7 +65,12 @@
 		- https://www.di.ens.fr/willow/research/mil-nce/
 - Visual LM: vision+prefix -> predict postfix text;
 	- **VirTex**: Karan Desai, Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. CVPR'21
+	- **Frozen**: Maria Tsimpoukelli, Jacob Menick, Serkan Cabi, S. M. Ali Eslami, Oriol Vinyals, Felix Hill. Multimodal Few-Shot Learning with Frozen Language Models. ICLR'21
 	- **SimVLM**: Zirui Wang, Jiahui Yu, Adams Wei Yu, Zihang Dai, Yulia Tsvetkov, Yuan Cao. SimVLM: Simple Visual Language Model Pretraining with Weak Supervision. ICLR'22
+		- Both + language -> transformer;
+		- GPT-like causal prediction task;
+	- **ClipCap**: Ron Mokady, Amir Hertz, Amit H. Bermano. ClipCap: CLIP Prefix for Image Captioning. arxiv'21
+		- Learn a light mapping to translate CLIP features into LM space;
 	- MAGMA – Multimodal Augmentation of Generative Models through Adapter-based Finetuning.
 	- Jun Chen, Han Guo, Kai Yi, Boyang Li, Mohamed Elhoseiny. VisualGPT: Data-efficient Adaptation of Pretrained Language Models for Image Captioning. CVPR'22
 	- **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
@@ -71,7 +86,7 @@
 	- CLIP to optimize text to get class;
 - Zero-shot detection on images. ECCV'22
 
-## Text-based Generation
+## Text-based Image Generation
 - Latent space mixture to manipulate one domain:
 	- Basics:
 		- e.g. Text-based image inpainting/generation/...

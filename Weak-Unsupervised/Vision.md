@@ -1,19 +1,40 @@
 # Weakly-Supervsied Learning
 
-## Unclassified
-- Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
-
-## Images Tasks
-- Summaries:
+## Basics
+- Goal: learn feature z from x, without label y;
+- Tasks:
+	- Autoencoder: reconstruct x from z;
+	- Context prediction:
+		- Jigsaw puzzle;
+		- Colorization;
+		- Context inpainting: (MAE)
+		- Tokenized (VQ-VAE like): BEiT;
+	- Pseudo labels:
+		- Rotation: 0/90/180/270
+		- Deep clustering;
+	- Consistency:
+		- Contrastive learning: MoCo, SimCLR, CPC, ...
+		- Non-contrastive: swav, byol, SimSiam, DINO, ...
+- Goal:
+	- Pretraining with a lot of unlabeled data;
+- Evaluation:
+	- Linear probe/protocol;
+	- Finetuning;
+- Tutorials:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
-- AutoEncoder: Quoc Le, Marc'Aurelio Ranzato, Rajat Monga, Matthieu Devin, Kai Chen, Greg Corrado, Jeff Dean, Andrew Ng. Building high-level features using large scale unsupervised learning. ICML'12
-	- ICML'22 Test of time award
-- **Context/Jigsaw** prediction:
+
+## Images Tasks
+- AutoEncoder:
+	- Quoc Le, Marc'Aurelio Ranzato, Rajat Monga, Matthieu Devin, Kai Chen, Greg Corrado, Jeff Dean, Andrew Ng. Building high-level features using large scale unsupervised learning. ICML'12
+		- ICML'22 Test of time award
+- **Context** prediction:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
 		- **Spatial relationship** for two image patches;
 	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
-	- Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV 2016
+	- Mehdi Noroozi, Paolo Favaro. Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV'16
+	- **Colorization**: Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
+	- Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
 	- **BEiT**: Hangbo Bao, Li Dong, Songhao Piao, Furu Wei. BEiT: BERT Pre-Training of Image Transformers. ICLR'22
 		- https://github.com/microsoft/unilm/tree/master/beit
 		- 224 x 224 image into 14 x 14 grid, each of size 16x16;
@@ -27,36 +48,111 @@
 		- ImageNet:
 			- BEIT-B: 83.2% (224x224), 84.6% (384x384)
 			- BEIT-L: 85.2% (224x224), 86.3% (384x384)
-	- **MAE**: Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollar, Ross Girshick. Masked Autoencoders Are Scalable Vision Learners. CVPR'22
+	- **MAE**: Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollar, Ross Girshick. Masked Autoencoders Are Scalable Vision Learners. CVPR'22 Best Paper Nominee
 		- https://github.com/facebookresearch/mae
 		- An important design of our MAE is to skip the mask token [M] in the encoder and apply it later in the lightweight decoder.
-- **Colorization**:
-	- Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
-- Predict image rotation:
-	- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR 2018
-- Clustering (pseudo-labels):
-	- **Pseudo-label**: Dong-Hyun Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
-		- Equivalent to Entropy Regularization;
-	- Mathilde Caron, Piotr Bojanowski, Armand Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
-		- Extract CNN and run K-means
-		- Train on cluster id;
-	- X Ji, J Henriques, A Vedaldi. Invariant Information Clustering for Unsupervised Image Classification and Segmentation. ICCV'19
-		- https://github.com/xu-ji/IIC
-	- Yang'16;
-	- Caron 18, 19: deep cluster;
-	- Zhuang 19;
-	- PCL: Li 20
-	- Asano: 2020 SeLa;
-	- Dwibedi 21, NNCLR;
+- Pseudo-labels:
+	- Predict image rotation:
+		- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR'18
+	- Clustering:
+		- **Pseudo-label**: Dong-Hyun Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
+			- Layerwise denoised autoencoder with cross-entropy(x, x^)
+			- Equivalent to Entropy Regularization;
+		- Mathilde Caron, Piotr Bojanowski, Armand Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
+			- Extract CNN and run K-means
+			- Train on cluster id;
+		- **SWAV**: Mathilde Caron, Ishan Misra, Julien Mairal, Priya Goyal, Piotr Bojanowski, Armand Joulin. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
+			- https://github.com/facebookresearch/swav
+			- Insight: prototypes C as a pseudo K-means;
+			- Given two augmented xt, xs, predict code qs from pt;
+				- l(zt, qs) = −∑qs(k) logpt(k)
+				- L(zt, zs) = l(zt, qs) + l(zs, qt),
+		- X Ji, J Henriques, A Vedaldi. Invariant Information Clustering for Unsupervised Image Classification and Segmentation. ICCV'19
+			- https://github.com/xu-ji/IIC
+		- Yang'16;
+		- Zhuang 19;
+		- PCL: Li 20
+		- Asano: 2020 SeLa;
+		- Dwibedi 21, NNCLR;
 - Dictionary Learning:
-	- Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
-		- https://github.com/zhirongw/lemniscate.pytorch
-		- Constrastive estimation;
-	- **AMDIM**: Philip Bachman, R Devon Hjelm, and William Buchwalter. Learning representations by maximizing mutual information. 2019
-		- https://github.com/Philip-Bachman/amdim-public
-	- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
-	- **LocalAggr**: Chengxu Zhuang, Alex Lin Zhai, and Daniel Yamins. Local aggregation for unsupervised learning of visual embeddings. ICCV'19
-- Weak supervision:
+	- **LocalAggr**: Chengxu Zhuang, Alex Lin Zhai, and Daniel Yamins. Local aggregation for unsupervised learning of visual embeddings. ICCV'19	
+- Consistency:
+	- **Contrastive** Exemplar: NPDC, MoCo, SimCLR, CPC
+		- Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
+			- https://github.com/zhirongw/lemniscate.pytorch
+			- Constrastive estimation;
+		- **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
+			- A query frame x_t at time t;
+			- Recent 8 frames: positive;
+			- Other uniformly sampled frames: negative;
+		- **AMDIM**: Philip Bachman, R Devon Hjelm, and William Buchwalter. Learning representations by maximizing mutual information. NIPS'19
+			- https://github.com/Philip-Bachman/amdim-public
+			- Maximize mutual-information I(aug1(x), aug2(x));
+			- Also between scales;
+		- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
+		- **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
+			- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
+			- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
+			- Momentum update: slowly updating key encoder; θ-k = 0.999 θ-k + 0.001 θ-q;
+			- Positive: random augmentation (with grayscale);
+			- Shuffling-BN: train with multiple GPUs independently, the sample order of minibatch randomly shuffled;
+			- Exp:
+				- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
+				- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
+				- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
+		- **SimCLR**: Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton. A Simple Framework for Contrastive Learning of Visual Representations. ICML'20
+			- https://github.com/ildoonet/pytorch-SimCLR
+			- Data augmentation: color distortion is critical;
+			- InfoNCE loss;
+			- Shuffle BN to solve information leakage (similar to MoCo);
+			- Large batch-size (4k - 8k, requires TPU support), longer training (1000 epochs);
+		- **MoCo-V2**: Xinlei Chen, Haoqi Fan, Ross Girshick, Kaiming He. Improved Baselines with Momentum Contrastive Learning. 2020
+			- Verify the effectiveness of two of SimCLR's design:
+				- **MLP projection head**
+				- More **data augmentation**
+		- Zhenda Xie, Yutong Lin, Zhuliang Yao, Zheng Zhang, Qi Dai, Yue Cao, and Han Hu. Self-supervised learning with swin transformers. 
+		- **MoCo-V3**: An Empirical Study of Training Self-Supervised Vision Transformers. ICCV'21
+			- Large batch-size instead of memory queue, vit backbone;
+			- Symmetrized loss: l(q1, k2) + l(q2, k1)
+		- Self-Supervised Pre-Training of Swin Transformers for 3D Medical Image Analysis. CVPR'22
+	- Non-Contrastive:
+		- **BYOL**: Bootstrap Your Own Latent A New Approach to Self-Supervised Learning. NIPS'20
+			- No negative pairs, target network;
+		- **simsiam**: Xinlei Chen, Kaiming He. Exploring Simple Siamese Representation Learning. CVPR'21 best paper honorable mention
+			- Insight: minimize negative cosine similarity between positive pairs only;
+				- p: extra-MLP after z;
+				- d(p1, z2) = - (p1, z2) / |p1| |z2|
+				- loss: L = 1/2[d(p1, z2) + d(p2, z1)]
+			- Techniques not used in the paper:
+				- (i) negative sample pairs,
+				- (ii) large batches,
+				- (iii) momentum encoders
+		- **Barlow Twins**: Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, Stéphane Deny. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
+			- Insight: feature correlation within a batch should be closed to identity;
+		- **DINO**: Mathilde Caron, Hugo Touvron, Ishan Misra, Herve Jegou, Julien Mairal, Piotr Bojanowski, Armand Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
+			- https://github.com/facebookresearch/dino
+			- Insight: match output feature distribution by distillation: -p2logp1, p1 student, p2 teacher;
+				- p1: softmax(s_out)
+				- p2: softmax(t_out - C); C: center ema-updated;
+				- Teacher/student: global/local view;
+				- Self-attention of [CLS] token groups objects;
+			- Teacher: parameter (stop grad, moving avr of student), centering layer, take >50% image;
+			- Student: to learn, with small image;
+			- SWAV mean C trick;
+			- DINO linear: 75.3% res-50, 77% vit, 80% vit-b;
+		- **MSN**: Mahmoud Assran, Mathilde Caron, Ishan Misra, Piotr Bojanowski, Florian Bordes, Pascal Vincent, Armand Joulin, Michael Rabbat, Nicolas Ballas. Masked Siamese Networks for Label-Efficient Learning.
+			- DINO + mask;
+
+## Analysis
+- Visualization:
+	- Florian Bordes, Randall Balestriero, Pascal Vincent. High Fidelity Visualization of What Your Self-Supervised Representation Knows About. 2021
+- Yuandong Tian, Lantao Yu, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning with Dual Deep Networks. arxiv
+- Yuandong Tian, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning Dynamics without Contrastive Pairs. ICML'21 Outstanding Paper Award Honorable Mention
+- Li Jing, Pascal Vincent, Yann LeCun, Yuandong Tian. Understanding Dimensional Collapse in Contrastive Self-supervised Learning. ICLR'22
+- Deep Contrastive Learning is Provably (almost) Principal Component Analysis. arxiv'22
+
+## Weakly Supervised
+- Classification:
 	- **URU**: D Mahajan, R Girshick, V Ramanathan, K He, M Paluri, Y Li, A Bharambe, L van der Maaten. Exploring the Limits of Weakly Supervised Pretraining. ECCV 2018
 		- **IG-1B** dataset: Instagram
 		- Pretrain on a larger dataset (1.5 billion Instagram) + (1.5k, 8.5k, 17k hashtag classes);
@@ -66,62 +162,12 @@
 		- Conclusion 1: hash-tags v.s. accuracy; (always a gain, fine-grained target needs a fine-grained source);
 		- Conclusion 2: larger amount of pretrain -> better target domain accuracy;
 		- Conclusion 3: the smaller the label noise (hashtags are noisy) -> better target accuracy;
-	- A Joulin, L van der Maaten, A Jabri, N Vasilache. Learning Visual Features from Large Weakly Supervised Data. ECCV 2016
-- **Contrastive** Exemplar: NPDC, MoCo, SimCLR, CPC
-	- **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
-		- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
-		- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
-		- Momentum update: slowly updating key encoder; θ-k = 0.999 θ-k + 0.001 θ-q;
-		- Positive: random augmentation (with grayscale);
-		- Shuffling-BN: train with multiple GPUs independently, the sample order of minibatch randomly shuffled;
-		- Exp:
-			- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
-			- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
-			- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
-	- **SimCLR**: Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton. A Simple Framework for Contrastive Learning of Visual Representations. 2020
-		- https://github.com/ildoonet/pytorch-SimCLR
-		- Data augmentation: color distortion is critical;
-		- InfoNCE loss;
-		- Shuffle BN to solve information leakage (similar to MoCo);
-		- Large batch-size (4k - 8k, requires TPU support), longer training (1000 epochs);
-	- **MoCo-V2**: Xinlei Chen, Haoqi Fan, Ross Girshick, Kaiming He. Improved Baselines with Momentum Contrastive Learning. 2020
-		- In this note, we verify the effectiveness of two of SimCLR's design improvements by implementing them in the MoCo framework. With simple modifications to MoCo—namely, using an **MLP projection head** and more **data augmentation**—we establish stronger baselines that outperform SimCLR
-	- Zhenda Xie, Yutong Lin, Zhuliang Yao, Zheng Zhang, Qi Dai, Yue Cao, and Han Hu. Self-supervised learning with swin transformers. 
-	- **MoCo-V3**: An Empirical Study of Training Self-Supervised Vision Transformers. ICCV'21
-		- Large batch-size instead of memory queue, vit backbone;
-		- Symmetrized loss: l(q1, k2) + l(q2, k1)
-- Non-Contrastive:
-	- **SWAV**: Mathilde Caron, Ishan Misra, Julien Mairal, Priya Goyal, Piotr Bojanowski, Armand Joulin. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
-		- https://github.com/facebookresearch/swav
-		- Insight: prototypes C as a pseudo Kmeans;
-	- **BYOL**: Bootstrap Your Own Latent A New Approach to Self-Supervised Learning. NIPS'20
-		- No negative pairs, target network;
-	- **simsiam**: Xinlei Chen, Kaiming He. Exploring Simple Siamese Representation Learning. CVPR'21 best paper honorable mention
-		- we report surprising empirical results that simple Siamese networks can learn meaningful representations even using none of the following:
-			- (i) negative sample pairs,
-			- (ii) large batches,
-			- (iii) momentum encoders
-	- **Barlow Twins**: Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, Stéphane Deny . Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
-	- **DINO**: Mathilde Caron, Hugo Touvron, Ishan Misra, Herve Jegou, Julien Mairal, Piotr Bojanowski, Armand Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
-		- https://github.com/facebookresearch/dino
-		- Insight: match output feature distribution by distillation: -p2logp1, p1 student, p2 teacher;
-			- p1: softmax(s_out)
-			- p2: softmax(t_out - C); C: center ema-updated;
-			- Teacher/student: global/local view;
-			- Self-attention of [CLS] token groups objects;
-		- Teacher: parameter (stop grad, moving avr of student), centering layer, take >50% image;
-		- Student: to learn, with small image;
-		- SWAV mean C trick;
-		- DINO linear: 75.3% res-50, 77% vit, 80% vit-b;
-	- **MSN**: Mahmoud Assran, Mathilde Caron, Ishan Misra, Piotr Bojanowski, Florian Bordes, Pascal Vincent, Armand Joulin, Michael Rabbat, Nicolas Ballas. Masked Siamese Networks for Label-Efficient Learning.
-		- DINO + mask;
+	- A Joulin, L van der Maaten, A Jabri, N Vasilache. Learning Visual Features from Large Weakly Supervised Data. ECCV'16
 - Weak detetection (Zhenheng):
 	- Image has only image level labeling (no bbox or segments);
 	- Hundreds of candidate proposals (can't penalize bbox reg-loss or classification loss);
 	- Max-pooling/top-k then direct classification;
 	- Half mAP
-- Visualization:
-	- Florian Bordes, Randall Balestriero, Pascal Vincent. High Fidelity Visualization of What Your Self-Supervised Representation Knows About. 2021
 
 ## Videos
 - **Frame** prediction forward or backward
@@ -130,9 +176,7 @@
 		- Predict shuffle;
 	- Vondrick et al NIPS'16, CVPR'17
 	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS'17
-	- **CPC**:
-		- Olivier J Hénaff, Ali Razavi, Carl Doersch, SM Eslami, and Aaron van den Oord. Data-efficient image recognition with contrastive predictive coding. 2019
-		- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
+	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
 - Predict motion/flow/ego-motion/motion-mask:
 	- P. Agrawal, J. Carreira, and J. Malik. Learning to see by moving. ICCV'15
 	- D. Jayaraman and K. Grauman. Learning image representations tied to egomotion. ICCV'15

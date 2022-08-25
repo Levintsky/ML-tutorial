@@ -15,19 +15,17 @@
 		- https://zhuanlan.zhihu.com/p/65539782
 		- https://zhuanlan.zhihu.com/p/120311352
 		- https://zhuanlan.zhihu.com/p/112277874
-- Non-NN Embedding:
-	- Matrix Factorization;
-	- Random Walk;
 - Learning with graphs:
 	- GCN;
 	- Graph attention, GAN;
-	- Pooling;
+	- Pooling: could be order-aware;
 	- Graph embedding;
 	- Graph generative network;
 	- Graph spatial/temporal networks;
 - Good Resources
 	- Stanford cs224w
 	- http://snap.stanford.edu/proj/embeddings-www/
+	- Keyulu Xu: https://people.csail.mit.edu/keyulux/
 - Survey:
 	- http://helper.ipam.ucla.edu/publications/dlt2018/dlt2018_14506.pdf
 	- Z Wu, S Pan, F Chen, G Long, C Zhang, P Yu. A Comprehensive Survey on Graph Neural Networks. 2018
@@ -35,9 +33,7 @@
 	- Jie Zhou, Ganqu Cui, Shengding Hua, Zhengyan Zhang, Cheng Yang, Zhiyuan Liu, Lifeng Wang, Changcheng Li, Maosong Sun. Graph neural networks: A review of methods and applications. '20
 
 ## Benchmarks
-- Hu, W., Fey, M., Zitnik, M., Dong, Y., Ren, H., Liu, B.,
-Catasta, M., and Leskovec, J. Open graph benchmark:
-Datasets for machine learning on graphs. NIPS'20
+- Hu, W., Fey, M., Zitnik, M., Dong, Y., Ren, H., Liu, B., Catasta, M., and Leskovec, J. Open graph benchmark: Datasets for machine learning on graphs. NIPS'20
 
 ## Graph Theory
 - Zhao, Y. Graph theory and additive combinatorics, 2019.
@@ -52,7 +48,7 @@ Datasets for machine learning on graphs. NIPS'20
 	- László Babai. Graph isomorphism in quasipolynomial time. STOC'16
 - Empirical/behavior:
 	- Lovasz, L. Large networks and graph limits, volume 60. American Mathematical Soc., 2012.
-	- Lovasz, L. and Szegedy, B. Limits of dense graph sequences.  Journal of Combinatorial Theory, Series B, 96(6):933–957, 2006.
+	- Lovasz, L. and Szegedy, B. Limits of dense graph sequences. Journal of Combinatorial Theory, Series B, 96(6):933–957, 2006.
 - Spectral theory:
 	- Find a **good** partition;
 	- Criteria:
@@ -110,9 +106,19 @@ Datasets for machine learning on graphs. NIPS'20
 		- Edge prediction;
 		- Graph embedding/classification;
 - Pinar Yanardag and SVN Vishwanathan. Deep graph kernels. KDD'15
+	- RKHS: K(G, G') = (φ(G), φ(G)) = φ(G)'Mφ(G)
+	- Graph kernels:
+		- 1. graphlet: (f1, f2): normalized counts;
+		- 2. **Weisfeiler-Lehman subtree kernel**: N. Shervashidze and K. Borgwardt. Fast subtree kernels on graphs. NIPS'10
+			- Compare number of shared subtree;
+		- 3. Random walk: count co-occurance; e.g. shortest path kernel;
+		- **R-Conv**: D. Haussler. Convolution kernels on discrete structures. TR'99
+	- Methodology for matrix M:
+		- Edit distance;
+		- Learning-based;
 - Tao Lei, Wengong Jin, Regina Barzilay, and Tommi Jaakkola. Deriving neural architectures from sequence and graph kernels. NIPS'17
 - Manzil Zaheer, Satwik Kottur, Siamak Ravanbakhsh, Barnabas Poczos, Ruslan R Salakhutdinov, and Alexander J Smola. Deep sets. NIPS'17
-- Muhan Zhang, Zhicheng Cui, Marion Neumann, and Yixin Chen. An end-to-end deep learning architecture for graph classification. AAAI'18
+	- Node-only, permutation invariant;
 - Keyulu Xu, Chengtao Li, Yonglong Tian, Tomohiro Sonobe, Ken-ichi Kawarabayashi, and Stefanie Jegelka. Representation learning on graphs with jumping knowledge networks. ICML'18
 - Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman. Provably Powerful Graph Networks. NIPS'19
 - Fox, J. and Rajamanickam, S. How robust are graph
@@ -140,12 +146,14 @@ neural networks to structural noise? arxiv'19
 		- 1-layer MLP not sufficient;
 		- GCN/GraphSage not sufficient; (pooling not injective)
 - GCN:
+	- General idea: z = f(LXW), L: graph Laplacian, e.g. D^(-1)A, W: learnable weights, f(.) non-linear activation;
 	- GCN + spectral trick:
 		- Eigen-decomposition: O(N^3) computation
 		- O(N^2) memory, not efficient for big graphs;
 	- **Spectral CNN**: J Bruna, W Zaremba, A Szlam and Y LeCun. Spectral networks and locally connected networks on graphs. ICLR'14
 	- David K Duvenaud, Dougal Maclaurin, Jorge Iparraguirre, Rafael Bombarell, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P Adams. Convolutional networks on graphs for learning molecular fingerprints. NIPS'15
 	- Mathias Niepert, Mohamed Ahmed, and Konstantin Kutzkov. Learning convolutional neural networks for graphs. ICML'16
+		- Vertice ordering;
 	- **DCNN**: J. Atwood and D. Towsley, Diffusion-convolutional neural networks, NIPS'16
 	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16
 	- **ChebNet**: M Defferrard, X Bresson and P Vandergheynst. Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering, NIPS'16
@@ -164,6 +172,8 @@ neural networks to structural noise? arxiv'19
 		- https://github.com/tkipf/pygcn (PyTorch)
 	- **GraphSage**: William L Hamilton, Rex Ying, and Jure Leskovec. Inductive representation learning on large graphs. NIPS'17
 	- **LGCN**: H. Gao, Z. Wang, and S. Ji, Large-scale learnable graph convolutional networks. KDD'18
+	- Sitao Luan, Mingde Zhao, Xiao-Wen Chang, Doina Precup. Break the Ceiling: Stronger Multi-scale Deep Graph Convolutional Networks. NIPS'18
+	- - Naganand Yadati, Madhav Nimishakavi, Prateek Yadav, Vikram Nitin, Anand Louis, Partha Talukdar. HyperGCN: A New Method For Training Graph Convolutional Networks on Hypergraphs. NIPS'18
 	- **AGCN**: R. Li, S. Wang, F. Zhu, and J. Huang, Adaptive graph convolutional neural networks. AAAI'18
 		- Augment a graph with a residual graph, incurs expensive computation;
 	- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
@@ -187,6 +197,8 @@ neural networks to structural noise? arxiv'19
 - Pooling:
 	- **GraphSage**: W. Hamilton, Z. Ying, and J. Leskovec, Inductive representation learning on large graphs. NIPS'17
 		- Introduce aggregation function;
+	- Muhan Zhang, Zhicheng Cui, Marion Neumann, and Yixin Chen. An end-to-end deep learning architecture for graph classification. AAAI'18
+		- Localized graph-conv + sortPooling;
 	- Rex Ying, Jiaxuan You, Christopher Morris, Xiang Ren, William L Hamilton, and Jure Leskovec. Hierarchical graph representation learning with differentiable pooling. NIPS'18
 	- Ryan L Murphy, Balasubramaniam Srinivasan, Vinayak Rao, and Bruno Ribeiro. Janossy pooling: Learning deep permutation-invariant functions for variable-size inputs. ICLR'19
 		- https://github.com/PurdueMINDS/JanossyPooling

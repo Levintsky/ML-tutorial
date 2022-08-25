@@ -3,6 +3,7 @@
 ## Basics
 - Problem Definition:
 	- Find data most uncertain; how to measure uncertainty and generate MAP? check Bayes/CRF;
+- Goal: solve insufficient data problem;
 - Typical heuristics:
 	- Start with a pool of unlabeled data
 	- Pick a few points at random and get their labels
@@ -11,11 +12,31 @@
 		- Query the unlabeled point that is closest to the boundary
 		- (or most uncertain, or most likely to decrease overall uncertainty,...)
 - Techniques:
+	- Acquisition Function (sampling strategy)
+		- Identify the most **valuable** data to label;
+		- Uncertainty Sampling: most uncertain;
+		- Diversity Sampling: represent the whole dataset;
+		- Expected Model Change: impact on model improvement/training loss;
+		- Hybrid Strategy: uncertain but also highly representative;
+	- Deep Acquisition Function:
+		- Measuring Uncertainty
+			- Ensemble and Approximated Ensemble
+			- Uncertainty in Parameter Space
+			- Loss Prediction
+			- Adversarial Setup
+		- Measuring Representativeness
+			- Core-sets Approach
+			- Diverse Gradient Embedding
+		- Measuring Training Effects
+			- Quantify Model Changes
+			- Forgetting Events
+		- Hybrid
 	- Adaptive query:
 		- Case I: Exploiting (cluster) structure in data;
 		- Case II: Efficient search through hypothesis space;
 - Tutorial:
 	- ICML'19: https://hunch.net/~active_learning/
+	- https://lilianweng.github.io/posts/2022-02-20-active-learning/#diversity-sampling
 
 ## Legacy
 - D. MacKay, Information-based objective functions for active data selection. Neural Computation'92
@@ -25,11 +46,41 @@
 - S. Tong and D. Koller, Support vector machine active learning with applications to text classification. JMLR'02
 	- SVM;
 
-## Cluster Based
+## Measure Uncertainty
+- Basics:
+	- Aleatoric uncertainty: data noise;
+	- Epistemic uncertainty: model uncertainty;
+- Ensemble:
+	- Dropout for cheap ensemble: Gal & Ghahramani 2016; MC-Dropout (Monte Carlo Dropout)
+	- DBAL (Deep Bayesian active learning): Gal et al. 2017; distribution over model weights;
+	- Beluch compared ensemble-based models with MC dropout;
+- Uncertainty Sampling: most uncertain;
+	- BBB measures uncertainty in NN: q(w|θ) to approx p(w|D);
+- Loss prediction;
+	- Design a loss prediction module;
+		- Yoo & Kweon (2019) Learning Loss for Active Learning. CVPR'19
+- Adversarial Setup:
+	- Sinha et al. (2019). VAAL (Variational Adversarial Active Learning).
+		- GAN-like D(.) to distinguish labeled and unlabeled;
+		- Selects unlabeled samples with low discriminator scores
+	- MAL (Minimax Active Learning; Ebrahimiet al. 2021) is an extension of VAAL.
+	- CAL (Contrastive Active Learning; Margatina et al. 2021) intends to select contrastive examples
+
+## Measuring Representativeness (Cluster Based)
 - Basics:
 	- Assume distance/neighborhood known, propagate labels;
-- Xiaojin Zhu, John Lafferty and Zoubin Ghahramani, Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions, ICML 2003 workshop
-- Sanjoy Dasgupta and Daniel Hsu. Hierarchical sampling for active learning. ICML 2008.
+- Legacy:
+	- Xiaojin Zhu, John Lafferty and Zoubin Ghahramani, Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions, ICML'03 workshop
+	- Sanjoy Dasgupta and Daniel Hsu. Hierarchical sampling for active learning. ICML'08.
+- Core-sets Approach: select a small subset for approx;
+	- Sener & Savarese (2018): 
+		- coreset loss := perf(labeled) - perf(all);
+	- Sinha'19, Coleman'20 SVP (Selection via Proxy, cheaper than coreset)
+- Diverse Gradient Embedding:
+	- BADGE (Batch Active learning by Diverse Gradient Embeddings; Ash et al. 2020)
+		- both model uncertainty and data diversity in the gradient space.
+		- Uncertainty := |gradient| w.r.t. the final layer;
+		- diversity := a diverse set of samples that span in the gradient space.
 
 ## Efficient search through hypothesis space
 - Basics:
@@ -46,6 +97,16 @@
 	- Alina Beygelzimer, Sanjoy Dasgupta, and John Langford, Importance Weighted Active Learning, ICML 2009.
 - Algorithms:
 	- A^2 algorithm;
+
+## Measuring Training Effects
+- Quantify Model Changes
+	- Settles et al. (2008) EGL (Expected Gradient Length)
+		- Measure by largest gradient magnitude;
+	- BALD (Bayesian Active Learning by Disagreement; Houlsby et al. 2011)
+		- Maximize information gain;
+- Forgetting Events:
+	- Mariya Toneva et al. (2019)
+	-  Bengar et al. (2021): label dispersion
 
 ## Application in Computer Vision
 - Scene classification:
@@ -67,18 +128,14 @@
 	- W. Luo, A. G. Schwing, and R. Urtasun, Latent Structured Active Learning. NIPS'13
 		- Latent structure with belief propagation; local entropy of the marginal distribution of each variable via convex belief propagation;
 	- Qing Sun, Ankit Laddha, Dhruv Batra. Active Learning for Structured Probabilistic Models with Histogram Approximation. CVPR'15
-		- Insight: a variational approach with Histogram Approximation for Gibbs distribution to approximate entropy;
-			<img src="/Basic-ML/images/active/hist-approx.png" alt="drawing" width="400"/>
-		- Assumption: CRF with unary and binary, S(y) = Σφ(yu) + Σφ(yu, yv), target: to learn weight w in the log-linear model s.t. (w, φ(x, y)); find the one with largest entropy to label:
+		- Insight: variational, Histogram Approx q(y|x) for p(y|x);
+		- Assumption: CRF with unary and binary
+			- S(y) = Σφ(yu) + Σφ(yu, yv)
+			- target: to learn weight w in the log-linear model s.t. (w, φ(x, y)); find the one with largest entropy to label:
 			- H(p) = -E_p(y|x)[log(P(y|x))]
-		- Approximate with sample entropy: with M-best proposals\
-			<img src="/Basic-ML/images/active/sample-entropy.png" alt="drawing" width="400"/>\
-			<img src="/Basic-ML/images/active/sample-entropy-2.png" alt="drawing" width="400"/>
-		- This paper with histogram around MAP:\
-			<img src="/Basic-ML/images/active/hist-entropy.png" alt="drawing" width="400"/>\
-			<img src="/Basic-ML/images/active/hist-entropy-2.png" alt="drawing" width="400"/>
-		- More details: circular or rings around MAP: solvable by Lagrange Dual\
-			<img src="/Basic-ML/images/active/hist-entropy-3.png" alt="drawing" width="400"/>
+		- Approximate with sample entropy: with M-best proposals;
+		- Proposed: histogram around MAP;
+		- More details: circular or rings around MAP: solvable by Lagrange Dual;
 		- Parameter Learning w: MLE, marginals via sum-product loop BP;
 - Ask for labels:
 	- S. Vijayanarasimhan and K. Grauman, What's it going to cost you? Predicting effort vs. informativeness for multilabel image annotations. CVPR'09
@@ -101,7 +158,7 @@
 - Propagation across images:
 	- D. Küttel, M. Guillaumin, and V. Ferrari. Segmentation propagation in imagenet. ECCV'12
 
-## NIPS'19
+## NIPS'18
 - Andreas Kirsch, Joost van Amersfoort, Yarin Gal. BatchBALD: Efficient and Diverse Batch Acquisition for Deep Bayesian Active Learning
 - Robert Pinsler, Jonathan Gordon, Eric Nalisnick, José Miguel Hernández-Lobato. Bayesian Batch Active Learning as Sparse Subset Approximation
 - Shali Jiang, Roman Garnett, Benjamin Moseley. Cost Effective Active Search
