@@ -101,16 +101,3 @@
 
 	- ResNet
 	<img src = '/NLP/images/wavenet2.png' width = '500px'>
-
-- **Work**:
-	- Unsup on several applications
-	- Word embeddings
-	- Text gen of short sentences
-- **Sort-of-Work**:
-	- Sentence embedding
-	- Unsup MT under some conditions
-- **Does-not-Work-yet**:
-	- Modeling long documents
-- **FAIR**:
-	- Yann. Adversarially-Trained Normalized Noisy-Feature Auto-Encoder for Text Generation, 2018
-	- Yann. Byte-Level Recursive Convolutional Auto-Encoder for Text, 2018

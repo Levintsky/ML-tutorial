@@ -50,6 +50,7 @@
 	- Other recent optimizers
 	- Visualization of algorithms
 	- Which optimizer to use?
+- Legacy: Robbins, H. and Monro, S. A stochastic approximation method. Annals of Mathematical Statistics, 1951.
 - U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 
 ## Parallel/Distributed

@@ -1,6 +1,97 @@
-# Weakly-Supervsied Learning
+# Self-Supervised Learning
 
 ## Basics
+- Contrastive Training Objectives
+	- Contrastive Loss (pairwise): (Chopra et al. 2005)  x
+		- L(xi, xj, θ) = I(yi=yj)|f(xi;θ)-f(xj;θ)| + I(yi≠yj)max(0, ε-|f(xi;θ)-f(xj;θ)|)
+	- Triplet Loss: (Chopra et al. 2005)
+	- Lifted Structured Loss (Song et al. 2015):
+		- generalize triplet, all pairs in a batch;
+	- N-pair Loss: Multi-Class N-pair loss (Sohn 2016)
+		- generalize triplet to multiple negatives;
+		- L = -log[exp(f(xq)f(x+)) / ∑exp(f(x)f(xi))]
+	- NCE (Noise Contrastive Estimation): Gutmann & Hyvarinen'10
+		- Target: p(x|c=1;θ)
+		- Noise: p(x|c=0)
+		- Logit: logp(.;θ) - logq(.)
+		- Loss = -log[p/p+q]
+	- InfoNCE (CPC):
+		- softmax categorical: L = -E[log(f(x,c)/∑f(x',c))]
+		- f = exp(z'Wc) in CPC, W trainable;
+	- Soft-Nearest Neighbors Loss: (Salakhutdinov & Hinton 2007, Frosst et al. 2019)
+		- Extend to multiple positive;
+	- Common Setup
+- Key Ingredients
+	- Heavy Data Augmentation (SimCLR)
+	- Large Batch Size (SimCLR, CLIP)
+	- Hard Negative Mining (SimCSE, DPR)
+		- top incorrect;
+- Vision: Image Embedding
+	- Image Augmentations (check Data-Augment.md)
+		- Basic Image Augmentation
+		- Augmentation Strategies
+		- Image Mixture: MixUp
+	- Parallel Augmentation: two noisy version of the same image;
+		- SimCLR, Barlow Twins, BYOL
+	- Memory Bank
+		- Instance Discrimination with Memoy Bank
+		- MoCo & MoCo-V2, CURL (RL)
+	- Feature Clustering
+		- DeepCluster, SwAV
+	- Working with Supervised Datasets (Check Multimodal.md)
+		- CLIP, Supervised Contrastive Learning
+- Language: Sentence Embedding
+	- Text Augmentation (Check Data-Augment.md)
+	- Supervision from NLI
+		- Sentence-BERT
+		- BERT-flow
+			- Transform embedding to smooth isotropic Gaussian via normalizing flows.
+		- Whitening Operation
+			- Make sentence vec 0 mean, identity covariance;
+	- Unsupervised Sentence Embedding Learning
+		- Context Prediction
+		- Mutual Information Maximization
+- Tutorials:
+	- NIPS'18 Tutorial by M. A. Ranzato and A. Graves. Deep unsupervised learning.
+		- https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
+	- **Tutorial**: ECCV'20
+		- Deepak Pathak: https://youtu.be/fUMpC_hoedA
+			- RL: intrinsic motivation/curiosity;
+				- Predict consequences of action;
+				- Bad prediction: high curiosity;
+		- Alexei Efros: https://youtu.be/iTbfEXFwDJc
+			- Optimistic view: PASCAL VOC -> ImageNet -> MS COCO -> LVIS;
+			- No-fixed dataset: data-augmentation?
+			- Continual learning? Catastrophic forgetting?
+		- Stella Yu: https://youtu.be/F5mt4z-w_Mk
+			- Metric learning?
+			- Non-parametric softmax instance;
+		- Ishan Misra: https://youtu.be/gbziPIn9uDI
+			- Multi-view invariance, grouping;
+			- **PIRL**: Ishan Misra, Laurens van der Maaten. Self-Supervised Learning of Pretext-Invariant Representations. CVPR'20
+				- Invariant to pretext task;
+			- AVID-CMA: Pedro Morgado, Nuno Vasconcelos, Ishan Misra. Audio-Visual Instance Discrimination with Cross-Modal Agreement. arxiv'20
+				- Task: in same video, audio/video match in time?
+				- https://github.com/facebookresearch/AVID-CMA
+			- **SWAV**: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NeurIPS'20
+				- Task: same image, two augmentation zt, zs and their query codes qt, qs, loss as l(zt, qs) + l(zs, qt);
+				- https://github.com/facebookresearch/swav
+		- Carl Doersch: https://youtu.be/RWCc0nZOSBw
+			- **BYOL**: Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, Michal Valko. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
+				- https://github.com/deepmind/deepmind-research/tree/master/byol
+				- step 1: no-negative;
+				- step 2: stop-gradient; (freeze target network)
+					- import to avoid collapse;
+				- step 3: prediction; **predict the other representation?**
+			- **CrossTransformer**:
+		- Paolo Favaro: https://youtu.be/APwHDZZcLuY
+			- Short-cut: predict from local features;
+			- Build global features: distinguish between objects;
+- **Tutorial**: ICML'21
+	- https://icml.cc/media/icml-2021/Slides/10843_QHaHBNU.pdf
+- https://lilianweng.github.io/posts/2021-05-31-contrastive/
+
+## Vision Specific
 - Goal: learn feature z from x, without label y;
 - Tasks:
 	- Autoencoder: reconstruct x from z;
@@ -23,6 +114,15 @@
 - Tutorials:
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
+
+## Unclassified
+- Edwards & Storkey, Towards a Neural Statistician, (2017)
+	- one must take seriously the idea of working with datasets, rather than datapoints, as the key objects to model.
+- **Test-time training (TTT)**
+	- A Jabri, A Owens, A Efros. Space-Time Correspondence as a Contrastive Random Walk. NeurIPS'20
+		- Task: play video forward then backward, should end at the same point;
+		- https://ajabri.github.io/videowalk/
+		- https://github.com/ajabri/videowalk
 
 ## Images Tasks
 - AutoEncoder:
@@ -142,6 +242,9 @@
 			- DINO linear: 75.3% res-50, 77% vit, 80% vit-b;
 		- **MSN**: Mahmoud Assran, Mathilde Caron, Ishan Misra, Piotr Bojanowski, Florian Bordes, Pascal Vincent, Armand Joulin, Michael Rabbat, Nicolas Ballas. Masked Siamese Networks for Label-Efficient Learning.
 			- DINO + mask;
+- Other prior:
+	- Symmetry:
+		- Andrea Vedaldi. Modelling and unsupervised learning of symmetric deformable object categories. NIPS'18
 
 ## Analysis
 - Visualization:
@@ -208,5 +311,45 @@
 	- g(x|vq, r) = int g(x,z|vq, r)dz, z: latent variable
 	- Env: rooms with multiple objects (DML?), allow agent to act, robotic-arm;
 
-## Unclassified
-- Andrea Vedaldi. Modelling and unsupervised learning of symmetric deformable object categories. NIPS'18
+## Augment Consistency
+- **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
+	- https://github.com/google-research/uda
+	- Semi-supervised learning:
+		- Labeled: l(p(y|x), y)
+		- Unlabeled: consistency between augmented data:
+			- p(y|x), p(y|x')
+
+## Google Brain
+- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
+	- https://github.com/google-research/disentanglement_lib
+
+## InfoNCE
+- **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
+	- Insight: an encoder g_enc(x_t)=z_t, as well as c_t (info accumulated until t), given some {z_t+k, z_j1, z_j2, ...}, z_t+k as positive and others uniformly sampled as negative, do classification **InfoNCE**;
+	- Prediction\
+		<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400'>
+	- Loss: InfoNCE\
+		<img src = '/Weak-Unsupervised/images/cpc3.png' width = '400'>
+	- Application in vision:
+		- ResNet-101: g-enc\
+			<img src = '/Weak-Unsupervised/images/cpc4.png' width = '500px'>
+- **GIM (Greedy-InfoMax)**: Sindy Löwe, Peter O’Connor, Bastiaan S. Veeling. Putting An End to End-to-End: Gradient-Isolated Learning of Representations. NIPS'19 Honorable Mention Outstanding New Directions Paper Award
+	- https://github.com/loeweX/Greedy_InfoMax
+	- Key insight: layer-wise information preservation;
+	- Algorithm: Divide CNN by depth into M modeules;\
+		<img src = '/Weak-Unsupervised/images/gim1.png' width = '500px'>
+	- Supervision: similar to CPC;\
+		<img src = '/Weak-Unsupervised/images/gim2.png' width = '500px'>
+	- Experiments:
+		- Vision: STL-10;
+		- Audio: LibriSpeech speaker recognition (100-hour);
+
+## NIPS'18
+- Vikas K. Garg, Adam Kalai. Supervising Unsupervised Learning. NIPS'18
+	- Insight: transfer knowledge from supervised dataset;
+- Tam Nguyen, Maximilian Dax, Chaithanya Kumar Mummadi, Nhung Ngo, Thi Hoai Phuong Nguyen, Zhongyu Lou, Thomas Brox. DeepUSPS: Deep Robust Unsupervised Saliency Prediction via Self-supervision
+- Adam Bielski, Paolo Favaro. Emergence of Object Segmentation in Perturbed Generative Models
+- Christopher Beckham, Sina Honari, Alex Lamb, Vikas Verma, Farnoosh Ghadiri, R Devon Hjelm, Yoshua Bengio, Chris Pal. On Adversarial Mixup Resynthesis
+- Iordanis Kerenidis, Jonas Landman, Alessandro Luongo, Anupam Prakash. q-means: A quantum algorithm for unsupervised machine learning
+- Hongteng Xu, Dixin Luo, Lawrence Carin. Scalable Gromov-Wasserstein Learning for Graph Partitioning and Matching
+- Hugo Caselles-Dupré, Michael Garcia Ortiz, David Filliat. Symmetry-Based Disentangled Representation Learning requires Interaction with Environments

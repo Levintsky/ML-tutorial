@@ -142,6 +142,9 @@
 	- Split finding on-the-fly (check CART);
 - Zhihua Zhou. Multi-Layered Gradient Boosting Decision Trees. NIPS'18
 
+## MoE
+- Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, Jeff Dean. Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. 17
+
 ## NIPS'18
 - Xiao Li, Yu Wang, Sumanta Basu, Karl Kumbier, Bin Yu. A Debiased MDI Feature Importance Measure for Random Forests
 - Shen-Huan Lyu, Liang Yang, Zhi-Hua Zhou. A Refined Margin Distribution Analysis for Forest Representation Learning

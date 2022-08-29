@@ -1,7 +1,64 @@
-# Learining Theory
+# Learning Theory
 
 ## Resources
 - Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
+
+## Supervised Learning Formulations (Stanford CS-229/Stat-214)
+- 1.1 Supervised learning
+	- training set;
+	- predictor, hypothesis, model;
+	- expected loss, population loss, expected risk, population risk;
+	- hypothesis class, hypothesis family, excess risk;
+- 1.2 Empirical risk minimization
+	- empirical risk: on training set;
+		- equal to population risk in expectation;
+
+## Asymptotic Analysis (Stanford CS-229/Stat-214)
+- 2.1 Asymptotics of empirical risk minimization
+	- L(θˆ) − infL(θ) ≤ c/n + o(1/n)
+	- Theo 2.1 θˆ →p θ∗ as n → ∞
+		- √n(θˆ−θ∗) →d Gaussian
+		- n(L(θˆ)−L(θ∗)) →d Gaussian
+	- Central Limit Theorem
+	- Theo 2.4 (MLE paradigm) suppose P(y|x; θ), θ∈Θ; loss MLE, nll l(xi,yi,θ)=-logP(y|x; θ), then
+		- θ converge;
+		- E[∇l(θ∗)] = 0;
+		- Cov(∇l) = ∇^2 L; (integral by part)
+		- √n(θˆ−θ∗) →d N(0, ∇2L(θ∗)^−1).
+- 2.2 Limitations of asymptotic analysis
+
+## Concentration Inequalities (Stanford CS-229/Stat-214)
+- Insight:
+	- 1. X1 +...+Xn concentrates around E[X1 +...+Xn].
+	- 2. More generally, f(X1,...,Xn) concentrates around E[f(X1,...,Xn)].
+- 3.1 The big-O notation
+- 3.2 Chebyshev's inequality
+	- Theo 3.1 (**Chebyshev**)
+		- P(|Z-E[Z]|≥t) ≤ Var(Z)/t^2
+	- Intuition: tail behavior, density decay at least at 1/t^2;
+- 3.3 Hoeffding's inequality
+	- Theo 3.2 (**Hoeffding**) X1, X2, ... Xn independent real, ai ≤ Xi ≤ bi almost surely. X̄ = 1/n Σni=1 Xi, let μ=E[x]
+		- P(|X̄−μ|≤ε) ≥ 1 - 2exp(-2n^2ε^2 / Σ(bi-ai)^2)
+	- 1/n^2 Σ(bi-ai)^2: upper bound or proxy of Var(Xi)
+	- Take ε=O(σ√logn)=σ√(clogn), P(|X̄−μ|≤ε) decays at n^(-2c)
+	- Compact form when Xi are bounded;
+- 3.4 Sub-Gaussian random variables
+	- Def. E[exp λ(X-μ)] ≤ exp(σ^2λ^2/2). σ-sub-Gaussian and say it has variance proxy σ^2.
+	- Theo 3.7 sub-Gaussian.
+		- Pr[|X−μ|≥t] ≤ 2exp(−2t^2/σ2), ∀t∈R.
+	- Theo 3.10 sum of sub-Gaussian.
+	- 3.4.1 Examples of sub-Gaussian random variables
+		- Rademacher random variables
+		- Random variables with bounded distance to mean
+		- Bounded random variables
+- 3.5 Concentrations of functions of random variables
+	- Theo 3.15 (**McDiarmid**'s inequality) f(X1,...,Xn) not overly sensitive to change of a single coord. Then
+		- P(|f(X1..,Xn)-E[f()]|≥t) ≤ 2exp(−2t^2/Σci^2)
+	- 3.5.1 Bounds for Gaussian random variables
+		- Theo 3.18 (**Gaussian Poincare inequality**) X1, X2, ..., Xn i.i.d. N(0,1)
+			- Var(f(X1,...,Xn)) ≤ E[|∇f(X1,...,Xn)|^2]
+		- Theo 3.19 (**Wainwright**) f: L-Lipschitz w.r.t. Euclidean distance, Xi i.i.d. N(0,1)
+			- P(|f(X)-E[f(X)]|≥t) ≤ 2exp(−t^2/2L^2)
 
 ## PAC Basics
 - Generalization error: E(h, D)

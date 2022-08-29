@@ -321,22 +321,22 @@ neural networks to structural noise? arxiv'19
 		- Given a set of objects as nodes with attributes oi=(oi1, oi2, ..., oin),
 		- Characterize relation as edge between them (bigger, behind, ...)
 		- Output: prediction
-	- **IN**: Peter Battaglia, Razvan Pascanu, Matthew Lai, Danilo Jimenez Rezende, and Koray Kavukcuoglu. Interaction networks for learning about objects, relations and physics. NIPS'16
+	- **IN**: Peter Battaglia, et. al. Interaction networks for learning about objects, relations and physics. NIPS'16
 		- Insight: MLP to handle pairwise relationship, aggregate all effect to predict result;
 		- Effect: et+1 = f(o1,t, o2,t, r)
 		- Predict future: o2,t+1 = f(o2,t, et+1)
-	- **RN**: Raposo, D., Santoro, A., Barrett, D., Pascanu, R., Lillicrap, T., and Battaglia, P. Discovering objects and their relations from entangled scene representations. ICLR Workshop 2017
+	- **RN**: Raposo, D., et. al. Discovering objects and their relations from entangled scene representations. ICLR Workshop 2017
 		- Function gψ to discover obj relations, gψ(D) ≡ gψ(o1, o2, ..., on)
 		- No prior: r = fφ(gψ(o1, .., on)).
 		- Obj prior: r = fφ(gψ(o1), .., gψ(on)).
 		- Obj pair prior: r = fφ(gψ(o1, o2), .., gψ(oi, oj))
 		- External effects (gravity): X={xi}
-	- **RN**: A Santoro, D Raposo, D G.T. Barrett, M Malinowski, R Pascanu, P Battaglia, T Lillicrap. A simple neural network module for relational reasoning. 2017
-		- Insight: one step GNN with a complete graph;
+	- **RN**: A Santoro, et. al. A simple neural network module for relational reasoning. NIPS'17
+		- Insight: same as RN, on raw image rather than detected objects;
 			- RN(O) = fφ(Σij gθ(oi, oj))
 		- V (vertices); u (attributes); E (edges)
 		- Update and aggregate operator
-	- **GN-Block**: P W. Battaglia, J B. Hamrick, V Bapst, A Sanchez-Gonzalez, V Zambaldi, M Malinowski, A Tacchetti, D Raposo, A Santoro, R Faulkner, C Gulcehre, F Song, A Ballard, J Gilmer, G Dahl, A Vaswani, K Allen, C Nash, V Langston, C Dyer, N Heess, D Wierstra, P Kohli, M Botvinick,O Vinyals, Y Li, R Pascanu. Relational inductive biases, deep learning, and graph networks. 2018
+	- **GN-Block**: P W. Battaglia, et. al. Relational inductive biases, deep learning, and graph networks. 2018
 		- Insight: edge attributes; local, global aggregation;
 		- https://github.com/deepmind/graph_nets
 		- MPNN [Gilmer'17] is a special case of GN;

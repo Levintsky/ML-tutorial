@@ -50,8 +50,7 @@
 - Energy-based:
 	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
 	- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
-- Score-based:
-	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
+- Erik Nijkamp, Mitch Hill, Song-Chun Zhu, Ying Nian Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
 
 ## Autoregressive/Progressive
 - Basics: Generate result piece by piece;
@@ -76,6 +75,11 @@
 ## Implicit
 - Only defines generating process, likelihood-free;
 - Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
+
+## Diffusion/Score-based
+- DDPM:
+- Score-based:
+	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
 
 ## Theory and Analysis
 - Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18

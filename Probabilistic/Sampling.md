@@ -1,17 +1,6 @@
-# Monte Carlo inference
+# Sampling
 
-## Physics Background
-- Lagrange Mechanics:
-	- q as coordinates, v=dq/dt as velocity
-	- Euler-Lagrange equation: dL/dq - d(dL/dv)/dt=0,
-	- Lagrangian L could be L=mv^2/2-V(q), with V as potential;
-- Legendre Transform: K=mv^2/2, then the slope p; applying duality to Lagrange and maximum, T(v) = mv^2/2
-- Hamilton: H=pq-L (Legendre), H(q,p)=T(p)+V(q); energy conservation: dH/dt=0 
-- T(p) or K(p): kinetic energy; p^TM^(-1)p, where M is mass matrix;
-- U(q) or V(q): potential energy;
-- Equation of motion: dqi/dt=dH/dpi, dpi/dt=-dH/dqi;
-
-## Latest
+## Misc
 - A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
 ## Sampling Methods (PRML Chap 11, Kevin Murphy Chap 2.7)
@@ -167,7 +156,16 @@
 - 24.7 Approximating the marginal likelihood
 
 ## Langevin Dynamics
-- Legacy SGD: Robbins, H. and Monro, S. A stochastic approximation method. Annals of Mathematical Statistics, 1951.
+- Physics Background (for HMC, Langevin Dynamics)
+	- Lagrange Mechanics:
+		- q as coordinates, v=dq/dt as velocity
+		- Euler-Lagrange equation: dL/dq - d(dL/dv)/dt=0,
+		- Lagrangian L could be L=mv^2/2-V(q), with V as potential;
+	- Legendre Transform: K=mv^2/2, then the slope p; applying duality to Lagrange and maximum, T(v) = mv^2/2
+	- Hamilton: H=pq-L (Legendre), H(q,p)=T(p)+V(q); energy conservation: dH/dt=0 
+	- T(p) or K(p): kinetic energy; p^TM^(-1)p, where M is mass matrix;
+	- U(q) or V(q): potential energy;
+	- Equation of motion: dqi/dt=dH/dφ, dpi/dt=-dH/dφ;
 - Neal, R. M. MCMC using Hamiltonian dynamics. In Brooks, S., Gelman, A., Jones, G., and Meng, X.-L. (eds.), Handbook of Markov Chain Monte Carlo. 2010
 	- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
 	- ηt ~ N(0, εt)
@@ -201,7 +199,7 @@
 - Tao Sun, Yuejiao Sun, Wotao Yin. On Markov Chain Gradient Descent. NIPS'18
 - Yi HAO, Alon Orlitsky, Venkatadheeraj Pichapati. On Learning Markov Chains. NIPS'18
 
-## NIPS'19
+## NIPS'18
 - Holden Lee, Oren Mangoubi, Nisheeth Vishnoi. Online sampling from log-concave distributions
 - Anna Wigren, Riccardo Sven Risuleo, Lawrence Murray, Fredrik Lindsten. Parameter elimination in particle Gibbs sampling
 - Ruqi Zhang, Christopher De Sa. Poisson-Minibatching for Gibbs Sampling with Convergence Rate Guarantees
