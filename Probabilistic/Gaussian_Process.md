@@ -111,7 +111,7 @@
 			- Reproducing proberty: (kernel trick)
 				- (f(·), k(.,x))H = f(x)
 				- (k(.,x), k(.,y)) = k(x,y)
-			- f(x) = (f, φ(x))H = Σ_i fi sqrt(λi)ei(x)
+			- f(x) = (f, φ(x))H = Σ_i fi √(λi)ei(x)
 		- Mercer: κ(x, x') = Σλiφi(x)φi(x') for positive definite kernel;
 		- φi: orthonormal basis for function space;
 		- Hk = {f: f(x) = Σfiφi(x), Σfi^2/λi < ∞} RKHS

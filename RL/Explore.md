@@ -8,7 +8,7 @@
 - lec-17, 18 (CS-294, Sergey Levine)
 - Approach 1: **UCB** (Upper Confidence Bounds)
 	- Intuition: try each arm until you are sure it's not great:
-		- a = argmax μa + sqrt(2lnT/N(a))
+		- a = argmax μa + √(2lnT/N(a))
 		- Reg(T) ~ O(logT), provably as good as any algorithm
 - Approach 2: **Thompson Sampling**:
 	- An easy tutorial: https://github.com/andrecianflone/thompson/blob/master/thompson.ipynb
@@ -52,7 +52,7 @@ def bonus(self, observation):
 - Pseudo-count:
 	- **CTS**: M G. Bellemare, S Srinivasan, G Ostrovski, T Schaul, D Saxton, R Munos. Unifying Count-Based Exploration and Intrinsic Motivation, NIPS'16
 		- CTS model (Bellemare, M., Veness, J., and Talvitie, E. (2014). Skip context tree switching. ICML'14);
-		- Enhance the reward r with rareness of next state N(s), r'=r+β/sqrt(N(s)+ε):
+		- Enhance the reward r with rareness of next state N(s), r'=r+β/√(N(s)+ε):
 			<img src="/RL/images/xx/xx-pseudo.png" alt="drawing" width="500"/>
 	- **PixelCNN**: Georg Ostrovski, Marc G. Bellemare, Aaron van den Oord, Remi Munos. Count-Based Exploration with Neural Density Models. ICML'17
 	- **Hash**: H Tang, R Houthooft, D Foote, A Stooke, X Chen, Y Duan, J Schulman, F D Turck, P Abbeel. #Exploration: A Study of Count-Based Exploration for Deep Reinforcement Learning. NIPS'17\

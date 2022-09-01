@@ -17,7 +17,7 @@
 		- Update stat n(s,a), n(s,a,s'), rc(s,a);
 		- Update model: R(st,at) and T(s'|s,a)
 		- Set Q(s, a) as exploration based reward by looping until convergence:
-			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/sqrt(n(s,a))
+			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/√(n(s,a))
 - **Recurrent World Models Facilitate Policy Evolution (Google Brain)**. NIPS'18
 
 ## Basics

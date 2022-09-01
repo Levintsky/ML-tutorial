@@ -161,7 +161,7 @@
 	- Sufficient converge condition (Robbins-Monroe):
 		- Ση = ∞, Ση^2 < ∞ (e.g. η ~ 1/k)
 	- Per-parameter: adagrad with moving variance s;
-		- θ = θ - ηg/(τ+sqrt(s))
+		- θ = θ - ηg/(τ+√(s))
 	- Perceptron: iterate each item, 
 		- w = w - η∇E(w) = w + ηφt
 		- if y ≠ y^, θ += yixi

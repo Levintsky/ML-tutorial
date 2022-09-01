@@ -23,12 +23,12 @@
 	- Theory (Hoeffding's Inequality) X1,..., Xn i.i.d in [0,1], Xn' as sample mean, then:
 		- P(E[x] > Xn'+u) <= exp(-2nu^2)
 	- Estimate Q(a)' and Q(a) close enough:
-		- P(|Q(a)-Q(a)'|>=sqrt(Clogt/N(a))) <= δ/T
+		- P(|Q(a)-Q(a)'|>=√(Clogt/N(a))) <= δ/T
 	- Number of time a non-optimal arm is pulled at most O(logT) times:
-		- Q(a)+sqrt(Clogt/N(a))) >= Q(a\*)+sqrt(Clogt/N(a\*))) >= Q(a\*)
-		- Q(a) + 2sqrt(Clogt/N(a))) >= Q(a\*)
+		- Q(a)+√(Clogt/N(a))) >= Q(a\*)+√(Clogt/N(a\*))) >= Q(a\*)
+		- Q(a) + 2√(Clogt/N(a))) >= Q(a\*)
 		- Nt(a) <= 4ClogT/∆a^2
-	- UCB: a = argmax μa + sqrt(2lnT/N(a))
+	- UCB: a = argmax μa + √(2lnT/N(a))
 - Optimistic initialization:
 	- Initialize Q(a) high;
 	- Update: Q(at) += 1/N(at)(rt-Qt)

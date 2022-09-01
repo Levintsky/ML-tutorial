@@ -63,7 +63,7 @@
 	- E(x) = (a+b)/2
 	- V(x) = (b-a)^2/12
 - 2.4.1 Gaussian
-	- 1d: N(x|μ, σ^2) ~ 1/sqrt(2πσ) exp(-1/2σ^2(x-μ)^2)
+	- 1d: N(x|μ, σ^2) ~ 1/√(2πσ) exp(-1/2σ^2(x-μ)^2)
 		- cdf: Φ(x; μ, σ2) := ∫N(z|μ, σ^2)dz
 	- Multi:
 		- N(x|μ, Σ) = (2π)^(-d/2)|Σ|^(-1/2) exp[-1/2(x-μ)Σ^-1(x-μ)]
@@ -118,7 +118,7 @@
 		- 4.6.3.8 Bayesian t-test
 			- p(μ>μ0|D) = ∫μ0..∞ p(μ|D)dμ
 			- p(μ|D) = T(μ|x, s^2/N, N−1)
-			- t statistic: t=(x-μ0)/(s/sqrt(N))
+			- t statistic: t=(x-μ0)/(s/√(N))
 	- (PRML) Bayesian Learning:
 		- 1-d, σ2 known, prior μ ~ N(μ0, σ0):
 			- Posterior: Gaussian μ ~ N(μN, σN)
@@ -154,7 +154,7 @@
 	- Pareto(x|k,m) = k m^k x^(-k-1) I(x>=m)
 - T distribution: if the variation is estimated, the standarized var observes t-distribution?
 	- Definition: p(x) = C(1+x^2/ν)^(-(ν+1)/2)
-	- C = Γ((ν+1)/2) / sqrt(πν)Γ(ν/2)
+	- C = Γ((ν+1)/2) / √(πν)Γ(ν/2)
 - F distribution:
 	- Definition:\
 		<img src="/Bayes/images/prob/f-dist-1.png" alt="drawing" width="400"/>\
@@ -183,7 +183,7 @@
 	- Multivar: Jacobi p(y)=p(x)det(∂x/∂y)
 - 2.6.3 Central Limit Theorm:
 	- X i.i.d., with mean=μ, std=σ, not necessarily Gaussian;
-	- (Σx-nμ)/sqrt(n)σ close to N(0, 1)
+	- (Σx-nμ)/√(n)σ close to N(0, 1)
 	- Proof: MGF same for the two; (Taylor)
 
 ## Periodic

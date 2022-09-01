@@ -126,7 +126,7 @@
 			- s.t. KL(π(at|st;θ')||π(at|st;θ')) < ε; constrained optimization;
 			- Utility approx: argmax ∇..θ A(θ)(θ'-θ), s.t. KL(π(θ'),π(θ)) < ε;
 				- We know KL(π(θ'),π(θ)) ~ 1/2 (θ'-θ)F(θ'-θ), with F as Fisher;
-			- θ' = θ + αF^(-1)∇..θ J(θ), with α=sqrt(2ε/∇J F ∇J), largest step within trust-region;
+			- θ' = θ + αF^(-1)∇..θ J(θ), with α=√(2ε/∇J F ∇J), largest step within trust-region;
 		- https://zhuanlan.zhihu.com/p/26308073
 		- In summary: Theoretical Guarantee of monotonic improvement if KL constraint satisfied; Surrogate loss; Line search to make the best stepsize update;
 		- Wojciech Zaremba: https://github.com/wojzaremba/trpo

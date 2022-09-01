@@ -495,7 +495,7 @@
 		- Def. **unique factorization domain, ufd** 分解唯一. 整环D是ufd如果满足:
 			- 1. Let a∈D such that a≠0 and a is not a unit. Then a can be written as the product of irreducible elements in D.
 			- 2. Let a=p1...pr=q1...qs, where the pi's and the qi's are irreducible. Then r = s and there is a π ∈ Sr such that pi and qπ(j) are associates for j = 1,...,r.
-		- e.g. 不是所有integer domain都是ufd, Z\[sqrt(3)i\]不是. 4=2.2=(1+sqrt(3)i)(1-sqrt(3)i)
+		- e.g. 不是所有integer domain都是ufd, Z\[√3i\]不是. 4=2.2=(1+√(3)i)(1-√(3)i)
 		- Def. 主理想整环 **principal ideal domain, pid**. An integral domain in which every ideal is principal.
 		- Lemma 18.11 Let D be an integral domain and let a, b ∈ D. Then
 			- a|b if and only if ⟨b⟩⊂⟨a⟩.
@@ -546,7 +546,7 @@
 	- Let's recall that a field F is a commutative ring with unit element 1 such that for every nonzero a ∈ F there is an element a^(-1) ∈ F such that aa^(-1) = 1.
 	- Q, R, C;
 	- F= {a+bi|a,b ∈ Q} ⊂ C
-	- F= {a+b sqrt(2)|a,b ∈ Q} ⊂ R
+	- F= {a+b √(2)|a,b ∈ Q} ⊂ R
 	- Let F be any field and let F\[x\] be the ring of polynomials in x over F. This field of quotients of F\[x\] is denoted by F(x) and is called the field of rational functions in x over F.
 	- Zp , the integers modulo the prime p, is a (finite) field.
 	- If D is any integeral domain, then it has a field of quotients, by Theorem 4.7.1, which consists of all the fractions a/b, where a and b are in D and b ≠ O.
@@ -598,7 +598,7 @@
 	- Theo 5.3.5. Let K ⊃ F and suppose that a in K is algebraic over F of degree n. Then F(a), the field obtained by adjoining a to F, is a finite extension of F, and
 		- \[F(a):F\] = n.
 	- Def. 单扩张 **simple extension** 添加一个元素.
-		- e.g. Q(sqrt(2)+sqrt(3)) = Q(sqrt(2), sqrt(3))
+		- e.g. Q(√(2)+√(3)) = Q(√(2), √(3))
 	- Theo Let E = F(α) be a simple extension of F , where α ∈ E is algebraic over F . Suppose that the degree of α over F is n. Then every element β ∈ E can be expressed uniquely in the form
 		- β = b0 + b1α + ... + bn−1α^(n−1), for bi ∈ F.
 - 有限扩张 Finite Extensions
@@ -620,7 +620,7 @@
 - 分裂域 Splitting field
 	- def. 分裂域 **splitting field** E原域F多项式的根式展开无重根. 域F, 多项式系数原域p(x)=a0+a1x+···+anx^n ∈ F\[x\]. 若存在E中α1, ... ,αn, s.t. E = F(α1,...,αn) and p(x)=(x−α1)(x−α2)...(x − αn)∈ F\[x\].
 	- def. 分裂 **splits**. A polynomial p(x) ∈ F\[x\] in E is the product of linear factors in E\[x\].
-	- e.g. Let p(x) = x^4 + 2x^2 − 8 be in Q\[x\]. Q(sqrt(2), i) is a splitting field for p(x).
+	- e.g. Let p(x) = x^4 + 2x^2 − 8 be in Q\[x\]. Q(√(2), i) is a splitting field for p(x).
 	- Theo. Let p(x) ∈ F\[x\] be a nonconstant polynomial. Then there exists a splitting field E for p(x).
 - 几何构造/尺规作图 Constructibility
 	- Q1: Can one duplicate a cube using just straight-edge and compass? (By duplicating a cube, we mean doubling its volume.)
@@ -630,7 +630,7 @@
 	- **Theo 5.5.1. The constructible numbers form a subfield of the field of real numbers.**
 	- By the **plane of K0** we shall mean the set of all points (a, b) in the real Euclidean plane whose coordinates a and b are in K0. 直线 (a, b), (c, d): (y-b)/(x-a) = (b-d)/(a-c), so is of the form ux+vy+w=0, where u, v, and w are in K0.
 	- Given a **circle** whose radius r is in K0, center (a, b), then(x-a)^2 + (y-b)^2 = r^2, 形如  X^2+y^2+dx+ey+f= 0. The intersection point (c, d) lies in the plane of K1 where \[K1:K0\] = 1 or 2
-	- 直线圆相交: 形如 F(sqrt(α)). \[K1:K0\]=1 or 2.
+	- 直线圆相交: 形如 F(√(α)). \[K1:K0\]=1 or 2.
 	- 圆圆相交: x^2+y^2+dx+ey+f=0, x^2+y^2+gx+hy+k=0, 直线(d-g)x+(e-h)y+(f-k)=O. \[K1:K0\]=1 or 2
 	- Contruct a contructable length a, extend \[L1:Q\]= 1 or 2, then extend \[L2:L1\]= 1 or 2. A finite sequence Q= L0 ⊂ L1 ⊂ ...⊂Ln of fields, where each \[Li:Li-1\] = 1 or 2 and where a is in Ln.
 	- \[Q(a):Q\] must **divide a power of 2**, hence \[Q(a):Q\]=2^m for some nonnegative integer m. 每次扩张不变or翻倍.
@@ -691,14 +691,14 @@
 	- e.g. Complex conjugation;
 	- Prop Let field E ⊃ F and f(x) ∈ F\[x\]. G(E/F)定义E中根置换.
 	- Def. **conjugate**. Let E be an algebraic extension of a field F. Two elements α, β ∈ E over F if they have the **same minimal polynomial**.
-	- e.g. sqrt(2) and -sqrt(2) in Q.
+	- e.g. √(2) and -√(2) in Q.
 	- Prop. If α and β are conjugate over F, there exists an isomorphism σ : F (α) → F(β) such that σ is the identity when restricted to F.
 	- Theo Let f(x) be a polynomial in F\[x\] and suppose that E is the splitting field for f(x) over F. If f(x) has no repeated roots, then |G(E/F)| = \[E : F\].
 	- Corollary. Let F be a finite field with a finite extension E such that \[E : F\] = k. Then G(E/F) is cyclic of order k.
 - 可分扩张 Separable Extensions
 	- Def. 可分 separable. f(x)在F上不可约, 若F特征为0, f(x)可分. If the characteristic of F is p and f(x) ≠ g(x^p) for some g(x) in F\[x\], then f(x) is also separable.
 	- Def. **primitive element**. α ∈ E such that E = F(α)
-	- e.g. Q(sqrt(3), sqrt(5))=Q(sqrt(3)+sqrt(5)), Q(5^(1/3),sqrt(5)i) = Q(5^(1/6)i).
+	- e.g. Q(√(3), √(5))=Q(√(3)+√(5)), Q(5^(1/3),√(5)i) = Q(5^(1/6)i).
 	- Theo 23.13. **Primitive Element Theorem**. Let E be a finite separable extension of a field F. Then there exists an α ∈ E such that E = F(α).
 	- Def. 完全域. 不可约多项式都可分. (无重根)
 - The Fundamental Theorem
@@ -735,7 +735,7 @@
 		- Gal(E/F) ∩ An 对应中间域F(D), 奇置换D变号, 行列式奇交换
 		- 重根 D=0
 		- d=D^2可完全由多项式系数表示 (不需要根)
-		- E为F上分裂域, E=F(sqrt(d))
+		- E为F上分裂域, E=F(√(d))
 		- 二次多项式, d=p1^2-4p2, d ∈ F^2, Gal(f)={1}; d ∉ F^2, Gal(f)=S2;
 		- Corollary. f(x) ∈ F\[x\], f(x)=(x-r1)(x-r2)...(x-rn)分裂域E, ri ∈ E, 则f(x)在F\[x\]上不可约 iff Gal(f)在{r1,...,rn}上传递.
 		- 三次多项式形如f(x)=x^3+px+q, d(f)=-4p^3-27q^2, 根据引理不可约传递只有A3,S3满足. 若d ∈ F^2, Gal(f)=A3; d ∉ F^2, Gal(f)=S3;

@@ -15,7 +15,7 @@
 		- Rank the solutions, select the best λ performers to get new mean;
 			- μt+1 = μt + α_μ 1/λ Σ_i=1..λ (xi.t+1-μt)
 		- Update path with Polyak averaging of update compensated with C^(-1/2):
-			- p_σ,t+1 = (1-α_σ)p_σ,t + sqrt(α_σ(2-α_σ)λ) Ct^(-1/2) (μt+1-μt)/σt
+			- p_σ,t+1 = (1-α_σ)p_σ,t + √(α_σ(2-α_σ)λ) Ct^(-1/2) (μt+1-μt)/σt
 		- Cumulative step-size adaptation to update σt;
 			- σt+1 = σt exp(α_σ/d_σ(pσ-1))
 		- Update rank-1 and rank-μ to update covariance matrix;

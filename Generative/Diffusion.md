@@ -8,11 +8,11 @@
 		- p(xt-1|x) = N(xt-1; μ(xt, t), Σ(xt, t))
 	- Adding noise: q() x0 - x1 - x2 - ... - xT as the approximate posterior q()
 		- Forward pass (diffusion process), q(x1:T|x0)=prod q(xt|xt-1);
-		- Model: q(xt|xt-1)=N(xt; sqrt(1-β_t)xt-1, β_t)
+		- Model: q(xt|xt-1)=N(xt; √(1-β_t)xt-1, β_t)
 		- beta can be constant or learned by reparametrization trick;
 	- Goal: maximise p(x0;θ) = int p(x0:T) dx1:T
 		- ELBO: E(-log p(x0)) = Eq(-log p(x0:T)/q(x1:T|x0))
-		- q(xt|x0) ~ N(xt; sqrt(α't)x0, (1-α't)I), because of Gaussian additive!
+		- q(xt|x0) ~ N(xt; √(α't)x0, (1-α't)I), because of Gaussian additive!
 		- **Traceable p(xt-1|xt,x0)** given x0, xt
 		- Loss: KL(q(xt-1|xt,x0)|p(xt-1|xt))
 	- Training:
@@ -61,18 +61,18 @@
 - **DDPM**: Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
 	- https://github.com/hojonathanho/diffusion
 	- Forward:
-		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; sqrt(1−βt)xt−1, βtI)
+		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; √(1−βt)xt−1, βtI)
 	- Reverse:
 		- pθ(x0:T) := p(xT)∏pθ(xt−1|xt), pθ(xt−1|xt):=N(xt−1; μθ(xt, t), Σθ(xt, t))
 	- Loss:
 		- E(-logpθ(x0)) <= Eq(-logp(x0..T)/q(x1:T|x0)) = Eq(-logp(xT)-Σlog pθ(xt-1|xt)/q(xt|xt-1))
 	- Let αt:=1−βt and α't:=∏s=1..t αs
-		- q(xt|x0) = N(xt; sqrt(α't)x0, (1−α't)I)
+		- q(xt|x0) = N(xt; √(α't)x0, (1−α't)I)
 		- q(xt−1|xt,x0) = N(xt−1;μ't(xt,x0),β'tI),
-			- with μt(xt,x0):=sqrt(α't−1)βt/(1-α't)x0 + sqrt(αt)(1−α't−1)/(1-α't)xt, 
+			- with μt(xt,x0):=√(α't−1)βt/(1-α't)x0 + √(αt)(1−α't−1)/(1-α't)xt, 
 			- β't=(1−α't−1)βt/(1-α't)
 		- Loss for one-step: Lt−1 = Eq(|μ't(xt,x0)−μθ(xt,t)|^2/2σt2) + C
-			- Reparametrize: xt(x0, ε) = sqrt(α't)x0 + sqrt(1−α't)ε for ε∼N(0, I)
+			- Reparametrize: xt(x0, ε) = √(α't)x0 + √(1−α't)ε for ε∼N(0, I)
 	- Practice:
 		- Training: sgd
 	- High-quality result with Langevin dynamics;
@@ -81,13 +81,13 @@
 	- Extend DDPM to non-Markov case:
 		- qσ(x1:T|x0) := qσ(xT|x0)∏qσ(xt−1|xt, x0)
 	- Inference process:
-		- qσ(xt−1|xt,x0)=N(sqrt(αt−1)x0 + sqrt(1−αt−σt^2)(xt-sqrt(αt)x0)/sqrt(1−αt), σt^2I)
-		- Mean and variance carefully chosen, s.t. qσ(xt|x0) ~ N(sqrt(αt)x0, (1-αt)I)
+		- qσ(xt−1|xt,x0)=N(√(αt−1)x0 + √(1−αt−σt^2)(xt-√(αt)x0)/√(1−αt), σt^2I)
+		- Mean and variance carefully chosen, s.t. qσ(xt|x0) ~ N(√(αt)x0, (1-αt)I)
 		- **Forward**: Bayesian
 			- qσ(xt|xt-1, x0) = qσ(xt-1|xt,x0)qσ(xt|x0) / qσ(xt-1|x0)
 			- Non-Markov, b/c xt depends on both xt-1 and x0
 		- **Reverse**: estimate x0 first, then qσ(xt-1|xt,x0) with run inference estimated x0
-			- Estimate x0: fθ,t(xt) := (xt − sqrt(1−αt)εθ,t(xt))/sqrt(αt)
+			- Estimate x0: fθ,t(xt) := (xt − √(1−αt)εθ,t(xt))/√(αt)
 			- p(xt-1|xt) = N(fθ,t(xt), σ^2I), if t=1;
 			- p(xt-1|xt) = qσ(xt-1|xt, fθ,t(xt)), otherwise;
 - Alex Nichol and Prafulla Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
@@ -187,21 +187,21 @@
 	- SMLD:
 		- Probability: pσ(x'|x):=Np(x';x,σ^2I) perturbation kernel, pσ(x')=∫pdata(x)pσ(x'|x)dx, NCSN
 		- Loss: θ = argmin  Σi=1..N σi^2 E pdata(x)Epσi(x'|x) |sθ(x',σi) - ∇x' logpσi(x'|x)|^2
-		- Langevin MCMC: x^i_m = x^i_m-1 + εi sθ(x^i_m-1, σi) + sqrt(2ε)z^i_m, m=1,2,...,M
+		- Langevin MCMC: x^i_m = x^i_m-1 + εi sθ(x^i_m-1, σi) + √(2ε)z^i_m, m=1,2,...,M
 	- DDPM:
-		- Probability: p(xi|xi-1) ~ N(xi; sqrt(1-βi)xi-1, βiI)
+		- Probability: p(xi|xi-1) ~ N(xi; √(1-βi)xi-1, βiI)
 		- Loss (ELBO): θ = argmin Σi=1..N (1-αi) E pdata(x)Epαi(x'|x) |sθ(x',i) - ∇x' logpαi(x'|x)^2
-		- Reverse MCMC: xi-1 = 1/sqrt(1-β) (xi + βi sθ(xi, i)) + sqrt(β)zi, i=N, N-1, ..., 1
+		- Reverse MCMC: xi-1 = 1/√(1-β) (xi + βi sθ(xi, i)) + √(β)zi, i=N, N-1, ..., 1
 	- DDPM and SMLD as SDE:
 		- Forward: dx = f(x,t)dt + g(t) dw
 		- Reverse: dx = (f(x, t) - g(t)^2 ∇xlogpt(x))dt + g(t)dw
-		- SMLD as SDE: dx = sqrt(d(σ(t)^2)/dt)dw; VE (variance-exploding SDE)
-		- DDPM as SDE: dx = -1/2 β(t)xdt + sqrt(β(t))dw
-		- Proposed new VP-SDE (variance-preserving): dx = -1/2 β(t)xdt + sqrt(β(t)(1-exp(-2∫0..t β(s)ds))dw
+		- SMLD as SDE: dx = √(d(σ(t)^2)/dt)dw; VE (variance-exploding SDE)
+		- DDPM as SDE: dx = -1/2 β(t)xdt + √(β(t))dw
+		- Proposed new VP-SDE (variance-preserving): dx = -1/2 β(t)xdt + √(β(t)(1-exp(-2∫0..t β(s)ds))dw
 	- Solver
 		- PC (stochastic):
-			- Predictor: xi = (2-sqrt(1-β))xi+1 + βi+1 sθ(xi+1, i+1)) + sqrt(βi+1)z
-			- Corrector: xi = xi + εi sθ(xi, i) + sqrt(εi)z
+			- Predictor: xi = (2-√(1-β))xi+1 + βi+1 sθ(xi+1, i+1)) + √(βi+1)z
+			- Corrector: xi = xi + εi sθ(xi, i) + √(εi)z
 
 ## Super-resolution
 - Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image Super-Resolution via Iterative Refinement. 2021

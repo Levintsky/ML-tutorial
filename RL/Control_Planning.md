@@ -14,7 +14,7 @@
 	- Find a leaf sl using TreePolicy(s1)
 	- Evaluate the leaf using DefaultPolicy(sl)
 	- Update all values in tree between s1 and sl, take best action from s1;
-	- UCT: Score(st) = Q(st)/N(st) + 2C sqrt(2lnN(st-1)/N(st))
+	- UCT: Score(st) = Q(st)/N(st) + 2C √(2lnN(st-1)/N(st))
 - Legacy
 	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
 	- S. Gelly and D. Silver. Combining online and offline knowledge in uct. ICML, 2007.
@@ -116,10 +116,7 @@
 - Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
 - Berkeley. Variational Inverse Control with Events: A General Framework for Data-Driven Reward Definition. NIPS'18
 
-## Theory
-- On the Sample Complexity of the Linear Quadratic Regulator
-
-## NIPS'19
+## NIPS'18
 - Shangtong Zhang, Wendelin Boehmer, Shimon Whiteson. Generalized Off-Policy Actor-Critic
 - Sebastian Tschiatschek, Ahana Ghosh, Luis Haug, Rati Devidze, Adish Singla. Learner-aware Teaching: Inverse Reinforcement Learning with Preferences and Constraints
 - Naman Agarwal, Elad Hazan, Karan Singh. Logarithmic Regret for Online Control

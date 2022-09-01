@@ -1,7 +1,42 @@
 # Learning Theory
 
-## Resources
-- Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
+## Basics
+- https://cs229.stanford.edu/extra-notes/hoeffding.pdf
+- Tutorial:
+	- Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
+
+## Prepration
+- **Markov Inequality**: X>0 random var, P(X≥a) ≤ E[X]/a
+	- Proof: divide by X≥a and X≤a, bound each part;
+- **Chernoff bounds**: for ∀ t ≥ 0,
+	- P(Z ≥ E[Z] + t) ≤ minλ≥0 E[exp(λ(Z−E[Z]))]exp(−λt) = minλ≥0 M(z-E[z],λ)exp(−λt)
+	- P(Z ≤ E[Z] - t) ≤ minλ≥0 E[exp(λ(E[Z]-Z))]exp(−λt) = minλ≥0 M(E[z]-z,λ)exp(−λt)
+	- Proof: Markov
+		- P(Z−E[Z] ≥ t) = P(exp(λ(Z−E[Z])) ≥ exp(λt)) ≤ E[exp(λ(Z−E[Z]))]exp(-λt)
+- **MGF**:
+	- M(z, λ) := E[exp(λz)] ≤ exp(C^2λ^2/2), ∀ λ ∈ R,
+		- for some C ∈ R, depends on distribution of z.
+	- Gaussian Z ∼ N (0, σ^2), M(z, λ)=exp(σ^2λ^2/2)
+	- Rademacher rv (±1 with p=1/2), E[exp(λS)] ≤ exp(λ^2/2)
+- **Hoeffding's lemma**: required for Hoeffding's Inequality
+	- E[exp(λ(z−E[z]))] ≤ exp(λ^2(b-a)^2/8), ∀ λ ∈ R
+	- Proof:
+		- Ez(exp(λ(z−E[z]))) = Ez(exp(λ(z−Ez'[z']))), (symmetrization)
+		- ≤ Ez[Ez' exp(λ(z-z'))], (Jensen)
+			- Introduce S ∈ {−1, 1} is a random sign variable
+		- = Ez,z'[Es[exp(λs(z-z'))|z,z']]
+			- Es[exp(λs(z-z'))|z,z'] ≤ exp(λ^2(z-z')^2/2), (Rademacher MGF)
+		- ≤ exp(λ^2(a-b)^2/2), (weaker version, with 2 not 8)
+- **Hoeffding**: z1, z2, ... zn independent, zi ∈ [a, b] with a,b bounded. X̄ = 1/n ΣXi, let μ=E[x]
+	- P(|X̄−μ|≤ε) ≥ 1 - 2exp(-2nε^2 / (b-a)^2)
+	- Proof: Chernoff + Hoeffding Lemma;
+		- p(X̄−μ ≥ t) ≤ E[exp(λn(X̄−μ))]exp(-λnt); (Chernoff)
+		- = ∏E[exp(λ(zi-μ))]exp(-λnt)
+		- ≤ ∏exp(λ^2(b-a)^2/8) exp(-λnt); (Hoeffding's Lemma)
+			- Minimize w.r.t. λ≥0, we have
+		- p(X̄−μ ≥ t) ≤ exp(-2nt^2/(b-a)^2)
+- **Jensen**: f: R → R convex, then f(E[z]) ≤ E[f(z)]
+- Symmetrization: z' an indepdent copy of z.
 
 ## Supervised Learning Formulations (Stanford CS-229/Stat-214)
 - 1.1 Supervised learning
@@ -26,6 +61,7 @@
 		- Cov(∇l) = ∇^2 L; (integral by part)
 		- √n(θˆ−θ∗) →d N(0, ∇2L(θ∗)^−1).
 - 2.2 Limitations of asymptotic analysis
+	- Obscure dependencies on higher order terms
 
 ## Concentration Inequalities (Stanford CS-229/Stat-214)
 - Insight:
@@ -36,8 +72,10 @@
 	- Theo 3.1 (**Chebyshev**)
 		- P(|Z-E[Z]|≥t) ≤ Var(Z)/t^2
 	- Intuition: tail behavior, density decay at least at 1/t^2;
+	- Proof: requires Markov Inequality:
+		- Let X=(Z-μ)^2 and a=t^2, apply Markov;
 - 3.3 Hoeffding's inequality
-	- Theo 3.2 (**Hoeffding**) X1, X2, ... Xn independent real, ai ≤ Xi ≤ bi almost surely. X̄ = 1/n Σni=1 Xi, let μ=E[x]
+	- Theo 3.2 (**Hoeffding**) X1, X2, ... Xn independent real, ai ≤ Xi ≤ bi almost surely. X̄ = 1/n ΣXi, let μ=E[x]
 		- P(|X̄−μ|≤ε) ≥ 1 - 2exp(-2n^2ε^2 / Σ(bi-ai)^2)
 	- 1/n^2 Σ(bi-ai)^2: upper bound or proxy of Var(Xi)
 	- Take ε=O(σ√logn)=σ√(clogn), P(|X̄−μ|≤ε) decays at n^(-2c)
@@ -53,50 +91,147 @@
 		- Bounded random variables
 - 3.5 Concentrations of functions of random variables
 	- Theo 3.15 (**McDiarmid**'s inequality) f(X1,...,Xn) not overly sensitive to change of a single coord. Then
-		- P(|f(X1..,Xn)-E[f()]|≥t) ≤ 2exp(−2t^2/Σci^2)
+		- P(|f(X1..,Xn)-E[f]|≥t) ≤ 2exp(−2t^2/Σci^2)
 	- 3.5.1 Bounds for Gaussian random variables
 		- Theo 3.18 (**Gaussian Poincare inequality**) X1, X2, ..., Xn i.i.d. N(0,1)
 			- Var(f(X1,...,Xn)) ≤ E[|∇f(X1,...,Xn)|^2]
 		- Theo 3.19 (**Wainwright**) f: L-Lipschitz w.r.t. Euclidean distance, Xi i.i.d. N(0,1)
 			- P(|f(X)-E[f(X)]|≥t) ≤ 2exp(−t^2/2L^2)
 
+## Generalization Bounds via Uniform Convergence
+- Insight:
+	- non-asymptotic analysis;
+- 4.1 Basic concepts
+	- Uniform convergence is a property of a parameter set Θ, which gives us bounds of the form:
+		- Pr[|Lˆ(θ)−L(θ)|)≥ε] ≤ δ; ∀θ ∈ Θ.
+	- 4.1.1 Motivation: Uniform convergence implies generalization
+		- L(θˆ)−L(θ∗) = [L(θˆ)−Lˆ(θˆ)] + [Lˆ(θˆ)−Lˆ(θ∗)] + [Lˆ(θ∗)−L(θ∗)]
+		- 1st: ?
+		- 2nd: <0
+		- 3rd: O(1/√n) via Hoeffding's inequality (l(.,.) bounded)
+	- 4.1.2 Deriving uniform convergence bounds
+		- 1. Suppose we have a bound of the form Pr[|Lˆ(θ) − L(θ)| ≥ ε′] ≤ δ′ for some single, fixed choice of θ.
+		- 2. all possible values of θ.
+	- 4.1.3 Intuitive interpretation of uniform convergence
+		- Uniform convergence implies generalization, excess risk is small;
+		- Asymptotic: L(θ) “close” to Lˆ(θ)
+		- Uniform: shape L clsoe to Lˆ
+- 4.2 Finite hypothesis class
+	- Theo 4.1 H is finite, loss l() bounded in [0, 1], then with p≥1−δ
+		- |L(h)-Lˆ(h)| ≤ √[(ln|H|+ln(2/δ))/2n]
+	- Proof: union of sum
+	- 4.2.1 Comparing Theorem 4.1 with standard concentration inequalities
+		- ∀h ∈ H, w.h.p. |L(h)−L(h)| ≤ O(1/√n), concentration inequality
+		- w.h.p., ∀h ∈ H |L(h)−L(h)| ≤ O(ln|H|/√n), uniform convergence
+	- 4.2.2 Comparing Theorem 4.1 with asymptotic bounds
+		- L(hˆ) − L(h∗) ≤ c/n + o(n^−1)
+- 4.3 Bounds for infinite hypothesis class via discretization
+	- Assume parameter within a L2-ball:
+		- H={hθ: θ ∈ R, ∥θ∥ ≤ B}.
+	- 4.3.1 Discretization of the parameter space by ε-covers
+		- Def: ε-cover
+		- Lemma 4.5 (ε-cover of l2 ball) B,ε > 0, and let S = {x ∈ Rp : ∥x∥ ≤ B}, then there exists an ε-cover with at most max((3B√p/ε)^p ,1) elements.
+			- Proof: set C = {x ∈ S : xi =ki√p, ki ∈Z, |ki| ≤ B√p/ε} grid has at most max((3B√p/ε)^p ,1) balls.
+	- 4.3.2 Uniform convergence bound for infinite H
+		- Def. κ-Lipschitz functions: |L(θ) − L(θ′)| ≤ κ∥θ − θ′∥.
+		- Theo 4.8 l((x, y), θ) ∈ [0, 1] and κ-Lipschitz in θ w.r.t. l2-norm. Then with p≥1−O(exp(−Ω(p))), we have:
+			- ∀θ, |Lˆ(θ)−L(θ)| ≤ O(√(p max(ln(κBn), 1)/n))
+		- Proof sketch: get finite ε-cover and bound with theo 4.1, and extend to all θ in each ball by Lipschitz.
+		- Proof: Fix δ, ε > 0, let C be a ε-cover.
+			- Event (within the ball) E={∀θ ∈ C, |Lˆ(θ)−L(θ)| ≤ δ). P(E) ≥ 1-2|C|exp(-2nδ^2); (Theo 4.1)
+			- ∀θ ∈ S, we pick a ball containing it (θ0 ∈ C s.t. ∥θ−θ0∥ ≤ ε)
+				- Within the ball, |Lˆ(θ)−L(θ)| ≤ |Lˆ(θ)−Lˆ(θ0)|+|Lˆ(θ0)−L(θ0)|+|L(θ0)−L(θ)| ≤ 2κε + δ;
+				- Let ε = δ/(2κ), |Lˆ(θ) − L(θ)| ≤ 2δ
+			- We set δ = √[c0p max(1,ln(κBn)))/n], with c0=36
+				- Since ln |C| ≤ p ln(3B/(δ/2)), (Lemma 4.5)
+				- ln|C|−2nδ^2 ≤ pln(6Bκ/δ) - 2nδ ≤ ... ≤ -p
+			- Therefore, with
+				- p ≥ 1 − 2|C|exp(−2nδ^2) = 1 − 2exp(ln|C|−2nδ^2) ≥ 1−O(exp(−p)),
+				- |L(θ) − L(θ)| ≤ 2δ = O(√p/n max(1, ln(κBn))
+- 4.4 Rademacher complexity
+	- 4.4.1 Motivation for a new complexity measure
+		- 1. If the hypothesis class H is finite,
+			- L(hˆ) − Lˆ(hˆ) ≤ O(√(log|H|/n))
+		- 2. p-dimensional
+			- L(hˆ) − Lˆ(hˆ) ≤ O(√(p/n))
+		- not precise enough: it depends solely on p and is not always optimal.
+			- L(hˆ) − Lˆ(hˆ) ≤ O(√(Complexity(Θ)/n))
+	- 4.4.2 Definitions
+		- A weaker goal:
+			- Uniform (supereme): sup_h∈H(L(h)−Lˆ(h))
+			- Here (mean): E[sup(L(h)−Lˆ(h))] ≤ upper bound.
+		- Def 4.10 (**Rademacher complexity**) f: Z → R,
+			- Rn(f) := Ez[Eσ[sup 1/n∑σif(zi)]]
+		- Theo 4.13 Ez[sup_f[1/n∑f(zi) - E_z[f(z)]]] ≤ 2Rn(f)
+			- Proof: symmetrization.
+		- e.g. 15. Binary classification, y ∈ {±1}, l0-1((x,y),h)=(1-yh(x))/2, zero-one loss;
+			- Rn(F) = Rn(H)/2
+	- 4.4.3 Dependence of Rademacher complexity on P
+		- Extreme example: z=z0 almost surely, Rn(f) = 1/√n
+- 4.5 Empirical Rademacher complexity
+	- Def 4.17 (**Empirical Rademacher complexity**) Rs(F), on dataset S={z1,z2,...,zn}
+	- Theo 4.18 f∈F, 0≤f(z)≤1, Then with p≥1−δ
+		- sup_f[1/n∑f(zi) - E_z[f(z)] ≤ 2Rs(F) + 3√[log(2/δ)/2n]
+		- Proof:
+			- Let g(z1,...,zn) = sup_f[1/n f(zi)−E[f(z)]]
+			- 1. McDiarmid: change one z, diff ≤ 1/n
+				- Then, p(g≥E[g]+ε) ≤ exp(-2nε^2); (McDiarmid)
+			- 2. E[g] ≤ 2Rn(F); (Theo 4.13)
+			- 3. empirical Rad-comp g'(z1,...,zn)=Rs(F)
+				- g'(z1,...,zn)-g'(z1,..,zi',.,zn) ≤ 1/n, (similar to step-1, for emp)
+				- p(g'-E[g']≥ε) ≤ exp(-2nε^2); (McDiarmid)
+			- 4. set δ s.t. exp(−2nε^2) = δ/2, our goal (excess diff) satisfies with p≥1−δ:
+				- g ≤ E[g] + ε
+				-   ≤ 2Rn(F) + ε; (4.13)
+				-   ≤ 2(Rs(F)+ε) + ε; (step-3)
+				-   = 3Rs(F) + ε
+	- 4.5.1 Rademacher complexity is translation invariant
+		- Prop 4.5.1 Proposition 4.5.1. Let F be a family of functions mapping Z → R and define F′ = {f′(z) = f(z) + c0 | f ∈ F} for some c0 ∈ R. Then RS(F) = RS(F′) and Rn(F) = Rn(F′).
+- 4.6 Covering number upper bounds Rademacher complexity
+	- All potential output space:
+		- Q := {(f(z1),...,f(zn)) : f ∈ F} ⊆ Rn,
+	- Prop 4.6.1 (**Massart’s finite lemma**) if 1/√n |v| ≤ M < ∞
+		- Rs(F) ≤ √[2M^2log|Q|/n]
+	- Corollary 4.21 f: z->R, if for all f, √[1/n Σf(zi)^2] ≤ M
+		- Rs(F) ≤ √[2M^2log|F|/n]
+
 ## PAC Basics
 - Generalization error: E(h, D)
 - Empirical error: E^(h,D)
 - Inequalities:
 	- Jensen: f() convex, then f(E(x)) <= E(f(x))
-	- Hoeffding: m sample, P(|E^x-Ex|>=eps) <= exp(-2m eps^2)
-	- McDiarmid: suppose sup|f(x1,..xi,..)-f(x1,..xi',..)|<=c, then p(|f(x)-f(xi')|>=eps)<=exp(-2eps^2/sum_i(ci^2))
+	- Hoeffding: m sample, P(|E^x-Ex|>=ε) <= exp(-2m ε^2)
+	- McDiarmid: suppose sup|f(x1,..xi,..)-f(x1,..xi',..)|<=c, then p(|f(x)-f(xi')|>=ε)<=exp(-2ε^2/Σ(ci^2))
 - Algorithm: L
 - Concept: C: X to Y;
 - Mapping: h: X to Y;
 - Hypothesis space: H, containing all h;
 - Separable/consistent: all correct
 - Non-separable/consistent:
-- PAC-identify: 0 < eps, delta < 1, P(E(h)<=eps)>=1-delta, then L can identify concept C from H;
-- PAC-learnable: exist algorithm L, poly s.t. m>=poly(1/eps, 1/delta, |x|, |c|), L can PAC-identify C;
-	- Insight: L can identify C, with error at most eps, with prob 1-delta;
+- PAC-identify: 0 < ε, δ < 1, P(E(h)<=ε)>=1-δ, then L can identify concept C from H;
+- PAC-learnable: exist algorithm L, poly s.t. m>=poly(1/ε, 1/δ, |x|, |c|), L can PAC-identify C;
+	- Insight: L can identify C, with error at most ε, with prob 1-δ;
 - PAC-learning algirthm;
 - Sample Compexity: minimum m, s.t. m>=poly();
 - Case 1: separable:
-	- m >= (ln|H| + ln(1/delta))/eps, O(1/m) convergence;
-	- Intuition, a bad h() with generalization error > eps, but do well on training set is at most exp(-m eps);
+	- m >= (ln|H| + ln(1/δ))/ε, O(1/m) convergence;
+	- Intuition, a bad h() with generalization error > ε, but do well on training set is at most exp(-m ε);
 - Case 2: non-separable:
-	- p(E^(h)-E(h)>=eps)<= exp(-2m eps^2) (Hoeffding)
-	- Agnostic PAC learnable: suppose h' best in hypothesis space, then L can learn P(E(h)-E(h')<=eps)>=1-delta;
+	- p(E^(h)-E(h)>=ε)<= exp(-2m ε^2) (Hoeffding)
+	- Agnostic PAC learnable: suppose h' best in hypothesis space, then L can learn P(E(h)-E(h')<=ε)>=1-δ;
 - VC-dimension:
-	- Growth function: all number of possibilities pi(H,m)=max{|(h(x1),...,h(xm)|h in H}
+	- Growth function: all number of possibilities π(H,m)=max{|(h(x1),...,h(xm)|h in H}
 	- Dichotomy:
 	- Shattering: m samples, at most 2^m possibilites. Every assignment: dichotomy, pi(H,m)=2^m, then D is shattered;
-	- VC-dim: max m s.t. pi(H,m)=2^m;
+	- VC-dim: max m s.t. π(H,m)=2^m;
 	- Theorem: VC(H)=d, then P(E(h)-E^(h)) has a bound;
 	- VC dimentionality is **distribution independent**;
 - Rademacher complexity:
 	- A tighter bound (distribution dependent);
-	- Given z1, ..., zm, E_sig (sup_h (sig1 h(x1)+sig2 h(x2)+...)/m), where sig is a random variable half +1, half -1;
+	- Given z1, ..., zm, E_σ (sup_h (σ1 h(x1)+σ2 h(x2)+...)/m), where {σ} is a random variable half +1, half -1;
 - Stability:
 	- Three costs: l(L,D) generalization; l^(L,D) empirical; l(L,D-i) leave-one-out;
-	- beta-uniform stability: |l(L,D)-l(L,D-i)| <= beta;
+	- beta-uniform stability: |l(L,D)-l(L,D-i)| <= β;
 	- ERM (empirical-risk-minimization)
 	- Theorem: algorithm L ERM and beta-stable, then hypothesis H learnable;
 
@@ -109,7 +244,7 @@
 		- Prior in hypothesis space H;
 		- Measure of C and H space;
 		- U: a subspace of H;
-		- P(E(U)<=...)>=1-delta; E(U) is generalization error;
+		- P(E(U)<=...)>=1-δ; E(U) is generalization error;
 	- David McAllester. Some PAC-Bayesian theorems. Machine Learning'99
 		- First paper on PAC-Bayes;
 	- McAllester D A. PAC-Bayesian model averaging. COLT'99
@@ -136,7 +271,7 @@
 ## Unclassified
 - Why Is My Classifier Discriminatory? NIPS'18
 
-## NIPS'19 Learning Theory
+## NIPS'18 Learning Theory
 - Fengxiang He, Tongliang Liu, Dacheng Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence
 - Colin Wei, Tengyu Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation
 - Kevin Bello, Jean Honorio. Exact inference in structured prediction

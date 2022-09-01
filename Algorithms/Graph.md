@@ -71,7 +71,7 @@
 	- Normalized:
 		- Symmetric: L_sym = D^(-1/2) L D^(-1/2)
 		- Skewed: L_sk = D^(-1) L
-		- f' L_sym f = 1/2 Σ wij(fi/sqrt(di)-fj/sqrt(dj))^2
+		- f' L_sym f = 1/2 Σ wij(fi/√(di)-fj/√(dj))^2
 - Algorithms:
 	- Unnormalized:
 		- Find k eigenvectors u1, u2, ..., uk of L:
@@ -185,7 +185,7 @@ neural networks to structural noise? arxiv'19
 		- Iterate until convergence: ht = f(lv, l, lnbr(v), ht-1)
 	- **GAN**: P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
 		- Insight: aggregating neighbor feature with attention;
-		- Traditional GCN: aij = 1/sqrt(deg(vi)deg(vj))
+		- Traditional GCN: aij = 1/√(deg(vi)deg(vj))
 		- GAN: aij learned;
 	- D Johnson. Learning graphical state transitions. ICLR'17
 		- Problem: learn graph structure;

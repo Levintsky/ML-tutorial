@@ -61,12 +61,12 @@
 - **Batch Norm**: Sergey Ioffe and Christian Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. ICML'15
 	- Insight: normalize NxHxW pixels with same channel-idx;
 	- μ, σ^2: batch mean, variance;
-	- x = (x-μ) / sqrt(σ^2+ε)
+	- x = (x-μ) / √(σ^2+ε)
 	- y = γx + β
 	- Moving mean and variance for inference time;
 - **Layer-Norm**: J L Ba, J R Kiros, G E. Hinton. Layer Normalization. 2016
 	- Insight: normalize dxHxW pixels within the same instance, no batch required;
-	- Same eqn as BN: x = (x-μ) / sqrt(σ^2+ε)
+	- Same eqn as BN: x = (x-μ) / √(σ^2+ε)
 - **Weight-Norm**: Tim Salimans and Diederik Kingma. Weight normalization: A simple reparameterization to accelerate training of deep neural networks. NIPS'16
 	- Insight: weight w is scale invariant to v, and the norm is always g;
 	- y = φ(wx+b)

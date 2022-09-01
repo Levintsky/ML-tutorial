@@ -333,10 +333,10 @@
 		- R''+R'/r+(mu-m2/r2)R=0
 		- Case I:
 			- μ=0: Z: linear; R: ln(r) or r^m (for m=0 or m!=0)
-		- Case II: μ>0: let x=sqrt(μ)r
+		- Case II: μ>0: let x=√(μ)r
 			- **Bessel Eqn**: R''(x)+R'(x)/x+(1-m2/x2)R(x)=0
-			- Z: exp(sqrt(μ)z), exp(-sqrt(μ)z)
-		- Case III: μ<0, x=sqrt(-μ)r
+			- Z: exp(√(μ)z), exp(-√(μ)z)
+		- Case III: μ<0, x=√(-μ)r
 			- R''(x)+R'(x)/x-(1+m2/x2)R(x)=0
 	- Hermholtz: Lap(v)+k^2 v=0
 		- Spherical: v(r, theta, φ)

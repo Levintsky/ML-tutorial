@@ -26,3 +26,6 @@
 	- Contributions: Thorough review of policy gradient methods at the time, many of which are still serviceable descriptions of deep RL methods.
 - Approximately Optimal Approximate Reinforcement Learning, Kakade and Langford, 2002.
 	- Contributions: Early roots for monotonic improvement theory, later leading to theoretical justification for TRPO and other algorithms.
+
+## Theory
+- On the Sample Complexity of the Linear Quadratic Regulator. NIPS'18

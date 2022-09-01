@@ -34,7 +34,7 @@
 		<img src="/Optimization/images/sgd/adadelta.png" alt="drawing" width="500"/>
 	- **Rmsprop**:
 		- E[g^2]t = 0.9E[g^2]t-1 + 0.1 gt^2; average 2nd-order momentum
-		- θt+1 = θt - η/sqrt(E[g^2]t+ε)gt; normalize gradient by 2nd-order momentum
+		- θt+1 = θt - η/√(E[g^2]t+ε)gt; normalize gradient by 2nd-order momentum
 	- **ADAM**: D. P. Kingma and J. Ba. Adam: A method for stochastic optimization. ICLR'15
 		- Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface;
 		- Let β1, β2 be exponentil decay rates of momentum; m0=0, v0=0;
@@ -43,7 +43,7 @@
 		- vt = β2 vt-1 + (1-β2) gt^2; 2st-order moment;
 		- mt' = mt/(1-β1^t); correct bias;
 		- vt' = mt/(1-β2^t); correct bias;
-		- θt+1 = θt - ηmt/sqrt(E[g^2]t+ε);
+		- θt+1 = θt - ηmt/√(E[g^2]t+ε);
 	- AdaMax
 	- Nadam
 	- AMSGrad

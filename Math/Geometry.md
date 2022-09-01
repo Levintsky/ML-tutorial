@@ -187,7 +187,7 @@
 		- 夹角: 两曲线α, β, 切线w1=J(u_α, v_α), w2=J(u_β, v_β)
 			- (w1, w2) = (u_α, v_α)^T J^T J (u_β, v_β) = (u_α, v_α)^T (E F;F G) (u_β, v_β)
 			- cosθ = (w1, w2)/|w1|/|w2|
-		- 面积: dA = |r_u ^ r_v|dudv = sqrt(det(g))dudv
+		- 面积: dA = |r_u ^ r_v|dudv = √(det(g))dudv
 - 2-6 Orientation of Surfaces;
 	- Def. orientable. 可以被同一定向的面铺满.
 	- e.g. 可定向: 球面, 
@@ -269,7 +269,7 @@
 	- Weingarten映射矩阵W=(a11, a12, a21, a22)性质:
 		- Gaussian curvature: K=det(aij) = det(II)/det(I) = (eg-f^2)/(EG-F^2)
 		- dN(v) = -kv = -kIv for v ∈ Tp(S), then k^2 - 2Hk + K = 0
-		- k = H ± sqrt(H^2-K)
+		- k = H ± √(H^2-K)
 		- W的eigenvalue, eigenvector: 主方向和对应的主曲率λ=κ(X)
 		- 渐近线: e(u')^2 + 2fu'v' + g(v')^2 = 0. 渐近线存在iff eg-f^2 <= 0. 椭圆曲线没有.
 		- 若f=F=0, 主曲率e/E, g/G, K=eg/EG, H=1/2 (eG-gE)/EG
@@ -367,7 +367,7 @@
 		- e.g. 平面上直线, kn=kg=0, 弯曲成圆柱, kn>0, kg=0.
 	- Prop 2. 平移存在&唯一.
 	- Prop 3. x(u, v)正交参数化(F=0), w(t)可微unit向量场沿x(u(t), v(t)), 则
-		- \[Dw/dt\] = 1/(2sqrt(EG)) (G_u dv/dt - E_v du/dt) + dφ/dt
+		- \[Dw/dt\] = 1/(2√(EG)) (G_u dv/dt - E_v du/dt) + dφ/dt
 		- φ是x_u到w(t)的夹角.
 	- Prop 4 (Liouville). α(s)弧长参数化曲线, x(u, v)正交Tp(S), φ(s)为x_u和α'(s)夹角, 则
 		- kg = (kg)1 cosφ + (kg)2 sinφ + dφ/ds
@@ -395,7 +395,7 @@
 	- **Theorem (Gauss-bonnet, Local)**: x: U->S be an orthogonal parametrization (F=0)
 		- ∑ ∫kg(s)ds + ∫∫ K dσ + ∑ θi = 2π
 		- Proof: prop-3 取弧长参数s
-		- kg(s)ds = 1/(2sqrt(EG)) (G_u dv - E_v du) + dφ
+		- kg(s)ds = 1/(2√(EG)) (G_u dv - E_v du) + dφ
 		- 左右积分. 左边分段积分.
 		- 右边第一项(G_u dv - E_v du)格林公式 ∫∫ K dσ
 	- Prop 1. 正则曲面可三角剖分.
@@ -421,7 +421,7 @@
 	- Normal coordinate: q=exp_p(w), w=ue1+ve2
 	- Geodesic Polar Coord:
 	- Prop 3. Let x: U-l -> V-L测地指数映射. E=E(ρ, θ), F=F(ρ, θ), G=G(ρ, θ)第一基本形式I满足:
-		- E=1, F=0, lim_ρ->0 G=0, lim_ρ->0 sqrt(G)=1,
+		- E=1, F=0, lim_ρ->0 G=0, lim_ρ->0 √(G)=1,
 	- Theorem (Minding) 高斯曲率相同的两正则曲面同胚.
 - 4-7 Further properties of geodesics; convex neighborhoods
 	- Prop 4. 凸临域存在. p ∈ S. 存在c > 0, s.t. Bc(p)凸 (任两点可由唯一最小测地线连通)

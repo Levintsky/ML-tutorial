@@ -155,7 +155,7 @@
 			- f(x) = 1/2π ∫-∞..∞ exp(ikx)F(k)dk
 		- Differentiaion: F(f'(x)) -> ikF(k)
 		- Translation: g(x)=f(x+a) -> exp(ika)F(k)
-		- Gaussian: F(exp(-x^2/2)) = sqrt(2π)exp(-k^2/2)
+		- Gaussian: F(exp(-x^2/2)) = √(2π)exp(-k^2/2)
 		- Dirac: F(δ(x)) = 1;
 		- Conv: F(conv(f, g)) = F(k)G(k)
 	- 6.2 Sampling and restriction
