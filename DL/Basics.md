@@ -109,6 +109,7 @@
 	- https://github.com/for-ai/TD
 
 ## Regularization
+- Behnam Neyshabur, Ryota Tomioka, Nathan Srebro. In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning. ICLR'15
 - Xavier Gastaldi. Shake-Shake regularization. 2017
 
 ## Differentiable Sampling (Reparametrization Trick)

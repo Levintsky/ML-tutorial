@@ -1,4 +1,7 @@
-# Provable Attack and Defense
+# Provable Robustness, Attack and Defense
+
+## Misc
+- Pascale Gourdeau, Varun Kanade, Marta Kwiatkowska, James Worrell. On the Hardness of Robust Classification. NIPS'18
 
 ## Provable Attack
 - Poisoning:
@@ -29,7 +32,7 @@
 	- Aditi Raghunathan, Jacob Steinhardt, Percy Liang. Certified Defenses against Adversarial Examples. 2018
 	- Jeremy Cohen, Elan Rosenfeld, J. Zico Kolter. Certified Adversarial Robustness via Randomized Smoothing. ICML'19
 
-# Verification
+## Verification
 - S. Arora, A. Bhaskara, R. Ge, and T. Ma. Provable bounds for learning some deep representations. ICML'14
 - N. Cohen, O. Sharir, and A. Shashua. On the expressive power of deep learning: A tensor analysis. COLT'16
 - P. L. Bartlett, D. J. Foster, and M. J. Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17

@@ -4,32 +4,46 @@
 - https://cs229.stanford.edu/extra-notes/hoeffding.pdf
 - Tutorial:
 	- Shai Shalev-Shwartz and Shai Ben-David. Understanding Machine Learning- From Theory to Algorithms. 2014
+- Resources:
+	- https://zhuanlan.zhihu.com/p/337298338
+	- https://docs.google.com/spreadsheets/d/1sLxEPagWrCiYBbkpLUcr5VOjgGjaZ-5mMsrKhTDhm40/edit#gid=0
 
 ## Prepration
-- **Markov Inequality**: X>0 random var, P(X≥a) ≤ E[X]/a
+- **Markov Inequality**: X>0 random var,
+	- P(X≥a) ≤ E[X]/a
 	- Proof: divide by X≥a and X≤a, bound each part;
+- **Chebyshev**:
+	- P(|Z-E[Z]|≥t) ≤ Var(Z)/t^2
+	- Proof: Markov with |Z-E[Z]| as positive var;
 - **Chernoff bounds**: for ∀ t ≥ 0,
 	- P(Z ≥ E[Z] + t) ≤ minλ≥0 E[exp(λ(Z−E[Z]))]exp(−λt) = minλ≥0 M(z-E[z],λ)exp(−λt)
 	- P(Z ≤ E[Z] - t) ≤ minλ≥0 E[exp(λ(E[Z]-Z))]exp(−λt) = minλ≥0 M(E[z]-z,λ)exp(−λt)
-	- Proof: Markov
+	- Proof: Markov with exp[λ(Z-E[Z])] as positive var;
 		- P(Z−E[Z] ≥ t) = P(exp(λ(Z−E[Z])) ≥ exp(λt)) ≤ E[exp(λ(Z−E[Z]))]exp(-λt)
-- **MGF**:
-	- M(z, λ) := E[exp(λz)] ≤ exp(C^2λ^2/2), ∀ λ ∈ R,
-		- for some C ∈ R, depends on distribution of z.
-	- Gaussian Z ∼ N (0, σ^2), M(z, λ)=exp(σ^2λ^2/2)
-	- Rademacher rv (±1 with p=1/2), E[exp(λS)] ≤ exp(λ^2/2)
-- **Hoeffding's lemma**: required for Hoeffding's Inequality
+- **MGF**: moment generation function;
+	- M(z, λ) := E[exp(λz)]
+		- M(z, λ) ≤ exp(C^2λ^2/2), ∀ λ ∈ R, for some C ∈ R, depends on distribution of z. Always used with Chernoff bound;
+	- Gaussian Z ∼ N (0, σ^2),
+		- M(z, λ)=exp(σ^2λ^2/2)
+	- Rademacher rv (±1 with p=1/2)
+		- E[exp(λS)] ≤ exp(λ^2/2)
+		- Combine with Chernoff to bound the sum of random sign Z=∑Si
+		- P(Z≥t) ≤ E[exp(λZ)]exp(-λt) ≤ exp(nλ^2/2)exp(-λt)
+			- Choose λ to minimize nλ^2/2-λt
+			- P(Z≥t) ≤ exp(-t^2/2n)
+- **Hoeffding's lemma**: required for Hoeffding's Inequality, zi∈[a, b] bounded
 	- E[exp(λ(z−E[z]))] ≤ exp(λ^2(b-a)^2/8), ∀ λ ∈ R
+	- Insight: symmetrization + Jensen + Rad-inequality, zi∈[a, b] required to bound (z-z')^2.
 	- Proof:
 		- Ez(exp(λ(z−E[z]))) = Ez(exp(λ(z−Ez'[z']))), (symmetrization)
 		- ≤ Ez[Ez' exp(λ(z-z'))], (Jensen)
-			- Introduce S ∈ {−1, 1} is a random sign variable
-		- = Ez,z'[Es[exp(λs(z-z'))|z,z']]
-			- Es[exp(λs(z-z'))|z,z'] ≤ exp(λ^2(z-z')^2/2), (Rademacher MGF)
+		- = Ez,z'[Es[exp(λs(z-z'))|z,z']], (Introduce S ∈ {−1, 1} is a random sign variable)
+			- Es[exp(λs(z-z'))|z,z'] ≤ exp(λ^2(z-z')^2/2), (Rademacher rv, i.e. E[exp(λS)] ≤ exp(λ^2/2))
 		- ≤ exp(λ^2(a-b)^2/2), (weaker version, with 2 not 8)
 - **Hoeffding**: z1, z2, ... zn independent, zi ∈ [a, b] with a,b bounded. X̄ = 1/n ΣXi, let μ=E[x]
 	- P(|X̄−μ|≤ε) ≥ 1 - 2exp(-2nε^2 / (b-a)^2)
-	- Proof: Chernoff + Hoeffding Lemma;
+	- Insight: Chernoff + Hoeffding Lemma;
+	- Proof:
 		- p(X̄−μ ≥ t) ≤ E[exp(λn(X̄−μ))]exp(-λnt); (Chernoff)
 		- = ∏E[exp(λ(zi-μ))]exp(-λnt)
 		- ≤ ∏exp(λ^2(b-a)^2/8) exp(-λnt); (Hoeffding's Lemma)
@@ -248,50 +262,33 @@
 	- David McAllester. Some PAC-Bayesian theorems. Machine Learning'99
 		- First paper on PAC-Bayes;
 	- McAllester D A. PAC-Bayesian model averaging. COLT'99
+	- John Langford and John Shawe-Taylor. Pac-bayes & margins. NIPS'02
 	- McAllester D A. PAC-Bayesian stochastic model selection. Machine Learning'03
+	- David McAllester. Simplified pac-bayesian margin bounds. 2003
 	- Seeger M. Pac-bayesian generalisation error bounds for gaussian process classification. JMLR'03
 	- Shawe-Taylor J, Langford J. PAC-Bayes & margins. NIPS'03
 	- Langford J. Tutorial on practical prediction theory for classification. JMLR'05
 	- Germain P, Lacasse A, Laviolette F, et al. PAC-Bayesian learning of linear classifiers. ICML'09
-	- Catoni O. PAC-Bayesian supervised classification: the thermodynamics of statistical learning. arxiv'07
-- For NN:
-	- PL Bartlett, DJ Foster, MJ Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17
-	- N Golowich, A Rakhlin, O Shamir. Size-independent sample complexity of neural networks
-	- Behnam Neyshabur, Srinadh Bhojanapalli, Nathan Srebro. A pac-bayesian approach to spectrally-normalized margin bounds for neural networks. ICLR'18
-	- Y Li, Y Liang. Learning overparameterized neural networks via stochastic gradient descent on structured data. NIPS'18
-	- R Novak, Y Bahri, DA Abolafia, J Pennington. Sensitivity and generalization in neural networks: an empirical study. arxiv'18
-	- Z Allen-Zhu, Y Li, Y Liang. Learning and generalization in overparameterized neural networks, going beyond two layers. NIPS'19
+	- Catoni O. PAC-Bayesian supervised classification: the thermodynamics of statistical learning. arxiv'07	
+- Matthew Holland. PAC-Bayes under potentially heavy tails. NIPS'18
+
+## ERM
+- Chi Jin, Lydia T. Liu, Rong Ge, Michael I. Jordan. On the Local Minima of the Empirical Risk. NIPS'18
+- Marco Loog, Tom Viering, Alexander Mey. Minimizers of the Empirical Risk and Risk Monotonicity. NIPS'18
 
 ## Mixture
 - Nearly tight sample complexity bounds for learning mixtures of Gaussians via sample compression schemes
 
-## Optimization
-- Chi Jin, Lydia T. Liu, Rong Ge, Michael I. Jordan. On the Local Minima of the Empirical Risk. NIPS'18
-
-## Unclassified
-- Why Is My Classifier Discriminatory? NIPS'18
-
 ## NIPS'18 Learning Theory
 - Fengxiang He, Tongliang Liu, Dacheng Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence
-- Colin Wei, Tengyu Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation
 - Kevin Bello, Jean Honorio. Exact inference in structured prediction
-- Bryon Aragam, Arash Amini, Qing Zhou. Globally optimal score-based learning of directed acyclic graphs in high-dimensions
 - Sushrut Karmalkar, Adam Klivans, Pravesh Kothari. List-decodable Linear Regression
 - Chenri Ni, Nontawat Charoenphakdee, Junya Honda, Masashi Sugiyama. On the Calibration of Multiclass Classification with Rejection
-- Pascale Gourdeau, Varun Kanade, Marta Kwiatkowska, James Worrell. On the Hardness of Robust Classification
 - Chen Dan, Hong Wang, Hongyang Zhang, Yuchen Zhou, Pradeep Ravikumar. Optimal Analysis of Subset-Selection Based L_p Low-Rank Approximation
-- Matthew Holland. PAC-Bayes under potentially heavy tails
 - Yihe Dong, Samuel Hopkins, Jerry Li. Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection
-- Vaishnavh Nagarajan, J. Zico Kolter. Uniform convergence may be unable to explain generalization in deep learning
-- Brian Axelrod, Ilias Diakonikolas, Alistair Stewart, Anastasios Sidiropoulos, Gregory Valiant. A Polynomial Time Algorithm for Log-Concave Maximum Likelihood via Locally Exponential Families
-- Gaël Letarte, Pascal Germain, Benjamin Guedj, Francois Laviolette. Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks
-- Karl Krauth, Stephen Tu, Benjamin Recht. Finite-time Analysis of Approximate Policy Iteration for the Linear Quadratic Regulator
 - Dylan Foster, Spencer Greenberg, Satyen Kale, Haipeng Luo, Mehryar Mohri, Karthik Sridharan. Hypothesis Set Stability and Generalization
-- Marco Loog, Tom Viering, Alexander Mey. Minimizers of the Empirical Risk and Risk Monotonicity
 - Sauptik Dhar, Vladimir Cherkassky, Mohak Shah. Multiclass Learning from Contradictions
-- Abi Komanduru, Jean Honorio. On the Correctness and Sample Complexity of Inverse Reinforcement Learning
 - Gilad Yehudai, Ohad Shamir. On the Power and Limitations of Random Features for Understanding Neural Networks
 - Amir Najafi, Shin-ichi Maeda, Masanori Koyama, Takeru Miyato. Robustness to Adversarial Perturbations in Learning from Incomplete Data
-- Fernando Gama, Alejandro Ribeiro, Joan Bruna. Stability of Graph Scattering Transforms
 - Yaqi Duan, Tracy Ke, Mengdi Wang. State Aggregation Learning from Markov Transition Data
 - Nika Haghtalab, Cameron Musco, Bo Waggoner. Toward a Characterization of Loss Functions for Distribution Learning

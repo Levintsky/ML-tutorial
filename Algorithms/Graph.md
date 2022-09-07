@@ -35,6 +35,10 @@
 ## Benchmarks
 - Hu, W., Fey, M., Zitnik, M., Dong, Y., Ren, H., Liu, B., Catasta, M., and Leskovec, J. Open graph benchmark: Datasets for machine learning on graphs. NIPS'20
 
+## Unclassified
+- Bryon Aragam, Arash Amini, Qing Zhou. Globally optimal score-based learning of directed acyclic graphs in high-dimensions. NeurIPS'18
+- Fernando Gama, Alejandro Ribeiro, Joan Bruna. Stability of Graph Scattering Transforms. NIPS'18
+
 ## Graph Theory
 - Zhao, Y. Graph theory and additive combinatorics, 2019.
 	- https://yufeizhao.com/gtac/

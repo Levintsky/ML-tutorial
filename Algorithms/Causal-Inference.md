@@ -13,6 +13,8 @@
 		- Iteratively delete edges;
 	- Approach 2: score-based;
 		- G = argmax s(D|G)
+- Courses:
+	- Stanford: https://www.youtube.com/playlist?list=PLxq_lXOUlvQAoWZEqhRqHNezS30lI49G-
 
 ## Tutorials
 - Bernhard Scholkopf, Dominik Janzing, Jonas Peters, Eleni Sgouritsa, Kun Zhang, Joris Mooij. On causal and anticausal learning. ICML'12
