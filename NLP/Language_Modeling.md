@@ -1,40 +1,68 @@
 # Language Modeling
 
-## Benchmark
-- https://gluebenchmark.com/leaderboard/
+## Basics
+- Goal:
+	- Statistical/probabilistic model for a sequence of words in a sentence;
+	- Could be character-level;
+- Approach:
+	- Traditional: n-grams, p-LSI, LDA;
+	- RNN;
+	- Transformer: GPT, Bert, ...
+	- (Self)-Supervision/loss:
+		- Causal (predict next word/token/character): GPT-1,2,3;
+		- Masked language modeling: BERT, ...
+		- Next sentence prediction;
+- Applications:
+	- (Conditional) generation, completion;
+	- Downstream tasks;
+- Evaluation:
+	- Perplexity;
+	- Downstream tasks;
+- Benchmark
+	- https://gluebenchmark.com/leaderboard/
 
-## Semi-supervised (SOA)
-- Legacy:
+## Legacy
+- N-grams:
+	- p(wt|wt-1,...,wt-n+1) = count(wt-n+1..t) / count(wt-n+1..t-1)
+
+## Backbone
+- CNN (1d): 
 	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
-	- Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH 2010
 	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
-	- Mikolov, T.; Kombrink, S.; Burget, L.; ernock, J.; and Khudanpur, S. 2011. Extensions of recurrent neural network language model. ICASSP 2011
+- RNN:
+	- Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH'10
+	- Mikolov, T.; Kombrink, S.; Burget, L.; ernock, J.; and Khudanpur, S. 2011. Extensions of recurrent neural network language model. ICASSP'11
 	- Sundermeyer, M.; Schluter, R.; and Ney, H. Lstm neural networks for language modeling. 2012
-- G Lample and A Conneau. Cross-lingual language model pretraining. 2019
-- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
-	<img src="/NLP/images/candidate-sample.png" alt="drawing" width="500"/>
-	<img src="/NLP/images/coordinate-as.png" alt="drawing" width="600"/>
-- NVIDIA:
-	- Megatron: https://github.com/NVIDIA/Megatron-LM
+	- ELMo
+	- Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. NAACL'18
+		- Deep ELMO;
+- Transformer:
+	- BERT: J. Devlin, et.al. ACL'19
+		- Embedding: WorldPiece;
+		- 12/24 layer (base/large)
+	- Y. You. Accelerate BerT to 76 minutes. '19
+	- NVIDIA: Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism. 19
+		- Megatron: https://github.com/NVIDIA/Megatron-LM
+	- RoBerTa: FB reproducing BERT;
+	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
+	- GPT: 12-layers; '18
+	- GPT-2: 48-layers; '18
+	- GPT-3: 12/24/32/40/96-layers from small to B;
 
-## Character Level
-- **BPE**: 
-	- Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with subword units. 2015
-	- FastBPE: https://github.com/glample/fastBPE
+## Supervision Design
+- Masked:
+	- ELMo, BERT, Roberta;
+- Causal:
+	- GPT-series;
+- Together with other tasks:
+	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
+	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
+
+## Cross-Lingual
+- G Lample and A Conneau. Cross-lingual language model pretraining. 2019
 
 ## Generation
 - Controlled Generation:
-	- **CTRL**: N Keskar, B McCann, L Varshney, C Xiong, R Socher. CTRL: A Conditional Transformer Language Model for Controllable Generation. 2019
-		- Insight: **conditional Transformer**; control code as first word without special treatment;
-		- https://github.com/salesforce/ctrl
-		- fastBPE for subword
-		- No PAD, MASK, ...
-		- Tied embeddings with vocabulary size 250k
-		- 48-layer transformer; 1.63B parameters
-		- Sampling with temperature;
-		- Control codes: style by domain; more complex; specific task; zero-shot code-mixing;
-		- Trained on 256 core of TPU v3; 800k iterations with AdaGrad; batch-size=1024;
-	- Finetune with RL: Daniel M. Ziegler, Nisan Stiennon, Jeffrey Wu, Tom B. Brown, Alec Radford, Dario Amodei, Paul Christiano, and Geoffrey Irving. Fine-tuning language models from human preferences. arXiv'19
 	- Training with conditions:
 		- Yuta Kikuchi, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. Controlling output length in neural encoder-decoders. EMNLP'16
 		- Jessica Ficler and Yoav Goldberg. Controlling linguistic style aspects in neural language generation. 2017

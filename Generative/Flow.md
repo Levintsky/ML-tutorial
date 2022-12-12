@@ -8,7 +8,7 @@
 - http://akosiorek.github.io/ml/2018/04/03/norm_flows.html
 - **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
 	- Expressive power: universal representation is possible under reasonable conditions (proved with Autogressive flows);
-	- Optimize theta = (phi, psi), for Transform phi and prior psi:\
+	- Optimize θ = (φ, ψ), for Transform φ and prior ψ:\
 		<img src = '/Generative/images/flow/survey1.png' width = '400'>
 	- Constructing Flows (finite compositions):
 		- Autoregressive flows (Jacobian determinant is triangular and tractable), zi only based on inputs z(j<=i);
@@ -32,7 +32,7 @@
 		- Discrete distribution;
 		- Riemannian manifold;
 	- Applications:
-		- Probabilistic modeling: MLE: KL(px(x), px(x, theta)), density estimation;
+		- Probabilistic modeling: MLE: KL(px(x), px(x, θ)), density estimation;
 		- Generation;
 		- Inference: modeling parameters to infer unkonwn quantities within a model;
 		- Representation learning;
@@ -45,6 +45,8 @@
 
 ## Misc
 - Jonathan Ho, Evan Lohn, Pieter Abbeel. Compression with Flows via Local Bits-Back Coding. NIPS'19
+- ClothFlow: A Flow-Based Model for Clothed Person Generation. ICCV'19
+- DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer. ICCV'19
 
 ## Normalizing Flows
 - **Normalizing flows** or **Planar Flows**: D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15

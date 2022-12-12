@@ -7,8 +7,8 @@
 	- More params does not lead to overfitting! (overparametrization)
 
 ## Unclassified
-- Colin Wei, Tengyu Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation. NeurIPS'18
 - Vaishnavh Nagarajan, J. Zico Kolter. Uniform convergence may be unable to explain generalization in deep learning. NIPS'18
+- Fengxiang He, Tongliang Liu, Dacheng Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
 - M. Belkin, D. Hsu, S. Ma, and S. Mandal. Reconciling modern machine-learning practice and the classical bias-variance trade-off. PNAS'19
 	- Does not increase monotonically with intermediate dim m;
 - Uniform convergence may be unable to explain generalization in deep learning. NIPS'19 oral
@@ -32,6 +32,10 @@
 - Pierre Baldi. Neuronal Capacity. NIPS'18
 
 ## PAC-Bayes/Complexity/Generalization
+- Data dependent complexity:
+	- Colin Wei, Tengyu Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation. NeurIPS'19
+- Devansh Arpit, Stanislaw Jastrzebski, Nicolas Ballas, David Krueger, Emmanuel Bengio, Maxinder S. Kanwal, Tegan Maharaj, Asja Fischer, Aaron Courville, Yoshua Bengio, and Simon Lacoste-Julien. A closer look at memorization in deep networks. ICML'17
+	- Over-parametrized -> memorize whole dataset with 0 error;
 - PL Bartlett, DJ Foster, MJ Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17
 - N Golowich, A Rakhlin, O Shamir. Size-independent sample complexity of neural networks
 - Behnam Neyshabur, Srinadh Bhojanapalli, Nathan Srebro. A pac-bayesian approach to spectrally-normalized margin bounds for neural networks. ICLR'18
@@ -61,6 +65,10 @@
 ## Optimization/Convergence
 - Initialization:
 	- Amit Daniely, Roy Frostig, and Yoram Singer. Toward deeper understanding of neural networks: The power of initialization and a dual view on expressivity. NIPS'16
+- NTK:
+	- Arthur Jacot, Franck Gabriel, Clément Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NeurIPS'18
+	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
+	- Lenaic Chizat, Edouard Oyallon, Francis Bach. On Lazy Training in Differentiable Programming. NeurIPS'19
 - Loss:
 	- Anna Choromanska, Mikael Henaff, Michael Mathieu, Gérard Ben Arous, and Yann LeCun. The loss surfaces of multilayer networks. AISTATS'15
 	- Daniel Soudry and Yair Carmon. No bad local minima: Data independent training error guarantees for multilayer neural networks. 2016
@@ -73,7 +81,7 @@
 		<img src="/DL/images/empirical/lca-2.png" alt="drawing" width="450"/>
 	- Chiyuan Zhang, Samy Bengio, and Yoram Singer. Are all layers created equal? arxiv'19
 - Over-Parametrization:
-	- Zeyuan Allen-Zhu, Yuanzhi Li, and Zhao Song. A convergence theory for deep learning via over- parameterization. ICML'18
+	- Zeyuan Allen-Zhu, Yuanzhi Li, and Zhao Song. A convergence theory for deep learning via over-parameterization. ICML'18
 	- Francis Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
 	- Behnam Neyshabur, Zhiyuan Li, Srinadh Bhojanapalli, Yann LeCun, Nathan Srebro. Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
 	- Simon S Du, Xiyu Zhai, Barnabas Poczos, and Aarti Singh. Gradient descent provably optimizes over-parameterized neural networks. arXiv preprint arXiv:1810.02054, 2018b

@@ -11,9 +11,8 @@
 
 ## Models
 - **HMM/GMM**
-	- Woodland, P. C., And Young, S. J. The htk tied-state continuous speech recogniser. In
-Eurospeech (1993).
-- ** DNN-Legacy**
+	- Woodland, P. C., And Young, S. J. The htk tied-state continuous speech recogniser. In Eurospeech (1993).
+- **DNN-Legacy**
 	- Hinton. et.al. Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups. SPM 2012
 - **CNN**
 	- Sercu, Lecun. Very deep multilingual convolutional neural networks for lvcsr. arXiv preprint arXiv:1509.08967 (2015).
@@ -49,8 +48,6 @@ Eurospeech (1993).
 
 ## TTS
 - van den Oord, A., et al. WaveNet: A Generative Model for Raw Audio. NIPS'16
-	- Dilated Conv\
-		<img src = '/NLP/images/wavenet1.png' width = '500px'>
-	- ResNet\
-		<img src = '/NLP/images/wavenet2.png' width = '500px'>
+	- Dilated Conv
+	- ResNet
 - Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis. NIPS'18

@@ -22,9 +22,7 @@
 - 3D:
 	- Neural 3D Morphable Models: Spiral Convolutional Networks for 3D Shape Representation Learning and Generation. ICCV'19
 - CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
-- ClothFlow: A Flow-Based Model for Clothed Person Generation. ICCV'19
 - Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
-- DUAL-GLOW: Conditional Flow-Based Generative Model for Modality Transfer. ICCV'19
 - Inference:
 	- V Dumoulin, I Belghazi, B Poole, A Lamb, M Arjovsky, O Mastropietro, and A Courville. Adversarially learned inference.
 - Domain adaptation:

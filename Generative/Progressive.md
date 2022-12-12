@@ -12,7 +12,7 @@
     - PNP-Net
 
 ## Recurrent, Sequential, Order-Aware
-- D. Ha. Recurrent Net Dreams Up Fake Chinese Characters in Vector Format with TensorFlow, 2015. 2015
+- D. Ha. Recurrent Net Dreams Up Fake Chinese Characters in Vector Format with TensorFlow, 2015
 - **sketch-RNN**: Ha, D. and Eck, D. A neural representation of sketch drawings. ICLR'18
 	- https://magenta.tensorflow.org/sketch_rnn
 	- QuickDrow dataset: https://quickdraw.withgoogle.com/
@@ -36,14 +36,14 @@
 - **DRAW**: K. Gregor, I. Danihelka, A. Graves, D. Jimenez Rezende, D. Wierstra. DRAW: A Recurrent Neural Network For Image Generation. ICML 2015
 	- https://github.com/ericjang/draw
 	- https://github.com/chenzhaomin123/draw_pytorch
--  Karol Gregor, Frederic Besse, Danilo Jimenez Rezende, Ivo Danihelka, and Daan Wierstra. Towards conceptual compression. NIPS 2016.
+- Karol Gregor, Frederic Besse, Danilo Jimenez Rezende, Ivo Danihelka, and Daan Wierstra. Towards conceptual compression. NIPS 2016.
 	- Convolutional DRAW.
 	- Two RNN: one encoder, one decoder;
 	- Compression: best reconstruction given budget
 	- VAE loss for regularization
 	- Step-by-step refine
-- **SPRIAL**. Y. Ganin, T. Kulkarni, Igor Babuschkin, S. M. Ali Eslami, Oriol Vinyals. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML 2018.
-- **NPI**:  Scott Reed and Nando de Freitas. Neural programmer-interpreters. In ICLR, 2016.
+- **SPRIAL**. Y. Ganin, T. Kulkarni, Igor Babuschkin, S. M. Ali Eslami, Oriol Vinyals. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML'18
+- **NPI**:  Scott Reed and Nando de Freitas. Neural programmer-interpreters. ICLR'16
 - **AIR**: Attend, Infer, Repeat: Fast Scene Understanding with Generative Models. NIPS 2016
 	- An RNN to handle multiple-object (variable length)
 	- Latent variable z to describe if there is new object or not

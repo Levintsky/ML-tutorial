@@ -91,7 +91,7 @@
 ## Backbone
 - Recurrent encoder/decoder:
 	- Good summaries: https://chuansongme.com/n/1628774042621
-	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML 2015
+	- **DRAW**: A Recurrent Neural Network For Image Generation. ICML'15
 		- https://github.com/ericjang/draw
 		- https://github.com/chenzhaomin123/draw_pytorch
 		- Recurrent encoder: q(zt|x, z1:t-1)

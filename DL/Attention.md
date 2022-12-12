@@ -15,7 +15,13 @@
 		- ff: x -> FC -> GeLU -> FC -> layer-norm;
 - Position encoding:
 	- Important since set op shuffle-invariant;
-	- Fourier;
+	- Fourier; ()
+		- k: position in seq;
+		- n: preset by user;
+		- i: 0 <= i <= d/2;
+		- d: pos-encoding dimension;
+		- p(k, 2i) = sin[k / n^(2i/d)]
+		- p(k, 2i+1) = cos[k / n^(2i/d)]
 	- Relative pos bias;
 	- Could be added or concat:
 		- x = x + pos-enc
@@ -28,17 +34,19 @@
 ## Attention Modules
 - Attention layers:
 	- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NIPS'17
-	- Cross attention:
-		- **Perceiver**: Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew Zisserman, Oriol Vinyals, Joao Carreira. Perceiver: General Perception with Iterative Attention. ICML'21
-			- Q from low-dim latent space: (n, d)
-			- KV from high-dim image space: (N, D)
-			- kqv-step:
-				- Map both to same dim C, (n,C), (N,D)
-				- Attention softmax: (n, N)
-				- Value: (n, C)
-			- Linear (C, d): (n, d)
-		- **LSTR**: Mingze Xu, Yuanjun Xiong, Hao Chen, Xinyu Li, Wei Xia, Zhuowen Tu, Stefano Soatto. Long Short-Term Transformer for Online Action Detection. NeurIPS'21
-			- https://xumingze0308.github.io/projects/lstr/
+	- **Multi-Query-Attn**: N. Shazeer. Fast transformer decoding: One write-head is all you need. '19
+		- Key/value share same head;
+- Cross attention:
+	- **Perceiver**: Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew Zisserman, Oriol Vinyals, Joao Carreira. Perceiver: General Perception with Iterative Attention. ICML'21
+		- Q from low-dim latent space: (n, d)
+		- KV from high-dim image space: (N, D)
+		- kqv-step:
+			- Map both to same dim C, (n,C), (N,D)
+			- Attention softmax: (n, N)
+			- Value: (n, C)
+		- Linear (C, d): (n, d)
+	- **LSTR**: Mingze Xu, Yuanjun Xiong, Hao Chen, Xinyu Li, Wei Xia, Zhuowen Tu, Stefano Soatto. Long Short-Term Transformer for Online Action Detection. NeurIPS'21
+		- https://xumingze0308.github.io/projects/lstr/
 - Activation:
 	- **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
 		- Insight: channel-wise scaling (learn by MLP);

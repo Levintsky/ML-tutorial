@@ -1,17 +1,105 @@
 # Program Synthesis
 
-## Basics
-- Problem definition: Input/Output examples -> Program
+## Problem Definition
+- Problem definition:
+	- Input/Output examples -> Program
+	- Task description -> Program
+- Goal:
+	- More productive: N. D. Matsakis and F. S. Klock. The Rust language. ACM SIGAda Ada Letters'14
+	- More accessible: M. Resnick. Scratch: programming for all. CACM'09
+- Challenge:
+	- Large structured search space;
+	- High false positive rate; (lack of tests)
+- Database:
+	- IOI, ICPC, 
+	- Google Code Jam;
+	- Facebook Hacker Cup;
+	- E. Caballero, OpenAI, and I. Sutskever. Description2Code Dataset'16
+	- Codeforce: https://codeforces.com/ (500k+ active users)
+		- A. Ebtekar. How to interpret contest ratings. https://codeforces.com/blog/entry/68288, 2021
+	- DeepMind: https://github.com/deepmind/code_contests
+	- **APPS**: D. Hendrycks, S. Basart, S. Kadavath, M. Mazeika, A. Arora, E. Guo, C. Burns, S. Puranik, H. He, D. Song, et al. Measuring coding challenge competence with APPS. arxiv'21
+		- 10k problems
+- Metric:
+	- n@k: n submissions from k samples per problems;
+
+## Legacy
+- Survey:
+	- S. Gulwani, O. Polozov, R. Singh, et al. Program synthesis. Foundations and Trends® in Programming Languages, 4(1-2):1–119, 2017
+	- Stephen Muggleton and Luc de Raedt. Inductive Logic Programming: Theory and Methods. 1994.
+- Flash Fill (Excel)
+- Oleksandr Polozov, Sumit Gulwani. FlashMeta: A Framework for Inductive Program Synthesis. 2015
+- Search in DSL+short snippets
+	- M. Bruch, M. Monperrus, and M. Mezini. Learning from examples to improve code completion systems. ACM SIGSOFT'09
+	- S. Gulwani. Automating string processing in spreadsheets using input-output examples. ACM Sigplan'11
+	- V. Raychev, M. Vechev, and E. Yahav. Code completion with statistical language models. SIGPLAN'14
+- Deductive:
+	- C. C. Green. Application of theorem proving to problem solving. In IJCAI, 1969.
+	- Z. Manna and R. J. Waldinger. Toward automatic program synthesis. CACM'71
+- Input/output-based:
+	- S. Gulwani. Automating string processing in spreadsheets using input-output examples. ACM Sigplan Notice'11
+- Sketch-based (skeleton provided): one manually provides a sketch of the program to be induced, which specifies a rough outline of its structure;
+	- A. Solar-Lezama. Program synthesis by sketching. University of California, Berkeley, 2008.
+
+## Decoder (Transformer)
+- Syntax-tree first (then to program):
+	- W. Ling, P. Blunsom, E. Grefenstette, K. M. Hermann, T. Kočiský, F. Wang, and A. Senior. Latent predictor networks for code generation. ACL'16
+		- Pointer network;
+	- P. Yin and G. Neubig. A syntactic neural model for general-purpose code generation. ACL'17
+		- RNN-based;
+- Simple Code in Python
+	- **Robustfill**: Jacob Devlin, Jonathan Uesato, Surya Bhupatiraju, Rishabh Singh, Abdel-rahman Mohamed, and Pushmeet Kohli. Robustfill: Neural program learning under noisy i/o. ICML'17
+	- C. B. Clement, D. Drain, J. Timcheck, A. Svyatkovskiy, and N. Sundaresan. PyMT5: multi-mode translation of natural language and Python code with transformers. arxiv'20
+	- Z. Feng, D. Guo, D. Tang, N. Duan, X. Feng, M. Gong, L. Shou, B. Qin, T. Liu, D. Jiang, et al. CodeBERT: a pre-trained model for programming and natural languages. EMNLP'20
+	- J. Austin, A. Odena, M. Nye, M. Bosma, H. Michalewski, D. Dohan, E. Jiang, C. Cai, M. Terry, Q. Le, et al. Program synthesis with large language models. arxiv'21
+	- **Codex**: M. Chen, J. Tworek, H. Jun, Q. Yuan, H. P. d. O. Pinto, J. Kaplan, H. Edwards, Y. Burda, N. Joseph, G. Brockman, et al. Evaluating large language models trained on code. arxiv'21
+		- **Codex**: https://openai.com/blog/openai-codex/
+		- GPT-3 on public github codebase;
+		- HumanEval to avoid fp;
+- I. Drori and N. Verma. Solving linear algebra by program synthesis. arxiv'21
+	- Codex for math problems solving;
+- L. Tang, E. Ke, N. Singh, N. Verma, and I. Drori. Solving probability and statistics problems by program synthesis. arxiv'21
+- AlphaCode: Competition-Level Code Generation with AlphaCode. Nature'22
+	- Model:
+		- P(Y|X), X: language description (1,536 tokens)
+		- Y: 768 tokens;
+		- Multi-Query Attn (Shazeer 19): K/V share heads;
+		- SentencePiece tokenizer (Kudo and Richardson, 2018);
+	- Pretraining: 715GB codes, multiple languages;
+		- Masked language modeling loss for encoder (Devlin'18);
+		- Next token loss for decoder;
+		- AdamW optimizer (Loshchilov Hutter '17)
+	- Finetuning:
+		- GOLD (Pang, He): offline RL;
+		- Conditioned on right/wrong solution in training, right only in sampling;
+		- Tempering: divide output logits by T < 1 to make sharper;
+	- Generate large sample sets;
+	- Filtering;
+		- Remove 99% wrong solutions;
+		- Clustering: a separate test input generation model;
+- Guided search:
+	- Matej Balog, Alexander L. Gaunt, Marc Brockschmidt, Sebastian Nowozin, Daniel Tarlow. DeepCoder: Learning to Write Programs. ICLR'17
+- Generate program sketch:
+	- V. Murali, L. Qi, S. Chaudhuri, and C. Jermaine. Neural sketch learning for conditional program generation. '17
+	- D. Guo, A. Svyatkovskiy, J. Yin, N. Duan, M. Brockschmidt, and M. Allamanis. Learning to generate code sketches. arxiv'21
+- Pseudo-code to code:
+	- S. Kulal, P. Pasupat, K. Chandra, M. Lee, O. Padon, A. Aiken, and P. S. Liang. Spoc: Search-based pseudocode to code. NeurIPS'19
+- Programatic policy in RL:
+	- D. Trivedi, J. Zhang, S.-H. Sun, and J. J. Lim. Learning to synthesize programs as interpretable and generalizable policies. NeurIPS'21
+
+## Code Completion
+- Legacy:
+	- R. Robbes and M. Lanza. How program history can improve code completion. ICSE'08
+	- A. Hindle, E. T. Barr, Z. Su, M. Gabel, and P. Devanbu. On the naturalness of software. ICSE'12
+		- Program as n-grams.
+- A. Svyatkovskiy, S. K. Deng, S. Fu, and N. Sundaresan. IntelliCode compose: Code generation using transformer. '20
+- G. A. Aye, S. Kim, and H. Li. Learning autocompletion from real-world datasets. 
 
 ## Unclassified
 - Rudy Bunel, Alban Desmaison, Pushmeet Kohli, Philip H.S. Torr, M. Pawan Kumar. Adaptive Neural Compilation. 2016
 - Alexander L. Gaunt, Marc Brockschmidt, Rishabh Singh, Nate Kushman, Pushmeet Kohli, Jonathan Taylor, Daniel Tarlow. TerpreT: A Probabilistic Programming Language for Program Induction. 2016
-- Matej Balog, Alexander L. Gaunt, Marc Brockschmidt, Sebastian Nowozin, Daniel Tarlow. DeepCoder: Learning to Write Programs. ICLR'17
 - Emilio Parisotto, Abdelrahman Mohamed, Rishabh Singh, Lihong Li, Denny Zhou, and Pushmeet Kohli. Neuro-Symbolic Program Synthesis. ICLR'17
 - Matko Bošnjak, Tim Rocktäschel, Jason Naradowsky, Sebastian Riedel. Programming with a Differentiable Forth Interpreter. ICML'17
-- **Robustfill**: Jacob Devlin, Jonathan Uesato, Surya Bhupatiraju, Rishabh Singh, Abdel-rahman Mohamed, and Pushmeet Kohli. Robustfill: Neural program learning under noisy i/o. ICML'17
-	- https://www.microsoft.com/en-us/research/blog/deep-learning-program-synthesis/
-	<img src = '/Program/images/robustfill.png' width = '400px'>
 - L Zhang, G Rosenblatt, E Fetaya, R Liao, W Byrd, M Might, R Urtasun, R Zemel. Neural Guided Constraint Logic Programming for Program Synthesis, NIPS'18
 	- https://github.com/xuexue/neuralkanren
 	- Input: input/output examples
@@ -38,14 +126,7 @@
 - Bailin Wang, Richard Shin, Xiaodong Liu, Oleksandr Polozov, Matthew Richardson. RAT-SQL: Relation-Aware Schema Encoding and Linking for Text-to-SQL Parsers. 2019
 - Hui Shi, Yang Zhang, Xinyun Chen, Yuandong Tian, Jishen Zhao. Deep Symbolic Superoptimization Without Human Knowledge. ICLR'20
 
-## Legacy
-- Stephen Muggleton and Luc de Raedt. Inductive Logic Programming: Theory and Methods. 1994.
-- Flash Fill (Excel)
-- Oleksandr Polozov, Sumit Gulwani. FlashMeta: A Framework for Inductive Program Synthesis. 2015
-
 ## Sketching
-- one manually provides a sketch of the program to be induced, which specifies a rough outline of its structure;
-- Armando Solar Lezama. Program Synthesis By Sketching. 2008
 - Kevin Ellis, Armando Solar-Lezama, Joshua B. Tenenbaum. Unsupervised Learning by Program Synthesis. NIPS'15
 	- Formulation:\
 		<img src = '/Program/images/unsup1.png' width = '400px'>
@@ -72,8 +153,6 @@ solvers for Satisfiability Modulo Theories (SMT) problems
 	- The first module, called the cross correlation I/O network, given a set of input-output examples, produces a continuous representation of the set of I/O examples. - The second module, the Recursive-Reverse-Recursive Neural Network (R3NN), given the continuous representation of the examples, synthesizes a program by incrementally expanding partial programs;
 - NLP: reading comprehension:
 	- Xinyun Chen, Chen Liang, Adams Wei Yu, Denny Zhou, Dawn Song, Quoc Le. Neural Symbolic Reader: Scalable Integration of Distributed and Symbolic Representations for Reading Comprehension. ICLR'20
-
-
 
 ## Unclassified
 - Shao-Hua Sun, Hyeonwoo Noh, Sriram Somasundaram, and Joseph Lim. Neural program synthesis

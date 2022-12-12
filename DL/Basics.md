@@ -171,6 +171,10 @@
 - Michael Figurnov, Shakir Mohamed, Andriy Mnih. Implicit Reparameterization Gradients. NIPS'18
 - Wonyeol Lee, Hangyeol Yu, Hongseok Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
 
+## Memory-Augmented NN
+- C. G. Atkeson and S. Schaal. Memory-based neural networks for robot learning. Neurocomputing, 9:243–269, 1995.
+- End-To-End Memory Networks
+
 ## Invert NN
 - Invertible/reversible:
 	- D. Maclaurin, D. K. Duvenaud, and R. P. Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15

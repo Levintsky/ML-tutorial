@@ -95,6 +95,7 @@
 	- https://github.com/openai/improved-diffusion
 - **SAM**: Pierre Foret, Ariel Kleiner, Hossein Mobahi, and Behnam Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
 - **Analytic-DPM**: Fan Bao, Chongxuan Li, Jun Zhu, Bo Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
+- **Stable diffusion**: Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
 
 ## Condition/Guidance
 - Classifier:
@@ -206,7 +207,7 @@
 ## Super-resolution
 - Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image Super-Resolution via Iterative Refinement. 2021
 	- upsampling + Gaussian blur;
-- Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Models.
+- Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Models. CVPR'22
 	- BSR noise;
 - Kai Zhang, Jingyun Liang, Luc Van Gool, and Radu Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
 	- BSR noise;

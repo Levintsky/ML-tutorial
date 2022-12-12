@@ -2,6 +2,8 @@
 
 ## Misc
 - Pascale Gourdeau, Varun Kanade, Marta Kwiatkowska, James Worrell. On the Hardness of Robust Classification. NIPS'18
+- Amir Najafi, Shin-ichi Maeda, Masanori Koyama, Takeru Miyato. Robustness to Adversarial Perturbations in Learning from Incomplete Data. NIPS'18
+- Yihe Dong, Samuel Hopkins, Jerry Li. Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection. NIPS'18
 
 ## Provable Attack
 - Poisoning:
