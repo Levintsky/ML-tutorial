@@ -1,6 +1,6 @@
 # Attention Model
 
-## Tutorials
+## Basics
 - Vanilla:
 	- A very good intro: http://jalammar.github.io/illustrated-transformer/
 	- Explanation with Pytorch: http://nlp.seas.harvard.edu/2018/04/03/attention.html
@@ -13,6 +13,14 @@
 		- out = linear(attn v)
 	- Feedforward: x = x + ff(x)
 		- ff: x -> FC -> GeLU -> FC -> layer-norm;
+- Causal?
+	- Masking the future;
+- Efficient:
+	- https://github.com/lucidrains/linear-attention-transformer
+	- Reduce O(T^2) cost:
+		- Efficient Attention: Attention with Linear Complexities. CoRR'18
+		- Sinong Wang, Belinda Z. Li, Madian Khabsa, Han Fang, Hao Ma. Linformer: Self-Attention with Linear Complexity. '20
+		- Reformer: The Efficient Transformer. ICLR'20
 - Position encoding:
 	- Important since set op shuffle-invariant;
 	- Fourier; ()
@@ -28,6 +36,10 @@
 			- e.g. Swin: Attn(K,Q,V) = softmax(qk/d+B)V
 			- B: learnable bias;
 		- x = [x; pos-enc]
+	- Relative linear position attention:
+		- Peter Shaw, Jakob Uszkoreit, Ashish Vaswani. Self-Attention with Relative Position Representations. NAACL'18
+	- Dependency syntax-based position:
+		- Xing Wang, Zhaopeng Tu, Longyue Wang, Shuming Shi. Self-Attention with Structural Position Representations. EMNLP'19
 - Task token:
 	- Used in BERT and VIT;
 
@@ -73,6 +85,8 @@
 - Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal Modeling. NIPS'18
 	- Insight: non-local attention has damping effect (eigenvalue decreases during training);
 	- Change formulation to make up the damping;
+- **Scaling** study:
+	- Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models. '20
 
 ## Efficient Inference
 - Paul Michel, Omer Levy, Graham Neubig. Are Sixteen Heads Really Better than One?. NeurIPS'19
@@ -102,7 +116,7 @@
 		- ELMo (Embeddings from Language Models)
 		- bidirectional LSTM, predict next/last word
 - Self-supervised learning:
-	- Bidiretional: BERT, RoBERTa;
+	- Bidiretional: BERT, RoBERTa, SpanBERT;
 	- Causal: GTP-1,2,3;
 	- Check SSL/NLP for details;
 - Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin de Laroussilhe, Andrea Gesmundo, Mona Attariyan, Sylvain Gelly. Parameter-Efficient Transfer Learning for NLP. ICML'19
@@ -125,8 +139,6 @@
 	- Transfer learning;
 - **Reformer**: Nikita Kitaev, Łukasz Kaiser, Anselm Levskaya. Reformer: The Efficient Transformer. ICLR'20
 	- LSH instead of fc for speed;
-- Scaling study:
-	- Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models. '20
 
 ## Vision: Backbone
 - Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He. Non-local neural networks. CVPR'18
@@ -235,6 +247,9 @@
 	- H Zheng, J Fu, T Mei, and J Luo. Learning multi-attention convolutional neural network for fine-grained image recognition. ICCV'17
 	- F Wang, M Jiang, C Qian, S Yang, C Li, H Zhang, X Wang, and X Tang. Residual attention network for image classification. arxiv'17
 	- Yunpeng Chen, Yannis Kalantidis, Jianshu Li, Shuicheng Yan, Jiashi Feng. A2-Nets: Double Attention Networks. NIPS'18
+
+## Bioinformatics
+- Jumper'21 AlphaFold2
 
 ## Attention in RL
 - **GTrXL**: Emilio Parisotto, H. Francis Song, Jack W. Rae, Razvan Pascanu, Caglar Gulcehre, Siddhant M. Jayakumar, Max Jaderberg, Raphael Lopez Kaufman, Aidan Clark, Seb Noury, Matthew M. Botvinick, Nicolas Heess, Raia Hadsell. Stabilizing Transformers for Reinforcement Learning.

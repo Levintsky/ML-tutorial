@@ -1,5 +1,8 @@
 # CNN (with focus on Classification)
 
+## Basics
+- Activation: always used with BatchNorm
+
 ## Layer/Operator Design
 - **CoordConv**: Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, Jason Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 - Strided-Conv;
@@ -10,11 +13,18 @@
 - Pooling, Aggregation
 	- R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016
 
+## CNN for NLP
+- Single layer for sentence cls:
+	- Yoon Kim: Convolutional Neural Networks for Sentence Classification. EMNLP'14
+- Zhang and Wallace. A Sensitivity Analysis of (and Practitioners' Guide to) Convolutional Neural Networks for Sentence Classification. 2015
+- Very deep:
+	- Conneau, Schwenk, Lecun, Barrault. EACL 2017.
+
 ## Network/Backbone Design
 - **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
 	- ImageNet: top-1 63.5%, top-5 84.7%;
 - **NIN**: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
-	- MLP in CNN;
+	- size-1 kernel, MLP in CNN;
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
 	- ImageNet: top-1 72.1%, top-5 90.8%
 - **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. ICLR'15

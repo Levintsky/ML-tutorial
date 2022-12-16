@@ -45,14 +45,18 @@
 - **CBOW**: Continuous Bag-of-Words
 	- Predict center using surroundings;
 	- Average/sum of surrounding embeddings;
-- **Skip-Gram**: T. Mikolov et al. Efficient estimation of word representations in vector space. arXiv 2013
+- **Skip-Gram**:
+	- T. Mikolov et al. Efficient estimation of word representations in vector space. arXiv'13
+	- T. Mikolov et al. Distributed Representations of Words and Phrases and their Compositionality. arxiv'13
 	- Problem setup: given center, predict surrounding 5;
-	- Suppose that you have a sliding window of a fixed size moving along a sentence: the word in the middle is the "target" and those on its left and right within the sliding window are the context words
 - **Glove**. J. Pennington, R. Socher, and C. Manning. Glove: Global vectors for word representation. EMNLP'14.
 	- Explicitly word co-occurence;
 	- J = ∑i,j f(Xij)(wi wj' + bi + bj - logXij)^2
 - C Allen, T Hospedales. Analogies Explained: Towards Understanding Word Embeddings. ICML'19 best paper honorable mention
 - Character-level:
+	- Build n-grams word **segment**: BPE;
+	- Ling, et al. 2015, Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation.
+		- biLSTM;
 	- Char-CNN: Kim, Y., Jernite, Y., Sontag, D., & Rush, A. M. Character-Aware Neural Language Models. AAAI'16
 		- char-CNN -> LSTM as word embedding
 	- R. Jozefowicz et. al. Exploring the Limits of Language Modeling (2016)
@@ -104,3 +108,7 @@
 
 ## Measure Distance
 - Learning Deep Structured Semantic Models for Web Search using Clickthrough Data. CIKM 2013
+
+## Analysis, Theory
+- Zi Yin and Yuanyuan Shen. On the Dimensionality of Word Embedding. NeurIPS'18
+	- Bias-variance trade-off;

@@ -16,14 +16,22 @@
 	- (Conditional) generation, completion;
 	- Downstream tasks;
 - Evaluation:
-	- Perplexity;
+	- Perplexity: J(t)(θ) = − ∑yt,j × log(yˆt,j)
+		- Perplexity = 2^J
 	- Downstream tasks;
 - Benchmark
 	- https://gluebenchmark.com/leaderboard/
+	- PennTreeBank
+	- WikiText-2, WikiText-3
 
 ## Legacy
+- Unigram: p(w1,...,wn) = ∏P(wi)
+- Bigram: p(w1,...,wn) = ∏P(wi|wi-1)
 - N-grams:
 	- p(wt|wt-1,...,wt-n+1) = count(wt-n+1..t) / count(wt-n+1..t-1)
+- Sparsity problem:
+	- Smoothing;
+	- Fall back;
 
 ## Backbone
 - CNN (1d): 
@@ -45,6 +53,7 @@
 		- Megatron: https://github.com/NVIDIA/Megatron-LM
 	- RoBerTa: FB reproducing BERT;
 	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
+		- AutoML, add LSTM in;
 	- GPT: 12-layers; '18
 	- GPT-2: 48-layers; '18
 	- GPT-3: 12/24/32/40/96-layers from small to B;
@@ -52,28 +61,25 @@
 ## Supervision Design
 - Masked:
 	- ELMo, BERT, Roberta;
+	- (Joshi & Chen et al., 2020): SpanBERT: Improving Pre-training by Representing and Predicting Spans
+		- contiguous spans of words instead of 15% random;
+		- Two end points of span to predict all the masked in between;
 - Causal:
 	- GPT-series;
 - Together with other tasks:
 	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
 	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
 
-## Cross-Lingual
-- G Lample and A Conneau. Cross-lingual language model pretraining. 2019
+## Inference Time Techniques
+- Beam Search;
+- Learning to bridge the gap of "teacher-forcing";
+	- Scheduled sampling: Bengio'15
+	- GOLD: offline RL with Importance-Sampling; ICLR'21
+- Yun Chen, Victor OK Li, Kyunghyun Cho, and Samuel R Bowman. A stable and effective learning strategy for trainable greedy decoding. arxiv'18
 
-## Generation
-- Controlled Generation:
-	- Training with conditions:
-		- Yuta Kikuchi, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. Controlling output length in neural encoder-decoders. EMNLP'16
-		- Jessica Ficler and Yoav Goldberg. Controlling linguistic style aspects in neural language generation. 2017
-	- **SeqGAN**: L Yu, W Zhang, J Wang, and Y Yu. SeqGAN: Sequence generative adversarial nets with policy gradient. AAAI'17
-	- **PPLM**: Sumanth Dathathri, Andrea Madotto, Janice Lan, Jane Hung, Eric Frank, Piero Molino, Jason Yosinski, Rosanne Liu. Plug and Play Language Models: a Simple Approach to Controlled Text Generation. ICLR'20
-		- https://github.com/uber-research/pplm
-		- Insight: modify history in the direction to maximize both p(x) and p(a|x), then we get p(x|a);
-			<img src="/NLP/images/pplm.png" alt="drawing" width="400"/>
-- Steer (with a small NN?):
-	- Jiatao Gu, Graham Neubig, Kyunghyun Cho, and Victor OK Li. Learning to translate in real-time with neural machine translation. arxiv'16
-	- Jiatao Gu, Kyunghyun Cho, and Victor OK Li. Trainable greedy decoding for neural machine translation. arxiv'17
-	- Yun Chen, Victor OK Li, Kyunghyun Cho, and Samuel R Bowman. A stable and effective learning strategy for trainable greedy decoding. arxiv'18
-	- Nishant Subramani, Sam Bowman, and Kyunghyun Cho. Can unconditional language models recover arbitrary sentences? arxiv'19
+## Cross-Lingual
+- G Lample and A Conneau. Cross-lingual language model pretraining. NeurIPS'19
+	- Embedding: all languages shared vocabulary through BPE;
+	- sentence #1 (En) - sentence #2 (Fr) with masked loss;
+- Nishant Subramani, Sam Bowman, and Kyunghyun Cho. Can unconditional language models recover arbitrary sentences? arxiv'19
 - Ari Holtzman, Jan Buys, Maxwell Forbes, Antoine Bosselut, David Golub, and Yejin Choi. Learning to write with cooperative discriminators. CoRR'18

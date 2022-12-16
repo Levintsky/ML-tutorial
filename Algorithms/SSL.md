@@ -41,6 +41,7 @@
 	- Working with Supervised Datasets (Check Multimodal.md)
 		- CLIP, Supervised Contrastive Learning
 - Language: Sentence Embedding
+	- Check NLP-LM for SSL;
 	- Text Augmentation (Check Data-Augment.md)
 	- Supervision from NLI
 		- Sentence-BERT
