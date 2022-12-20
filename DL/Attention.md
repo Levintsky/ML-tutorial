@@ -45,11 +45,11 @@
 
 ## Attention Modules
 - Attention layers:
-	- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NIPS'17
+	- Ashish Vaswani, et. al. Attention is all you need. NIPS'17
 	- **Multi-Query-Attn**: N. Shazeer. Fast transformer decoding: One write-head is all you need. '19
 		- Key/value share same head;
 - Cross attention:
-	- **Perceiver**: Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew Zisserman, Oriol Vinyals, Joao Carreira. Perceiver: General Perception with Iterative Attention. ICML'21
+	- **Perceiver**: DeepMind. Perceiver: General Perception with Iterative Attention. ICML'21
 		- Q from low-dim latent space: (n, d)
 		- KV from high-dim image space: (N, D)
 		- kqv-step:
@@ -119,17 +119,16 @@
 	- Bidiretional: BERT, RoBERTa, SpanBERT;
 	- Causal: GTP-1,2,3;
 	- Check SSL/NLP for details;
-- Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin de Laroussilhe, Andrea Gesmundo, Mona Attariyan, Sylvain Gelly. Parameter-Efficient Transfer Learning for NLP. ICML'19
-	- Adapter module
-- **Transformer-XL**: Z Dai, Z Yang, Y Yang, J Carbonell, Q Le, R Salakhutdinov. Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. 2019
+- Efficient:
+	- Neil Houlsby, et. al. Parameter-Efficient Transfer Learning for NLP. ICML'19
+		- Adapter module
+- **Transformer-XL**: Z Dai, et. al. Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context. 2019
 	- https://github.com/kimiyoung/transformer-xl
-	- Insight: improved attention span; (Improved on Rami Al-Rfou et.al. 2018 [Character-level language modeling with deeper self-attention])
+	- Insight: improved on GPT for long sequence;
 	- Dynamic masking;
-	- Fixed-length segment; hidden state reuse\
-		<img src = '/NLP/images/transformer-xl.png' width = '600px'>
-	- Relative position encoding:\
-		<img src = '/NLP/images/transformer-xl-2.png' width = '600px'>
-- **XLNet**: Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le. XLNet: Generalized Autoregressive Pretraining for Language Understanding. 2019
+	- Fixed-length segment; hidden state reuse (no-gradient)
+	- Relative position encoding;
+- **XLNet**: Zhilin Yang, et. al. XLNet: Generalized Autoregressive Pretraining for Language Understanding. 2019
 	- https://github.com/zihangdai/xlnet
 - Sainbayar Sukhbaatar, Edouard Grave, Piotr Bojanowski, Armand Joulin. Adaptive Attention Span in Transformers. 2019
 - **Universal Transformers**: Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Łukasz Kaiser. Universal Transformer. ICLR'19

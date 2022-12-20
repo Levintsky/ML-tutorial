@@ -5,7 +5,8 @@
 	- Authentic, high-quality;
 	- Steerable;
 	- Disentangled;
-	- Conditional
+	- Conditional:
+	- Interactive:
 - Evaluation
 	- Image:
 		- IS (Inception Score);
@@ -35,7 +36,7 @@
 	- Basics: image-based rendering;
 - Framework/Loss design:
 	- GAN/adversarial;
-	- VAE/DLGM;
+	- AE/VAE/DLGM;
 	- Energy/score-based;
 	- Autoregressive;
 		- PixelCNN, PixelRNN, PixcelCNN++, Pixel-SNAIL, VPN, PixelVAE;
@@ -48,38 +49,291 @@
 	- Attention: A-GAN;
 - Operator design:
 	- Spectral-norm: SN-GAN;
+- Loss Design
+	- Standard: (L1/L2/...)
+		- AE;
+		- By byte:
+			- AR: DeepMind. ByteNet.'16
+	- Latent space distance:
+		- CRN: L1-norm on intermediate;
+	- Diversity loss;
+	- Adversarial:
+		- GAN, WGAN, pix2pix;
+		- Flow: Flow-GAN, ...
+		- AE: AAE (Adv-loss for decoding quality);
+	- Likelihood:
+		- AR: PixelCNN++;
+		- Flow: 
+	- Reweighted objective:
+		- Common and critical in DM;
+	- AE/DAE;
+		- DM, score-matching;
+	- Information:
+		- InfoGAN;
+		- Beta-VAE;
+	- Consistency (a lot in style-transfer)
+		- Cycle-GAN: |F(G(x))-x| + |G(F(y))-y|
 - Progressive:
-	- Progressive GAN;
+	- Progressive GAN; DDPM, ...
 - Two-stage/Latent-space;
-	- Discrete: VQ-VAE, VQ-VAE2 (VQ+AR);
+	- Discrete: VQ-VAE, VQ-VAE2 (VQ+AR); Stable-Diffusion;
 - Conditional:
 	- semi-VAE, c-VAE, c-GAN;
 - Disentangled:
-	- beta-VAE;
-	- ICML'19 best paper: not possbile for disentabled representation;
+	- β-VAE;
+	- ICML'19 best paper: impossbile;
+- Interactive:
+	- Jun-Yan Zhu, et. al. Generative Visual Manipulation on the Natural Image Manifold. ECCV'18
+		- Mapping on latent manifold;
+
+## Latent/Hierarchical (Always Two-Stages)
+- VAE:
+	- VQ-VAE, VQ-VAE-2, DVAE;
+- AR:
+	- VQ-VAE-2;
+- GAN:
+	- VQ-GAN;
+- DM:
+	- LDM: Stable-Diffusion CVPR'22
+	- Hierarchical: Cascaded Diffusion. '21
+
+## VAE
+- Key insight: reparametrization
+	- ELBO: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
+	- ∇φEqφ(z)[fθ(z)] ⇔ EN(ε|0,1)[∇φfθ(μ+σε)].
+- Legacy:
+	- VAE ICLR'14; DLGM ICML'14
+- Conditional:
+	- Semi-VAE: Kingma NIPS'14 (w/o known y)
+		- Generative: p(x|y, z)
+		- Recognition: q(z,y|x) = q(y|x)q(z|x,y)
+	- cVAE NIPS'15
+		- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
+- Backbone:
+	- Recurrent: DRAW ICML'15; One-shot ICML'16; VRNN; TDVAE; ...
+	- Two-Stage/Hierarchical:
+		- VQ-VAE, VQ-VAE-2;
+	- Auto-regressive decoder: PixelVAE; VQ-VAE-2;
+		- PixelVAE: ICLR'17; Enc-Dec-PixelCNN;
+- Supervision/Loss-design:
+	- Info-Theory:
+		- VLAE (lossy) OpenAI ICLR'16:
+			- Bits-back coding: info-theory view of variational inf;
+			- Decoder: rely on local window and z;
+			- Prior: IAF for more espressiveness;
+		- DVIB:
+
+## GAN
+- Loss design:
+	- GAN NIPS'14:
+		- LD = E(log(D(x))) + E(log(1-D(G(z))))
+		- LG = E(log(D(G(z))))
+	- LSGAN (L2):
+		- LD = E((D(x)-1)^2) + E(D(G(z))^2)
+		- LG = E(D(G(z))-1)^2
+	- WGAN (EMD); WGAN-GP; Banach-WGAN;
+		- LD = E(D(x)) - E(D(G(z)) s.t. Lip(D(x)) <=1
+		- LG = E(D(G(z)))
+		- Insight: W-GAN is Earth-Mover-Distance, Kantorovich-Rubinstein duality
+			- Primal: EMD(p1, p2) = minπ ∫c(x,y) dπ(x,y);
+				- s.t. ∫π(x,y)dy=p1(x), ∫π(x,y)dx=p2(y)
+			- Lagrange: L=EMD - ∫λ1(x)(∫π(x,y)dy-p1(x))dx - ∫λ2(y)(∫π(x,y)dx-p2(y))dy
+				- L = ∫[c(x,y)-λ1(x)-λ2(y)]dπ(x,y) + Ep1(λ(x))+Ep2(λ(x))
+					- s.t. c(x,y)-λ1(x)-λ2(y) >= 0 (gap >= 0)
+				- x=y: λ1(x)+λ2(y) = 0, since c(x,y)=0
+			- Dual loss: L = Ep1(λ(x)) - Ep2(λ(x))
+				- s.t. Lip(λ(x))<=1
+			- Intuitively, λ(x): the cost at x, λ(x1)-λ(x2)<=|x1-x2|, cost diff <= moving cost;
+	- Info: InfoGAN OpenAI NIPS'16;
+		- Insight: maximize mutual-info of context c and G(z,c); (reformulated by restructing c by a NN)
+		- min_G max_D V(D, G) - λLI(c, c')
+			- L(D) = LD-GAN
+			- L(G, Q) = LG-GAN - λLI(c, c')
+	- Energy: EBGAN'17;
+		- Insight: use D(x)=|Dec(Enc(x))-x| AE reconstruction loss instead of binary classifier;
+		- LD = D(x) + max(0, m-D(G(z)))
+		- LG = D(G(z))
+		- Repelling regulaizer: (si,sj)^2 within batch, encourage representation to be orthogonal;
+	- GAN + AE: (Adv: reconstruction, semantic z)
+		- Y Ganin and V Lempitsky. Unsupervised domain adaptation by backpropagation. ICML'15
+			- x -> feature f=f(x)
+				- Loss 1: classifier L(y, G(f()));
+				- Loss 2: domain classifer (fool to learn to transfer)
+		- **ALI**: V Dumoulin, et. al. Adversarially learned inference. ICLR'17
+			- Learn a genrator and a semantic meaningful encoder similar to InfoGAN;
+			- Generator:
+				- x ~ real, z' ~ Gz(x)
+				- z ~ q(z|x), x' ~ Gx(z)
+			- Discriminator: D(x, Gz(x)) to differentiate (x, z') and (z, x')
+- Backbone:
+	- Conv: Laplace-GAN [NIPS'15]; DCGAN; ...
+	- Spectral-Norm [ICLR'18];
+		- SNGAN: (to guarantee Lip/op-norm <= 1)
+	- Transformer: SA-GAN ICML'19
+	- Progressive: (multi-scale, stepwise)
+		- Karras ICLR'18 https://zhuanlan.zhihu.com/p/30637133
+- Conditional: cGAN; [Mirza'14， Odena ICML'17, Takeru Miyato '18]
+- Tricks and techniques:
+	- BIGGAN; improved-GAN; improved-WGAN;
+- Analysis:
+- Application in RL: GAIL; (disc score as reward)
+
+## Design-- Progressive/Auto-Regressive
+- Legacy:
+	- NADE, AISTATS'11; RNADE, NIPS'13; MADE, ICML'15;
+- 2D: Masked Raster-Scan/zig-zag;
+- Backbone:
+	- RBM/MLP: NADE;
+	- (Gated)-CNN:
+		- PixelCNN, NIPS'16; VPN (for video) DeepMind 16;
+		- **UNet**: PixelCNN++, ICLR'17;
+		- WaveNet (1D), 2016;
+	- Multiscale (Coarse2fine):
+		- DeepMind. Parallel multiscale autoregressive density estimation. ICML'17.
+		- DeepMind, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
+			- Bit-by-bit;
+	- RNN:
+		- Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
+		- Pixel-RNN, ICML'16;
+		- Mehri, S., et. al. Samplernn: An unconditional end-to-end neural audio generation model. 2016
+	- Attention/transformer:
+		- Google-Brain. Image transformer. ICML'18
+			- Raster-scan for block-level and inside block pixels;
+		- PixelSNAIL, OpenAI, ICML'18;
+		- OpenAI. Generating Long Sequences with Sparse Transformers. 2019
+	- More high-level action in decoder: DRAW, sketch-RNN, Spiral;
+- 1-D:
+	- B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15
+	- **ByteNet**: DeepMind. Neural machine translation in linear time. 2016
+		<img src="/Generative/images/autor/bytenet.png" alt="drawing" width="550"/>
+	- DeepMind. Efficient neural audio synthesis. 2018
+
+## Design-- Normalizing Flow
+- Insight:
+	- GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
+	 - Transformation of a probability density through a sequence of **invertible** mappings;
+	 	- zK = fK ◦ ... ◦ f2 ◦ f1(z0);
+	 	- lnqK(zK) = lnq0(z0) − Σk ln|det∂fk/zk-1|,
+	- Supervision: Loss = -[log(prior(z0)) + log(det)]
+- Good resources:
+	- https://github.com/karpathy/pytorch-normalizing-flows
+	- https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html
+	- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+	- Survey: Ivan Kobyzev, Simon Prince, Marcus Brubaker. Normalizing flows: An introduction and review of current methods. PAMI'20
+- Backbone: **Invertible** Op (required)
+	- Affine/location-scale:  (NICE, RealNVP, IAF, MAF;)
+		- (-) Limited-form, less flexible;
+		- (+) Easy-Jacobian-determinant;
+		- Planar Flow: (Rezende ICML'15)
+			- zt = zt-1 + uh(w'zt-1+b)
+		- Affine-constant: z = x exp(s) + t; (NICE)
+			- ActNorm: a variation, s, t intialized based on data;
+				- s = -log(std(x))
+				- t = -E[x exp(s)]
+		- Affine-half-flow: (RealNVP)
+			- s, t = MLP1(x), MLP2(x);
+			- z0, z1 = x0, exp(s)x1 + t; (swap parity)
+			- log(det) = Σs
+		- MAF: (Autoregressive)
+			- Forward:
+			- z0 init as 0; s0, t0; shared learnable param;
+			- Layer-i: update dimension i;
+				- s, t = MLP(x[i]);
+				- z[i] = x[i] exp(s) + t;
+				- log(det) = Σs
+		- IAF: forward/backward reversed as MAF;
+		- Invertible Conv: Glow; WaveGlow NVIDIA'19;
+			- Assemble weight W each time by LU during forward/backward;
+			- Forward: z = x @ W; log(det) = Σ|s| (cropped diagonal)
+			- Backward: x = z @ inv(W);
+	- Non-affine: conic (NAF, block NAF, B-NAF, Flow++);
+		- Drawback: not inverted analytically, only iteratively via bp;
+		- Flow++ [OpenAI ICML'19]: 3 improvements:
+			- Data-dependent init ε ~ qx(ε) rather than uniform;
+			- Improved coupling layer;
+				- aθ, bθ also data-parametrized;
+				- y1 = x1, y2 = x2 · exp(aθ(x1)) + bθ(x1)
+				- MixLogCDF in coupling layer;
+			- Self-attention: Input - conv - **MHA** - gate instead of non-conv-non;
+	- Spline: cut into piecewise affine flow; connectivity at border required;
+		- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NeurIPS'19
+	- Residual flow (Planar flow; Sylvester flow; Radial flow;)
+		- (+) guaranteed invertible if contrastive with Lip < 1;
+		- (-) no known efficient procedure Jacobian determinant;
+		- Sylvester-flow (Rianne van den Berg, UAI'18):
+			- Improves on Planar-flow from 1-dim bottleneck to n-dim;
+			- z' = z + u h(w'z+b);
+			- z' = z + A h(Bz+b);
+			- Challenge: keep QR of A and B;
+	- Recurrent (RNN, shared para across conditioners):
+		- Transformation autoregressive networks. ICML'18
+		- IAF (RNN-version);
+	- CNF: FFJORD; PointFlow ICCV'19; occflow;
+		- NODE: trace required; Hutchinson for fast trace [1990, FFJORD]
+		- Solving forward: Runge-Kutta family;
+		- Solving backward: adjoint [adjoint sensitivity method, Pontryagin 1962];
+	- Graph: GNF NeurIPS'19,
+		- Graph-Normalizing-Flows: invertible message passing; 
+- NF:
+	- D. J. Rezende and S. Mohamed. Variational inference with normalizing flows. ICML'15
+		- Encoder: x -> z0
+		- NF: z0 -> ... -> zK for more complex posterior p(z|x);
+		- Decoder: zK -> x'
+		- Model: approx posterior with q(z|x)=qK(zK)
+		- Free-energy ELBO: F(x) = E_q0(z0)[lnq0(z0)] - E_q0(z0)[logp(x,zK)] - E_q0(z0)[Σk ln|1+uk'ψk(zk-1)|]
+	- NICE [ICLRW'15]: update half of latent (additive)
+		- Insight: Affine Half-flow as RealNVP; scale/shift only;
+	- RealNVP [ICLR'17]: Affine Half-flow;
+		- Insight: x split half-dim into: x0, x1, each as [d/2]-dim;
+		- Backward: (swap parity)
+			- s = MLP1(z0); t = MLP2(z1);
+			- x0 = z0; x1 = (z1-t)exp(-s);
+			- log(det) = Σ-s
+	- ActNorm-flow: Variation of affine-constant: z = x exp(s) + t;
+	- Glow: OpenAI. NeurIPS'18
+		- Insight: [ActNorm - Conv1x1 - Affine] x n
+		- Invertible Conv1x1:
+			- Q: dxd; Q=PLU; P: permutation; L/U: lower/upper triangular;
+			- Forward/backward: z = x @ W; x = z @ inv(W);
+- Autoregressive-Flow: zi'=（zi;hi); hi=ci(z < i)
+	- **IAF**: OpenAI. Improved variational inference with inverse autoregressive flow. NeurIPS'16
+		- Encoder: z0 = μ0 + σ0 ⊙ ε
+		- Flow: **zt = μt + σt ⊙ zt−1**
+		- Numerical stable (gated): **zt = σt⊙zt−1 + (1-σt)⊙mt**
+	- **MAF**: G. Papamakarios et al. Masked auto-regressive flow for density estimation, NeurIPS'17
+		- Insight: update 1-dim at a time; (autogressive); Inverse version of IAF;
+		- Slow version:
+			- z0 init as 0; s0, t0; shared learnable param;
+			- Layer-i:
+				- s, t = MLP(x[i]);
+				- z[i] = x[i] exp(s) + t;
+				- log(det) = Σs
+		- Fast version:
+			- Forward: fast parallel;
+			- Backward: same as slow, autoregressive;
+	- **NAF**: Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+- VAE+Flow:
+	- f-VAE;
+
+## Diffusion/Score-based
+- DDPM:
+- Score-based:
+	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
+- Music: Riffusion;
+
+## Theory and Analysis
+- Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
+- Hisham Husain, Richard Nock, Robert Williamson. A Primal-Dual link between GANs and Autoencoders. NIPS'19
+- Zhiting Hu, Zichao Yang, Ruslan Salakhutdinov, Xiaodan Liang, Lianhui Qin, Haoye Dong, Eric Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18
 
 ## Backbone/Op
-- RBM/MLP:
-	- AR: NADE;
 - RNN/LSTM:
-	- AR: PixelCNN, PixelRNN;
-	- Flow: recurrent-flow;
 	- VAE: DRAW, VRNN, TD-VAE;
 - Conv/Deconv:
 	- DCGAN;
-	- AR: WaveNet, Audio-DeepDream;
 	- VAE: PixelVAE;
-- **Invertible** Op (required by Flow):
-	- Affine/location-scale: NICE, RealNVP, IAF, MAF, Glow;
-	- Non-affine: conic (NAF, block NAF, B-NAF, Flow++);
-		- drawback: not inverted analytically, only iteratively via bp;
-	- Residual flow (with Lip < 1)
-	- CNF: PointFlow ICCV'19;
-	- 1D: WaveGlow;
-	- Graph: GNF'19, 
 - Transformer:
 	- AR:
-		- Image transformer. ICML'18
 		- OpenAI. Generating Long Sequences with Sparse Transformers. 2019
 	- GAN: SA-GAN, BigGAN;
 - UNet:
@@ -114,53 +368,22 @@
 			- DALLE-2;
 - Operators:
 	- Dilated-Conv: PixelSNAIL (AR);
-	- Spectral-Norm; (to guarantee Lip/op-norm <= 1)
 
-## Latent/Hierarchical (Always Two-Stage)
-- VAE:
-	- VQ-VAE, VQ-VAE-2, DVAE;
-- AR:
-	- VQ-VAE-2;
-- GAN:
-	- VQ-GAN;
-- DM:
-	- LDM: Stable-Diffusion CVPR'22
-	- Hierarchical: Cascaded Diffusion. '21
+## Energy/Optimization-Based
+- Energy-based:
+	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
+	- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
+- Erik Nijkamp, Mitch Hill, Song-Chun Zhu, Ying Nian Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
 
-## Loss Design
-- Standard: (L1/L2/...)
-	- AE;
-	- By byte:
-		- AR: DeepMind. ByteNet.'16
-- Latent space distance:
-	- CRN: L1-norm on intermediate;
-- Diversity loss;
-- Adversarial:
-	- GAN, WGAN, pix2pix;
-	- Flow: Flow-GAN, ...
-	- AE: AAE (Adv-loss for decoding quality);
-- Likelihood:
-	- AR: PixelCNN++;
-	- Flow: 
-- Reweighted objective:
-	- Common and critical in DM;
-- AE/DAE;
-	- DM, score-matching;
-- Information:
-	- InfoGAN;
-	- Beta-VAE;
-- Consistency (a lot in style-transfer)
-	- Cycle-GAN: |F(G(x))-x| + |G(F(y))-y|
+## Implicit
+- Only defines generating process, likelihood-free;
+- Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
 
 ## Combination
 - VAE + AR:
-	- IAF: D Kingma and T Salimans. Improving variational inference with inverse autoregressive flow. NIPS'16
 	- PixelVAE;
 - VAE + Flow:
-	- Variational lossy autoencoder. ICLR'16
 	- f-VAE, 
-- Adversarial:
-	- AR: PixelGAN;
 
 ## Special
 - VAE
@@ -171,40 +394,3 @@
 - DM:
 	- Advanced sampling: DDIM, ...
 	- Theory: SMLD ~ DDPM; (an SDE look)
-
-## Energy/Optimization-Based
-- Energy-based:
-	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-	- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
-- Erik Nijkamp, Mitch Hill, Song-Chun Zhu, Ying Nian Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
-
-## Autoregressive/Progressive
-- NADE, RNADE, ...
-- IAF;
-- Transformer:
-	- Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., and Ku, A. Image transformer. ICML'18
-	- R. Child, S. Gray, A. Radford, I. Sutskever. Generating Long Sequences with Sparse Transformers. 2019
-- Audio: WaveNet;
-- More high-level action: one-stroke at a time;
-	- DRAW, sketch-RNN, Spiral;
-
-## Flow-based
-- VAE+Flow:
-	- f-VAE, sylvester-nf;
-- IAF, NAF, Flow++;
-- Continuous flow:
-	- Neural ODE, PointFlow, occflow;
-
-## Implicit
-- Only defines generating process, likelihood-free;
-- Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
-
-## Diffusion/Score-based
-- DDPM:
-- Score-based:
-	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
-
-## Theory and Analysis
-- Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
-- Hisham Husain, Richard Nock, Robert Williamson. A Primal-Dual link between GANs and Autoencoders. NIPS'19
-- Zhiting Hu, Zichao Yang, Ruslan Salakhutdinov, Xiaodan Liang, Lianhui Qin, Haoye Dong, Eric Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18

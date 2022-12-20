@@ -1,7 +1,6 @@
 # General Adversarial Net
 
 ## GAN Inversion
-- Jun-Yan Zhu, Philipp Krahenbuhl, Eli Shechtman, and Alexei A. Efros. Generative Visual Manipulation on the Natural Image Manifold. ECCV'18
 - Weihao Xia, Yulun Zhang, Yujiu Yang, Jing-Hao Xue, Bolei Zhou, and Ming-Hsuan Yang. GAN Inversion: A Survey. 2021
 
 ## Unclassified
@@ -19,14 +18,9 @@
 	- https://github.com/seowok/TreeGAN
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
 - Counterfactual Critic Multi-Agent Training for Scene Graph Generation. ICCV'19
-- 3D:
-	- Neural 3D Morphable Models: Spiral Convolutional Networks for 3D Shape Representation Learning and Generation. ICCV'19
+- Neural 3D Morphable Models: Spiral Convolutional Networks for 3D Shape Representation Learning and Generation. ICCV'19
 - CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
 - Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
-- Inference:
-	- V Dumoulin, I Belghazi, B Poole, A Lamb, M Arjovsky, O Mastropietro, and A Courville. Adversarially learned inference.
-- Domain adaptation:
-	- Y Ganin and V Lempitsky. Unsupervised domain adaptation by backpropagation. ICML'15
 - Others:
 	- M. Liu and O. Tuzel. Coupled generative adversarial networks. In NIPS, 2016
 - GAN + AE (Reconstruction ability):
@@ -38,11 +32,6 @@
 - Yair Weiss. On GANs and GMMs. NIPS'18
 
 ## Loss Function
-- GAN: I Goodfellow, J Pouget-Abadie, M Mirza, B Xu, D Warde-Farley, S Ozair, A Courville, and Y Bengio. Generative adversarial nets. NIPS'14.
-	- LD = E(log(D(x))) + E(log(1-D(G(z))))
-	- LG = E(log(D(G(z))))
-- LSGAN: LD = E((D(x)-1)^2) + E(D(G(z))^2)
-	- LG = E(D(G(z))-1)^2
 - **WGAN**: M Arjovsky, S Chintala and Leon Bottou. Wasserstein GAN. 2017
 	- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
 	- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
@@ -64,16 +53,8 @@
 	- LG = LG-GAN
 - CGAN: LD = E(log(D(x, c))) + E(log(1-D(G(z), c)))
 	- LG = E(log(D(G(z), c)))
-- InfoGAN: X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, and P Abbeel. Infogan: Interpretable representation learning by information maximizing generative adversarial nets. NIPS'16
-	- Insight: disentangled context c (continuous/attributes or discrete/category) plus noise in generator
-		- Maximize the mutual information I(c;G(z,c)); MI could be reformulated as reconstructing c;
-	- LD = LD-GAN - λLI(c, c')
-	- LG = LG-GAN - λLI(c, c')
 - ACGAN: LD = LD-GAN + E(P(class=c|x)) + E(P(class=c|G(z)))
 	- LG = LG-GAN + E(P(class=c|G(z)))
-- EBGAN: J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-	- LD = DAE(x) + max(0, m-DAE(G(z)))
-	- LG = LG-GAN + λ PT
 - BEGAN: D Berthelot, T Schumm, L Metz. BEGAN: Boundary Equilibrium Generative Adversarial Networks. 2017
 	- LD = DAE(x) - kt DAE(G(z))
 	- LG = DAE(G(z))
@@ -81,29 +62,6 @@
 - Sebastian Nowozin, Botond Cseke, and Ryota Tomioka. **f-GAN**: Training generative neural samplers using variational divergence minimization. NIPS'16
 - M G. Bellemare, I Danihelka, W Dabney, S Mohamed, B Lakshminarayanan, S Hoyer, and R Munos. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
 - T Salimans, H Zhang, A Radford, and D Metaxas. Improving GANs using optimal transport. ICLR'18.
-
-## Backbone
-- Conv:
-	- E Denton, S Chintala, A Szlam, and R Fergus. Deep generative image models using a laplacian pyramid of adversarial networks. NIPS'15.
-	- **DC-GAN**: A Radford, L Metz, and S Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. ICLR'16.
-- Operator:
-	- **Spectral-norm**: T Miyato, T Kataoka, M Koyama, Y Yoshida. Spectral Normalization for Generative Adversarial Networks, ICLR'18
-		- Theory: the importance of Lipschitz continuity in assuring the boundedness of statistics
-		- Spectral Normalization to assure Lipschitz condition.
-- Transformer:
-	- **SA-GAN**: H Zhang, I Goodfellow, D Metaxas, and A Odena. Self-attention generative adversarial networks. ICML'19
-		- https://github.com/heykeetae/Self-Attention-GAN
-		- Other tricks: two-timescale update rule (TTUR)
-		- Experiments: Inception score: 36.8 -> 52.52; Frechet Inception distance: 27.62 -> 18.65
-	- **SN-GAN**: T Miyato, T Kataoka, M Koyama, Y Yoshida. Spectral Normalization for Generative Adversarial Networks, ICLR'18
-- Conditional:
-	- **CGAN**: Mirza, M. and Osindero, S. Conditional generative adversarial nets. 2014.
-	- A Odena, C Olah, and J Shlens. Conditional image synthesis with auxiliary classifier GANs. ICML'17.
-	- Takeru Miyato and Masanori Koyama. cGANs with projection discriminator. ICLR'18.
-- Progressive:
-	- Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen. Progressive growing of GANs for improved quality, stability, and variation. ICLR 2018.
-		- https://zhuanlan.zhihu.com/p/30637133
-		- Multi-Scale:
 
 ## Single shot
 - Assaf Shocher, Nadav Cohen, and Michal Irani. Zero-Shot Super-Resolution using Deep Internal Learning. CVPR'18
@@ -167,15 +125,6 @@
 	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. In CVPR, 2017.
 	- C. K. Sønderby, J. Caballero, L. Theis, W. Shi, and F. Huszár. Amortised map inference for image super-resolution. In ICLR, 2017.
 
-## Feature Learning
-- Deepak: Unsupervised Feature Learning by Image Inpainting using GANs, CVPR 2016
-	- https://github.com/pathak22/context-encoder
-
-## RL, Imitation Learning
-- Merel, J., Tassa, Y., Srinivasan, S., Lemmon, J., Wang, Z., Wayne, G., and Heess, N. Learning human behaviors from motion capture by adversarial imitation. arXiv preprint arXiv:1707.02201, 2017.
 
 ## Misc
 - Louppe, G. and Cranmer, K. Adversarial variational optimization of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.
-
-## Codes
-- StarGAN: https://github.com/yunjey/StarGAN

@@ -78,7 +78,7 @@
 				- Task: same image, two augmentation zt, zs and their query codes qt, qs, loss as l(zt, qs) + l(zs, qt);
 				- https://github.com/facebookresearch/swav
 		- Carl Doersch: https://youtu.be/RWCc0nZOSBw
-			- **BYOL**: Jean-Bastien Grill, Florian Strub, Florent Altché, Corentin Tallec, Pierre H. Richemond, Elena Buchatskaya, Carl Doersch, Bernardo Avila Pires, Zhaohan Daniel Guo, Mohammad Gheshlaghi Azar, Bilal Piot, Koray Kavukcuoglu, Rémi Munos, Michal Valko. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
+			- **BYOL**: DeepMind. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
 				- https://github.com/deepmind/deepmind-research/tree/master/byol
 				- step 1: no-negative;
 				- step 2: stop-gradient; (freeze target network)
@@ -127,7 +127,7 @@
 
 ## Images Tasks
 - AutoEncoder:
-	- Quoc Le, Marc'Aurelio Ranzato, Rajat Monga, Matthieu Devin, Kai Chen, Greg Corrado, Jeff Dean, Andrew Ng. Building high-level features using large scale unsupervised learning. ICML'12
+	- Google-Brain. Building high-level features using large scale unsupervised learning. ICML'12
 		- ICML'22 Test of time award
 - **Context** prediction:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
@@ -149,7 +149,7 @@
 		- ImageNet:
 			- BEIT-B: 83.2% (224x224), 84.6% (384x384)
 			- BEIT-L: 85.2% (224x224), 86.3% (384x384)
-	- **MAE**: Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollar, Ross Girshick. Masked Autoencoders Are Scalable Vision Learners. CVPR'22 Best Paper Nominee
+	- **MAE**: FAIR. Masked Autoencoders Are Scalable Vision Learners. CVPR'22 Best Paper Nominee
 		- https://github.com/facebookresearch/mae
 		- An important design of our MAE is to skip the mask token [M] in the encoder and apply it later in the lightweight decoder.
 - Pseudo-labels:
@@ -182,7 +182,7 @@
 		- Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
 			- https://github.com/zhirongw/lemniscate.pytorch
 			- Constrastive estimation;
-		- **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
+		- **CPC**: DeepMind. Representation Learning with Contrastive Predictive Coding. NIPS'18
 			- A query frame x_t at time t;
 			- Recent 8 frames: positive;
 			- Other uniformly sampled frames: negative;
@@ -191,7 +191,7 @@
 			- Maximize mutual-information I(aug1(x), aug2(x));
 			- Also between scales;
 		- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
-		- **MoCo**: K He, H Fan, Y Wu, S Xie, R Girshick. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
+		- **MoCo**: FAIR. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
 			- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
 			- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
 			- Momentum update: slowly updating key encoder; θ-k = 0.999 θ-k + 0.001 θ-q;
@@ -201,13 +201,13 @@
 				- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
 				- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
 				- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
-		- **SimCLR**: Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton. A Simple Framework for Contrastive Learning of Visual Representations. ICML'20
+		- **SimCLR**: Google-Brain. A Simple Framework for Contrastive Learning of Visual Representations. ICML'20
 			- https://github.com/ildoonet/pytorch-SimCLR
 			- Data augmentation: color distortion is critical;
 			- InfoNCE loss;
 			- Shuffle BN to solve information leakage (similar to MoCo);
 			- Large batch-size (4k - 8k, requires TPU support), longer training (1000 epochs);
-		- **MoCo-V2**: Xinlei Chen, Haoqi Fan, Ross Girshick, Kaiming He. Improved Baselines with Momentum Contrastive Learning. 2020
+		- **MoCo-V2**: FAIR. Improved Baselines with Momentum Contrastive Learning. 2020
 			- Verify the effectiveness of two of SimCLR's design:
 				- **MLP projection head**
 				- More **data augmentation**
@@ -228,7 +228,7 @@
 				- (i) negative sample pairs,
 				- (ii) large batches,
 				- (iii) momentum encoders
-		- **Barlow Twins**: Jure Zbontar, Li Jing, Ishan Misra, Yann LeCun, Stéphane Deny. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
+		- **Barlow Twins**: FAIR. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
 			- Insight: feature correlation within a batch should be closed to identity;
 		- **DINO**: Mathilde Caron, Hugo Touvron, Ishan Misra, Herve Jegou, Julien Mairal, Piotr Bojanowski, Armand Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
 			- https://github.com/facebookresearch/dino

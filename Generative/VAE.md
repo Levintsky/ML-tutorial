@@ -49,9 +49,6 @@
 ## VAE-Basics
 - A great codebase:
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
-- **VAE**: Diederik P Kingma and Max Welling. Auto-encoding variational bayes. ICLR'14
-	- **ELBO**: L = -KL(q(z|x), p(z)) + E_q(p(x|z))
-	- **BCE** (Binary Cross Entropy) for reconstruction (mnist)
 - **DLGM**: Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML'14
 	- Graphical model:\
 		<img src="/Generative/images/vae/vae-dlgm-1.png" alt="drawing" width="350"/>
@@ -105,17 +102,6 @@
 	- Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16
 	- A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues, AAAI'17
 	- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019
-- Autoregressive encoder/decoder/prior:
-	- **PixelVAE**: I Gulrajani, K Kumar, F Ahmed, A Ali Taiga, F Visin, D Vazquez, and A Courville. PixelVAE: A latent variable model for natural images. ICLR'17
-		- Insight: VAE with autoregressive PixelCNN like decoder;
-		- Encoder: conv-resnet with downsample, z=Enc(x)
-		- Decoder:
-			- Conv-resnet with upsample to get z for each subregion (optional)
-				- out=Dec(z)=z for whole image ok);
-			- PixelCNN decoder rec=PixelCnn(x, out)
-				- Training with teacher-forcing and MaskConv;
-				- xv, xh = layer(xv, xh, cond); (cond=out)
-			- Loss: Reconstruction + KL
 - Hierarchical:
 	- Rajesh Ranganath, Dustin Tran, and David Blei. Hierarchical variational models. ICML'16
 	- Diederik P Kingma, Tim Salimans, Rafal Jozefowicz, Xi Chen, Ilya Sutskever, and Max Welling. Improved variational inference with inverse autoregressive flow. NIPS'16
@@ -206,21 +192,11 @@
 - **DeepMind**:
 	- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
 	- **ACN**: Graves et. al., Associative Compression Networks for Representation Learning (2018)
-- **OpenAI**:
-	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16.
 - **FAIR**:
 	- Bouchacourt, D., Tomioka, R., and Nowozin, S. Multi-level variational autoencoder: Learning disentangled representations from grouped observations. AAAI'18.
 	- **Non-Adversarial Mapping with VAEs**, NIPS'18
 - **SOA**: Lars Maaløe, Casper Kaae Sønderby, Søren Kaae Sønderby, Ole Winther. Auxiliary Deep Generative Models. 2016
-- Chen at. al., **Variational Lossy Autoencoder** (2017)
-	- Minimum Description Length for VAE
 - **FVAE**: Z. Deng, R. Navarathna, P. Carr, S. Mandt, Y. Yue, I. Matthews, and G. Mori. Factorized variational autoencoders for modeling audience reactions to movies. CVPR 2017.
-- NIPS 2018:
-	- Information Constraints on Auto-Encoding Variational Bayes
-	- IntroVAE: Introspective Variational Autoencoders for Photographic Image Synthesis
-	- Hamiltonian Variational Auto-Encoder
-	- Importance Weighting and Variational Inference
-	- Gaussian Process Prior Variational Autoencoders
 - Cian Eastwood, Christopher K. I. Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
 
 ## Applications
