@@ -142,6 +142,17 @@
 		- Johannes L Schonberger and Jan-Michael Frahm. Structure-from-motion revisited. CVPR'16
 - **IBRNet**: Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul Srinivasan, Howard Zhou, Jonathan T Barron, Ricardo Martin-Brualla, Noah Snavely, and Thomas Funkhouser. Ibrnet: Learning multi-view image-based rendering. CVPR'21
 
+## Unclassified
+- **GQN**: Neural scene representation and rendering. Science 2018
+	- https://deepmind.com/blog/neural-scene-representation-and-rendering/
+	- Problem setup: novel view synthesis;
+	- Encode: v1, v2, ... -> r1, r2;
+		- Additive r = r1 + r2;
+	- Novel view:
+		- Latent z, query vi -> h
+		- Render: h -> new view;
+	- g(x|vq, r) = ∫g(x,z|vq, r)dz
+
 ## Explicit Voxel/PC/...
 - Also refer to 3D-representation;
 	- Explicit, topology-free;

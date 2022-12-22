@@ -90,9 +90,9 @@
 	- Effective in high-dimensional or continuous action spaces
 	- Can learn **stochastic** policies
 - Legacy:
-	- **REINFORCE**: Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. 1992
-	- Baxter & Bartlett (2001). Infinite-horizon policy-gradient estimation: temporally decomposed policy gradient (not the first paper on this! see actor-critic section later)
-	- Peters & Schaal (2008). Reinforcement learning of motor skills with policy gradients: very accessible overview of optimal baselines and natural gradient
+	- **REINFORCE**: Williams. 1992
+	- Baxter & Bartlett 2001
+	- Peters & Schaal 2008
 - Recent:
 	- **NPG**: Sham Kakade. A Natural Policy Gradient. NIPS'01
 		- Utility: J(θ) = Σs,a ρ(s;π)π(a;s)R(s,a), we assume ρ(s;π) is a well-defined stationary distribution;
@@ -166,7 +166,7 @@
 	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14
 		- ∇..φ J(φ)=E[∇..aQ(s,a;π) ∇..φπ(s;φ)]
 		- where Q(s,a;π)=E[Rt|s,a]
-	- **A3C**: V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. Asynchronous methods for deep reinforcement learning. ICML'16
+	- **A3C**: ICML'16
 		- Hogwild
 	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
 		- Adv(st,at) = r(st,at)+γV(st+1)-V(s), low variance but high-bias, b/c value net could be wrong;

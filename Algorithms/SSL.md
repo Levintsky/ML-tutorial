@@ -300,18 +300,6 @@
 ## 3D
 - Alexey Dosovitskiy. Unsupervised Learning of Shape and Pose with Differentiable Point Clouds. NIPS'18
 
-## DeepMind
-- Neural scene representation and rendering. Science 2018
-	- https://deepmind.com/blog/neural-scene-representation-and-rendering/
-	- Input: images and viewpoints; output: a query new image
-	- **Generative Query Network (GQN)**: learns an internal representation
-		- t-SNE
-		- VAE will fail
-		- Factorized-representation\
-			<img src = '/Weak-Unsupervised/images/gqn.png' width = '500px'>
-	- g(x|vq, r) = int g(x,z|vq, r)dz, z: latent variable
-	- Env: rooms with multiple objects (DML?), allow agent to act, robotic-arm;
-
 ## Augment Consistency
 - **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
 	- https://github.com/google-research/uda

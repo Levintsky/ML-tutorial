@@ -85,17 +85,17 @@
 - Interactive:
 	- Jun-Yan Zhu, et. al. Generative Visual Manipulation on the Natural Image Manifold. ECCV'18
 		- Mapping on latent manifold;
-
-## Latent/Hierarchical (Always Two-Stages)
-- VAE:
-	- VQ-VAE, VQ-VAE-2, DVAE;
-- AR:
-	- VQ-VAE-2;
-- GAN:
-	- VQ-GAN;
-- DM:
-	- LDM: Stable-Diffusion CVPR'22
-	- Hierarchical: Cascaded Diffusion. '21
+- Latent/Hierarchical
+	- Can be 2-Stages, or trained together;
+	- First Stage (Quantization): widely used loss:
+		- L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
+		- VAE: VQ-VAE, VQ-VAE-2, DVAE;
+		- GAN: VQ-GAN;
+		- Hierarchical: Cascaded Diffusion. '21
+	- Second stage: Always AR likelihood
+		- VQ-VAE, VQ-VAE-2, VQ-GAN;
+	- Hierarchical:
+		- VQ-VAE-2, LVAE (Ladder)
 
 ## VAE
 - Key insight: reparametrization
@@ -111,17 +111,34 @@
 		- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
 - Backbone:
 	- Recurrent: DRAW ICML'15; One-shot ICML'16; VRNN; TDVAE; ...
+	- Conv/Deconv: VQ-VAE, VQ-VAE-2;
 	- Two-Stage/Hierarchical:
 		- VQ-VAE, VQ-VAE-2;
-	- Auto-regressive decoder: PixelVAE; VQ-VAE-2;
+		- NVAE: Arash Vahdat, Jan Kautz. A Deep Hierarchical Variational Autoencoder. NeurIPS'20
+	- Auto-regressive decoder: PixelVAE; VQ-VAE-1,2;
 		- PixelVAE: ICLR'17; Enc-Dec-PixelCNN;
+	- Hierarchical: LVAE (Ladder, NIPS'16), NVAE
 - Supervision/Loss-design:
+	- AAE Google-Brain'15: GAN-loss
+		- D(.) to discriminate p(z) and q(z|x) instead of KL(q,p)
 	- Info-Theory:
 		- VLAE (lossy) OpenAI ICLR'16:
 			- Bits-back coding: info-theory view of variational inf;
 			- Decoder: rely on local window and z;
 			- Prior: IAF for more espressiveness;
 		- DVIB:
+- Latent:
+	- **VQ-VAE**: Neural Discrete Representation Learning. NIPS'17
+		- Quantize encoded e=E(x) to discrete codes in Kmeans style;
+		- x -> E(x) -> e -> z=ek -> D(e) -> x'
+		- AE-loss + Quantization loss + commitment loss;
+	- **VQ-VAE-2**: Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
+		- Stage 1: VQ-VAE pretraining;
+			- Hierarchical VAE: image (256) -> bottom (64) -> top (32)
+			- Top: VQ-VAE on e_bottom (64) <-> e_top (32)
+			- Bottom: VQ-VAE on [e_bottom, U(e_top)] (64) <-> x (256)
+		- Stage 2: Pixel-SNAIL for AR prior;
+			- Hierarchical zig-zag AR;
 
 ## GAN
 - Loss design:
@@ -172,6 +189,7 @@
 	- Transformer: SA-GAN ICML'19
 	- Progressive: (multi-scale, stepwise)
 		- Karras ICLR'18 https://zhuanlan.zhihu.com/p/30637133
+	- VQ: VQ-VAE
 - Conditional: cGAN; [Mirza'14， Odena ICML'17, Takeru Miyato '18]
 - Tricks and techniques:
 	- BIGGAN; improved-GAN; improved-WGAN;
@@ -380,8 +398,6 @@
 - Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
 
 ## Combination
-- VAE + AR:
-	- PixelVAE;
 - VAE + Flow:
 	- f-VAE, 
 

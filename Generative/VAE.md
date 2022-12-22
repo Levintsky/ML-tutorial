@@ -30,7 +30,6 @@
 	- Discrete (VQ-VAE, DVAE);
 	- Backbone:
 		- Recurrent encoder/decoder;
-		- Autoregressive: PixelVAE;
 		- Hierarchical VAE;
 	- Regularization on Latent code;
 		- KL(q(z|x), p(z));
@@ -82,6 +81,7 @@
 - **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS'15
 	- Insight: condition everything on class c;
 	- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
+- **VIMCO**: Andriy Mnih and Danilo Jimenez Rezende. Variational inference for monte carlo objectives. ICML'16
 - **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
 	- The negative loss for connection with VAE; (Check Basic-ML/Info-Theory)
 
@@ -104,57 +104,16 @@
 	- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019
 - Hierarchical:
 	- Rajesh Ranganath, Dustin Tran, and David Blei. Hierarchical variational models. ICML'16
-	- Diederik P Kingma, Tim Salimans, Rafal Jozefowicz, Xi Chen, Ilya Sutskever, and Max Welling. Improved variational inference with inverse autoregressive flow. NIPS'16
-	- **LVAE**: Casper Kaae Sønderby, Tapani Raiko, Lars Maaløe, Søren Kaae Sønderby, Ole Winther. Ladder Variational Autoencoders. NIPS'16
 	- Harrison A Edwards and Amos J. Storkey. Towards a neural statistician. ICLR'17
 	- Alexej Klushyn, Nutan Chen, Richard Kurle, Botond Cseke, and Patrick van der Smagt. Learning hierarchical priors in vaes. NIPS'19
-	- NVAE: A Deep Hierarchical Variational Autoencoder. NIPS'20
 		- Prior: p(z) = Πp(zl|z..l-1)
 		- Approx posterior: q(z|x)=Πq(zl|z..l-1, x)
 		- LVAE(x) := Eq(z|x)[logp(x|z)] − KL(q(z1|x)||p(z1)) − ΣEq(z..l-1|x)[KL(q(zl|x,z..l-1), p(zl|z..l-1))]
 
 ## Latent code
 - Discrete
-	- x -> z (discrete)
-	- z -> embedding -> x
-	- **VQ-VAE**: Aaron van den Oord, Oriol Vinyals, Koray Kavukcuoglu. Neural Discrete Representation Learning. NIPS'17
-		- VAE with discrete latent variables, K-means style codebook;
-			- Encoder: E(.): x -> e;
-			- Decoder: D(.): e -> x;
-			- Quantization: q(z=ek|x) = I(k=argmin|ze(x)-ei|)
-				- Pick ei from codebook s.t. closest to E(x);
-		- L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
-			- 1st term: x-domain reconstruction loss;
-			- 2nd term: VQ-loss;
-			- 3rd term: commitment loss; encoder output stay close to the embedding space, avoid fluctuating between codes;
-	- **VQ-VAE-2**: Ali Razavi, Aäron van den Oord, Oriol Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
-		- Insight: Hierarchical VQ-VAE-stage:
-			- Encoder: (standard 2d-resnet)
-				- x (256 x 256) -> E(.) -> e-bottom (64 x 64);
-				- e-bottom -> E(.) -> e-top (32 x 32);
-			- Decoder: (deconv-relu-deconv-...)
-				- Quantize: q-top = Q(e-top)
-				- q-top -> Dec(.) -> dec-top;
-				- Bottom-embedding: enc-bottom = [dec-top, e-bottom]
-				- Quantize: q-bottom = Q(enc-bottom)
-				- [upsample(q-top), q-bottom] -> Dec(.) -> dec-x;
-			- Quantize:
-				- compute distance to all embed vec on the fly;
-				- Embed vec updated by ema, not gd;
-			- Loss: |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
-				- Latent-loss (quantization): L2(z - code)
-		- Insight: stage-2 (PixelSNAIL) for autoregressive prior;
-		- Framework:\
-			<img src="/Generative/images/vae/VQ-VAE-2.png" alt="drawing" width="450"/>
 	- **DVAE**: Discrete Variational Autoencoders with Relaxed Boltzmann Priors. NIPS'18
 		- https://github.com/QuadrantAI/dvae
-- Regularization:
-	- AAE: Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
-		- Insight: instead of KL(q(z|x), p(z))
-		- Use a Gan-like:
-			- z-real ~ p(z)
-			- z-fake ~ q(z|x)
-			- D(z) to discriminate;
 - Disentanglement:
 	- G. Desjardins, A. Courville, and Y. Bengio. Disentangling factors of variation via generative entangling. arxiv'12
 		- First paper on deep disentangled representation learning;
@@ -162,7 +121,7 @@
 	- Z. Zhu, P. Luo, X. Wang, and X. Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
 	- J. Yang, S. Reed, M.-H. Yang, and H.Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
 	- R. Goroshin, M. Mathieu, and Y. LeCun. Learning to linearize under uncertainty. NIPS'15
-	- **Beta-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
+	- **β-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. β-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
 		- Better disentangle
 		- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 		- max Ex[Eq(z|x)[logp(x|z)]], s.t. KL(q(z|x), p(z)) < ε
@@ -184,9 +143,6 @@
 			<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
 	- **VITAE**: Nicki Skafte, Søren Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
 		- Insight: two latent codes zA, zP; then zP transform conanical view zA with a STN;
-			<img src="/Generative/images/vae/vitae.png" alt="drawing" width="400"/>
-		- Formulation:\
-			<img src="/Generative/images/vae/vitae-2.png" alt="drawing" width="400"/>
 
 ## Unclassified
 - **DeepMind**:
@@ -196,7 +152,7 @@
 	- Bouchacourt, D., Tomioka, R., and Nowozin, S. Multi-level variational autoencoder: Learning disentangled representations from grouped observations. AAAI'18.
 	- **Non-Adversarial Mapping with VAEs**, NIPS'18
 - **SOA**: Lars Maaløe, Casper Kaae Sønderby, Søren Kaae Sønderby, Ole Winther. Auxiliary Deep Generative Models. 2016
-- **FVAE**: Z. Deng, R. Navarathna, P. Carr, S. Mandt, Y. Yue, I. Matthews, and G. Mori. Factorized variational autoencoders for modeling audience reactions to movies. CVPR 2017.
+- **FVAE**: Z. Deng, R. Navarathna, P. Carr, S. Mandt, Y. Yue, I. Matthews, and G. Mori. Factorized variational autoencoders for modeling audience reactions to movies. CVPR'17.
 - Cian Eastwood, Christopher K. I. Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
 
 ## Applications
