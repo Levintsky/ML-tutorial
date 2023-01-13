@@ -1,8 +1,204 @@
 # Basics of Optimization
 
-## Software
-- Gurobi
-- Mosek
+## Basics
+- Textbook:
+	- Linear and Nonlinear Programming: David Luenberger, Yinyu Ye;
+	- Numerical Optimization: Jorge Norcedal, Stephen Wright.
+- Courses:
+	- CME307/MS&E311: Optimization
+- Software
+	- Gurobi
+	- Mosek
+- Linear programming
+	- Simplex (L/NL-P Chap-3; NO Chap-13)
+	- Duality and Complementarity (L/NL-P Chap-4)
+	- Interior-Point (L/NL-P Chap-5; NO Chap-14)
+	- Conic LP (L/NL-P Chap-6)
+- Uncontrained
+	- Basics: (L/NL-P Chap-7)
+		- 0/1/2-order
+		- convex/concave
+		- speed of convergence;
+	- Basic descent:  (L/NL-P Chap-8; NO, Chap-3,4)
+		- Line search
+		- GD/Newton/Coord-descent;
+		- Trust-region;
+	- Conjugate directions: (L/NL-P Chap-9; NO Chap-5)
+	- Quasi-Newton: (L/NL-P Chap-10; NO Chap-6)
+		- BFGS, SR1
+	- Large-scale: (NO Chap-7)
+- Constrained
+	- Constrained: Tangent-subspace (L/NL-P Chap-11)
+ 	- Primal: (L/NL-P Chap-12)
+ 	- Penalty and Barrier: (L/NL-P Chap-13)
+ 	- Duality: Local/global-duality, Lagrange (L/NL-P Chap-14; NO Chap-12)
+ 	- Primal-dual: (L/NL-P Chap-15)
+- Derivative:
+	- Calculating Derivatives/Hessian (NO Chap-8)
+	- Derivative-Free Optimization (NO Chap-9)
+- Least square: (NO Chap-10)
+	- Gauss-Newton;
+	- Levenberg–Marquardt;
+- Nonlinear Equations: (NO Chap-11)
+- QuadraticProgramming: (NO Chap-16)
+	- KKT;
+- Penalty and Augmented Lagrangian Methods: (NO Chap-17)
+- Sequential Quadratic Programming: (NO Chap-18)
+	- SQP, IQP, EQP;
+- Interior-Point Methods for Nonlinear Programming: (NO Chap-19)
+
+## Math Preliminaries
+- Affine set:
+	- x, y ∈ S and α ∈ R ⇒ αx + (1 − α)y ∈ S.
+	- 0 ≤ α ≤ 1: convex;
+- Cone: x ∈ C ⇒ αx ∈ C ∀ α>0
+	- **Dual**: C∗ :={y: x•y ≥ 0 ∀ x∈C}.
+	- Theorem 1 The dual is always a closed convex cone, and the dual of the dual is the closure of convex hall of C.
+	- Polyhedral Convex Cones: C = {x: Ax ≤ 0}
+- Lipschitz Functions
+	- ∥∇f(x) − ∇f(y)∥ ≤ β∥x − y∥
+- Inequalities:
+	- Cauchy-Schwarz: |x'y| ≤ ∥x∥p ∥y∥q, where 1/p+1/q=1;
+	- Triangle: ∥x + y∥p ≤ ∥x∥p + ∥y∥p for p ≥ 1
+	- Arithmetic: 1/n ∑xj ≥ (∏xj)^1/n
+- Linear equations:
+	- Ax = b has a solution iff A'y=0, b'y≠0 has no solution.
+		- infeasibility certificate
+
+## Mathematical Optimization Models and Applications
+- Stanford CME307/MS&E311 Chap-1
+	- Primal: min f(x) s.t. x ∈ X
+	- X usually:
+		- ci(x) = 0;
+		- ci(x) ≤ 0;
+- Model:
+	- Unconstrained, Linear, Nonlinear, Convex;
+	- Conc Linear, Mixed-Integer, stochastic;
+	- Fixed-Point or Min-Max;
+- Structured: Conic Linear Programming;
+	- min (c, x)
+	- s.t. Ax = b, x ∈ K
+	- LP: K nonnegative orthant cone
+	- SOSP: K is the second-order cone
+	- SDP: K is the semidefinite matrix cone
+- Examples:
+	- Facility Location: POCP (p-th order CLP)
+	- Sparse linear regression: min|x|0 s.t. Ax=b;
+		- LASSO: L1; (LP)
+	- SVM: find slope x and scalar x0, s.t.
+		- (ai, x) + x0 ≥ 1
+		- (bj, x) + x0 ≤ -1
+		- Introduce β for inseparable and slope regularization:
+			- min β + μ|x|^2
+			- s.t. (ai, x) + x0 + β ≥ 1
+			- s.t. (bj, x) + x0 - β ≤ -1
+			- β ≥ 0
+			- Constrained QP;
+		- Ellipsoidal Separation: SDP;	
+	- Logistic: NLL loss;
+	- QP: Portfolio Management
+		- min x'Vx, s.t. (r,x)≥μ, (e,x)=1, x≥0;
+			- Convex QP
+		- Robust: QCQP, SOCP;
+	- Portfolio Selection Problem: MIP;
+	- Optimal Transportation: Wasserstein Barycenter Problem;
+		- ∑∑cij xij
+			- s.t. ∑j xij = si
+			- s.t. ∑j xij = dj
+			- xij ≥ 0
+	- Graph Realization and Sensor Network Localization
+		- SOCP;
+	- Stochastic: minx E_Fξ[h(x, ξ)]
+	- Learning with noise distortion;
+		- Verification: min|x-xˆ|^2
+			- s.t. f(x) ∈ ...
+	- DRO (Distributionally Robust Optimization and Learning)
+		- minx maxD E_Fξ∈D[h(x, ξ)]
+	- Reinforcement Learning: Markov Decision/Game Process
+		- yi∗ = min{cj + γpj' y∗, ∀j ∈ Ai}, ∀i,
+		- πi∗ = argmin{cj + γpj' y∗, ∀j ∈ Ai}, ∀i.
+
+## Conic
+- Stanford CME307/MS&E311 Lec-3
+	- Caratheodory's theorem
+	- Basic and Basic Feasible Solution I
+	- Separating and supporting hyperplane theorem
+	- Farkas' Lemma: {x: Ax=b, x≥0} feasible iff −A' y ≥ 0 and b' y > 0  infeasible;
+	- Alternative systems I: Ax=b, x≥0 | −A'y≥0, b'y=1(>0)
+	- Alternative systems II: Ax=0, x≥0, c'x=−1(<0) | c − A' y ≥ 0
+	- General: {x: Ax=b, x∈K} | {y: −A'y∈K∗, b'y>0}.
+	- General: Ax=0, x∈K, c'x=−1(<0) | c − A'y ∈ K∗
+	- Dual of Conic LP:
+		- CLP: min c'x s.t. ai'x=bi
+		- CLD: max b'y s.t. ∑yiai + s = c
+	- The dual of the dual is the primal.
+	- Transportation Dual: Economic Interpretation
+	- The dual of the Max-Flow problem: Min-Cut
+	- LP formulation of RL/MDP
+	- LP formulation of Nash Equilibrium
+- CME307/MS&E311 Lec-4: Conic Duality Theorems and Applications
+	- Primal/Dual of Conic LP:
+		- CLP: min c'x s.t. ai'x=bi
+		- CLD: max b'y s.t. ∑yiai + s = c
+	- Weak duality: c•x−b'y = x•s ≥ 0
+	- Strong dualiy: Let x∗ ∈ Fp and (y∗, s∗) ∈ Fd. Then, c • x∗ = bT y∗ implies that x∗ is optimal for (CLP) and (y∗, s∗) is optimal for (CLD).
+	- Complementarity Condition:
+		- For feasible x and (y,s), xT s = xT (c − AT y) = cT x − bT y is called the **complementarity gap**;
+			- x' s = 0: complementary to each other;
+
+## Unconstrained Problems
+- NO-Chap-2:
+	- Local/global/strict/isolate optimzer
+	- Recognizing local minimum:
+		- Taylor: 1st, 2nd order;
+	- Two strategies:
+		- Line Search: 
+		- Trust Region;
+	- Search directions:
+		- GD;
+		- Newton direction:
+			- Approximate and update Hessian: SR1, BFGS;
+- L/NL-P Chap-11: Optimality Conditions for Nonlinear Optimization
+	- first-order necessary condition (FONC): ∇f(x) = 0
+	- second-order necessary condition (SONC): ∇f(x) = 0 and ∇^2f(x) ≽ 0
+	- **Lagrange Theorem**: minf(x) s.t. Ax = b, then local minimizer:
+		- ∇f(x) = y'A
+		- The geometric interpretation: the objective gradient vector is perpendicular to or the objective level set tangents the constraint hyperplanes.
+	- **KKT theorem**: minf(x) s.t. Ax ≥ b, local minimizer:
+		- ∇f(x) = yA, y ≥ 0 exists for some y;
+		- y: **Lagrange or dual multipliers**;
+	- **KKT**: if x is a local minimizer, then there exists y s.t.
+		- aix (≤, =, ≥) bi; Original Problem Constraints (OPC)
+		- ∇f(x) = yA; Lagrangian Multiplier Conditions (LMC)
+		- yi (≤, free, ≥) 0; Multiplier Sign Constraints (MSC)
+		- yi = 0 if i ∉ A(x); Complementarity Slackness Conditions (CSC)
+- L/NL-P Chap-11: GCO
+	- Generalized Constrained: GCO
+		- min f(x), s.t. h(x)=0; c(x)≥0;
+	- Lemma 1: let x be a feasible, if x is a local minimizer of GCO, then no d satisfy:
+		- ∇f(x)d < 0;
+		- ∇h(x)d = 0;
+		- ∇ci(x)d ≥ 0, ∀i ∈ Ax;
+	- Theorem (**1st-order KKT** of Optimality Condition) local minimizer:
+		- ∇f(x) = y' ∇h(x) + s' ∇c(x)
+		- si ci(x) = 0; ∀i (complementarity slackness)
+		- Proof: based on alternative system theory, or Farkas Lemma;
+	- Lagrange function: L(x,y,s) = f(x) − y' h(x) − s' c(x); y: free; s ≥ 0;
+	- Lagrangian Relaxation Problem: (LRP) minx L(x, y, s).
+	- **2nd-order necessary** conditions for GCO:
+		- Tx := {z: ∇h(x)z=0, ∇ci(x)z=0 ∀i ∈ Ax}.
+		- Theorem: GCO, let x,y,s satisfies 1st-order KKT, it is necessary to have:
+			- d' ∇^2x L(x,y,s) d ≥ 0 ∀ d ∈ Tx.
+	- **2nd-order sufficient** conditions for GCO:
+		- d' ∇^2x L(x,y ̄) d > 0 ∀0 ≠ d ∈ Tx;
+
+## NO-Chap-3: Line Search
+- Armijo condition (sufficient decrease);
+- Curvature condition;
+- Wolfe condition: A + C;
+- Goldstein condition:
+	- to make sufficient decrease not too short;
+- Backtracking:
 
 ## Learning to Optimize
 - Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla. Learning To Solve Hard Minimal Problems. CVPR'22

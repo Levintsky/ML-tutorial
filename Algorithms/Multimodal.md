@@ -14,6 +14,8 @@
 			- Optimize z s.t. cross-modality agree;
 	- Low-shot learning:
 		- PointCLIP CVPR'22
+- Multitask:
+	- DeepMind: A Generalist Agent.
 - Tutorial:
 	- Image + text: https://lilianweng.github.io/posts/2022-06-09-vlm/
 
@@ -26,10 +28,13 @@
 	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
 	- Mert Bulent Sariyildiz, Julien Perez, and Diane Larlus. Learning Visual Representations with Caption Annotations. 2020
 	- Yuhao Zhang, Hang Jiang, Yasuhide Miura, Christopher D. Manning, and Curtis P. Langlotz. Contrastive Learning of Medical Visual Representations from Paired Images and Text. 2020
-	- Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
-	- **ALIGN**: Chao Jia, Yinfei Yang, Ye Xia, Yi-Ting Chen, Zarana Parekh, Hieu Pham, Quoc V. Le, Yunhsuan Sung, Zhen Li, Tom Duerig. Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
+	- OpenAI. Learning Transferable Visual Models From Natural Language Supervision. 2021
+	- **ALIGN**: Google-Brain. Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
 	- Norman Mu, Alexander Kirillov, David Wagner, and Saining Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
 	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
+
+## Multitask Learning
+- DeepMind: A Generalist Agent.
 
 ## Embedding, Feature Learning
 - Model:
@@ -57,8 +62,8 @@
 	- Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu. UNITER: UNiversal Image-TExt Representation Learning. ECCV'20
 	- Xiujun Li, Xi Yin, Chunyuan Li, Pengchuan Zhang, Xiaowei Hu, Lei Zhang, Lijuan Wang, Houdong Hu, Li Dong, Furu Wei, Yejin Choi, Jianfeng Gao. Oscar: Object-Semantics Aligned Pre-training for Vision-Language Tasks
 - Dual-encoder contrastive:
-	- **CLIP**: Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning Transferable Visual Models From Natural Language Supervision. 2021
-	- **ALIGN**: Chao Jia, Yinfei Yang, Ye Xia, Yi-Ting Chen, Zarana Parekh, Hieu Pham, Quoc V. Le, Yunhsuan Sung, Zhen Li, Tom Duerig. ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
+	- **CLIP**: OpenAI. Learning Transferable Visual Models From Natural Language Supervision. 2021
+	- **ALIGN**: Google-Brain. ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
 	- CoCa: Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, Yonghui Wu. CoCa: Contrastive Captioners are Image-Text Foundation Models.
 	- **Florence**: Lu Yuan, Dongdong Chen, Yi-Ling Chen, Noel Codella, Xiyang Dai, Jianfeng Gao, Houdong Hu, Xuedong Huang, Boxin Li, Chunyuan Li, Ce Liu, Mengchen Liu, Zicheng Liu, Yumao Lu, Yu Shi, Lijuan Wang, Jianfeng Wang, Bin Xiao, Zhen Xiao, Jianwei Yang, Michael Zeng, Luowei Zhou, Pengchuan Zhang. Florence: A New Foundation Model for Computer Vision.
 	- **MIL-NCE**: Antoine Miech, Jean-Baptiste Alayrac, Lucas Smaira, Ivan Laptev, Josef Sivic, Andrew Zisserman. End-to-End Learning of Visual Representations from Uncurated Instructional Videos.
@@ -73,7 +78,7 @@
 		- Learn a light mapping to translate CLIP features into LM space;
 	- MAGMA – Multimodal Augmentation of Generative Models through Adapter-based Finetuning.
 	- Jun Chen, Han Guo, Kai Yi, Boyang Li, Mohamed Elhoseiny. VisualGPT: Data-efficient Adaptation of Pretrained Language Models for Image Captioning. CVPR'22
-	- **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
+	- **Flamingo**: DeepMind. **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
 - Retrieval:
 	- IBM, Dialog-based Interactive Image Retrieval, NIPS'18
 - Downstream tasks:
@@ -111,7 +116,7 @@
 			- G(w+Δw) a real image, s.t. CLIP(.,text), L2(w,w0), Lid(.) all satisfy;
 		- Approach 3: global direction;
 			- Align: 
-- **DALL-E**: Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-Shot Text-to-Image Generation. 2021
+- **DALL-E**: OpenAI. Zero-Shot Text-to-Image Generation. 2021
 	- https://github.com/openai/DALL-E
 	- Stage 1: dVAE, 256x256-dVAE-32x32x8192 tokens; train φ and θ;
 	- Stage 2: concatenate 256 BPE-encoded text tokens with the 32 × 32 = 1024 image tokens, and train an autoregressive transformer pψ(y, z).

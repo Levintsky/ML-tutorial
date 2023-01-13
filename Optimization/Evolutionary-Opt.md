@@ -1,0 +1,39 @@
+# Black-Box Optimization (Gradient-Free)
+
+## Evoluation Strategy
+- https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html
+- Basics:
+	- Black-box optimization, gradient free;
+	- Simple Gaussian-ES:
+		- θ = (μ, σ) ~ μ + σ N(0, I)
+		- Sample population, select a top subset of λ samples, elite set;
+		- Estimate new mean and std;
+	- **CMA-ES** (Covariance Matrix Adaptation-ES): 
+		- Insight: θ = (μ, σ^2C) ~ μ + σ N(0, C), Stochastic version of BFGS (quasi-Newton);
+			- Small number of samples to estimate covariance, so complicated rules to adapt;
+		- Sample xt = mt + σt Ct^(1/2) zt, zt ~ N(0,I)
+		- Rank the solutions, select the best λ performers to get new mean;
+			- μt+1 = μt + α_μ 1/λ Σ_i=1..λ (xi.t+1-μt)
+		- Update path with Polyak averaging of update compensated with C^(-1/2):
+			- p_σ,t+1 = (1-α_σ)p_σ,t + √(α_σ(2-α_σ)λ) Ct^(-1/2) (μt+1-μt)/σt
+		- Cumulative step-size adaptation to update σt;
+			- σt+1 = σt exp(α_σ/d_σ(pσ-1))
+		- Update rank-1 and rank-μ to update covariance matrix;
+	- A population of parameter vectors ("genotypes") is perturbed "mutated", and their objective function value ("fitness") is evaluated.
+	- The highest scoring parameter vectors are then recombined to form the population for the next generation, and this procedure is iterated until the objective is fully optimized;
+	- Successful in optimization in low-medium dimension;
+- Legacy:
+	- I. Rechenberg and M. Eigen. Evolutionsstrategie: Optimierung Technischer Systeme nach Prinzipien der Biologischen Evolution. 1973
+	- H.-P. Schwefel. Numerische optimierung von computer-modellen mittels der evolutionsstrategie. 1977
+	- Juergen Schmidhuber and Jieyu Zhao. Direct policy search and uncertain policy evaluation. 1998
+	- Sebastian Risi and Julian Togelius. Neuroevolution in games: State of the art and open challenges. 2015
+- Nikolaus Hansen and Andreas Ostermeier. Completely derandomized self-adaptation in evolution strategies. Evolutionary computation, 9(2):159–195, 2001
+- Nikolaus Hansen. The CMA Evolution Strategy: A Tutorial. 2016
+- **NES**: natural ES;
+	- Similar to REINFORCE, use func-eval f(x) as reward;
+		- E_x\~p(θ)[f(x)∇logp(x;θ)]; enhance the probability of sampling good x;
+	- θ = θ + α F^(-1)∇J
+	- Daan Wierstra, Tom Schaul, Jan Peters, and Juergen Schmidhuber. Natural evolution strategies. 2008
+	- Daan Wierstra, Tom Schaul, Tobias Glasmachers, Yi Sun, Jan Peters, and Jürgen Schmidhuber. Natural evolution strategies. JMLR'14
+- David Ha. A Visual Guide to Evolution Strategies. blog.otoro.net. Oct 2017.
+	- http://blog.otoro.net/2017/10/29/visual-evolution-strategies/
