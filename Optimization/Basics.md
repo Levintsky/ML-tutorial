@@ -64,6 +64,8 @@
 - Linear equations:
 	- Ax = b has a solution iff A'y=0, b'y≠0 has no solution.
 		- infeasibility certificate
+- Lipchitz condition:
+	- https://zhuanlan.zhihu.com/p/27554191
 
 ## Mathematical Optimization Models and Applications
 - Stanford CME307/MS&E311 Chap-1
@@ -154,10 +156,15 @@
 	- Two strategies:
 		- Line Search: 
 		- Trust Region;
-	- Search directions:
+	- Search directions (for line search):
 		- GD;
 		- Newton direction:
+		- Quasi-Newton: superlinear convergence;
 			- Approximate and update Hessian: SR1, BFGS;
+		- Nonlinear conjugate gradient:
+	- Trust Region:
+		- Assume B=0, steepest descent with radius;
+		- Scaling;
 - L/NL-P Chap-11: Optimality Conditions for Nonlinear Optimization
 	- first-order necessary condition (FONC): ∇f(x) = 0
 	- second-order necessary condition (SONC): ∇f(x) = 0 and ∇^2f(x) ≽ 0
@@ -190,15 +197,174 @@
 		- Theorem: GCO, let x,y,s satisfies 1st-order KKT, it is necessary to have:
 			- d' ∇^2x L(x,y,s) d ≥ 0 ∀ d ∈ Tx.
 	- **2nd-order sufficient** conditions for GCO:
-		- d' ∇^2x L(x,y ̄) d > 0 ∀0 ≠ d ∈ Tx;
+		- d' ∇^2x L(x, y) d > 0 ∀0 ≠ d ∈ Tx;
+	- d in the null space of A iff
+		- d = (I −A(AA')^−1A)u = PA u form some u;
+		- PA: projection matrix of A;
+	- Test with constraint Ad=0 becomes: u' PA Q PA u ≥ 0, ∀ u ∈ Rn
 
-## NO-Chap-3: Line Search
-- Armijo condition (sufficient decrease);
-- Curvature condition;
-- Wolfe condition: A + C;
-- Goldstein condition:
-	- to make sufficient decrease not too short;
-- Backtracking:
+## Search Directions
+- NO-Chap-3: Line Search
+	- 3.1 Step length:
+		- Armijo condition (sufficient decrease);
+			- f(xk + αpk) ≤ f(xk) + c1 α ∇fk pk
+		- Curvature condition;
+			- ∇f(xk + αkpk)' pk ≥ c2 ∇fk' pk, for c2 ∈ (c1, 1);
+				- Typically c2=0.9 (quasi)-Newton, 0.1 CG; 
+		- Wolfe condition: Armijo + Curvature;
+		- Goldstein condition:
+			- f(xk) + (1−c)αk ∇fk' pk ≤ f(xk +αkpk) ≤ f(xk) + c αk ∇fk pk; for 0 < c < 1/2.
+			- to make sufficient decrease not too short;
+		- Backtracking:
+			- repeat α ← ρα with ρ∈(0,1), until condition satisfies;
+	- 3.2 Convergence of Line Search
+		- Theo-3.2 ∑cosθk^2 |∇fk|^2 < ∞
+		- cosθk ≥ δ > 0 (bounded away from 90◦), converge;
+		- |Bk| |B^−1| ≤ M, cosθk ≥1/M, converge;
+	- 3.3 Rate of Convergence
+		- f(x) = 1/2 x'Qx - b'x
+		- Theo 3.3 (**steepest descent**) with exact line search:
+			- |xk+1−x∗|^2 ≤ (λn-λ1)^2/(λn+λ1)^2 |xk−x∗|^2
+		- Newton's method: p = −(∇^2f)^−1 ∇f
+		- Theo 3.5 (**Newton**) positive-definite, then rate of convergence is **quadratic**;
+			- |xk+pk−x∗| ≤ L|∇^2f(x∗)|^−1|xk−x∗|^2
+		- Quasi-Newton: pk = -Bk^-1 ∇fk
+		- Theo-3.6 (**Quasi-Newton**) Wolfe, positive-definite:
+			- αk=1 is admissible for k large enough;
+			- if αk=1 for all k > k0, {xk} converges to x∗ **superlinearly**.
+		- Super-linearity ⇔ |(Bk−∇2f(x∗))pk| / |pk| = 0
+	- 3.4 Newton's method with Hessian Modification
+		- Add a diagonal to make positive definite;
+		- Eigenvalue
+		- Modified Cholesky Factorization;
+		- Modified Symmetric Indefinite factorization;
+	- 3.5 Step-length selection algorithms
+		- Convex quadratic: closed-form analytically
+		- Interpolation;
+		- Initial step length;
+- NO-Chap-4: Trust-Region Methods
+	- Approximate locally in a neighborhood:
+		- min_p mk(p) = fk + gk' p + 1/2 p'Bkp s.t. |p| ≤ Δk
+	- Evaluate performance:
+		- ρk = (f(xk) − f(xk+pk)) / (mk(0) - mk(pk))
+	- Cauchy-point;
+	- 4.1 Algorithms based on **Cauchy point**
+		- Approx cost by pk = argmin fk + gk'p s.t. |p| ≤ Δk
+			- pk = - Δk/|gk| gk (steepest descent direction)
+			- τk = 1 if gkBkgk ≤ 0;
+			- min(|gk|^3/(Δkgk'Bkgk), 1), otherwise;
+		- **Dogleg** method:
+			- pB = −B^−1 g > Δk?
+			- Two line segments:
+				- First: pU = - (g'g)/(g'Bg) g
+				- Second: pU to pB
+	- 4.2 Global Convergence
+		- Lemma 4.3 Cauchy point pkC satisifes:
+			- mk(0) - mk(pkC) ≥ 1/2 |gk| min(Δk, |gk|/|Bk|)
+	- 4.3 Iterative Solution of subproblem
+		- Find optimal p(λ) = −(B + λI)−1g
+- NO-Chap-5: Conjugate Gradient Methods
+	- 5.1 Linear CG
+		- Ax = b, A: symmetric positive definite;
+			- minφ(x) = 1/2 x'Ax − b'x
+			- ∇φ(x) = Ax − b = r(x)
+		- Conjugate: pi'Apj = 0, i ≠ j
+		- xk+1 = xk + αk pk
+			- αk = -(rk'pk)/(pk'Apk), 1-dim minimizer of φ(.);
+		- Theo-5.1 converges to solution in at most n steps.
+		- rk+1 = rk + αkApk
+		- Theo-5.2 (Expanding Subspace Minimization)
+			- rk'pi = 0; for i=0,1,...,k-1
+			- xk is minimizer of φ(.) in {x|x=x0 +span{p0,p1,...,pk−1}}
+		- Algorithm:
+			- Init: r0 = Ax0-b, p0 ← -r0, k = 0;
+				- p0: initial direction as steepest descent;
+				- Some proof won't hold
+			- For new direction pk, get best step-length αk:
+				- αk = -(rk'pk)/(pk'Apk)
+				- xk+1 ← xk + αkpk; rk+1 ← Axk+1 - b;
+			- Get new direction pk+1:
+				- βk+1 = rk+1'Apk/(pk'Apk)
+				- pk+1 ← -rk+1 + βk+1pk;
+			- k ← k+1
+		- Theo-5.4 r distinct eigenvalues -> terminate in at most r iterations;
+		- Theo-5.5 A has eigenvalues λ1 ≤ λ2 ≤ ··· ≤ λn, then: |xk+1−x∗|^2 ≤ (λn-k − λ1)^2/ (λn-k + λ1)^2 |x0−x∗|^2;
+		- Preconditioning: xˆ = Cx
+	- 5.2 Nonlinear CG
+		- Fletcher-Reeves Method:
+			- Init: x0, f0=f(x0), ∇f0=∇f(x0), p0 ← −∇f0;
+			- while ∇fk ≠ 0:
+				- Get αk, xk+1 = xk + αk pk; (step length)
+				- Eval ∇fk+1;
+				- βk+1 = |∇fk+1|^2 / |∇fk|^2
+				- pk+1 = -∇fk+1 + βk+1 pk; (direction)
+		- Polak-Ribiere Method and variant:
+			- Variants differ from each other by β;
+			- P-R: βk+1 = ∇fk+1'(∇fk+1-∇fk) / |∇fk|^2
+		- Global convergence:
+			- Theo-5.7 lim inf|∇fk| = 0.
+- NO-Chap-6: Quasi-Newton Methods
+	- 6.1 BFGS:
+		- Bk+1 αk pk = ∇fk+1 − ∇fk
+		- Bk+1 sk = yk (**Secant Equation**)
+			- sk = xk+1 - xk = αk pk
+			- yk = ∇fk+1 − ∇fk
+		- Bk+1 positive-definite: curvature condition
+			- sk' yk > 0
+		- If nonconvex, need Wolfe Condition to make curvature condition work;
+		- Among all Bk+1 satisfying Secont equation, find the one closest to current Bk:
+			- min|B-Bk| s.t. B=B', Bsk=yk
+		- **DFP**: Bk+1 and inverse of Bk, Hk:
+			- Bk+1 = (I − ρk yk sk')Bk(I − ρk sk yk') + ρk yk yk'
+				- with ρk = 1/(yk'sk), rank-2 modification;
+			- Hk+1 = Hk − Hkykyk'Hk/(yk'Hkyk) + (sksk')/(yk'sk)
+		- **BFGS**: Hk+1yk = sk, find the Hk s.t.
+			- min|H-Hk| s.t. H=H', Hyk = sk
+			- Hk+1 = (I − ρkskyk')Hk(I − ρkyksk') + ρksksk'
+			- Bk+1 = Bk - Bksksk'Bk/(sk'Bksk) + (ykyk')/(yk'sk)
+		- DFP and BFGS: dual of each other;
+		- BFGS + Wolfe-step-length
+	- 6.2 SR1 Method
+		- Bk+1 = Bk + σvv' with Sekant equation;
+		- SR1: Bk+1 = Bk + (yk-Bsk)(yk-Bsk)' / (yk-Bksk)'sk
+		- SR1: Hk+1 = Hk + (sk-Hkyk)(sk-Hkyk)' / (sk-Hksk)'yk
+		- SR1 + Trust-region;
+	- 6.3 The Broyden Class
+		- Bk+1 = Bk - Bksksk'Bk/(sk'Bksk) + (ykyk')/(yk'sk) + φk(sk'Bksk)vkvk'
+			- vk = yk/(yk'sk) - Bksk/(sk'Bksk)
+		- BFGS: φk = 0;
+		- DFP: φk = 1;
+		- restricted Broyden class: φk in [0,1]
+	- 6.4 Convergence Analysis
+		- Theo-6.5 Converge;
+		- Theo-6.6 superlinear rate;
+- NO Chap-7 Large-Scale Unconstrained Optimization
+	- 7.1 Inexact Newton
+		- ∇^2fk pk = −∇fk
+		- Iteratively solve pk (not exactly)
+			- Stop when the residual small enough: rk = ∇^2fk pk + ∇fk
+		- Theo-7.1 |rk| ≤ ηk |∇fk|, then
+			- |∇2 f(x∗)(xk+1 − x∗)| ≤ ηˆ|∇2 f(x∗)(xk − x∗)|
+		- Line-search Newton-CG (truncated Newton)
+		- Trust-region Newton-CG (CG–Steihaug)
+		- Trust-region Newton-Lanczos
+			- Search after j stpes;
+	- 7.2 Limited-Memory Quasi-Newton
+		- L-BFGS:
+			- xk+1 = xk − αk Hk ∇f
+			- Hk+1 = Vk'HkVk + ρksksk'
+			- L-BFGS: save (si, yi) pairs instead of Hk;
+	- 7.3 Sparse Quasi-Newton
+	- 7.4 Partially Separable Functions
+
+## Convex Optimization
+- **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
+	- https://github.com/cvxgrp/cvxpylayers (support both pytorch and tf)
+
+## Variance Reduction
+- UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
+- SEGA: Variance Reduction via Gradient Sketching. NIPS'18
+- Stochastic Expectation Maximization with Variance Reduction. NIPS'18
 
 ## Learning to Optimize
 - Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla. Learning To Solve Hard Minimal Problems. CVPR'22

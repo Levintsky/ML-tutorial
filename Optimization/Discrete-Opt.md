@@ -1,4 +1,11 @@
-# Combinatorial Optimization
+# Discrete/Combinatorial Optimization
+
+## Basics
+- Books:
+	- C Papadimitriou and K Steiglitz. Combinatorial Optimization: Algorithms and Complexity. '82
+	- G Nemhauser and L Wolsey. Integer and Combinatorial Optimization. '88
+	- W Cook. Combinatorial Optimization. '97
+	- Wolsey. Integer Programming. '98
 
 ## DL
 - Po-Wei Wang, Priya L. Donti, Bryan Wilder, Zico Kolter. SATNet: Bridging deep learning and logical reasoning using a differentiable satisfiability solver. ICML'19

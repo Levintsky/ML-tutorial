@@ -1,13 +1,70 @@
-# SGD
+# Stochastic Optimization
 
-## Summaries
-- http://ruder.io/optimizing-gradient-descent/
+## Basics
+- Books:
+	- P. Kall and S Wallace. Stochastic Programming. '94
+	- J Birge, F Louveaux. Introduction to Stochastic Programming. '97
+	- Ben-Tal, A Nemirovski. Lectures on Modern Convex Optimization: Analysis, Algorithms and Engineering Applications. SIAM'01
+- Good resources:
+	- http://ruder.io/optimizing-gradient-descent/
 - Heavily used in neural networks;
 - A summary:
 	- GD: batch/mini-batch sgd;
 	- SGD: Momentum, Nesterov accelerated gradient, Adagrad, Adadelta, RMSprop, Adam, AdaMax, Nadam, AMSGrad
 	- Parallel/distributed: Hogwild!, Downpour SGD, Delay-tolerant Algorithms for SGD, TensorFlow, Elastic Averaging SGD
 	- Additional strategies: Shuffling and Curriculum Learning, Batch normalization, Early Stopping, Gradient noise
+
+## IFT-6085
+- 2. Convex Optimization
+	- Lipschitz: |f(x)-f(y)| ≤ L|x-y|
+	- Lemma-1. 1st-order: L-Lipschitz ⇔ ∥∇f(x)∥ ≤ L
+	- Def. Convex combination, convex set, convex function;
+	- Lemma-2. 1st-order: convex function f ⇔ f(y) ≥ f(x) + ∇f(x)'(y − x)
+	- Def. Positive Semi-definite. M ≽ 0
+	- Theo-1. Symmetric matrix positive semi-definite ⇔ λi ≥ 0
+	- Lemma-4. 2nd-order condition. ∇2f(x) ≽ 0
+	- Theo-2. T-steps GD with step size γ=|x-x∗|/L√T, then following hold:
+		- f(1/T ∑xk) - f(x∗) ≤ L|x-x∗|/√T
+- 3. Gradients for smooth and for strongly convex functions
+	- Def. β-smooth: ∥∇f(x) − ∇f(y)∥ ≤ β∥x − y∥
+	- Lemma-2. (quadratic bounds) β-smooth then
+		- |f(x)−f(y)−∇f(y)'(x−y)| ≤ β/2 ∥x−y∥^2
+	- Lemma-4. convex and β-smooth, then gd with stepsize γ = 1/β:
+		- f(xk) − f(x∗) ≤ 2β∥x1 − x∗∥^2/(k-1)
+	- Def-5. f(x) α-strongly convex: f(x)− α/2 ∥x∥^2 is convex.
+		- or ∇^2f(x) ≽ αI
+	- Theo-6. α-strongly convex and L-Lipschitz, T steps subgradient descent with γk = 2/α(k + 1) satisfies:
+		- f(∑2kxk/T(T+1)) - f(x∗) ≤ 2L^2/α(T+1)
+	- Theo-9. λ-strongly convex and β-smooth, gradient descent with γ = 2/(λ+β):
+		- f(xk+1) - f(x∗) ≤ β/2 exp(-4k/(κ+1)) |x1-x∗|^2
+		- where κ = β/λ is condition number
+- 4. Black-box Models and Lower bounds
+	- 0th order: bisection, genetic, simulated annealing, Metropolis;
+	- 1st order: Nesterov, Polyak;
+	- 2nd order: Newton, Quasi-Newton (BFGS, L-BFGS);
+	- Adaptive: each variable/dimension has its own hyperparameters;
+	- Lower bounds;
+		- β-smooth and α-strongly convex:
+			- f(xt) - f(x∗) ≤ α/2 (√κ-1/√κ+1)^2(t-1) ||x1 −x∗||2
+- 5. Accelerated Methods - Polyak's Momentum (Heavy Ball Method)
+	- Polyak's momentum: xt+1 = xt − γ∇f(xt) + μ(xt − xt−1)
+	- Convergence for a quadratic loss
+		- |[xt+1,xt]-[x∗,x∗]| = O(ρ(A)^t), ρ(.) spectral radius;
+	- Lemma-2. Optimal γ, μ.
+- 6. Nesterov's Momentum, SGD
+	- NAG:
+		- vt+1 ← βvt − α∇f(xt + βvt)
+		- xt+1 ← xt + vt+1
+		- Same acceleration as Polyak in case of quadratic:
+			- Smooth: O(1/T^2) compared to GD O(1/T)
+			- Smooth & strongly-convex: O(exp(-T/√κ)) compared to GD O(exp(-T/κ))
+	- SGD:
+		- E[vt|w(t)] ∈ ∂f(w(t))
+		- wt+1 ← wt − ηvt
+	- Bias-Variance Trade-off
+	- Def. Subgradient. f(y) ≥ f(x) + ⟨y−x, v⟩
+	- Theo-5. Convex function, step size η=B/ρ√T, |vt| ≤ ρ. Then,
+		- E[f(w)] - f(w∗) ≤ Bρ/√T
 
 ## 1st-Order
 - GD:
@@ -30,8 +87,13 @@
 		- Primal-dual subgradient: xt+1 = argmin_x[η(1/tΣgt,x)+ηφ(x)+1/t Ψt]
 		- Compositve Mirror decent: xt+1 = argmin_x[η(gt,x)+ηφ(x)+BΨt(x,xt)]
 	- **AdaDelta**: M Zeiler. ADADELTA: An Adaptive Learning Rate Method. 2012
-		- Improves over adagrad
-		<img src="/Optimization/images/sgd/adadelta.png" alt="drawing" width="500"/>
+		- Improves over adagrad:
+		- Each step:
+			- Compute gradient: gt;
+			- E[g^2]t = ρE[g^2]t-1 + (1-ρ)gt^2;
+			- Update: Δxt = -RMS(Δxt-1)/RMS(gt) gt
+			- E[Δx^2]t = ρE[Δx^2]t-1 + (1-ρ)Δxt^2^2;
+			- Apply update: xt+1 = xt + Δxt
 	- **Rmsprop**:
 		- E[g^2]t = 0.9E[g^2]t-1 + 0.1 gt^2; average 2nd-order momentum
 		- θt+1 = θt - η/√(E[g^2]t+ε)gt; normalize gradient by 2nd-order momentum
@@ -52,6 +114,49 @@
 	- Which optimizer to use?
 - Legacy: Robbins, H. and Monro, S. A stochastic approximation method. Annals of Mathematical Statistics, 1951.
 - U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
+
+## 2nd-Order
+- Natural Gradient:
+	- Resources and Tutorials:
+		- Relation with Gauss-Newton
+		- https://www.zhihu.com/question/266846405
+		- https://zhuanlan.zhihu.com/p/82934100
+	- James Martens. New insights and perspectives on the natural gradient method. 2017
+		- KL(Q(y|x)||P(y|x)) = ∫q(x,y) log[q(y|x)q(x)/p(y|x)q(x)]dxdy
+		- with training distribution, KL = -1/|S| Σ(x,y)∈S logp(y|x,θ), becomes standard loss;
+		- Fisher: F = E_p(x,y)[∇logp(x,y|θ)∇logp(x,y|θ)^T] = E_Qx[E_p(y|x)[gg^T]]
+		- Geometric interpretation: steepest descent with instrinsic information geometry;
+			- KL(P(θ+d)||P(θ)) = 1/2 d^TFd + O(d^3), locally symmetric;
+	- Legacy:
+		- S.-I. Amari. Natural gradient works efficiently in learning. Neural Computation, 10(2): 251–276, 1998.
+		- S.-i. Amari and A. Cichocki. Adaptive blind signal processing-neural network approaches. Proceedings of the IEEE, 86(10):2026–2048, 1998.
+		- S.-i. Amari and H. Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
+	- Razvan Pascanu, Yoshua Bengio. Revisiting Natural Gradient for Deep Networks. arXiv preprint arXiv:1301.3584 (2013).
+	- Alberto Bernacchia, Mate Lengyel, Guillaume Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NIPS'18
+	- Thomas George, César Laurent, Xavier Bouthillier, Nicolas Ballas, Pascal Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
+	- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix.
+		- Cholesky decomposition.
+	- Octavian-Eugen Ganea, Gary Bécigneul, Thomas Hofmann. Hyperbolic Neural Networks. NIPS'18
+	- Higher-order:
+		- Yang Song, Jiaming Song, Stefano Ermon. Accelerating Natural Gradient with Higher-Order Invariance. ICML'18
+			- https://ermongroup.github.io/blog/geo/
+- Lower-Rank Approximation of Hessian:
+	- Martens, James. Deep learning via hessian-free optimization. ICML'10
+	- **KFAC**: J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature. ICML'15
+		- Kronecker approximation to Fisher
+		- Assumption: FC (si = Wi\* ai) + non-linear (ai = φ(si)), then DWi=gi x ai-1, Fisher:\
+			<img src="/Optimization/images/2nd/k-fac1.png" alt="drawing" width="400"/>
+		- Approx:\
+			<img src="/Optimization/images/2nd/k-fac2.png" alt="drawing" width="400"/>
+	- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
+		- Follow-up on KFAC for convolutions
+	- Instability:
+		- Byrd, R., Hansen, S., Nocedal, J., and Singer, Y. A stochastic quasi-newton method for large-scale optimization. SIAM Journal on Optimization'16
+	- Estimate the metric:
+		- Pascanu, Razvan and Bengio, Yoshua. Revisiting natural gradient for deep networks. ICLR'14
+		- KFAC. ICML'15
+		- **PRONG**: G. Desjardins, K. Simonyan, R. Pascanu, et.al. Natural neural networks. NIPS'15
+			- Whitening each layer.
 
 ## Parallel/Distributed
 - **Hogwild!**: Niu, F., Recht, B., Christopher, R., & Wright, S. J. . Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. 2011
