@@ -18,15 +18,6 @@
 - https://www.ise.ncsu.edu/fuzzy-neural/wp-content/uploads/sites/9/2019/03/Lecturenote5.pdf
 
 ## Lagrange Dual
-- Bishop, PRML, Appendix E;
-	- Maximize f(x1, x2) s.t. g(x1, x2) = 0;
-	- Equality constraint: g(x)=0, partial derivative of f and g must be parallel (λ);
-		- L(x,λ) = f(x) + λg(x)
-		- ∇f + λ∇g = 0; parallel;
-	- Inequality constraint: g(x) >= 0; g(x) > 0 inactive constraint, g(x) = 0, active; introduce λg(x):
-		- g(x) >= 0;
-		- λ >= 0 
-		- λg(x) = 0;
 - Lagrange dual (https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/lecture7.pdf)
 	- Primal problem: minimization with Lagrange multiplier:
 		- minf0(x), s.t. fi(x) <= 0;
@@ -49,21 +40,19 @@
 ## Strong Duality
 - Linear programming:
 	- Wasserstein metric (Wasserstein or Kantorovich–Rubinstein metric or distance):
-		- Formulation (optimal transport);\
-			<img src = '/Optimization/images/dual/wgan-dual.png' width='400'>
+		- Formulation (optimal transport): linear programming
+			- Primal: minz = c'x s.t. Ax=b, x ≥ 0
+			- Dual: maxz=b'y s.t. A'y ≤ c
 		- Weak duality: (z >= z-dual), z = (c, x) >= (Ay, x) = (y, b) = z-dual
 		- Strong duality: z = z-dual;
 			- 1. Farkas Theorem:
 			- 2. Contruct a problem related to oringal LP;
-		- Cost function:\
-			<img src = '/Optimization/images/dual/wgan-dual-2.png' width='400'>
+		- Cost function: EMD(Pr, Pf) = f'Pr + g'Pf
 		- Constraints: f(xi) + g(xj) <= Dij (Dii = 0 gives f(xi) + g(xi) <= 0)
 		- Since we optimize [p-r, p-fake] x [f, g], both f(xi), g(xi) should be large, we have g+f=0, or g=-f;
 		- Final cost: E(x-Pr)f(x) - E(x-P-fake)f(x);
 		- Constraint f(xi) + g(xj) <= Dij become f(xi) - f(xj) <= Dij. f(xi) + f(xj) >= -Dij, which becomes Lipschitz L <= 1.
 - Nash Equilibrium of Mixed Strategy:
-
-## Convex Dual
 
 ## Primal-Dual also Proximal Methods
 - Resources:

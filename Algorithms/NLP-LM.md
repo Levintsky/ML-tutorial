@@ -23,6 +23,11 @@
 	- https://gluebenchmark.com/leaderboard/
 	- PennTreeBank
 	- WikiText-2, WikiText-3
+- Amazing/latest LLM:
+	- Google LaMDA: https://blog.google/technology/ai/lamda/
+	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
+	- Google CoPilot;
+	- Google: Large Language Models Encode Clinical Knowledge
 
 ## Legacy
 - Unigram: p(w1,...,wn) = ∏P(wi)
@@ -57,6 +62,8 @@
 	- GPT: 12-layers; '18
 	- GPT-2: 48-layers; '18
 	- GPT-3: 12/24/32/40/96-layers from small to B;
+- LLM:
+	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
 
 ## Supervision Design
 - Masked:

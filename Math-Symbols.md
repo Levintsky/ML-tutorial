@@ -24,7 +24,7 @@
 - π
  
 ## Algebraic
-- ∞	 
+- ∞
 - Composition: f∘g
 - ∑, ∑∑
 - ∏

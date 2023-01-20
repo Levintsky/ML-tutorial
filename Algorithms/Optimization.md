@@ -120,8 +120,164 @@
 		- yi∗ = min{cj + γpj' y∗, ∀j ∈ Ai}, ∀i,
 		- πi∗ = argmin{cj + γpj' y∗, ∀j ∈ Ai}, ∀i.
 
-## Conic
-- Stanford CME307/MS&E311 Lec-3
+## Derivatives
+- NO-Chap-8:
+	- 8.1 Finite-Difference derivative approximations
+		- One-side:
+			- ∂f/∂xi = (f(x+εei)-f(x))/ε + δε
+			- where |δε|≤(L/2)ε^2
+		- Central-difference:
+			- ∂f/∂xi = (f(x+εei)-f(x-εei))/2ε + O(ε^2)
+		- Approximate Jacobian
+		- Approximate Hessian
+	- 8.2 Automatic Differentiation
+		- Forward mode:
+		- Reverse mode:
+			- ∂f/∂xi = ∑j ∂f/∂xj ∂xj/∂xi
+			- Accumulate: xi^ += ∑j ∂f/∂xj ∂xj/∂xi
+		- Vector Functions and Partial Separability
+		- Calculating Jacobians of vector functions
+		- Hessians: forward mode
+
+## Unconstrained Problems
+- NO-Chap-2: Fundamentals of Unconstrained Optimization
+	- Local/global/strict/isolate optimzer
+	- Recognizing local minimum:
+		- Taylor: 1st, 2nd order;
+	- Two strategies:
+		- Line Search: 
+		- Trust Region;
+	- Search directions (for line search):
+		- GD;
+		- Newton direction:
+		- Quasi-Newton: superlinear convergence;
+			- Approximate and update Hessian: SR1, BFGS;
+		- Nonlinear conjugate gradient:
+	- Trust Region:
+		- Assume B=0, steepest descent with radius;
+		- Scaling;
+- NO-Chap-10: Least-Square Problems
+	- Loss: f(x) = 1/2 ∑rj^2(x)
+		- each rj: residual
+		- Jacobian: J(x) = [∂rj/∂xi]mxn
+		- Real Hessian: ∇^2f(x) = J'J + ∑rj ∇^2rj
+	- 10.1 Background
+		- Fixed-regression model;
+		- MLE, discrepancy: normal distribution;
+	- 10.2 Linear Least-Squares Problems
+		- f(x) = 1/2 |J(x)-y|^2
+		- Normal equations: J'Jx∗ = J'y
+		- Three approaches:
+			- 1: Cholesky factorizaation of J'J;
+			- 2: QR factorization of J.
+			- 3: SVD of J.
+	- 10.3 Alogrithm for nonlinear Least-squares
+		- Gauss-Newton Method:
+			- Jk'Jk pk = =Jk'rk instead of ∇2f(xk)p=−∇f(xk),
+			- Assumption: ∇^2 fk ≈ Jk'Jk (ignore rj∇^2rj)
+			- Insight: Newton's method with line search;
+			- Three advantages:
+				- 1. no need of residual Hessian ∇^2rj;
+				- 2. always dominate the 2nd term;
+				- 3. whenever Jk has full rank, p is a descent direction;
+			- Convergence: Theo-10.1 limk→∞ Jk'rk = 0
+		- Levenberg-Marquardt Method:
+			- min 1/2|Jkp+rk|^2, s.t. p ≤ Δk
+			- If GN got solution |pGN| < Δk, accept;
+			- Otherwise, find λ > 0, s.t.
+				- (J'J+λI)p = −J'r
+			- Convergence: Theo-10.3 limk→∞∇fk = Jk'rk = 0
+	- 10.4 Orthognal Distance Regression
+- NO-Chap-11: Nonlinear Equations
+	- Root finding as nonlinear optimization:
+		- min|r(x)| for r(x)=0
+	- 11.1 Local Algorithms
+		- Broyden method;
+	- 11.2 Practical Methods
+		- Merit Functions
+	- 11.3 Continuatoin/Homotopy Methods
+		- H(x,λ) = λr(x) + (1−λ)(x−a), initial point (a, 0) at λ=0;
+		- H(x(s), λ(s)) = 0, ∀ s ≥ 0, s as travel distance;
+		- Total derivative w.r.t. s:
+			- ∂H/∂x x' + ∂H/∂λ λ' = 0, where (x', λ') = (dx/dx, dλ/ds)
+			- |x ̇(s)|^2 +|λ ̇(s)|^2 = 1
+		- Procedure: Tangent Vector Calculation;
+- L/NL-P Chap-11: Optimality Conditions for Nonlinear Optimization
+	- first-order necessary condition (FONC): ∇f(x) = 0
+	- second-order necessary condition (SONC): ∇f(x) = 0 and ∇^2f(x) ≽ 0
+	- **Lagrange Theorem**: minf(x) s.t. Ax = b, then local minimizer:
+		- ∇f(x) = y'A
+		- The geometric interpretation: the objective gradient vector is perpendicular to or the objective level set tangents the constraint hyperplanes.
+	- **KKT theorem**: minf(x) s.t. Ax ≥ b, local minimizer:
+		- ∇f(x) = yA, y ≥ 0 exists for some y;
+		- y: **Lagrange or dual multipliers**;
+	- **KKT**: if x is a local minimizer, then there exists y s.t.
+		- aix (≤, =, ≥) bi; Original Problem Constraints (OPC)
+		- ∇f(x) = yA; Lagrangian Multiplier Conditions (LMC)
+		- yi (≤, free, ≥) 0; Multiplier Sign Constraints (MSC)
+		- yi = 0 if i ∉ A(x); Complementarity Slackness Conditions (CSC)
+
+## Constrained Problems
+- NO-Chap-12: Theory of Constrained Optimization
+	- Ω = {x|ci(x)=0, i ∈ E; ci(x)≥0, i ∈ I},
+	- min_x∈Ω f(x)
+	- 12.1 Examples
+	- 12.2 Tangent cone and constraint Qualifications
+		- Def.12.2 tangent vector. All tangents: tangent cone;
+		- Def.12.3 Linearized feasible directions F(x).
+			- F(x) = {d| d'∇ci(x)=0, i∈E, d'∇ci(x)≥0, i∈I}
+	- 12.3 First-order Optimality Conditions
+		- L(x, λ) = f(x) - ∑λici(x)
+		- Theo-12.1 1st-order necessary conditions (**KKT**)
+			- ∇xL(x∗,λ∗) = 0,
+			- ci(x∗) = 0, i ∈ E
+			- ci(x∗) ≥ 0, i ∈ I
+			- λi∗ ≥ 0, i ∈ I
+			- λi∗xi∗ = 0; complementary conditions
+	- 12.4 First-order Optimality Conditions: Proof
+		- Lemma-12.4 Farka's Lemma
+	- 12.5 Second-order Conditions
+		- Necessary: w' ∇^2L(x∗,λ∗)w ≥ 0, ∀ w∈C(x∗, λ∗).
+		- Sufficient: w' ∇^2L(x∗,λ∗)w > 0, ∀ w∈C(x∗, λ∗).
+	- 12.6 Other Constraint Qualifications
+	- 12.7 A Geometric Viewpoint
+	- 12.8 Lagrange Multipliers and Sensitivity
+	- 12.9 Duality
+		- Dual objective: q(λ) = inf_x L(x, λ)
+		- Dual problem: max_λ q(λ) s.t. λ ≥ 0
+		- Theo-12.10 q(.) is concave with convex domain;
+		- Theo-12.11 Weak duality
+- Boyd-Chap-5: Duality
+	- 5.1 Lagrange Dual function
+		- Least square: min x'x s.t. Ax = b
+			- Dual: -1/4 ν'AA'ν -b'ν
+		- LP: c'x s.t. Ax = b, x ≽ 0
+			- g(λ, ν) = -b'ν; if A'ν-λ+c=0
+			- g(λ, ν) = −∞; otherwise
+		- Conjugate function: f∗(y)= sup_x (y'x−f(x))
+	- 5.2 Lagrange Dual Problem
+		- Weak duality: d⋆ ≤ p⋆
+		- Strong duality: d⋆ = p⋆
+		- Slater's condition (strictly feasible):
+			- x ∈ relint D, s.t. fi(x) < 0, Ax=b;
+		- Primal function convex, constraint convex, usually strong duality hold.
+	- 5.3 Geometric Interpretation
+		- Epigraph variation;
+		- A={(u,v,t)|fi(x)≤ui, hi(x)=vi, f(x0)≤t)}
+		- And find hyperplane (λ, 1)'(u, t) below A.
+		- Intercept with u=0 gives g(λ).
+		- Proof of Strong Duality:
+			- Assume:
+				- f0,...,fm convex, x ∈ relintD;
+				- relintD = intD nonempty interior;
+				- rankA=p
+				- p⋆ is finite
+	- 5.4 Saddle-point interpretation
+	- 5.5 Optimality Conditions (KKT)
+	- 5.6 Perturbation and sensitivity analysis
+	- 5.7 Examples
+	- 5.8 Theorems of alternatives
+- CME307/MS&E311 Lec-3
 	- Caratheodory's theorem
 	- Basic and Basic Feasible Solution I
 	- Separating and supporting hyperplane theorem
@@ -147,38 +303,6 @@
 	- Complementarity Condition:
 		- For feasible x and (y,s), xT s = xT (c − AT y) = cT x − bT y is called the **complementarity gap**;
 			- x' s = 0: complementary to each other;
-
-## Unconstrained Problems
-- NO-Chap-2:
-	- Local/global/strict/isolate optimzer
-	- Recognizing local minimum:
-		- Taylor: 1st, 2nd order;
-	- Two strategies:
-		- Line Search: 
-		- Trust Region;
-	- Search directions (for line search):
-		- GD;
-		- Newton direction:
-		- Quasi-Newton: superlinear convergence;
-			- Approximate and update Hessian: SR1, BFGS;
-		- Nonlinear conjugate gradient:
-	- Trust Region:
-		- Assume B=0, steepest descent with radius;
-		- Scaling;
-- L/NL-P Chap-11: Optimality Conditions for Nonlinear Optimization
-	- first-order necessary condition (FONC): ∇f(x) = 0
-	- second-order necessary condition (SONC): ∇f(x) = 0 and ∇^2f(x) ≽ 0
-	- **Lagrange Theorem**: minf(x) s.t. Ax = b, then local minimizer:
-		- ∇f(x) = y'A
-		- The geometric interpretation: the objective gradient vector is perpendicular to or the objective level set tangents the constraint hyperplanes.
-	- **KKT theorem**: minf(x) s.t. Ax ≥ b, local minimizer:
-		- ∇f(x) = yA, y ≥ 0 exists for some y;
-		- y: **Lagrange or dual multipliers**;
-	- **KKT**: if x is a local minimizer, then there exists y s.t.
-		- aix (≤, =, ≥) bi; Original Problem Constraints (OPC)
-		- ∇f(x) = yA; Lagrangian Multiplier Conditions (LMC)
-		- yi (≤, free, ≥) 0; Multiplier Sign Constraints (MSC)
-		- yi = 0 if i ∉ A(x); Complementarity Slackness Conditions (CSC)
 - L/NL-P Chap-11: GCO
 	- Generalized Constrained: GCO
 		- min f(x), s.t. h(x)=0; c(x)≥0;
@@ -360,11 +484,6 @@
 ## Convex Optimization
 - **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
 	- https://github.com/cvxgrp/cvxpylayers (support both pytorch and tf)
-
-## Variance Reduction
-- UCLA. Stochastic Nested Variance Reduced Gradient Descent for Nonconvex Optimization. NIPS'18
-- SEGA: Variance Reduction via Gradient Sketching. NIPS'18
-- Stochastic Expectation Maximization with Variance Reduction. NIPS'18
 
 ## Learning to Optimize
 - Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla. Learning To Solve Hard Minimal Problems. CVPR'22

@@ -1,5 +1,13 @@
 # Learning Theory
 
+## Resouces
+- Princeton: https://youtu.be/PHcodnoOlgI
+- MSR DL theory: https://www.youtube.com/live/3wbLr-NnIKI?feature=share
+- MIT: https://www.mit.edu/~9.520/fall19/
+- Duke:
+	- https://users.cs.duke.edu/~cynthia/teaching.html
+	- https://youtu.be/nACHK2CgyGg
+
 ## Basics
 - Goal:
 	- Bound the gap of performance between population and empirical;

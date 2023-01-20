@@ -152,6 +152,8 @@
 	- RL reward: J(θ) = Eθ[Σγ^t rt]
 	- Learn from Human feedback:
 		- ADEM Lowe'17, HUSE Hashimoto'19
+- LLM SOTA:
+	- **LaMDA**: Romal Thoppilan. LaMDA: Language Models for Dialog Applications. 2022
 - Social impact:
 	- Ethics: Sheng et al., EMNLP'19; Zellers et al., NeurIPS'19
 	- Hidden biases: Wallace et al., EMNLP'19; Gehman et al., EMNLP Findings 2020

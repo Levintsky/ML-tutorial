@@ -1,5 +1,49 @@
 # Black-Box Optimization (Gradient-Free)
 
+## Basics
+- Build a model f() explicitly
+	- Quadratic: NO-9.2
+
+## Derivative-Free Optimization
+- NO-Chap-9
+	- 9.1 Finite Difference and Noise
+		- f(x) = h(x) + φ(x), φ(x): noise
+		- η(x; ε) = sup|φ(z)|
+		- Lemma-9.1. ∇^h(x) L-Lipschitz, central derivative:
+			- |∇εf(x)-∇h(x)| ≤ Lε^2 + η(x; ε)/ε
+	- 9.2 Model-Based Methods
+		- Algorithm:
+			- Form a quadratic model by interpolation:
+				- mk(xk + p) = c + gT p + 1/2 p'Gp
+			- Solve trust region minimization:
+				- minp mk(xk+p) s.t. |p|≤Δ
+			- Ratio: actual/predicted reduction
+				- ρ = (f(xk)−f(xk+))/(m(xk)−m(xk+))
+			- If sufficient ρ ≥ η:
+				- Add in xk+, enlarge trust-region Δ;
+			- If not:
+				- Reason 1: interpolation set inaccurate, monitor condition number;
+				- Reason 2: trust-region Δ too large;
+		- Interpolation and Polynomial Bases
+		- Updating the interpolation set
+	- 9.3 Coodinate and Pattern Search Methods
+		- Coordinate search: Cycle through coordinates with other fixed;
+	- 9.4 A Conjugate-Direction Method
+		- Insight: two parallel lines l1(α)=x1+αp and l2(α)= x2+αp with optimal step size for x1∗, x2∗, then x1∗ − x2∗ is conjugate to p.
+		- DFO CG (1-step from xk to xk+1): search in each direction, then get CG direction;
+			- pi = ei; (standard coord direction)
+			- zi = xk;
+			- Calculate αj s.t. f(zj+αj pj) is minimized
+			- zj+1 ← zj + αjpj;
+			- Last step pn ← zn+1 − z1; (conjugate direction)
+			- Calculate αn so that f(zn+1+αn pn) is minimized;
+			- xk+1 ←zn+1 + αnpn;
+	- 9.5 Nelder-Mead Method
+		- Keep track of current n-best solutions to form a simplex;
+		- Replace worst a better;
+	- 9.6 Implicit filtering
+		- Variant of steepest descent + line search;
+
 ## Evoluation Strategy
 - https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html
 - Basics:
