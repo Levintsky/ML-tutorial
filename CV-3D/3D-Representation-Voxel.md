@@ -22,17 +22,23 @@
 	- Input depth image (no-rgbd), output voxel binary occupancy;
 	- Model: structured random forest;
 
-## 3D-Deconv from latent space:
+## Backbone
+- 3D-Conv/Deconv: [Jiajun NeurIPS'16]; [Andrew Brock, NeurIPSW'16]
+- 3D-Conv + RNN/LSTM: 3D-R2N2 [Savarese, ECCV'16]
+- Recursive/Oc-tree/Hierarchical/Coarse2Fine/...:
+	- **OGN**: [Maxim Tatarchenko, Alexey Dosovitskiy, and Thomas Brox ICCV'17]
+	- **HSP**: C Hane, S Tulsiani, J Malik. 3DV'17
+	- Octnetfusion: [A. Geiger, 3DV'17]
+	- **Adaptive O-CNN**: Xin Tong. [SIGGRAPH Asia'18]
+
+## Supervision
+- Pixel/pointwise binary: 3D-R2N2;
+- GAN on whole object: [Jiajun NeurIPS'16];
+- VAE: [Andrew Brock, NeurIPSW'16]
+
+## 3D-Deconv from latent space
 - Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
 	- Input: image; output: voxel;
-- **3D-R2N2**: Christopher B. Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
-	- https://github.com/chrischoy/3D-R2N2
-	- Input: single/multiple images; output: voxel;
-	- Model:
-		- CNN-RNN: CNN (ResNet), RNN to update model with RNN each time with a new image;
-		- RNN: no output gates, only output at final;
-	- Supervision: binary cross-entropy on the final output;
-	<img src="/CV-3D/images/3d_output/3d-r2n2.png" alt="drawing" width="500"/>
 - R Girdhar, D F Fouhey, M Rodriguez, and A Gupta. Learning a predictable and generative vector representation for objects. ECCV'16
 	- Problem definition: AE
 	- Input: Voxel, image; Output: voxel;
@@ -45,12 +51,6 @@
 	- Supervision: 2D-weak-sup; REINFORCE to bypass back-prop through black-box renderer;
 	- Experiment: ShapeNet;
 	<img src="/CV-3D/images/3d_output/unsup-3d.png" alt="drawing" width="600"/>
-- Jiajun Wu, Chengkai Zhang, Tianfan Xue, Bill Freeman, and Josh Tenenbaum. Learning a probabilistic latent space of object shapes via 3d generative adversarial modeling. NIPS'16
-	- GAN / GAN-VAE;
-	- Noisy / Blurry;
-- Andrew Brock, Theodore Lim, James M Ritchie, and Nick Weston. Generative and discriminative voxel modeling with convolutional neural networks. 3D Deep Learning Workshop at NIPS'16
-	- VAE;
-	- https://github.com/ajbrock/Generative-and-Discriminative-Voxel-Modeling
 - Interactive 3D modeling with a generative adversarial network, 3D Vision 2017
 - **PrGAN**: Matheus Gadelha, Subhransu Maji and Rui Wang. 3D Shape Induction from 2D Views of Multiple Objects. 3DV'17
 	- https://github.com/matheusgadelha/PrGAN
@@ -64,25 +64,6 @@
 		- Step 2: keep the decoder, train an encoder to map partial data to the same latent space;
 - Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. SAGNet: Structure-aware generative network for 3d-shape modeling. TOG'19
 	- GRU + VAE;
-
-## Oct-Tree
-- **OGN**: Maxim Tatarchenko, Alexey Dosovitskiy, and Thomas Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
-	- Key: **Coarse to fine**;
-	- https://github.com/lmb-freiburg/ogn
-	- Input: image; output: voxel;
-	<img src="/CV-3D/images/3d_output/ogn.png" alt="drawing" width="600"/>
-- **HSP**: C Hane, S Tulsiani, J Malik. Hierarchical Surface Prediction for 3D Object Reconstruction. 3DV'17
-	- Insight: **coarse to fine**, 16^3 to 32^3 to ... 256^3; only nodes on boundary needs upsamplng;
-	- https://github.com/chaene/hsp
-	- Input: color, depth, partial volume; Ouptut: voxel (3 classes: free, **boundary**, occupied)
-	- CNN with deep-supervision on different resolution
-	- Most important part: predict layer l+1 based on layer l (e.g. from 16^3 to 32^3)
-		- 1. Feature Cropping: (b/2+2p)^3 region with p padding;
-		- 2. Upsampling: (b+2p)^3 region
-		- 3. Output generation: max boundary prediction reponse; above threshold, expand child;
-	<img src="/CV-3D/images/3d_output/factor3d.png" alt="drawing" width="600"/>
-- Gernot Riegler, Ali Osman Ulusoy, Horst Bischof, and Andreas Geiger. Octnetfusion: Learning depth fusion from data. 3DV'17
-- **Adaptive O-CNN**: Peng-Shuai Wang, Chun-Yu Sun, Yang Liu, and Xin Tong. Adaptive O-CNN: a patch-based deep representation of 3d shapes. SIGGRAPH Asia'18
 
 ## Unproject from 2D (assume known camera pose?):
 - A. O. Ulusoy, A. Geiger, and M. J. Black. Towards probabilistic volumetric reconstruction using ray potentials. 3DV'15

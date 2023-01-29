@@ -36,10 +36,10 @@
 	- Learning to summarize from human feedback (Stiennon et al 2020)
 - Contrastive
 	- CPC: Contrastive Predictive Coding (Van den Oord et al 2018)
-	- Aravind Srinivas, Michael Laskin, Pieter Abbeel. CURL: Contrastive Unsupervised Representations for Reinforcement Learning. ICML'20
+	- A Srinivas, M Laskin, P Abbeel. CURL: Contrastive Unsupervised Representations for Reinforcement Learning. ICML'20
 	- DrQ: Image Augmentation is all you need - (Kostrikov & Yarats et al 2020),
 	- RAD: Reinforcement Learning with Augmented Data (Laskin et al 2020)
-	- **SPR**: Max Schwarzer, Ankesh Anand, Rishab Goel, R Devon Hjelm, Aaron Courville, Philip Bachman. Data-Efficient Reinforcement Learning with Self-Predictive Representations. ICLR'21
+	- **SPR**: M Schwarzer, A Anand, R Goel, R Hjelm, A Courville, P Bachman. Data-Efficient Reinforcement Learning with Self-Predictive Representations. ICLR'21
 		- CPC-like, but executed in BYOL fashion- Decoupling Representation Learning from Reinforcement Learning (Stooke et al 2021)
 		- Significant improvement
 	- Reinforcement Learning with Prototypical Representations (Yarats et al 2021)
@@ -75,7 +75,7 @@
 		- Yuri Burda, Harri Edwards, Deepak Pathak, Amos Storkey, Trevor Darrell, Alexei A. Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
 			- Deeper dive on feature space?
 			- https://pathak22.github.io/large-scale-curiosity/
-		- Ramanan Sekar, Oleh Rybkin, Kostas Daniilidis, Pieter Abbeel, Danijar Hafner, Deepak Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
+		- R Sekar, O Rybkin, K Daniilidis, P Abbeel, D Hafner, D Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
 			- https://github.com/ramanans1/plan2explore
 			- Planning in the Latent Space, Intrinsic Reward := Latent Disagreement
 		- Epistemic Uncertainty 
@@ -128,4 +128,4 @@
 - Klyubin et. al. Empowerment: A Universal Agent-Centric Measure of Control (2005)
 - Gregor et. al. Variational Intrinsic Control (2016)
 - Wang, J.X. et al. Evolving intrinsic motivations for altruistic behavior. 2018
-- Natasha Jaques, Angeliki Lazaridou, Edward Hughes, Caglar Gulcehre, Pedro A. Ortega, DJ Strouse, Joel Z. Leibo, Nando de Freitas. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention
+- N Jaques, A Lazaridou, E Hughes, C Gulcehre, P Ortega, D Strouse, J Leibo, N Freitas. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention

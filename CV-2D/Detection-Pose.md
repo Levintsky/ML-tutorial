@@ -18,8 +18,7 @@
 L. Pishchulin, J. Gall, and B. Schiele. Posetrack: A benchmark for human pose estimation and tracking. CVPR'18
 
 ## Legacy
-- Y. Yang and D. Ramanan. Articulated pose estimation
-with flexible mixtures-of-parts. CVPR'11
+- Y. Yang and D. Ramanan. Articulated pose estimation with flexible mixtures-of-parts. CVPR'11
 - L. Pishchulin, M. Andriluka, P. V. Gehler, and B. Schiele. Poselet conditioned pictorial structures. CVPR'13
 
 ## Deep Learning
@@ -57,8 +56,3 @@ with flexible mixtures-of-parts. CVPR'11
 - M. Kocabas, S. Karagoz, and E. Akbas. Multiposenet: Fast multi-person pose estimation using pose residual network. ECCV'18
 - HRNet:
 	- https://github.com/leoxiaobin/deep-high-resolution-net.pytorch
-
-## Tracking
-- S. Jin, X. Ma, Z. Han, Y. Wu, W. Yang, W. Liu, C. Qian, and W. Ouyang. Towards multi-person pose tracking: Bottom-up and top-down methods. ICCVW'17
-- A. Doering, U. Iqbal, and J. Gall. Joint flow: Temporal flow fields for multi person tracking, 2018
-- R. Girdhar, G. Gkioxari, L. Torresani, M. Paluri, and D. Tran. Detect-and-track: Efficient pose estimation in videos. CVPR'18

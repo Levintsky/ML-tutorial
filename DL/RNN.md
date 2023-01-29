@@ -1,11 +1,11 @@
 # Recurrent Neural Network
 
 ## Unclassified
-- Nan Rosemary Ke, Anirudh Goyal, Olexa Bilaniuk, Jonathan Binas, Michael C. Mozer, Chris Pal, Yoshua Bengio. Sparse Attentive Backtracking: Temporal Credit Assignment Through Reminding. NIPS'18
-- Iryna Korshunova, Jonas Degrave, Ferenc Huszár, Yarin Gal, Arthur Gretton, Joni Dambre. BRUNO: A Deep Recurrent Model for Exchangeable Data. NIPS'18
-- Aditya Kusupati, Manish Singh, Kush Bhatia, Ashish Kumar, Prateek Jain, Manik Varma. FastGRNN: A Fast, Accurate, Stable and Tiny Kilobyte Sized Gated Recurrent Neural Network. NIPS'18
-- Kevin Liang, Guoyin Wang, Yitong Li, Ricardo Henao, Lawrence Carin. Kernel-Based Approaches for Sequence Modeling: Connections to Neural Methods. NIPS'19	
-- Giancarlo Kerg, Kyle Goyette, Maximilian Puelma Touzel, Gauthier Gidel, Eugene Vorontsov, Yoshua Bengio, Guillaume Lajoie. Non-normal Recurrent Neural Network (nnRNN): learning long time dependencies while improving expressivity with transient dynamics. NIPS'19
+- N Ke, A Goyal, O Bilaniuk, J Binas, M Mozer, C Pal, Y Bengio. Sparse Attentive Backtracking: Temporal Credit Assignment Through Reminding. NIPS'18
+- I Korshunova, J Degrave, F Huszár, Y Gal, A Gretton, J Dambre. BRUNO: A Deep Recurrent Model for Exchangeable Data. NIPS'18
+- A Kusupati, M Singh, K Bhatia, A Kumar, P Jain, M Varma. FastGRNN: A Fast, Accurate, Stable and Tiny Kilobyte Sized Gated Recurrent Neural Network. NIPS'18
+- K Liang, G Wang, Y Li, R Henao, L Carin. Kernel-Based Approaches for Sequence Modeling: Connections to Neural Methods. NIPS'19	
+- G Kerg, K Goyette, M Touzel, G Gidel, E Vorontsov, Y Bengio, G Lajoie. Non-normal Recurrent Neural Network (nnRNN): learning long time dependencies while improving expressivity with transient dynamics. NIPS'19
 
 ## Legacy
 - S. Hochreiter and J. Schmidhuber. Long short-term memory. Neural Computation'97
@@ -23,7 +23,7 @@
 - M. Berglund, T. Raiko, M. Honkala, L. Karkkainen, A. Vetek, and J. Karhunen, Bidirectional recurrent neural networks as generative models. NIPS'15
 	- Problem setup: generating missing data in time series data in an unsupervised setting using Bidirectional RNNs;
 	- Two approaches proposed: GSN; NADE;
--  Z. Huang, W. Xu, and K. Yu. Bidirectional lstm-crf models for sequence tagging. 2015
+- Z. Huang, W. Xu, and K. Yu. Bidirectional lstm-crf models for sequence tagging. 2015
 - H. Sak, A. Senior, K. Rao, and F. Beaufays. Fast and accurate recurrent neural network acoustic models for speech recognition. 2015
 - C. Wang, H. Yang, C. Bartz, and C. Meinel. Image captioning with deep bidirectional lstms. CoRR'16
 - **BiBS**: Bidirectional Beam Search: Forward-Backward Inference in Neural Sequence Models for Fill-in-the-Blank Image Captioning. CVPR'17

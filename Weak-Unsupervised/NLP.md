@@ -2,7 +2,7 @@
 
 ## Cloze Test, Future Prediction
 - Bidirectional:
-	- **BERT**: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. ACL'19
+	- **BERT**: J Devlin, M Chang, K Lee, K Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. ACL'19
 		- **Bidirectional Transformer** as model (L=12 for Base, L=24 for Large);
 		- **Embedding**: sum of following three;
 			- **WorldPiece** (Wu et al 2016): 30,000 tokens;
@@ -21,7 +21,7 @@
 		- Batch-size: 64k - 32k
 		- Optimizer: **LAMB** (Layer-wise Adaptive Moments optimizer for Batch training)
 		- Iteration: 1m -> 8,599
-	- **RoBERTa**: Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov. RoBERTa: A Robustly Optimized BERT Pretraining Approach. 2019
+	- **RoBERTa**: Y Liu, M Ott, N Goyal, J Du, M Joshi, D Chen, O Levy, M Lewis, L Zettlemoyer, V Stoyanov. RoBERTa: A Robustly Optimized BERT Pretraining Approach. 2019
 		- Difference from BERT:
 			- More data (160G v.s. Bert 16G): Books Corpus + English Wikipedia 16GB; CC-New (76G); OpenWebText (38G); Stories (31GB);
 		- More Steps; (500k steps)
@@ -85,7 +85,7 @@
 		- No pair data, so fool discrimitor for Wx and y
 		- Nearest neighbor for refinements
 		- Orthogonality
-	- G. Lample et al. Phrase-based and neural unsupervised machine translation, EMNLP 2018
+	- G. Lample et al. Phrase-based and neural unsupervised machine translation, EMNLP'18
 - van den Oord, A., et al. WaveNet: A Generative Model for Raw Audio. NIPS'16
 	- Dilated Conv
 	- ResNet

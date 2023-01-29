@@ -23,12 +23,12 @@
 			- 23147 images;
 		- https://www.kaggle.com/c/herbarium-2020-fgvc7/
 	- Cars:
-		- Jonathan Krause, Michael Stark, Jia Deng, and Li Fei-Fei. 3d object representations for fine-grained categorization. In ICCVW'13
+		- J Krause, M Stark, J Deng, and Li Fei-Fei. 3d object representations for fine-grained categorization. In ICCVW'13
 		- Stanford cars: 3D Object Representations for Fine-Grained Categorization
 			- https://ai.stanford.edu/~jkrause/cars/car_dataset.html
 			- 16,185 images (8,144 train/8,041 test), 196 classes;
 			- Make/Model/year;
-		- Linjie Yang, Ping Luo, Chen Change Loy, Xiaoou Tang. A Large-Scale Car Dataset for Fine-Grained Categorization and Verification. CVPR'15
+		- L Yang, P Luo, C C Loy, X Tang. A Large-Scale Car Dataset for Fine-Grained Categorization and Verification. CVPR'15
 	- Aircraft:
 		- Subhransu Maji, Esa Rahtu, Juho Kannala, Matthew Blaschko, and Andrea Vedaldi. Fine-grained visual classification of aircraft. arxiv'13
 			- https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/
@@ -36,8 +36,8 @@
 			- 1/1/1 train/val/test;
 	- Fish: https://www.kaggle.com/c/the-nature-conservancy-fisheries-monitoring
 	- Product: https://rpc-dataset.github.io/
-	- Grant Van Horn, Oisin Mac Aodha, Yang Song, Yin Cui, Chen Sun, Alex Shepard, Hartwig Adam, Pietro Perona, Serge Belongie. The iNaturalist Species Classification and Detection Dataset. CVPR'18
-	- Insect: Xiaoping Wu, Chi Zhan, Yu-Kun Lai, Ming-Ming Cheng, Jufeng Yang. IP102: A Large-Scale Benchmark Dataset for Insect Pest Recognition. CVPR'19
+	- G Horn, O Aodha, Y Song, Y Cui, C Sun, A Shepard, H Adam, P Perona, S Belongie. The iNaturalist Species Classification and Detection Dataset. CVPR'18
+	- Insect: X Wu, C Zhan, Y Lai, M Cheng, J Yang. IP102: A Large-Scale Benchmark Dataset for Insect Pest Recognition. CVPR'19
 	- Finer-grained: Xiaohan Yu, Yang Zhao, Yongsheng Gao, Xiaohui Yuan, Shengwu Xiong. Benchmark Platform for Ultra-Fine-Grained Visual Categorization Beyond Human Performance. ICCV'21
 		- 47,114 images, 3,526 categories;
 		- https://github.com/XiaohanYu-GU/Ultra-FGVC
@@ -52,21 +52,21 @@
 	- **Bilinear**: T Lin, A Roy Chowdhury, S Maji. Bilinear CNN Models for Fine-grained Visual Recognition. ICCV'15
 		- https://github.com/HaoMood/bilinear-cnn
 		- CUB-Bird: 84.1% 
-	- Lei Wang, Jianjia Zhang, Luping Zhou, Chang Tang, Wanqing Li. Beyond Covariance: Feature Representation with Nonlinear Kernel Matrices. ICCV'15
-	- Tsung-Yu Lin, Aruni RoyChowdhury, Subhransu Maji. Bilinear CNNs for Fine-grained Visual Recognition. ICCV'15
-	- Tsung-Yu Lin, Subhransu Maji. Improved Bilinear Pooling with CNNs. BMVC'17
+	- L Wang, J Zhang, Lg Zhou, C Tang, W Li. Beyond Covariance: Feature Representation with Nonlinear Kernel Matrices. ICCV'15
+	- T Lin, A  Chowdhury, S Maji. Bilinear CNNs for Fine-grained Visual Recognition. ICCV'15
+	- T Lin, S Maji. Improved Bilinear Pooling with CNNs. BMVC'17
 	- S. Kong, C. Fowlkes. Low-rank Bilinear Pooling for Fine-Grained Classification. CVPR'17
-	- Sijia Cai, Wangmeng Zuo, Lei Zhang. Higher-Order Integration of Hierarchical Convolutional Activations for Fine-Grained Visual Categorization. ICCV'17
-	- Peihua Li, Jiangtao Xie, Qilong Wang, Wangmeng Zuo. Is Second-order Information Helpful for Large-scale Visual Recognition? ICCV'17
-	- Peihua Li, Jiangtao Xie, Qilong Wang, Zilin Gao. Towards Faster Training of Global Covariance Pooling Networks by Iterative Matrix Square Root Normalization. CVPR'18
+	- S Cai, W Zuo, L Zhang. Higher-Order Integration of Hierarchical Convolutional Activations for Fine-Grained Visual Categorization. ICCV'17
+	- P Li, J Xie, Q Wang, W Zuo. Is Second-order Information Helpful for Large-scale Visual Recognition? ICCV'17
+	- P Li, J Xie, Q Wang, Z Gao. Towards Faster Training of Global Covariance Pooling Networks by Iterative Matrix Square Root Normalization. CVPR'18
 		- CUB-Bird: 88.7%
 		- https://github.com/jiangtaoxie/fast-MPN-COV
 		- https://github.com/osmr/imgclsmob
-	- CAP: Ardhendu Behera, Zachary Wharton, Pradeep Hewage, Asish Bera. Context-aware Attentional Pooling (CAP) for Fine-grained Visual Classification. AAAI'21
+	- CAP: A Behera, Z Wharton, P Hewage, A Bera. Context-aware Attentional Pooling (CAP) for Fine-grained Visual Classification. AAAI'21
 		- CUB-Bird: 91.8%
 		- https://github.com/ArdhenduBehera/cap
 - Part-based
-	- Ning Zhang, Jeff Donahue, Ross Girshick, Trevor Darrell. Part-based R-CNNs for Fine-grained Category Detection. ECCV'14
+	- N Zhang, J Donahue, R Girshick, T Darrell. Part-based R-CNNs for Fine-grained Category Detection. ECCV'14
 	- Shaoli Huang, Zhe Xu, Dacheng Tao, Ya Zhang. Part-Stacked CNN for Fine-Grained Visual Categorization. CVPR'16
 	- Xiu-Shen Wei, Chen-Wei Xie, Jianxin Wu. Mask-CNN: Localizing Parts and Selecting Descriptors for Fine-Grained Image Recognition. CVPR'16
 	- Jianlong Fu, Heliang Zheng, Tao Mei. Look Closer to See Better: Recurrent Attention Convolutional Neural Network for Fine-Grained Image Recognition. CVPR'17
@@ -103,13 +103,13 @@
 - PIM: Po-Yung Chou, Cheng-Hung Lin, and Wen-Chung Kao. A Novel Plug-in Module for Fine-Grained Visual Classification. 2022
 	- https://github.com/chou141253/FGVC-PIM
 	- CUB-200: 92.8%
-- SWAG: Mannat Singh, Laura Gustafson, Aaron Adcock, Vinicius de Freitas Reis, Bugra Gedik, Raj Prateek Kosaraju, Dhruv Mahajan, Ross Girshick, Piotr Dollar, Laurens van der Maaten.  Revisiting Weakly Supervised Pre-Training of Visual Perception Models
+- SWAG: M Singh, L Gustafson, A Adcock, V Reis, B Gedik, R Kosaraju, D Mahajan, R Girshick, P Dollar, L Maaten.  Revisiting Weakly Supervised Pre-Training of Visual Perception Models
 	- https://github.com/facebookresearch/SWAG
 	- Hashtag weak supervision;
 - Text data:
 	- Are These Birds Similar: Learning Branched Networks for Fine-grained Representations. 2020
 		- 87.5%
-- Ashiq Imran, Vassilis Athitsos. DATL: Domain Adaptive Transfer Learning on Visual Attention Aware Data Augmentation for Fine-grained Visual Categorization. 20
+- A Imran, V Athitsos. DATL: Domain Adaptive Transfer Learning on Visual Attention Aware Data Augmentation for Fine-grained Visual Categorization. 20
 	- 91.2%
 
 ## Loss-Design

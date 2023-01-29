@@ -244,6 +244,20 @@
 		- Estimate an
 		- ∫-1..1 Tn(x)dx = 0 (n odd); 2/(1-n^2) (n even).
 
+## Numeric Linear Algebra
+- cost of Ax=b: n^3 generally
+- flops := floating-point operations
+- Easy to solve linear equations:
+	- Diagonal: n
+	- Lower/upper triangle: n^2
+	- Orthogonal: 2n^2
+	- permutation: 0
+- LU factorization: A=PLU (2/3)n^3
+	- LU fac: (2/3)n^3, others all 0 or n^2
+- Cholesky (for positive definite)
+	- A = LL', (1/3)n^3
+	- Others: n^2
+
 ## Trick in Practice
 - About the fast trace estimation trick:
 	- About trace for flow generative: https://blog.csdn.net/hanss2/article/details/85331863

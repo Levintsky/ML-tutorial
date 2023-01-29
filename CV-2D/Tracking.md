@@ -26,3 +26,8 @@
 ## End-to-End
 - I. Posner and P. Ondruska. Deep Tracking: Seeing Beyond Seeing Using Recurrent Neural Networks. AAAI'16
 - A. Milan, S. H. Rezatofighi, A. Dick, K. Schindler, and I. Reid. Online Multi-target Tracking using Recurrent Neural Networks. AAAI'17
+
+## Tracking
+- S. Jin, X. Ma, Z. Han, Y. Wu, W. Yang, W. Liu, C. Qian, and W. Ouyang. Towards multi-person pose tracking: Bottom-up and top-down methods. ICCVW'17
+- A. Doering, U. Iqbal, and J. Gall. Joint flow: Temporal flow fields for multi person tracking, 2018
+- R. Girdhar, G. Gkioxari, L. Torresani, M. Paluri, and D. Tran. Detect-and-track: Efficient pose estimation in videos. CVPR'18

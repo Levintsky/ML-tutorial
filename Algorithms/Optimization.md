@@ -2,27 +2,55 @@
 
 ## Basics
 - Textbook:
-	- Linear and Nonlinear Programming: David Luenberger, Yinyu Ye;
-	- Numerical Optimization: Jorge Norcedal, Stephen Wright.
+	- David Luenberger, Yinyu Ye. Linear and Nonlinear Programming.
+	- Jorge Norcedal, Stephen Wright. Numerical Optimization.
+	- S. Bubeck. Convex optimization: algorithms and complexity. Foundations and trends in machine learning, 2015.
 - Courses:
 	- CME307/MS&E311: Optimization
 - Software
 	- Gurobi
 	- Mosek
+- **Convergence rate**:
+	- GD + Wolfe: converge (gradient diminish);
+	- Quadratic + GD: **linear** |xk+1−x∗|^2 ≤ (λn-λ1)^2/(λn+λ1)^2 |xk−x∗|^2
+	- Newton + Lipschitz-Hessian + sufficient cond around x∗: **quadratic convergence**
+		- |xk+pk−x∗| ≤ L|∇^2f(x∗)|^−1 |xk−x∗|^2
+	- Quasi-Newton: ∇^2f continuous + Wolfe + ∇^2f(x∗) positive definite
+		- αk = 1 is admissible for k large enough
+		- For αk = 1, **superlinear** convergence; pk − pkN ~ o(|pk|) diverge from Newton by a **smaller order**;
+	- Trust-region:
+		- Cauchy point: ~ GD + Linear search;
+		- Theo-4.9: Quasi-Newton: **superlinear**;
+	- CG:
+		- Linear:
+			- Pos-def: r distinct eigenvalues, **at most r iterations**;
+			- Each CG-step: based on **eigen** |xk+1−x∗|^2 ≤ (λn-k − λ1)^2/ (λn-k + λ1)^2 |x0−x∗|^2;
+		- Nonlinear:
+			- Converge: limk→∞ inf |∇fk| = 0
 - Linear programming
 	- Simplex (L/NL-P Chap-3; NO Chap-13)
 	- Duality and Complementarity (L/NL-P Chap-4)
-	- Interior-Point (L/NL-P Chap-5; NO Chap-14)
+	- Interior-Point/Primal-Dual (L/NL-P Chap-5; NO Chap-14)
 	- Conic LP (L/NL-P Chap-6)
-- Uncontrained
-	- Basics: (L/NL-P Chap-7)
-		- 0/1/2-order
-		- convex/concave
-		- speed of convergence;
-	- Basic descent:  (L/NL-P Chap-8; NO, Chap-3,4)
+- Search directions
+	- Basic descent: (L/NL-P Chap-8; NO, Chap-3,4)
 		- Line search
 		- GD/Newton/Coord-descent;
 		- Trust-region;
+- Uncontrained
+	- Basics: (L/NL-P Chap-7, NO)
+		- 0/1/2-order
+		- convex/concave
+		- line search: GD, Newton, Quasi-Newton, CG;
+		- trust region:
+		- speed of convergence;
+	- Least square: (NO Chap-10)
+		- Gauss-Newton;
+		- Levenberg–Marquardt;
+	- Nonlinear Equations: (NO Chap-11)
+		- Broyden method;
+		- Merit function;
+		- Homotopy method;
 	- Conjugate directions: (L/NL-P Chap-9; NO Chap-5)
 	- Quasi-Newton: (L/NL-P Chap-10; NO Chap-6)
 		- BFGS, SR1
@@ -36,26 +64,52 @@
 - Derivative:
 	- Calculating Derivatives/Hessian (NO Chap-8)
 	- Derivative-Free Optimization (NO Chap-9)
-- Least square: (NO Chap-10)
-	- Gauss-Newton;
-	- Levenberg–Marquardt;
-- Nonlinear Equations: (NO Chap-11)
-- QuadraticProgramming: (NO Chap-16)
+- Quadratic Programming: (NO Chap-16)
 	- KKT;
 - Penalty and Augmented Lagrangian Methods: (NO Chap-17)
 - Sequential Quadratic Programming: (NO Chap-18)
 	- SQP, IQP, EQP;
 - Interior-Point Methods for Nonlinear Programming: (NO Chap-19)
+- Subgradient
+	- Mirror descent, Bregman divergence;
 
 ## Math Preliminaries
-- Affine set:
+- Def: Affine set:
 	- x, y ∈ S and α ∈ R ⇒ αx + (1 − α)y ∈ S.
 	- 0 ≤ α ≤ 1: convex;
-- Cone: x ∈ C ⇒ αx ∈ C ∀ α>0
+- Def: Dual norm: ∥z∥∗ = sup{z'x|∥x∥≤1}.
+- Def: Cone (nonnegative homogeneous) x ∈ C ⇒ αx ∈ C ∀ α>0
+	- Def. conic combination, conic hull.
+	- Norm cone: C ={(x,t)|∥x∥≤t} ⊆ Rn+1.
 	- **Dual**: C∗ :={y: x•y ≥ 0 ∀ x∈C}.
+		- e.g. subspace. V⊥ ={y|v'y = 0 ∀ v∈V}.
+		- Nonnegative orthant: self-dual;
+		- Positive semidefinite cone: self-dual;
+		- Dual of a norm cone: dual-norm cone K∗ ={(u,v) ∈ Rn+1 |∥u∥∗ ≤v},
 	- Theorem 1 The dual is always a closed convex cone, and the dual of the dual is the closure of convex hall of C.
-	- Polyhedral Convex Cones: C = {x: Ax ≤ 0}
-- Lipschitz Functions
+	- Def: Polyhedral Convex Cones: C = {x: Ax ≤ 0}
+	- Def: positive definite cone;
+	- Proper cone;
+- Def: Hyperplane: {x|a'x = b}
+	- Def. halfspaces;
+- Def: polyhedron P = {x|aj'x ≤ bj , j = 1,...,m, cj'x=dj , j = 1,..., p}.
+	- Simplexes: k+1 points affinely independent, then
+		- C = conv{v0,...,vk} = {θ0v0+···+θkvk|θ≽0, 1'θ=1}
+- Def: Euclidean ball:
+	- B(xc,r) = {xc +ru|∥u∥2 ≤1}.
+	- Ellipsoid: E = {x|(x−xc)' P^−1 (x−xc)≤1},
+		- Also, E = {xc +Au|∥u∥2 ≤1}, A = P^1/2
+- Operations that preserve convexity
+	- Intersection;
+	- Affine functions: f(x) = Ax + b;
+	- Linear-fractional and perspective functions: f(x)=(Ax+b)/(c'x+d)
+- Def: generalized inequalities:
+	- K ⊆ Rn a proper cone (convex, closed, solid, pointed)
+	- Def. x ≼K y ⇐⇒ y−x ∈ K.
+	- Def. x ≺K y ⇐⇒ y−x ∈ intK
+	- Partial order;
+	- Minimum, maximum (unique)
+- Def: Lipschitz Functions
 	- ∥∇f(x) − ∇f(y)∥ ≤ β∥x − y∥
 - Inequalities:
 	- Cauchy-Schwarz: |x'y| ≤ ∥x∥p ∥y∥q, where 1/p+1/q=1;
@@ -249,21 +303,30 @@
 		- Theo-12.11 Weak duality
 - Boyd-Chap-5: Duality
 	- 5.1 Lagrange Dual function
+		- min f0(x) s.t. fi(x) ≤ 0, hi(x) = 0;
+		- L(x, λ, ν) = f0(x) + ∑λifi(x) + ∑νihi(x)
+		- Def: **Lagrange Dual function** g(λ, ν) = inf_x∈D L(x, λ, ν) 
 		- Least square: min x'x s.t. Ax = b
 			- Dual: -1/4 ν'AA'ν -b'ν
 		- LP: c'x s.t. Ax = b, x ≽ 0
 			- g(λ, ν) = -b'ν; if A'ν-λ+c=0
 			- g(λ, ν) = −∞; otherwise
-		- Conjugate function: f∗(y)= sup_x (y'x−f(x))
+		- Def: **Conjugate function** f∗(y)= sup_x (y'x−f(x))
+			- minf0(x) s.t. Ax ≼ b, Cx = d;
+				- Conjugate: g(λ,ν) = −b'λ − d'ν − f0∗(−A'λ−C'ν)
 	- 5.2 Lagrange Dual Problem
+		- max g(λ, ν), s.t. λ ≽ 0
 		- Weak duality: d⋆ ≤ p⋆
 		- Strong duality: d⋆ = p⋆
 		- Slater's condition (strictly feasible):
 			- x ∈ relint D, s.t. fi(x) < 0, Ax=b;
 		- Primal function convex, constraint convex, usually strong duality hold.
 	- 5.3 Geometric Interpretation
+		- G = {(f1(x),...,fm(x),h1(x),...,hp(x),f0(x)) ∈ Rm × Rp × R|x∈D}
+			- optimal primal: p⋆ = inf{t|(u,v,t) ∈ G, u≼0, v=0}.
+		- Supporting hyperplane: (λ, ν, 1)' (u, v, t) ≥ g(λ, ν)
 		- Epigraph variation;
-		- A={(u,v,t)|fi(x)≤ui, hi(x)=vi, f(x0)≤t)}
+		- A = {(u,v,t)|fi(x)≤ui, hi(x)=vi, f(x0)≤t)}
 		- And find hyperplane (λ, 1)'(u, t) below A.
 		- Intercept with u=0 gives g(λ).
 		- Proof of Strong Duality:
@@ -272,11 +335,26 @@
 				- relintD = intD nonempty interior;
 				- rankA=p
 				- p⋆ is finite
+			- Proof: separating hyperplane theorem;
+				- Slater's condition -> non-vertical
 	- 5.4 Saddle-point interpretation
+		- Strong duality ⇔ saddle point;
 	- 5.5 Optimality Conditions (KKT)
 	- 5.6 Perturbation and sensitivity analysis
 	- 5.7 Examples
 	- 5.8 Theorems of alternatives
+		- Weak alternatives via dual
+			- min0 s.t. fi(x) ≤ 0, hi(x) = 0;
+				- Optimal value: 0 if feasible; ∞ if infeasible;
+			- Dual: g(λ, ν) = inf_x (∑λifi(x) + ∑νihi(x))
+				- λ ≽ 0, g(λ,ν) > 0 feasible, then ∞; otherwise 0;
+			- **weak alternatives** if at most one of the two is feasible
+		- Strong alternatives:
+			- fi convex, hi affine;
+			- fi(x) < 0, Ax = b;
+			- λ ≽ 0, λ ≠ 0, g(λ, ν) ≥ 0.
+		- e.g.1 Linear inequalities
+			- Ax ≤ b v.s. λ ≽ 0, A'λ = 0, b'λ < 0.
 - CME307/MS&E311 Lec-3
 	- Caratheodory's theorem
 	- Basic and Basic Feasible Solution I
@@ -342,24 +420,29 @@
 		- Backtracking:
 			- repeat α ← ρα with ρ∈(0,1), until condition satisfies;
 	- 3.2 Convergence of Line Search
-		- Theo-3.2 ∑cosθk^2 |∇fk|^2 < ∞
+		- Theo-3.2 αk Wolfe, f bounded below, ∇f Lipschitz continuous, then
+			- ∑cosθk^2 |∇fk|^2 < ∞
+			- Proof: fk+1 ≤ fk − c cosθk^2|∇fk|^2, with c = c1(1-c2)/L
 		- cosθk ≥ δ > 0 (bounded away from 90◦), converge;
 		- |Bk| |B^−1| ≤ M, cosθk ≥1/M, converge;
 	- 3.3 Rate of Convergence
 		- f(x) = 1/2 x'Qx - b'x
-		- Theo 3.3 (**steepest descent**) with exact line search:
+			- Exact line search: αk =  ∇fk'∇fk / (∇fk'Q∇fk)
+		- Theo-3.3 (**steepest descent**) with exact line search:
 			- |xk+1−x∗|^2 ≤ (λn-λ1)^2/(λn+λ1)^2 |xk−x∗|^2
+			- Convergence rate decided by condition number: κ(Q) = λn/λ1
 		- Newton's method: p = −(∇^2f)^−1 ∇f
-		- Theo 3.5 (**Newton**) positive-definite, then rate of convergence is **quadratic**;
-			- |xk+pk−x∗| ≤ L|∇^2f(x∗)|^−1|xk−x∗|^2
+		- Theo-3.5 (**Newton**) positive-definite, ∇2 f(x) Lipschitz continuous
+			- then rate of convergence is **quadratic**: |xk+pk−x∗| ≤ L|∇^2f(x∗)|^−1|xk−x∗|^2
 		- Quasi-Newton: pk = -Bk^-1 ∇fk
 		- Theo-3.6 (**Quasi-Newton**) Wolfe, positive-definite:
 			- αk=1 is admissible for k large enough;
 			- if αk=1 for all k > k0, {xk} converges to x∗ **superlinearly**.
 		- Super-linearity ⇔ |(Bk−∇2f(x∗))pk| / |pk| = 0
 	- 3.4 Newton's method with Hessian Modification
-		- Add a diagonal to make positive definite;
-		- Eigenvalue
+		- Alg-3.2 Add a diagonal to make positive definite + Wolfe/Goldstein/Armijo/...;
+		- Theo-3.8 f twice c continuously differentiable, alg-3.2 converge s.t. limk→∞ ∇f(xk)=0.
+		- Eigenvalue Modification;
 		- Modified Cholesky Factorization;
 		- Modified Symmetric Indefinite factorization;
 	- 3.5 Step-length selection algorithms
@@ -373,7 +456,7 @@
 		- ρk = (f(xk) − f(xk+pk)) / (mk(0) - mk(pk))
 	- Cauchy-point;
 	- 4.1 Algorithms based on **Cauchy point**
-		- Approx cost by pk = argmin fk + gk'p s.t. |p| ≤ Δk
+		- Alg-4.2 (**Cauchy point**) Approx cost by pk = argmin fk + gk'p s.t. |p| ≤ Δk
 			- pk = - Δk/|gk| gk (steepest descent direction)
 			- τk = 1 if gkBkgk ≤ 0;
 			- min(|gk|^3/(Δkgk'Bkgk), 1), otherwise;
@@ -383,10 +466,14 @@
 				- First: pU = - (g'g)/(g'Bg) g
 				- Second: pU to pB
 	- 4.2 Global Convergence
-		- Lemma 4.3 Cauchy point pkC satisifes:
+		- Lemma-4.3 Cauchy point pkC satisifes:
 			- mk(0) - mk(pkC) ≥ 1/2 |gk| min(Δk, |gk|/|Bk|)
+		- Theo-4.5 **convergence** lim infk→∞ |gk| = 0.
 	- 4.3 Iterative Solution of subproblem
-		- Find optimal p(λ) = −(B + λI)−1g
+		- Alg-4.3 Find optimal p(λ) = −(B + λI)−1g
+	- 4.4 Local Convergence of Trust-Region Newton
+		- Theo-4.9 second-order sufficient conditions
+			- **superlinear** convergence |pk−pkN| = o(pkN ).
 - NO-Chap-5: Conjugate Gradient Methods
 	- 5.1 Linear CG
 		- Ax = b, A: symmetric positive definite;
@@ -415,7 +502,7 @@
 		- Theo-5.5 A has eigenvalues λ1 ≤ λ2 ≤ ··· ≤ λn, then: |xk+1−x∗|^2 ≤ (λn-k − λ1)^2/ (λn-k + λ1)^2 |x0−x∗|^2;
 		- Preconditioning: xˆ = Cx
 	- 5.2 Nonlinear CG
-		- Fletcher-Reeves Method:
+		- Alg-5.4 Fletcher-Reeves Method:
 			- Init: x0, f0=f(x0), ∇f0=∇f(x0), p0 ← −∇f0;
 			- while ∇fk ≠ 0:
 				- Get αk, xk+1 = xk + αk pk; (step length)
@@ -427,6 +514,7 @@
 			- P-R: βk+1 = ∇fk+1'(∇fk+1-∇fk) / |∇fk|^2
 		- Global convergence:
 			- Theo-5.7 lim inf|∇fk| = 0.
+			- Theo-5.8 Exist of f s.t. {∇fk} is bounded away from zero.
 - NO-Chap-6: Quasi-Newton Methods
 	- 6.1 BFGS:
 		- Bk+1 αk pk = ∇fk+1 − ∇fk
@@ -453,11 +541,13 @@
 		- SR1: Bk+1 = Bk + (yk-Bsk)(yk-Bsk)' / (yk-Bksk)'sk
 		- SR1: Hk+1 = Hk + (sk-Hkyk)(sk-Hkyk)' / (sk-Hksk)'yk
 		- SR1 + Trust-region;
+		- Theo-6.1 strongly convex quadratic, then at most n steps, Hn=A^-1;
+		- Theo-6.2 limk→∞ |Bk−∇2f(x∗)| = 0.
 	- 6.3 The Broyden Class
 		- Bk+1 = Bk - Bksksk'Bk/(sk'Bksk) + (ykyk')/(yk'sk) + φk(sk'Bksk)vkvk'
 			- vk = yk/(yk'sk) - Bksk/(sk'Bksk)
-		- BFGS: φk = 0;
-		- DFP: φk = 1;
+		- **BFGS**: φk = 0;
+		- **DFP**: φk = 1;
 		- restricted Broyden class: φk in [0,1]
 	- 6.4 Convergence Analysis
 		- Theo-6.5 Converge;
@@ -480,6 +570,57 @@
 			- L-BFGS: save (si, yi) pairs instead of Hk;
 	- 7.3 Sparse Quasi-Newton
 	- 7.4 Partially Separable Functions
+
+## Linear Programming
+- NO-Chap-13 Simplex Method
+	- min c'x s.t. Ax = b, x ≥ 0
+	- 13.1 Optimality and Duality
+		- Theo-13.1 Strong Duality: finite ⇔ finite, equal; unbounded ⇔ infeasible.
+	- 13.2 Geometry of the Feasible Set
+		- Assume: A full row rank.
+		- Def. basis matrix. B: m columns selected. mxm.
+		- Theo-13.2 feasible+bounded -> optimal solution.
+		- Theo-13.3 All basic feasible points are vertices of the feasible polytope {x|Ax=b, x≥0}
+		- Def. Degeneracy. xi=0 for some i ∈ B.
+	- 13.3 Simplex Method
+		- Algorithm (1-step):
+			- Given basis B, N, xB=B^-1b ≥ 0, Xn=0;
+			- Solve B'λ = cB for λ
+			- Pricing: sN = cN − N' λ
+			- if sN ≥ 0, step (optimal)
+			- select an index q ∈ N as the entering index;
+			- Solve Bd = Aq for d;
+			- if d ≤ 0, stop (problem unbounded)
+			- xq+ = min_i|di>0 (xB)i/di, use p to denote the minimizing i;
+			- xB+ = xB −dxq+, xN+ = (0,...,0,xq+,0,...,0)'
+			- Keep q and remove p from B
+		- Theo-13.4 Provided primal is nondegenerate and bounded, the simplex method terminates at a basic optimal point.
+	- 13.4 Linear Algebra in Simplex
+		- B'λ = cB, no need to always do inv(B'), LU factorization since B update by 1 column each time;
+	- 13.5 Other Important Details
+		- Starting: requires feasible x, two-phase approach
+	- 13.6 Dual Simplex
+	- 13.7 Presolving
+- NO-Chap-14 Interior-Point Methods
+	- 14.1 Primal-Dual Methods
+		- Primal: min c'x, s.t. Ax = b, x ≥ 0;
+		- Dual: max b'λ, s.t. A'λ+s = c,s ≥ 0,
+		- KKT:
+			- A'λ+s = c; Ax = b
+			- xisi = 0; (x, s) ≥ 0
+		- Primal-dual: (Newton-like) Jacobian Δ = -F + Line-search
+			- [0 A' I] Δx = -rc (:=A'λ+s−c,)
+			- [A 0  0] Δ = -rb (:=Ax-b)
+			- [S 0  X] Δs = -XSe
+		- Interior-point: -XSe -> -XSe + σμe (s.t. xisi = σμ > 0)
+			- μ: current duality
+			- σ ∈ [0, 1]: reduction factor
+		- Central Path: xisi = τ
+			- Same optimality condition as: min c'x − τ∑lnxi , s.t. Ax = b
+				- defining: si = τ/xi
+			- Strictly convex: sufficient + necessary;
+			- τ ↓ 0 converge;
+	- 14.2 Practical Primal-Dual
 
 ## Convex Optimization
 - **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19

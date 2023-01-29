@@ -8,7 +8,7 @@
 
 ## Unclassified
 - Strehl, A. L., Li, L., & Littman, M. L. Incremental model-based learners with formal learning-time guarantees. UAI'06
-- **MBIE-EB**: Alexander L Strehl, Michael L Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
+- **MBIE-EB**: A Strehl, M Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
 	- Init: ε, δ, m;
 	- n(s,a,s')=0, rc(s,a)=0, n(s,a)=0, Q(s,a)=1/(1−γ);
 	- Loop:

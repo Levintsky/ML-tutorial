@@ -58,7 +58,7 @@
 - **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
 
 ## Normalization Operators
-- **Batch Norm**: Sergey Ioffe and Christian Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. ICML'15
+- **Batch Norm**: S Ioffe and C Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. ICML'15
 	- Insight: normalize NxHxW pixels with same channel-idx;
 	- μ, σ^2: batch mean, variance;
 	- x = (x-μ) / √(σ^2+ε)
@@ -73,11 +73,11 @@
 	- w = gv / |v|
 	- Data-dependent initialization (to make output with invariant scales)
 	- ∇g L, ∇v L, ∇w L: check paper derivation;
-- **Instance Norm**: Dmitry Ulyanov, Andrea Vedaldi, Victor Lempitsky. Instance Normalization: The Missing Ingredient for Fast Stylization. 2017
+- **Instance Norm**: D Ulyanov, A Vedaldi, V Lempitsky. Instance Normalization: The Missing Ingredient for Fast Stylization. 2017
 	- Same as BN and Layer-Norm, normalize within HxW for each channel, no batch required;
-- **Class-BN**: Harm de Vries, Florian Strub, Jeremie Mary, Hugo Larochelle, Olivier Pietquin, and Aaron Courville. Modulating early visual processing by language. NIPS 2017.
+- **Class-BN**: H Vries, F Strub, J Mary, H Larochelle, O Pietquin, and A Courville. Modulating early visual processing by language. NIPS'17.
 	- Class Conditioned BN;
-- **Spectral normalization**: Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization for generative adversarial networks. ICLR'18
+- **Spectral normalization**: T Miyato, T Kataoka, M Koyama, and Y Yoshida. Spectral normalization for generative adversarial networks. ICLR'18
 	- Insight: W-GAN need D() to be K-Lipschitz;
 		- |Ax| <= K|x|
 		- (Ax, Ax) <= K^2 (x, x)
@@ -103,9 +103,9 @@
 		- Between Layer-norm and IN;
 
 ## Dropout
-- Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdinov. Dropout: A simple way to prevent neural networks from overfitting. JMLR, 15:1929–1958, 2014
+- N Srivastava, G Hinton, A Krizhevsky, I Sutskever, and R Salakhutdinov. Dropout: A simple way to prevent neural networks from overfitting. JMLR, 15:1929–1958, 2014
 - Y Gal, J Hron, A Kendall. Concrete Dropout. NIPS'17
-- Aidan N. Gomez, Ivan Zhang, Kevin Swersky, Yarin Gal, Geoffrey E. Hinton. Targeted Dropout. ICLR 2019
+- A Gomez, I Zhang, K Swersky, Y Gal, G Hinton. Targeted Dropout. ICLR 2019
 	- https://github.com/for-ai/TD
 
 ## Regularization
@@ -168,7 +168,7 @@
 		- https://www.zhihu.com/question/62631725
 		- https://blog.csdn.net/a358463121/article/details/80820878
 		- https://laurent-dinh.github.io/2016/11/22/gumbel-max.html
-- Michael Figurnov, Shakir Mohamed, Andriy Mnih. Implicit Reparameterization Gradients. NIPS'18
+- M Figurnov, S Mohamed, A Mnih. Implicit Reparameterization Gradients. NIPS'18
 - Wonyeol Lee, Hangyeol Yu, Hongseok Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
 
 ## Memory-Augmented NN

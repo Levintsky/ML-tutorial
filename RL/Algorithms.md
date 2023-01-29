@@ -33,11 +33,11 @@
 - Model-based Offline batch RL:
 	- Learn a model penalize model uncertainty during planning;
 	- Empirically very promising on D4RL tasks;
-	- MOPO: Tianhe Yu, Garrett Thomas, Lantao Yu, Stefano Ermon, James Zou, Sergey Levine, Chelsea Finn, Tengyu Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
-	- Rahul Kidambi, Aravind Rajeswaran, Praneeth Netrapalli, Thorsten Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
+	- MOPO: T Yu, G Thomas, L Yu, S Ermon, J Zou, S Levine, C Finn, T Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
+	- R Kidambi, A Rajeswaran, P Netrapalli, T Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
 - PS Thomas, B Castro da Silva, AG Barto, S Giguere. Preventing undesirable behavior of intelligent machines. Science'19
 	- Optimizing while ensuring solution won't exhibit undesirable behavior;
-- Blossom Metevier, Stephen Giguere, Sarah Brockman, Ari Kobren, Yuriy Brun, Emma Brunskill, Philip S. Thomas. Offline Contextual Bandits with High Probability Fairness Guarantees. NIPS'19
+- B Metevier, S Giguere, S Brockman, A Kobren, Y Brun, E Brunskill, P Thomas. Offline Contextual Bandits with High Probability Fairness Guarantees. NIPS'19
 	- Fairness constraint:
 		- gf(θ) = 1/|F|Σ(RI(f) - E[R|f]) - εf
 		- gm(θ) = 1/|M|Σ(RI(m) - E[R|m]) - εm
@@ -350,7 +350,7 @@
 		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
 		- Claims V(s,a) style does not reduce variance
 - PG + Q-Learning:
-	- **Reactor**: Audrunas Gruslys, Will Dabney, Mohammad Gheshlaghi Azar, Bilal Piot, Marc Bellemare, Remi Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
+	- **Reactor**: A Gruslys, W Dabney, M Azar, Bilal Piot, M Bellemare, R Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
 	- **IPG**: 	Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning
 
 ## Evoluation Strategy
@@ -387,5 +387,5 @@
 		- The other half updated together with critic;
 		- New π, Σ computed using elite samples;
 - PBT:
-	- Max Jaderberg, Valentin Dalibard, Simon Osindero, Wojciech M. Czarnecki, Jeff Donahue, Ali Razavi, Oriol Vinyals, Tim Green, Iain Dunning, Karen Simonyan, Chrisantha Fernando, Koray Kavukcuoglu. Population Based Training of Neural Networks. NIPS'17
-	- POET: Rui Wang, Joel Lehman, Jeff Clune, Kenneth O. Stanley. Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions. 19
+	- M Jaderberg, et. al. Population Based Training of Neural Networks. NIPS'17
+	- POET: R Wang, J Lehman, J Clune, K Stanley. Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions. 19

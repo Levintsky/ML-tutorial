@@ -109,7 +109,6 @@
 			- Ben-Tal, Aharon, Tamar Margalit, and Arkadi Nemirovski. The ordered subsets mirror descent optimization method with applications to tomography. SIAM Journal on Optimization'01
 			- A. Beck, M. Teboulle. Mirror descent and nonlinear projected subgradient methods for convex optimization. Operations Research Letters, 31(3), 2003.
 			- I. Dhillon, J. Tropp. Matrix nearness problems with Bregman divergences. , SIAM Journal on Matrix Analysis and Applications, 29(4), 2007.
-			- S. Bubeck. Convex optimization: algorithms and complexity. Foundations and trends in machine learning, 2015.
 			- A. Beck. First-order methods in optimization. Vol. 25, SIAM, 2017.
 		- Mirror descent:
 			- Naive, 1/t convergence:\
