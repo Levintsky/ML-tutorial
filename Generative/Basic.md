@@ -219,7 +219,7 @@
 			- Raster-scan for block-level and inside block pixels;
 		- PixelSNAIL, OpenAI, ICML'18;
 		- OpenAI. Generating Long Sequences with Sparse Transformers. 2019
-	- More high-level action in decoder: DRAW, sketch-RNN, Spiral;
+	- More high-level action in decoder: DRAW, sketch-RNN, Spiral ICML'18;
 - 1-D:
 	- B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15
 	- **ByteNet**: DeepMind. Neural machine translation in linear time. 2016

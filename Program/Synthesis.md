@@ -34,12 +34,13 @@
 	- S. Gulwani. Automating string processing in spreadsheets using input-output examples. ACM Sigplan'11
 	- V. Raychev, M. Vechev, and E. Yahav. Code completion with statistical language models. SIGPLAN'14
 - Deductive:
-	- C. C. Green. Application of theorem proving to problem solving. In IJCAI, 1969.
+	- C. C. Green. Application of theorem proving to problem solving. IJCAI'69.
 	- Z. Manna and R. J. Waldinger. Toward automatic program synthesis. CACM'71
 - Input/output-based:
 	- S. Gulwani. Automating string processing in spreadsheets using input-output examples. ACM Sigplan Notice'11
 - Sketch-based (skeleton provided): one manually provides a sketch of the program to be induced, which specifies a rough outline of its structure;
 	- A. Solar-Lezama. Program synthesis by sketching. University of California, Berkeley, 2008.
+	- K Ellis, A Solar-Lezama, J Tenenbaum. Unsupervised Learning by Program Synthesis. NIPS'15
 
 ## Decoder (Transformer)
 - Syntax-tree first (then to program):

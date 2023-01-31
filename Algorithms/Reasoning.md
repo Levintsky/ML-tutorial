@@ -1,5 +1,19 @@
 # Reasoning
 
+## Tasks/Dataset
+- VQA:
+	- Clevr: J Johnson, J Hoffman, B Hariharan, L v d Maaten, Li Fei-Fei, L Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+
+## Neural Reasoning
+- As a program:
+	- NMN. J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
+- Program synthesis:
+	- **Neural-Symbolic VQA**: K Yi, J Wu, C Gan, A Torralba, P Kohli, J Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding. NeurIPS'18
+	- Y Liu, Z Wu, D Ritchie, W Freeman, J Tenenbaum, and J Wu. Learning to describe scenes with programs. ICLR'19
+
+## Backbone
+- CNN-RNN: NMN; Neural-Symbolic VQA;
+
 ## Interpretability
 - Neural Interaction Transparency (NIT): Disentangling Learned Interactions for Improved Interpretability
 
