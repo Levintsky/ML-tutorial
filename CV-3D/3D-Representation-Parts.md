@@ -10,6 +10,9 @@
 - Assembly: given each part, predict placement;
 - Part representation;
 
+## Unclassified
+- Z Liu, W Freeman, J Tenenbaum, and J Wu. Physical Primitive Decomposition. ECCV'18
+
 ## Legacy
 - Ideas legacy;
 	- L. G. Roberts. Machine perception of three-dimensional solids. PhD thesis, MIT, 1963
@@ -39,6 +42,7 @@
 			- Unary: template fitting of each segment;
 		- 3. Joint seg, post processing;
 	- DL: BAE-Net;
+	- PlaneRCNN: C Liu, K Kim, J Gu, Y Furukawa, J Kautz. PlaneRCNN: 3D Plane Detection and Reconstruction from a Single Image. CVPR'19
 - Framework: Active learning:
 	- L Yi, L. Guibas. A Scalable Active Framework for Region Annotation in 3D Shape Collections. SIGGRAPH Asia'16
 		- Select annotation set;

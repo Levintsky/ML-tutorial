@@ -1,20 +1,36 @@
 # Implicit Functions (N-SDF)
 
-## Legacy
+## Function Definition
+- Legacy
+	- CSG: A Ricci. '73
+	- Union of decaying balls：
+		- MetaBalls: J Blinn. TOG'82.
+			- F(x,y,z)=D(x,y,z)-T, where D(x,y,z) = ∑ bi exp(-ai ri)
+		- Blobby-model: S Muraki. Volumetric shape description of range data using blobby model. SIGGRAPH'91
+		- RBF: J Carr, R Beatson, J Cherrie, T Mitchell, W Fright, B McCallum, and T Evans. Reconstruction and representation of 3d objects with radial basis functions. SIGGRAPH'01
+	- Union of polynomials: sio-surface
+		- Soft-object: G Wyvill. '86
+			- C(r) = 2 r^3/R^3 - 3r^2/R^2 + 1, r < R
+	- Partition of unity:
+		- POU: B Caloz and Osborn J. E. Special finite element methods for a class of second order elliptic problems with rough coefficients. SIAM J. Numerical Analysis'94
+		- MPU: Y Ohtake, A Belyaev, M Alexa, G Turk, and H Seidel. Multi-level partition of unity implicits. ACM'03
+			- Adaptive octree-based subdivision;
+	- Conv-surface: J Bloomenthal and K Shoemake. Convolution surfaces. SIGGRAPH'91
+		- Insight: generalize sum to integral;
+		- Integral of continuous implicit functions f(S,p)=int(exp(s-p)^2ds);
 - B. Curless and M. Levoy. A volumetric method for building complex models from range images. SIGGRAPH'96
-- **RBF**: J Carr, R Beatson, J Cherrie, T Mitchell, W Fright, B McCallum, and T Evans. Reconstruction and representation of 3d objects with radial basis functions. SIGGRAPH'01
 - G Turk and J O'Brien. Modelling with implicit surfaces that interpolate. TOG'02
 - **Unity implicits**: Y Ohtake, A Belyaev, M Alexa, G Turk, and H Seidel. Multi-level partition of unity implicits, volume 22. ACM, 2003
 - C Shen, J O'Brien, and J Shewchuk. Interpolating and approximating implicit surfaces from polygon soup. TOG'04
 
-## Render for implicit models:
+## Render for implicit models
 - Marching Cube;
 - J Hart. Sphere tracing: A geometric method for the antialiased ray tracing of implicit surfaces. 1996
 - **Surface-Finding**: S Frisken, R Perry, A Rockwood, and T Jones. Adaptively sampled distance fields: A general representation of shape for computer graphics. 2000
 
-## Generalized Neural-SDF or indicator Function:
+## Generalized Neural-SDF or indicator Function
 - Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. NeurIPS'19
-- Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. ECCV'20.
+- S Peng, M Niemeyer, L Mescheder, M Pollefeys, and A Geiger. Convolutional occupancy networks. ECCV'20.
 - Backbone:
 	- 3D-Conv: OCCNet;
 	- Point-Cloud: DeepSdf [Facebook, CVPR'19]

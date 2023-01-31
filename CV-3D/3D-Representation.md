@@ -27,6 +27,29 @@
 - A. X. Chang, M. Savva, and C. D. Manning. Learning spatial knowledge for text to 3d scene generation. EMNLP'14
 - A. Chang, W. Monroe, M. Savva, C. Potts, and C. D. Manning. Text to 3d scene generation with rich lexical grounding. ACL'15
 
+## Shape Analysis
+- Manual templates:
+	- V. Ganapathi-Subramanian, O. Diamanti, S. Pirk, C. Tang, M. Nießner, and L. Guibas. Parsing geometry using structure-aware shape templates. 3DV'18
+- Igarashi, T., Matsuoka, S., Tanaka, H.: Teddy: a sketching interface for 3d freeform design. SIGGRAPH'99
+- N Mitra, M Wand, H Zhang, D Cohen-Or, V Kim, and Q Huang. Structure-aware shape processing. In SIGGRAPH Asia Courses, 2013
+	- regularity, structure
+- R Hu, M Savva, and O van Kaick. Functionality representations and applications for shape analysis. CGF'18
+- R Hu, O v Kaick, Y Zheng, and M Savva. Siggraph asia 2016: course notes directions in shape analysis towards functionality. In SIGGRAPH Asia 2016 Courses, page 8. ACM, 2016
+- H Laga, Y Guo, Hedi Tabia, R Fisher, and M Bennamoun. 3D Shape Analysis: Fundamentals, Theory, and Applications. 2018
+- K Xu, V Kim, Q Huang, and E Kalogerakis. Data-driven shape analysis and processing. CGF'17
+- Deep Structured 3D Estimation. Mini-12
+	- Input: stereo image, LiDAR; Output: pose, shape;
+	- Supervision:
+		- Multi-view geometry;
+		- Intuitive physics;
+		- Photo consistency;
+		- Silhouette;
+		- Consistency;
+		- Intuitive physics;
+		- Symmetry;
+	- Metrics: shape; (Chamfer distance) pose;
+	- Exp: ShapeNet, Tor4D, Kitti;
+
 ## 2.5D, Depth, Skeleton, 3D-Aware 2D Cues...
 - Depth:
 	- G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. OctNetFusion: Learning depth fusion from data. 3DV'17

@@ -20,8 +20,8 @@
 ## MRF/CRF Style
 - S. Wang, A. Schwing, and R. Urtasun. Efficient inference of continuous markov random fields with polynomial potentials. NIPS'14
 - L. Chen, A. Schwing, A. Yuille, and R. Urtasun. Learning deep structured models. ICML'15
-	- Problem formulation:\
-		<img src="/Composition/images/structure/deep-struct.png" alt="drawing" width="450"/>
+	- Problem formulation:
+		- min_w ∑(x,y)∈D [max{∑b(y)f(x,y;w)+∑H(b)}-F(x,y;w)]
 	- Inner loop: inference of CRF;
 	- Outer loop: learning of NN parameters;
 - A. Schwing and R. Urtasun. Fully connected deep structured networks. arxiv'15
@@ -30,12 +30,12 @@
 - David Belanger and Andrew McCallum. Structured prediction energy networks. ICML'16
 - Liang-Chieh Chen, Jonathan T. Barron, George Papandreou, Kevin Murphy, and Alan L. Yuille. Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform. CVPR'16
 - Shenlong Wang, Sanja Fidler, Raquel Urtasun. Proximal Deep Structured Models. NIPS'16
-	- Structured inference problem (energy minimization):\
-		<img src="/Composition/images/structure/prox-deep-struct1.png" alt="drawing" width="450"/>
-	- Proximal algorithms: non-smooth, non-differentiable, or constrained problem;\
-		<img src="/Composition/images/structure/prox-deep-struct2.png" alt="drawing" width="450"/>
-	- Algorithm:\
-		<img src="/Composition/images/structure/prox-deep-struct3.png" alt="drawing" width="450"/>
+	- Structured inference problem (energy minimization):
+		- E(x,y;w) = ∑fi(yi,x;wu) + ∑α fα(yα,x;wα)>
+	- Algorithm:
+		- z = prox(g; z + σ/h w'y^)
+		- y = prox(gi,hi; yi - σ/h w'y)
+		- yi^ = yi + σ(yt+1 - yt)
 	- Application: image denoising; depth refinement; optical flow;
 - Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution,
 and Fully Connected CRFs. 2017
@@ -62,13 +62,11 @@ and Fully Connected CRFs. 2017
 	- Fox, R., Shin, R., Krishnan, S., Goldberg, K., Song, D., and Stoica, I. Parametrized hierarchical procedures for neural programming. ICLR'18
 	- Sun, S.-H., Noh, H., Somasundaram, S., and Lim, J. Neural program synthesis from diverse demonstration videos. ICML'18
 - Combined:
-	- **NGSI**: Sidi Lu, Jiayuan Mao, Joshua B. Tenenbaum, Jiajun Wu. Neurally-Guided Structure Inference. ICML'19
+	- NGSI: S Lu, J Mao, J Tenenbaum, J Wu. Neurally-Guided Structure Inference. ICML'19
 		- https://github.com/desire2020/NGSI
-		- Key insight: combine search-based and data-driven approaches;\
-			<img src="/Composition/images/structure/ng-si.png" alt="drawing" width="450"/>
+		- Key insight: search-based, exhaustive -> neural guided;
 		- The algorithm builds the hierarchical structure by recursively choosing the production rule to expand a non-terminal symbol;
-		- Application 1: Matrix decomposition. F = MG + G. M: selection; first G: Gaussian of cluster center; 2nd G: i.i.d Noise;\
-			<img src="/Composition/images/structure/ng-si1.png" alt="drawing" width="450"/>
+		- Application 1: Matrix decomposition. F = MG + G. M: selection; first G: Gaussian of cluster center; 2nd G: i.i.d Noise;
 		- Application 2: Program parsing. Build on Xinyun 2018 with while loop.
 
 ## Application
