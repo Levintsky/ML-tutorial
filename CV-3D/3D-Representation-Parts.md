@@ -9,6 +9,13 @@
 - Fitting of each part (differentiable or non-)
 - Assembly: given each part, predict placement;
 - Part representation;
+- Tutorials:
+	- Hao Su: http://cseweb.ucsd.edu/~haosu/slides/PartInduction.pdf
+		- Part: Descriptive; Concise; Interpretable
+		- Supervision:
+			- Unsupervised: Shape-Abstract (Shubham), CSGNet;
+			- Weak-supervised: deep-functional-dictionaries (Sung);
+			- SSL: deep-part-induction (Yi Li);
 
 ## Unclassified
 - Z Liu, W Freeman, J Tenenbaum, and J Wu. Physical Primitive Decomposition. ECCV'18
@@ -135,12 +142,13 @@
 	- R. Hu, O. van Kaick, B. Wu, H. Huang, A. Shamir, and H. Zhang. Learning how objects function via co-analysis of interactions. TOG'16
 
 ## Unsupervised part discovery
-- Li Yi, Haibin Huang, Difan Liu, Evangelos Kalogerakis, Hao Su, Leonidas Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia 2018
+- L Yi, H Huang, D Liu, E Kalogerakis, H Su, L Guibas. Deep Part Induction from Articulated Object Pairs. SIGGRAPH Asia'18
 	- Deep Matching (Point Net)
 	- Motion Discovery, Part Co-segmentation
-- **Superquadrics**: Despoina Paschalidou, Ali Osman Ulusoy, and Andreas Geiger. Superquadrics revisited: Learning 3d shape parsing beyond cuboids. CVPR'19
+- **Superquadrics**: D Paschalidou, A Ulusoy, and A Geiger. Superquadrics revisited: Learning 3d shape parsing beyond cuboids. CVPR'19
 	- https://github.com/paschalidoud/superquadric_parsing
-- **Neural Parts**: Despoina Paschalidou, Angelos Katharopoulos, Andreas Geiger, Sanja Fidler. Neural Parts: Learning Expressive 3D Shape Abstractions With Invertible Neural Networks. CVPR'21
+- T Luo, K Mo, Z Huang, J Xu, S Hu, L Wang, H Su. Learning to Group: A Bottom-Up Framework for 3D Part Discovery in Unseen Categories. ICLR'20
+- **Neural Parts**: D Paschalidou, A Katharopoulos, A Geiger, S Fidler. Neural Parts: Learning Expressive 3D Shape Abstractions With Invertible Neural Networks. CVPR'21
 	- https://paschalidoud.github.io/neural_parts
 	- https://github.com/paschalidoud/neural_parts
 	- Task: input image + 3D mesh, output a part template;

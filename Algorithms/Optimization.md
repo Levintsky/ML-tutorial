@@ -28,45 +28,43 @@
 		- Nonlinear:
 			- Converge: limk→∞ inf |∇fk| = 0
 - Linear programming
-	- Simplex (L/NL-P Chap-3; NO Chap-13)
-	- Duality and Complementarity (L/NL-P Chap-4)
-	- Interior-Point/Primal-Dual (L/NL-P Chap-5; NO Chap-14)
-	- Conic LP (L/NL-P Chap-6)
+	- Simplex (L/NL-P-Chap-3; NO-Chap-13)
+		- Iterate over feasible basis;
+	- Duality and Complementarity (L/NL-P-Chap-4)
+	- Interior-Point/Primal-Dual (L/NL-P-Chap-5; NO-Chap-14)
+	- Conic LP (L/NL-P-Chap-6)
 - Search directions
-	- Basic descent: (L/NL-P Chap-8; NO, Chap-3,4)
-		- Line search
+	- Basic descent: (L/NL-P-Chap-8;)
 		- GD/Newton/Coord-descent;
-		- Trust-region;
+	- Line search (NO-Chap-3);
+	- Trust-region (NO-Chap-4);
+	- CG/Truncated-Newton (NO-Chap-5; L/NL-P-Chap-9;)
+	- Quasi-Newton: BFGS, DFP SR1 (NO-Chap-6; L/NL-P-Chap-10;)
+	- Large-scale (NO-Chap-7)
 - Uncontrained
-	- Basics: (L/NL-P Chap-7, NO)
-		- 0/1/2-order
-		- convex/concave
-		- line search: GD, Newton, Quasi-Newton, CG;
-		- trust region:
+	- Basics: (L/NL-P-Chap-7)
+		- 0/1/2-order (NO-Chap-9)
 		- speed of convergence;
-	- Least square: (NO Chap-10)
-		- Gauss-Newton;
-		- Levenberg–Marquardt;
-	- Nonlinear Equations: (NO Chap-11)
-		- Broyden method;
-		- Merit function;
+	- Least square: f(x) = 1/2 ∑rj^2(x) (NO-Chap-10)
+		- Gauss-Newton: Approx ∇^2 f ≈ J'J (ignore r ∇^2r)
+		- Levenberg–Marquardt; (trust-region) dumped within Δ;
+	- Nonlinear Equations: (NO-Chap-11)
+		- Broyden method: Gauss-Newton;
+		- Merit function: f(x) = 1/2 ∑rj^2(x)
 		- Homotopy method;
-	- Conjugate directions: (L/NL-P Chap-9; NO Chap-5)
-	- Quasi-Newton: (L/NL-P Chap-10; NO Chap-6)
-		- BFGS, SR1
-	- Large-scale: (NO Chap-7)
 - Constrained
-	- Constrained: Tangent-subspace (L/NL-P Chap-11)
- 	- Primal: (L/NL-P Chap-12)
- 	- Penalty and Barrier: (L/NL-P Chap-13)
- 	- Duality: Local/global-duality, Lagrange (L/NL-P Chap-14; NO Chap-12)
- 	- Primal-dual: (L/NL-P Chap-15)
+	- Constrained: Tangent-subspace (L/NL-P-Chap-11)
+ 	- Primal: (L/NL-P-Chap-12)
+ 	- Penalty and Barrier: (L/NL-P-Chap-13)
+ 	- 1st-order: KKT; 2nd-order: Hessian;
+ 	- Duality: Local/global-duality, Lagrange (L/NL-P-Chap-14; NO-Chap-12)
+ 	- Primal-dual: (L/NL-P-Chap-15)
+	- Penalty and Augmented Lagrangian Methods: (NO-Chap-17)
 - Derivative:
-	- Calculating Derivatives/Hessian (NO Chap-8)
-	- Derivative-Free Optimization (NO Chap-9)
-- Quadratic Programming: (NO Chap-16)
+	- Calculating Derivatives/Hessian (NO-Chap-8)
+	- Derivative-Free Optimization (NO-Chap-9)
+- Quadratic Programming: (NO-Chap-16)
 	- KKT;
-- Penalty and Augmented Lagrangian Methods: (NO Chap-17)
 - Sequential Quadratic Programming: (NO Chap-18)
 	- SQP, IQP, EQP;
 - Interior-Point Methods for Nonlinear Programming: (NO Chap-19)
@@ -235,7 +233,7 @@
 				- 2. always dominate the 2nd term;
 				- 3. whenever Jk has full rank, p is a descent direction;
 			- Convergence: Theo-10.1 limk→∞ Jk'rk = 0
-		- Levenberg-Marquardt Method:
+		- Levenberg-Marquardt Method: trust-region
 			- min 1/2|Jkp+rk|^2, s.t. p ≤ Δk
 			- If GN got solution |pGN| < Δk, accept;
 			- Otherwise, find λ > 0, s.t.
@@ -247,8 +245,13 @@
 		- min|r(x)| for r(x)=0
 	- 11.1 Local Algorithms
 		- Broyden method;
+		- Single var: eval f'≈Δf/Δx, then x ~ x - f/f'
+		- Multi var: Δf≈JΔx, update J, x ~ x - J^-1 f;
 	- 11.2 Practical Methods
-		- Merit Functions
+		- Merit Functions: f(x) = 1/2 |r(x)|^2
+		- GN/Broyden + line-search/trust-region;
+		- Theo-11.6 J'r -> 0; iterates approach stationary of merit function;
+		- Theo-11.7 trust-region, J'r -> 0;
 	- 11.3 Continuatoin/Homotopy Methods
 		- H(x,λ) = λr(x) + (1−λ)(x−a), initial point (a, 0) at λ=0;
 		- H(x(s), λ(s)) = 0, ∀ s ≥ 0, s as travel distance;
@@ -256,7 +259,7 @@
 			- ∂H/∂x x' + ∂H/∂λ λ' = 0, where (x', λ') = (dx/dx, dλ/ds)
 			- |x ̇(s)|^2 +|λ ̇(s)|^2 = 1
 		- Procedure: Tangent Vector Calculation;
-- L/NL-P Chap-11: Optimality Conditions for Nonlinear Optimization
+- L/NL-P-Chap-11: Optimality Conditions for Nonlinear Optimization
 	- first-order necessary condition (FONC): ∇f(x) = 0
 	- second-order necessary condition (SONC): ∇f(x) = 0 and ∇^2f(x) ≽ 0
 	- **Lagrange Theorem**: minf(x) s.t. Ax = b, then local minimizer:
@@ -301,6 +304,67 @@
 		- Dual problem: max_λ q(λ) s.t. λ ≥ 0
 		- Theo-12.10 q(.) is concave with convex domain;
 		- Theo-12.11 Weak duality
+- NO-Chap-15: Fundamentals of Algorithms for Nonlinear Constrained Optimization
+	- 15.1 Categorizing Optimization Algorithms
+		- I. quadratic programming: active set, interior-point, gradient projection;
+		- II. Penalty and augmented Lagrangian (ALMM);
+		- III. Sequential quadratic programming (SQP);
+		- IV. Interior-point for Nonlinear programming;
+	- 15.2 The Combinatorial difficulty of Inequality-constrained problems
+	- 15.3 Elimination of Variables
+	- 15.4 Merit Functions and Filters
+		- Def-15.1 Exact Merit function: φ(x; μ) with μ∗, s.t. any μ>μ∗, local solution of original problem is a local minimizer of φ(x; μ).
+		- Def-15.2 Filter
+		- Alg-15.1 General Filter Method
+	- 15.5 The Maratos Effect
+		- Reject steps with good progress
+	- 15.6 2nd-order correction and nonmonotone techniques
+		- Add a correction term to decrease constraint violation;
+		- Alg-15.3 Watchdog
+- NO-Chap-16: Quadratic Programming
+	- 16.1 Equality-Constrained Quadratic Programming
+		- min_x q(x) = 1/2 x'Gx + x'c
+			- s.t. Ax = b
+		- [G A'] -p = g (g=c+Gx, p=x∗-x desired step)
+		- [A 0 ] λ∗ = h (h:=Ax-b)
+	- 16.2 Direct Solution of KKT System
+		- Factor KKT matrix: symmetric indefinite
+		- Schur-Complement Method: elimination
+			- [G A']
+			- [0 -AG^-1A']
+		- Null-Space Method
+			- p = Ypy + Zpz; Z: null-space
+	- 16.3 Iterative Solution
+		- Alg-16.1 Preconditioned CG for reduced systems
+		- Alg-16.2 Projected CG
+	- 16.4 Inequality-constrained Problems
+	- 16.5 Active-set Methods for Convex QPs
+		- minq(x) = 1/2x'Gx + x'c
+			- s.t. ai'x=bi, i ∈ A(x∗).
+	- 16.6 Interior-Point Methods (Primal Dual)
+		- q(x) = 1/2 x'Gx + x'c
+			- s.t. Ax ≥ b
+		- Ax - y - b = 0; (y: slack var)
+		- [G  0 -A'] Δx = -rd (rd := Gx-A'λ+c)
+		- [A -I  0]  Δy = -rp (rb := Ax-b-y)
+		- [0  Λ  Y]  Δλ = -ΛYe+σμe (e := (1,1,1,...))
+	- 16.7 The Gradient Projection Method
+	- 16.8 Perspectives and Software
+- NO-Chap-17: Penalty and Augmented Lagrangian Methods
+	- 17.1 The Quadratic Penality Method
+		- min f(x) s.t. ci(x)=0
+		- Q(x) = f(x) + μ/2∑ci(x)^2
+		- Alg-17.1 Quadratic Penalty Method
+			- Increase μ each time, get new x;
+		- Theo-17.1 Convergece when μk ↑ ∞
+	- 17.2 Nonsmooth Penalty Functions
+		- Q(x) = f(x) + μ/2 ∑|ci(x)| + μ/2 ∑[ci(x)]-
+		- Framework-17.2 Classicial l1 Penalty Method;
+	- 17.3 Augmented Lagrangian Method: Equality Constraints
+		- L(x,λ;μ) = f(x) - ∑λici(x) + μ/2∑ci(x)^2
+		- Framework-17.3 ALMM
+	- 17.4 Practical Augmented Lagrangian Methods
+	- 17.5 Perspectives and Software
 - Boyd-Chap-5: Duality
 	- 5.1 Lagrange Dual function
 		- min f0(x) s.t. fi(x) ≤ 0, hi(x) = 0;
@@ -381,7 +445,7 @@
 	- Complementarity Condition:
 		- For feasible x and (y,s), xT s = xT (c − AT y) = cT x − bT y is called the **complementarity gap**;
 			- x' s = 0: complementary to each other;
-- L/NL-P Chap-11: GCO
+- L/NL-P-Chap-11: GCO
 	- Generalized Constrained: GCO
 		- min f(x), s.t. h(x)=0; c(x)≥0;
 	- Lemma 1: let x be a feasible, if x is a local minimizer of GCO, then no d satisfy:
@@ -417,7 +481,7 @@
 		- Goldstein condition:
 			- f(xk) + (1−c)αk ∇fk' pk ≤ f(xk +αkpk) ≤ f(xk) + c αk ∇fk pk; for 0 < c < 1/2.
 			- to make sufficient decrease not too short;
-		- Backtracking:
+		- Alg-3.1 Backtracking:
 			- repeat α ← ρα with ρ∈(0,1), until condition satisfies;
 	- 3.2 Convergence of Line Search
 		- Theo-3.2 αk Wolfe, f bounded below, ∇f Lipschitz continuous, then
@@ -440,8 +504,10 @@
 			- if αk=1 for all k > k0, {xk} converges to x∗ **superlinearly**.
 		- Super-linearity ⇔ |(Bk−∇2f(x∗))pk| / |pk| = 0
 	- 3.4 Newton's method with Hessian Modification
-		- Alg-3.2 Add a diagonal to make positive definite + Wolfe/Goldstein/Armijo/...;
-		- Theo-3.8 f twice c continuously differentiable, alg-3.2 converge s.t. limk→∞ ∇f(xk)=0.
+		- Alg-3.2
+			- Bk = ∇^f+Ek, Add a diagonal to make positive definite
+			- Wolfe/Goldstein/Armijo/...;
+		- Theo-3.8 f ∇^2, alg-3.2 converge s.t. limk→∞ ∇f(xk)=0.
 		- Eigenvalue Modification;
 		- Modified Cholesky Factorization;
 		- Modified Symmetric Indefinite factorization;
@@ -454,13 +520,16 @@
 		- min_p mk(p) = fk + gk' p + 1/2 p'Bkp s.t. |p| ≤ Δk
 	- Evaluate performance:
 		- ρk = (f(xk) − f(xk+pk)) / (mk(0) - mk(pk))
-	- Cauchy-point;
-	- 4.1 Algorithms based on **Cauchy point**
-		- Alg-4.2 (**Cauchy point**) Approx cost by pk = argmin fk + gk'p s.t. |p| ≤ Δk
+	- Alg-4.1 Cauchy point (GD, Hessian just to help stepsize)
+		- Alg-4.2 Cauchy point:
+			- Approx cost by pk = argmin fk + gk'p s.t. |p| ≤ Δk
 			- pk = - Δk/|gk| gk (steepest descent direction)
-			- τk = 1 if gkBkgk ≤ 0;
-			- min(|gk|^3/(Δkgk'Bkgk), 1), otherwise;
-		- **Dogleg** method:
+				- τk = 1 if gkBkgk ≤ 0;
+				- min(|gk|^3/(Δkgk'Bkgk), 1), otherwise;
+		- **Dogleg** method: combine Gauss-Newton with GD. 
+			- If the step of GN within Δ, then take GN;
+			- Else, get Cauchy-point (GD), if Cauchy outside Δ, just take GD with length Δ;
+			- Otherwise, get line Cauchy->GN intersect Δ ball;
 			- pB = −B^−1 g > Δk?
 			- Two line segments:
 				- First: pU = - (g'g)/(g'Bg) g
@@ -468,12 +537,12 @@
 	- 4.2 Global Convergence
 		- Lemma-4.3 Cauchy point pkC satisifes:
 			- mk(0) - mk(pkC) ≥ 1/2 |gk| min(Δk, |gk|/|Bk|)
-		- Theo-4.5 **convergence** lim infk→∞ |gk| = 0.
+		- Theo-4.5 convergence of Alg-4.1 lim infk→∞ |gk| = 0.
 	- 4.3 Iterative Solution of subproblem
-		- Alg-4.3 Find optimal p(λ) = −(B + λI)−1g
+		- Alg-4.3 Find optimal p(λ) = −(B + λI)^−1 g
 	- 4.4 Local Convergence of Trust-Region Newton
-		- Theo-4.9 second-order sufficient conditions
-			- **superlinear** convergence |pk−pkN| = o(pkN ).
+		- Theo-4.9 2nd sufficient conditions
+			- **superlinear** convergence |pk−pkN| = o(pkN).
 - NO-Chap-5: Conjugate Gradient Methods
 	- 5.1 Linear CG
 		- Ax = b, A: symmetric positive definite;
@@ -487,7 +556,7 @@
 		- Theo-5.2 (Expanding Subspace Minimization)
 			- rk'pi = 0; for i=0,1,...,k-1
 			- xk is minimizer of φ(.) in {x|x=x0 +span{p0,p1,...,pk−1}}
-		- Algorithm:
+		- Alg-5.2:
 			- Init: r0 = Ax0-b, p0 ← -r0, k = 0;
 				- p0: initial direction as steepest descent;
 				- Some proof won't hold
@@ -502,7 +571,7 @@
 		- Theo-5.5 A has eigenvalues λ1 ≤ λ2 ≤ ··· ≤ λn, then: |xk+1−x∗|^2 ≤ (λn-k − λ1)^2/ (λn-k + λ1)^2 |x0−x∗|^2;
 		- Preconditioning: xˆ = Cx
 	- 5.2 Nonlinear CG
-		- Alg-5.4 Fletcher-Reeves Method:
+		- Alg-5.4 **Fletcher-Reeves** Method: replace alg-5.2 step-length αk with line search; replace residual r with gradient;
 			- Init: x0, f0=f(x0), ∇f0=∇f(x0), p0 ← −∇f0;
 			- while ∇fk ≠ 0:
 				- Get αk, xk+1 = xk + αk pk; (step length)
@@ -510,7 +579,7 @@
 				- βk+1 = |∇fk+1|^2 / |∇fk|^2
 				- pk+1 = -∇fk+1 + βk+1 pk; (direction)
 		- Polak-Ribiere Method and variant:
-			- Variants differ from each other by β;
+			- **Variants of FR differ from each other by β**;
 			- P-R: βk+1 = ∇fk+1'(∇fk+1-∇fk) / |∇fk|^2
 		- Global convergence:
 			- Theo-5.7 lim inf|∇fk| = 0.
@@ -552,7 +621,7 @@
 	- 6.4 Convergence Analysis
 		- Theo-6.5 Converge;
 		- Theo-6.6 superlinear rate;
-- NO Chap-7 Large-Scale Unconstrained Optimization
+- NO-Chap-7 Large-Scale Unconstrained Optimization
 	- 7.1 Inexact Newton
 		- ∇^2fk pk = −∇fk
 		- Iteratively solve pk (not exactly)
@@ -604,23 +673,37 @@
 - NO-Chap-14 Interior-Point Methods
 	- 14.1 Primal-Dual Methods
 		- Primal: min c'x, s.t. Ax = b, x ≥ 0;
-		- Dual: max b'λ, s.t. A'λ+s = c,s ≥ 0,
+		- Dual: max b'λ, s.t. A'λ+s = c, s ≥ 0;
 		- KKT:
-			- A'λ+s = c; Ax = b
+			- A'λ+s = c; Ax = b;
 			- xisi = 0; (x, s) ≥ 0
 		- Primal-dual: (Newton-like) Jacobian Δ = -F + Line-search
-			- [0 A' I] Δx = -rc (:=A'λ+s−c,)
-			- [A 0  0] Δ = -rb (:=Ax-b)
-			- [S 0  X] Δs = -XSe
-		- Interior-point: -XSe -> -XSe + σμe (s.t. xisi = σμ > 0)
+			- [0 A' I] Δx = -rc (rc := A'λ+s−c,)
+			- [A 0  0] Δλ = -rb (rb := Ax-b)
+			- [S 0  X] Δs = -XSe (e := (1,1,1,...))
+			- Similar to Newton's step in nl-eqn: J[Δx,Δλ,Δs]=-F
+		- Desirability: xisi (duality measure)
+			- μ = x's / n;
+		- Framework-14.1 Interior-point: less-aggressive, relax to interior;
+			- [S 0  X] Δs = -XSe + σμe (s.t. xisi = σμ > 0)
 			- μ: current duality
+			- (x, λ, s) += (Δx, Δλ, Δs) 
 			- σ ∈ [0, 1]: reduction factor
-		- Central Path: xisi = τ
-			- Same optimality condition as: min c'x − τ∑lnxi , s.t. Ax = b
+		- Central Path: xisi = τ > 0;
+			- Same optimality condition as log-barrier:
+				- min c'x − τ∑lnxi , s.t. Ax = b
 				- defining: si = τ/xi
 			- Strictly convex: sufficient + necessary;
 			- τ ↓ 0 converge;
+		- Alg-14.2 long-step path-following;
+		- Theo-14.4 ∀ ε ∈ (0, 1) and γ ∈ (0, 1), starting point of alg-14.2 satisfies (x0,λ0,s0) ∈ N−∞(γ), then ∃ index K with K=O(nlog1/ε), s.t.
+			- μk ≤ εμ0
 	- 14.2 Practical Primal-Dual
+		- Corrector and centering steps
+		- Step length;
+		- Starting point;
+	- 14.3 Other Primal-Dual Algorithms and Extensions
+	- 14.4 Perspectives and Software
 
 ## Convex Optimization
 - **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
@@ -632,18 +715,3 @@
 	- Learn to initialize g(.)
 	- Applications:
 		- 5pt
-
-## Regularization
-- M. Jordan. Stochastic Cubic Regularization for Fast Nonconvex Optimization. NIPS'18
-- NIPS'19
-	- Dennis Maximilian Elbrächter, Julius Berner, Philipp Grohs. How degenerate is the parametrization of neural networks with the ReLU activation function?
-	- Sanjeev Arora, Nadav Cohen, Wei Hu, Yuping Luo. Implicit Regularization in Deep Matrix Factorization
-	- Fariborz Salehi, Ehsan Abbasi, Babak Hassibi. The Impact of Regularization on High-dimensional Logistic Regression
-	- Qian Qian, Xiaoyuan Qian. The Implicit Bias of AdaGrad on Separable Data
-	- Aditya Sharad Golatkar, Alessandro Achille, Stefano Soatto. Time Matters in Regularizing Deep Networks: Weight Decay and Data Augmentation Affect Early Learning Dynamics, Matter Little Near Convergence
-
-## SGD NIPS'19
-- Dominic Richards, Patrick Rebeschini. Optimal Statistical Rates for Decentralised Non-Parametric Regression with Linear Speed-Up
-- Robert Gower, Dmitry Koralev, Felix Lieder, Peter Richtarik. RSN: Randomized Subspace Newton
-- Othmane Sebbouh, Nidham Gazagnadou, Samy Jelassi, Francis Bach, Robert Gower. Towards closing the gap between the theory and practice of SVRG
-- Ali Kavis, Kfir Y. Levy, Francis Bach, Volkan Cevher. UniXGrad: A Universal, Adaptive Algorithm with Optimal Guarantees for Constrained Optimization

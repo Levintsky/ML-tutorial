@@ -145,6 +145,9 @@
 	- https://github.com/ZhengZerong/DeepImplicitTemplates
 	- Not just DeepSDF, deep SDF + warping;
 
+## Framework
+- Retrieve a prototype then deform;
+
 ## Backbone Model
 - CNN:
 	- DeepMetaHandles
@@ -173,23 +176,23 @@
 	- Supervision: differentiable rendering loss;
 
 ## Retrieval
-- Kai Xu, Hanlin Zheng, Hao Zhang, Daniel Cohen-Or, Ligang Liu, and Yueshan Xiong. Photo-inspired model-driven 3d object modeling. SIGGRAPH'11
+- K Xu, H Zheng, H Zhang, D Cohen-Or, L Liu, and Y Xiong. Photo-inspired model-driven 3d object modeling. SIGGRAPH'11
 	- Input: target image, source set of 3D models (with consistent parts labels);
 	- Retrieval: manual or auto;
 	- Deformation: component-wise controller (cuboid or cylinder);
 		- Optimization: silhouette + symmetry;
-- Liangliang Nan, Ke Xie, and Andrei Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
+- L Nan, K Xie, and A Sharf. A search-classify approach for cluttered indoor scene understanding. TOG'12
 	- Deform every source and find the best fit to the target (time-consuming)
 	- Problem: input 3D scan of indoor scene, output recognition and reconstruction;
 	- Key-idea: a controlled region growing process which searches for meaningful objects in the scene by accumulating surface patches with high classification likelihood
 	- Preprocessing: over-segment, connected graph,
 	- Model: manual feature, random-forest classifier, segmentation and classification with region growing; temlate fitting with deformation;
-- Jason Rock, Tanmay Gupta, Justin Thorsen, JunYoung Gwak, Daeyun Shin, and Derek Hoiem. Completing 3d object shape from one depth image. CVPR'15
+- J Rock, T Gupta, J Thorsen, J Gwak, D Shin, and D Hoiem. Completing 3d object shape from one depth image. CVPR'15
 	- Non-DL, retrieve a similar mesh;
 	- task: input depth map, output completed obj;
-- Yangyan Li, Hao Su, Charles Ruizhongtai Qi, Noa Fish, Daniel Cohen-Or, and Leonidas J. Guibas. Joint embeddings of shapes and images via cnn image purification. SIGGRAPH Asia'15
+- Y Li, H Su, C Qi, N Fish, D Cohen-Or, and L Guibas. Joint embeddings of shapes and images via cnn image purification. SIGGRAPH Asia'15
 	- **Strong baseline** for retrieval;
-- Adriana Schulz, Ariel Shamir, Ilya Baran, David I. W. Levin, Pitchaya Sitthi-Amorn, and Wojciech Matusik. Retrieval on parametric shape collections. TOG'17
+- A Schulz, A Shamir, I Baran, D Levin, P Sitthi-Amorn, and W Matusik. Retrieval on parametric shape collections. TOG'17
 	- Parametric representation (points + tangent planes), retrieval before deforming;
 	- Problem: query shape s, source parametric;
 	- Traditional: fit every source and find best;
@@ -213,3 +216,18 @@
 - Tianyu Zhao, Qiaojun Feng, Sai Jadhav, Nikolay Atanasov. CORSAIR: Convolutional Object Retrieval and Symmetry-AIded Registration. '21
 	- https://acsweb.ucsd.edu/~qif007/CORSAIR/
 - Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
+
+## Unclassified
+- J Pontes, C Kong, A Eriksson, C Fookes, S Sridharan, and S Lucey. Compact Model Representation for 3D Reconstruction. 3DV'17
+	- https://github.com/jhonykaesemodel/compact_3D_reconstruction
+- **Pix3D**: X Sun, J Wu, X Zhang, Z Zhang, C Zhang, T Xue, J Tenenbaum, W Freeman. Pix3D: Dataset and Methods for Single-Image 3D Shape Modeling. CVPR'18
+	- http://pix3d.csail.mit.edu/
+	- https://github.com/xingyuansun/pix3d
+- J Wu, C Zhang, X Zhang, Z Zhang, W Freeman, J Tenenbaum. Learning Shape Priors for Single-View 3D Completion and Reconstruction. ECCV'18
+	- http://shapehd.csail.mit.edu/
+- D Fremont, T Dreossi, S Ghosh, X Yue, A Sangiovanni-Vincentelli, S Seshia. Scenic: A Language for Scenario Specification and Scene Generation. Scenic: a language for scenario specification and scene generation. PLDI'19
+	- https://github.com/BerkeleyLearnVerify/Scenic
+- Ennafii, O; Le Bris, A; Lafarge, F; Mallet, C. A learning approach to evaluate the quality of 3D city models. Engineering & Remote Sensing'19
+- T Du, J Inala, Yewen Pu, ASpielberg, A Schulz, D Rus, A Solar-Lezama, W Matusik. InverseCSG: automatic conversion of 3D models to CSG trees. SIGGRAPH Asia'18
+	- http://cfg.mit.edu/content/inversecsg-automatic-conversion-3d-models-csg-trees
+- T Deprelle, T Groueix, M Fisher, V Kim, B Russell, M Aubry. Learning elementary structures for 3D shape generation and matching. NIPS'19

@@ -23,6 +23,12 @@
 - Colin Wei, Jason D. Lee, Qiang Liu, and Tengyu Ma. Regularization matters: Generalization and optimization of neural nets v.s. their induced kernel, 2020
 	- How finite-dim neural net approx infinite l1-network?
 		- You need m=n+1;
+- NIPS'19
+	- Dennis Maximilian Elbrächter, Julius Berner, Philipp Grohs. How degenerate is the parametrization of neural networks with the ReLU activation function?
+	- Sanjeev Arora, Nadav Cohen, Wei Hu, Yuping Luo. Implicit Regularization in Deep Matrix Factorization
+	- Fariborz Salehi, Ehsan Abbasi, Babak Hassibi. The Impact of Regularization on High-dimensional Logistic Regression
+	- Qian Qian, Xiaoyuan Qian. The Implicit Bias of AdaGrad on Separable Data
+	- Aditya Sharad Golatkar, Alessandro Achille, Stefano Soatto. Time Matters in Regularizing Deep Networks: Weight Decay and Data Augmentation Affect Early Learning Dynamics, Matter Little Near Convergence
 
 ## Universal Approximator
 - Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks, 4(2): 251–257, 1991.

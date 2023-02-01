@@ -340,9 +340,10 @@
 - Music: Riffusion;
 
 ## Theory and Analysis
-- Shengjia Zhao, Hongyu Ren, Arianna Yuan, Jiaming Song, Noah Goodman, Stefano Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
-- Hisham Husain, Richard Nock, Robert Williamson. A Primal-Dual link between GANs and Autoencoders. NIPS'19
-- Zhiting Hu, Zichao Yang, Ruslan Salakhutdinov, Xiaodan Liang, Lianhui Qin, Haoye Dong, Eric Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18
+- J. Xie, Y. Lu, S.-C. Zhu, and Y. Wu. A theory of generative convnet. ICML'16.
+- S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
+- H Husain, R Nock, R Williamson. A Primal-Dual link between GANs and Autoencoders. NIPS'19
+- Z Hu, Z Yang, R Salakhutdinov, X Liang, L Qin, H Dong, E Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18
 
 ## Backbone/Op
 - RNN/LSTM:
@@ -358,7 +359,7 @@
 	- Standard: UNet MICCAI'15,
 	- AR: PixelCNN++;
 	- DM:
-		- Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+		- P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
 		- DDPM '19;
 		- Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
 - Multiscale:

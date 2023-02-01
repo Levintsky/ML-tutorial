@@ -193,8 +193,13 @@
 - Frank Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
 
 ## Unclassified
-- Zeyuan Zhu. The Lingering of Gradients: How to Reuse Gradients Over Time. NIPS'18
-- Wotao Yin. On Markov Chain Gradient Descent. NIPS'18
+- Z Zhu. The Lingering of Gradients: How to Reuse Gradients Over Time. NIPS'18
+- W Yin. On Markov Chain Gradient Descent. NIPS'18
+- D Richards, P Rebeschini. Optimal Statistical Rates for Decentralised Non-Parametric Regression with Linear Speed-Up. NeurIPS'19
+- R Gower, D Koralev, F Lieder, P Richtarik. RSN: Randomized Subspace Newton. NeurIPS'19
+- O Sebbouh, N Gazagnadou, S Jelassi, F Bach, R Gower. Towards closing the gap between the theory and practice of SVRG. NeurIPS'19
+- A Kavis, K Levy, F Bach, V Cevher. UniXGrad: A Universal, Adaptive Algorithm with Optimal Guarantees for Constrained Optimization. NeurIPS'19
+- M. Jordan. Stochastic Cubic Regularization for Fast Nonconvex Optimization. NIPS'18
 
 ## SVGD
 - Qiang Liu, Dilin Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
