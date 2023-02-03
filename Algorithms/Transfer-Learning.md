@@ -1,35 +1,27 @@
-## Transfer Learning
+# Transfer Learning
 
-## Unclassified
-- MacNet: Transferring Knowledge from Machine Comprehension to Sequence-to-Sequence Models. NIPS'18
-- Adapted Deep Embeddings: A Synthesis of Methods for k-Shot Inductive Transfer Learning. NIPS'18
+## Basics
+- Goal: learn a representation cross-domain;
+- Domain-adaptation:
+	- Adversarial domain adaptation;
+- Domain randomization: Randomness for diversity;
+	- Uniform: Dactyl [OpenAI robotics];
+	- Optimization: learn source s.t. target perf is maxed;
 
-## NIPS'19
-- Tamas Madarasz, Tim Behrens. Better Transfer Learning with Inferred Successor Maps
-- Ching-Yi Hung, Cheng-Hao Tu, Cheng-En Wu, Chien-Hung Chen, Yi-Ming Chan, Chu-Song Chen. Compacting, Picking and Growing for Unforgetting Continual Learning
-- Stephan Rabanser, Stephan Günnemann, Zachary Lipton. Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift
-- Anthony Ndirango, Tyler Lee. Generalization in multitask deep neural classifiers: a statistical physics approach
-- John Lee, Max Dabagia, Eva Dyer, Christopher Rozell. Hierarchical Optimal Transport for Multimodal Distribution Alignment
-- Haohan Wang, Songwei Ge, Zachary Lipton, Eric Xing. Learning Robust Global Representations by Penalizing Local Predictive Power
-- Elliot Meyerson, Risto Miikkulainen. Modular Universal Reparameterization: Deep Multi-task Learning Across Diverse Domains
-- Rahaf Aljundi, Eugene Belilovsky, Tinne Tuytelaars, Laurent Charlin, Massimo Caccia, Min Lin, Lucas Page-Caccia. Online Continual Learning with Maximal Interfered Retrieval
-- Xi Lin, Hui-Ling Zhen, Zhenhua Li, Qing-Fu Zhang, Sam Kwong. Pareto Multi-Task Learning
-- Boyu Wang, Jorge Mendez, Mingbo Cai, Eric Eaton. Transfer Learning via Minimizing the Performance Gap Between Domains
-
-# Domain Adaptation
+## Domain Adaptation
 - Generative
-	- Lanlan Liu, Michael Muelly, Jia Deng, Tomas Pfister, Jia Li. Generative Modeling for Small-Data Object Detection.
+	- L Liu, M Muelly, J Deng, T Pfister, J Li. Generative Modeling for Small-Data Object Detection.
 - P. Li, X. Liang, D. Jia, and E. P. Xing. Semantic-aware gradgan for virtual-to-real urban scene adaption. BMVC'18
 - G. French, M. Mackiewicz, and M. Fisher. Self-ensembling for visual domain adaptation. ICLR'18.
 - **Cycada**: J Hoffman, E. Tzeng, T. Park, J.-Y. Zhu, P. Isola, A Efros, and T. Darrell. Cycada: Cycle-consistent adversarial domain adaptation. ICML'18
 - X Huang, M Liu, S Belongie, J Kautz. Multimodal unsupervised image-to-image translation. ECCV'18.
 - Y. Zou, Z. Yu, B. V. K. V. Kumar, and J. Wang. Domain adaptation for semantic segmentation via class-balanced self- training. ECCV'18 
 - Berkeley. Conditional Adversarial Domain Adaptation. NIPS'18
-- Han Zhao. Adversarial Multiple Source Domain Adaptation. NIPS'18
+- H Zhao. Adversarial Multiple Source Domain Adaptation. NIPS'18
 - Co-regularized Alignment for Unsupervised Domain Adaptation. NIPS'18
 - FAIR. One-Shot Unsupervised Cross Domain Translation. NIPS'18
 
-# Domain Randomization (DR)
+## Domain Randomization (DR)
 - Basics
 	- Intuition:
 		- Given an source domain (game) and a target domain (real)
@@ -42,26 +34,21 @@
 	- J Tobin, R Fong, A Ray, J Schneider, W Zaremba, P Abbeel. Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS'17
 		- A recurrent policy can adapt to different physical dynamics
 		- Random: Mass and dimensions of objects; Mass and dimensions of robot bodies; Damping, kp, friction of the joints; Gains for the PID controller (P term); Joint limit; Action delay; Observation noise.
-	- **Dactyl**: Marcin Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
-		- Problem setup: Manipulate objects using a Shadow Dexterous Hand
-			- **Hardware**: a humanoid robotic hand with 24 degrees of freedom (DoF) actuated by 20 pairs of agonist–antagonist tendons
-			- **Simulator**: simulate the physical system with the MuJoCo physics engine; use Unity2 to render the images for training the vision based pose estimator.
-			- modify the basic version of our simulation to a distribution over many simulations that foster transfer
-			- Same distributed system as OpenAI Five;
-			- Distributed workers collect experience at large scale;
-		- At first, barely survive 5 seconds without dropping
-		- DR: evolved work surprisingly well;
+	- **Dactyl**: M Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
 		- https://blog.openai.com/learning-dexterity/
+		- Target domain: 24-dof robotic hand;
+		- Source: Mujoco;
 		- Train models:
-			- A LSTM RL to predict action (control policy);
-			- A CNN to predict object pose;
-			- Combine pose estimation and control policy from multiple camera inputs;
-			- Trained with PPO;
-			- **Policy actions**: correspond to desired joints angles relative to the current ones, **discrete action spaces work much better.**
-			- **Reward**: at timestep t is r(t) = d(t) − d(t+1), desired and current object orientations. additional reward of 5 whenever a goal is achieved and a reward of −20.
+			- CNN -> object pose;
+			- LSTM -> action (control policy);
+			- Learning: PPO;
+			- Supervision: diff to desired joints angles;
+			- Reward: r(t) = d(t) − d(t+1)
+				- desired and current orientations. 
+				- additional 5/−20 for success/non;
 - DR as optimization
 	- Q Vuong, S Vikram, H Su, S Gao, H Christensen. How to pick the domain randomization parameters for sim-to-real transfer of reinforcement learning policies? 2019
-		- Insight: domain randomization as an optimization problem; learn a distribution on of source domain which a policy is trained on can achieve maximal performance in real world;
+		- Learn a distribution on of source s.t. policy trained on achieve maximal perf in real world;
 		- https://github.com/quanvuong/domain_randomization
 - Guided DR:
 	- Optimization for Task Performance
@@ -86,7 +73,7 @@
 			<img src="/RL/images/transfer/meta-sim2.png" alt="drawing" width="500"/>
 			<img src="/RL/images/transfer/meta-sim3.png" alt="drawing" width="600"/>
 			<img src="/RL/images/transfer/meta-sim4.png" alt="drawing" width="500"/>
-		- Jeevan Devaranjan, Amlan Kar, Sanja Fidler. Meta-Sim2: Unsupervised Learning of Scene Structure for Synthetic Data Generation. ECCV'20
+		- J Devaranjan, A Kar, S Fidler. Meta-Sim2: Unsupervised Learning of Scene Structure for Synthetic Data Generation. ECCV'20
 		- D Li, A Kar, N Ravikumar, AF Frangi, S Fidler. Federated Simulation for Medical Imaging. MICCAI'20
 	- Match Real Data Distribution
 		- **SimOpt**: Y Chebotar, A Handa, V Makoviychuk, M Macklin, J Issac, N Ratliff, D Fox. Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience. 2019

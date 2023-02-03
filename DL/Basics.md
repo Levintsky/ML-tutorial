@@ -4,10 +4,10 @@
 - Tutorials
 	- Yann LeCun, Yoshua Bengio, and Geoffrey Hinton. Deep learning. nature, 521(7553):436, 2015.
 - Books
-	- **Deep learning**: Ian Goodfellow, Yoshua Bengio, Aaron Courville, and Yoshua Bengio. volume 1. MIT press Cambridge, 2016.
+	- **Deep learning**: I Goodfellow, Y Bengio, Aaron Courville, and Yoshua Bengio. volume 1. MIT press Cambridge, 2016.
 
 ## Unclassified
-- Gamaleldin F. Elsayed, Dilip Krishnan, Hossein Mobahi, Kevin Regan, Samy Bengio. Large Margin Deep Networks for Classification. NIPS'18
+- Gamaleldin F. Elsayed, D Krishnan, H Mobahi, K Regan, Samy Bengio. Large Margin Deep Networks for Classification. NIPS'18
 
 ## PRML (Chapter 5)
 - Feed-forward:
@@ -55,7 +55,12 @@
 - **GeLU**: Dan Hendrycks, Kevin Gimpel. Gaussian Error Linear Units (GELUs). '16
 	- Smoother than ReLU;
 	- Used in BERT and GPT-3;
-- **SENet**: Jie Hu, Li Shen, Gang Sun. Squeeze-and-Excitation Networks. CVPR'18
+- **SENet**: J Hu, L Shen, G Sun. Squeeze-and-Excitation Networks. CVPR'18
+	- https://github.com/hujie-frank/SENet
+	- Insight: channel-wise scaling (learn by MLP);
+	- Model: channel-wise selection/attention;
+		- For a HxWxC feature x, calculate channel-wise W 1x1xC;
+		- Then apply the weight channel-wise: W x
 
 ## Normalization Operators
 - **Batch Norm**: S Ioffe and C Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. ICML'15
@@ -185,7 +190,7 @@
 	- Real NVP:
 		- y1 = x1;
 		- y2 = x2 exp(F(x1)) + G(x1)
-	- **RevNet**: Aidan N. Gomez, Mengye Ren, Raquel Urtasun, Roger B. Grosse. The Reversible Residual Network: Backpropagation Without Storing Activations. NIPS'17
+	- **RevNet**: A Gomez, M Ren, R Urtasun, R Grosse. The Reversible Residual Network: Backpropagation Without Storing Activations. NIPS'17
 - Reconstruct p(x|z) with prior on x
 	- Mahendran, A., and Vedaldi, A. Understanding deep image representations by inverting them. CVPR'15
 		- Insight: find x s.t. representation φ(x) match with prior regularization plus a regularization:

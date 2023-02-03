@@ -70,7 +70,7 @@
 - Basics:
 	- Assume distance/neighborhood known, propagate labels;
 - Legacy:
-	- Xiaojin Zhu, John Lafferty and Zoubin Ghahramani, Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions, ICML'03 workshop
+	- X Zhu, J Lafferty and Z Ghahramani, Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions, ICML'03 workshop
 	- Sanjoy Dasgupta and Daniel Hsu. Hierarchical sampling for active learning. ICML'08.
 - Core-sets Approach: select a small subset for approx;
 	- Sener & Savarese (2018): 

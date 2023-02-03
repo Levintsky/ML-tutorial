@@ -134,9 +134,9 @@
 		- **Spatial relationship** for two image patches;
 	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
 	- Mehdi Noroozi, Paolo Favaro. Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV'16
-	- **Colorization**: Richard Zhang, Phillip Isola, Alexei A. Efros. Colorful Image Colorization, ECCV'16
-	- Tomas Jakab, Ankush Gupta, Hakan Bilen, Andrea Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
-	- **BEiT**: Hangbo Bao, Li Dong, Songhao Piao, Furu Wei. BEiT: BERT Pre-Training of Image Transformers. ICLR'22
+	- **Colorization**: R Zhang, P Isola, A Efros. Colorful Image Colorization, ECCV'16
+	- T Jakab, A Gupta, H Bilen, A Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
+	- **BEiT**: H Bao, L Dong, S Piao, F Wei. BEiT: BERT Pre-Training of Image Transformers. ICLR'22
 		- https://github.com/microsoft/unilm/tree/master/beit
 		- 224 x 224 image into 14 x 14 grid, each of size 16x16;
 		- Tokenized with dVAE rather than raw pixels; (stage I)
@@ -156,13 +156,13 @@
 	- Predict image rotation:
 		- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR'18
 	- Clustering:
-		- **Pseudo-label**: Dong-Hyun Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
+		- **Pseudo-label**: D Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
 			- Layerwise denoised autoencoder with cross-entropy(x, x^)
 			- Equivalent to Entropy Regularization;
-		- Mathilde Caron, Piotr Bojanowski, Armand Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
+		- M Caron, P Bojanowski, A Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
 			- Extract CNN and run K-means
 			- Train on cluster id;
-		- **SWAV**: Mathilde Caron, Ishan Misra, Julien Mairal, Priya Goyal, Piotr Bojanowski, Armand Joulin. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
+		- **SWAV**: M Caron, I Misra, J Mairal, P Goyal, P Bojanowski, A Joulin. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
 			- https://github.com/facebookresearch/swav
 			- Insight: prototypes C as a pseudo K-means;
 			- Given two augmented xt, xs, predict code qs from pt;
@@ -176,21 +176,26 @@
 		- Asano: 2020 SeLa;
 		- Dwibedi 21, NNCLR;
 - Dictionary Learning:
-	- **LocalAggr**: Chengxu Zhuang, Alex Lin Zhai, and Daniel Yamins. Local aggregation for unsupervised learning of visual embeddings. ICCV'19	
+	- **LocalAggr**: C Zhuang, A Zhai, and D Yamins. Local aggregation for unsupervised learning of visual embeddings. ICCV'19	
 - Consistency:
 	- **Contrastive** Exemplar: NPDC, MoCo, SimCLR, CPC
-		- Zhirong Wu, Yuanjun Xiong, Stella Yu, and Dahua Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
+		- Z Wu, Y Xiong, S Yu, and D Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
 			- https://github.com/zhirongw/lemniscate.pytorch
 			- Constrastive estimation;
 		- **CPC**: DeepMind. Representation Learning with Contrastive Predictive Coding. NIPS'18
 			- A query frame x_t at time t;
 			- Recent 8 frames: positive;
 			- Other uniformly sampled frames: negative;
-		- **AMDIM**: Philip Bachman, R Devon Hjelm, and William Buchwalter. Learning representations by maximizing mutual information. NIPS'19
+		- **AMDIM**: P Bachman, R D Hjelm, and W Buchwalter. Learning representations by maximizing mutual information. NIPS'19
 			- https://github.com/Philip-Bachman/amdim-public
 			- Maximize mutual-information I(aug1(x), aug2(x));
 			- Also between scales;
 		- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
+		- UDA: Q Xie, Z Dai, E Hovy, M Luong, and Q Le. Unsupervised data augmentation for consistency training. 2019
+			- https://github.com/google-research/uda
+			- Semi-supervised learning:
+				- Labeled: l(p(y|x), y)
+				- Unlabeled: consistency between augmented data: p(y|x), p(y|x')
 		- **MoCo**: FAIR. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
 			- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
 			- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
@@ -211,7 +216,7 @@
 			- Verify the effectiveness of two of SimCLR's design:
 				- **MLP projection head**
 				- More **data augmentation**
-		- Zhenda Xie, Yutong Lin, Zhuliang Yao, Zheng Zhang, Qi Dai, Yue Cao, and Han Hu. Self-supervised learning with swin transformers. 
+		- Z Xie, Y Lin, Z Yao, Z Zhang, Q Dai, Y Cao, and H Hu. Self-supervised learning with swin transformers.
 		- **MoCo-V3**: An Empirical Study of Training Self-Supervised Vision Transformers. ICCV'21
 			- Large batch-size instead of memory queue, vit backbone;
 			- Symmetrized loss: l(q1, k2) + l(q2, k1)
@@ -230,7 +235,7 @@
 				- (iii) momentum encoders
 		- **Barlow Twins**: FAIR. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
 			- Insight: feature correlation within a batch should be closed to identity;
-		- **DINO**: Mathilde Caron, Hugo Touvron, Ishan Misra, Herve Jegou, Julien Mairal, Piotr Bojanowski, Armand Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
+		- **DINO**: M Caron, H Touvron, I Misra, H Jegou, J Mairal, P Bojanowski, A Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
 			- https://github.com/facebookresearch/dino
 			- Insight: match output feature distribution by distillation: -p2logp1, p1 student, p2 teacher;
 				- p1: softmax(s_out)
@@ -241,7 +246,7 @@
 			- Student: to learn, with small image;
 			- SWAV mean C trick;
 			- DINO linear: 75.3% res-50, 77% vit, 80% vit-b;
-		- **MSN**: Mahmoud Assran, Mathilde Caron, Ishan Misra, Piotr Bojanowski, Florian Bordes, Pascal Vincent, Armand Joulin, Michael Rabbat, Nicolas Ballas. Masked Siamese Networks for Label-Efficient Learning.
+		- **MSN**: M Assran, M Caron, I Misra, P Bojanowski, F Bordes, P Vincent, A Joulin, M Rabbat, N Ballas. Masked Siamese Networks for Label-Efficient Learning.
 			- DINO + mask;
 - Other prior:
 	- Symmetry:
@@ -249,7 +254,7 @@
 
 ## Analysis
 - Visualization:
-	- Florian Bordes, Randall Balestriero, Pascal Vincent. High Fidelity Visualization of What Your Self-Supervised Representation Knows About. 2021
+	- F Bordes, R Balestriero, P Vincent. High Fidelity Visualization of What Your Self-Supervised Representation Knows About. 2021
 - Yuandong Tian, Lantao Yu, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning with Dual Deep Networks. arxiv
 - Yuandong Tian, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning Dynamics without Contrastive Pairs. ICML'21 Outstanding Paper Award Honorable Mention
 - Li Jing, Pascal Vincent, Yann LeCun, Yuandong Tian. Understanding Dimensional Collapse in Contrastive Self-supervised Learning. ICLR'22
@@ -300,14 +305,6 @@
 ## 3D
 - Alexey Dosovitskiy. Unsupervised Learning of Shape and Pose with Differentiable Point Clouds. NIPS'18
 
-## Augment Consistency
-- **UDA**: Qizhe Xie, Zihang Dai, Eduard Hovy, Minh-Thang Luong, and Quoc V. Le. Unsupervised data augmentation for consistency training. 2019
-	- https://github.com/google-research/uda
-	- Semi-supervised learning:
-		- Labeled: l(p(y|x), y)
-		- Unlabeled: consistency between augmented data:
-			- p(y|x), p(y|x')
-
 ## Google Brain
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
 	- https://github.com/google-research/disentanglement_lib
@@ -325,20 +322,8 @@
 - **GIM (Greedy-InfoMax)**: Sindy Löwe, Peter O’Connor, Bastiaan S. Veeling. Putting An End to End-to-End: Gradient-Isolated Learning of Representations. NIPS'19 Honorable Mention Outstanding New Directions Paper Award
 	- https://github.com/loeweX/Greedy_InfoMax
 	- Key insight: layer-wise information preservation;
-	- Algorithm: Divide CNN by depth into M modeules;\
-		<img src = '/Weak-Unsupervised/images/gim1.png' width = '500px'>
-	- Supervision: similar to CPC;\
-		<img src = '/Weak-Unsupervised/images/gim2.png' width = '500px'>
+	- Algorithm: Divide CNN by depth into M modules;
+	- Supervision: similar to CPC;
 	- Experiments:
 		- Vision: STL-10;
 		- Audio: LibriSpeech speaker recognition (100-hour);
-
-## NIPS'18
-- Vikas K. Garg, Adam Kalai. Supervising Unsupervised Learning. NIPS'18
-	- Insight: transfer knowledge from supervised dataset;
-- Tam Nguyen, Maximilian Dax, Chaithanya Kumar Mummadi, Nhung Ngo, Thi Hoai Phuong Nguyen, Zhongyu Lou, Thomas Brox. DeepUSPS: Deep Robust Unsupervised Saliency Prediction via Self-supervision
-- Adam Bielski, Paolo Favaro. Emergence of Object Segmentation in Perturbed Generative Models
-- Christopher Beckham, Sina Honari, Alex Lamb, Vikas Verma, Farnoosh Ghadiri, R Devon Hjelm, Yoshua Bengio, Chris Pal. On Adversarial Mixup Resynthesis
-- Iordanis Kerenidis, Jonas Landman, Alessandro Luongo, Anupam Prakash. q-means: A quantum algorithm for unsupervised machine learning
-- Hongteng Xu, Dixin Luo, Lawrence Carin. Scalable Gromov-Wasserstein Learning for Graph Partitioning and Matching
-- Hugo Caselles-Dupré, Michael Garcia Ortiz, David Filliat. Symmetry-Based Disentangled Representation Learning requires Interaction with Environments

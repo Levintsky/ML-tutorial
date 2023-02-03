@@ -26,7 +26,7 @@
 - Ke Li, Tianhao Zhang, Jitendra Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
 
 ## Adversarial Learning
-- Andrew Ilyas, Shibani Santurkar, Dimitris Tsipras, Logan Engstrom, Brandon Tran, Aleksander Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19
+- A Ilyas, S Santurkar, D Tsipras, L Engstrom, B Tran, A Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19
 	- Some features are robust, some are non-robust
 	- Imagine binary classifcation: f(x) and y (+/-1)
 	- Insight: create a new dataset, manipulate x (originally cat), s.t., turns it into a dog with cat-looking with dog-robust-feature and labled it as a dog in the new dataset;
@@ -34,7 +34,7 @@
 - Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
 
 ## Attack
-- Battista Biggio, Blaine Nelson and Pavel Laskov. Poisoning Attacks against Support Vector Machines. ICML'12
+- B Biggio, B Nelson and P Laskov. Poisoning Attacks against Support Vector Machines. ICML'12
 	- ICML'22 Test of Time Award
 - Optimization-based:
 	- **SOA**: N Carlini and D Wagner. Towards Evaluating the Robustness of Neural Networks. IEEE Security and Privacy 2017 (Best Student Paper)
@@ -71,7 +71,7 @@
 		- based on SPADE [Semantic image synthesis with spatially-adaptive normalization, 2019]
 	- L Jain, W Wu, S Chen, U Jang, V Chandrasekaran, S Seshia, S Jha. Generating Semantic Adversarial Examples with Differentiable Rendering. ICLR'20 reject
 	- H Qiu, C Xiao, L Yang, X Yan, H Lee, B Li. SemanticAdv: Generating Adversarial Examples via Attribute-Conditional Image Editing. ICLR'20 reject
-	- Ameya Joshi, Amitangshu Mukherjee, Soumik Sarkar, Chinmay Hegde. Semantic Adversarial Attacks: Parametric Transformations That Fool Deep Classifiers. ICLR'20
+	- A Joshi, A Mukherjee, S Sarkar, C Hegde. Semantic Adversarial Attacks: Parametric Transformations That Fool Deep Classifiers. ICLR'20
 - Application in 3D
 	- C Xiang, C Qi, B Li. Generating 3D Adversarial Point Clouds, CVPR'19
 		- https://github.com/xiangchong1/3d-adv-pc

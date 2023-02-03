@@ -22,23 +22,16 @@
 
 ## Network/Backbone Design
 - **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
-	- ImageNet: top-1 63.5%, top-5 84.7%;
 - **NIN**: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
 	- size-1 kernel, MLP in CNN;
 - **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
-	- ImageNet: top-1 72.1%, top-5 90.8%
 - **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. ICLR'15
-	- ImageNet-v1: top-1 76.3%, top-5 93.2%
 - **GoogleNet**: C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich (GoogleNet): Going deeper with convolutions. CVPR'15
 	- Inception-V1
-	- Winner-of-ILSVRC-2014: top-5 93.3%;
 	- https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7
 - **Incpetion-V2**: S Ioffe, C Szegedy. Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML'15
-	- ImageNet: top-1 79.9%, top-5 95.0%;
 - **Inception-V3**: C Szegedy, V Vanhoucke, S Ioffe, J Shlens, Z Wojna. Rethinking the Inception Architecture for Computer Vision. CVPR'16
-	- ImageNet: top-1 82.7%, top-5 96.5%;
 - **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR'16
-	- Winner-of-ILSVRC-2015: top-1 80.6%, top-5 95.5%;
 	- downample: conv1x1 (stride=2) - BN
 	- Basic block:
 		- x -> Conv3x3 - BN - ReLU - Conv3x3 - BN -> out
@@ -59,32 +52,39 @@
 		- Res1 (64) - Res2 (down 112 x 28 x 28) - Res3 (down 256 x 14 x 14, down) - Res4 (down 512 x 7 x 7)
 		- Average-pool (7x7) - fc1000
 - **Inception-V4**: C Szegedy, S Ioffe, V Vanhoucke, A Alemi. Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning; 2016
-	- ImageNet: top-1 83.5%, top-5 96.9%;
 - **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR'17
-	- ImageNet: top-1 80.9%, top-5 95.6%;
-	- COCO: AP-at-0.5 51.9%, AP 30.0%;
 	- Insight: **Grouped-Convolution**
-	- 2nd of ILSVR'16
 	- i. same spatial size: same hyper-parameter;
 	- ii. down-sample by 2, width increase by 2; (each layer similar computation)
 	- Conv - Batch-Norm - ReLU;
 	- Short-cut: ReLU after adding shortcut;
-- **SENet**: J Hu, L Shen, G Sun. Squeeze-and-Excitation Networks. CVPR'18
-	- Insight: channel-wise scaling (learn by MLP);
-	- https://github.com/hujie-frank/SENet
-	- Winner of ILSVR'17
 - **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR'18
 	- https://github.com/bamos/densenet.pytorch
-	- ImageNet: top-1 79.2%, top-5 94.7%;
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 - J Wang, K Sun, T Cheng, B Jiang, C Deng, Y Zhao, D Liu, Y Mu, M Tan, X Wang, et al. Deep high-resolution representation learning for visual recognition. PAMI'20
 	- High-resolution, multi-branch, fuse;
 **EfficientNet**: M Tan, Quoc V. Le. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
 	- Check Efficient-Inf for details;
-	- ImageNet: top-1 81.6%(B3), 82.9%(B4), ..., 84.3%(B7);
 - **RegNet**: I Radosavovic, R Kosaraju, R Girshick, K He, P Dollar. Designing Network Design Spaces. CVPR'20
 	- Check AutoML for details;
-	- ImageNet: top-1 80.0%(4G), 81.7%(8G), 82.9%(16G);
+
+## Performance
+- ImageNet:
+	- AlexNet: top-1 63.5%, top-5 84.7%;
+	- SPP: top-1 72.1%, top-5 90.8%
+	- VGG: top-1 76.3%, top-5 93.2%
+	- Inception-V1: top-5 93.3%; (1st of ILSVRC'14)
+	- Inception-V2: top-1 79.9%, top-5 95.0%;
+	- ResNet: top-1 80.6%, top-5 95.5%; (1st of ILSVRC'15)
+	- Inception-V3: top-1 82.7%, top-5 96.5%;
+	- Inception-V4: top-1 83.5%, top-5 96.9%;
+	- ResNext: top-1 80.9%, top-5 95.6%; (2nd of ILSVR'16)
+	- SENet: (1st of ILSVR'17)
+	- DenseNet: top-1 79.2%, top-5 94.7%;
+	- EfficientNet: top-1 81.6%(B3), 82.9%(B4), ..., 84.3%(B7);
+	- RegNet: top-1 80.0%(4G), 81.7%(8G), 82.9%(16G);
+- COCO:
+	- ResNext: AP-at-0.5 51.9%, AP 30.0%;
 
 ## Multi-Scale Design
 - Basics:
