@@ -2,9 +2,20 @@
 
 ## Distance
 - Bregman Divergence: a class for convex functions;
+	- Resouces:
+		- https://www.zhihu.com/question/22426561/answer/209945856
+	- Intuition:
+		- Given a random variable X={x1, x2, ...}, the minimizer of f(y)=d(x,y) is y=E[x], satisfies iff f(.) is convex;
+		- d(x, y) >= 0 implies f(x) convex;
+		- **Assymetry**: in general D(x,y) != D(y,x);
+	- Common Bregman divergence:\
+		<img src="/Optimization/images/distance/bregman.jpg" alt="drawing" width="400"/>
+	- Legacy:
+		- A Banerjee, X Guo, and H Wang. On the optimality of conditional expectation as a Bregman predictor. TIT'05
+		- A Banerjee, et al. Clustering with Bregman divergences. JMLR'05
+- Hausdorff distance: Let K, L ⊆ Rd be two sets.
+	- dH(K, L) := inf {λ ≥ 0 | K ⊆ L + λB(0, 1), L ⊆ K + λB(0, 1)}
 - Squared Mahalanobis distance
-- Probability:
-	- KL Divergence;
 - Matrix:
 	- von Neumann divergence
 - Empirical distribution:

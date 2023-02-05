@@ -11,7 +11,7 @@
 
 ## PCA
 - Applications:
-	- Quan Wang. Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models. 2014
+	- Q Wang. Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models. 2014
 		- Key insight: preimage, iteratively optimize z, such that the projection with on true feature-space eigen-vector v1, v2, ... is the same as the kernelized result;
 			<img src="/Bayes/images/pca/pre-image-1.png" alt="drawing" width="400"/>
 		- Gaussian kernels:\
@@ -20,34 +20,33 @@
 ## ICA
 - Legacy
 	- Mutual information (MI) estimation:
-		- **Kernel-ICA**: Francis R. Bach, Michael I. Jordan. Kernel Independent Component Analysis. JMLR'02
+		- **Kernel-ICA**: F Bach, M Jordan. Kernel Independent Component Analysis. JMLR'02
 	- Entropy, negentropy estimation
 		- **Infomax-ICA**: AJ Bell, TJ Sejnowski. An information-maximization approach to blind separation and blind deconvolution. Neural computation'95
 		- **RADICAL**: Erik. G. Learned-Miller, John W. Fisher III, ICA Using Spacings Estimates of Entropy. JMLR'03
 		- **FastICA**: A. Hyvärinen. Fast and Robust Fixed-Point Algorithms for Independent Component Analysis. TNN'99
 		- M Girolami, C Fyfe. Stochastic ICA contrast maximisation using OJA's nonlinear PCA algorithm. 1997
 	- ML estimation
-		- **KDICA**: Aiyou Chen, Peter Bickel. Fast Kernel Density Independent Component Analysis. 2006
-		- **EM-ICA**: Max Welling and Markus Weber. A Constrained EM Algorithm for Independent Component Analysis. Neural Computation'01
+		- **KDICA**: A Chen, P Bickel. Fast Kernel Density Independent Component Analysis. 2006
+		- **EM-ICA**: M Welling and M Weber. A Constrained EM Algorithm for Independent Component Analysis. NC'01
 		- [MacKay 1996; Pearlmutter & Parra 1996; Cardoso 1997]
 	- Higher order moments, cumulants based methods
 		- JADE[Cardoso,1993]
 	- Nonlinear correlation based methods
 		- [Jutten and Herault, 1991]
 - Identifiability in Time Series:
-	- **TCL**: Hyvärinen, A. and Morioka, H. Unsupervised feature extraction by time-contrastive learning and nonlinear ICA. NIPS'16
-	- Aapo Hyvarinen and Hiroshi Morioka. Nonlinear ICA of temporally dependent stationary sources. PMLR'17
-- Aapo Hyvarinen, Hiroaki Sasaki, and Richard E Turner. Nonlinear ICA using auxiliary variables and generalized contrastive learning. 2018
-- Hyvärinen, A., Sasaki, H., and Turner, R. Nonlinear ICA Using Auxiliary Variables and Generalized Contrastive Learning. AISTATS'19
-- Wei Wang, Zheng Dang, Yinlin Hu, Pascal Fua, Mathieu Salzmann. Backpropagation-Friendly Eigendecomposition. NIPS'19
-- Piotr Indyk, Ali Vakilian, Yang Yuan. Learning-Based Low-Rank Approximations. NIPS'19
+	- **TCL**: A Hyvärinen and H Morioka. Unsupervised feature extraction by time-contrastive learning and nonlinear ICA. NIPS'16
+	- A Hyvarinen and H Morioka. Nonlinear ICA of temporally dependent stationary sources. PMLR'17
+- A Hyvärinen, H Sasaki, and R Turner. Nonlinear ICA Using Auxiliary Variables and Generalized Contrastive Learning. AISTATS'19
+- W Wang, Z Dang, Y Hu, P Fua, Mathieu Salzmann. Backpropagation-Friendly Eigendecomposition. NIPS'19
+- P Indyk, A Vakilian, Y Yuan. Learning-Based Low-Rank Approximations. NIPS'19
 - Applications
 	- ICA: blind source separation;
 	- Autoassociative neural network;
 	- Modeling nonlinear manifold;
 - **Deep Latent Model (ICA)**
-	- Assaf Shocher, Michal Irani. Blind Super-Resolution Kernel Estimation using an Internal-GAN Sefi Bell-Kligler. NIPS'19
-	- Ilyes Khemakhem, Diederik P. Kingma, Ricardo Pio Monti, Aapo Hyvärinen. Variational Autoencoders and Nonlinear ICA: A Unifying Framework. AISTATS'20 submission.
+	- A Shocher, Ml Irani. Blind Super-Resolution Kernel Estimation using an Internal-GAN Sefi Bell-Kligler. NIPS'19
+	- I Khemakhem, D Kingma, R Monti, A Hyvärinen. Variational Autoencoders and Nonlinear ICA: A Unifying Framework. AISTATS'20 submission.
 		- x d-dim, u m-dim both observed; z n-dim, n <= d latent;
 		- Parameters: θ = (f, T, λ); f: mixing? T sufficient statistics;
 		- Model assumption:
@@ -55,7 +54,7 @@
 			- p(x|z; f) = p(x-f(z); ε)
 			- p(z|u; T, λ) = Π_i pi(zi|u) = Π_i Qi(zi)/Zi(ui) exp[Σj=1..k Tij(zi)λi,j(u)]
 		- Main result: (theorem) θ = (f, T, λ) are identifiable
-	- Peter Sorrenson, Carsten Rother, Ullrich Köthe. Disentanglement by Nonlinear ICA with General Incompressible-flow Networks (GIN). ICLR'20
+	- P Sorrenson, C Rother, U Köthe. Disentanglement by Nonlinear ICA with General Incompressible-flow Networks (GIN). ICLR'20
 		- Architecture:\
 			<img src="/Bayes/images/pca/ica-flow-1.png" alt="drawing" width="400"/>
 		- Model:\

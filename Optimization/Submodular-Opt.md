@@ -34,10 +34,3 @@
 			<img src="/Optimization/images/submodular/submodbox-2.png" alt="drawing" width="400"/>
 	- Solution: lazy-greedy with branch-and-bound tree;\
 		<img src="/Optimization/images/submodular/submodbox-3.png" alt="drawing" width="400"/>
-
-## Unclassified
-- Pan Li, Niao He, Olgica Milenkovic. Quadratic Decomposable Submodular Function Minimization. NIPS'18
-- Yaron Singer, Avinatan Hassidim. Optimization for Approximate Submodularity. NIPS'18
-- Wenruo Bai, William Stafford Noble, Jeff A. Bilmes. Submodular Maximization via Gradient Ascent: The Case of Deep Submodular Functions. NIPS'18
-- Francis Bach. Efficient Algorithms for Non-convex Isotonic Regression through Submodular Optimization. NIPS'18
-- Abram L. Friesen, Pedro Domingos. Submodular Field Grammars: Representation, Inference, and Application to Image Parsing. NIPS'18

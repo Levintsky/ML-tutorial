@@ -195,8 +195,6 @@
 			- Recombination
 			- Mutation
 			- Survivor Selection: remove old and low-perf;
-		<img src="/AutoML-Meta/images/automl-evo.jpg" alt="drawing" width="500"/>
-		<img src="/AutoML-Meta/images/automl-ea2.jpg" alt="drawing" width="500"/>
 	- Legacy:
 		- K. Stanley and R. Miikkulainen. Evolving neural networks through augmenting topologies. Evolutionary Computation, 10(2):99–127, 2002. 2
 		- D. Floreano, P. Durr, and C. Mattiussi. Neuroevolution: from architectures to learning. Evolutionary Intelligence, 1(1):47–62, 2008

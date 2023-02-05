@@ -1,13 +1,18 @@
 # Machine Learning on Graphs
 
 ## Basics
-- Graph matching:
-- Graph generation:
-	- Non-learning:
-		- ER (Erdős, Rényi), '60
-		- BA (Barabási, Albert), '99
-	- Graphon;
-	- NN: VAE, GAN;
+- Goal:
+	- Graph matching:
+	- Graph generation:
+		- Non-learning:
+			- ER (Erdős, Rényi), '60
+			- BA (Barabási, Albert), '99
+		- Graphon;
+		- NN: VAE, GAN;
+	- Edge/link prediction;
+	- Node classification;
+	- Graph embedding/representation/classification;
+	- Reasoning as graph;
 - Graph techniques:
 	- Matrix factorization;
 	- Random Walk;
@@ -30,31 +35,27 @@
 	- http://helper.ipam.ucla.edu/publications/dlt2018/dlt2018_14506.pdf
 	- Z Wu, S Pan, F Chen, G Long, C Zhang, P Yu. A Comprehensive Survey on Graph Neural Networks. 2018
 	- Z Zhang, P Cui and W Zhu. Deep Learning on Graphs: A Survey. '18
-	- Jie Zhou, Ganqu Cui, Shengding Hua, Zhengyan Zhang, Cheng Yang, Zhiyuan Liu, Lifeng Wang, Changcheng Li, Maosong Sun. Graph neural networks: A review of methods and applications. '20
+	- J Zhou, G Cui, S Hua, Z Zhang, C Yang, Z Liu, L Wang, C Li, M Sun. Graph neural networks: A review of methods and applications. '20
 
 ## Benchmarks
 - Hu, W., Fey, M., Zitnik, M., Dong, Y., Ren, H., Liu, B., Catasta, M., and Leskovec, J. Open graph benchmark: Datasets for machine learning on graphs. NIPS'20
-
-## Unclassified
-- Bryon Aragam, Arash Amini, Qing Zhou. Globally optimal score-based learning of directed acyclic graphs in high-dimensions. NeurIPS'18
-- Fernando Gama, Alejandro Ribeiro, Joan Bruna. Stability of Graph Scattering Transforms. NIPS'18
 
 ## Graph Theory
 - Zhao, Y. Graph theory and additive combinatorics, 2019.
 	- https://yufeizhao.com/gtac/
 - Graph isomorphism:
 	- NP-hard, no polynomial time alg so far;
-	- Boris Weisfeiler and AA Lehman. A reduction of a graph to a canonical form and an algebra arising during this reduction. Nauchno-Technicheskaya Informatsia, 2(9):12–16, 1968.
-	- László Babai and Ludik Kucera. Canonical labelling of graphs in linear average time. FoCS'79
-	- Jin-Yi Cai, Martin Fürer, and Neil Immerman. An optimal lower bound on the number of variables for graph identification. Combinatorica'91
-	- Sergei Evdokimov and Ilia Ponomarenko. Isomorphism of coloured graphs with slowly increasing multiplicity of jordan blocks. Combinatorica'99
-	- **WL-Test**: Brendan L Douglas. The weisfeiler-lehman method and graph isomorphism testing. '11
-	- László Babai. Graph isomorphism in quasipolynomial time. STOC'16
+	- B Weisfeiler and A Lehman. A reduction of a graph to a canonical form and an algebra arising during this reduction. '68.
+	- L Babai and L Kucera. Canonical labelling of graphs in linear average time. FoCS'79
+	- J Cai, M Fürer, and N Immerman. An optimal lower bound on the number of variables for graph identification. Combinatorica'91
+	- S Evdokimov and I Ponomarenko. Isomorphism of coloured graphs with slowly increasing multiplicity of jordan blocks. Combinatorica'99
+	- **WL-Test**: B Douglas. The weisfeiler-lehman method and graph isomorphism testing. '11
+	- L Babai. Graph isomorphism in quasipolynomial time. STOC'16
 - Empirical/behavior:
 	- Lovasz, L. Large networks and graph limits, volume 60. American Mathematical Soc., 2012.
 	- Lovasz, L. and Szegedy, B. Limits of dense graph sequences. Journal of Combinatorial Theory, Series B, 96(6):933–957, 2006.
 - Spectral theory:
-	- Find a **good** partition;
+	- Find a good partition;
 	- Criteria:
 		- Min edges: cut(A, B);
 		- Normalized cut: cut(A, B)/ min(vol(A), vol(B));
@@ -101,15 +102,121 @@
 	- M Belkin, P Niyogi. Towards a theoretical foundation for Laplacian-based manifold methods. '08
 	- U Von Luxburg, M Belkin, O Bousquet. Consistency of spectral clustering. Annual of Statistics'08
 
+## Tasks
+- Edge prediction:
+	- Link Prediction Based on Graph Neural Networks. NIPS'18
+	- LinkNet: Relational Embedding for Scene Graph. NIPS'18
+- Holistic Isometry: 
+	- GIN: K Xu, W Hu, J Leskovec, and S Jegelka. How Powerful are Graph Neural Networks? ICLR'19
+		- WL-test: if x1 not isometric to x2, GNN(x1) ≠ GNN(x2);
+		- Theo: if GNN(x1) ≠ GNN(x2), then x1 not isometric to x2;
+		- Theo: WL not isometric -> if GNN(x1) ≠ GNN(x2), with sufficient layers, if:
+			- Aggregation update injective;
+			- ReadOut injective;
+		- Sum: injective aggregation;
+		- Proposed GIN: sum pooling;
+		- 1-layer MLP not sufficient;
+		- GCN/GraphSage not sufficient; (pooling not injective)
+
+## Graph Data-augmentation
+- Verma, V., Qu, M., Kawaguchi, K., Lamb, A., Bengio, Y., Kannala, J., and Tang, J. Graphmix: Improved training of gnns for semi-supervised learning. arxiv'19
+- Rong, Y., Huang, W., Xu, T., and Huang, J. Dropedge: Towards deep graph convolutional networks on node classification. ICLR'20
+- Wang, Y., Wang, W., Liang, Y., Cai, Y., and Hooi, B. Graphcrop: Subgraph cropping for graph classification. arxiv'20
+- Wang, Y., Wang, W., Liang, Y., Cai, Y., Liu, J., and Hooi, B. Nodeaug: Semi-supervised node classification with data augmentation. KDD'20
+- Zhao, T., Liu, Y., Neves, L., Woodford, O., Jiang, M., and Shah, N. Data augmentation for graph neural networks. AAAI'21
+- Park, H., Lee, S., Kim, S., Park, J., Jeong, J., Kim, K.M., Ha, J.W., and Kim, H. J. Metropolis-hastings data augmentation for graph neural networks. NIPS'21
+- Suresh, S., Li, P., Hao, C., and Neville, J. Adversarial graph augmentation to improve graph contrastive learning. arxiv'21
+- Tang, Z., Qiao, Z., Hong, X., Wang, Y., Dharejo, F. A., Zhou, Y., and Du, Y. Data augmentation for graph convolutional network on semi-supervised classification. arxiv'21
+- You, Y., Chen, T., Wang, Z., and Shen, Y. Bringing your own view: Graph contrastive learning without prefabricated data augmentations. arxiv'22
+
+## Backbone (Encoding)
+- Legacy (MLP):
+	- Scarselli IJCNN'05, TNN'09; Bruna, Lecun SPM'17;
+- GCN:
+	- Node-MLP + Edge-Laplacian;
+		- z = f(LXW); L: Laplacian;
+		- Spectral trick to accelerate;
+	- Bruna: Spectral-CNN, ICLR'14;
+	- DCNN; ChebNet;
+	- ChebNet: M Defferrard, X Bresson and P Vandergheynst. Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering, NIPS'16
+		- Fast localized filter: Graph Fourier Transform;
+		- Graph Coarsening;
+	- GCN, [M Welling; ICLR'17]
+- Attention:
+	- GAN, ...
+- Graph Matching
+	- Generalizing Graph Matching beyond Quadratic Assignment Model. NIPS'18
+	- (Probably) Concave Graph Matching. NIPS'18
+	- KONG: Kernels for ordered-neighborhood graphs. NIPS'18
+
+## Graph Generation
+- MLP:
+	- Graph-VAE: T Kipf and M Welling, '16
+- Autoregressive:
+	- GRAN: R Liao. NIPS'19
+		- Each step: learn to add new nodes and adjacency matrix, with conanical ordering;
+	- Graph-RNN: [M Segler, 17]
+	- GEG: Y Li, O Vinyals, C Dyer, R Pascanu, P Battaglia. Learning Deep Generative Models of Graphs. ICML'18
+	- GraphRNN: J. You, R. Ying, X. Ren, W. L. Hamilton, and J. Leskovec, GraphRNN: A deep generative model for graphs. ICML'18
+		- https://github.com/snap-stanford/GraphRNN
+		- Graph-level RNN;
+		- Edge-level RNN; (adjacency vector)
+		- Evaluation: MMD (Maximum Mean Discrepancy)
+	- Y Li, O Vinyals, C Dyer, R Pascanu, and P Battaglia. Learning deep generative models of graphs. 2018
+
+## Applications
+- Insight: ifer interaction between agents: Molecule; n-Body system; rigid body system;
+- Medical/bio:
+	- D K Duvenaud, et. al. Convolutional networks on graphs for learning molecular fingerprints. NIPS'15
+- Inference, reasoning between agents/objects:
+	- Problem setup:
+		- Given a set of objects as nodes with attributes oi=(oi1, oi2, ..., oin),
+		- Characterize relation as edge between them (bigger, behind, ...)
+		- Output: prediction
+	- IN: P Battaglia, et. al. Interaction networks for learning about objects, relations and physics. NIPS'16
+		- Insight: MLP to handle pairwise relationship, aggregate all effect to predict result;
+		- Effect: et+1 = f(o1,t, o2,t, r)
+		- Predict future: o2,t+1 = f(o2,t, et+1)
+	- RN: Raposo, D., et. al. Discovering objects and their relations from entangled scene representations. ICLR Workshop 2017
+		- Function gψ to discover obj relations, gψ(D) ≡ gψ(o1, o2, ..., on)
+		- No prior: r = fφ(gψ(o1, .., on)).
+		- Obj prior: r = fφ(gψ(o1), .., gψ(on)).
+		- Obj pair prior: r = fφ(gψ(o1, o2), .., gψ(oi, oj))
+		- External effects (gravity): X={xi}
+	- RN: A Santoro, et. al. A simple neural network module for relational reasoning. NIPS'17
+		- Insight: same as RN, on raw image rather than detected objects;
+			- RN(O) = fφ(Σij gθ(oi, oj))
+		- V (vertices); u (attributes); E (edges)
+		- Update and aggregate operator
+	- GN-Block: P W. Battaglia, et. al. Relational inductive biases, deep learning, and graph networks. 2018
+		- Insight: edge attributes; local, global aggregation;
+		- https://github.com/deepmind/graph_nets
+		- MPNN [Gilmer'17] is a special case of GN;
+		- A GN-block: G=(u,V,E), u: global attributes;
+			- Edge updates: ek ← φe(ek, vrk, vsk, u);
+			- Node updates:
+				- ei' ← ρe→v(Ei') aggregated updated edge attr;
+				- vi' ← φv(ei', vi, u);
+			- Global edge attr aggr: e' ← ρe→u(E')
+			- Global node attr aggr: v' ← ρv→u(V')
+			- Global attr update: u' ← φu()(e', v', u) 
+	- A Santoro, et. al. Measuring abstract reasoning in neural networks. ICML'18
+	- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
+- Vision: interaction between segments/proposals...
+	- X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. CVPR'17
+		- 3D-graph
+	- H Hu, J Gu, Z Zhang, J Dai, Y Wei. Relation Networks for Object Detection. CVPR'18
+		- Pairwise relation after proposals;
+		- Transformer for formulation;
+	- Y Li, A Gupta. Beyond Grids: Learning Graph Representations for Visual Recognition. NIPS'18
+- Generation: generate graph-topology
+	- NTG: H Chu, D Li, D Acuna, A Kar, M Shugrina, X Wei, M Liu, A Torralba, S Fidler. Neural Turtle Graphics for Modeling City Road Layouts. ICCV'19
+		- https://nv-tlabs.github.io/NTG/
+		- Node as street intersection, RNN-encoder;
+		- RNN-decoder with GRU;
+
 ## Learning with Graph Input, GNN
-- Basics:
-	- Nodes pass messages to neighbors by edge;
-	- Node/edge feature updates;
-	- Tasks:
-		- Node classification;
-		- Edge prediction;
-		- Graph embedding/classification;
-- Pinar Yanardag and SVN Vishwanathan. Deep graph kernels. KDD'15
+- P Yanardag and S Vishwanathan. Deep graph kernels. KDD'15
 	- RKHS: K(G, G') = (φ(G), φ(G)) = φ(G)'Mφ(G)
 	- Graph kernels:
 		- 1. graphlet: (f1, f2): normalized counts;
@@ -120,72 +227,36 @@
 	- Methodology for matrix M:
 		- Edit distance;
 		- Learning-based;
-- Tao Lei, Wengong Jin, Regina Barzilay, and Tommi Jaakkola. Deriving neural architectures from sequence and graph kernels. NIPS'17
-- Manzil Zaheer, Satwik Kottur, Siamak Ravanbakhsh, Barnabas Poczos, Ruslan R Salakhutdinov, and Alexander J Smola. Deep sets. NIPS'17
+- T Lei, W Jin, R Barzilay, and T Jaakkola. Deriving neural architectures from sequence and graph kernels. NIPS'17
+- M Zaheer, S Kottur, S Ravanbakhsh, B Poczos, R Salakhutdinov, and Alexander J Smola. Deep sets. NIPS'17
 	- Node-only, permutation invariant;
-- Keyulu Xu, Chengtao Li, Yonglong Tian, Tomohiro Sonobe, Ken-ichi Kawarabayashi, and Stefanie Jegelka. Representation learning on graphs with jumping knowledge networks. ICML'18
-- Haggai Maron, Heli Ben-Hamu, Hadar Serviansky, Yaron Lipman. Provably Powerful Graph Networks. NIPS'19
+- K Xu, C Li, Y Tian, T Sonobe, K Kawarabayashi, and S Jegelka. Representation learning on graphs with jumping knowledge networks. ICML'18
+- H Maron, H Ben-Hamu, H Serviansky, Y Lipman. Provably Powerful Graph Networks. NIPS'19
 - Fox, J. and Rajamanickam, S. How robust are graph
 neural networks to structural noise? arxiv'19	
-- Edge:
-	- Link Prediction Based on Graph Neural Networks. NIPS'18
-	- LinkNet: Relational Embedding for Scene Graph. NIPS'18
 - GNN:
-	- Gori, M., Monfardini, G., and Scarselli, F. A new model for learning in graph domains. IJCNN 2005
-	- Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. Computational capabilities of graph neural networks. TNN'09
-	- Scarselli, F., Gori, M., Tsoi, A. C., Hagenbuchner, M., and Monfardini, G. The graph neural network model. TNN'09
-	- A. Micheli, Neural network for graphs: A contextual constructive approach. TNN'09
-	- Bronstein, M. M., Bruna, J., LeCun, Y., Szlam, A., and Vandergheynst, P. Geometric deep learning: going beyond euclidean data. SPM'17
-	- **GLoMo**: Unsupervisedly Learned Relational Graphs as Transferable Representations, 2018
+	- GLoMo: Unsupervisedly Learned Relational Graphs as Transferable Representations, 2018
 	- Z Xinyi, L Chen. Capsule Graph Neural Network. ICLR'19
 		- https://docs.google.com/presentation/d/1g48ETPJGzi8xDAWEB53KiYxUCWVHwOBQCePvK5c10Ow/edit#slide=id.g2645f83e45_0_0
-	- **GIN**: Keyulu Xu, Weihua Hu, Jure Leskovec, and Stefanie Jegelka. How Powerful are Graph Neural Networks? ICLR'19
-		- WL-test: if x1 not isometric to x2, GNN(x1) ≠ GNN(x2);
-		- Theo: if GNN(x1) ≠ GNN(x2), then x1 not isometric to x2;
-		- Theo: WL not isometric -> if GNN(x1) ≠ GNN(x2), with sufficient layers, if:
-			- Aggregation update injective;
-			- ReadOut injective;
-		- Sum: injective aggregation;
-		- Proposed GIN: sum pooling;
-		- 1-layer MLP not sufficient;
-		- GCN/GraphSage not sufficient; (pooling not injective)
 - GCN:
-	- General idea: z = f(LXW), L: graph Laplacian, e.g. D^(-1)A, W: learnable weights, f(.) non-linear activation;
-	- GCN + spectral trick:
-		- Eigen-decomposition: O(N^3) computation
-		- O(N^2) memory, not efficient for big graphs;
-	- **Spectral CNN**: J Bruna, W Zaremba, A Szlam and Y LeCun. Spectral networks and locally connected networks on graphs. ICLR'14
-	- David K Duvenaud, Dougal Maclaurin, Jorge Iparraguirre, Rafael Bombarell, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P Adams. Convolutional networks on graphs for learning molecular fingerprints. NIPS'15
-	- Mathias Niepert, Mohamed Ahmed, and Konstantin Kutzkov. Learning convolutional neural networks for graphs. ICML'16
+	- M Niepert, M Ahmed, and K Kutzkov. Learning convolutional neural networks for graphs. ICML'16
 		- Vertice ordering;
 	- **DCNN**: J. Atwood and D. Towsley, Diffusion-convolutional neural networks, NIPS'16
 	- M. Defferrard, X. Bresson, and P. Vandergheynst. Convolutional neural networks on graphs with fast localized spectral filtering. NIPS'16
-	- **ChebNet**: M Defferrard, X Bresson and P Vandergheynst. Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering, NIPS'16
-		- Problem: classify graph on fixed graph;
-		- Localized in space; pooling;
-		- https://github.com/mdeff/cnn_graph
-		- https://github.com/xbresson/spectral_graph_convnets 
-		- **Fast localized filter: Graph Fourier Transform**;
-		- Graph Coarsening;
 	- **MPNN**: Gilmer, J., Schoenholz, S. S., Riley, P. F., Vinyals, O., and Dahl, G. E. Neural message passing for quantum chemistry. ICML'17
 		- Combine GNN and Convolutional-GNN
-	- **GCN-layer**: T. N. Kipf and M. Welling, Semi-supervised classification with graph convolutional networks. ICLR'17
-		- Problem: classify nodes;
-		- First order approximation of ChebNet;
-		- https://github.com/tkipf/gcn
-		- https://github.com/tkipf/pygcn (PyTorch)
-	- **GraphSage**: William L Hamilton, Rex Ying, and Jure Leskovec. Inductive representation learning on large graphs. NIPS'17
+	- **GraphSage**: W Hamilton, R Ying, and J Leskovec. Inductive representation learning on large graphs. NIPS'17
 	- **LGCN**: H. Gao, Z. Wang, and S. Ji, Large-scale learnable graph convolutional networks. KDD'18
-	- Sitao Luan, Mingde Zhao, Xiao-Wen Chang, Doina Precup. Break the Ceiling: Stronger Multi-scale Deep Graph Convolutional Networks. NIPS'18
-	- - Naganand Yadati, Madhav Nimishakavi, Prateek Yadav, Vikram Nitin, Anand Louis, Partha Talukdar. HyperGCN: A New Method For Training Graph Convolutional Networks on Hypergraphs. NIPS'18
+	- S Luan, M Zhao, X Chang, D Precup. Break the Ceiling: Stronger Multi-scale Deep Graph Convolutional Networks. NIPS'18
+	- N Yadati, M Nimishakavi, P Yadav, V Nitin, A Louis, P Talukdar. HyperGCN: A New Method For Training Graph Convolutional Networks on Hypergraphs. NIPS'18
 	- **AGCN**: R. Li, S. Wang, F. Zhu, and J. Huang, Adaptive graph convolutional neural networks. AAAI'18
 		- Augment a graph with a residual graph, incurs expensive computation;
-	- Vladlen Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
+	- V Koltun. Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search. NIPS'18
 	- R Liao, Z Zhao, R Urtasun, R Zemel. LanczosNet: Multi-Scale Deep Graph Convolutional Networks. ICLR'19
 		- https://github.com/lrjconan/LanczosNetwork
-	- Guohao Li, Matthias Muller, Ali Thabet, and Bernard Ghanem. DeepGCNs: Can GCNs Go as Deep as CNNs? ICCV'19
+	- G Li, M Muller, A Thabet, and B Ghanem. DeepGCNs: Can GCNs Go as Deep as CNNs? ICCV'19
 - Attention:
-	- **GGNN**: Yujia Li, Daniel Tarlow, Marc Brockschmidt, Richard Zemel. Gated Graph Sequence Neural Networks. ICLR'16
+	- **GGNN**: Y Li, D Tarlow, M Brockschmidt, R Zemel. Gated Graph Sequence Neural Networks. ICLR'16
 		- Iterate until convergence: ht = f(lv, l, lnbr(v), ht-1)
 	- **GAN**: P. Velickovic, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, Graph attention networks. ICLR'17
 		- Insight: aggregating neighbor feature with attention;
@@ -201,10 +272,10 @@ neural networks to structural noise? arxiv'19
 - Pooling:
 	- **GraphSage**: W. Hamilton, Z. Ying, and J. Leskovec, Inductive representation learning on large graphs. NIPS'17
 		- Introduce aggregation function;
-	- Muhan Zhang, Zhicheng Cui, Marion Neumann, and Yixin Chen. An end-to-end deep learning architecture for graph classification. AAAI'18
+	- M Zhang, Z Cui, M Neumann, and Y Chen. An end-to-end deep learning architecture for graph classification. AAAI'18
 		- Localized graph-conv + sortPooling;
-	- Rex Ying, Jiaxuan You, Christopher Morris, Xiang Ren, William L Hamilton, and Jure Leskovec. Hierarchical graph representation learning with differentiable pooling. NIPS'18
-	- Ryan L Murphy, Balasubramaniam Srinivasan, Vinayak Rao, and Bruno Ribeiro. Janossy pooling: Learning deep permutation-invariant functions for variable-size inputs. ICLR'19
+	- R Ying, J You, C Morris, X Ren, W Hamilton, and J Leskovec. Hierarchical graph representation learning with differentiable pooling. NIPS'18
+	- R Murphy, B Srinivasan, V Rao, and B Ribeiro. Janossy pooling: Learning deep permutation-invariant functions for variable-size inputs. ICLR'19
 		- https://github.com/PurdueMINDS/JanossyPooling
 	- Baek, J., Kang, M., and Hwang, S. J. Accurate learning of graph representations with graph multiset pooling. ICLR'20
 	- Bianchi, F. M., Grattarola, D., and Alippi, C. Spectral clustering with graph neural networks for graph pooling. ICML'20
@@ -222,26 +293,7 @@ neural networks to structural noise? arxiv'19
 	- Ruiz, L., Wang, Z., and Ribeiro, A. Graph and graphon neural network stability. arxiv'20
 	- Hu, Z., Fang, Y., and Lin, L. Training graph neural networks by graphon estimation, 2021.
 	- Vizuete, R., Garin, F., and Frasca, P. The laplacian spectrum of large graphs sampled from graphons. TNSE'21
-- Data-augmentation:
-	- Verma, V., Qu, M., Kawaguchi, K., Lamb, A., Bengio, Y., Kannala, J., and Tang, J. Graphmix: Improved training of gnns for semi-supervised learning. arxiv'19
-	- Rong, Y., Huang, W., Xu, T., and Huang, J. Dropedge: Towards deep graph convolutional networks on node classification. ICLR'20
-	- Wang, Y., Wang, W., Liang, Y., Cai, Y., and Hooi, B. Graphcrop: Subgraph cropping for graph classification. arxiv'20
-	- Wang, Y., Wang, W., Liang, Y., Cai, Y., Liu, J., and Hooi, B. Nodeaug: Semi-supervised node classification with data augmentation. KDD'20
-	- Zhao, T., Liu, Y., Neves, L., Woodford, O., Jiang, M., and Shah, N. Data augmentation for graph neural networks. AAAI'21
-	- Park, H., Lee, S., Kim, S., Park, J., Jeong, J., Kim, K.M., Ha, J.W., and Kim, H. J. Metropolis-hastings data augmentation for graph neural networks. NIPS'21
-	- Suresh, S., Li, P., Hao, C., and Neville, J. Adversarial graph augmentation to improve graph contrastive learning. arxiv'21
-	- Tang, Z., Qiao, Z., Hong, X., Wang, Y., Dharejo, F. A., Zhou, Y., and Du, Y. Data augmentation for graph convolutional network on semi-supervised classification. arxiv'21
-	- You, Y., Chen, T., Wang, Z., and Shen, Y. Bringing your own view: Graph contrastive learning without prefabricated data augmentations. arxiv'22
-- Spatial:
-	- **GGNN** (Gated Graph Neural Networks): K. Cho, B. Van Merriënboer, C. Gulcehre, D. Bahdanau, F. Bougares, H. Schwenk, and Y. Bengio, Learning phrase representations using rnn encoder-decoder for statistical machine translation. EMNLP'14
-	- **SSE** (Stochastic Steady-state Embedding): H. Dai, Z. Kozareva, B. Dai, A. Smola, and L. Song, Learning steady-states of iterative algorithms over graphs. ICLR'18
-- Spatial-temporal:
-	- Y. Seo, M. Defferrard, P. Vandergheynst, and X. Bresson, Structured sequence modeling with graph convolutional recurrent networks, arXiv preprint arXiv:1612.07659, 2016.
-	- Y. Li, R. Yu, C. Shahabi, and Y. Liu, Diffusion convolutional recurrent neural network: Data-driven traffic forecasting, ICLR'18.
-	- B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting, IJCAI'18
-	- S. Yan, Y. Xiong, and D. Lin, Spatial temporal graph convolutional networks for skeleton-based action recognition, AAAI'18
-	- A. Jain, A. R. Zamir, S. Savarese, and A. Saxena, Structural-rnn: Deep learning on spatio-temporal graphs, CVPR'16
-- Across-Graph
+- Graph similarity:
 	- **GMN**: Y Li, C Gu, T Dullien, O Vinyals, P Kohli. Graph Matching Networks for Learning the Similarity of Graph Structured Objects. ICML'19
 		- Input two graphs G1=(V1,E1), G2=(V2,E2);
 		- Output similarity;
@@ -252,12 +304,6 @@ neural networks to structural noise? arxiv'19
 		- Similarity produced from aggregator feature;
 
 ## Graph Generation
-- **GRAN**: R Liao, Y Li, Y Song, S Wang, W Hamilton, D Duvenaud, R Urtasun, R Zemel. Efficient Graph Generation with Graph Recurrent Attention Networks. NIPS'19
-	- Insight:
-		- Embedding: MLP-GNN; aggregation: GRU;
-		- Each step: learn to add new nodes and adjacency matrix, with **conanical ordering**;
-	- https://github.com/lrjconan/GRAN
-	- First to generate to scale up to 5K;
 - GAN:
 	- N. De Cao and T. Kipf, Molgan: An implicit generative model for small molecular graphs. ICML Workshop'18
 	- A. Bojchevski, O. Shchur, D. Zugner, and S. Gunnemann, NetGAN: Generating graphs via random walks. ICML'18
@@ -277,97 +323,14 @@ neural networks to structural noise? arxiv'19
 	- S. Pan, R. Hu, G. Long, J. Jiang, L. Yao, and C. Zhang, Adversarially regularized graph autoencoder for graph embedding. IJCAI'18
 - VAE:
 	- T. N. Kipf and M. Welling, Variational graph auto-encoders. 2016
-		- http://tkipf.github.io/graph-convolutional-networks/
-		- X: N x F (features on nodes); Adj: N x N;
-		- Training:
-			- Encoder: n x Act(W\*Laplacian\*X) -> (μ, σ);
-			- Sample z ~ N(μ, σ) for decoder;
-			- Decoder: (Linear - ReLU) x 3;
-			- Decoder output reshaped as N x N, loss with ground truth Adj-GT;
-			- Additional loss of KL-Div on μ, σ;
-		- Testing: directly sampling;
 	- Q Liu, M Allamanis, M Brockschmidt, and A Gaunt. Constrained Graph Variational Autoencoders for Molecule Design. NIPS'18
 	- Brute-Force VAE: M Simonovsky, N Komodakis. GraphVAE: Towards Generation of Small Graphs Using Variational Autoencoders. ICANN'18
 	- Wengong Jin, Regina Barzilay, and Tommi Jaakkola. Junction tree variational autoencoder for molecular graph generation. 2018
 	- T. Ma, J. Chen, and C. Xiao, Constrained generation of semantically valid graphs via regularizing variational autoencoders. NIPS'18
-- Autoregressive: graph-rnn;
-	- **Graph-RNN**: M Segler, T Kogej, C Tyrchan, and M P Waller. Generating focused molecule libraries for drug discovery with recurrent neural networks. 2017
-		- RNN on domain-specific sequentializations of graphs;
-	- **GEG**: Y Li, O Vinyals, C Dyer, R Pascanu, P Battaglia. Learning Deep Generative Models of Graphs. ICML'18
-		- (1) sample add a new node or terminate;
-		- (2) we add a node of this type to the graph;
-		- (3) check if any new edges;
-		- (4) select a node and add an edge connecting the new node to the selected node. The algorithm goes back to step (3) and repeats until the model decides not to add another edge. 
-		- (5) go back to (1);
-	- **GraphRNN**: J. You, R. Ying, X. Ren, W. L. Hamilton, and J. Leskovec, GraphRNN: A deep generative model for graphs. ICML'18
-		- https://github.com/snap-stanford/GraphRNN
-		- Graph-level RNN;
-		- Edge-level RNN; (adjacency vector)
-		- Evaluation: MMD (Maximum Mean Discrepancy)
-	- Yujia Li, Oriol Vinyals, Chris Dyer, Razvan Pascanu, and Peter Battaglia. Learning deep generative models of graphs. 2018
-	- **GRAN**: R Liao, Y Li, Y Song, S Wang, W Hamilton, D Duvenaud, R Urtasun, R Zemel. Efficient Graph Generation with Graph Recurrent Attention Networks. NIPS'19
-		- First to generate to scale up to 5K;
-		- https://github.com/lrjconan/GRAN
-		- Generate B rolls at a time;
-		- Node representation: linear mapping for initial node feat;
-		- GNN with Attentive Messages: add all augmented edges, run message passing in GNN, classification of the edges to decide y/n with GRU;
-
-## Graph Matching
-- Generalizing Graph Matching beyond Quadratic Assignment Model. NIPS'18
-- (Probably) Concave Graph Matching. NIPS'18
-- KONG: Kernels for ordered-neighborhood graphs. NIPS'18
 
 ## Applications
-- Applications:
-	- Infer interaction between agents: Molecule; n-Body system; rigid body system;
-- Inference, reasoning:
-	- Problem setup:
-		- Given a set of objects as nodes with attributes oi=(oi1, oi2, ..., oin),
-		- Characterize relation as edge between them (bigger, behind, ...)
-		- Output: prediction
-	- **IN**: Peter Battaglia, et. al. Interaction networks for learning about objects, relations and physics. NIPS'16
-		- Insight: MLP to handle pairwise relationship, aggregate all effect to predict result;
-		- Effect: et+1 = f(o1,t, o2,t, r)
-		- Predict future: o2,t+1 = f(o2,t, et+1)
-	- **RN**: Raposo, D., et. al. Discovering objects and their relations from entangled scene representations. ICLR Workshop 2017
-		- Function gψ to discover obj relations, gψ(D) ≡ gψ(o1, o2, ..., on)
-		- No prior: r = fφ(gψ(o1, .., on)).
-		- Obj prior: r = fφ(gψ(o1), .., gψ(on)).
-		- Obj pair prior: r = fφ(gψ(o1, o2), .., gψ(oi, oj))
-		- External effects (gravity): X={xi}
-	- **RN**: A Santoro, et. al. A simple neural network module for relational reasoning. NIPS'17
-		- Insight: same as RN, on raw image rather than detected objects;
-			- RN(O) = fφ(Σij gθ(oi, oj))
-		- V (vertices); u (attributes); E (edges)
-		- Update and aggregate operator
-	- **GN-Block**: P W. Battaglia, et. al. Relational inductive biases, deep learning, and graph networks. 2018
-		- Insight: edge attributes; local, global aggregation;
-		- https://github.com/deepmind/graph_nets
-		- MPNN [Gilmer'17] is a special case of GN;
-		- A GN-block: G=(u,V,E), u: global attributes;
-			- Edge updates: ek ← φe(ek, vrk, vsk, u);
-			- Node updates:
-				- ei' ← ρe→v(Ei') aggregated updated edge attr;
-				- vi' ← φv(ei', vi, u);
-			- Global edge attr aggr: e' ← ρe→u(E')
-			- Global node attr aggr: v' ← ρv→u(V')
-			- Global attr update: u' ← φu()(e', v', u) 
-	- Adam Santoro, Felix Hill, David Barrett, Ari Morcos, and Timothy Lillicrap. Measuring abstract reasoning in neural networks. ICML'18
-	- Eric Xing. Symbolic Graph Reasoning Meets Convolutions. NIPS'18
-- Vision: interaction between segments/proposals...
-	- X. Qi, R. Liao, J. Jia, S. Fidler, and R. Urtasun. 3d graph neural networks for rgbd semantic segmentation. CVPR'17
-		- 3D-graph
-	- Han Hu, Jiayuan Gu, Zheng Zhang, Jifeng Dai, Yichen Wei. Relation Networks for Object Detection. CVPR'18
-		- Pairwise relation after proposals;
-		- Transformer for formulation;
-	- Yin Li, Abhinav Gupta. Beyond Grids: Learning Graph Representations for Visual Recognition. NIPS'18
 - Few-shot learning:
 	- Garcia, V. and Bruna, J. Few-shot learning with graph neural networks. ICLR 2017
-- NLP: parse-tree;
-	- Learning to Act Properly: Predicting and Explaining Affordances from Images, 2018
-	- Bordes, A., Usunier, N., Garcia-Duran, A., Weston, J., and Yakhnenko, O. Translating embeddings for modeling multi-relational data. NIPS 2013
-- Vision: Scene-graph;
-	- RvNN-VAE: M Li, A Patil, K Xu, S Chaudhuri, O Khan, A Shamir, C Tu, B Chen, D Cohen-Or, H Zhang. GRAINS: Generative Recursive Autoencoders for INdoor Scenes. SIGGRAPH'19
 - PGM inference:
 	- K Yoon, R Liao, Y Xiong, L Zhang, E Fetaya, R Urtasun, R Zemel, X Pitkow. Inference in Probabilistic Graphical Models by Graph Neural Networks. ICMLW'19
 - Vision:
@@ -380,9 +343,4 @@ neural networks to structural noise? arxiv'19
 	- R Liao, M Brockschmidt, D Tarlow, A Gaunt, R Urtasun, R Zemel. Graph Partition Neural Networks for Semi-Supervised Classification, ICLRW'18
 		- https://github.com/Microsoft/graph-partition-neural-network-samples
 	- Yin Bi, Aaron Chadha, Alhabib Abbas, Eirina Bourtsoulatze, and Yiannis Andreopoulos. Graph-based object classification for neuromorphic vision sensing. ICCV'19
-- Graph Generation:
-	- **NTG**: Hang Chu, Daiqing Li, David Acuna, Amlan Kar, Maria Shugrina, Xinkai Wei, Ming-Yu Liu, Antonio Torralba, Sanja Fidler. Neural Turtle Graphics for Modeling City Road Layouts. ICCV'19
-		- https://nv-tlabs.github.io/NTG/
-		- Node as street intersection, RNN-encoder;
-		- RNN-decoder with GRU;
 - B. Yu, H. Yin, and Z. Zhu, Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting. IJCAI'18

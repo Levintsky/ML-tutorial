@@ -1,0 +1,167 @@
+# Dual Algorithms
+
+## Basics
+- Duality:
+- Lagrange duality: constrained;
+- Primal-dual: interior method for linear programming;
+- Proximal-dual: Bregman divergence, ISTA, mirror-descent;
+- Summaries:
+	- https://blog.csdn.net/asd136912/article/details/79149881
+	- https://www.cnblogs.com/90zeng/p/Lagrange_duality.html
+	- https://www.zhihu.com/question/58584814
+	- https://zhuanlan.zhihu.com/p/26514613
+- Tutorials:
+	- https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/lecture7.pdf
+- Courses:
+	- Cornell: https://people.orie.cornell.edu/dpw/orie6300/
+	- Berkeley: https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227A/
+	- Washington: https://courses.cs.washington.edu/courses/cse521/16sp/
+
+## Conjugate Function
+- Fenchel conjugate:
+	- f∗(y) := sup_x∈domf ⟨x, y⟩ − f(x)
+	- f∗ is convex even if f is not;
+- If differentiable, then Fenchel-Legendre transform:
+	- f∗(∇f(x)) = ⟨x, ∇f(x)⟩ − f(x)
+- Fenchel-Young inequality: f∗(u)+f(x) ≥ ⟨u,x⟩
+- Theo: f∗∗ = f, if f convex;
+- Theo: f∗ = f ⇔ f = 1/2 ∥·∥2
+- Examples:
+	- Linear: f(x) = ax + b, f∗(z) = supzx−(ax+b) = b or ∞ (z≠a)
+	- f(x) = −√(a^2−x^2), f∗(z) = a√(1+z^2)
+	- f(x) = 1/2 x†Ax, A≻0, f∗(z)= 1/2 z†A^−1z
+	- f(x) = max(0,1−x), f∗(z) = z
+	- Norm: f(x) = ∥x∥, f∗(z) = δ∥·∥∗≤1(z) (indicator unit ball)
+- Analogies: infimal convolution:
+	- (f ⊗ g)(x):= inf_y f(y) + g(x−y)
+	- (f ⊗ g)∗ = f∗ + g∗, and (f+g)∗ = f∗ ⊗ g∗.
+- Theo: Let T be a transform that maps Γ0 → Γ0 and satifies:
+	- (i) T(Tf) = f (closure); and
+	- (ii) f ≤ g ⇒ Tf ≥Tg.
+	- Then, T must "essentially" be the Fenchel transform. More precisely, ∃ c ∈ R, v ∈ Rd and B ∈ GLn(R) s.t.
+		- (Tf)(x) = (Lf)(Bx+v) + ⟨v, x⟩ + c
+- https://tintin.space/2019/04/20/Primal/
+- https://www.ise.ncsu.edu/fuzzy-neural/wp-content/uploads/sites/9/2019/03/Lecturenote5.pdf
+
+## Mirror descent
+- Definition:
+	- Dϕ(x, z) = ϕ(x) − (ϕ(z) + h∇ϕ(z),(x − z)i).
+- Intuition: replace the L2 regularization of ||xt-xt+1||^2 with Bregman Divergence;
+- Common examples:
+	- φ(x) | dϕ(x, y)
+	- x^2  | (x-y)^2; Squared
+	- Shannon entropy: xlogx - x | xlog(x/y) - (x-y)
+	- Logistic: xlogx + (1-x)log(1-x) | xlog(x/y) + (1-x)log(1-x/1-y)
+	- -logx | x/y - log(x/y) - 1; Itakura-Saito
+	- exp(x) | exp(x)-exp(y)-(x-y)exp(y)
+	- ∥.∥^2 | ∥x-y∥^2; Euclidean
+	- x†Ax | (x-y)†A(x-y)
+	- Negative-entropy: ∑xjlog2 xj | ∑xjlog(xj/yj); KL-divergence
+	- Generalized I-divergence: ∑xjlog xj | ∑xjlog(xj/yj) - ∑(xj-yj)
+- e.g. KL divergence
+	- xi,t+1 =  xt exp(−η∇f(xt)..i) / ∑xt exp(−η∇f(xt)..i)
+	- exponentiated gradient descent or entropic descent
+- Three-point lemma:
+	- Dφ(x, y) + Dφ(y, z) − Dφ(x, z) = ⟨∇φ(z) − ∇φ(y), x − y⟩
+- Exponential family:
+	- pφ(x|θ) = exp{⟨x, θ⟩ − φ(θ) − h(x)}
+	- pφ(x|θ) = exp{−Dφ∗(x, μ(θ))}gφ∗(x)
+		- φ∗(θ) = supx{⟨x, θ⟩ − φ(x)}: Fenchel conjugate of φ 
+		- μ(θ) = Eθ[x]
+		- gφ∗(x) = exp{φ∗(x)−h(x)}
+- Alternative view:
+	- ∇ϕ(xt+1) = ∇ϕ(xt) − ηt∇f(xt)
+- A second reformulation:
+	- ∇ϕ(xt+1) = ∇ϕ∗(∇ϕ(xt) − ηt∇f(xt)) with ϕ∗ as Fenchal-conjugate of ϕ.
+- Convergence:
+	- fbest - f∗ ~ O(1/√t)
+	- NAG: ~ O(1/t)?
+- Resources:
+	- Yuxin Chen's slides;
+	- https://zhuanlan.zhihu.com/p/34299990
+	- E. Candes. Mathematical optimization, MATH301 lecture notes, Stanford.
+	- S. Boyd. Convex optimization, EE364B lecture notes. Stanford.
+	- D. Bertsekas. Nonlinear Programming (2nd Edition). Athena Scientific, 2016.
+- A. Nemirovski, D. Yudin, Wiley. Problem complexity and method efficiency in optimization. 1983.
+- A Ben-Tal, T Margalit, and A Nemirovski. The ordered subsets mirror descent optimization method with applications to tomography. SIAM Journal on Optimization'01
+- A Beck, M Teboulle. Mirror descent and nonlinear projected subgradient methods for convex optimization. ORL'03.
+- I Dhillon, J Tropp. Matrix nearness problems with Bregman divergences. SIAM Journal on Matrix Analysis'07.
+- A Beck. First-order methods in optimization. SIAM'17
+
+## Primal-Dual also Proximal Methods
+- φ(x) := f(x) + r(x)
+	- f, r both convex, f differentiable;
+- e.g. f(x) = 1/2 ∥Ax−b∥^2 and r(x) = λ∥x∥1, Lasso
+- e.g. f(x) : Logistic loss, and r(x) = λ∥x∥1, sparse-LR
+- Subgradient: xk+1 = xk − ηkgk, gk ∈ ∂φ(xk)
+	- Convergence only O(1/√k)
+- Proximal gradient: xk+1 = prox αkr(xk −αk∇f(xk))
+	- Convergence only O(1/k) for f ∈ C1L!
+- Theo: firmly nonexpansive (FNE)
+	- ∥proxrx−proxry∥2 ≤ ⟨proxrx−proxry, x−y⟩
+- Moreau decomposition: y = proxr y + proxr∗ y
+- Accelerated (Nesterov):
+	- xk = proxαkh(yk−1 − αk∇f(yk−1)) (standard)
+	- yk = xk + k−1/k+2 (xk − xk−1) (historical)
+	- Convergence: φ(xk) − φ∗ ≤ 2L/(k+1)^2 ∥x0−x∗∥2, O(1/k^2)!
+- Douglas-Rachford splitting:
+	- Reflection operator: Rh(z) := 2 proxh(z) − z
+	- DR method:
+		- xk = proxh(zk)
+		- vk = proxf(2xk − zk)
+		- zk+1 = zk + γk(vk − xk)
+- Resources:
+	- Shenlong's slides;
+	- https://zhuanlan.zhihu.com/p/82622940
+	- https://zhuanlan.zhihu.com/p/103161094
+	- https://huixuan.wordpress.com/2015/01/02/primal-dual-algorithm%E7%9A%84%E7%B2%97%E6%B5%85%E8%A7%A3%E9%87%8A/
+- ISTA: A Beck and M Teboulle. A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems. SIAM'09
+- Combettes and Pesquet. Proximal Splitting Methods in Signal Processing '10
+- A. Chambolle and T. Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. JMIV'11
+- N. Parikh and S. Boyd. Proximal algorithms. Foundations and Trends in optimization, 2014.
+- Problem: H(x) = F(Kx)+G(x), K is kernel;
+- Fenchel duality with auxiliary y: L(x,y)= y'Kx-F∗(y) + G(x), where F∗(y)=sup_z {z'y-F(z)}
+
+## ADMM
+- Resource: Yuxin Chen's slides
+- Problem: minimize f(x) + f2(z) s.t. Ax + Bz=c;
+- min_λ f1∗(−A†λ) + f2∗(−B†λ) + ⟨λ, b⟩
+- Proximal methods:
+	- λ = argmin f1∗(−A†λ)+f2(−B†λ)+⟨λ,b⟩+ ∥λ−λt∥2
+- Turns out equivalent to ALMM (primal-dual):
+	- xt+1, zt+1 = argmin{f1(x)+f2(z)+ρ/2∥Ax + Bz - b + λt/ρ∥^2}
+	- λt+1 = λt + ρ(Axt+1 + Bzt+1 − b)
+- ADMM (cheaper than ALM):
+	- xt+1 : = arg min⟨A†λt+1, x⟩ + f1(x)
+	- zt+1 : = arg min⟨B†λt+1, z⟩ + f2(z)
+	- λt+1 = λt + ρ(Axt+1 + Bzt+1 − b)
+- Applications:
+	- robust PCA;
+	- graphical lasso;
+- Generally slower than gradient descent, Newton's method;
+- D. Gabay and B. Mercier. A dual algorithm for the solution of nonlinear variational problems via finite element approximation. Computers & Mathematics with Applications, 1976
+- S Boyd. Alternating Direction Method of Multipliers. 2011
+- Distributed Optimization and Statistical Learning via the Alternating Direction Method of Multipliers. 
+
+## Optimal Transport
+- Matthew Thorpe. Introduction to Optimal Transport. 2018
+	- Def 1.1. We say that T : X → Y transports μ ∈ P(X) to ν ∈ P(Y), and we call T a transport map, if
+		- ν(B) = μ(T−1(B)) for all ν-measurable sets B 搬运后测度相等;
+	- Def 1.3. Monge's Optimal Transport Problem: given μ ∈ P(X) and ν ∈ P(Y), 
+		- minimize M(T)= ∫X c(x, T(x)) dμ(x)
+		- over μ-measurable maps T : X → Y subject to ν = T#μ.
+	- A measure π ∈ P(X × Y) and think of dπ(x, y) as the amount of mass transferred from x to y
+	- Def 1.4. Kantorovich's Optimal Transport Problem: given μ ∈ P(X) and ν ∈ P(Y),
+		- minimize K(π)= ∫XxY c(x,y) dπ(x, y)
+		- over π ∈ Π(μ, ν).
+	- inf K(π) ≤ inf M(T). 可拆分搬运?
+	- Existence:
+		- Prop 1.5. Let μ ∈ P(X), ν ∈ P(Y) where X, Y are Polish spaces, and assume c : X × Y → [0, ∞) is lower semi-continuous. Then there exists π ∈ Π(μ, ν) that minimises K (defined in Definition 1.4) over all π ∈ Π(μ, ν).
+	- Special case 1d:
+		- Theorem 2.1. Let μ,ν ∈ P(R) with cumulative distributions F and G respectively. Assume c(x, y) = d(x−y) where d is convex and continuous. Let π† be the measure on R2 with cumulative distribution function H(x, y) = min{F (x), G(y)}. Then π† ∈ Π(μ, ν) and furthermore π† is optimal for Kantorovich’s optimal transport problem with cost function c. Moreover the optimal transport cost is
+			- minπ K(π)= ∫0..1 d(F^−1(t)−G^−1(t)) dt.
+			- Insight: 依cdf greedy搬到最近的;
+	- Theorem 3.1. Kantorovich Duality. Let μ ∈ P(X), ν ∈ P(Y) where X, Y are Polish spaces. Let c: X×Y → [0,+∞)be a lower semi-continuous cost function. Define K as in Def 1.4 and J by
+		- J: L1(μ) × L1(ν) → R, J(φ, ψ) = ∫X φdμ + ∫Y ψ dν.
+		- Let Φc ={(φ,ψ) ∈ L1(μ)×L1(ν) : φ(x)+ψ(y) ≤ c(x,y)}
+	- min K(π) = sup J(φ, ψ).

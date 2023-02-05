@@ -252,57 +252,16 @@
 	- Insight: case of mini-batch, a global variable β to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
 		<img src="/Bayes/images/VI/svi.png" alt="drawing" width="400"/>
 
-## Theory
-- Theoretical guarantees for EM under misspecified Gaussian mixture models. NIPS'18
-
-## Unclassified
-- DropMax: Adaptive Variational Softmax. NIPS'18
-- Latent Alignment and Variational Attention. NIPS'18
-- Topic Modeling
-	- Distilled Wasserstein Learning for Word Embedding and Topic Modeling (Lawrence Carin) NIPS'18
-	- Dirichlet belief networks for topic structure learning NIPS'18
-- Stein Variational Gradient Descent as Moment Matching NIPS'18
-- Improving Explorability in Variational Inference with Annealed Variational Objectives (MILA) NIPS'18
-- Mean-field theory of graph neural networks in graph partitioning NIPS'18
-- Regret bounds for meta Bayesian optimization with an unknown Gaussian process prior (MIT) NIPS'18
-- Eric Xing. DAGs with NO TEARS: Continuous Optimization for Structure Learning, NIPS'18
-- GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration, NIPS'18
-- Coupled Variational Bayes via Optimization Embedding (Le Song) NIPS'18
-- Discretely Relaxing Continuous Variables for tractable Variational Inference NIPS'18
-- Cluster Variational Approximations for Structure Learning of Continuous-Time Bayesian Networks from Incomplete Data NIPS'18
-- A Stein variational Newton method NIPS'18
-- Wasserstein Variational Inference NIPS'18
-- Variational Inference with Tail-adaptive f-Divergence NIPS'18
-- Boosting Black Box Variational Inference NIPS'18
-- Using Large Ensembles of Control Variates for Variational Inference NIPS'18
-- Streamlining Variational Inference for Constraint Satisfaction Problems NIPS'18
-- Importance Weighting and Variational Inference NIPS'18
-- Orthogonally Decoupled Variational Gaussian Processes NIPS'18
-- Improving Explorability in Variational Inference with Annealed Variational Objectives NIPS'18
-- Amortized Inference
-	- Amortized Inference Regularization. NIPS'18
-	- A General Method for Amortizing Variational Filtering. NIPS'18
-	- Stefan Webb, Adam Golinski, Robert Zinkov, N. Siddharth, Tom Rainforth, Yee Whye Teh, Frank Wood. Faithful Inversion of Generative Models for Effective Amortized Inference. NIPS'18
-
-## NIPS'18
-- Mohammad Emtiyaz Khan, Alexander Immer, Ehsan Abedi, Maciej Korzepa. Approximate Inference Turns Deep Networks into Gaussian Processes
-- Marcel Hirt, Petros Dellaportas, Alain Durmus. Copula-like Variational Inference
-- Justin Domke, Daniel Sheldon. Divide and Couple: Using Monte Carlo Variational Objectives for Posterior Approximation
-- Artem Sobolev, Dmitry Vetrov. Importance Weighted Hierarchical Variational Inference
-- Kazuki Osawa, Siddharth Swaroop, Mohammad Emtiyaz Khan, Anirudh Jain, Runa Eschenhagen, Richard E Turner, Rio Yokota. Practical Deep Learning with Bayesian Principles
-- Dominik Linzner, Michael Schmidt, Heinz Koeppl. Scalable Structure Learning of Continuous-Time Bayesian Networks from Incomplete Data
-- Trevor Campbell, Xinglong Li. Universal Boosting Variational Inference
-- Yixin Wang, David Blei. Variational Bayes under Model Misspecification
-- Tomasz Kuśmierczyk, Joseph Sakaya, Arto Klami. Variational Bayesian Decision-making for Continuous Utilities
-- Adam Foster, Martin Jankowiak, Elias Bingham, Paul Horsfall, Yee Whye Teh, Thomas Rainforth, Noah Goodman. Variational Bayesian Optimal Experimental Design
-- Andrew Stirn, Tony Jebara, David Knowles. A New Distribution on the Simplex with Auto-Encoding Applications
-- Dustin Tran, Mike Dusenberry, Mark van der Wilk, Danijar Hafner. Bayesian Layers: A Module for Neural Network Uncertainty
-- Edoardo Manino, Long Tran-Thanh, Nicholas Jennings. Streaming Bayesian Inference for Crowdsourced Classification
-- Farnood Salehi, William Trouleau, Matthias Grossglauser, Patrick Thiran. Learning Hawkes Processes from a handful of events
-- Peng Chen, Keyi Wu, Joshua Chen, Tom O'Leary-Roseberry, Omar Ghattas. Projected Stein Variational Newton: A Fast and Scalable Bayesian Inference Method in High Dimensions
-- Justin Domke. Provable Gradient Variance Guarantees for Black-Box Variational Inference
-- Arman Hasanzadeh, Ehsan Hajiramezanali, Krishna Narayanan, Nick Duffield, Mingyuan Zhou, Xiaoning Qian. Semi-Implicit Graph Variational Auto-Encoders
-- Trevor Campbell, Boyan Beronov. Sparse Variational Inference: Bayesian Coresets from Scratch
-- Dilin Wang, Ziyang Tang, Chandrajit Bajaj, Qiang Liu. Stein Variational Gradient Descent With Matrix-Valued Kernels
-- Laurence Aitchison. Tensor Monte Carlo: Particle Methods for the GPU era
-- Vaden Masrani, Tuan Anh Le, Frank Wood. The Thermodynamic Variational Objective
+## Latent Models
+- Binary latent factors:
+	- Z Ghahramani and T Griffiths. Infinite latent feature models and the indian buffet process. NIPS'06
+- Matrix Factorization:
+	- A Mnih and R Salakhutdinov. Probabilistic matrix factorization. NIPS'08
+- Clustering, co-clustering:
+	- C Kemp, J Tenenbaum, T Griffiths, T Yamada, and N Ueda. Learning systems of concepts with an infinite relational model. AAAI'06
+- Sparse coding:
+- Dependent GSM:
+	- Y Karklin and M Lewicki. Emergence of complex cell properties by learning to generalize in natural scenes. Nature'09
+- Structure discovery (recursive search-based):
+	- C Kemp and J Tenenbaum. The discovery of structural form. PNAS'08
+	- R Grosse, R Salakhutdinov, W Freeman, and J Tenenbaum. Exploiting compositionality to explore a large space of model structures. UAI'12

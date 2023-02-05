@@ -5,6 +5,7 @@
 	- P. Kall and S Wallace. Stochastic Programming. '94
 	- J Birge, F Louveaux. Introduction to Stochastic Programming. '97
 	- Ben-Tal, A Nemirovski. Lectures on Modern Convex Optimization: Analysis, Algorithms and Engineering Applications. SIAM'01
+	- Guillaume Garriogos. Handbook of Convergence Theorems for (Stochastic) Gradient Methods. 2023
 - Good resources:
 	- http://ruder.io/optimizing-gradient-descent/
 - Heavily used in neural networks;
@@ -18,6 +19,202 @@
 	- SGD: Momentum, Nesterov accelerated gradient, Adagrad, Adadelta, RMSprop, Adam, AdaMax, Nadam, AMSGrad
 	- Parallel/distributed: Hogwild!, Downpour SGD, Delay-tolerant Algorithms for SGD, TensorFlow, Elastic Averaging SGD
 	- Additional strategies: Shuffling and Curriculum Learning, Batch normalization, Early Stopping, Gradient noise
+
+## Handbook of Convergence
+- 1. Intro
+- 2. Theory & Notations
+	- Def-2.1 Jacobian;
+	- Def-2.2 Gradient;
+	- Def-2.3 Hessian;
+	- Def-2.5 L-Lipshitz: |F(y)-F(x)| ≤ L|y-x|
+	- Def-2.6 if differentiable: L-Lipshitz ⇔ |DF(x)|≤L
+	- Def-2.7 ∀x,y, t∈[0,1], f(tx+(1-t)y) ≤ tf(x) + (1-t)f(y)
+	- Lemma-2.8 f(x) ≥ f(y) + (∇(f(y), x-y) (2)
+		- Insight: def-2.7 with t->0
+	- Lemma-2.9 convex and ∇^2, then eigenvalue λ ≥ 0;
+	- Example-2.10 f(x) = 1/2 ∥Φx−y∥2
+	- Def-2.11 μ-strongly convex:
+		- μt(1−t)∥x−y∥^2 + f(tx+(1−t)y) ≤ tf(x) + (1−t)f(y)
+	- Lemma-2.12 μ-strongly convex ⇔ ∃g(x) convex, s.t.
+		- f(x) = g(x) + μ/2 ∥x∥^2.
+	- Lemma-2.13 stongly convex -> f unique minimizer;
+	- Lemma-2.14 ∀x,y ∈ Rd, stongly convex
+		- f(y) ≥ f(x)+⟨∇f(x),y−x⟩+μ2∥y−x∥2 (4)
+	- Lemma-2.15 μ-strongly convex, eigenvalue λ of Hessian ∇2f(x), we have λ ≥ μ.
+	- Def-2.17 Polyak-Lojasiewicz: μ-PL
+		- f(x) − inf(f) ≤ 1/2μ ∥∇f(x)∥2.
+	- Def-2.18 μ-strongly convex ⇒ μ-PL
+	- Example-2.19 Least-squares if PL.
+	- Example-2.20 Nonconvex PL function: f(t) = t^2 +3sin(t)^2. 
+	- Lemma-2.22. f differentiable PL function. Then
+		- x∗ ∈ argmin(f) ⇔ ∇f(x∗) = 0.
+	- Def-2.24 L-smooth ∥∇f(x)−∇f(y)∥ ≤ L∥x−y∥
+	- Lemma-2.25 L-smooth, then
+		- f(y) ≤ f(x) + ⟨∇f(x),y−x⟩ + L/2 ∥y−x∥2 (9)
+	- Lemma-2.26 L-smooth and ∇2, λ of ∇2f(x), we have |λ| ≤ L.
+	- 2.27 L-smooth and μ-strongly convex then μ ≤ L.
+	- Lemma-2.28 L-smooth with λ > 0,
+		- f(x−λ∇f(x)) − f(x) ≤ −λ(1−λL/2) ∥∇f(x)∥^2. (11)
+		- If inf f > −∞, 1/2L ∥∇f(x)∥2 ≤ f(x) − inf(f) (12)
+	- Lemma-2.29 convex + L-smooth, 
+		- 1/2L ∥∇f(y)−∇f(x)∥^2 ≤ f(y)−f(x)−⟨∇f(x),y−x⟩
+		- 1/L ∥∇f(x)−∇f(y)∥^2 ≤ ⟨∇f(y)−∇f(x), y−x⟩ (15)
+- 3. Gradient Descent
+	- Al-3.2 xt+1 = xt − γ∇f(xt)
+	- 3.3 Stepsizes Learning rate
+	- Theo-3.4 convex + L-smooth, 0<γ≤1/L, then 1/t-convergence
+		- f(xt) - inf(f) ≤ ∥x0 − x∗∥2/2γt
+	- Proof-3.4 Lyapunov arguments:
+		- Sufficient decrease: (11)
+			- f(xt+1) − f(xt) ≤ −γ(1 − γL)∥∇f(xt)∥2 ≤ 0
+		- Sufficient closer: L-smooth + (9)
+			- 1/2γ ∥xt+1−x∗∥2 − 1/2γ ∥xt −x∗∥2 ≤ −(f(xt+1) − inf f)
+		- Lyapunov energy is decreasing
+		- Et := 1/2γ ∥xt−x∗∥2 +t(f(xt)−inff)
+	- Proof-3.4 direct
+		- Sufficient closer each step: (15)
+			- ∥xt+1 − x∗∥2 ≤ ∥xt−x∗∥2 − 1/L^2 ∥∇f(xt)∥2;
+		- Sufficient decrease each step:
+			- let decrease δt=f(xt)−f(x∗)
+			- δt+1 ≤ δt - 1/2L∥x0 −x∗∥2 (f(xt)-f(x∗))^2
+		- Let β=1/2L∥x0 −x∗∥2
+			- β ≤ 1/δt+1 - 1/δt
+		- Tβ ≤ 1/δT, f(xT)−f(x∗) = δT ≤ 1/β(T−1)
+	- Theo-3.6 μ-strongly convex + L-smooth: linear-convergence
+		- ∥xt+1−x∗∥2 ≤ (1−γμ)^(t+1) ∥x0−x∗∥2
+	- Proof-3.6 1st-order
+		- Sufficient closer (4)+(12)
+		- ∥xt+1−x∗∥2 = (1-γμ)∥xt−x∗∥2 - 2γ(1-γL)(f(xt)-f(x∗))
+		- ∥xt+1−x∗∥2 ≤ (1-γμ)∥xt−x∗∥2
+	- Proof-3.6 with Hessian
+		- T(x)=x−γ∇f(x), T(x∗) = x∗
+		- Prove T(.) is (1−λμ)-Lipschitz;
+	- Corollary: O(log(1/ε)) complexity;
+	- Theo-3.9 μ-PL + L-smooth, 0<γ≤1/L,
+		- f(xt) − inf f ≤ (1−γμ)^t (f(x0)−inff)
+	- Proof-3.9
+		- Sufficient decrease: (9)
+		- f(xt+1) ≤ f(xt) − γ/2 ∥∇f(xt)∥^2
+- 4. Theory: Sum of Functions
+	- P-4.1 Sum of functions: f(x) = 1/n ∑fi(x)
+	- A-4.2 Sum of Convex:
+	- A-4.3 Sum of Lmax-smooth:
+	- Lemma-4.4 fi Li-smooth, then f Lavg-smooth
+	- Def-4.5 E[x], E[x|y], V[x]
+	- Lemma-4.7 Lmax-smooth in expectation, then
+		- 1/2Lmax E[∥∇fi(y)−∇fi(x)∥^2] ≤ f(y)−f(x)−⟨∇f(x),y−x⟩
+	- Lemma-4.8 1/2Lmax E[∥∇fi(x)−∇fi(x∗)∥^2] ≤ f(x)−inf(f)
+	- Def-4.9 interpolation holds: 
+		- ∃ x∗ ∈ Rd s.t. fi(x∗) = inf fi
+	- Def-4.13 function noise
+		- ∆∗f = inf(f) − 1/n∑inf(fi)
+	- Lemma-4.15  ∆∗f ≥ 0.
+		- Interpolation holds ⇔ if ∆∗f = 0.
+	- Def-4.16 Gradient noise
+		- σf∗ = inf(x∗∈argmin(f)) V[∇fi(x)]
+	- Lemma-4.18 (Sum of Lmax-Smooth)
+		- σf∗ ≤ 2 Lmax∆∗f
+		- each fi is μ-strongly convex, then 2μ∆∗f ≤ σf∗
+	- Lemma-4.19 Variance transfer (Lemma-2.28)
+		- E[∥∇fi(x)∥2] ≤ 2Lmax(f(x)−inf(f)) + 2Lmax ∆∗f
+	- Lemma-4.20 Lmax-smooth + sum-of-convex:
+		- E[∥∇fi(x)∥2] ≤ 4Lmax(f(x)−inf(f)) + 2σf∗ (38)
+- 5. SGD
+	- Alg-5.1 xt+1 = xt − γt∇fit(xt).
+	- Remark-5.2 Unbiased estimator:
+		- E[∇fi(xt)|xt] = ∇f(xt)
+	- Theo-5.3 Sum-of-Lmax-Smooth + Sum-of-Convex, then
+		- E[f(x ̄)−inf(f)] ≤ O(1/∑γ(1-2γkL)) + O(∑γ^2/∑γ(1-2γkL))
+	- Proof-5.3:
+		- Sufficient closer: (2)+(38)
+			- Ek[∥xk+1−x∗∥^2] ≤ ∥xk−x∗∥2 + 2γk(2γkL−1)(f(xk)−inff)) + 2γk2σf∗.
+		- Sufficient decrease: rearrange above
+			- 2γk(1−2γkLmax)E[f(x)−inff] ≤ E[∥xk−x∗∥^2] − E[∥xt+1−x∗∥^2] + 2γk^2σ∗f.
+		- Sum and telescopic cancellation:
+			- ∑0..t-1 E[ptk(f(xk)-inff)] ≤ O(1/∑γ(1-2γkL)) + O(∑γ^2/∑γ(1-2γkL))
+		- Convex + Jensen
+			- E[f(x ̄)−inf(f)] ≤ ...
+	- Theo-5.5 xt ̄=E[x] we have:
+		- if γt=γ<1/2Lmax, fixed learning rate,
+			- E[f(x ̄t)−f(x∗)] ≤ O(1/t) + C σ∗f
+		- if γt=γ/√t+1, then
+			- E[f(x ̄t)−f(x∗)] ~ O(log(k)/√k)
+	- Proof-5.5:
+		- ∑γt^2 ~ γ^2 log(k)
+		- ∑γt ~ 2γ(√k-√2)
+	- Corollary-5.6 O(1/ε^2) Complexity
+	- Theo-5.7 μ-strongly convex, then
+		- E[∥xt−x∗∥2] ≤ (1−γμ)^t∥x0−x∗∥2 + 2γ/μ σf∗
+	- Corollary-5.8 O(1/ε) Complexity
+	- Theo-5.9 PL
+- 6. Minibatch SGD
+	- ∇fB(xt) = 1/|B| ∑i∈B ∇fi(xt)
+	- Alg-6.1 MiniSGD xt+1 = xt − γt∇fBt(xt).
+	- Def-6.3 minibatch gradient noise:
+		- σb∗ = inf Vb[∇fB(x)]
+	- Def-6.4 Lb-smooth in expectation
+	- Lemma-6.5 σb∗= (n−b)/b(n-1) σf∗
+	- Theo-6.8 (similar to Theo-5.3)
+	- Theo-6.9 (similar to Theo-5.4)
+	- Theo-6.11 (similar to Theo-5.7)
+- 7. Stochastic Momentum
+	- Alg-7.1 Momentum
+		- mt = βtmt−1 + ∇fit(xt)
+		- xt+1 = xt − γtmt
+	- Equivalent to heavy-ball:
+		- xt+1 = xt − γˆt ∇fit (xt) + βˆt(xt − xt−1)
+	- Theo-7.4 Lmax-smooth, sum-of-convex
+		- γt = 2η/t+3, βt = t/t+2, with η ≤ 1/4Lmax
+		- Then E[f(xt)−inff] ≤ ∥x0−x∗∥^2/η(t+1) +2ησ∗f
+	- Proof-7.4:
+		- Sufficient close: convexity (Lemma-2.8) + variance-transfer (Lemma-4.20)
+		- E[∥zt+1−x∗∥2|xt] ≤ ∥zt−x∗∥2 − 2ηλt+1(f(xt) − inf f) + 2ηλt(f(xt−1)−inf f) + 2η^2σ∗f
+	- Corollary 7.5 O(1/ε2) Complexity
+- 8. Theory: Nonsmooth functions
+	- Def-8.1 domain, proper
+	- Def-8.2 lower semi-continuous
+	- Def-8.4 subgradient, ∂f(x) subdifferential;
+	- Lemma-8.5 convex and continuous: ∂f(x) ≠ ∅
+	- Lemma-8.6 differentiable: ∂f(x) = {∇f(x)}
+	- Prop-8.8 Fermat's x is minimizer ⇔ 0 ∈ ∂f(x)
+	- Lemma-8.12 μ-strongly convex
+		- f(y)−f(x)−⟨η,y−x⟩≥ μ/2 ∥y−x∥^2
+	- Def-8.13 Proximal operator
+		- proxg(x) := argmin_x′ g(x′) + 1/2 ∥x′−x∥2
+	- Lemma-8.15 proper-convex
+		- p=proxg(x) ⇔ x−p ∈ ∂g(p)
+	- Lemma-8.16 (Non-expansiveness) proxg is 1-Lipschitz
+	- Def-8.18 Bregman divergence:
+		- Df(y;x) = f(y)−f(x)−⟨∇f(x),y−x⟩
+	- Lemma-8.19 0 ≤ Df(x;x∗) ≤ F(x) − infF
+	- Lemma-8.20 variance-transfer, general convex
+		- V[∇fi(x)] ≤ 4Lmax Df(x; y) + 2V[∇fi(y)]
+	- Def-8.21 F=f+g, composite gradient noise
+		- σF∗ = inf_x∈argminF V[∇fi(x)]
+- 9. Stochastic Subgradient Descent
+	- Theo-9.5 Similar to Theo-5.3
+	- Theo-9.6
+	- Theo-9.8 Similar to Theo-5.7
+	- Assumption-9.9 (B–Bounded Solution). There exists B > 0 and a solution x∗ ∈ argmin f such that ∥x∗∥ ≤ B.
+	- Alg-9.10 PSSD
+		- xt+1 = projB(0,B)(xt − γtg(xt, ξt)),
+	- Theo-9.11 convex + G-bounded subgradient
+		-  ED[f(x ̄T)−inff] ≤ 1/√T(3B^2/γ +γG^2)
+- 10. Proximal Gradient Descent
+	- Problem-10.1 F(x) = f(x) + g(x), f differentiable, g proper;
+	- Alg-10.2 PGD: xt+1 = proxγg(xt − γ∇f(xt))
+	- Theo-10.3 g convex; f convex, L-smooth:
+		- F(x)−infF ≤ ∥x0−x∗∥2/2γt
+	- Proof-10.3:
+		- Decreasing:
+			- g(xt+1)−g(xt) ≤ −1/2γ ∥xt+1−xt∥^2 −⟨∇f(xt),xt+1 −xt⟩
+			- f(xt+1)−f(xt) ≤ ⟨∇f(xt), xt+1−xt⟩ + L/2 ∥xt+1−xt∥2
+			- F(xt+1) − F(xt) ≤ −1/2γ ∥xt+1−xt∥2 + L/2∥xt+1−xt∥2 ≤ 0
+		- Closer:
+			- 1/2γ ∥xt+1−x∗∥2 − 1/2γ ∥xt−x∗∥2 ≤ −(F(xt+1)−infF)
+	- Corollary-10.4 (O(1/t) Complexity)
+	- Theo-10.5 g convex; f μ-strongly convex + L-smooth;
+		- ∥xt+1−x∗∥2 ≤ (1−γμ) ∥xt − x∗∥2
 
 ## IFT-6085
 - 2. Convex Optimization
@@ -72,16 +269,14 @@
 		- E[f(w)] - f(w∗) ≤ Bρ/√T
 
 ## 1st-Order
+- Robbins, H. and Monro, S. A stochastic approximation method. Annals of Mathematical Statistics, 1951.
 - GD:
 	- Batch GD: batch-sze = whole training set;
 	- SGD: θ = θ - η∇θ J(θ;xi, yi)
 	- SGD with mini-batch: θ = θ - η∇θ J(θ;xi..i+n, yi..i+n)
 - Gradient descent optimization algorithms:
-	- Momentum: Qian, N. On the momentum term in gradient descent learning algorithms. 1999
-		- vt = γ vt-1 + η∇θ J(θ), average of historical gradient
-		- θ = θ - vt
 	- **NAG (Nestorov)**: Y Nesterov. A method for unconstrained convex minimization problem with the rate of convergence o(1/k2). 1983
-		- vt = γ vt-1 + η∇θ J(θ-γvt-1), average of historical gradient
+		- vt = γ vt-1 + η∇θ J(θ-γvt-1), look ahead to get gradient
 		- θ = θ - vt
 	- **AdaGrad**: J Duchi, E Hazan, and Y Singer. Adaptive subgradient methods for online learning and stochastic optimization. JMLR'11
 		- Insight: It adapts the learning rate to the parameters, performing smaller updates (i.e. low learning rates) for parameters associated with frequently occurring features, and larger updates (i.e. high learning rates) for parameters associated with infrequent features
@@ -102,7 +297,7 @@
 	- **Rmsprop**:
 		- E[g^2]t = 0.9E[g^2]t-1 + 0.1 gt^2; average 2nd-order momentum
 		- θt+1 = θt - η/√(E[g^2]t+ε)gt; normalize gradient by 2nd-order momentum
-	- **ADAM**: D. P. Kingma and J. Ba. Adam: A method for stochastic optimization. ICLR'15
+	- **ADAM**: D Kingma and J Ba. Adam: A method for stochastic optimization. ICLR'15
 		- Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface;
 		- Let β1, β2 be exponentil decay rates of momentum; m0=0, v0=0;
 		- gt = ∇θft(θt-1), gradient at timestep t;
@@ -117,8 +312,6 @@
 	- Other recent optimizers
 	- Visualization of algorithms
 	- Which optimizer to use?
-- Legacy: Robbins, H. and Monro, S. A stochastic approximation method. Annals of Mathematical Statistics, 1951.
-- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 
 ## 2nd-Order
 - Struggle to improve over first-order baselines for non-convex loss surfaces;
@@ -132,27 +325,27 @@
 		- Relation with Gauss-Newton
 		- https://www.zhihu.com/question/266846405
 		- https://zhuanlan.zhihu.com/p/82934100
-	- James Martens. New insights and perspectives on the natural gradient method. 2017
+	- J Martens. New insights and perspectives on the natural gradient method. 2017
 		- KL(Q(y|x)||P(y|x)) = ∫q(x,y) log[q(y|x)q(x)/p(y|x)q(x)]dxdy
 		- with training distribution, KL = -1/|S| Σ(x,y)∈S logp(y|x,θ), becomes standard loss;
-		- Fisher: F = E_p(x,y)[∇logp(x,y|θ)∇logp(x,y|θ)^T] = E_Qx[E_p(y|x)[gg^T]]
+		- Fisher: F = E_p(x,y)[∇logp(x,y|θ)∇logp(x,y|θ)†] = E_Qx[E_p(y|x)[gg†]]
 		- Geometric interpretation: steepest descent with instrinsic information geometry;
 			- KL(P(θ+d)||P(θ)) = 1/2 d^TFd + O(d^3), locally symmetric;
 	- Legacy:
 		- S.-I. Amari. Natural gradient works efficiently in learning. Neural Computation, 10(2): 251–276, 1998.
 		- S.-i. Amari and A. Cichocki. Adaptive blind signal processing-neural network approaches. Proceedings of the IEEE, 86(10):2026–2048, 1998.
 		- S.-i. Amari and H. Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
-	- Razvan Pascanu, Yoshua Bengio. Revisiting Natural Gradient for Deep Networks. arXiv preprint arXiv:1301.3584 (2013).
-	- Alberto Bernacchia, Mate Lengyel, Guillaume Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NIPS'18
-	- Thomas George, César Laurent, Xavier Bouthillier, Nicolas Ballas, Pascal Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
+	- R Pascanu, Y Bengio. Revisiting Natural Gradient for Deep Networks. arXiv preprint arXiv:1301.3584 (2013).
+	- A Bernacchia, M Lengyel, G Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NIPS'18
+	- T George, C Laurent, X Bouthillier, N Ballas, P Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
 	- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix.
 		- Cholesky decomposition.
-	- Octavian-Eugen Ganea, Gary Bécigneul, Thomas Hofmann. Hyperbolic Neural Networks. NIPS'18
+	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NIPS'18
 	- Higher-order:
-		- Yang Song, Jiaming Song, Stefano Ermon. Accelerating Natural Gradient with Higher-Order Invariance. ICML'18
+		- Y Song, J Song, S Ermon. Accelerating Natural Gradient with Higher-Order Invariance. ICML'18
 			- https://ermongroup.github.io/blog/geo/
 - Lower-Rank Approximation of Hessian:
-	- Martens, James. Deep learning via hessian-free optimization. ICML'10
+	- J Martens. Deep learning via hessian-free optimization. ICML'10
 	- **KFAC**: J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature. ICML'15
 		- Kronecker approximation to Fisher
 		- Assumption: FC (si = Wi\* ai) + non-linear (ai = φ(si)), then DWi=gi x ai-1, Fisher:\
@@ -165,7 +358,6 @@
 		- Byrd, R., Hansen, S., Nocedal, J., and Singer, Y. A stochastic quasi-newton method for large-scale optimization. SIAM Journal on Optimization'16
 	- Estimate the metric:
 		- Pascanu, Razvan and Bengio, Yoshua. Revisiting natural gradient for deep networks. ICLR'14
-		- KFAC. ICML'15
 		- **PRONG**: G. Desjardins, K. Simonyan, R. Pascanu, et.al. Natural neural networks. NIPS'15
 			- Whitening each layer.
 
@@ -191,15 +383,6 @@
 - **EASGD** Elastic Averaging SGD: Zhang, S., Choromanska, A., & LeCun, Y. Deep learning with Elastic Averaging SGD. NIPS'15
 - R Anil, V Gupta, T Koren, and Y Singer. Memory-efficient adaptive optimization for large-scale learning. 2019
 - Frank Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
-
-## Unclassified
-- Z Zhu. The Lingering of Gradients: How to Reuse Gradients Over Time. NIPS'18
-- W Yin. On Markov Chain Gradient Descent. NIPS'18
-- D Richards, P Rebeschini. Optimal Statistical Rates for Decentralised Non-Parametric Regression with Linear Speed-Up. NeurIPS'19
-- R Gower, D Koralev, F Lieder, P Richtarik. RSN: Randomized Subspace Newton. NeurIPS'19
-- O Sebbouh, N Gazagnadou, S Jelassi, F Bach, R Gower. Towards closing the gap between the theory and practice of SVRG. NeurIPS'19
-- A Kavis, K Levy, F Bach, V Cevher. UniXGrad: A Universal, Adaptive Algorithm with Optimal Guarantees for Constrained Optimization. NeurIPS'19
-- M. Jordan. Stochastic Cubic Regularization for Fast Nonconvex Optimization. NIPS'18
 
 ## SVGD
 - Qiang Liu, Dilin Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16

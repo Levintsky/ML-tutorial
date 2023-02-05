@@ -3,21 +3,7 @@
 ## Problem Definition
 - A structured model to explain a scene/object/...
 
-## Structural Inference Problems
-- Matrix Factorization:
-	- Mnih, A. and Salakhutdinov, R. R. Probabilistic matrix factorization. NIPS'08
-- Clustering, co-clustering:
-	- Kemp, C., Tenenbaum, J. B., Griffiths, T. L., Yamada, T., and Ueda, N. Learning systems of concepts with an infinite relational model. AAAI'06
-- Binary latent factors:
-	- Ghahramani, Z. and Griffiths, T. L. Infinite latent feature models and the indian buffet process. NIPS'06
-- Sparse coding:
-- Dependent GSM:
-	- Karklin, Y. and Lewicki, M. S. Emergence of complex cell properties by learning to generalize in natural scenes. Nature'09
-- Structure discovery (recursive search-based):
-	- Kemp, C. and Tenenbaum, J. B. The discovery of structural form. PNAS'08
-	- Grosse, R. B., Salakhutdinov, R., Freeman, W. T., and Tenenbaum, J. B. Exploiting compositionality to explore a large space of model structures. UAI'12
-
-## MRF/CRF Style
+## DL Meet MRF/CRF
 - S. Wang, A. Schwing, and R. Urtasun. Efficient inference of continuous markov random fields with polynomial potentials. NIPS'14
 - L. Chen, A. Schwing, A. Yuille, and R. Urtasun. Learning deep structured models. ICML'15
 	- Problem formulation:
@@ -26,10 +12,10 @@
 	- Outer loop: learning of NN parameters;
 - A. Schwing and R. Urtasun. Fully connected deep structured networks. arxiv'15
 - S. Zheng, S. Jayasumana, B. Romera-Paredes, V. Vineet, Z. Su, D. Du, C. Huang, and P. Torr. Conditional random fields as recurrent neural networks. ICCV'15
-- George Papandreou, Liang-Chieh Chen, Kevin Murphy, and Alan L. Yuille. Weakly- and Semi-Supervised Learning of a Deep Convolutional Network for Semantic Image Segmentation. ICCV'15
-- David Belanger and Andrew McCallum. Structured prediction energy networks. ICML'16
-- Liang-Chieh Chen, Jonathan T. Barron, George Papandreou, Kevin Murphy, and Alan L. Yuille. Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform. CVPR'16
-- Shenlong Wang, Sanja Fidler, Raquel Urtasun. Proximal Deep Structured Models. NIPS'16
+- G Papandreou, L Chen, K Murphy, and A Yuille. Weakly- and Semi-Supervised Learning of a Deep Convolutional Network for Semantic Image Segmentation. ICCV'15
+- D Belanger and A McCallum. Structured prediction energy networks. ICML'16
+- L Chen, J Barron, G Papandreou, K Murphy, and A Yuille. Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform. CVPR'16
+- S Wang, S Fidler, R Urtasun. Proximal Deep Structured Models. NIPS'16
 	- Structured inference problem (energy minimization):
 		- E(x,y;w) = ∑fi(yi,x;wu) + ∑α fα(yα,x;wα)>
 	- Algorithm:
@@ -37,8 +23,7 @@
 		- y = prox(gi,hi; yi - σ/h w'y)
 		- yi^ = yi + σ(yt+1 - yt)
 	- Application: image denoising; depth refinement; optical flow;
-- Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution,
-and Fully Connected CRFs. 2017
+- L Chen, G Papandreou, I Kokkinos, K Murphy, and A Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs. 2017
 
 ## Structure Inference Approaches
 - Search based:

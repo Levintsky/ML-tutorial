@@ -7,8 +7,9 @@
 	- More params does not lead to overfitting! (overparametrization)
 
 ## Unclassified
-- Vaishnavh Nagarajan, J. Zico Kolter. Uniform convergence may be unable to explain generalization in deep learning. NIPS'18
-- Fengxiang He, Tongliang Liu, Dacheng Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
+- V Nagarajan, Z Kolter. Uniform convergence may be unable to explain generalization in deep learning. NIPS'18
+- F He, T Liu, D Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
+- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 - M. Belkin, D. Hsu, S. Ma, and S. Mandal. Reconciling modern machine-learning practice and the classical bias-variance trade-off. PNAS'19
 	- Does not increase monotonically with intermediate dim m;
 - Uniform convergence may be unable to explain generalization in deep learning. NIPS'19 oral

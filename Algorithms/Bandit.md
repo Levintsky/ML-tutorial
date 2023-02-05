@@ -8,16 +8,16 @@
 ## Stanford-cs234 (lec-10)
 - A tuple of (A, R)
 	- Q(a) = E[r|a]
-	- V\* = max_a Q(a)
-	- Regret: lt = E[V\*-Q(at)]
-	- total regret: Lt = E[ΣV\*-Q(at)] = ΣE[Nt(a)]∆a (visit times gap)
+	- V∗ = max_a Q(a)
+	- Regret: lt = E[V∗-Q(at)]
+	- total regret: Lt = E[ΣV∗-Q(at)] = ΣE[Nt(a)]∆a (visit times gap)
 	- Goal: maximize cumulative Σrt or minimize total regret;
 - Greedy: could stuck on suboptimal;
 	- Estimate ri with MC;
 	- Greedy to select the highest value;
 - ε-greedy
 - Theory (Lai and Robbins): Asymptotic total regret is at least logarithmic in number of steps:
-	- limt->∞ Lt = logt Σ ∆a/KL(Ra|Ra\*)
+	- limt->∞ Lt = logt Σ ∆a/KL(Ra|Ra∗)
 - UCB:
 	- Estimate upper bound Ut(a), s.t. Q(a) < Ut(a) with high probability;
 	- Theory (Hoeffding's Inequality) X1,..., Xn i.i.d in [0,1], Xn' as sample mean, then:
@@ -25,15 +25,15 @@
 	- Estimate Q(a)' and Q(a) close enough:
 		- P(|Q(a)-Q(a)'|>=√(Clogt/N(a))) <= δ/T
 	- Number of time a non-optimal arm is pulled at most O(logT) times:
-		- Q(a)+√(Clogt/N(a))) >= Q(a\*)+√(Clogt/N(a\*))) >= Q(a\*)
-		- Q(a) + 2√(Clogt/N(a))) >= Q(a\*)
+		- Q(a)+√(Clogt/N(a))) >= Q(a∗)+√(Clogt/N(a∗))) >= Q(a∗)
+		- Q(a) + 2√(Clogt/N(a))) >= Q(a∗)
 		- Nt(a) <= 4ClogT/∆a^2
 	- UCB: a = argmax μa + √(2lnT/N(a))
 - Optimistic initialization:
 	- Initialize Q(a) high;
 	- Update: Q(at) += 1/N(at)(rt-Qt)
 - Probably Approximately Correct: mostly based on optimism or Thompson Sampling;
-	- Choose ε-optimal, s.t. p(Q(a)>=Q(a\*)-ε) > 1-δ
+	- Choose ε-optimal, s.t. p(Q(a)>=Q(a∗)-ε) > 1-δ
 	- Polynomial in the problem parameters (#actions,)
 - Bayesian Bandit:
 	- Knowledge about prior p(R), p[R|ht], ht=(a1,r1,...)
