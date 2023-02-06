@@ -279,11 +279,11 @@
 
 ## PDE
 - Classic:
-	- Laplacian: Lap(u) = 0
+	- Laplacian: Δu = 0
 	- Heat-eqn, diffusion: Lap(u) = c u_t
-		- u(r, t)=T(t)v(r)
-		- T'+ck^2T=0, exp(-k^2ct)
-		- Hermholtz: Lap(v)+k^2 v = 0
+		- u(r, t) = T(t)v(r)
+		- T' + ck^2T = 0, exp(-k^2ct)
+		- Hermholtz: Δv + k^2 v = 0
 	- Wave-eqn (vibrating string, D'alembert equation?): Lap(u) = c u_tt
 		- u(r,t)=T(t)v(r);
 		- T(t): sin/cos or exponential (depending on eigenvalue);
@@ -294,7 +294,7 @@
 - Categories:
 	- A u_xixj + B u_xi + cu + f = 0
 	- A, b, c, f only function of (x1, x2,...), linear;
-	- f=0: homogenious;
+	- f = 0: homogenious;
 	- Superposition principle: addible;
 	- A y'' + B y' + C = 0
 		- B^2 > 4AC: Hyperbolic (Wave-eqn)
@@ -310,7 +310,7 @@
 		- u_xx + u_yy = 0
 		- u(x2+y2=a2) = 0 (on cylinder)
 		- Polar coord: u_r2 + 1/r u_r + 1/r2 u_φ2 = 0
-		- u(r, rho) = R(r) Φ(φ)
+		- u(r, ρ) = R(r) Φ(φ)
 	- Inhomegenious eqn:
 		- e.g. u_tt - c u_xx = f
 		- Fourier series;
@@ -320,12 +320,12 @@
 		- General fo homogenious;
 - Common 2nd order PDE:
 	- Sphere Laplacian:
-		- u = R(r)Φ(φ)Theta(theta)
+		- u = R(r)Φ(φ)Θ(Θ)
 		- 1/R d/dr(r2 R') = λ
 		- Φ'' = -m^2 Φ, m integer
-		- λsin(theta)^2 + sin(theta)/Theta d/dtheta(sin(theta)Theta')=m^2
-			- set x = cos(theta),
-			- **Legendre Eqn**: ((1-x^2)d2/dx2 - 2x d/dx + l(l+1)) Theta(x)=0
+		- λsin(Θ)^2 + sin(Θ)/Θ d/dΘ(sin(Θ)Θ')=m^2
+			- set x = cos(Θ),
+			- **Legendre Eqn**: ((1-x^2)d2/dx2 - 2x d/dx + l(l+1)) Θ(x)=0
 	- Cylinder Laplacian:
 		- u = R(r)Φ(φ)Z(z)
 		- Φ''+λΦ=0, λ = m^2, Φ(φ)=Acos(mφ)+Bsin(mφ)
@@ -339,9 +339,9 @@
 		- Case III: μ<0, x=√(-μ)r
 			- R''(x)+R'(x)/x-(1+m2/x2)R(x)=0
 	- Hermholtz: Lap(v)+k^2 v=0
-		- Spherical: v(r, theta, φ)
+		- Spherical: v(r, Θ, φ)
 			- Φ: sin/cos
-			- Theta: Legendre eqn;
+			- Θ: Legendre eqn;
 			- l-order spherical Bessel: r^2 R''+2r R'+(k^2r^2-l(l+1))R=0
 				- Can be converted to Bessel;
 		- Cylinder: v=R(r)Φ(φ)Z(z)

@@ -88,65 +88,6 @@
 		- Newton: xn+1 = xn − (∇∇F(xn))^−1 ∇F(xn).
 			- (∇∇F)ij = ∂^2F/∂xi∂xj
 		- xn+1 = xn - α∇F(xn)
-- Chap 5: Methods for ODE
-	- 5.1 IVP
-		- y'(t) = f(y(t), t)
-		- Picard;
-	- 5.2 Numerical methods for Initial-Value Problems
-		- Forward Euler (a.k.a. explicit Euler).
-			- yn+1 = yn + h f(tn, yn).
-		- Backward Euler (a.k.a. implicit Euler). since you don't know yn+1.
-			- yn+1 = yn + h f(tn+1, yn+1).
-		- Trapezoidal (a.k.a. midpoint) rule (implicit).
-			- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1)) .
-		- Improved Euler, Runge-Kutta 2 (explicit). get a surrogate yn+1' first;
-			- yn+1' = yn + h f(tn, yn)
-			- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1))
-		- Runge-Kutta 4 (explicit)
-			- yn+1 = yn + h(k1 + 2k2 + 2k3 + k4),
-			- k1 = f(tn, yn), k2 = f(tn+h/2, yn+k1),
-			- k3 = f(tn+h/2, yn+h/2 k2), k4 = f(tn + h, yn + hk3).
-		- 5.2.1 Convergence
-			- yn+1 = Ψ(tn, yn, h),
-			- Local: en+1(h) = Ψ(tn, y(tn), h) − y(tn+1),
-			- Global: En(h) = yn − y(tn).
-			- Def 6. Consistency. lim(h->0) en(h)/h = 0
-			- Def 7. (Order) Ψ is of order p if en(h) ~ O(h^p+1)
-			- local error ~ O(h^p+1), then global tends to O(h^p)
-			- Forward/backward Euler: order 1;
-			- Midpoint, RK-2: order 2;
-			- RK-4: order 4;
-		- 5.2.2 Stability
-			- Def 8. (Linear stability) Suppose y'=λy for some λ ∈ C. Then the numerical method Ψ is linearly stable if yn → 0 as n → ∞.
-				- Re(λ) < 0;
-			- e.g. forward Euler: yn+1 = yn + hλyn = (1 + hλ)yn. y->0 provided |1 + hλ| < 1.
-			- e.g. backward: yn+1 = yn/(1-hλ). stability zone: Re(λ)<0
-			- e.g. Trapezoidal: yn+1/yn=(1+hλ/2)/(1-hλ/2), Re(λ)<0
-			- Multi-dimension vector var: A=∇y f(y,t), dy/dt=Ay(t), y(t)=y(0)exp(tA); Re(λ)<0;
-		- 5.2.3 Miscellaneous
-			- Deffered correction: uniform grid, lower order fitting first, then correct;
-			- Error: δ(t) = y(t) − πn(t); πn(.) n-th order interpolation;
-			- δ'(t) = f(y(t),t) − π'n(t)
-	- 5.3 Boundary-value problems
-		- Solve for u(x), s.t.:
-			- u''(x) = f(x), x ∈ \[0,1\], u(0)=a, u(1)=b; (Dirichlet)
-			- u''(x) = f(x), x ∈ \[0,1\], u'(0)=a, u'(1)=b; (Neumann)
-			- u''(x) = f(x), x ∈ \[0,1\], u(0)=u(1); (periodic)
-		- Shooting method for ODE;
-		- PDE: K matrix of shifting (-1, 2, -1), KU=F, solve U;
-		- Def 9. The local truncation error (LTE) of a numerical scheme KU = F, error made when evaluating the numerical scheme: KU=F+τ
-			- e.g. We know -(u(xj+1)-2u(xj)+u(xj-1))/h^2=f(xj)+O(h^2);
-			- LTE is O(h^2)
-		- Def 10. Actual error.
-		- 5.3.1 Matrix norms and eigenvalues
-			- Def 11. spectral norm or 2-norm. |A|=max|Ax|/|x| with vector 2-norm.
-				- |Ax|<=|A| |x|
-			- Theo 9. Let A=A'. Then |A| = max|λi(A)|.
-		- 5.3.2 Properties of the matrix K
-			- e = inv(K)τ
-			- Eigen value and vector of K.
-				- v(0)=v(1)=0, vn(x)=sin(nπx)
-		- 5.3.3 Other boundary conditions and other equations
 - Chap-6: Fourier analysis
 	- 6.1 The Fourier transform
 		- Def. Integrability. ∫|f(x)|dx < ∞ in the sense of Lebesgue integration. f ∈ L1(R) for the space of integrable functions.
@@ -243,6 +184,89 @@
 		- ∫-1..1 Tn(x)dx = ∫0..π cos(nθ)sinθdθ
 		- Estimate an
 		- ∫-1..1 Tn(x)dx = 0 (n odd); 2/(1-n^2) (n even).
+
+## Methods for ODE
+- MIT-18-330-Chap-5
+- 5.1 IVP
+	- y'(t) = f(y(t), t)
+	- Picard;
+- 5.2 Numerical methods for Initial-Value Problems
+	- Forward Euler (a.k.a. explicit Euler).
+		- yn+1 = yn + h f(tn, yn).
+	- Backward Euler (a.k.a. implicit Euler). since you don't know yn+1.
+		- yn+1 = yn + h f(tn+1, yn+1).
+	- Trapezoidal (a.k.a. midpoint) rule (implicit).
+		- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1)) .
+	- Improved Euler, Runge-Kutta 2 (explicit). get a surrogate yn+1' first;
+		- yn+1' = yn + h f(tn, yn)
+		- yn+1 = yn + h/2 (f(tn, yn) + f(tn+1, yn+1))
+	- Runge-Kutta 4 (explicit)
+		- yn+1 = yn + h(k1 + 2k2 + 2k3 + k4),
+		- k1 = f(tn, yn),
+		- k2 = f(tn+h/2, yn+k1),
+		- k3 = f(tn+h/2, yn+h/2 k2),
+		- k4 = f(tn + h, yn + hk3).
+	- 5.2.1 Convergence
+		- yn+1 = Ψ(tn, yn, h),
+		- Local: en+1(h) = Ψ(tn, y(tn), h) − y(tn+1),
+		- Global: En(h) = yn − y(tn).
+		- Def 6. Consistency. lim(h->0) en(h)/h = 0
+		- Def 7. (Order) Ψ is of order p if en(h) ~ O(h^p+1)
+		- local error ~ O(h^p+1), then global tends to O(h^p)
+		- Forward/backward Euler: order 1;
+		- Midpoint, RK-2: order 2;
+		- RK-4: order 4;
+	- 5.2.2 Stability
+		- Def 8. (Linear stability) Suppose y'=λy for some λ ∈ C. Then the numerical method Ψ is linearly stable if yn → 0 as n → ∞.
+			- Re(λ) < 0;
+		- e.g. forward Euler: yn+1 = yn + hλyn = (1 + hλ)yn. y->0 provided |1 + hλ| < 1.
+		- e.g. backward: yn+1 = yn/(1-hλ). stability zone: Re(λ)<0
+		- e.g. Trapezoidal: yn+1/yn=(1+hλ/2)/(1-hλ/2), Re(λ)<0
+		- Multi-dimension vector var: A=∇y f(y,t), dy/dt=Ay(t), y(t)=y(0)exp(tA); Re(λ)<0;
+	- 5.2.3 Miscellaneous
+		- Deffered correction: uniform grid, lower order fitting first, then correct;
+		- Error: δ(t) = y(t) − πn(t); πn(.) n-th order interpolation;
+		- δ'(t) = f(y(t),t) − π'n(t)
+- 5.3 Boundary-value problems
+	- Solve for u(x), s.t.:
+		- u''(x) = f(x), x ∈ [0,1], u(0)=a, u(1)=b; (Dirichlet)
+		- u''(x) = f(x), x ∈ [0,1], u'(0)=a, u'(1)=b; (Neumann)
+		- u''(x) = f(x), x ∈ [0,1], u(0)=u(1); (periodic)
+	- Shooting method for ODE;
+	- PDE: K matrix of shifting (-1, 2, -1), KU=F, solve U;
+	- Def 9. The local truncation error (LTE) of a numerical scheme KU = F, error made when evaluating the numerical scheme: KU=F+τ
+		- e.g. We know -(u(xj+1)-2u(xj)+u(xj-1))/h^2=f(xj)+O(h^2);
+		- LTE is O(h^2)
+	- Def 10. Actual error.
+	- 5.3.1 Matrix norms and eigenvalues
+		- Def 11. spectral norm or 2-norm. |A|=max|Ax|/|x| with vector 2-norm.
+			- |Ax|<=|A| |x|
+		- Theo 9. Let A=A'. Then |A| = max|λi(A)|.
+	- 5.3.2 Properties of the matrix K
+		- e = inv(K)τ
+		- Eigen value and vector of K.
+			- v(0)=v(1)=0, vn(x)=sin(nπx)
+	- 5.3.3 Other boundary conditions and other equations
+
+## PDE
+- Example: E(f) = ∫∥∇f(⃗x)∥2 d⃗x
+	- minE(f), s.t. f(⃗x) = g(⃗x) ∀x ∈ ∂Ω
+	- Solution: Laplacian Eqn
+		- ∇2f(⃗x) = 0 ∀⃗x ∈ Ω\∂Ω
+		- f(⃗x) = g(⃗x) ∀⃗x ∈ ∂Ω
+- Representing derivative operators
+	- Finite difference;
+	- Collocation:
+		- u(⃗x) ≈ ∑ aiφi(⃗x)
+		- w(⃗xi) = ∇2 u(⃗xi) = ∑ aj∇2φj(⃗xi)
+	- Finite Elements
+		- Check integrated quantities rather than pointwise;
+		- Def: binear operator
+			- ⟨u, v⟩∇2 ≡ ∫v(⃗x)∇2u(⃗x) d⃗x.
+		- finite elements method (FEM)
+			- u(⃗x) ≈ ∑ki=1 aiφi(⃗x)
+		- Galerkin method, requires ⟨u,v⟩∇2 = 0, ⟨u, φi⟩∇2 = 0
+		- [⟨φ1, φ1⟩∇2, ⟨φ1, φ2⟩∇2, ...] a = 0
 
 ## Numeric Linear Algebra
 - cost of Ax=b: n^3 generally
