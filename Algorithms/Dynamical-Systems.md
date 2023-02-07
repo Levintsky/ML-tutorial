@@ -6,6 +6,36 @@
 	- D Bertsekas. Dynamic programming and optimal control, volume 1. Athena scientific Belmont, MA, 1995.
 	- D Greenwood. Advanced dynamics. Cambridge University Press, 2006.
 	- C Wit, B Siciliano, and G Bastin. Theory of robot control. Springer Science & Business Media, 2012.
+- Background (physics):
+	- Constraint:
+		- Holomonic: f(rk, t) = 0;
+		- Non-holomonic: g(q, dq/ddt, t) = 0;
+	- Standard/Cartesian coordinate:
+		- coordinate: rj = rj(q(t))
+		- velocity: v, vk = drk/dt = ∑..j ∂rj/∂qi dqi/dt
+	- Generalized:
+		- Coordinates: q(t);
+		- Velocity: dq/dt;
+		- Force: Qi = ∑ Fj ∂rj/∂qi
+		- Momentum: Pi = ∂T/∂qi', canonically conjugate to qi;
+	- Assumption:
+		- Interal force does no work on δr; ∑F δr can cancel internal;
+		- ∑Fi δri = 0;
+	- Optimize x=x(t) s.t. J(x(t)) = ∫a.b F(t,x,x')dx
+		- δJ = ∫a.b [F(t,x+δx,x'+δx')-F(t,x,x')]dx
+		- δJ = 0 ⇒ d(∂F/∂x')dt = ∂F/∂x (Euler-Lagrange eqn)
+	- Lagrange Equation: d/dt[∂L/∂qi'] - ∂T/∂qi = Qi
+		- Lagrange-Eqn is similar in form with EL
+		- To minimize S = ∫Ldt
+	- T: kinetic; V: potential; Lagrange L=T-V;
+	- All force conservative: Fi = -∂V/∂ri
+		- Generalized force: Qi = - ∂V/∂qi
+		- ∂V/∂qi' = 0;
+		- Lagrange equation becomes: d/dt[∂L/∂qi'] - ∂L/∂qi = 0;
+	- Non conservative force τi: d/dt[∂L/∂qi'] - ∂L/∂qi = τi;
+	- Define energy with Legendre transform:
+		- H = ∑..i qi' ∂L/∂qi' - L = ∑..i Piqi' - L
+		- dq/dt = ∂H/∂p, dp/dt = -∂H/∂q
 - Classical ODE numerical solvers:
 	- Forward Euler (simplest RK);
 	- Midpoint, leapfrog;
@@ -17,7 +47,13 @@
 	- https://www.youtube.com/watch?v=1mVycBKb1TE
 - Optimal Control, Diffential equation, adjoint method:
 	- Pontryagin's maximum principle (Boltyanskii et al., 1960; Pontryagin, 1987)
-		<img src = '/DL/images/dynamic-system/msa-pmp.png' width = '400'>
+		- dx/dt = f(x, u); x(0) = x0; u(t) control;
+		- Objective: J = Ψ(x(T)) + ∫0.T L(x(t),u(t))dt
+	- Define Hamilton H(x(t), u(t), λ(t), t) = λ(t)†f(x, u) + L(x, u)
+	- Optimal trajectory x∗, u∗ should satisfy:
+		- H(x∗(t), u∗(t), λ∗(t), t) ≤ H(x(t), u(t), λ(t), t)
+		- -dλ/dt = H∗(t) = λ∗(t)†f∗(t) + L∗(t)
+		- λ(T) = Ψ(x(T))
 	- About adjoint method: https://blog.csdn.net/liangdaojun/article/details/100633277
 	- Adjoint sensitivity analysis for differential-algebraic equations: algorithms and software. JIAM J. Sci. Comput 2003
 - Fixed point:
@@ -81,6 +117,17 @@
 			- y2 = x2 + G(z1), x2 = y2 - G(z1);
 			- y1 = z1,         x1 = z1 - F(x2);
 		- The backprop: customized, constructing the value first;
+	- i-ResNet: J Behrmann, W Grathwohl, R Chen, D Duvenaud, J Jacobsen. Invertible Residual Networks. ICML'19
+		- https://github.com/jhjacobsen/invertible-resnet
+		- Main insight: same as RevNet and flow-based methods. but free-form;
+			- Add Spectral-Norm to make g() contractive i.e., Lip(g(θ)) < 1.
+			- Then backward Euler to compute x(t+1) from x(t) as fixed point:
+				- Iterate n times xi+1 = y - g(xi), with x0=y;
+		- Flow ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F()
+			- since F=I+g(), Taylor expansion: tr(ln(I+Jg(x))) = ∑k (-1)^k+1 tr(Jg)/k;
+		- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
+		- For (1), (2), the approximate trick;
+		- For (3), truncated at n steps;
 
 ## Continuous Neural Net/NODE
 - Problem setup: z(t) evolves through time:
@@ -92,7 +139,7 @@
 	- DTO: need to backprop inside the solver, expensive;
 		- DTO: ∂L/∂z0 = ∂L/∂z1(I+∂f(z0,θ)/∂z0)
 	- Both OTD and DTO error scales at O(dt)
-	- Trace estimation trick
+	- Trace estimation trick: Skilling-Hutchinson estimator
 - MSA: Q Li, L Chen, C Tai, W E. Maximum Principle Based Algorithms for Deep Learning. JMLR'18
 	- Insight: also leverage co-state (adjoint) + backward ODE;
 	- Problem setup:
@@ -157,32 +204,67 @@
 - Acceleration:
 	- HollowNet: T Chen, D Duvenaud. Neural Networks with Cheap Differential Operators. NIPS'19
 
+## Learn Dynamics
+- DeLaN: M Lutter, C Ritter, J Peters. Deep Lagrangian Networks: Using Physics as Model Prior for Deep Learning. ICLR'19
+	- Notation:
+		- T = q'H(q)q'/2: kinetic; H(q): symmetric positive definite;
+		- V: potential with dV/dq=g(q);
+		- τ: general force;
+		- Then d(∂L/∂q')/dt-∂L/∂q=τ
+	- Problem setup: estimate mass H(q) and force g(q);
+		- Let H(q) = L(q;θ)L(q; θ)†, estimate L instead of H;
+		- g(q) = g(q; ψ)
+		- (θ; ψ) = argmin l(f(q,q',q'',θ,ψ), τ)
+		- Supervision: l(.) any form s.t. Lagrange-eqn should hold;
+	- Inverse: LL^Tq'' + d(LLT)/dt q' - 1/2 ∂(q'LL^Tq')/∂q + g
+	- Application: learning an inverse dynamics model for robot control
+- HNN: S Greydanus, M Dzamba, J Yosinski. Hamiltonian Neural Networks. NIPS'19
+	- https://github.com/greydanus/hamiltonian-nn
+	- Goal: learn a Hamiltonian to preserve energy;
+		- Input p, q; learn H(p,q;θ) parametrized by MLP;
+	- Supervision: estimated ∂H/∂p, ∂H/∂q and true dp/dt, dq/dt should match;
+		- L = |∂H(θ)/∂p-∂q/∂t| + |∂H(θ)/∂q+∂p/∂t|
+	- Pixel-HNN:
+		- Input 2 frames to encode velocity;
+		- Supervision: HNN loss + autoencoder-L2 + autoencoder-latent-space;
+			- AE loss: latent z decode to get close to x;
+			- Hamilton loss: z(t+1) close to estimated z(t)+M∂H/∂z
+			- Conanical coord loss: Lcc = |zpt −(zqt −zqt+1)|, p is close to dq/dt.
+- LNN: M Cranmer, S Greydanus, S Hoyer, P Battaglia, D Spergel, S Ho. Lagrangian Neural Networks. ICLR'20 Workshop
+	- https://github.com/MilesCranmer/lagrangian_nns
+	- Problem: given q, q', estimate dynamic q'';
+		- Baseline NN: q'' = f(q, q')
+		- LNN: estimate Lagrange L=f(q,q'), q''= (∂2L/∂q'2)^(-1)(∂L/∂q-q'∂2L/∂q∂q')
+	- Background:
+		- S = ∫(T(qt,q't)−V(qt)) dt
+		- Many paths, physical system will take minimum δS = 0;
+		- Denote: (∇q∇q'^T L)ij = ∂^2L/∂qi∂qj
+		- d^2q/dt^2 = (∇q∇q'^T L)^-1 (∇qL-(∇q∇q'^T L)q')
+	- Solving EL with JAX;
+- SRNN: Z Chen, J Zhang, M Arjovsky, L Bottou. Symplectic Recurrent Neural Networks. ICLR'20
+	- Insight: use a symplectic integrator (leapfrog):
+		- pn+1/2 = pn − 1/2 ∆t V'(qn)
+		- qn+1 = qn + ∆t K'(pn+1/2)
+		- pn+1 = pn+1/2 − 1/2 ∆t V'(qn+1)
+- N Gruver, M Finzi, S Stanton, A G Wilson. Deconstructing the Inductive Biases of Hamiltonian Neural Networks. ICLR'22
+	- Insight: analyze why HNN outperforms NODE, with 3 reasons (energy cons, symplectic, 2nd-order)
+	- HNN: dz/dt = J∇H, with J as antisymmetric matrix;
+	- Reason 1 (Energy conservation): not the reason b/c numeric error accumulates;
+		- dH(z)/dt = ∇H(z)dz/dt = ∇H J ∇H = 0 (b/c J antisymmetric)
+	- Reason 2 (Symplectic vector Field): not the reason, symplectic regularization has negligible influence;
+		- J matrix is preserved by the dynamics;
+		- (JDF)'=JDF, b/c J=-J'
+		- Vector field has 0 divergence: Tr(DF)=0
+	- Reason 3 (2nd-order structure): main reason, acceleration directly
+		- (dq/dt; dp/dt)=(M^-1(q)p; -dV/dq)
+		- dq/dt = v
+		- dv/dt = A(q, v)
+	- Experiments: verified on Mojoco;
+
 ## Neural ODE
 - Basics:
 	- Neural net to approximate flow vector field and supervision at intermidiate/terminal time: NODE, ANODE;
 	- Learn to predict dynamics with neural net for control: HNN;
-- ODE-inspired network structure (discrete):
-	- **i-ResNet**: J Behrmann, W Grathwohl, R Chen, D Duvenaud, J Jacobsen. Invertible Residual Networks. ICML'19
-		- https://github.com/jhjacobsen/invertible-resnet
-		- Main insight: same as RevNet and flow-based methods. but **free-form**;
-			- Add Spectral-Norm to make g() contractive i.e., Lip(g(θ)) < 1.
-			- Then backward Euler to compute x(t+1) from x(t) as fixed point:
-				- Iterate n times xi+1 = y - g(xi), with x0=y;
-		- For generative model, ln(px(x)) = ln(pz(z))+ln|det(JF(x))|, with JF as the Jacobian of F(), since F=I+g() as the residual block, we could have a Taylor expansion.
-			- tr(ln(I+Jg(x))) = ∑k (-1)^k+1 tr(Jg)/k;
-		- Three computation drawbacks: (1) evaluate tr(J); (2) power of J; (3) Taylor has infinite terms;
-		- For (1), (2), the approximate trick;
-		- For (3), truncated at n steps;
-	- **Residual-Flow**: R Chen, J Behrmann, D Duvenaud, J Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
-		- Main insight: improves on RealNVP to allow **free-form** and get unbiased Log Density Estimation for MLE with **Russian roulette** vJv to estimate trace(J); similar to FFJORD;
-		- Flip a coin (Bernoulli) to decide when to stop; Improve on **i-ResNet**;
-		- https://github.com/rtqichen/residual-flows
-		- Theo: un-biased log density estimator for f(x)=x+g(x) with Lip(g)<1;
-			- logp(x)=logp(f(x))+En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k))
-		- Memory efficient bp: ∂log det(I+Jg(x,θ))/∂θ
-			- ∂log det(I+Jg(x,θ))/∂θ = En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k)), very expensive to save O(mn)
-		- BP:
-			- ∂L/∂θ = ∂L/∂log det(I+Jg(x,θ)) ∂log det(I+Jg(x,θ))/∂θ
 - ODE-inspired network structure (continuous):
 	- Sonoda, Sho and Murata, Noboru. Double continuum limit of deep neural networks. ICML Workshop'17
 		- ∂φt(x)/∂t = ∇Vt(φt(x)), x ∈ R
@@ -220,66 +302,13 @@
 			- min L=r(w)+Σi=1..d L(Xi,yi)
 			- L(Xi,yi)=λ(Ln-1 - Ln)
 		- Application: denoising;
-- Dynamic with physical inductive-bias:
-	- **DeLaN**: Michael Lutter, Christian Ritter & Jan Peters. Deep Lagrangian Networks: Using Physics as Model Prior for Deep Learning. ICLR'19
-		- Background:
-			- q: generalized coord, q': velocity;
-			- T = q'H(q)q'/2: kinetic;
-			- V: potential with dV/dq=g(q);
-			- τ: general force;
-			- Lagrange L=T-V; 
-			- Then d(∂L/∂q')/dt-∂L/∂q=τ
-		- Problem setup: estimate mass H(q) and force g(q);
-			- Denote: H(q) = L(q;θ)L(q; θ)T, g(q) = g(q; ψ)
-			- (θ; ψ) = argmin l(f(q,q',q'',θ,ψ), τ)
-		- Backward: LL^Tq'' + d(LLT)/dt q' - 1/2 ∂(q'LL^Tq')/∂q + g
-		- Forward: q'' from backward eqn;
-	- **HNN**: S Greydanus, M Dzamba, J Yosinski. Hamiltonian Neural Networks. NIPS'19
-		- Insight: learn a Hamiltonian to preserve energy;
-		- https://github.com/greydanus/hamiltonian-nn
-		- Hamiltonian Mechanics:
-			- dq/dt=∂H/∂p, dp/dt=-∂H/∂q
-		- HNN: L=|∂H(θ)/∂p-∂q/∂t|+|∂H(θ)/∂q+∂p/∂t|
-			- Input p, q; MLP to get H(p,q;θ);
-			- Take derivative to get ∂H/∂p, ∂H/∂q; L2-loss with true dp/dt, dq/dt;
-		- Pixel-HNN:
-			- Input 2 frames to encode velocity;
-			- Supervision: HNN loss + autoencoder-L2 + autoencoder-latent-space;
-				- AE loss: latent z decode to get close to x;
-				- Hamilton loss: z(t+1) close to estimated z(t)+M∂H/∂z
-				- Conanical coord loss: Lcc = |zpt −(zqt −zqt+1)|, p is close to dq/dt.
-	- SRNN: Z Chen, J Zhang, M Arjovsky, L Bottou. Symplectic Recurrent Neural Networks. ICLR'20
-	- **LNN**: Miles Cranmer, Sam Greydanus, Stephan Hoyer, Peter Battaglia, David Spergel, Shirley Ho. Lagrangian Neural Networks. ICLR'20 Workshop
-		- https://github.com/MilesCranmer/lagrangian_nns
-		- Background:
-			- S = ∫(T(qt,q't)−V(qt)) dt
-			- Many paths, physical system will take minimum δS = 0;
-			- Lagrange: L=T-V;
-			- Euler-Lagrange eqn: d(∂L/∂q')dt=∂L/∂q
-			- Denote: (∇q∇q'^T L)ij = ∂^2L/∂qi∂qj
-			- d^2q/dt^2 = (∇q∇q'^T L)^-1 (∇qL-(∇q∇q'^T L)q')
-		- Solving EL with JAX;
-	- Nate Gruver, Marc Finzi, Samuel Stanton, Andrew Gordon Wilson. Deconstructing the Inductive Biases of Hamiltonian Neural Networks. ICLR'22
-		- Insight: analyze why HNN outperforms NODE, with 3 reasons (energy cons, symplectic, 2nd-order)
-		- HNN: dz/dt = J∇H, with J as antisymmetric matrix;
-		- Reason 1 (Energy conservation): not the reason b/c numeric error accumulates;
-			- dH(z)/dt = ∇H(z)dz/dt = ∇H J ∇H = 0 (b/c J antisymmetric)
-		- Reason 2 (Symplectic vector Field): not the reason, symplectic regularization has negligible influence;
-			- J matrix is preserved by the dynamics;
-			- (JDF)'=JDF, b/c J=-J'
-			- Vector field has 0 divergence: Tr(DF)=0
-		- Reason 3 (2nd-order structure): main reason, acceleration directly
-			- (dq/dt; dp/dt)=(M^-1(q)p; -dV/dq)
-			- dq/dt = v
-			- dv/dt = A(q, v)
-		- Experiments: verified on Mojoco;
 
 ## Neural PDE
 - Generally 3 approaches:
 	- Forward pathwise: memory O(1), time O(LD)
 	- Backprop through solver: memory O(L), time O(L)
 	- Stochastic adjoint (ours): memory O(1), time O(Llog L)
-- **L-PDE**: Fang, Cong, Zhao, Zhenyu, Zhou, Pan, and Lin, Zhouchen. Feature learning via partial differential equation with applications to face recognition. Pattern Recognition, 69 (C):14–25, 2017.
+- **L-PDE**: C Fang, Z Zhao, P Zhou, and Z Lin. Feature learning via partial differential equation with applications to face recognition. PR'17.
 	- Learned-PDE;
 - PDE-inspired:
 	- **PDE-Net**: Z Long, Y Lu, X Ma, B Dong. PDE-Net: Learning PDEs from Data. ICML'18
@@ -308,22 +337,22 @@
 ## ML-Solver
 - Use ML (could be neural net) to solve a given ODE/PDE;
 - General:
-	- Isaac E Lagaris, Aristidis Likas, and Dimitrios I Fotiadis. Artificial neural networks for solving ordinary and partial differential equations. TNN'98
+	- I Lagaris, A Likas, and D Fotiadis. Artificial neural networks for solving ordinary and partial differential equations. TNN'98
 - ODE Solver:
 	- Nguyen, B. D., and McMechan, G. A. Five ways to avoid storing source wavefield snapshots in 2d elastic prestack reverse time migration. Geophysics'14
 		- Reversible numerical methods for ODEs have been studied in the context of hyperbolic differential equations;
-	- Michael Schober, David Duvenaud, Philipp Hennig. Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
+	- M Schober, D Duvenaud, P Hennig. Probabilistic ODE solvers with Runge-Kutta means. NIPS 2014
 		- Gaussian Process to solve ODE
-	- Weinan E. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
+	- W E. A proposal on machine learning via dynamical systems. Communications in Mathematics and Statistics. 2017
 		- Insight: first proposed connection between ResNet and ODE; ResNet = Forward Euler;
-	- Maziar Raissi, Paris Perdikaris, George Em Karniadakis. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
+	- M Raissi, P Perdikaris, George Em Karniadakis. Multistep neural networks for data-driven discovery of nonlinear dynamical systems. 2018
 		- https://github.com/maziarraissi/MultistepNNs
 		- Insight: fit a neural model to approximate dynamics;
 		- To model dx/dt=g(x), apply a neural net f(x, θ), s.t.
 			- yn = ∑ α(m)x(n−m) + ∆t β(m)f(x(n−m))
 			- Loss with MSE on y;
 - PDE solver:
-	- Dong, Bin, Jiang, Qingtang, and Shen, Zuowei. Image restoration: wavelet frame shrinkage, nonlinear evolution pdes, and beyond. Multiscale Modeling & Simulation'17
+	- B Dong, Q Jiang and Z Shen. Image restoration: wavelet frame shrinkage, nonlinear evolution pdes, and beyond. Multiscale Modeling & Simulation'17
 		- Insight: Conv operator as differentiation;
 	- Rassi. Numerical Gaussian processes for time-dependent and nonlinear partial differential equations. 2018
 
@@ -363,8 +392,7 @@
 	- Theorem of backprop through fixed point:
 - Equilibrium Propagation
 	- B. Scellier and Y. Bengio. Towards a biologically plausible backprop. arXiv'16
-	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models
-	and backpropagation. 2017
+	- B. Scellier and Y. Bengio. Equilibrium propagation: Bridging the gap between energy-based models and backpropagation. 2017
 		- A biologically inspired equilibrium propagation framework for an energy-based model whose prediction is the fixed-point of the energy dynamics at its local minimum;
 	- B. Scellier and Y. Bengio. Equivalence of equilibrium propagation and recurrent backpropagation. NC'19
 	- M Ernoult, J Grollier, D Querlioz, Y Bengio, B Scellier. Updates of Equilibrium Prop Match Gradients of Backprop Through Time in an RNN with Static Input. NIPS'19

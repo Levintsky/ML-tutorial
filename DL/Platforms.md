@@ -4,6 +4,8 @@
 - Good resources:
 	- https://zhuanlan.zhihu.com/p/29032307
 	- https://zhuanlan.zhihu.com/p/30976469
+- B Pearlmutter, J Siskind. Reverse-Mode AD in a Functional Framework: Lambda the Ultimate Backpropagator. TOPLAS'08
+- Conal Elliott. The simple essence of automatic differentiation. 2018
 
 ## DL
 - DistBelief:

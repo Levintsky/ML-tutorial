@@ -286,6 +286,16 @@
 	- Recurrent (RNN, shared para across conditioners):
 		- Transformation autoregressive networks. ICML'18
 		- IAF (RNN-version);
+	- Free-form: required tricks to keep Lipschitz and estimate det-Jacobian;
+		- Residual-Flow: R Chen, J Behrmann, D Duvenaud, J Jacobsen. Residual Flows for Invertible Generative Modeling. NIPS'19
+			- Main insight: free-form + augmented LogP(.) with Russian roulette vJv for trace(J);
+			- Flip a coin (Bernoulli) to decide when to stop; Improve on i-ResNet;
+			- https://github.com/rtqichen/residual-flows
+			- Theo: un-biased log density estimator for f(x)=x+g(x) with Lip(g)<1;
+				- logp(x)=logp(f(x))+En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k))
+			- Memory efficient bp: ∂log det(I+Jg(x,θ))/∂θ
+				- ∂log det(I+Jg(x,θ))/∂θ = En,v(∑k=1..n (-1)^k1+1/k vTJg(x)v/P(N>=k)), very expensive to save O(mn)
+			- BP: ∂L/∂θ = ∂L/∂log det(I+Jg(x,θ)) ∂log det(I+Jg(x,θ))/∂θ
 	- CNF: FFJORD; PointFlow ICCV'19; occflow;
 		- NODE: trace required; Hutchinson for fast trace [1990, FFJORD]
 		- Solving forward: Runge-Kutta family;

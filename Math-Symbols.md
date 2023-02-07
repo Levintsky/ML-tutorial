@@ -32,7 +32,7 @@
 - γ	Euler-Mascheroni constant	γ = 0.5772156649...	 
 - φ	golden ratio
 - π	= 3.141592654...
-- AT, A†, A*
+- AT, A†, A∗
 
 ## Logic symbols
 - ⋅	^ &	+ ∨ |

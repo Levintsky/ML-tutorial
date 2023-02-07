@@ -20,13 +20,13 @@
 
 ## Modeling the skilled movement of articulated figures
 - Kinematics:
-	- Alla Safonova and Jessica K Hodgins. Construction and optimal search of interpolated motion graphs. TOG'07
-	- Yongjoon Lee, Kevin Wampler, Gilbert Bernstein, Jovan Popović, and Zoran Popović. Motion Fields for Interactive Character Locomotion. SIGGRAPH Asia 2010
-	- Yuting Ye and C. Karen Liu. 2010b. Synthesis of Responsive Motion Using a Dynamic Model. CGF'10
-	- Sergey Levine, Jack M. Wang, Alexis Haraux, Zoran Popović, and Vladlen Koltun. 2012. Continuous Character Control with Low-Dimensional Embeddings. TOG'12
-	- Shailen Agrawal and Michiel van de Panne. Task-based Locomotion. TOG'16
-	- Daniel Holden, Jun Saito, and Taku Komura. 2016. A Deep Learning Framework for Character Motion Synthesis and Editing. TOG'16
-	- Daniel Holden, Taku Komura, and Jun Saito. 2017. Phase-functioned Neural Networks for Character Control. TOG'17
+	- A Safonova and J Hodgins. Construction and optimal search of interpolated motion graphs. TOG'07
+	- Y Lee, K Wampler, G Bernstein, J Popović, and Z Popović. Motion Fields for Interactive Character Locomotion. SIGGRAPH Asia'10
+	- Y Ye and C Liu. 2010b. Synthesis of Responsive Motion Using a Dynamic Model. CGF'10
+	- S Levine, J Wang, A Haraux, Z Popović, and V Koltun. Continuous Character Control with Low-Dimensional Embeddings. TOG'12
+	- S Agrawal and M Panne. Task-based Locomotion. TOG'16
+	- D Holden, J Saito, and T Komura. A Deep Learning Framework for Character Motion Synthesis and Editing. TOG'16
+	- D Holden, T Komura, and J Saito. Phase-functioned Neural Networks for Character Control. TOG'17
 - Physics based: products of an underlying simplified model and an optimization process
 	- Stelian Coros, Philippe Beaudoin, and Michiel van de Panne. Generalized Biped Walking Control. TOG'10
 	- Yuting Ye and C Karen Liu. Optimal feedback control for character animation using an abstract model. TOG'10

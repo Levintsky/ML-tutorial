@@ -10,6 +10,9 @@
 - Program synthesis:
 	- **Neural-Symbolic VQA**: K Yi, J Wu, C Gan, A Torralba, P Kohli, J Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding. NeurIPS'18
 	- Y Liu, Z Wu, D Ritchie, W Freeman, J Tenenbaum, and J Wu. Learning to describe scenes with programs. ICLR'19
+- C Liang, J Berant, Q Le, K Forbus, N Lao. Neural Symbolic Machines: Learning Semantic Parsers on Freebase with Weak Supervision. ACL'17
+- C Liang. Integrating Machine Learning and Symbolic Reasoning: Learning to Generate Symbolic Representations from Weak Supervision. Thesis 2018
+- C Liang, M Norouzi, J Berant, Q Le, N Lao. Memory augmented policy optimization for program synthesis and semantic parsing. NeurIPS'18
 
 ## Backbone
 - CNN-RNN: NMN; Neural-Symbolic VQA;

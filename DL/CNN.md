@@ -4,12 +4,12 @@
 - Activation: always used with BatchNorm
 
 ## Layer/Operator Design
-- **CoordConv**: R Liu, J Lehman, P Molino, F Such, E Frank, A Sergeev, J Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 - Strided-Conv;
 - Dilated-Conv;
 	- F Yu and V Koltun. Multi-scale context aggregation by dilated convolutions. arxiv'15
 	- L. Chen, G. Papandreou, I. Kokkinos, K. Murphy, and A. L. Yuille. Deeplab: Semantic image segmentation with deep convolutional. PAMI'18
 	- H. Zhao, J. Shi, X. Qi, X. Wang, and J. Jia. Pyramid scene parsing network. CVPR'17
+- CoordConv: R Liu, J Lehman, P Molino, F Such, E Frank, A Sergeev, J Yosinski. An intriguing failing of convolutional neural networks and the CoordConv solution. NIPS'18
 - Pooling, Aggregation
 	- R Arandjelovic, P Gronat, A Torii, T Pajdla, J Sivic. NetVLAD: CNN architecture for weakly supervised place recognition. 2016
 
@@ -69,20 +69,48 @@
 	- Check AutoML for details;
 
 ## Performance
-- ImageNet:
-	- AlexNet: top-1 63.5%, top-5 84.7%;
+- ImageNet: (params/flops) top-1
+	- AlexNet: 63.5%, top-5 84.7%;
 	- SPP: top-1 72.1%, top-5 90.8%
 	- VGG: top-1 76.3%, top-5 93.2%
 	- Inception-V1: top-5 93.3%; (1st of ILSVRC'14)
-	- Inception-V2: top-1 79.9%, top-5 95.0%;
-	- ResNet: top-1 80.6%, top-5 95.5%; (1st of ILSVRC'15)
-	- Inception-V3: top-1 82.7%, top-5 96.5%;
-	- Inception-V4: top-1 83.5%, top-5 96.9%;
-	- ResNext: top-1 80.9%, top-5 95.6%; (2nd of ILSVR'16)
-	- SENet: (1st of ILSVR'17)
-	- DenseNet: top-1 79.2%, top-5 94.7%;
-	- EfficientNet: top-1 81.6%(B3), 82.9%(B4), ..., 84.3%(B7);
+	- Inception-V2: 79.9%, top-5 95.0%;
+	- ResNet: 80.6%; (1st of ILSVRC'15)
+		- R-18 (12M/1.8B): 69.8%
+		- R-34 (21M/3.7B): 73.3%
+		- R-50 (25M/4.1B): 80.9%
+		- R-101 (44M/7.8B): 81.9%
+		- R-152 (60M/11B): 82.3% (78.3% old code)
+	- Inception-V3: 82.7%, top-5 96.5%;
+	- Inception-V4: 83.5%, top-5 96.9%;
+	- ResNext-101 (32B): 80.9%, top-5 95.6%; (2nd of ILSVR'16)
+	- SENet (42B): 82.7% (1st of ILSVR'17)
+	- NASNet-A (24B): 82.9%
+	- DenseNet: 79.2%, top-5 94.7%;
+	- AmeobaNet-C (41B): 83.5%
+	- EfficientNet:
+		- B1 (0.7B): 79.1%
+		- B3 (1.8B): 81.6%
+		- B4 (4.2B): 82.9%
+		- B5 (9.9B): 83.6%
+		- B7: 84.3%;
+	- MobileNet-v2: (/0.3B): 72.2%
+	- MobileNet-v3:
+		- Small (2M/0.06B): 67.7%
+		- Large (5M/0.2B): 75.3%
 	- RegNet: top-1 80.0%(4G), 81.7%(8G), 82.9%(16G);
+	- ViT:
+		- B-16 (86M/17B): 81.1% (85% SWAG)
+		- B-32 (88M/4.4B): 75.9%
+		- L-16 (304M/61B): 79.7% (88% SWAG)
+		- L-32 (306M/15B): 77.0%
+	- Swin:
+		- T (28M/4.4B): 81.5%
+		- Tv2 (28M/5.9B): 82.1%
+		- S (49M/8.7B): 83.2%
+		- Sv2 (50M/11.5B): 83.7%
+		- B (88M/15.4B): 83.6%
+		- Bv2 (88M/20B): 84.1%
 - COCO:
 	- ResNext: AP-at-0.5 51.9%, AP 30.0%;
 
