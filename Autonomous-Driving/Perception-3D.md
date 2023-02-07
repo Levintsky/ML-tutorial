@@ -19,10 +19,10 @@
 	- Multi-scale is very important in 2D detection;
 
 ## Survey
-- Eduardo Arnold, Omar YAl-Jarrah, Mehrdad Dianati, Saber Fallah, David Oxtoby, and Alex Mouzakitis. A Survey on 3D Object Detection Methods for Autonomous Driving Applications. T-ITS'19
+- E Arnold, O YAl-Jarrah, M Dianati, S Fallah, D Oxtoby, and A Mouzakitis. A Survey on 3D Object Detection Methods for Autonomous Driving Applications. T-ITS'19
 
 ## Misc
-- Kelvin Wong, Shenlong Wang, Mengye Ren, and Raquel Urtasun. Identifying Unknown Instances for Autonomous Driving. CoRL'19
+- K Wong, S Wang, M Ren, and R Urtasun. Identifying Unknown Instances for Autonomous Driving. CoRL'19
 	- Unseen: deer, ... detect and group the point-clouds
 
 ## Detection From 2D

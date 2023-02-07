@@ -36,7 +36,7 @@
 - L Caccia, H v Hoof, A Courville, J Pineau. Deep Generative Modeling of LiDAR Data. 2019
 	- Unravel into 2D; GAN/VAE/...
 	- https://github.com/pclucas14/lidar_generation
-- **LiDARsim**: Sivabalan Manivasagam, Shenlong Wang, Mikita Sazanovich, Shuhan Tan, Bin Yang, Kelvin Wong, Wenyuan Zeng, Wei-Chiu Ma, Raquel Urtasun. LiDARsim: Realistic LiDAR Simulation by leveraging the Real-World. CVPR'20
+- **LiDARsim**: S Manivasagam, S Wang, M Sazanovich, S Tan, B Yang, K Wong, W Zeng, W Ma, R Urtasun. LiDARsim: Realistic LiDAR Simulation by leveraging the Real-World. CVPR'20
 	- 1. Background surfel (dynamic removed);
 	- 2. Dynamic 3D asset;
 	- 3. Simulated Lidar rendering;
@@ -46,7 +46,7 @@
 ## Image simulation:
 - Translation in Urban Scenes:\
 	<img src="/Autonomous-Driving/images/simulation/image-translation.png" alt="drawing" width="500"/>
-	- **pix2pixHD**: Ting-Chun Wang, Ming-Yu Liu, Jun-Yan Zhu, Andrew Tao, Jan Kautz, Bryan Catanzaro. High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs. CVPR'17
+	- **pix2pixHD**: T Wang, M Liu, J Zhu, A Tao, J Kautz, B Catanzaro. High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs. CVPR'17
 	- **CRN**: Q Chen, V Koltun. Photographic Image Synthesis with Cascaded Refinement Networks. ICCV'17
 	- **vid2vid**: T Wang, M Liu, J Zhu, G Liu, A Tao, J Kautz, B Catanzaro. Video-to-Video Synthesis. NeurIPS'18
 	- **SPADE**: T Park, M Liu, T Wang, J Zhu. Semantic Image Synthesis with Spatially-Adaptive Normalization. CVPR'19
@@ -58,9 +58,9 @@
 	- **CyCADA**: Judy Hoffman, Eric Tzeng, Taesung Park, Jun-Yan Zhu, Phillip Isola, Kate Saenko, Alexei A. Efros, Trevor Darrell. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML'18
 - ATG:\
 	<img src="/Autonomous-Driving/images/simulation/camera-sim.png" alt="drawing" width="400"/>
-- **Removing objects**: Adam, Ricson Cheng, Xinchen Yan, Ersin Yumer, Raquel Urtasun. Learning Dynamic Object removal in the wild via geometry-aware multi-model representation. arxiv'20
+- **Removing objects**: Adam, R Cheng, X Yan, E Yumer, R Urtasun. Learning Dynamic Object removal in the wild via geometry-aware multi-model representation. arxiv'20
 	<img src="/Autonomous-Driving/images/simulation/image-removal.png" alt="drawing" width="400"/>
-- **Adding objects**: Frieda Rong, Shenlong. GeoSim: Photorealistic Image Simulation by Geometry-Aware Composition for Self-Driving. arxiv'20
+- **Adding objects**: F Rong, S Wang. GeoSim: Photorealistic Image Simulation by Geometry-Aware Composition for Self-Driving. arxiv'20
 	- Model:\
 		<img src="/Autonomous-Driving/images/simulation/geosim.png" alt="drawing" width="400"/>
 	- Separate static and dynamic modeling;
@@ -73,7 +73,7 @@
 	- 4. Final image synthesis;
 	- Geometry refinement: optimize Nx3 mesh with energy with silhoutte, lidar and symmetry;
 - GAN:
-	- **SurfelGAN**: Zhenpei Yang, Yuning Chai, Dragomir Anguelov, Yin Zhou, Pei Sun, Dumitru Erhan, Sean Rafferty, Henrik Kretzschmar. SurfelGAN: Synthesizing Realistic Sensor Data for Autonomous Driving. CVPR'20
+	- **SurfelGAN**: Z Yang, Y Chai, D Anguelov, Y Zhou, P Sun, D Erhan, S Rafferty, H Kretzschmar. SurfelGAN: Synthesizing Realistic Sensor Data for Autonomous Driving. CVPR'20
 		- Problem setup: input surfel; output image;
 			<img src="/Autonomous-Driving/images/simulation/surfel-gan-1.png" alt="drawing" width="500"/>
 		- Model: Cycle-GAN with supervised pair and unpaired data;\

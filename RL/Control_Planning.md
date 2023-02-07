@@ -24,7 +24,7 @@
 - New, SOA
 	- X. Guo, S. Singh, H. Lee, R. Lewis, and X. Wang. Deep learning for real-time atari game play using offline monte-carlo tree search planning. NIPS'14
 		- Imitation learning from MCTS
-	- Thomas Anthony, Zheng Tian, and David Barber. Thinking fast and slow with deep learning and tree search, 2017.
+	- T Anthony, Z Tian, and D Barber. Thinking fast and slow with deep learning and tree search, 2017.
 
 ## Control as Inference
 - Basic idea: planning as inference;

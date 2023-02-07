@@ -1,20 +1,21 @@
 # Benchmarks, Dataset
 
 ## Cities
-- **Kitti**: A. Geiger, P. Lenz, and R. Urtasun. Are we ready for autonomous driving? the kitti vision benchmark suite. CVPR'12
+- **Kitti**: A Geiger, P Lenz, and R Urtasun. Are we ready for autonomous driving? the kitti vision benchmark suite. CVPR'12
 	- 1 x GPS/IMU (OXTS RT 3003);
 	- 1 x Lidar (Velodyne 64);
 	- 2 x gray-scale camera;
 	- 2 x color camera;
 	- Evaluate: SLAM, optical flow, stereo, road segmentation.
-- **Cityscapes**: M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and B. Schiele. The cityscapes dataset for semantic urban scene understanding. CVPR'16
+- **Cityscapes**: M Cordts, M Omran, S Ramos, T. Rehfeld, M Enzweiler, R Benenson, U Franke, S Roth, and B Schiele. The cityscapes dataset for semantic urban scene understanding. CVPR'16
 	- Focus on semantic and instance segmentation;
-- **TorontoCity**: Shenlong Wang, Min Bai, Gellert Mattyus, Hang Chu, Wenjie Luo, Bin Yang, Justin Liang, Joel Cheverie, Sanja Fidler, Raquel Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
+- **TorontoCity**: S Wang, M Bai, G Mattyus, H Chu, W Luo, B Yang, J Liang, J Cheverie, S Fidler, R Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
 - Uber in-house;
 - **ApolloScape**:
 	- http://apolloscape.auto/
 	- 146,997 frames
-	- Trajectory dataset, 3D Lidar Object Detection and Tracking dataset including about 100K image frames, 80k lidar point cloud and 1000km trajectories for urban traffic;
+	- Trajectory + 3D Lidar OD + Tracking dataset
+	- 100K image frames, 80k lidar pc and 1000km trajectories for urban traffic;
 
 ## Urban Scene
 - ISPRS Multi-platform:

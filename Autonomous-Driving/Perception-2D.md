@@ -16,11 +16,11 @@
 		<img src="/Autonomous-Driving/images/detection/waymo-multibin3.png" alt="drawing" width="400"/>
 
 ## Segmentation
-- **MultiNet**: Marvin Teichmann, Michael Weber, Marius Zollner, Roberto Cipolla and Raquel Urtasun. MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving. IV'18
+- **MultiNet**: M Teichmann, M Weber, M Zollner, R Cipolla and R Urtasun. MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving. IV'18
 	- https://github.com/MarvinTeichmann/MultiNet
 	- The encoder is shared amongst the three tasks
 	- Joint classification, detection and semantic segmentation via a unified architecture;
-- **DARNet**: Dominic Cheng, Renjie Liao, Sanja Fidler, Raquel Urtasun. DARNet: Deep Active Ray Network for Building Segmentation. CVPR'19
+- **DARNet**: D Cheng, R Liao, S Fidler, R Urtasun. DARNet: Deep Active Ray Network for Building Segmentation. CVPR'19
 - **UPSNet**: Y Xiong, R Liao, H Zhao, R Hu, M Bai, E Yumer, R Urtasun. UPSNet: A Unified Panoptic Segmentation Network. CVPR'19
 	- Problem setup: semantic seg + instance seg (Mask R-CNN);
 		- Countable things: people, bicycle, car (thing);
@@ -39,7 +39,7 @@
 	- Segmentation model: SegNet or PSP;
 	<img src="/Autonomous-Driving/images/vision2d/anomaly1.png" alt="drawing" width="450"/>
 	<img src="/Autonomous-Driving/images/vision2d/anomaly2.png" alt="drawing" width="450"/>
-- Justin Liang, Namdar Homayounfar, Wei-Chiu Ma, Yuwen Xiong, Rui Hu, Raquel Urtasun. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
+- J Liang, N Homayounfar, W Ma, Y Xiong, R Hu, R Urtasun. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
 - Level-Set R-CNN [Namdar];
 - **DSAC**: D. Marcos, D. Tuia, B. Kellenberger, L. Zhang, M. Bai, R. Liao and R. Urtasun. Learning deep structured active contours end-to-end. CVPR'18
 	- Check mapping for details;
@@ -47,4 +47,4 @@
 - SurfConv: Bridging 3D and 2D Convolution for RGBD Images [CVPR’18, H Chu]
 
 ## Misc
-- Mengye Ren, Andrei Pokrovsky, Bin Yang, and Raquel Urtasun. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 
+- M Ren, A Pokrovsky, B Yang, and R Urtasun. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 

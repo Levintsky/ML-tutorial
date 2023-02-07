@@ -1,16 +1,16 @@
 # Map-Automation
 
 ## Road/Lane
-- Gellert Mattyus, Shenlong Wang, Sanja Fidler and Raquel Urtasun. Enhancing Road Maps by Parsing Aerial Images Around the World. ICCV'15
+- G Mattyus, S Wang, S Fidler and R Urtasun. Enhancing Road Maps by Parsing Aerial Images Around the World. ICCV'15
 	- Problem setup: aerial image + OSM as input (only centerline, not accurate), optimize offset (h1, h2, ...) and width (y1, y2, ...);
 	- Cost function:\
 		<img src="/Autonomous-Driving/images/mapping/osm-cost.png" alt="drawing" width="400"/>
 	- Algorithm:\
 		<img src="/Autonomous-Driving/images/mapping/osm-bcd.png" alt="drawing" width="400"/>
-- Gellert Mattyus, Shenlong Wang, Sanja Fidler, Raquel Urtasun. HD Maps: Fine-grained Road Segmentation by Parsing Ground and Aerial Images. CVPR'16
+- G Mattyus, S Wang, S Fidler, R Urtasun. HD Maps: Fine-grained Road Segmentation by Parsing Ground and Aerial Images. CVPR'16
 - G Mattyus, W Luo and R Urtasun. DeepRoadMapper: Extracting Road Topology From Aerial Images. ICCV'17
-- Min Bai, Gellert Mattyus, Namdar Homayounfar, Shenlong Wang, Shrinidhi Kowshika Lakshmikanth, Raquel Urtasun. Deep Multi-Sensor Lane Detection. IROS'18
-- Namdar Homayounfar, Wei-Chiu Ma, Shrinidhi Kowshika Lakshmikanth, Raquel Urtasun. Hierarchical Recurrent Attention Networks for Structured Online Maps. CVPR'18
+- M Bai, G Mattyus, N Homayounfar, S Wang, S  Lakshmikanth, R Urtasun. Deep Multi-Sensor Lane Detection. IROS'18
+- N Homayounfar, W Ma, S Lakshmikanth, R Urtasun. Hierarchical Recurrent Attention Networks for Structured Online Maps. CVPR'18
 	- Problem setup: input: sparse point cloud (BEV); output: structured lanes;
 	- Algorithm:\
 	<img src="/Autonomous-Driving/images/mapping/hran1.png" alt="drawing" width="400"/>

@@ -6,28 +6,28 @@
 	- https://youtu.be/gxh4tT0JD_A
 
 ## Unclassified
-- Dahua Lin. Trajectory Convolution for Action Recognition. NIPS'18
+- D Lin. Trajectory Convolution for Action Recognition. NIPS'18
 - A summary: https://zhuanlan.zhihu.com/p/149340496
 
 ## Benchmarks
 - Google:
-	- **YouTube-8M**: Sami Abu-El-Haija, Nisarg Kothari, Joonseok Lee, Paul Natsev, George Toderici, Balakrishnan Varadarajan, Sudheendra Vijayanarasimhan. YouTube-8M: A Large-Scale Video Classification Benchmark
+	- YouTube-8M: S Abu-El-Haija, N Kothari, J Lee, P Natsev, G Toderici, B Varadarajan, S Vijayanarasimhan. YouTube-8M: A Large-Scale Video Classification Benchmark
 		- https://research.google.com/youtube8m/
 		- 6.1 Million, 350,000 hours
 		- 2.6 billion audio/visual features
 		- 3,862 classes (from knowledge graph: https://developers.google.com/knowledge-graph/)
-	- W. Kay, J. Carreira, K. Simonyan, B. Zhang, C. Hillier, S. Vijayanarasimhan, F. Viola, T. Green, T. Back, P. Natsev, et al. The kinetics human action video dataset. 2017
-	- **AVA**: C. Gu, C. Sun, D. A. Ross, C. Vondrick, C. Pantofaru, Y. Li, S. Vijayanarasimhan, G. Toderici, S. Ricco, R. Sukthankar, et al. AVA: A video dataset of spatio-temporally localized atomic visual actions. CVPR 2018
+	- kinetics: W. Kay, et.al. 2017
+	- **AVA**: CVPR'18
 		- https://research.google.com/ava/index.html
 		- 80 categories
 		- 15 min long clips from 430 movies
 		- 1.62M action labels
 - Other large-scale:
-	- **Something something**: Goyal, R., Kahou, S.E., Michalski, V., Materzynska, J., Westphal, S., Kim, H., Haenel, V., Fruend, I., Yianilos, P., Mueller-Freitag, M., et al.: The something something video database for learning and evaluating visual common sense. ICCV 2017
+	- Something-something: ICCV'17
 		- Need to understand physical interactions
-	- **Activitynet**: F. Caba Heilbron, V. Escorcia, B. Ghanem, and J. C. Niebles. Activitynet: A large-scale video benchmark for human activity understanding. CVPR 2015
-	- **Charades**: Sigurdsson, G.A., Varol, G., Wang, X., Farhadi, A., Laptev, I., Gupta, A.: Hollywood in homes: Crowdsourcing data collection for activity understanding. ECCV'16
-- **Cooking**: David Chen, William Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL'11
+	- ActivityNet: CVPR-15
+	- Charades ECCV'16
+- **Cooking**: D Chen, W Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL'11
 	- 2,089 videos; 85,550 English descriptions
 - **HMDB-51**: H. Kuehne, H. Jhuang, E. Garrote, T. Poggio, and T. Serre. HMDB: a large video database for human motion recognition. ICCV'11
 	- 51 categories, 7,000 annotated
@@ -36,11 +36,11 @@
 - **MPII-Pose**: M. Andriluka, L. Pishchulin, P. Gehler, and B. Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
 	- 25k images, 40k people
 	- 410 human activities
-- **Sports-1M**: Andrej Karpathy; George Toderici; Sanketh Shetty; Thomas Leung; Rahul Sukthankar; Li Fei-Fei. Large-scale Video Classification with Convolutional Neural Networks. CVPR 2014;
+- **Sports-1M**: A Karpathy; et.al. CVPR'14;
 	- 1 Million videos, 487 classes x (1k-3k) videos per class; test: 70% training, 10% val, 20% testing;
 	- 360 x 640 resolution
 - **ACT**: X. Wang, A. Farhadi, and A. Gupta. Actions transformations. CVPR'16
-- **Kinetics**: Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset, CVPR 2017
+- **Kinetics**: Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset, CVPR'17
 	- 240k train, 20k val, 400 action classes, 10s each clip;
 	- Classification;
 	- De-duplicate: word synonymy; class by class, a clip per video + inception-V1 feature after average pooling, 25 sampled frames, cosine similarity matrix;
@@ -50,46 +50,45 @@
 - **YouCook II**: L. Zhou, C. Xu, and J. J. Corso. Towards automatic learning of procedures from web instructional videos. AAAI'18
 - M. Monfort, A. Andonian, B. Zhou, K. Ramakrishnan, S.A. Bargal, Y. Yan, L. Brown, Q. Fan, D. Gutfreund, C. Vondrick, et al. Moments in time dataset: one million videos for event understanding. PAMI'19
 
-## Legacy, Hand-Designed
-- P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV'05
-- **STIP**: I. Laptev and T. Lindeberg. Space-time interest points. ICCV 2003
-- S. Sadanand and J. Corso. Action bank: A high-level representation of activity in video. CVPR 2012
-- H. Wang and C. Schmid. Action recognition with improved trajectories. ICCV 2013
+## Backbone
+- Legacy/Hand-Designed
+	- P. Dollar, V. Rabaud, G. Cottrell, and S. Belongie. Behavior recognition via sparse spatio-temporal features. ICCV'05
+	- STIP: I. Laptev and T. Lindeberg. Space-time interest points. ICCV 2003
+	- S. Sadanand and J. Corso. Action bank: A high-level representation of activity in video. CVPR 2012
+	- H. Wang and C. Schmid. Action recognition with improved trajectories. ICCV'13
+- CNN-2d + pooling
+	- 2-stream: K Simonyan and A Zisserman. Two-stream convolutional networks for action recognition in videos. NIPS'14
+		- rgb-cnn + flow-cnn
+	- A Zisserman, C Feichtenhofer, A Pinz. Convolutional two-stream network fusion for video action recognition. CVPR'16
+	- SlowFast: C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV'19
+- CNN + RNN:
+	- J Donahue, et. al. Long-term recurrent convolutional networks for visual recognition and description. CVPR'15
+	- Joe Yue-Hei Ng, et. al. Beyond short snippets: Deep networks for video classification. CVPR'15
+- CNN + Transformer:
+	- X Wang, et. al. Non-local Neural Networks, CVPR'18
+	- VideoBERT: ICCV'19
+		- Vector-quantization: S3D for feature extraction;
+		- WordPiece for text (ASR API);
+		- BLEU-4 1.42 to 5.42 on YouCook II;
+- Conv3D, C3D
+	- A Karpathy, et. al. Large-scale video classification with convolutional neural networks. CVPR'14
+	- C3D: D Tran, L Bourdev, R Fergus, L Torresani, and M Paluri. Learning spatiotemporal features with 3d convolutional networks. ICCV'15
 
 ## Classification, Action Recognition
 - Matching, Attentional, optical flow:
-	- Karen Simonyan and Andrew Zisserman. Two-stream convolutional networks for action recognition in videos. NIPS'14
-	- Andrew Zisserman Christoph Feichtenhofer, Axel Pinz. Convolutional two-stream network fusion for video action recognition. CVPR'16
 	- M Shan and N Atanasov. A spatiotemporal model with visual attention for video classification. 2017
-	- X Wang, R Girshick, A Gupta, K He. Non-local Neural Networks, CVPR'18
-		- Video classification
-		- THW 512 dimension, attention with every other location
-		- Softmax sum;\
-		<img src="/CV-2D/images/video/non-local.png" alt="drawing" width="400"/>
-	- **CPNet**: Xingyu Liu, Joon-Young Lee, Hailin Jin. Learning Video Representations from Correspondence Proposals. CVPR'19 oral
+	- **CPNet**: X Liu, J Lee, H Jin. Learning Video Representations from Correspondence Proposals. CVPR'19 oral
 		- Insight: hard attention by kNN;
 		- https://github.com/xingyul/cpnet
 		- Model:\
 			<img src="/CV-2D/images/video/cpnet-1.png" alt="drawing" width="400"/>
 		- Correspondence Embedding layer:\
 			<img src="/CV-2D/images/video/cpnet-2.png" alt="drawing" width="400"/>
-	- **SlowFast**: C Feichtenhofer, H Fan, J Malik, K He. SlowFast Networks for Video Recognition, ICCV'19
-		- Slow pathway: 2 fps;
-		- Fast pathway: 16 fps; lightweight computation; (same net, small hyper)
-		<img src="/CV-2D/images/video/slowfast.png" alt="drawing" width="500"/>
-	- **VideoBERT**: C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
-		- Vector-quantization: S3D for feature extraction;
-		- WordPiece for text (ASR API);
-		- BLEU-4 1.42 to 5.42 on YouCook II;
-		<img src="/CV-2D/images/video/videobert-1.png" alt="drawing" width="600"/>
-		<img src="/CV-2D/images/video/videobert-2.png" alt="drawing" width="600"/>
 - C3D:
-	- Andrej Karpathy, George Toderici, Sanketh Shetty, Thomas Leung, Rahul Sukthankar, and Li Fei-Fei. Large-scale video classification with convolutional neural networks. CVPR'14
-	- Du Tran, Lubomir Bourdev, Rob Fergus, Lorenzo Torresani, and Manohar Paluri. Learning spatiotemporal features with 3d convolutional networks. ICCV'15
-	- **ArtNet**: Limin Wang, Wei Li, Wen Li, and Luc Van Gool. Appearance-and-relation networks for video classification. CVPR'18
+	- **ArtNet**: L Wang, W Li, W Li, and L Van Gool. Appearance-and-relation networks for video classification. CVPR'18
 		- Insight: C3D w/o correspondence, then concat;
 		<img src="/CV-2D/images/video/artnet.png" alt="drawing" width="600"/>
-	- Mohammadreza Zolfaghari, Kamaljeet Singh, and Thomas Brox. Eco: Efficient convolutional network for online video understanding. ECCV'18
+	- M Zolfaghari, K Singh, and T Brox. Eco: Efficient convolutional network for online video understanding. ECCV'18
 	- **S3D**: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV'18
 		- I3D (inflate the 2D conv in Inception)
 		- Bottom-Heavy-I3D: 3D temporal-conv at bottom, 2D-Conv at top
@@ -109,12 +108,9 @@
 			- Sports1M: 75.5%, 92.7% (ir-CSN res-152)
 		<img src="/CV-2D/images/video/csn1.png" alt="drawing" width="450"/>
 		<img src="/CV-2D/images/video/csn2.png" alt="drawing" width="450"/>
-	- Chao-Yuan Wu, Ross Girshick, Kaiming He, Christoph Feichtenhofer, Philipp Krähenbühl. A Multigrid Method for Efficiently Training Video Models. CVPR'20
-	- Fanyi Xiao, Yong Jae Lee, Kristen Grauman, Jitendra Malik, Christoph Feichtenhofer. Audiovisual SlowFast Networks for Video Recognition. arxiv'20
-	- **X3D**: Christoph Feichtenhofer. X3D: Expanding Architectures for Efficient Video Recognition. CVPR'20
-- RNN, LSTM:
-	- Jeffrey Donahue, Lisa Anne Hendricks, Sergio Guadarrama, Marcus Rohrbach, Subhashini Venugopalan, Kate Saenko, and Trevor Darrell. Long-term recurrent convolutional networks for visual recognition and description. CVPR'15
-	- Joe Yue-Hei Ng, Matthew Hausknecht, Sudheendra Vijayanarasimhan, Oriol Vinyals, Rajat Monga, and George Toderici. Beyond short snippets: Deep networks for video classification. CVPR'15
+	- C Wu, R Girshick, K He, C Feichtenhofer, P Krähenbühl. A Multigrid Method for Efficiently Training Video Models. CVPR'20
+	- F Xiao, Y J Lee, K Grauman, J Malik, C Feichtenhofer. Audiovisual SlowFast Networks for Video Recognition. arxiv'20
+	- **X3D**: C Feichtenhofer. X3D: Expanding Architectures for Efficient Video Recognition. CVPR'20
 - MSRA:
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
@@ -136,7 +132,7 @@
 ## Video Caption
 - Video caption: https://github.com/xiadingZ/video-caption.pytorch
 - R. Krishna, K. Hata, F. Ren, L. Fei-Fei, and J. C. Niebles. Dense-Captioning events in videos. ICCV 2017
-- **SOA**: L. Zhou, Y. Zhou, J. J. Corso, R. Socher, and C. Xiong. End-to-end dense video captioning with masked transformer. CVPR 2018
+- **SOA**: L. Zhou, Y. Zhou, J. J. Corso, R. Socher, and C. Xiong. End-to-end dense video captioning with masked transformer. CVPR'18
 	- SOA on YouCook II dataset
 - A. Rohrbach, M. Rohrbach, W. Qiu, A. Friedrich, M. Pinkal, and B. Schiele. Coherent multi-sentence video description with variable level of detail. GCPR 2014
 
@@ -155,4 +151,4 @@
 - MIT:
 	- T. Xue, J. Wu, K. Bouman, and B. Freeman. Visual dynamics: Probabilistic future frame synthesis via cross convolutional networks. NIPS 2016
 	- C. Vondrick, H. Pirsiavash, and A. Torralba. Generating videos with scene dynamics. In NeurIPS, 2016.
-- Ruben Villegas, Arkanath Pathak, Harini Kannan, Dumitru Erhan, Quoc V Le, Honglak Lee. High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks. NIPS'19
+- R Villegas, A Pathak, H Kannan, D Erhan, Q Le, H Lee. High Fidelity Video Prediction with Large Stochastic Recurrent Neural Networks. NIPS'19

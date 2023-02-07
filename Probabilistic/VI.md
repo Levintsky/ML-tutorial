@@ -10,6 +10,17 @@
 		- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
 	- Special case: mean field;
 		- qj(xj) ~ exp(E_-qj[logp(x)]); marginalize out other var xi with qi(.);
+- EM:
+	- E-Step: posterior for z, p(z|θ)
+	- M-step: fix p(z|θ), optimize θ;
+- CCCP:
+	- Optimize minF(x) = f(x) - h(x), both f and h convex;
+	- h(x) ≥ h(y) + ⟨∇h(y), x−y⟩. (h convex)
+	- F(x) ≤ f(x) − h(y) − ⟨∇h(y), x−y⟩ =: G(x, y); upper bound
+	- Alg:
+		- xk+1 = argmin.x G(x, xk)
+		- ∇f(xk+1) = ∇h(xk) each iteration;
+	- EM: a special case of CCCP;
 - VBEM: infer z and learn θ; p(θ,z1..N|D) ~ q(θ)Πqi(zi)
 - MCMC:
 	- Hard to do m-step, sample some z and average
@@ -17,10 +28,10 @@
 	- MC sample instead of integral to compute gradient;
 
 ## Summaries and Tutorials
-- M. J. Wainwright and M. I. Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
-- Blei, D. M., Jordan, M. I., and Paisley, J. W. Variational Bayesian inference with Stochastic Search. ICML'12
-- Hoffman, M. D., Blei, D. M., Wang, C., and Paisley, J. Stochastic variational inference. JMLR'13
-- David Blei. Variational Inference: A Review for Statisticians, 2018
+- M Wainwright and M Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
+- D Blei,  M Jordan and J Paisley. Variational Bayesian inference with Stochastic Search. ICML'12
+- M Hoffman, D Blei, C Wang, and J Paisley. Stochastic variational inference. JMLR'13
+- D Blei. Variational Inference: A Review for Statisticians, 2018
 	- ELBO (Evidence Lower-Bound)
 
 ## Mixture Models/EM, (PRML-Chap-9, Kevin Murphy Chap-11)
@@ -88,9 +99,9 @@
 - Important property:
 	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
 - Modern:
-	- Ji Xu, Daniel Hsu, Arian Maleki. Benefits of over-parameterization with EM. NIPS'18
-	- Wu Lin, Mohammad Emtiyaz Khan, Mark Schmid. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
-	- Belhal Karimi, Hoi-To Wai, Eric Moulines, Marc Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
+	- J Xu, D Hsu, A Maleki. Benefits of over-parameterization with EM. NIPS'18
+	- W Lin, M Khan, M Schmid. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
+	- B Karimi, H Wai, E Moulines, M Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
 
 ## VI (Kevin Murphy, Chap-21, 22)
 - 21.1 Intro
@@ -194,7 +205,7 @@
 - E.g.2: Gaussian, factorized prior (mean, precision) for conjugate prior:
 	- Assume q(μ,τ)=q(μ)q(τ), we have
 - E.g.3: EM of GMM with Dirichlet prior on π (PRML 10.2), Gaussian-Wishart prior on mean, precision;
-- E.g.4: EM of linear regression: a gamma prior α ~ gamma(a0, b0) for weight precision; assume q(w, α) ~ q(w)q(α)
+- E.g.4: EM of linear regression: a Γ prior α ~ Γ(a0, b0) for weight precision; assume q(w, α) ~ q(w)q(α)
 	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>\
 	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="300"/>
@@ -235,7 +246,7 @@
 		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
 
 ## Black-box VI
-- Rajesh Ranganath Sean Gerrish David M. Blei. Black Box Variational Inference. AISTATS'14
+- R Ranganath, S Gerrish, D Blei. Black Box Variational Inference. AISTATS'14
 	- Basics behind VAE;
 	- Assume q(z|λ) with λ as parameter;
 	- ELBO: L(λ) = E_q(λ)[logp(x,z)-logq(z)]
@@ -245,10 +256,10 @@
 		- ∇λL ≈ 1/S Σ_s ∇λ logq(zs|λ)(logp(x, zs) − logq(zs|λ)),
 
 ## Conjugate Prior
-- Mohammad Emtiyaz Khan, Wu Lin. Conjugate-Computation Variational Inference: Converting Variational Inference in Non-Conjugate Models to Inferences in Conjugate Models. AISTATS'17
+- M Khan, W Lin. Conjugate-Computation Variational Inference: Converting Variational Inference in Non-Conjugate Models to Inferences in Conjugate Models. AISTATS'17
 
 ## Minibatch
-- MD Hoffman, DM Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
+- M Hoffman, D Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
 	- Insight: case of mini-batch, a global variable β to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
 		<img src="/Bayes/images/VI/svi.png" alt="drawing" width="400"/>
 

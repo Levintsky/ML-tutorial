@@ -142,8 +142,8 @@
 		- Parallel sampling:
 
 ## Imitation Learning
-- **Alvinn**: Dean A Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
-- Nathan D Ratliff, J Andrew Bagnell, and Martin A Zinkevich. Maximum margin planning. ICML'06
+- **Alvinn**: D Pomerleau. Alvinn: An autonomous land vehicle in a neural network. NIPS'89
+- N Ratliff, A Bagnell, and M Zinkevich. Maximum margin planning. ICML'06
 - Predicting the Way by Learning to Sample and Learning the Cost: Urban Self-Driving without HD Maps. Mini-27
 	- No HD-Maps
 	- With HD-Maps as supervision;
@@ -207,7 +207,7 @@
 		- https://github.com/carla-simulator/imitation-learning.
 		<img src="/Autonomous-Driving/images/plan/cil1.png" alt="drawing" width="400"/>
 		<img src="/Autonomous-Driving/images/plan/cil2.png" alt="drawing" width="600"/>
-	- Felipe Codevilla, Matthias Miiller, Antonio López, Vladlen Koltun, and Alexey Dosovitskiy. End-to-end driving via conditional imitation learning. ICRA'18
+	- F Codevilla, M Miiller, A López, V Koltun, and A Dosovitskiy. End-to-end driving via conditional imitation learning. ICRA'18
 	- M Muller, A Dosovitskiy, B Ghanem, and V Koltun. Driving policy transfer via modularity and abstraction. CoRL'18
 		- Input: semantic segmentation
 		- Output: high-level control
@@ -215,8 +215,7 @@
 		<img src="/Autonomous-Driving/images/plan/cil4.png" alt="drawing" width="500"/>
 - C Chen, A Seff, A Kornhauser, and J Xiao. DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving. ICCV'15
 - A Sauer, N Savinov, and A Geiger. Conditional affordance learning for driving in urban environments. arxiv'18
-- Jeffrey Hawke, Richard Shen, Corina Gurau, Siddharth Sharma, Daniele Reda, Nikolay Nikolov
-Przemysław Mazur, Sean Micklethwaite, Nicolas Griffiths, Amar Shah, Alex Kendall. Urban Driving with Conditional Imitation Learning. 2019
+- J Hawke, R Shen, C Gurau, S Sharma, D Reda, N  Mazur, S Micklethwaite, N Griffiths, A Shah, A Kendall. Urban Driving with Conditional Imitation Learning. 2019
 	- Input three images x 2 frames; no LiDAR;\
 		<img src="/Autonomous-Driving/images/plan/wayve-cil.png" alt="drawing" width="500"/>
 

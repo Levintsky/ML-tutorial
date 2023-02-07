@@ -18,28 +18,30 @@
 - How to solve multi-modality?
 	- K-mode output: loss for with the closest to ground truth;
 
+## Task-setup
+- Uber:
+	- FaF [cvpr'18]: detection + tracking + prediction;
+	- IntentNet [CoRL'18]: detection + trajectory + high-level action;
+	- SPAGNN [ICRA'20]: GNN for interaction;
+	- DeepSignals: [CoRL'18, ICRA'19]
+	- PnP with Radar [Benson Guo];
+- Waymo:
+	- Pedestrian: [STINet: CVPR'20] detection + tracking + prediction;
+
+## Backbone
+- BEV-CNN:
+	- FaF: PIXOR-conv + ssd + tracking-by-detection (tracklet)
+	- Intent: 2-stream + late fusion;
+- CNN + LSTM:
+	- DeepSignals;
+- CNN + GNN:
+	- SPAGNN;
+	- STINet: Res-UNet + T-RPN + GNN;
+- Transformer:
+	- L Li, B Yang, M Liang, M Ren, W Zeng, S Segal, R Urtasun. End-to-end Contextual Perception and Prediction with Interaction Transformer. IROS'20
+
 ## PnP Together
-- **FaF**: W. Luo, B. Yang, and R. Urtasun. Fast and furious: Real time end-to-end 3d detection, tracking and motion forecasting with a single convolutional net. CVPR'18
-	- Insight: **PIXOR** + tracking + prediction;
-	- Input: 4D tensor from BEV 3D LiDAR (144 × 80m / 0.2m/bin), previous 5 timesteps;
-	- Output: 1. 3D detection; 2. tracking; 3. motion forecasting; (predict next 1 sec; no intent;)
-	- Model:
-		- Early/late fusion on 5 frames: tradeoff between speed (early is fast) and accuracy;
-		- SSD-like one-stage detection: multi-boxes each location; different aspect ratio;
-		- Tracking by detection: decoding tracklets;
-	- Supervision:
-		- Binary cross-entropy classification loss;
-		- Regression-loss: find correspondence first (IoU > 0.4 with ground truth), 
-	<img src="/Autonomous-Driving/images/prediction/faf.png" alt="drawing" width="500"/>
-- **IntentNet**: S Casas, W Luo, R Urtasun. IntentNet: Learning to Predict Intention from Raw Sensor Data. CoRL'18
-	- Insight: **Improve on FaF with HDMap**;
-	- Input: 1. 3D point cloud; (BEV) stack time on height; 2. dynamic maps;
-	- Output: 1. trajectory regression; (a sequence of bounding boxes); 2. high level actions (keep lane, turn left/right, left/right lane change, stopping, stopped, parked)
-	- Output head: 1. detection branch; (anchors) 2. intention branch; 3. intention as an embedding for motion estimation/regression;
-	- **Two-stream + Late fusion**: predict probability of being a vehicle; predict bounding box into the future;
-	- Predicts: detection scores for vehicle and background classes, high level action probabilities corresponding to discrete intention, and bounding box regressions in the current and future time steps to represent the intended trajectory;\
-		<img src="/Autonomous-Driving/images/prediction/intentnet.png" alt="drawing" width="600"/>
-- **SPAGNN**: Sergio Casas, Cole Gulino, Renjie Liao, Raquel Urtasun. SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. ICRA'20
+- **SPAGNN**: S Casas, C Gulino, R Liao, R Urtasun. SPAGNN: Spatially-Aware Graph Neural Networks for Relational Behavior Forecasting from Sensor Data. ICRA'20
 	- Insight: Improve on FaF and IntentNet with GraphNN + GaBP to handle interaction.\
 		<img src="/Autonomous-Driving/images/prediction/spagnn.png" alt="drawing" width="600"/>
 - M Liang, B Yang, R Hu, Y Chen, R Urtasun. Learning Lane Graph Representations for Structured Prediction.
@@ -51,60 +53,8 @@
 		- Lane graph connection: predecessor, successor, left/right neighbor;
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
-- Davi Frossard, Eric Kee Raquel Urtasun. DeepSignals: Predicting Intent of Drivers Through Visual Attributes. CoRL'18, ICRA'19
-	- Insight: detect turn signals to predict turn;
-	- Signal: left/right/flashers/off/unknown;
-	- Model: CNN + LSTM;
 - Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
-- PnP with Radar [Benson Guo];
-- Lingyun Li, Bin Yang, Ming Liang, Mengye Ren, Wenyuan Zeng, Sean Segal, Raquel Urtasun. End-to-end Contextual Perception and Prediction with Interaction Transformer. IROS'20
-	- Insight: use transformer to improve SPAGNN
-
-## Pedestrian
-- PnP:
-	- **STINet**: Zhishuai Zhang, Jiyang Gao, Junhua Mao, Yukai Liu, Dragomir Anguelov, Congcong Li. STINet: Spatio-Temporal-Interactive Network for Pedestrian Detection and Trajectory Prediction. CVPR'20
-		- Problem: preception + tracking (previous frames) + prediction from BEV for pedestrian;
-		- Model: T-RPN\
-			<img src="/Autonomous-Driving/images/detection/stinet-1.png" alt="drawing" width="500"/>
-		- Backbone: ResUNet\
-			<img src="/Autonomous-Driving/images/detection/stinet-2.png" alt="drawing" width="400"/>
-		- Past + trajejory as feature, GNN for interaction:\
-			<img src="/Autonomous-Driving/images/detection/stinet-3.png" alt="drawing" width="400"/>
-- Legacy:
-	- B. D. Ziebart, N. Ratliff, G. Gallagher, C. Mertz, K. Peterson, J. A. Bagnell, M. Hebert, A. K. Dey, and S. Srinivasa. Planning-based prediction for pedestrians. IROS'09
-- A. Alahi, K. Goel, V. Ramanathan, A. Robicquet, L. Fei-Fei, and S. Savarese. Social LSTM: Human Trajectory Prediction in Crowded Spaces. CVPR'16
-- S. Yi, H. Li, and X. Wang. Pedestrian Behavior Understanding and Prediction with Deep Neural Networks. ECCV'16
-- S. Hoermann, M. Bach, and K. Dietmayer. Dynamic Occupancy Grid Prediction for Urban Autonomous Driving: A Deep Learning Approach with Fully Automatic Labeling. IV'17
-- S. Becker, R. Hug, W. Hubner, and M. Arens. An Evaluation of Trajectory Prediction Approaches and Notes on the TrajNet Benchmark. CoRR'18
-- **Social GAN**: A. Gupta, J. Johnson, L. Fei-Fei, S. Savarese, and A. Alahi. Social GAN: Socially Acceptable Trajectories with Generative Adversarial Networks. CVPR'18
-- D. Ridel, E. Rehder, M. Lauer, C. Stiller, and D. Wolf. A literature review on the prediction of pedestrian behavior in urban scenarios. In Proceedings of the International Conference on Intelligent Transportation Systems, November 2018.
-- A. Rudenko, L. Palmieri, M. Herman, K. M. Kitani, D. M. Gavrila, and K. O. Arras. Human motion trajectory prediction: A survey. ArXiv, abs/1905.06113, 2019.
-- W.-C. Ma, D.-A. Huang, N. Lee, and K. M. Kitani. Forecasting interactive dynamics of pedestrians with fictitious play. CVPR'17
-- **DRF-Net**: Ajay Jain, Sergio Casas, Renjie Liao, Yuwen Xiong, Song Feng, Sean Segal, Raquel Urtasun. Discrete Residual Flow for Probabilistic Pedestrian Behavior Prediction. CoRL'19
-
-## Pure Prediction
-- **GPRF**: Kihwan Kim, Dongryeol Lee, Irfan Essa. Gaussian Process Regression Flow for Analysis of Motion Trajectories. ICCV'11
-	- http://www.cc.gatech.edu/cpl/projects/gprf/
-	- Framework:\
-		<img src="/Autonomous-Driving/images/prediction/gprf-1.png" alt="drawing" width="400"/>
-	- Input space x position (u, v, t); output y (yu, yv, yt) (yt: frame difference as a constant), with Gaussian process:\
-		<img src="/Autonomous-Driving/images/prediction/gprf-2.png" alt="drawing" width="400"/>\
-		<img src="/Autonomous-Driving/images/prediction/gprf-3.png" alt="drawing" width="400"/>
-		<img src="/Autonomous-Driving/images/prediction/gprf-4.png" alt="drawing" width="400"/>
-	- Train k GPRF for each class;
-	- Classification of Trajectories: Similarity for Complete Trajectories;\
-		<img src="/Autonomous-Driving/images/prediction/gprf-5.png" alt="drawing" width="400"/>
-	- Prediction of Trajectories: Similarity for Complete Trajectories;\
-		<img src="/Autonomous-Driving/images/prediction/gprf-6.png" alt="drawing" width="400"/>
-- Mayank Bansal, Alex Krizhevsky, and Abhijit S. Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18
-- Multi future:
-	- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
-	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. ICRA'19
-	- **DSF**: Ye Yuan, Kris M. Kitani. Diverse Trajectory Forecasting with Determinantal Point Processes. ICLR'20 \
-		<img src="/Autonomous-Driving/images/prediction/dsf.png" alt="drawing" width="400"/>
-- **Multipath**: Yuning Chai, Benjamin Sapp, Mayank Bansal, and Dragomir Anguelov. Multipath: Multiple probabilistic anchor trajectory hypotheses for behavior prediction. 2019
-- Tianyang Zhao, Yifei Xu, Mathew Monfort, Wongun Choi, Chris Baker, Yibiao Zhao, Yizhou Wang, and Ying Nian Wu. Multi-agent tensor fusion for contextual trajectory prediction. CoRR'19
-- **MFP**: Yichuan Charlie Tang, Ruslan Salakhutdinov. Multiple Futures Prediction. NIPS'19
+- **MFP**: Y Tang, R Salakhutdinov. Multiple Futures Prediction. NIPS'19
 	- Insight: semantically meaningful latent variables for multimodality; interactive and step-wise rollouts; hypothetical inference;
 	- Input: X (past), I (context); output: Y; P(Y|X, I)
 	- Multimodality: naive RNN + BPTT will cause mode averaging; solution: latent z;
@@ -119,8 +69,44 @@
 	<img src="/Autonomous-Driving/images/prediction/mfp.png" alt="drawing" width="600"/>
 	<img src="/Autonomous-Driving/images/prediction/mfp-elbo.png" alt="drawing" width="600"/>
 
+## Pedestrian
+- Legacy:
+	- B. D. Ziebart, N. Ratliff, G. Gallagher, C. Mertz, K. Peterson, J. A. Bagnell, M. Hebert, A. K. Dey, and S. Srinivasa. Planning-based prediction for pedestrians. IROS'09
+- A. Alahi, K. Goel, V. Ramanathan, A. Robicquet, L. Fei-Fei, and S. Savarese. Social LSTM: Human Trajectory Prediction in Crowded Spaces. CVPR'16
+- S. Yi, H. Li, and X. Wang. Pedestrian Behavior Understanding and Prediction with Deep Neural Networks. ECCV'16
+- S. Hoermann, M. Bach, and K. Dietmayer. Dynamic Occupancy Grid Prediction for Urban Autonomous Driving: A Deep Learning Approach with Fully Automatic Labeling. IV'17
+- S. Becker, R. Hug, W. Hubner, and M. Arens. An Evaluation of Trajectory Prediction Approaches and Notes on the TrajNet Benchmark. CoRR'18
+- **Social GAN**: A. Gupta, J. Johnson, L. Fei-Fei, S. Savarese, and A. Alahi. Social GAN: Socially Acceptable Trajectories with Generative Adversarial Networks. CVPR'18
+- D. Ridel, E. Rehder, M. Lauer, C. Stiller, and D. Wolf. A literature review on the prediction of pedestrian behavior in urban scenarios. In Proceedings of the International Conference on Intelligent Transportation Systems, November 2018.
+- A. Rudenko, L. Palmieri, M. Herman, K. M. Kitani, D. M. Gavrila, and K. O. Arras. Human motion trajectory prediction: A survey. ArXiv, abs/1905.06113, 2019.
+- W.-C. Ma, D.-A. Huang, N. Lee, and K. M. Kitani. Forecasting interactive dynamics of pedestrians with fictitious play. CVPR'17
+- **DRF-Net**: A Jain, S Casas, R Liao, Y Xiong, S Feng, S Segal, R Urtasun. Discrete Residual Flow for Probabilistic Pedestrian Behavior Prediction. CoRL'19
+
+## Pure Prediction
+- **GPRF**: K Kim, D Lee, I Essa. Gaussian Process Regression Flow for Analysis of Motion Trajectories. ICCV'11
+	- http://www.cc.gatech.edu/cpl/projects/gprf/
+	- Framework:\
+		<img src="/Autonomous-Driving/images/prediction/gprf-1.png" alt="drawing" width="400"/>
+	- Input space x position (u, v, t); output y (yu, yv, yt) (yt: frame difference as a constant), with Gaussian process:\
+		<img src="/Autonomous-Driving/images/prediction/gprf-2.png" alt="drawing" width="400"/>\
+		<img src="/Autonomous-Driving/images/prediction/gprf-3.png" alt="drawing" width="400"/>
+		<img src="/Autonomous-Driving/images/prediction/gprf-4.png" alt="drawing" width="400"/>
+	- Train k GPRF for each class;
+	- Classification of Trajectories: Similarity for Complete Trajectories;\
+		<img src="/Autonomous-Driving/images/prediction/gprf-5.png" alt="drawing" width="400"/>
+	- Prediction of Trajectories: Similarity for Complete Trajectories;\
+		<img src="/Autonomous-Driving/images/prediction/gprf-6.png" alt="drawing" width="400"/>
+- M Bansal, A Krizhevsky, and A Ogale. Chauffeurnet: Learning to drive by imitating the best and synthesizing the worst. CoRR'18
+- Multi future:
+	- Nachiket Deo and Mohan M. Trivedi. Convolutional social pooling for vehicle trajectory prediction. CoRR'18
+	- Henggang Cui, Vladan Radosavljevic, Fang-Chieh Chou, Tsung-Han Lin, Thi Nguyen, Tzu-Kuo Huang, Jeff Schneider, and Nemanja Djuric. Multimodal trajectory predictions for autonomous driving using deep convolutional networks. ICRA'19
+	- **DSF**: Ye Yuan, Kris M. Kitani. Diverse Trajectory Forecasting with Determinantal Point Processes. ICLR'20 \
+		<img src="/Autonomous-Driving/images/prediction/dsf.png" alt="drawing" width="400"/>
+- **Multipath**: Y Chai, B Sapp, M Bansal, and D Anguelov. Multipath: Multiple probabilistic anchor trajectory hypotheses for behavior prediction. 2019
+- T Zhao, Y Xu, M Monfort, W Choi, C Baker, Y Zhao, Y Wang, and Y Wu. Multi-agent tensor fusion for contextual trajectory prediction. CoRR'19
+
 ## Scene Prediction
-- **SPCSFNet**: Xinshuo Weng, Jianren Wang, Sergey Levine, Kris Kitani, Nicholas Rhinehart. Unsupervised Sequence Forecasting of 100,000 Points for Unsupervised Trajectory Forecasting. ECCV'20
+- **SPCSFNet**: X Weng, J Wang, S Levine, K Kitani, N Rhinehart. Unsupervised Sequence Forecasting of 100,000 Points for Unsupervised Trajectory Forecasting. ECCV'20
 	- Insight: Define a new task, Scene Point Cloud Sequence Forecasting;
 	- https://github.com/xinshuoweng/SPCSF
 	- Problem: input M frames, output N frames; i.e., predict a new point cloud for whole scene;
@@ -138,17 +124,17 @@
 - **TrafficPredict**: Y. Ma et al., TrafficPredict: Trajectory Prediction for Heterogeneous Traffic-Agents. 2018
 - J. Ren et al., Heter-Sim: Interactive data-driven optimization for simulating heterogeneous multi-agent systems. arxiv'18
 - Q. Chao, Z. Deng, J. Ren, Q. Ye, X. Jin, Realistic Data-Driven Traffic Flow Animation Using Texture Synthesis. TVCG'18
-- Chen Sun, Per Karlsson, Jiajun Wu, Joshua B. Tenenbaum, and Kevin Murphy. Stochastic prediction of multi-agent interactions from partial observations. CoRR'19
+- C Sun, P Karlsson, J Wu, J Tenenbaum, and K Murphy. Stochastic prediction of multi-agent interactions from partial observations. CoRR'19
 	- Multi-modality
-- Nicholas Watters, Daniel Zoran, Theophane Weber, Peter Battaglia, Razvan Pascanu, and Andrea Tacchetti. Visual interaction networks: Learning a physics simulator from video. NIPS'17
+- N Watters, D Zoran, T Weber, P Battaglia, R Pascanu, and A Tacchetti. Visual interaction networks: Learning a physics simulator from video. NIPS'17
 - **R2P2**: N. Rhinehart, K. M. Kitani, and P. Vernaza. R2P2: A reparameterized pushforward policy for diverse, precise generative path forecasting. ECCV'18
 	- Insight: Deep Generative Imitation Learning (like GAIL)
-	- Diversity-precision tradeoff with **symmetric cross-entropy** H(p,q) for mode coverage, H(q,p) for precision; loss = H(p,q)+beta H(q,p);
+	- Diversity-precision tradeoff with **symmetric cross-entropy** H(p,q) for mode coverage, H(q,p) for precision; loss = H(p,q)+β H(q,p);
 	- Pushforward parameterization to render inference and learning in this model efficient;
 		- q(x) = q(z) |det(J)|^(-1)
 	- Prior approximation;
 	- CNN - RNN; Verlet prediction;
-- **PRECOG**: Nicholas Rhinehart, Rowan McAllister, Kris M. Kitani, and Sergey Levine. PRECOG: prediction conditioned on goals in visual multi-agent settings. CoRR'19
+- **PRECOG**: N Rhinehart, R McAllister, K Kitani, and S Levine. PRECOG: prediction conditioned on goals in visual multi-agent settings. CoRR'19
 	- https://sites.google.com/view/precog
 	- Insight: extend R2P2 one-step single-agent;
 	- Key: a factorized flow-based generative model that forecasts the joint state of all agents; the use of factorized latent variables to model decoupled agent intentions even though agent dynamics are coupled;
@@ -180,9 +166,9 @@
 - J. F. Fisac, E. Bronstein, E. Stefansson, D. Sadigh, S. S. Sastry, and A. D. Dragan. Hierarchical game-theoretic planning for autonomous vehicles. arxiv'18
 
 ## Physics
-- Greg Welch, Gary Bishop, et al. An introduction to the kalman filter. 1995
-- Tuomas Haarnoja, Anurag Ajay, Sergey Levine, and Pieter Abbeel. Backprop KF: learning discriminative deterministic state estimators. CoRR'16
-- Stéphanie Lefèvre, Dizan Vasquez, and Christian Laugier. A survey on motion prediction and risk assessment for intelligent vehicles. 2014
+- G Welch, G Bishop, et al. An introduction to the kalman filter. 1995
+- T Haarnoja, A Ajay, S Levine, and P Abbeel. Backprop KF: learning discriminative deterministic state estimators. CoRR'16
+- S Lefèvre, D Vasquez, and C Laugier. A survey on motion prediction and risk assessment for intelligent vehicles. 2014
 
 ## Misc
 - T. Streubel and K. H. Hoffmann. Prediction of driver intended path at intersections. 2014
