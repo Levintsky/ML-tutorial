@@ -3,18 +3,38 @@
 ## Basics
 - AutoML: most successful for mobile vision;
 
+## Auto-TVM:
+- T Chen, et. al. TVM: An Automated End-to-End Optimizing Compiler for Deep Learning. OSDI'18
+- T Chen, et. al. Learning to Optimize Tensor Programs. NIPS'18
+	- Input: a program, output: an efficient execution;
+	- Model 1: GBT (XGBoost);
+	- Model 2: TreeGRU; (Kai Sheng Tai, Richard Socher, and Christopher D Manning. Improved semantic representations from tree-structured long short-term memory networks.)
+	- Loss: ranking loss;
+	- Optimization process (Sub-Modular): simulated annealing to collect candidates; diversity-aware optimization;
+	- Transfer Learning;
+
+## Polyhedral
+- U Bondhugula, A Hartono, J Ramanujam, and P. Sadayappan. A practical automatic polyhedral parallelizer and locality optimizer. SIGPLAN, PLDI'08
+- S Verdoolaege, J Juega, A Cohen, J Gómez, C Tenllado, and F Catthoor. Polyhedral parallel code generation for cuda. ACM 2013
+- **Halide**: J Ragan-Kelley, et. al. Halide: A language and compiler for optimizing parallelism, locality, and recomputation in image processing pipelines. PLDI'13
+- **Tensor comprehension**: N Vasilache, et. al. Tensor comprehensions: Frameworkagnostic high-performance machine learning abstractions. CoRR'18
+
+## Black box:
+- **FFTW**: M. Frigo and S. G. Johnson. Fftw: an adaptive software architecture for the fft. ICASSP 1998
+-  Daniel Golovin, Benjamin Solnik, Subhodeep Moitra, Greg Kochanski, John Karro, and D. Sculley. Google vizier: A service for black-box optimization. KDD 2017
+- **Atlas**: R. Clint Whaley and Jack J. Dongarra. Automatically tuned linear algebra software. 1998
+
+## DSL
+- A Sujeeth, H Lee, K Brown, H Chafi, M Wu, A Atreya, K Olukotun, T Rompf, and M Odersky. Optiml: An implicitly parallel domain-specific language for machine learning. ICML'11
+- F Kjolstad, S Kamil, S Chou, D Lugato, and S Amarasinghe. The tensor algebra compiler. OOPSLA'17
+- **Weld**: S Palkar, et. al. M Zaharia. Weld: Rethinking the interface between data-intensive applications. PLDI CoRR'17
+- M Steuwer, T Remmelg, and C Dubach. Lift: A functional data-parallel ir for high-performance gpu code generation. CGO'17
+
 ## Unclassified
-- **Squeezenet**: Forrest N. Iandola, Matthew W. Moskewicz, Khalid Ashraf, Song Han, William J. Dally, and Kurt Keutzer. Squeezenet: Alexnet-level accuracy with 50x fewer parameters and <1mb model size. CoRR'16
-- Gao Huang, Shichen Liu, Laurens van der Maaten, and Kilian Q. Weinberger. Condensenet: An efficient densenet using learned group convolutions. CoRR'16
-- Bichen Wu, Alvin Wan, Xiangyu Yue, Peter H. Jin, Sicheng Zhao, Noah Golmant, Amir Gholaminejad, Joseph Gonzalez, and Kurt Keutzer. Shift: A zero flop, zero parameter alternative to spatial convolutions.
-- Azalia Mirhoseini, Hieu Pham, Quoc V. Le, Benoit Steiner, Rasmus Larsen, Yuefeng Zhou, Naveen Kumar, Mohammad Norouzi, Samy Bengio, and Jeff Dean. Device placement optimization with reinforcement learning. ICML'17
-- Jin-Dong Dong, An-Chieh Cheng, Da-Cheng Juan, Wei Wei, and Min Sun. Dpp-net: Device-aware progressive search for pareto-optimal neural architectures. ECCV'18
-	- Cell-based search
-- Yuanxiang Gao, Li Chen, Baochun Li. Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization. NIPS'18
-	- Place different OPs on different GPUs
-	- Cross Entropy
-	- RL with PPO
-- Don Kurian Dennis Chirag Pabbaraju Harsha Vardhan Simhadri Prateek Jain. Multiple Instance Learning for Efficient Sequential Data Classification on Resource-constrained Devices. NIPS'18
+- **Squeezenet**: F Iandola, M Moskewicz, K Ashraf, S Han, W Dally, and K Keutzer. Squeezenet: Alexnet-level accuracy with 50x fewer parameters and <1mb model size. CoRR'16
+- G Huang, S Liu, L v d Maaten, and K Weinberger. Condensenet: An efficient densenet using learned group convolutions. CoRR'16
+- B Wu, et. al. Kurt Keutzer. Shift: A zero flop, zero parameter alternative to spatial convolutions.
+- A Mirhoseini, et. al. J Dean. Device placement optimization with reinforcement learning. ICML'17
 
 ## Mobile
 - MobileNet Series:
@@ -39,7 +59,7 @@
 			<img src="/AutoML-Meta/images/mobile/m-v2-3.png" alt="drawing" width="500"/>
 		- Classification: ImageNet 74.7%
 		- Detection (SSD-Lite): 75 mIOU compared to 80 ResNet with 30 times more ops;
-	- **MobileNet-V3**: Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam. Searching for MobileNetV3. 2019
+	- **MobileNet-V3**: Searching for MobileNetV3. 2019
 		- Similar to MNas: RNN-based controller and the same factorized hierarchical search space
 		- 0. Backbone based on MnasNet;
 			- Block-wise Search;
@@ -53,7 +73,7 @@
 		- 6. Change V2 final layers;\
 			<img src="/AutoML-Meta/images/mobile/m-v3-1.png" alt="drawing" width="400"/>
 - MNas:
-	- **MnasNet**: Mingxing Tan, Bo Chen, Ruoming Pang, Vijay Vasudevan, Mark Sandler, Andrew Howard, Quoc V. Le. MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
+	- **MnasNet**: M Tan, et. al. MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
 		- Built upon the MobileNetV2 structure by introducing lightweight attention modules based on squeeze and excitation into the bottleneck structure
 		- Steps:
 			- Generate a set of new proposals with at least delta reduction in latency compared to the previous step;
@@ -61,9 +81,9 @@
 			- Selected best proposal according to some metric;
 		- Manually redesign expensive layers;
 		- Activation: swish;
-	- Bo Chen, Golnaz Ghiasi, Hanxiao Liu, Tsung-Yi Lin, Dmitry Kalenichenko, Hartwig Adams, Quoc V Le. MnasFPN: Learning Latency-aware Pyramid Architecture for Object Detection on Mobile Devices. 2019
+	- B Chen, et. al. MnasFPN: Learning Latency-aware Pyramid Architecture for Object Detection on Mobile Devices. 2019
 - Efficient:
-	- **EfficientNet**: Mingxing Tan, Quoc V. Le. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
+	- **EfficientNet**: EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
 		- Baseline (MNAS): mobile inverted bottleneck convolution (MBConv)
 		- Width scaling
 		- Depth scaling
@@ -76,6 +96,6 @@
 	- ShuffleNet: ReLU[x + (**Gconv**1x1 BN-ReLU **Channel-Shuffle** DWconv3x3 BN-ReLU **Gconv**1x1 BN)]
 - **FBNet**:
 	- ChamNet: Towards Efficient Network Design through Platform-Aware Model Adaptation. 2018
-	- V1: Bichen Wu, Xiaoliang Dai, Peizhao Zhang, Yanghan Wang, Fei Sun, Yiming Wu, Yuandong Tian, Peter Vajda, Yangqing Jia, Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
-	- **FBNetV2**: Alvin Wan, Xiaoliang Dai, Peizhao Zhang, Zijian He, Yuandong Tian, Saining Xie, Bichen Wu, Matthew Yu, Tao Xu, Kan Chen, Peter Vajda, Joseph E. Gonzalez. FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
+	- V1: B Wu, et. al. Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
+	- **FBNetV2**: FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
 		- https://github.com/facebookresearch/mobile-vision

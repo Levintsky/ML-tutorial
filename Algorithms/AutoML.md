@@ -92,6 +92,7 @@
 		- Op-level: 1x7, 3x3, 5x5, ... conv, pooling, ...
 		- Graph-level: randomly select 1 or 2, and an op to combine them;
 	- [Junjie Yan AAAI'18], ENAS [H Pham, ICML'18], AmoebaNet [E. Real, AAAI'19],
+	- J Dong, Dpp-net: ECCV'18
 	- Evolved Transformer [Chen Liang, 19]
 		- 5 branch-level: input, norm, layer, output-dim and act
 		- 1 block-level search field (combiner function)

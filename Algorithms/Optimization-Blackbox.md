@@ -46,7 +46,7 @@
 		- Variant of steepest descent + line search;
 
 ## Estimate Gradient
-- Chi Jin, Lydia T. Liu, Rong Ge, Michael I. Jordan. On the Local Minima of the Empirical Risk. NIPS'18
+- C Jin, L Liu, R Ge, M Jordan. On the Local Minima of the Empirical Risk. NIPS'18
 	- Insight: propose an optimization algorithm (ZPSGD), Gaussian smoothing 0-order grad;
 	- Zero-th order Perturbed Stochastic Gradient Descent;
 		- Sample m i.i.d. Gaussian (zt1, zt2, ..., ztm) ~ N(0, σ^2I)
@@ -80,16 +80,44 @@
 	- Successful in optimization in low-medium dimension;
 - Legacy:
 	- I. Rechenberg and M. Eigen. Evolutionsstrategie: Optimierung Technischer Systeme nach Prinzipien der Biologischen Evolution. 1973
-	- H.-P. Schwefel. Numerische optimierung von computer-modellen mittels der evolutionsstrategie. 1977
-	- Juergen Schmidhuber and Jieyu Zhao. Direct policy search and uncertain policy evaluation. 1998
-	- Sebastian Risi and Julian Togelius. Neuroevolution in games: State of the art and open challenges. 2015
-- Nikolaus Hansen and Andreas Ostermeier. Completely derandomized self-adaptation in evolution strategies. Evolutionary computation, 9(2):159–195, 2001
-- Nikolaus Hansen. The CMA Evolution Strategy: A Tutorial. 2016
+	- H Schwefel. Numerische optimierung von computer-modellen mittels der evolutionsstrategie. 1977
+	- J Schmidhuber and J Zhao. Direct policy search and uncertain policy evaluation. 1998
+	- S Risi and J Togelius. Neuroevolution in games: State of the art and open challenges. 2015
+- N Hansen and A Ostermeier. Completely derandomized self-adaptation in evolution strategies. 2001
+- N Hansen. The CMA Evolution Strategy: A Tutorial. 2016
 - **NES**: natural ES;
 	- Similar to REINFORCE, use func-eval f(x) as reward;
-		- E_x\~p(θ)[f(x)∇logp(x;θ)]; enhance the probability of sampling good x;
+		- E_x ~ p(θ)[f(x)∇logp(x;θ)]; enhance the probability of sampling good x;
 	- θ = θ + α F^(-1)∇J
-	- Daan Wierstra, Tom Schaul, Jan Peters, and Juergen Schmidhuber. Natural evolution strategies. 2008
-	- Daan Wierstra, Tom Schaul, Tobias Glasmachers, Yi Sun, Jan Peters, and Jürgen Schmidhuber. Natural evolution strategies. JMLR'14
-- David Ha. A Visual Guide to Evolution Strategies. blog.otoro.net. Oct 2017.
+	- D Wierstra, T Schaul, J Peters, and J Schmidhuber. Natural evolution strategies. 2008
+	- D Wierstra, T Schaul, T Glasmachers, Y Sun, J Peters, and J Schmidhuber. Natural evolution strategies. JMLR'14
+- D Ha. A Visual Guide to Evolution Strategies. blog.otoro.net. Oct 2017.
 	- http://blog.otoro.net/2017/10/29/visual-evolution-strategies/
+- PBT:
+	- M Jaderberg, et. al. Population Based Training of Neural Networks, 2017
+	- M Jaderberg, et. al. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
+
+## Random Search, Grid Search
+- J. Bergstra and Y. Bengio. Random search for hyperparameter optimization. JMLR'12
+- L Li, K Jamieson, G DeSalvo, A Rostamizadeh, A Talwalkar. Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization, ICLR'17, JMLR'18
+	- https://www.argmin.net/2016/06/23/hyperband/
+
+## Bayesian-Based Hyperparameter Learning
+- B. Shahriari, K. Swersky, Z. Wang, R. P. Adams, and N. de Freitas. Taking the human out of the loop: A review of bayesian optimization. 2016
+- J Snoek, H Larochelle, and R Adams. Practical bayesian optimization of machine learning algorithms. NIPS'12
+- J Snoek, et. al. Scalable bayesian optimization using deep neural networks. NIPS'15
+- Gradient based hyper-parameter optimization:
+	- D Maclaurin, D Duvenaud, R Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
+	- F Pedregosa. Hyperparameter optimization with approximate gradient. ICML'16
+
+## Unclassified
+- Frank Hutter, Holger H. Hoos, and Kevin Leyton-Brown. Sequential model-based optimization for general algorithm configuration. LION 2005
+
+## Unclassified
+- F Hutter, L Xu, H Hoos, and K Leyton-Brown. Algorithm runtime prediction: Methods and evaluation (extended abstract). IJCAI'15
+- T Domhan, J Springenberg, F Hutter. Speeding up Automatic Hyperparameter Optimization of Deep Neural Networksby Extrapolation of Learning Curves. IJCAI 2015
+	- https://github.com/automl/pylearningcurvepredictor
+- D Ha, A Dai and Q Le. Hypernetworks. ICLR 2017.
+- J. Bergstra, R. Bardenet, Y. Bengio, and B. Kegl. Algorithms for hyper-parameter optimization. NIPS'11
+- E Hazan, A Klivans, Y Yuan. Hyperparameter Optimization: A Spectral Approach. NIPS DLTP Workshop 2017
+	- https://github.com/callowbird/Harmonica
