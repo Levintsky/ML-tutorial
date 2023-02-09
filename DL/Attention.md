@@ -239,9 +239,6 @@
 
 ## Multimodal Attention
 - Arandjelovic, R. and Zisserman, A. Objects that sound. ECCV'18
-- Alayrac, J.-B., Recasens, A., Schneider, R., Arandjelovic,
-R., Ramapuram, J., De Fauw, J., Smaira, L., Dieleman,
-S., and Zisserman, A. Self-supervised multimodal versatile networks. NeurIPS'20
-- Chen, Y.-C., Li, L., Yu, L., El Kholy, A., Ahmed, F., Gan,
-Z., Cheng, Y., and Liu, J. UNITER: Learning UNiversal
+- DeepMind. Self-supervised multimodal versatile networks. NeurIPS'20
+- UNITER: Learning UNiversal
 Image-TExt Representations. ECCV'20

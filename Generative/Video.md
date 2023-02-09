@@ -1,8 +1,5 @@
 # Video Generation
 
-## Autoregressive
-- **VPN**: Kalchbrenner, Nal, Oord, Aaron van den, Simonyan, Karen, Danihelka, Ivo, Vinyals, Oriol, Graves, Alex, and Kavukcuoglu, Koray. Video pixel networks. 2016
-
 ## GAN
 - **VGAN**: C. Vondrick, H. Pirsiavash, and A. Torralba. Generating videos with scene dynamics. NIPS'16
 	- Spatial-temporal 3D CNN

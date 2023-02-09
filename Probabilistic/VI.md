@@ -16,6 +16,10 @@
 - Mode computation; (Jordan-08-8);
 - Conic programming; (Jordan-08-9);
 - Techniques:
+	- Loopy-BP:
+		- Init ms→t=1, bel(xs)=1;
+		- ms→t(xt) = Σs[ψs(xs)ψst(xs, xt) ∏u∉N(t) mu→s(xs)]
+		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
 	- VI, ELBO:
 		- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
 		- logp(x) <= ELBO(q) = E_q(z)[log p(z, x)] - H(q)
@@ -24,10 +28,19 @@
 			- = log[E_q(z)[logp(x,z)/q(z)]]
 			- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
 		- Special case: mean field;
-			- qj(xj) ~ exp(E_-qj[logp(x)]); marginalize out other var xi with qi(.);
-	- EM:
+			- Problem: known θ, infer z;
+			- logqj(xj) ~ E.-qj[logp(x)]; marginalize out other var xi with qi(.);
+			- qj(xj) = exp(E.-qj[lnp(x,z)]) / ∫exp(E.-qj[lnp(x,z)])dzj
+	- VB: Learn θ;
+		- p(θ|D) ~ Πqi(θi)
+	- EM: infer z and learn θ; q(θ) approx, p(z) exact;
 		- E-Step: posterior for z, p(z|θ)
 		- M-step: fix p(z|θ), optimize θ;
+	- VBEM/EM: both q(θ) q(z) approx;
+		- p(θ,z1..N|D) ~ q(θ)Πqi(zi)
+		- zi → xi ← θ.
+		- Variational E-step: logq(z) by ∫q(θ)
+		- Variational M-step: logq(θ) by ∫q(z)
 	- CCCP:
 		- Optimize minF(x) = f(x) - h(x), both f and h convex;
 		- h(x) ≥ h(y) + ⟨∇h(y), x−y⟩. (h convex)
@@ -36,13 +49,14 @@
 			- xk+1 = argmin.x G(x, xk)
 			- ∇f(xk+1) = ∇h(xk) each iteration;
 		- EM: a special case of CCCP;
-	- VBEM: infer z and learn θ; p(θ,z1..N|D) ~ q(θ)Πqi(zi)
-	- MCMC:
-		- Hard to do m-step, sample some z and average
+	- Sampling:
+		- MCMC: Hard to do m-step, sample some z and average;
+		- Gibbs sampling:
 	- Black-box VI: used in VAE;
 		- MC sample instead of integral to compute gradient;
 - Examples:
 	- Mixture model (PRML-9, K Murphy-11)
+		- ln(∑(exp(.))) is **convex**, so Z(w) is always convex;
 	- Gaussian;
 	- Linear-regression;
 	- LDA;
@@ -60,6 +74,8 @@
 	- μs(xs) := ∑.j μs;j Is;j(xs);
 	- μst(xs,xt) := ∑.jk μst;jk Ist;jk(xs, xt);
 	- marginal polytope M(G)
+		- The space of allowable μ: M(G)
+		- where G is the structure of the graph defining UGM.
 - Normalization condition:
 	- ∑τs(xs) = 1
 	- ∑.t τst(xs,xt) = τs
@@ -96,13 +112,11 @@
 		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
 	- 22.2.3 LBP on a factor graph
 	- 22.2.4 Convergence
-		- Damping: 
-		- TRP, TRW
+		- Damping: M̃k(xs) = λM(xs)+(1−λ)M̃k−1(xs)
+		- TRP: pick a set of spanning tree, only up-down sweep update on tree, keep others fixed;
+		- TRW:
 	- 22.2.5 Accuracy of LBP
 - 22.3 Loopy belief propagation: theoretical issues
-	- 22.3.2 The marginal polytope
-		- The space of allowable μ: marginal polytope M(G)
-		- where G is the structure of the graph defining the UGM.
 	- 22.3.3 Exact inference as a variational optimization problem
 		- L(q) = −KL(q||p)+logZ = Eq[logp'(x)]+H(q) ≤ logZ
 		- max.μ∈M θ'μ + H(μ)
@@ -113,6 +127,33 @@
 		- Σt τs(xs, xt) = τs(xs); marginalization constraint.
 		- L(G) := {τ ≥ 0 : (1) holds ∀s ∈ V and (2) holds ∀(s, t) ∈ E}
 	- 22.3.6 Loopy BP vs mean field
+		- Mean field: concave functional on non-convex set;
+			- max.μ θ†μ + H(μ) ≤ logZ(θ)
+			- max.μ ∑.s∑.xs θ(xs)μ(xs) + ∑.E∑.xs,xt θ(xs,xt)μ(xs)μ(xt) + ∑.s H(μs) ≤ logZ(θ)
+		- Message passing: non-concave functional on convex set;
+			- L(τ,λ;θ) = θ†μ + H.Bethe(τ) + λss...
+- 22.4 Extensions of belief propagation
+	- 22.4.1 Generalized belief propagation
+	- 22.4.2 Convex belief propagation
+		- Tree-reweighted BP: weight Ist with ρst;
+- 22.5 Expectation propagation
+	- 22.5.1 EP as a variational inference problem
+	- 22.5.2 Optimizing the EP objective using moment matching
+	- 22.5.3 EP for the clutter problem
+	- Expectation propagation: the **reverse form KL(p, q)**:
+		- We use an exponential family q(z) to approx p(z):
+			- q(z) = h(z)g(η)exp(η†u(z))
+			- KL(p|q) = -lng(η) - η†E.p(z)[u(z)] + const
+		- E.g. Moment matching; the cost:
+			- KL(p|q) = KL(1/p(D) ∏fi(θi)|1/Z ∏fi'(θi))
+- 22.6 MAP state estimation
+	- 22.6.1 Linear programming relaxation
+		- argmax_x∈X m θφ(x) = argmax_μ∈M(G) θ'μ
+	- 22.6.2 Max-product belief propagation
+	- 22.6.3 Graphcuts
+		- Submodular: Euv(1, 1) + Euv(0, 0) ≤ Euv(1, 0) + Euv(0, 1)
+	- 22.6.4 Experimental comparison of graphcuts and BP
+	- 22.6.5 Dual decomposition
 
 ## Mixture Models/EM, (PRML-Chap-9, Kevin Murphy Chap-11)
 - {X, Z}, posterior of z (E-step);
@@ -128,22 +169,6 @@
 	- logp(X|θ) = L(q,θ) + KL(q||p)
 	- L(q,θ) = Σ_z q(z)log[p(x,z|θ)/q(z)]
 	- KL(q||p) = Σ_z q(z)log[p(z|x,θ)/q(z)]
-- The generalized EM, or GEM, algorithm addresses the problem of an intractable M step. Instead of aiming to maximize L(q, θ) with respect to θ, it seeks instead to change the parameters in such a way as to increase its value;
-- 11.1 Latent variable
-- 11.2 Mixture models
-	- p(x|θ) = Σk πk pk(xi|θ)
-	- 11.2.1 Mixture of Gaussian
-		- p(x|θ) = Σk πk N(xi|μk,Σk)
-	- 11.2.2 Mixture of multinomial
-		- p(xi|zi=k,θ) = Π_k Ber(xij|μjk)
-	- 11.2.3 Mixture for clustering
-		- To infer p(zi=k|xi,θ)
-		- Posterior: p(zi)p(x|zi,θ) / Σp(zi)p(x|zi,θ); soft
-		- MAP: maxp(zi)p(x|zi,θ); hard clustering
-	- 11.2.4 Mixture for experts
-		- Graphical model: xi->zi->yi (zi controls different experts); generative
-		- p(yi|xi,zi=k,θ) = N(yi|wkxi,σk^2)
-		- p(zi|xi,θ) = Cat(zi|S(Vxi)), zi posterior by generative likelihood
 - 11.3 Parameter estimation for mixture models
 	- 11.3.1 Unidentifiability
 	- 11.3.2 Computing a MAP estimate is **non-convex**
@@ -153,11 +178,6 @@
 		- Complete likelihood: lc=Σlogp(xi,zi|θ)
 		- Q(θ, θ-old) = E[lc(θ)|D, θ-old]
 		- M-step: θ-new = argmax_θ Q(θ, θ-old)+logp(θ)
-	- 11.4.2 EM for GMM
-	- 11.4.3 EM for mixture of experts
-	- 11.4.4 EM for DGM
-	- 11.4.5 EM for the Student distribution
-	- 11.4.6 EM for probit regression
 	- 11.4.7 Theoretical basis for EM
 		- Lower bound: Jensen's inequality
 		- ΣlogΣ > ΣΣlog, b/c log(.) concave;
@@ -174,16 +194,14 @@
 		- ECEM: conditional;
 		- Over-relaxed EM: θt+1 = θt + η(M(θt)−θt), with aggressive η;
 - 11.5 Model selection for latent variable models
-	- K∗ = argmaxk p(D|K).
+	- K∗ = argmax.k p(D|K).
 - 11.6 Fitting models with missing data
-- Important property:
-	- **log-sum-exp is Convex**, so Z(w) is always convex for mixture models
 - Modern:
 	- J Xu, D Hsu, A Maleki. Benefits of over-parameterization with EM. NIPS'18
 	- W Lin, M Khan, M Schmid. Fast and Simple Natural-Gradient Variational Inference with Mixture of Exponential-family Approximations. ICML'19
 	- B Karimi, H Wai, E Moulines, M Lavielle. On the Global Convergence of (Fast) Incremental Expectation Maximization Methods. NIPS'19
 
-## VI (Kevin Murphy, Chap-21, 22)
+## VI (Kevin Murphy-21)
 - 21.1 Intro
 - 21.2 VI
 	- KL(p|q) = Σ_x p(x)log(p/q); (intractable, b/c Expectation over p(x))
@@ -198,57 +216,21 @@
 		- KL(p|q): mode-covering
 - 21.3 Mean field
 	- q(x) = Πqi(xi)
-	- Goal: min_q1,... KL(q||p)
-	- logqj(xj) = E_-qj[logp(x)] = Σ_x-jΠ_i≠j qi(xi)logp(x)
+	- Goal: min_q1,... KL(q∥p)
+		- D(θ1∥θ2) = A(θ2) - A(θ1) - ⟨μ1, θ2-θ1⟩
+		- D(θ1∥θ2) ≡ D(μ1∥θ2) = A(θ2) + A∗(μ1) − ⟨μ1, θ2⟩
+		- D(θ1∥θ2) ≡ A∗(μ1) − A∗(μ2) − ⟨θ2, μ1 − μ2⟩
+	- logqj(xj) = E.-qj[logp(x)] = Σ_x-jΠ_i≠j qi(xi)logp(x)
 	- 21.3.1 Derivation
 		- L(q) = -J(q) = Σq(x)log(p^(x)/q(x))
 		- qj(xj) ~ exp(E_-qj[logp(x)])
-	- 21.3.2 Example: Ising model
-		- x: hidden clean image; y: obs;
-		- p(x) = 1/Z0 exp(-E0(x)), with energy E0(x)=-ΣΣWijxixj defined on neighbor;
-		- Likelihood: p(y|x) = Πp(yi|xi) = Σexp(-Li(xi))
-		- Posterior: p(x|y) = 1/Z exp(-E0(x)+Li(x))
-		- Approx: q(x) = Πqi(xi, μi), assuming μi as mean of xi;
-		- Logp^(x) = xiΣWijxj + Li(xi)
 - 21.4 Structured Mean field
 	- Exploit tractable substructure (no need to fully factorize)
-	- 21.4.1 Example: factorial HMM
-- 21.5 Variational Bayes
-	- So far, we assume we know θ and infer z;
-	- Both θ and z, VB;
-	- VBEM: p(θ,z1..N|D) ~ q(θ)Πqi(zi)
-	- 21.5.1 Example: VB for a univariate Gaussian
-		- p(μ,λ) = N(μ|μ0,(κ0λ)−1)Ga(λ|a0,b0)
-		- Approx with: q(μ, λ) = qμ(μ)qλ(λ)
-	- 21.5.2 Example: VBEM for linear regression
-- 21.6 Variational Bayes EM
-	- Latent model: zi → xi ← θ.
-	- p(θ, z1:N|D) ≈ q(θ)q(z) = q(θ)Πq(zi)
-	- 21.6.1 Example: VBEM for mixtures of Gaussians
-		- Variational E-step: logq(z) by integral q(θ)
-		- Variational M-step: logq(θ) by integral q(z)
 - 21.7 Variational message passing and VIBES
 	- One can then sweep over the graph, updating nodes one at a time, in a manner similar to Gibbs sampling. This is known as variational message passing or VMP (Winn and Bishop 2005)
+	- Preferred in continuous z; discrete, use loopy-bp;
 - 21.8 Local variational bounds
-	- Variational logistic regression
-		- p(y|X,w) = Πexp(yiηi-lse(ηi)), with ηi=Xiwi
-			- log-sum-exp or lse(ηi)=log(1+Σexp(Σηim))
-		- Not conjugate to Gaussian prior;
-- 22.4 Extensions of belief propagation
-	- 22.4.1 Generalized belief propagation
-	- 22.4.2 Convex belief propagation
-- 22.5 Expectation propagation
-	- 22.5.1 EP as a variational inference problem
-	- 22.5.2 Optimizing the EP objective using moment matching
-	- 22.5.3 EP for the clutter problem
-- 22.6 MAP state estimation
-	- 22.6.1 Linear programming relaxation
-		- argmax_x∈X m θφ(x) = argmax_μ∈M(G) θ'μ
-	- 22.6.2 Max-product belief propagation
-	- 22.6.3 Graphcuts
-		- Submodular: Euv(1, 1) + Euv(0, 0) ≤ Euv(1, 0) + Euv(0, 1)
-	- 22.6.4 Experimental comparison of graphcuts and BP
-	- 22.6.5 Dual decomposition
+	- Simpler function to replace a specific term;
 
 ## Examples: Exponential Families
 - e.g.1 Factorized Gaussian: (PRML-10)
@@ -259,6 +241,9 @@
 		- q(z1) = N(z1|m1, Λ11^-1)
 		- m1 = μ1 - Λ11^-1Λ12[E[z2]-μ2]
 		- m2 = μ2 - Λ22^-1Λ21[E[z1]-μ1]
+- e.g.2: VB for a univariate Gaussian (K.Murphy-25.1)
+	- p(μ,λ) = N(μ|μ0,(κ0λ)−1)Ga(λ|a0,b0)
+	- Approx with: q(μ, λ) = qμ(μ)qλ(λ)
 - E.g.2: Gaussian, factorized prior (mean, precision) for conjugate prior:
 	- Assume q(μ,τ)=q(μ)q(τ), we have
 - E.g.3: exponential family;
@@ -270,10 +255,47 @@
 	- p(η) = f(νN, xN)g(η)^νN exp(η†xN)
 		- νN = ν0 + N
 		- xN = x0 + ∑E.z[u(x,z)]
+- 11.4.5 EM for the Student distribution
 
-## Examples: Mixture Model
-- E.g.: EM of GMM with Dirichlet prior on π (PRML 10.2),
+## Examples: MRF
+- E.g. Ising model: (K-Murphy-21)
+	- Problem: x: hidden clean image; y: obs;
+	- p(x) = 1/Z0 exp(-E0(x)), where E0(x)=-ΣΣWijxixj;
+	- Likelihood: p(y|x) = Πp(yi|xi) = Σexp(-Li(xi))
+	- Posterior: p(x|y) = 1/Z exp(-E0(x)+Li(x))
+	- Approx: q(x) = Πqi(xi, μi), assuming μi as mean of xi;
+	- q(xi) ∝ exp[xiΣWijμj + Li(xi)]
+
+## Examples: MM/HMM
+- e.g.: factorial HMM (K-Murphy-21.4.1)
+
+## Examples: Mixture Model (K-Murphy-21)
+- Generally: p(x|θ) = Σk πk pk(xi|θ)
+- E.g. EM of GMM with Dirichlet prior on π (PRML 10.2),
 	- Gaussian-Wishart prior on mean, precision;
+- e.g. EM for GMM (K.Murphy-11)
+	- p(x|θ) = Σk πk N(xi|μk,Σk)
+- 11.2.2 Mixture of multinomial
+	- p(xi|zi=k,θ) = Π_k Ber(xij|μjk)
+- 11.2.3 Mixture for clustering
+	- To infer p(zi=k|xi,θ)
+	- Posterior: p(zi)p(x|zi,θ) / Σp(zi)p(x|zi,θ); soft
+	- MAP: maxp(zi)p(x|zi,θ); hard clustering
+- 11.2.4 Mixture for experts
+	- Graphical model: xi->zi->yi (zi controls different experts); generative
+	- p(yi|xi,zi=k,θ) = N(yi|wkxi,σk^2)
+	- p(zi|xi,θ) = Cat(zi|S(Vxi)), zi posterior by generative likelihood
+- 11.4.3 EM for mixture of experts
+- 11.4.4 EM for DGM
+
+## Generalizd Linear Model
+- 11.4.6 EM for probit regression
+- 21.5.2 Example: VBEM for linear regression
+- 21.8.1.1. Variational logistic regression
+	- p(y|X,w) = Πexp(yiηi-lse(ηi)), with ηi=Xiwi
+		- log-sum-exp or lse(ηi)=log(1+Σexp(Σηim))
+	- Not conjugate to Gaussian prior;
+	- Approx with simpler function;
 
 ## Approximate Inference (PRML-Chap-10, Kevin-Murphy-Chap-21)
 - Local variational method, **conjugate function**:\
@@ -285,11 +307,6 @@
 		<img src="/Bayes/images/VI/local-vi-5.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/VI/local-vi-6.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/VI/local-vi-7.png" alt="drawing" width="400"/>
-- Expectation propagation: the **reverse form KL(p, q)**:
-	- We use an exponential family q(z) to approx p(z):\
-		<img src="/Bayes/images/VI/ep-1.png" alt="drawing" width="400"/>
-	- E.g. Moment matching; the cost:\
-		<img src="/Bayes/images/VI/ep-2.png" alt="drawing" width="400"/>
 
 ## Black-box VI
 - R Ranganath, S Gerrish, D Blei. Black Box Variational Inference. AISTATS'14

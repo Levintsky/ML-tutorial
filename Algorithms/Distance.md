@@ -8,8 +8,6 @@
 		- Given a random variable X={x1, x2, ...}, the minimizer of f(y)=d(x,y) is y=E[x], satisfies iff f(.) is convex;
 		- d(x, y) >= 0 implies f(x) convex;
 		- **Assymetry**: in general D(x,y) != D(y,x);
-	- Common Bregman divergence:\
-		<img src="/Optimization/images/distance/bregman.jpg" alt="drawing" width="400"/>
 	- Legacy:
 		- A Banerjee, X Guo, and H Wang. On the optimality of conditional expectation as a Bregman predictor. TIT'05
 		- A Banerjee, et al. Clustering with Bregman divergences. JMLR'05
@@ -25,6 +23,11 @@
 ## Distribution Distance
 - Fisher Divergence: Johnson, O. Information theory and the central limit theorem, 2004.
 	- F(p,q)=Ex||∇logp(x)−∇logq(x)||^2,
+- Alpha divergence:
+	- Dα(p||q) = 4/(1-α^2)[1-∫p(x)^(1+α)/2 q(x)^(1-α)/2 dx]
+	- General, α -> 1, KL(p|q); α -> -1, KL(q|p); α=-, Hellinger;
+- Hellinger distance:
+	- D(p||q) = ∫(p(x)^.5 - q(x)^.5)^2 dx
 - KSD: Q. Liu, J. Lee, and M. Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16
 	- S(p, q) = Ex,x'∼p[δq,p(x)k(x, x')δq,p(x')]
 	- where δq,p(x) = sq(x) − sp(x) is the score difference;

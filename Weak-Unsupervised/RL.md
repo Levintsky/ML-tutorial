@@ -26,13 +26,14 @@
 		- Reward prediction
 	- DARLA: Improving Zero-Shot Transfer in Reinforcement Learning (Higgins et al 2017)
 	- World Models (Ha & Schmidhuber, 2018)
-		- G Wayne, C Hung, D Amos, M Mirza, A Ahuja, A Grabska-Barwinska, J Rae, P Mirowski, J Z. Leibo, A Santoro, M Gemici, M Reynolds, T Harley, J Abramson, S Mohamed, D Rezende, D Saxton, A Cain, C Hillier, D Silver, K Kavukcuoglu, M Botvinick, D Hassabis, T Lillicrap. Unsupervised Predictive Memory in a Goal-Directed Agent
-	- **ToMnet**: N C. Rabinowitz, F Perbet, H. Francis Song, C Zhang, S. M. A Eslami, M Botvinick. Machine Theory of Mind. ICML'18
-		<img src = '/Weak-Unsupervised/images/tomnet.png' width = '500px'>
-		- **Predict other agent** 1. immediate action (policy); 2. consumed object (goal); 3. trajectory (successor representation).
+		- DeepMind. Unsupervised Predictive Memory in a Goal-Directed Agent.
+	- ToMnet: Machine Theory of Mind. ICML'18
+		- Task: Predict other agent
+			- 1. next action (policy); 
+			- 2. goal;
+			- 3. trajectory.
 		- VAE on character embedding: generate mean and variance;
-		- DVIB for penalty
-		<img src = '/Weak-Unsupervised/images/tomnet2.png' width = '500px'>
+		- DVIB for supervision;
 	- Learning to summarize from human feedback (Stiennon et al 2020)
 - Contrastive
 	- CPC: Contrastive Predictive Coding (Van den Oord et al 2018)
@@ -51,8 +52,8 @@
 	- TCN: Time Contrastive Networks (Sermanet et al 2018)
 	- FERM: A Framework for Efficient Robotic Manipulation (Zhan et al 2020)
 - Augmentation + RL
-	- Misha Laskin, Kimin Lee, Adam Stooke, Lerrel Pinto, Pieter Abbeel, Aravind Srinivas. Reinforcement Learning with Augmented Data. NeurIPS'20
-	- Denis Yarats, Ilya Kostrikov, Rob Fergus. Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels. ICLR'21
+	- Pieter Abbeel. Reinforcement Learning with Augmented Data. NeurIPS'20
+	- D Yarats, I Kostrikov, R Fergus. Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels. ICLR'21
 
 ## Reward-Free RL
 - Reward-Free Pre-Training:
@@ -119,7 +120,7 @@
 
 ## Intrinsic Reward
 - Curious Agent
-	- Wenlong Huang, Igor Mordatch, Deepak Pathak. One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control. ICML'20
+	- W Huang, I Mordatch, D Pathak. One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control. ICML'20
 		- https://github.com/huangwl18/modular-rl/
 - Baldi et. al., Bayesian Surprise Attracts Human Attention. (2005)
 - Prediction Gain: Bellemare et. al. (Unifying Count-Based Exploration and Intrinsic Motivation. 2016)

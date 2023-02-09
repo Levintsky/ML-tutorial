@@ -1,12 +1,33 @@
 # Sampling
 
+## Basics
+- Goal: evaluate E[f]=∫f(z)p(z)dz
+	- Approximate with f=1/L ∑l=1..L f(zl)
+	- Var(f)=1/L E[(f-E(f))^2]
+- Basic:
+	- Rejection sampling: sample from q(z) to get p(z)
+		- Adaptive: piecewise envelope;
+	- Importance sampling: sample from q and reweight;
+	- Sampling-importance-resampling (SIR)
+- Monte Carlo EM
+- Time domain:
+	- Particle filtering;
+- Dependent sampling:
+	- MCMC
+	- Metropolis Hasting;
+	- Gibbs, Colapsed
+	- Slice
+	- HMC
+- Techniques:
+	- Burn-in + mixing;
+	- Annealing;
+- Applications:
+	- Estimate normalization function;
+
 ## Misc
 - A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
 ## Sampling Methods (PRML Chap 11, Kevin Murphy Chap 2.7)
-- Goal: evaluate E[f]=∫f(z)p(z)dz
-	- Approximate with f=1/L ∑l=1..L f(zl)
-	- Var(f)=1/L E[(f-E(f))^2]
 - 11.1 Basic Sampling Algorithm
 	- y=f(z), then p(y)=p(z)|dz/dy|
 	- 11.1.2 Rejection sampling:
@@ -156,22 +177,13 @@
 - 24.7 Approximating the marginal likelihood
 
 ## Langevin Dynamics
-- Physics Background (for HMC, Langevin Dynamics)
-	- Lagrange Mechanics:
-		- q as coordinates, v=dq/dt as velocity
-		- Euler-Lagrange equation: dL/dq - d(dL/dv)/dt=0,
-		- Lagrangian L could be L=mv^2/2-V(q), with V as potential;
-	- Legendre Transform: K=mv^2/2, then the slope p; applying duality to Lagrange and maximum, T(v) = mv^2/2
-	- Hamilton: H=pq-L (Legendre), H(q,p)=T(p)+V(q); energy conservation: dH/dt=0 
-	- T(p) or K(p): kinetic energy; p^TM^(-1)p, where M is mass matrix;
-	- U(q) or V(q): potential energy;
-	- Equation of motion: dqi/dt=dH/dφ, dpi/dt=-dH/dφ;
-- Neal, R. M. MCMC using Hamiltonian dynamics. In Brooks, S., Gelman, A., Jones, G., and Meng, X.-L. (eds.), Handbook of Markov Chain Monte Carlo. 2010
+- Physics Background: Lagrange/Hamilton mechanics, check dynamic-systems;
+- R Neal. MCMC using Hamiltonian dynamics. Handbook of Markov Chain Monte Carlo. 2010
 	- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
 	- ηt ~ N(0, εt)
 - **HMC**: MCMC using Hamiltonian dynamics. Radford M. Neal 2012
 	- https://blog.csdn.net/qy20115549/article/details/54561643
-- **SGLD**: Max Welling, Yee Whye Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
+- **SGLD**: M Welling, Y W Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
 	- Insight: a new framework for learning from large scale datasets based on iterative learning from small mini-batches.
 	- Model prior p(x|θ), X = {xi}i=1..N, p(θ|X)∝p(θ)∏i=1..N p(xi|θ)
 	- Robins-Monroe (mini-batch):
@@ -188,8 +200,8 @@
 	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
 	- https://github.com/henripal/sgld
 	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
-- **SGHMC**: Tianqi Chen, Emily Fox, Carlos Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
-- Henri Palacci, Henry Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
+- **SGHMC**: T Chen, E Fox, C Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
+- H Palacci, H Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
 - YP Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NIPS'18
 	- Application: LDA;
-- Nicolas Brosse, Alain Durmus, Eric Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
+- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
