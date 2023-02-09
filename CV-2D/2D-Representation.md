@@ -27,6 +27,20 @@
 - **ISIN**: C Lu, H Su, Y Li, Y Lu, L Yi, CK Tang, L Guibas. Beyond Holistic Object Recognition: Enriching Image Understanding with Part States. CVPR'18
 	- Part state dataset from PASCAL VOC: 15 object categories, 104,965 parts, 856 states from 19,437 images;
 
+## Parts
+- Preliminaries
+	- Hough Transform
+	- Bezier Curve
+	- Graph Neural Network
+- SOTAs
+	- **LCNN**: Y Zhou, H Qi, Y Ma. L-CNN — End-to-End Wireframe Parsing. ICCV'19
+		- https://github.com/zhou13/lcnn
+	- **ht-lcnn**: Y Lin, and S Pintea, and J Gemert. Deep-Hough-Transform-Line-Priors. ECCV'20
+		- https://github.com/yanconglin/Deep-Hough-Transform-Line-Priors
+	- N Xue, T Wu, S Bai, F Wang, G Xia, L Zhang, P Torr. Holistically-Attracted Wireframe Parsing. 
+	- ULSD: H Li, H Yu, W Yang, L Yu, S Scherer. ULSD: Unified Line Segment Detection across Pinhole, Fisheye, and Spherical Cameras. arxiv'20
+	- Conv-MPN: F Zhang,  Nauata, Y Furukawa. Conv-MPN: Convolutional Message Passing Neural Network for Structured Outdoor Architecture Reconstruction. CVPR'20
+
 ## Backbone
 - CNN:
 	- NPR: H Zeng, J Wu and Y Furukawa. Neural Procedural Reconstruction for Residential Buildings. ECCV'18
@@ -58,3 +72,4 @@
 ## Unclassified
 - J Wang, A Yuille. Semantic Part Segmentation using Compositional Model combining Shape and Appearance. CVPR'15
 - v d Hengel, A., Russell, C., Dick, A., Bastian, J., Pooley, D., Fleming, L., Agapito, L.: Part-based modelling of compound scenes from images. CVPR'15
+- Ritchie, D., Thomas, A., Hanrahan, P., and Goodman, N. Neurally-guided procedural models: Amortized inference for procedural graphics programs using neural networks. NIPS'16

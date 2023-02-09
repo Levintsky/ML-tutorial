@@ -61,8 +61,8 @@
 ## Frequentist Statistics (Kevin Murphy Chap 6)
 - The parameter is viewed as fixed and the data as random, which is the exact opposite of the Bayesian approach;
 - Sampling distribution:
-	- θ^ = θ^mle(D), D ~ θ\*.
-	- θ^ -> N(θ\*, I(θ\*)^-1) as N -> ∞
+	- θ^ = θ^mle(D), D ~ θ∗.
+	- θ^ -> N(θ∗, I(θ∗)^-1) as N -> ∞
 - Frequentist decision theory:
 	- ρ(a|D, π) := E_p(θ|D,π)[L(θ,a)] = ∫L(θ,a)p(θ|D,π)dθ
 - Not only is the frequentist definition unnatural, it cannot even be computed, because true θ is unknown. Consequently, we cannot compare different estimators in terms of their frequentist risk. We discuss various solutions to this below.

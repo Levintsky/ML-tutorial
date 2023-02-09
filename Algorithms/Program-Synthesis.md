@@ -45,8 +45,12 @@
 	- SMT: symbolic search
 	- M. Bruch, M. Monperrus, and M. Mezini. Learning from examples to improve code completion systems. ACM SIGSOFT'09
 	- S. Gulwani. Automating string processing in spreadsheets using input-output examples. ACM Sigplan'11
+	- Menon, A., Tamuz, O., Gulwani, S., Lampson, B., and Kalai, A. A machine learning framework for programming by example. ICML'13
 	- V. Raychev, M. Vechev, and E. Yahav. Code completion with statistical language models. SIGPLAN'14
+	- Osera, P.-M. and Zdancewic, S. Type-and-example-directed program synthesis. ACM SIGPLAN'15
 	- A Kalyan, A Mohta, O Polozov, D Batra, P Jain, S Gulwani. Neural-Guided Deductive Search for Real-Time Program Synthesis from Examples. 2018
+	- R Fox, R Shin, S Krishnan, K Goldberg, D Song, and I Stoica. Parametrized hierarchical procedures for neural programming. ICLR'18
+	- Sun, S.-H., Noh, H., Somasundaram, S., and Lim, J. Neural program synthesis from diverse demonstration videos. ICML'18
 - Deductive:
 	- C. C. Green. Application of theorem proving to problem solving. IJCAI'69.
 	- Z. Manna and R. J. Waldinger. Toward automatic program synthesis. CACM'71
@@ -150,3 +154,10 @@
 	- Differentiable, fine-tuned by gd
 - NLP: reading comprehension:
 	- X Chen, C Liang, A Yu, D Zhou, D Song, Q Le. Neural Symbolic Reader: Scalable Integration of Distributed and Symbolic Representations for Reading Comprehension. ICLR'20
+- CV: search a program:
+	- NGSI: S Lu, J Mao, J Tenenbaum, J Wu. Neurally-Guided Structure Inference. ICML'19
+		- https://github.com/desire2020/NGSI
+		- Key insight: search-based, exhaustive -> neural guided;
+		- The algorithm builds the hierarchical structure by recursively choosing the production rule to expand a non-terminal symbol;
+		- Application 1: Matrix decomposition. F = MG + G. M: selection; first G: Gaussian of cluster center; 2nd G: i.i.d Noise;
+		- Application 2: Program parsing. Build on Xinyun 2018 with while loop.

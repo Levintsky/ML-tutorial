@@ -181,13 +181,6 @@
 ## Generalized Linear Models, Exponential Family (Kevin Murphy, Chap 9)
 - 9.1 Introduction
 - 9.2 Exponential Family:
-	- p(x|θ) = 1/Z(θ) h(x) exp[θφ(x)] = h(x)exp[θφ(x)-A(θ)]
-	- A(θ) = logZ(θ); Log-Partition function
-	- 9.2.2 Examples
-		- Bernoulli, Multinoulli, Univariate Gaussian
-	- 9.2.3 Log partition function
-		- dA/dθ = E[φ(x)]
-		- ∇^2 A(θ) = cov[φ(x)]
 	- 9.2.4 MLE
 		- **Pitman-Koopman-Darmois theorem**: under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics.
 		- ∇θlogp(D|θ) = φ(D) − NE[φ(X)]; moment matching;
@@ -195,14 +188,6 @@
 		- Likelihood: p(D|η) ∝ exp(NηTs − NA(η))
 		- Prior: p(θ|ν0, τ0) ∝ g(θ)^ν0 exp(η(θ)τ0)
 		- Posterior: p(θ|ν0+N, τ0+SN)
-	- 9.2.6 Maximum entropy derivation
-		- The principle of maximum entropy or maxent says we should pick the distribution with maximum entropy (closest to uniform),
-		- s.t. the constraints that the moments of the distribution match the empirical:
-			- Σ_x fk(x)p(x) = Fk
-		- Maximize entropy s.t. prob and moment matching constraint:
-			- J(p, λ) = -Σp(x)log(x) + λ0(1-Σp(x)) + Σ_k λk(Fk-Σp(x)fk(x))
-			- ∂J/∂p(x) = -1 - logp(x) - λ0 - Σ_k λkfk(x) = 0
-			- p(x) ∝ exp(- Σλkfk(x)): Gibbs distribution;
 - 9.3 Generalized linear models (GLMs)
 	- 9.3.2 ML and MAP estimation
 	- 9.3.3 Bayesian inference
@@ -344,5 +329,18 @@
 	- 13.8.3 Compressed sensing
 	- 13.8.4 Image inpainting and denoising
 
-## Unclassified
-- Alexander Munteanu, Chris Schwiegelshohn, Christian Sohler, David P. Woodruff. On Coresets for Logistic Regression. NIPS'18
+## PRML-10
+- EM of linear regression: a Γ prior α ~ Γ(a0, b0) for weight precision; assume q(w, α) ~ q(w)q(α)
+	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>\
+	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>\
+	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="300"/>
+	- Assume variational factorized posterior: q(w, α) = q(w) q(α)
+	- Prior α:\
+		<img src="/Bayes/images/VI/em-lr-4.png" alt="drawing" width="400"/>
+	- Weight w:\
+		<img src="/Bayes/images/VI/em-lr-5.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/VI/em-lr-6.png" alt="drawing" width="400"/>
+	- Predict:\
+		<img src="/Bayes/images/VI/em-lr-7.png" alt="drawing" width="400"/>\
+		<img src="/Bayes/images/VI/em-lr-8.png" alt="drawing" width="400"/>
+- E.g.6: variational logistic regression:

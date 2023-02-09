@@ -4,9 +4,9 @@
 - A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
 ## Sampling Methods (PRML Chap 11, Kevin Murphy Chap 2.7)
-- Goal: evaluate E\[f\]=∫f(z)p(z)dz
+- Goal: evaluate E[f]=∫f(z)p(z)dz
 	- Approximate with f=1/L ∑l=1..L f(zl)
-	- Var(f)=1/L E\[(f-E(f))^2\]
+	- Var(f)=1/L E[(f-E(f))^2]
 - 11.1 Basic Sampling Algorithm
 	- y=f(z), then p(y)=p(z)|dz/dy|
 	- 11.1.2 Rejection sampling:
@@ -89,7 +89,7 @@
 		- Analytically integrate out some of the unknown quantities, and just sample the rest
 		- Insight: sample z and integrate out θ, will make estimate much lower variance; integration always more robust than sampling?
 		- Theorem 24.2.1 (**Rao-Blackwell**). Let z and θ be dependent random variables, and f(z,θ) be some scalar function. Then
-			- Varz,θ\[f(z, θ)\]≥varz\[Eθ\[f(z,θ)|z\]\]
+			- Var.z,θ[f(z, θ)] ≥ var.z[Eθ[f(z,θ)|z]]
 	- 24.2.6 BUGS and JAGS
 		- BUGS (Lunn et al. 2000), which stands for "Bayesian updating using Gibbs Sampling", widely used in biostatistics and social science;
 		- JAGS (Plummer 2003), which stands for "Just Another Gibbs Sampler".
@@ -193,26 +193,3 @@
 - YP Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NIPS'18
 	- Application: LDA;
 - Nicolas Brosse, Alain Durmus, Eric Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
-
-## Unclassified
-- Fredrik Lindsten, Jouni Helske, Matti Vihola. Graphical model inference: Sequential Monte Carlo meets deterministic approximations. NIPS'18
-- Tao Sun, Yuejiao Sun, Wotao Yin. On Markov Chain Gradient Descent. NIPS'18
-- Yi HAO, Alon Orlitsky, Venkatadheeraj Pichapati. On Learning Markov Chains. NIPS'18
-
-## NIPS'18
-- Holden Lee, Oren Mangoubi, Nisheeth Vishnoi. Online sampling from log-concave distributions
-- Anna Wigren, Riccardo Sven Risuleo, Lawrence Murray, Fredrik Lindsten. Parameter elimination in particle Gibbs sampling
-- Ruqi Zhang, Christopher De Sa. Poisson-Minibatching for Gibbs Sampling with Convergence Rate Guarantees
-- Christopher Nemeth, Fredrik Lindsten, Maurizio Filippone, James Hensman. Pseudo-Extended Markov chain Monte Carlo
-- Difan Zou, Pan Xu, Quanquan Gu. Stochastic Gradient Hamiltonian Monte Carlo Methods with Recursive Variance Reduction
-- Adil SALIM, Dmitry Koralev, Peter Richtarik. Stochastic Proximal Langevin Algorithm: Potential Splitting and Nonasymptotic Rates
-- Xuechen Li, Yi Wu, Lester Mackey, Murat Erdogdu. Stochastic Runge-Kutta Accelerates Langevin Monte Carlo and Beyond
-- Ruoqi Shen, Yin Tat Lee. The Randomized Midpoint Method for Log-Concave Sampling
-- Kunal Talwar. Computational Separations between Sampling and Optimization
-- Niloy Biswas, Pierre E Jacob, Paul Vanetti. Estimating Convergence of Markov chains with L-Lag Couplings
-- Bo Dai, Zhen Liu, Hanjun Dai, Niao He, Arthur Gretton, Le Song, Dale Schuurmans. Exponential Family Estimation via Adversarial Dynamics Embedding
-- Michalis Titsias, Petros Dellaportas. Gradient-based Adaptive Markov Chain Monte Carlo
-- Guillaume Gautier, Rémi Bardenet, Michal Valko. On two ways to use determinantal point processes for Monte Carlo integration
-- Santosh Vempala, Andre Wibisono. Rapid Convergence of the Unadjusted Langevin Algorithm: Isoperimetry Suffices
-- Michael Zhu. Sample Adaptive MCMC
-- Kirill Neklyudov, Evgenii Egorov, Dmitry Vetrov. The Implicit Metropolis-Hastings Algorithm

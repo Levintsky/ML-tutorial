@@ -1,30 +1,38 @@
 # Graphical Models
 
 ## Basics
-- DGM:
+- DGM: (PRML-8, K Murphy-10)
 	- Bayesian net:
 	- Inference: counting p(x_h|x_v,θ) = p(x_h,x_v|θ)/p(x_v|θ)
 	- Learning: NLL, non-convex if latent;
-- UGM:
-	- MRF, CRF;
+		- p(θ|D) ∝ p(D|θ)p(θ) = ∏p(D|θ) p(θ)
+- UGM: MRF/CRF (PRML-8, K Murphy-19)
+	- MRF: p(y|θ) = 1/Z(θ) exp(−∑E(yc|θc)), Gibbs distribution;
 	- Learning:
+		- p(y|θ)= 1/Z(θ) exp[Σ_c θc† φc(y)]
+		- ∂l/∂θc = [1/N Σ_i φ_c(yi)] - E[φ_c(yi)]
 	- Inference:
-	- CRF (discriminative MRF)
+	- CRF (discriminative MRF): y: label, connected, latent; x: observed;
+		- p(y|x, w) = 1/Z(x,w) ∏c ψc(yc|x, w)
+		- Usually assume log-linear clique: ψc(yc|x, w) = exp(wc† φ(x, yc))
+	- Learning:
+		- l(w) = 1/N Σlogp(yi|xi, w) = 1/N Σi[Σc wc' φc(yi, xi) − log Z(w, xi)]
+		- ∂l/∂wc = 1/N Σi[φc(yi, xi) - E[φc(y, xi)]]
 	- Structured/Latent SVM;
-- Inference:
+- Inference: (PRML-8, K Murphy-20)
 	- Exact inference:
 		- VE;
 		- Factor graph;
-		- Sum-product/max-product;
+		- Sum-product/max-product: for posterior and MAP;
 	- Variational inference (check VI);
-- Markov:
-	- HMM:
+- Examples:
+	- Markov-HMM: (K Murphy-17)
 		- Inference:
-			- Maginal each state: forward/backward, (message-passing)
+			- Maginal each state: apply junction-tree, a.k.a. forward/backward, (message-passing)
 			- Most likely whole sequence: Viterbi (DP)
 		- Learning: Baum-Welch
-	- Spate Space Model:
-		- Inference Kalman
+	- Spate Space Model: (K Murphy-18)
+		- Inference: Kalman Filter, ADF,
 		- Learning: Baum-Welch
 
 ## Directed Graphical Models (PRML: Chap 8.1, 8.2; Kevin Murphy Chap-10)
@@ -150,27 +158,17 @@
 	- 20.2.4 Other BP variants
 - 20.3 The variable elimination algorithm
 	- Max-product
-- 20.4 The junction tree algorithm
 - 20.5 Computational intractability of exact inference in the worst case
 	- 20.5.1 Approximate inference
-
 - Exact inference:
 	- Variable elimination;
-	- Factor graph;
-		<img src="/Bayes/images/gm/factor-graph-1.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/gm/factor-graph-2.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/gm/factor-graph-3.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/gm/factor-graph-4.png" alt="drawing" width="400"/>
+	- Factor graph: clique ψ(a,b,c) like;
 	- **Sum-product** algorithm (same as **belief propagation**, variable elimination):
 		- Used to find marginal of a node p(x):
-		- Belief propagation (Pearl, 1988) is a special case; sum-product for a node x first does sum of neighbor xb, then x takes all sum and do product;\
-			<img src="/Bayes/images/gm/sum-product.png" alt="drawing" width="400"/>
-	- Max-product: 
-		- Used to find x maximize the joint distribution;
-			<img src="/Bayes/images/gm/max-product-1.png" alt="drawing" width="400"/>
-			<img src="/Bayes/images/gm/max-product-2.png" alt="drawing" width="400"/>
+		- Belief propagation (Pearl, 1988) is a special case; sum-product for a node x first does sum of neighbor xb, then x takes all sum and do product;
+	- Max-product: find x maximize the joint distribution;
 - Exact inference:
-	- Trunction tree: sum-product, max-product produces efficient, exact inference on tree, so make graph a tree;
+	- Junction tree: sum-product, max-product produces efficient, exact inference on tree, so make graph a tree;
 - Loopy BP;
 - Learning grah structure;
 
@@ -188,12 +186,30 @@
 		- **PDivMAP**: F. Meier, A. Globerson, and F. Sha. The More the Merrier: Parameter Learning for Graphical Models with Multiple MAPs. in ICML Workshop on Inferning: Interactions between Inference and Learning, 2013
 		- C. Chen, V. Kolmogorov, Y. Zhu, D. Metaxas, and C. H. Lampert. Computing the m most probable modes of a graphical model. AISTATS'13
 - Dense CRF:
-	- Philipp Krähenbühl, Vladlen Koltun. Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials. NIPS'12
+	- P Krähenbühl, V Koltun. Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials. NIPS'12
 	- DeepLab;
 - Uncertainty measure:
 	- G. Papandreou and A. L. Yuille, Perturb-and-map random fields: Using discrete optimization to learn and sample from energy models. ICCV'11
 	- D. Tarlow, R. P. Adams, and R. S. Zemel. Randomized optimum models for structured prediction. AISTATS'12
 	- **MAP-perturbation**: S. Maji, T. Hazan, and T. Jaakkola. Active boundary annotation using random map perturbations. AAAI'14
+
+## Exact Inference: Junction Tree
+- Def: Clique tree with RIP;
+- K.Murphy-20.4: The junction tree algorithm
+	- Triangulated ⇔ junction tree;
+- Inference: run message passing on the junction tree; (between clique)
+
+## Example: Tree
+- Model: p(x1,x2,...,xm) = ∏.s ψs(xs) ∏.s,t ψst(xs,xt)
+- Marginal: μs(xs) = ∑.xs'=xs p(x1',x2',...,xm')
+- Message Passing: (Jordan-08-2.5.1)
+	- Sum-product: dynamic programming;
+		- μs(xs) = κ ψs(xs) ∏.t∈N(s) M∗ts(xs)
+		- Subtree: M∗ts(xs) = ∑.xVt' ψst(xs,xt) p(xVt';Tt)
+		- Full graph: Mts(xs) ← κ ∑[ψst(xs,x′t)ψt(x′t) ∏.u∈N(t)/s Mut(x′t)]
+		- Insight; message t to s: local clique, message from N(t) except s;
+	- Full-graph:
+		- Replace sum with max;
 
 ## Markov and HMM (Kevin Murphy Chap 17)
 - 17.1 Intro;
@@ -322,18 +338,3 @@
 		- Boyen-Koller algorithm for online inference in DBNs
 		- Gaussian approximation for online inference in GLMs
 - 18.6 Hybrid discrete/continuous SSMs
-
-## NIPS'19
-- Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models. NIPS'19
-- Shanshan Wu, Sujay Sanghavi, Alexandros G. Dimakis. Sparse Logistic Regression Learns All Discrete Pairwise Graphical Models. NIPS'19
-- Lingrui Gan, Xinming Yang, Naveen Narisetty, Feng Liang. Bayesian Joint Estimation of Multiple Graphical Models. NIPS'19
-- Radu Marinescu, Rina Dechter. Counting the Optimal Solutions in Graphical Models. NIPS'19
-- Firoozeh Sepehr, Donatello Materassi. An Algorithm to Learn Polytree Networks with Hidden Nodes
-- Jonathan Kuck, Tri Dao, Hamid Rezatofighi, Ashish Sabharwal, Stefano Ermon. Approximating the Permanent by Sampling from Adaptive Partitions
-- Lingrui Gan, Xinming Yang, Naveen Narisetty, Feng Liang. Bayesian Joint Estimation of Multiple Graphical Models
-- Radu Marinescu, Rina Dechter. Counting the Optimal Solutions in Graphical Models
-- Boxin Zhao, Y. Samuel Wang, Mladen Kolar. Direct Estimation of Differential Functional Graphical Models
-- Pasha Khosravi, YooJung Choi, Yitao Liang, Antonio Vergari, Guy Van den Broeck. On Tractable Computation of Expected Predictions
-- Andy Shih, Guy Van den Broeck, Paul Beame, Antoine Amarilli. Smoothing Structured Decomposable Circuits
-- Shanshan Wu, Sujay Sanghavi, Alexandros Dimakis. Sparse Logistic Regression Learns All Discrete Pairwise Graphical Models
-- Sandeep Kumar, Jiaxi Ying, Jose Vinicius de Miranda Cardoso, Daniel Palomar. Structured Graph Learning Via Laplacian Spectral Constraints

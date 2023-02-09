@@ -17,9 +17,9 @@
 
 ## Good Summaries
 - Tutorials
-	- MacKay, D. J. C. (1998). Introduction to Gaussian processes. In C. M. Bishop (Ed.), Neural Networks and Machine Learning, pp. 133–166. Springer. 1998
-	- Williams, C. K. I. (1999). Prediction with Gaussian processes: from linear regression to linear prediction and beyond. In M. I. Jordan (Ed.), Learning in Graphical Models, pp. 599–621. MIT Press. 1999
-	- MacKay, D. J. C. Information Theory, Inference and Learning Algorithms. 2003
+	- D. MacKay. Introduction to Gaussian processes. 1998
+	- C. Williams. Prediction with Gaussian processes: from linear regression to linear prediction and beyond. 1999
+	- D. MacKay. Information Theory, Inference and Learning Algorithms. 2003
 	- C Rasmussen, C Williams. Gaussian Processes for Machine Learning. 2006
 - GP for Optimization
 	- https://krasserm.github.io/2018/03/19/gaussian-processes/
@@ -157,18 +157,9 @@
 - Jaehoon Lee, Yasaman Bahri, Roman Novak, Sam Schoenholz, Jeffrey Pennington, and Jascha Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
 - Alexander G de G Matthews, Mark Rowland, Jiri Hron, Richard E Turner, and Zoubin Ghahramani. Gaussian process behaviour in wide deep neural networks. arxiv'18
 - **CNN**: Adrià Garriga-Alonso, Carl Edward Rasmussen, and Laurence Aitchison. Deep convolutional networks as shallow gaussian processes. ICLR'19
-- Roman Novak, Lechao Xiao, Jaehoon Lee, Yasaman Bahri, Greg Yang, Jiri Hron, Daniel A. Abolafia, Jeffrey Pennington, and Jascha Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19
+- R Novak, L Xiao, J Lee, Y Bahri, G Yang, J Hron, D Abolafia, Jeffrey Pennington, and Jascha Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19
 
 ## Unclassified
 - Orthogonally Decoupled Variational Gaussian Processes. NIPS'18
 - Infinite-Horizon Gaussian Processes. NIPS'18
 - Learning Gaussian Processes by Minimizing PAC-Bayesian Generalization Bounds. NIPS'18
-
-## NIPS'19
-- Haibin YU, Yizhou Chen, Bryan Kian Hsiang Low, Patrick Jaillet, Zhongxiang Dai. Implicit Posterior Variational Inference for Deep Gaussian Processes
-- Rui Li. Multivariate Sparse Coding of Nonstationary Covariances with Gaussian Processes
-- Siqi Liu, Milos Hauskrecht. Nonparametric Regressive Point Processes Based on Conditional Gaussian Processes
-- Ian Char, Youngseog Chung, Willie Neiswanger, Kirthevasan Kandasamy, Oak Nelson, Mark Boyer, Egemen Kolemen, Jeff Schneider. Offline Contextual Bayesian Optimization
-- Creighton Heaukulani, Mark van der Wilk. Scalable Bayesian dynamic covariance modeling with variational Wishart and inverse Wishart processes
-- Yusuke Tanaka, Toshiyuki Tanaka, Tomoharu Iwata, Takeshi Kurashima, Maya Okawa, Yasunori Akagi, Hiroyuki Toda. Spatially Aggregated Gaussian Processes with Multivariate Areal Outputs
-- Armin Lederer, Jonas Umlauft, Sandra Hirche. Uniform Error Bounds for Gaussian Process Regression with Application to Safe Control

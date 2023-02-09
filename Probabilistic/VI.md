@@ -1,38 +1,118 @@
 # EM, Variational Inference
 
 ## Basics
-- VI, ELBO:
-	- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
-	- logp(x) <= ELBO(q) = E_q(z)[log p(z, x)] - H(q)
-		- logp(x) = log[∫p(x,z)dz]
-		- = log[∫p(x,z)q(z)/q(z)dz]
-		- = log[E_q(z)[logp(x,z)/q(z)]]
-		- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
-	- Special case: mean field;
-		- qj(xj) ~ exp(E_-qj[logp(x)]); marginalize out other var xi with qi(.);
-- EM:
-	- E-Step: posterior for z, p(z|θ)
-	- M-step: fix p(z|θ), optimize θ;
-- CCCP:
-	- Optimize minF(x) = f(x) - h(x), both f and h convex;
-	- h(x) ≥ h(y) + ⟨∇h(y), x−y⟩. (h convex)
-	- F(x) ≤ f(x) − h(y) − ⟨∇h(y), x−y⟩ =: G(x, y); upper bound
-	- Alg:
-		- xk+1 = argmin.x G(x, xk)
-		- ∇f(xk+1) = ∇h(xk) each iteration;
-	- EM: a special case of CCCP;
-- VBEM: infer z and learn θ; p(θ,z1..N|D) ~ q(θ)Πqi(zi)
-- MCMC:
-	- Hard to do m-step, sample some z and average
-- Black-box VI: used in VAE;
-	- MC sample instead of integral to compute gradient;
+- Background:
+	- Exponential family (Jordan-08-3);
+	- Conjugate dual ;
+- Exact inference:
+	- Junction tree;
+	- Variable elimination;
+- Belief propagation: (Jordan-08-4, K-Murphy-22);
+	- Bethe approximation;
+	- Expectation propagation;
+- Mean field method; (Jordan-08-5, PRML-10, K-Murphy-21);
+- Parameter Estimation in VI; (Jordan-08-6);
+- Convex relaxation; (Jordan-08-7);
+- Mode computation; (Jordan-08-8);
+- Conic programming; (Jordan-08-9);
+- Techniques:
+	- VI, ELBO:
+		- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
+		- logp(x) <= ELBO(q) = E_q(z)[log p(z, x)] - H(q)
+			- logp(x) = log[∫p(x,z)dz]
+			- = log[∫p(x,z)q(z)/q(z)dz]
+			- = log[E_q(z)[logp(x,z)/q(z)]]
+			- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
+		- Special case: mean field;
+			- qj(xj) ~ exp(E_-qj[logp(x)]); marginalize out other var xi with qi(.);
+	- EM:
+		- E-Step: posterior for z, p(z|θ)
+		- M-step: fix p(z|θ), optimize θ;
+	- CCCP:
+		- Optimize minF(x) = f(x) - h(x), both f and h convex;
+		- h(x) ≥ h(y) + ⟨∇h(y), x−y⟩. (h convex)
+		- F(x) ≤ f(x) − h(y) − ⟨∇h(y), x−y⟩ =: G(x, y); upper bound
+		- Alg:
+			- xk+1 = argmin.x G(x, xk)
+			- ∇f(xk+1) = ∇h(xk) each iteration;
+		- EM: a special case of CCCP;
+	- VBEM: infer z and learn θ; p(θ,z1..N|D) ~ q(θ)Πqi(zi)
+	- MCMC:
+		- Hard to do m-step, sample some z and average
+	- Black-box VI: used in VAE;
+		- MC sample instead of integral to compute gradient;
+- Examples:
+	- Mixture model (PRML-9, K Murphy-11)
+	- Gaussian;
+	- Linear-regression;
+	- LDA;
+- Tutorials
+	- M Wainwright and M Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
+	- D Blei,  M Jordan and J Paisley. Variational Bayesian inference with Stochastic Search. ICML'12
+	- M Hoffman, D Blei, C Wang, and J Paisley. Stochastic variational inference. JMLR'13
+	- D Blei. Variational Inference: A Review for Statisticians, 2018
+		- ELBO (Evidence Lower-Bound)
 
-## Summaries and Tutorials
-- M Wainwright and M Jordan, Graphical models, exponential families, and variational inference, Foundations and Trends in Machine Learning. 2008
-- D Blei,  M Jordan and J Paisley. Variational Bayesian inference with Stochastic Search. ICML'12
-- M Hoffman, D Blei, C Wang, and J Paisley. Stochastic variational inference. JMLR'13
-- D Blei. Variational Inference: A Review for Statisticians, 2018
-	- ELBO (Evidence Lower-Bound)
+## Sum-Product, Bethe–Kikuchi, and Expectation-Propagation
+- Jordan-08-4
+- Problem setup: pairwise-MRF + discrete
+	- pθ(x) ∝ exp{∑θs(xs)+ ∑θst(xs,xt)} 
+	- μs(xs) := ∑.j μs;j Is;j(xs);
+	- μst(xs,xt) := ∑.jk μst;jk Ist;jk(xs, xt);
+	- marginal polytope M(G)
+- Normalization condition:
+	- ∑τs(xs) = 1
+	- ∑.t τst(xs,xt) = τs
+	- ∑.s τst(xs,xt) = τt
+	- τ of L(G) as pseudomarginals;
+- L(G): local consistent, M(G) ⊆ L(G)
+- Bethe:
+	- H(pμ) = −A∗(μ) = ∑Hs(μs) - ∑Ist(μst)
+	- Bethe Approx: −A∗(τ) = ∑Hs(τs) - ∑Ist(τst)
+- BVP (Bethe variational problem):
+	- max.τ{⟨θ, τ⟩ + ∑Hs(τs) − ∑Ist(τst)}, Bethe free energy;
+	- s.t. Css(τ) := 1 − ∑τs(xs)
+	- s.t. Cts(xs,τ) := τs(xs) − ∑τst(xs,xt)
+	- Lagrange with λss, λts(xs)
+- Theo: Sum-Product and the Bethe Problem
+	- a. fixed-point: ∇τ L(τ∗,λ∗;θ) = 0, and ∇λ L(τ∗,λ∗;θ) = 0;
+	- b. tree MRF: exact solution and optimal A(θ).
+- Two approximations:
+	- Bethe entropy;
+	- L(G) outer bound of M(G);
+- Expectation-Propagation [T. Minka]:
+	- Sufficient stat decoupling:
+		- Tractable: φ := (φ1 ,φ2 ,...,φdT)
+		- Intractable: Φ := (Φ1,Φ2,...,ΦdI)
+	- Reformulate: p(x,θ,θ') = f0(x)exp⟨θ, φ(x)⟩∏exp(⟨θi, Φi(x)⟩).
+	- base model: p(x;θ,0) ∝ f0(x)exp⟨θ, φ(x)⟩, no intractable part;
+	- Φi-augmented: p(x;θ,θi) ∝ f0(x)exp⟨θ, φ(x)⟩ exp(⟨θi, Φi(x)⟩)
+	- EP: marginalize base model, augment 1 at a time;
+- K.Murphy
+- 22.2 Loopy belief propagation: algorithmic issues
+	- 22.2.2 LBP on pairwise models
+		- Initialize message ms→t=1, beliefs bel(xs)=1;
+		- ms→t(xt) = Σs[ψs(xs)ψst(xs, xt) ∏u mu→s(xs)]
+		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
+	- 22.2.3 LBP on a factor graph
+	- 22.2.4 Convergence
+		- Damping: 
+		- TRP, TRW
+	- 22.2.5 Accuracy of LBP
+- 22.3 Loopy belief propagation: theoretical issues
+	- 22.3.2 The marginal polytope
+		- The space of allowable μ: marginal polytope M(G)
+		- where G is the structure of the graph defining the UGM.
+	- 22.3.3 Exact inference as a variational optimization problem
+		- L(q) = −KL(q||p)+logZ = Eq[logp'(x)]+H(q) ≤ logZ
+		- max.μ∈M θ'μ + H(μ)
+	- 22.3.4 Mean field as a variational optimization problem
+		- inner approximation: MF(G) ⊆ M(G), some edges (sufficient stat) are set as zero;
+	- 22.3.5 LBP as a variational optimization problem
+		- Σx τs(xs) = 1; normalization constraint;
+		- Σt τs(xs, xt) = τs(xs); marginalization constraint.
+		- L(G) := {τ ≥ 0 : (1) holds ∀s ∈ V and (2) holds ∀(s, t) ∈ E}
+	- 22.3.6 Loopy BP vs mean field
 
 ## Mixture Models/EM, (PRML-Chap-9, Kevin Murphy Chap-11)
 - {X, Z}, posterior of z (E-step);
@@ -154,32 +234,6 @@
 		- p(y|X,w) = Πexp(yiηi-lse(ηi)), with ηi=Xiwi
 			- log-sum-exp or lse(ηi)=log(1+Σexp(Σηim))
 		- Not conjugate to Gaussian prior;
-- 22.1 Introduction
-- 22.2 Loopy belief propagation: algorithmic issues
-	- 22.2.1 A brief history
-	- 22.2.2 LBP on pairwise models
-		- Initialize message ms→t=1, beliefs bel(xs)=1;
-		- ms→t(xt) = Σs[ψs(xs)ψst(xs, xt) ∏u mu→s(xs)]
-		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
-	- 22.2.3 LBP on a factor graph
-	- 22.2.4 Convergence
-		- Damping: 
-		- TRP, TRW
-	- 22.2.5 Accuracy of LBP
-- 22.3 Loopy belief propagation: theoretical issues
-	- 22.3.1 UGMs represented in exponential family form
-	- 22.3.2 The marginal polytope
-		- The space of allowable μ vectors is called the marginal polytope, and is denoted M(G), where G is the structure of the graph defining the UGM.
-	- 22.3.3 Exact inference as a variational optimization problem
-		- L(q) = −KL(q||p)+logZ = Eq[logp'(x)]+H(q) ≤ logZ
-		- maxμ∈M θ'μ + H(μ)
-	- 22.3.4 Mean field as a variational optimization problem
-		- inner approximation: MF(G) ⊆ M(G), some edges (sufficient stat) are set as zero;
-	- 22.3.5 LBP as a variational optimization problem
-		- Σx τs(xs) = 1; normalization constraint;
-		- Σt τs(xs, xt) = τs(xs); marginalization constraint.
-		- L(G) := {τ ≥ 0 : (1) holds ∀s ∈ V and (2) holds ∀(s, t) ∈ E}
-	- 22.3.6 Loopy BP vs mean field
 - 22.4 Extensions of belief propagation
 	- 22.4.1 Generalized belief propagation
 	- 22.4.2 Convex belief propagation
@@ -196,40 +250,33 @@
 	- 22.6.4 Experimental comparison of graphcuts and BP
 	- 22.6.5 Dual decomposition
 
-## Approximate Inference (PRML-Chap-10, Kevin-Murphy-Chap-21)
-- Basics: Many problems can be expressed in terms of an optimization problem in which the quantity being optimized is a functional. This is done by restricting the range of functions over which the optimization is performed. Our goal is to find an approximation for the posterior distribution p(Z|X) as well as for the model evidence p(X).
-- E.g.1: factorized Gaussian to approximate 2-dimension Gaussian:\
-	<img src="/Bayes/images/VI/em-gauss-1.png" alt="drawing" width="400"/>\
-	- Iteratively optimize:\
-		<img src="/Bayes/images/VI/em-gauss-2.png" alt="drawing" width="400"/>
+## Examples: Exponential Families
+- e.g.1 Factorized Gaussian: (PRML-10)
+	- To approx a coupled Gaussian:
+		- μ = [μ1,μ2];
+		- Λ=[Λ11 Λ12;Λ21 Λ22]
+	- With factorized Gaussian:
+		- q(z1) = N(z1|m1, Λ11^-1)
+		- m1 = μ1 - Λ11^-1Λ12[E[z2]-μ2]
+		- m2 = μ2 - Λ22^-1Λ21[E[z1]-μ1]
 - E.g.2: Gaussian, factorized prior (mean, precision) for conjugate prior:
 	- Assume q(μ,τ)=q(μ)q(τ), we have
-- E.g.3: EM of GMM with Dirichlet prior on π (PRML 10.2), Gaussian-Wishart prior on mean, precision;
-- E.g.4: EM of linear regression: a Γ prior α ~ Γ(a0, b0) for weight precision; assume q(w, α) ~ q(w)q(α)
-	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="300"/>
-	- Assume variational factorized posterior: q(w, α) = q(w) q(α)
-	- Prior alpha:\
-		<img src="/Bayes/images/VI/em-lr-4.png" alt="drawing" width="400"/>
-	- Weight w:\
-		<img src="/Bayes/images/VI/em-lr-5.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/VI/em-lr-6.png" alt="drawing" width="400"/>
-	- Predict:\
-		<img src="/Bayes/images/VI/em-lr-7.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/VI/em-lr-8.png" alt="drawing" width="400"/>
-- E.g.5: exponential family;
-	- Model: (x, z) with latent z, conjagate prior on nita;\
-		<img src="/Bayes/images/VI/em-exp-family-1.png" alt="drawing" width="400"/>
-	- Variational factorized posterior: q(z,η)=q(z)q(η)
-	- q(z)\
-		<img src="/Bayes/images/VI/em-exp-family-2.png" alt="drawing" width="400"/>
-	- q(η)\
-		<img src="/Bayes/images/VI/em-exp-family-3.png" alt="drawing" width="400"/>
+- E.g.3: exponential family;
+	- Model: (x, z) with latent z, conjagate prior on η;
+		- p(x,z|η) = h(x,z)g(η)exp(η†u(x,z))
+		- p(η|ν0, v0) = f(ν0, x0)g(η)^ν0 exp(ν0 η†x)
+	- Approx: q(z,η)=q(z)q(η)
+	- q(zi) = h(xi,zi)g(E[η])exp(E[η†]u(x,z))
+	- p(η) = f(νN, xN)g(η)^νN exp(η†xN)
+		- νN = ν0 + N
+		- xN = x0 + ∑E.z[u(x,z)]
+
+## Examples: Mixture Model
+- E.g.: EM of GMM with Dirichlet prior on π (PRML 10.2),
+	- Gaussian-Wishart prior on mean, precision;
+
+## Approximate Inference (PRML-Chap-10, Kevin-Murphy-Chap-21)
 - Local variational method, **conjugate function**:\
-	<img src="/Bayes/images/VI/local-vi-1.png" alt="drawing" width="400"/>
-	- For convex function f(x) and g(λ), we define its **lower bound**:\
-		<img src="/Bayes/images/VI/local-vi-2.png" alt="drawing" width="400"/>
 	- For concave funtions, we could get **upper bound**:\
 		<img src="/Bayes/images/VI/local-vi-3.png" alt="drawing" width="400"/>
 	- Log(logistic) is concave, with upper bound:\
@@ -238,7 +285,6 @@
 		<img src="/Bayes/images/VI/local-vi-5.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/VI/local-vi-6.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/VI/local-vi-7.png" alt="drawing" width="400"/>
-- E.g.6: variational logistic regression:
 - Expectation propagation: the **reverse form KL(p, q)**:
 	- We use an exponential family q(z) to approx p(z):\
 		<img src="/Bayes/images/VI/ep-1.png" alt="drawing" width="400"/>
@@ -261,7 +307,6 @@
 ## Minibatch
 - M Hoffman, D Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
 	- Insight: case of mini-batch, a global variable β to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
-		<img src="/Bayes/images/VI/svi.png" alt="drawing" width="400"/>
 
 ## Latent Models
 - Binary latent factors:

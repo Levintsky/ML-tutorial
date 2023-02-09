@@ -41,8 +41,26 @@
 
 ## Misc
 - Y. Zhu, C. Zhao, J. Wang, X. Zhao, Y. Wu, and H. Lu. Couplenet: Coupling global structure with local parts for object detection. ICCV'17
-- Zheng Ge, Songtao Liu, Feng Wang, Zeming Li, Jian Sun. YOLOX: Exceeding YOLO Series in 2021. CVPR'21
+- Z Ge, S Liu, F Wang, Z Li, J Sun. YOLOX: Exceeding YOLO Series in 2021. CVPR'21
 	- https://github.com/Megvii-BaseDetection/YOLOX
+
+## Perf
+- COCO-val2017: mAP
+	- Faster-RCNN:
+		- resnet50-fpn: (41M/134B): 37.0
+		- resnet50-fpn-v2: (43.7M/280B): 46.7
+		- mobilenet-v3-large-fpn: (19.4M/4.5B): 32.8
+		- mobilenet-v3-320-fpn: (19.4M/0.7B): 22.8
+	- Mask-RCNN:
+		- resnet50-fpn: (44.4M/134B): 37.9
+		- resnet50-fpn-v2: (46.3M/333B): 47.4
+	- RetinaNet:
+		- resnet50-fpn: (34M/151B): 36.4
+		- resnet50-fpn-v2: (38.2M/152B): 41.5
+	- FCOS-resnet50-fpn: (32M/128B): 39.2
+	- KeypointRcnn (59.1M/137B): 54.6
+	- SSD300-VGG16 (35.6M/34.8B): 25.1
+	- SSDLite-MobileNet-v3 (34M/0.6B): 21.3
 
 ## Backbone
 - Legacy:
@@ -266,12 +284,12 @@
 	- ResNext;
 	- FPN CVPR'17;
 	- Georgia Gkioxari, Ross Girshick, Piotr Dollár, and Kaiming He. Detecting and Recognizing Human-Object Interactions. Tech report, arXiv'17
-	- Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour. Tech report, arXiv'17
+	- P Goyal, P Dollár, R Girshick, P Noordhuis, L Wesolowski, A Kyrola, A Tulloch, Y Jia, and K He. Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour. Tech report, arXiv'17
 	- Focal-loss ICCV'17;
 	- Mask R-CNN;
 	- Non-Local Neural Networks;
-	- Ronghang Hu, Piotr Dollár, Kaiming He, Trevor Darrell, and Ross Girshick. Learning to Segment Every Thing. Tech report, arXiv'17.
-	- Ilija Radosavovic, Piotr Dollár, Ross Girshick, Georgia Gkioxari, and Kaiming He. Data Distillation: Towards Omni-Supervised Learning. Tech report, arXiv, Dec. 2017.
+	- R Hu, P Dollár, K He, T Darrell, and R Girshick. Learning to Segment Every Thing. Tech report, arXiv'17.
+	- I Radosavovic, P Dollár, R Girshick, G Gkioxari, and K He. Data Distillation: Towards Omni-Supervised Learning. Tech report, arXiv, Dec. 2017.
 - Detectron v2: https://github.com/facebookresearch/detectron2
 	- DensePose: Dense Human Pose Estimation In The Wild
 	- Scale-Aware Trident Networks for Object Detection

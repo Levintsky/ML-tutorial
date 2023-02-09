@@ -29,6 +29,49 @@
 		- Mean and precision unknown: Gaussian-Wishart
 - Exponential family (GLM), check Linear-Model
 
+## Exponential Family (Jordan-08-3, K.Murphy-9)
+- Principle of max entropy with empirical expectation:
+	- μα^ := 1/n ∑i=1.n φα(Xi),
+- Model expectation:
+	- Ep[φα(X)] := ∫φα(x)p(x)ν(dx)
+- Maximize Shannon entropy:
+	- H(p) := -∫[logp(x)]p(x)ν(dx)
+- Proof: (K-Murphy-9.2.6)
+	- Maximize entropy s.t. Σ_x fk(x)p(x) = Fk (moment matching)
+	- J(p, λ) = -Σp(x)log(x) + λ0(1-Σp(x)) + Σ_k λk(Fk-Σp(x)fk(x))
+	- ∂J/∂p(x) = -1 - logp(x) - λ0 - Σ_k λkfk(x) = 0
+	- p(x) ∝ exp(-Σλkfk(x)): Gibbs distribution;
+- Examples:
+	- Bernoulli, Multinoulli, Gaussian;
+	- Ising model; (pairwise)
+	- Potts model
+- Potential functions or sufficient statistics: φα : Xm → R
+	- Minimal
+	- Overcomplete;
+- pθ(x1,x2,...,xm) = exp{⟨θ, φ(x)⟩ − A(θ)}
+	- In K.Murphy-9.2 as: p(x|θ) = 1/Z(θ) h(x) exp[θφ(x)] = h(x)exp[θφ(x)-A(θ)]
+- A(θ) = logZ(θ); Log-Partition function, cumulant function;
+	- A(θ) = log∫.x ⟨θ, φ(x)⟩ν(dx)
+	- ∂A/∂θ = E[φ(x)]
+	- ∇^2 A(θ) = cov[φ(x)]
+	- ∇A : Ω → M bijective ⇔ if representation is minimal;
+	- pair (θ,μ) is dually coupled if μ = ∇A(θ)
+	- Theo: ∇A is onto the interior M◦, ∀ μ ∈ M◦, ∃ θ = θ(μ) ∈ Ω s.t. Eθ[φ(X)] = μ
+- Mean parameters and Marginal Polytopes:
+	- Mean parameters: μα = Ep[φα(X)] = φα(x)p(x)ν(dx)
+	- All realizable: M := {μ∈Rd |∃p s.t. Ep[φα(X)]=μα ∀α∈I}
+	- Convex polytope; Minkowski-Weyl theorem;
+- Forward mapping: θ ∈ Ω to μ ∈ M;
+- Backward mapping: μ ∈ M to θ ∈ Ω;
+- Log-likehood: l(θ;X1n) := 1/nΣlogpθ(Xi) = ⟨θ, μ^⟩ − A(θ)
+- Conjugate dual:
+	- A∗(μ) := sup.θ {⟨μ, θ⟩ − A(θ)}
+	- E.θ(μ)[φ(X)] = ∇A(θ(μ)) = μ
+	- Theo: A∗(μ) = H(pθ(μ)) if μ ∈ M◦
+		- A∗(μ) = +∞ if μ ∉ M
+	- A(θ) = sup.μ ⟨θ, μ⟩ − A∗(μ)
+	- bijective between θ ∈ Ω and μ ∈ M;
+
 ## Discrete (Kevin Murphy 2.3, 3.3, 3.4)
 - 2.3.1 Binomial and Bernoulli
 	- Bernoulli: Ber(x|θ) = θ^I(x=1) (1−θ)^I(x=0)
@@ -213,7 +256,5 @@
 
 ## Bounds, Theory
 - Weak law of large numbers (Khinchin's law)
-	- the sample average converges in probability towards the expected value\
-		<img src="/Basic-ML/images/law-weak.png" alt="drawing" width="400"/>
-- Chebyshev\
-	<img src="/Basic-ML/images/chebyshev.png" alt="drawing" width="600"/>
+	- the sample average converges in probability towards the expected value: lim.n→∞ P(|X-μ|>ε) = 0
+- Chebyshev: P(|X-μ|>ε) ≤ σ^2/ε^2

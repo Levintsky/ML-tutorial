@@ -70,10 +70,14 @@
 
 ## Performance
 - ImageNet: (params/flops) top-1
-	- AlexNet: 63.5%, top-5 84.7%;
+	- AlexNet (61M/0.7B): 63.5%, top-5 84.7%;
 	- SPP: top-1 72.1%, top-5 90.8%
-	- VGG: top-1 76.3%, top-5 93.2%
-	- Inception-V1: top-5 93.3%; (1st of ILSVRC'14)
+	- VGG:
+		- 19-BN (143M/19.6B): 74.2%;
+	- Inception:
+		- V1 (Going-deeper) (66M/1.5B): 69.8%
+		- V3 (271M/5.7B): 77.3%;
+		- Inception-V4: 83.5%, top-5 96.9%;
 	- Inception-V2: 79.9%, top-5 95.0%;
 	- ResNet: 80.6%; (1st of ILSVRC'15)
 		- R-18 (12M/1.8B): 69.8%
@@ -81,19 +85,22 @@
 		- R-50 (25M/4.1B): 80.9%
 		- R-101 (44M/7.8B): 81.9%
 		- R-152 (60M/11B): 82.3% (78.3% old code)
-	- Inception-V3: 82.7%, top-5 96.5%;
-	- Inception-V4: 83.5%, top-5 96.9%;
 	- ResNext-101 (32B): 80.9%, top-5 95.6%; (2nd of ILSVR'16)
 	- SENet (42B): 82.7% (1st of ILSVR'17)
 	- NASNet-A (24B): 82.9%
-	- DenseNet: 79.2%, top-5 94.7%;
+	- DenseNet:
+		- 121 (79M/2.8B): 74.4%
+		- 161 (286M/7.7B): 77.1%
+		- 169 (141M/3.4B): 75.6%
+		- 201 (200M/4.3B): 76.9%;
 	- AmeobaNet-C (41B): 83.5%
 	- EfficientNet:
-		- B1 (0.7B): 79.1%
-		- B3 (1.8B): 81.6%
-		- B4 (4.2B): 82.9%
-		- B5 (9.9B): 83.6%
-		- B7: 84.3%;
+		- B0 (5M/0.4B): 77.7%
+		- B1 (7.8M/0.7B): 79.8%
+		- B3 (12M/1.8B): 82.0%
+		- B4 (19M/4.4B): 83.3%
+		- B5 (30M/9.9B): 83.6%
+		- B7 (66M/37.7B): 84.1%;
 	- MobileNet-v2: (/0.3B): 72.2%
 	- MobileNet-v3:
 		- Small (2M/0.06B): 67.7%
@@ -111,6 +118,10 @@
 		- Sv2 (50M/11.5B): 83.7%
 		- B (88M/15.4B): 83.6%
 		- Bv2 (88M/20B): 84.1%
+	- ConvNext:
+		- Tiny (28M/4.4B): 82.5%
+		- Base (88M/15.3B): 84.1%
+		- Large (197M/34B): 84.4%
 - COCO:
 	- ResNext: AP-at-0.5 51.9%, AP 30.0%;
 
