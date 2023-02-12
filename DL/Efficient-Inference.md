@@ -21,7 +21,7 @@
 
 ## Black box:
 - **FFTW**: M. Frigo and S. G. Johnson. Fftw: an adaptive software architecture for the fft. ICASSP 1998
--  Daniel Golovin, Benjamin Solnik, Subhodeep Moitra, Greg Kochanski, John Karro, and D. Sculley. Google vizier: A service for black-box optimization. KDD 2017
+-  D Golovin, B Solnik, S Moitra, G Kochanski, J Karro, and D Sculley. Google vizier: A service for black-box optimization. KDD'17
 - **Atlas**: R. Clint Whaley and Jack J. Dongarra. Automatically tuned linear algebra software. 1998
 
 ## DSL

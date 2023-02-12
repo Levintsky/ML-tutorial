@@ -28,6 +28,8 @@
 	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
 	- Google CoPilot;
 	- Google: Large Language Models Encode Clinical Knowledge
+	- OpenAI. Scaling laws for neural language models. arxiv'20
+	- DeepMind. Training compute-optimal large language models. arxiv'22
 
 ## Legacy
 - Unigram: p(w1,...,wn) = ∏P(wi)

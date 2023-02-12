@@ -7,6 +7,9 @@
 - Duke:
 	- https://users.cs.duke.edu/~cynthia/teaching.html
 	- https://youtu.be/nACHK2CgyGg
+- PAC-Bayes:
+	- J Shawe-Taylor and R Williamson. A PAC analysis of a Bayesian estimator. COLT'97
+	- P Alquier. PAC-Bayesian bounds for randomized empirical risk minimizers. 08
 
 ## Basics
 - Goal:
@@ -637,36 +640,27 @@
 ## PAC-Bayes
 - Currently the best theory to explain NN generalization;
 - Legacy:
-	- Shawe-Taylor J, Williamson R C. A PAC analysis of a Bayesian estimator[C]//Proceedings of the tenth annual conference on Computational learning theory. ACM, 1997
-	- David McAllester. Some PAC-Bayesian theorems. COLT'98
+	- Shawe-Taylor J, Williamson R C. A PAC analysis of a Bayesian estimator. COLT'97
+	- D McAllester. Some PAC-Bayesian theorems. COLT'98
 		- Concept space observes any distribution D;
 		- Prior in hypothesis space H;
 		- Measure of C and H space;
 		- U: a subspace of H;
 		- P(E(U)<=...)>=1-δ; E(U) is generalization error;
-	- David McAllester. Some PAC-Bayesian theorems. Machine Learning'99
+	- D McAllester. Some PAC-Bayesian theorems. Machine Learning'99
 		- First paper on PAC-Bayes;
-	- McAllester D A. PAC-Bayesian model averaging. COLT'99
-	- John Langford and John Shawe-Taylor. Pac-bayes & margins. NIPS'02
-	- McAllester D A. PAC-Bayesian stochastic model selection. Machine Learning'03
+	- D McAllester. PAC-Bayesian model averaging. COLT'99
+	- J Langford and J Shawe-Taylor. Pac-bayes & margins. NIPS'02
+	- D McAllester. PAC-Bayesian stochastic model selection. Machine Learning'03
 	- David McAllester. Simplified pac-bayesian margin bounds. 2003
 	- Seeger M. Pac-bayesian generalisation error bounds for gaussian process classification. JMLR'03
 	- Shawe-Taylor J, Langford J. PAC-Bayes & margins. NIPS'03
 	- Langford J. Tutorial on practical prediction theory for classification. JMLR'05
 	- Germain P, Lacasse A, Laviolette F, et al. PAC-Bayesian learning of linear classifiers. ICML'09
 	- Catoni O. PAC-Bayesian supervised classification: the thermodynamics of statistical learning. arxiv'07	
-- Matthew Holland. PAC-Bayes under potentially heavy tails. NIPS'18
+- M Holland. PAC-Bayes under potentially heavy tails. NIPS'18
 
 ## Misc
-- Marco Loog, Tom Viering, Alexander Mey. Minimizers of the Empirical Risk and Risk Monotonicity. NIPS'18
+- M Loog, T Viering, A Mey. Minimizers of the Empirical Risk and Risk Monotonicity. NIPS'18
 	- Insight: introduce Risk Monotonicity
-- Dylan Foster, Spencer Greenberg, Satyen Kale, Haipeng Luo, Mehryar Mohri, Karthik Sridharan. Hypothesis Set Stability and Generalization. NIPS'18
-
-## NIPS'18 Learning Theory
-- Sushrut Karmalkar, Adam Klivans, Pravesh Kothari. List-decodable Linear Regression
-- Chenri Ni, Nontawat Charoenphakdee, Junya Honda, Masashi Sugiyama. On the Calibration of Multiclass Classification with Rejection
-- Chen Dan, Hong Wang, Hongyang Zhang, Yuchen Zhou, Pradeep Ravikumar. Optimal Analysis of Subset-Selection Based L_p Low-Rank Approximation
-- Sauptik Dhar, Vladimir Cherkassky, Mohak Shah. Multiclass Learning from Contradictions
-- Gilad Yehudai, Ohad Shamir. On the Power and Limitations of Random Features for Understanding Neural Networks
-- Yaqi Duan, Tracy Ke, Mengdi Wang. State Aggregation Learning from Markov Transition Data
-- Nika Haghtalab, Cameron Musco, Bo Waggoner. Toward a Characterization of Loss Functions for Distribution Learning
+- D Foster, S Greenberg, S Kale, H Luo, M Mohri, K Sridharan. Hypothesis Set Stability and Generalization. NIPS'18

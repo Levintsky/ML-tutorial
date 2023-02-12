@@ -111,15 +111,15 @@
 - Merrell, P., Schkufza, E., Koltun, V.: Computer-generated residential building layouts. TOG'14
 
 ## Light
-- Michael Schwarz and Peter Wonka. Procedural Design of Exterior Lighting for Buildings with Complex Constraints. TOG'2014
+- M Schwarz and P Wonka. Procedural Design of Exterior Lighting for Buildings with Complex Constraints. TOG'2014
 
 ## Inverse Procedural Modeling
 - City:
-	- Carlos A Vanegas, Ignacio Garcia-Dorado, Daniel G Aliaga, Bedrich Benes, and Paul Waddell. Inverse design of urban procedural model. TOG'12
-	- Gen Nishida, Ignacio Garcia-Dorado, Daniel G. Aliaga, Bedrich Benes, Adrien Bousseau. Interactive Sketching of Urban Procedural Models. TOG'16
+	- C Vanegas, I Garcia-Dorado, D G Aliaga, B Benes, and P Waddell. Inverse design of urban procedural model. TOG'12
+	- G Nishida, I Garcia-Dorado, D Aliaga, B Benes, A Bousseau. Interactive Sketching of Urban Procedural Models. TOG'16
 		- Inverse PM: Our interactive sketching tool allows the user to quickly and easily author procedural 3D building models.
 		- The user only performs interactive sketching and our system automatically generates the procedural model and its parameters yielding the sketched shape.
 - Tree:
 	- O Stava, S Pirk, J Kratt, B Chen, R Mech, O Deussen, and B Benes. Inverse Procedural Modelling of Trees. CGF'14
-- Bedrich Beneš, Ondrej Štava, Radomir Mech, and Gavin Miller. Guided Procedural Modeling. EG'11
+- B Beneš, O Štava, R Mech, and G Miller. Guided Procedural Modeling. EG'11
 - Martinovic, A., Van Gool, L.: Bayesian grammar learning for inverse procedural modeling. CVPR'13

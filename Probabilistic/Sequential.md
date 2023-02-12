@@ -1,0 +1,175 @@
+# Sequential Data
+
+## Basics
+- Time-domain/sequential data
+- Discrete time: MM, HMM;
+- Continuous time:
+- Markov-HMM: (K Murphy-17)
+	- Inference:
+		- Maginal each state: apply junction-tree, a.k.a. forward/backward, (message-passing)
+		- Most likely whole sequence: Viterbi (DP)
+	- Learning: Baum-Welch
+- Spate Space Model: (K Murphy-18)
+	- Inference: Kalman Filter, ADF, (infer z with known dynamics)
+	- Learning: Baum-Welch
+- Sampling:
+	- particle filtering (K Murphy-23.5)
+- Beam search: dp with top-k
+
+## Markov and HMM (K.Murphy-17, PRML-13)
+- 17.1 Intro;
+- 17.2 Markov models:
+	- p(X1:T) = p(X1) ∏p(Xt|Xt-1)
+	- 2.1 Transition matrix A;
+	- n-step: A(n), A(1)=A, A(m+n)=A(m)A(n);
+	- 2.2 Language modeling:
+		- p(Xt=k) unigram;
+		- p(Xt=k|Xt-1=j): bigram;
+		- p(Xt=k|Xt-1=j, Xt-2=i): trigram;
+		- n-gram;
+		- MLE: π^ = Nj/ΣNj, Ajk^ = Njk/Σ_k Njk;
+		- Backoff smoothing: Dirichlet;
+	- 2.3 stationary distribution
+		- π=πA
+- 17.3 HMM
+	- Hidden state z1:T
+	- p(x|θ) = ∑.z p(x,z|θ)
+	- p(z1:T,x1:T) = [p(z1)∏p(zt|zt-1)] [∏p(xt|zt)]
+	- Obs model:
+		- B(k,l) = p(xt=l|zt=k,θ); discrete
+		- p(xt|z=k,θ) = N(xt|μk, Σk)
+- 17.4 HMM inference
+	- 17.4.2 Forward algorithm
+		- Posterior with all previous observations:
+		- p(zt=j|x1:t−1) = Σp(zt=j|zt−1=i)p(zt−1=i|x1:t−1)
+		- Forward posterior:
+			- αt(j) = p(zt=j|x1:t) = p(zt=j|xt, x1:t−1) 
+			- = 1/Z p(xt|zt=j)p(zt=j|x1:t−1)
+			- αt ∝ ψt ⊙ (Ψ† αt−1)
+				- with ψt(j) = p(xt|zt=j) as local evidence
+				- Ψ(i,j) = p(zt=j|zt−1=i)
+	- 17.4.3 Forward-backward algorithm [Rabiner'89] Alpha-Beta [Jordan'07]
+		- Posterior of a state given all observations:
+			- p(z=j|x1:T) ∝ p(zt=j,x_t+1:T|x1:t) 
+			- ∝ p(zt=j|x1:t) p(x_t+1:T|zt=j)
+		- First item: αt := p(zt=j|xt, x1:t−1); previous
+			- α(zt) = p(xt|zt) Σ.z α(zt-1)p(zt|zt-1)
+		- Second item: βt(j) := p(xt+1:T|zt=j); future
+			- β(zt) = Σ.z β(zt+1)p(t+1|zt+1)p(zt+1|zt)
+		- Posterior: γt(j) ∝ αt(j)βt(j)
+		- βt−1 = Ψ(ψt ⊙ βt)
+	- 17.4.4 Viterbi (most probable sequence)
+		- z∗ = argmax_z2:T p(z1:T|x1:T)
+		- Still forward-backward, but do dynamic programming;
+		- Keep track of best so far up to t-1;
+		- δt(j) = max δt−1(i)ψ(i, j)φt(j)
+	- 17.4.5 Forwards filtering, backwards sampling
+		- zs1:T ∼ p(z1:T|x1:T)
+		- One-step back posterior:
+			- p(zt=i|zt+1=j,x1:T)=φt+1(j)ψ(i,j)αt(i)/αt+1(j)
+- 17.5 Learning for HMMs
+	- 17.5.1 Training with fully obs data
+	- 17.5.2 EM for HMMs (the Baum-Welch algorithm)
+		- E-step: latent zt marginal:
+			- γi,t(j) = p(zt=j|xi,1:Ti, θ)
+			- ξi,t(j, k) = p(zt−1=j, zt=k|xi,1:Ti, θ)
+		- M-step:
+			- Transition for discrete: Ajk = E[N_jk]/ΣE_k'[N_jk']
+			- μ, Σ for Gaussian;
+	- 17.5.3 Bayesian fitting
+		- VBEM: posterior rather than MAP
+	- 17.5.4 Discriminative training
+		- Implicit from generative model
+	- 17.5.5 Model selection
+		- Choosing the number of hidden states
+		- Structure learning: learning a **sparse** transition matrix
+- 17.6 Generalizations of HMMs
+	- 17.6.1 Variable duration (semi-Markov) HMMs
+		- 17.6.1.1 HSMM as augmented HMMs
+	- 17.6.2 Hierarchical HMMs
+	- 17.6.3 Input-output HMMs:
+		- Extra input xt, obs ~ ot|zt, xt
+	- 17.6.4 Auto-regressive and buried HMMs
+	- 17.6.5 Factorial HMM:
+		- multiple z chain, obs ~ ot|z1t, z2t
+	- 17.6.6 Coupled HMM and the influence model
+	- 17.6.7 Dynamic Bayesian networks (DBNs)
+
+## State space models (K.Murphy-18, PRML-13)
+- 18.1 Introduction
+	- State: zt = g(at, zt−1, εt)
+	- Observation: ot = h(zt, at, δt)
+	- Important special case: all linear-Gaussian (LG-SSM):
+		- Transition: zt = Atzt−1 + Btat + εt
+		- Observation: ot = Ctzt + Dtat + δt
+		- εt ∼ N(0,Qt), δt ∼ N(0,Rt)
+- 18.2 Applications of SSMs
+	- 18.2.1 SSMs for object tracking
+	- 18.2.2 Robotic SLAM
+	- 18.2.3 Online parameter learning using recursive least squares
+	- 18.2.4 SSM for time series forecasting
+		- ARMA
+- 18.3 Inference in LG-SSM
+	- 18.3.1 The Kalman filtering algorithm
+		- p(zt|o1:t, a1:t) = N(zt|μt, Σt)
+		- Prediction step: predict state zt based on all previous observations o1:t-1
+			- p(zt|o1:t-1, a1:t) ~ N(zt|μt|t-1, Σt|t-1)
+			- zt|μt|t-1 = Atμt−1 + Btat
+			- Σt|t-1 = AtΣt−1ATt + Qt
+		- Measurement step: get new observation ot, re-estimate state zt;
+			- p(zt|o1:t, a1:t) ∝ p(ot|zt, at)p(zt|o1:t−1, a1:t) ~ N(zt|μt, Σt)
+			- μt = μt|t−1 + Kt rt,
+				- Observaton residualrt=ot−oˆt
+				- o^ = E[ot|o1:t−1, a1:t] = Ctμt|t−1 + Dtut
+			- Kt: Kalman gain matrix
+				- Kt = Σt|t-1 Ct St^(-1)
+				- St = Ct Σt|t-1 Ct' + Rt
+		- Marginal likelihood of the sequence:
+			- log p(o1:T|a1:T ) = Σ_t log p(ot|o1:t−1, a1:t)
+			- p(ot|o1:t−1,a1:t) = N(ot|Ctμt|t−1, St)
+		- Predictive: p(ot|o1:t−1, a1:t) ~ N(yt|Cμt|t−1 , CΣt|t−1 CT + R)
+	- 18.3.2 The Kalman smoothing algorithm
+		- Consider the future to reduce uncertainty
+		- p(zt|o1:T) ~ N(μt|T, Σt|T)
+		- μt|T = μt|t + Jt(μt+1|T − μt+1|t)
+		- Σt|T = Σt|t + Jt(Σt+1|T − Σt+1|t)JTt
+		- with Jt = Σt|t A't+1 Σt+1|t^(−1)
+- 18.4 Learning for LG-SSM
+	- Also systems identification in control theory
+	- 18.4.1 Identifiability and numerical stability
+	- 18.4.2 Training with fully observed data
+	- 18.4.3 EM for LG-SSM (Baum-Welch)
+		- E-step: Q(θ, θ-old) = E.z|θ-old[lnp(x,z|θ)]
+		- M-step: maximize C, Σ, ...
+- 18.5 Approximate online inference for non-linear, non-Gaussian SSMs
+	- 18.5.1 Extended Kalman filter (EKF)
+		- Nonlinear models, Gaussian noise;
+		- zt = g(at, zt−1) + N(0, Qt)
+		- ot = h(zt) + N(0, Rt)
+		- EKF: linearize g and h with 1st-order Taylor
+	- 18.5.2 Unscented Kalman filter (UKF)
+	- 18.5.3 Assumed density filtering (ADF)
+		- Boyen-Koller algorithm for online inference in DBNs
+		- Gaussian approximation for online inference in GLMs
+- 18.6 Hybrid discrete/continuous SSMs
+
+## Misc
+- Particle filtering: SIR (K.Murphy-23.5)
+	- Model: p(z1:t|y1:t) = p(yt|zt)p(zt|zt-1)p(z1:t-1|y1:t-1)
+	- Sequential importance sampling for p(z1:t|y1:t)
+	- A set of weighted particles with IS weight w(ts)
+		- w(ts) = p(z1:t|y1:t) / q(z1:t|y1:t)
+	- Proposal q, we restrict as:
+		- q(z1:t|y1:t)=q(zt|z1:t-1,y1:t)q(z1:t-1|y1:t-1)
+	- Reweight after observing yt:
+		- w(ts) = w(ts-1) p(yt|zts)p(zts|zt-1s)/q(zts|zs1:t-1,y1:t)
+	- For degeneration, do resampling
+- Beam search: dp with top-k
+
+## Unclassified
+- A Neitz, G Parascandolo, S Bauer, B Schölkopf. Adaptive Skip Intervals: Temporal Abstraction for Recurrent Dynamical Models. NIPS'18
+- Y Sun, Y Duan, H Gong, M Wang. Learning low-dimensional state embeddings and metastable clusters from time series data. NIPS'19
+- Continuous Time Series with NN
+	- H Mei and J M Eisner. The neural hawkes process: A neurally self-modulating multivariate point process. NIPS'17
+	- Z Che, S Purushotham, K Cho, D Sontag, and Y Liu. Recurrent Neural Networks for Multivariate Time Series with Missing Values. Scientific Report'18
+	- W Cao, D Wang, J Li, H  Zhou, L Li, and et al. Brits: Bidirectional recurrent imputation for time series. arxiv'18

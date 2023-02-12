@@ -4,119 +4,161 @@
 - Approximation theory:
 	- Universal approximator, capacity;
 - Statistical Generalization
-	- More params does not lead to overfitting! (overparametrization)
+	- overparametrization: more params does not lead to overfitting!
+	- Complexity/expressiveness;
+- Optimization:
+	- Initialization:
+	- Implicit regularization; (SGD, initialization)
+	- Behavior: double-descent
+	- Behavior: NTK
+	- Batch size;
+	- Loss surface;
+- VI:
+	- Mean field:
+- Information Theory
+- Connection with other:
+	- Gaussian Process
 
 ## Unclassified
-- V Nagarajan, Z Kolter. Uniform convergence may be unable to explain generalization in deep learning. NIPS'18
-- F He, T Liu, D Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
-- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 - M. Belkin, D. Hsu, S. Ma, and S. Mandal. Reconciling modern machine-learning practice and the classical bias-variance trade-off. PNAS'19
 	- Does not increase monotonically with intermediate dim m;
-- Uniform convergence may be unable to explain generalization in deep learning. NIPS'19 oral
-	- https://www.youtube.com/watch?v=o3GfnEjTdIQ
-- Zeyuan Allen-Zhu, Yuanzhi Li. Can SGD Learn Recurrent Neural Networks with Provable Generalization? NIPS'19
-- Mean field:
-	- Ge Yang and Samuel Schoenholz. Mean field residual networks: On the edge of chaos. NeurIPS'17
-	- Ryo Karakida, Shotaro Akaho, and Shun-ichi Amari. Universal statistics of fisher information in deep neural networks: mean field approach. 2018.
-	- Mei, Song, Theodor Misiakiewicz, and Andrea Montanari. Mean-field theory of two-layers neural networks: dimension-free bounds and kernel limit. arXiv'19
-	- Yaniv Blumenfeld, Dar Gilboa, and Daniel Soudry. A mean field theory of quantized deep networks: The quantization-depth trade-off. arXiv preprint arXiv:1906.00771, 2019.
-	- Soufiane Hayou, Arnaud Doucet, and Judith Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019.
-- Colin Wei, Jason D. Lee, Qiang Liu, and Tengyu Ma. Regularization matters: Generalization and optimization of neural nets v.s. their induced kernel, 2020
-	- How finite-dim neural net approx infinite l1-network?
-		- You need m=n+1;
 - NIPS'19
-	- Dennis Maximilian Elbrächter, Julius Berner, Philipp Grohs. How degenerate is the parametrization of neural networks with the ReLU activation function?
-	- Sanjeev Arora, Nadav Cohen, Wei Hu, Yuping Luo. Implicit Regularization in Deep Matrix Factorization
-	- Fariborz Salehi, Ehsan Abbasi, Babak Hassibi. The Impact of Regularization on High-dimensional Logistic Regression
-	- Qian Qian, Xiaoyuan Qian. The Implicit Bias of AdaGrad on Separable Data
-	- Aditya Sharad Golatkar, Alessandro Achille, Stefano Soatto. Time Matters in Regularizing Deep Networks: Weight Decay and Data Augmentation Affect Early Learning Dynamics, Matter Little Near Convergence
+	- D Elbrächter, J Berner, P Grohs. How degenerate is the parametrization of neural networks with the ReLU activation function?
+	- S Arora, N Cohen, W Hu, Y Luo. Implicit Regularization in Deep Matrix Factorization
+	- F Salehi, E Abbasi, B Hassibi. The Impact of Regularization on High-dimensional Logistic Regression
+	- Q Qian, X Qian. The Implicit Bias of AdaGrad on Separable Data
+	- A Golatkar, A Achille, S Soatto. Time Matters in Regularizing Deep Networks: Weight Decay and Data Augmentation Affect Early Learning Dynamics, Matter Little Near Convergence
 
 ## Universal Approximator
-- Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks, 4(2): 251–257, 1991.
-- Hongzhou Lin, Stefanie Jegelka. ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
-- M. Leshno, V. Lin, A. Pinkus, and S. Schocken. Multilayer feedforward networks with a non- polynomial activation function can approximate any function. NN'93
-- Ben Poole, Subhaneil Lahiri, Maithra Raghu, Jascha Sohl-Dickstein, and Surya Ganguli. Exponential expressivity in deep neural networks through transient chaos. NeurIPS'16
+- M. Leshno, V. Lin, A. Pinkus, and S. Schocken. Multilayer feedforward networks with a non-polynomial activation function can approximate any function. NN'93
+- K Hornik. Approximation capabilities of multilayer feedforward networks. Neural networks'91
+- H Lin, S Jegelka. ResNet with one-neuron hidden layers is a Universal Approximator. NIPS'18
 - Pierre Baldi. Neuronal Capacity. NIPS'18
 
 ## PAC-Bayes/Complexity/Generalization
-- Data dependent complexity:
-	- Colin Wei, Tengyu Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation. NeurIPS'19
-- Devansh Arpit, Stanislaw Jastrzebski, Nicolas Ballas, David Krueger, Emmanuel Bengio, Maxinder S. Kanwal, Tegan Maharaj, Asja Fischer, Aaron Courville, Yoshua Bengio, and Simon Lacoste-Julien. A closer look at memorization in deep networks. ICML'17
-	- Over-parametrized -> memorize whole dataset with 0 error;
-- PL Bartlett, DJ Foster, MJ Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17
-- N Golowich, A Rakhlin, O Shamir. Size-independent sample complexity of neural networks
-- Behnam Neyshabur, Srinadh Bhojanapalli, Nathan Srebro. A pac-bayesian approach to spectrally-normalized margin bounds for neural networks. ICLR'18
-	- Net: FF+ReLU
-		- Tools: bound ∆output w.r.t. ∆weight, (bounding the sharpness);
-		- Spectral norm of the layers and the Frobenius norm of the weights
-	- Main result:
-- Simon S Du, Jason D Lee, Haochuan Li, Liwei Wang, and Xiyu Zhai. Gradient descent finds global minima of deep neural networks. arXiv preprint arXiv:1811.03804, 2018a.
-- Y Li, Y Liang. Learning overparameterized neural networks via stochastic gradient descent on structured data. NIPS'18
-- R Novak, Y Bahri, DA Abolafia, J Pennington. Sensitivity and generalization in neural networks: an empirical study. arxiv'18
-- Gaël Letarte, Pascal Germain, Benjamin Guedj, Francois Laviolette. Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks. NIPS'18
-- Vaishnavh Nagarajan and Zico Kolter. Deterministic PAC-bayesian generalization bounds for deep networks via generalizing noise-resilience. ICLR'19
-- Wenda Zhou, Victor Veitch, Morgane Austern, Ryan P. Adams, and Peter Orbanz. Nonvacuous generalization bounds at the imagenet scale: a PAC-bayesian compression approach. ICLR'19
-- Z Allen-Zhu, Y Li, Y Liang. Learning and generalization in overparameterized neural networks, going beyond two layers. NIPS'19
-- Ping Li and Phan-Minh Nguyen. On random deep weight-tied autoencoders: Exact asymptotic analysis, phase transitions, and implications to training. ICLR'19
-- Complexity:
-	- Zi Yin, Yuanyuan Shen. On the Dimensionality of Word Embedding. NIPS'18
+- Complexity/Expressiveness:
+	- B Poole, S Lahiri, M Raghu, J Sohl-Dickstein, and S Ganguli. Exponential expressivity in deep neural networks through transient chaos. NeurIPS'16
+	- Z Yin, Y Shen. On the Dimensionality of Word Embedding. NIPS'18
 		- PIP loss, bias-variance trade-off
-	- Simon Du. How Many Samples are Needed to Estimate a Convolutional Neural Network? NIPS'18
-	- Léonard Blier, Yann Ollivier. The Description Length of Deep Learning models. NIPS'18
-	- Chunyuan Li, Heerad Farkhoor, Rosanne Liu, Jason Yosinski. Measuring the Intrinsic Dimension of Objective Landscapes. ICLR'18
+	- S Du. How Many Samples are Needed to Estimate a Convolutional Neural Network? NIPS'18
+	- L Blier, Y Ollivier. The Description Length of Deep Learning models. NIPS'18
+	- C Li, H Farkhoor, R Liu, J Yosinski. Measuring the Intrinsic Dimension of Objective Landscapes. ICLR'18
 		- Insight: constrain the update in a subspace to recheck convergence;
-- Behavior:
-	- Chiyuan Zhang, Samy Bengio, Moritz Hardt, Benjamin Recht, Oriol Vinyals. Understanding deep learning requires rethinking generalization. ICLR'17
-		- **effective capacity**: successful neural network architectures is large enough to shatter the training data;
+	- C Wei, T Ma. Data-dependent Sample Complexity of Deep Neural Networks via Lipschitz Augmentation. NeurIPS'19
+	- N Golowich, A Rakhlin, O Shamir. Size-independent sample complexity of neural networks
+- Empirical behavior:
+	- C Zhang, S Bengio, M Hardt, B Recht, O Vinyals. Understanding deep learning requires rethinking generalization. ICLR'17
+		- Neural-net large enough to shatter the training data;
+	- R Novak, Y Bahri, DA Abolafia, J Pennington. Sensitivity and generalization in neural networks: an empirical study. arxiv'18
+	- P Li and P Nguyen. On random deep weight-tied autoencoders: Exact asymptotic analysis, phase transitions, and implications to training. ICLR'19
+- PAC-Bayes Generalization Bound:
+	- PL Bartlett, DJ Foster, MJ Telgarsky. Spectrally-normalized margin bounds for neural networks. NIPS'17
+	- B Neyshabur, S Bhojanapalli, N Srebro. A pac-bayesian approach to spectrally-normalized margin bounds for neural networks. ICLR'18
+		- Net: FF+ReLU
+			- Tools: bound ∆output w.r.t. ∆weight, (bounding the sharpness);
+			- Spectral norm of the layers and the Frobenius norm of the weights
+		- Main result:
+	- V Nagarajan, Z Kolter. Uniform convergence may be unable to explain generalization in deep learning. NIPS'18
+		- https://www.youtube.com/watch?v=o3GfnEjTdIQ
+	- G Letarte, P Germain, B Guedj, F Laviolette. Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks. NIPS'18
+	- W Zhou, V Veitch, M Austern, R Adams, and P Orbanz. Nonvacuous generalization bounds at the imagenet scale: a PAC-bayesian compression approach. ICLR'19
+	- V Nagarajan and Z Kolter. Deterministic PAC-bayesian generalization bounds for deep networks via generalizing noise-resilience. ICLR'19
+	- Z Allen-Zhu, Y Li, Y Liang. Learning and generalization in overparameterized neural networks, going beyond two layers. NIPS'19
+- Overparametrization:
+	- Y Li, Y Liang. Learning overparameterized neural networks via stochastic gradient descent on structured data. NIPS'18
+	- Z Allen-Zhu, Y Li, and Z Song. A convergence theory for deep learning via over-parameterization. ICML'18
+	- B Neyshabur, Z Li, S Bhojanapalli, Y LeCun, N Srebro. Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
+	- S Du, X Zhai, B Poczos, and A Singh. Gradient descent provably optimizes over-parameterized neural networks. arXiv preprint arXiv:1810.02054, 2018b
+	- L Su, P Yang. On Learning Over-parameterized Neural Networks: A Functional Approximation Perspective. NIPS'19
+- D Arpit, S Jastrzebski, N Ballas, D Krueger, E Bengio, M Kanwal, T Maharaj, A Fischer, A Courville, Y Bengio, and S Lacoste-Julien. A closer look at memorization in deep networks. ICML'17
+	- Over-parametrized → memorize whole dataset with 0 error;
 
 ## Optimization/Convergence
 - Initialization:
-	- Amit Daniely, Roy Frostig, and Yoram Singer. Toward deeper understanding of neural networks: The power of initialization and a dual view on expressivity. NIPS'16
+	- I Safran and O Shamir. On the quality of the initial basin in overspecified neural networks. ICML'16
+	- A Daniely, R Frostig, and Y Singer. Toward deeper understanding of neural networks: The power of initialization and a dual view on expressivity. NIPS'16
 - NTK:
-	- Arthur Jacot, Franck Gabriel, Clément Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NeurIPS'18
-	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
-	- Lenaic Chizat, Edouard Oyallon, Francis Bach. On Lazy Training in Differentiable Programming. NeurIPS'19
+	- Good resources:
+		- https://lilianweng.github.io/posts/2022-09-08-ntk/
+	- Insight: K(x, x') what sgd on x will influence f(x'); 
+	- L(θ) = 1/N ∑.i l(f(xi;θ), yi)
+	- ∇L(θ) = 1/N ∑.i ∇f(xi;θ) ∇l(f, yi)
+	- Infinitesimal step GD: dθ/dt = -∇L(θ)
+	- Prediction of new x:
+		- df(x;θ)/dt = -1/N ∑.i ∇f(x)†∇f(xi) ∇l(f, yi)
+		- NTK: ∇f(x)†∇f(xi)
+	- Main result: infinite width, NTK converges to
+		- Deterministic at initialization;
+		- Stays constant during training;
+	- Proof: by inducition. check NNGP.
+	- Linearized model:
+		- df(θ)/dt = -ηK∇L(f), (since K constant)
+		- e.g. MSE loss: ∇L(f) = f(X;θ) - y; let 
+			- ODE gives: f(θ) - y = C exp[-ηKt]
+	- Lazy training with NTK:
+		- Change in θ: Δθ ~ ∥y-f(θ0)∥/∥∇f(θ0)∥
+		- Change in ∇θ: Δ∇θ ~ ∥y-f(θ0)∥∇2f(θ0) / ∥∇f(θ0)∥
+		- Let κ(θ) = Δ∇θ/∥∇θ∥, E[κ(θ)] → 0;
+	- A Jacot, F Gabriel, C Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NeurIPS'18
+	- Y Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
+	- L Chizat, E Oyallon, F Bach. On Lazy Training in Differentiable Programming. NeurIPS'19
+- Regularization:
+	- C Wei, J Lee, Q Liu, and T Ma. Regularization matters: Generalization and optimization of neural nets v.s. their induced kernel, 2020
+	- How finite-dim neural net approx infinite l1-network?
+		- You need m=n+1;
+- SGD:
+	- S Du, J D Lee, H Li, L Wang, and X Zhai. Gradient descent finds global minima of deep neural networks. arXiv'18
+	- F Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
+	- B Hanin. Which Neural Net Architectures Give Rise to Exploding and Vanishing Gradients. NIPS'18
+	- A Zhu. Byzantine Stochastic Gradient Descent. NIPS'18
+	- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
+	- Z Zhu, Y Li. Can SGD Learn Recurrent Neural Networks with Provable Generalization? NIPS'19
+- Batch:
+	- N Keskar, D Mudigere, J Nocedal, M Smelyanskiy, and P Tak P Tang. On large-batch training for deep learning: Generalization gap and sharp minima. arxiv'16
+	- F He, T Liu, D Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
 - Loss:
-	- Anna Choromanska, Mikael Henaff, Michael Mathieu, Gérard Ben Arous, and Yann LeCun. The loss surfaces of multilayer networks. AISTATS'15
-	- Daniel Soudry and Yair Carmon. No bad local minima: Data independent training error guarantees for multilayer neural networks. 2016
-	- Nitish Shirish Keskar, Dheevatsa Mudigere, Jorge Nocedal, Mikhail Smelyanskiy, and Ping Tak Peter Tang. On large-batch training for deep learning: Generalization gap and sharp minima. arxiv'16
-	- Itay Safran and Ohad Shamir. On the quality of the initial basin in overspecified neural networks. ICML'16
-	- Quynh Nguyen and Matthias Hein. The loss surface of deep and wide neural networks. ICML'17
-	- Janice Lan, Rosanne Liu, Hattie Zhou, Jason Yosinski. LCA: Loss Change Allocation for Neural Network Training. NIPS'19
+	- A Choromanska, M Henaff, M Mathieu, G Arous, and Y LeCun. The loss surfaces of multilayer networks. AISTATS'15
+	- D Soudry and Y Carmon. No bad local minima: Data independent training error guarantees for multilayer neural networks. 2016
+	- Q Nguyen and M Hein. The loss surface of deep and wide neural networks. ICML'17
+	- J Lan, R Liu, H Zhou, J Yosinski. LCA: Loss Change Allocation for Neural Network Training. NIPS'19
 		- Insight: module-wise training loss during iteration;
 		<img src="/DL/images/empirical/lca-1.png" alt="drawing" width="450"/>\
 		<img src="/DL/images/empirical/lca-2.png" alt="drawing" width="450"/>
-	- Chiyuan Zhang, Samy Bengio, and Yoram Singer. Are all layers created equal? arxiv'19
-- Over-Parametrization:
-	- Zeyuan Allen-Zhu, Yuanzhi Li, and Zhao Song. A convergence theory for deep learning via over-parameterization. ICML'18
-	- Francis Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
-	- Behnam Neyshabur, Zhiyuan Li, Srinadh Bhojanapalli, Yann LeCun, Nathan Srebro. Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
-	- Simon S Du, Xiyu Zhai, Barnabas Poczos, and Aarti Singh. Gradient descent provably optimizes over-parameterized neural networks. arXiv preprint arXiv:1810.02054, 2018b
-	- Yuanzhi Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
-		- Empirical
-	- Lili Su, Pengkun Yang. On Learning Over-parameterized Neural Networks: A Functional Approximation Perspective. NIPS'19
-- SGD:
-	- Boris Hanin. Which Neural Net Architectures Give Rise to Exploding and Vanishing Gradients. NIPS'18
-	- Allen Zhu. Byzantine Stochastic Gradient Descent. NIPS'18
+	- C Zhang, S Bengio, and Y Singer. Are all layers created equal? arxiv'19
 - Normalization:
-	- Shibani Santurkar, Dimitris Tsipras, Andrew Ilyas, Aleksander Madry. How Does Batch Normalization Help Optimization? NIPS'18
+	- S Santurkar, D Tsipras, A Ilyas, A Madry. How Does Batch Normalization Help Optimization? NIPS'18
 	- Nils Bjorck, Carla P. Gomes, Bart Selman, Kilian Q. Weinberger. Understanding Batch Normalizations. NIPS'18
-	- Yixi Xu, Xiao Wang. Understanding Weight Normalized Deep Neural Networks with Rectified Linear Units. NIPS'18
-- Paul Hand. Phase Retrieval Under a Generative Prior. NIPS'18
-- Allen Zhu. NEON2: Finding Local Minima via First-Order Oracles. NIPS'18
+	- Y Xu, X Wang. Understanding Weight Normalized Deep Neural Networks with Rectified Linear Units. NIPS'18
+- P Hand. Phase Retrieval Under a Generative Prior. NIPS'18
+- A Zhu. NEON2: Finding Local Minima via First-Order Oracles. NIPS'18
 - Are ResNets Provably Better than Linear Predictors? NIPS'18
-- Simon Du, Jason Lee. Algorithmic Regularization in Learning Deep Homogeneous Models: Layers are Automatically Balanced. NIPS'18
+- S Du, J Lee. Algorithmic Regularization in Learning Deep Homogeneous Models: Layers are Automatically Balanced. NIPS'18
 - Behavior:
-	- Ian J Goodfellow, Oriol Vinyals, and Andrew M Saxe. Qualitatively characterizing neural network optimization problems. 2014
-	- Hao Li, Zheng Xu, Gavin Taylor, Christoph Studer, and Tom Goldstein. Visualizing the Loss Landscape of Neural Nets. NIPS'18
-	- **Double-Descent**: Preetum Nakkiran, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, Ilya Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. ICLR'20
+	- I Goodfellow, O Vinyals, and A Saxe. Qualitatively characterizing neural network optimization problems. 2014
+	- H Li, Z Xu, G Taylor, C Studer, and T Goldstein. Visualizing the Loss Landscape of Neural Nets. NIPS'18
+	- **Double-Descent**: P Nakkiran, G Kaplun, Y Bansal, T Yang, B Barak, I Sutskever. Deep Double Descent: Where Bigger Models and More Data Hurt. ICLR'20
 		- https://openai.com/blog/deep-double-descent/
-		- Model-wise double descent: there is a regime where bigger models are worse;
-			<img src="/DL/images/empirical/double-descent-1.png" alt="drawing" width="450"/>
-		- Sample-wise non-monotonicity: there is a regime where more samples hurts;
-			<img src="/DL/images/empirical/double-descent-2.png" alt="drawing" width="450"/>
+		- Model-wise double descent: there is a regime where bigger models are worse, then the bigger the better;
+		- Sample-wise non-monotonicity: there is a regime where more samples hurts, then the more the better;
 		- Epoch-wise double descent;
-		- Hypothesis: Our intuition is that, for models at the interpolation threshold, there is effectively only one model that fits the train data, and forcing it to fit even slightly noisy or misspecified labels will destroy its global structure. That is, there are no "good models" which both interpolate the train set and perform well on the test set. However, in the over-parameterized regime, there are many models that fit the train set and there exist such good models. Moreover, the implicit bias of stochastic gradient descent (SGD) leads it to such good models, for reasons we don't yet understand.
+		- Hypothesis (intuition):
+			- At the **interpolation threshold** regime, only 1 model fitting train, (slight noisy or misspecified labels will destroy)
+				- i.e., no "good models" which both interpolate the train set and perform well on the test set. 
+			- Over-parameterized regime, many models fitting train set. Implicit bias of SGD leads it to such good models.
+
+## Variational Inference
+- Mean field:
+	- G Yang and S Schoenholz. Mean field residual networks: On the edge of chaos. NeurIPS'17
+	- R Karakida, S Akaho, and S Amari. Universal statistics of fisher information in deep neural networks: mean field approach. 2018.
+	- S Mei, T Misiakiewicz, and A Montanari. Mean-field theory of two-layers neural networks: dimension-free bounds and kernel limit. arXiv'19
+	- Y Blumenfeld, D Gilboa, and D Soudry. A mean field theory of quantized deep networks: The quantization-depth trade-off. arXiv preprint arXiv:1906.00771, 2019.
+	- S Hayou, A Doucet, and J Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019.
 
 ## Information Theory
-- Samuel S Schoenholz, Justin Gilmer, Surya Ganguli, and Jascha Sohl-Dickstein. Deep information propagation. arXiv preprint arXiv:1611.01232, 2016.
+- S Schoenholz, J Gilmer, S Ganguli, and J Sohl-Dickstein. Deep information propagation. arXiv preprint arXiv:1611.01232, 2016.
+
+## NN as Gaussian Process
+- R Neal. Prior for Infinite Networks. 94
+- NNGP: J Lee, Y Bahri, R Novak, S Schoenholz, J Pennington, J Sohl-Dickstein. Deep Neural Networks as Gaussian Processes. ICLR'18
+	- Infinite width:
+		- ∑l+1(x, x') = E.f~N(0,Λl)[σ(f(x))†σ(f(x'))] + β^2

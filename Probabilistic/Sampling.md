@@ -8,16 +8,27 @@
 	- Rejection sampling: sample from q(z) to get p(z)
 		- Adaptive: piecewise envelope;
 	- Importance sampling: sample from q and reweight;
-	- Sampling-importance-resampling (SIR)
-- Monte Carlo EM
+		- Sampled from q(z) and weighted by p(z)/q(z);
+	- Sampling-importance-resampling (SIR): sample from q(z), and resample
+		- Sample from q(z) to get z1,...,zl, then resample with p(zi)/q(zi).
+- Monte Carlo EM: sample instead of integral in E-step;
+	- Q(θ, θ-old) ~ 1/L∑l=1..L lnp(Zl,X|θ)
 - Time domain:
 	- Particle filtering;
 - Dependent sampling:
-	- MCMC
-	- Metropolis Hasting;
-	- Gibbs, Colapsed
-	- Slice
-	- HMC
+	- MCMC: q(z|z')
+	- Metropolis Hasting: assumes q(zA|zB) = q(zB|zA)
+		- Accept with probability min(1, p(z2)/p(z1))
+		- Assymetric r = min(1, p(x')q(x|x')/p(x)q(x'|x))
+	- Gibbs Sampling: p(zi|-zi)
+		- Colapsed Gibbs Sampling: analytically intergral part of var;
+	- Data-driven MCMC:
+		- q(x'|x,D) = pi0 q0(x'|x) + ∑ pik qk(xk'|fk(D))
+	- Auxiliary MCMC:
+		- Slice: zi, p(zi), sample u ∈ [0, p(zi)] -> sample z2 in area p(z2) > u;
+		- Swedsen-Wang: p(x|x',z=0) and p(x|x',z=1) to accelerate convergence;
+		- HMC: guided transition, next step with ∇p(z);
+			- Auxiliary momentum p, update (z, p);
 - Techniques:
 	- Burn-in + mixing;
 	- Annealing;
@@ -25,9 +36,9 @@
 	- Estimate normalization function;
 
 ## Misc
-- A Golinski, Yee Whye Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
+- A Golinski, Y W Teh, F Wood, T Rainforth. Amortized Monte Carlo Integration. ICML'19 best paper honorable mention
 
-## Sampling Methods (PRML Chap 11, Kevin Murphy Chap 2.7)
+## Sampling Methods (PRML-11, K.Murphy-2.7)
 - 11.1 Basic Sampling Algorithm
 	- y=f(z), then p(y)=p(z)|dz/dy|
 	- 11.1.2 Rejection sampling:
@@ -47,8 +58,8 @@
 		- Stage 1: sample z1, z2, ..., zL from q(z);
 		- Stage 2: sample from (z1, z2, ...) with probability (w1, w2, ...); wl = p(zl)/q(zl) / ∑p(zl)/q(zl)
 	- 11.6 Monte Carlo EM
-		- Traditional EM (M-step): Q(θ, θold)=∫p(Z|X, θold)lnp(Z,X|θ)dZ
-		- MCEM, sample z instead of integrate: Q(θ, θold) ~ 1/L∑l=1..L lnp(Zl,X|θ)
+		- Traditional EM (M-step): Q(θ, θold)=∫p(Z|X, θ-old)lnp(Z,X|θ)dZ
+		- MCEM, sample z instead of integrate: Q(θ, θ-old) ~ 1/L∑l=1..L lnp(Zl,X|θ)
 		- IP (imputation-posterior): full-Bayesian, θ is a distribution and requires sampling too;
 - 11.2 MCMC
 	- Insight: to sample p(z), sample q(z'|z); e.g. p(z)=p'(z)/Z with Z hard to compute;
@@ -80,27 +91,10 @@
 		- Ze/ZG = ∑z exp(-E(z)) / ∑z exp(-G(z))
 		- Ze/ZG = ∑z exp(-E(z)+G(z))exp(-G(z)) / ∑z exp(-G(z))
 		- Ze/ZG = E_G(z)(exp(-E+G)) ~ ∑l exp(-E(zl)+G(zl))
-
-## Sampling
 - Sampling from Standard Distributions
 	- Using **cdf**, u ~ U(0,1), invF(u) ~ F
-- **Rejection Sampling**
-	- Especially if p(x) hard to evaluate due to normalization factor, maybe the true p'(x)=p(x)/Z
-	- Mq(x) > p(x)
-	- x ~ q(x), u ~ U(0, 1), accept x if u > p(x)/Mq(x)
-- **Importance Sampling** (especially when we want to sample more from a rare event)
-	- Evaluate E(f(x)), where x ~ p(x), empirical: (f(x1) + f(x2) + ... + f(xN)) / N;
-	- Sample x ~ q(x), evaluate E\[f(x)p(x)/q(x)\]
-- **Particle filtering**:
-	- Sequential importance sampling for p(z1:t|y1:t)
-	- A set of weighted particles w(ts)
-	- Weight: w(ts) = p(z1:t|y1:t) / q(z1:t|y1:t)
-	- p(z1:t|y1:t) = p(yt|zt)p(zt|zt-1)p(z1:t-1|y1:t-1)
-	- For proposal q, we restrict as: q(z1:t|y1:t)=q(zt|z1:t-1,y1:t)q(z1:t-1|y1:t-1)
-	- Weight: w(ts) = w(ts-1) p(yt|zts)p(zts|zt-1s)/q(zts|zs1:t-1,y1:t)
-	- For degeneration, do resampling
 
-## MCMC (Kevin Murphy Chap 24)
+## MCMC (PRML-11, K.Murphy-24)
 - 24.2 Gibbs sampling:
 	- Basic idea: p(x1'|x2, x3), then p(x2'|x1, x3), p(x3'|x1, x2)
 		- e.g. pairwise-MRF: p(xt|x-t, θ) ∝ ∏s∈nbr(t) ψst(xs,xt)
@@ -129,7 +123,7 @@
 		- Mixture: convex combintation of some basics;
 	- Data-driven MCMC (Tu, Zhu)
 		- Proposal also data-driven
-		- q(x'|x,D) = pi0 q0(x'|x) + sum pik qk(xk'|fk(D))
+		- q(x'|x,D) = pi0 q0(x'|x) + ∑ pik qk(xk'|fk(D))
 		- q0: a standard data-independent proposal (random walk)
 		- qk proposes changes to kth part
 - 24.4 Speed and accuracy
@@ -143,22 +137,27 @@
 		- Autocorrelation function (ACF) measures correlation of recent t samples;
 	- 24.4.5 How many chains?
 - 24.5 Auxiliary variable MCMC
-	- Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x)=sum_z(p(x,z))
+	- Sometimes we can dramatically improve the efficiency of sampling by introducing dummy z, p(x) = ∑.z p(x,z)
 	- 24.5.2 Slice-sampling
 		- Insight: introduce auxiliary height h to improve large moves;
 		- Given last sample xi target density f(x), sample ui+1 on U(0, f(x)) , then sample next xi+1 s.t. f(x)>=ui+1. (Try to find another high prob)
 	- 24.5.3 Swendsen-Wang;
-		- Ising model with energy (eJ e^-J;e^-J eJ), highly correlated; mix-in slow;
-		- Insight: introduce z, s.t. g(x,z=0)=(e^-J e^-J;e^-J e^-J) and g(x,z=1)=(eJ-e^-J 0;0 eJ-e^-J), easier to sample and converge;
+		- Ising model with edge [exp(J) exp(-J);exp(-J) exp(J)], highly correlated; mix-in slow;
+		- Insight: introduce z, s.t. 
+			- z=0, g(x,z=0)=[exp(-J) exp(-J);exp(-J) exp(-J)]
+			- z=1, g(x,z=1)=[exp(J)-exp(-J) 0;0 exp(J)-exp(-J)]
+			- easier to sample and converge;
 	- 24.5.4 HMC (hybrid MCMC or Hamiltonian MCMC)
-		- Insight: extending MC-MH (MH fails with high-dimension, large exploration space); **Inform** Effective Markov Transitions with a vector field;
-			- Mimic a satellite around a gravitational planet; Add **right amount of momentum** to make it circle (no collapse or fly out);
-		- Probability: auxiliary momentum parameters, pn, qn->(qn,pn);
+		- Insight: for high dim z, extend MC-MH with guided Markov Transitions with a vector field -∇E(z);
+		- Setup: p(z) = 1/Zp exp(-E(z))
+			- auxiliary momentum p -> (z, p);
+		- -∇E(z) as conservative force, K(p) = 1/2 ∑p^2
+		- Define Hamilton as H(z,p) = E(z) + K(p)
+			- dz/dt = ∂H/∂p = ∂K/∂p
+			- dp/dt = -∂H/∂z = -∂K/∂z - ∂V/∂z
 		- π(q,p) = π(p|q)π(q), let π(q, p) = exp(−H(q,p))
 		- H(q,p) ≡ −logπ(q,p) = −logπ(p|q)−logπ(q) ≡ K(p,q) + V(q)
 		- Right amount of vector field, explore the typical set;
-			- dq/dt = ∂H/∂p = ∂K/∂p
-			- dp/dt = -∂H/∂q = -∂K/∂q - ∂V/∂q
 		- Idealized HMC (infinite of choices for momentum p):
 			- Get on phase space first: p ∼ π(p|q);
 			- Integrating Hamilton's equations for some time: (q,p) → φt(q,p)
@@ -175,33 +174,3 @@
 	- 24.6.2 Annealed importance sampling
 	- 24.6.3 Parallel tempering
 - 24.7 Approximating the marginal likelihood
-
-## Langevin Dynamics
-- Physics Background: Lagrange/Hamilton mechanics, check dynamic-systems;
-- R Neal. MCMC using Hamiltonian dynamics. Handbook of Markov Chain Monte Carlo. 2010
-	- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
-	- ηt ~ N(0, εt)
-- **HMC**: MCMC using Hamiltonian dynamics. Radford M. Neal 2012
-	- https://blog.csdn.net/qy20115549/article/details/54561643
-- **SGLD**: M Welling, Y W Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
-	- Insight: a new framework for learning from large scale datasets based on iterative learning from small mini-batches.
-	- Model prior p(x|θ), X = {xi}i=1..N, p(θ|X)∝p(θ)∏i=1..N p(xi|θ)
-	- Robins-Monroe (mini-batch):
-		- ∆θt = εt/2(∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt))
-	- Ensure convergence:
-		- ∑εt=∞, ∑εt^2<∞
-	- True gradient: g(θ) = ∇logp(θt) + ∑i=1..N ∇logp(xi|θt)
-	- Deviation from minibatch gradient with finite variance V(θ):
-		- h(θ) = ∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt) - g(θ)
-	- Proof sketch: cut into subsequences s.t. each subseq has same total stepsize;
-		- t1, t2, ..., s.t. ∑t=ti..ti+1 εt ~ ε0, as t -> ∞
-		- Each subsequence has variance: ε0/2 g(θts)+O(ε0)
-		- So θt1, θt2 , ... will approach a sequence generated by Langevin dynamics with a fixed step size ε, converge to the posterior;
-	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
-	- https://github.com/henripal/sgld
-	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
-- **SGHMC**: T Chen, E Fox, C Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
-- H Palacci, H Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
-- YP Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NIPS'18
-	- Application: LDA;
-- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18

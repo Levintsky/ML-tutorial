@@ -1,13 +1,35 @@
 # Deep Learning Basics
 
-## Resources
-- Tutorials
-	- Yann LeCun, Yoshua Bengio, and Geoffrey Hinton. Deep learning. nature, 521(7553):436, 2015.
-- Books
-	- **Deep learning**: I Goodfellow, Y Bengio, Aaron Courville, and Yoshua Bengio. volume 1. MIT press Cambridge, 2016.
+## Basics
+- Operator design:
+	- Invariance: conv, pool
+	- Equivariance:
+- Activation:
+	- ReLU, Leaky-ReLU
+	- GeLU, SENet
+- Normalization:
+	- Batch-Norm;
+	- Layer-Norm, Instance-Norm, group-norm;
+	- Weight-norm, spectral-norm;
+	- Class-norm
+- Techniques:
+	- Dropout;
+	- Regularization;
+- Differentiable sampling:
+	- Gumbel softmax;
+	- VAE,
+- Behavior:
+	- NTK;
+- Invertible-NN;
+- Visualization;
+- Resources:
+	- Tutorials
+		- Y LeCun, Y Bengio, and G Hinton. Deep learning. nature'15.
+	- Books
+		- Deep learning: I Goodfellow, Y Bengio, A Courville. 2016.
 
 ## Unclassified
-- Gamaleldin F. Elsayed, D Krishnan, H Mobahi, K Regan, Samy Bengio. Large Margin Deep Networks for Classification. NIPS'18
+- Gamaleldin F. Elsayed, D Krishnan, H Mobahi, K Regan, S Bengio. Large Margin Deep Networks for Classification. NIPS'18
 
 ## PRML (Chapter 5)
 - Feed-forward:
@@ -19,12 +41,12 @@
 	- SGD, Hessian;
 - Error backprop: Jacobian matrix;
 - Hessian matrix:
-	- Diagonal approximation:\
-		<img src="/DL/images/hessian-approx.png" alt="drawing" width="500"/>
-	- Outer product approx, ignore the 2nd term in (5.83);\
-		<img src="/DL/images/hessian-1.png" alt="drawing" width="300"/>\
-		<img src="/DL/images/hessian-2.png" alt="drawing" width="200"/>\
-		<img src="/DL/images/hessian-3.png" alt="drawing" width="200"/>
+	- Diagonal approximation:
+		- ∂2E/∂aj2 = h'(aj)^2 Σ.k wkj^2 ∂2E/∂ak2 + h''(aj)Σ.k ∂E/∂ak
+	- Outer product approx, ignore the 2nd term in (5.83);
+		- H = ∇∇E = Σ∇yn∇yn + Σ(yn-tn)∇∇yn
+		- H ~ Σbnbn†
+		- H ~ Σyn(1-yn)bnbn†
 	- Fast approximation by Hessian;
 - Regularization:
 	- Regularization;
@@ -45,17 +67,17 @@
 - Invariance:
 	- Conv, pooling;
 - Equivarance:
-	- Maurice Weiler, Mario Geiger, Max Welling, Wouter Boomsma, Taco Cohen. 3D Steerable CNNs: Learning Rotationally Equivariant Features in Volumetric Data. NIPS'18
+	- M Weiler, M Geiger, M Welling, W Boomsma, T Cohen. 3D Steerable CNNs: Learning Rotationally Equivariant Features in Volumetric Data. NIPS'18
 	- Esteves, C., Allen-Blanchette, C., Makadia, A., and Daniilidis, K. Learning SO(3) equivariant representations with spherical CNNs. ECCV'18
 
 ## Activation
-- **ReLU**: Nair, V. and Hinton, G. E. Rectified linear units improve restricted boltzmann machines. ICML'10
+- ReLU: Nair, V. and Hinton, G. E. Rectified linear units improve restricted boltzmann machines. ICML'10
 	- xI(x>0)
-- **Leaky-ReLU**;
-- **GeLU**: Dan Hendrycks, Kevin Gimpel. Gaussian Error Linear Units (GELUs). '16
+- Leaky-ReLU;
+- GeLU: D Hendrycks, K Gimpel. Gaussian Error Linear Units (GELUs). '16
 	- Smoother than ReLU;
 	- Used in BERT and GPT-3;
-- **SENet**: J Hu, L Shen, G Sun. Squeeze-and-Excitation Networks. CVPR'18
+- SENet: J Hu, L Shen, G Sun. Squeeze-and-Excitation Networks. CVPR'18
 	- https://github.com/hujie-frank/SENet
 	- Insight: channel-wise scaling (learn by MLP);
 	- Model: channel-wise selection/attention;
@@ -72,7 +94,7 @@
 - **Layer-Norm**: J L Ba, J R Kiros, G E. Hinton. Layer Normalization. 2016
 	- Insight: normalize dxHxW pixels within the same instance, no batch required;
 	- Same eqn as BN: x = (x-μ) / √(σ^2+ε)
-- **Weight-Norm**: Tim Salimans and Diederik Kingma. Weight normalization: A simple reparameterization to accelerate training of deep neural networks. NIPS'16
+- **Weight-Norm**: T Salimans and D Kingma. Weight normalization: A simple reparameterization to accelerate training of deep neural networks. NIPS'16
 	- Insight: weight w is scale invariant to v, and the norm is always g;
 	- y = φ(wx+b)
 	- w = gv / |v|
@@ -114,12 +136,12 @@
 	- https://github.com/for-ai/TD
 
 ## Regularization
-- Behnam Neyshabur, Ryota Tomioka, Nathan Srebro. In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning. ICLR'15
-- Xavier Gastaldi. Shake-Shake regularization. 2017
+- B Neyshabur, R Tomioka, N Srebro. In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning. ICLR'15
+- X Gastaldi. Shake-Shake regularization. 2017
 
 ## Differentiable Sampling (Reparametrization Trick)
 - Make sampling process differentiable;
-- **Score-function**: the gradient of the log-likelihood function with respect to the parameter vector;
+- Score-function: the gradient of the log-likelihood function w.r.t. to the parameter vector;
 	- s(θ) = ∂logL(θ)/∂θ; L: likelihood;
 - Reinforce: unbiased but high variance:
 	- ∇θ Ez[f(z)] = Ez[f(z) ∇θlogp(z;θ)]
@@ -148,8 +170,8 @@
 		- To sample from gumbel, **G=-log(-log(U))**, with U ~ Uniform(0, 1)
 	- **Key insight**: sample {z1, z2, ...} with prob {α1, α2, ...}:
 		- Sample Gumbel var {g1, g2, ...} ~ -log(-log(u));
-		- Let ind = argmax(log α_k + gk)
-		- Then p(ind=k) = α_k;
+		- Let ind = argmax(log αk + gk)
+		- Then p(ind=k) = αk;
 	- Proof: with uk=log α_k+gk,
 		- p(ind=k) = ∫ Πp(uj < uk) f(uk) duk
 		- p(uj < uk) ~ Gumbel cdf F(x);
@@ -157,14 +179,14 @@
 		<img src="/DL/images/basics/gumbel-proof.png" alt="drawing" width="400"/>
 	- Differentiable sampling:
 		- argmax is not differentiable;
-		- we can use f(x, tau) = softmax(x/tau), for vector x=(x1, x2, ...)
-		- then y as a weighted sum of {v1, v2} with prob f(x, tau)
-		- y is both differentiable w.r.t. {v1, v2, ...} and {alpha1, alpha2, ...}
-		- when tau approaches 0, sampling behavior is exact;
-	- C. J. Maddison, A. Mnih, and Y. Whye Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
+		- we can use f(x, τ) = softmax(x/τ), for vector x=(x1, x2, ...)
+		- then y as a weighted sum of {v1, v2} with prob f(x, τ)
+		- y is both differentiable w.r.t. {v1, v2, ...} and {α1, α2, ...}
+		- τ 0, sampling behavior is exact;
+	- C. J. Maddison, A. Mnih, and Y W Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
 		- Independently discover the same trick;
 	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
-		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When tau approaches 0, equivalent to Gumbel:\
+		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When τ approaches 0, equivalent to Gumbel:\
 			<img src="/DL/images/basics/gumbel-softmax2.png" alt="drawing" width="500"/>
 		- True Gumbel-softmax distribution:\
 			<img src="/DL/images/basics/gumbel-softmax-true.png" alt="drawing" width="500"/>
@@ -174,10 +196,18 @@
 		- https://blog.csdn.net/a358463121/article/details/80820878
 		- https://laurent-dinh.github.io/2016/11/22/gumbel-max.html
 - M Figurnov, S Mohamed, A Mnih. Implicit Reparameterization Gradients. NIPS'18
-- Wonyeol Lee, Hangyeol Yu, Hongseok Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
+- W Lee, H Yu, H Yang. Reparameterization Gradient for Non-differentiable Models. NIPS'18
+
+## NTK
+- A Jacot, F Gabriel, C Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NIPS'18
+	- https://rajatvd.github.io/NTK/
+- Chizat, Lenaic, and F Bach. A note on lazy training in supervised differentiable programming. arXiv'18
+- S Arora, et al. On exact computation with an infinitely wide neural net. arXiv'19
+- Y Li, et al. Enhanced Convolutional Neural Tangent Kernels. arxiv'19
+- M. Belkin, S. Ma, and S. Mandal. To understand deep learning we need to understand kernel learning. arXiv'18
 
 ## Memory-Augmented NN
-- C. G. Atkeson and S. Schaal. Memory-based neural networks for robot learning. Neurocomputing, 9:243–269, 1995.
+- C. G. Atkeson and S. Schaal. Memory-based neural networks for robot learning. NC'95
 - End-To-End Memory Networks
 
 ## Invert NN
@@ -198,4 +228,23 @@
 	- Dosovitskiy, A., and Brox, T. Inverting visual representations with convolutional networks. CVPR'16
 		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP;\
 			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
-		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;	
+		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;
+- Arora, S.; Liang, Y.; and Ma, T. Why are deep nets reversible: A simple theory, with implications for training. ICLR-Workshop'16
+- Gilbert, A. C.; Zhang, Y.; Lee, K.; Zhang, Y.; and Lee, H. Towards understanding the invertibility of convolutional neural networks. IJCAI'17
+	- Theoretical connection between compressive sensing and neural network;
+	- Model-based CS, MB-RIP; assume higher dimension observation and Gaussian kernel;
+		<img src = '/DL/images/dynamic-system/mb-iht.png' width = '400'>
+
+## Visualization
+- https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
+	- Attention
+	- Interactive
+	- Deep Visualization (J Yosinski, 2015)
+	- Deep Dream (Google)
+	- RNN (The Unreasonable Effectiveness of Recurrent Neural Networks, A Karpathy, 2015)
+	- Linear: PCA, 
+	- Non-linear: Scaling, Sammon Mapping, Isomap, ...
+		- t-SNE
+		- **UMAP** (Uniform Manifold Approximation and Projection, 2018)
+	- Tensorflow Playground
+	- GAN lab: https://poloclub.github.io/ganlab/

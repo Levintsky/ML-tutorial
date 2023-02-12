@@ -2,7 +2,7 @@
 
 ## Physics Based
 - ODE, PDE: http://graphics.pixar.com/pbm2001/
-- William Reeves: Particle systems— a technique for modeling a class of fuzzy objects, Proc. SIGGRAPH 1983
+- W Reeves: Particle systems— a technique for modeling a class of fuzzy objects, Proc. SIGGRAPH 1983
 - Runge-Kutta:
 	- Witkin, Baraff, Kass: Physically-based Modeling Course Notes, SIGGRAPH 2001
 - Fluid:
@@ -15,7 +15,7 @@
 - http://processing.org/learning/topics/smokeparticlesystem.html
 
 ## Unclassified
-- **MANN**: He Zhang, Sebastian Starke, Taku Komura, Jun Saito. Mode-Adaptive Neural Networks for Quadruped Motion Control. SIGGRAPH'18
+- **MANN**: H Zhang, S Starke, T Komura, J Saito. Mode-Adaptive Neural Networks for Quadruped Motion Control. SIGGRAPH'18
 	- Could be used in pedestrian simulation;
 
 ## Modeling the skilled movement of articulated figures
@@ -28,15 +28,15 @@
 	- D Holden, J Saito, and T Komura. A Deep Learning Framework for Character Motion Synthesis and Editing. TOG'16
 	- D Holden, T Komura, and J Saito. Phase-functioned Neural Networks for Character Control. TOG'17
 - Physics based: products of an underlying simplified model and an optimization process
-	- Stelian Coros, Philippe Beaudoin, and Michiel van de Panne. Generalized Biped Walking Control. TOG'10
-	- Yuting Ye and C Karen Liu. Optimal feedback control for character animation using an abstract model. TOG'10
-	- Jack M. Wang, Samuel R. Hamner, Scott L. Delp, Vladlen Koltun, and More Specifically. Optimizing locomotion controllers using biologically-based actuators and objectives. TOG'12
-	- Igor Mordatch, Emanuel Todorov, and Zoran Popović. Discovery of Complex Behaviors Through Contact-invariant Optimization. TOG'12
-	- Yuval Tassa, Tom Erez, and Emanuel Todorov. 2012. Synthesis and stabilization of complex behaviors through online trajectory optimization. IROS'12
-	- Shailen Agrawal, Shuo Shen, and Michiel van de Panne. Diverse Motion Variations for Physics-based Character Animation. 2013
-	- Kevin Wampler, Zoran Popović, and Jovan Popović. Generalizing Locomotion Style to New Animals with Inverse Optimal Regression. TOG'14
-	- Sehoon Ha and C Karen Liu. Iterative training of dynamic skills inspired by human coaching techniques. TOG'14
-	- **MPC**: Perttu Hämäläinen, Joose Rajamäki, and C Karen Liu. 2015. Online control of simulated humanoids using particle belief propagation. TOG'15
+	- S Coros, P Beaudoin, and M v d Panne. Generalized Biped Walking Control. TOG'10
+	- Y Ye and K Liu. Optimal feedback control for character animation using an abstract model. TOG'10
+	- J Wang, S Hamner, S Delp, V Koltun, and More Specifically. Optimizing locomotion controllers using biologically-based actuators and objectives. TOG'12
+	- I Mordatch, E Todorov, and Z Popović. Discovery of Complex Behaviors Through Contact-invariant Optimization. TOG'12
+	- Y Tassa, T Erez, and E Todorov. Synthesis and stabilization of complex behaviors through online trajectory optimization. IROS'12
+	- S Agrawal, S Shen, and M v d Panne. Diverse Motion Variations for Physics-based Character Animation. 2013
+	- K Wampler, Z Popović, and J Popović. Generalizing Locomotion Style to New Animals with Inverse Optimal Regression. TOG'14
+	- S Ha and C K Liu. Iterative training of dynamic skills inspired by human coaching techniques. TOG'14
+	- **MPC**: P Hämäläinen, J Rajamäki, and C K Liu. Online control of simulated humanoids using particle belief propagation. TOG'15
 - RL:
-	- Xue Bin Peng, Glen Berseth, and Michiel van de Panne. 2015. Dynamic Terrain Traversal Skills Using Reinforcement Learning. TOG'15
-	- Libin Liu and Jessica Hodgins. 2017. Learning to Schedule Control Fragments for Physics-Based Characters Using Deep Q-Learning. TOG'17
+	- X B Peng, G Berseth, and M v d Panne. Dynamic Terrain Traversal Skills Using Reinforcement Learning. TOG'15
+	- L Liu and J Hodgins. Learning to Schedule Control Fragments for Physics-Based Characters Using Deep Q-Learning. TOG'17

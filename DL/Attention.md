@@ -73,7 +73,7 @@
 		- https://github.com/Meituan-AutoML/CPVT
 	- Relative position encoding (as in Swin):
 		- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation networks for object detection. CVPR'18
-		- Han Hu, Zheng Zhang, Zhenda Xie, and Stephen Lin. Local relation networks for image recognition. ICCV'19
+		- H Hu, Z Zhang, Z Xie, and S Lin. Local relation networks for image recognition. ICCV'19
 		- C Raffel, N Shazeer, A Roberts, K Lee, S Narang, M Matena, Y Zhou, W Li, and P Liu. Exploring the limits of transfer learning with a unified text-to-text transformer. JMLR'20
 		- H Bao, L Dong, F Wei, W Wang, N Yang, X Liu, Y Wang, J Gao, S Piao, M Zhou, et al. Unilmv2: Pseudo-masked language models for unified language model pre-training. ICML'20
 
@@ -117,7 +117,7 @@
 	- Dynamic masking;
 	- Fixed-length segment; hidden state reuse (no-gradient)
 	- Relative position encoding;
-- **XLNet**: Zhilin Yang, et. al. XLNet: Generalized Autoregressive Pretraining for Language Understanding. 2019
+- **XLNet**: Z Yang, et. al. XLNet: Generalized Autoregressive Pretraining for Language Understanding. 2019
 	- https://github.com/zihangdai/xlnet
 - S Sukhbaatar, E Grave, P Bojanowski, A Joulin. Adaptive Attention Span in Transformers. 2019
 - **Universal Transformers**: M Dehghani, S Gouws, O Vinyals, J Uszkoreit, Ł Kaiser. Universal Transformer. ICLR'19
@@ -221,7 +221,7 @@
 
 ## Vision: others
 - Rendering:
-	- Joshua Tobin, Wojciech Zaremba, Pieter Abbeel. Geometry-Aware Neural Rendering. NeurIPS'19
+	- J Tobin, W Zaremba, P Abbeel. Geometry-Aware Neural Rendering. NeurIPS'19
 - Recurrent attention:
 	- V Mnih, N Heess, A Graves, et al. Recurrent models of visual attention. NIPS'14
 	- J Fu, H Zheng, and T Mei. Look closer to see better: Recurrent attention convolutional neural network for fine-grained image recognition. CVPR'17

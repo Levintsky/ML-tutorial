@@ -26,14 +26,8 @@
 - Z. Huang, W. Xu, and K. Yu. Bidirectional lstm-crf models for sequence tagging. 2015
 - H. Sak, A. Senior, K. Rao, and F. Beaufays. Fast and accurate recurrent neural network acoustic models for speech recognition. 2015
 - C. Wang, H. Yang, C. Bartz, and C. Meinel. Image captioning with deep bidirectional lstms. CoRR'16
-- **BiBS**: Bidirectional Beam Search: Forward-Backward Inference in Neural Sequence Models for Fill-in-the-Blank Image Captioning. CVPR'17
-	- Model: left-right:\
-		<img src="/DL/images/rnn/bibs-1.png" alt="drawing" width="500"/>
-	- Inference:\
-		<img src="/DL/images/rnn/bibs-2.png" alt="drawing" width="400"/>
-	- Algorithm:\
-		<img src="/DL/images/rnn/bibs-3.png" alt="drawing" width="400"/>
 
 ## Beam Search
-- Ronan Collobert, Awni Hannun, Gabriel Synnaeve. A fully differentiable beam search decoder. ICML'19
-- Wouter Kool, Herke van Hoof, Max Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention
+- Bidirectional Beam Search: Forward-Backward Inference in Neural Sequence Models for Fill-in-the-Blank Image Captioning. CVPR'17
+- R Collobert, A Hannun, G Synnaeve. A fully differentiable beam search decoder. ICML'19
+- W Kool, H v Hoof, M Welling. Stochastic Beams and Where to Find Them: The Gumbel-Top-k Trick for Sampling Sequences Without Replacement. ICML'19 best paper honorable mention

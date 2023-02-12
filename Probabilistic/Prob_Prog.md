@@ -2,18 +2,18 @@
 
 ## Tutorial, Introductions
 - https://media.nips.cc/Conferences/2015/tutorialslides/wood-nips-probabilistic-programming-tutorial-2015.pdf
-- Jan-Willem van de Meent, Brooks Paige, Hongseok Yang, Frank Wood. An Introduction to Probabilistic Programming. 2018
+- J v d Meent, B Paige, H Yang, F Wood. An Introduction to Probabilistic Programming. 2018
 
 ## Resources
 - **BUGS**: D Spiegelhalter, et. al. BUGS 0.5: Bayesian inference using Gibbs sampling manual. 1995
 - **Infer.NET**: https://dotnet.github.io/infer/
 - **STAN**: Stan: A C++ Library for Probability and Sampling. 2013
-- **Church**: Noah Goodman, Vikash Mansinghka, Daniel M. Roy, Keith Bonawitz, Joshua B. Tenenbaum. Church: a language for generative models. 2012
-- David Wingate, Andreas Stuhlmüller, Noah D. Goodman. Lightweight Implementations of Probabilistic Programming Languages Via Transformational Compilation. AISTATS'11
-- **Probabilistic-C**: Brooks Paige, Frank Wood. A Compilation Target for Probabilistic Programming Languages. ICML'14
-- **Venture**: Vikash Mansinghka, Daniel Selsam, Yura Perov. Venture: a higher-order probabilistic programming platform with programmable inference. 2014
+- **Church**: N Goodman, V Mansinghka, D Roy, K Bonawitz, J Tenenbaum. Church: a language for generative models. 2012
+- D Wingate, A Stuhlmüller, N Goodman. Lightweight Implementations of Probabilistic Programming Languages Via Transformational Compilation. AISTATS'11
+- **Probabilistic-C**: B Paige, F Wood. A Compilation Target for Probabilistic Programming Languages. ICML'14
+- **Venture**: V Mansinghka, D Selsam, Y Perov. Venture: a higher-order probabilistic programming platform with programmable inference. 2014
 	- http://probcomp.csail.mit.edu/software/venture/
-- **Anglican**: Wood, F., van de Meent, J.-W., & Mansinghka, V. (2014). A new approach to probabilistic programming inference. In Artificial Intelligence and Statistics (pp. 1024–1032).
+- **Anglican**: Wood, F., van de Meent, J.-W., & Mansinghka, V. A new approach to probabilistic programming inference. AISTATS'14
 	- https://probprog.github.io/anglican/index.html
 	- Particle MCMC
 	- Purely functional: LISP;
@@ -23,7 +23,7 @@
 - **Picture**: Kulkarni, T. D., Kohli, P., Tenenbaum, J. B., and Mansinghka, V. Picture: A probabilistic programming language for scene perception. CVPR'15
 
 ## RL
-- David Wingate, Noah D. Goodman, Daniel M. Roy, Leslie P. Kaelbling and Joshua B. Tenenbaum. Bayesian Policy Search with Policy Priors. IJCAI'11
+- D Wingate, N Goodman, D Roy, L Kaelbling and J Tenenbaum. Bayesian Policy Search with Policy Priors. IJCAI'11
 - van de Meent, Tolpin, Paige, and Wood. Black-Box Policy Search with Probabilistic Programs. 2015
 
 ## Reasoning about reasoning
