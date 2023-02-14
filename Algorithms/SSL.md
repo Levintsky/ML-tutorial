@@ -1,7 +1,9 @@
 # Self-Supervised Learning
 
 ## Basics
-- Contrastive Training Objectives
+- Labels...
+	- Assumption: 1. Smoothness: smooth label; 2. Cluster; 3. Low-density separation; 4. Manifold;
+- Supervision: Contrastive Training Objectives
 	- Contrastive Loss (pairwise): (Chopra et al. 2005)  x
 		- L(xi, xj, θ) = I(yi=yj)|f(xi;θ)-f(xj;θ)| + I(yi≠yj)max(0, ε-|f(xi;θ)-f(xj;θ)|)
 	- Triplet Loss: (Chopra et al. 2005)
@@ -21,11 +23,28 @@
 	- Soft-Nearest Neighbors Loss: (Salakhutdinov & Hinton 2007, Frosst et al. 2019)
 		- Extend to multiple positive;
 	- Common Setup
+- Supervision: other consistency
+	- Π-model: (also used in SimCLR, BYOL, SimCSE, ...)
+	- Temporal ensembling: EMA-target;
+	- Mean teachers: mean-teacher with EMA-parameter;
+	- noisy samples as learning targets: adversarial, VAT, ICT, MixUp, UDA,
+- Superivision: Pseudo Label
+	- Label propagation: similarity graph;
+	- Self-Training; train a model, then convert most confident data into labeled ones;
+	- Reducing confirmation bias: problem with wrong label from imperfect teacher;
+		- Meta Pseudo Labels (Pham et al. 2021)
+	- Pseudo Labeling with Consistency Regularization
+		- MixMatch, ReMixMatch;
+		- DivideMix: GMM to divide data;
+		- FixMatch
 - Key Ingredients
 	- Heavy Data Augmentation (SimCLR)
 	- Large Batch Size (SimCLR, CLIP)
 	- Hard Negative Mining (SimCSE, DPR)
 		- top incorrect;
+- Evaluation:
+	- Generally downstream task performance;
+	- Google-Brain. Realistic Evaluation of Deep Semi-Supervised Learning Algorithms. NIPS'18
 - Vision: Image Embedding
 	- Image Augmentations (check Data-Augment.md)
 		- Basic Image Augmentation
@@ -92,6 +111,17 @@
 	- https://icml.cc/media/icml-2021/Slides/10843_QHaHBNU.pdf
 - https://lilianweng.github.io/posts/2021-05-31-contrastive/
 
+## NLP
+- Unsupervised Translation:
+	- A. Conneau et al. Word translation without parallel data, ICLR 2018
+		- https://github.com/facebookresearch/MUSE
+		- https://github.com/facebookresearch/fastText
+		- W = argmin||Wx-y||^2
+		- No pair data, so fool discrimitor for Wx and y
+		- Nearest neighbor for refinements
+		- Orthogonality
+	- G. Lample et al. Phrase-based and neural unsupervised machine translation, EMNLP'18
+
 ## Vision Specific
 - Goal: learn feature z from x, without label y;
 - Tasks:
@@ -113,6 +143,7 @@
 	- Linear probe/protocol;
 	- Finetuning;
 - Tutorials:
+	- https://lilianweng.github.io/posts/2021-12-05-semi-supervised
 	- Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer. Revisiting Self-Supervised Visual Representation Learning. CVPR'19
 		- https://github.com/google/revisiting-self-supervised
 
@@ -124,6 +155,13 @@
 		- Task: play video forward then backward, should end at the same point;
 		- https://ajabri.github.io/videowalk/
 		- https://github.com/ajabri/videowalk
+- **ReMixMatch**: D Berthelot, N Carlini, E Cubuk, A Kurakin, H Zhang, C Raffel, K Sohn. ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring. 2019
+	- CTAugment
+	- https://github.com/google-research/remixmatch
+	- CIFAR: 93.73% with 4,000 labels; 84.9% with 40;
+- **FixMatch**: K Sohn, D Berthelot, C Li, Z Zhang, N Carlini, E Cubuk, A Kurakin, H Zhang, C Raffel. FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence. 2020
+	- https://github.com/google-research/fixmatch
+	- CIFAR: 94.9% with 250 labels, 88.6% with 40 (4 per class);
 
 ## Images Tasks
 - AutoEncoder:
@@ -190,7 +228,7 @@
 			- https://github.com/Philip-Bachman/amdim-public
 			- Maximize mutual-information I(aug1(x), aug2(x));
 			- Also between scales;
-		- R Devon Hjelm, Alex Fedorov, Samuel Lavoie-Marchildon, Karan Grewal, Adam Trischler, and Yoshua Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
+		- Y Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
 		- UDA: Q Xie, Z Dai, E Hovy, M Luong, and Q Le. Unsupervised data augmentation for consistency training. 2019
 			- https://github.com/google-research/uda
 			- Semi-supervised learning:

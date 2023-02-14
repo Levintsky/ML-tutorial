@@ -61,7 +61,7 @@
 	- Assumptions:
 		- One z (latent intention) remains consistent for all Y;
 		- Agent i has access to its own latent Zi and others' observed Yj
-	- ELBO: q(Z) to approximate p(Z|Y, X, theta), latent Z: discrete with small cardinality (< 10)
+	- ELBO: q(Z) to approximate p(Z|Y, X, θ), latent Z: discrete with small cardinality (< 10)
 	- Classmate forcing:
 	- State encoding:
 	- Hypothetical rollouts:

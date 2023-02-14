@@ -633,9 +633,9 @@
 	- Given z1, ..., zm, E_σ (sup_h (σ1 h(x1)+σ2 h(x2)+...)/m), where {σ} is a random variable half +1, half -1;
 - Stability:
 	- Three costs: l(L,D) generalization; l^(L,D) empirical; l(L,D-i) leave-one-out;
-	- beta-uniform stability: |l(L,D)-l(L,D-i)| <= β;
+	- β-uniform stability: |l(L,D)-l(L,D-i)| <= β;
 	- ERM (empirical-risk-minimization)
-	- Theorem: algorithm L ERM and beta-stable, then hypothesis H learnable;
+	- Theorem: algorithm L ERM and β-stable, then hypothesis H learnable;
 
 ## PAC-Bayes
 - Currently the best theory to explain NN generalization;

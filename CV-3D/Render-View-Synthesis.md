@@ -108,20 +108,20 @@
 	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
 	- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996
 	- S. M. Seitz and C. R. Dyer. View morphing. 1996
-	- Marc Levoy and Pat Hanrahan. Light field rendering. SIGGRAPH'96
+	- M Levoy and P Hanrahan. Light field rendering. SIGGRAPH'96
 		- Blending weight based on ray proximity;
-	- Jonathan Shade, Steven Gortler, Li-wei He, and Richard Szeliski. Layered depth images. SIGGRAPH'98
-	- Daniel N Wood, Daniel I Azuma, Ken Aldinger, Brian Curless, Tom Duchamp, David H Salesin, and Werner Stuetzle. Surface light fields for 3d photography. SIGGRAPH'00
+	- J Shade, S Gortler, L He, and R Szeliski. Layered depth images. SIGGRAPH'98
+	- D N Wood, D Azuma, K Aldinger, B Curless, T Duchamp, D Salesin, and W Stuetzle. Surface light fields for 3d photography. SIGGRAPH'00
 	- A. Fitzgibbon, Y. Wexler, and A. Zisserman. Image-based rendering using image-based priors. IJCV'05
 - Proxy geometry:
-	- Gaurav Chaurasia, Sylvain Duchene, Olga Sorkine-Hornung, and George Drettakis. Depth synthesis and local warps for plausible image-based navigation. ACM TOG'13
-	- Peter Hedman, Tobias Ritschel, George Drettakis, and Gabriel Brostow. Scalable inside-out image-based rendering. TOG'16
+	- G Chaurasia, S Duchene, O Sorkine-Hornung, and G Drettakis. Depth synthesis and local warps for plausible image-based navigation. TOG'13
+	- P Hedman, T Ritschel, G Drettakis, and G Brostow. Scalable inside-out image-based rendering. TOG'16
 - Optical flow:
-	- Martin Eisemann, Bert De Decker, Marcus Magnor, Philippe Bekaert, Edilson De Aguiar, Naveed Ahmed, Christian Theobalt, and Anita Sellent. Floating textures. Computer graphics forum'08
-	- Dan Casas, Christian Richardt, John Collomosse, Christian Theobalt, and Adrian Hilton. 4d model flow: Precomputed appearance alignment for real-time 4d video interpolation. CGF'15
-	- Shao-Hua Sun, Minyoung Huh, Yuan-Hong Liao, Ning Zhang, and Joseph J Lim. Multi-view to novel view: Synthesizing novel views with self-learned confidence. ECCV'18
+	- M Eisemann, B Decker, M Magnor, P Bekaert, E Aguiar, N Ahmed, C Theobalt, and A Sellent. Floating textures. CGF'08
+	- D Casas, C Richardt, J Collomosse, C Theobalt, and A Hilton. 4d model flow: Precomputed appearance alignment for real-time 4d video interpolation. CGF'15
+	- S Sun, M Huh, Y Liao, N Zhang, and J J Lim. Multi-view to novel view: Synthesizing novel views with self-learned confidence. ECCV'18
 		- https://shaohua0116.github.io/Multiview2Novelview/
-	- Ruofei Du, Ming Chuang, Wayne Chang, Hugues Hoppe,and Amitabh Varshney. Montage4d: Interactive seamless fusion of multiview video textures. ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, 2018
+	- R Du, M Chuang, W Chang, H Hoppe,and A Varshney. Montage4d: Interactive seamless fusion of multiview video textures. ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games, 2018
 - Soft blending:
 	- Eric Penner and Li Zhang. Soft 3D reconstruction for view synthesis. SIGGRAPH Asia, 2017
 	- Gernot Riegler and Vladlen Koltun. Free view synthesis. ECCV'20
@@ -133,10 +133,10 @@
 			- for a pixel, get direction and feature (vk, fk) in visible frames with UNet;
 			- for a new direction u, aggregate aggr(u, {vk, fk}k)
 - Mesh surface:
-	- Paul Debevec, Yizhou Yu, and George Borshukov. Efficient view-dependent image-based rendering with projective texture-mapping. Eurographics W'98
-	- Jingwei Huang, Justus Thies, Angela Dai, Abhijit Kundu, Chiyu Jiang, Leonidas J Guibas, Matthias Nießner, and Thomas Funkhouser. Adversarial texture optimization from rgb-d scans. CVPR, 2020.
-	- Justus Thies, Michael Zollhofer, and Matthias Nießner. Deferred neural rendering: Image synthesis using neural textures. ACM TOG'19
-- Peter Hedman, Julien Philip, True Price, Jan-Michael Frahm, George Drettakis, and Gabriel Brostow. Deep blending for free-viewpoint image-based rendering. SIGGRAPH Asia'18
+	- P Debevec, Y Yu, and G Borshukov. Efficient view-dependent image-based rendering with projective texture-mapping. Eurographics W'98
+	- J Huang, J Thies, A Dai, A Kundu, C Jiang, L Guibas, M Nießner, and Thomas Funkhouser. Adversarial texture optimization from rgb-d scans. CVPR, 2020.
+	- J Thies, M Zollhofer, and M Nießner. Deferred neural rendering: Image synthesis using neural textures. ACM TOG'19
+- P Hedman, J Philip, T Price, J Frahm, G Drettakis, and G Brostow. Deep blending for free-viewpoint image-based rendering. SIGGRAPH Asia'18
 	- Generate 2 MVS, then CNN to blend;
 		- Michal Jancosek and Tomas Pajdla. Multi-view reconstruction preserving weakly-supported surfaces. CVPR'11
 		- Johannes L Schonberger and Jan-Michael Frahm. Structure-from-motion revisited. CVPR'16
@@ -184,13 +184,13 @@
 		- Encoder: 2D - 3D;
 		- Transformer-bottleneck: Target-pose -> resampling layer -> aggregated voxel feature;
 		- Decoder: 2D + occupancy -> image;
-	- Philipp Henzler, Niloy J. Mitra, and Tobias Ritschel. Learning a neural 3d texture space from 2d exemplars. CVPR'20
+	- P Henzler, N Mitra, and T Ritschel. Learning a neural 3d texture space from 2d exemplars. CVPR'20
 		- https://geometry.cs.ucl.ac.uk/projects/2020/neuraltexture
 - Layered/Multiplane:
 	- Basics:
 		- Represent the 3d scene with a few different layers with depth d1, d2, d3, ...;
 	- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
-	- John Flynn, Ivan Neulander, James Philbin, and Noah Snavely. Deepstereo: Learning to predict new views from the world's imagery. CVPR'16
+	- J Flynn, I Neulander, J Philbin, and N Snavely. Deepstereo: Learning to predict new views from the world's imagery. CVPR'16
 		- PSV: Plane sweep volume;
 		- Each image (selection tower as depth prediction): conv-relu -> per-pixel softmax;
 	- **LDI**: Shubham Tulsiani, Richard Tucker, Noah Snavely. Layer-structured 3D Scene Inference via View Synthesis. ECCV'18
@@ -206,9 +206,9 @@
 	- Peng Dai, Yinda Zhang, Zhuwen Li, Shuaicheng Liu, and Bing Zeng. Neural point cloud rendering via multi-plane projection. CVPR'20
 	- Zhengqi Li, Wenqi Xian, Abe Davis, and Noah Snavely. Crowdsampling the plenoptic function. ECCV'20
 - Point cloud:
-	- Kara-Ali Aliev, Artem Sevastopolsky, Maria Kolos,Dmitry Ulyanov, and Victor Lempitsky. Neural point-based graphics. arxiv'19
-	- Moustafa Mahmoud Meshry, Dan B Goldman, Sameh Khamis, Hugues Hoppe, Rohit Kumar Pandey, Noah Snavely, and Ricardo Martin Brualla. Neural rerendering in the wild. CVPR'19
-	- Francesco Pittaluga, Sanjeev JKoppal, Sing Bing Kang, and Sudipta N Sinha. Revealing scenes by inverting structure from motion reconstructions. CVPR'19
+	- K Aliev, A Sevastopolsky, M Kolos, D Ulyanov, and V Lempitsky. Neural point-based graphics. arxiv'19
+	- M Meshry, D Goldman, S Khamis, H Hoppe, R Pandey, N Snavely, and R Brualla. Neural rerendering in the wild. CVPR'19
+	- F Pittaluga, S Koppal, S B Kang, and S Sinha. Revealing scenes by inverting structure from motion reconstructions. CVPR'19
 
 ## Implicit Radience Field
 - Basic idea:
@@ -221,7 +221,7 @@
 		- Implicit function: Phi(R3) -> Rn;
 		- Neural render: Psi, ray-marching lstm;
 	- **NERF**: Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
-		- Insight: overfit a function mlp(x,y,z,theta,phi) to explain the scene;
+		- Insight: overfit a function mlp(x,y,z,θ,φ) to explain the scene;
 		- Key techniques to improve novel view synthesis performance:
 			- Positional encoding;
 			- Multi-resolution;
@@ -331,7 +331,7 @@ view synthesis with neural basis expansion. arxiv'21
 - T. Zhou, S. Tulsiani, W. Sun, J. Malik and A. Efros. View synthesis by appearance flow. ECCV'16
 	- https://github.com/tinghuiz/appearance-flow
 - A Dosovitskiy, J Springenberg, M Tatarchenko, T Brox. Learning to Generate Chairs, Tables and Cars with Convolutional Networks. PAMI'17
-	- Input: class c, view v, transfrom param theta;
+	- Input: class c, view v, transfrom param θ;
 	- Output: image;
 	- Conv, deconv, upsampling;
 - J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16

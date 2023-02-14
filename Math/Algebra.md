@@ -1,27 +1,50 @@
 # Algebra
 
-## Good Resources
-- http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
-- https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
-- https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
-- Textbook: Herstein, I. N. Abstract Algebra.
-- Textbook: Abstract Algebra Theory and Applications. Thomas W. Judson
+## Basics
+- Groups:
+	- 子群, 陪集;
+	- 正规子群(商群需要), 中心化子;
+	- 循环群;
+	- Lagrange: |G|/|H| = [G:H]
+	- Euler: gcd(a,n)=1 ⇒ a^φ(n)≡1(mod n)
+	- Fermat: p prime ⇒ a^p−1≡1(mod p)
+	- Wilson: (p —1)!≡-1(modulo p)
+	- 1st-homo: 对kernel 商群 同构于 同态映射后的群;
+- Symmetry Group (operation on sets):
+	- Isometry: 保距离
+		- Translation + O2
+	- Isometry of the plane:
+		- Translation + rotation + reflection;
+	- Finite groups: cyclic + dihedral group;
+		- orbit/轨道: [x]=Gx
+		- fixed point/不动点;
+		- stablizer: Gs = {g∈G|gs=g}
+		- Index/指数: [G:H] = |G/H|
+		- 所有离散子群: {0} or {Za} or {Za+Zb}
+		- point group/点群: 固定一点的群 ⊂ O2
+		- Crystallographic Restriction: 离散 H ⊂ O2, rotation can only be 1,2,3,4,6 order.
+	- |G| = |Gs| |Os|
+	- Operation on S equivalent to some permutation group in Sn: φ : G → Sn
+- Resources
+	- http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
+	- https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
+	- https://ocw.mit.edu/courses/18-703-modern-algebra-spring-2013/
+	- Textbook: Herstein, I. N. Abstract Algebra.
+	- Textbook: Abstract Algebra Theory and Applications. Thomas W. Judson
 
 ## Linear Algebra (MIT 18.700)
 - https://ocw.mit.edu/courses/18-700-linear-algebra-fall-2013/pages/syllabus/
 - Textbook: Axler, Sheldon, 2nd edition
-- Chap-1: vector-space;
-	- Complex numbers;
-	- A list of length n, n-tuple, coordinate;
-	- Addition, scalar multiplication;
-	- Unique additive identity; unique additive inverse;
-- Chap-2: Finite-dimension vector space;
-	- Span and Linear Independence;
-	- Bases;
-	- Theo: Every linearly independent list of vectors in a finite- dimensional vector space can be extended to a basis of the vector space.
-	- Theo: Any two bases of a finite-dimensional vector space have the same length.
+- 1: 向量空间;
+	- 可取复数;
+	- 对加 标量乘封闭;
+	- 加法单位元 逆元唯一;
+- 2: 有限维线性空间
+	- 展开, 线性独立, 基矢;
+	- Theo: 任何线性独立向量克扩张成基矢.
+	- Theo: 任两基矢长度相同.
 	- Theo: dim(U1+U2)=dim(U1)+dim(U2)-dim(U1 ∩ U2)
-- Chap-3: Linear Maps;
+- 3: 线性变换;
 	- Additivity: T(u+v)=Tu+Tv
 	- Homogeniety: T(av)=aTv
 	- Null spaces and ranges;
@@ -34,98 +57,101 @@
 		- Invertibility;
 		- Isomorphic of two vector space: existence of invertible linear map;
 		- dim(L(V, W))=dim(V)dim(W)
-- Chap-4: polynomials;
-	- Degree;
-	- Theo (Division Algorithm): Suppose p, q ∈ P(F), with p ≠ 0. Then there exist polynomials s, r ∈ P(F) such that q=sp+r; deg(r) < deg(p)
-	- Fundamental Theorem of Algebra: Every nonconstant polynomial with complex coefficients has a root.
-		- Proof (by contradiction): if p has no root, 1/p analytical, p(z) goes to infty as z approaches infty, and 1/p(z) approaches 0; 1/p has to be constant to be bounded (Liouville's theory), p is constant;
+- 4: 多项式;
+	- Def. 次;
+	- Theo: 任两多项式 p, q ∈ P(F), p ≠ 0. ∃ s, r ∈ P(F) s.t.
+		- q=sp+r; deg(r) < deg(p)
+	- 代数基本定理: 任意复系数非常数多项式有一个根.
+		- 反证法: 假定p没有, 则1/p analytical
+		- z→∞, p(z)→∞, 1/p(z)→0;
+		- 1/p 有界只能是常数 (Liouville's theory), p是常数;
 	- Corollary: p(z) = c(z − λ1) . . . (z − λm),
-- Chap-5: Eigenvalues and Eigenvectors;
-	- Invariant supaspace;
+- 5: 特征值 特征向量;
+	- 不变子空间;
 	- Tu=λu; eigenvalue, eigenvector;
-	- Theo: Let T ∈ L(V ). Suppose λ1, ... , λm are distinct eigenvalues of T and v1, ... , vm are corresponding nonzero eigenvectors. Then (v1, ... , vm) is linearly independent.
-	- Theo: Every operator on a finite-dimensional, nonzero, complex vector space has an eigenvalue.
+	- Theo: 不同特征值对应特征向量线性独立
+	- Theo: 任何有限维复空间线性变换有一个特征值.
 		- Proof: (v,Tv, ..., T^nv) linearly independent, a0v+a1Tv+...=0, replace T with eigenvalue, funda theo of algebra;
-	- Theo: Suppose V is a complex vector space and T ∈ L(V). Then T has an upper-triangular matrix with respect to some basis of V.
-	- Proposition: If T ∈ L(V ) has dim V distinct eigenvalues, then T has a diagonal matrix with respect to some basis of V.
-- Chap-6: Inner-product spaces;
+	- Theo: V复线性空间, T ∈ L(V). T呈上三角w.r.t 某基矢.
+	- Proposition: If T ∈ L(V) has dim(V)不同特征值, then T 呈对角 w. r. t. 某基矢.
+- 6: 内积空间;
 	- Cauchy-Schwarz: |(u,v)|<= |u| |v|
 	- Triangle Inequality: |u+v| <= |u| + |v|
 	- Orthonormal bases;
 	- Linear functionals and adjoints;
 	- Theorem: Suppose φ is a linear functional on V. Then there is a unique vector v ∈ V such that φ(u) = ⟨u, v⟩
-	- Adjoint: (Tv,w)=(v,T'w), T': adjoint
-- Chap-7: Operators on Inner-Product Spaces
-	- Self-Adjoint and Normal Operators
-		- Operator T ∈ L(v), if T=T', self-adjoint;
-	- Proposition: Every eigenvalue of a self-adjoint operator is real.
-	- An operator on an inner-product space is called **normal** if it commutes with its adjoint; in other words, T ∈ L(V) is normal if TT'=T'T
-	- **The Spectral Theorem**: Suppose that V is a complex inner-product space and T ∈ L(V). Then V has an **orthonormal basis** consisting of **eigenvectors of T** if and only if **T is normal**.
-	- Lemma: Lemma: Suppose T ∈ L(V ) is self-adjoint. If α, β ∈ R are such that α2 < 4β, then T^2+αT+βI is invertible.
-	- Lemma: Suppose T ∈ L(V) is self-adjoint. Then T has an eigenvalue.
-	- **Real Spectral Theorem**: Suppose that V is a real inner-product space and T ∈ L(V). Then V has an orthonormal basis consisting of eigenvectors of T if and only if T is self-adjoint.
-		- Proof: if orthonormal, T has a diagonal matrix under the basis, T=T'.
+	- 自伴/adjoint: (Tv,w)=(v,T†w), T': 
+- 7: 内积空间算符
+	- 自伴算符: T ∈ L(v), T=T†;
+	- Proposition: 自伴算符特征值为实数.
+	- 正规/normal: TT†=T†T
+	- **The Spectral Theorem**: V复数内积空间, T ∈ L(V). Then V 有正交基矢由T特征向量构成 ⇔ T正规.
+	- Lemma: T ∈ L(V) 自伴. If α, β ∈ R are s.t. α2 < 4β, then T^2+αT+βI is invertible.
+	- Lemma: T ∈ L(V) 自伴. T有特征值.
+	- **Real Spectral Theorem**: V实内积空间, T ∈ L(V). V 有正交基矢由T特征向量构成 ⇔ T自伴.
+		- Proof: if orthonormal, T has a diagonal matrix under the basis, T=T†.
 		- Proof: if self-adjoint, by induction, find any eigenvector u, then span.
-	- Positive Operators: self-adjoint, (Tv, v)>=0;
+	- Positive Operators: 自伴, (Tv, v)>=0;
 	- Isometry: S ∈ L(V), |Sv|=|v| ∀ v ∈ V.
-	- Singular value:
-		- Singular-Value Decomposition: Suppose T ∈ L(V) has singular values s1, . . . , sn. Then there exist orthonormal bases (e1, . . . , en) and (f1,...,fn) of V such that
+	- Singular value/奇异值:
+		- 奇异值分解: T ∈ L(V), 奇异值 s1,..., sn. 正交规一 基矢(e1, ... , en) and (f1,...,fn) of V such that
 			- Tv = s1(v,e1)f1 +···+sn(v,en)fn
-- Chap-8: Operators on Complex Vector Spaces
+- 8: 复空间算符
 	- Generalized Eigenvectors: (T-λI)^j v = 0
 	- Multiplicity;
-	- **Cayley-Hamilton Theorem**: Suppose that V is a complex vector space and T ∈ L(V). Let q denote the characteristic polynomial of T . Then q(T) = 0.
+	- **Cayley-Hamilton Theorem**: V 复空间, T ∈ L(V). q为T的特征多项式
+		- q(T) = 0.
 	- Decomposition of an Operator:
-	- Nilpotent matrix: N^k=0
-	- Square Roots:
-		- Recall that a square root of an operator T ∈ L(V) is an operator S ∈ L(V) such that S^2 = T.
+	- Nilpotent matrix/幂零矩阵: N^k=0
+	- 平方根:
+		- 平方根 T ∈ L(V), S ∈ L(V) s.t. S^2 = T.
 		- Lemma: Suppose N ∈ L(V) is nilpotent. Then I + N has a square root.
 		- Theorem: Suppose V is a complex vector space. If T ∈ L(V) is invertible, then T has a square root.
-	- Minimal polynomial:
-		- a0 +a1z+a2z^2 +···+am−1z^m−1 +z^m is called the minimal polynomial of T.
-		- Theorem: Let T ∈ L(V) and let q ∈ P(F). Then q(T) = 0 if and only if the minimal polynomial of T divides q.
+	- 最小多项式:
+		- a0+a1z+...+am−1z^m−1 +z^m is called the minimal polynomial of T.
+		- Theorem: Let T ∈ L(V) and let q ∈ P(F). Then q(T) = 0 ⇔ T最小多项式 divides q.
 	- Jordan form:
-		- The: Suppose V is a complex vector space. If T ∈ L(V), then there is a basis of V that is a Jordan basis for T .
-- Chap-9: Operators on Real Vector Spaces:
-	- Block Upper-Triangular Matrices:
-	- Theorem: Suppose V is a real vector space and T ∈ L(V). Then there is a basis of V with respect to which T has a block upper-triangular matrix;
-	- The Characteristic Polynomial:
-- Chap-10: Trace and Determinant
+		- V复空间, T ∈ L(V), then V存在基矢为Jordan basis for T .
+- 9: 实空间算符
+	- Block Upper-Triangular Matrices/上三角:
+	- Theorem: V实空间 and T ∈ L(V). V存在基矢  w.r.t. T上三角;
+	- 特征多项式:
+- 10: Trace and Determinant
 	- Change of basis;
-	- Trace:
+	- trace/迹:
 		- tr(AB)=tr(BA)
 		- (u1, ..., un), (v1, ..., vn) are bases of V, then tr(T, {u})=tr(T, {v})
 		- Theo: tr(T)=tr(M(T))
 		- Corollary: There do not exist operators S , T ∈ L(V) such that ST−TS=I.
 			- Proof: tr(TS-ST)=0
-	- Determinant:
-		- For T ∈ L(V), we define the determinant of T, denoted detT, to be (−1)^(dim V) times the constant term in the characteristic polynomial of T.
-		- Theo: Suppose T ∈ L(V). Then the characteristic polynomial of T equals det(zI−T).
+	- Determinant/行列式:
+		- def: T ∈ L(V), detT, (−1)^(dim V) 乘以特征多项式T常数项.
+		- Theo: T ∈ L(V).  T特征多项式 = det(zI−T).
 		- Theo: det(AB) = det(BA) = (det A)(det B).
-		- Proposition: Suppose that V is an inner-product space. If S ∈ L(V) is an isometry, then |detS| = 1.
+		- Proposition: V内积空间. If S ∈ L(V) is an isometry, then |detS| = 1.
 
 ## 1. Things Familiar and Less Familiar (MIT 18.703)
-- **Diffeomorphism** 微分同胚: an isomorphism of spaces equipped with a differential structure, typically differentiable manifolds;
-- **Homeomorphism, topological isomorphism** 同胚:
-	- f is a bijection (one-to-one and onto)
-	- f is continuous,
-	- the inverse function f^(-1) is continuous (f is an open mapping).
-- **Homotopy** 同伦: if one can be "continuously deformed" into the other, such a deformation being called a homotopy between the two functions;
-	- Formally, a homotopy between two continuous functions f and g from a topological space X to a topological space Y is defined to be a continuous function H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y such that
+- Diffeomorphism/微分同胚: 同胚空间带微分结构, typically 可微流形;
+- Homeomorphism, topological isomorphism/同胚:
+	- f bijection/双射 (one-to-one and onto)
+	- f连续,
+	- 逆函数f^(-1)连续 (f is an open mapping).
+- Homotopy/同伦: 可连续形变为, 形变称为homotopy;
+	- 两连续函数间homotopy, 从拓扑空间X到拓扑空间Y 定义为连续函数 H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y s.t.
 		- H(x,0)=f(x)
 		- H(x,1)=g(x)
-- **Homology** 同调: a general way of associating a sequence of **algebraic objects** such as abelian groups or modules to other mathematical objects such as **topological spaces**;
+- Homology/同调: a general way of associating a sequence of **algebraic objects** such as 阿贝尔群 or modules to other mathematical objects such as 拓扑空间;
 - A Few Preliminary Remarks
-- Set Theory
-- Mappings
+- 集合
+- 映射
 	- Injection; (x1≠x2, y1≠y2)
 	- Surjection; (for any y, there is a x, s.t. f(x)=y)
 	- Bijection; (injection + surjection)
 	- Inverse mapping;
-- A(S) (The Set of 1-1 Mappings of S onto Itself)
-- The Integers
-- Mathematical Induction
-- Complex Numbers
+- A(S) (所有S到自身1-1映射集合)
+- 整数
+- 归纳法
+- 复数
 - (AATA Chap-19) Lattices and Boolean Algebras
 	- Lattices
 		- def. 偏序 **poset**, **Partially Ordered Sets**. reflexive, antisymmetric, transitive.
@@ -140,52 +166,89 @@
 		- Axiom 19.12 **Principle of Duality**. Any statement that is true for all lattices remains true when ≼ is replaced by ≽ and ∨ and ∧ are interchanged throughout the statement.
 
 ## 2. Groups (MIT 18.703)
-- Definitions and Examples of Groups
-	- Set A(S) of all 1-1 mappings of S onto itself;
-	- 闭合性，结合律，单位元，逆元存在 (Closure, Associativity, unit, inverse)
-	- Finite group;
-	- Abelian: ab=ba;
-		- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
-		- f(x,y)=(-x,y) refelct along y, g(x,y)=(-y,x) rotate counterclockwise 90-deg, fg≠gf
-	- Def. **Semigroup**: Associative: (a.b).c=a.(b.c)
-		- e.g. 乘法
-	- e.g. 特殊线性群 GL(n, C): invertible. SL(n, C): det(.)=1; Zn 整数加法群;
-- Some Simple Remarks
-	- 单位元/逆元唯一. 左右消去律成立;
-	- Cayley table (凯雷表), 
-	- inv(inv(a))=a
-	- inv(ab)=inv(b)inv(a)
-- 子群 Subgroups
-	- Nonempty subset H of a group G;
-	- Def. 循环群 Cyclic subgroup: {a^i} i all integer; (循环子群,包含a的最小群)
-		- **循环群都abelian**; 循环群的子群都循环, 生成员b=a^k, 则阶数n/gcd(n,k)
-		- T = {z ∈ C : |z| = 1}, C的子群，生成员 primitive nth root of unity cis(2π/n).
+- AATA-3 群
+	- 3.1 整数
+		- modn群
+		- 对称群: S (保对称性)
+		- 置换群: 
+		- A(S);
+	- 3.2 定义
+		- Def: 闭合性/结合律/单位元/逆元存在 (Closure, Associativity, unit, inverse)
+		- Some Simple Remarks
+			- 单位元/逆元唯一. 左右消去律成立;
+			- Cayley table (凯雷表), 
+			- inv(inv(a))=a
+			- inv(ab)=inv(b)inv(a)
+		- Finite group;
+		- Abelian: ab=ba;
+			- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
+			- f(x,y)=(-x,y) y翻转, g(x,y)=(-y,x) 逆时针 90-deg, fg≠gf
+		- Def. Semigroup/半群: Associative: (a.b).c=a.(b.c)
+			- e.g. 乘法
+		- e.g. 特殊线性群 GL(n, C): 可逆. SL(n, C): det(.)=1; Zn 整数加法群;
+	- 3.3 Subgroups/子群
+		- Nonempty subset H of a group G;
+- AATA-4 循环群
+	- 4.1 循环子群
+		- Def. 循环群 Cyclic subgroup: ⟨a⟩={ak :k∈Z}; (循环子群,包含a的最小群)
+		- **循环群都abelian**; 循环群的子群都循环, 生成员b=a^k
+			- 则阶数n/gcd(n,k)
+		- r(cosθ + i sinθ): r cis θ.
+		- T = {z ∈ C : |z| = 1}, C的子群, 生成员 cis(2π/n).
+- AATA-5 置换群
+	- 对称群: S, n!个元素
+	- 置换群: Sn的子群
+	- 对换
+	- 交错群 Alternating groups: A(n), Alt(n): 偶置换群;
+	- 5.2 Dihedral Groups/二面体群
+		- Dn;
+		- n边形所有刚体运动: order 2n;
+		- 包含: r^n=1 s^2=1, srs=r^-1
+		- The Motion Group of a Cube: 6x4=24 (某个面朝上4种x6个面)
+		- Theo: The group of rigid motions of a cube is S4.
+- AATA-6 Coset and Lagrange's Theorem
+	- 6.1 Coset/陪集
+		- 左操作
+		- G ⊂ H. gH 左陪集; Hg 右陪集;
+		- Def. 指数/index: 左陪集个数 [G:H]
+	- 6.2 Lagrange's Theorem
+		- Theo-6.10 Lagrange. |G|/|H| = [G:H]
+	- 6.3 Fermat’s and Euler’s Theorems
+		- Theo-6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
+		- Theo-6.18 Euler. gcd(a,n)=1. Then a^φ(n)≡1(mod n)
+		- Theo-6.19 Fermat’s Little Theorem. p prime, then a^p−1 ≡ 1 (mod p)
+- AATA-7 Cryptology
+	- RSA: n=pq, p q prime numbers; φ(n)=m=(p−1)(q−1), find E s.t. gcd(E,m)=1, find DE ≡ 1(mod m);
+		- E and n: known to everyone;
+		- B send A message x, send y=x^E mod n;
+		- A has D x=y^D mod n; D: private;
+- AATA-9 Isomorphism
+	- Def: isomorphic (G,·) and (H,◦) 若存在1-1, onto映射φ: G → H
+		- φ(a·b) = φ(a) ◦ φ(b)
+	- Theo-9.12 Cayley. Every group is isomorphic to a group of permutations.
+	- 9.2 direct product
+		- External direct product: (g,h) ∈ G × H
+		- (g1, h1)(g2, h2) = (g1 · g2, h1 ◦ h2)
 - Groups action 群在集合上操作
-	- def. 左操作 **(left) action** Let X be a set and G be a group. A  of G on X is a map G × X → X given by (g, x) -> gx, where
-		- ex=x for all x ∈ X;
-		- (g1g2)x = g1(g2x) for all x ∈ X and all g1,g2 ∈ G.
 	- 群到Sn的同态: 置换表示; 群到矩阵的表示: 线性表示;
 	- X is called **G-set**.
-	- Def. **G-equivalent** x,y ∈ X, exists g ∈ G such that gx = y. We write x ~ Gy or x ~ y. 只要存在g, 使gx=y即可.
-	- Def. G-轨道 **orbit**: x ∈ X. [x]=Gx. 元素变化只能在等价类的轨道内.
-	- Def. 不动点集 **fixed point set** Xg, x ∈ X s.t. gx = x. We can also study the group elements g that fix a given x ∈ X. 
-	- Def. This set is more than a subset of G, it is a subgroup. This subgroup is called the **stabilizer subgroup** or **isotropy subgroup** of x.
+	- Def. G-equivalent: x,y ∈ X, ∃g∈G s.t. gx = y. x ~ Gy or x ~ y.
+	- Def. G-轨道/orbit: x ∈ X. [x]=Gx. 元素变化只能在等价类的轨道内.
+	- Def. 不动点集/fixed point set Xg, x ∈ X s.t. gx = x. 
+	- Def. stabilizer/isotropy-subgroup: Gs = {g∈G|gs=g}.
 - Lagrange's Theorem
 	- def. 阶(order) 元素个数;
 	- def. 等价关系(Equivalence): 自反 Reflexity， 对称 Symmetry, 传递 Transitivity
-	- H subgroup of G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
+	- H ⊂ G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
 		- a ~ b iff a ∈ Hb={hb|h in H}, Hb: 右陪集 right coset of H in G;
 		- 5条件等价: g1H=g2H; Hg1^(-1)=Hg2^(-1); g1H ⊂ g2H; g2 ∈ g1H; g^(−1)g2 ∈ H.
-		- Def. 指数 index: 左陪集个数 [G:H]
 		- Theo: 左陪集个数=右陪集个数. (证明:构造一一映射 φ(gH) = Hg^−1)
 	- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax (conjugacy) 共轭
 	- [a] the class of a;
 	- Def. Congruence modulo n;
 	- Theo 2.4.1: ~ partisions S into equivalence classes;
-	- **Theo 2.4.2 (Lagrange's Theorem)**. 群阶数等于子群阶数乘陪集个数. If G is a finite group and H is a subgroup of G, then the order of H divides the order of G. 
-		- Proof: partition in Ha, |G|=|H|n
-		- **Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;**
-	- **Theo 2.4.3: A group G of prime order is cyclic.** 素数阶群都Abel而且循环群. 同构于Zp
+	- **Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;**
+	- Theo-2.4.3: 素数阶群都Abel而且循环群. 同构于Zp
 		- Proof: 包含a(非e)的子群只能是自身，a是生成员，循环群
 	- Def: **order** o(a), least positive integer m, s.t. a^m=e
 	- e.g. Nonabelian群至少6阶, i.e., S3.
@@ -195,31 +258,30 @@
 	- Theo 6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
 	- Def: The **Euler φ-function**, φ(n), is defined by φ(1) = 1 and, for n > 1, φ(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
 	- Theo 2.4.7: Un forms an abelian group, under the product [a][b] = [ab], of order φ(n), where φ(n) is the Euler φ-function.
-	- **Theo 2.4.8 (Euler). If a is an integer relatively prime to n, then a^φ(n) = 1 mod n.**
-	- **Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) =1 mod p.**
+	- Theo-2.4.8 (Euler). If a is an integer relatively prime to n, then a^φ(n) = 1 mod n.
+	- Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) =1 mod p.
 		- For any integer b, b^p = b mod p.
 - 同态 Homomorphisms 正规子群 Normal Subgroups
-	- Def: **homomorphism** 映射后保计算关系. φ: G -> G' if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
-	- Def: **monomorphism** φ: G ~ G' is 1-1. A monomorphism that is onto is called an 同构 **isomorphism**. An isomorphism from G to G itself is called an **automorphism**.
-	- Def: **isomorphic** Two groups G and G',  if there is an isomorphism of G onto G'.
+	- Def: homomorphism/同态 映射后保计算关系. φ: G -> G' if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
+	- Def: monomorphism/单同态 φ: G ~ G' is 1-1.
+	- 单同态+ onto 同构/isomorphism. G到自身isomorphism: 自同构.
 	- 同构映射保持: 单位元, 逆元, 元素个数, abelian, cyclic, 子群;
 	- Theo: 无限阶循环群同构于Z.
 	- Theo: n阶循环群同构于Zn.
 	- Corollary: If G is a group of order p, where p is a prime number, then G is isomorphic to Zp.
 	- S3, Z6不同构, S3 nonabelian;
-	- **Theo 2.5.1 (Cayley's Theorem). Every group G is isomorphic to some subgroup of A(S)** 每个群都等价于某种置换.
 	- If φ() is homomorphism of G into G', 保单位元和逆元
 	- Def: 象**image** of φ, φ(G)={φ(a)|a φ G}.
 	- Def: 核**kernel** Ker(φ)={a ∈ G|φ(a)=e'}, measures the lack of 1-1'ness.
-	- Corollary. If φ is a homomorphism of G into G', then φ is a monomorphism if and only if Ker φ = (e).
-	- Def: 正规子群 **normal subgroup**. The subgroup N of G, a^(-1)Na ∈ N for every a ∈ G. 对所有元素自共轭.
+	- Corollary. If φ is a homomorphism of G into G', then φ 单同态 ⇔ Ker φ = (e).
+	- Def: 正规子群/normal subgroup. N ⊂ G, a^(-1)Na ∈ N ∀ a ∈ G. 对所有元素自共轭.
 		- e.g. Abel群的任何子群;
 		- e.g. S3中 H={(1), (123), (132)}
 		- 3条件等价:
 			- The subgroup N is normal in G.
-			- For all g ∈ G, g N g^−1 ⊂ N.
-			- For all g ∈ G, g N g^−1 = N.
-	- Theo: 正规子群等价于任何左陪集也是右陪集 N <| G iff every left coset of N in G is a right coset of N in G.
+			- ∀ g ∈ G, g N g^−1 ⊂ N.
+			- ∀ g ∈ G, g N g^−1 = N.
+	- Theo: 正规子群等价于任何左陪集也是右陪集.
 	- Lemma: 任何交错群An可由3-cycle产生;
 		- Proof: 一对对换可有3-cycle产生:
 			- (a,b)(a,b)=1;
@@ -259,7 +321,7 @@
 	- Aut(G): 所有automorphism的集合. 构成群, 是置换群的子群, Aut(G) ≤ SG.
 - Cauchy's Theorem
 	- Extends Theo 2.6.4 to non-abelian group;
-	- **Theo 2.8.2 (Cauchy). If p is a prime and p divides the order of G, then G contains an element of order p.**
+	- Theo-2.8.2 (Cauchy). If p prime, p| |G|, then G contains an element of order p.
 	- Lemma 2.8.3: 群G有pq个元素, p, q素数且p > q. a ∈ G为p阶, 则子群< a >正规A <| G.
 	- Lemma 2.8.4. a ∈ G m阶, b ∈ G n阶, m, n互素且ab = ba, then c = ab mn阶.
 	- Theo 2.8.5. Let G be a group of order pq, where p, q are primes and p>q. If q is not dividable by p-1, then G must be cyclic.
@@ -320,7 +382,7 @@
 
 ## 3. The Symmetric Group (对称群)
 - 1 Preliminaries
-	- Consider only A(S) for S a finite set
+	- A(S) with a finite set
 	- def. 对称群(所有置换) Sn: S有n个元素, A(S) the symmetric group of degree n; |Sn|=n!
 	- Sn的元素 置换 permutations(right to left). Sn的子群置换群
 - 2 Cycle Decomposition
@@ -359,11 +421,6 @@
 		- Case 2.3: 对换的积 σ=(a1,a2)(a3,a4)..., b=(a2,a3,a4)∈An, bσb^(-1)σ<=4变动 ∈ N 与假设矛盾;
 		- 若有1个长度3的轮换, 则所有长度3的轮换 ∈ N. (型相同 共轭)
 		- 所有3轮换生成An. N=An
-- Dihedral group 二面体群 Dn;
-	- rigid motion of a n-sided polygon: order 2n;
-	- 包含: r^n=1 s^2=1, **srs=r^-1**
-	- The Motion Group of a Cube: 6x4=24 (某个面朝上4种x6个面)
-		- Theo The group of rigid motions of a cube is S4.
 
 ## 4. Ring Theory
 - Definitions and Examples
@@ -567,7 +624,7 @@
 		- (b) Ou = 0, where the first 0 is the zero in F.
 		- (c) αu = 0 implies that α = 0 or u = 0.
 		- (d) (-α)u = -(αu).
-	- Def. **nontrivial solution**. F: a field; then the n-tuple (β1,... , βn), where the βi ∈ F, and not all of them are 0, s.t. the system of homogeneous linear equations: alpha β=0.
+	- Def. **nontrivial solution**. F: a field; then the n-tuple (β1,... , βn), where the βi ∈ F, and not all of them are 0, s.t. the system of homogeneous linear equations: α β=0.
 	- Theo 5.2.2. If n > r, that is, if the number of variables (unknowns) exceeds the number of equations, then it has a nontrivial solution in F.
 	- Def. **linear combination**. **finite dimensional**. **linearly independent**. **dimension**. **basis**.
 	- Lemma 5.2.3. 线性独立则分解展开唯一.
@@ -761,7 +818,7 @@
 	- Linear Transformation σ(.):
 		- basis e1, e2, ..., matrix σ(e1,e2,...)=[e1,e2,...]A
 		- Theorem: σ(.) for coordinate X under basis (e1,e2,...) is Y=AX; b/c Y=σ(X)=[e1,e2,...]AX;
-	- **Key**: Basis operation always right-mulitply, b/c it is column operation; coordinates always left multiply, b/c it is row operation;
+	- **Key**: Basis operation always right-multiply, b/c it is column operation; coordinates always left multiply, b/c it is row operation;
 
 ## Algebra and Geometry
 - Set, relation, operator, structure;
@@ -819,15 +876,15 @@
 	- Positive-definite;
 		- Digonal items > 0; det > 0;
 - Bilinear-function:
-	- f under basis alpha is A, (alpha1,...,alpha_n)=(beta,...)P, then f under basis beta is B=P'AP
+	- f under basis α is A, (α1,...,αn)=(β,...)P, then f under basis β is B=P'AP
 	- Matrix **congruence**: P'AP=B
 	- All symmetric f can be diagonalized;
 	- All antisymmetric f can be divided to [0, 1;-1, 0];
 	- Witt's theorem;
 - Metric linear space:
-	- Unitary spaces (for complex numbers); (alpha, beta)=alpha beta\*
+	- Unitary spaces (for complex numbers); (α, β)=α β∗
 	- Unitary transform: A inner-product preserving, (Aa,Ab)=(a,b)
-	- Hermite transform, or Hermite matrix; (Aa,b)=(a,Ab), i.e. A=A\*
+	- Hermite transform, or Hermite matrix; (Aa,b)=(a,Ab), i.e. A=A∗
 	- A positive definite; x†Ax>0;
 	- **Normal matrix**: AA†=A†A;
 	- if A is normal matrix, then A is diagonizable by inv(P)AP

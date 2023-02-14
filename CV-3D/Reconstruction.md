@@ -14,7 +14,7 @@
 		- Output: camera pose; sparse 3D points;
 	- Visual Odometry:
 		- Input: images from single/multiple cameras;
-		- Output: camera path only (x, y, z, theta1, 2, 3) Euler Angles
+		- Output: camera path only (x, y, z, θ1, θ2, θ3) Euler Angles
 		- Local consistency, can be a building block of a V-SLAM;
 	- MVS:
 		- Input: images, known camera poses;

@@ -8,12 +8,12 @@
 	- V = R + γPV -> V = (I-γP)^-1 R
 	- Bellman backup (iterative):
 		- V(s;π) = Σ_a π(a|s)[r(s,a) + γΣ_s' p(s'|s,a)V(s';π)]
-- Optimal: π\*(s) = argmax_π V(s;π)
+- Optimal: π∗(s) = argmax_π V(s;π)
 	- Existance and unique;
 - State-action: Q(s,a;π) = R(s,a) + γΣ_s' p(s'|s,a)V(s';π)]
 	- Policy iteration (PI): iteratively do value-eval and policy improvement;
 		- Policy improvement: take argmax, then follow π, always gets better;
-		- π\*(s) = argmax_a Q(s,a;π)
+		- π∗(s) = argmax_a Q(s,a;π)
 	- Value iteration (VI):
 		- V=BV, or V(s) = max_a[R(s,a)+γΣ_s' p(s'|s,a)V(s')]
 - Policy evaluation:
@@ -28,16 +28,3 @@
 		- at = argmaxQ(s,a)
 		- Observe rt, st+1;
 		- Update posterior p(Ras|rt), p(T|st+1) using Bayesian rule;
-
-## POMDP
-- Monte-Carlo Tree Search for Constrained POMDPs. NIPS'18
-- Learning Others' Intentional Models in Multi-Agent Settings Using Interactive POMDPs. NIPS'18
-
-## NIPS'19
-- Yingdong Lu, Mark Squillante, Chai Wah Wu. A Family of Robust Stochastic Operators for Reinforcement Learning
-- Felix Leibfried, Sergio Pascual-Díaz, Jordi Grau-Moya. A Unified Bellman Optimality Principle Combining Reward Maximization and Empowerment
-- Shaofeng Zou, Tengyu Xu, Yingbin Liang. Finite-Sample Analysis for SARSA with Linear Function Approximation
-- Falcon Dai, Matthew Walter. Maximum Expected Hitting Cost of a Markov Decision Process and Informativeness of Rewards
-- Max Simchowitz, Kevin Jamieson. Non-Asymptotic Gap-Dependent Regret Bounds for Tabular MDPs
-- Hao(Jackson) Cui, Roni Khardon. Sampling Networks and Aggregate Simulation for Online POMDP Planning
-- Tengyu Xu, Shaofeng Zou, Yingbin Liang. Two Time-scale Off-Policy TD Learning: Non-asymptotic Analysis over Markovian Samples

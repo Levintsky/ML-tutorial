@@ -40,6 +40,15 @@
 	- Smoothing;
 	- Fall back;
 
+## Embedding (check NLP-Embedding.md)
+- WordPiece [Wu; 16]
+	- BERT;
+- Position Encoding:
+	- Learned: BERT;
+- Segment Embedding:
+	- BERT;
+- BPE, fast-BPE: GPT-series;
+
 ## Backbone
 - CNN (1d): 
 	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
@@ -62,10 +71,29 @@
 	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
 		- AutoML, add LSTM in;
 	- GPT: 12-layers; '18
+		- https://github.com/openai/finetune-transformer-lm
 	- GPT-2: 48-layers; '18
 	- GPT-3: 12/24/32/40/96-layers from small to B;
+		- https://github.com/openai/gpt-3
+		- 175B parameters;
 - LLM:
 	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
+
+## Tricks
+- Training:
+	- More data:
+		- BERT: 16G
+		- Roberta: 160G
+		- GPT-3: 45T
+	- Large Batch (BERT 256):
+		- (32-64k) Y You, J Li, J Hseu, X Song, J Demmel, C Hsieh. Reducing BERT Pre-Training Time from 3 Days to 76 Minutes. 2019
+		- RoBERTa: 8000
+	- More steps:
+		- Roberta: 500k
+	- Optimizer (BERT: ADAM 0.999):
+		- Y You, J Li, J Hseu, X Song, J Demmel, C Hsieh. Reducing BERT Pre-Training Time from 3 Days to 76 Minutes. 2019
+			- **LAMB** (Layer-wise Adaptive Moments optimizer for Batch training)
+		- ADAM (0.98)
 
 ## Supervision Design
 - Masked:
@@ -75,6 +103,11 @@
 		- Two end points of span to predict all the masked in between;
 - Causal:
 	- GPT-series;
+- Auxiliary loss:
+	- GPT-series:
+		- Multiple prediction (predict every character in the sequence)
+		- Intermediate layer losses (deep supervision)
+		- Multiple targets
 - Together with other tasks:
 	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
 	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
@@ -84,11 +117,11 @@
 - Learning to bridge the gap of "teacher-forcing";
 	- Scheduled sampling: Bengio'15
 	- GOLD: offline RL with Importance-Sampling; ICLR'21
-- Yun Chen, Victor OK Li, Kyunghyun Cho, and Samuel R Bowman. A stable and effective learning strategy for trainable greedy decoding. arxiv'18
+- Y Chen, V Li, K Cho, and S Bowman. A stable and effective learning strategy for trainable greedy decoding. arxiv'18
 
 ## Cross-Lingual
 - G Lample and A Conneau. Cross-lingual language model pretraining. NeurIPS'19
 	- Embedding: all languages shared vocabulary through BPE;
 	- sentence #1 (En) - sentence #2 (Fr) with masked loss;
-- Nishant Subramani, Sam Bowman, and Kyunghyun Cho. Can unconditional language models recover arbitrary sentences? arxiv'19
-- Ari Holtzman, Jan Buys, Maxwell Forbes, Antoine Bosselut, David Golub, and Yejin Choi. Learning to write with cooperative discriminators. CoRR'18
+- N Subramani, S Bowman, and K Cho. Can unconditional language models recover arbitrary sentences? arxiv'19
+- A Holtzman, J Buys, M Forbes, A Bosselut, D Golub, and Y Choi. Learning to write with cooperative discriminators. CoRR'18

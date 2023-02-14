@@ -12,6 +12,9 @@
 ## Tutorials
 - ICML'21: https://sites.google.com/view/ResponsibleAITutorial
 
+## Unclassified
+- DeepMind. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention
+
 ## Fairness
 - Sriram Vasudevan, Krishnaram Kenthapadi. LiFT: A Scalable Framework for Measuring Fairness in ML Applications. CIKM'20
 	- https://github.com/linkedin/LiFT

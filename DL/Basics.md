@@ -248,3 +248,12 @@
 		- **UMAP** (Uniform Manifold Approximation and Projection, 2018)
 	- Tensorflow Playground
 	- GAN lab: https://poloclub.github.io/ganlab/
+
+## Non-BP/Gradient-Free Training
+- S. Günther, L. Ruthotto, J.B. Schroder, E.C. Cyr, N.R. Gauger. Layer-Parallel Training of Deep Residual Neural Networks. 2019
+	- Training layer-parallel rather than sequential, with inexact gradient info;
+- Capsule:
+	- S Sabour, N Frosst. Dynamic Routing Between Capsules. NIPS'17
+	- G Hinton, S Sabour, N Frosst. Matrix Capsules with EM routing. ICLR'18
+	- Y Zhao, T Birdal, H Deng, F Tombari. 3D Point Capsule Networks. CVPR'19
+	- Z Xinyi, L Chen. Capsule Graph Neural Network. ICLR'19

@@ -77,7 +77,7 @@
 - Softmax (skip-gram);
 	- p(wo|wi) = exp(v'o vi) / ∑o exp（v'o vi)
 	- Limitation: when V is very large, calculating denominator requires going through all the words for every single sample is impractical;
-- Hierarchical Softmax: Frederic Morin, Yoshua Bengio. Hierarchical Probabilistic Neural Network Language Model. AISTATS'05
+- Hierarchical Softmax: F Morin, Y Bengio. Hierarchical Probabilistic Neural Network Language Model. AISTATS'05
 	- Encode in a tree structure;
 - **D-softmax**: Chen, W., Grangier, D., & Auli, M. Strategies for Training Large Vocabulary Neural Language Models. 2015
 	- Sparse embedding matrix;
@@ -110,5 +110,5 @@
 - Learning Deep Structured Semantic Models for Web Search using Clickthrough Data. CIKM 2013
 
 ## Analysis, Theory
-- Zi Yin and Yuanyuan Shen. On the Dimensionality of Word Embedding. NeurIPS'18
+- Z Yin and Y Shen. On the Dimensionality of Word Embedding. NeurIPS'18
 	- Bias-variance trade-off;

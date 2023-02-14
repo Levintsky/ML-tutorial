@@ -683,10 +683,10 @@
 	- Good summary: https://en.wikipedia.org/wiki/List_of_formulas_in_Riemannian_geometry
 	- **Riemann manifold**: (M, g) is a real, smooth manifold M equipped with an **inner product** gp on the tangent space TpM at each point p that varies smoothly from point to point in the sense that if X and Y are differentiable vector fields on M, then p ↦ gp(X|p, Y|p) is a smooth function;
 		- Euclid space: vector space is equivalent to tangent space;
-		- Theorem: (N, h) n-dim Riemann manifold, f: M -> N immersed of dimension m, for any point p in M, let g(p)(u,v)=h(f(p))(f(u), f(v)), then g=f\*h();
+		- Theorem: (N, h) n-dim Riemann manifold, f: M -> N immersed of dimension m, for any point p in M, let g(p)(u,v)=h(f(p))(f(u), f(v)), then g=f∗h();
 		- First fundamental form:\
 			<img src="/Math/images/geometry/1st-fundamental.png" alt="drawing" width="400"/>
-		- **Homeomorphism** of tangent and cotangent space: for any u in T, alpha(u)(v)=< u, v >, then u to alpha(u) is a linear mapping; 
+		- **Homeomorphism** of tangent and cotangent space: for any u in T, α(u)(v)=⟨u, v⟩, then u to α(u) is a linear mapping; 
 	- Vector operator, differential operator;
 		- grad f = sum (i,j) g(i,j) df/dui duj
 		- Gradient field is the normal of Isosurface;

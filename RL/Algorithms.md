@@ -26,7 +26,7 @@
 
 ## Pessimistic
 - Assume pessimistic for insufficient overlap/support (s,a) space;
-- Yao Liu, Adith Swaminathan, Alekh Agarwal, Emma Brunskill. Provably Good Batch Off-Policy Reinforcement Learning Without Great Exploration. NIPS'20
+- Y Liu, A Swaminathan, A Agarwal, E Brunskill. Provably Good Batch Off-Policy Reinforcement Learning Without Great Exploration. NIPS'20
 	- Filtration function: ξ(s,a;μ,b) = 1(μ(s,a)>b)
 	- Bellman op: Tf(s,a) = r(s,a) + γEs'[max_a' ξ(s',a')f(s',a')]; (0 for insufficient data)
 	- Error bound;
@@ -60,59 +60,64 @@
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294):
-	- θ = argmax E..τ\~p(θ) Σr(st, at), maximize J(θ)
-		- Insight: reward depends on trajectory, increase the probability of high-reward trajectory;
-	- PG:
-		- ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ
-		- ∇J(θ) = E..τ\~p(θ)[∇logπ(τ;θ)r(τ)]
-		- With trick: π(τ;θ)∇logπ(τ;θ) = ∇π(τ;θ)
-		- Loss in practice: L = -E[logπ(τ;θ)r(τ)]
-		- Insight: increase the probability of high reward trajectory;
-	- Policy:
-		- Softmax: φ(s,a)'θ, π(s,a;θ) = softmax(φ(s,a)θ)
-			- Score function: ∇logπ(s,a)=φ(s,a)-E[φ(s,.)]
-		- Gaussian: mean μ(s)=φ(s)θ, fixed σ^2
-			- ∇logπ(s,a) = φ(s)(a-μ(s))/σ^2;
-	- Baseline for variance reduction:
-		- E[∇logπ(τ;θ)b] = 0, so we can use any b in ∇logπ(r-b);
-		- min_b Var(∇J(θ)) -> dVar/db=0;
-			- b = E[g(τ)^2 r(τ)]/E[g(τ)^2], with g(τ)=∇logπ(τ;θ);
-		- State-wise: b(st) (actor-critic)
-	- IS, off-policy PG:
-		- Insight: we have trajectory of τ ~ p(θ) and try to optimize J(θ');
-		- Weight each trajectory τ ~ p(θ) with p(θ')/p(θ), which is also π(τ;θ')/π(τ;θ);
-		- PG of θ' becomes: weighted(Σ∇logπ)(Σr(st,at)) under τ ~ p(θ);
-		- Keep up-to t and ignore future, we get TRPO;
-		- Σ∇logπ(τ;θ') (Πt'=1..t π(θ')/π(θ)) (Σt'=t..T r(st,at))
+- Goal: J(θ) = E..τ~p(θ)[Σr(st, at)]; θ = argmax J(θ)
+	- Insight: increase the probability of high-reward trajectory;
+- PG:
+	- ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ
+	- ∇J(θ) = E..τ~ p(θ)[∇logπ(τ;θ)r(τ)]
+- Policy:
+	- Softmax: φ(s,a)'θ, π(s,a;θ) = softmax(φ(s,a)θ)
+	- Gaussian: mean μ(s)=φ(s)θ, fixed σ^2
+		- ∇logπ(s,a) = φ(s)(a-μ(s))/σ^2;
+- Supervision:
+	- Loss: L = -E[logπ(τ;θ)r(τ)]
 - Advantages:
 	- On-Policy
 	- Better Convergence
 	- Effective in high-dimensional or continuous action spaces
 	- Can learn **stochastic** policies
+- Trick:
+	- π(τ;θ)∇logπ(τ;θ) = ∇π(τ;θ)
+	- Score function: ∇logπ(s,a)=φ(s,a)-E[φ(s,.)]
+	- Baseline for variance reduction:
+		- E[∇logπ(τ;θ)b] = 0, so we can use any b in ∇logπ(r-b);
+		- min_b Var(∇J(θ)) -> dVar/db=0;
+			- b = E[g(τ)^2 r(τ)]/E[g(τ)^2], with g(τ)=∇logπ(τ;θ);
+		- State-wise: b(st) (actor-critic)
+	- IS/off-policy PG:
+		- Insight: we have trajectory of τ ~ p(θ) and try to optimize J(θ');
+		- Weight each trajectory τ ~ p(θ) with p(θ')/p(θ), which is also π(τ;θ')/π(τ;θ);
+		- PG of θ' becomes: weighted(Σ∇logπ)(Σr(st,at)) under τ ~ p(θ);
+		- Keep up-to t and ignore future, we get TRPO;
+		- Σ∇logπ(τ;θ') (Πt'=1..t π(θ')/π(θ)) (Σt'=t..T r(st,at))
+	- Natural-PG [NIPS'21]
+	- Damped update: π-new=(1-α)π+απ' [ICML'02]
+	- Trust-Region NPG: TRPO [ICML'15]
+	- PPO: Clip IS weight in (1-ε,1+ε)
 - Legacy:
 	- **REINFORCE**: Williams. 1992
 	- Baxter & Bartlett 2001
 	- Peters & Schaal 2008
 - Recent:
-	- **NPG**: Sham Kakade. A Natural Policy Gradient. NIPS'01
+	- **NPG**: S Kakade. A Natural Policy Gradient. NIPS'01
 		- Utility: J(θ) = Σs,a ρ(s;π)π(a;s)R(s,a), we assume ρ(s;π) is a well-defined stationary distribution;
 		- ∇J = Σs,a ρ(s;π)∇π(a;s)R(s,a)
 		- Proposed: ∇J = F(θ)^(-1) ∇J
-	- Sham Kakade, John Langord. Approximately Optimal Approximate Reinforcement Learning. ICML'02
-		- Insight: **conservative mixture π-new=(1-α)π+απ' has theoretical guarantee**;
+	- S Kakade, J Langord. Approximately Optimal Approximate Reinforcement Learning. ICML'02
+		- Insight: conservative mixture π-new=(1-α)π+απ' has theoretical guarante;
 		- Def. μ restart distribution: draws next state from μ.
 		- Discounted future state distribution: ρ(s;π) = (1-γ)Σ[γ^t p(st=s;π)]
-		- Desired: more uniformly from explotary μ as J(π;μ) = E..s\~μ[V(s;π)]
+		- Desired: more uniformly from explotary μ as J(π;μ) = E..s~μ[V(s;π)]
 		- Proposed approach: π-new(a,s) = (1-α)π(a;s) + απ'(a,s)
 		- Policy improvement:
-			- A(π';π,μ) = E..s\~ρ(π,μ)[E..a~π'(a,s) [A(s,a;π)]], same state distribution and advantage, change policy as a ~ π'(a,s).
+			- A(π';π,μ) = E..s~ρ(π,μ)[E..a~π'(a,s) [A(s,a;π)]], same state distribution and advantage, change policy as a ~ π'(a,s).
 			- Theory: J(π-new,μ)-J(π,μ) >= α/(1-γ)(Adv - 2αγε/(1-γ(1-α)))
 	- **GPS**: S, Levine & Koltun. Guided policy search: deep RL with importance sampled policy gradient.  ICML'13. (unrelated to later discussion of guided policy search)
 	- **TRPO**: J Schulman, S Levine, P Moritz, M Jordan, P Abbeel. Trust region policy optimization. ICML'15
 		- Insight: proposed utility J=L(θ;θ-old) - C KL(θ-old;θ), with C chosen theoretically;
 			- J(θ) >= L(θ;θ-old) - CKL(.,.);
 		- **Trick-1**: make new expectation as old plus Advantage; J(π')=J(π)+E(Adv(s,a)), notice the expectation is under new policy π';
-			- J(θ')-J(θ) = E..τ\~p(;θ') (Σt=0..∞ γ^t Adv(st, at;πθ))
+			- J(θ')-J(θ) = E..τ~p(;θ') (Σt=0..∞ γ^t Adv(st, at;πθ))
 			- Let L(π-new) = J(π) + Σs,a[ρ(s;π)Σa π-new(a|s)A(s,a;π)]
 			- Then L(π) and J(π) agrees on value and gradient near θ if policy π(a|s;θ) if parametrized by θ;
 				- L(θ) = J(θ); ∇L(θ) = ∇J(θ)
@@ -122,19 +127,19 @@
 			- |p(s;θ')-p(s;θ)| <= 2εt; (Taylor Expansion)
 			- J(θ')-J(θ) Sample from old trajectory instead will result in at most Σ..t 2εtC loss, with constant C bounded by O(Trmax) or O(rmax/1-γ);
 		- **Trick-4**: First order approx for utility J(.), natural gradient for update;
-			- θ' = argmaxθ' Σt E..st\~p(st;θ)[E..at\~π(at|st;θ)[π(;θ')/π(;θ) γ^t A(st,at;πθ')]]; traj, policy all sampled from old, IS advantage for new;
+			- θ' = argmaxθ' Σt E..st~p(st;θ)[E..at~π(at|st;θ)[π(;θ')/π(;θ) γ^t A(st,at;πθ')]]; traj, policy all sampled from old, IS advantage for new;
 			- s.t. KL(π(at|st;θ')||π(at|st;θ')) < ε; constrained optimization;
 			- Utility approx: argmax ∇..θ A(θ)(θ'-θ), s.t. KL(π(θ'),π(θ)) < ε;
 				- We know KL(π(θ'),π(θ)) ~ 1/2 (θ'-θ)F(θ'-θ), with F as Fisher;
 			- θ' = θ + αF^(-1)∇..θ J(θ), with α=√(2ε/∇J F ∇J), largest step within trust-region;
 		- https://zhuanlan.zhihu.com/p/26308073
 		- In summary: Theoretical Guarantee of monotonic improvement if KL constraint satisfied; Surrogate loss; Line search to make the best stepsize update;
-		- Wojciech Zaremba: https://github.com/wojzaremba/trpo
+		- W Zaremba: https://github.com/wojzaremba/trpo
 	- **PPO**: J Schulman, P Wolski, P Dhariwal, A Radford and O Klimov. Proximal policy optimization algorithms: deep RL with importance sampled policy gradient. 2017
 		- Let rt(θ) = π(at|st;θ)/π(at|st;θ-old), so rt(θ-old)=1;
 		- Lcpi(θ) = E[π(at|st;θ)/π(at|st;θ-old)At]=E[rt(θ)At], IS-advantage;
 		- Lclip(θ) = E[min(rt(θ)At, clip(rt(θ),1-ε,1+ε)At)], clip IS in (1-ε,1+ε)
-	- **PPO-Penalty**: Nicolas Heess, Dhruva TB, Srinivasan Sriram, Jay Lemmon, Josh Merel, Greg Wayne, Yuval Tassa, Tom Erez, Ziyu Wang, S. M. Ali Eslami, Martin Riedmiller, David Silver. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
+	- **PPO-Penalty**: DeepMind. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
 		- Insight: adaptive KL-penalty;
 		- J(θ) = Σ At π(at|st,θ)/π-old - λ KL(π-old|π)
 		- Update value network V(;φ)
@@ -144,74 +149,88 @@
 			- λ=λ/α
 
 ## Value + Policy, Actor-Critic
-- Basics: (Sergey Levine, CS-294)
-	- Actor: the policy π(st|at;θ)
-	- Critic: value function, Advantage A(s,a)=Q(s,a)-V(s)
+- Goal: PG with variance reduction (adv)
+	- Actor: π(st|at;θ)
+	- Critic: Advantage A(s,a)=Q(s,a)-V(s)
 		- Value V can be supervised by V=E[Q]
 	- Reduce variance of policy gradient: update with A(s,a)∇logπ
 - A general framework (for Implementation):
-	- Phase 1: collect data (act/sample, no gradient!)
-		- Given input x, neural net to get V(x), π(a|x), entropy H(π), and intermediate value such as h of RNN;
-		- If deterministic, take action a argmax π(a|x), otherwise sample;
-	- 1.1 Environment step forward;
-		- Take action a, get reward, observation;
-	- Phase 2: Learning of both actor and critic (A2C/PPO/...): 
-		- 2.1 Critic target: Estimated with (GAE/n-step) V(st+1)
-		- 2.2 Loss function and Update: value-loss + action-loss;
-			- L = adv^2 - adv log π(a|s)
-		- 2.3 After-update: update mask, observation, and RNN-state (optional);
+	- Give nstate x, neural net for V(s), π(a|s), entropy H(π);
+	- Action: deterministic argmax π(a|s) or sample;
+- Supervision: Learning of both actor and critic (A2C/PPO/...): 
+	- Critic target: GAE/n-step for V(st+1)
+	- Loss: L = A(s,a)^2 - A(s,a) log π(a|s)
+- Value/Advantage estimation:
+	- Adv(s,a) = r(s,a)+γV(s')-V(s), low variance but high-bias, b/c value net could be wrong;
+	- Adv(s,a) = Σ.t' γ^(t'-t)r(st',at')-V(st), no bias but high variance, b/c single traj;
+	- Eligibility traces & n-steps, combine the two;
+		- Adv(st,at) = Σ_t..t+n γ^(t'-t)r(st',at') + γ^nV(st+n) - V(st)
+	- GAE: weighted comb of different steps: Adv_GAE(st,at) = Σ.n wn Adv_n
+- Model design:
+	- DPG [ICML'14]: value Q(s,a;θ) with action a=μ(θ)=argmax.a Q(s,a)
+		- Q(s,a;θ) learning: θ += E.s[∇.θ Q(a, μ(s;θ))]
+		- Chain rule: θ += E.s[∇.a Q(a, μ(s)) ∇.θμ(s)]
+- Tricks:
+	- Hogwild: A3C [ICML'16]
+	- Offline: ACER (with IS) [DeepMind, ICLR'17]
+	- Optimizer: ACKTR (KFAC) [G-Brain, 17]
 - Legacy
 	- Sutton, McAllester, Singh, Mansour. Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation. NIPS'00
 - Recent:
-	- **DPG**: D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, and M. Riedmiller. Deterministic policy gradient algorithms. ICML'14
+	- DPG: DeepMind. Deterministic policy gradient algorithms. ICML'14
 		- ∇..φ J(φ)=E[∇..aQ(s,a;π) ∇..φπ(s;φ)]
 		- where Q(s,a;π)=E[Rt|s,a]
-	- **A3C**: ICML'16
-		- Hogwild
-	- **GAE**: J Schulman, P Moritz, S Levine, M I. Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
-		- Adv(st,at) = r(st,at)+γV(st+1)-V(s), low variance but high-bias, b/c value net could be wrong;
-		- Adv(st,at) = Σ_t' γ^(t'-t)r(st',at')-V(st), no bias but high variance, b/c single traj;
-		- Eligibility traces & n-steps, combine the two;
-			- Adv(st,at) = Σ_t..t+n γ^(t'-t)r(st',at') + γ^nV(st+n) -V(st)
-		- Insight of GAE: weighted combine of different n: Adv_GAE(st,at)=Σwn Adv_n
-	- **ACER**: Ziyu Wang, Victor Bapst, Nicolas Heess, Volodymyr Mnih, Remi Munos, Koray Kavukcuoglu, Nando de Freitas. Sample Efficient Actor-Critic with Experience Replay. ICLR'17
-		- AC with off-policy, IS;
-		- Available in OpenAI baselines;
-	- **ACKTR**: Yuhuai Wu, Elman Mansimov, Shun Liao, Roger Grosse, Jimmy Ba. Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation. 2017
-		- **K-FAC** (Kronecker-factored approximate curvature) for both actor and critic;
+	- GAE: J Schulman, P Moritz, S Levine, M Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
 
 ## Value Function, Q-learning
-- Basics (Sergey Levine, CS-294):
-	- Known transition dynamics: dynamic programming;
-	- Unknown dynamics:
-		- Collect some samples;
-		- Fit a model for estimated return: Q(s,a;π) = r(s,a) + γE_s'\~p(s'|s,a)[V(s;π)]
-		- V(s;π) = max_a Q(s,a;π)
-	- Online Q-iteration (SARSA, TD): eval current policy;
-		- Take action ai ~ π; (off-policy if not π)
-		- Observe (si,ai,si',ri);
-		- Update Q(si,ai) += α(rt+γQ(st+1,at+1)-Q(st,at))
-		- Update π as ε-greedy: π = argmax_aQ(s,a) with prob 1-ε else random;
-	- Q-learning (off-policy): only diff with SARSA is Q-update;
-		- Q(si,ai) += α(rt+γmax_a Q(st+1,a)-Q(st,at));
-		- **Biased** due to max-op proof: Mannor, Simester, Sun and Tsitsiklis. Bias and Variance Approximation in Value Function Estimates. Management Science 2007
-		- Double Q-learnign to remove bias;
-	- Value Fitting:
-		- Q-fit:
-			- Target (Q-learning): yi = r(si,ai) + γmax_a'Q(si',ai';φ)
-			- Target (MC): y=Gt
-			- Target (SARSA): y=r+γQ(st+1,at+1)
-			- Fitting: φ -= α dQ(si,ai)/dφ (Q(si,ai;φ)-yi)
-		- V-fit:
-			- L = E_s|V(s;π)-V(s;π,θ)|
-			- V(s) += α(r+γV(s')-V(s)); TD(0)
-			- Proof: for linear function approximator V=ws, converge;
-		- Importance sampling in policy evaluation:
-			- V(s;π) ~ Σi=1..Nτ\~π' p(τ|π,s)/p(τ|π',s) Rτ
-			- Don't need the dynamic model, just weight by π;
+- Framework:
+	- Collect some samples;
+	- Fit a model for estimated return: Q(s,a;π) = r(s,a) + γE_s'~ p(s'|s,a)[V(s;π)]
+	- V(s;π) = max_a Q(s,a;π)
+- Online Q-iteration (SARSA, TD): eval current policy;
+	- Take action ai ~ π; (off-policy if not π)
+	- Observe (si,ai,si',ri);
+	- Update Q(si,ai) += α(rt+γQ(st+1,at+1)-Q(st,at))
+	- Update π as ε-greedy: π = argmax_aQ(s,a) with prob 1-ε else random;
+- Q-learning (off-policy): only diff with SARSA is Q-update;
+	- Q(si,ai) += α(rt+γmax_a Q(st+1,a)-Q(st,at));
+	- **Biased** due to max-op proof: Mannor, Simester, Sun and Tsitsiklis. Bias and Variance Approximation in Value Function Estimates. Management Science 2007
+	- Double Q-learnign to remove bias;
+- Value Fitting:
+	- Q-fit: Q(si, ai)
+		- Target (Q-learning): y = r(si,ai) + γmax_a'Q(si',ai';φ)
+			- φ -= α dQ(si,ai;φ)/dφ (Q(si,ai;φ)-yi)
+		- Target (MC): y=Gt
+		- Target (SARSA): y=rt+1 + γQ(st+1,at+1)
+			- Q(st,at) += α(y - Q(st,at))
+	- V-fit:
+		- L = E_s|V(s;π)-V(s;π,θ)|
+		- V(s) += α(r+γV(s')-V(s)); TD(0)
+		- Proof: for linear function approximator V=ws, converge;
+	- IS in policy evaluation:
+		- V(s;π) ~ Σi=1..Nτ~ π' p(τ|π,s)/p(τ|π',s) Rτ
+		- Don't need the dynamic model, just weight by π;
+- Model design:
+	- Neural Net backbone: DQN [2013, Nature'15]
+	- Dueling-Net head [ICML'16 best-paper]: separate head for state and advantage;
+		- Q(s,a;θ,α,β) = V(s;θ,β) + A(s,a;θ,α),
+	- DDPG [ICLR'16]: deep version of DPG
+		- Value Q(s,a;φ) with target yj = rj + γmax_a Q(sj',μ(sj';θ);φ)
+		- Actor with loss: -Q(s, μ(θ);φ)
+- Loss: over-optimistic target;
+	- Double-Q [NIPS'15]: 2 networks, 1 for Q, 1 for a; 
+- Tricks:
+	- Q-learning: Off-Policy
+	- Experience Replay
+		- PER [ICLR'16]: prioritize high TD-error;
+		- HER [NIPS'17]: reward based on goal: R(s,a,g)
 	- Exploration:
 		- π(at|st) = 1-ε if at = argmax_a Q(st,at;φ); and random uniform other actions;
 		- π(at|st) ∝ exp(Q(st,at;φ))
+	- Fixed Q-targets: fixed target y, just regression, no gradient;
+	- Multi-step return; yj,t = Σ_t' rj,t' + γ^n max_a Q(sj,t+n,aj,t+n)
+	- Rainbow [AAAI'18]: combination of all tricks:
+		- Double Q-learning + PER + Dueling + Multi-step learning + Distributional + Noisy Nets
 - Theory:
 	- Define operator B: BV=max_a ra + γTaV, with Ta as the state transition dynamics;
 	- Optimal V∗ is a fixed point: V∗ = BV∗
@@ -222,14 +241,8 @@
 		- V' <- argmin_V∈Ω 1/2|V'(s)-BV(s)|^2
 		- ∏ is a projection in sense of L2: |∏v1-∏v2|<=|v1-v2|
 		- but ∏B is not a contraction of any kind;
-- On policy: SARSA
-	- Q(st,at) <- Q(st,at) + α(rt+1 + γQ(st+1,at+1) - Q(st,at))
 - Classic
-	- Q-learning: Off-Policy
-	- Experience Replay
-	- Fixed Q-targets: fixed target y, just regression, no gradient;
-	- Multi-Step Returns: R Munos, T Stepleton, A Harutyunyan, M G. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
-		- yj,t = Σ_t' rj,t' + γ^n max_a Q(sj,t+n,aj,t+n)
+	- Multi-Step Returns: DeepMind. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
 - Legacy:
 	- **TD**: Sutton, R. S. Learning to predict by the methods of temporal differences. Machine learning, 3(1):9–44, 1988.
 	- C. J. Watkins and P. Dayan. Q-learning. Machine learning'92.
@@ -237,32 +250,15 @@
 	- **SARSA**: Singh, S., Jaakkola, T., Littman, M. L., and Szepesvari, C. Convergence results for single-step on-policy reinforcement-learning algorithms. ML'00
 	- Precup, D., Sutton, R. S., and Dasgupta, S. Off-policy temporal-difference learning with function approximation. ICML'01
 - More modern techniques:
-	- **DQN**: Playing Atari with deep reinforcement learning, Mnih et al. 2013
-	- **DQN**: V. Mnih, et.al. Human level control through deep reinforcement learning. Nature, 2015.
-	- **DRQN**: Matthew Hausknecht, Peter Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
+	- **DRQN**: M Hausknecht, P Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
 		- Could bootstrap from start of the episode or random point;
-	- **PER**: T Schaul, J Quan, I Antonoglou and D Silver. Prioritized Experience Replay. ICLR'16
-		- Prioritizing with TD-error (with a heap):
-			- pi = |r+γmax_a' Q(si+1,a';w−) − Q(si,ai;w)|
-			- P(i) = pi^β / Σpi^β
-	- **Dueling network**: Z Wang, T Schaul, M Hessel, H v Hasselt, M Lanctot, N d Freitas. Dueling network architectures for deep reinforcement learning, best-paper ICML'16
-		- Indictive bias with neural net: two heads for value function;
-			- One for state value;
-			- One for state-dependent action advantage function;
-	- **Noisy Nets**: Fortunato, M.; Azar, M. G.; Piot, B.; Menick, J.; Osband, I.; Graves, A.; Mnih, V.; Munos, R.; Hassabis, D.; Pietquin, O.; Blundell, C.; and Legg, S. Noisy networks for exploration. ICLR'18
-	- **Rainbow**: M Hessel, J Modayil, H v Hasselt, T Schaul, G Ostrovski, W Dabney, D Horgan, B Piot, M Azar, D Silver. Combining improvements in deep reinforcement learning, AAAI'18
-		- Double Q-learning
-		- Prioritized replay
-		- Dueling network
-		- Multi-step learning
-		- Distributional RL
-		- Noisy Nets (for Montezuma's Revenge)
+	- **Noisy Nets**: DeepMind. Noisy networks for exploration. ICLR'18
 	- **Non-delusional Q-learning and value iteration**, NIPS 2018 best paper award:
 		- Delusion: parameter update inconsistent with following policy;
 		- PCVI: Tabular (model-based MDP)
 		- PCQL: Q-learning (model-free)
 - Continuous:
-	- **SVG**: N. Heess. Learning continuous control policies by stochastic value gradients. NIPS'15
+	- **SVG**: DeepMind. Learning continuous control policies by stochastic value gradients. NIPS'15
 		- Insight: non-deterministic policy; gradient w.r.t. reparametrization (sample from noise);
 			- e.g. y = f(x, ξ), where ξ ~ ρ(.);
 			- ∇xE_p(y|x)[g(y)] = E_ρ(ξ)[gyfx] ≈ 1/MΣgyfx|ξ=ξi (MC estimator)
@@ -272,24 +268,10 @@
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
 		- https://github.com/ghliu/pytorch-ddpg
-		- A deep variant of DPG:
-			- max_a Q(s,a;φ) = Q(s,argmax_a Q(s,a;φ);φ)
-			- Train another net to get a=μ(s;θ) to maximize Q(s,.);
-			- θ = argmax_θ Q(s,μ(s;θ);φ)
-			- Target: yj = rj + γmax_a Q(sj',μ(sj';θ);φ)
-		- 1. ddpg class;
-			- Actor, actor-target, actor optimizer
-			- Critic, critic-target, critic optimizer
-		- 2. Collect experience: record (s, a, s', r)
-		- 3. Learning
-			- value loss (critic): Q(s, a; θ1) with target r + γQ-target(s', actor-target(s'))
-			- policy loss (actor): -Q(s, actor(s))
-	- D Kalashnikov, A Irpan, P Pastor, J Ibarz, A Herzog, E Jang, D Quillen, E Holly, M Kalakrishnan, V Vanhoucke, S Levine. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
+	- Google-Brain. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
 - **Overestimation**:
-	- Thrun, S. and Schwartz, A. Issues in using function approximation for reinforcement learning. In Proceedings of the 1993 Connectionist Models Summer School Hillsdale, NJ. Lawrence Erlbaum, 1993.
+	- Thrun, S. and Schwartz, A. Issues in using function approximation for reinforcement learning. 1993.
 	- **Double Q-Learning**: Van Hasselt, H. Double q-learning. NIPS'10
-	- **Double DQN**: H v Hasselt, A Guez, D Silver. Deep Reinforcement Learning with Double Q-learning. NIPS'15
-		- Two networks, one to choose action, the other to compute Q(s,a)
 	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
 		- https://github.com/sfujim/TD3
 		- Clipped Double Q-learning:
@@ -300,7 +282,7 @@
 		- Delayed Policy update: at lower frequency;
 		- Sync actor/critic target with current at even lower frequency;
 - Experience replay:
-	- **HER**: Marcin Andrychowicz, Filip Wolski, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, Wojciech Zaremba. Hindsight Experience Replay. NIPS'17
+	- **HER**: OpenAI. Hindsight Experience Replay. NIPS'17
 		- Insight: enhance state with augmented goals;
 		- Given:
 			- off-policy RL alg A; (DQN, DDPG, ...)
@@ -317,14 +299,14 @@
 					- get r', store transition;
 			- Learning;
 - Bias:
-	- **SBEED**: Bo Dai, Albert Shaw, Lihong Li, Lin Xiao, Niao He, Zhen Liu, Jianshu Chen, Le Song. SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation. ICML'18
+	- **SBEED**: B Dai, A Shaw, L Li, L Xiao, N He, Z Liu, J Chen, L Song. SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation. ICML'18
 		- Value iteration does not have a cost function to optimize, it is just a fixed point iteration;
 		- Key idea: use conjugate of the square function to avoid the bias introduced in square function;
 		- Tradeoff: introduce a mini-max formulation;
-	- Yihao Feng, Lihong Li, Qiang Liu. A Kernel Loss for Solving the Bellman Equation. NIPS'19
+	- Y Feng, L Li, Q Liu. A Kernel Loss for Solving the Bellman Equation. NIPS'19
 
 ## Unclassified
-- Paulo Rauber, Avinash Ummadisingu, Filipe Mutz, Juergen Schmidhuber. Hindsight policy gradients. ICLR'19
+- P Rauber, A Ummadisingu, F Mutz, J Schmidhuber. Hindsight policy gradients. ICLR'19
 - O'Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
 - Distributional:
@@ -332,12 +314,12 @@
 		- Q(s, a) from scalar to a categorical 51 classes (linear between v-min to v-max)
 		- Do KL divergence training between Q(st, at) and r(st, at) + max_a Q(st+1, a), when take argmax action, just calculate expectation (marginalize 51 categories);\
 			<img src="/RL/images/algos/c51.png" alt="drawing" width="400"/>
-	- **QR-DQN**: Will Dabney, Mark Rowland, Marc G. Bellemare, Rémi Munos. Distributional Reinforcement Learning with Quantile Regression. AAAI'18\
+	- **QR-DQN**: DeepMind. Distributional Reinforcement Learning with Quantile Regression. AAAI'18\
 		<img src="/RL/images/algos/qr-dqn.png" alt="drawing" width="400"/>
 	- **IQN**: Will Dabney, Georg Ostrovski, David Silver, Remi Munos. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
-	- **dopamine**: Pablo Samuel Castro, Subhodeep Moitra, Carles Gelada, Saurabh Kumar, Marc G. Bellemare. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
+	- **dopamine**: DeepMind. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
 		- https://github.com/google/dopamine
-	- Barth-Maron, G., Hoffman, M. W., Budden, D., Dabney, W., Horgan, D., TB, D., Muldal, A., Heess, N., and Lillicrap, T. Distributional policy gradients. ICLR'18
+	- DeepMind. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
 - Action Dependent: (in AC, value function should be state-dependent)
@@ -345,7 +327,7 @@
 		- Taylor approx of DPG/DDPG for value function, mixture of DPG/DDPG
 		- https://github.com/shaneshixiang/rllabplusplus
 		<img src="/RL/images/q-prop.png" alt="drawing" width="600"/>
-	- **Stein-Control-Variate**: Hao Liu, Yihao Feng, Yi Mao, Dengyong Zhou, Jian Peng, Qiang Liu. Action-depedent Control Variates for Policy Optimization via Stein's Identity. ICLR'18
+	- **Stein-Control-Variate**: H Liu, Y Feng, Y Mao, D Zhou, J Peng, Q Liu. Action-depedent Control Variates for Policy Optimization via Stein's Identity. ICLR'18
 	- The Mirage of Action-Dependent Baselines in Reinforcement Learning.
 		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
 		- Claims V(s,a) style does not reduce variance
@@ -369,16 +351,16 @@
 		- PG: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(a;θ))
 		- ES: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(θ';θ))
 	- Experiments: 3D humanoid walking in 10 minute, competitive on Atari;
-- Edoardo Conti, Vashisht Madhavan, Felipe Petroski Such, Joel Lehman, Kenneth O. Stanley, Jeff Clune. Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NIPS'18
+- Uber-AI. Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NIPS'18
 	- NES-based on **novelty**, not only evaluation score;
 	- b(π): domain-specific behavior characterization; (could be location for locomotion, ...)
 	- N(θ, A) = 1/λ Σ|b(π) - bi-knn|, find KNN in Action set A;
 	- ∇E[f(θ)] = 1/σ E[ε N(θ+σε,A)]
 - NSRAdapt-ES (NSRA-ES): perf + novelty in es search;
 	- θ = θ + α 1/σ Σ_i εi((1-w)N(θ+ε,A) + wF(θ+ε))
-- ERL: Shauharda Khadka, Kagan Tumer. Evolution-Guided Policy Gradient in Reinforcement Learning. NIPS'18
+- ERL: S Khadka, K Tumer. Evolution-Guided Policy Gradient in Reinforcement Learning. NIPS'18
 	- Combine Cross Entropy Method (CEM) with DDPG or TD3.
-- CEM-RL: Aloïs Pourchot, Olivier Sigaud. CEM-RL: Combining evolutionary and gradient-based methods for policy search. ICLR'19
+- CEM-RL: A Pourchot, O Sigaud. CEM-RL: Combining evolutionary and gradient-based methods for policy search. ICLR'19
 	- The mean actor of the CEM population π is initialized with a random actor network;
 	- The critic network Q is initialized too, updated by DDPG/TD3;
 	- Repeat:

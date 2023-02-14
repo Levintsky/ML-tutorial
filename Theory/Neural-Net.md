@@ -65,6 +65,7 @@
 	- V Nagarajan and Z Kolter. Deterministic PAC-bayesian generalization bounds for deep networks via generalizing noise-resilience. ICLR'19
 	- Z Allen-Zhu, Y Li, Y Liang. Learning and generalization in overparameterized neural networks, going beyond two layers. NIPS'19
 - Overparametrization:
+	- L. Sagun, U. Evci, V. U. Guney, Y. Dauphin, and L. Bottou. Empirical analysis of the hessian of over-parametrized neural networks. CoRR'17
 	- Y Li, Y Liang. Learning overparameterized neural networks via stochastic gradient descent on structured data. NIPS'18
 	- Z Allen-Zhu, Y Li, and Z Song. A convergence theory for deep learning via over-parameterization. ICML'18
 	- B Neyshabur, Z Li, S Bhojanapalli, Y LeCun, N Srebro. Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks, 2018
@@ -102,24 +103,43 @@
 	- A Jacot, F Gabriel, C Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NeurIPS'18
 	- Y Li. Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data. NIPS'18
 	- L Chizat, E Oyallon, F Bach. On Lazy Training in Differentiable Programming. NeurIPS'19
+	- S Du, K Hou, R Salakhutdinov, B Poczos, R Wang, and K Xu. Graph neural tangent kernel: Fusing graph neural networks with graph kernels. NeurIPS'19
+	- G Yang. Scaling limits of wide neural networks with weight sharing: Gaussian process behavior, gradient independence, and neural tangent kernel derivation. arxiv'19
+	- S Hayou, A Doucet, and J Rousseau. Mean-field behaviour of neural tangent kernel for deep neural networks, 2019
 - Regularization:
 	- C Wei, J Lee, Q Liu, and T Ma. Regularization matters: Generalization and optimization of neural nets v.s. their induced kernel, 2020
 	- How finite-dim neural net approx infinite l1-network?
 		- You need m=n+1;
 - SGD:
+	- SGD prefers flatter minimia, which generalizes better:
+		- S. Hochreiter and J. Schmidhuber. Flat minima. NC'97
+		- N. S. Keskar, D. Mudigere, J. Nocedal, M. Smelyanskiy, and P. T. P. Tang. On large-batch training for deep learning: Generalization gap and sharp minima. ICLR'17
+		- L Wu, Z Zhu, and W E. Towards understanding generalization of deep learning: Perspective of loss landscapes. arxiv'17
+		- S Jastrzebski, Z Kenton, D Arpit, N Ballas, A Fischer, Y Bengio, and A Storkey. Three factors influencing minima in sgd. arxiv'17
 	- S Du, J D Lee, H Li, L Wang, and X Zhai. Gradient descent finds global minima of deep neural networks. arXiv'18
 	- F Bach. On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport. NIPS'18
 	- B Hanin. Which Neural Net Architectures Give Rise to Exploding and Vanishing Gradients. NIPS'18
+	- Z Zhu, J Wu, B Yu, L Wu, and J Ma. The anisotropic noise in stochastic gradient descent: Its behavior of escaping from minima and regularization effects. arxiv'18
+		- the specific non-isotropic structure of the noise is important for SGD to find flat minima;
+		- minima found by GD (gradient decent) can be unstable for SGD;
 	- A Zhu. Byzantine Stochastic Gradient Descent. NIPS'18
+	- L Wu, C Ma, W E. How SGD Selects the Global Minima in Over-parameterized Learning: A Dynamical Stability Perspective. NIPS'18
+		- GD to SGD: escape from minimum and converge to another;
+		- Def3. Sharpness, non-uniformity. Let H = 1/nΣHi, Σ=1/nΣi=1..n Hi^2-H^2, We define a = max(H) to be the sharpness, and s = max(Σ^1/2) to be the non-uniformity, respectively.
 	- U Şimşekli，L Sagun, M Gürbüzbalaban. A Tail-Index Analysis of Stochastic Gradient Noise in Deep Neural Networks. ICML'19 best paper honorable mention
 	- Z Zhu, Y Li. Can SGD Learn Recurrent Neural Networks with Provable Generalization? NIPS'19
-- Batch:
+- Batchsize:
 	- N Keskar, D Mudigere, J Nocedal, M Smelyanskiy, and P Tak P Tang. On large-batch training for deep learning: Generalization gap and sharp minima. arxiv'16
+	- P Goyal, et. al. Accurate, large minibatch sgd: training imagenet in 1 hour. arxiv'17
+	- E Hoffer, I Hubara, and D Soudry. Train longer, generalize better: closing the generalization gap in large batch training of neural networks. NIPS'17
+		- the ratio between the learning rate and the batch size η/B is a key factor for flatness;
 	- F He, T Liu, D Tao. Control Batch Size and Learning Rate to Generalize Well: Theoretical and Empirical Evidence. NIPS'18
-- Loss:
+- Loss surface:
 	- A Choromanska, M Henaff, M Mathieu, G Arous, and Y LeCun. The loss surfaces of multilayer networks. AISTATS'15
 	- D Soudry and Y Carmon. No bad local minima: Data independent training error guarantees for multilayer neural networks. 2016
+	- J. Pennington and Y. Bahri. Geometry of neural network loss surfaces via random matrix theory. ICML'16
 	- Q Nguyen and M Hein. The loss surface of deep and wide neural networks. ICML'17
+	- S. Mei, A. Montanari, and P.-M. Nguyen. A mean field view of the landscape of two-layer neural networks. PNAS'18
 	- J Lan, R Liu, H Zhou, J Yosinski. LCA: Loss Change Allocation for Neural Network Training. NIPS'19
 		- Insight: module-wise training loss during iteration;
 		<img src="/DL/images/empirical/lca-1.png" alt="drawing" width="450"/>\

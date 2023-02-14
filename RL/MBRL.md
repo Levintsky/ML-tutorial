@@ -63,12 +63,12 @@
 	- Aleatoric or statistical uncertainty
 	- Epistemic or model uncertainty
 	- Bayesian neural network
-	- Bootstrap ensembles p(theta|D)
+	- Bootstrap ensembles p(θ|D)
 	- Moment matching (project to Gaussian)
 
 ## Learn a Model for Data Generation
-- Shixiang Gu, Timothy Lillicrap, Ilya Sutskever, Sergey Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
-- Gabriel Kalweit, Joschka Boedecker. Uncertainty-driven Imagination for Continuous Deep Reinforcement Learning CoRL2017.
+- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
+- G Kalweit, J Boedecker. Uncertainty-driven Imagination for Continuous Deep Reinforcement Learning CoRL2017.
 	- Insight: model could be inaccurate!
 	- Experience Replay Buffer divided into 2 categories:
 		- traditional replay buffer

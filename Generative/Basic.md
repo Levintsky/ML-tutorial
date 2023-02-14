@@ -34,12 +34,15 @@
 - Legacy
 	- Copy and Paste/Flow/Warp
 	- Basics: image-based rendering;
+	- NLP:
+		- Retrieval-based; Retrieval + Neural-Net
 - Framework/Loss design:
 	- GAN/adversarial;
 	- AE/VAE/DLGM;
 	- Energy/score-based;
 	- Autoregressive;
 		- PixelCNN, PixelRNN, PixcelCNN++, Pixel-SNAIL, VPN, PixelVAE;
+		- All NLP!
 	- Flow-based/NODE/CNF;
 		- CNF: NICE, MADE, RealNVP, Glow;
 		- Continuous: NODE, PointFlow, ...

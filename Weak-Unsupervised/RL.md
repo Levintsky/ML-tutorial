@@ -1,7 +1,7 @@
 # Reinforcement Learning
 
 ## Tutorial
-- ICML'21: Aravind Srinivas, Pieter Abbeel. Unsupervised Learning for Reinforcement Learning
+- ICML'21: A Srinivas, P Abbeel. Unsupervised Learning for Reinforcement Learning
 - Count-based Exploration: Bellemare DeepMind
 - Curiosity (Pathak, Efros), Random Network Distillation (OpenAI), Go-Explore (Uber AI)
 - Forms of Unsupervised Learning:
@@ -46,13 +46,13 @@
 	- Reinforcement Learning with Prototypical Representations (Yarats et al 2021)
 	- Pre-training representations for data-efficient RL (Schwarzer & Rajkumar et al 2021)
 		- Significant improvement
-	- Adam Stooke, Kimin Lee, Pieter Abbeel, Michael Laskin. Decoupling Representation Learning from Reinforcement Learning. ICML'21
+	- A Stooke, K Lee, P Abbeel, M Laskin. Decoupling Representation Learning from Reinforcement Learning. ICML'21
 - Applications (in robotics)
 	- Deep Spatial Autoencoders for Visuomotor Learning (Finn et al 2015)
 	- TCN: Time Contrastive Networks (Sermanet et al 2018)
 	- FERM: A Framework for Efficient Robotic Manipulation (Zhan et al 2020)
 - Augmentation + RL
-	- Pieter Abbeel. Reinforcement Learning with Augmented Data. NeurIPS'20
+	- P Abbeel. Reinforcement Learning with Augmented Data. NeurIPS'20
 	- D Yarats, I Kostrikov, R Fergus. Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels. ICLR'21
 
 ## Reward-Free RL
@@ -73,7 +73,7 @@
 		- Pathak et. al. Curiosity-driven Exploration by Self-supervised Prediction. ICML'17
 			- https://pathak22.github.io/noreward-rl/index.html#sourceCode
 			- **Prediction Error**: choose actions to maximise prediction error in observations.
-		- Yuri Burda, Harri Edwards, Deepak Pathak, Amos Storkey, Trevor Darrell, Alexei A. Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
+		- Y Burda, H Edwards, D Pathak, A Storkey, T Darrell, A Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
 			- Deeper dive on feature space?
 			- https://pathak22.github.io/large-scale-curiosity/
 		- R Sekar, O Rybkin, K Daniilidis, P Abbeel, D Hafner, D Pathak. Planning to Explore via Self-Supervised World Models. ICML'20
@@ -82,7 +82,7 @@
 		- Epistemic Uncertainty 
 			- Planning to be Surprised [Sun, Gomez, Schmidhuber, 2011]
 			- VIME: Variational Information Maximization Exploration [Houthooft, Chen, Duan, Schulman, De Turck, Abbeel, 2017]
-			- Deepak Pathak, Dhiraj Gandhi, Abhinav Gupta. Self-Supervised Exploration via Disagreement. ICML'19
+			- D Pathak, D Gandhi, A Gupta. Self-Supervised Exploration via Disagreement. ICML'19
 				- https://pathak22.github.io/exploration-by-disagreement/index.html#sourceCode
 		- Aleatoric Uncertainty
 	- Competence;
@@ -129,4 +129,3 @@
 - Klyubin et. al. Empowerment: A Universal Agent-Centric Measure of Control (2005)
 - Gregor et. al. Variational Intrinsic Control (2016)
 - Wang, J.X. et al. Evolving intrinsic motivations for altruistic behavior. 2018
-- N Jaques, A Lazaridou, E Hughes, C Gulcehre, P Ortega, D Strouse, J Leibo, N Freitas. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention

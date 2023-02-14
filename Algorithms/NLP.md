@@ -52,6 +52,9 @@
 
 ## Backbones
 - Bag of vectors
+	- n-grams:
+		- FastText: Joulin et al. Bag of tricks for efficient text classification, ACL'16
+			- https://fasttext.cc/
 - CNN
 - RNN
 - Transformer (SOTA)
@@ -122,8 +125,8 @@
 - M Johnson, et al. Googles multilingual neural machine translation system: Enabling zero-shot translation. TACL'17
 - Generative Neural Machine Translation. NIPS'18
 - Steer (with a small NN?):
-	- Jiatao Gu, Graham Neubig, Kyunghyun Cho, and Victor OK Li. Learning to translate in real-time with neural machine translation. arxiv'16
-	- Jiatao Gu, Kyunghyun Cho, and Victor OK Li. Trainable greedy decoding for neural machine translation. arxiv'17
+	- J Gu, G Neubig, K Cho, and V Li. Learning to translate in real-time with neural machine translation. arxiv'16
+	- J Gu, K Cho, and V Li. Trainable greedy decoding for neural machine translation. arxiv'17
 
 ## (Conditional) Generation
 - Generally contains a lot of problems
@@ -132,7 +135,7 @@
 	- QA, Dialog
 - Backbone:
 	- Transformer:
-		- Peter J. Liu, Mohammad Saleh, Etienne Pot†, Ben Goodrich, Ryan Sepassi, Łukasz Kaiser, Noam Shazeer. Generating Wikipedia by Summarizing Long Sequences. ICLR'18
+		- Google-Brain. Generating Wikipedia by Summarizing Long Sequences. ICLR'18
 - Decoding:
 	- Top-k sampling:
 		- Fan et al., ACL 2018; Holtzman et al., ACL 2018
@@ -146,7 +149,7 @@
 	- Quality;
 		- Surrogate with BLEU (RL);
 - Challenges:
-	- Ari Holtzman, Jan Buys, Li Du, Maxwell Forbes, Yejin Choi. The Curious Case of Neural Text Degeneration. ICLR'20
+	- A Holtzman, J Buys, L Du, M Forbes, Y Choi. The Curious Case of Neural Text Degeneration. ICLR'20
 - Loss design:
 	- MLE: Σlogp(yt|y0..t-1, x), x as context;
 	- RL reward: J(θ) = Eθ[Σγ^t rt]
@@ -158,7 +161,7 @@
 	- Ethics: Sheng et al., EMNLP'19; Zellers et al., NeurIPS'19
 	- Hidden biases: Wallace et al., EMNLP'19; Gehman et al., EMNLP Findings 2020
 - Conditional:
-	- Samy Bengio. Content preserving text generation with attribute controls. NIPS'18
+	- S Bengio. Content preserving text generation with attribute controls. NIPS'18
 - Deep State Space Models for Unconditional Word Generation. NIPS'18
 - **CTRL**: N Keskar, B McCann, L Varshney, C Xiong, R Socher. CTRL: A Conditional Transformer Language Model for Controllable Generation. 2019
 	- Insight: **conditional Transformer**; control code as first word without special treatment;
@@ -176,14 +179,14 @@
 		- Learn a reward function;
 		- Use reward model for policy training;
 - Training with conditions:
-	- Yuta Kikuchi, Graham Neubig, Ryohei Sasano, Hiroya Takamura, and Manabu Okumura. Controlling output length in neural encoder-decoders. EMNLP'16
-	- Jessica Ficler and Yoav Goldberg. Controlling linguistic style aspects in neural language generation. 2017
+	- Y Kikuchi, G Neubig, R Sasano, H Takamura, and M Okumura. Controlling output length in neural encoder-decoders. EMNLP'16
+	- J Ficler and Y Goldberg. Controlling linguistic style aspects in neural language generation. 2017
 - Inference time:
-	- **PPLM**: Sumanth Dathathri, Andrea Madotto, Janice Lan, Jane Hung, Eric Frank, Piero Molino, Jason Yosinski, Rosanne Liu. Plug and Play Language Models: a Simple Approach to Controlled Text Generation. ICLR'20
+	- **PPLM**: Uber-AI. Plug and Play Language Models: a Simple Approach to Controlled Text Generation. ICLR'20
 		- https://github.com/uber-research/pplm
 		- Insight: modify history in the direction to maximize both p(x) and p(a|x), then we get p(x|a);
 			<img src="/NLP/images/pplm.png" alt="drawing" width="400"/>
-- **GOLD**: Richard Yuanzhe Pang, He He. Text Generation by Learning from Demonstrations. ICLR'21
+- **GOLD**: R Pang, H He. Text Generation by Learning from Demonstrations. ICLR'21
 	- https://github.com/yzpang/gold-off-policy-text-gen-iclr21
 	- Offline RL with reward rt = p_human(at|st)
 	- Offline:  reduce interaction with the environment and stay close to the demonstrated trajectories.
@@ -198,11 +201,10 @@
 ## (External)-Knowledge based
 - Resouces:
 	- https://www.cnblogs.com/huangyc/p/10043749.html
-- Kevin Meng, David Bau, Alex Andonian, Yonatan Belinkov. Locating and Editing Factual Associations in GPT. 
+- K Meng, D Bau, A Andonian, Y Belinkov. Locating and Editing Factual Associations in GPT. 
 	- rank-1 update: w2 = w2 + uv' (Rome/Paris)
-- Mor Geva, Roei Schuster, Jonathan Berant, Omer Levy. Transformer Feed-Forward Layers Are Key-Value Memories. EMNLP'21
-- Damai Dai, Li Dong, Yaru Hao, Zhifang Sui, Baobao Chang, Furu Wei.
-Knowledge Neurons in Pretrained Transformers. ACL'22
+- M Geva, R Schuster, J Berant, O Levy. Transformer Feed-Forward Layers Are Key-Value Memories. EMNLP'21
+- D Dai, L Dong, Y Hao, Z Sui, B Chang, F Wei. Knowledge Neurons in Pretrained Transformers. ACL'22
 - External tool:
 	- No trained retriever;
 	- OpenAI: **WebGPT**: Browser-assisted question-answering with human feedback. 2021
@@ -210,8 +212,8 @@ Knowledge Neurons in Pretrained Transformers. ACL'22
 - Learn to retrieve (E2E, trial and error);
 	- Problem setup: p(gold-answer|input, memory)
 		- ∑memory p(mem|input)p(gold-answer|input,mem)
-	- **ORQA**: Kenton Lee, Ming-Wei Chang, Kristina Toutanova. Latent Retrieval for Weakly Supervised Open Domain Question Answering. ACL'19
-	- **REALM**: Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, Ming-Wei Chang. REALM: Retrieval-Augmented Language Model Pre-Training.
+	- **ORQA**: K Lee, M Chang, K Toutanova. Latent Retrieval for Weakly Supervised Open Domain Question Answering. ACL'19
+	- **REALM**: K Guu, K Lee, Z Tung, P Pasupat, M Chang. REALM: Retrieval-Augmented Language Model Pre-Training.
 
 ## Coreference Resolution in Two Steps
 - Benchmarks:
@@ -240,7 +242,7 @@ Knowledge Neurons in Pretrained Transformers. ACL'22
 	- Question type: Factoid vs non-factoid, open-domain vs closed-domain, simple vs compositional, ..
 	- Answer type: A short segment of text, a paragraph, a list, yes/no, ...
 - Benchmark:
-	- Zhilin Yang, ..., Christopher D Manning. **Hotpotqa**: A dataset for diverse, explainable multi-hop question answering. 2018
+	- Z Yang, ..., C D Manning. **Hotpotqa**: A dataset for diverse, explainable multi-hop question answering. 2018
 	- SQuAD;
 - Legacy:
 	- Simmons et al., 1964
@@ -270,8 +272,8 @@ Knowledge Neurons in Pretrained Transformers. ACL'22
 		- Seo et al., 2019. Real-Time Open-Domain Question Answering with Dense-Sparse Phrase Index
 		- Lee et al., 2020. Learning Dense Representations of Phrases at Scale
 - A Fan, Yacine Jernite, Ethan Perez, David Grangier, Jason Weston, and Michael Auli. Eli5: Long form question answering. 2019
-- Bryan McCann, Nitish Shirish Keskar, Caiming Xiong, and Richard Socher. The natural language decathlon: Multitask learning as question answering. 2018
-- Patrick Lewis, Ludovic Denoyer, and Sebastian Riedel. Unsupervised question answering by cloze translation. 2019
+- B McCann, N Keskar, C Xiong, and R Socher. The natural language decathlon: Multitask learning as question answering. 2018
+- P Lewis, L Denoyer, and S Riedel. Unsupervised question answering by cloze translation. 2019
 - Knowledge-based/augmented:
 	- M Dunn, L Sagun, M Higgins, V Guney, V Cirik, and K Cho. Searchqa: A new q&a dataset augmented with context from a search engine. 2017
 

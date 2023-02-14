@@ -242,8 +242,8 @@
 	- safe policy iteration (SPI) and safe value iteration (SVI);
 	- safe DQN, safe DPI;
 - Constrained Cross-Entropy Method for Safe Reinforcement Learning. NIPS'18
-- Yinlam Chow, Ofir Nachum, Aleksandra Faust, Edgar Duenez-Guzman, Mohammad Ghavamzadeh. Lyapunov-based Safe Policy Optimization for Continuous Control. ICML'19
-	- Lagrange method: max_theta min_lambda c(xt,at) + lambda (D(xt|pi,x0)-d)
+- Y Chow, O Nachum, A Faust, E Duenez-Guzman, M Ghavamzadeh. Lyapunov-based Safe Policy Optimization for Continuous Control. ICML'19
+	- Lagrange method: max_θ min_λ c(xt,at) + λ (D(xt|pi,x0)-d)
 	- Lyapunov constraint: feasibility set;
 - Robust Control
 	- **LQG-Robust**: Sarah Dean, Nikolai Matni, Benjamin Recht, and Vickie Ye. Robust Guarantees for Perception-Based Control. 2019
@@ -324,7 +324,7 @@
 	- AI2-THOR 2017
 	- **DeepMind-Lab**: Learning to navigate in complex environments. ICLR'17
 	- Realistic: Matterport, AdobeIndoorNav, Stanford 2D-3D-S, Scannet, Gibson, MINOS
-	- **StreetLearn**: P Mirowski, A Banki-Horvath, K Anderson, D Teplyashin, K Hermann, M Malinowski, M Grimes, K Simonyan, K Kavukcuoglu, A Zisserman, R Hadsell. The StreetLearn Environment and Dataset. 2019
+	- **StreetLearn**: DeepMind. The StreetLearn Environment and Dataset. 2019
 		- Google Street View;
 		- http://streetlearn.cc
 	- Baidu XWorld (Zihang Dai): https://github.com/zihangdai/pytorch_xworld
@@ -347,7 +347,7 @@
 - Y Wu, Y Tian. Training Agent for First-Person Shooter Game with Actor-Critic Curriculum Learning. ICLR'17
 	- VizDoom, known map;
 	- Batch A3C;
-- A Banino, C Barry, B Uria, C Blundell, T Lillicrap, P Mirowski, A Pritzel, M Chadwick, T Degris, J Modayil, G Wayne, H Soyer, F Viola, B Zhang, R Goroshin, N Rabinowitz, R Pascanu, C Beattie, S Petersen, A Sadik, S Gaffney, H King, K Kavukcuoglu, D Hassabis, R Hadsell, D Kumaran. Vector-based Navigation using Grid-like Representations in Artificial Agents. Nature'18
+- DeepMind. Vector-based Navigation using Grid-like Representations in Artificial Agents. Nature'18
 - P Mirowski. et.al. Learning to navigate in cities without a map. NIPS'18
 - T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
 - Devendra Singh Chaplot, Saurabh Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19

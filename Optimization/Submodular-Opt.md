@@ -1,8 +1,7 @@
 # Submodular Optimization
 
 ## Basics
-- Problem setup: marginal gains decreasing\
-	<img src="/Optimization/images/submodular/def.png" alt="drawing" width="400"/>
+- Problem setup: marginal gains decreasing
 
 ## Legacy
 - E.L.Lawler and D.E.Wood. Branch-and-bound methods: A survey. Operations Research, 14(4):699–719, 1966
@@ -21,16 +20,12 @@
 - A. Prasad, S. Jegelka, and D. Batra. Submodular meets structured: Finding diverse subsets in exponentially-large structured item sets. NIPS'14
 
 ## Applications
-- **SubmodBoxes**: Qing Sun, Dhruv Batra. SubmodBoxes: Near-Optimal Search for a Set of Diverse Object Proposals. NIPS'15
+- **SubmodBoxes**: Q Sun, D Batra. SubmodBoxes: Near-Optimal Search for a Set of Diverse Object Proposals. NIPS'15
 	- Problem setup: select a submodular subset greedily to achieve max gain and diversity:
-		<img src="/Optimization/images/submodular/submodbox-1.png" alt="drawing" width="400"/>
+		- argmax F(Y) = R(Y) + λD(Y) s.t. |Y|≤M
 	- Relevance by EdgeBox score;
 	- Diversity:
-		- Sliding window + NMS heuristics: infinite penalty for overlapping, no reward for diversity (submodular but not monotone, gain can be negative);\
-			<img src="/Optimization/images/submodular/nms.png" alt="drawing" width="400"/>
+		- Sliding window + NMS heuristics: infinite penalty for overlapping, no reward for diversity (submodular but not monotone, gain can be negative);
 		- ESS: one object at a time, then suppress it and redo; monotone and submodular if r(.) is positive; Equivalent to subtracts the score contribution coming from the intersection region;
-			<img src="/Optimization/images/submodular/nms.png" alt="drawing" width="400"/>
-		- Proposed:\
-			<img src="/Optimization/images/submodular/submodbox-2.png" alt="drawing" width="400"/>
-	- Solution: lazy-greedy with branch-and-bound tree;\
-		<img src="/Optimization/images/submodular/submodbox-3.png" alt="drawing" width="400"/>
+		- Proposed:
+	- Solution: lazy-greedy with branch-and-bound tree;

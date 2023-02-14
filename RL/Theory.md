@@ -1,10 +1,10 @@
 # Theory
 
 ## Theory on Batch RL
-- Jinglin Chen, Nan Jiang. Information-Theoretic Considerations in Batch Reinforcement Learning. ICML'19
+- J Chen, N Jiang. Information-Theoretic Considerations in Batch Reinforcement Learning. ICML'19
 
 ## Theory on Imitation Learning
-- Wen Sun, Arun Venkatraman, Geoffrey J. Gordon, Byron Boots, J. Andrew Bagnell. Deeply AggreVaTeD: Differentiable Imitation Learning for Sequential Prediction. ICML'17
+- W Sun, A Venkatraman, G Gordon, B Boots, A Bagnell. Deeply AggreVaTeD: Differentiable Imitation Learning for Sequential Prediction. ICML'17
 
 ## Theory on Exploration + Tabular MDP
 - Tabular MDP: minimax results;
@@ -18,7 +18,7 @@
 	- Many others, including our work (lead by Andrea Zanette), and Mengdi Wang's lab.
 
 ## Theory Analysis
-- Richard S. Sutton, David McAllester, Satinder Singh, Yishay Mansour. Policy Gradient Methods for Reinforcement Learning with Function Approximation. NIPS'00.
+- R Sutton, D McAllester, S Singh, Y Mansour. Policy Gradient Methods for Reinforcement Learning with Function Approximation. NIPS'00.
 	- Contributions: Established policy gradient theorem and showed convergence of policy gradient algorithm for arbitrary policy classes.
 - Tsitsiklis and Van Roy. An Analysis of Temporal-Difference Learning with Function Approximation. TAC'97.
 	- Contributions: Variety of convergence results and counter-examples for value-learning methods in RL.

@@ -21,7 +21,7 @@
 
 ## Multi-Task
 - **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
-	- Multi-task Q-learning, Vg(s;theta) with g as the goal; 
+	- Multi-task Q-learning, Vg(s;θ) with g as the goal; 
 	- 1+ goal we may try to achieve;
 	- Every episode sample state goal pair (s0, g);
 	- Different model architecture to represent goal and state\
@@ -29,13 +29,13 @@
 	- RL algorithm: Q-learning\
 		<img src="/RL/images/transfer/uvfa2.png" alt="drawing" width="400"/>
 - **Progressive-Nets**:
-	- A Rusu, N Rabinowitz, G Desjardins, H Soyer, James Kirkpatrick, Koray Kavukcuoglu, Razvan Pascanu, Raia Hadsell. Progressive Neural Networks. 2016
+	- DeepMind. Progressive Neural Networks. 2016
 		- They are schemes that can train NN's in an ensemble individually in a sequential fashion where an output of all trained NN's are stored and updated in an information center. The communication among NN’s is maintained indirectly through IC (information center), which ultimately reduces the interaction among the NNs
 		- RL Alg: A3C
 		- Everytime freeze previous learned knowledge;\
 			<img src="/RL/images/transfer/progressive.png" alt="drawing" width="450"/>
-	- Andrei A. Rusu, Mel Vecerik, Thomas Rothörl, Nicolas Heess, Razvan Pascanu, Raia Hadsell. Sim-to-Real Robot Learning from Pixels with Progressive Nets. CoRL'17
-- **UNREAL**: M Jaderberg, V Mnih, W Czarnecki, T Schaul, J Leibo, D Silver, K Kavukcuoglu. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
+	- DeepMind. Sim-to-Real Robot Learning from Pixels with Progressive Nets. CoRL'17
+- **UNREAL**: DeepMind. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
 	- https://github.com/miyosuda/unreal
 - **IU Agent**: S Cabi, S Colmenarejo, M Hoffman, M Denil, Z Wang, N Freitas. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
 	- Insight: the agent perceives a stream of rewards rti, indexed by i at time t. To learn the actor neural network parameterized by θ, we are interested in simultaneously maximizing the expected value of all tasks;
@@ -58,10 +58,6 @@
 - J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
 - **MATL**: Wulfmeier et al. Mutual Alignment Transfer Learning. 2017.
 - Hausman et al, Learning an Embedding Space for Transferable Robot Skills. 2018.
-- **HER**: M Andrychowicz, F Wolski, A Ray, J Schneider, R Fong, P Welinder, B McGrew, J Tobin, P Abbeel, W Zaremba. Hindsight Experience Replay. NIPS'17
-	- Insight: if a goal is hard to achieve, then sparse reward impossible to train with; change goal to reachable make RL learn;
-	- Multi-goal RL (similar to UVFA)
-		<img src="/RL/images/algos/her.png" alt="drawing" width="500"/>
 
 ## Generalization, Overfitting
 - K Cobbe, O Klimov, C Hesse, T Kim, and John Schulman. Quantifying generalization in reinforcement learning. arxiv'18

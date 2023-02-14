@@ -166,7 +166,7 @@
 ## CRF (Directed or Undirected)
 - Inference Proposals
 	- MAP inference:
-		- alpha-expansion
+		- α-expansion
 		- TRW-S
 	- M-Best-MAP:
 		- D. Nilsson. An efficient algorithm for finding the m most probable configurations in probabilistic expert systems. Statistics and Computing, vol. 8, pp. 159–173, 1998.

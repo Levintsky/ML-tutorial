@@ -45,9 +45,9 @@
 		- Summut et al., ICML 1992: Learning to fly in flight simulator;
 	- Problem: distribution mismatch; (always pretty well in practice)
 		- Compounding error; ∝ ε^T2
-	- Stephane Ross, J. Andrew Bagnell. Efficient Reductions for Imitation Learning. AISTATS'10
+	- S Ross, A Bagnell. Efficient Reductions for Imitation Learning. AISTATS'10
 	- A Giusti, J Guzzi, D C. Ciresan, F He, J P. Rodríguez, F Fontana, M Faessler, C Forster, J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
-	- Ajay Mandlekar, Danfei Xu, Josiah Wong, Soroush Nasiriany, Chen Wang, Rohun Kulkarni, Li Fei-Fei, Silvio Savarese, Yuke Zhu, Roberto Martín-Martín. What Matters in Learning from Offline Human Demonstrations for Robot Manipulation. CoRL'21
+	- A Mandlekar, D Xu, J Wong, S Nasiriany, C Wang, R Kulkarni, Li Fei-Fei, S Savarese, Y Zhu, R Martín-Martín. What Matters in Learning from Offline Human Demonstrations for Robot Manipulation. CoRL'21
 - DAgger
 	- Interactive from expert;
 	- S Ross, G J Gordon, and D Bagnell. A reduction of imitation learning and structured prediction to no-regret online learning. AISTATS'11
@@ -112,14 +112,14 @@
 	- A Rajeswaran, V Kumar, A Gupta, G Vezzani, J Schulman, E Todorov, S Levine. Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations
 	- Deep Q-learning from Demonstrations. RSS'18
 	- Leveraging Demonstrations for Deep Reinforcement Learning on Robotics Problems with Sparse Rewards
-	- **NAC**: Y Gao, Huazhe(Harry) Xu, J Lin, F Yu, S Levine, T Darrell. Reinforcement Learning from Imperfect Demonstrations. ICML'18
+	- **NAC**: Y Gao, H Xu, J Lin, F Yu, S Levine, T Darrell. Reinforcement Learning from Imperfect Demonstrations. ICML'18
 		- An auxiliary pool of D (demonstration) to warm up, then AC;
 		- NAC: Normalized Actor-Critic; similar to soft policy gradient (with max-entropy term);
 		- Normalizing the Q-function over the actions
 		- Previously, PCL (bridging the gap...) learns Q from demonstration;\
 			<img src="/RL/images/imitation/nac1.png" alt="drawing" width="400"/>
 			<img src="/RL/images/imitation/nac2.png" alt="drawing" width="400"/>
-	- Yueh-Hua Wu, Nontawat Charoenphakdee, Han Bao, Voot Tangkaratt, Masashi Sugiyama. Imitation Learning from Imperfect Demonstration. ICML'19
+	- Y Wu, N Charoenphakdee, H Bao, V Tangkaratt, M Sugiyama. Imitation Learning from Imperfect Demonstration. ICML'19
 - Multi-Agent IL:
 	- Legacy:
 		- Chernova, Sonia and Veloso, Manuela. Multiagent collaborative task learning through imitation.

@@ -36,8 +36,7 @@
 		- φi := Alg(θ, Dtr) = θ - α∇θ L(θ, Dtr)
 	- Theory support: C Finn and S Levine. Meta-learning and universality: Deep representations and gradient descent can approximate any learning algorithm. 2017
 - M Al-Shedivat, T Bansal, Y Burda, I Sutskever, I Mordatch, and P Abbeel. Continuous adaptation via meta-learning in nonstationary and competitive environments. 2017
-- C Finn, T Yu, T Zhang, P Abbeel, and S Levine. One-shot visual
-imitation learning via meta-learning. 2017
+- C Finn, T Yu, T Zhang, P Abbeel, and S Levine. One-shot visual imitation learning via meta-learning. 2017
 - Shared parameters **reduce overfitting**:
 	- N Mishra, M Rohaninejad, X Chen, and P Abbeel. A Simple Neural Attentive Meta-Learner. ICLR'18
 	- Y Lee and S Choi. Meta-Learning with Adaptive Layerwise Metric and Subspace. ICLR'18
@@ -68,17 +67,17 @@ imitation learning via meta-learning. 2017
 		<img src = '/AutoML-Meta/images/iMAML1.png' width='400'>
 	- Total and Partial Derivatives of the nested function:\
 		<img src = '/AutoML-Meta/images/iMAML2.png' width='400'>
-	- dAlg(theta)/dtheta memory heavy, intractable large graph;\
+	- dAlg(θ)/dθ memory heavy, intractable large graph;\
 		<img src = '/AutoML-Meta/images/iMAML3.png' width='400'>
 - M Yin, G Tucker, M Zhou, S Levine, C Finn. Meta-Learning without Memorization. 2019
 	- Problem definition: Complete memorization in meta-learning is when the learned model ignores the task training data s.t.
-		- I(y\*; D|x\*, θ) = 0
-		- (i.e., q(y\*|x\*, θ, D)=q(y\* | x\*, θ) = E D'|x\* [q( y \* | x\*, θ, D')].
-- **warpgrad**: S Flennerhag, A Rusu, Razvan Pascanu, Francesco Visin, Hujun Yin, Raia Hadsell. Meta-Learning with Warped Gradient Descent. ICLR'20
+		- I(y∗; D|x∗, θ) = 0
+		- (i.e., q(y∗|x∗, θ, D)=q(y∗|x∗, θ) = E D'|x∗ [q(y∗|x∗, θ, D')].
+- **warpgrad**: DeepMind. Meta-Learning with Warped Gradient Descent. ICLR'20
 	- https://github.com/flennerhag/warpgrad
 	- Insight: learn a meta-preconditioner mimicing 2nd-order to accelerate;
 - Applications of MAML:
-	- Fei Mi, Minlie Huang, Jiyong Zhang, and Boi Faltings. Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 2019
+	- F Mi, M Huang, J Zhang, and B Faltings. Meta-learning for low-resource natural language generation in task-oriented dialogue systems. 2019
 
 ## Gradient Descent-Based
 - S Hochreiter, S Younger and P Conwell. Learning to learn using gradient descent. ICANN'01
@@ -121,7 +120,7 @@ imitation learning via meta-learning. 2017
 - F. Sung, Y. Yang, L. Zhang, T. Xiang, P. H. Torr, and T. M. Hospedales. Learning to compare: Relation network for fewshot learning. CVPR'18.
 
 ## Detection
-- Bingyi Kang, Zhuang Liu, Xin Wang, Fisher Yu, Jiashi Feng, Trevor Darrell. Few-shot Object Detection via Feature Reweighting. 2018
+- B Kang, Z Liu, X Wang, F Yu, J Feng, T Darrell. Few-shot Object Detection via Feature Reweighting. 2018
 	- Built on YOLOv2
 	- Assumptions: feature can be reused, different features play important roles in specific classes
 	- Train a meta-conv module as weight, to reweight features

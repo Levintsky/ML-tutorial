@@ -709,6 +709,10 @@
 - **cvxlayers**: A Agrawal, B Amos, S Barratt, S Boyd, S Diamond, and Z Kolter. Differentiable Convex Optimization Layers. NIPS'19
 	- https://github.com/cvxgrp/cvxpylayers (support both pytorch and tf)
 
+## Nonconvex Optimization
+- Y. N. Dauphin, R. Pascanu, C. Gulcehre, K. Cho, S. Ganguli, and Y. Bengio. Identifying and attacking the saddle point problem in high-dimensional non-convex optimization. NIPS'14
+- R. Pascanu, Y. N. Dauphin, S. Ganguli, and Y. Bengio. On the saddle point problem for non-convex optimization. arxiv'14
+
 ## Learning to Optimize
 - Petr Hruby, Timothy Duff, Anton Leykin, Tomas Pajdla. Learning To Solve Hard Minimal Problems. CVPR'22
 	- homotopy continuation (HC) + ML

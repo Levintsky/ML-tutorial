@@ -40,7 +40,7 @@
 		- K: capital
 		- L: labor
 		- f(K, L)
-			- Cobb–Douglas pro- duction function: f=A K^alpha L^(1-alpha)
+			- Cobb–Douglas production function: f=A K^α L^(1-α)
 	- 3-2 How Is National Income Distributed to the Factors of Production?
 		- Factor Prices
 		- The Decisions Facing the Competitive Firm

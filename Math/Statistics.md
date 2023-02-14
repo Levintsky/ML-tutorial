@@ -83,7 +83,7 @@
 	- All more extreme cases
 	- p-value=2(p(90H)+p(91H)+...)
 	- Consider: p(10H)+p(9H)
-	- p < alpha, reject
+	- p < α, reject
 
 ## Outlier, Anomaly
 

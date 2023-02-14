@@ -25,13 +25,13 @@
 	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
 	- Habitat-API: https://github.com/facebookresearch/habitat-api
 - Large Vision + Language 
-	- Karan Desai and Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
-	- Mert Bulent Sariyildiz, Julien Perez, and Diane Larlus. Learning Visual Representations with Caption Annotations. 2020
-	- Yuhao Zhang, Hang Jiang, Yasuhide Miura, Christopher D. Manning, and Curtis P. Langlotz. Contrastive Learning of Medical Visual Representations from Paired Images and Text. 2020
+	- K Desai and J Johnson. VirTex: Learning Visual Representations from Textual Annotations. 2020
+	- M B Sariyildiz, J Perez, and D Larlus. Learning Visual Representations with Caption Annotations. 2020
+	- Y Zhang, H Jiang, Y Miura, C Manning, and C Langlotz. Contrastive Learning of Medical Visual Representations from Paired Images and Text. 2020
 	- OpenAI. Learning Transferable Visual Models From Natural Language Supervision. 2021
 	- **ALIGN**: Google-Brain. Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
-	- Norman Mu, Alexander Kirillov, David Wagner, and Saining Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
-	- Andreas Fürst, Elisabeth Rumetshofer, Viet Thuong Tran, Hubert Ramsauer, Fei Tang, Johannes Lehner, D P Kreil, Michael K Kopp, Günter Klambauer, Angela Bitto-Nemling, and Sepp Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
+	- N Mu, A Kirillov, D Wagner, and S Xie. SLIP: Self-supervision meets Language-Image Pre-training. 2021
+	- A Fürst, E Rumetshofer, V T Tran, H Ramsauer, F Tang, J Lehner, D P Kreil, M Kopp, G Klambauer, A Bitto-Nemling, and S Hochreiter. CLOOB: Modern Hopfield Networks with InfoLOOB Outperform CLIP, 2022.
 
 ## Multitask Learning
 - DeepMind: A Generalist Agent.
@@ -49,44 +49,44 @@
 		- Learn image embedding as (Frozen) LM Prefix: Frozen, ClipClap;
 		- Cross-attention: VisualGPT, VisualCPT, MERLOT, Flamingo;
 - BERT-style:
-	- **ViLBERT**: Jiasen Lu, Dhruv Batra, Devi Parikh, Stefan Lee. ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks. NeurIPS'19
+	- **ViLBERT**: J Lu, D Batra, D Parikh, S Lee. ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations for Vision-and-Language Tasks. NeurIPS'19
 	- **VideoBERT**: C Sun, A Myers, C Vondrick, K Murphy and C Schmid. VideoBERT: A Joint Model for Video and Language Representation Learning. ICCV'19
-	- **VisualBERT**: Liunian Harold Li, Mark Yatskar, Da Yin, Cho-Jui Hsieh, Kai-Wei Chang. VisualBERT: A Simple and Performant Baseline for Vision and Language. arxiv'19
+	- **VisualBERT**: L Li, M Yatskar, D Yin, C Hsieh, K Chang. VisualBERT: A Simple and Performant Baseline for Vision and Language. arxiv'19
 		- https://github.com/uclanlp/visualbert
 		- Insight:
 			- Both image and text embedding input to a transformer;
 			- Masked language model as task; 
-	- Gunnar A. Sigurdsson, Jean-Baptiste Alayrac, Aida Nematzadeh, Lucas Smaira, Mateusz Malinowski, João Carreira, Phil Blunsom, Andrew Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
+	- G Sigurdsson, J Alayrac, A Nematzadeh, L Smaira, M Malinowski, J Carreira, P Blunsom, A Zisserman. Visual Grounding in Video for Unsupervised Word Translation. 2020
 		- Extend VideoBert to multilingual
-	- Weijie Su, Xizhou Zhu, Yue Cao, Bin Li, Lewei Lu, Furu Wei, Jifeng Dai. VL-BERT: Pre-training of Generic Visual-Linguistic Representations. ICLR'20
-	- Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, Jingjing Liu. UNITER: UNiversal Image-TExt Representation Learning. ECCV'20
-	- Xiujun Li, Xi Yin, Chunyuan Li, Pengchuan Zhang, Xiaowei Hu, Lei Zhang, Lijuan Wang, Houdong Hu, Li Dong, Furu Wei, Yejin Choi, Jianfeng Gao. Oscar: Object-Semantics Aligned Pre-training for Vision-Language Tasks
+	- W Su, X Zhu, Y Cao, B Li, L Lu, F Wei, Jg Dai. VL-BERT: Pre-training of Generic Visual-Linguistic Representations. ICLR'20
+	- Y Chen, L Li, L Yu, A Kholy, F Ahmed, Z Gan, Y Cheng, J Liu. UNITER: UNiversal Image-TExt Representation Learning. ECCV'20
+	- X Li, X Yin, C Li, P Zhang, X Hu, L Zhang, L Wang, H Hu, L Dong, F Wei, Y Choi, J Gao. Oscar: Object-Semantics Aligned Pre-training for Vision-Language Tasks
 - Dual-encoder contrastive:
 	- **CLIP**: OpenAI. Learning Transferable Visual Models From Natural Language Supervision. 2021
 	- **ALIGN**: Google-Brain. ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
 	- CoCa: Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, Yonghui Wu. CoCa: Contrastive Captioners are Image-Text Foundation Models.
-	- **Florence**: Lu Yuan, Dongdong Chen, Yi-Ling Chen, Noel Codella, Xiyang Dai, Jianfeng Gao, Houdong Hu, Xuedong Huang, Boxin Li, Chunyuan Li, Ce Liu, Mengchen Liu, Zicheng Liu, Yumao Lu, Yu Shi, Lijuan Wang, Jianfeng Wang, Bin Xiao, Zhen Xiao, Jianwei Yang, Michael Zeng, Luowei Zhou, Pengchuan Zhang. Florence: A New Foundation Model for Computer Vision.
-	- **MIL-NCE**: Antoine Miech, Jean-Baptiste Alayrac, Lucas Smaira, Ivan Laptev, Josef Sivic, Andrew Zisserman. End-to-End Learning of Visual Representations from Uncurated Instructional Videos.
+	- **Florence**: MSR Florence: A New Foundation Model for Computer Vision.
+	- **MIL-NCE**: DeepMind. End-to-End Learning of Visual Representations from Uncurated Instructional Videos.
 		- https://www.di.ens.fr/willow/research/mil-nce/
 - Visual LM: vision+prefix -> predict postfix text;
-	- **VirTex**: Karan Desai, Justin Johnson. VirTex: Learning Visual Representations from Textual Annotations. CVPR'21
-	- **Frozen**: Maria Tsimpoukelli, Jacob Menick, Serkan Cabi, S. M. Ali Eslami, Oriol Vinyals, Felix Hill. Multimodal Few-Shot Learning with Frozen Language Models. ICLR'21
-	- **SimVLM**: Zirui Wang, Jiahui Yu, Adams Wei Yu, Zihang Dai, Yulia Tsvetkov, Yuan Cao. SimVLM: Simple Visual Language Model Pretraining with Weak Supervision. ICLR'22
+	- **VirTex**: K Desai, J Johnson. VirTex: Learning Visual Representations from Textual Annotations. CVPR'21
+	- **Frozen**: M Tsimpoukelli, J Menick, S Cabi, A Eslami, O Vinyals, F Hill. Multimodal Few-Shot Learning with Frozen Language Models. ICLR'21
+	- **SimVLM**: Z Wang, J Yu, A Yu, Z Dai, Y Tsvetkov, Y Cao. SimVLM: Simple Visual Language Model Pretraining with Weak Supervision. ICLR'22
 		- Both + language -> transformer;
 		- GPT-like causal prediction task;
-	- **ClipCap**: Ron Mokady, Amir Hertz, Amit H. Bermano. ClipCap: CLIP Prefix for Image Captioning. arxiv'21
+	- **ClipCap**: R Mokady, A Hertz, A Bermano. ClipCap: CLIP Prefix for Image Captioning. arxiv'21
 		- Learn a light mapping to translate CLIP features into LM space;
 	- MAGMA – Multimodal Augmentation of Generative Models through Adapter-based Finetuning.
-	- Jun Chen, Han Guo, Kai Yi, Boyang Li, Mohamed Elhoseiny. VisualGPT: Data-efficient Adaptation of Pretrained Language Models for Image Captioning. CVPR'22
+	- J Chen, H Guo, K Yi, B Li, M Elhoseiny. VisualGPT: Data-efficient Adaptation of Pretrained Language Models for Image Captioning. CVPR'22
 	- **Flamingo**: DeepMind. **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
 - Retrieval:
 	- IBM, Dialog-based Interactive Image Retrieval, NIPS'18
 - Downstream tasks:
-	- Sheng Shen, Liunian Harold Li, Hao Tan, Mohit Bansal, Anna Rohrbach, Kai-Wei Chang, Zhewei Yao, and Kurt Keutzer. How Much Can CLIP Benefit Vision-and-Language Tasks?
+	- S Shen, H Li, H Tan, M Bansal, A Rohrbach, K Chang, Z Yao, and K Keutzer. How Much Can CLIP Benefit Vision-and-Language Tasks?
 
 ## Low-Shot Learning
 - **Flamingo**: a Visual Language Model for Few-Shot Learning. 2022
-- Renrui Zhang, Ziyu Guo, Wei Zhang, Kunchang Li, Xupeng Miao, Bin Cui, Yu Qiao, Peng Gao, Hongsheng Li. PointCLIP: Point Cloud Understanding by CLIP. CVPR'22
+- R Zhang, Z Guo, W Zhang, K Li, X Miao, B Cui, Y Qiao, P Gao, H Li. PointCLIP: Point Cloud Understanding by CLIP. CVPR'22
 	- 3D PC project to 2D image;
 	- CLIP to optimize text to get class;
 - Zero-shot detection on images. ECCV'22
@@ -97,7 +97,7 @@
 		- e.g. Text-based image inpainting/generation/...
 		- Encode time: concatenate enc(Text)
 		- Supervision time:
-	- Shizhan Zhu, Sanja Fidler, Raquel Urtasun, Dahua Lin, Chen Change Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
+	- S Zhu, S Fidler, R Urtasun, D Lin, C C Loy. Be Your Own Prada: Fashion Synthesis with Structural Coherence. ICCV'17
 		- Problem setup: input image + text; output new image (focus on fashion);
 		- Model:
 			- Image -> Enc() -> z1;
@@ -107,7 +107,7 @@
 	- **Attngan**: T. Xu, P. Zhang, Q. Huang, H. Zhang, Z. Gan, X. Huang, and X. He. Attngan: Fine-grained text to image generation with attentional generative adversarial networks. CVPR'18
 	- Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language. NIPS'18
 	- Yonsei University, Text-Adaptive Generative Adversarial Networks: Manipulating Images with Natural Language, NIPS'18
-	- **StyleCLIP**: Or Patashnik, Zongze Wu, Eli Shechtman, Daniel Cohen-Or, Dani Lischinski. StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery. ICCV'21 oral
+	- **StyleCLIP**: O Patashnik, Z Wu, E Shechtman, D Cohen-Or, D Lischinski. StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery. ICCV'21 oral
 		- https://github.com/orpatashnik/StyleCLIP
 		- Approach 1: optimize latent w, s.t.
 			- CLIP(G(w), text) close + regularization (close to original w and a face recognition)
@@ -125,7 +125,7 @@
 		- Latent distribution qφ(z|x): 32x32 dVAE, K=8192 tokens, with Gumbel trick;
 		- Image distribution pθ(x|y,z): Log-laplace NLL loss;
 		- Text token joint distribution: pψ(y, z); 12-billion parameter sparse transformer
-- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+- **GLIDE**: A Nichol, P Dhariwal, A Ramesh, P Shyam, P Mishkin, B McGrew, I Sutskever, and M Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
 	- https://github.com/openai/glide-text2im.
 	- CLIP-guidance v.s. classifier-free guidance;
 
@@ -155,10 +155,10 @@
 		- Object-level grounding;
 - Unclassified
 	- Partially-Supervised Image Captioning. NIPS'18
-	- Dahua Lin. A Neural Compositional Paradigm for Image Captioning. NIPS'18
+	- D Lin. A Neural Compositional Paradigm for Image Captioning. NIPS'18
 	- Weakly Supervised Dense Event Captioning in Videos. NIPS'18
 	- Answerer in Questioner's Mind: Information Theoretic Approach to Goal-Oriented Visual Dialog. NIPS'18
-	- Fenglin Liu, Yuanxin Liu, Xuancheng Ren, Xiaodong He, Xu Sun. Aligning Visual Regions and Textual Concepts for Semantic-Grounded Image Representations. NIPS'19
+	- F Liu, Y Liu, X Ren, X He, X Sun. Aligning Visual Regions and Textual Concepts for Semantic-Grounded Image Representations. NIPS'19
 - Misc
 	- **NeuralTalk**: A. Karpathy. https://github.com/karpathy/neuraltalk
 	- A. Karpathy and L. Fei-Fei. Deep visual-semantic alignments for generating image descriptions. CVPR 2015
@@ -179,8 +179,8 @@
 	- Misc:
 		- Learning Conditioned Graph Structures for Interpretable Visual Question Answering. NIPS'18
 		- Out of the Box: Reasoning with Graph Convolution Nets for Factual Visual Question Answering. NIPS'18
-		- Jin-Hwa Kim, Jaehyun Jun, Byoung-Tak Zhang. Bilinear Attention Networks. NIPS'18
-	- Vqa: Visual question answering. ICCV 2015.
+		- J Kim, J Jun, B Zhang. Bilinear Attention Networks. NIPS'18
+	- Vqa: Visual question answering. ICCV'15.
 	- Devi, Dhruv: Visual Dialog. CVPR 2017
 		- https://visualqa.org/challenge.html
 	- A-star best performer:
@@ -221,7 +221,7 @@
 
 ## RL + Language
 - Program Guided
-	- Shao-Hua Sun, Te-Lin Wu, Joseph J. Lim. Program Guided Agent. ICLR'20
+	- S Sun, T Wu, J Lim. Program Guided Agent. ICLR'20
 		- Input: perception (2D) + DSL program;
 		- Output: action;
 - Navigation
