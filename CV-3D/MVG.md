@@ -10,12 +10,12 @@
 - 2D:
 	- Points: (x, y), or (x', y', w) = w(x, y, 1)
 	- Lines: ax + by + c = 0. so (n, d), n is normal;
-	- Conics: x^T Q x = 0
+	- Conics: x†Qx = 0
 - 3D:
 	- Points: (x, y, z, w);
 	- Planes: ax + by + cz + d = 0;
 	- Lines: (1-lambda)p + lambda q; L=pq-qp (Plucker coordinate);
-	- Quadrics: x^T Q x = 0
+	- Quadrics: x†Qx = 0
 - 2D-Transformation:\
 	<img src="/CV-3D/images/mvg/2d-transform.png" alt="drawing" width="400"/>
 - 2D-Transformation:\
@@ -38,9 +38,9 @@
 			- xc = xc(1 + k1 r^2 + k2 r^4)
 			- yc = yc(1 + k1 r^2 + k2 r^4)
 	- **3D to 2D** (world-to-screen):
-		- P = K[R\|T]; x=PX=KEX;
+		- P = K[R|T]; x=PX=KEX;
 		- T = -Rc, with c as the camera center;
-		- R = [R-camx^T; R-camy^T; R-camz^T], row vector as the 
+		- R = [R-camx†; R-camy†; R-camz†], row vector as the
 	- Screen to world: X ~ E(-1) K(-1) x;
 	- Camera to camera (assume z known):\
 		<img src="/CV-3D/images/mvg/cam-cam.png" alt="drawing" width="400"/>
@@ -55,7 +55,7 @@
 
 ## Structure From Motion
 - Rick Szeliski, Chap 7
-	- Triangulation: determining a point's 3D position from a set of corresponding image locations and known camera positions is known as triangulation; Pj=Kj[Rj\|tj], where tj=-Rjcj and cj is ith camera center;
+	- Triangulation: determining a point's 3D position from a set of corresponding image locations and known camera positions is known as triangulation; Pj=Kj[Rj|tj], where tj=-Rjcj and cj is ith camera center;
 		<img src="/CV-3D/images/mvg/triangulate.png" alt="drawing" width="400"/>
 	- Two-frame structure from motion:
 		- Calibrated: essential matrix (rank deficient b/c Et=0), chirality (a positive distance along the viewing rays emanating from the camera)\
@@ -121,7 +121,7 @@
 
 ## Theory, Minimal-Problems
 - http://cmp.felk.cvut.cz/old_pages/mini/
-- David Nister. An Efficient Solution to the Five-Point Relative Pose Problem. PAMI'05
-- Joe Kileel. Minimal Problems for the Calibrated Trifocal Variety. 2016
+- D Nister. An Efficient Solution to the Five-Point Relative Pose Problem. PAMI'05
+- J Kileel. Minimal Problems for the Calibrated Trifocal Variety. 2016
 	- https://math.berkeley.edu/~jkileel/CalibratedMinimalProblems.html
-- Timothy Duff, Kathlen Kohn, Anton Leykin, Tomas Pajdla. PLMP- Point-Line Minimal Problems in Complete Multi-View Visibility. ICCV'19 best student paper award
+- T Duff, K Kohn, A Leykin, T Pajdla. PLMP-Point-Line Minimal Problems in Complete Multi-View Visibility. ICCV'19 best student paper award

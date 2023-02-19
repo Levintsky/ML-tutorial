@@ -54,8 +54,9 @@
 	- https://ray.readthedocs.io/en/latest/rllib.html \
 		<img src="/RL/images/dist/rllib.png" alt="drawing" width="600"/>
 - **R2D2**: S Kapturowski, G Ostrovski, J Quan, R Munos, W Dabney. Recurrent Experience Replay in Distributed Reinforcement Learning. ICLR'19
-- Dopamine: https://github.com/google/dopamine
+- **dopamine**: DeepMind. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
+		- https://github.com/google/dopamine
 - Algorithms
 	- Y. Li and D. Schuurmans. Mapreduce for parallel reinforcement learning. Recent advances in reinforcement learning, 2011.
-	- Popov, I., Heess, N., Lillicrap, T., Hafner, R., BarthMaron, G., Vecerik, M., Lampe, T., Tassa, Y., Erez, T., and Riedmiller, M. Data-efficient deep reinforcement learning for dexterous manipulation. 2017
-	- Horgan, D., Quan, J., Budden, D., Barth-Maron, G., Hessel, M., van Hasselt, H., and Silver, D. Distributed prioritized experience replay. ICLR'18
+	- DeepMind. Data-efficient deep reinforcement learning for dexterous manipulation. 2017
+	- DeepMind. Distributed prioritized experience replay. ICLR'18

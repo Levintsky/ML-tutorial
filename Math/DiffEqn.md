@@ -89,7 +89,7 @@
 		- Theorem 3.6: f(x,y) < F(x,y), y1'=f(x,y), y2'=F(x,y) passes the same (x0,y0), then
 			- x > x0, y2(x)>y1(x)
 			- x < x0, y1(x)>y2(x)
-		- Theorem 3.7: exists sigma < h, x in (x0-sigma, x0+sigma), sol achieves minimum and maximum;
+		- Theorem 3.7: exists σ < h, x in (x0-σ, x0+σ), sol achieves minimum and maximum;
 - Ding TongRen Chap 4: Singular solution;
 	- **Implicit eqn: F(x,y,y')=0**;
 		- E.g. y=f(x,p) p=dy/dx;

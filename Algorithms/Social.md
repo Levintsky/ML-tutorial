@@ -12,14 +12,17 @@
 ## Tutorials
 - ICML'21: https://sites.google.com/view/ResponsibleAITutorial
 
-## Unclassified
+## RL
 - DeepMind. Social Influence as Intrinsic Motivation for Multi-Agent Deep Reinforcement Learning. ICML'19 best paper honorable mention
+- DeepMind. Offline Contextual Bandits with High Probability Fairness Guarantees. NIPS'19
+	- Fairness constraint:
+		- gf(θ) = 1/|F|Σ(RI(f) - E[R|f]) - εf
+		- gm(θ) = 1/|M|Σ(RI(m) - E[R|m]) - εm
 
 ## Fairness
-- Sriram Vasudevan, Krishnaram Kenthapadi. LiFT: A Scalable Framework for Measuring Fairness in ML Applications. CIKM'20
+- S Vasudevan, K Kenthapadi. LiFT: A Scalable Framework for Measuring Fairness in ML Applications. CIKM'20
 	- https://github.com/linkedin/LiFT
 
 ## Privacy
-- NIPS'18
-	- Mark Bun, Thomas Steinke. Average-Case Averages: Private Algorithms for Smooth Sensitivity and Mean Estimation.
-	- Kamalika Chaudhuri Jacob Imola, Ashwin Machanavajjhala. Capacity Bounded Differential Privacy.
+- M Bun, T Steinke. Average-Case Averages: Private Algorithms for Smooth Sensitivity and Mean Estimation. NIPS'18
+- K Chaudhuri, J Imola, A Machanavajjhala. Capacity Bounded Differential Privacy.

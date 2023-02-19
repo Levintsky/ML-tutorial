@@ -94,30 +94,10 @@
 - D Ha. A Visual Guide to Evolution Strategies. blog.otoro.net. Oct 2017.
 	- http://blog.otoro.net/2017/10/29/visual-evolution-strategies/
 - PBT:
-	- M Jaderberg, et. al. Population Based Training of Neural Networks, 2017
+	- M Jaderberg, et. al. Population Based Training of Neural Networks, NeurIPS'17
 	- M Jaderberg, et. al. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
 
 ## Random Search, Grid Search
 - J. Bergstra and Y. Bengio. Random search for hyperparameter optimization. JMLR'12
 - L Li, K Jamieson, G DeSalvo, A Rostamizadeh, A Talwalkar. Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization, ICLR'17, JMLR'18
 	- https://www.argmin.net/2016/06/23/hyperband/
-
-## Bayesian-Based Hyperparameter Learning
-- B. Shahriari, K. Swersky, Z. Wang, R. P. Adams, and N. de Freitas. Taking the human out of the loop: A review of bayesian optimization. 2016
-- J Snoek, H Larochelle, and R Adams. Practical bayesian optimization of machine learning algorithms. NIPS'12
-- J Snoek, et. al. Scalable bayesian optimization using deep neural networks. NIPS'15
-- Gradient based hyper-parameter optimization:
-	- D Maclaurin, D Duvenaud, R Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
-	- F Pedregosa. Hyperparameter optimization with approximate gradient. ICML'16
-
-## Unclassified
-- Frank Hutter, Holger H. Hoos, and Kevin Leyton-Brown. Sequential model-based optimization for general algorithm configuration. LION 2005
-
-## Unclassified
-- F Hutter, L Xu, H Hoos, and K Leyton-Brown. Algorithm runtime prediction: Methods and evaluation (extended abstract). IJCAI'15
-- T Domhan, J Springenberg, F Hutter. Speeding up Automatic Hyperparameter Optimization of Deep Neural Networksby Extrapolation of Learning Curves. IJCAI 2015
-	- https://github.com/automl/pylearningcurvepredictor
-- D Ha, A Dai and Q Le. Hypernetworks. ICLR 2017.
-- J. Bergstra, R. Bardenet, Y. Bengio, and B. Kegl. Algorithms for hyper-parameter optimization. NIPS'11
-- E Hazan, A Klivans, Y Yuan. Hyperparameter Optimization: A Spectral Approach. NIPS DLTP Workshop 2017
-	- https://github.com/callowbird/Harmonica

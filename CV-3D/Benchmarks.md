@@ -10,11 +10,11 @@
 
 ## Objects
 - ShapeNet-Series:
-	- **ShapeNet**: Angel X Chang, Thomas Funkhouser, Leonidas Guibas, et al. Shapenet: An information-rich 3d model repository. 2015
+	- **ShapeNet**: L Guibas. Shapenet: An information-rich 3d model repository. 2015
 		- https://www.shapenet.org/
 		- 55 classes, 51,300 unique 3D models (ShapeNetCore)
 		- Part label available
-	- **PartNet**: Kaichun Mo, Shilin Zhu, Angel X. Chang, Li Yi, Subarna Tripathi, Leonidas J. Guibas, Hao Su. PartNet: A Large-scale Benchmark for Fine-grained and Hierarchical Part-level 3D Object Understanding. CVPR'19
+	- **PartNet**: Hao Su. PartNet: A Large-scale Benchmark for Fine-grained and Hierarchical Part-level 3D Object Understanding. CVPR'19
 		- https://cs.stanford.edu/~kaichun/partnet/
 		- https://github.com/daerduoCarey/partnet_anno_system (Online annotation system)
 		- https://github.com/daerduoCarey/partnet_dataset
@@ -30,32 +30,32 @@
 		- https://shape.cs.princeton.edu/benchmark/
 		- 1,814 3D polygonal models collected from the World Wide Web;
 		- Each 3D model contains a (.off) file, a model information file (e.g., the URL from where it came), and a JPEG image file with a thumbnail view of the model.
-	- **IKEA**: Joseph J. Lim, Hamed Pirsiavash, and Antonio Torralba. Parsing ikea objects: Fine pose estimation. ICCV'13
+	- **IKEA**: J Lim, H Pirsiavash, and A Torralba. Parsing ikea objects: Fine pose estimation. ICCV'13
 		- http://ikea.csail.mit.edu/
 		- Goal: evaluate fine pose estimation based on 3D models
 		- 759 images, 219 3D-models;
-	- **ModelNet**: Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
+	- **ModelNet**: Z Wu, S Song, A Khosla, F Yu, L Zhang, X Tang, and J Xiao. 3d shapenets: A deep representation for volumetric shapes. CVPR'15
 		- http://3dshapenets.cs.princeton.edu/
 		- 30 x 30 x 30 voxels
 		- 662 classes, 151,128 CAD models (3D)
 		- ModelNet10: 4899 models from 10 categories 
 		- ModelNet40: 12,311 models from 40 categories, all are uniformly orientated;
-	- Zhou, Qingnan and Jacobson. Thingi10K: A Dataset of 10,000 3D-Printing Models (2016).
+	- Thingi10K: A Dataset of 10,000 3D-Printing Models (2016).
 		- https://ten-thousand-models.appspot.com/
 		- 10k models from thingiverse.com;
-	- **ABC**: Sebastian Koch, Albert Matveev, Zhongshi Jiang, Francis Williams, Alexey Artemov, Evgeny Burnaev, Marc Alexa, Denis Zorin, Daniele Panozzo. ABC: A Big CAD Model Dataset For Geometric Deep Learning. CVPR'19
+	- **ABC**: S Koch, A Matveev, Z Jiang, F Williams, A Artemov, E Burnaev, M Alexa, D Zorin, D Panozzo. ABC: A Big CAD Model Dataset For Geometric Deep Learning. CVPR'19
 		- https://cs.nyu.edu/~zhongshi/publication/abc-dataset/
 		- https://deep-geometry.github.io/abc-dataset/
 		- a collection of one million CAD models;
 		- Each model: **explicitly parametrized curves and surfaces**, providing ground truth for differential quantities, patch segmentation, geometric feature detection, and shape reconstruction;
-	- Mikaela Angelina Uy, Quang-Hieu Pham, Binh-Son Hua, Duc Thanh Nguyen, Sai-Kit Yeung. ScanObjectNN: A New Benchmark Dataset and Classification Model on Real-World Data. ICCV'19
+	- M Uy, Q Pham, B Hua, D T Nguyen, S Yeung. ScanObjectNN: A New Benchmark Dataset and Classification Model on Real-World Data. ICCV'19
 		- https://hkust-vgd.github.io/scanobjectnn/
 		- **Indoor** with clean obj or with background;
 		- Benchmark for classification task;
-	- **Fusion 360**: Karl D. D. Willis and Yewen Pu and Jieliang Luo and Hang Chu and Tao Du and Joseph G. Lambourne and Armando Solar-Lezama and Wojciech Matusik. Fusion 360 Gallery Dataset. TOG'21
+	- **Fusion 360**: K Willis, Y Pu, J Luo, H Chu, T Du, J Lambourne, A Solar-Lezama and W Matusik. Fusion 360 Gallery Dataset. TOG'21
 		- https://github.com/AutodeskAILab/Fusion360GalleryDataset
 		- Submitted by users of the CAD package Autodesk Fusion 360
-	- Kim, Jungtaek and Chung, Hyunsoo and Lee, Jinhwi and Cho, Minsu and Park, Jaesik. Combinatorial {3D} Shape Generation via Sequential Assembly. NeurIPSW'20
+	- J Kim, H Chung, J Lee and M Cho and J Park. Combinatorial {3D} Shape Generation via Sequential Assembly. NeurIPSW'20
 		- https://github.com/POSTECH-CVLab/Combinatorial-3D-Shape-Generation
 		- Sequential assembly with geometric primitives (2x4 jigsaw puzzles)
 - **LabelMe 3d**: B. C. Russell and A. Torralba. Building a database of 3d scenes from user annotations. CVPR'09
@@ -95,7 +95,7 @@
 	- Armen Avetisyan, Manuel Dahnert, Angela Dai, Manolis Savva, Angel X. Chang, Matthias Nießner. Scan2CAD: Learning CAD Model Alignment in RGB-D Scans.
 		- https://github.com/skanti/Scan2CAD
 - Shrec:
-	- **ObjectNN**: Binh-Son Hua, Quang-Trung Truong, Minh-Khoi Tran, Quang-Hieu Pham, Asako Kanezaki, Tang Lee, HungYueh Chiang, Winston Hsu, Bo Li, Yijuan Lu, Henry Johan, Shoki Tashiro, Masaki Aono, Minh-Triet Tran, Viet-Khoi Pham, Hai-Dang Nguyen, Vinh-Tiep Nguyen, Quang-Thang Tran, Thuyen V. Phan, Bao Truong, Minh N. Do, Anh-Duc Duong, Lap-Fai Yu, Duc Thanh Nguyen, Sai-Kit Yeung. SHREC'17: RGB-D to CAD Retrieval with ObjectNN Dataset. EuroGraphics'17
+	- **ObjectNN**: SHREC'17: RGB-D to CAD Retrieval with ObjectNN Dataset. EuroGraphics'17
 		- http://103.24.77.34/scenenn/home/
 		- query: 1,667 from SceneNN;
 		- Target: 3,308 CAD from shapenet;
@@ -118,7 +118,7 @@
 		- Each object is labeled with a class and an instance number (cup1, cup2, cup3, etc)
 	- Rent3D: Floor-Plan Priors for Monocular Layout Estimation.
 		- https://www.cs.toronto.edu/~fidler/projects/rent3D.html
-	- **SceneNN**: Binh-Son Hua, Quang-Hieu Pham, Duc Thanh Nguyen, Minh-Khoi Tran, Lap-Fai Yu, Sai-Kit Yeung. SceneNN: a Scene Meshes Dataset with aNNotations. 3DV'16
+	- **SceneNN**: B Hua, Q Pham, D T Nguyen, M Tran, L Yu, S Yeung. SceneNN: a Scene Meshes Dataset with aNNotations. 3DV'16
 		- 100+ indoor scene meshes;
 		- http://www.scenenn.net
 	- **SUNRGB-D**: S. Song, S. Lichtenberg, and J. Xiao. SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite. CVPR'15
@@ -129,21 +129,21 @@
 		- GT label:
 			- 2D polygon: Amazon Mechanical Turk, LabelMe-style;
 			- 3D: bev;
-	- **ScanNet**: Angela Dai, Angel X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser and Matthias Nießner. 2017. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
+	- **ScanNet**: A Dai, A Chang, M Savva, M Halber, T Funkhouser and M Nießner. ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes. CVPR'17
 		- 2.5 million, >1,500 scans, annotated camera pose, surface reconstruction, instance-level semantic segmentation;
 		- iPad RGB camera, 30Hz, depth 640 × 480, color at 1296 × 968 pixels;
 		- GT acquisition:
 			- Reconstruction: volumetric fusion (bundle fusion), then Voxel-Hashing + Marching Cube;
 			- Instance-segmentation: normal-based graph-cut (over-seg), then user click to cluster; CAD retrieval for object detection?
-	- **Matterport3D**: Angel Chang, Angela Dai, Thomas Funkhouser, Maciej Halber, Matthias Nießner, Manolis Savva, Shuran Song, Andy Zeng, Yinda Zhang. Matterport3D: Learning from RGB-D Data in Indoor Environments. 3DV'17
+	- **Matterport3D**: A Chang, A Dai, T Funkhouser, M Halber, M Nießner, M Savva, S Song, A Zeng, Y Zhang. Matterport3D: Learning from RGB-D Data in Indoor Environments. 3DV'17
 		- RGB-D indoor Environment;
 		- https://github.com/niessner/Matterport
-	- **SUNCG**: Shuran Song, Fisher Yu, Andy Zeng, Angel X. Chang, Manolis Savva, Thomas Funkhouser. Semantic Scene Completion from a Single Depth Image. CVPR'17
+	- **SUNCG**: S Song, F Yu, A Zeng, A Chang, M Savva, T Funkhouser. Semantic Scene Completion from a Single Depth Image. CVPR'17
 		- https://sscnet.cs.princeton.edu/
 		- Focus on **semantic scene completion**, a task for producing a complete 3D voxel representation of volumetric occupancy and semantic labels for a scene from a single-view depth map observation;
-	- **InteriorNet**: Wenbin Li, Sajad Saeedi, John McCormac, Ronald Clark, Dimos Tzoumanikas, Qing Ye, Yuzhong Huang, Rui Tang and Stefan Leutenegger. InteriorNet: Mega-scale Multi-sensor Photo-realistic Indoor Scenes Dataset. BMVC'18
+	- **InteriorNet**: Wenbin Li, Sajad Saeedi, John McCormac, Ronald Clark, Dimos Tzoumanikas, Qing Ye, Y Huang, R Tang and S Leutenegger. InteriorNet: Mega-scale Multi-sensor Photo-realistic Indoor Scenes Dataset. BMVC'18
 		- https://interiornet.org/
-	- **Structured3D**: Jia Zheng, Junfei Zhang, Jing Li, Rui Tang, Shenghua Gao, Zihan Zhou. Structured3D: A Large Photo-realistic Dataset for Structured 3D Modeling
+	- **Structured3D**: J Zheng, J Zhang, J Li, R Tang, S Gao, Z Zhou. Structured3D: A Large Photo-realistic Dataset for Structured 3D Modeling
 		- https://structured3d-dataset.org/
 	- 3D-FRONT: 3D Furnished Rooms with layOuts and semaNTics [Link]
 		- Contains 10,000 houses (or apartments) and ~70,000 rooms with layout information.
@@ -152,16 +152,16 @@
 		- Task: navigation;
 	- **Facebook House3D**: A Rich and Realistic 3D Environment 2017;
 		- Built on SUNCG;
-	- **HoME**: Simon Brodeur, Ethan Perez, Ankesh Anand, Florian Golemo, Luca Celotti, Florian Strub, Jean Rouat, Hugo Larochelle, Aaron Courville. HoME: a Household Multimodal Environment. NIPS'17
+	- **HoME**: S Brodeur, E Perez, A Anand, F Golemo, L Celotti, F Strub, J Rouat, H Larochelle, A Courville. HoME: a Household Multimodal Environment. NIPS'17
 		- https://home-platform.github.io/
 	- **AI2-THOR**: Eric Kolve, Roozbeh Mottaghi, Winson Han, Eli VanderBilt, Luca Weihs, Alvaro Herrasti, Daniel Gordon, Yuke Zhu, Abhinav Gupta, Ali Farhadi. AI2-THOR: An Interactive 3D Environment for Visual AI. 2017
 		- Simulation, robotics;
-	- **UnrealCV**: Weichao Qiu, Fangwei Zhong, Yi Zhang, Siyuan Qiao,Zihao Xiao, Tae Soo Kim, Yizhou Wang, Alan Yuille. UnrealCV: Virtual Worlds for Computer Vision. ACMMM'17
+	- **UnrealCV**: W Qiu, F Zhong, Y Zhang, S Qiao, Z Xiao, T S Kim, Y Wang, A Yuille. UnrealCV: Virtual Worlds for Computer Vision. ACMMM'17
 		- https://unrealcv.org/
 	- **Gibson Environment**: Real-World Perception for Embodied Agents;
 		- http://gibsonenv.stanford.edu/
 		- Built on real indoor scenes;
-	- **3D-FUTURE**: Huan Fu, Rongfei Jia, Lin Gao, Mingming Gong, Binqiang Zhao, Steve Maybank, Dacheng Tao. 3D-FUTURE: 3D FUrniture shape with TextURE. arxiv'20
+	- **3D-FUTURE**: H Fu, R Jia, L Gao, M Gong, B Zhao, S Maybank, D Tao. 3D-FUTURE: 3D FUrniture shape with TextURE. arxiv'20
 		- https://tianchi.aliyun.com/specials/promotion/alibaba-3d-future?spm=5176.14208320.0.0.66293cf7asRnrR
 		- 20,240 indoor rendered images and 16,563 (+6571) 3D furniture models,
 	- 3ThreeDWorld(TDW): A High-Fidelity, Multi-Modal Platform for Interactive Physical Simulation [Link]
@@ -180,10 +180,10 @@
 	- MVS benchmark;
 
 ## 3D Human
-- **FAUST**: Federica Bogo, Javier Romero, Matthew Loper, Michael J. Black. FAUST: Dataset and evaluation for 3D mesh registration, CVPR'14
+- **FAUST**: F Bogo, J Romero, M Loper, M Black. FAUST: Dataset and evaluation for 3D mesh registration, CVPR'14
 	- http://faust.is.tue.mpg.de/
 	- Human scans
-- **VOCASET**: Daniel Cudeiro, Timo Bolkart, Cassidy Laidlaw, Anurag Ranjan and Michael J. Black. VOCASET: Speech-4D Head Scan Dataset. CVPR'19
+- **VOCASET**: D Cudeiro, T Bolkart, C Laidlaw, A Ranjan and M Black. VOCASET: Speech-4D Head Scan Dataset. CVPR'19
 	- https://voca.is.tue.mpg.de/
 	- 4D face datasets, 29 min, 60fps, 12 speakers;
 

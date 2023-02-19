@@ -87,14 +87,14 @@
 	- Assume we have multiple classifier hypothesis, add new data+label, remove unsatisfied hypothesis;
 	- Supervised: for misclassification error ≤ ε, need ≈ 1/ε labeled points.
 - Separable data:
-	- David Cohn, Les Atlas and Richard Ladner. Improving generalization with active learning, Machine Learning 15(2):201-221, 1994.
-	- Yoav Freund, H. Sebastian Seung, Eli Shamir, and Naftali Tishby, Selective Sampling Using the Query by Committee Algorithm, Machine Learning, 28, 133-168, 1997.
-	- Sanjoy Dasgupta, Coarse sample complexity bounds for active learning. NIPS 2005.
+	- D Cohn, Les Atlas and R Ladner. Improving generalization with active learning, ML'94
+	- Y Freund, S Seung, E Shamir, and N Tishby, Selective Sampling Using the Query by Committee Algorithm, Machine Learning'97.
+	- S Dasgupta, Coarse sample complexity bounds for active learning. NIPS'05.
 - General data:
-	- Nina Balcan, Alina Beygelzimer, John Langford, Agnostic Active Learning. ICML 2006
+	- N Balcan, A Beygelzimer, J Langford, Agnostic Active Learning. ICML'06
 	- Hanneke, S. A Bound on the Label Complexity of Agnostic Active Learning. ICML 2007.
-	- Sanjoy Dasgupta, Daniel J. Hsu, and Claire Monteleoni. A general agnostic active learning algorithm. NIPS 2007.
-	- Alina Beygelzimer, Sanjoy Dasgupta, and John Langford, Importance Weighted Active Learning, ICML 2009.
+	- S Dasgupta, D Hsu, and C Monteleoni. A general agnostic active learning algorithm. NIPS 2007.
+	- A Beygelzimer, S Dasgupta, and J Langford, Importance Weighted Active Learning, ICML'09
 - Algorithms:
 	- A^2 algorithm;
 
@@ -109,6 +109,17 @@
 	-  Bengar et al. (2021): label dispersion
 
 ## Application in Computer Vision
+- 3D:
+	- L Yi, L Guibas. A Scalable Active Framework for Region Annotation in 3D Shape Collections. SIGGRAPH Asia'18
+		- Problem setup: per-point human-verified annotations of 3D shapes; reduce human effort;
+		- Human task set: Annotation Am, verification Vm;
+		- Propagates labels from the annotated shapes to unlabeled ones by exploiting both local geometric features and global shape structure;\
+			<img src="/CV-3D/images/detection/active-anno.png" alt="drawing" width="500"/>
+		- Goal: optimize utility function N-good / Time;
+		- 1.1 Selecting Annotation set: Prediction confidence: similarity between shape sk to its most similar sx + global;
+		- 1.2 Selecting Verification set:
+		- 2. Human labels: obtaining input;
+		- 3. Propagate labels:
 - Scene classification:
 	- G.-J. Qi, X.-S. Hua, Y. Rui, J. Tang, and H.-J. Zhang, Two-dimensional active learning for image classification. CVPR'08
 - Object/image categorization:
@@ -127,7 +138,7 @@
 		- Tree/chain
 	- W. Luo, A. G. Schwing, and R. Urtasun, Latent Structured Active Learning. NIPS'13
 		- Latent structure with belief propagation; local entropy of the marginal distribution of each variable via convex belief propagation;
-	- Qing Sun, Ankit Laddha, Dhruv Batra. Active Learning for Structured Probabilistic Models with Histogram Approximation. CVPR'15
+	- Q Sun, A Laddha, D Batra. Active Learning for Structured Probabilistic Models with Histogram Approximation. CVPR'15
 		- Insight: variational, Histogram Approx q(y|x) for p(y|x);
 		- Assumption: CRF with unary and binary
 			- S(y) = Σφ(yu) + Σφ(yu, yv)

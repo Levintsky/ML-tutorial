@@ -58,8 +58,8 @@
 - **Approximate Knowledge Compilation by Online Collapsed Importance Sampling**. NIPS'18
 - **Randomized Prior Functions for Deep Reinforcement Learning**. NIPS'18
 - UD-RL
-	- Jurgen Schmidhuber. Reinforcement Learning Upside Down: Don’t Predict Rewards - Just Map Them to Actions. 2019
-	- Rupesh Kumar Srivastava, Pranav Shyam, Filipe Mutz, Wojciech Jaśkowski, Jürgen Schmidhuber. Training Agents using Upside-Down Reinforcement Learning. 2019
+	- J Schmidhuber. Reinforcement Learning Upside Down: Don’t Predict Rewards - Just Map Them to Actions. 2019
+	- R K Srivastava, P Shyam, F Mutz, W Jaśkowski, J Schmidhuber. Training Agents using Upside-Down Reinforcement Learning. 2019
 
 ## Applications on RL
 - System Optimization
@@ -74,9 +74,9 @@
 - NTM
 	- W. Zaremba and I. Sutskever. Reinforcement learning neural turing machines. arxiv, 2015.
 - Recommendation
-	- Lihong Li, Wei Chu, John Langford, Robert E. Schapire. A Contextual-Bandit Approach to Personalized News Article Recommendation, WWW'10
+	- L Li, W Chu, J Langford, R Schapire. A Contextual-Bandit Approach to Personalized News Article Recommendation, WWW'10
 	- Fighting Boredom in Recommender Systems with Linear Reinforcement Learning. NIPS'18
-	- **Horizon**: Jason Gauci, Edoardo Conti, Yitao Liang, Kittipat Virochsiri, Yuchen He, Zachary Kaden, Vivek Narayanan, Xiaohui Ye, Zhengxing Chen, Scott Fujimoto. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
+	- **Horizon**: Facebook. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
 - Misc
 	- Data center cooling using model-predictive control. NIPS'18 Tutorial
 - Unclassified
@@ -96,14 +96,9 @@
 			- C. Maddison, A. Huang, I. Sutskever, and D. Silver. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
 			- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML'15.
 		- Y. Tian and Y. Zhu. Better computer go player with neural network and long- term prediction. arxiv, 2015.
-		- **AlphaGo**: D. Silver, A. Huang, C. J. Maddison, A. Guez, L. Sifre, G. van den Driessche, J. Schrittwieser, I. Antonoglou, V. Panneershelvam, M. Lanctot, S. Dieleman, J. Nham, N. Kalchbrenner, I. Sutskever, T. Lillicrap, M. Leach, K. Kavukcuoglu, T. Graepel, and D. Hassabis. Mastering the game of go with deep neural networks and tree search. Nature'14
-		- **AlphaGo Zero**: D Silver, J Schrittwieser, K Simonyan, I Antonoglou, A Huang, A Guez, T Hubert, L Baker, M Lai, A Bolton, Y Chen, T Lillicrap, F Hui, L Sifre, G v d Driessche, T Graepel, D Hassabis. Mastering the game of Go without human knowledge. Nature'17
-		- The system:\
-			<img src="/RL/images/chess/agz1.png" alt="drawing" width="600"/>
-		- MCTS:\
-			<img src="/RL/images/chess/agz2.png" alt="drawing" width="600"/>
-			<img src="/RL/images/chess/agz3.png" alt="drawing" width="400"/>
-		- **AlphaZero**: D Silver, T Hubert, J Schrittwieser, I Antonoglou, M Lai, A Guez, M Lanctot, L Sifre, D Kumaran, T Graepel, T Lillicrap, K Simonyan, D Hassabis. A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science'19
+		- AlphaGo: DeepMind. Mastering the game of go with deep neural networks and tree search. Nature'14
+		- AlphaGo-Zero: DeepMind. Mastering the game of Go without human knowledge. Nature'17
+		- AlphaZer: DeepMind. A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science'19
 		- PhoenixGo: https://github.com/Tencent/PhoenixGo
 		- MuGo: https://github.com/brilee/MuGo
 		- Leela: https://github.com/gcp/leela-zero
@@ -116,7 +111,7 @@
 	- Basics:
 		- How to solve the rubik's cube - beginners method. https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/.
 	- Mathematics:
-		- Daniel Kunkle and Gene Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC'07
+		- D Kunkle and G Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC'07
 		- Silviu Radu. Rubik’s cube can be solved in 34 quarter turns. http://cubezzz.dyndns.org/drupal/?q=node/view/92, Jul 2007.
 		- Michael Reid. Superflip requires 20 face turns. http://www.math.rwth-aachen.de/~Martin.Schoenert/Cube-Lovers/michael_reid__superflip_requires_20_face_turns.html, Jan 1995.
 		- Tomas Rokicki. Twenty-two moves suffice for rubik’s cubeR. The Mathematical Intelligencer, 32(1):33–40, 2010.
@@ -125,15 +120,15 @@
 		-  Morwen Thistlethwaite. Thistlethwaite’s 52-move algorithm. https://www.jaapsch.net/puzzles/thistle.htm, Jul 1981.
 	- Legacy:
 		- Peter Lichodzijewski and Malcolm Heywood. The rubik cube and gp temporal sequence learning: an initial study. In Genetic Programming Theory and Practice VIII, pages 35–54. Springer, 2011.
-	-  **Korf**:
-		- Andrew Brown. Rubik’s cube solver. https://github.com/brownan/Rubiks-Cube-Solver, 2017.
+	- **Korf**:
+		- A Brown. Rubik’s cube solver. https://github.com/brownan/Rubiks-Cube-Solver, 2017.
 		- Deepening A* search.
-		- Richard E. Korf. Finding optimal solutions to rubik’s cube using pattern databases. AAAI’97/IAAI’97, pages 700–705. AAAI
+		- R Korf. Finding optimal solutions to rubik’s cube using pattern databases. AAAI’97/IAAI’97, pages 700–705. AAAI
 	- **Kociemba**:
 		- Two-phase algorithm details. http://kociemba.org/math/imptwophase.htm.
-		- Maxim Tsoy. Kociemba. https://github.com/muodov/kociemba, 2018.
+		- M Tsoy. Kociemba. https://github.com/muodov/kociemba, 2018.
 	- Deep-learning:
-		- Robert Brunetto and Otakar Trunda. Deep heuristic-learning in the rubik’s cube domain: an experimental evaluation. 2017.
+		- R Brunetto and O Trunda. Deep heuristic-learning in the rubik’s cube domain: an experimental evaluation. 2017.
 
 ## HRL
 - From Spinningup
@@ -172,9 +167,8 @@
 		- Algorithm:\
 			<img src="/RL/images/hrl/straw3.png" alt="drawing" width="400"/>
 		- Experiments: 2D-maze; Atari;
-	- **FUN**: A S Vezhnevets, S Osindero, T Schaul, N Heess, M Jaderberg, D Silver, K Kavukcuoglu. Feudal Network for Hierarchical Reinforcement Learning. ICML'17
+	- FUN: DeepMind. Feudal Network for Hierarchical Reinforcement Learning. ICML'17
 		- https://github.com/dmakian/feudal_networks
-		<img src="/RL/images/hrl/fun.png" alt="drawing" width="500"/>
 	- Sanjay Krishnan, Roy Fox, Ion Stoica, and Ken Goldberg. Ddco: Discovery of deep continuous options for robot learning from demonstrations. ICLR'17
 	- Carlos Florensa, Yan Duan, and Pieter Abbeel. Stochastic neural networks for hierarchical reinforcement learning. 2017
 	- K Frans, J Ho, X Chen, P Abbeel, J Schulman. Meta Learning Shared Hierarchies. ICLR'18
@@ -202,12 +196,12 @@
 	- **CMDP**: Altman, Eitan. Constrained Markov Decision Processes. 1999
 	- Uchibe, Eiji and Doya, Kenji. Constrained reinforcement learning from intrinsic and extrinsic rewards. ICDL'07
 		- Heuristic CMDP: gradient projection
-	- Moldovan, Teodor Mihai and Abbeel, Pieter. Safe Exploration in Markov Decision Processes. ICML'12
-- Chow, Yinlam, Ghavamzadeh, Mohammad, Janson, Lucas, and Pavone, Marco. Risk-Constrained Reinforcement Learning with Percentile Risk Criteria. JMLR'15
+	- T Moldovan and P Abbeel. Safe Exploration in Markov Decision Processes. ICML'12
+- Y Chow, M Ghavamzadeh, L Janson, and M Pavone. Risk-Constrained Reinforcement Learning with Percentile Risk Criteria. JMLR'15
 	- **Primal-dual** subgradient method for risk-constrained reinforcement learning 
 	- Takes policy gradient steps on an objective that trades off return with risk
 	- Simultaneously learning the trade-off coefficients (dual variables).
-- Bou Ammar, Haitham, Tutunov, Rasul, and Eaton, Eric. Safe Policy Search for Lifelong Reinforcement Learning with Sublinear Regret. ICML'15
+- B Ammarm, R Tutunov, and E Eaton. Safe Policy Search for Lifelong Reinforcement Learning with Sublinear Regret. ICML'15
 	- Theoretic
 - Amodei et al. Concrete Problems in AI Safety, 2016. 
 	- Contribution: establishes a taxonomy of safety problems, serving as an important jumping-off point for future research. We need to solve these!
@@ -216,7 +210,7 @@
 	- 3. Scalable Oversight;
 	- 4. Safe Exploration;
 	- 5. Robustness to Distribution Shift;
-- Shalev-Shwartz, Shai, Shammah, Shaked, and Shashua, Amnon. Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving. 2016
+- S Shalev-Shwartz, S Shammah, and A Shashua. Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving. 2016
 	- avoid the problem of enforcing constraints on parametrized policies by decomposing 'desires' from trajectory planning;
 	- the neural network policy learns desires for behavior
 	- while the trajectory planning algorithm (which is not learned) selects final behavior and enforces safety constraints;
@@ -226,7 +220,7 @@
 		<img src="/RL/images/safety/cpo.png" alt="drawing" width="400"/>
 - Held, David, Mccarthy, Zoe, Zhang, Michael, Shentu, Fred, and Abbeel, Pieter. Probabilistically Safe Policy Transfer. ICRA'17
 - **HIRL**: Saunders et al. Trial without Error: Towards Safe Reinforcement Learning via Human Intervention, 2017.
-- **Intrinsic-fear**: Lipton, Zachary C., Gao, Jianfeng, Li, Lihong, Chen, Jianshu, and Deng, Li. Combating Deep Reinforcement Learning’s Sisyphean Curse with Intrinsic Fear.
+- **Intrinsic-fear**: Z Lipton, J Gao, L Li, J Chen, and D Deng. Combating Deep Reinforcement Learning’s Sisyphean Curse with Intrinsic Fear.
 - **Leave-No-Trace**: Eysenbach et al. Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning, 2017.
 - Chow, Y., Ghavamzadeh, M., Janson, L., and Pavone, M. Risk-constrained reinforcement learning with percentile risk criteria. JMLR'17
 - **Safety-Layer**: Dalal et al. Safe Exploration in Continuous Action Spaces. ICML'18. 
@@ -350,8 +344,8 @@
 - DeepMind. Vector-based Navigation using Grid-like Representations in Artificial Agents. Nature'18
 - P Mirowski. et.al. Learning to navigate in cities without a map. NIPS'18
 - T Chen, S Gupta, and A Gupta. Learning exploration policies for navigation. 2019
-- Devendra Singh Chaplot, Saurabh Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19
-- Devendra Singh Chaplot, Dhiraj Gandhi, Saurabh Gupta, Abhinav Gupta, Ruslan Salakhutdinov. Learning to Explore using Active Neural SLAM. ICLR'20
+- D Chaplot, S Gupta, A Gupta, R Salakhutdinov. Modular Visual Navigation using Active Neural Mapping. ICLR'19
+- D Chaplot, D Gandhi, S Gupta, A Gupta, R Salakhutdinov. Learning to Explore using Active Neural SLAM. ICLR'20
 	- https://github.com/devendrachaplot/Neural-SLAM
 	- https://www.cs.cmu.edu/~dchaplot/projects/neural-slam.html
 	- Insight: combination of classics and deep learning, analytical path planners with learned SLAM module;

@@ -29,5 +29,5 @@
 ## Legacy
 - M. Lauer and M. Riedmiller. An algorithm for distributed reinforcement learning in cooperative multi-agent systems. ICML'00
 - L. Matignon, G. J. Laurent, and N. Le Fort-Piat. Hysteretic q-learning: an algorithm for decentralized reinforcement learning in cooperative multi-agent teams. IROS'07
-- L. Busoniu, R. Babuska, and B. De Schutter. A comprehensive survey of multiagent reinforce- ment learning. 2008
+- L. Busoniu, R. Babuska, and B. De Schutter. A comprehensive survey of multiagent reinforcement learning. 2008
 - L. Panait and S. Luke. Cooperative multi-agent learning: The state of the art. AAMAS'05

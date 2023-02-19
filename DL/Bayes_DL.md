@@ -18,7 +18,7 @@
 - Resources
 	- Y Gal. http://bdl101.ml/
 	- NIPS'19 Tutorial: Deep Learning with Bayesian Principles.
-	- Angelos Filos et al. Benchmarking Bayesian Deep Learning with Diabetic Retinopathy Diagnosis.
+	- A Filos et al. Benchmarking Bayesian Deep Learning with Diabetic Retinopathy Diagnosis.
 	- Y Gal. Uncertainty in deep learning. 2016
 
 ## Preliminaries
@@ -26,7 +26,7 @@
 	- Can't be explained away;
 	- Homoscedastic;
 	- Heteroscedastic;
-		- Predict output uncertainty sigma(x) as well as y(x);
+		- Predict output uncertainty σ(x) as well as y(x);
 		- Optimize L(θ)=∑|yi-f(xi)|/2σ(xi)^2 + log(σ(xi))^2
 		- MAP: single value for θ;
 	- Distribution over model;

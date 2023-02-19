@@ -35,7 +35,7 @@
 - T Ijiri, S Owada, T Igarashi. Seamless integration of initial sketching and subsequent detail editing in flower modeling. CGF'06 
 - S Longay, A Runions, F Boudon, Przemyslaw Prusinkiewicz. Treesketch: Interactive modeling of trees on a tablet. EG'12
 - T Ijiri, S Owada, T Igarashi. The sketch L-System: Global control of tree modeling using free-form strokes. Smart Graphics'06
-- Yotam Livny, Feilong Yan, Matt Olson, Baoquan Chen, Hao Zhang, Jihad El-Sana. Automatic reconstruction of tree skeletal structures from point clouds. TOG'10
+- Y Livny, F Yan, M Olson, B Chen, H Zhang, J El-Sana. Automatic reconstruction of tree skeletal structures from point clouds. TOG'10
 - **SpeedTree**: Interactive Data Visualization, Inc. SpeedTree. 13
 	- http://www.speedtree.com/
 - **plastic trees**: Pirk, Sören; Stava, Ondrej; Kratt, Julian; Massih Said, Michel Abdul; Neubert, Boris; Mech, Randomir; Benes, Bedrich; Deussen, Oliver. Plastic trees: interactive self-adapting botanical tree models. SIGGRAPH'12

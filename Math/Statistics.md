@@ -49,11 +49,11 @@
 - T-test: SD+ instead of SD compared to Z-test;
 	- Most test statistics have the form t=Z/s, where Z and s are functions of the data.
 	- The **assumptions** underlying a t-test in its simplest form are that:
-		- X follows a **normal** distribution with mean mu and variance sig^2/n;
-		- s^2 follows a **chi-square** distribution with n−1 degrees of freedom. This assumption is met when the observations used for estimating s2 come from a normal distribution (and i.i.d for each group).
+		- X follows a **normal** distribution with mean mu and variance σ^2/n;
+		- s^2 follows a χ-square distribution with n−1 degrees of freedom. This assumption is met when the observations used for estimating s2 come from a normal distribution (and i.i.d for each group).
 		- Z and s are **independent**.
 		<img src="/Basic-ML/images/stat/t-test.png" alt="drawing" width="400"/>
-- Pearson's **chi-squared** test:
+- Pearson's χ-squared test:
 	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;\
 		<img src="/Basic-ML/images/stat/chi-squared-test.png" alt="drawing" width="400"/>
 
@@ -65,7 +65,7 @@
 
 	- Testing of Variance
 		- Chi-square test: variance of some samples
-		- F-test: Given two set of samples from (mean1, var1), (mean2, var2), test if var1 >=< var2?
+		- F-test: Given two set of samples from (μ1, σ1), (μ2, σ2), test if var1 ? var2
 - Distribution fitting test
 - Skewness, Kurtosis
 	- 3rd and 4th moments
@@ -75,9 +75,8 @@
 <img src="/Basic-ML/images/stat/gaussian-skew.png" alt="drawing" width="450"/>
 
 - Rank sum test:
-	- f1(x) = f2(x+a) test a >=< 0?
+	- f1(x) = f2(x+a) test a ? 0
 	- rank x(1) < x(2) < ... < x(n)
-
 - P-Value test:
 	- e.g., 100 coins, 90H/10T, fair?
 	- All more extreme cases

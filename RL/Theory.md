@@ -8,7 +8,7 @@
 
 ## Theory on Exploration + Tabular MDP
 - Tabular MDP: minimax results;
-	- Azar, Mohammad Gheshlaghi, Ian Osband, and Remi Munos. Minimax regret bounds for reinforcement learning. ICML'17 (regret)
+	- DeepMind. Minimax regret bounds for reinforcement learning. ICML'17 (regret)
 	- Dann, C., Li, L., Wei, W., and Brunskill, E. Policy certificates: Towards accountable reinforcement learning. ICML'19 (PAC)
 - Instance-dependence bounds for tabular MDPs
 	- Zanette and Brunskill. Tighter problem-dependent regret bounds in reinforcement learning without domain knowledge using value function bounds. ICML'19

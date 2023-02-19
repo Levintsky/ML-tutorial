@@ -76,6 +76,7 @@
 	- GPT-3: 12/24/32/40/96-layers from small to B;
 		- https://github.com/openai/gpt-3
 		- 175B parameters;
+	- InstructGPT: Training language models to follow instructions with human feedback. NeurIPS'22
 - LLM:
 	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
 

@@ -23,6 +23,16 @@
 	- Sampling: CEM, CMA-ES;
 	- Easily to optimize: NAF (normalized advantage function);
 	- Learn an optimizer: DDPG;
+- Soft-Q-learning: HMM-style forward+backward
+	- p(Ot=1|st,aT) := exp(r(st,at))
+	- Forward: αt = p(st|O1:t-1)
+	- β(st) = p(O.t:T|st)
+		- V(s) := log[β(s)] = log∫exp(Q(s,a))da
+	- β(st,at) = p(O.t:T|st,at)
+		- Q(s,a) := log[β(s,a)] = r(s,a)+log(E.s'|s,a[exp(V(s'))])
+	- π(at|st) ∝ β(st,at)/β(st)
+	- Minimize loss: KL(pˆ(τ)|p(τ)) equivalent to maximize
+		- E.sˆ[H(π(at|st))]+E.sˆaˆ[r(s,a)]
 
 ## Pessimistic
 - Assume pessimistic for insufficient overlap/support (s,a) space;
@@ -30,33 +40,8 @@
 	- Filtration function: ξ(s,a;μ,b) = 1(μ(s,a)>b)
 	- Bellman op: Tf(s,a) = r(s,a) + γEs'[max_a' ξ(s',a')f(s',a')]; (0 for insufficient data)
 	- Error bound;
-- Model-based Offline batch RL:
-	- Learn a model penalize model uncertainty during planning;
-	- Empirically very promising on D4RL tasks;
-	- MOPO: T Yu, G Thomas, L Yu, S Ermon, J Zou, S Levine, C Finn, T Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
-	- R Kidambi, A Rajeswaran, P Netrapalli, T Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
 - PS Thomas, B Castro da Silva, AG Barto, S Giguere. Preventing undesirable behavior of intelligent machines. Science'19
 	- Optimizing while ensuring solution won't exhibit undesirable behavior;
-- B Metevier, S Giguere, S Brockman, A Kobren, Y Brun, E Brunskill, P Thomas. Offline Contextual Bandits with High Probability Fairness Guarantees. NIPS'19
-	- Fairness constraint:
-		- gf(θ) = 1/|F|Σ(RI(f) - E[R|f]) - εf
-		- gm(θ) = 1/|M|Σ(RI(m) - E[R|m]) - εm
-
-## Misc (NIPS'18)
-- Policy Gradient:
-	- Evolution-Guided Policy Gradient in Reinforcement Learning
-	- Dual Policy Iteration
-- Off-policy:
-	- Is Q-Learning Provably Efficient? (Berkeley)
-	- Breaking the Curse of Horizon: Infinite-Horizon Off-Policy Estimation
-	- Policy Optimization via Importance Sampling
-	- Representation Balancing MDPs for Off-policy Policy Evaluation
-	- A Deep Bayesian Policy Reuse Approach Against Non-Stationary Agents
-	- Q-learning with Nearest Neighbors
-- Value Function:
-	- Transfer of Value Functions via Variational Methods
-	- Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion (Honglak Lee)
-- Confounding-Robust Policy Improvement (Cornell)
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294):
@@ -172,15 +157,14 @@
 		- Chain rule: θ += E.s[∇.a Q(a, μ(s)) ∇.θμ(s)]
 - Tricks:
 	- Hogwild: A3C [ICML'16]
-	- Offline: ACER (with IS) [DeepMind, ICLR'17]
+	- Offline: ACER (with IS) [DeepMind, ICLR'17], SAC, DDPG
 	- Optimizer: ACKTR (KFAC) [G-Brain, 17]
 - Legacy
 	- Sutton, McAllester, Singh, Mansour. Policy gradient methods for reinforcement learning with function approximation: actor-critic algorithms with value function approximation. NIPS'00
-- Recent:
-	- DPG: DeepMind. Deterministic policy gradient algorithms. ICML'14
-		- ∇..φ J(φ)=E[∇..aQ(s,a;π) ∇..φπ(s;φ)]
-		- where Q(s,a;π)=E[Rt|s,a]
-	- GAE: J Schulman, P Moritz, S Levine, M Jordan and P Abbeel. High-dimensional continuous control with generalized advantage estimation. ICLR'16
+- DPG: DeepMind. Deterministic policy gradient algorithms. ICML'14
+	- ∇..φ J(φ)=E[∇..aQ(s,a;π) ∇..φπ(s;φ)]
+	- where Q(s,a;π)=E[Rt|s,a]
+- GAE: ICLR'16
 
 ## Value Function, Q-learning
 - Framework:
@@ -217,22 +201,45 @@
 	- DDPG [ICLR'16]: deep version of DPG
 		- Value Q(s,a;φ) with target yj = rj + γmax_a Q(sj',μ(sj';θ);φ)
 		- Actor with loss: -Q(s, μ(θ);φ)
+	- SVG [DeepMind NIPS'15] Stochastic policy + value:
+		- Assumption:
+			- Stochastic dynamics: s' = f(s, a, ξ), noise ξ ∼ ρ(ξ);
+			- Stochastic policy: a = π(s, η; θ), noise η ∼ ρ(η);
+		- V(s) = E.ρ(η)[r(s,π(s,η;θ))+γE.ρ(ξ)[V'(f(s, π(s, η; θ), ξ))
+		- Insight: gradient w.r.t. reparametrization (sample from noise);
+			- e.g. y = f(x, ξ), where ξ ~ ρ(.);
+			- ∇xE_p(y|x)[g(y)] = E_ρ(ξ)[gyfx] ≈ 1/MΣgyfx|ξ=ξi (MC estimator)
+		- SVG(0): model free, sample noise;
+		- SVG(1): one-step dynamics p(s'|s,a)
+		- SVG(∞)
+	- SAC: [ICML'18] as random as possible; 
+		- 3 separate net: V(.;ψ), V(.;ψ'), Q(s,a;θ), π(.|s,φ);
+		- Actor: J(π) = Σr(s,a) + αH(π(.|s));
+		- Critic: standard L2 V-loss;
+		- SGD: ψ -= λ∇Jv(ψ); θ -= λ∇Jq(θ); φ -= λ∇Jπ(φ);
+		- Target-net: ψˆ = τψ + (1-τ)ψ
+
 - Loss: over-optimistic target;
-	- Double-Q [NIPS'15]: 2 networks, 1 for Q, 1 for a; 
+	- Double-Q [NIPS'15]: 2 networks, 1 for Q, 1 for a;
+	- TD3 [ICML'18]: Critic x2 Q(;θ1), Q(;θ2);
+		- Deterministic actor π(;φ);
+		- For value iteration: target always pick the minimum
+			- y = r + γmin_i=1,2(Qi(s',a'))
 - Tricks:
 	- Q-learning: Off-Policy
 	- Experience Replay
 		- PER [ICLR'16]: prioritize high TD-error;
-		- HER [NIPS'17]: reward based on goal: R(s,a,g)
+		- HER [NIPS'17]: reward based on goal: R(s,a,g), highsight relabel replay buffer to match final state;
 	- Exploration:
 		- π(at|st) = 1-ε if at = argmax_a Q(st,at;φ); and random uniform other actions;
 		- π(at|st) ∝ exp(Q(st,at;φ))
 	- Fixed Q-targets: fixed target y, just regression, no gradient;
 	- Multi-step return; yj,t = Σ_t' rj,t' + γ^n max_a Q(sj,t+n,aj,t+n)
-	- Rainbow [AAAI'18]: combination of all tricks:
+	- Combination of all tricks: Rainbow [AAAI'18]: 
 		- Double Q-learning + PER + Dueling + Multi-step learning + Distributional + Noisy Nets
+	- Different update frequency for a/c: TD3 [ICML'18]
 - Theory:
-	- Define operator B: BV=max_a ra + γTaV, with Ta as the state transition dynamics;
+	- Define op B: BV=max_a ra + γTaV, with Ta dynamics;
 	- Optimal V∗ is a fixed point: V∗ = BV∗
 	- B is a contraction |BV1-BV2| <= γ|V1-V2|, w.r.t. ∞-norm;
 	- Non-tabular case:
@@ -241,6 +248,10 @@
 		- V' <- argmin_V∈Ω 1/2|V'(s)-BV(s)|^2
 		- ∏ is a projection in sense of L2: |∏v1-∏v2|<=|v1-v2|
 		- but ∏B is not a contraction of any kind;
+	- SAC:
+		- Lemma 1: soft-value iteration converges;
+		- Lemma 2: KL-minimizer guarantees improved Q(s,a);
+		- Theo 1: soft policy eval + iter with π ∈ Π converge to optimal π∗;
 - Classic
 	- Multi-Step Returns: DeepMind. Bellemare. Safe and Efficient Off-Policy Reinforcement Learning. NIPS'16
 - Legacy:
@@ -253,51 +264,15 @@
 	- **DRQN**: M Hausknecht, P Stone. Deep Recurrent Q-Learning for Partially Observable MDPs. AAAI'15
 		- Could bootstrap from start of the episode or random point;
 	- **Noisy Nets**: DeepMind. Noisy networks for exploration. ICLR'18
-	- **Non-delusional Q-learning and value iteration**, NIPS 2018 best paper award:
+	- **Non-delusional Q-learning and value iteration**, NIPS'18 best paper award:
 		- Delusion: parameter update inconsistent with following policy;
 		- PCVI: Tabular (model-based MDP)
 		- PCQL: Q-learning (model-free)
 - Continuous:
-	- **SVG**: DeepMind. Learning continuous control policies by stochastic value gradients. NIPS'15
-		- Insight: non-deterministic policy; gradient w.r.t. reparametrization (sample from noise);
-			- e.g. y = f(x, ξ), where ξ ~ ρ(.);
-			- ∇xE_p(y|x)[g(y)] = E_ρ(ξ)[gyfx] ≈ 1/MΣgyfx|ξ=ξi (MC estimator)
-		- SVG(0): model free, sample noise;
-		- SVG(1): one-step dynamics p(s'|s,a)
-		- SVG(∞)
 	- S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
-	- **DDPG**: T P. Lillicrap, J J. Hunt, A Pritzel, N Heess, T Erez, Y Tassa, D Silver, D Wierstra. Continuous control with deep reinforcement learning. ICLR'16
-		- https://github.com/ghliu/pytorch-ddpg
 	- Google-Brain. QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation. CoRL'18
 - **Overestimation**:
 	- Thrun, S. and Schwartz, A. Issues in using function approximation for reinforcement learning. 1993.
-	- **Double Q-Learning**: Van Hasselt, H. Double q-learning. NIPS'10
-	- **TD3**: S Fujimoto, H van Hoof, D Meger. Addressing Function Approximation Error in Actor-Critic Methods. ICML'18
-		- https://github.com/sfujim/TD3
-		- Clipped Double Q-learning:
-			- Deterministic actor π(;φ);
-			- Two critic x2 Q(;θ1), Q(;θ2);
-		- For value iteration: target always pick the minimum
-			- y = r + γmin_i=1,2(Qi(s',a'))
-		- Delayed Policy update: at lower frequency;
-		- Sync actor/critic target with current at even lower frequency;
-- Experience replay:
-	- **HER**: OpenAI. Hindsight Experience Replay. NIPS'17
-		- Insight: enhance state with augmented goals;
-		- Given:
-			- off-policy RL alg A; (DQN, DDPG, ...)
-			- Strategy S for sampling goals: e.g. S(s0,...,sT) = m(sT)
-			- reward: SxAxG -> R, e.g. R(s,a,g)=-[fg(s)=0]
-		- Alg:
-			- for t=0..T-1
-				- sample at ~ π(st||g), get new state st+1;
-			- for t=0..T-1
-				- rt := r(st,at,g)
-				- store (st||g, at, rt, st+1||g) in buffer;
-				- Sample a set of additional goals G
-				- for each goal g' ∈ G; 
-					- get r', store transition;
-			- Learning;
 - Bias:
 	- **SBEED**: B Dai, A Shaw, L Li, L Xiao, N He, Z Liu, J Chen, L Song. SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation. ICML'18
 		- Value iteration does not have a cost function to optimize, it is just a fixed point iteration;
@@ -310,15 +285,13 @@
 - O'Donoghue, B., Osband, I., Munos, R., and Mnih, V. The uncertainty bellman equation and exploration. 2017
 - **Smoothed**: Nachum, O., Norouzi, M., Tucker, G., and Schuurmans, D. Smoothed action value functions for learning gaussian policies. 2018
 - Distributional:
-	- **C51**: Bellemare, M. G.; Dabney, W.; and Munos, R. 2017. A distributional perspective on reinforcement learning. ICML'17
+	- **C51**: DeepMind. A distributional perspective on reinforcement learning. ICML'17
 		- Q(s, a) from scalar to a categorical 51 classes (linear between v-min to v-max)
 		- Do KL divergence training between Q(st, at) and r(st, at) + max_a Q(st+1, a), when take argmax action, just calculate expectation (marginalize 51 categories);\
 			<img src="/RL/images/algos/c51.png" alt="drawing" width="400"/>
 	- **QR-DQN**: DeepMind. Distributional Reinforcement Learning with Quantile Regression. AAAI'18\
 		<img src="/RL/images/algos/qr-dqn.png" alt="drawing" width="400"/>
-	- **IQN**: Will Dabney, Georg Ostrovski, David Silver, Remi Munos. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
-	- **dopamine**: DeepMind. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
-		- https://github.com/google/dopamine
+	- **IQN**: DeepMind. Implicit Quantile Networks for Distributional Reinforcement Learning. ICML'18
 	- DeepMind. Distributional policy gradients. ICLR'18
 - Variance-reduction:
 	 - Anschel, O., Baram, N., and Shimkin, N. Averaged-dqn: Variance reduction and stabilization for deep reinforcement learning. ICML'17
@@ -332,14 +305,14 @@
 		- Contribution: interestingly, critiques and reevaluates claims from earlier papers (including Q-Prop and stein control variates) and finds important methodological errors in them.
 		- Claims V(s,a) style does not reduce variance
 - PG + Q-Learning:
-	- **Reactor**: A Gruslys, W Dabney, M Azar, Bilal Piot, M Bellemare, R Munos. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
+	- **Reactor**: DeepMind. The Reactor: A Fast and Sample-Efficient Actor-Critic Agent for Reinforcement Learning. ICLR'18
 	- **IPG**: 	Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning
 
 ## Evoluation Strategy
 - https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html
 - Basics:
 	- Check Optimization/Black-Box.
-- **ES-RL**: Tim Salimans, Jonathan Ho, Xi Chen, Szymon Sidor, Ilya Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+- **ES-RL**: OpenAI. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
 	- NES as a gradient-free optimizer to find optimal policy θ;
 	- Let θ ~ N(θ', σ^2 I)
 	- Sample to get ∇f(θ):
@@ -369,5 +342,4 @@
 		- The other half updated together with critic;
 		- New π, Σ computed using elite samples;
 - PBT:
-	- M Jaderberg, et. al. Population Based Training of Neural Networks. NIPS'17
 	- POET: R Wang, J Lehman, J Clune, K Stanley. Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions. 19

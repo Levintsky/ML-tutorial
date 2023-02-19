@@ -1,6 +1,7 @@
 # Model-based RL
 
-## Resources:
+## Basics
+- Mordatch/Hamrick Tutorial (ICML'20)
 - From Spinningup
 	- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
 	- Model given: AlphaGo, Exit;
@@ -19,6 +20,13 @@
 		- Set Q(s, a) as exploration based reward by looping until convergence:
 			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/√(n(s,a))
 - **Recurrent World Models Facilitate Policy Evolution (Google Brain)**. NIPS'18
+
+## Over-Optimistic
+- Model-based Offline batch RL:
+	- Learn a model penalize model uncertainty during planning;
+	- Empirically very promising on D4RL tasks;
+	- MOPO: T Yu, G Thomas, L Yu, S Ermon, J Zou, S Levine, C Finn, T Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
+	- R Kidambi, A Rajeswaran, P Netrapalli, T Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
 
 ## Basics
 - Version 0.5: collect random samples, train dynamics, plan
@@ -66,6 +74,37 @@
 	- Bootstrap ensembles p(θ|D)
 	- Moment matching (project to Gaussian)
 
+## MDP/POMPD
+- Stanford cs-234 (Lec-2)
+- Assumption:
+	- Dynamics and reward model available;
+	- p(st+1|st, at) = p(st+1|ht, at)
+- MDP + π(a|s) = MRP (Markov Reward Process)
+	- V = R + γPV -> V = (I-γP)^-1 R
+	- Bellman backup (iterative):
+		- V(s;π) = Σ_a π(a|s)[r(s,a) + γΣ_s' p(s'|s,a)V(s';π)]
+- Optimal: π∗(s) = argmax_π V(s;π)
+	- Existance and unique;
+- State-action: Q(s,a;π) = R(s,a) + γΣ_s' p(s'|s,a)V(s';π)]
+	- Policy iteration (PI): iteratively do value-eval and policy improvement;
+		- Policy improvement: take argmax, then follow π, always gets better;
+		- π∗(s) = argmax_a Q(s,a;π)
+	- Value iteration (VI):
+		- V=BV, or V(s) = max_a[R(s,a)+γΣ_s' p(s'|s,a)V(s')]
+- Policy evaluation:
+	- MC: Gt = rt + γrt+1 + γ^2rt+2 + ... (high var, unbiased)
+		- Incremental: G(s) += Gi,t, V(s;π)=G(s)/N(s)
+	- TD(0): V(s) += α(r+γV(st+1)-V(st)), (low var, biased)
+- Thompson Sampling for MDP:
+	- Init prior p(Ras), p(T(s'|s,a))
+	- Loop:
+		- Sample: (s,a), T(s'|s,a), R(s,a)
+		- Compute optimal Q;
+		- at = argmaxQ(s,a)
+		- Observe rt, st+1;
+		- Update posterior p(Ras|rt), p(T|st+1) using Bayesian rule;
+
+
 ## Learn a Model for Data Generation
 - S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 - G Kalweit, J Boedecker. Uncertainty-driven Imagination for Continuous Deep Reinforcement Learning CoRL2017.
@@ -91,12 +130,12 @@
 		- Game: Sokoban;
 	- **VPN**: Vladimir Feinberg, Alvin Wan, Ion Stoica, Michael I. Jordan, Joseph E. Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
 		- https://github.com/junhyukoh/value-prediction-network
-- **MuZero**: Julian Schrittwieser, Ioannis Antonoglou, Thomas Hubert, Karen Simonyan, Laurent Sifre, Simon Schmitt, Arthur Guez, Edward Lockhart, Demis Hassabis, Thore Graepel, Timothy Lillicrap, David Silver. Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. 2019
+- MuZero: DeepMind. Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. 2019
 	- MuZero = VPN (learn abstract states + dynamics) + AlphaZero-planning (MCTS)
 
 ## Learn a Model
 - World Model
-	- **Navigation**: Z Guo, M G Azar, B Piot, B A. Pires, T Pohlen, R Munos. Neural Predictive Belief Representations, ICLR'19
+	- **Navigation**: DeepMind. Neural Predictive Belief Representations, ICLR'19
 		- 1-step frame prediction
 		- Two variants of Contrastive-Predictive Coding (CPC), CPC|Action
 		- DeepMind Lab\
@@ -176,6 +215,8 @@
 		<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
 - **MB-MPO**: Clavera. Model-Based Reinforcement Learning via Meta-Policy Optimization. 2018
 - **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M J. Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
+- **MBPO**: M Janner, J Fu, M Zhang, S Levine. When to Trust Your Model: Model-Based Policy Optimization. NeurIPS'19
+	- https://zhuanlan.zhihu.com/p/105645139
 
 ## Legacy
 - **PILCO**: M P Deisenroth, C E Rasmussen. PILCO: A Model-Based and Data-Efficient Approach to Policy Search. ICML'11
@@ -190,6 +231,5 @@
 - Zhiao Huang, Fangchen Liu, Hao Su. Mapping State Space using Landmarks for Universal Goal Reaching
 - Rinu Boney, Norman Di Palo, Mathias Berglund, Alexander Ilin, Juho Kannala, Antti Rasmus, Harri Valpola. Regularizing Trajectory Optimization with Denoising Autoencoders
 - Yonathan Efroni, Nadav Merlis, Mohammad Ghavamzadeh, Shie Mannor. Tight Regret Bounds for Model-Based Reinforcement Learning with Greedy Policies
-- **MBPO**: Michael Janner, Justin Fu, Marvin Zhang, Sergey Levine. When to Trust Your Model: Model-Based Policy Optimization
-	- https://zhuanlan.zhihu.com/p/105645139
+
 - Hado van Hasselt, Matteo Hessel, John Aslanides. When to use parametric models in reinforcement learning?

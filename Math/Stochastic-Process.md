@@ -40,7 +40,6 @@
 		<img src="/Basic-ML/images/stochastic-process/dpp5.png" alt="drawing" width="400"/>
 	- Application: to generate/encourage **diversity**, each pair of samples are **negative-correlated**;
 
-
 ## Infectious Disease
 - Herbert W. Hethcote. The Mathematics of Infectious Diseases. SIAM Review'00
 	- The model:\

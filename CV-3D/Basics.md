@@ -1,9 +1,15 @@
 # 3D-CV Basics
 
-## Tutorials, Books
-- Faugeras and Luong, The Geometry of Multiple Views, 2001
-- Richard Hartley, Andrew Zisserman. Multiple view geometry in computer vision.
-- Ma, Soatto, Kosecka, Sastry, An Invitation to 3D Vision, 2004.
+## Basics
+- Library:
+	- Kaolin: NVIDIA.
+	- Pytorch3D;
+- https://github.com/timzhang642/3D-Machine-Learning
+- Point Clouds: https://github.com/Yochengliu/awesome-point-cloud-analysis
+- Tutorials/Books
+	- Faugeras and Luong, The Geometry of Multiple Views, 2001
+	- Richard Hartley, Andrew Zisserman. Multiple view geometry in computer vision.
+	- Ma, Soatto, Kosecka, Sastry, An Invitation to 3D Vision, 2004.
 
 ## Linear Algebra, Lie-Algebra
 - SVD:

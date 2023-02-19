@@ -874,7 +874,7 @@
 	- **Quadratic form**: real symmetric A, x^TAx
 	- Principal axis theorem; X^TAx = Y(Q^TAQ)Y in diagonal form;
 	- Positive-definite;
-		- Digonal items > 0; det > 0;
+		- Diagonal items > 0; det > 0;
 - Bilinear-function:
 	- f under basis α is A, (α1,...,αn)=(β,...)P, then f under basis β is B=P'AP
 	- Matrix **congruence**: P'AP=B

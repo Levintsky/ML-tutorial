@@ -48,7 +48,7 @@
 		- Def. Homotopy class
 		- Fact 5.2. 所有文字可由自由同伦类的某曲线表示.
 		- Theo 5.3. 自由同伦类与射线选择无关 移动ab点也无关(不能越过path p).
-		- Prop 5.4. p的自由同伦类不形如\[\], \[B···B\], \[B'...B'\] (可去掉A), 则无法把a移动到infty而不穿过p.
+		- Prop 5.4. p的自由同伦类不形如[], [B···B], [B'...B'] (可去掉A), 则无法把a移动到infty而不穿过p.
 		- Prop 5.5. p的自由同伦类不形如\[\], \[BA...BA\], \[A'B'...A'B'\]. 从a走到b必穿过p.
 		- Prop 5.6. 多边形的自由同伦类形如: \[\], \[A\], \[A'\], \[B\], \[B'\], \[AB\]=\[BA\], \[A'B'\]=\[B'A'\].
 - Chap-II: Billiards
@@ -108,7 +108,7 @@
 	- Def. same orientation: matrix to change basis has positive determinant;
 	- Def. (u^v)w = det(u, v, w)
 	- (u^v) or uxv, cross product;
-	- (u^v).(x^y)= \[(u.x v.x); (u.y v.y)\]
+	- (u^v).(x^y)= [(u.x v.x); (u.y v.y)]
 - 1-5 Local theory of curves
 	- def. 曲率 **curvature**. α: I=(a, b) -> R^3. |α''(s)|
 	- def. **tangent** t(s), 主法向量 **normal** n(s), 次法向量 **binormal** b(s)=t(s)^n(s), t(s), n(s): 密切平面 **osculating plane**.
@@ -174,8 +174,8 @@
 	- Unit normal vector: N(q)=x_u^x_v / |x_u^x_v|
 - 2-5 The First Fundamental Form; Area
 	- def. 第一基本形式: quadratic form I_p. 定义在Tp(S). 若
-		- 对称\<w1, w2\>=\<w2, w1\>
-		- 正定\<w, w\> >=0
+		- 对称⟨w1, w2⟩=⟨w2, w1⟩
+		- 正定⟨w, w⟩ >=0
 	- 令E(u0, v0)=(X_u, X_u), F=(X_u, X_v), G=(X_v, X_v)
 		- Quadratic form: I_p = E(u')^2 + 2Fu'v' + G(v')^2
 	- 弧长: ds^2 = E(du)^2 + 2Fdudv + G(dv)^2
@@ -353,10 +353,10 @@
 	- e.g.
 		- Great circle. 球面过球心大圆环
 		- Cylinder: x(u, v) = (cos(u), sin(u), v). Expand as a plane: still straight line.
-	- Def. 协变导数w的**algebraic value** at t. w: 可微单位向量场沿 α: I -> S 映射到可定向S. w(t) unit, (dw/dt)(t) is normal to w(t), therefore: Dw/dt = λ(N ^ w(t)), λ=λ(t), denoted by \[Dw/dt\]
+	- Def. 协变导数w的**algebraic value** at t. w: 可微单位向量场沿 α: I -> S 映射到可定向S. w(t) unit, (dw/dt)(t) is normal to w(t), therefore: Dw/dt = λ(N ^ w(t)), λ=λ(t), denoted by [Dw/dt]
 		- Lemma 2: v, w可微单位向量场沿 α: I -> S, |w(t)|=|v(t)|=1, t ∈ I, 则
-			- \[Dw/dt\] - \[Dv/dt\] = dφ/dt
-	- Def. 测地曲率 **geodesic curvature** of C at p: α(s) algebraic value of \[Dα'(s)/ds\]=kg.
+			- [Dw/dt] - [Dv/dt] = dφ/dt
+	- Def. 测地曲率 **geodesic curvature** of C at p: α(s) algebraic value of [Dα'(s)/ds]=kg.
 		- k^2 = kg^2 + kn^2
 		- kg = (α', n^α)
 		- kn = (N, dT/ds)
@@ -367,7 +367,7 @@
 		- e.g. 平面上直线, kn=kg=0, 弯曲成圆柱, kn>0, kg=0.
 	- Prop 2. 平移存在&唯一.
 	- Prop 3. x(u, v)正交参数化(F=0), w(t)可微unit向量场沿x(u(t), v(t)), 则
-		- \[Dw/dt\] = 1/(2√(EG)) (G_u dv/dt - E_v du/dt) + dφ/dt
+		- [Dw/dt] = 1/(2√(EG)) (G_u dv/dt - E_v du/dt) + dφ/dt
 		- φ是x_u到w(t)的夹角.
 	- Prop 4 (Liouville). α(s)弧长参数化曲线, x(u, v)正交Tp(S), φ(s)为x_u和α'(s)夹角, 则
 		- kg = (kg)1 cosφ + (kg)2 sinφ + dφ/ds
@@ -529,7 +529,7 @@
 - Distance:
 	- d(x,y) >= 0; d(x,y) = d(y,x); d(x,z)+d(z,y) >= d(x,y);
 - Norm:
-	- ||x|| >= 0; ||αx|| = |α|\*||x||; ||x||+||y|| >= ||x+y||;
+	- ∥x∥ >= 0; ∥αx∥ = |α|∥x∥; ∥x∥+∥y∥ >= ∥x+y∥;
 - Banach space: a **complete** normed vector space;
 - Hilbert space: a **complete** space with dot product;
 	- Could be infinite dimensional;

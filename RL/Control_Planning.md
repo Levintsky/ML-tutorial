@@ -16,17 +16,25 @@
 	- Update all values in tree between s1 and sl, take best action from s1;
 	- UCT: Score(st) = Q(st)/N(st) + 2C √(2lnN(st-1)/N(st))
 - Legacy
-	- C. Browne, E. Powley, D. Whitehouse, S. Lucas, P. I. Cowling, P. Rohlfshagen, D. P. Stephen Tavener, S. Samothrakis, and S. Colton. A survey of monte carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in Games, 2012
-	- S. Gelly and D. Silver. Combining online and offline knowledge in uct. ICML, 2007.
-	- L. Kocsis and C. Szepesvàri. Bandit based monte-carlo planning. ECML, 2006.
-	- Rémi Coulom. Efficient selectivity and backup operators in monte-carlo tree search. In International conference on computers and games, pages 72–83. Springer, 2006.
 	- G. Tesauro and G. R. Galperin. On-line policy improvement using monte-carlo search. NIPS'96.
+	- L. Kocsis and C. Szepesvàri. Bandit based monte-carlo planning. ECML'06.
+	- S. Gelly and D. Silver. Combining online and offline knowledge in uct. ICML'07.
+	- R Coulom. Efficient selectivity and backup operators in monte-carlo tree search. 2008
+- Survey:
+	- C. Browne, et. al. A survey of monte carlo tree search methods. 2012
 - New, SOA
 	- X. Guo, S. Singh, H. Lee, R. Lewis, and X. Wang. Deep learning for real-time atari game play using offline monte-carlo tree search planning. NIPS'14
 		- Imitation learning from MCTS
 	- T Anthony, Z Tian, and D Barber. Thinking fast and slow with deep learning and tree search, 2017.
 
 ## Control as Inference
+- Problem setup:
+	- State x, action u; Minimize cost:
+	- C(x0,u0.T) = ∑.x p(x1:T|x0,u0.T-1) ∑t R(xt,ut,xt+1)
+	- Imagine a free form Markov process qt(xt+1|xt)
+		- Optimal: ψ(x1:T|x0) = q(x1:T|x0)exp(-∑R(xt,t))
+	- Goal: minimize KL(p|ψ)
+		- Loss: KL(p|q) + ⟨R⟩
 - Basic idea: planning as inference;
 	- A graphical model: p(Ot|st,at) ∝ exp(r(st,at))
 	- Check HMM forward-backward algorithm (message-passing);
@@ -35,13 +43,18 @@
 	- Given optimality before, where I am in state space;
 - Backward message:
 	- Given what will happen after t, what is the optimality if we should take (st at).
+	- p(Ot=1|st,aT) := exp(r(st,at))
+	- β(st) = p(O.t:T|st)
+	- β(st,at) = p(O.t:T|st,at)
+	- π(at|st) ∝ β(st,at)/β(st)
 	- for t=T-1 to 1:
 		- β(st,at) = p(Ot|st,at)E_st+1[β(st+1)]
 		- β(st) = E_at[β(st,at)]
-	- soft Q(s, a) or β(st, at) = p(Ot:T|st, at): backward likelihood
-	- soft V(s) or β(st): marginalize at with some p(at|st) action prior;
-	- Q(st,at) = logβ(st,at) = r(st, at) + logE[exp(V(st+1))]
-	- V(st) = logβ(st) = log∫exp(Q(st,at))dat
+- Generalized/Soft Q-learning:
+	- Q(s, a) := log[β(st, at)]
+		- := logβ(st,at) = r(st, at) + logE.st+1|st,at[exp(V(st+1))]
+	- V(st) := logβ(st) 
+		- := log∫exp(Q(st,at))dat
 	- Policy: π(at|st, O1:T) = β(st,at)/β(st)
 - Forward message: αt(st) = p(st) given O1:t-1;
 	- p(st|O1:T) ∝ αt(st)βt(st)
@@ -72,69 +85,21 @@
 	- **PCL**: Nachum, Norouzi, Xu, Schuurmans. Bridging the gap between value and policy based reinforcement learning. NIPS'17
 		- soft q-learning; n-step as path-consistent;
 	- Schulman, Abbeel, Chen. Equivalence between policy gradients and soft Q-learning. 2017
- 	- SAC: Haarnoja, Zhou, Abbeel, L. Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor. ICML'18
-	 	- Insight: succeed while as random as possible; 1. separate network for policy and value; 2. off-policy AC; 3. Entropy max;
-			- Problem setup: Continuous control;
-			- Algorithm: off-policy actor-critic;
-			- https://github.com/vitchyr/rlkit
-			- Formulation: J(π) = Σr(st,at) + αH(π(.|st))
-			- Theory (soft policy to soft AC):
-				- Lemma 1: formulation equivalent with soft Bellman (converge when t→∞);
-				- Lemma 2: π-old ∈ Π and let π-new = argmin_(π∈Π)KL(π'(.|st), exp(Q(π-old))/Z-old), then guarantees Q(st,at;π-new) >= Q(st,at;π-old);
-				- Theory 1: soft policy eval + iteration with π ∈ Π converge to optimal π∗;
-			- Value-loss: Jv(ψ) = E_(st∼D)[1/2(V(st;ψ)-V^)^2];
-				- Target V^ = E_at[Q(st,at;θ)−logπφ(at|st)]
-			- Q-loss: E[1/2(Q(st,at;θ)-Q^(st,at))^2]
-				- Target Q^ = r(st, at) + γE[V(st+1;ψ')]
-			- Policy-loss 
-				- Jπ = E_st[KL(π(.|s,φ)|exp(Q(st,.;θ)))]
-			- Value update: target value = r + α q_target(s', π(s'))
-			- With V(.;ψ), V(.;ψ') as value network (original and target), Q(s,a;θ), π(.|s,φ), SAC alg:
-				- Collect (st,at,rt,st+1):
-					- at ~ π(at|s,φ)
-					- st+1 ~ p(st+1|st,at)
-				- SGD Learning:
-					- ψ -= λ∇Jv(ψ)
-					- θ -= λ∇Jq(θ)
-					- φ -= λ∇Jπ(φ)
-	- **Trust-PCL**: Ofir Nachum, Mohammad Norouzi, Kelvin Xu, Dale Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
+	- **Trust-PCL**: O Nachum, M Norouzi, K Xu, D Schuurmans. Trust-PCL: An Off-Policy Trust Region Method for Continuous Control. ICLR'18
 	- Levine. Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review. 18
 
 ## Legacy
 - Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes, 2007
 
 ## Unclassified
-- N Heess, J J Hunt, T P Lillicrap, D Silver. Memory-based control with recurrent neural networks. NIPS'15
-- C Blundell, B Uria, A Pritzel, Y Li, A Ruderman, J Z Leibo, J Rae, D Wierstra, D Hassabis. Model-Free Episodic Control
-- G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
+- DeepMind. Memory-based control with recurrent neural networks. NIPS'15
+- DeepMind. Model-Free Episodic Control
 - M Moczulski, K Xu, A Courville, K Cho. A Controller-Recognizer Framework: How necessary is recognition for control? ICML'16
 - Y Chebotar, K Hausman, M Zhang, G Sukhatme, S Schaal, S Levine. Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning. ICML'17
-- D Silver, H v Hasselt, M Hessel, T Schaul, A Guez, T Harley, G Dulac-Arnold, D Reichert, N Rabinowitz, A Barreto, T Degris. The Predictron: End-To-End Learning and Planning, ICML'17
+- DeepMind. The Predictron: End-To-End Learning and Planning, ICML'17
 - **OptNet**: B Amos and Z Kolter. OptNet: Differentiable Optimization as a Layer in Neural Networks. ICML'17
+- G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
+- P Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
+- Berkeley. Variational Inverse Control with Events: A General Framework for Data-Driven Reward Definition. NIPS'18
 - **MPC**: B Amos, I Rodriguez, J Sacks, B Boots, Z Kolter. Differentiable MPC for End-to-end Planning and Control. 2019
 	- https://locuslab.github.io/mpc.pytorch/
-- Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
-- Berkeley. Variational Inverse Control with Events: A General Framework for Data-Driven Reward Definition. NIPS'18
-
-## NIPS'18
-- Shangtong Zhang, Wendelin Boehmer, Shimon Whiteson. Generalized Off-Policy Actor-Critic
-- Sebastian Tschiatschek, Ahana Ghosh, Luis Haug, Rati Devidze, Adish Singla. Learner-aware Teaching: Inverse Reinforcement Learning with Preferences and Constraints
-- Naman Agarwal, Elad Hazan, Karan Singh. Logarithmic Regret for Online Control
-- Xingyu Lin, Harjatin Baweja, George Kantor, David Held. Adaptive Auxiliary Task Weighting for Reinforcement Learning
-- Pim de Haan, Dinesh Jayaraman, Sergey Levine. Causal Confusion in Imitation Learning
-- Hengyuan Hu, Denis Yarats, Qucheng Gong, Yuandong Tian, Mike Lewis. Hierarchical Decision Making by Generating and Following Natural Language Instructions
-- Xiangyuan Zhang, Kaiqing Zhang, Erik Miehling, Tamer Basar. Non-Cooperative Inverse Reinforcement Learning
-- Jack Umenberger, Mina Ferizbegovic, Thomas Schön, Håkan Hjalmarsson. Robust exploration in linear quadratic reinforcement learning
-- Francisco Garcia, Philip Thomas. A Meta-MDP Approach to Exploration for Lifelong Reinforcement Learning
-- Andrea Zanette, Alessandro Lazaric, Mykel J Kochenderfer, Emma Brunskill. Limiting Extrapolation in Linear Approximate Value Iteration
-- Alberto Maria Metelli, Amarildo Likmeta, Marcello Restelli. Propagating Uncertainty in Reinforcement Learning via Wasserstein Barycenters
-- Yu Bai, Tengyang Xie, Nan Jiang, Yu-Xiang Wang. Provably Efficient Q-Learning with Low Switching Cost
-- Ronald Ortner, Matteo Pirotta, Alessandro Lazaric, Ronan Fruit, Odalric-Ambrym Maillard. Regret Bounds for Learning State Representations in Reinforcement Learning
-- Matteo Turchetta, Felix Berkenkamp, Andreas Krause. Safe Exploration for Interactive Machine Learning
-- David Janz, Jiri Hron, Przemysław Mazur, Katja Hofmann, José Miguel Hernández-Lobato, Sebastian Tschiatschek. Successor Uncertainties: Exploration and Uncertainty in Temporal Difference Learning
-- Andrea Zanette, Mykel J Kochenderfer, Emma Brunskill. Almost Horizon-Free Structure-Aware Best Policy Identification with a Generative Model
-- Kamil Ciosek, Quan Vuong, Robert Loftin, Katja Hofmann. Better Exploration with Optimistic Actor Critic
-- Simon Du, Yuping Luo, Ruosong Wang, Hanrui Zhang. Provably Efficient Q-learning with Function Approximation via Distribution Shift Error Checking Oracle
-- Liangpeng Zhang, Ke Tang, Xin Yao. Explicit Planning for Efficient Exploration in Reinforcement Learning
-- Jian QIAN, Ronan Fruit, Matteo Pirotta, Alessandro Lazaric. Exploration Bonus for Regret Minimization in Discrete and Continuous Average Reward MDPs
-- Xiuyuan Lu, Benjamin Van Roy. Information-Theoretic Confidence Bounds for Reinforcement Learning

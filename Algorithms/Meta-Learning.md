@@ -17,11 +17,44 @@
 - Applications:
 	- Low-shot learning;
 
+## Unclassified
+- F Hutter, H Hoos, and K Leyton-Brown. Sequential model-based optimization for general algorithm configuration. LION'05
+- F Hutter, L Xu, H Hoos, and K Leyton-Brown. Algorithm runtime prediction: Methods and evaluation (extended abstract). IJCAI'15
+- T Domhan, J Springenberg, F Hutter. Speeding up Automatic Hyperparameter Optimization of Deep Neural Networksby Extrapolation of Learning Curves. IJCAI 2015
+	- https://github.com/automl/pylearningcurvepredictor
+- D Ha, A Dai and Q Le. Hypernetworks. ICLR 2017.
+- J. Bergstra, R. Bardenet, Y. Bengio, and B. Kegl. Algorithms for hyper-parameter optimization. NIPS'11
+- E Hazan, A Klivans, Y Yuan. Hyperparameter Optimization: A Spectral Approach. NIPS DLTP Workshop 2017
+	- https://github.com/callowbird/Harmonica
+- Bayesian-Based Hyperparameter Learning
+	- J Snoek, H Larochelle, and R Adams. Practical bayesian optimization of machine learning algorithms. NIPS'12
+	- J Snoek, et. al. Scalable bayesian optimization using deep neural networks. NIPS'15
+	- DeepMind. Taking the human out of the loop: A review of bayesian optimization. 2016
+	- Gradient based hyper-parameter optimization:
+		- D Maclaurin, D Duvenaud, R Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
+		- F Pedregosa. Hyperparameter optimization with approximate gradient. ICML'16
+
 ## Legacy
 - J Schmidhuber. Evolutionary principles in self-referential learning. 1987
 - Y Yoshua, S Bengio, and J Cloutier. Learning a synaptic learning rule. '91
 - D Naik and R Mammone. Meta-neural networks that learn by learning. IJCNN'92
 - S Thrun and L Pratt. Learning to learn. 1998
+
+## Meta-RL
+- L2RL: DeepMind. Learning to reinforcement learn. CogSci 2016
+- RL2: OpenAI. RL2: Fast Reinforcement Learning via Slow Reinforcement Learning. 2016
+	- Fast RL: learned "algorithm" performed by LSTM
+	- Slow RL: algorithm used to train LSTM in outer loop
+- DeepMind. Been There, Done That: Meta-Learning with Episodic Recall. ICML'18
+- DeepMind. Meta-Gradient Reinforcement Learning. NIPS'18
+- OpenAI. Model-Based Reinforcement Learning via Meta-Policy Optimization. CoRL'18
+- OpenAI. On First-Order Meta-Learning Algorithms. 2018
+- Berkeley. The Importance of Sampling in Meta-Reinforcement Learning. NIPS'18
+- Sergey. Meta-Reinforcement Learning of Structured Exploration Strategies. NIPS'18
+- Zero-Shot Transfer with Deictic Object-Oriented Representation in Reinforcement Learning. NIPS'18
+- DeepMind. Reinforcement Learning, Fast and Slow. Trends in Cognitive Sciences'19
+- MAML for RL: https://github.com/cbfinn/maml_rl
+- SNAIL: A Simple Neural Attentive Meta-Learner, Mishra et al'18
 
 ## MAML, Bi-level Optimization
 - Intuition:
@@ -109,7 +142,7 @@
 - H. Qi, M. Brown, and D. G. Lowe. Low-shot learning with imprinted weights. 2017
 - T Munkhdalai, X Yuan, S Mehri, T Wang and A Trischler. Learning rapid-temporal adaptations. ICML'18
 - S Gidaris and N Komodakis. Dynamic few-shot visual learning without forgetting. CVPR'18
-- S Qiao, C Liu, W Shen and A Yuille. Few-shot image recognition by predict- ing parameters from activations. CVPR'18
+- S Qiao, C Liu, W Shen and A Yuille. Few-shot image recognition by predicting parameters from activations. CVPR'18
 
 ## Memory-based
 - A Santoro, S Bartunov, M Botvinick, D Wierstra, and T Lillicrap. Meta-learning with memory-augmented neural networks. ICML'16

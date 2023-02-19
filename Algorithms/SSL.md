@@ -74,6 +74,11 @@
 - Tutorials:
 	- NIPS'18 Tutorial by M. A. Ranzato and A. Graves. Deep unsupervised learning.
 		- https://media.neurips.cc/Conferences/NIPS2018/Slides/Visualization_for_ML.pdf
+	- https://deepmind.com/blog/unsupervised-learning/
+	- Re-imagining intelligence
+		- https://deepmind.com/blog/agents-imagine-and-plan/
+	- https://deepmind.com/blog/reinforcement-learning-unsupervised-auxiliary-tasks/
+	- https://deepmind.com/research/publications/neural-predictive-belief-representations/	
 	- **Tutorial**: ECCV'20
 		- Deepak Pathak: https://youtu.be/fUMpC_hoedA
 			- RL: intrinsic motivation/curiosity;

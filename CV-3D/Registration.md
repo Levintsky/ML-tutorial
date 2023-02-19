@@ -30,7 +30,7 @@
 	-  A. K. Ushani, R. W. Wolcott, J. M. Walls, and R. M. Eustice. A learning approach for real-time temporal scene flow estimation from lidar data. ICRA'17
 	- A. Behl, D. Paschalidou, S. Donne, and A. Geiger. Pointflownet: Learning representations for 3d scene flow estimation from point clouds. 2018
 	- L. Shao, P. Shah, V. Dwaracherla, and J. Bohg. Motion-based object segmentation based on dense rgb-d scene flow. 2018
-	- **FlowNet3D**: Xingyu Liu, Charles R. Qi, Leonidas J. Guibas. FlowNet3D: Learning Scene Flow in 3D Point Clouds. CVPR'19
+	- **FlowNet3D**: X Liu, C Qi, L Guibas. FlowNet3D: Learning Scene Flow in 3D Point Clouds. CVPR'19
 		- Insight: PointNet++ for feature, embedding + matching, upconv for refinement;
 		- https://github.com/xingyul/flownet3d
 		<img src="/CV-3D/images/registration/flownet3d.png" alt="drawing" width="600"/>

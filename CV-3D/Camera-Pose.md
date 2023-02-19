@@ -73,10 +73,10 @@
 	- **PTAM**: Klein, Murray, Parallel Tracking and Mapping (PTAM) for Small AR Workspaces, ISMAR 2007
 
 ## Unclassified
-- David F. Fouhey, Abhinav Gupta, and Martial Hebert. Data-driven 3D primitives for single image understanding. ICCV'13
-- Shubham Tulsiani and Jitendra Malik. Viewpoints and keypoints. CVPR'15
-- Derek Hoiem, Alexei A. Efros, and Martial Hebert. Geometric context from a single image. ICCV'15
-- Georgios Pavlakos, Xiaowei Zhou, Aaron Chan, Konstantinos G. Derpanis, and Kostas Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
+- D Fouhey, A Gupta, and M Hebert. Data-driven 3D primitives for single image understanding. ICCV'13
+- S Tulsiani and J Malik. Viewpoints and keypoints. CVPR'15
+- D Hoiem, A Efros, and M Hebert. Geometric context from a single image. ICCV'15
+- G Pavlakos, X Zhou, A Chan, K Derpanis, and K Daniilidis. 6-dof object pose from semantic keypoints. ICRA'17
 - Dense RGB-D Tracking:
 	- Benchmark: Sturm, Engelhard, Endres, Burgard, Cremers, IROS 2012
 	- Steinbrücker, Sturm, Cremers (2011)
@@ -172,9 +172,9 @@
 	- S. Gupta, P. Arbelaez, R. Girshick, and J. Malik. Aligning 3d models to rgb-d images of cluttered scenes. CVPR'15
 
 ## Learning-based
-- Hao Su, Charles R Qi, Yangyan Li, and Leonidas Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
+- H Su, C Qi, Y Li, and L Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. ICCV'15
 - A. Kendall, M. Grimes, and R. Cipolla. PoseNet: A convolutional network for real-time 6-DOF camera relocalization. ICCV'15
-- Shubham Tulsiani, Joao Carreira and Jitendra Malik. Pose Induction for Novel Object Categories. ICCV'15
+- S Tulsiani, J Carreira and J Malik. Pose Induction for Novel Object Categories. ICCV'15
 	- Input: images, output three Euler Angles
 	- SCT (Similar Class Transfer): 
 		- Train a CNN for each class (shared base layers, output heads)
@@ -188,5 +188,5 @@
 - R Clark, M Bloesch, J Czarnowski, S Leutenegger, and A Davison. Learning to solve nonlinear least squares for monocular stereo. ECCV'18
 	- solve nonlinear least squares in two-view SfM using a LSTM-RNN
 - Z Lv, F Dellaert, J Rehg, A Geiger. Taking a Deeper Look at the Inverse Compositional Algorithm. 2019
-- **SVD**: Jake Levinson, Carlos Esteves, Kefan Chen, Noah Snavely, Angjoo Kanazawa, Afshin Rostamizadeh, Ameesh Makadia. An Analysis of SVD for Deep Rotation Estimation. NeurIPS'20
+- **SVD**: J Levinson, C Esteves, K Chen, N Snavely, A Kanazawa, A Rostamizadeh, A Makadia. An Analysis of SVD for Deep Rotation Estimation. NeurIPS'20
 	- https://youtu.be/jgN2SJTVokI

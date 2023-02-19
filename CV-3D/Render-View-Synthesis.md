@@ -15,8 +15,8 @@
 	- Single depth;
 	- Multiple plane (MPI)/Layered depth (LDI);
 - Generally 2D rendered by volumetric rendering;
-	- James T Kajiya and Brian P Von Herzen. Ray tracing volume densities. ACM SIGGRAPH'84
-	- Robert A Drebin, Loren Carpenter, and Pat Hanrahan. Volume rendering. SIGGRAPH'88
+	- J Kajiya and B Herzen. Ray tracing volume densities. ACM SIGGRAPH'84
+	- R Drebin, L Carpenter, and P Hanrahan. Volume rendering. SIGGRAPH'88
 	- https://www.zhihu.com/search?type=content&q=volumetric%20rendering
 - Good Tutorials:
 	- CVPR'20:
@@ -46,11 +46,11 @@
 		- https://www.zhihu.com/search?type=content&q=ray%20marching
 	- https://www.zhihu.com/question/29863225/answer/70728387
 	- James T. Kajiya. Rendering equation. SIGGRAPH'83
-	- David S. Immel, Michael F. Cohen, Donald P Greenberg. A radiosity method for non-diffuse environments. SIGGRAPH'86
+	- D Immel, M Cohen, D Greenberg. A radiosity method for non-diffuse environments. SIGGRAPH'86
 	- Systematically sample light sources at each hit
 		- Don't just wait the rays will hit it by chance
 	- Photon mapping: https://www.zhihu.com/search?type=content&q=photon%20map
-	- Eric Veach, Leonidas John Guibas. Optimally combining sampling techniques for Monte Carlo rendering. SIGGRAPH'95
+	- E Veach, L Guibas. Optimally combining sampling techniques for Monte Carlo rendering. SIGGRAPH'95
 - Color
 	- Lambertian: (ideal matte, diffusely reflecting surface), same color regardless of observer's angle of view;
 	- Reflection, refraction:
@@ -63,25 +63,25 @@
 		- Cons: costly construction, not great if you work with moving objects;
 	- Most people use the Surface Area Heuristic (SAH)
 		- MacDonald and Booth. Heuristic for ray tracing using space subdivision. Visual Computer'90
-	- Warren Hunt, William R. Mark, Gordon Stoll. Fast kd-tree Construction with an Adaptive Error-Bounded Heuristic. IRT'06
-	- Kun Zhou, Qiming Hou, Rui Wang, Baining Guo. Real-Time KD-Tree Construction on Graphics Hardware. SIGGRAPH Asia'08
+	- W Hunt, W Mark, G Stoll. Fast kd-tree Construction with an Adaptive Error-Bounded Heuristic. IRT'06
+	- K Zhou, Q Hou, R Wang, B Guo. Real-Time KD-Tree Construction on Graphics Hardware. SIGGRAPH Asia'08
 	- Hard core efficiency: Ingo Wald's PhD thesis: http://www.sci.utah.edu/~wald/PhD/
 - Differentiable:
 	- Resources:
 		- **Kaolin**: https://github.com/NVIDIAGameWorks/kaolin
 		- **Tensorflow**: https://www.tensorflow.org/graphics/api_docs/python/tfg/rendering
 		- **pytorch3d**: https://github.com/facebookresearch/pytorch3d
-	- **Neural-Renderer**: Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3D Mesh Renderer. CVPR'18
+	- **Neural-Renderer**: H Kato, Y Ushiku, and T Harada. Neural 3D Mesh Renderer. CVPR'18
 		- Problem: 1. single 2D image to mesh; 2. Mesh Editing;
 		- Insight: differentiable; approximate GD; first mesh generative model;
 		- http://hiroharu-kato.com/projects_en/neural_renderer.html
 		- https://github.com/daniilidis-group/neural_renderer
 		- Supervision: silhouette loss + smoothness loss;
 		- Assumption: deform an existing mesh (not from scratch); preprocessed segmentation;
-	- **Soft-Ras**: Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
+	- **Soft-Ras**: S Liu, T Li, W Chen, and H Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
 		- https://github.com/ShichenLiu/SoftRas
 		- Insight: soft assign pixel to faces, making the rasterization differentiable by soft aggregation;
-	- **DIB-R**: Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
+	- **DIB-R**: W Chen, J Gao, H Ling, Ed Smith, J Lehtinen, A Jacobson, and S Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
 		- https://nv-tlabs.github.io/DIB-R/
 		- Insight: Barycentric interpolation based;
 		- Applied Soft-Ras weighting to soft assign pixel;
@@ -94,17 +94,17 @@
 	- Easy to render;
 	- Hard to represent complex scenes;
 - Lambertian:
-	- Michael Waechter, Nils Moehrle, and Michael Goesele. Let there be color! large-scale texturing of 3d reconstructions. ECCV'14
+	- M Waechter, N Moehrle, and M Goesele. Let there be color! large-scale texturing of 3d reconstructions. ECCV'14
 - Non-Lambertian:
-	- Paul E Debevec, Camillo J Taylor, and Jitendra Malik. Modeling and rendering architecture from photographs: A hybrid geometry-and image-based approach. SIGGRAPH'96
-	- Daniel N Wood, Daniel I Azuma, Ken Aldinger, Brian Curless, Tom Duchamp, David H Salesin, and Werner Stuetzle. Surface light fields for 3d photography. SIGGRAPH'00
-	- Chris Buehler, Michael Bosse, Leonard McMillan, Steven Gortler, and Michael Cohen. Unstructured lumigraph rendering. SIGGRAPH'01
+	- P Debevec, C Taylor, and J Malik. Modeling and rendering architecture from photographs: A hybrid geometry-and image-based approach. SIGGRAPH'96
+	- D Wood, D Azuma, K Aldinger, B Curless, T Duchamp, D Salesin, and W Stuetzle. Surface light fields for 3d photography. SIGGRAPH'00
+	- C Buehler, M Bosse, L McMillan, S Gortler, and M Cohen. Unstructured lumigraph rendering. SIGGRAPH'01
 
 ## Image Based Rendering: Multi Images/Warping/Alpha-Blending
 - Insight: Rely on a set of two-dimensional images of a scene to generate a three-dimensional model and then render some novel views of this scene;
 - Legacy:
 	- Alpha-Compositing: Thomas Porter and Tom Duff. Compositing digital images. Computer graphics and interactive techniques, 1984.
-	- Shenchang Eric Chen and Lance Williams. View interpolation for image synthesis. SIGGRAPH'93.
+	- S Chen and L Williams. View interpolation for image synthesis. SIGGRAPH'93.
 	- S. E. Chen and L. Williams. View interpolation for image synthesis. 1993
 	- P. E. Debevec, C. J. Taylor, and J. Malik. Modeling and rendering architecture from photographs: A hybrid geometry- and image-based approach. 1996
 	- S. M. Seitz and C. R. Dyer. View morphing. 1996
@@ -140,7 +140,7 @@
 	- Generate 2 MVS, then CNN to blend;
 		- Michal Jancosek and Tomas Pajdla. Multi-view reconstruction preserving weakly-supported surfaces. CVPR'11
 		- Johannes L Schonberger and Jan-Michael Frahm. Structure-from-motion revisited. CVPR'16
-- **IBRNet**: Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul Srinivasan, Howard Zhou, Jonathan T Barron, Ricardo Martin-Brualla, Noah Snavely, and Thomas Funkhouser. Ibrnet: Learning multi-view image-based rendering. CVPR'21
+- **IBRNet**: Q Wang, T Funkhouser. Ibrnet: Learning multi-view image-based rendering. CVPR'21
 
 ## Unclassified
 - **GQN**: Neural scene representation and rendering. Science 2018
@@ -160,24 +160,24 @@
 	- **Refer to Voxels in 3D-represenation**;
 	- Octree:
 		- Aaron Knoll. A survey of octree volume rendering methods. GI'06
-	- Nima Khademi Kalantari, Ting-Chun Wang, and Ravi Ramamoorthi. Learning-based view synthesis for light field cameras. ACM TOG, 2016
-	- Eric Penner and Li Zhang. Soft 3D reconstruction for view synthesis. SIGGRAPH Asia, 2017
-	- Shubham Tulsiani, Tinghui Zhou, Alexei A. Efros,and Jitendra Malik. Multi-view supervision for single-view reconstruction via differentiable ray consistency. CVPR'17
-	- Abhishek Kar, Christian Hane, and Jitendra Malik. Learning a multi-view stereo machine. NeurIPS'17
-	- SM Ali Eslami, Danilo Jimenez Rezende, Frederic Besse, Fabio Viola, Ari S Morcos, Marta Garnelo, Avraham Ruderman, Andrei A Rusu, Ivo Danihelka, Karol Gregor, et al. Neural scene representation and rendering. Science'18
-	- Vincent Sitzmann, Justus Thies, Felix Heide, Matthias Nießner, Gordon Wetzstein, and Michael Zollhofer. Deepvoxels: Learning persistent 3d feature embeddings. CVPR'19
+	- N Kalantari, T Wang, and R Ramamoorthi. Learning-based view synthesis for light field cameras. ACM TOG, 2016
+	- E Penner and L Zhang. Soft 3D reconstruction for view synthesis. SIGGRAPH Asia, 2017
+	- S Tulsiani, T Zhou, A Efros,and J Malik. Multi-view supervision for single-view reconstruction via differentiable ray consistency. CVPR'17
+	- A Kar, C Hane, and J Malik. Learning a multi-view stereo machine. NeurIPS'17
+	- DeepMind. Neural scene representation and rendering. Science'18
+	- V Sitzmann, J Thies, F Heide, M Nießner, G Wetzstein, and M Zollhofer. Deepvoxels: Learning persistent 3d feature embeddings. CVPR'19
 		- https://vsitzmann.github.io/deepvoxels/
 		- Assume: camera intrinsics, poses known;
 		- 2D feat extract;
 		- Lifting layer -> GRU (state shared across training) -> Hole filling (UNet)
 		- Projection -> occlusion net -> render
 		- Supervision: L1-loss, adv-loss;
-	- Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, and Yaser Sheikh. Neural volumes: Learning dynamic renderable volumes from images. TOG'19
+	- S Lombardi, T Simon, J Saragih, G Schwartz, A Lehrmann, and Y Sheikh. Neural volumes: Learning dynamic renderable volumes from images. TOG'19
 		- encoder-decoder network end-to-end using a differentiable ray marching algorithm;
 		- Encoder: three views (center, leftmost, rightmost) go through CNN to get 3,072dim, concat, fc, VAE+sample -> 256-dim + condition-var;
 		- Decoder: Voxel V(x;z)=S(x-x0/W/2, g(z))
 		- Warping field: to generate finer resolution;
-	- Kyle Olszewski, Sergey Tulyakov, Oliver Woodford, Hao Li, and Linjie Luo. Transformable bottleneck networks. ICCV'19
+	- K Olszewski, S Tulyakov, O Woodford, H Li, and L Luo. Transformable bottleneck networks. ICCV'19
 		- https://kyleolsz.github.io/TB-Networks/
 		- Problem: 3D manipulation;
 		- Source -> 3D-recon voxel -> novel view synthesis;
@@ -193,17 +193,17 @@
 	- J Flynn, I Neulander, J Philbin, and N Snavely. Deepstereo: Learning to predict new views from the world's imagery. CVPR'16
 		- PSV: Plane sweep volume;
 		- Each image (selection tower as depth prediction): conv-relu -> per-pixel softmax;
-	- **LDI**: Shubham Tulsiani, Richard Tucker, Noah Snavely. Layer-structured 3D Scene Inference via View Synthesis. ECCV'18
+	- **LDI**: S Tulsiani, R Tucker, N Snavely. Layer-structured 3D Scene Inference via View Synthesis. ECCV'18
 		- https://shubhtuls.github.io/lsi/
 		- https://github.com/google/layered-scene-inference
-	- Tinghui Zhou, Richard Tucker, John Flynn, Graham Fyffe, Noah Snavely. Stereo Magnification: Learning View Synthesis using Multiplane Images. SIGGRAPH'18
+	- T Zhou, R Tucker, J Flynn, G Fyffe, N Snavely. Stereo Magnification: Learning View Synthesis using Multiplane Images. SIGGRAPH'18
 		- https://people.eecs.berkeley.edu/~tinghuiz/projects/mpi/
-	- **MPI**: Pratul P. Srinivasan, Richard Tucker, Jonathan T. Barron, Ravi Ramamoorthi, Ren Ng, Noah Snavely. Pushing the Boundaries of View Extrapolation with Multiplane Images. CVPR'19
+	- **MPI**: P Srinivasan, R Tucker, J Barron, R Ramamoorthi, R Ng, N Snavely. Pushing the Boundaries of View Extrapolation with Multiplane Images. CVPR'19
 		- https://github.com/google-research/google-research/tree/master/mpi_extrapolation
-	- John Flynn, Michael Broxton, Paul Debevec, Matthew DuVall, Graham Fyffe, Ryan Overbeck, Noah Snavely, Richard Tucker. DeepView: View synthesis with learned gradient descent. CVPR'19
+	- J Flynn, M Broxton, P Debevec, M DuVall, G Fyffe, R Overbeck, N Snavely, R Tucker. DeepView: View synthesis with learned gradient descent. CVPR'19
 		- https://augmentedperception.github.io/deepview/
-	- Ben Mildenhall, Pratul P Srinivasan, Rodrigo Ortiz-Cayon, Nima Khademi Kalantari, Ravi Ramamoorthi, Ren Ng, and Abhishek Kar. Local light field fusion: Practical view synthesis with prescriptive sampling guidelines. TOG'19
-	- Peng Dai, Yinda Zhang, Zhuwen Li, Shuaicheng Liu, and Bing Zeng. Neural point cloud rendering via multi-plane projection. CVPR'20
+	- B Mildenhall, P Srinivasan, R Ortiz-Cayon, N Kalantari, R Ramamoorthi, R Ng, and A Kar. Local light field fusion: Practical view synthesis with prescriptive sampling guidelines. TOG'19
+	- P Dai, Y Zhang, Z Li, S Liu, and B Zeng. Neural point cloud rendering via multi-plane projection. CVPR'20
 	- Zhengqi Li, Wenqi Xian, Abe Davis, and Noah Snavely. Crowdsampling the plenoptic function. ECCV'20
 - Point cloud:
 	- K Aliev, A Sevastopolsky, M Kolos, D Ulyanov, and V Lempitsky. Neural point-based graphics. arxiv'19
@@ -213,26 +213,26 @@
 ## Implicit Radience Field
 - Basic idea:
 	- Use a MLP to overfit color and occupancy of a scene, supervised by each image;
-- Xu Chen, Jie Song, and Otmar Hilliges. Monocular neural image based rendering with continuous view control. ICCV'19
+- X Chen, J Song, and O Hilliges. Monocular neural image based rendering with continuous view control. ICCV'19
 	- Analysis
 - NERF:
-	- **SRN**: Vincent Sitzmann, Michael Zollhofer, and Gordon Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. NeurIPS'19
+	- **SRN**: V Sitzmann, M Zollhofer, and G Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. NeurIPS'19
 		- https://github.com/vsitzmann/scene-representation-networks
 		- Implicit function: Phi(R3) -> Rn;
 		- Neural render: Psi, ray-marching lstm;
-	- **NERF**: Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
+	- **NERF**: B Mildenhall, P Srinivasan, M Tancik, J Barron, R Ramamoorthi, and R Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
 		- Insight: overfit a function mlp(x,y,z,θ,φ) to explain the scene;
 		- Key techniques to improve novel view synthesis performance:
 			- Positional encoding;
 			- Multi-resolution;
-	- Keunhong Park, Utkarsh Sinha, Jonathan T. Barron, Sofien Bouaziz, Dan B Goldman, Steven M. Seitz, and Ricardo Martin-Brualla. Deformable neural radiance fields. arxiv'20
+	- K Park, U Sinha, J Barron, S Bouaziz, D Goldman, S Seitz, and R Martin-Brualla. Deformable neural radiance fields. arxiv'20
 		- https://nerfies.github.io/
 		- Problem setup:
 			- Input: selfie videos; (people can move)
 		- Insight: Optimize an additional continuous volumetric deformation field;
 			- (x,y,z) -> MLP -> **deformation** field (x',y',z')
 			- Nerf on the deformed view;
-	- Ricardo Martin-Brualla, Noha Radwan, Mehdi S. M. Sajjadi, Jonathan T. Barron, Alexey Dosovitskiy, and Daniel Duckworth. NeRF in the Wild: Neural Radiance Fields for Unconstrained Photo Collections. CVPR'21
+	- R Martin-Brualla, N Radwan, M Sajjadi, J Barron, A Dosovitskiy, and D Duckworth. NeRF in the Wild: Neural Radiance Fields for Unconstrained Photo Collections. CVPR'21
 		- https://nerf-w.github.io/
 		- Problem setup:
 			- Input: unstructured collected images from internet;
@@ -240,86 +240,84 @@
 			- Static embedding;
 			- **Transient** embedding; (moving human, ...)
 			- Reconstruction + uncertainty; (to ignore transient parts)
-	- Pratul P. Srinivasan, Boyang Deng, Xiuming Zhang, Matthew Tancik, Ben Mildenhall, and Jonathan T. Barron. Nerv: Neural reflectance and visibility fields for relighting and view synthesis. CVPR'21
+	- P Srinivasan, B Deng, X Zhang, M Tancik, B Mildenhall, and J Barron. Nerv: Neural reflectance and visibility fields for relighting and view synthesis. CVPR'21
 		- Problem setup: to enable **relighting**;
 		- Neural Visibility Field;
-	- Michelle Guo, Alireza Fathi, Jiajun Wu, Thomas Funkhouser. Object-Centric Neural Scene Rendering. arxiv'20
+	- M Guo, A Fathi, J Wu, T Funkhouser. Object-Centric Neural Scene Rendering. arxiv'20
 		- https://www.shellguo.com/osf/
 - NERF acceleration:
 	- Add a prior (image cnn features!):
-		- **GRF**: Alex Trevithick and Bo Yang. Grf: Learning a general radiance field for 3d scene representation and rendering. ICCV'21
+		- **GRF**: A Trevithick and B Yang. Grf: Learning a general radiance field for 3d scene representation and rendering. ICCV'21
 			- https://github.com/alextrevithick/GRF
 			- Similar to IBRNet, but use absolute coord;
 			- Each image -> CNN -> feature;
 			- Reproject feature -> (xp, yp, zp) -> Attention aggregation;
 			- Volumetric rendering and supervision;
-		- Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa. pixelnerf: Neural radiance fields from one or few images. CVPR'21
+		- A Yu, V Ye, M Tancik, and A Kanazawa. pixelnerf: Neural radiance fields from one or few images. CVPR'21
 			- Similar to IBRNet, with abs coord；
 			- (x,y,z) + image-feat at (u,v) -> MLP -> color + opacity;
-		- Matthew Tancik, Ben Mildenhall, Terrance Wang, Divi Schmidt, Pratul P. Srinivasan, Jonathan T. Barron, and Ren Ng. Learned initializations for optimizing coordinate-based neural representations. CVPR'21
+		- M Tancik, B Mildenhall, T Wang, D Schmidt, P Srinivasan, J Barron, and R Ng. Learned initializations for optimizing coordinate-based neural representations. CVPR'21
 			- **Meta learning**: learn to initialize the network;
 			- https://www.matthewtancik.com/learnit
-	- Daniel Rebain, Wei Jiang, Soroosh Yazdani, Ke Li, Kwang Moo Yi, and Andrea Tagliasacchi. Derf: Decomposed radiance fields. CVPR'20
+	- D Rebain, W Jiang, S Yazdani, K Li, K M Yi, and A Tagliasacchi. Derf: Decomposed radiance fields. CVPR'20
 		- Decompose into several small net;
-		- Occupancy: sigma(x)=sum w(x) sig(x)
-		- Color: c(x, d) = sum w(x) c(x,d)
-	- **NSVF**: Lingjie Liu, Jiatao Gu, Kyaw Zaw Lin, Tat-Seng Chua, and Christian Theobalt. Neural sparse voxel fields. NeurIPS'20
+		- Occupancy: σ(x)=∑ w(x) sig(x)
+		- Color: c(x, d) = ∑ w(x) c(x,d)
+	- **NSVF**: L Liu, J Gu, K Z Lin, T Chua, and C Theobalt. Neural sparse voxel fields. NeurIPS'20
 		- https://lingjie0206.github.io/papers/NSVF/
 		- https://github.com/facebookresearch/NSVF
 		- Insight: Voxel bounded implicit field; progressive training;
 		- Skip empty, 10x faster;
-	- David B Lindell, Julien NP Martel, and Gordon Wetzstein. Autoint: Automatic integration for fast neural volume rendering. CVPR'21
+	- D Lindell, J Martel, and G Wetzstein. Autoint: Automatic integration for fast neural volume rendering. CVPR'21
 		- http://www.computationalimaging.org/publications/
 		- Modifies Nerf s.t. fewer samples required;
 			- Grad net for fast integral;
 		- Lower quality;
-	- Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten	Kreis, Charles Loop, Derek Nowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler. Neural geometric level of detail: Real-time rendering with implicit 3D shapes. CVPR'21
+	- T Takikawa, J Litalien, K Yin, K Kreis, C Loop, D Nowrouzezahrai, A Jacobson, M McGuire, and S Fidler. Neural geometric level of detail: Real-time rendering with implicit 3D shapes. CVPR'21
 		- octree;
 - Fast rendering;
-	- Peter Hedman, Pratul P. Srinivasan, Ben Mildenhall, Jonathan T. Barron, and Paul Debevec. Baking neural radiance fields for real-time view synthesis. ICCV'21
+	- P Hedman, P Srinivasan, B Mildenhall, J Barron, and P Debevec. Baking neural radiance fields for real-time view synthesis. ICCV'21
 		- https://youtu.be/5jKry8n5YO8
-		- Stephan J. Garbin, Marek Kowalski, Matthew Johnson,
-	Jamie Shotton, and Julien Valentin. Fastnerf: High-fidelity
-	neural rendering at 200fps. arxiv'21
+	- S Garbin, M Kowalski, M Johnson,
+	J Shotton, and J Valentin. Fastnerf: High-fidelity neural rendering at 200fps. arxiv'21
 		- https://microsoft.github.io/FastNeRF/
 		- Cache instead of neural net: decompose to avoid 5-dim cache;
 			- position dependent;
 			- direction dependent;
-	- Christian Reiser, Songyou Peng, Yiyi Liao, and Andreas
+	- C Reiser, S Peng, Y Liao, and A
 	Geiger. Kilonerf: Speeding up neural radiance fields with
 	thousands of tiny mlps. arxiv'21
 		- https://github.com/creiser/kilonerf
 		- Thousands of small MLP instead of a big MLP;
 	- Real-time rendering of NeRFs with PlenOctrees - Angjoo Kanazawa
 		- https://unsup3d.github.io/
-- Zhengqi Li, Simon Niklaus, Noah Snavely, and Oliver Wang. Neural scene flow fields for space-time view synthesis of dynamic scenes. arxiv'20
-- Konstantinos Rematas, Ricardo Martin-Brualla, and Vittorio Ferrari. Sharf: Shape-conditioned radiance fields from a single view. arxiv'21
+- Z Li, S Niklaus, N Snavely, and O Wang. Neural scene flow fields for space-time view synthesis of dynamic scenes. arxiv'20
+- K Rematas, R Martin-Brualla, and V Ferrari. Sharf: Shape-conditioned radiance fields from a single view. arxiv'21
 - Generative
-	- Marco Fraccaro, Danilo Jimenez Rezende, Yori Zwols, Alexander Pritzel, SM Eslami, and Fabio Viola. Generative temporal models with spatial memory for partially observed environments. arxiv'18
-	- Philipp Henzler, Niloy J Mitra, and Tobias Ritschel. Escaping plato's cave: 3d shape from adversarial rendering. ICCV'19
-	- Thu Nguyen-Phuoc, Chuan Li, Lucas Theis, Christian Richardt, and Yong-Liang Yang. Hologan: Unsupervised learning of 3d representations from natural images. ICCV'19
-	- Eric R Chan, Marco Monteiro, Petr Kellnhofer, Jiajun Wu, and Gordon Wetzstein. pi-GAN: Periodic implicit generative adversarial networks for 3d-aware image synthesis. arxiv'20
-	- Michael Niemeyer and Andreas Geiger. Giraffe: Representing scenes as compositional generative neural feature fields. arxiv'20
-	- GRAF: Katja Schwarz, Yiyi Liao, Michael Niemeyer, and Andreas Geiger. GRAF: Generative radiance fields for 3d-aware image synthesis. NeurIPS'20
+	- M Fraccaro, D J Rezende, Y Zwols, A Pritzel, Eslami, and F Viola. Generative temporal models with spatial memory for partially observed environments. arxiv'18
+	- P Henzler, N Mitra, and T Ritschel. Escaping plato's cave: 3d shape from adversarial rendering. ICCV'19
+	- T Nguyen-Phuoc, C Li, L Theis, C Richardt, and Y Yang. Hologan: Unsupervised learning of 3d representations from natural images. ICCV'19
+	- E Chan, M Monteiro, P Kellnhofer, J Wu, and G Wetzstein. pi-GAN: Periodic implicit generative adversarial networks for 3d-aware image synthesis. arxiv'20
+	- M Niemeyer and A Geiger. Giraffe: Representing scenes as compositional generative neural feature fields. arxiv'20
+	- GRAF: K Schwarz, Y Liao, M Niemeyer, and A Geiger. GRAF: Generative radiance fields for 3d-aware image synthesis. NeurIPS'20
 		- Insight: Generative model + NERF
 			- Traditional: z-sampling -> image/voxel;
 			- Proposed: z-sampling -> RF, RF + camera-pose -> image;
-	- **SGN**: Terrance DeVries, Miguel Angel Bautista, Nitish Srivastava, Graham W. Taylor, Joshua M. Susskind. Unconstrained Scene Generation with Locally Conditioned Radiance Fields. ICCV'21
+	- **SGN**: T DeVries, M Angel Bautista, N Srivastava, G Taylor, J Susskind. Unconstrained Scene Generation with Locally Conditioned Radiance Fields. ICCV'21
 		- Global generator from a latent code z: W=g(z); with StyleGAN2;
-		- Local radience field from an angle p: (sigma, color)=f(wij, p); modulated linear layers similar to CIPS;
+		- Local radience field from an angle p: (σ, color)=f(wij, p); modulated linear layers similar to CIPS;
 
 ## Real-Time
-- Suttisak Wizadwongsa, Pakkapon Phongthawee, Jiraphon
-Yenphraphai, and Supasorn Suwajanakorn. NeX: Real-time
-view synthesis with neural basis expansion. arxiv'21
-- MVP: Stephen Lombardi, Tomas Simon, Gabriel Schwartz, Michael Zollhoefer, Yaser Sheikh, and Jason Saragih. Mixture of volumetric primitives for efficient neural rendering. SIGGRAPH'21
+- S Wizadwongsa, P Phongthawee, J
+Yenphraphai, and S Suwajanakorn. NeX: Real-time view synthesis with neural basis expansion. arxiv'21
+- MVP: S Lombardi, T Simon, G Schwartz, M Zollhoefer, Y Sheikh, and J Saragih. Mixture of volumetric primitives for efficient neural rendering. SIGGRAPH'21
 
 ## Extroplate, Large Angle
-- Inchang Choi, Orazio Gallo, Alejandro Troccoli, Min H Kim, and Jan Kautz. Extreme view synthesis. ICCV'19
-- Andrew Liu, Richard Tucker, Varun Jampani, Ameesh Makadia, Noah Snavely, and Angjoo Kanazawa. Infinite nature: Perpetual view generation of natural scenes from a single image. arxiv'20
+- I Choi, O Gallo, A Troccoli, M Kim, and J Kautz. Extreme view synthesis. ICCV'19
+- A Liu, R Tucker, V Jampani, A Makadia, N Snavely, and A Kanazawa. Infinite nature: Perpetual view generation of natural scenes from a single image. arxiv'20
 
 ## Unclassified
-- Hao Su, Fan Wang, Eric Yi, Leonidas Guibas. 3D-Assisted Feature Synthesis for Novel Views of an Object. ICCV'15
+- H Su, F Wang, E Yi, L Guibas. 3D-Assisted Feature Synthesis for Novel Views of an Object. ICCV'15
 - J Yang. Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis. NIPS 2015
 	- Input/output: images
 	- https://github.com/jimeiyang/deepRotator
@@ -340,18 +338,18 @@ view synthesis with neural basis expansion. arxiv'21
 	- Evaluation: Kitti, NYU;\
 		<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="500"/>
 - E Park, J Yang, E Yumer, D Ceylan, and A Berg. Transformation-Grounded Image Generation Network for Novel 3d View Synthesis. 2017
-- Johanna Delanoy, Mathieu Aubry, Phillip Isola, Alexei A. Efros, Adrien Bousseau. 3D Sketching using Multi-View Deep Volumetric Prediction. CGIT'18
+- J Delanoy, M Aubry, P Isola, A Efros, A Bousseau. 3D Sketching using Multi-View Deep Volumetric Prediction. CGIT'18
 - S Sun, M Huh, Y Liao, N Zhang, and J Lim. Multi-view to Novel view: Synthesizing Novel Views with Self-Learned Confidence. ECCV'18
 	- Problem: novel view synthesis
 	- Input: many images;
 	- https://github.com/shaohua0116/Multiview2Novelview
-- Daeyun Shin, Zhile Ren, Erik B. Sudderth, Charless C. Fowlkes. 3D Scene Reconstruction with Multi-layer Depth and Epipolar Transformers. ICCV'19
+- D Shin, Z Ren, E Sudderth, C Fowlkes. 3D Scene Reconstruction with Multi-layer Depth and Epipolar Transformers. ICCV'19
 	- https://research.dshin.org/iccv19/multi-layer-depth/
-- **SynSin**: Olivia Wiles, Georgia Gkioxari, Richard Szeliski, Justin Johnson. SynSin: End-to-end View Synthesis from a Single Image. CVPR'20 submission
+- **SynSin**: O Wiles, G Gkioxari, R Szeliski, J Johnson. SynSin: End-to-end View Synthesis from a Single Image. CVPR'20 submission
 	- http://www.robots.ox.ac.uk/~ow/synsin.html
 
 ## Disentangled
-- **3D-SDN**: Shunyu Yao, Tzu Ming Harry Hsu, Jun-Yan Zhu, Jiajun Wu, Antonio Torralba, William T. Freeman, Joshua B. Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics. NIPS'18
+- **3D-SDN**: S Yao, H Hsu, J Zhu, J Wu, A Torralba, W Freeman, J Tenenbaum. 3D-Aware Scene Manipulation via Inverse Graphics. NIPS'18
 	- http://3dsdn.csail.mit.edu/
 	- https://github.com/ysymyth/3D-SDN
 	- Algorithm:\

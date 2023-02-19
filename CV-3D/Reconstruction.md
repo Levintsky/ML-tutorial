@@ -253,7 +253,7 @@
 		<img src="/CV-3D/images/reconstruction/ba-net.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/ba-net2.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/reconstruction/ba-net3.png" alt="drawing" width="600"/>
-- Joel Ruben Antony Moniz, Christopher Beckham, Simon Rajotte, Sina Honari, Christopher Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
+- J Ruben A Moniz, C Beckham, S Rajotte, S Honari, C Pal. Unsupervised Depth Estimation, 3D Face Rotation and Replacement. NIPS'18
 
 ## Stereo
 - Unclassified:
@@ -302,8 +302,8 @@
 	- **HD3**: Z. Yin, T. Darrell and F. Yu: Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR 2019.
 		- https://github.com/ucbdrive/hd3
 	- **PSM-Net**: J Chang and Y Chen. Pyramid stereo matching network. CVPR'18
-	- Learning Unsupervised Multi-View Stereopsis via Robust Photometric Consistency, T. Khot, S. Agrawal, S. Tulsiani, C. Mertz, S. Lucey, M. Hebert. 2019.
-	- Chengzhou Tang and Ping Tan. BA-Net: Dense Bundle Adjustment Network. 2018
+	- T. Khot, S. Agrawal, S. Tulsiani, C. Mertz, S. Lucey, M. Hebert. Learning Unsupervised Multi-View Stereopsis via Robust Photometric Consistency. 2019.
+	- C Tang and P Tan. BA-Net: Dense Bundle Adjustment Network. 2018
 	- **Unsupervised-Deep-VO**: Ruihao Li, Sen Wang, Zhiqiang Long, and Dongbing Gu. Undeepvo: Monocular visual odometry through unsupervised deep learning. In ICRA, 2018.
 - DL: PSV (plane-sweep algorithm):
 	- J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep-Stereo: Learning to predict new views from the world's imagery. CVPR'16
@@ -326,7 +326,7 @@
 			- DeMoN dataset: 640 x 480 resolution;
 			- **MVS-SYNTH**: 120 sequences synthetic (greatly helpful), each seq contains 100 images of 1920 x 1080 resolution, ground truth disparity map, extrinsic and intrinsic camera;
 			- ETH3D
-	- **DPSNet**: Sunghoon Im, Hae-Gon Jeon, Stephen Lin, In So Kweon. DPSNet: End-to-end Deep Plane Sweep Stereo, ICLR'19.
+	- **DPSNet**: S Im, H Jeon, S Lin, I S Kweon. DPSNet: End-to-end Deep Plane Sweep Stereo, ICLR'19.
 		- Assume: intrinsic K; extrinsic (R, t) known
 		<img src="/CV-3D/images/stereo/dpsnet.png" alt="drawing" width="600"/>
 		<img src="/CV-3D/images/stereo/dpsnet2.png" alt="drawing" width="500"/>
@@ -371,8 +371,8 @@
 		- Assume a probabilistic model
 		- Model to optimize MLE;
 	- S Duggal, S Wang, W Ma, R Urtasun. Learning Spatially Consistent Depth using Graph Neural Network based Poisson Solver. Mini-17
-	- Angela Dai, Daniel Ritchie, Martin Bokeloh, Scott Reed, Jurgen Sturm, Matthias Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
-	- Angela Dai, Christian Diller, Matthias Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
+	- A Dai, D Ritchie, M Bokeloh, S Reed, J Sturm, M Nießner. ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans. 2018
+	- A Dai, C Diller, M Nießner. SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans. CVPR'20 submission
 
 ## Misc
 - X. Wang, D. Fouhey, and A. Gupta. Designing deep networks for surface normal estimation. CVPR'15
