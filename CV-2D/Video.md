@@ -11,7 +11,7 @@
 
 ## Benchmarks
 - Google:
-	- YouTube-8M: S Abu-El-Haija, N Kothari, J Lee, P Natsev, G Toderici, B Varadarajan, S Vijayanarasimhan. YouTube-8M: A Large-Scale Video Classification Benchmark
+	- YouTube-8M: A Large-Scale Video Classification Benchmark
 		- https://research.google.com/youtube8m/
 		- 6.1 Million, 350,000 hours
 		- 2.6 billion audio/visual features

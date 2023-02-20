@@ -348,10 +348,8 @@
 	- J Martens. Deep learning via hessian-free optimization. ICML'10
 	- **KFAC**: J. Martens and R. Grosse. Optimizing neural networks with kronecker-factored approximate curvature. ICML'15
 		- Kronecker approximation to Fisher
-		- Assumption: FC (si = Wi\* ai) + non-linear (ai = φ(si)), then DWi=gi x ai-1, Fisher:\
-			<img src="/Optimization/images/2nd/k-fac1.png" alt="drawing" width="400"/>
-		- Approx:\
-			<img src="/Optimization/images/2nd/k-fac2.png" alt="drawing" width="400"/>
+		- Assumption: FC (si = Wi ai) + non-linear (ai = φ(si)), then DWi=gi x ai-1, Fisher:
+		- Approx:
 	- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
 		- Follow-up on KFAC for convolutions
 	- Instability:

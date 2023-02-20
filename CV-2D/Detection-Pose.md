@@ -45,14 +45,13 @@ L. Pishchulin, J. Gall, and B. Schiele. Posetrack: A benchmark for human pose es
 	- https://github.com/CMU-Perceptual-Computing-Lab/openpose
 - H Joo, T Simon, Y Sheikh. Total Capture: A 3D Deformation Model for Tracking Faces, Hands, and Bodies. CVPR'18
 - Y. Xiu, J. Li, H. Wang, Y. Fang, and C. Lu. Pose flow: Efficient online pose tracking. BMVC'18
-- **DensePose**:
+- **DensePose**: FAIR. DensePose: Dense Human Pose Estimation In The Wild. CVPR'18
 	- http://densepose.org/
-	- Riza Alp Güler, Natalia Neverova, Iasonas Kokkinos. DensePose: Dense Human Pose Estimation In The Wild. CVPR'18
-		- https://github.com/facebookresearch/Densepose
-		- Dataset: match SMPL to COCO;\
-		- Insight: RPN-style (mask-RCNN) better than FCN; cascade helps;\
-			<img src="/CV-2D/images/detection/densepose.png" alt="drawing" width="400"/>
-	- Natalia Neverova, David Novotny, Andrea Vedaldi. Correlated Uncertainty for Learning Dense Correspondences from Noisy Labels. NeurIPS'19
+	- https://github.com/facebookresearch/Densepose
+	- Dataset: match SMPL to COCO;\
+	- Insight: RPN-style (mask-RCNN) better than FCN; cascade helps;\
+		<img src="/CV-2D/images/detection/densepose.png" alt="drawing" width="400"/>
+	- N Neverova, D Novotny, A Vedaldi. Correlated Uncertainty for Learning Dense Correspondences from Noisy Labels. NeurIPS'19
 - M. Kocabas, S. Karagoz, and E. Akbas. Multiposenet: Fast multi-person pose estimation using pose residual network. ECCV'18
 - HRNet:
 	- https://github.com/leoxiaobin/deep-high-resolution-net.pytorch

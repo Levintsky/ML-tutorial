@@ -95,5 +95,5 @@
 - **FBNet**:
 	- ChamNet: Towards Efficient Network Design through Platform-Aware Model Adaptation. 2018
 	- V1: B Wu, et. al. Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
-	- **FBNetV2**: FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
+	- FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
 		- https://github.com/facebookresearch/mobile-vision
