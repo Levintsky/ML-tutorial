@@ -52,23 +52,18 @@
 	- Evolutionary: ES;
 
 ## Misc
-- Visual Memory for Robust Path Following (Sergey Levine, Jitendra Malik). NIPS'18
-- Fast deep reinforcement learning using online adjustments from the past (DeepMind). NIPS'18
-- **Randomized Prior Functions for Deep Reinforcement Learning**. NIPS'18
-- **Approximate Knowledge Compilation by Online Collapsed Importance Sampling**. NIPS'18
-- **Randomized Prior Functions for Deep Reinforcement Learning**. NIPS'18
 - UD-RL
 	- J Schmidhuber. Reinforcement Learning Upside Down: Don’t Predict Rewards - Just Map Them to Actions. 2019
 	- R K Srivastava, P Shyam, F Mutz, W Jaśkowski, J Schmidhuber. Training Agents using Upside-Down Reinforcement Learning. 2019
 
-## Applications on RL
+## Applications of RL
 - System Optimization
 	- E. Ipek, O. Mutlu, José, and R. Caruana. Self-optimizing memory controllers: A reinforcement learning approach. ISCA, 2008.
 - Web Browse
 	- E Z Liu, K Guu, P Pasupat, T Shi, P Liang. Reinforcement Learning on Web Interfaces using Workflow-Guided Exploration. ICLR'18
 - Computer Vision (Attention)
-	- V Mnih, N Heess, A Graves, K Kavukcuoglu. Recurrent Models of Visual Attention. NIPS'14
-	- J. L. Ba, V. Mnih, and K. Kavukcuoglu. Multiple object recognition with visual attention. ICLR, 2015.
+	- DeepMind. Recurrent Models of Visual Attention. NIPS'14
+	- DeepMind. Multiple object recognition with visual attention. ICLR'15.
 	- P. Sermanet, A. Frome, and E. Real. Attention for fine-grained categorization. ICLR'15
 	- D Jayaraman, K Grauman. Learning to look around: Intelligently Exploring Unseen Environments for Unknown Tasks. CVPR'18
 - NTM
@@ -76,7 +71,7 @@
 - Recommendation
 	- L Li, W Chu, J Langford, R Schapire. A Contextual-Bandit Approach to Personalized News Article Recommendation, WWW'10
 	- Fighting Boredom in Recommender Systems with Linear Reinforcement Learning. NIPS'18
-	- **Horizon**: Facebook. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
+	- Horizon: Facebook. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
 - Misc
 	- Data center cooling using model-predictive control. NIPS'18 Tutorial
 - Unclassified
@@ -85,26 +80,24 @@
 
 ## Poker/Chess
 - Chess
-	- Chess:
-		- M. Campbell, A. J. Hoane, and F. hsiung Hsu. Deep blue. Artificial intelligence, 2002.
-	- Go
-		- Legacy:
-			- M. Enzenberger. The integration of a priori knowledge into a go playing neural network. URL: http://www.markus-enzenberger.de/neurogo.html, 1996.
-			- M. Enzenberger. an open-source framework for board games and go engine based on monte carlo tree search. IEEE Transactions on Computational Intelligence and AI in Games, 2010.
-			- **Pachi**: P. Baudis and J. loup Gailly. Pachi: State of the art open source go program. Advances in Computer Games, 2012.
-			- D. Silver, Temporal-Difference Search in Computer Go, 2012
-			- C. Maddison, A. Huang, I. Sutskever, and D. Silver. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
-			- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML'15.
-		- Y. Tian and Y. Zhu. Better computer go player with neural network and long- term prediction. arxiv, 2015.
-		- AlphaGo: DeepMind. Mastering the game of go with deep neural networks and tree search. Nature'14
-		- AlphaGo-Zero: DeepMind. Mastering the game of Go without human knowledge. Nature'17
-		- AlphaZer: DeepMind. A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science'19
-		- PhoenixGo: https://github.com/Tencent/PhoenixGo
-		- MuGo: https://github.com/brilee/MuGo
-		- Leela: https://github.com/gcp/leela-zero
-		- MiniGo: https://github.com/tensorflow/minigo
-		- Y Tian, J Ma, Q Gong, S Sengupta, Z Chen, J Pinkerton, L Zitnick. ELF OpenGo: an analysis and open reimplementation of AlphaZero. ICML'19
-	- Gammon: Gerald Tesauro. Temporal difference learning and td-gammon. Communications of the ACM, 38(3):58–68, 1995.
+	- Gammon: G Tesauro. Temporal difference learning and td-gammon. 1995.
+	- Chess: M. Campbell, A. J. Hoane, and F. hsiung Hsu. Deep blue. Artificial intelligence, 2002.
+	- Go-Legacy:
+		- M. Enzenberger. The integration of a priori knowledge into a go playing neural network. URL: http://www.markus-enzenberger.de/neurogo.html, 1996.
+		- M. Enzenberger. an open-source framework for board games and go engine based on monte carlo tree search. 2010.
+		- **Pachi**: P. Baudis and J. loup Gailly. Pachi: State of the art open source go program. 2012.
+		- D. Silver, Temporal-Difference Search in Computer Go, 2012
+		- Y. Tian and Y. Zhu. Better computer go player with neural network and long-term prediction. arxiv, 2015.
+	- DeepMind. Move evaluation in go using deep convolutional neural networks. arxiv, 2014.
+	- C. Clark and A. Storkey. Teaching deep convolutional neural networks to play go. ICML'15.
+	- AlphaGo: DeepMind. Nature'14
+	- AlphaGo-Zero: DeepMind. Nature'17
+	- AlphaZero: chess+shogi+Go. Science'19
+	- PhoenixGo: https://github.com/Tencent/PhoenixGo
+	- MuGo: https://github.com/brilee/MuGo
+	- Leela: https://github.com/gcp/leela-zero
+	- MiniGo: https://github.com/tensorflow/minigo
+	- ELF OpenGo. ICML'19
 - Poker (Texas Hod'em)
 	- Check Game Theory;
 - Rubik's Cube
@@ -112,18 +105,20 @@
 		- How to solve the rubik's cube - beginners method. https://ruwix.com/the-rubiks-cube/how-to-solve-the-rubiks-cube-beginners-method/.
 	- Mathematics:
 		- D Kunkle and G Cooperman. Twenty-six moves suffice for rubik’s cube. ISSAC'07
-		- Silviu Radu. Rubik’s cube can be solved in 34 quarter turns. http://cubezzz.dyndns.org/drupal/?q=node/view/92, Jul 2007.
-		- Michael Reid. Superflip requires 20 face turns. http://www.math.rwth-aachen.de/~Martin.Schoenert/Cube-Lovers/michael_reid__superflip_requires_20_face_turns.html, Jan 1995.
-		- Tomas Rokicki. Twenty-two moves suffice for rubik’s cubeR. The Mathematical Intelligencer, 32(1):33–40, 2010.
-		- Tomas Rokicki. God’s number is 26 in the quarter-turn metric. http://www.cube20.org/qtm/, Aug 2014
-		- Tomas Rokicki, Herbert Kociemba, Morley Davidson, and John Dethridge. The diameter of the rubik’s cube group is twenty. SIAM Review, 56(4):645–670, 2014.
-		-  Morwen Thistlethwaite. Thistlethwaite’s 52-move algorithm. https://www.jaapsch.net/puzzles/thistle.htm, Jul 1981.
+		- S Radu. Rubik’s cube can be solved in 34 quarter turns. Jul 2007.
+			- http://cubezzz.dyndns.org/drupal/?q=node/view/92, 
+		- M Reid. Superflip requires 20 face turns. Jan 1995.
+			- http://www.math.rwth-aachen.de/~Martin.Schoenert/Cube-Lovers/michael_reid__superflip_requires_20_face_turns.html, 
+		- T Rokicki. Twenty-two moves suffice for rubik’s cubeR. 2010.
+		- T Rokicki. God’s number is 26 in the quarter-turn metric. http://www.cube20.org/qtm/, Aug 2014
+		- T Rokicki, H Kociemba, M Davidson, and J Dethridge. The diameter of the rubik’s cube group is twenty. SIAM Review'14.
+		- M Thistlethwaite. Thistlethwaite’s 52-move algorithm. https://www.jaapsch.net/puzzles/thistle.htm, Jul 1981.
 	- Legacy:
-		- Peter Lichodzijewski and Malcolm Heywood. The rubik cube and gp temporal sequence learning: an initial study. In Genetic Programming Theory and Practice VIII, pages 35–54. Springer, 2011.
+		- P Lichodzijewski and M Heywood. The rubik cube and gp temporal sequence learning: an initial study. 2011.
 	- **Korf**:
 		- A Brown. Rubik’s cube solver. https://github.com/brownan/Rubiks-Cube-Solver, 2017.
-		- Deepening A* search.
-		- R Korf. Finding optimal solutions to rubik’s cube using pattern databases. AAAI’97/IAAI’97, pages 700–705. AAAI
+		- Deepening A∗ search.
+		- R Korf. Finding optimal solutions to rubik’s cube using pattern databases. AAAI’97/IAAI’97
 	- **Kociemba**:
 		- Two-phase algorithm details. http://kociemba.org/math/imptwophase.htm.
 		- M Tsoy. Kociemba. https://github.com/muodov/kociemba, 2018.
@@ -131,35 +126,32 @@
 		- R Brunetto and O Trunda. Deep heuristic-learning in the rubik’s cube domain: an experimental evaluation. 2017.
 
 ## HRL
-- From Spinningup
-	- STRAW, FUN, HIRO;
+- From Spinningup: STRAW, FUN, HIRO;
 - Legacy
 	- Hierarchical Learning in Stochastic Domains: Preliminary Results
-	- Amy McGovern and Andrew G Barto. Automatic discovery of subgoals in reinforcement learning
-	using diverse density. 2001.
-	- Martin Stolle and Doina Precup. Learning options in reinforcement learning. In International Symposium on Abstraction, Reformulation, and Approximation, pp. 212–223. Springer, 2002.
+	- R Sutton, D Precup, and S Singh. Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning. AI'99
+	- A McGovern and A Barto. Automatic discovery of subgoals in reinforcement learning using diverse density. 2001.
+	- M Stolle and D Precup. Learning options in reinforcement learning. 2002.
 	- A Tutorial on Bayesian Optimization of Expensive Cost Functions, with Application to Active User Modeling and Hierarchical Reinforcement Learning 2010
-	- David Silver and Kamil Ciosek. Compositional planning using optimal option models.
+	- D Silver and K Ciosek. Compositional planning using optimal option models.
 - HRL
 	- A summary: https://thegradient.pub/the-promise-of-hierarchical-reinforcement-learning/
 	- A Deep Hierarchical Approach to Lifelong Learning in Minecraft, AAAI'17
 	- T Shu, C Xiong, R Socher. Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning. ICLR'18
-	- Tejas D Kulkarni, Karthik R Narasimhan, Ardavan Saeedi, and Joshua B Tenenbaum. Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation. NIPS'16
+	- T Kulkarni, K Narasimhan, A Saeedi, and J Tenenbaum. Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation. NIPS'16
 	- S Zheng, Y Yue and P Lucey. Generating long-term trajectories using deep hierarchical networks. NIPS'16.
 		- Long-term planning;
-	- Kulkarni, Tejas D, Narasimhan, Karthik, Saeedi, Ardavan, and Tenenbaum, Josh. Hierarchical deep reinforcement learning: Integrating temporal abstraction and intrinsic motivation. NIPS'16
 	- E Zhan, Stephan Zheng, Generative Multi-Agent Behavioral Cloning
-	- **HIRO**: Ofir Nachum, Shixiang Gu, Honglak Lee, Sergey Levine. Data-Efficient Hierarchical Reinforcement Learning. NIPS'18
-	- Honglak Lee. Hierarchical Reinforcement Learning for Zero-shot Generalization with Subtask Dependencies. NIPS'18
-	- Andrew Levy, George Konidaris, Robert Platt, Kate Saenko. Learning Multi-Level Hierarchies with Hindsight. ICLR'19
-	- Zhen-Jia Pang, Ruo-Ze Liu, Zhou-Yu Meng, Yi Zhang, Yang Yu, Tong Lu. On Reinforcement Learning for Full-length Game of StarCraft. 2019
-	- **MPH**: Alexander Pashevich, Danijar Hafner, James Davidson, Rahul Sukthankar, Cordelia Schmid. Modulated Policy Hierarchies. 2019
+	- **HIRO**: O Nachum, S Gu, H Lee, Sergey Levine. Data-Efficient Hierarchical Reinforcement Learning for Zero-shot Generalization with Subtask Dependencies. NIPS'18
+	- A Levy, G Konidaris, R Platt, K Saenko. Learning Multi-Level Hierarchies with Hindsight. ICLR'19
+	- Z Pang, R Liu, Z Meng, Y Zhang, Y Yu, T Lu. On Reinforcement Learning for Full-length Game of StarCraft. 2019
+	- **MPH**: A Pashevich, D Hafner, J Davidson, R Sukthankar, C Schmid. Modulated Policy Hierarchies. 2019
 - Joint Skills and Meta-Controller
 	- P Dayan, Peter and G Hinton. Feudal reinforcement learning. NIPS'93.
-	- Pierre-Luc Bacon and Doina Precup. The option-critic architecture. NIPSW'15
-	- Pierre-Luc Bacon, Jean Harb, and Doina Precup. The Option-Critic Architecture, AAAI 2017
-	- Nicolas Heess, Greg Wayne, Yuval Tassa, Timothy Lillicrap, Martin Riedmiller, and David Silver. Learning and transfer of modulated locomotor controllers. 2016
-	- **STRAW**: Alexander Vezhnevets, Volodymyr Mnih, John Agapiou, Simon Osindero, A Graves, O Vinyals, K Kavukcuoglu. Strategic Attentive Writer for Learning Macro-Actions. NIPS'16
+	- P Bacon and D Precup. The option-critic architecture. NIPSW'15
+	- P Bacon, J Harb, and D Precup. The Option-Critic Architecture, AAAI'17
+	- DeepMind. Learning and transfer of modulated locomotor controllers. 2016
+	- STRAW: DeepMind. Strategic Attentive Writer for Learning Macro-Actions. NIPS'16
 		- Stick to the plan (commit)\
 			<img src="/RL/images/hrl/straw1.png" alt="drawing" width="500"/>
 		- Attention model:\
@@ -169,15 +161,15 @@
 		- Experiments: 2D-maze; Atari;
 	- FUN: DeepMind. Feudal Network for Hierarchical Reinforcement Learning. ICML'17
 		- https://github.com/dmakian/feudal_networks
-	- Sanjay Krishnan, Roy Fox, Ion Stoica, and Ken Goldberg. Ddco: Discovery of deep continuous options for robot learning from demonstrations. ICLR'17
-	- Carlos Florensa, Yan Duan, and Pieter Abbeel. Stochastic neural networks for hierarchical reinforcement learning. 2017
+	- S Krishnan, R Fox, I Stoica, and K Goldberg. Ddco: Discovery of deep continuous options for robot learning from demonstrations. ICLR'17
 	- K Frans, J Ho, X Chen, P Abbeel, J Schulman. Meta Learning Shared Hierarchies. ICLR'18
 	- Main problem:
 		- the meta-policy does not select "bad" options, so these options do not receive any reward signal to improve.
-		- Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. Outrageously large neural networks: The sparsely-gated mixture-of-experts layer. 2017
+		- Google-Brain. Outrageously large neural networks: The sparsely-gated mixture-of-experts layer. 2017
 - Options
-	- Daniel J Mankowitz, Timothy A Mann, and Shie Mannor. Time-regularized interrupting options. ICML'14
-	- Marlos C. Machado, Clemens Rosenbaum, Xiaoxiao Guo, Miao Liu, Gerald Tesauro, Murray Campbell. Eigenoption Discovery through the Deep Successor Representation, ICLR'18
+	- D Mankowitz, T Mann, and S Mannor. Time-regularized interrupting options. ICML'14
+	- R Fox, S Krishnan, I Stoica, and K Goldberg. Multi-Level Discovery of Deep Options. 2017
+	- M Machado, C Rosenbaum, X Guo, M Liu, G Tesauro, M Campbell. Eigenoption Discovery through the Deep Successor Representation, ICLR'18
 
 ## Interpretable RL
 - A Mott, D Zoran, M Chrzanowski, D Wierstra, D Rezende. Towards Interpretable Reinforcement Learning Using Attention Augmented Agents. NIPS'19
@@ -193,8 +185,8 @@
 
 ## Safety RL
 - Legacy:
-	- **CMDP**: Altman, Eitan. Constrained Markov Decision Processes. 1999
-	- Uchibe, Eiji and Doya, Kenji. Constrained reinforcement learning from intrinsic and extrinsic rewards. ICDL'07
+	- **CMDP**: E Altman. Constrained Markov Decision Processes. 1999
+	- E Uchibe and K Doya. Constrained reinforcement learning from intrinsic and extrinsic rewards. ICDL'07
 		- Heuristic CMDP: gradient projection
 	- T Moldovan and P Abbeel. Safe Exploration in Markov Decision Processes. ICML'12
 - Y Chow, M Ghavamzadeh, L Janson, and M Pavone. Risk-Constrained Reinforcement Learning with Percentile Risk Criteria. JMLR'15
@@ -218,7 +210,7 @@
 - **CPO**: Achiam et al. Constrained Policy Optimization. 2017.
 	- near-constraint satisfaction at each iteration\
 		<img src="/RL/images/safety/cpo.png" alt="drawing" width="400"/>
-- Held, David, Mccarthy, Zoe, Zhang, Michael, Shentu, Fred, and Abbeel, Pieter. Probabilistically Safe Policy Transfer. ICRA'17
+- D Held, Z Mccarthy, M Zhang, F Shentu, and P Abbeel. Probabilistically Safe Policy Transfer. ICRA'17
 - **HIRL**: Saunders et al. Trial without Error: Towards Safe Reinforcement Learning via Human Intervention, 2017.
 - **Intrinsic-fear**: Z Lipton, J Gao, L Li, J Chen, and D Deng. Combating Deep Reinforcement Learning’s Sisyphean Curse with Intrinsic Fear.
 - **Leave-No-Trace**: Eysenbach et al. Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning, 2017.
@@ -247,7 +239,7 @@
 		- Evaluated on synthetic example CARLA
 
 ## Reproducibility, Analysis, and Critique
-- Continuous control: Y Duan, X Chen, R Houthooft, J Schulman, P Abbeel. Benchmarking Deep Reinforcement Learning for Continuous Control. ICML'16
+- OpenAI. Benchmarking Deep Reinforcement Learning for Continuous Control. ICML'16
 	- https://github.com/rll/rllab
 - Islam et al. Reproducibility of Benchmarked Deep Reinforcement Learning Tasks for Continuous Control. 2017.
 - Henderson et al. Deep Reinforcement Learning that Matters. 2017.
@@ -257,52 +249,47 @@
 - Wang et al. Benchmarking Model-Based Reinforcement Learning. 2019.
 
 ## RTS
-- Starcraft
-	- https://github.com/TorchCraft/TorchCraft
-	- Starcraft II:
-		- https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/
-		- https://github.com/deepmind/pysc2
-		- Challenge
-			- Game theory: StarCraft is a game where, just like rock-paper-scissors, there is no single best strategy.
-			- Imperfect information
-			- Long term planning
-			- Real time
-			- Large action space
-		- Network
-			- Transformer Torso (Deep reinforcement learning with relational inductive biases, ICLR'19)
-			- Deep LSTM core
-			- Auto-regressive policy head with a pointer network
-			- a centralised value baseline (Counterfactual Multi-Agent Policy Gradients AAAI'18)
-			- Warm-start: supervised learning with human data
-			- Population-based training;
-	- FAIR: Forward Modeling for Partial Observation Strategy Games - A StarCraft Defogger. NIPS'18
-		- **POMDP**
-	- Jonas Gehring (FAIR)
-		- Starcraft
-		- LSTM for each unit;
-		- Train stage I: off-policy;
-		- Stage II: on-policy;		
-- Dota
-	- **OpenAI Five**:
-		- https://openai.com/blog/openai-five/
-		- **Long time horizons**: Dota games run at 30 frames per second for an average of 45 minutes, resulting in 80,000 ticks per game. OpenAI Five observes every fourth frame, yielding 20,000 moves;
-		- **Partially-observed state**: Units and buildings can only see the area around them. The rest of the map is covered in a fog hiding enemies and their strategies.
-		- **High-dimensional, continuous action space**: In Dota, each hero can take dozens of actions, and many actions target either another unit or a position on the ground. 170,000 possible actions per hero (not all valid each tick, such as using a spell on cooldown)
-		- **High-dimensional, continuous observation space**: Dota is played on a large continuous map containing ten heroes, dozens of buildings, dozens of NPC units, and a long tail of game features such as runes, trees, and wards. Valve’s Bot API as 20,000 (mostly floating-point) numbers representing all information a human is allowed to access
-		- Pure from selfplay.\
-			<img src="/RL/images/rts/openai-five.png" alt="drawing" width="600"/>
-		- **Model structure**: Each of OpenAI Five’s networks contain a single-layer, 1024-unit LSTM that sees the current game state (extracted from Valve’s Bot API) and emits actions through several possible action heads.
-		- **Exploration**
-		- **Coordination**
-		- Distributed training system: **Rapid**, could be applied to any gym environment
-			- Workers **push** data of game play
-			- Optimizer: P100 GPU, PPO with Adam, batch size 4096, BPTT 16 time steps, NCCL to average gradients (previously with MPI allreduce)
-			- Eval workers: 2500 CPUs, v.s. hardcoded scripted bots and self\
-				<img src="/RL/images/rts/openai-five-rapid.png" alt="drawing" width="600"/>
-		- **Difference versus humans**: 150-170 actions per minute;
-		- **Binary rewards can give good performance.**
-		- **Creep blocking can be learned from scratch.**
-		- **We’re still fixing bugs**
+- Challenge:
+	- no single best strategy: rock-paper-scissors (Starcraft II)
+	- Imperfect information
+	- Long term planning
+	- Real time
+	- Large action space
+- Model:
+	- Starcraft I [FAIR]: LSTM for each unit;
+	- Starcraft II [DeepMind]: Transformer + deep-LSTM
+		- Transformer Torso (Deep reinforcement learning with relational inductive biases, ICLR'19)
+	- OpenAI-Five: LSTM for each player;
+- Learning techniques:
+	- Self-replay;
+	- Imitation learning to warm up: Starcraft II
+	- PBT: Starcraft-II;
+	- Distributed Learning: Rapid (OpenAI);
+	- Binary reward: OpenAI-Five;
+- Starcraft-II
+	- https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/
+	- https://github.com/deepmind/pysc2
+	- Network
+		- Auto-regressive policy head with a pointer network
+		- a centralised value baseline (Counterfactual Multi-Agent Policy Gradients AAAI'18)
+- FAIR: Starcraft
+	- https://github.com/TorchCraft/TorchCraft	
+	- **POMDP**
+	- LSTM for each unit;
+	- Train stage I: off-policy;
+	- Stage II: on-policy;
+	- Stardata: A starcraft ai research dataset
+	- High-level strategy selection under partial observability in starcraft: Brood war
+	- Forward modeling for partial observation strategy games-a starcraft defogger. NIPS'18
+- OpenAI Five: Dota
+	- https://openai.com/blog/openai-five/
+	- Pure from selfplay.
+	- Distributed training: Rapid, applicable to gym environment
+		- Workers push data of game play
+		- Optimizer: P100 GPU, PPO with Adam, batch size 4096, BPTT 16 time steps, NCCL to average gradients (previously with MPI allreduce)
+		- Eval workers: 2500 CPUs, v.s. hardcoded scripted bots and self
+	- Difference versus humans: 150-170 actions per minute;
+	- Creep blocking can be learned from scratch.
 
 ## Navigation
 - GA3C: https://github.com/tgangwani/GA3C-DeepNavigation
@@ -311,7 +298,7 @@
 	- VizDoom 2016
 	- DeepMind Lab 2016
 	- HoME 2017
-	- House 3D: Y Wu, Y Wu, G Gkioxari, Y Tian. Building generalizable agents with a realistic and rich 3D environment. 2018
+	- House 3D: FAIR. 2018
 		- https://github.com/facebookresearch/House3D
 		- https://github.com/jxwuyi/HouseNavAgent
 	- Chalet 2018
@@ -322,13 +309,11 @@
 		- Google Street View;
 		- http://streetlearn.cc
 	- Baidu XWorld (Zihang Dai): https://github.com/zihangdai/pytorch_xworld
-- Language:
-	- Speaker-Follower Models for Vision-and-Language Navigation. NIPS'18
 - VIN
 	- Good summaries:
 		- https://zhuanlan.zhihu.com/p/25515755
 		- https://zhuanlan.zhihu.com/p/24478944
-	- **VIN**: Aviv Tamar, Yi Wu, Garrett Thomas, Sergey Levine, Pieter Abbeel. Value Iteration Network. NIPS'16
+	- **VIN**: A Tamar, Y Wu, G Thomas, S Levine, P Abbeel. Value Iteration Network. NIPS'16
 		<img src="/RL/images/navigation/vin1.png" alt="drawing" width="600"/>
 		<img src="/RL/images/navigation/vin2.png" alt="drawing" width="600"/>
 	- **GVIN**: S Niu, S Chen, H Guo, C Targonski, M Smith, J Kovačević. Generalized Value Iteration Networks: Life Beyond Lattices. AAAI'18

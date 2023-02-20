@@ -11,6 +11,7 @@
 		- Sampled from q(z) and weighted by p(z)/q(z);
 	- Sampling-importance-resampling (SIR): sample from q(z), and resample
 		- Sample from q(z) to get z1,...,zl, then resample with p(zi)/q(zi).
+- Bootstrapping: resample with replacement from sampled data;
 - Monte Carlo EM: sample instead of integral in E-step;
 	- Q(θ, θ-old) ~ 1/L∑l=1..L lnp(Zl,X|θ)
 - Time domain:

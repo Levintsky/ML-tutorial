@@ -21,7 +21,7 @@
 		- MI: SSN4HRL, VIC, DIAYN, VALOR, DISCERN, DADS, VISR;
 		- Asymmetric Self-Play (ASP);
 	- Data-based: Entropy (i.e. coverage) of data collected;
-		- Pseudo-count: [Bellemare 2016] [Ostrovski 2017] #exploration, RND;
+		- Pseudo-count: CTS, PixelCNN, Hash, RND;
 		- Entropy: MEPO, particle-based, ...
 - Theory:
 	- E Hazan, S Kakade, K Singh, A Soest. Provably Efficient Maximum Entropy Exploration. ICML'19
@@ -29,8 +29,11 @@
 - Tutorials/Survey
 	- C Colas, T Karch, O Sigaud, Ps Oudeyer. Autotelic Agents with Intrinsically Motivated Goal-Conditioned Reinforcement Learning: a Short Survey. 2020
 	- ICML'21: A Srinivas, P Abbeel. Unsupervised Learning for Reinforcement Learning.
+- https://blog.openai.com/reinforcement-learning-with-prediction-based-rewards/
+- https://blog.openai.com/learning-montezumas-revenge-from-a-single-demonstration/
 
 ## Algorithmic Exploration (Complement RFPT)
+- lec-17, 18 (CS-294, Sergey Levine)
 - Insight: Optimism in Face of Uncertainty
 	- Assume high reward for unvisitd states;
 - Classic: Tabular/linear
@@ -45,17 +48,48 @@
 	- Peter Auer’s UCB regret bounds, 2002;
 	- Strehl and Littman, Model-based Interval Estimation (MBIE), 2008
 - MCTS: check control-planning.md;
-- UCB;
+- UCB: (Upper Confidence Bounds)
+    - a = argmax μa + √(2lnT/N(a))
+    - Reg(T) ~ O(logT), provably as good as any algorithm
 - Q Ensembles, Thompson Sampling: directly model posterior;
+	- If conjugate prior/posterior: directly update;
+	- Otherwise, approximate posterior θˆ:
+		- Gibbs Sampling: θˆ0 init, change one θˆk at a time;
+		- Laplace Approximation: approx around mode;
+		- Langevin MC: dφt = ∇ln(g(φˆt))dt + √2 dBt
+			- Iterate until stationary; (Euler discretization in practice)
+		- Bootstrapping: resample from hypothetical history H=((x1,y1), ...) uniformly with replacement;
+    - O Chapelle, L Li. An Empirical Evaluation of Thompson Sampling, NIPS'11
     - I Osband, C Blundell, A Pritzel, B V Roy. Deep Exploration via Bootstrapped DQN, NIPS'16
+    	- Build C DQN agents using bootstrapped samples;
+    		- Expensive, shared backbone with multi-heads Q(s, a) in practice;
+    	- st, at=argmaxQ(s,a) from a random head; sample mask mt ~ M;
+    	- (st, at, rt, st+1, mt) to replay buffer for learning;
 	- Chen, Sidor, Abbeel, Schulman Q-UCB, 2017
 		- a ∈ μ(st, a) + λσ(st, a), mean, std across ensembles;
+    - D Russo, B V Roy, A Kazerouni, and I Osband. A Tutorial on Thompson Sampling. 2017
+    - Mandel, Liu, Brunskill, Popovic. Thompson sampling over representation & parameters. IJCAI'16
+    - Efficient Exploration through Bayesian Deep Q-Networks. NeurIPS workshop 2017
+        - Use deep NN with last layer as Bayesian linear regression;
 	- POLO: Lowrey, Rajeswaran, Kakade, Todorov, Mordatch. 2019
 		- V(s) = log(∑.k exp(κV(s;θk)))
 	- Lee, Laskin, Srinivas, Abbeel, SUNRISE 2020
 		- Q(st, at) := rt + γmax.a Q(st+1, a)
 			- if unseen (s, a), target Q inaccurate;
 			- Weight |Q-Qt| with confidence score;
+- Information Gain: bonus reward for reward uncertainty;
+    - D Russo, B V Roy. Learning to Optimize via Information-Directed Sampling. NIPS'14
+        - IG(z,y|a) = E_y[H(p(z))-H(p(z)|y)|a], how much we learn about z from action a;
+        - y = ra, z = θa (parameters of model p(ra))
+        - g(a) = IG(θa,ra|a), information gain about a;
+        - ∆a = E[r(a∗)-r(a)], expected suboptimality of a;
+        - Choose a based on argmin_a ∆a^2/g(a),
+            - Numerator ∆a^2: avoid known suboptimal actions;
+            - Denominator g(a): prefer uncertain actions;
+- In Q-learning:
+    - ∆w = α(Q-tgt − Qˆ(s,a;w))∇wQˆ(s,a;w)
+    - ∆w = α(r(s,a) + Q-tgt − Qˆ(s,a;w))∇wQˆ(s,a;w)
+        - r(s,a): uncertainty;
 
 ## RFPT
 - HER [NeurIPS'17]:
@@ -115,7 +149,8 @@
 - Legacy:
 	- J Schmidhuber, Curious model-building control systems. IJCNN'91
 	- Oudeyer and Kaplan. What is Intrinsic Motivation? A Typology of Computational Approaches. 2007
-- Stadie, Levine, Abbeel, 2015; Achiam, Sastry, 2017
+- Stadie, Levine, Abbeel. Incentivizing Exploration in Reinforcement Learning with Deep Predictive Models. 2015
+- Achiam, Sastry, 2017
 - ICM. Pathak. Curiosity-driven Exploration by Self-supervised Prediction. ICML'17
 - Y Burda, H Edwards, D Pathak, A Storkey, T Darrell, A Efros. Large-Scale Study of Curiosity-Driven Learning. ICLR'19
 	- Deeper dive on feature space?
@@ -164,7 +199,9 @@
 	- Bob reward: -tB
 	- tA, tB: completion time;
 - Klyubin, Polani, Nehaniv. Empowerment: A Universal Agent-Centric Measure of Control. '05
+- T Jung, D Polani, and P Stone. Empowerment for continuous agent—environment systems. 2011.
 - Salge, Glackin, Polani, Empowerment: An Introduction. 2013
+- S Mohamed and D J Rezende. Variational information maximisation for intrinsically motivated reinforcement learning. NIPS'15
 - VIC: DeepMind. Variational Intrinsic Control. ICLR'17
 	- HRL: intermediate option set Ω, with π(a|s,Ω); final state sf1, sf2, ...
 	- Loss-diversity: intrinsically different options I(Ω,sf|s0)
@@ -175,6 +212,8 @@
 	- Train with DIAYN;
 	- logq(z|s) as reward;
 - ASP: FAIR. Intrinsic Motivation and Automatic Curricula via Asymmetric Self-Play. ICLR'18
+- DeepMind. Learning an embedding space for transferable robot skills. ICLR'18
+	- MI(z; τ); latent skill z and trajectory τ;
 - DIAYN: B Eysenbach, A Gupta, J Ibarz, S Levine. Diversity is All You Need: Learning Skills without a Reward Function. ICLR'19
 - DISCERN: DeepMind. Unsupervised Control Through Non-Parametric Discriminative Rewards. ICLR'19
 - VISR: DeepMind. Fast Task Inference with Variational Intrinsic Successor Features. ICLR'20
@@ -192,11 +231,20 @@
 - CTS: DeepMind. Skip Context Tree Switching. ICML'14
 - Pseudo-count:
 	- CTS [NeurIPS'16]: Unifying Count-based Exploration and Intrinsic Motivation.
-		- learn P(s), change in P(s) as pseudo-count
+		- learn p(s), change in P(s) as pseudo-count
+		- Fitting: old p(si;θ), new p(si;θ′) with si added;
+		- p(si;θ) = N(si)/n; p(si;θ′) = N(si)+1/n+1;
+		- Solve N(si), n; (two unknowns, two equations)
+		- r' = r + β/√(N(s)+ε)
 	- Ostrovski [ICML'17]: Count-Based Exploration with Neural Density Models
 		- Better perf with density model (PixelCNN);
 	- Tang [NeurIPS'17]: #exploration
 		- Hash to low-dimension space and count there;
+	- J Fu, J D. Co-Reyes, S Levine. EX2: Exploration with Exemplar Models for Deep Reinforcement Learning, NeurIPS'17
+	    - https://github.com/justinjfu/exemplar_models
+	    - Exemplar-classifier for seen/unseen, classifier error to obtain density:
+	        - p(s;θ) = (1-D(s))/D(s)
+	        - Extra reward f(D(s))
 	- RND [ICLR'19]: Burda. Exploration by Random Network Distillation.
 		- Train a classifier for seen/new state;
 - Directly Optimizing Entropy of Data Collected
@@ -217,6 +265,10 @@
 	- W Huang, I Mordatch, D Pathak. One Policy to Control Them All: Shared Modular Policies for Agent-Agnostic Control. ICML'20
 		- https://github.com/huangwl18/modular-rl/
 - Baldi et. al., Bayesian Surprise Attracts Human Attention. (2005)
-- Complexity Gain: Graves et. al. Automated Curriculum learning For Neural Networks. (2017)
 - Driven by Compression Progress: A Simple Principle Explains Essential Aspects of Subjective Beauty, Novelty, Surprise, Interestingness, Attention, Curiosity, Creativity, Art, Science, Music, Jokes, Schmidhuber, 2008
+- Complexity Gain: Graves et. al. Automated Curriculum learning For Neural Networks. (2017)
 - Wang, J.X. et al. Evolving intrinsic motivations for altruistic behavior. 2018
+- Sergey. Visual Reinforcement Learning with Imagined Goals. NIPS'18
+- Learning to Play With Intrinsically-Motivated, Self-Aware Agents. NIPS'18
+- S Singh. On Learning Intrinsic Rewards for Policy Gradient Methods. NIPS'18
+

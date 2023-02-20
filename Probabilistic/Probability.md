@@ -2,6 +2,7 @@
 
 ## Basics
 - Discrete
+	- Bernoulli
 	- Binomial <> Beta
 	- Multinomial <> Dirichlet
 	- Poisson
@@ -14,7 +15,7 @@
 	- Laplace
 	- Gamma (Exponential, Erlang, χ-Square), Inverse-Gamma;
 	- Beta
-	- student-t: if var is unknown and estimated, then (x-μ)/σ^ ~ t()
+	- student-t: if var is unknown and estimated, then (x-μ)/σˆ ~ t()
 	- F-distribution;
 - Joint
 - Conjugacy: posterior of the same functional form with prior
@@ -31,7 +32,7 @@
 
 ## Exponential Family (Jordan-08-3, K.Murphy-9)
 - Principle of max entropy with empirical expectation:
-	- μα^ := 1/n ∑i=1.n φα(Xi),
+	- μαˆ := 1/n ∑i=1.n φα(Xi),
 - Model expectation:
 	- Ep[φα(X)] := ∫φα(x)p(x)ν(dx)
 - Maximize Shannon entropy:
@@ -72,7 +73,7 @@
 	- A(θ) = sup.μ ⟨θ, μ⟩ − A∗(μ)
 	- bijective between θ ∈ Ω and μ ∈ M;
 
-## Discrete (Kevin Murphy 2.3, 3.3, 3.4)
+## Discrete (K.Murphy-2.3, 3.3, 3.4)
 - 2.3.1 Binomial and Bernoulli
 	- Bernoulli: Ber(x|θ) = θ^I(x=1) (1−θ)^I(x=0)
 		- E(x) = p
@@ -81,8 +82,8 @@
 		- Bin(m|N,μ) = C(N,m)μ^m(1-μ)^(N-m)
 		- E(x) = np
 		- V(x) = np(1-p)
-		- Beta: **conjugacy prior** of binomial;
-	- 3.3 Learning:
+		- Beta(a, b) ∝ x^(a-1) (1-x)^(b-1)
+	- Learning:
 		- Prior: p(θ) ∝ θ^γ1 (1−θ)^γ2 ~ Beta(θ|a, b)
 		- Likelihood: p(D|θ) = θ^N1 (1−θ)^N0
 		- Posterior: p(θ|N0, N1) ∝ Beta(θ|N1+a, N0+b)
@@ -101,43 +102,59 @@
 - 2.3.4 Empirical distribution;
 	- p_emp(A) = 1/N Σδxi(A)
 
-## Continuous (Kevin Murphy 2.4)
+## Gaussian (2.4）
+- 1d:
+	- pdf: N(x|μ, σ^2) ~ 1/√(2πσ) exp(-1/2σ^2 (x-μ)^2)
+	- cdf: Φ(x; μ, σ^2) := ∫N(z|μ, σ^2)dz
+- Multi:
+	- N(x|μ, Σ) = (2π)^(-d/2)|Σ|^(-1/2) exp[-1/2(x-μ)Σ^-1(x-μ)]
+	- Precision matrix: Λ = inv(Σ);
+- Eigen interpretation:
+	- Σ = Σi λi uiui† (SVD)
+	- Σ^-1 = Σi 1/λi uiui†
+	- p(y) = p(x)|J| = ∏1/(2πλi)^1/2 exp(-yi^2/2λi)
+- MLE:
+	- μˆ = 1/N Σx
+	- Σˆ = 1/N (Σxx') - μˆμˆ†
+- **Conditional**
+	- μ = [μ1]; Σ=[Σ11 Σ12]
+	-     [μ2];   [Σ21 Σ22]
+	- Λ = Σ^(-1) = [Λ11 Λ12]
+	- 			   [Λ21 Λ22]
+	- Posterior:
+		- x1 ~ N(x1|μ1, Σ11)
+		- x2 ~ N(x2|μ2, Σ22)
+		- p(x1|x2) ~ N(x1|μ1|2, Σ1|2)
+		- μ1|2 = Σ1|2(Λ11μ1 - Λ12(x2-μ2))
+		- Σ1|2 = Σ11 - Σ12 Σ22^-1 Σ21 = Λ11^(-1)
+	- Proof of Posterior
+		- Theo 4.3.2: inverse of a partitioned matrix with Schur complements;
+		- p(x1,x2) = p(x2)p(x1|x2)
+- Linear Gaussian (Application of conditional)
+	- p(x) ~ N(x|μ, Σx)
+	- p(y|x) ~ N(y|Ax+b, Σy) noisy obs of x;
+	- Posterior conditional: p(x|y) ~ N(x|μx|y, Σx|y)
+		- (Σx|y)^-1 = Σx^-1 + A'Σy^(-1)A
+		- μx|y = Σx|y[A†Σy^(-1)(y-b) + Σx^(-1)μx]
+	- Marginal: p(y) ~ N(y|Aμx + b, Σy + AΣxA†)
+- MAP, 1-dim (PRML):
+	- σ2 known, prior μ ~ N(μ0, σ0):
+		- Posterior: Gaussian μ ~ N(μN, σN)
+	- μ known, precision λ=1/σ^2 ~ Gam(a0,b0)
+		- p(λ|X) ~ Gam(a0-1+N/2, λ)
+	- μ, λ unknown: Gaussian-Gamma
+		- p(μ, λ) ~ N(μ0,(βλ)^-1)Gam(λ|a,b)
+		- p(μ, λ|X) Gaussian-Gamma
+
+## Continuous (K.Murphy-2.4)
 - Uniform U(a, b)
 	- E(x) = (a+b)/2
 	- V(x) = (b-a)^2/12
+- Dirac delta δ(x)
+- Laplace:
+	- Lap(x|μ, b) = 1/2b exp(-|x-μ|/b)
+	- mean = μ, mode = μ, var = 2b2
 - 2.4.1 Gaussian
-	- 1d: N(x|μ, σ^2) ~ 1/√(2πσ) exp(-1/2σ^2(x-μ)^2)
-		- cdf: Φ(x; μ, σ2) := ∫N(z|μ, σ^2)dz
-	- Multi:
-		- N(x|μ, Σ) = (2π)^(-d/2)|Σ|^(-1/2) exp[-1/2(x-μ)Σ^-1(x-μ)]
-		- Precision matrix: Λ = inv(Σ);
-	- Eigen interpretation:
-		- Σ = Σi λi uiui' (SVD)
-		- Σ^-1 = Σi 1/λi uiui'
-		- p(y) = p(x)|J| = ∏1/(2πλi)^1/2 exp(-yi^2/2λi)
-	- 4.1.3 MLE:
-		- μ^ = 1/N Σx
-		- Σ^ = 1/N (Σxx') - μ^μ^'
-	- 4.3 Conditional
-		- μ = [μ1; μ2]; Σ=[Σ11 Σ12;Σ21 Σ22]
-		- Λ = Σ^(-1) = [Λ11 Λ12;Λ21 Λ22]
-		- Marginal:
-			- x1 ~ N(x1|μ1, Σ11)
-			- x2 ~ N(x2|μ2, Σ22)
-		- Theo-4.3.1 Posterior conditional:
-			- p(x1|x2) ~ N(x1|μ1|2, Σ1|2)
-			- μ1|2 = Σ1|2(Λ11μ1 - Λ12(x2-μ2))
-			- Σ1|2 = Σ11 - Σ12 Σ22^-1 Σ21 = Λ11^(-1)
-		- Proof of 4.3.1
-			- Theo 4.3.2: inverse of a partitioned matrix with Schur complements;
-			- p(x1,x2) = p(x2)p(x1|x2)
-	- 4.4 Linear Gaussian
-		- p(x) ~ N(x|μ, Σx)
-		- p(y|x) ~ N(y|Ax+b, Σy) noisy obs of x;
-		- Posterior conditional: p(x|y) ~ N(x|μx|y, Σx|y)
-			- (Σx|y)^-1 = Σx^-1 + A'Σy^(-1)A
-			- μx|y = Σx|y[A'Σy^(-1)(y-b)+Σx^(-1)μx]
-		- Marginal: p(y) ~ N(y|Aμx+b, Σy+AΣxA')
 	- 4.5 Digression: The Wishart distribution
 		- Insight: multivar of Gamma
 		- Wi(Λ|S,ν) = 1/Z |Λ|^(ν−D−1)/2 exp(−1/2 tr(ΛS^−1))
@@ -149,7 +166,7 @@
 	- 4.6 Infer
 		- Likelihood: p(D|μ) = N(x|μ, 1/NΣ)
 		- Posterior:
-			- p(μ|D, Σ) = N (μ|mN, VN)
+			- p(μ|D, Σ) = N(μ|mN, VN)
 			- VN^−1 = V0^(−1) + NΣ^(−1)
 			- m = VN[Σ^(−1)(Nx) + V0^(−1)m0]
 		- Posterior of Σ: IW
@@ -162,18 +179,6 @@
 			- p(μ>μ0|D) = ∫μ0..∞ p(μ|D)dμ
 			- p(μ|D) = T(μ|x, s^2/N, N−1)
 			- t statistic: t=(x-μ0)/(s/√(N))
-	- (PRML) Bayesian Learning:
-		- 1-d, σ2 known, prior μ ~ N(μ0, σ0):
-			- Posterior: Gaussian μ ~ N(μN, σN)
-		- 1-d, μ known, precision λ=1/σ^2 ~ Gam(a0,b0)
-			- p(λ|X) ~ Gam(a0-1+N/2, λ)
-		- 1-d, μ, λ unknown: Gaussian-Gamma p(μ, λ) ~ N(μ0,(βλ)^-1)Gam(λ|a,b)
-			- p(μ, λ|X) Gaussian-Gamma
-- 2.4.2 Degenerate pdf
-	- Dirac delta δ(x)
-- 2.4.3 Laplace:
-	- Lap(x|μ, b) = 1/2b exp(-|x-μ|/b)
-	- mean = μ, mode = μ, var = 2b2
 - 2.4.4 Gamma:
 	- Ga(T|a, b) = b^a/Γ(a) T^(a-1) exp(-Tb)
 	- Gamma function: Γ(x) := ∫u^(x-1)exp(-u)du
@@ -189,7 +194,6 @@
 		- IG(x|a,b) = b^a/Γ(a) x^(-a-1) exp(-b/x)
 		- mean = b/a−1, mode = b/a+1,var = b^2/(a−1)^2(a−2),
 - 2.4.5 Beta
-	- **conjugacy prior** of binomial
 	- Beta(x|a,b) = 1/B(a,b) x^(a-1)(1-x)^(b-1)
 	- B(a,b) = Γ(a)Γ(b)/Γ(a+b)
 	- mean = a/a+b, mode = a−1/a+b-2, var= ab/(a+b)^2(a+b+1)
