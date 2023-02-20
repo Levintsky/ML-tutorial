@@ -271,4 +271,3 @@
 - Sergey. Visual Reinforcement Learning with Imagined Goals. NIPS'18
 - Learning to Play With Intrinsically-Motivated, Self-Aware Agents. NIPS'18
 - S Singh. On Learning Intrinsic Rewards for Policy Gradient Methods. NIPS'18
-

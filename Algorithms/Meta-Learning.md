@@ -96,12 +96,15 @@
 	- S Flennerhag, P Moreno, N Lawrence and A Damianou. Transferring knowledge across learning processes. ICLR'19
 - C Finn, A Rajeswaran, S Kakade, and S Levine. Online meta-learning. ICML'19
 - **iMAML**: A Rajeswaran, C Finn, S Kakade, S Levine. Meta-Learning with Implicit Gradients. NIPS'19
-	- Notice the regularization:\
-		<img src = '/AutoML-Meta/images/iMAML1.png' width='400'>
-	- Total and Partial Derivatives of the nested function:\
-		<img src = '/AutoML-Meta/images/iMAML2.png' width='400'>
-	- dAlg(θ)/dθ memory heavy, intractable large graph;\
-		<img src = '/AutoML-Meta/images/iMAML3.png' width='400'>
+	- θ∗ = argmin.θ F(θ), where F(θ) = 1/M ∑Li(Alg.i(θ))
+		- Alg.i(θ) = argmin.φ Gi(φ′,θ) = Li(φ′) + λ/2 ∥φ′-φ∥^2
+	- Total and Partial Derivatives of the nested function:
+		- dL(Alg(θ))/dθ = dφ/dθ ∇.φ Li(φ)
+	- dAlg(θ)/dθ memory heavy, intractable large graph;
+		- Obtain task φi with iterative solver s.t. ∥φ-Alg(θ)∥^2
+		- vi = ∇.φ Li(φ)
+		- CG to solve gi s.t. ∥gi - (I+1/λ ∇2L(φi))^-1vi∥ ≤ δ
+		- ∇.θ F(θ) := 1/B ∑gi; used for SGD;
 - M Yin, G Tucker, M Zhou, S Levine, C Finn. Meta-Learning without Memorization. 2019
 	- Problem definition: Complete memorization in meta-learning is when the learned model ignores the task training data s.t.
 		- I(y∗; D|x∗, θ) = 0

@@ -38,7 +38,7 @@
 
 ## Mobile
 - MobileNet Series:
-	- **MobileNet-V1**: A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W. Wang, T. Weyand, M. Andreetto, and H. Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. CoRR 2017
+	- MobileNet-V1: Google. Mobilenets: Efficient convolutional neural networks for mobile vision applications. CoRR'17
 		- Insight: Depthwise separable + two hyper-parameters for tradeoff (width + resolution multiplier)
 		- Input: DF x DF x M, output: DF x DF x N, kernel size: DK
 		- Traditional: DK^2 x M x N x DF^2
@@ -46,34 +46,32 @@
 			- DK x DK x 1 kernel: DK^2 x M x DF^2
 			- 1 x 1 x N kernel: M x N x DF^2
 		- DS parameters: DK x DK x M + M x N
-		- Model:\
-			<img src="/AutoML-Meta/images/mobile/m-v1.png" alt="drawing" width="500"/>
+		- Model:
+			- Standard: 3x3-conv - BN - ReLU
+			- Proposed: 3x3-dwise-conv - BN - ReLU6 - [1x1-conv - BN - ReLU]
 		- Experiments: ~71% on ImageNet; (much lower op and params than GoogleNet and VGG)
-	- **MobileNet-V2**: M. Sandler, A. G. Howard, M. Zhu, A. Zhmoginov, and L. Chen. Inverted residuals and linear bottlenecks: Mobile networks for classification, detection and segmentation. CVPR 2018
+	- MobileNet-V2: Google. Inverted residuals and linear bottlenecks: Mobile networks for classification, detection and segmentation. CVPR'18
 		- Problem setup: classification, detection (SSDLite), segmentation (Mobile DeepLabv3);
-		- Linear bottlenecks\
-			<img src="/AutoML-Meta/images/mobile/m-v2-1.png" alt="drawing" width="350"/>
-		- Inverted Residuals\
-			<img src="/AutoML-Meta/images/mobile/m-v2-2.png" alt="drawing" width="350"/>
-		- Model comparison:\
-			<img src="/AutoML-Meta/images/mobile/m-v2-3.png" alt="drawing" width="500"/>
+		- Linear bottlenecks:
+			- 3x3-dwise-conv - Relu6 - Relu6, 1x1 - 1
+		- Inverted Residuals: PW - DW - PW
+			- 1x1-ReLU6 - Dwise-3x3-Relu6 - 1x1-linear
 		- Classification: ImageNet 74.7%
 		- Detection (SSD-Lite): 75 mIOU compared to 80 ResNet with 30 times more ops;
 	- **MobileNet-V3**: Searching for MobileNetV3. 2019
 		- Similar to MNas: RNN-based controller and the same factorized hierarchical search space
 		- 0. Backbone based on MnasNet;
 			- Block-wise Search;
-			- Layer-wise Search;\
-			<img src="/AutoML-Meta/images/mobile/m-v3-2.png" alt="drawing" width="400"/>
+			- Layer-wise Search;
 		- 1. Depthwise (as in V1);
 		- 2. Linear bottleneck + inverted residual net;
 		- 3. Lightweight attention SE based on squeeze and excitatin;
 		- 4. h-swish;
 		- 5. Platform-aware NAS and NetAdapt;
-		- 6. Change V2 final layers;\
-			<img src="/AutoML-Meta/images/mobile/m-v3-1.png" alt="drawing" width="400"/>
+		- 6. Change V2 final layers:
+			- 1x1-conv-BN-swish - Avg-pool - 1x1-conv-swish - 1x1-conv (Linear)
 - MNas:
-	- **MnasNet**: M Tan, et. al. MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
+	- **MnasNet**: Google. MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
 		- Built upon the MobileNetV2 structure by introducing lightweight attention modules based on squeeze and excitation into the bottleneck structure
 		- Steps:
 			- Generate a set of new proposals with at least delta reduction in latency compared to the previous step;
