@@ -107,7 +107,7 @@
 - Unsupervised Cross-Modal Alignment of Speech and Text Embedding Spaces. NIPS'18
 
 ## Measure Distance
-- Learning Deep Structured Semantic Models for Web Search using Clickthrough Data. CIKM 2013
+- Learning Deep Structured Semantic Models for Web Search using Clickthrough Data. CIKM'13
 
 ## Analysis, Theory
 - Z Yin and Y Shen. On the Dimensionality of Word Embedding. NeurIPS'18

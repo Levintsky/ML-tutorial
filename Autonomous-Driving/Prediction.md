@@ -54,7 +54,7 @@
 		- Lane graph op: parametric conv, pool, unpool;
 	- Combine 1, 2 for structured prediction;
 - Predicting Motion of Vulnerable Road Users using High-Definition Maps and Efficient ConvNets [NIPS'18, Pitts]
-- **MFP**: Y Tang, R Salakhutdinov. Multiple Futures Prediction. NIPS'19
+- MFP: Y Tang, R Salakhutdinov. Multiple Futures Prediction. NIPS'19
 	- Insight: semantically meaningful latent variables for multimodality; interactive and step-wise rollouts; hypothetical inference;
 	- Input: X (past), I (context); output: Y; P(Y|X, I)
 	- Multimodality: naive RNN + BPTT will cause mode averaging; solution: latent z;

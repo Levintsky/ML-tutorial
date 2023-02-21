@@ -1,9 +1,12 @@
 # Bandit
 
-## Resources
-- http://iosband.github.io/2015/07/28/Beat-the-bandit.html
-- https://github.com/bgalbraith/bandits
-- Book: Csaba Szepesvari and Tor Lattimore. Bandit Algorithms. 2020
+## Basics
+- Resources
+	- http://iosband.github.io/2015/07/28/Beat-the-bandit.html
+	- https://github.com/bgalbraith/bandits
+	- Book: C Szepesvari and T Lattimore. Bandit Algorithms. 2020
+- Gradient Bandit
+- Contextual bandit: associative search;
 
 ## Stanford-cs234 (lec-10)
 - A tuple of (A, R)

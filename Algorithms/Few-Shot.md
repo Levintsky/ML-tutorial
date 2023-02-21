@@ -6,7 +6,7 @@
 	- B. M. Lake, R. R. Salakhutdinov, and J. Tenenbaum. Oneshot learning by inverting a compositional causal process. NIPS 2013
 
 ## Metric Learning
-- Jake Snell, Kevin Swersky, Richard Zemel. Prototypical Networks for Few-shot Learning. NeurIPS'17
+- J Snell, K Swersky, R Zemel. Prototypical Networks for Few-shot Learning. NeurIPS'17
 - TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS'18
 - SEN: A Novel Dissimilarity Measure for Prototypical Few Shot Learning Networks. ECCV'20
 

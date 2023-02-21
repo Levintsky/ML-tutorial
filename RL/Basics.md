@@ -171,10 +171,6 @@
 	- R Fox, S Krishnan, I Stoica, and K Goldberg. Multi-Level Discovery of Deep Options. 2017
 	- M Machado, C Rosenbaum, X Guo, M Liu, G Tesauro, M Campbell. Eigenoption Discovery through the Deep Successor Representation, ICLR'18
 
-## Interpretable RL
-- A Mott, D Zoran, M Chrzanowski, D Wierstra, D Rezende. Towards Interpretable Reinforcement Learning Using Attention Augmented Agents. NIPS'19
-	<img src="/RL/images/interpretable/interp-rl.png" alt="drawing" width="500"/>
-
 ## Memory
 - From OpenAI spinning-up:
 	- **MFEC**: Blundell et al. Model-Free Episodic Control. 2016
@@ -248,7 +244,7 @@
 - Mania et al. Simple Random Search Provides a Competitive Approach to Reinforcement Learning. 2018.
 - Wang et al. Benchmarking Model-Based Reinforcement Learning. 2019.
 
-## RTS
+## RTS- Self-replay
 - Challenge:
 	- no single best strategy: rock-paper-scissors (Starcraft II)
 	- Imperfect information
@@ -290,6 +286,29 @@
 		- Eval workers: 2500 CPUs, v.s. hardcoded scripted bots and self
 	- Difference versus humans: 150-170 actions per minute;
 	- Creep blocking can be learned from scratch.
+
+## Multi-Agent
+- MA-DDPG: OpenAI. 2018
+- Legacy:
+	- M. Lauer and M. Riedmiller. An algorithm for distributed reinforcement learning in cooperative multi-agent systems. ICML'00
+	- L. Panait and S. Luke. Cooperative multi-agent learning: The state of the art. AAMAS'05
+	- L. Matignon, G. J. Laurent, and N. Le Fort-Piat. Hysteretic q-learning: an algorithm for decentralized reinforcement learning in cooperative multi-agent teams. IROS'07
+	- L. Busoniu, R. Babuska, and B. De Schutter. A comprehensive survey of multiagent reinforcement learning. 2008
+- Particle-World: Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments, 2018
+	- https://github.com/openai/multiagent-particle-envs
+- J Suarez, Y Du, P Isola, I Mordatch. Neural MMO: A Massively Multiagent Game Environment for Training and Evaluating Intelligent Agents. ICLR 2019 reject
+- S Liu, G Lever, N Heess, J Merel, S Tunyasuvunakool, and T Graepel. Emergent coordination through competition. ICLR'19
+- DeepMind. Human-level performance in 3D multiplayer games with population-based reinforcement learning. Science'19
+	- PBT;
+	- CNN + Slow/fast-RNN;
+- Hide-and-Seek. OpenAI. Emergent Tool Use From Multi-Agent Autocurricula. 2019
+	- http://openai.com/blog/emergent-tool-use
+	- http://github.com/openai/multi-agent-emergence-environments
+	- Key insight: six emergent phases in agent strategy in our environment, each of which creates a new pressure for the opposing team to adapt
+	- Policy: PPO + GAE;
+	- Platform: rapid;
+	- Entity centric and attention based to capture object-level info;
+	- Net structure: CNN-RNN;
 
 ## Navigation
 - GA3C: https://github.com/tgangwani/GA3C-DeepNavigation

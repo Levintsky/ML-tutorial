@@ -15,11 +15,11 @@
 	- Natural language (In ICML'21 tutorial)
 		- SNLI: S. Bowman et al., A large annotated corpus for learning natural language inference, EMNLP, 2015.
 			- 550k train, 10k test;
-		- M. Marelli et al., A SICK cure for the evaluation of compositional distributional semantic models, LREC, 2014.
+		- M. Marelli et al., A SICK cure for the evaluation of compositional distributional semantic models, LREC'14
 		- A. Williams et al., A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference, NAACL, 2018.
 		- S. Gururangan et al., Annotation Artifacts in Natural Language Inference Data, NAACL, 2019.
 		- A. Bosselut et al., COMET: Commonsense transformers for automatic knowledge graph construction. ACL, 2019.
-		- Oana-Maria Camburu, Brendan Shillingford, Pasquale Minervini, Thomas Lukasiewicz, Phil Blunsom. Make Up Your Mind! Adversarial Generation of Inconsistent Natural Language Explanations. ACL'20
+		- O Camburu, B Shillingford, P Minervini, T Lukasiewicz, P Blunsom. Make Up Your Mind! Adversarial Generation of Inconsistent Natural Language Explanations. ACL'20
 		- M. Lewis et al., BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension. ACL, 2020.
 		- NILE: Kumar and Talukdar. NILE: Natural Language Inference with Faithful Natural Language Explanations. ACL'20
 		- Majumder et al., Rationale-Inspired Natural Language Explanations with Commonsense. 2021
@@ -36,9 +36,9 @@
 ## Tutorial
 - NeurIPS'20: https://explainml-tutorial.github.io/
 	- Explain pre-built models in a **post-hoc** manner
-		- Marco Tulio Ribeiro, Sameer Singh, Carlos Guestrin. Why Should I Trust You?: Explaining the Predictions of Any Classifier. KDD'16
-		- Marco Tulio Ribeiro, Sameer Singh, Carlos Guestrin. Anchors: High-Precision Model-Agnostic Explanations. AAAI'18
-		- Himabindu Lakkaraju, Ece Kamar, Rich Caruana, Jure Leskovec. Faithful and Customizable Explanations of Black Box Models. AEIS'19
+		- M Ribeiro, S Singh, C Guestrin. Why Should I Trust You?: Explaining the Predictions of Any Classifier. KDD'16
+		- M Ribeiro, S Singh, C Guestrin. Anchors: High-Precision Model-Agnostic Explanations. AAAI'18
+		- H Lakkaraju, E Kamar, R Caruana, J Leskovec. Faithful and Customizable Explanations of Black Box Models. AEIS'19
 	- **Local** versus **Global** Explanations
 	- Approaches for Post hoc Explainability:
 		- Local:
@@ -79,21 +79,24 @@
 
 ## Interpretability
 - Why Is My Classifier Discriminatory? NIPS'18
-- David Alvarez-Melis, Tommi S. Jaakkola. Towards Robust Interpretability with Self-Explaining Neural Networks. NIPS'18
-- Wenbo Guo, Sui Huang, Yunzhe Tao, Xinyu Xing, Lin Lin. Explaining Deep Learning Models -- A Bayesian Non-parametric Approach. NIPS'18
-- Liwei Wang, Lunjia Hu, Jiayuan Gu, Yue Wu, Zhiqiang Hu, Kun He, John Hopcroft. Towards Understanding Learning Representations: To What Extent Do Different Neural Networks Learn the Same Representation. NIPS'18
-- Sara Hooker, Dumitru Erhan, Pieter-Jan Kindermans, Been Kim. A Benchmark for Interpretability Methods in Deep Neural Networks. NIPS'19
-- Patrick Schwab, Walter Karlen. CXPlain: Causal Explanations for Model Interpretation under Uncertainty. NIPS'19
+- D Alvarez-Melis, T Jaakkola. Towards Robust Interpretability with Self-Explaining Neural Networks. NIPS'18
+- W Guo, S Huang, Y Tao, X Xing, L Lin. Explaining Deep Learning Models -- A Bayesian Non-parametric Approach. NIPS'18
+- L Wang, L Hu, J Gu, Y Wu, Z Hu, K He, J Hopcroft. Towards Understanding Learning Representations: To What Extent Do Different Neural Networks Learn the Same Representation. NIPS'18
+- S Hooker, D Erhan, P Kindermans, B Kim. A Benchmark for Interpretability Methods in Deep Neural Networks. NIPS'19
+- P Schwab, W Karlen. CXPlain: Causal Explanations for Model Interpretation under Uncertainty. NIPS'19
+
+## Interpretable RL
+- DeepMind. Towards Interpretable Reinforcement Learning Using Attention Augmented Agents. NIPS'19
 
 ## Analysis
-- Matthew Olson, Abraham Wyner, Richard Berk. Modern Neural Networks Generalize on Small Data Sets. NIPS'18
-- Ann-Kathrin Dombrowski, Maximillian Alber, Christopher Anders, Marcel Ackermann, Klaus-Robert Müller, Pan Kessel. Explanations can be manipulated and geometry is to blame. NIPS'19
-- Randall Balestriero, Romain Cosentino, Behnaam Aazhang, Richard Baraniuk. The Geometry of Deep Networks: Power Diagram Subdivision. NIPS'19
+- MOlson, A Wyner, R Berk. Modern Neural Networks Generalize on Small Data Sets. NIPS'18
+- A Dombrowski, M Alber, C Anders, M Ackermann, K Müller, P Kessel. Explanations can be manipulated and geometry is to blame. NIPS'19
+- R Balestriero, R Cosentino, B Aazhang, R Baraniuk. The Geometry of Deep Networks: Power Diagram Subdivision. NIPS'19
 
 ## Visualization
-- Pei Wang, Nuno Nvasconcelos. Deliberative Explanations: visualizing network insecurities. NIPS'19
-- Suraj Srinivas, François Fleuret. Full-Gradient Representation for Neural Network Visualization. NIPS'19
-- Emily Reif, Ann Yuan, Martin Wattenberg, Fernanda B Viegas, Andy Coenen, Adam Pearce, Been Kim. Visualizing and Measuring the Geometry of BERT. NIPS'19
+- P Wang, N Nvasconcelos. Deliberative Explanations: visualizing network insecurities. NIPS'19
+- S Srinivas, F Fleuret. Full-Gradient Representation for Neural Network Visualization. NIPS'19
+- E Reif, A Yuan, M Wattenberg, F Viegas, A Coenen, A Pearce, B Kim. Visualizing and Measuring the Geometry of BERT. NIPS'19
 
 ## NIPS'19
 - Sara Hooker, Dumitru Erhan, Pieter-Jan Kindermans, Been Kim. A Benchmark for Interpretability Methods in Deep Neural Networks

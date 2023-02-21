@@ -22,7 +22,7 @@
 - ≅, ~ : congruent, similar;
 - Δ
 - π
- 
+
 ## Algebraic
 - ∞ ∥∥
 - Composition: f∘g

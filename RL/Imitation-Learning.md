@@ -1,15 +1,26 @@
 # Imitation Learning
 
-## Two ways
-- BC
-- IRL
+## Basics
+- Problem setup:
+	- Given expert demonstration, guess reward functions;
+- Two approaches:
+	- BC
+	- IRL
+- IRL:
+	- Bi-level optimization: expensive;
+		- Learn reward;
+		- RL with learned reward;
+	- Linear case:
+		- Feature matching;
+		- SVM learning;
+- Sergey Levine (294 lec-16)
 
 ## Basics
-- Sergey Levine (294 lec-16)
-- Legacy problem setup: feature mapping\
-	<img src="/RL/images/irl/irl1.png" alt="drawing" width="600"/>
-- SVM trick: demonstration better than other trajectory by a margin\
-	<img src="/RL/images/irl/irl2.png" alt="drawing" width="600"/>
+- Legacy problem setup: feature mapping
+	- Linear reward: r(s,a;ψ) = ∑ψi fi(s,a) = ψ†fi(s,a)
+	- Pick ψ s.t. E.πrψ[f(s,a)] = E.π∗[f(s,a)]
+- SVM trick: demonstration better than other trajectory by a margin
+	- min∥ψ∥^2 s.t. ψ†E.π∗[f(s,a)] ≥ ψ†E.π[f(s,a)] + D(π, π∗)
 - From control inference: policy probability\
 	<img src="/RL/images/irl/irl3.png" alt="drawing" width="600"/>
 - MLE with parition function:\
@@ -31,23 +42,19 @@
 - One-Shot High-Fidelity Imitation: Training Large-Scale Deep Nets with RL, Le Paine et al, 2018.
 	- Algorithm: MetaMimic.
 
-## Imitation Learning/IRL
-- Exponentially Weighted Imitation Learning for Batched Historical Data. NIPS'18
-- A Bayesian Approach to Generative Adversarial Imitation Learning. NIPS'18
-- Reward learning from human preferences and demonstrations in Atari. NIPS'18
-- Learning Task Specifications from Demonstrations. NIPS'18
-- Teaching Inverse Reinforcement Learners via Features and Demonstrations. NIPS'18
+## Misc
+- P Sharma, D Pathak, A Gupta. Third-Person Visual Imitation Learning via Decoupled Hierarchical Controller. NeurIPS'19
 
 ## IL
 - Behavior Cloning: naive supervised;
 	- Two notable success stories:
-		- Pomerleau, NIPS 1989: ALVINN;
-		- Summut et al., ICML 1992: Learning to fly in flight simulator;
+		- Pomerleau, NIPS'89: ALVINN;
+		- Summut et al., ICML'92: Learning to fly in flight simulator;
 	- Problem: distribution mismatch; (always pretty well in practice)
 		- Compounding error; ∝ ε^T2
 	- S Ross, A Bagnell. Efficient Reductions for Imitation Learning. AISTATS'10
-	- A Giusti, J Guzzi, D C. Ciresan, F He, J P. Rodríguez, F Fontana, M Faessler, C Forster, J Schmidhuber, G Di Caro, D Scaramuzza, L M. Gambardella. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
-	- A Mandlekar, D Xu, J Wong, S Nasiriany, C Wang, R Kulkarni, Li Fei-Fei, S Savarese, Y Zhu, R Martín-Martín. What Matters in Learning from Offline Human Demonstrations for Robot Manipulation. CoRL'21
+	- J Schmidhuber, et. al. A Machine Learning Approach to Visual Perception of Forest Trails for Mobile Robots. 2015
+	- Stanford. What Matters in Learning from Offline Human Demonstrations for Robot Manipulation. CoRL'21
 - DAgger
 	- Interactive from expert;
 	- S Ross, G J Gordon, and D Bagnell. A reduction of imitation learning and structured prediction to no-regret online learning. AISTATS'11
@@ -159,7 +166,7 @@
 	- Linear case:
 		- R(s)=wx(s)
 		- V(s0;π) = E[Σ_t γ^tR(st)|s0] = wμ(π), with μ(π) discounted weighted frequency of states;
-		- Expert optimal, so: wμ(π\*) >= wμ(π) for other policies;
+		- Expert optimal, so: wμ(π∗) >= wμ(π) for other policies;
 - Legacy:
 	- P Abbeel, A Ng. Apprenticeship Learning via Inverse Reinforcement Learning. ICML'04
 	- B D. Ziebart, A Maas, J Bagnell, and A K. Dey. Maximum Entropy Inverse Reinforcement Learning. AAAI'08

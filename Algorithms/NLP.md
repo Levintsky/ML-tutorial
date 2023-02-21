@@ -185,18 +185,18 @@
 	- **PPLM**: Uber-AI. Plug and Play Language Models: a Simple Approach to Controlled Text Generation. ICLR'20
 		- https://github.com/uber-research/pplm
 		- Insight: modify history in the direction to maximize both p(x) and p(a|x), then we get p(x|a);
-			<img src="/NLP/images/pplm.png" alt="drawing" width="400"/>
 - **GOLD**: R Pang, H He. Text Generation by Learning from Demonstrations. ICLR'21
 	- https://github.com/yzpang/gold-off-policy-text-gen-iclr21
+	- Also used in AlphaCode;
 	- Offline RL with reward rt = p_human(at|st)
-	- Offline:  reduce interaction with the environment and stay close to the demonstrated trajectories.
+	- Offline: reduce interaction with the environment and stay close to the demonstrated trajectories.
 		- E[Σwt ∇θlogπ(at|st;θ) Q(st, at)]
 		- wt: IS weight, wt = ∏t π(at;θ)/π(at;b); approx as wt = π(at;θ)/π(at;b) in GOLD;
 	- Final gradient: ∇J(θ) = ΣΣ π(at|st;θ) ∇logπ(at|st;θ) Q(st,at)
 		- R(s,a) := logp_MLE(a|s), with γ = 1
 		- Q(s,a) := Σt p(at|st)
 - Summarization:
-	- Abigail See, Peter J Liu, and Christopher D Manning. Get to the point: Summarization with pointer-generator networks. ACL'17
+	- A See, P Liu, and C Manning. Get to the point: Summarization with pointer-generator networks. ACL'17
 
 ## (External)-Knowledge based
 - Resouces:

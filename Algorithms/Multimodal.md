@@ -20,7 +20,7 @@
 	- Image + text: https://lilianweng.github.io/posts/2022-06-09-vlm/
 
 ## Platform & Dataset
-- **Habitat**: M Savva, A Kadian, O Maksymets, Y Zhao, E Wijmans, B Jain, J Straub, J Liu, V Koltun, J Malik, D Parikh and D Batra. Habitat: A Platform for Embodied AI Research. ICCV'19
+- FAIR: Habitat: A Platform for Embodied AI Research. ICCV'19
 	- Tasks: Embodied QA, Language grounding, navigation;
 	- Simulator: MatterPort3D, Gibson, Replic; https://github.com/facebookresearch/habitat-sim
 	- Habitat-API: https://github.com/facebookresearch/habitat-api

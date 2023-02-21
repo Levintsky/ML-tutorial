@@ -1,4 +1,11 @@
-# MRI, Classification, Detection, Segmentation
+# Medical
+
+## Basics
+- Problems:
+	- MRI
+	- Classification
+	- Detection
+	- Segmentation
 
 ## Benchmarks
 - LIDC-IDRI 

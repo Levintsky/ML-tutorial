@@ -2,10 +2,9 @@
 
 ## From Spinning Up
 - Benchmarking Reinforcement Learning Algorithms on Real-World Robots, Mahmood et al, 2018.
-- QT-Opt: Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation, Kalashnikov et al, 2018. Algorithm: QT-Opt.
 
 ## Misc
-- Jake Bruce, Niko Sünderhauf, Piotr Mirowski, Raia Hadsell, Michael Milford. Learning Deployable Navigation Policies at Kilometer Scale from a Single Traversal. 2018
+- DeepMind. Learning Deployable Navigation Policies at Kilometer Scale from a Single Traversal. 2018
 	- Key insight: real robot;
 
 ## Berkeley
@@ -19,7 +18,6 @@
 - Supersizing Self-supervision: Learning to Grasp from 50K Tries and 700 Robot Hours
 
 ## OpenAI
-- Y Duan, M Andrychowicz, B C. Stadie, J Ho, J Schneider, I Sutskever, P Abbeel and W Zaremba. One-Shot Imitation Learning. 2017
 - OpenAI Robotics Symposium 2019 with a lot of talks:
 	- https://openai.com/blog/symposium-2019/
 	- Learning From Play, Pierre Sermanet, Google Brain
@@ -40,11 +38,9 @@
 - Robot Learning in Homes: Improving Generalization and Reducing Dataset Bias. NIPS'18 Tutorial
 
 ## Legacy
-- L.-J. Lin. Reinforcement learning for robots using neural networks. No. CMU-CS-93-103. Carnegie-Mellon Univ Pittsburgh PA School of Computer Science, 1993.
+- L.-J. Lin. Reinforcement learning for robots using neural networks. 1993.
 
 ## NIPS'19
-- Andrew Spielberg, Allan Zhao, Yuanming Hu, Tao Du, Wojciech Matusik, Daniela Rus. Learning-In-The-Loop Optimization: End-To-End Control And Co-Design Of Soft Robots Through Learned Deep Latent Representations
-- Charlie Tang, Russ Salakhutdinov. Multiple Futures Prediction
-- Ya-Chien Chang, Nima Roohi, Sicun Gao. Neural Lyapunov Control
-- Taewan Kim, Joydeep Ghosh. On Single Source Robustness in Deep Fusion Models
-- Pratyusha Sharma, Deepak Pathak, Abhinav Gupta. Third-Person Visual Imitation Learning via Decoupled Hierarchical Controller
+- A Spielberg, A Zhao, Y Hu, T Du, W Matusik, D Rus. Learning-In-The-Loop Optimization: End-To-End Control And Co-Design Of Soft Robots Through Learned Deep Latent Representations
+- Y Chang, N Roohi, S Gao. Neural Lyapunov Control
+- T Kim, J Ghosh. On Single Source Robustness in Deep Fusion Models

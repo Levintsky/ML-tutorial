@@ -24,7 +24,7 @@
 - Basics:
 	- Problem setup: same network with same weights, multiple problems;
 - R. Sutton. The bitter lesson. Incomplete Ideas (blog), 13:12, 2019.
-- **Gato**: Scott Reed, Konrad Żołna, Emilio Parisotto, Sergio Gómez Colmenarejo, Alexander Novikov, Gabriel Barth-Maron, Mai Giménez, Yury Sulsky, Jackie Kay, Jost Tobias Springenberg, Tom Eccles, Jake Bruce, Ali Razavi, Ashley Edwards, Nicolas Heess, Yutian Chen, Raia Hadsell, Oriol Vinyals, Mahyar Bordbar and Nando de Freitas. A Generalist Agent. 2022
+- **Gato**: DeepMind. A Generalist Agent. 2022
 	- Tokenization:
 		- Text: SentencePiece (Kudo and Richardson, 2018), 32,000 subwords;
 		- Image: ViT - rasterize order;

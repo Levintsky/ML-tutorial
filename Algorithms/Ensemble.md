@@ -123,14 +123,14 @@
 		<img src="/Basic-ML/images/ensemble/cart4.png" alt="drawing" width="550"/>
 
 ## Boosting
-- **AdaBoost**: Freund, Yoav; Schapire, Robert E. A decision-theoretic generalization of on-line learning and an application to boosting". Journal of Computer and System Sciences. 1997
+- **AdaBoost**: Freund, Yoav; Schapire, Robert E. A decision-theoretic generalization of on-line learning and an application to boosting". 1997
 	- First paper on AdaBoost;
 - J. Friedman. Greedy function approximation: a gradient boosting machine. Annals of Statistics. 2001
 - J. Bennett and S. Lanning. The netflix prize. In Proceedings of the KDD Cup Workshop 2007
 - P. Li. Robust Logitboost and adaptive base class (ABC) Logitboost. UAI'10
 - **LambdaMART**: C. Burges. From ranknet to lambdarank to lambdamart: An overview. Learning'10
 - X. He, J. Pan, O. Jin, T. Xu, B. Liu, T. Xu, Y. Shi, A. Atallah, R. Herbrich, S. Bowers, and J. Q. n. Candela. Practical lessons from predicting clicks on ads at facebook. ADKDD'14
-- **XG-Boost**: Tianqi Chen, Carlos Guestrin. XGBoost: A Scalable Tree Boosting System, KDD 2016
+- **XG-Boost**: T Chen, C Guestrin. XGBoost: A Scalable Tree Boosting System, KDD'16
 	- https://github.com/dmlc/xgboost
 	- y = Σfk(x), f ∈ F(CART)
 	- Loss (regression + complexity):\
@@ -143,14 +143,4 @@
 - Zhihua Zhou. Multi-Layered Gradient Boosting Decision Trees. NIPS'18
 
 ## MoE
-- Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, Jeff Dean. Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. 17
-
-## NIPS'18
-- Xiao Li, Yu Wang, Sumanta Basu, Karl Kumbier, Bin Yu. A Debiased MDI Feature Importance Measure for Random Forests
-- Shen-Huan Lyu, Liang Yang, Zhi-Hua Zhou. A Refined Margin Distribution Analysis for Forest Representation Learning
-- Julaiti Alafate, Yoav S Freund. Faster Boosting with Smaller Memory
-- Allan Grønlund, Lior Kamma, Kasper Green Larsen, Alexander Mathiasen, Jelani Nelson. Margin-Based Generalization Lower Bounds for Boosted Classifiers
-- Bulat Ibragimov, Gleb Gusev. Minimal Variance Sampling in Stochastic Gradient Boosting
-- Igor Kuralenok, Vasilii Ershov, Igor Labutin. MonoForest framework for tree ensemble analysis
-- Corinna Cortes, Mehryar Mohri, Dmitry Storcheus. Regularized Gradient Boosting
-- Peilin Zhong, Yuchen Mo, Chang Xiao, Pengyu Chen, Changxi Zheng. Rethinking Generative Mode Coverage: A Pointwise Guaranteed Approach
+- Google-Brain. Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. 17

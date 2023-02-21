@@ -409,7 +409,7 @@
 
 ## Implicit
 - Only defines generating process, likelihood-free;
-- Shakir Mohamed, Balaji Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
+- S Mohamed, B Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
 
 ## Combination
 - VAE + Flow:
@@ -424,3 +424,14 @@
 - DM:
 	- Advanced sampling: DDIM, ...
 	- Theory: SMLD ~ DDPM; (an SDE look)
+- Steerability
+	- A Jahanian, L Chai, P Isola. On the "steerability" of generative adversarial networks. ICLR'20
+		- https://ali-design.github.io/gan_steerability/
+
+## Misc
+- P Esser, E Sutter, B Ommer. A Variational U-Net for Conditional Appearance and Shape Generation, CVPR '18
+- GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML'18
+- Carter et. al., Experiments in Handwriting with a Neural Network (2016)
+- C. Olah et. al. Feature Visualization, distill (2018)
+- E Vertes, M Sahani. Flexible and accurate inference and learning for deep generative models. NIPS'18
+- B Bailey, Matus J. Telgarsky. Size-Noise Tradeoffs in Generative Networks. NIPS'18

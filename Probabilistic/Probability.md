@@ -25,10 +25,38 @@
 		- μ known, precision λ=1/σ^2 ~ Gamma
 		- Mean and precision unknown: Gaussian-Gamma
 		- x ~ N(μ, τ^-1) with Gam(τ|a, b),
-			- with τ integrated as p(x|μ, a, b): student-t;
+		- with unknown precision/covariance integrated out: student-t;
 	- Posterior (multi-variable):
 		- Mean and precision unknown: Gaussian-Wishart
+		- covariance: inverse-Wishart
 - Exponential family (GLM), check Linear-Model
+
+## Preliminaries
+- Joint Distribution (K-Murphy-2.5)
+	- 2.5.1 Covariance and correlation
+		- cov[X,Y] = E[(X−E[X])(Y−E[Y])] = E[XY]−E[X]E[Y]
+	- Pearson correlation coefficient
+		- ρ(X, Y) = cov(X, Y) / std(X)std(Y)
+	- Marginal distribution
+	- Conditional distribution
+- Distribution
+	- Z=X+Y (Convolution): fx * fy
+	- Y/X: ∫ |x|fx(x)fy(xz) dx
+	- XY: ∫ 1/|x| fx(x)fy(z/x) dx
+	- max(X,Y): Fz(z)=Fx(z)Fy(z)
+- Transformation (K-Murphy-2.6)
+	- 2.6.1 Linear Transform
+	- 2.6.2 General transformations
+		- p(y)=p(x)|dx/dy|
+		- Multivar: Jacobi p(y)=p(x)det(∂x/∂y)
+- Theory:
+	- 2.6.3 Central Limit Theorm:
+		- X i.i.d., with mean=μ, std=σ, not necessarily Gaussian;
+		- (Σx-nμ)/√(n)σ close to N(0, 1)
+		- Proof: MGF same for the two; (Taylor)
+	- Weak law of large numbers (Khinchin's law)
+		- the sample average converges in probability towards the expected value: lim.n→∞ P(|X-μ|>ε) = 0
+	- Chebyshev: P(|X-μ|>ε) ≤ σ^2/ε^2
 
 ## Exponential Family (Jordan-08-3, K.Murphy-9)
 - Principle of max entropy with empirical expectation:
@@ -94,13 +122,14 @@
 	- 3.4 Learning
 		- Likelihood: p(D|θ) = ∏k θk^Njk
 		- Prior: Dir(θ|α) = 1/B(α) ∏k θk^(αk-1)
+			- C = 1/B(α) = Γ(α0)/Γ(α1)..Γ(αK)
 		- Posterior: Dir(θ|α1 + N1,...,αK + NK)
 - 2.3.3 Poisson:
 	- Poi(x|λ) = exp(-λ) λ^x/x!
 	- E[x] = Var(x) = λ
 	- Physical meaning: x ~ Bin(n, p), n very large, np=λ, then k appearancd observes Poisson;
 - 2.3.4 Empirical distribution;
-	- p_emp(A) = 1/N Σδxi(A)
+	- p.emp(A) = 1/N Σδxi(A)
 
 ## Gaussian (2.4）
 - 1d:
@@ -142,35 +171,31 @@
 		- Posterior: Gaussian μ ~ N(μN, σN)
 	- μ known, precision λ=1/σ^2 ~ Gam(a0,b0)
 		- p(λ|X) ~ Gam(a0-1+N/2, λ)
+	- Integrate out precision λ or σ
+		- (x-μ)/(s/√n) ~ t
 	- μ, λ unknown: Gaussian-Gamma
 		- p(μ, λ) ~ N(μ0,(βλ)^-1)Gam(λ|a,b)
 		- p(μ, λ|X) Gaussian-Gamma
-
-## Continuous (K.Murphy-2.4)
-- Uniform U(a, b)
-	- E(x) = (a+b)/2
-	- V(x) = (b-a)^2/12
-- Dirac delta δ(x)
-- Laplace:
-	- Lap(x|μ, b) = 1/2b exp(-|x-μ|/b)
-	- mean = μ, mode = μ, var = 2b2
-- 2.4.1 Gaussian
-	- 4.5 Digression: The Wishart distribution
+- MAP, multi-dim:
+	- Wishart: known mean, unknown precision matrix Λ: (K-4.5)
 		- Insight: multivar of Gamma
 		- Wi(Λ|S,ν) = 1/Z |Λ|^(ν−D−1)/2 exp(−1/2 tr(ΛS^−1))
 		- Normalizer: ZWi = 2^(νD/2) ΓD(ν/2) |S|ν/2
 		- 1-d: Wi(λ|s^−1,ν) = Ga(λ|ν/2, s/2)
-		- 4.5.1 Inverse Wishart distribution
-			- λ ∼ Ga(a, b), then 1/λ ∼ IG(a, b)
-			- Σ^−1 ∼ Wi(S, ν) then Σ ∼ IW(S−1, ν + D + 1)
-	- 4.6 Infer
+	- Inverse-Wishart: known mean, unknown covariance:
+		- λ ∼ Ga(a, b), then 1/λ ∼ IG(a, b)
+		- Σ^−1 ∼ Wi(S, ν) then Σ ∼ IW(S−1, ν + D + 1)
+	- Student t: p(x) = T(x|μ, Σ, ν)
+		- p(x) = C [1+1/ν (x-μ)Σ^-1(x-μ))]^(-(ν+d)/2)
+			- V = νΣ
+			- C = Γ((ν+d)/2)/Γ(ν/2) |πV|^(-1/2)
+	- 4.6 Infer/MAP
 		- Likelihood: p(D|μ) = N(x|μ, 1/NΣ)
 		- Posterior:
 			- p(μ|D, Σ) = N(μ|mN, VN)
 			- VN^−1 = V0^(−1) + NΣ^(−1)
 			- m = VN[Σ^(−1)(Nx) + V0^(−1)m0]
 		- Posterior of Σ: IW
-		- MAP
 		- 4.6.3 Posterior distribution of μ and Σ
 			- Likelihood: Gaussian p(D|μ,Σ)
 			- Prior: p(μ,Σ) = N(μ|m0,V0)IW(Σ|S0,ν0)
@@ -179,86 +204,42 @@
 			- p(μ>μ0|D) = ∫μ0..∞ p(μ|D)dμ
 			- p(μ|D) = T(μ|x, s^2/N, N−1)
 			- t statistic: t=(x-μ0)/(s/√(N))
-- 2.4.4 Gamma:
-	- Ga(T|a, b) = b^a/Γ(a) T^(a-1) exp(-Tb)
+
+## Gamma Distribution (K-Murphy-2.4.4)
+- Ga(T|a, b) = b^a/Γ(a) T^(a-1) exp(-Tb)
 	- Gamma function: Γ(x) := ∫u^(x-1)exp(-u)du
 	- mean = a/b, mode = a−1/b, var = a/b^2
-	- Special case: Exponential, Erlang and χ-square
-		- Exponential: p(x) ~ Ga(x|1, λ) = exp(-x/θ)/θ
-			- E(x) = θ, V(x) = θ^2
-		- Erlang: Ga(x|2, λ)
-		- χ-square: Ga(x|ν/2, 1/2)
-			- zi i.i.d normal, Q = Σ_k zi^2
-			- Q ~ χ^2(k)
-	- Inverse Gamma: X ~ Ga(a,b), then 1/X ~ IG(a,b)
-		- IG(x|a,b) = b^a/Γ(a) x^(-a-1) exp(-b/x)
-		- mean = b/a−1, mode = b/a+1,var = b^2/(a−1)^2(a−2),
-- 2.4.5 Beta
+- Special case: Exponential, Erlang and χ-square
+	- Exponential: p(x) ~ Ga(x|1, λ) = exp(-x/θ)/θ
+		- E(x) = θ, V(x) = θ^2
+	- Erlang: Ga(x|2, λ)
+	- χ-square: Ga(x|ν/2, 1/2)
+		- zi i.i.d normal, Q = Σ_k zi^2
+		- Q ~ χ^2(k)
+- Inverse Gamma: X ~ Ga(a,b), then 1/X ~ IG(a,b)
+	- IG(x|a,b) = b^a/Γ(a) x^(-a-1) exp(-b/x)
+	- mean = b/a−1, mode = b/a+1,var = b^2/(a−1)^2(a−2),
+
+## Other-Continuous (K.Murphy-2.4)
+- Uniform U(a, b)
+	- E(x) = (a+b)/2
+	- V(x) = (b-a)^2/12
+- Dirac delta δ(x)
+- Laplace:
+	- Lap(x|μ, b) = 1/2b exp(-|x-μ|/b)
+	- mean = μ, mode = μ, var = 2b2
+- Beta (K-2.4.5)
 	- Beta(x|a,b) = 1/B(a,b) x^(a-1)(1-x)^(b-1)
 	- B(a,b) = Γ(a)Γ(b)/Γ(a+b)
 	- mean = a/a+b, mode = a−1/a+b-2, var= ab/(a+b)^2(a+b+1)
-- 2.4.6 Pareto
+- Pareto (K-2.4.6)
 	- Pareto(x|k,m) = k m^k x^(-k-1) I(x>=m)
-- T distribution: if the variation is estimated, the standarized var observes t-distribution?
+- Standard t-distribution:
 	- Definition: p(x) = C(1+x^2/ν)^(-(ν+1)/2)
 	- C = Γ((ν+1)/2) / √(πν)Γ(ν/2)
 - F distribution:
-	- Definition:\
-		<img src="/Bayes/images/prob/f-dist-1.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/prob/f-dist-2.png" alt="drawing" width="400"/>
-	- Statistics:\
-		<img src="/Bayes/images/prob/f-dist-3.png" alt="drawing" width="300"/>
-		<img src="/Bayes/images/prob/f-dist-4.png" alt="drawing" width="300"/>
-
-## Joint Distribution (Kevin Murphy, 2.5)
-- 2.5.1 Covariance and correlation
-	- cov[X,Y] = E[(X−E[X])(Y−E[Y])] = E[XY]−E[X]E[Y]
-- 2.5.2 Multivariate Gaussian (d-dim)
-	- N(x|μ, Σ) = (2π)^(-d/2)|Σ|^(-1/2) exp[-1/2(x-μ)Σ^-1(x-μ)]
-- 2.5.3 Multivariate Student t distribution (d-dim)
-	- p(x) = T(x|μ, Σ, ν) = C [1+1/ν (x-μ)Σ^-1(x-μ))]^(-(ν+d)/2)
-		- V = νΣ
-	- C = Γ((ν+d)/2)/Γ(ν/2) |πV|^(-1/2)
-- 2.4 Dirichlet
-	- Dir(X|α) = C Π_k xk^(αk-1)
-	- C = 1/B(α) = Γ(α0)/Γ(α1)..Γ(αK)
-
-## Transformation (Kevin Murphy 2.6)
-- 2.6.1 Linear Transform
-- 2.6.2 General transformations
-	- p(y)=p(x)|dx/dy|
-	- Multivar: Jacobi p(y)=p(x)det(∂x/∂y)
-- 2.6.3 Central Limit Theorm:
-	- X i.i.d., with mean=μ, std=σ, not necessarily Gaussian;
-	- (Σx-nμ)/√(n)σ close to N(0, 1)
-	- Proof: MGF same for the two; (Taylor)
-
-## Periodic
-- On a circle: average angle \
-	<img src="/Bayes/images/prob/periodic-1.png" alt="drawing" width="200"/>
-- Definition: distribution with period 2π \
-	<img src="/Bayes/images/prob/periodic-2.png" alt="drawing" width="200"/>
-- With (x1, x2) and (μ1, μ2) as prior, we have: \
-	<img src="/Bayes/images/prob/periodic-3.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/prob/periodic-4.png" alt="drawing" width="400"/>
-- Mises distribution:\
-	<img src="/Bayes/images/prob/periodic-5.png" alt="drawing" width="400"/>
-
-## Multidimensional
-- Joint distribution
-- Covariance Matrix
-	- Cov(X, Y) = E[(X-EX)(Y-EY)]
-- Pearson correlation coefficient
-	- ρ(X, Y) = cov(X, Y) / std(X)std(Y)
-- Marginal distribution
-- Conditional distribution
-- Distribution
-	- Z=X+Y (Convolution): fx * fy
-	- Y/X: int |x|fx(x)fy(xz) dx
-	- XY: int 1/|x| fx(x)fy(z/x) dx
-	- max(X,Y): Fz(z)=Fx(z)Fy(z)
-
-## Bounds, Theory
-- Weak law of large numbers (Khinchin's law)
-	- the sample average converges in probability towards the expected value: lim.n→∞ P(|X-μ|>ε) = 0
-- Chebyshev: P(|X-μ|>ε) ≤ σ^2/ε^2
+	- U1, U2 χ-square with dof d1, d2
+	- X = (U1/d1) / (U2/d2)
+- Periodic (PRML-2.3.8)
+	- On a circle: average angle (with period 2π)
+	- von Mises distribution: periodic generalization of Gaussian;

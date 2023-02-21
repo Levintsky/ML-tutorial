@@ -9,7 +9,7 @@
 	- Evaluate: SLAM, optical flow, stereo, road segmentation.
 - **Cityscapes**: M Cordts, M Omran, S Ramos, T. Rehfeld, M Enzweiler, R Benenson, U Franke, S Roth, and B Schiele. The cityscapes dataset for semantic urban scene understanding. CVPR'16
 	- Focus on semantic and instance segmentation;
-- **TorontoCity**: S Wang, M Bai, G Mattyus, H Chu, W Luo, B Yang, J Liang, J Cheverie, S Fidler, R Urtasun. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
+- **TorontoCity**: Uber. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
 - Uber in-house;
 - **ApolloScape**:
 	- http://apolloscape.auto/
@@ -20,8 +20,8 @@
 ## Urban Scene
 - ISPRS Multi-platform:
 	- F. Rottensteiner, G. Sohn, M. Gerke, and J. D. Wegner. Isprs test project on urban classification and 3d building reconstruction. 2013.
-	- J. Niemeyer, F. Rottensteiner, and U. Soergel. Contextual classification of lidar data and building object detection in urban areas. ISPRS journal of photogrammetry and remote sensing 2014
-	- F. Nex, M. Gerke, F. Remondino, H. Przybilla, M. Baumker, and A. Zurhorst. Isprs benchmark for multi-platform photogrammetry. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 2015
+	- J. Niemeyer, F. Rottensteiner, and U. Soergel. Contextual classification of lidar data and building object detection in urban areas. ISPRS'14
+	- F. Nex, M. Gerke, F. Remondino, H. Przybilla, M. Baumker, and A. Zurhorst. Isprs benchmark for multi-platform photogrammetry. ISPRS'15
 - **TUM-DLR**: T. Koch, P. d'Angelo, F. Kurz, F. Fraundorfer, P. Reinartz, and M. Korner. The tum-dlr multimodal earth observation evaluation benchmark. CVPRW'16
 - **Oxford-RobotCar**: W. Maddern, G. Pascoe, C. Linegar, and P. Newman. 1 year, 1000km: The oxford robotcar dataset. IJRR, 2016
 

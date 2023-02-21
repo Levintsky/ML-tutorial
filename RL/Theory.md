@@ -18,13 +18,13 @@
 	- Many others, including our work (lead by Andrea Zanette), and Mengdi Wang's lab.
 
 ## Theory Analysis
-- R Sutton, D McAllester, S Singh, Y Mansour. Policy Gradient Methods for Reinforcement Learning with Function Approximation. NIPS'00.
-	- Contributions: Established policy gradient theorem and showed convergence of policy gradient algorithm for arbitrary policy classes.
 - Tsitsiklis and Van Roy. An Analysis of Temporal-Difference Learning with Function Approximation. TAC'97.
 	- Contributions: Variety of convergence results and counter-examples for value-learning methods in RL.
-- Reinforcement Learning of Motor Skills with Policy Gradients, Peters and Schaal, 2008. 
+- R Sutton, D McAllester, S Singh, Y Mansour. Policy Gradient Methods for Reinforcement Learning with Function Approximation. NIPS'00.
+	- Contributions: Established policy gradient theorem and showed convergence of policy gradient algorithm for arbitrary policy classes.
+- Peters and Schaal. Reinforcement Learning of Motor Skills with Policy Gradients, 2008. 
 	- Contributions: Thorough review of policy gradient methods at the time, many of which are still serviceable descriptions of deep RL methods.
-- Approximately Optimal Approximate Reinforcement Learning, Kakade and Langford, 2002.
+- Kakade and Langford. Approximately Optimal Approximate Reinforcement Learning, 2002.
 	- Contributions: Early roots for monotonic improvement theory, later leading to theoretical justification for TRPO and other algorithms.
 
 ## Theory

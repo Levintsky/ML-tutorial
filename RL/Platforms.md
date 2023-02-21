@@ -5,7 +5,7 @@
 	- **ALE**: Bellemare, M. G.; Naddaf, Y.; Veness, J.; and Bowling, M. The arcade learning environment: An evaluation platform for general agents. JAIR'13'
 	- ELF: https://github.com/pytorch/ELF
 - Navigation with auxiliary (e.g. shooting, QA, ...)
-	- **VizDoom**: ViZDoom: A Doom-based AI research platform for visual reinforcement learning. CIG 2016
+	- **VizDoom**: ViZDoom: A Doom-based AI research platform for visual reinforcement learning. CIG'16
 		- Poland Team.
 	- DeepMind-Lab
 		- 3D, first-person
