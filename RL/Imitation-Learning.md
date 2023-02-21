@@ -21,14 +21,16 @@
 	- Pick ψ s.t. E.πrψ[f(s,a)] = E.π∗[f(s,a)]
 - SVM trick: demonstration better than other trajectory by a margin
 	- min∥ψ∥^2 s.t. ψ†E.π∗[f(s,a)] ≥ ψ†E.π[f(s,a)] + D(π, π∗)
-- From control inference: policy probability\
-	<img src="/RL/images/irl/irl3.png" alt="drawing" width="600"/>
-- MLE with parition function:\
-	<img src="/RL/images/irl/irl4.png" alt="drawing" width="500"/>
-	<img src="/RL/images/irl/irl5.png" alt="drawing" width="600"/>
-	<img src="/RL/images/irl/irl6.png" alt="drawing" width="600"/>
-- Max Ent IRL\
-	<img src="/RL/images/irl/irl7.png" alt="drawing" width="600"/>
+- From control inference: policy probability
+	- p(τ|O1:T) ∝ p(τ)exp[∑.t r(st,at)]
+- MLE with parition function:
+	- max.ψ 1/N ∑.i logp(τi|O1:T) = max.ψ 1/N ∑.i r(τi;ψ) - logZ
+		- Z = ∫p(τ)exp(r(τ;ψ))dτ
+	- ∇.ψ L = E.π∗[∇.ψ r] - E.π[∇.ψ r]
+	- Let μt(st,at) ∝ β(st,at)α(st), we have:
+	- ∇.ψ L = ∑μt ∇.ψr
+- Max Ent IRL: r(st,at;ψ) = ψ†E[f] actually:
+	- max.ψ H(π) s.t. E.πrψ[f(s,a)] = E.π∗[f(s,a)]
 
 ## Spinning Up
 - Ziebart. Modeling Purposeful Adaptive Behavior with the Principle of Maximum Causal Entropy, 2010.

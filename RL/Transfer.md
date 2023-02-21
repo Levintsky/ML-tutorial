@@ -3,9 +3,9 @@
 ## From Spinningups
 - Progressive, uvfa; UNREAL; IU Agent; PathNet; MATL; learning an embedding space; HER;...
 
-## Sergey Levine
-- lec-17, 18
-- **Forward** transfer: train on one task, transfer to a new task
+## Problem setup
+- Sergey Levine (lec-17, 18)
+- Forward transfer: train on one task, transfer to a new task
 	- Just try it and hope for the best
 	- Architectures for transfer: progressive networks
 	- Finetune on the new task
@@ -18,49 +18,57 @@
 - Multi-task meta-learning: learn to learn from many tasks
 	- RNN-based meta-learning
 	- Gradient-based meta-learning
+- Goal: learn a representation cross-domain;
+- Domain-adaptation:
+	- Adversarial domain adaptation;
+- Domain randomization: Randomness for diversity;
+	- Uniform: Dactyl [OpenAI robotics];
+	- Optimization: learn source s.t. target perf is maxed;
 
 ## Multi-Task
-- **UVFA**: DeepMind. Universal value function approximators. ICML'15
+- Basics:
+	- 1x net with nx goal as net condition: UVFA;
+	- nx head, trained separately: Progressive Net;
+	- 1x enc, nx actor: IU-Agent;
+	- Evolution + Mask: PathNet;
+- UVFA: DeepMind. Universal value function approximators. ICML'15
 	- Multi-task Q-learning, Vg(s;θ) with g as the goal; 
 	- 1+ goal we may try to achieve;
 	- Every episode sample state goal pair (s0, g);
-	- Different model architecture to represent goal and state\
-		<img src="/RL/images/transfer/uvfa1.png" alt="drawing" width="450"/>
-	- RL algorithm: Q-learning\
-		<img src="/RL/images/transfer/uvfa2.png" alt="drawing" width="400"/>
-- **Progressive-Nets**:
+	- Different model architecture to represent goal and state (separate or combined)
+	- RL algorithm: Q-learning
+- Progressive-Nets:
 	- DeepMind. Progressive Neural Networks. 2016
-		- They are schemes that can train NN's in an ensemble individually in a sequential fashion where an output of all trained NN's are stored and updated in an information center. The communication among NN’s is maintained indirectly through IC (information center), which ultimately reduces the interaction among the NNs
+		- Train NN in an ensemble individually in a sequential fashion; all trained NN are stored/updated in an information center. The communication among NNs is maintained indirectly through IC, to reduces the interaction among the NNs
 		- RL Alg: A3C
-		- Everytime freeze previous learned knowledge;\
-			<img src="/RL/images/transfer/progressive.png" alt="drawing" width="450"/>
+		- Everytime freeze previous learned knowledge;
 	- DeepMind. Sim-to-Real Robot Learning from Pixels with Progressive Nets. CoRL'17
-- **UNREAL**: DeepMind. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
-	- https://github.com/miyosuda/unreal
-- **IU Agent**: DeepMind. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
-	- Insight: the agent perceives a stream of rewards rti, indexed by i at time t. To learn the actor neural network parameterized by θ, we are interested in simultaneously maximizing the expected value of all tasks;
-	- RL Alg: DDPG
+- UNREAL: DeepMind. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
+- IU Agent: DeepMind. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
+	- Problem: the agent perceives a stream of rewards rti, indexed by i at time t;
+	- Insight: To learn the actor neural network, we are interested in simultaneously maximizing the expected value of all tasks;
 	- To learn an intentional task, one will learn multiple unintentional (has to be off-policy);
-		<img src="/RL/images/transfer/iu-agent.png" alt="drawing" width="450"/>
+	- When acting according to the policy associated with one of the hardest tasks, we are able to learn all other tasks off-policy;
+	- Model: enc(obs)x1 + enc(action)xn for value function;
+	- RL Alg: DDPG
 	- Experiments: Mujoco physics engine, stack object
-	- When acting according to the policy associated with one of the hardest tasks, we are able to learn all other tasks off-policy
-- **PathNet**: DeepMind. PathNet: Evolution Channels Gradient Descent in Super Neural Networks. 2017
-	-  Use agents embedded in the neural network whose task is to discover which parts of the network to re-use for new tasks;
+- PathNet: DeepMind. PathNet: Evolution Channels Gradient Descent in Super Neural Networks. 2017
+	- Use agents embedded in the neural network whose task is to discover which parts of the network to re-use for new tasks;
 	- MNIST, CIFAR, SVHN;
 	- A3C on some games;
 	- Algorithm from classification:
-		- P genotypes (pathways) are initialized randomly, each genotype is at most a N by L matrix of integers, which describe the active modules in each layer in that pathway;
+		- P genotypes (pathways) are initialized randomly, each genotype:NxL matrix for active modules in each layer in that pathway;
 		- A binary tournament selection algorithm: A random genotype is chosen, and its pathway is trained for T epochs, its fitness being the negative classification error during that period of training;
 		- A copy of the winning pathway’s genotype overwrites the losing pathways genotype.
 	- A3C:
 		- All 64 genotypes are evaluated in parallel;
 		- Once the worker has finished T episodes, it chooses B other random genotypes and checks if any of those genotypes have returned a fitness of at least its own fitness
 - J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
-- **MATL**: Wulfmeier et al. Mutual Alignment Transfer Learning. 2017.
+- MATL: Wulfmeier et al. Mutual Alignment Transfer Learning. 2017.
 - Hausman et al, Learning an Embedding Space for Transferable Robot Skills. 2018.
 
 ## Generalization, Overfitting
-- K Cobbe, O Klimov, C Hesse, T Kim, and John Schulman. Quantifying generalization in reinforcement learning. arxiv'18
+- OpenAI. Quantifying generalization in reinforcement learning. arxiv'18
 - J Farebrother, M Machado, and M Bowling. Generalization and regularization in DQN. CoRR'18
 
 ## Domain Adaptation (DA)
@@ -69,12 +77,91 @@
 - S Daftry, J. A Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
 	- Task: AirDrone MAV flight, monocular reactive control
 	- Deep domain adaptation
-	- Dagger\
-		<img src="/RL/images/transfer/mav.png" alt="drawing" width="500"/>
+	- Dagger
 - Google-Brain. Using simulation and domain adaptation to improve efficiency of deep robotic grasping. CoRR'17
 - S Gamrian and Y Goldberg. Transfer learning for related reinforcement learning tasks via image-to-image translation. CoRR'18
 - Google-Brain. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
 - Transfer Value or Policy? A Value-centric Framework Towards Transferrable Continuous Reinforcement Learning. 2019
+
+## Domain Randomization (DR)
+- Basics
+	- Intuition:
+		- Given an source domain (game) and a target domain (real)
+		- Randomize game s.t. the RL algorithm trained on game transfer well to target;
+		- Discrepancies between the source and target domains are modeled as variability in the source domain;
+	- Good resources:
+		- https://lilianweng.github.io/lil-log/2019/05/05/domain-randomization.html
+- Uniform randomization
+	- F Sadeghi, S Levine. CAD2RL: Real Single-Image Flight Without a Single Real Image. 2016
+	- J Tobin, R Fong, A Ray, J Schneider, W Zaremba, P Abbeel. Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS'17
+		- A recurrent policy can adapt to different physical dynamics
+		- Random: Mass and dimensions of objects; Mass and dimensions of robot bodies; Damping, kp, friction of the joints; Gains for the PID controller (P term); Joint limit; Action delay; Observation noise.
+	- **Dactyl**: M Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
+		- https://blog.openai.com/learning-dexterity/
+		- Target domain: 24-dof robotic hand;
+		- Source: Mujoco;
+		- Train models:
+			- CNN -> object pose;
+			- LSTM -> action (control policy);
+			- Learning: PPO;
+			- Supervision: diff to desired joints angles;
+			- Reward: r(t) = d(t) − d(t+1)
+				- desired and current orientations. 
+				- additional 5/−20 for success/non;
+- DR as optimization
+	- Q Vuong, S Vikram, H Su, S Gao, H Christensen. How to pick the domain randomization parameters for sim-to-real transfer of reinforcement learning policies? 2019
+		- Learn a distribution on of source s.t. policy trained on achieve maximal perf in real world;
+		- https://github.com/quanvuong/domain_randomization
+- Guided DR:
+	- Optimization for Task Performance
+		- N Ruiz, S Schulter, M Chandraker. Learning To Simulate. ICLR'19
+			- NAS: considered the task feedback as reward in RL problem and proposed a RL-based method
+			- Exp: Toy example (GMM) for binary classification;
+			- Exp: CARLA;
+			- Exp: Semantic Segmentation;
+			<img src="/RL/images/transfer/learn-to-sim.png" alt="drawing" width="600"/>
+		- W Yu, K Liu, G Turk. Policy Transfer with Strategy Optimization. ICLR'19
+			- Evolution based; CMA-ES (covariance matrix adaptation evolution strategy)
+		- **SDR**: A Prakash, S Boochoon, M Brophy, D Acuna, E Cameracci, G State, O Shapira, S Birchfield. Structured Domain Randomization: Bridging the Reality Gap by Context-Aware Synthetic Data.
+		- NVIDIA. Meta-Sim: Learning to Generate Synthetic Datasets. ICCV'19
+			- Goal: generate scenes for vision tasks and network training;
+			- Framework:
+				- GNN G(.) for object relation and hierarchy;
+				- Output of G nodes (obj attr) render to get images and GT;
+			- Supervision:
+				- Generative: GAN(image), AE(graphs)
+				- MMD loss between real/sim im/gt distribution;
+				- Perf trained on sim tested on real;
+		- J Devaranjan, A Kar, S Fidler. Meta-Sim2: Unsupervised Learning of Scene Structure for Synthetic Data Generation. ECCV'20
+		- D Li, A Kar, N Ravikumar, AF Frangi, S Fidler. Federated Simulation for Medical Imaging. MICCAI'20
+	- Match Real Data Distribution
+		- **SimOpt**: Y Chebotar, A Handa, V Makoviychuk, M Macklin, J Issac, N Ratliff, D Fox. Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience. 2019
+			- https://sites.google.com/view/simopt
+			- trained under an initial randomization distribution Pϕ(ξ) first, getting a policy πθ,Pϕ.
+			- Then this policy is deployed on both simulator and physical robot to collect trajectories τξ and τreal respectively.
+			- The optimization objective is to minimize the discrepancy between sim and real trajectories
+			- SimOpt also has to solve the **tricky problem** of how to propagate gradient through non-differentiable simulator
+			<img src="/RL/images/transfer/simopt.png" alt="drawing" width="500"/>
+		- **RCAN**: S James, P Wohlhart, M Kalakrishnan, D Kalashnikov, A Irpan, J Ibarz, S Levine, R Hadsell, K Bousmalis. Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks. 2019
+			- a nice combination of DA and DR for end-to-end RL tasks.
+			- An image-conditional GAN (cGAN) is trained in sim to translate a domain-randomized image into a non-randomized version (aka “canonical version”).
+			- Later the same model is used to translate real images into corresponding simulated version so that the agent would consume consistent observation as what it has encountered in training.
+			- Still, the underlying assumption is that the distribution of domain-randomized sim images is broad enough to cover real-world samples.
+			<img src="/RL/images/transfer/rcan.png" alt="drawing" width="500"/>
+	- Guided by Data in Simulator
+		- S Zakharov, W Kehl, S Ilic. DeceptionNet: Network-Driven Domain Randomization. 2019
+			- With the recognition network fixed, maximize the difference between the prediction and the labels by applying reversed gradients during backpropagation. So that the deception module can learn the most confusing tricks.
+			- With the deception modules fixed, train the recognition network with input images altered.
+			<img src="/RL/images/transfer/DeceptionNet.png" alt="drawing" width="500"/>
+		- **ADR**: B Mehta, M Diaz, F Golemo, C Pal, L Paull. Active Domain Randomization. 2019
+			- Searches most informative env var, as discrepancies of policy rollouts;
+				- SimOpt: disc(sim, real)
+				- ADR: disc(rand, non-rand) (avoid expensive real data)
+			- GAIL like nn for disc(rand, non-rand)
+				- logp(rand) as reward;
+			- 3. The reward by discriminator is fed into Stein Variational Policy Gradient (SVPG) particles, outputting a diverse set of randomization configurations.
+			<img src="/RL/images/transfer/adr.png" alt="drawing" width="500"/>
+- X. B. Peng, M. Andrychowicz, W. Zaremba, and P. Abbeel. Sim-to-real transfer of robotic control with dynamics randomization. CoRR'17
 
 ## OpenAI
 - **Retro Contest**: OpenAI. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018

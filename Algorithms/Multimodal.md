@@ -203,15 +203,13 @@
 		- Z. Yang, X. He, J. Gao, L. Deng, and A. J. Smola. Stacked attention networks for image question answering. CVPR'16
 
 ## Visual Reasoning
-- **NMN**: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
+- NMN: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
 	- Compositional reasoning;
-- Justin Johnson, Judy Hoffman, Bharath Hariharan, Laurens van der Maaten, Li Fei-Fei, C. Lawrence Zitnick, Ross Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+- J Johnson, J Hoffman, B Hariharan, L v d Maaten, L Fei-Fei, L Zitnick, R Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
 	- Insight: program generator + execution engine; built on NMN; train by REINFORCE;
-	- Algorithm:\
-		<img src="/Grounding/images/vqa-exe.png" alt="drawing" width="400"/>
 	- Program generator: LSTM seq2seq, output predicted program z;
 	- Execution engine: input program z and image x, a=phi(x, z).
-- Kexin Yi, Jiajun Wu, Chuang Gan, Antonio Torralba, Pushmeet Kohli and Joshua B. Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NIPS 2018
+- K Yi, J Wu, C Gan, A Torralba, P Kohli and J Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NIPS 2018
 	- An interpretable VQA model that disentangles language reasoning from visual understanding
 	- For visual understanding, first perform objects segmentation and then learn to obtain structural scene representation (with supervision) such as color, size, shape, position.
 	- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 
