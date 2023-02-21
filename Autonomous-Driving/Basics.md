@@ -1,0 +1,86 @@
+# Autonomous Driving
+
+## Basics
+- Problem setup:
+	- Input: BEV, front view Lidar, images, HD-map;
+	- Task: detection, tracking, prediction, planning, control;
+- Perception/detection
+	- Baidu: VeloFCN, MV3D;
+	- Apple: VoxelNet;
+	- PointRCNN;
+- Segmentation:
+	- UPSNet;
+	- Uber: LidarSeg [3DV'18]
+- PnP:
+	- Pixor; FaF; IntentNet;
+	- Deep continuous fusion; MTMF;
+	- LaserNet;
+	- DeepSignals;
+- Prediction:
+	- Uber: Simon Suo; Sergio Casas;
+	- Apple: Multiple Futures Prediction. NeurIPS'19
+- Planning:
+	- ALVINN;
+	- Uber: SPAGNN (E2E), PLT, Neural Planner [Wenyuan];
+	- NVIDIA: E2E;
+	- Teacher-student [Soatto'19]
+	- Imitation learning;
+- Prediction + Planning
+	- Waymo: Chauffernet;
+- E2E:
+	- Uber: Percept, Predict, Plan '20
+- Localization;
+- Waymo: MultiPath;
+- Platform:
+	- Carla: V Koltun. [ECCV'16; CoRL'17]
+		- Renderer: unreal, Unity3D, Blensor;
+	- Microsoft: AirSim 2018;
+	- NVIDIA: Drive Constellation;
+	- Waymo: CarCraft 2017;
+	- Baidu: AADS;
+- Simulation: data generation;
+	- Problem setup:
+		- Edit background;
+		- Add/remove object;
+		- Trajectory synthesis;
+	- Lidar Sim: render;
+		- Uber: LidarSim;
+	- Image Sim (3D-aware):
+		- NVIDIA: Meta-Sim;
+		- Tracking: Virtual-Kitti [CVPR'16]
+		- Waymo: surfel-> image; SurfelGAN [CVPR'20]
+	- 2D + 3D:
+		- Baidu: AADS [Science'19]
+
+## Benchmarks
+- Kitti: A Geiger, P Lenz, and R Urtasun. Are we ready for autonomous driving? the kitti vision benchmark suite. CVPR'12
+	- 1 x GPS/IMU (OXTS RT 3003);
+	- 1 x Lidar (Velodyne 64);
+	- 2 x gray-scale camera;
+	- 2 x color camera;
+	- Evaluate: SLAM, optical flow, stereo, road segmentation.
+- Cityscapes: MPI. The cityscapes dataset for semantic urban scene understanding. CVPR'16
+	- Focus on semantic and instance segmentation;
+- Uber. TorontoCity: Seeing the World with a Million Eyes. ICCV'17
+- Uber in-house;
+- ApolloScape: Baidu.
+	- http://apolloscape.auto/
+	- 146,997 frames
+	- Trajectory + 3D Lidar OD + Tracking dataset
+	- 100K image frames, 80k lidar pc and 1000km trajectories for urban traffic;
+- ISPRS Multi-platform:
+	- F. Rottensteiner, G. Sohn, M. Gerke, and J. D. Wegner. Isprs test project on urban classification and 3d building reconstruction. 2013.
+	- J. Niemeyer, F. Rottensteiner, and U. Soergel. Contextual classification of lidar data and building object detection in urban areas. ISPRS'14
+	- F. Nex, M. Gerke, F. Remondino, H. Przybilla, M. Baumker, and A. Zurhorst. Isprs benchmark for multi-platform photogrammetry. ISPRS'15
+- TUM-DLR: T. Koch, P. d'Angelo, F. Kurz, F. Fraundorfer, P. Reinartz, and M. Korner. The tum-dlr multimodal earth observation evaluation benchmark. CVPRW'16
+- Oxford-RobotCar: W. Maddern, G. Pascoe, C. Linegar, and P. Newman. 1 year, 1000km: The oxford robotcar dataset. IJRR'16
+- nuTonomy. nuscenes: A multimodal dataset for autonomous driving. 2019
+
+## Language
+- [Sean Segal] VQA: Universal Spatial Embeddings for Question Answering in Self-Driving;
+	- Support how many; actions (turning?); interactions (blocked by another car?) map topology (3-way interaction);
+- S Segal, E Kee, W Luo, E Yumer, R Urtasun. ScenarioNet: Universal Spatial Embeddings for Semantic Search in Self-Driving.
+	- Input: language query? Output: Search
+	- Backbone: Pixor
+	- Embedding for log;
+	- Attention + ranking;

@@ -20,7 +20,7 @@
 	- Gradient-based meta-learning
 
 ## Multi-Task
-- **UVFA**: Schaul, T., Horgan, D., Gregor, K., and Silver, D. (2015a). Universal value function approximators. ICML'15
+- **UVFA**: DeepMind. Universal value function approximators. ICML'15
 	- Multi-task Q-learning, Vg(s;θ) with g as the goal; 
 	- 1+ goal we may try to achieve;
 	- Every episode sample state goal pair (s0, g);
@@ -37,14 +37,14 @@
 	- DeepMind. Sim-to-Real Robot Learning from Pixels with Progressive Nets. CoRL'17
 - **UNREAL**: DeepMind. Reinforcement Learning with Unsupervised Auxiliary Tasks. 2016
 	- https://github.com/miyosuda/unreal
-- **IU Agent**: S Cabi, S Colmenarejo, M Hoffman, M Denil, Z Wang, N Freitas. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
+- **IU Agent**: DeepMind. The Intentional Unintentional Agent: Learning to Solve Many Continuous Control Tasks Simultaneously. CoRL'17
 	- Insight: the agent perceives a stream of rewards rti, indexed by i at time t. To learn the actor neural network parameterized by θ, we are interested in simultaneously maximizing the expected value of all tasks;
 	- RL Alg: DDPG
 	- To learn an intentional task, one will learn multiple unintentional (has to be off-policy);
 		<img src="/RL/images/transfer/iu-agent.png" alt="drawing" width="450"/>
 	- Experiments: Mujoco physics engine, stack object
 	- When acting according to the policy associated with one of the hardest tasks, we are able to learn all other tasks off-policy
-- **PathNet**: C Fernando, D Banarse, C Blundell, Y Zwols, D Ha, A Rusu, A Pritzel, D Wierstra. PathNet: Evolution Channels Gradient Descent in Super Neural Networks. 2017
+- **PathNet**: DeepMind. PathNet: Evolution Channels Gradient Descent in Super Neural Networks. 2017
 	-  Use agents embedded in the neural network whose task is to discover which parts of the network to re-use for new tasks;
 	- MNIST, CIFAR, SVHN;
 	- A3C on some games;
@@ -71,18 +71,18 @@
 	- Deep domain adaptation
 	- Dagger\
 		<img src="/RL/images/transfer/mav.png" alt="drawing" width="500"/>
-- K Bousmalis, A Irpan, P Wohlhart, Y Bai, M Kelcey, M Kalakrishnan, L Downs, J Ibarz, P Pastor, K Konolige, S Levine, and V Vanhoucke. Using simulation and domain adaptation to improve efficiency of deep robotic grasping. CoRR'17
+- Google-Brain. Using simulation and domain adaptation to improve efficiency of deep robotic grasping. CoRR'17
 - S Gamrian and Y Goldberg. Transfer learning for related reinforcement learning tasks via image-to-image translation. CoRR'18
-- S James, P Wohlhart, M Kalakrishnan, D Kalashnikov, A Irpan, J Ibarz, S Levine, R Hadsell, and K Bousmalis. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
+- Google-Brain. Sim-to-real via sim-to-sim: Data-efficient robotic grasping via randomized-to-canonical adaptation networks. CoRR'18
 - Transfer Value or Policy? A Value-centric Framework Towards Transferrable Continuous Reinforcement Learning. 2019
 
 ## OpenAI
-- **Retro Contest**: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
+- **Retro Contest**: OpenAI. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
 	- https://contest.openai.com/2018-1/
 	- https://github.com/openai/retro#gym-retro
 	- Sonic benchmark
 	- Classic video games to gym environment
-- **CoinRun**: K Cobbe, O Klimov, C Hesse, T Kim, J Schulman. Quantifying Generalization in Reinforcement Learning. ICML'19
+- **CoinRun**: OpenAI. Quantifying Generalization in Reinforcement Learning. ICML'19
 	- https://openai.com/blog/quantifying-generalization-in-reinforcement-learning/
 	- https://github.com/openai/coinrun
 	- much simpler than traditional platformer games like Sonic the Hedgehog

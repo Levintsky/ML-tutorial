@@ -31,29 +31,28 @@
 		- Contribution: Systematic analysis of parallelization in deep RL across algorithms.
 		- https://github.com/astooke/accel_rl
 	- IMPALA, Ape-X, R2D2, RLlib;
-- A summary:\
-	<img src="/RL/images/dist/dist-rl-history.png" alt="drawing" width="600"/>
-- 2013/2015: DQN\
-	<img src="/RL/images/dist/dist-rl-dqn.png" alt="drawing" width="600"/>
-- **Gorila**: DeepMind. Massively parallel methods for deep reinforcement learning view publication. ICML, 2015.\
-	<img src="/RL/images/dist/dist-rl-gorila.png" alt="drawing" width="600"/>
-- **A3C**: DeepMind. Asynchronous methods for deep reinforcement learning. ICML'16\
-	<img src="/RL/images/dist/a3c.png" alt="drawing" width="600"/>
-- **Ape-X**: DeepMind. Distributed Prioritized Experience Replay. ICLR'18\
-	<img src="/RL/images/dist/dist-rl-ape-x.png" alt="drawing" width="600"/>
-- **AlphaZero**\
-	<img src="/RL/images/dist/dist-rl-agz.png" alt="drawing" width="600"/>
+- A summary:  DQN - Gorila - A3C - Ape-X - IMPALA;
+- 2013/2015: DQN;
+- Gorila: DeepMind. Massively parallel methods for deep reinforcement learning view publication. ICML'15.
+	- Parameter Server for Q-Net, Target-Net update with learner;
+- A3C: DeepMind. Asynchronous methods for deep reinforcement learning. ICML'16
+- Ape-X: DeepMind. Distributed Prioritized Experience Replay. ICLR'18
+	- Distributed Priority Experienced Replay;
+- AlphaZero: Self-replay.
+	- 1 x learner;
+	- n x eval;
 - **IMPALA**: DeepMind. IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures. ICML'18
-	- https://github.com/deepmind/scalable_agent \
-		<img src="/RL/images/dist/impala.png" alt="drawing" width="700"/>
-	- V-trace: old policy mu (generated the trajectory), new policy pi\
-		<img src="/RL/images/dist/impala2.png" alt="drawing" width="600"/>
-- T Salimans, J Ho, X Chen, S Sidor, I Sutskever. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
-	<img src="/RL/images/dist/dist-rl-evo.png" alt="drawing" width="600"/>
-- **RLlib**: E Liang, R Liaw, P Moritz, R Nishihara, R Fox, K Goldberg, J E. Gonzalez, M I. Jordan, I Stoica. RLlib: Abstractions for Distributed Reinforcement Learning. ICML'18
-	- https://ray.readthedocs.io/en/latest/rllib.html \
-		<img src="/RL/images/dist/rllib.png" alt="drawing" width="600"/>
-- **R2D2**: S Kapturowski, G Ostrovski, J Quan, R Munos, W Dabney. Recurrent Experience Replay in Distributed Reinforcement Learning. ICLR'19
+	- https://github.com/deepmind/scalable_agent
+	- 1 x learner (1 master, a few worker);
+	- n x actors;
+	- A2C sync;
+	- V-trace: n-steps with IS (off-policy);
+- OpenAI. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
+	- n different workers perform and get returns;
+	- Learner SGD according to the return; (synchronized)
+- RLlib: E Liang, R Liaw, P Moritz, R Nishihara, R Fox, K Goldberg, J E. Gonzalez, M I. Jordan, I Stoica. RLlib: Abstractions for Distributed Reinforcement Learning. ICML'18
+	- https://ray.readthedocs.io/en/latest/rllib.html
+- **R2D2**: DeepMind. Recurrent Experience Replay in Distributed Reinforcement Learning. ICLR'19
 - **dopamine**: DeepMind. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018
 		- https://github.com/google/dopamine
 - Algorithms

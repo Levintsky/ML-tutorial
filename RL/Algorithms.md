@@ -13,9 +13,13 @@
 	- GAE: 
 - Q-learning
 	- Value function: V(s;π) = (1-γ)E[Σγ^t R(st,at)|π,s];
-	- BV: Q(s,a) = r(s,a) + max_a' Q(s',a'), contraction by γ;
+	- BV: Q(s,a) = r(s,a) + max_a′ Q(s′,a′), contraction by γ;
 	- Non-tabular: V = πBV, with π(.) as NN fitting;
-	- Exploration: ε, greedy, Boltzmann;
+	- On-policy (SARSA): Q(s,a) += α[R+γQ(s′,a′)-Q(s,a)]
+		- Estimate current policy Q(s,a), then improve;
+	- Off-policy (Q-learning): Q(s,a) += α[R+max.a′ Q(s′,a′)-Q(s,a)]
+		- Try to estimate optimal policy value with current policy;
+	- Exploration: ε-greedy, Boltzmann;
 	- Target-network, replay buffer;
 	- Over-estimate: Double-Q, multi-step;
 	- PER, dueling-network;
@@ -218,7 +222,6 @@
 		- Critic: standard L2 V-loss;
 		- SGD: ψ -= λ∇Jv(ψ); θ -= λ∇Jq(θ); φ -= λ∇Jπ(φ);
 		- Target-net: ψˆ = τψ + (1-τ)ψ
-
 - Loss: over-optimistic target;
 	- Double-Q [NIPS'15]: 2 networks, 1 for Q, 1 for a;
 	- TD3 [ICML'18]: Critic x2 Q(;θ1), Q(;θ2);

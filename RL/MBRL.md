@@ -8,7 +8,7 @@
 - https://zhuanlan.zhihu.com/p/72642285
 
 ## Unclassified
-- Strehl, A. L., Li, L., & Littman, M. L. Incremental model-based learners with formal learning-time guarantees. UAI'06
+- A Strehl, L Li, M Littman. Incremental model-based learners with formal learning-time guarantees. UAI'06
 - **MBIE-EB**: A Strehl, M Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
 	- Init: ε, δ, m;
 	- n(s,a,s')=0, rc(s,a)=0, n(s,a)=0, Q(s,a)=1/(1−γ);
@@ -104,7 +104,6 @@
 		- Observe rt, st+1;
 		- Update posterior p(Ras|rt), p(T|st+1) using Bayesian rule;
 
-
 ## Learn a Model for Data Generation
 - S Gu, T Lillicrap, I Sutskever, S Levine. Continuous Deep Q-Learning with Model-based Acceleration. ICML'16
 - G Kalweit, J Boedecker. Uncertainty-driven Imagination for Continuous Deep Reinforcement Learning CoRL2017.
@@ -116,19 +115,19 @@
 
 ## Learn a Model for Planning
 - Model for Better Value Estimation
-	- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J E. Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
+	- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
 		- Insight: approximate, few-step simulation of a reward- dense environment
 		- Problem setup: continuous state and action;
 		- RL: AC, on-policy; (IS not required)\
 			<img src="/RL/images/mbrl/mve.png" alt="drawing" width="550"/>
 	- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
 - Learn a model as context:
-	- **I2A**: T Weber, S Racanière, D Reichert, L Buesing, A Guez, D Rezende, A Badia, O Vinyals, N Heess, Y Li, R Pascanu, P Battaglia, D Hassabis, D Silver, D Wierstra. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
+	- **I2A**: DeepMind. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
 		- Framework:\
 			<img src="/RL/images/mbrl/i2a-1.png" alt="drawing" width="550"/>
 			<img src="/RL/images/mbrl/i2a-2.png" alt="drawing" width="550"/>
 		- Game: Sokoban;
-	- **VPN**: Vladimir Feinberg, Alvin Wan, Ion Stoica, Michael I. Jordan, Joseph E. Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
+	- **VPN**: V Feinberg, A Wan, I Stoica, M Jordan, J Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
 		- https://github.com/junhyukoh/value-prediction-network
 - MuZero: DeepMind. Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. 2019
 	- MuZero = VPN (learn abstract states + dynamics) + AlphaZero-planning (MCTS)
@@ -161,18 +160,17 @@
 		- Output: predicts next frame (256 softmax)
 		- Output: Reward\
 			<img src="/RL/images/mbrl/mbrl-atari2.png" alt="drawing" width="550"/>
-	- RL:
-		- PPO
+	- RL: PPO
 	- Experiment: 100k interactions;
 
 ## Continuous (MuJoCo, Robotics)
 - Gaussian-Process Model (non-parametric):
 	- C. E. Rasmussen and M. Kuss. Gaussian processes in reinforcement learning. NIPS'03
-	- J. Kocijan, R. Murray-Smith, C. E. Rasmussen, and A. Girard. Gaussian process model based predictive control. ACC'04
-	- . Ko, D. J. Klein, D. Fox, and D. Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
+	- J Kocijan, R Murray-Smith, C Rasmussen, and A Girard. Gaussian process model based predictive control. ACC'04
+	- . Ko, D Klein, D Fox, and D Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
 	- D. Nguyen-Tuong, J. Peters, and M. Seeger. Local Gaussian process regression for real time online model learning. NIPS'08
 	- A. Grancharova, J. Kocijan, and T. A. Johansen. Explicit stochastic predictive control of combustion plants based on Gaussian process models. Automatica'08
-	- M P Deisenroth, C E Rasmussen, D Fox. Learning to Control a Low-Cost Manipulator using Data-Efficient Reinforcement Learning. RSS'11
+	- M Deisenroth, C Rasmussen, D Fox. Learning to Control a Low-Cost Manipulator using Data-Efficient Reinforcement Learning. RSS'11
 		- Gaussian Process to learn the dynamics
 	- M. Deisenroth, D. Fox, and C. Rasmussen. Gaussian processes for data-efficient learning in robotics and control. PAMI'14
 	- S. Kamthe and M. P. Deisenroth. Data-efficient reinforcement learning with probabilistic model predictive control. AISTATS'18
@@ -206,7 +204,7 @@
 	- I. Osband. Risk versus uncertainty in deep learning: Bayes, bootstrap and the dangers of dropout. NIPSW'16
 	- I. Osband, C. Blundell, A. Pritzel, and B. Van Roy. Deep exploration via bootstrapped DQN. NIPS'16
 	- C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger. On calibration of modern neural networks. ICML'17
-- **MBMF**: Somil Bansal Roberto Calandra Kurtland Chua Sergey Levine Claire Tomlin. MBMF: Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
+- **MBMF**: S Bansal, R Calandra, K Chua, S Levine, C Tomlin. MBMF: Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
 	- Learn a probabilistic dynamics model and leveraging it as a prior for the intertwined model-free optimization;\
 		<img src="/RL/images/mbrl/mbmf.png" alt="drawing" width="550"/>
 - **PETS**: K Chua, R Calandra, R McAllister, S Levine. Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models. NIPS'18
@@ -214,7 +212,7 @@
 	- https://github.com/kchua/handful-of-trials \
 		<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
 - **MB-MPO**: Clavera. Model-Based Reinforcement Learning via Meta-Policy Optimization. 2018
-- **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M J. Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
+- **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
 - **MBPO**: M Janner, J Fu, M Zhang, S Levine. When to Trust Your Model: Model-Based Policy Optimization. NeurIPS'19
 	- https://zhuanlan.zhihu.com/p/105645139
 
@@ -222,14 +220,3 @@
 - **PILCO**: M P Deisenroth, C E Rasmussen. PILCO: A Model-Based and Data-Efficient Approach to Policy Search. ICML'11
 - **DDP**: Mayne, Jacobson. Differential dynamic programming. 1970
 - **iLQR**: Tassa, Erez, Todorov.  Synthesis and Stabilization of Complex Behaviors through Online Trajectory Optimization. 2012
-
-## NIPS'19
-- Marek Petrik, Reazul Hasan Russel. Beyond Confidence Regions: Tight Bayesian Ambiguity Sets for Robust MDPs
-- Bastian Alt, Adrian Šošić, Heinz Koeppl. Correlation Priors for Reinforcement Learning
-- Mikael Henaff. Explicit Explore-Exploit Algorithms in Continuous State Spaces
-- Daniel Freeman, David Ha, Luke Metz. Learning to Predict Without Looking Ahead: World Models Without Forward Prediction
-- Zhiao Huang, Fangchen Liu, Hao Su. Mapping State Space using Landmarks for Universal Goal Reaching
-- Rinu Boney, Norman Di Palo, Mathias Berglund, Alexander Ilin, Juho Kannala, Antti Rasmus, Harri Valpola. Regularizing Trajectory Optimization with Denoising Autoencoders
-- Yonathan Efroni, Nadav Merlis, Mohammad Ghavamzadeh, Shie Mannor. Tight Regret Bounds for Model-Based Reinforcement Learning with Greedy Policies
-
-- Hado van Hasselt, Matteo Hessel, John Aslanides. When to use parametric models in reinforcement learning?
