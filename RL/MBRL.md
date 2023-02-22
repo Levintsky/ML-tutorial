@@ -68,7 +68,7 @@
 	- Distillation: Dagger;
 	- Terminal value functions
 	- Planning as policy improvement 
-	- Implicit planning: VIN [NeurIPS'16], VPN [NeurIPS'17] Diff-CEM [Amos 20]
+	- Implicit planning: VIN [NeurIPS'16], GVIN [AAAI'18], VPN [NeurIPS'17] Diff-CEM [Amos 20]
 - Others: curiosity/... (check Explore)
 - From Spinningup
 	- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
