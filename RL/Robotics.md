@@ -17,25 +17,13 @@
 - F. Sadeghi and S. Levine. CAD2RL: real single-image flight without a single real image. 2017
 - Supersizing Self-supervision: Learning to Grasp from 50K Tries and 700 Robot Hours
 
-## OpenAI
-- OpenAI Robotics Symposium 2019 with a lot of talks:
-	- https://openai.com/blog/symposium-2019/
-	- Learning From Play, Pierre Sermanet, Google Brain
-	- Doing for Our Robots What Nature Did for Us, Leslie Kaelbling, MIT
-	- Treating People as Optimizers in Human-Robot Interaction, Anca Dragan, UC Berkeley
-	- Social-Emotional Intelligence in Human-Robot Interactions, Jin Joo Lee, MIT / Amazon
-	- What Should Be Learned, Chris Atkeson, CMU
-
-## Dataset
-- MuJoCo: A physics engine for model-based control, IROS 2012
-- ShadowRobot. ShadowRobot Dexterous Hand. https://www.shadowrobot.com/products/dexterous-hand/, 2005.
-	- five fingers with a total of 24 degrees of freedom
-- Simulation only:
-	- Y. Bai and C. K. Liu. Dexterous manipulation using both palm and fingers. ICLR'14
-	- I. Mordatch, Z. Popovic, and E. Todorov. Contact-invariant optimization for hand manipulation. SCA'12
-
 ## Robotics
 - Robot Learning in Homes: Improving Generalization and Reducing Dataset Bias. NIPS'18 Tutorial
+- Learning From Play, Pierre Sermanet, Google Brain
+- Doing for Our Robots What Nature Did for Us, Leslie Kaelbling, MIT
+- Treating People as Optimizers in Human-Robot Interaction, Anca Dragan, UC Berkeley
+- Social-Emotional Intelligence in Human-Robot Interactions, Jin Joo Lee, MIT / Amazon
+- What Should Be Learned, Chris Atkeson, CMU
 
 ## Legacy
 - L.-J. Lin. Reinforcement learning for robots using neural networks. 1993.

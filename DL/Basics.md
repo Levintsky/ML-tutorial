@@ -183,7 +183,7 @@
 		- then y as a weighted sum of {v1, v2} with prob f(x, τ)
 		- y is both differentiable w.r.t. {v1, v2, ...} and {α1, α2, ...}
 		- τ 0, sampling behavior is exact;
-	- C. J. Maddison, A. Mnih, and Y W Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
+	- C. J. Maddison, A Mnih, and Y W Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
 		- Independently discover the same trick;
 	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
 		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When τ approaches 0, equivalent to Gumbel:\

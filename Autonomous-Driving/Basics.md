@@ -72,6 +72,10 @@
 	- F. Rottensteiner, G. Sohn, M. Gerke, and J. D. Wegner. Isprs test project on urban classification and 3d building reconstruction. 2013.
 	- J. Niemeyer, F. Rottensteiner, and U. Soergel. Contextual classification of lidar data and building object detection in urban areas. ISPRS'14
 	- F. Nex, M. Gerke, F. Remondino, H. Przybilla, M. Baumker, and A. Zurhorst. Isprs benchmark for multi-platform photogrammetry. ISPRS'15
+- Synthetic:
+	- A Gaidon, Q Wang, Y Cabon, and E Vig. Virtual worlds as proxy for multi-object tracking analysis. CVPR'16
+	- G. Ros, L. Sellart, J. Materzynska, D. Vazquez, and A. Lopez. The SYNTHIA Dataset: A large collection of synthetic images for semantic segmentation of urban scenes. CVPR'16
+	- M. Wrenninge and J. Unger. Synscapes: A photorealistic synthetic dataset for street scene parsing.
 - TUM-DLR: T. Koch, P. d'Angelo, F. Kurz, F. Fraundorfer, P. Reinartz, and M. Korner. The tum-dlr multimodal earth observation evaluation benchmark. CVPRW'16
 - Oxford-RobotCar: W. Maddern, G. Pascoe, C. Linegar, and P. Newman. 1 year, 1000km: The oxford robotcar dataset. IJRR'16
 - nuTonomy. nuscenes: A multimodal dataset for autonomous driving. 2019

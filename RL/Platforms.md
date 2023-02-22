@@ -16,14 +16,23 @@
 	- **Malmo**: Johnson M., Hofmann K., Hutton T., Bignell D. The Malmo Platform for Artificial Intelligence Experimentation. IJCAI'16
 - General:
 	- Open-AI gym: https://github.com/openai/gym
-	- Retro Contest: A Nichol, V Pfau, C Hesse, O Klimov, J Schulman. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
+	- Robo-School: https://github.com/openai/roboschool
+	- ShadowRobot. ShadowRobot Dexterous Hand. 2005
+		- https://www.shadowrobot.com/products/dexterous-hand/
+		- five fingers with a total of 24 degrees of freedom
+	- Mujoco: E Todorov, T Erez, and Y Tassa. Mujoco: A physics engine for model-based control. IROS'12
+		- https://github.com/openai/mujoco-py
+	- Retro: N Bhonker, S Rozenberg and I Hubara. Playing SNES in the Retro Learning Environment. ICLR'17
+	- Retro Contest: OpenAI. Gotta Learn Fast: A New Benchmark for Generalization in RL. 2018
 		- https://contest.openai.com/2018-1/
 		- https://github.com/openai/retro#gym-retro
 		- Classic video games to gym environment
-	- **Retro**: N Bhonker, S Rozenberg and I Hubara. Playing SNES in the Retro Learning Environment. ICLR'17
-- Robotics:
-	- Robo-School: https://github.com/openai/roboschool
-	- Mujoco: https://github.com/openai/mujoco-py
+	- OpenAI Robotics Symposium 2019 with a lot of talks:
+		- https://openai.com/blog/symposium-2019/
+
+- Simulation only:
+	- Y. Bai and C. K. Liu. Dexterous manipulation using both palm and fingers. ICLR'14
+	- I. Mordatch, Z. Popovic, and E. Todorov. Contact-invariant optimization for hand manipulation. SCA'12
 
 ## Distributed RL Platforms
 - From Spinningup
@@ -50,7 +59,7 @@
 - OpenAI. Evolution Strategies as a Scalable Alternative to Reinforcement Learning. 2017
 	- n different workers perform and get returns;
 	- Learner SGD according to the return; (synchronized)
-- RLlib: E Liang, R Liaw, P Moritz, R Nishihara, R Fox, K Goldberg, J E. Gonzalez, M I. Jordan, I Stoica. RLlib: Abstractions for Distributed Reinforcement Learning. ICML'18
+- RLlib: E Liang, R Liaw, P Moritz, R Nishihara, R Fox, K Goldberg, J E. Gonzalez, M Jordan, I Stoica. RLlib: Abstractions for Distributed Reinforcement Learning. ICML'18
 	- https://ray.readthedocs.io/en/latest/rllib.html
 - **R2D2**: DeepMind. Recurrent Experience Replay in Distributed Reinforcement Learning. ICLR'19
 - **dopamine**: DeepMind. Dopamine: A Research Framework for Deep Reinforcement Learning. 2018

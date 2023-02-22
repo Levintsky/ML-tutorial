@@ -1,8 +1,5 @@
 # Multi-Task/Transfer Learning
 
-## From Spinningups
-- Progressive, uvfa; UNREAL; IU Agent; PathNet; MATL; learning an embedding space; HER;...
-
 ## Problem setup
 - Sergey Levine (lec-17, 18)
 - Forward transfer: train on one task, transfer to a new task
@@ -24,6 +21,9 @@
 - Domain randomization: Randomness for diversity;
 	- Uniform: Dactyl [OpenAI robotics];
 	- Optimization: learn source s.t. target perf is maxed;
+- Resources:
+	- Progressive, uvfa; UNREAL; IU Agent; PathNet; MATL; learning an embedding space; HER;...
+	- https://lilianweng.github.io/lil-log/2019/05/05/domain-randomization.html
 
 ## Multi-Task
 - Basics:
@@ -89,8 +89,6 @@
 		- Given an source domain (game) and a target domain (real)
 		- Randomize game s.t. the RL algorithm trained on game transfer well to target;
 		- Discrepancies between the source and target domains are modeled as variability in the source domain;
-	- Good resources:
-		- https://lilianweng.github.io/lil-log/2019/05/05/domain-randomization.html
 - Uniform randomization
 	- F Sadeghi, S Levine. CAD2RL: Real Single-Image Flight Without a Single Real Image. 2016
 	- J Tobin, R Fong, A Ray, J Schneider, W Zaremba, P Abbeel. Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS'17
@@ -115,11 +113,8 @@
 - Guided DR:
 	- Optimization for Task Performance
 		- N Ruiz, S Schulter, M Chandraker. Learning To Simulate. ICLR'19
-			- NAS: considered the task feedback as reward in RL problem and proposed a RL-based method
-			- Exp: Toy example (GMM) for binary classification;
-			- Exp: CARLA;
-			- Exp: Semantic Segmentation;
-			<img src="/RL/images/transfer/learn-to-sim.png" alt="drawing" width="600"/>
+			- NAS: considered the task feedback as reward in RL problem and proposed a RL-based method;
+			- Exp: Toy example (GMM); CARLA; Semantic Segmentation;
 		- W Yu, K Liu, G Turk. Policy Transfer with Strategy Optimization. ICLR'19
 			- Evolution based; CMA-ES (covariance matrix adaptation evolution strategy)
 		- **SDR**: A Prakash, S Boochoon, M Brophy, D Acuna, E Cameracci, G State, O Shapira, S Birchfield. Structured Domain Randomization: Bridging the Reality Gap by Context-Aware Synthetic Data.
@@ -137,30 +132,25 @@
 	- Match Real Data Distribution
 		- **SimOpt**: Y Chebotar, A Handa, V Makoviychuk, M Macklin, J Issac, N Ratliff, D Fox. Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience. 2019
 			- https://sites.google.com/view/simopt
-			- trained under an initial randomization distribution Pϕ(ξ) first, getting a policy πθ,Pϕ.
-			- Then this policy is deployed on both simulator and physical robot to collect trajectories τξ and τreal respectively.
-			- The optimization objective is to minimize the discrepancy between sim and real trajectories
-			- SimOpt also has to solve the **tricky problem** of how to propagate gradient through non-differentiable simulator
-			<img src="/RL/images/transfer/simopt.png" alt="drawing" width="500"/>
-		- **RCAN**: S James, P Wohlhart, M Kalakrishnan, D Kalashnikov, A Irpan, J Ibarz, S Levine, R Hadsell, K Bousmalis. Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks. 2019
-			- a nice combination of DA and DR for end-to-end RL tasks.
-			- An image-conditional GAN (cGAN) is trained in sim to translate a domain-randomized image into a non-randomized version (aka “canonical version”).
-			- Later the same model is used to translate real images into corresponding simulated version so that the agent would consume consistent observation as what it has encountered in training.
-			- Still, the underlying assumption is that the distribution of domain-randomized sim images is broad enough to cover real-world samples.
-			<img src="/RL/images/transfer/rcan.png" alt="drawing" width="500"/>
+			- trained under an initial randomization distribution Pϕ(ξ) -> policy πθ,Pϕ.
+			- π deployed on both simulator and physical robot to collect τξ and τreal.
+			- Minimize: discrepancy(τξ, τreal)
+			- SimOpt needo to bp through non-differentiable simulator
+		- **RCAN**: Google-Brain. Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks. 2019
+			- DA + DR for end-to-end RL tasks.
+			- GAN (cGAN) trained in sim: translate dom-rand image -> "canonical"
+			- Same model: translate real images -> "canonical" for agents.
 	- Guided by Data in Simulator
 		- S Zakharov, W Kehl, S Ilic. DeceptionNet: Network-Driven Domain Randomization. 2019
-			- With the recognition network fixed, maximize the difference between the prediction and the labels by applying reversed gradients during backpropagation. So that the deception module can learn the most confusing tricks.
-			- With the deception modules fixed, train the recognition network with input images altered.
-			<img src="/RL/images/transfer/DeceptionNet.png" alt="drawing" width="500"/>
-		- **ADR**: B Mehta, M Diaz, F Golemo, C Pal, L Paull. Active Domain Randomization. 2019
+			- im -> DeNet - RecogNet (fixed);
+			- im -> DeNet (fixed) - RecogNet;
+		- ADR: B Mehta, M Diaz, F Golemo, C Pal, L Paull. Active Domain Randomization. 2019
 			- Searches most informative env var, as discrepancies of policy rollouts;
 				- SimOpt: disc(sim, real)
 				- ADR: disc(rand, non-rand) (avoid expensive real data)
 			- GAIL like nn for disc(rand, non-rand)
 				- logp(rand) as reward;
 			- 3. The reward by discriminator is fed into Stein Variational Policy Gradient (SVPG) particles, outputting a diverse set of randomization configurations.
-			<img src="/RL/images/transfer/adr.png" alt="drawing" width="500"/>
 - X. B. Peng, M. Andrychowicz, W. Zaremba, and P. Abbeel. Sim-to-real transfer of robotic control with dynamics randomization. CoRR'17
 
 ## OpenAI

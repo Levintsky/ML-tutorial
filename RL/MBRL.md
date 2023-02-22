@@ -1,46 +1,83 @@
 # Model-based RL
 
 ## Basics
-- Mordatch/Hamrick Tutorial (ICML'20)
+- Motivation and application:
+	- Robotic control, safety, human-AI interaction, games, science (chemical synthesis), operation research;
+- Problem setup:
+	- Transition: st+1 = fs(st, at)
+	- Reward: rt+1 = fr(st, at)
+- Learned models:
+	- States: s = [x, dx/dt, φ];
+		- Galileo [Wu, 2015], GNN [ICML'18], local-linear [Yip 2014]
+	- Observations: image; (reconstuct image)
+		- Ebert, Finn, [2018]; Finn & Levine [2017]; Finn, Goodfellow, & Levine [2016]
+	- Latent space: z; (reconstruct image from z)
+		- World-Models [Ha, NeurIPS'18]
+		- State-Space-transition [Buesing ICML'18]
+		- Structured Latent: MONet [Burgess 2019], COBRA [Watters 2019]
+	- Object-centric;
+	- Recurrent value models:
+		- DeepMind: muzero;
+- Models:
+	- Parametric
+	- Non-Parametric:
+		- Kovar. Motion Graphics. [TOG'02]
+		- Gaussian Process: PILCO [ICML'11]
+		- Transition graphs: Composable planning [ICML'18], Koltun Semi-parametric [ICLR'18]
+		- Empirical replay buffer: DeepMind. When to use [NeurIPS'19]
+- How to leverage models in RL?
+	- Simulation: mix real/model-gen experience, and apply model-free RL;
+		- Tzeng [17]; Dexterous [OpenAI'19]
+	- Assist learning: Policy backprop, SVG, dreamer;
+		- ∂s′/∂s, ∂s′/∂a, ∂r/∂a, ∂r/∂s;
+		- Backprop through s′ = fs(s,a) and r=fr(s,a)
+		- SVG [15], dream-to-control [Hafner'20], Imagined-value-grad [Byravan'20]
+	- Strengthen policy; inf/learning time;
+- Plan with models:
+	- BG planning (learning time):
+		- Learn θ for any situation; (Habit)
+		- Simulate: dyna, MVE, MBPO;
+		- Assist learning: Policy backprop, SVG, dreamer;
+	- Decision-Time (inference planning):
+		- Plan a0, a1, ... for current goal; (Improvisation)
+		- Discrete actions: Heuristic search, MCTS;
+		- Continuous:
+			- Shooting: iLQR, DDP, PIˆ2;
+			- Collocation: direct, STOMP;
+	- Challenge:
+		- Sensitivity and poor conditioning: error will accumulate;
+			- Collocation;
+		- Only local optimum: CEM/PI^2 to avoid;
+		- Slow convergence: 2nd-order opt
+			- LQR '72; linear dyn + quadratic reward;
+			- iLQR: Todorov '05
+			- DDP: fr = s†Qs + a†Ra
+- Model-based control in the loop:
+	- Offline-RL: MOReL, MOPO;
+	- Data Augmentation;
+	- Plan under imperfect model: replan (closed loop);
+		- Replan with MPC (model-predictive control);
+		- Plan conservatively:
+			- with avg/worst model: Rajeswaran EPOpt;
+			- Ensemble-CIO;
+	- Stay close to states where model is certain;
+		- Implicitly: Peters [12]; GPS [14]
+		- Explicitly: MOReL;
+	- Estimate model uncertainty: GP; BNN; Pseudo-count; Ensembles;
+- Combine planning with learning;
+	- Distillation: Dagger;
+	- Terminal value functions
+	- Planning as policy improvement 
+	- Implicit planning: VIN [NeurIPS'16], VPN [NeurIPS'17] Diff-CEM [Amos 20]
+- Others: curiosity/... (check Explore)
 - From Spinningup
 	- Model learned: I2A, MBMF, MVE, STEVE, ME-TRPO, MB-MPO, world-models...
 	- Model given: AlphaGo, Exit;
-- https://zhuanlan.zhihu.com/p/72642285
-
-## Unclassified
-- A Strehl, L Li, M Littman. Incremental model-based learners with formal learning-time guarantees. UAI'06
-- **MBIE-EB**: A Strehl, M Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
-	- Init: ε, δ, m;
-	- n(s,a,s')=0, rc(s,a)=0, n(s,a)=0, Q(s,a)=1/(1−γ);
-	- Loop:
-		- at = argmax Q(st,a);
-		- Observe rt and state st+1;
-		- Update stat n(s,a), n(s,a,s'), rc(s,a);
-		- Update model: R(st,at) and T(s'|s,a)
-		- Set Q(s, a) as exploration based reward by looping until convergence:
-			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/√(n(s,a))
-- **Recurrent World Models Facilitate Policy Evolution (Google Brain)**. NIPS'18
-
-## Over-Optimistic
-- Model-based Offline batch RL:
-	- Learn a model penalize model uncertainty during planning;
-	- Empirically very promising on D4RL tasks;
-	- MOPO: T Yu, G Thomas, L Yu, S Ermon, J Zou, S Levine, C Finn, T Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
-	- R Kidambi, A Rajeswaran, P Netrapalli, T Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
+- Resources:
+	- Mordatch/Hamrick Tutorial (ICML'20)
+	- https://zhuanlan.zhihu.com/p/72642285
 
 ## Basics
-- Version 0.5: collect random samples, train dynamics, plan
-	- Pro: simple, no iterative procedure
-	- Con: distribution mismatch problem
-- Version 1.0: iteratively collect data, replan, collect data
-	- Pro: simple, solves distribution mismatch
-	- Con: open loop plan might perform poorly, esp. in stochastic domains
-- Version 1.5: iteratively collect data using **MPC** (replan at each step)
-	- Pro: robust to small model errors
-	- Con: computationally expensive, but have a planning algorithm available
-- Version 2.0: backpropagate directly into policy
-	- Pro: computationally cheap at runtime
-	- Con: can be numerically unstable, especially in stochastic domains (more on this later)
 - Learn model and plan (without policy)
 	- Iteratively collect more data to overcome distribution mismatch
 	- Replan every time step (MPC) to mitigate small model errors
@@ -56,16 +93,13 @@
 	- replay buffer value estimation methods (Q-learning, DDPG, NAF, SAC, etc.)
 	- model-based deep RL (e.g. PETS, guided policy search)
 	- model-based "shallow" RL (e.g. PILCO)
-- Known dynamics (294, lec-11)\
-	<img src="/RL/images/mbrl/mbrl1.png" alt="drawing" width="500"/>
+- Known dynamics (294, lec-11)
+	- min cost, s.t. Dynamics
 - Linear case:
-	- LQR: linear transition, quadratic cost\
-		<img src="/RL/images/mbrl/mbrl2.png" alt="drawing" width="600"/>
-	- Solved with backward recursion\
-		<img src="/RL/images/mbrl/mbrl3.png" alt="drawing" width="550"/>
+	- LQR: linear transition, quadratic cost
+	- Solved with backward recursion (dynamic programming)
 - Nonlinear case: DDP/iterative LQR
-	- iLQR\
-		<img src="/RL/images/mbrl/mbrl4.png" alt="drawing" width="550"/>
+	- iLQR: approx with LQR locally;
 - Learn dynamics (294, lec-12)
 	- Uncertainty-aware models
 	- Aleatoric or statistical uncertainty
@@ -73,6 +107,26 @@
 	- Bayesian neural network
 	- Bootstrap ensembles p(θ|D)
 	- Moment matching (project to Gaussian)
+
+## Unclassified
+- A Strehl, L Li, M Littman. Incremental model-based learners with formal learning-time guarantees. UAI'06
+- **MBIE-EB**: A Strehl, M Littman. An analysis of model-based interval estimation for Markov decision processes. JoCS'08
+	- Init: ε, δ, m;
+	- n(s,a,s')=0, rc(s,a)=0, n(s,a)=0, Q(s,a)=1/(1−γ);
+	- Loop:
+		- at = argmax Q(st,a);
+		- Observe rt and state st+1;
+		- Update stat n(s,a), n(s,a,s'), rc(s,a);
+		- Update model: R(st,at) and T(s'|s,a)
+		- Set Q(s, a) as exploration based reward by looping until convergence:
+			- Q(s,a) = R(s,a) + γΣT(s'|s,a)maxQ(s',a) + β/√(n(s,a))
+
+## Over-Optimistic
+- Model-based Offline batch RL:
+	- Learn a model penalize model uncertainty during planning;
+	- Empirically very promising on D4RL tasks;
+	- MOPO: T Yu, G Thomas, L Yu, S Ermon, J Zou, S Levine, C Finn, T Ma. MOPO: Model-based Offline Policy Optimization. NIPS'20
+	- R Kidambi, A Rajeswaran, P Netrapalli, T Joachims. MOReL: Model-Based Offline Reinforcement Learning. NIPS'20
 
 ## MDP/POMPD
 - Stanford cs-234 (Lec-2)
@@ -115,59 +169,47 @@
 
 ## Learn a Model for Planning
 - Model for Better Value Estimation
-	- **MVE**: V Feinberg, A Wan, I Stoica, M I. Jordan, J Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
+	- **MVE**: V Feinberg, A Wan, I Stoica, M Jordan, J Gonzalez, S Levine. Model-Based Value Expansion for Efficient Model-Free Reinforcement Learning. ICML'18
 		- Insight: approximate, few-step simulation of a reward- dense environment
 		- Problem setup: continuous state and action;
-		- RL: AC, on-policy; (IS not required)\
-			<img src="/RL/images/mbrl/mve.png" alt="drawing" width="550"/>
+		- RL: AC, on-policy; (IS not required)
 	- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
 - Learn a model as context:
 	- **I2A**: DeepMind. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
-		- Framework:\
-			<img src="/RL/images/mbrl/i2a-1.png" alt="drawing" width="550"/>
-			<img src="/RL/images/mbrl/i2a-2.png" alt="drawing" width="550"/>
+		- Framework: two-streams
+			- Model-based: Imag xn;
+			- Model-free:
 		- Game: Sokoban;
-	- **VPN**: V Feinberg, A Wan, I Stoica, M Jordan, J Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
+	- VPN: V Feinberg, A Wan, I Stoica, M Jordan, J Gonzalez, Sergey Levine. Value Prediction Network. NIPS'17
 		- https://github.com/junhyukoh/value-prediction-network
 - MuZero: DeepMind. Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. 2019
 	- MuZero = VPN (learn abstract states + dynamics) + AlphaZero-planning (MCTS)
 
 ## Learn a Model
-- World Model
-	- **Navigation**: DeepMind. Neural Predictive Belief Representations, ICLR'19
-		- 1-step frame prediction
-		- Two variants of Contrastive-Predictive Coding (CPC), CPC|Action
-		- DeepMind Lab\
-			<img src="/RL/images/mbrl/cpc.png" alt="drawing" width="550"/>
-- J. Oh, X. Guo, H. Lee, R. Lewis, and S.Singh. Action-conditional video prediction using deep networks in atari games. arxiv, 2015.
-- D Ha, J Schmidhuber. Recurrent World Models Facilitate Policy Evolution， NIPS'18
+-  DeepMind. Neural Predictive Belief Representations, ICLR'19
+	- 1-step frame prediction
+	- Two variants of Contrastive-Predictive Coding (CPC), CPC|Action
+	- DeepMind Lab: navigation;
+- J Oh, X Guo, H Lee, R Lewis, and S Singh. Action-conditional video prediction using deep networks in atari games. arxiv'15.
+- D Ha, J Schmidhuber. Recurrent World Models Facilitate Policy Evolution， NeurIPS'18
 	- VAE to encode frames for compression and regularization
 	- RNN to Predict next step
 	- Game: CarRacing, 
-	- https://worldmodels.github.io \
-		<img src="/RL/images/mbrl/r-world.png" alt="drawing" width="550"/>
-- Ł Kaiser, M Babaeizadeh, P Miłos, B Osinski, R H Campbell, K Czechowski, D Erhan, C Finn, P Kozakowski, S Levine, R Sepassi, G Tucker, H Michalewski. Model Based Reinforcement Learning for Atari. ICLR'20
-	- SimPLe\
-		<img src="/RL/images/mbrl/mbrl-atari1.png" alt="drawing" width="550"/>
+	- https://worldmodels.github.io
+- SimPLe: Google-Brain.Model Based Reinforcement Learning for Atari. ICLR'20
 	- https://ai.googleblog.com/2019/03/simulated-policy-learning-in-video.html
 	- Open sourced at https://github.com/tensorflow/tensor2tensor
-	- Main loop:
-		- The agent starts interacting with the real environment.
-		- The collected observations are used to update the current world model.
-		- The agent updates the policy by learning inside the world model.
-	- World model: feed-forward CNN
-		- Input 4 frames
-		- Output: predicts next frame (256 softmax)
-		- Output: Reward\
-			<img src="/RL/images/mbrl/mbrl-atari2.png" alt="drawing" width="550"/>
+	- Insight: learn world model to generate data, learn policy in world model;
+		- Play/interact -> Update-world model -> policy-world-model;
+	- World model: ff CNN predict next frame and reward from past 4 frames;
 	- RL: PPO
 	- Experiment: 100k interactions;
 
 ## Continuous (MuJoCo, Robotics)
 - Gaussian-Process Model (non-parametric):
-	- C. E. Rasmussen and M. Kuss. Gaussian processes in reinforcement learning. NIPS'03
+	- C Rasmussen and M Kuss. Gaussian processes in reinforcement learning. NIPS'03
 	- J Kocijan, R Murray-Smith, C Rasmussen, and A Girard. Gaussian process model based predictive control. ACC'04
-	- . Ko, D Klein, D Fox, and D Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
+	- Ko, D Klein, D Fox, and D Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
 	- D. Nguyen-Tuong, J. Peters, and M. Seeger. Local Gaussian process regression for real time online model learning. NIPS'08
 	- A. Grancharova, J. Kocijan, and T. A. Johansen. Explicit stochastic predictive control of combustion plants based on Gaussian process models. Automatica'08
 	- M Deisenroth, C Rasmussen, D Fox. Learning to Control a Low-Cost Manipulator using Data-Efficient Reinforcement Learning. RSS'11
@@ -191,26 +233,22 @@
 	- J. Fu, S. Levine, and P. Abbeel. One-shot learning of manipulation skills with online dynamics adaptation and neural network priors. IROS'16
 	- A. Baranes and P.-Y. Oudeyer. Active learning of inverse models with intrinsically motivated goal exploration in robots. 2016
 	- I. Mordatch, N. Mishra, C. Eppner, and P. Abbeel. Combining model-based policy search with online model learning for control of physical humanoids. ICRA'16
-	- S Depeweg, J. M. Hernández-Lobato, F. Doshi-Velez, and S. Udluft. Learning and policy search in stochastic dynamical systems with Bayesian neural networks. 2016
+	- S Depeweg, J Hernández-Lobato, F. Doshi-Velez, and S. Udluft. Learning and policy search in stochastic dynamical systems with Bayesian neural networks. 2016
 	- Y. Gal, R. McAllister, and C. Rasmussen. Improving PILCO with Bayesian neural network dynamics models. ICMLW'16
 	- P. Agrawal, A. V. Nair, P. Abbeel, J. Malik, and S. Levine. Learning to poke by poking: Experiential learning of intuitive physics. NIPS'16
-	- G. Williams, N. Wagener, B. Goldfain, P. Drews, J. M. Rehg, B. Boots, and E. A. Theodorou. Information theoretic MPC for model-based reinforcement learning. ICRA'17
-	- A Nagabandi, G Kahn, R S. Fearing, S Levine. Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning. ICLR'18
+	- G Williams, N Wagener, B Goldfain, P Drews, J Rehg, B Boots, and E Theodorou. Information theoretic MPC for model-based reinforcement learning. ICRA'17
+		- Replan
+	- A Nagabandi, G Kahn, R Fearing, S Levine. Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning. ICLR'18
 		- At beginning: avoid overfitting (MBRL is better)
 		- Later: avoid underfitting (MF-RL is better)
 		- Mb-Mf best
 - Bayesian-NN, Uncertainty-Aware:
-	- Y. Gal, J. Hron, and A. Kendall. Concrete dropout. NIPS'16
 	- I. Osband. Risk versus uncertainty in deep learning: Bayes, bootstrap and the dangers of dropout. NIPSW'16
-	- I. Osband, C. Blundell, A. Pritzel, and B. Van Roy. Deep exploration via bootstrapped DQN. NIPS'16
-	- C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger. On calibration of modern neural networks. ICML'17
 - **MBMF**: S Bansal, R Calandra, K Chua, S Levine, C Tomlin. MBMF: Model-Based Priors for Model-Free Reinforcement Learning. NIPS'17
-	- Learn a probabilistic dynamics model and leveraging it as a prior for the intertwined model-free optimization;\
-		<img src="/RL/images/mbrl/mbmf.png" alt="drawing" width="550"/>
+	- Learn a probabilistic dynamics model and leveraging it as a prior for the intertwined model-free optimization;
 - **PETS**: K Chua, R Calandra, R McAllister, S Levine. Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models. NIPS'18
-	- **SOA**!
-	- https://github.com/kchua/handful-of-trials \
-		<img src="/RL/images/mbrl/pets.png" alt="drawing" width="550"/>
+	- https://github.com/kchua/handful-of-trials
+	- CEM actions;
 - **MB-MPO**: Clavera. Model-Based Reinforcement Learning via Meta-Policy Optimization. 2018
 - **SOLAR**: M Zhang, S Vikram, L Smith, P Abbeel, M Johnson, S Levine. SOLAR: Deep Structured Representations for Model-Based Reinforcement Learning. ICML'19
 - **MBPO**: M Janner, J Fu, M Zhang, S Levine. When to Trust Your Model: Model-Based Policy Optimization. NeurIPS'19
@@ -219,4 +257,3 @@
 ## Legacy
 - **PILCO**: M P Deisenroth, C E Rasmussen. PILCO: A Model-Based and Data-Efficient Approach to Policy Search. ICML'11
 - **DDP**: Mayne, Jacobson. Differential dynamic programming. 1970
-- **iLQR**: Tassa, Erez, Todorov.  Synthesis and Stabilization of Complex Behaviors through Online Trajectory Optimization. 2012
