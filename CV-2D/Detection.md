@@ -21,7 +21,7 @@
 	- **COCO**: T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. L. Zitnick. Microsoft coco: Common objects in context. ECCV'14
 - Downstream tasks:
 	- People/pedestrian detection/counting;
-	- 
+	- Text detection, OCR;
 - Popular approaches:
 	- Backbone: ResNet, ResNeXt, VGG, HRNet, RegNet, Res2Net, ResNeSt
 		- Group Normalization, Weight Standardization, Mixed Precision (FP16) Training
@@ -274,6 +274,10 @@
 	- A. Shrivastava and A. Gupta. Contextual priming and feedback for faster r-cnn. ECCV'16
 	- X. Zeng, W. Ouyang, B. Yang, J. Yan, and X. Wang. Gated bi-directional cnn for object detection. ECCV'16
 - H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation Networks for Object Detection. CVPR'18
+
+## Text Detection
+- X Zhou, C Yao, H Wen, Y Wang, S Zhou, W He, and J Liang. EAST: an efficient and accurate scene text detector. CVPR'17
+- T He, Z Tian, W Huang, C Shen, Y Qiao, and C Sun. An end-to-end textspotter with explicit alignment and attention. CVPR'18
 
 ## Toolboxes
 - Detectron v1: https://github.com/facebookresearch/Detectron

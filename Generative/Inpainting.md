@@ -20,24 +20,24 @@
 	- relative distance measure
 
 ## SOTA
-- Shengyu Zhao, Jonathan Cui, Yilun Sheng, Yue Dong, Xiao Liang, Eric I Chang, Yan Xu. Large Scale Image Completion via Co-Modulated Generative Adversarial Networks. ICLR'21
+- S Zhao, J Cui, Y Sheng, Y Dong, X Liang, E Chang, Y Xu. Large Scale Image Completion via Co-Modulated Generative Adversarial Networks. ICLR'21
 
 ## Legacy
-- **ZNCC**: Dirk Padfield. Masked object registration in the fourier domain. TIP'12
+- **ZNCC**: D Padfield. Masked object registration in the fourier domain. TIP'12
 	- masked zero-normalized cross correlation;
 - Progressive fill holes on the boundary by patch similarity:
-	- Alexei A Efros and Thomas K Leung. Texture synthesis by non-parametric sampling. ICCV'99
-	- Denis Simakov, Yaron Caspi, Eli Shechtman, and Michal Irani. Summarizing visual data using bidirectional similarity. CVPR'08
-	- C. Barnes, E. Shechtman, A. Finkelstein, and D. B. Goldman. Patchmatch: A randomized correspondence algorithm for structural image editing. TOG'09
-	- Soheil Darabi, Eli Shechtman, Connelly Barnes, Dan Goldman, and Pradeep Sen. Image melding: Combining inconsistent images using patch-based synthesis. TOG'12
-	- Kaiming He and Jian Sun. Image completion approaches using the statistics of similar patches. PAMI'14
+	- A Efros and T Leung. Texture synthesis by non-parametric sampling. ICCV'99
+	- D Simakov, Y Caspi, E Shechtman, and M Irani. Summarizing visual data using bidirectional similarity. CVPR'08
+	- Adobe. Patchmatch. TOG'09
+	- Adobe. Image melding: Combining inconsistent images using patch-based synthesis. TOG'12
+	- K He and J Sun. Image completion approaches using the statistics of similar patches. PAMI'14
 - Image gradient statistics:
-	- Coloma Ballester, Marcelo Bertalmio, Vicent Caselles, Guillermo Sapiro, and Joan Verdera. Filling-in by joint interpolation of vector fields and gray levels. TIP'01
-	- Patrick Perez, Michel Gangnet, and Andrew Blake. Poisson image editing. TOG'03
-	- Shai Avidan and Ariel Shamir. Seam carving for content-aware image resizing. TOG'07
+	- C Ballester, M Bertalmio, V Caselles, G Sapiro, and J Verdera. Filling-in by joint interpolation of vector fields and gray levels. TIP'01
+	- P Perez, M Gangnet, and A Blake. Poisson image editing. TOG'03
+	- S Avidan and A Shamir. Seam carving for content-aware image resizing. TOG'07
 - Texture synthesis:
-	- A. A. Efros and W. T. Freeman. Image quilting for texture synthesis and transfer. SIGGRAPH'01
-	- A. Criminisi, P. Perez, and K. Toyama. Object removal by exemplar-based inpainting. CVPR'03
+	- A Efros and W Freeman. Image quilting for texture synthesis and transfer. SIGGRAPH'01
+	- A Criminisi, P Perez, and K Toyama. Object removal by exemplar-based inpainting. CVPR'03
 	- I. Drori, D. Cohen-Or, and H. Yeshurun. Fragment-based image completion. TOG'03
 	- V. Kwatra, I. Essa, A. Bobick, and N. Kwatra. Texture optimization for example-based synthesis. TOG'05
 	- M. Wilczkowiak, G. Brostow, B. Tordoff, and R. Cipolla. Hole fill through photomontage. BMVC'05
@@ -50,7 +50,7 @@
 	- J. Sun, L. Yuan, J. Jia, and H.-Y. Shum. Image completion with structure propagation. TOG'05
 
 ## Inpainting
-- **Context-encoder**: Deepak Pathak, Philipp Krahenbuhl, Jeff Donahue, Trevor Darrell, and Alexei A Efros. Context encoders: Feature learning by inpainting. CVPR'16
+- **Context-encoder**: D Pathak, P Krahenbuhl, J Donahue, T Darrell, and A Efros. Context encoders: Feature learning by inpainting. CVPR'16
 	- Inpaint from surrounding context;
 	- Insight: inpainting auto-encoder; loss: L2;
 	- Problem: fixed size (resolution), fixed mask; \
@@ -101,8 +101,8 @@
 - **Partial-Conv**: G Liu, F Reda, K J Shih, T Wang, A Tao, and B Catanzaro. Image Inpainting for Irregular Holes Using Partial Convolutions. ECCV'18
 	- Insight: Convolution is masked and re-normalized to utilize valid pixels only;
 	- https://github.com/NVIDIA/partialconv
-- **GMCNN**: Yi Wang, Xin Tao, Xiaojuan Qi, Xiaoyong Shen, Jiaya Jia. Image Inpainting via Generative Multi-column Convolutional Neural Networks. NIPS'18
-	- https://github.com/shepnerd/inpainting_gmcnn \
+- **GMCNN**: Y Wang, X Tao, X Qi, X Shen, J Jia. Image Inpainting via Generative Multi-column Convolutional Neural Networks. NIPS'18
+	- https://github.com/shepnerd/inpainting_gmcnn
 	- 3 submodules: a generator to produce results, global local discriminators for adversarial training, and a pretrained VGG network [20] to calculate ID-MRF loss. In the testing phase, only the generator network is used. \
 		<img src="/Generative/images/inpaint/gmcnn.png" alt="drawing" width="500"/>
 	- ID-MRF (implicit diversified Markov random fields): direct NN: over-smooth result; relative distance encourages different patch find different candidate (otherwise softmax loss will be large); \
@@ -121,11 +121,11 @@
 	- Input: sketches as guidance;
 	- Improve on partial-conv on soft-gated conv;\
 		<img src="/Generative/images/inpaint/sn-patchgan.png" alt="drawing" width="500"/>
-- Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model from a Single Natural Image. ICCV'19 best paper
+- T Shaham, T Dekel, T Michaeli. SinGAN: Learning a Generative Model from a Single Natural Image. ICCV'19 best paper
 
 ## Composition
-- **ST-GAN**: Chen-Hsuan Lin, Ersin Yumer, Oliver Wang, Eli Shechtman, Simon Lucey. ST-GAN: Spatial Transformer Generative Adversarial Networks for Image Compositing. CVPR'18
-- Samaneh Azadi, Deepak Pathak, Sayna Ebrahimi, Trevor Darrell. Compositional GAN: Learning Image-Conditional Binary Composition. IJCV'20
+- ST-GAN: C Lin, E Yumer, O Wang, E Shechtman, S Lucey. ST-GAN: Spatial Transformer Generative Adversarial Networks for Image Compositing. CVPR'18
+- S Azadi, D Pathak, S Ebrahimi, T Darrell. Compositional GAN: Learning Image-Conditional Binary Composition. IJCV'20
 
 ## User-Guided
 - J.-Y. Zhu, P. Krähenbühl, E. Shechtman, and A. A. Efros. Generative visual manipulation on the natural image manifold. ECCV'16.
@@ -140,12 +140,12 @@
 	- Yonatan Wexler, Eli Shechtman, and Michal Irani. Space-time completion of video. PAMI'07
 	- Alasdair Newson, Andres Almansa, Matthieu Fradet, Yann Gousseau, and Patrick Perez. Towards fast, generic video inpainting. ECVMP'13
 - Optical flow:
-	- Wei-Sheng Lai, Jia-Bin Huang, Oliver Wang, Eli Shechtman, Ersin Yumer, and Ming-Hsuan Yang. Learning blind video temporal consistency. ECCV'18
+	- Adobe. Learning blind video temporal consistency. ECCV'18
 		- ConvLSTM;
-	- Donghoon Lee, Tomas Pfister, and Ming-Hsuan Yang. Inserting videos into videos. CVPR'19
+	- D Lee, T Pfister, and M Yang. Inserting videos into videos. CVPR'19
 		- 1. optical flow;
 		- 2. flow guided inpainting;
-	- Rui Xu, Xiaoxiao Li, Bolei Zhou, and Chen Change Loy. Deep flow-guided video inpainting. CVPR'19
+	- R Xu, X Li, B Zhou, and C C Loy. Deep flow-guided video inpainting. CVPR'19
 		- 1. optical flow;
 		- 2. flow guided inpainting;
 - Geometrically-Driven Dynamic Object Removal for Self-Driving Video Simulation. CVPR'20 submission

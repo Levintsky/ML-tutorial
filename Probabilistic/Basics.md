@@ -4,6 +4,12 @@
 - Super-Gaussian distributions: kurt(z) > 0; natural signals (images) with filtering;
 	- kurt(z) := μ4/σ^4 - 3
 - Skewed distribution: skew(z) = μ3/σ^3
+- Textbooks
+	- Machine Learning: A Probabilistic Perspective
+	- Foundations of Machine Learning
+	- The Elements of Statistical Learning
+	- PRML: Pattern Recognition and Machine Learning
+- PKU: https://resource.pku.edu.cn/index.php?r=course%2Fdetail&id=381
 
 ## Basic Concepts (Kevin Murphy Chap-3)
 - 3.2 Bayesian concept learning
