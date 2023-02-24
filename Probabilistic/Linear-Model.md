@@ -283,7 +283,7 @@
 		- Posterior p(γ|D) ∝ p(γ)p(D|γ)
 	- 13.2.2 From the Bernoulli-Gaussian model to l0 regularization
 		- p(γ, w) ∝ N(w|0, σ2I)π^|γ|0 (1− π)^(D−|γ|0)
-		- f(w) = |y−Xw|^2 + λ|w|0
+		- f(w) = ∥y−Xw∥^2 + λ|w|0
 	- 13.2.3 Algorithms
 		- Greedy search: matching pursuit, ...
 		- Stochastic search: MCMC
@@ -316,7 +316,7 @@
 		- Proximal gradient method
 			- Key idea: approx L(.) with quadratic near xt;
 			- xt+1 = argmin_z R(z)+L(xt)+gk'(z−xt)+ 1/2tk |z−xt|^2, with gk=∇L(θk)
-			- xt+1 = argmin[tkR(z)+1/2|z−ut|^2] = proxτtR(ut)
+			- xt+1 = argmin[tkR(z)+1/2∥z−ut∥^2] = proxτtR(ut)
 			- with ut = −τtgt, gt = ∇L(xt)
 		- Nesterov
 	- 13.4.4 EM for lasso

@@ -36,15 +36,17 @@
 	- https://github.com/uber-research/UPSNet
 	- Cityscapes, COCO
 - K Lis, K Nakka, P Fua, M Salzmann. Detecting the Unexpected via Image Resynthesis. 2019
+	- Framework:
+		- Image -> [Seg] -> semantic-seg
+		- sem-seg -> [GAN] -> Fake-img
+		- Fake-im - Real-im -> Anomaly
 	- Segmentation model: SegNet or PSP;
-	<img src="/Autonomous-Driving/images/vision2d/anomaly1.png" alt="drawing" width="450"/>
-	<img src="/Autonomous-Driving/images/vision2d/anomaly2.png" alt="drawing" width="450"/>
-- J Liang, N Homayounfar, W Ma, Y Xiong, R Hu, R Urtasun. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
+- Uber-ATG. PolyTransform: Deep Polygon Transformer for Instance Segmentation. CVPR'20
 - Level-Set R-CNN [Namdar];
-- **DSAC**: D. Marcos, D. Tuia, B. Kellenberger, L. Zhang, M. Bai, R. Liao and R. Urtasun. Learning deep structured active contours end-to-end. CVPR'18
+- DSAC: Uber-ATG. Learning deep structured active contours end-to-end. CVPR'18
 	- Check mapping for details;
 - Deep Parametric Continuous Convolutional Neural Networks [CVPR’18, Shenlong]
 - SurfConv: Bridging 3D and 2D Convolution for RGBD Images [CVPR’18, H Chu]
 
 ## Misc
-- M Ren, A Pokrovsky, B Yang, and R Urtasun. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 
+- Uber-ATG. SBNet: Leveraging Activation Block Sparsity for Speeding up Convolutional Neural Networks. 

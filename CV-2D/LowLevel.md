@@ -24,11 +24,35 @@
 - **SelFlow**: P Liu, M R. Lyu, I King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
 	<img src="/CV/images/low-level/selflow1.png" alt="drawing" width="600"/>
 	<img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
-- **HD3**: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
+
+## Scene Flow
+- Input: two stereo pairs
+- Output: 3D motion (mostly from ego-car, dynamic objects)
+- Assume: all cameras calibrated with known intrinsics;
+- **ISF**: A. Behl, O. Jafari, S. Mustikovela, H. Alhaija, C. Rother and A. Geiger: Bounding Boxes, Segmentations and Object Coordinates: How Important is Recognition for 3D Scene Flow Estimation in Autonomous Driving Scenarios?. ICCV'17
+- Z Ren, D Sun, J Kautz, and E Sudderth. Cascaded scene flow prediction using semantic segmentation. 3DV'17
+- DRISF: Uber-ATG. Deep Rigid Instance Scene Flow. ICCV'19
+	- Network design: three streams; then combined;
+	- 1. Optical flow: Pwc-Net (pyramid, warping, cost-volume)
+	- 2. Stereo: PSM-Net
+	- 3. Segmentation: Mask R-CNN
+	- 4xstreams -> [GN-solver] -> motion (MRF)
+- HD^3-Flow: Z Yin, T Darrell, F Yu. Hierarchical Discrete Distribution Decomposition for Match Density Estimation. CVPR'19
 	- https://github.com/ucbdrive/hd3
+	- feat -> [warping] -> warped-feat for correlation;
+	- Loss at different resolution;
+
+## Depth
+- Depth: Learning Joint 2D-3D Representations for Depth Completion [Yun Chen]
+
+## Stereo
+- Uber-ATG. DeepPruner: Learning Efficient Stereo Matching via Differentiable PatchMatch. ICCV'19
+- Shela Qiu: Monocular stereo;
+	- Global coarse depth;
+	- Then bounding box -> refinement;
 
 ## Keypoints, Feature Matching
-- X. Han, T. Leung, Y. Jia, R. Sukthankar, and A. C. Berg. MatchNet: Unifying feature and metric learning for patch-based matching. CVPR'15
+- X. Han, T. Leung, Y. Jia, R. Sukthankar, and A Berg. MatchNet: Unifying feature and metric learning for patch-based matching. CVPR'15
 - J Yang, S Wang, W Ma, A Barsan, J Martinez, R Urtasun. End-to-End Sparse Image Matching. Mini-18
 - Law, H., & Deng, J. CornerNet: Detecting objects as paired keypoints. IJCV'19
 
