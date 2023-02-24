@@ -35,7 +35,7 @@
 	- https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
 ## Diffusion Model
-- Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
+- J Sohl-Dickstein, E Weiss, N Maheswaranathan, and S Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
 	- Forward (adding noise): with diffusion kernel Tπ
 		- π(y) = ∫dy' Tπ(y|y';β)π(y')
 		- q(xt|xt−1)= Tπ(xt|xt−1; βt)
@@ -58,7 +58,7 @@
 			- p(xt-1|xt) ~ N(xt-1; fμ(xt,t)+fΣ(xt,t) ∂logr(xt-1)/∂xt-1|xt-1=fμ(xt,t), fΣ(xt,t))
 		- **Perturbed model transition should obey equilibrium**: p'(xt) = ∫dxt+1 p'(xt|xt+1)p'(xt+1);
 		- r(x): hopefully multipied with a Gaussian/binomial in closed form;
-- **DDPM**: Jonathan Ho, Ajay Jain, Pieter Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
+- DDPM: J Ho, A Jain, P Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
 	- https://github.com/hojonathanho/diffusion
 	- Forward:
 		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; √(1−βt)xt−1, βtI)
@@ -76,8 +76,8 @@
 	- Practice:
 		- Training: sgd
 	- High-quality result with Langevin dynamics;
-- Yang Song and Stefano Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
-- **DDIM**: Jiaming Song, Chenlin Meng, and Stefano Ermon. Denoising diffusion implicit models. ICLR'21
+- Y Song and S Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
+- DDIM: J Song, C Meng, and S Ermon. Denoising diffusion implicit models. ICLR'21
 	- Extend DDPM to non-Markov case:
 		- qσ(x1:T|x0) := qσ(xT|x0)∏qσ(xt−1|xt, x0)
 	- Inference process:
@@ -90,22 +90,22 @@
 			- Estimate x0: fθ,t(xt) := (xt − √(1−αt)εθ,t(xt))/√(αt)
 			- p(xt-1|xt) = N(fθ,t(xt), σ^2I), if t=1;
 			- p(xt-1|xt) = qσ(xt-1|xt, fθ,t(xt)), otherwise;
-- Alex Nichol and Prafulla Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
+- A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
 	- upsampling;
 	- https://github.com/openai/improved-diffusion
-- **SAM**: Pierre Foret, Ariel Kleiner, Hossein Mobahi, and Behnam Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
-- **Analytic-DPM**: Fan Bao, Chongxuan Li, Jun Zhu, Bo Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
-- **Stable diffusion**: Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
+- **SAM**: P Foret, A Kleiner, H Mobahi, and B Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
+- **Analytic-DPM**: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
+- **Stable diffusion**: R Rombach, A Blattmann, D Lorenz, P Esser, B Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
 
 ## Condition/Guidance
 - Classifier:
-	- **ADMNet**: Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+	- **ADMNet**: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
 		- Guided diffusion (Class-conditional):
 			- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
 			- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
 		- DDIM technique to get xT (non-Markov prediction);
 - Classifier-free (implicit):
-	- Jonathan Ho and Tim Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
+	- J Ho and T Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
 		- Guided diffusion (Class-free):
 		- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
 			- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
@@ -115,11 +115,11 @@
 			- εθ(xt|c) = εθ(xt|∅) + s (εθ(xt|c) − εθ(xt|∅))
 - Text-based (Embedding):
 	- CLIP: given text c, image x, (f(x), g(c)) as guidance;
-	- **GLIDE**: Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and Mark Chen. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+	- GLIDE: OpenAI. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
 		- https://github.com/openai/glide-text2im.
 		- CLIP-guidance v.s. classifier-free guidance:
 		- µθ(xt|c) = µθ(xt|c) + sΣθ(xt|c)∇xt(f(xt)g(c))
-- **DALL-E-2**: Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
+- **DALL-E-2**: OpenAI. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
 	- Image caption pair (x, y), embedding (zi, zt);
 		- CLIP: zi (ViT), zt (GPT-3), trained with SAM;
 	- Prior: P(zi|y), predict image embedding zi based on caption y;
@@ -147,43 +147,24 @@
 		- ψi(x; θ) = ∂logq(x; θ)/∂xi; 1st-order gradient w.r.t. data
 		- ∂ψi(x; θ)/∂xi = ∂^2logq(x; θ)/∂xi^2; 2nd-order gradient w.r.t. data
 	- Proof: integral by part;
-- **Denoising score matching**: Pascal Vincent. A Connection Between Score Matching and Denoising Autoencoders. NC'11
+- **Denoising score matching**: P Vincent. A Connection Between Score Matching and Denoising Autoencoders. NC'11
 	- Insight: circumvents tr(∇x sθ(x))
 	- Denote: q(x) data distribution, p(x;θ)= exp(-E(x;θ))/Z(θ)
 	- ESM (explicit): J(θ) = Eq(x) (1/2 |∂ψ(x; θ)-∂logq(x)/∂x|)
 	- ISM (implicit): J(θ) = Eq(x) (1/2 |ψ(x;θ)^2+Σi ∂ψi(x;θ)/∂xi|)
 	- DSM: qσ(x',x) = qσ(x'|x)q0(x), ∂logqσ(x')/∂x=1/σ^2(x-x')
 	- Add noise to the data qσ(x'|x) = N(x'|x, σ^2I), ∇x'logqσ(x'|x)=−(x'−x)/σ
-- **Stein-Score**: Q. Liu, J. Lee, and M. Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16
-	- Insight: a discrepancy measure of two p.d.f. by score function sq=∇x logq(x);
-	- Problem setup: sample {xi} ∼ p(x) from q(x)? H0: p = q;
-	- **Stein's method**: p(x) and q(x) are identical iff Ep\[sq(x)f(x)+∇xf(x)\] = 0
-		- (Stein) score function of q(x): sq(x) = ∇x log q(x) = ∇xq(x)/q(x)
-	- RKHS: k(x, x') = Σj λj ej(x)ej(x'), {ej}, {λj} are the orthonormal eigenfunctions and positive eigenvalues of k(x,x');
-		- If k(x,x') positive definite, its RKHS space H:
-		- f(x) = Σj fjej(x), with Σj fj^2/λj < ∞
-		- Then (f, g)=Σj fj.gj/λj, equip the space with norm ||f||=(f, f)=Σj fj^2/λj.
-		- Every kernel defines a RHKS s.t. k(x,.) ∈ H, f(x)=(f, k(.,x)), k(x, x')=(k(.,x), k(.,x')), k is the reproducing kernel;
-	- Stein-class: f(x) s.t. ∫ ∇x(f(x)p(x))dx = 0.
-	- Stein operator Ap: Apf(x) = sp(x)f(x) + ∇xf(x)
-	- **KSD**: The kernelized Stein discrepancy (KSD) between two distribution p, q;
-		- S(p, q) = Ex,x'∼p\[δq,p(x)k(x, x')δq,p(x')\],
-		- where δq,p(x) = sq(x) − sp(x) is the score difference;
-	- Theorem: Let uq(x,x') = Σjλj (Aqej(x))'(Aqej(x')), where Apf(x) = sp(x)f(x) + ∇xf(x), then KSD:
-		- S(p,q) = Σj λj||Ex∼p(Aqej(x))||2.
-	- Goodness of fitting given {xi} from p and score function sq():
-		- Su(p,q) = 1/n(n-1) Σij uq(xi,xj)
 - Y. Song, S. Garg, J. Shi, and S. Ermon. Sliced score matching: A scalable approach to density and score estimation. UAI'19
 	- Insight: efficient with a random vector v, p(v)
 		- Ep(v) Ep(data) v∇xsθ(x)v + 1/2|sθ(x)|^2 
-- **NCSN/SMLD**: Yang Song, Stefano Ermon. Generative Modeling by Estimating Gradients of the Data Distribution. NIPS'19
+- **NCSN/SMLD**: Y Song, S Ermon. Generative Modeling by Estimating Gradients of the Data Distribution. NIPS'19
 	- Insight: a neural network sθ(x) to approximate ∇xlog(pdata(x))
 		- 1) perturbing the data using various levels of noise;
 		- 2) simultaneously estimating scores corresponding to all noise levels by training a single conditional score network
-	- Equivalent to: Ep'(x)\[tr(∇xsθ(x)) + 2|sθ(x)|^2\]
+	- Equivalent to: Ep'(x)[tr(∇xsθ(x)) + 2∥sθ(x)∥^2]
 	- Noise Conditional Score Network (NCSN): sθ(x, σ)
-		- θ=argmin_θ σi^2 Ep'(x)Epσi(x'|x) ||sθ(x',σi)-∇x logpσi(x'|x)||^2.
-- Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, Ben Poole. Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
+		- θ=argmin_θ σi^2 Ep'(x)Epσi(x'|x) ∥sθ(x',σi)-∇x logpσi(x'|x)∥^2.
+- Y Song, J Sohl-Dickstein, D Kingma, A Kumar, S Ermon, B Poole. Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
 	- Insight: unify SMLD and DDPM in a SDE framework, propose a stochastic solver (PC) and a deterministic (ODE);
 	- SMLD:
 		- Probability: pσ(x'|x):=Np(x';x,σ^2I) perturbation kernel, pσ(x')=∫pdata(x)pσ(x'|x)dx, NCSN
@@ -205,13 +186,11 @@
 			- Corrector: xi = xi + εi sθ(xi, i) + √(εi)z
 
 ## Super-resolution
-- Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image Super-Resolution via Iterative Refinement. 2021
+- C Saharia, J Ho, W Chan, T Salimans, D Fleet, and M Norouzi. Image Super-Resolution via Iterative Refinement. 2021
 	- upsampling + Gaussian blur;
-- Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-Resolution Image Synthesis with Latent Diffusion Models. CVPR'22
-	- BSR noise;
-- Kai Zhang, Jingyun Liang, Luc Van Gool, and Radu Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
+- K Zhang, J Liang, L V Gool, and R Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
 	- BSR noise;
 
 ## Video Generation
-- **ADMNet**: Prafulla Dhariwal and Alex Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
-- Jonathan Ho, Chitwan Saharia, William Chan, David J. Fleet, Mohammad Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
+- **ADMNet**: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+- J Ho, C Saharia, W Chan, D Fleet, M Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021

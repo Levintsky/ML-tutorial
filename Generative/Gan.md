@@ -1,19 +1,12 @@
 # General Adversarial Net
 
 ## GAN Inversion
-- Weihao Xia, Yulun Zhang, Yujiu Yang, Jing-Hao Xue, Bolei Zhou, and Ming-Hsuan Yang. GAN Inversion: A Survey. 2021
+- W Xia, Y Zhang, Y Yang, J Xue, B Zhou, and M Yang. GAN Inversion: A Survey. 2021
 
 ## Unclassified
 - NIPS'19 oral:
 	- Multi-marginal Wasserstein GAN. NIPS'19
 - **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
-- Michael Arbel, Dougal J. Sutherland, Mikolaj Binkowski, Arthur Gretton. On gradient regularizers for MMD GANs. NIPS'18
-- Haoye Dong, Xiaodan Liang, Ke Gong, Hanjiang Lai, Jia Zhu, Jian Yin. Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis. NIPS'18
-- Chenshen Wu, Luis Herranz, Xialei Liu, Yaxing Wang, Joost van de Weijer, Bogdan Raducanu. Memory Replay GANs: Learning to Generate New Categories without Forgetting. NIPS'18
-- Chang Xiao, Peilin Zhong, Changxi Zheng. BourGAN: Generative Networks with Metric Embeddings. NIPS'18
-- Xiaojie Wang, Rui Zhang, Yu Sun, Jianzhong Qi. KDGAN: Knowledge Distillation with Generative Adversarial Networks. NIPS'18
-- Xinyu Gong, Shiyu Chang, Yifan Jiang, Zhangyang Wang. AutoGAN: Neural Architecture Search for Generative Adversarial Networks. ICCV 2019
-	- https://github.com/TAMU-VITA/AutoGAN
 - Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
 	- https://github.com/seowok/TreeGAN
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
@@ -59,14 +52,14 @@
 	- LD = DAE(x) - kt DAE(G(z))
 	- LG = DAE(G(z))
 	- kt+1 = kt + λ(γDae(x)-Dae(G(z))
-- Sebastian Nowozin, Botond Cseke, and Ryota Tomioka. **f-GAN**: Training generative neural samplers using variational divergence minimization. NIPS'16
-- M G. Bellemare, I Danihelka, W Dabney, S Mohamed, B Lakshminarayanan, S Hoyer, and R Munos. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
+- S Nowozin, B Cseke, and R Tomioka. **f-GAN**: Training generative neural samplers using variational divergence minimization. NIPS'16
+- DeepMind. The Cramer distance as a solution to biased Wasserstein gradients. In arXiv preprint arXiv:1705.10743, 2017.
 - T Salimans, H Zhang, A Radford, and D Metaxas. Improving GANs using optimal transport. ICLR'18.
 
 ## Single shot
-- Assaf Shocher, Nadav Cohen, and Michal Irani. Zero-Shot Super-Resolution using Deep Internal Learning. CVPR'18
-- Assaf Shocher, Shai Bagon, Phillip Isola, and Michal Irani. InGAN: Capturing and Remapping the "DNA" of a Natural Image. ICCV'19
-- Tamar Rott Shaham, Tali Dekel, Tomer Michaeli. SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19 Marr Prize
+- A Shocher, N Cohen, and M Irani. Zero-Shot Super-Resolution using Deep Internal Learning. CVPR'18
+- A Shocher, S Bagon, P Isola, and M Irani. InGAN: Capturing and Remapping the "DNA" of a Natural Image. ICCV'19
+- T Shaham, T Dekel, T Michaeli. SinGAN: Learning a Generative Model From a Single Natural Image. ICCV'19 Marr Prize
 	- Multi-scale GAN:\
 		<img src = '/Generative/images/gan/sin-gan-1.png' width = '400'>
 	- A single scale:\
@@ -124,7 +117,6 @@
 - Super-resolution:
 	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. In CVPR, 2017.
 	- C. K. Sønderby, J. Caballero, L. Theis, W. Shi, and F. Huszár. Amortised map inference for image super-resolution. In ICLR, 2017.
-
 
 ## Misc
 - Louppe, G. and Cranmer, K. Adversarial variational optimization of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.

@@ -26,9 +26,9 @@
 	- Definition:
 		- P(Y) ~ det(Ly)
 		- L(i,j) = (gi, gj) feature inner product
-	- Volumes and Gram Matrices: Vol(g(i), i in Y) = ||g(1)|| Vol(Proj g(i): i in Y - {1})
+	- Volumes and Gram Matrices: Vol(g(i), i ∈ Y) = ∥g(1)∥ Vol(Proj g(i): i ∈ Y-{1})
 		<img src="/Basic-ML/images/stochastic-process/dpp0.png" alt="drawing" width="300"/>
-	- Alex Kulesza, Ben Taskar. Determinantal point processes for machine learning. 2013
+	- A Kulesza, B Taskar. Determinantal point processes for machine learning. 2013
 	- http://people.csail.mit.edu/stefje/fall15/notes_lecture21.pdf
 	- L-ensemble; another definition (unnormalized) and relation with original K-defintion; \
 		<img src="/Basic-ML/images/stochastic-process/dpp1.png" alt="drawing" width="150"/>
@@ -41,7 +41,7 @@
 	- Application: to generate/encourage **diversity**, each pair of samples are **negative-correlated**;
 
 ## Infectious Disease
-- Herbert W. Hethcote. The Mathematics of Infectious Diseases. SIAM Review'00
+- H Hethcote. The Mathematics of Infectious Diseases. SIAM Review'00
 	- The model:\
 		<img src="/Basic-ML/images/stochastic-process/mseir-graph.png" alt="drawing" width="400"/>
 	- Notations:\

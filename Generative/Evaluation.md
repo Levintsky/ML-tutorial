@@ -10,13 +10,13 @@
 	- FID := |μ1-μ2|^2 + tr(Σ1+Σ2-2(Σ1^(.5)Σ2 Σ1^(.5))^.5)
 
 ## Unclassified
-- Alexander A. Alemi, Ian Fischer. GILBO: One Metric to Measure Them All. NIPS'18
-- Mehdi S. M. Sajjadi, Olivier Bachem, Mario Lucic, Olivier Bousquet, Sylvain Gelly. Assessing Generative Models via Precision and Recall. NIPS'18
-- L Theis, A van den Oord, and M Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.
+- A Alemi, I Fischer. GILBO: One Metric to Measure Them All. NIPS'18
+- M Sajjadi, O Bachem, M Lucic, O Bousquet, S Gelly. Assessing Generative Models via Precision and Recall. NIPS'18
+- L Theis, A Oord, and M Bethge. A note on the evaluation of generative models. In arXiv preprint arXiv:1511.01844, 2015.
 - Y Wu, Y Burda, R Salakhutdinov, and R Grosse. On the quantitative analysis of decoder-based generative models. 2017.
 - S Arora and Y Zhang. Do gans actually learn the distribution? an empirical study. 2017
 - A Bakhtin, A Szlam, M Ranzato. GenEval: A benchmark suite for evaluating generative models, in submission to ICLR 2019
 	- GenEval dataset
-- David Bau, Jun-Yan Zhu, Jonas Wulff, William Peebles, Hendrik Strobelt, Bolei Zhou, Antonio Torralba. Seeing What a GAN Cannot Generate. ICCV'19
+- D Bau, J Zhu, J Wulff, W Peebles, H Strobelt, B Zhou, A Torralba. Seeing What a GAN Cannot Generate. ICCV'19
 	- http://ganseeing.csail.mit.edu/
 	- https://github.com/davidbau/ganseeing

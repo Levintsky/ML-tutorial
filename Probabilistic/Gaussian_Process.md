@@ -36,90 +36,91 @@
 - 15.1 Introduction
 	- p(y∗|x∗,X,y) = ∫p(y∗|f,x∗)p(f|X,y)df
 	- A GP defines a **prior over functions**;
-	- Assumption: p(f(x1),...,f(xN)) is jointly Gaussian, mean μ(x), covariance ∑ij=k(xi,xj)
-- 15.2 GPs for regression
-	- f(x) ∼ GP(m(x), κ(x, x'))
-	- m(x) = E[f(x)]
-	- κ(x,x') = E[(f(x)−m(x))(f(x')−m(x'))']
-	- p(f|X) = N(f|μ, K), with Kij = κ(xi,xj) and μ = (m(x1),...,m(xN)).
-	- 15.2.1 Predictions using noise-free observations
-		- f ~ N(μ, [K K∗])
-		- f∗ ~ N(μ∗, [K∗ K∗∗])
-		- Posterior: conditional Gaussian p(f∗|X∗,X,f) = N(f∗|μ∗,Σ∗)
-			- μ∗ = μ(X∗) + K∗' K^(−1)(f − μ(X))
-			- Σ∗ = K∗∗ - K∗' K^(−1)K∗
-		- SE (squared exponential) kernel: κ(x, x') = σf^2 exp(−1/2l^2(x−x')^2)
-	- 15.2.2 Predictions using noisy observations
-		- Observed y is noisy: y = f(x) + ε
-		- cov[y|X] = K + σy^2I := Ky, replace K with Ky in noise-free;
-		- p(f∗|x∗,X,y) = N(f|k∗'Ky^(−1)y, k∗∗−k∗'Ky^(−1)k∗)
-		- Estimated f∗ = k∗Ky^(-1)y = Σαiκ(xi, x∗), with α=Ky^(-1)y
-	- 15.2.3 Effect of the kernel parameters
-	- 15.2.4 Estimating the kernel parameters
-		- MLE for marginal: p(y|X) = ∫p(y|f,X)p(f|X)df
-		- Prior: p(y|X) ~ N(f|0, K)
-		- p(y|f) = Πi N(yi|fi, σi^2)
-		- logp(y|X)=logN(y|0,K) = −1/2yKy^(−1)y − 1/2log|K| − Nlog(2π)
-		- First term: data fit; 2nd: complexity
-		- ∂logp(y|X)/∂θj = 1/2 tr((αα'-Ky^(-1))∂Ky/∂θj)
-	- 15.2.5 Computational and numerical issues
-		- Input: x, y, K, k∗, σy, estimate f∗, var[f∗], logp(y)
-		- L = cholesky(K+σy^2I)
-		- α = (L')^(-1) (L^(-1)y)
-		- E[f∗] = k∗'α
-		- v = (L)^-1 k∗;
-		- var[f∗]=κ(x∗,x∗)−v'v;
-		- logp(y|X)=−1/2y'α − Σ_i logLii − N/2log(2π)
-	- 15.2.6 Semi-parametric GPs*
-		- f(x) = β'φ(x) + r(x), with r(x) ∼ GP(0,κ(x,x'))
-- 15.3 GPs meet GLMs
-	- 15.3.1 Binary classification
-		- p(yi|xi) = σ(yif(xi)), f ∼ GP(0, κ)
-		- Posterior: l(f) = logp(y|f) + logp(f|X) 
-		-      = logp(y|f) − 1/2yK^(−1)y − 1/2log|K| − Nlog(2π)
-		- Loss: J(f) := −l(f)
-			- g = −∇logp(y|f) + K^(−1)f
-			- H = −∇∇logp(y|f) + K^(−1) = W + K^(−1)
-			- p(f|X,y) ≈ N(fˆ, (K^−1 +W)^−1)
-		- Computing the posterior predictive
-			- E[f∗|x∗,X,y] = k∗'K^(−1)E[f|X, y] ≈ k∗'K^(−1)fˆ
-		- Marginal likelihood:
-			- logp(y|X) ≈ logp(y|fˆ) − 1/2fˆ'K^(−1)fˆ − 1/2log|K| − 1/2log|K^−1+W|
-		- Numerically stable computation
-	- 15.3.2 Multi-class classification
-- 15.4 Connection with other methods
-	- 15.4.1 Linear models compared to GPs
-		- Bayesian linear regression is equivalent to a GP with covariance function κ(x, x') = x'Σx
-	- 15.4.2 Linear smoothers compared to GPs
-		- f(x∗) = ∑wi(x∗)yi
-		- GP: wi(x∗) = [(K+σy^2I)^(−1)k∗]i
-	- 15.4.3 SVMs compared to GPs
-		- J(f) = 2f'f + CΣ_i(1−yifi)+
-		- J(f) = 2f'f - Σ_ilogp(yi|fi)
-		- No such likelihood (KM-14.5.5)
-	- 15.4.4 L1VM and RVMs compared to GPs
-	- 15.4.5 Neural networks compared to GPs
-		- p(y|x, θ) = Ber(y|σ(wσ(Vx)))
-		- Assume v i.i.d. Gaussian,
-		- Eθ[f(x)] = 0
-		- Eθ[f(x)f(x')] = σb^2 + H σv^2 Eu[g(x;u)g(x;u)']
-	- 15.4.6 Smoothing splines compared to GPs
-		- Def (Hilbert space): Inner product space containing Cauchy sequence limits.
-			- f(.) is a function, f(x)∈R is a point;
-			- f(x) = f(.)'φ(x)
-			- k(.,y)=φ(y), (k(·,y), φ(x))H=k(x,y)
-			- Reproducing proberty: (kernel trick)
-				- (f(·), k(.,x))H = f(x)
-				- (k(.,x), k(.,y)) = k(x,y)
-			- f(x) = (f, φ(x))H = Σ_i fi √(λi)ei(x)
-		- Mercer: κ(x, x') = Σλiφi(x)φi(x') for positive definite kernel;
-		- φi: orthonormal basis for function space;
-		- Hk = {f: f(x) = Σfiφi(x), Σfi^2/λi < ∞} RKHS
-		- Inner product defined: (f,g)H = Σfigi/λi
-		- Norm: |f|H = Σfi^2/λi
-		- Optimization problem: J(f)=1/2σy^2 Σ(yi-f(xi))^2 + 1/2|f|H^2
-			- with Hilbert function norm prior;
-		- Solution must have the form f(x)=Σαiκ(xi, x) (representation theorem);
+	- Assumption: p(f(x1),...,f(xN)) ~ N(μ(x), ∑), ∑ij=k(xi,xj)
+
+## GPs for regression
+- K-Murphy-15.2
+- f(x) ∼ GP(m(x), κ(x, x'))
+- m(x) = E[f(x)]
+- κ(x,x') = E[(f(x)−m(x))(f(x')−m(x'))']
+- p(f|X) = N(f|μ, K), with Kij = κ(xi,xj) and μ = (m(x1),...,m(xN)).
+- 15.2.1 Predictions using noise-free observations
+	- f ~ N(μ,  [K   K∗])
+	- f∗   (μ∗, [K∗† K∗∗])
+	- Posterior: conditional Gaussian
+		- p(f∗|X∗,X,f) = N(f∗|μ∗,Σ∗)
+		- μ∗ = μ(X∗) + K∗† K−inv (f−μ(X))
+		- Σ∗ = K∗∗ - K∗† Kinv K∗
+	- SE (squared exponential) kernel:
+		- κ(x, x′) = σf^2 exp(−1/2l^2(x−x′)^2)
+- 15.2.2 Predictions using noisy observations
+	- Observed y is noisy: y = f(x) + ε
+	- cov[y|X] = K + σy^2I := Ky;
+		- [Ky  K∗]
+		- [K∗† K∗∗]
+	- p(f∗|x∗,X,y) = N(f|k∗† Ky-inv y, k∗∗−k∗† Kyinv k∗)
+	- Estimated f∗ = k∗ Ky-inv
+		- Equivalent to y = Σαiκ(xi, x∗), with α=Ky-inv y
+- 15.2.3 Effect of the kernel parameters
+- 15.2.4 Estimating the kernel parameters
+	- MLE for marginal: p(y|X) = ∫p(y|f,X)p(f|X)df
+	- Prior: p(y|X) ~ N(f|0, K)
+	- p(y|f) = Πi N(yi|fi, σi^2)
+	- logp(y|X)=logN(y|0,K) = −1/2yKy^(−1)y − 1/2log|K| − Nlog(2π)
+	- First term: data fit; 2nd: complexity
+	- ∂logp(y|X)/∂θj = 1/2 tr((αα'-Ky^(-1))∂Ky/∂θj)
+- 15.2.5 Computational and numerical issues
+	- Input: x, y, K, k∗, σy, estimate f∗, var[f∗], logp(y)
+		- Cholesky to speedup [k∗† Ky-inv y], [k∗∗−k∗† Kyinv k∗]
+	- L = Cholesky(Ky)
+	- α = Linv† Linv y
+	- E[f∗] = k∗† α
+	- v = Linv k∗;
+	- var[f∗] = κ(x∗,x∗) − v†v;
+	- logp(y|X) = −1/2y†α − Σ_i logLii − N/2log(2π)
+- 15.2.6 Semi-parametric GPs*
+	- f(x) = β†φ(x)+r(x), with r(x) ∼ GP(0,κ(x,x'))
+
+## GPs meet GLMs
+- K-Murphy-15.3
+- 15.3.1 Binary classification
+	- p(yi|xi) = σ(yif(xi)), f ∼ GP(0, κ)
+	- Posterior: l(f) = logp(y|f) + logp(f|X) 
+	-      = logp(y|f) − 1/2y Kinv y − 1/2log|K| − Nlog(2π)
+	- Loss: J(f) := −l(f)
+		- g = −∇logp(y|f) + Kinv f
+		- H = −∇∇logp(y|f) + Kinv = W + Kinv
+		- p(f|X,y) ≈ N(fˆ, (Kinv +W)inv)
+	- Computing the posterior predictive
+		- E[f∗|x∗,X,y] = k∗†Kinv E[f|X, y] ≈ k∗† Kinv fˆ
+	- Marginal likelihood:
+		- logp(y|X) ≈ logp(y|fˆ) − 1/2fˆ† Kinv fˆ − 1/2log|K| − 1/2log|Kinv+W|
+	- Numerically stable computation
+- 15.3.2 Multi-class classification
+
+## Connection with other methods
+- K-Murphy-15.4
+- 15.4.1 Linear models compared to GPs
+	- Prior: w ~ N(0, Σ)
+	- Bayesian linear regression ⇔ a GP with covariance κ(x, x′) = x†Σx′
+- 15.4.2 Linear smoothers compared to GPs
+	- f(x∗) = ∑wi(x∗)yi
+	- GP: wi(x∗) = [Kyinv k∗]i
+- 15.4.3 SVMs compared to GPs
+	- Loss: J(f) = 2f†f + CΣ.i (1−yifi)+
+		-        = 2f†f - Σ.i logp(yi|fi)
+	- No such likelihood (KM-14.5.5)
+- 15.4.4 L1VM and RVMs compared to GPs
+- 15.4.5 Neural networks compared to GPs
+	- p(y|x, θ) = Ber(y|σ(w† σ(Vx)))
+	- Prior (i.i.d. Gaussian): b ~ N(0, σb^2) v ~ N(vj|0, σw^2)
+	- Eθ[f(x)] = 0
+	- Eθ[f(x)f(x′)] = σb^2 + H σv^2 Eu[g(x;u)g(x′;u)]
+	- H → ∞, ~ GP
+- 15.4.6 Smoothing splines compared to GPs
+	- Optimization problem: J(f)=1/2σy^2 Σ(yi-f(xi))^2 + 1/2|f|H^2
+		- with Hilbert function norm prior;
+	- Solution must have the form f(x)=Σαiκ(xi, x) (representation theorem);
 - 15.5 GP latent variable model
 	- GP-LVM
 - 15.6 Approximation methods for large datasets
@@ -131,7 +132,7 @@
 	- k(x,x') = θ0 exp{-1/2 Σ_i=1..D ηi(xi-xi')^2} + θ2 + θ3Σ_i=1..D xnixmi
 
 ## Theory
-- D R. Burt, C E. Rasmussen, M van der Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
+- D Burt, C Rasmussen, M v d Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
 	- Reduce O(NM^2+M^3) to  and O(NM+M^2)
 
 ## Deep GP
@@ -152,4 +153,4 @@
 	- https://github.com/brain-research/nngp
 - A Matthews, M Rowland, J Hron, R Turner, and Z Ghahramani. Gaussian process behaviour in wide deep neural networks. arxiv'18
 - **CNN**: A Garriga-Alonso, C E Rasmussen, and L Aitchison. Deep convolutional networks as shallow gaussian processes. ICLR'19
-- R Novak, L Xiao, J Lee, Y Bahri, G Yang, J Hron, D Abolafia, Jeffrey Pennington, and Jascha Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19
+- R Novak, L Xiao, J Lee, Y Bahri, G Yang, J Hron, D Abolafia, J Pennington, and J Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19

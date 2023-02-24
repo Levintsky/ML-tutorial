@@ -5,152 +5,155 @@
 - Linear regression:
 	- MLE (L2)
 	- Bias/Variance trade-off;
-	- Bayesian (prior, posterior, predictive);
+	- Bayesian:
+		- known observation variance:
+			- prior, posterior, predictive: Gaussian;
+		- Unknown observation variance:
+			- prior NIG(w, σ^2);
+			- posterior: σ^2 ~ IG, w ~ T;
+			- Predictive: y ~ T;
 - Linear classifier (Logistic Regression):
 	- MLE, IRLS, Newton/BFGS;
 	- Bayesian (Laplacian Approx), BIC, probit-approx for predictive;
 	- Online learning: perceptron;
-	- Fisher
-	- Probit regression:
-		- Approx sigmoid with Gaussian erf (probit function);
+	- Bayesian:
+		- Laplace approx: w ~ Gaussian
+		- Probit approx: Approx sigmoid with Gaussian erf (probit function);
 - GLM, exponential family;
 	- learning: ∇θlogp(D|θ) = φ(D) − NE[φ(X)]; moment matching;
 	- Max-entropy -> exp family;
 - Latent linear
-	- FA: obs x=Wz, infer W, z
+	- FA: obs x=Wz, known z prior, infer W, z;
 	- PCA: obs x=Wz, z Gaussian, minimize reconstruction error;
 		- y = L^(-1/2)U'(x-E[x])
 	- ICA: obs x=Wz, z-Non-Gaussian;
-		- fast-ICA (Newton's method, assuming all distribution known and same)
+		- fast-ICA (approx Newton's method, assuming all dist known and same)
 - Sparse linear model
 	- L1-norm;
 	- Optimization: Lasso; Coord-descent; proximal methods;
 
-## Linear Regression (Kevin Murphy, Chap 7; Bishop, Chap 3)
+## Linear Regression
+- K-Murphy-7; PRML-3
 - 7.1 Introduction;
 	- y(x,w) = Σwjφj(x) = wφ(x)
 	- (Bishop) Multiple output target t, with Moore-Penrose pseudo-inverse:
-		- p(t|x,w,β) = N(t|y(x,w), β^-1)
+		- p(t|x,w,β) = N(t|y(x,w), βinv)
 		- lnp(t|x,w,β) = Nlnβ/2 - Nln(2π)/2 - βE(w) with E(w) as MSE fitting error;
-		- Pseudo-inverse: (Φ'Φ)^(-1)Φ'
+		- Pseudo-inverse: (Φ†Φ)inv Φ†
 - 7.2 Model specification:
 	- p(y|x,θ) = N(y|wx, σ^2)
 	- p(y|x,θ) = N(y|wφ(x), σ^2), basis function;
 - 7.3 MLE:
 	- l(θ) = Σlogp(yi|xi,θ)
 	- OLS (ordinary least squares):
-		- NLL(w) = 1/2 (y-Xw)'(y-Xw) = 1/2 w'(X'X)w - w'(X'y)
-		- w = (X'X)^(-1)X'y
-	- Geometric interpretation: residual y-y^ orthogonal to span of X;
-		- y' = X w^ = X (X'X)^(-1) X'y
+		- NLL(w) = 1/2 (y-Xw)†(y-Xw) = 1/2 w†(X†X)w - w†(X†y)
+		- w = (X†X)inv X†y
+	- Geometric interpretation: residual y-yˆ orthogonal to span of X;
+		- y' = X wˆ = X (X†X)inv X†y
 - 7.4 Robust linear regression:
 	- L1-norm
 	- Huber-loss
 - 7.5 Ridge-regression:
 	- J(w) = 1/N Σ(yi-(w0+wxi))^2 + λ|w|^2
-	- w = (λI+X'X)^(-1) X'y
+	- w = (λI+X†X)inv X†y
 	- 7.5.2 Numerical stability:
 		- Avoid inverting matrix
 		- Cholesky decomposition
 		- QR decomposition
 	- 7.5.3 Connection with PCA
-		- Let X = USV (SVD)
-		- y^ = Σ_j uj Sjj uj' y
-		- dof(λ) = Σ_j σj^2/(σj^2+λ)
-- 7.6 Bayesian linear regression
+		- Let X = USV† (SVD)
+		- yˆ = Σ.j uj Sjj uj† y
+		- dof(λ) = Σ.j σj^2/(σj^2+λ)
+- 7.6 Bayesian linear regression (also PRML-10)
 	- 7.6.1 Posterior (known σ^2):
-		- p(y|X,w,μ,σ^2) ~ N(y|μ+Xw,σ^2I) for all observed y;
+		- Assume obs noise σ^2 known
+		- p(y|X,w,μ,σ^2) ~ N(y|μ+Xw, σ^2I) for all observed y;
 		- Conjugate prior (Gaussian): p(w) ~ p(w|w0,V0);
 		- w0 = 0, V ~ τI: Ridge regression;
+		- Posterior w ~ N(wN, vN);
 	- 7.6.2 Posterior predictive: (test x)
 		- p(y|x,D,σ^2) = ∫N(y|xw,σ^2)N(w|w,Vn)dw
 		- ~ N(y|wx,σ(x)^2)
-		- σ(x)^2 = σ^2 + x Vn x; var of obs and weight w;
+		- σ(x)^2 = σ^2 + x† Vn x; var of obs and weight w;
 	- 7.6.3 Bayesian inf with unknown σ^2:
 		- Conjugate prior: p(w,σ^2) = N(w0,σ^2V0)IG(σ^2|a0,b0)
 		- Posterior:
 			- p(σ^2|D) ~ IG(aN, bN)
 			- p(w|D) ~ T(wN, bN/aNVN, 2aN), student-t;
-		- Predictive of new test y: p(y|x,D) ~ T(xw, bN/aN(Im+XVnX'), 2aN); student-t;
-	- Bishop 3.3: non-diagonal Var
+		- Predictive y: p(y|x,D) ~ T(xw, bN/aN(Im+XVnX†), 2aN); student-t;
+	- PRML-3.3: non-diagonal Var
 		- Prior: p(w) ~ N(m0, S0)
 		- Posterior: p(w) ~ N(mN, SN)
-		- m = SN(S^(−1)m0 + βΦ't), β: precision;
-		- SN^(-1) = S0^(-1) + βΦ'Φ
-		- Predictive: p(t|D,α,β) = ∫p(t|w,β)p(w|D,α,β)dw
-		- p(t|D,α,β) ~ N(mNφ(x), σN^2(x))
-			- with σN^2(x) = 1/β + φ'(x)SN φ(x)
+		- m = SN(S.inv m0 + βXy), β: precision;
+		- SN.inv = S0.inv + βX†X
+		- Predictive: p(y|D,α,β) = ∫p(y|w,β)p(w|D,α,β)dw
+		- p(y|D,α,β) ~ N(mNx, σN^2(x))
+			- with σN^2(x) = 1/β + x† SN x
 		- 3.3.3 Equivalent kernel;
 			- Express weight by training D={x};
-			- y(x,m) = mφ(x) = Σβφ'(x)Sφ(x)t = Σk(x,xn)tn
-			- Kernel maxtrix: k(x1,x2) = βφ'(x1)Sφ(x2)
-- Bishop 3.2: Bias and Variance trade-off,
-	- let h(x) = E[t|x], the true mean of t(x); bias measures diff y(x;D) from h; variance of a solution measures its vary around its own average;
-	- E[{y(x;D)-h(x)}^2] = (bias)^2 + Evar
-		- (bias)^2 = {E_D[y(x;D)]-h(x)}^2; diff y(x;D) from h
-		- Variance: Ev = E_D[{y(x;D)-E[y(x;D)]}^2]
-	- Loss: E[L] = ∫{y(x)-h(x)}^2p(x)dx + ∫{h(x)-t}^2p(x,t)dxdt = (Eb)^2 + Ev + noise
+			- y(x,m) = mφ(x) = Σβφ(x)† S φ(x)t = Σk(x,xn)yn
+			- Kernel maxtrix: k(x1,x2) = βφ(x1)† S φ(x2)
+- PRML-3.2: Bias and Variance trade-off,
+	- let y(x) = E[y|x], the true mean of y(x);
+		- bias measures diff yˆ(x;D) from y;
+		- variance of a solution measures its vary around its own average;
+	- E[{y(x;D)-h(x)}^2] = (bias)^2 + E[var]
+		- (bias)^2 = {E.D[y(x;D)]-h(x)}^2; diff yˆ(x;D) from h
+		- Variance: Ev = E.D[{yˆ(x;D)-E[y(x;D)]}^2]
+	- Loss: E[L] = ∫{y(x)-yˆ(x)}^2p(x)dx + ∫{h(x)-t}^2p(x,t)dxdt = (Eb)^2 + Ev + noise
 		- Noise = ∫{h(x)-t}^2 p(x,t)dxdt
 	- In practice, train L different models yi(x);
-		- y^(x) = 1/L Σyi(x)
-		- (bias)^2 = 1/N Σ{y^(xn)-h(xn)}^2; over all x
-		- Variance = 1/NL ΣΣ{yi(x)-y^(x)}^2; over all i, x;
-- Bishop 3.4 Bayesian Model comparison:
+		- yˆ(x) = 1/L Σyi(x)
+		- (bias)^2 = 1/N Σ{yˆ(xn)-h(xn)}^2; over all x
+		- Variance = 1/NL ΣΣ{yi(x)-yˆ(x)}^2; over all i, x;
+- PRML-3.4 Bayesian Model comparison:
 	- L models {Mi}, i = 1, ..., L.
 	- **Bayes factor**: p(D|Mi)/p(D|Mj)
-- Bishop 3.5 Evidence approximation:
+- PRML-3.5 Evidence approximation:
 	- Empirical Bayes:
 		- Hyperparameters α, β(w ~ N(0, α^-1), y ~ N(xw, β^-1))
 		- Marginalized LE p(t|α, β)
 		- Marginalize over w, implicit optimization for α, β respetively;
 
-## Logistic Regression (Kevin Murphy, Chap 8; PRML-Chap-4)
+## Logistic Regression
+- K-Murphy-8; PRML-4
 - 8.1 Intro
 - 8.2 Model: p(y|x, w) ~ Ber(y, σ(wx))
 - 8.3 Fitting
 	- 8.3.1 MLE: loss, gradient and Hessian
-		- NLL(w) = Σlog(1+exp(-yi w'xi))
-		- g = df(w)/dw = X'(μ-y), with μ=σ(wx)
-		- H = X'SX, with diag(μi(1−μi))
-	- 8.3.2 SGD
-		- Avoid zigzag: momentum
+		- NLL(w) = Σlog(1+exp(-yi w†xi))
+		- g = df(w)/dw = X†(μ-y), with μ=σ(wx)
+		- H = X†SX, with S := diag(μi(1−μi))
+	- 8.3.2 SGD; Avoid zigzag: momentum
 	- 8.3.3 Newton's method
 	- 8.3.4 IRLS (Iterated reweighted Least Square)
 		- Apply Newton's method for logistic regression;
 		- w -= H^(-1)g
 	- 8.3.5 Quasi-Newton: BFGS;
 		- Assumption: Hessian as Diagonal + low-rank approx;
-		- Approximate Bk ~ Hk;
-			- Bk+1 = Bk + ykyk/yksk - (Bksk)(Bksk)'/skBksk
-			- sk = θk - θk-1
-			- yk = gk - gk-1
-		- Ck ~ Hk^(-1):
-			- Ck+1 = (I-skyk'/yksk')Ck(I-skyk'/yksk') _ sksk'/yk'sk
 	- 8.3.6 l2 regularization
 	- 8.3.7 Multiclass: softmax
 - 8.4 Bayesian logistic:
-	- **Lapalace approx**: Find a Gaussian approximation q(z) which is centred on a **mode** of the distribution p(z);
+	- Lapalace approx: Find a Gaussian approx q(z) centered on mode of p(z);
 		- p(θ|D) = 1/Z exp(-E(θ)), with E(θ) as energy function;
-		- E(θ) = -logp(θ,D) ≈ E(θ∗) + (θ-θ∗)g + 1/2 (θ-θ∗)H(θ-θ∗), Taylor expansion around mode θ∗;
-		- H = ∇^2 E(θ)|θ∗
-		- Approximate p^(θ|D) ≈ exp(-E(θ∗)) exp[-1/2(θ-θ∗)H(θ-θ∗)] ~ N(θ|θ∗, H^(-1));
+		- E(θ) ≈ -logp(θ,D) ≈ E(θ∗) + (θ-θ∗)g + 1/2 (θ-θ∗)†H(θ-θ∗), Taylor;
+		- H = ∇∇ E(θ)|θ∗
+		- Approximate p^(θ|D) ≈ exp(-E(θ∗)) exp[-1/2(θ-θ∗)†H(θ-θ∗)] ~ N(θ|θ∗, H^(-1));
 	- 8.4.2 BIC:
 		- log p(D) ≈ log p(D|θ∗) + log p(θ∗) − 1/2log|H|
 	- 8.4.3 Gaussian
-		- p(w|D) ≈ N(w|w^, H^-1)
-		- w^ = argminE(w)
+		- p(w|D) ≈ N(w|w∗, H^-1); w∗ = argminE(w)
 	- 8.4.4 Approx posterior predictive
 		- p(y|x, D) = ∫p(y|x, w)p(w|D)dw
-		- p(y = 1|x, D) ≈ p(y = 1|x, E[w]), Bayesian point with E[w];
+		- p(y=1|x, D) ≈ p(y = 1|x, E[w]), Bayesian point with E[w];
 		- MC: p(y=1|x,D) ≈ Σσ(wx) with w sampled from posterior;
-		- Probit approx, moderated output
-			- Gaussian approx posterior:
-				- p(w|D) ≈ N (w|mN, VN)
+		- Probit approx, moderated output (predictive posterior)
+			- Gaussian approx posterior p(w|D) ≈ N(w|mN, VN), we approx p(y|x)
 				- p(y=1|x, D) ≈ ∫σ(wx)p(w|D)dw = ∫σ(a)N (a|μ_a, σa^2)da
 				- a = wx, μ_a=E[a], σa^2 = var[a] = xVNx
 			- Probit function (Gaussian cdf) erf(a):
 				- Φ(a) = ∫N(x|0,1)dx
-				- Probit really similar to Sigmoid σ(.); Approx with it!
+				- Probit really similar to σ(.); Approx with it!
 			- Rescale s.t. σ(.) and Φ(.) has the same slope at origin;
 			- Advantage: we can convolve with Gaussian analytically;
 - 8.5 Online learning, regret minimization;
@@ -171,21 +174,22 @@
 - 8.6 Generative v.s. discriminative models
 	- D: p(y|x, w)
 	- G: p(x, y|w)
-- Bishop 4.1: Fisher
-	- m1, m2 as class mean, get direction w (mapping to 1-dim) such that the between class have high variance and within class has low variance:
-		- J(w) = wSBw / wSWw
-		- Between class: SB = (m2-m1)(m2-m1)'
-		- Within class: SW = ΣΣ(xi-mci)(xi-mci)'
+- PRML-4.1: Fisher
+	- m1, m2 as class mean, get direction w (mapping to 1-dim) s.t. the between class have high variance and within class has low variance:
+		- J(w) = w†SBw / w†SWw
+		- Between class: SB = (m2-m1)(m2-m1)†
+		- Within class: SW = ΣΣ(xi-mci)(xi-mci)†
 		- w ∝ SW^(-1)(m2-m1)
 
-## Generalized Linear Models, Exponential Family (Kevin Murphy, Chap 9)
+## Generalized Linear Models, Exponential Family
+- K-Murphy-9
 - 9.1 Introduction
 - 9.2 Exponential Family:
 	- 9.2.4 MLE
 		- **Pitman-Koopman-Darmois theorem**: under certain regularity conditions, the exponential family is the only family of distributions with finite sufficient statistics.
 		- ∇θlogp(D|θ) = φ(D) − NE[φ(X)]; moment matching;
 	- 9.2.5 Bayes for the exponential family
-		- Likelihood: p(D|η) ∝ exp(NηTs − NA(η))
+		- Likelihood: p(D|η) ∝ exp(Nη†s − NA(η))
 		- Prior: p(θ|ν0, τ0) ∝ g(θ)^ν0 exp(η(θ)τ0)
 		- Posterior: p(θ|ν0+N, τ0+SN)
 - 9.3 Generalized linear models (GLMs)
@@ -193,72 +197,73 @@
 	- 9.3.3 Bayesian inference
 		- MCMC
 - 9.4 Probit regression
-	- Logistic: p(y=1|xi, w) = σ(wxi)
-	- General: p(y=1|xi, w) = g^−1(wT xi), with g^(-1) maps [−∞, ∞] to [0,1]. Φ(η): standard cdf: probit regression;
+	- Logistic: p(y=1|xi, w) = σ(w†xi)
+	- General: p(y=1|xi, w) = g^−1(w†xi), with g^(-1) maps [−∞, ∞] to [0,1]. Φ(η): standard cdf: probit regression;
 	- 9.4.1 ML/MAP estimation using gradient-based optimization
-		- μi = wxi, yi^={-1,+1}
-		- gradient gi = dlogp(y^|wx)/dw = x yφ(wx)/Φ(yiwxi)
+		- μi = w†xi, yi^={-1,+1}
+		- gradient gi = dlogp(y^|w†x)/dw = x yφ(w†x)/Φ(yiw†xi)
 			- φ(.) normal pdf, Φ(.) cdf;
-		- Hessian Hi = d^2logp(y^|wx)/dw^2
+		- Hessian Hi = ∇∇.w logp(y^|w†x)
 	- 9.4.2 Latent variable interpretation
 		- RUM
 	- 9.4.3 Ordinal probit regression
 	- 9.4.4 Multinomial probit models
 - 9.5 Multi-task learning
 	- Different tasks with own parameters share a same prior. Model trained on fewer data could borrow from group with more data;
-	- logp(D|β) + logp(β) = Σ[logp(Dj|βj) + |βj−β∗|2] - ||β∗||^2 / 2σ∗^2
+	- logp(D|β) + logp(β) = Σ[logp(Dj|βj) + ∥βj−β∗∥2] - ∥β∗∥^2 / 2σ∗^2
 
-## Latent Linear Models (Kevin Murphy, Chap 12)
+## Latent Linear Models
+- K-Murphy-12
 - 12.1 Factor Analysis (FA)
 	- p(zi) = N(zi|μ0, Σ0)
 	- p(xi|zi, θ) = N(Wzi+μ, Ψ)
 	- 12.1.1 FA is a low rank parameterization of an MVN
-		- Marginal: p(xi|θ) = N(xi|Wμ0+μ, Ψ+WΣ0W')
+		- Marginal: p(xi|θ) = N(xi|Wμ0+μ, Ψ+WΣ0W†)
 	- 12.1.2 Inference
 		- p(zi|xi, θ) = N(zi|mi, Σi)
-		- Σi ~ [Σ0^−1 + W'Ψ^(−1)W]^−1
-		- mi ~ Σi(W'Ψ^(−1)(xi−μ) + Σ0^(−1)μ0)
+		- Σi ~ [Σ0^−1 + W†Ψ^(−1)W]^−1
+		- mi ~ Σi(W†Ψ^(−1)(xi−μ) + Σ0^(−1)μ0)
 	- 12.1.3 Unidentifiability
 	- 12.1.4 Mixtures of factor analysers
 		- p(xi|zi,qi=k,θ) = N(xi|μk +Wkzi,Ψ), extra: qi
 		- p(zi|θ) = N(zi|0, I)
 		- p(qi|θ) = Cat(qi|π)
-	- 12.1.5 EM for factor analysis models
+	- 12.1.5 EM for mixture-FA models
 	- 12.1.6 Fitting FA models with missing data
 - 12.2 PCA (Also PRML, Chap-12)
 	- 12.2.1 Classical PCA: statement of the theorem
 		- J(W, Z) = 1/N Σ|xi-xi^|^2, where xi = Wzi
 	- 12.2.2 Proof
 	- 12.2.3 Singular value decomposition (SVD)
-		- X = USV'
+		- X = USV†
 	- 12.2.4 Probabilistic PCA
 		- logp(X|W,σ^2) = -N/2log|C| - 1/2Σ xiC^(-1)xi = -N/2log|C| + tr(C^-1Σ^)
 	- 12.2.5 EM algorithm for PCA
-		- E step: Z^ = (W'W)^(−1)W'X
-		- M step: W^ = X^Z'(ZZ')^(-1), σ
+		- E step: Z^ = (W†W)^(−1)W†X
+		- M step: W^ = X^Z†(ZZ†)^(-1), σ
 - 12.3 Choosing the number of latent dimensions
 	- 12.3.1 Model selection for FA/PPCA
 - 12.4 PCA for categorical data
 - 12.5 PCA for paired and multi-view data
 	- 12.5.1 Supervised PCA (latent factor regression)
 		- p(zi) ~ N(0, IL)
-		- p(yi|zi) ~ N(wy'zi +μy, σy^2)
-		- p(xi|zi) ~ N(Wx'zi +μx, σx2^ID)
+		- p(yi|zi) ~ N(wy†zi +μy, σy^2)
+		- p(xi|zi) ~ N(Wx†zi +μx, σx2^ID)
 	- 12.5.2 Partial least squares
 - 12.6 ICA (Independent Component Analysis)
 	- xt = Wzt + εt, W: mixing matrix;
 	- Prior: p(zt)=∏pj(ztj), any form; PCA: i.i.d. Gaussian;
 	- 12.6.1 Maximum likelihood estimation
 		- Assume observed x is centered and whitened, obs x noise-free;
-		- i.e. E[xx']=I, let V=W^(-1)
+			- i.e. E[xx†]=I, let V=W^(-1)
 		- px(Wzt) = pz(Vxt)|det(V)|
 		- Assume T i.i.d. samples with same W(V):
-			- 1/Tlogp(D|V) = log|det(V)| + 1/T ΣΣlogpj(vjxt)
-		- NLL(V) = ΣE[Gj(zj)]
+			- 1/Tlogp(D|V) = log|det(V)| + 1/T ΣΣlogpj(vj†xt)
+		- NLL(V) = ΣE[Gj(zj)], with zj=vj†xt, Gj(zj)=-logp.j(z)
 	- 12.6.2 The FastICA algorithm (Hyvarinen and Oja 2000)
-		- Fast ICA = Approximate Newton
+		- Fast ICA ~ Approximate Newton
 		- G(z) = −logp(z), g(z) = dG(z)/dz
-		- f(v) = E[G(vx)] + λ(1−v'v)
+		- f(v) = E[G(vx)] + λ(1−v†v)
 		- ∇f(v) = E[xg(vx)] - βv
 		- H(v) = E[xx'g'(vx)] - βI
 		- v∗ := E[xg(v'x)] − E[g'(v'x)]v
@@ -268,7 +273,8 @@
 		- Minimizing mutual information
 		- Maximizing mutual information (infomax)
 
-## Sparse Linear Models (Kevin Murphy, Chap 13)
+## Sparse Linear Models
+- K-Murphy-13
 - 13.1 Intro
 - 13.2 Bayesian variable selection
 	- γj = 1 if feature j is "relevant", and let γj = 0 otherwise.
@@ -328,19 +334,3 @@
 	- min_W,z Σ|xi-Wzi|+λ|z|
 	- 13.8.3 Compressed sensing
 	- 13.8.4 Image inpainting and denoising
-
-## PRML-10
-- EM of linear regression: a Γ prior α ~ Γ(a0, b0) for weight precision; assume q(w, α) ~ q(w)q(α)
-	<img src="/Bayes/images/VI/em-lr-1.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/VI/em-lr-2.png" alt="drawing" width="400"/>\
-	<img src="/Bayes/images/VI/em-lr-3.png" alt="drawing" width="300"/>
-	- Assume variational factorized posterior: q(w, α) = q(w) q(α)
-	- Prior α:\
-		<img src="/Bayes/images/VI/em-lr-4.png" alt="drawing" width="400"/>
-	- Weight w:\
-		<img src="/Bayes/images/VI/em-lr-5.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/VI/em-lr-6.png" alt="drawing" width="400"/>
-	- Predict:\
-		<img src="/Bayes/images/VI/em-lr-7.png" alt="drawing" width="400"/>\
-		<img src="/Bayes/images/VI/em-lr-8.png" alt="drawing" width="400"/>
-- E.g.6: variational logistic regression:

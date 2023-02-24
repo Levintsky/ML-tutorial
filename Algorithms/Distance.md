@@ -22,13 +22,31 @@
 
 ## Distribution Distance
 - Fisher Divergence: Johnson, O. Information theory and the central limit theorem, 2004.
-	- F(p,q)=Ex||∇logp(x)−∇logq(x)||^2,
+	- F(p,q)=Ex∥∇logp(x)−∇logq(x)∥^2,
 - Alpha divergence:
 	- Dα(p||q) = 4/(1-α^2)[1-∫p(x)^(1+α)/2 q(x)^(1-α)/2 dx]
 	- General, α -> 1, KL(p|q); α -> -1, KL(q|p); α=-, Hellinger;
 - Hellinger distance:
 	- D(p||q) = ∫(p(x)^.5 - q(x)^.5)^2 dx
-- KSD: Q. Liu, J. Lee, and M. Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16
+- Kernelized: KSD (kernelized stein discrepancy)
 	- S(p, q) = Ex,x'∼p[δq,p(x)k(x, x')δq,p(x')]
 	- where δq,p(x) = sq(x) − sp(x) is the score difference;
 	- Su(p,q) = 1/n(n-1) Σij uq(xi,xj)
+
+## More on Stein
+- Insight: a discrepancy measure of two p.d.f. by score function sq=∇x logq(x);
+	- s.p = ∇x logp(x) = ∇x p(x)/p(x)
+	- Stein-class: f(x) s.t. ∫ ∇x[f(x)p(x)]dx = 0.
+		- lim.x→∞ f(x)p(x) = 0
+	- Stein-operator A.p: A.p f(x) = s.p(x)f(x) + ∇xf(x)
+- Problem setup: sample {xi} ∼ p(x) from q(x)? H0: p = q;
+	- Stein's method: p(x) and q(x) are identical ⇔ E.x~ p[s.q(x)f(x)+∇xf(x)] = 0
+- KSD between two distribution p, q;
+	- S(p, q) = Ex,x′∼p[δq,p(x)† k(x, x′) δq,p(x′)],
+	- δq,p(x) = s.q(x)−s.p(x) is the score difference;
+- Theo: eigen of k as {λj} and {ej}
+	- u.q(x,x′) = Σjλj (A.q ej(x))†(A.q ej(x')), then KSD:
+	- S(p,q) = Σj λj∥E.x∼p[A.q ej(x)]∥2.
+- Goodness of fitting given {xi} from p and score function sq():
+	- Su(p,q) = 1/n(n-1) Σ.ij uq(xi,xj)
+- KSD: Q. Liu, J. Lee, and M. Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16

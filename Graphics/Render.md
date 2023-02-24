@@ -41,18 +41,18 @@
 
 ## Differentiable Rendering
 - I. Gkioulekas, S. Zhao, K. Bala, T. Zickler, and A. Levin. Inverse volume rendering with material dictionaries. TOG'13
-- **Opendr**: Loper, M. M. and Black, M. J. Opendr: An approximate differentiable renderer. ECCV'14
+- Opendr: M Loper and M Black. Opendr: An approximate differentiable renderer. ECCV'14
 	- General framework, not only for NN;
 - I. Gkioulekas, A. Levin, and T. Zickler. An evaluation of computational imaging techniques for heterogeneous inverse scattering. ECCV'16
 - T.-M. Li, M. Aittala, F. Durand, and J. Lehtinen. Differentiable monte carlo ray tracing through edge sampling. Siggraph Asia'18
 	- https://github.com/BachiLi/redner
 	- https://people.csail.mit.edu/tzumao/diffrt/
-- Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, Yaser Sheikh. Neural Volumes: Learning Dynamic Renderable Volumes From Images Paper Abstract Author Preprint Paper Video. SIGGRAPH'19
-- Justus Thies, Michael Zollhofer, Matthias Niessner. Deferred Neural Rendering: Image Synthesis using Neural Textures. SIGGRAPH'19
-- Lingjie Liu, Weipeng Xu, Michael Zollhoefer, Hyeongwoo Kim, Florian Bernard, Marc Habermann, Wenping Wang, Christian Theobalt. Neural Rendering and Reenactment of Human Actor Videos. SIGGRAPH'19
-- Shih-En Wei, Jason Saragih, Tomas Simon, Adam W. Harley, Stephen Lombardi, Michal Perdoch, Alexander Hypes, Dawei Wang, Hernan Badino, Yaser Sheikh. VR Facial Animation via Multiview Image Translation. SIGGRAPH'19
-- Ohad Fried, Ayush Tewari, Michael Zollhofer, Adam Finkelstein, Eli Shechtman, Dan B Goldman, Kyle Genova, Zeyu Jin, Christian Theobalt, Maneesh Agrawala. Text-based Editing of Talking-head Video. SIGGRAPH'19
-- Yuxuan Zhang, Wenzheng Chen, Huan Ling, Jun Gao, Yinan Zhang, Antonio Torralba, Sanja Fidler. Image gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. 2020
+- S Lombardi, T Simon, J Saragih, G Schwartz, A Lehrmann, Y Sheikh. Neural Volumes: Learning Dynamic Renderable Volumes From Images Paper Abstract Author Preprint Paper Video. SIGGRAPH'19
+- J Thies, M Zollhofer, M Niessner. Deferred Neural Rendering: Image Synthesis using Neural Textures. SIGGRAPH'19
+- L Liu, W Xu, M Zollhoefer, H Kim, F Bernard, M Habermann, W Wang, C Theobalt. Neural Rendering and Reenactment of Human Actor Videos. SIGGRAPH'19
+- S Wei, J Saragih, T Simon, A Harley, S Lombardi, M Perdoch, A Hypes, D Wang, H Badino, Y Sheikh. VR Facial Animation via Multiview Image Translation. SIGGRAPH'19
+- O Fried, A Tewari, M Zollhofer, A Finkelstein, E Shechtman, D Goldman, K Genova, Z Jin, C Theobalt, M Agrawala. Text-based Editing of Talking-head Video. SIGGRAPH'19
+- Y Zhang, W Chen, H Ling, J Gao, Y Zhang, A Torralba, S Fidler. Image gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. 2020
 
 ## Applications
 - 3D face reconstruction:
@@ -71,7 +71,7 @@
 	- T. Nguyen-Phuoc, C. Li, S. Balaban, and Y. Yang. Rendernet: A deep convolutional network for differentiable rendering from 3d shapes. arxiv'18
 
 ## Unclassified
-- **GPGP**:  Mansinghka, V. K., Kulkarni, T. D., Perov, Y. N., and Tenenbaum, J. Approximate bayesian image interpretation using generative probabilistic graphics programs. NIPS'13
+- GPGP: MIT. Approximate bayesian image interpretation using generative probabilistic graphics programs. NIPS'13
 - Inverse Problems in Computer Vision Using Adversarial Imagination Priors. 2016
 - Tung, H.-Y. F., Harley, A. W., Seto, W., and Fragkiadaki, K. Adversarial inverse graphics networks: Learning 2d-to3d lifting and image-to-image translation from unpaired supervision. ICCV'17.
 - Differentiable Image Parameterizations. 2018
@@ -80,8 +80,8 @@
 	- 4 outputs: diffuse albedo, specular albedo, roughness, normal
 - H Kato, Y Ushiku, T Harada. Neural 3d mesh renderer. CVPR'18.
 - T Li, M Aittala, F Durand, and J Lehtinen. Differentiable monte carlo ray tracing through edge sampling. SIGGRAPH'18
-- Thu H. Nguyen-Phuoc, Chuan Li, Stephen Balaban, Yongliang Yang. RenderNet: A deep convolutional network for differentiable rendering from 3D shapes. NIPS'18
-- Wang Yifan, Felice Serena, Shihao Wu, Cengiz Öztireli, and Olga Sorkine-Hornung. 1343 2019. Differentiable Surface Splatting for Point-based Geometry Processing. TOG'19
+- T Nguyen-Phuoc, C Li, S Balaban, Y Yang. RenderNet: A deep convolutional network for differentiable rendering from 3D shapes. NeurIPS'18
+- Y Wang, S Felice, S Wu, C Öztireli, and O Sorkine-Hornung. Differentiable Surface Splatting for Point-based Geometry Processing. TOG'19
 - L Jain, W Wu, S Chen, U Jang, V Chandrasekaran, S Seshia, S Jha. Generating Semantic Adversarial Examples with Differentiable Rendering. ICLR'20 reject
 
 ## Toolbox

@@ -40,11 +40,6 @@
 	- Analysis:
 		- with GAN;
 
-## Unclassified
-- Constrained Generation of Semantically Valid Graphs via Regularizing Variational Autoencoders. NIPS'18
-- Emile Mathieu, Charline Le Lan, Chris J. Maddison, Ryota Tomioka, Yee Whye Teh. Continuous Hierarchical Representations with Poincaré Variational Auto-Encoders. NIPS'19
-- Muhan Zhang, Shali Jiang, Zhicheng Cui, Roman Garnett, Yixin Chen. D-VAE: A Variational Autoencoder for Directed Acyclic Graphs. NIPS'19
-
 ## VAE-Basics
 - A great codebase:
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
@@ -81,7 +76,7 @@
 - **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS'15
 	- Insight: condition everything on class c;
 	- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
-- **VIMCO**: Andriy Mnih and Danilo Jimenez Rezende. Variational inference for monte carlo objectives. ICML'16
+- **VIMCO**: A Mnih and D Rezende. Variational inference for monte carlo objectives. ICML'16
 - **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
 	- The negative loss for connection with VAE; (Check Basic-ML/Info-Theory)
 
@@ -101,11 +96,11 @@
 	- Neural Variational Inference for Text Processing, ICML'16
 	- Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16
 	- A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues, AAAI'17
-	- **TD-VAE**: Karol Gregor, George Papamakarios, Frederic Besse, Lars Buesing, Theophane Weber. Temporal Difference Variational Auto-Encoder. 2019
+	- **TD-VAE**: K Gregor, G Papamakarios, F Besse, L Buesing, T Weber. Temporal Difference Variational Auto-Encoder. 2019
 - Hierarchical:
-	- Rajesh Ranganath, Dustin Tran, and David Blei. Hierarchical variational models. ICML'16
+	- R Ranganath, D Tran, and D Blei. Hierarchical variational models. ICML'16
 	- Harrison A Edwards and Amos J. Storkey. Towards a neural statistician. ICLR'17
-	- Alexej Klushyn, Nutan Chen, Richard Kurle, Botond Cseke, and Patrick van der Smagt. Learning hierarchical priors in vaes. NIPS'19
+	- A Klushyn, N Chen, R Kurle, B Cseke, and P Smagt. Learning hierarchical priors in vaes. NIPS'19
 		- Prior: p(z) = Πp(zl|z..l-1)
 		- Approx posterior: q(z|x)=Πq(zl|z..l-1, x)
 		- LVAE(x) := Eq(z|x)[logp(x|z)] − KL(q(z1|x)||p(z1)) − ΣEq(z..l-1|x)[KL(q(zl|x,z..l-1), p(zl|z..l-1))]
@@ -121,7 +116,7 @@
 	- Z. Zhu, P. Luo, X. Wang, and X. Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
 	- J. Yang, S. Reed, M.-H. Yang, and H.Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
 	- R. Goroshin, M. Mathieu, and Y. LeCun. Learning to linearize under uncertainty. NIPS'15
-	- **β-VAE**: Irina Higgins, Loic Matthey, Arka Pal, Christopher Burgess, Xavier Glorot, Matthew Botvinick, Shakir Mohamed, Alexander Lerchner. β-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
+	- **β-VAE**: I Higgins, L Matthey, A Pal, C Burgess, X Glorot, M Botvinick, S Mohamed, A Lerchner. β-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
 		- Better disentangle
 		- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 		- max Ex[Eq(z|x)[logp(x|z)]], s.t. KL(q(z|x), p(z)) < ε
@@ -132,7 +127,7 @@
 		- Better disentanglement: majority vote classifier on a different feature vector which accounts for a corner case in the BetaVAE metric;
 	- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18\
 		<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
-	- **β-TCVAE**: Tian Qi Chen, Xuechen Li, Roger B Grosse, and David K Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
+	- **β-TCVAE**: T Chen, X Li, R Grosse, and D Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
 		- https://github.com/rtqichen/beta-tcvae
 		- Mutual Information Gap (MIG)
 	- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper
@@ -141,19 +136,19 @@
 			- Gaussian encoder: mean, log-variance
 			- Bernoulli decoder: 10 latent dimension\
 			<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
-	- **VITAE**: Nicki Skafte, Søren Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
+	- **VITAE**: N Skafte, S Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
 		- Insight: two latent codes zA, zP; then zP transform conanical view zA with a STN;
 
 ## Unclassified
 - **DeepMind**:
-	- Eslami, S. A., Heess, N., Weber, T., Tassa, Y., Szepesvari, D., Kavukcuoglu, K., and Hinton, G. E. Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
+	- Attend, infer, repeat: Fast scene understanding with generative models. ICML'16.
 	- **ACN**: Graves et. al., Associative Compression Networks for Representation Learning (2018)
 - **FAIR**:
 	- Bouchacourt, D., Tomioka, R., and Nowozin, S. Multi-level variational autoencoder: Learning disentangled representations from grouped observations. AAAI'18.
 	- **Non-Adversarial Mapping with VAEs**, NIPS'18
-- **SOA**: Lars Maaløe, Casper Kaae Sønderby, Søren Kaae Sønderby, Ole Winther. Auxiliary Deep Generative Models. 2016
+- **SOA**: L Maaløe, C Sønderby, S Sønderby, O Winther. Auxiliary Deep Generative Models. 2016
 - **FVAE**: Z. Deng, R. Navarathna, P. Carr, S. Mandt, Y. Yue, I. Matthews, and G. Mori. Factorized variational autoencoders for modeling audience reactions to movies. CVPR'17.
-- Cian Eastwood, Christopher K. I. Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
+- C Eastwood, C Williams. A framework for the quantitative evaluation of disentangled representations. ICLR'18
 
 ## Applications
 - Temporal sequence:
@@ -161,12 +156,12 @@
 		- 1D-Conv
 	- Yang, Z., Hu, Z., Salakhutdinov, R., and Berg-Kirkpatrick, T. Improved variational autoencoders for text modeling using dilated convolutions. ICML'17
 		- Dilated Conv;
-	- **MT-VAE**: Xinchen Yan, Akash Rastogi, Ruben Villegas, Kalyan Sunkavalli, Eli Shechtman, Sunil Hadap, Ersin Yumer, Honglak Lee. MT-VAE: Learning Motion Transformations to Generate Multimodal Human Dynamics. ECCV'18
+	- **MT-VAE**: X Yan. MT-VAE: Learning Motion Transformations to Generate Multimodal Human Dynamics. ECCV'18
 		- Encoder and decode motion sequence with LSTM;
 - 3D:
-	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
+	- M Gadelha, R Wang, and S Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 		- z=Enc(.): image 2d encoder + MRT-pc-encoder (multiresolution-tree)
-	- **PC-AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoencoders for generating 3d point clouds.
+	- **PC-AAE**: M Zamorski, M Zieba, R Nowak, W Stokowiec, and T Trzciński. Adversarial autoencoders for generating 3d point clouds.
 		- Encoder: pointnet;
 		- Decoder: MLP + ReLU;
 

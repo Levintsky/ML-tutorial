@@ -239,8 +239,8 @@
 - Good resources:
 	- https://github.com/karpathy/pytorch-normalizing-flows
 	- https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html
-	- **Survey**: George Papamakarios, Eric Nalisnick, Danilo Jimenez Rezende, Shakir Mohamed Balaji Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
-	- Survey: Ivan Kobyzev, Simon Prince, Marcus Brubaker. Normalizing flows: An introduction and review of current methods. PAMI'20
+	- **Survey**: G Papamakarios, E Nalisnick, D Rezende, Si Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+	- Survey: I Kobyzev, S Prince, M Brubaker. Normalizing flows: An introduction and review of current methods. PAMI'20
 - Backbone: **Invertible** Op (required)
 	- Affine/location-scale:  (NICE, RealNVP, IAF, MAF;)
 		- (-) Limited-form, less flexible;
@@ -342,14 +342,14 @@
 		- Fast version:
 			- Forward: fast parallel;
 			- Backward: same as slow, autoregressive;
-	- **NAF**: Chin-Wei Huang, David Krueger, Alexandre Lacoste, and Aaron C. Courville. Neural autoregressive flows. ICML'18
+	- **NAF**: C Huang, D Krueger, A Lacoste, and A Courville. Neural autoregressive flows. ICML'18
 - VAE+Flow:
 	- f-VAE;
 
 ## Diffusion/Score-based
 - DDPM:
 - Score-based:
-	- Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
+	- Y Song and S Ermon. Generative modeling by estimating gradients of the data distribution. NeurIPS'19
 - Music: Riffusion;
 
 ## Theory and Analysis
@@ -404,8 +404,8 @@
 ## Energy/Optimization-Based
 - Energy-based:
 	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-	- Yilun Du and Igor Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
-- Erik Nijkamp, Mitch Hill, Song-Chun Zhu, Ying Nian Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
+	- Y Du and I Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
+- E Nijkamp, M Hill, S Zhu, Y Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
 
 ## Implicit
 - Only defines generating process, likelihood-free;

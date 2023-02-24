@@ -11,7 +11,7 @@
 	- PRML: Pattern Recognition and Machine Learning
 - PKU: https://resource.pku.edu.cn/index.php?r=course%2Fdetail&id=381
 
-## Basic Concepts (Kevin Murphy Chap-3)
+## Basic Concepts (K-Murphy-3)
 - 3.2 Bayesian concept learning
 	- 3.2.1 Likelihood
 	- 3.2.2 Prior
@@ -22,7 +22,7 @@
 		- p(x|y=c,θ)=Πp(xj|y=c,θjc)
 	- The log-sum-exp trick: minus the baseline;
 
-## Bayesian Statistics (Kevin Murphy Chap 5)
+## Bayesian Statistics (K-Murphy-5)
 - MAP estimation is not invariant to reparameterization
 - Credible intervals:
 	- Cα(D)=(l,u): P(l≤θ≤u|D)=1-α
@@ -64,7 +64,7 @@
 	- Multi-arm bandit: UCB, Thompson Sampling;
 	- Utility theory;
 
-## Frequentist Statistics (Kevin Murphy Chap 6)
+## Frequentist Statistics (K-Murphy-6)
 - The parameter is viewed as fixed and the data as random, which is the exact opposite of the Bayesian approach;
 - Sampling distribution:
 	- θ^ = θ^mle(D), D ~ θ∗.
@@ -75,3 +75,49 @@
 	- Option 1: Bayes risk;
 	- Option 2: Minimax risk;
 	- Admissible estimator: An estimator is said to be admissible if it is not strictly dominated by any other estimator;
+
+## SVM
+- K-Murphy-14.5
+- J(w, λ) = ΣL(yi, yˆi) + λ∥w∥2
+- 14.5.1 SVMs for regression
+	- Huber like regression loss: E(y(x)-t) = (|y(x)-t|-ε)+
+	- J(w, λ) = Σ(ξi+, ξi-) + λ∥w∥2
+	- Optimal solution has form: wˆ = Σ αi xi (Schoelkopf and Smola 2002)
+	- yˆ(x) = wˆ0 + Σαi κ(xi, x)
+- 14.5.2 SVMs for classification
+	- L.nll(y, η) = −logp(y|x, w) = log[1+exp(−yη)]
+	- L(y, η) = max(0, 1−yη) = (1−yη)+
+	- J(w, λ) = 1/2∥w∥2 + CΣ(1−yη)+; equivalent to Σξ
+	- yˆ(x) = sgn(wˆ0 + Σαi κ(xi, x))
+	- Large margin learning: x=x⊥+rw/|w|, then f(x)=rw'w/|w|
+	- ν-SVM classifier: CΣξ (C=1/(νN))
+	- Probabilistic output
+	- SVMs for multi-class classification
+- 14.5.3 Choosing C
+- 14.5.4 Summary of key points
+- 14.5.5 A probabilistic interpretation of SVMs
+- Latent-SVM (K-Murphy-19.7)
+	- http://www.csc.kth.se/cvap/cvg/rg/materials/magnus_004_slides.pdf
+	- Generalize classical SVM to structured output;
+	- Learn linear weight w for the loss/utility ⟨w,φ(x, y)⟩
+		- with desired loss δ(y, y')
+		- min.w ∥w∥^2 + C max.y[δ(y, yˆ) + w(φ(x,y)-φ(x,yˆ))]
+	- Lower/upper bound:
+		- R(w) ~ E(w) + Σ.i[max.y{L(yi,y)+w†φ(x,yi)}]
+	- Gaussian prior: ∥w∥^2 with binary classification, reduced to standard SVM;
+	- Non-probabilistic view:
+	- Cutting plane methods:
+		- http://svmlight.joachims.org/svm_struct.html
+		- Initial guess w and no constraints.
+		- Each iteration:
+			- for xi, we find the "most violated" constraint involving x and yˆ.
+			- If L(yi, y) > ξ+ε, add yˆ to the working set;
+			- solve the resulting new QP to find the new w, ξ.
+	- The structured perceptron algorithm;
+	- Stochastic subgradient descent;
+- Latent-structural-SVMs: hidden h;
+	- e.g. in machine translation x->y without word alignment;
+		- R(w) = -logp(w) + Σ.i log[Σ.y,h exp[L(yi,y,h)] exp[w†φ(x,y,h)]/Z(x,w)]
+		- p(y,h|x,w) = exp[w†φ(x,y,h)] / Z(x, w)
+		- Z(x, w) = Σ.y,h exp[w†φ(x,y,h)]
+	- CCCP (concave-convex procedure): check VI;

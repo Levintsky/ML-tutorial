@@ -81,9 +81,13 @@
 	- **Soft-Ras**: S Liu, T Li, W Chen, and H Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. ICCV'19
 		- https://github.com/ShichenLiu/SoftRas
 		- Insight: soft assign pixel to faces, making the rasterization differentiable by soft aggregation;
-	- **DIB-R**: W Chen, J Gao, H Ling, Ed Smith, J Lehtinen, A Jacobson, and S Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
+	- DIB-R: NVIDIA. Learning to predict 3d objects with an interpolation-based differentiable renderer. NIPS'19
 		- https://nv-tlabs.github.io/DIB-R/
 		- Insight: Barycentric interpolation based;
+		- Framework:
+			- im -> CNN -> mesh, light, texture (3-heads);
+			- mesh/light/texture -> DIB-R -> rendered image;
+		- Loss: mask, rgb;
 		- Applied Soft-Ras weighting to soft assign pixel;
 		- Lighting: support Phong, Lambertian, Sphere Harmonics;
 		- Application: 3D objects from single images; 3D-GAN;
@@ -308,8 +312,7 @@
 		- Local radience field from an angle p: (σ, color)=f(wij, p); modulated linear layers similar to CIPS;
 
 ## Real-Time
-- S Wizadwongsa, P Phongthawee, J
-Yenphraphai, and S Suwajanakorn. NeX: Real-time view synthesis with neural basis expansion. arxiv'21
+- S Wizadwongsa, P Phongthawee, J Yenphraphai, and S Suwajanakorn. NeX: Real-time view synthesis with neural basis expansion. arxiv'21
 - MVP: S Lombardi, T Simon, G Schwartz, M Zollhoefer, Y Sheikh, and J Saragih. Mixture of volumetric primitives for efficient neural rendering. SIGGRAPH'21
 
 ## Extroplate, Large Angle
@@ -332,11 +335,10 @@ Yenphraphai, and S Suwajanakorn. NeX: Real-time view synthesis with neural basis
 	- Input: class c, view v, transfrom param θ;
 	- Output: image;
 	- Conv, deconv, upsampling;
-- J. Xie, R. B. Girshick, and A. Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
+- J Xie, R Girshick, and A Farhadi. Deep3D: Fully automatic 2D-to-3D video conversion with deep convolutional neural networks. ECCV'16
 	- Key insight: Unsupervised;
 	- Input: left view; Output: right view
-	- Evaluation: Kitti, NYU;\
-		<img src="/CV-3D/images/depth-est/deep3d.png" alt="drawing" width="500"/>
+	- Evaluation: Kitti, NYU;
 - E Park, J Yang, E Yumer, D Ceylan, and A Berg. Transformation-Grounded Image Generation Network for Novel 3d View Synthesis. 2017
 - J Delanoy, M Aubry, P Isola, A Efros, A Bousseau. 3D Sketching using Multi-View Deep Volumetric Prediction. CGIT'18
 - S Sun, M Huh, Y Liao, N Zhang, and J Lim. Multi-view to Novel view: Synthesizing Novel Views with Self-Learned Confidence. ECCV'18

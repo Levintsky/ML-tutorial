@@ -1,5 +1,20 @@
 # Calculus
 
+## Basics
+- Def (Hilbert space): Inner product space containing Cauchy sequence limits.
+	- Assumption: continuous, bounded.
+		- Inner product defined: ⟨f,g⟩H = Σfigi/λi
+		- Hk = {f: f(x) = Σfiφi(x), Σfi^2/λi < ∞}
+		- Norm: ∥f∥H = Σfi^2/λi
+	- Reproducing proberty: (kernel trick)
+		- ∃ unique k(.,x), s.t. ⟨f(·), K(.,x)⟩H = f(x); Reisz Representation theorem
+		- ⟨K(.,x), K(.,y)⟩H = K(x,y)
+	- Mercer: κ(x, x′) = Σ.i λiφi(x)φi(x') positive definite,
+		- then ∃ orthonormal basis {φi(.)}
+		- f(x) = Σ.i fi φi(x)
+		- k(.,y)=φ(y), ⟨k(·,y), φ(x)⟩H=k(x,y)
+		- f(x) = ⟨f, φ(x)⟩H = Σ.i fi √(λi)ei(x)
+
 ## Gradient, Diffentiation
 - Function composition
 - Fermat Theorem: x0 is a stationary point of f(x), if f'(x)=0;
