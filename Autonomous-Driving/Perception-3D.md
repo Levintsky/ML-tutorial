@@ -22,14 +22,14 @@
 - E Arnold, O YAl-Jarrah, M Dianati, S Fallah, D Oxtoby, and A Mouzakitis. A Survey on 3D Object Detection Methods for Autonomous Driving Applications. T-ITS'19
 
 ## Misc
-- K Wong, S Wang, M Ren, and R Urtasun. Identifying Unknown Instances for Autonomous Driving. CoRL'19
+- Uber-ATG. Identifying Unknown Instances for Autonomous Driving. CoRL'19
 	- Unseen: deer, ... detect and group the point-clouds
 
 ## Detection From 2D
 - B Xu and Z Chen. Multi-level fusion based 3d object detection from monocular images. CVPR'18
 	- Insight: estimate depth first, then 3D detection;
 - Geometry constraint:
-	- **MultiBin**: A Mousavian, D Anguelov, J Flynn, and J Kosecka. 3d bounding box estimation using deep learning and geometry. CVPR'17
+	- **MultiBin**: Waymo. 3d bounding box estimation using deep learning and geometry. CVPR'17
 		- 2D bounding box first, then 3D;
 	- B Li, W Ouyang, L Sheng, X Zeng, and X Wang. Gs3d: An efficient 3d object detection framework for autonomous driving. 2019.
 
