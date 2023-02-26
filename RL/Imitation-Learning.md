@@ -141,7 +141,7 @@
 	- r(s,a) = λr.GAIL(s,a) + (1-λ)r.task(s,a)
 
 ## 3rd-Person IL/Video Demo
-- DeepMind. Playing hard exploration games by watching YouTube (DeepMind), NIPS'18
+- DeepMind. Playing hard exploration games by watching YouTube NIPS'18
 	- Task: MONTEZUMA’S REVENGE, PITFALL! and PRIVATE EYE
 	- Input: unaligned videos from multiple sources
 	- SSL -> feature-enc;
@@ -162,8 +162,8 @@
 ## Reward Shaping
 - Additional reward F(s, s′) to help converge faster;
 - A Ng, D Harada, and S Russell. Policy invariance under reward transformations: Theory and application to reward shaping. ICML'99
-- I. Mordatch, E. Todorov, and Z. Popovic. Discovery of complex behaviors through contact-invariant optimization. TOG'12
-- Y. Tassa, T. Erez, and E. Todorov. Synthesis and stabilization of complex behaviors through online trajectory optimization. IROS'12
+- I Mordatch, E Todorov, and Z Popovic. Discovery of complex behaviors through contact-invariant optimization. TOG'12
+- Y Tassa, T Erez, and E Todorov. Synthesis and stabilization of complex behaviors through online trajectory optimization. IROS'12
 
 ## Meta/Low-Shot IL
 - Insight:

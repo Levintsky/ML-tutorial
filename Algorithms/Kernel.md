@@ -113,5 +113,5 @@
 - A. Rahimi and B. Recht. Random features for large-scale kernel machines. NIPS'08
 
 ## Deep Learning
-- Y. Cho and L. K. Saul. Kernel methods for deep learning. NIPS'09
+- Y Cho and L Saul. Kernel methods for deep learning. NIPS'09
 - N Jean, S Xie, S Ermon. Semi-supervised Deep Kernel Learning: Regression with Unlabeled Data by Minimizing Predictive Variance. NIPS'18

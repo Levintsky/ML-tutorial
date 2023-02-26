@@ -102,7 +102,14 @@
 - D Kingma, T Salimans, and M Welling. Variational dropout and the local reparameterization trick. NIPS'15
 - Y Gal and Z Ghahramani. Bayesian convolutional neural networks with Bernoulli approximate variational inference. ICLRW'16
 - Y Gal and Z Ghahramani. Dropout as a Bayesian approximation: Representing model uncertainty in deep learning. ICML'16
-	- SGD based;
+	- ω = {Wi}i=1.L; Posterior: q(ω), Wi = Mi ⊗ Zi, Zi ~ Bernoulli(pi)
+	- L = 1/N Σ.i E(yi, yiˆ) + λ Σ(∥wi∥2 + ∥bi∥^2)
+		- ELBO: L.GP-MC ∝ 1/N Σ-logp(yn|xn,ω)/τ + regularization;
+	- MC-est:
+		- q(y∗|x∗) = ⟨p(y∗|x∗)⟩.q(ω)
+		- ⟨p(y∗|x∗)⟩.q(y∗|x∗) ≈ 1/T Σy∗(x∗, W1t, W2t, ...)
+		- 2nd moment: ⟨y∗†y∗⟩ ≈ τ^-1I + 1/T Σy∗† y∗
+		- Variance, uncertainty, ...
 - Y Li, and Y Gal. Dropout inference in Bayesian neural networks with α-divergences. ICML'17
 - Y Gal, J Hron, A Kendall. Concrete Dropout. NIPS'17
 - A Kendall, Y Gal. What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision? NIPS'17

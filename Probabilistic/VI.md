@@ -22,11 +22,11 @@
 		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
 	- VI, ELBO:
 		- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
-		- logp(x) <= ELBO(q) = E_q(z)[log p(z, x)] - H(q)
+		- logp(x) <= ELBO(q) = ⟨log p(z, x)⟩.q(z) - H(q)
 			- logp(x) = log[∫p(x,z)dz]
 			- = log[∫p(x,z)q(z)/q(z)dz]
-			- = log[E_q(z)[logp(x,z)/q(z)]]
-			- >= E_q(z)[log[p(x,z)/q(z)]] (Jensen, swap E[.] and log)
+			- = log[⟨logp(x,z)/q(z)⟩q(z)]
+			- >= ⟨log[p(x,z)/q(z)⟩q(z) (Jensen, swap E[.] and log)
 		- Special case: mean field;
 			- Problem: known θ, infer z;
 			- logqj(xj) ~ E.-qj[logp(x)]; marginalize out other var xi with qi(.);
@@ -54,6 +54,20 @@
 		- Gibbs sampling:
 	- Black-box VI: used in VAE;
 		- MC sample instead of integral to compute gradient;
+- SVI:
+	- p(z|x) = p(x|z)p(x) / ∫p(x|z)p(x)dz
+	- Generally, the normalizer: ∫p(x|z)p(x)dz is not tractable;
+	- Approx with q(z), minimize KL(q(z)|p(z|x))
+	- KL = ⟨log[q(z)/p(z|x)]⟩q(z) = ⟨logq(z)⟩q - ⟨logp(z|x)⟩q
+	-    = ⟨logq(z)⟩q(z) - ⟨log[p(x|z)p(z)]⟩q(z) + logp(x)
+	- 3rd term logp(x) not related, dropped, we got negative ELBO;
+	- SVI: sample a subset of dataset (Monte Carlo ∫)
+	- Gradient of ELBO, two approaches to calculate E.q[∇.θ f(z)], with f(z) as ELBO in our case:
+		- Reparametrization trick [ADVI] MC ∫
+			- q(z; θ) -> q(g(z); ξ)
+			- ⟨∇.θ f(ξ)⟩ξ
+		- REINFORCE [BBVI] MC ∫
+			- E.q(z;θ)[∇.θ logq(z;θ)[logp(x|z)p(z)-logq(z;θ)]]
 - Examples:
 	- Mixture model (PRML-9, K Murphy-11)
 		- ln(∑(exp(.))) is **convex**, so Z(w) is always convex;
@@ -308,22 +322,21 @@
 		<img src="/Bayes/images/VI/local-vi-6.png" alt="drawing" width="400"/>
 		<img src="/Bayes/images/VI/local-vi-7.png" alt="drawing" width="400"/>
 
-## Black-box VI
-- R Ranganath, S Gerrish, D Blei. Black Box Variational Inference. AISTATS'14
+## Black-box/Stochastic VI
+- BBVI: R Ranganath, S Gerrish, D Blei. Black Box Variational Inference. AISTATS'14
 	- Basics behind VAE;
 	- Assume q(z|λ) with λ as parameter;
 	- ELBO: L(λ) = E_q(λ)[logp(x,z)-logq(z)]
 	- ∇λL = Eq[∇λ logq(z|λ)(logp(x,z) − logq(z|λ))].
 	- Noisy unbiased gradient of ELBO by MC:
 		- Sample some z[s] ~ q(z|λ)
-		- ∇λL ≈ 1/S Σ_s ∇λ logq(zs|λ)(logp(x, zs) − logq(zs|λ)),
+		- ∇λL ≈ 1/S Σ.s ∇λ logq(zs|λ)(logp(x, zs) − logq(zs|λ)),
+- M Hoffman, D Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
+	- Insight: case of mini-batch, a global variable β to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
+- ADVI: A Kucukelbir, D Tran, R Ranganath, A Gelman, D Blei. Automatic Differentiation Variational Inference. JMLR'17
 
 ## Conjugate Prior
 - M Khan, W Lin. Conjugate-Computation Variational Inference: Converting Variational Inference in Non-Conjugate Models to Inferences in Conjugate Models. AISTATS'17
-
-## Minibatch
-- M Hoffman, D Blei, C Wang, J Paisley. Stochastic variational inference. JMLR'13
-	- Insight: case of mini-batch, a global variable β to guarantee correctness; otherwise, x1, x2 is not independent of x3; minibatch won't work;
 
 ## Latent Models
 - Binary latent factors:

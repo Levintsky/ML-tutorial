@@ -94,18 +94,20 @@
 	- J Tobin, R Fong, A Ray, J Schneider, W Zaremba, P Abbeel. Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS'17
 		- A recurrent policy can adapt to different physical dynamics
 		- Random: Mass and dimensions of objects; Mass and dimensions of robot bodies; Damping, kp, friction of the joints; Gains for the PID controller (P term); Joint limit; Action delay; Observation noise.
-	- **Dactyl**: M Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
+	- Dactyl: M Andrychowicz et.al. Learning Dexterous In-Hand Manipulation, 2018
 		- https://blog.openai.com/learning-dexterity/
 		- Target domain: 24-dof robotic hand;
 		- Source: Mujoco;
-		- Train models:
-			- CNN -> object pose;
+		- Models:
+			- Each camera: [ResNet] -> feat;
+				- feat -> [Concat] -> [FC] -> pose/rotation;
 			- LSTM -> action (control policy);
-			- Learning: PPO;
-			- Supervision: diff to desired joints angles;
+		- Supervision: diff to desired joints angles;
 			- Reward: r(t) = d(t) − d(t+1)
 				- desired and current orientations. 
 				- additional 5/−20 for success/non;
+		- Distributed learning: Redis-server;
+		- Learning: PPO;
 - DR as optimization
 	- Q Vuong, S Vikram, H Su, S Gao, H Christensen. How to pick the domain randomization parameters for sim-to-real transfer of reinforcement learning policies? 2019
 		- Learn a distribution on of source s.t. policy trained on achieve maximal perf in real world;

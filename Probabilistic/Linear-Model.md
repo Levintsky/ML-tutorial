@@ -55,7 +55,7 @@
 	- Huber-loss
 - 7.5 Ridge-regression:
 	- J(w) = 1/N Σ(yi-(w0+wxi))^2 + λ|w|^2
-	- w = (λI+X†X)inv X†y
+	- w = (λI + X†X)inv X†y
 	- 7.5.2 Numerical stability:
 		- Avoid inverting matrix
 		- Cholesky decomposition
@@ -65,15 +65,18 @@
 		- yˆ = Σ.j uj Sjj uj† y
 		- dof(λ) = Σ.j σj^2/(σj^2+λ)
 - 7.6 Bayesian linear regression (also PRML-10)
-	- 7.6.1 Posterior (known σ^2):
+	- 7.6.1 Posterior (known σ^2) on weight w:
 		- Assume obs noise σ^2 known
 		- p(y|X,w,μ,σ^2) ~ N(y|μ+Xw, σ^2I) for all observed y;
 		- Conjugate prior (Gaussian): p(w) ~ p(w|w0,V0);
 		- w0 = 0, V ~ τI: Ridge regression;
-		- Posterior w ~ N(wN, vN);
+		- Posterior w ~ N(wN, vN):
+			- w.N = VN V0^-1 w0 + 1/σ^2 VN X† y
+			- VN^-1 = V0^-1 + 1/σ^2 X†X
+			- VN = σ^2(σ^2 V0^-1 + X†X)^-1
 	- 7.6.2 Posterior predictive: (test x)
-		- p(y|x,D,σ^2) = ∫N(y|xw,σ^2)N(w|w,Vn)dw
-		- ~ N(y|wx,σ(x)^2)
+		- p(y|x,D,σ^2) = ∫N(y|x†w,σ^2)N(w|w,Vn)dw
+		- ~ N(y|wN† x, σ(x)^2)
 		- σ(x)^2 = σ^2 + x† Vn x; var of obs and weight w;
 	- 7.6.3 Bayesian inf with unknown σ^2:
 		- Conjugate prior: p(w,σ^2) = N(w0,σ^2V0)IG(σ^2|a0,b0)

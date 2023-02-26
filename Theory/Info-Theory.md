@@ -28,16 +28,15 @@
 - DVIB:
 	- Mutual Information: I(X; Y)
 		- I(X;Z) = H(X) - H(X|Z);
-		- DV or Donsker-Varadhan representation: dual form;\
-			<img src="/Basic-ML/images/info-theory/dv.png" alt="drawing" width="350"/>
-		- Proof by construction: when G=P, gap is zero;\
-			<img src="/Basic-ML/images/info-theory/dv-dual.png" alt="drawing" width="450"/>
+		- DV (Donsker-Varadhan) representation: dual form;
+			- KL(p,q) = sup.T:Ω→R E.p[T] - log(E.q[exp(e^T)])
+		- Proof by construction: when G=P, gap is zero;
 		- Data Processing Inequality (DPI): X->Y->Z, then I(X;Y)>=I(X;Z)
 		- Reparametrization invariance: Two invertible functions f1, f2, then I(X;Y)=I(f1(X);f2(Y))
 	- Information Plane Theorem:
-		- X-axis: The sample complexity of Ti is determined by the encoder mutual information I(X;Ti). Sample complexity refers to how many samples you need to achieve certain accuracy and generalization.
-		- Y-axis: The accuracy (generalization error) is determined by the decoder mutual information I(Ti;Y).\
-			<img src="/Basic-ML/images/info-theory/info-plane.png" alt="drawing" width="450"/>
+		- X-axis: The sample-complexity of Ti depends on I(X;Ti). 
+			- how many samples to achieve certain perf.
+		- Y-axis: The perf (generalization accuracy) depends on I(Ti;Y).
 
 ## Deep Feature Learning
 - Information Bottleneck
@@ -73,30 +72,23 @@
 	- S Nowozin, Cseke, and R Tomioka. f-gan: Training generative neural samplers using variational divergence minimization. NIPS'16
 	- MINE: I Belghazi, A Baratin, S Rajeswar, S Ozair, Y Bengio, A Courville, and R Hjelm. Mine: mutual information neural estimation. ICML'18
 		- Problem setup: estimate MI;
-		- Key insight: use the upper bound by **dual representations of the KL-divergence**, a neural discriminator d(x;z);
-		- Upper bound with neural approximation:\
-			<img src="/Basic-ML/images/info-theory/mine-1.png" alt="drawing" width="450"/>
-		- Algorithm:\
-			<img src="/Basic-ML/images/info-theory/mine-2.png" alt="drawing" width="350"/>
-		- Application: maximize MI to improve GAN on mode-collapse;\
-			<img src="/Basic-ML/images/info-theory/mine-3.png" alt="drawing" width="350"/>
-	- **DIM**: R Hjelm, A Fedorov, S Lavoie-Marchildon, K Grewal, P Bachman, A Trischler, Y Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
+		- Key insight: use the upper bound by dual of the KL, a neural discriminator d(x;z);
+		- Upper bound with neural approx: I(X;Z) ≥ I(X,Z;Θ)
+		- Application: maximize MI to improve GAN on mode-collapse;
+	- DIM: R Hjelm, A Fedorov, S Lavoie-Marchildon, K Grewal, P Bachman, A Trischler, Y Bengio. Learning deep representations by mutual information estimation and maximization. ICLR'19
 		- https://github.com/rdevon/DIM
 		- Problem setup: unsupervised learning;
-		- Model:\
-			<img src="/Basic-ML/images/info-theory/dim-1.png" alt="drawing" width="450"/>
+		- Model:
+			- Im -> [conv] -> f-low -> [conv] -> f-high
+			- Im1 -> f1-high+f1-low -> [D] -> real
+			- Im2 -> f1-high+f2-low -> [D] -> fake
 		- Formulation:
-			- **Mutual information maximization**: Find the set of parameters, phi, such that the mutual information, I(X;E(phi(X))), is maximized. Depending on the end-goal, this maximization can be done over the complete input, X, or some structured or "local" subset;
-			- **Statistical constraints**: Depending on the end-goal for the representation, the marginal U(phi,P) should match a prior distribution, V. Roughly speaking, this can be used to encourage the output of the encoder to have desired characteristics (e.g., independence).
-			- Put together: 1st/2nd terms for global/local MI with neural classifier parametrized by w1, w2; 3rd term discriminator with phi for statistical matching with prior;\
-				<img src="/Basic-ML/images/info-theory/dim-5.png" alt="drawing" width="400"/>
+			- ψ = argmax I(X;E(ψ(X)));
+			- Loss: global-MI + local-MI + prior-matching;
 		- Different ways to estimate MI:
-			- MINE: based on DV (Donsker-Varadhan representation)\
-				<img src="/Basic-ML/images/info-theory/dim-2.png" alt="drawing" width="400"/>
-			- JS-MI:\
-				<img src="/Basic-ML/images/info-theory/dim-3.png" alt="drawing" width="400"/>
-			- InfoNCE:\
-				<img src="/Basic-ML/images/info-theory/dim-4.png" alt="drawing" width="400"/>
+			- MINE: based on DV (Donsker-Varadhan representation)
+			- JS-MI:
+			- InfoNCE:
 	- **AMDIM**: P Bachman, R Hjelm, W Buchwalter. Learning Representations by Maximizing Mutual Information Across Views. NIPS'19
 		- https://github.com/Philip-Bachman/amdim-public
 		- Problem setup: unsupervised learning;
@@ -108,10 +100,9 @@
 	- https://lilianweng.github.io/lil-log/2017/09/28/anatomize-deep-learning-with-information-theory.html
 	- Information Theory in Deep Learning (Youtube): https://www.youtube.com/watch?v=bLqJHjXihK8&feature=youtu.be
 - Two Optimization Phases:
-	- Among early epochs, the mean values are three magnitudes larger than the standard deviations.
-	- After a sufficient number of epochs, the error saturates and the standard deviations become much noisier afterward.
-	- The further a layer is away from the output, the noisier it gets, because the noises can get amplified and accumulated through the back-prop process (not due to the width of the layer).
-		<img src="/Basic-ML/images/info-theory/two-opt-phase.png" alt="drawing" width="450"/>
+	- Early: ∥μ∥ >> ∥σ∥
+	- Later: std σ becomes much noiser;
+	- σ noiser when a layer gets further away from output;
 - R. Shwartz-Ziv and N. Tishby. Opening the black box of deep neural networks via information. arXiv preprint arXiv:1703.00810, 2017
 	- Deep networks undergo two distinct phases consisting of an initial fitting phase and a subsequent compression phase;
 	- the compression phase is causally related to the excellent generalization performance of deep networks; 
@@ -121,7 +112,7 @@
 ## DL Theory
 - Learning Theory:
 	- Old Generalization Bounds:
-		- Read https://mostafa-samir.github.io/ml-theory-pt1/ and https://mostafa-samir.github.io/ml-theory-pt2/ for ML theory;
-			<img src="/Basic-ML/images/info-theory/old-bound.png" alt="drawing" width="450"/>
-	- New Input compression bound:\
-			<img src="/Basic-ML/images/info-theory/new-bound.png" alt="drawing" width="450"/>
+		- https://mostafa-samir.github.io/ml-theory-pt1/
+		- https://mostafa-samir.github.io/ml-theory-pt2/
+		- ε^2 < (log|Hε|+1/δ) / 2m
+	- New Input compression bound;

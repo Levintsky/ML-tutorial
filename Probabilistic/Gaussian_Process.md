@@ -14,6 +14,7 @@
 	- GP ~ Bayesian linear learning with same kernel;
 	- GP ~ NN with infinite width;
 	- RKHS
+- Learning: GP SVI;
 
 ## Good Summaries
 - Tutorials
@@ -131,26 +132,69 @@
 	- k(x,x') = θ0 exp{-1/2 Σηi(xi-xi')^2}
 	- k(x,x') = θ0 exp{-1/2 Σ_i=1..D ηi(xi-xi')^2} + θ2 + θ3Σ_i=1..D xnixmi
 
+## Learning
+- J. Hensman and N. Lawrence. Gaussian processes for big data through stochastic variational inference. NIPS Workshop'12/UAI'13
+	- SVI with introduced u (m points in the same space of x) to decouple between examples;
+		- Denoiting ⟨.⟩p expectation under p.
+		- Noisy obs: p(y|f) ~ N(f, β^−1 I)
+		- p(f|u) ~ N(Knm Kmm^-1 u, Knn - Knm Kmm^-1 Kmn)
+		- p(u) ~ N(0, Kmm)
+		- logp(y|u) = log⟨p(y|f)⟩p(f|u) ≥ ⟨logp(y|f)⟩p(f|u) := L1
+		- logp(y|X) = log∫p(y|u)p(u)du ≥ log∫exp(L1)p(u)du := L2
+		- μ.u = β Λ^-1 Kmm^-1 Kmn y
+		- Λ.u = β K.mm^-1 Kmn Knm Kmm^-1 + Kmm^-1
+	- Global var u, approx q(u)
+		- logp(y|X) ≥ ⟨L1 + logp(u) - logq(u)⟩q(u) := L3
+		- q(u) ~ N(u|m, S)
+		- Natural gradient to optimize {m, S}.
+
 ## Theory
 - D Burt, C Rasmussen, M v d Wilk. Rates of Convergence for Sparse Variational Gaussian Process Regression. ICML'19 best paper
 	- Reduce O(NM^2+M^3) to  and O(NM+M^2)
 
 ## Deep GP
-- N Lawrence and A Moore. Hierarchical gaussian process latent variable models. ICML'07
-- A Damianou and N Lawrence. Deep gaussian processes. AISTATS'13
-- D Duvenaud, O Rippel, R Adams, and Z Ghahramani. Avoiding pathologies in very deep networks. AISTATS'14
-- T Bui, D Hernandez-Lobato, J Hernandez-Lobato, Y Li, and R Turner. Deep gaussian processes for regression using approximate expectation propagation. ICML'16
-- **Gpytorch**: J R Gardner, G Pleiss, D Bindel, K Weinberger, and A Wilson. Gpytorch: Blackbox matrix-matrix gaussian process inference with gpu acceleration.
-
-## Connection with Neural Network
-- R Neal. Priors for infinite networks. 1994
-	- Single hidden layer
-- R Neal. Bayesian Learning for Neural Networks. 1994
-- C Williams. Computing with infinite networks. NIPS'97
-- J Lee, Y Bahri, R Novak, S Schoenholz, J Pennington, and J Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
+- Derive analytical GP kernels for 1-layer NN;
+	- Infinite width N → ∞
+		- z ~ GP(0, K)
+		- K(x, x′) = σb^2 + σw^2 C(x, x′)
+	- R Neal. Priors for infinite networks. 1994
+		- Single hidden layer
+	- R Neal. Bayesian Learning for Neural Networks. 1994
+	- C Williams. Computing with infinite networks. NIPS'97
+- GP-LVM:
+	- Setup: unsupervised learning, obs Y ∈ R.d, from latent X ∈ R.q
+	- N Lawrence. Gaussian process latent variable models for visualisation of high dimensional data. NIPS'04
+	- N Lawrence. Probabilistic non-linear principal component analysis with Gaussian process latent variable models. JMLR'05
+	- N Lawrence and A Moore. Hierarchical gaussian process latent variable models. ICML'07
+	- M Titsias. Variational learning of inducing variables in sparse Gaussian processes. JMLR'09
+	- M Titsias and N Lawrence. Bayesian Gaussian process latent variable model. AISTATS'10
+		- Introduce auxiliary u to handle non-linearity;
+	- A Damianou and N Lawrence. Deep gaussian processes. AISTATS'13
+		- Stacked-GP-LVM, introduce U to handle non-linearity;
+	- D Duvenaud, O Rippel, R Adams, and Z Ghahramani. Avoiding pathologies in very deep networks. AISTATS'14
+	- T Bui, D Hernandez-Lobato, J Hernandez-Lobato, Y Li, and R Turner. Deep gaussian processes for regression using approximate expectation propagation. ICML'16
+- NNGP: J Lee, Y Bahri, R Novak, S Schoenholz, J Pennington, and J Sohl-dickstein. Deep neural networks as gaussian processes. ICLR'18
 	- Exact equivalence between infinitely wide deep networks and GPs
 	- Focus on exact Bayesian inference for regression tasks
+	- Setup: zi(x) = bi + ∑.j Wij xj; xj = φ(zj)
+	- Recursive kernels:
+		- K0(x,x′) = σb^2 + σw^2(xx′/d.in)
+		- Kl(x,x′) = σb^2 + σw^2 F.φ[Kl-1(x,x′), Kl-1(x,x), Kl-1(x′,x′)]
+	- Predictive: D=P{(x1,t1),...(xn,tn)}, predict x∗ ~ N(μ∗, K∗)
+		- K = [K.DD  Kx∗,D†]
+		-     [Kx∗,D Kx∗,x∗]
+		- μ∗ = Kx∗,D(K.DD + σε^2I)inv t
+		- K∗ = Kx∗,x∗ - Kx∗,D (K.DD + σε^2I)inv Kx∗,D†
+	- Numeric implementation: refer to SVI;
+		- Generate pre-act [-umax,...,umax], var [0,...,smax]
+		- Populate F with a lut for F.φ in grids;
+		- For every pair (x, x′), bilinear interpolate lut;
 	- https://github.com/brain-research/nngp
+- Deep kernel learning:
+	- M Al-Shedivat, A Wilson, Y Saatchi, Z Hu, and E Xing. Learning scalable deep kernels with recurrent structure. JMLR'17
+	- A Wilson, Z Hu, R Salakhutdinov, and E Xing. Deep kernel learning. AISTATS'17
+- Gpytorch: J R Gardner, G Pleiss, D Bindel, K Weinberger, and A Wilson. Gpytorch: Blackbox matrix-matrix gaussian process inference with gpu acceleration. NeurIPS'18
+	- https://gpytorch.ai/
 - A Matthews, M Rowland, J Hron, R Turner, and Z Ghahramani. Gaussian process behaviour in wide deep neural networks. arxiv'18
-- **CNN**: A Garriga-Alonso, C E Rasmussen, and L Aitchison. Deep convolutional networks as shallow gaussian processes. ICLR'19
+- **CNN**: A Garriga-Alonso, C Rasmussen, and L Aitchison. Deep convolutional networks as shallow gaussian processes. ICLR'19
 - R Novak, L Xiao, J Lee, Y Bahri, G Yang, J Hron, D Abolafia, J Pennington, and J Sohl-Dickstein. Bayesian deep convolutional networks with many channels are gaussian processes. ICLR'19
