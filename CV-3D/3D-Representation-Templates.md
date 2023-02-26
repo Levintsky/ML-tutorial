@@ -15,34 +15,34 @@
 		- https://github.com/maxjiang93/ShapeFlow
 		- CNF-based;
 - Legacy:
-	- 3DMM: Volker Blanz and Thomas Vetter. A morphable model for the synthesis of 3D faces. In 26th Annual Conference on Computer Graphics and Interactive Techniques'99
+	- 3DMM: V Blanz and T Vetter. A morphable model for the synthesis of 3D faces. In 26th Annual Conference on Computer Graphics and Interactive Techniques'99
 		- Human face;
 - Deform **each vertice**:
 	- DeformNet: A Kuryenkov, J Ji, A Garg, V Mehta, J Gwak, C Choy, S Savarese. DeformNet: Free-Form Deformation Network for 3D Shape Reconstruction from a Single Image. 2017
 		- Insight: first CNN retrive a **prototype**, then CNN to deform
 		- https://deformnet-site.github.io/DeformNet-website/
 		- Input: single image; output: offset/deformation;
-	- ALIGNet: Rana Hanocka, Noa Fish, Zhenhua Wang, Raja Giryes, Shachar Fleishman, and Daniel Cohen-Or. ALIGNet: Partial-Shape agnostic alignment via unsupervised learning. TOG'18
+	- ALIGNet: R Hanocka, N Fish, Z Wang, R Giryes, S Fleishman, and D Cohen-Or. ALIGNet: Partial-Shape agnostic alignment via unsupervised learning. TOG'18
 		- https://github.com/ranahanocka/ALIGNet
 		- Input: source, **partial** target;
 		- Learn a masked-autoencoder;
-	- **cmr**: Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
-	- Dominic Jack, Jhony K. Pontes, Sridha Sridharan, Clinton Fookes, Sareh Shirazi, Frederic Maire, Anders Eriksson. Learning Free-Form Deformations for 3D Object Reconstruction. ACCV'18
+	- **cmr**: A Kanazawa, S Tulsiani, A Efros, and J Malik. Learning category-specific mesh reconstruction from image collections. ECCV'18
+	- D Jack, J Pontes, S Sridharan, C Fookes, S Shirazi, F Maire, A Eriksson. Learning Free-Form Deformations for 3D Object Reconstruction. ACCV'18
 		- https://github.com/jackd/template_ffd
 		- Input: image, some templates;
 		- Learn to infer offset for each template;
-	- Thibault Groueix, Matthew Fisher, Vladimir G. Kim, Bryan C. Russell, and Mathieu Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. Eurographics'19
+	- T Groueix, M Fisher, V Kim, B Russell, and M Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. Eurographics'19
 		- Input: source A, target B;
 		- Output: deformation;
 		- Model:
 			- Backbone: A, B go through pointnet, feature vA, vB;
-			- Tranformation vectors: concatenate \[vA, vB\] then MLP to get p1, ..., pK;
+			- Tranformation vectors: concatenate [vA, vB] then MLP to get p1, ..., pK;
 			- Deformation: point on A go through p1, ..., pK to get final shape;
 		- Supervision:
 			- Chamfer distance;
 			- 2-consistency: p-fAB fBA(p)
 			- 3-consistency: triplet shape A, B, C, then AB, BA, CA;
-	- **3DN**: Weiyue Wang, Duygu Ceylan, Radomir Mech, and Ulrich Neumann. 3dn: 3d deformation network. CVPR'19
+	- **3DN**: W Wang, D Ceylan, R Mech, and U Neumann. 3dn: 3d deformation network. CVPR'19
 		- https://github.com/laughtervv/3DN
 		- Input: source mesh, target model (2D image/3D model);
 		- Backbone:
@@ -52,9 +52,9 @@
 		- Supervision:
 			- CD, EMD between deformed mesh and target;
 			- Symmetry loss;
-	- Eloi Mehr, Ariane Jourdan, Nicolas Thome, Matthieu Cord, and Vincent Guitteny. DiscoNet: Shapes learning on disconnected manifolds for 3d editing. ICCV'19
+	- E Mehr, A Jourdan, N Thome, M Cord, and V Guitteny. DiscoNet: Shapes learning on disconnected manifolds for 3d editing. ICCV'19
 		- https://github.com/Fasjeit/DiscoNet
-	- **DeformSyncNet**: Minhyuk Sung, Zhenyu Jiang, Panos Achlioptas, Niloy J. Mitra, and Leonidas J. Guibas. DeformSyncNet: Deformation transfer via synchronized shape deformation spaces. SIGGRAPH Asia'20
+	- **DeformSyncNet**: M Sung, Z Jiang, P Achlioptas, N Mitra, and L Guibas. DeformSyncNet: Deformation transfer via synchronized shape deformation spaces. SIGGRAPH Asia'20
 		- https://github.com/Steve-Tod/DeformSyncNet
 		- Problem definition: 
 			- shape editting;
@@ -64,9 +64,9 @@
 			- Project shape-editting to deformation space, s.t. ||Bx z - Ax v||;
 			- Given source x, target y, learn dictionary model F(.) and encoder E(.) such that:
 				- y = x + F(x)(E(y)-E(x))
-	- **Neural cages**: Wang Yifan, Noam Aigerman, Vladimir Kim, Siddhartha Chaudhuri, and Olga Sorkine-Hornung. Neural cages for detail-preserving 3d deformations. CVPR'20
+	- **Neural cages**: Y Wang, N Aigerman, V Kim, S Chaudhuri, and O Sorkine-Hornung. Neural cages for detail-preserving 3d deformations. CVPR'20
 		- https://github.com/yifita/deep_cage
-	- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
+	- F Liu and X Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
 		- https://github.com/liuf1990/Implicit_Dense_Correspondence
 		- Learn a latent space z s.t. enc(x)=z;
 		- Learn a SEF f(.) and its inverse g(.):
@@ -77,17 +77,16 @@
 	- DeepMetaHandles: [H Su] CVPR'21
 		- https://github.com/Colin97/DeepMetaHandles
 - Deform **SDF**:
-	- Feng Liu and Xiaoming Liu. Learning implicit functions for topology-varying dense 3d shape correspondence. NeurIPS'20
 	- **DIT-Net**: Yu Deng, Jiaolong Yang, Xin Tong. Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence. CVPR'21
 		- https://github.com/microsoft/DIF-Net
 - Deform parts:
 	- T Groueix, M Fisher, V G. Kim, B Russell, and M Aubry. Deep self-supervised cycle-consistent deformation for few-shot shape segmentation. EG'19
 - Articulated objects (like SMPL for Human) or **learned template/graph**:
-	- Allen, B., Curless, B., Popovic, Z.: Articulated body deformation from range scan data. SIGGRAPH'02
-	- Brett Allen, Brian Curless, Zoran Popovic. The space of human body shapes: reconstruction and parameterization from range scans. TOG'03
-	- Dragomir Anguelov, Praveen Srinivasan,Daphne Koller, Sebastian Thrun, Jim Rodgers, and James Davis. SCAPE: shape completion and animation of people. TOG'05
+	- B Allen, B Curless, Z Popovic. Articulated body deformation from range scan data. SIGGRAPH'02
+	- B Allen, B Curless, Z Popovic. The space of human body shapes: reconstruction and parameterization from range scans. TOG'03
+	- D Anguelov, P  Srinivasan, D Koller, S Thrun, J Rodgers, and J Davis. SCAPE: shape completion and animation of people. TOG'05
 	- Allen, B., Curless, B., Popovic, Z.: Learning a correlated model of identity and pose-dependent body shape variation for real-time synthesis. Symposium on Computer Animation'06
-	- Silvia Zuffi and Michael J. Black. The stitched puppet: A graphical model of 3d human shape and pose. CVPR'15
+	- S Zuffi and M Black. The stitched puppet: A graphical model of 3d human shape and pose. CVPR'15
 	- **SMPL**: M Loper, N Mahmood, J Romero, G Pons-Moll, and M Black. SMPL: a skinned multi-person linear model. TOG'15
 		- Template:
 			- Mesh T (6,890 x 3) 6,890 points;
@@ -108,7 +107,7 @@
 		- Build a LDC graph;
 		- Step 1: estimate a coarse camera pose and select the CAD model from the LDC graph to best register the 2D landmarks;
 		- Step 2: refine the camera position and deform the best CAD model by linear combination with its neighbors in the LDC graph to fit both the landmarks and the silhouette.
-	- A. Kanazawa, M. J. Black, D. W. Jacobs, and J. Malik. End-to-end recovery of human shape and pose. CVPR'18
+	- A Kanazawa, M Black, D Jacobs, and J Malik. End-to-end recovery of human shape and pose. CVPR'18
 	- 3D-CODED: T Groueix ECCV'18
 		- http://imagine.enpc.fr/~groueixt/3D-CODED/
 		- https://github.com/ThibaultGROUEIX/3D-CODED
@@ -169,7 +168,7 @@
 - Other available info: segmentation, ...
 
 ## E2E
-- **3d-rcnn**: Abhijit Kundu, Yin Li, and James M. Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
+- **3d-rcnn**: A Kundu, Y Li, and J Rehg. 3d-rcnn: Instance-level 3d object reconstruction via render-and-compare. CVPR'18
 	- https://abhijitkundu.info/projects/3D-RCNN/
 	- Input: 2D image;
 	- Output: 3D scene;
@@ -197,25 +196,25 @@
 	- Problem: query shape s, source parametric;
 	- Traditional: fit every source and find best;
 	- This paper: approximate in an embedding space;
-- C. Kong, C.-H. Lin, and S. Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
+- C Kong, C Lin, and S Lucey. Using locally corresponding CAD models for dense 3D reconstructions from a single image. CVPR'17
 	- Check CAD/template-based method;
-- **SceneCAD**: Armen Avetisyan, Tatiana Khanova, Christopher Choy, Denver Dash, Angela Dai, Matthias Nießner. SceneCAD: Predicting Object Alignments and Layouts in RGB-D Scans. ECCV'20
+- **SceneCAD**: A Avetisyan, T Khanova, C Choy, D Dash, A Dai, M Nießner. SceneCAD: Predicting Object Alignments and Layouts in RGB-D Scans. ECCV'20
 	- https://github.com/skanti/SceneCAD
 	- Simultaneously predict layout and objects-cad alignment;
 	- GNN;
-- Mikaela Angelina Uy, Jingwei Huang, Minhyuk Sung, Tolga Birdal, and Leonidas Guibas. Deformation-Aware 3D model embedding and retrival. ECCV'20
+- M A Uy, J Huang, M Sung, T Birdal, and L Guibas. Deformation-Aware 3D model embedding and retrival. ECCV'20
 	- **Strong baseline** for retrieval;
 	- Retrieve and optimize ARAP loss;
 	- **ARAP**: Takeo Igarashi, Tomer Moscovich, and John F. Hughes. Asrigid-as-possible shape manipulation. SIGGRAPH'05
-- Yue Zhong, Yulia Gryaditskaya, Honggang Zhang, Yi-Zhe Song. Deep Sketch-Based Modeling: Tips and Tricks. 3DV'20
+- Y Zhong, Y Gryaditskaya, H Zhang, Y Song. Deep Sketch-Based Modeling: Tips and Tricks. 3DV'20
 	- Sketch domain;
-- Mikaela Angelina Uy, Vladimir G. Kim, Minhyuk Sung, Noam Aigerman, Siddhartha Chaudhuri, Leonidas Guibas. Joint Learning of 3D Shape Retrieval and Deformation. CVPR'21
+- M A Uy, V Kim, M Sung, N Aigerman, S Chaudhuri, L Guibas. Joint Learning of 3D Shape Retrieval and Deformation. CVPR'21
 	- Insight: retrieve top K (unsupervised?), and then deform them;
 	- https://joint-retrieval-deformation.github.io/
 	- https://github.com/mikacuy/joint_learning_retrieval_deformation
-- Tianyu Zhao, Qiaojun Feng, Sai Jadhav, Nikolay Atanasov. CORSAIR: Convolutional Object Retrieval and Symmetry-AIded Registration. '21
+- T Zhao, Q Feng, S Jadhav, N Atanasov. CORSAIR: Convolutional Object Retrieval and Symmetry-AIded Registration. '21
 	- https://acsweb.ucsd.edu/~qif007/CORSAIR/
-- Shuo Yang, Min Xu, Haozhe Xie, Stuart Perry, Jiahao Xia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
+- S Yang, M Xu, H Xie, S Perry, JXia. Single-View 3D Object Reconstruction From Shape Priors in Memory. CVPR'21
 
 ## Unclassified
 - J Pontes, C Kong, A Eriksson, C Fookes, S Sridharan, and S Lucey. Compact Model Representation for 3D Reconstruction. 3DV'17

@@ -136,9 +136,9 @@
 ## Video Inpainting
 - V. Kwatra, A. Schodl, I. Essa, G. Turk, and A. Bobick. Graphcut textures: Image and video synthesis using graph cuts. SIGGRAPH'03
 - Spatial temporal:
-	- Eli Shechtman, Yaron Caspi, and Michal Irani. Space-time super-resolution. PAMI'05
-	- Yonatan Wexler, Eli Shechtman, and Michal Irani. Space-time completion of video. PAMI'07
-	- Alasdair Newson, Andres Almansa, Matthieu Fradet, Yann Gousseau, and Patrick Perez. Towards fast, generic video inpainting. ECVMP'13
+	- E Shechtman, Y Caspi, and M Irani. Space-time super-resolution. PAMI'05
+	- Y Wexler, E Shechtman, and M Irani. Space-time completion of video. PAMI'07
+	- A Newson, A Almansa, M Fradet, Y Gousseau, and P Perez. Towards fast, generic video inpainting. ECVMP'13
 - Optical flow:
 	- Adobe. Learning blind video temporal consistency. ECCV'18
 		- ConvLSTM;

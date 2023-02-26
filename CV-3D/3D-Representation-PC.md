@@ -6,9 +6,10 @@
 - Deform a Gaussian ball (CNF, pointflow)
 
 ## Upsampling
-- Wang Yifan, Shihao Wu, Hui Huang, Daniel Cohen-Or, and Olga Sorkine-Hornung. Patch-based progressive 3d point set upsampling. arXiv preprint arXiv:1811.11286, 2018
-- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Ec-net: an edge-aware point set consolidation network. ECCV'18
-- Lequan Yu, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. Pu-net: Point cloud upsampling network. CVPR'18
+- Y Wang, S Wu, H Huang, D Cohen-Or, and O Sorkine-Hornung. Patch-based progressive 3d point set upsampling. arXiv preprint arXiv:1811.11286, 2018
+- L Yu, X Li, C Fu, D Cohen-Or, and P Heng. Ec-net: an edge-aware point set consolidation network. ECCV'18
+- L Yu, X Li, C Fu, D Cohen-Or, and P Heng. Pu-net: Point cloud upsampling network. CVPR'18
+- R Li, X Li, C Fu, D Cohen-Or, and Pheng-Ann Heng. PU-GAN: A point cloud upsampling adversarial network. ICCV'19
 
 ## Backbones (Decoder)
 Framework:
@@ -52,9 +53,8 @@ Framework:
 	- Experiment: built on AE
 
 ## Misc
-- Nobuyuki Umetani. Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia'17
+- N Umetani. Exploring Generative 3D Shapes Using Autoencoder Networks. SIGGRAPH Asia'17
 	- AutoEncoder on 3D points and hand-coded features;
-- **AAE**: Maciej Zamorski, Maciej Zieba, Rafał Nowak, Wojciech Stokowiec, and Tomasz Trzciński. Adversarial autoencoders for generating 3d point clouds. 2018
+- AAE: M Zamorski, M Zieba, R Nowak, W Stokowiec, and T Trzciński. Adversarial autoencoders for generating 3d point clouds. 2018
 	- Build on Alireza Makhzani, Jonathon Shlens, Navdeep Jaitly, Ian Goodfellow, and Brendan Frey. Adversarial autoencoders. 2015
-- Chen-Hsuan Lin, Chen Kong, and Simon Lucey. Learning efficient point cloud generation for dense 3d object reconstruction. AAAI'18
-- Ruihui Li, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng. PU-GAN: A point cloud upsampling adversarial network. ICCV'19
+- C Lin, C Kong, and S Lucey. Learning efficient point cloud generation for dense 3d object reconstruction. AAAI'18

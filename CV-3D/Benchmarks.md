@@ -81,7 +81,7 @@
 - C. Yan, D. Misra, A. Bennnett, A. Walsman, Y. Bisk, and Y. Artzi. Chalet: Cornell house agent learning environment. 2018
 - L. Yi, L. Guibas, A. Hertzmann, V. G. Kim, H. Su, and E. Yumer. Learning hierarchical shape segmentation and labeling from online repositories. TOG'17
 - L. Yi, V. G. Kim, D. Ceylan, I. Shen, M. Yan, H. Su, C. Lu, Q. Huang, A. Sheffer, L. Guibas, et al. A scalable active framework for region annotation in 3D shape collections. TOG 2016
-- **Pix3D**: Xingyuan Sun, Jiajun Wu, Xiuming Zhang, Zhoutong Zhang, Chengkai Zhang, Tianfan Xue, Joshua B. Tenenbaum, and William T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
+- **Pix3D**: MIT. Pix3d: Dataset and methods for single-image 3d shape modeling. CVPR'18
 	- Data: Images/3D pairs (2D-3D alignment);
 		- 595 3D shapes;
 		- 10,069 pairs;
@@ -105,11 +105,11 @@
 	- Open Surfaces:
 		- http://opensurfaces.cs.cornell.edu/publications/opensurfaces/
 		- 22,213 scans, labeled with materials
-		- Sean Bell and Paul Upchurch and Noah Snavely and Kavita Bala. Open Surfaces: A Richly Annotated Catalog of Surface Appearance. SIGGRAPH'13
-		- Sean Bell, Kavita Bala, Noah Snavely. Intrinsic Images in the Wild. SIGGRAPH'14
+		- Noah Snavely. Open Surfaces: A Richly Annotated Catalog of Surface Appearance. SIGGRAPH'13
+		- Noah Snavely. Intrinsic Images in the Wild. SIGGRAPH'14
 			- Intrinsic image decomposition separates an image into a reflectance layer and a shading layer;
-		- Sean Bell, Paul Upchurch, Noah Snavely, Kavita Bala. Material Recognition in the Wild with the Materials in Context Database. CVPR'15
-		- Balazs Kovacs, Sean Bell, Noah Snavely, Kavita Bala. Shading Annotations in the Wild. CVPR'17
+		- Noah Snavely. Material Recognition in the Wild with the Materials in Context Database. CVPR'15
+		- Noah Snavely. Shading Annotations in the Wild. CVPR'17
 	- **NYU Depth Dataset V2**: N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor segmentation and support inference from rgbd images. ECCV'12
 		- https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html
 		- Indoor scene, 1449 densely labeled pairs of RGB-D (**Kinect**)
@@ -175,7 +175,7 @@
 - DeMon dataset: combination of SUN3D, ...
 - **DTU**: H Aanæs, R Jensen, G Vogiatzis, E Tola, and A Dahl. Large-Scale Data for Multiple-View Stereopsis. IJCV'16
 	- MVS benchmark;
-- **ETH-3D**: T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, and A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
+- **ETH-3D**: A. Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. CVPR'17
 - **Tanks and Temples**: A Knapitsch, J Park, Q Zhou, and V Koltun. Tanks and Temples: Benchmarking Large-scale Scene Reconstruction. TOG'17
 	- MVS benchmark;
 

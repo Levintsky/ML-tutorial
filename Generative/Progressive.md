@@ -6,7 +6,7 @@
 	- Lake, B. M., Ullman, T. D., Tenenbaum, J. B., and Gershman, S. J. Building machines that learn and think like people. Behavioral and Brain Sciences, 40, 2017.
 
 ## Recurrent, Progressive	
-- Greg Mori. Probabilistic Neural Programmed Networks for Scene Generation, NIPS 2018
+- G Mori. Probabilistic Neural Programmed Networks for Scene Generation, NIPS 2018
 	- Input: text-based programs
     - Output: rendered images
     - PNP-Net
@@ -33,17 +33,17 @@
 	- Immediate reward: smoothness
 
 ## DeepMind
-- **DRAW**: K. Gregor, I. Danihelka, A. Graves, D. Jimenez Rezende, D. Wierstra. DRAW: A Recurrent Neural Network For Image Generation. ICML 2015
+- DeepMind. DRAW: A Recurrent Neural Network For Image Generation. ICML 2015
 	- https://github.com/ericjang/draw
 	- https://github.com/chenzhaomin123/draw_pytorch
-- Karol Gregor, Frederic Besse, Danilo Jimenez Rezende, Ivo Danihelka, and Daan Wierstra. Towards conceptual compression. NIPS 2016.
+- DeepMind. Towards conceptual compression. NIPS 2016.
 	- Convolutional DRAW.
 	- Two RNN: one encoder, one decoder;
 	- Compression: best reconstruction given budget
 	- VAE loss for regularization
 	- Step-by-step refine
-- **SPRIAL**. Y. Ganin, T. Kulkarni, Igor Babuschkin, S. M. Ali Eslami, Oriol Vinyals. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML'18
-- **NPI**:  Scott Reed and Nando de Freitas. Neural programmer-interpreters. ICLR'16
+- **SPRIAL**. DeepMind. SPIRAL: Synthesizing Programs for Images using Reinforced Adversarial Learning. ICML'18
+- **NPI**:  DeepMind. Neural programmer-interpreters. ICLR'16
 - **AIR**: Attend, Infer, Repeat: Fast Scene Understanding with Generative Models. NIPS 2016
 	- An RNN to handle multiple-object (variable length)
 	- Latent variable z to describe if there is new object or not

@@ -33,15 +33,15 @@
 		- A specially designed architecture to enforce the autoregressive property in the autoencoder efficiently
 			<img src = '/Generative/images/flow/made.png' width = '500'>
 - VAE + Flow:
-	- Xi Chen, Diederik P Kingma, Tim Salimans, Yan Duan, Prafulla Dhariwal, John Schulman, Ilya Sutskever, and Pieter Abbeel. Variational lossy autoencoder. ICLR'16
+	- OpenAI. Variational lossy autoencoder. ICLR'16
 	- **f-VAEs**: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
 - Autoregressive Flow:
-	- Yang Song, Chenlin Meng, and Stefano Ermon. MintNet: Building invertible neural networks with masked convolutions. NIPS'19
-	- Priyank Jaini, Kira A. Selby, and Yaoliang Yu. Sum-of-squares polynomial flow. ICML'19
-	- **B-NAF** Nicola De Cao, Ivan Titov, and Wilker Aziz. Block neural autoregressive flow. UAI'19
+	- Y Song, C Meng, and S Ermon. MintNet: Building invertible neural networks with masked convolutions. NIPS'19
+	- P Jaini, K Selby, and Y Yu. Sum-of-squares polynomial flow. ICML'19
+	- N D Cao, I Titov, and W Aziz. Block neural autoregressive flow. UAI'19
 - Flow + GAN:
-	- Ivo Danihelka, Balaji Lakshminarayanan, Benigno Uria, Daan Wierstra, and Peter Dayan. Comparison of maximum likelihood and gan-based training of real nvps. 2017
-	- Aditya Grover, Manik Dhar, and Stefano Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
+	- DeepMind. Comparison of maximum likelihood and gan-based training of real nvps. 2017
+	- A Grover, M Dhar, and S Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
 - **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
 	- https://www.guandaoyang.com/PointFlow/
 	- https://github.com/stevenygd/PointFlow
@@ -57,8 +57,8 @@
 - **RAD**: L Dinh, J Sohl-Dickstein, R Pascanu, and H Larochelle. A RAD approach to deep mixture models. ICLR'19
 
 ## Invertible
-- Yunfei Teng, Anna Choromanska, and Mariusz Bojarski. Invertible autoencoder for domain adaptation. 2018
-- R.T. Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
-- Fangchang Ma, Ulas Ayaz, Sertac Karaman. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
-- Lynton Ardizzone, Jakob Kruse, Sebastian Wirkert, Daniel Rahner, Eric W. Pellegrini, Ralf S. Klessen, Lena Maier-Hein, Carsten Rother, Ullrich Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
-- Aditya Grover, Christopher Chute, Rui Shu, Zhangjie Cao, Stefano Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019
+- Y Teng, A Choromanska, and M Bojarski. Invertible autoencoder for domain adaptation. 2018
+- R Schirrmeister, P. Chraba ̧szcz, F. Hutter, and T. Ball. Training generative reversible networks. 2018
+- F Ma, U Ayaz, S Karaman. Invertibility of Convolutional Generative Networks from Partial Measurements. NIPS'18
+- L Ardizzone, J Kruse, S Wirkert, D Rahner, E Pellegrini, R Klessen, L Maier-Hein, C Rother, U Köthe. Analyzing Inverse Problems with Invertible Neural Networks. ICLR'19
+- A Grover, C Chute, R Shu, Z Cao, S Ermon. AlignFlow: Cycle Consistent Learning from Multiple Domains via Normalizing Flows. 2019

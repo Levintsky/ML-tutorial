@@ -9,8 +9,14 @@
 	- Interactive:
 - Evaluation
 	- Image:
-		- IS (Inception Score);
-		- FID score;
+		- IS (Inception Score) [NeurIPS'16]: precision;
+			- fake-im -> [Inception-V3] -> fake-label
+			- Low-entropy
+		- FID (Fréchet Inception Distance) [NeurIPS'17]: recall
+			- Wasserstein between two Gaussian (μ1, Σ1) and (μ2, Σ2)
+			- Inception-V3 -> real-im (μ1, Σ1), fake-im (μ2, Σ2)
+			- FID := |μ1-μ2|^2 + tr(Σ1+Σ2-2(Σ1^(.5)Σ2 Σ1^(.5))^.5)
+		- Y Wu, Y Burda, R Salakhutdinov, and R Grosse. On the quantitative analysis of decoder-based generative models. 2017.
 	- Probability model:
 		- To model p(x)
 		- NLL/perplexity (VAE, flow);

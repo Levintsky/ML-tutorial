@@ -87,6 +87,7 @@
 
 ## Analaysis
 - Metz, L., Poole, B., Pfau, D., and Sohl-Dickstein, J. Unrolled generative adversarial networks. 2016
+- S Arora and Y Zhang. Do gans actually learn the distribution? an empirical study. 2017
 - Arora, S., Ge, R., Liang, Y., Ma, T., and Zhang, Y. Generalization and equilibrium in generative adversarial nets (gans). 2017
 - Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium. 2017
 - Nagarajan, V. and Kolter, J. Z. Gradient descent GAN optimization is locally stable. 2017
@@ -101,7 +102,7 @@
 	- Conclusion 1: Both gradient penalties (GAN-GP and DRAGAN-NS) help when training non-saturating GANs, by making the models more robust to hyperparameters.
 	- The non-saturating GAN trained with gradient penalties produces better sample (IS)
 	- WGAN-GP models perform best on Color MNIST and CIFAR-10.
-- Lars Mescheder, Andreas Geiger, and Sebastian Nowozin. Which training methods for GANs do actually converge? ICML'18.
+- L Mescheder, A Geiger, and S Nowozin. Which training methods for GANs do actually converge? ICML'18.
 - A Odena, J Buckman, C Olsson, T B. Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
 	- Follow Pennington et al., 2017 to analyze Jacobian;
 	- Jacobian generally becomes ill-conditioned at the beginning of training: a good cluster in which the condition number stays the same or even gradually decreases, and a "bad cluster", in which the condition number continues to grow
@@ -110,6 +111,9 @@
 		<img src = '/Generative/images/gan/causal-gan.png' width = '400'>
 - A Convex Duality Framework for GANs. NIPS'18
 - Are GANs Created Equal? A Large-Scale Study. NIPS'18
+- D Bau, J Zhu, J Wulff, W Peebles, H Strobelt, B Zhou, A Torralba. Seeing What a GAN Cannot Generate. ICCV'19
+	- http://ganseeing.csail.mit.edu/
+	- https://github.com/davidbau/ganseeing
 
 ## Applications with Adversarial Loss
 - Photo editting;

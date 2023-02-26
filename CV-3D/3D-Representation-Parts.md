@@ -22,7 +22,7 @@
 
 ## Legacy
 - Ideas legacy;
-	- L. G. Roberts. Machine perception of three-dimensional solids. PhD thesis, MIT, 1963
+	- L Roberts. Machine perception of three-dimensional solids. PhD thesis, MIT, 1963
 	- D Hoffman and W Richards. Parts of recognition. Cognition, 18(1-3):65–96, 1984
 	- A Pentland. Parts: Structured descriptions of shape. AAAI'86
 	- **geon**: I. Biederman. Recognition-by-components: a theory of human image understanding. Psychological review, 94(2):115, 1987
@@ -154,31 +154,31 @@
 	- Task: input image + 3D mesh, output a part template;
 	- each part: a learned homeomorphism learned by INN;
 	- Insight: part emerge without labels, temporal consistency;
-- Fenggen Yu, Zhiqin Chen, Manyi Li, Aditya Sanghi, Hooman Shayani, Ali Mahdavi-Amiri, Hao Zhang. CAPRI-Net: Learning Compact CAD Shapes with Adaptive Primitive Assembly. 2021
+- F Yu, Z Chen, M Li, A Sanghi, H Shayani, A Mahdavi-Amiri, H Zhang. CAPRI-Net: Learning Compact CAD Shapes with Adaptive Primitive Assembly. 2021
 
 ## Supervised
 - Compose/Assembly/Placement:
-	- Siddhartha Chaudhuri, Evangelos Kalogerakis, Leonidas Guibas, and Vladlen Koltun. Probabilistic reasoning for assembly-based 3d modeling. TOG'11
+	- S Chaudhuri, E Kalogerakis, L Guibas, and V Koltun. Probabilistic reasoning for assembly-based 3d modeling. TOG'11
 		- Bayesian Network with a library of things;
-	- Kalogerakis, E., Chaudhuri, S., Koller, D., Koltun, V.: A probabilistic model for component-based shape synthesis. TOG'12
+	- E Kalogerakis, S Chaudhuri, D Koller, V Koltun: A probabilistic model for component-based shape synthesis. TOG'12
 	- Zheng, Y., Cohen-Or, D., Averkiou, M., Mitra, N.J.: Recurring part arrangements in shape collections. CGF'14
-	- Anastasia Dubrovina, Fei Xia, Panos Achlioptas, Mira Shalah, Raphael Groscot, Leonidas Guibas. Composite Shape Modeling via Latent Space Factorization. ICCV'19
+	- A Dubrovina, F Xia, P Achlioptas, M Shalah, R Groscot, L Guibas. Composite Shape Modeling via Latent Space Factorization. ICCV'19
 		- Input: 3D;
 		- Output: editable object by manipulating semantic space;
 		- Backbone:
 			- Input 3D voxel -> 3D-CNN -> partition unity to 1;
 			- Each part feature -> decoder -> STN -> obj;
-	- **CompoNet**: Nadav Schor, Oren Katzir, Hao Zhang, and Daniel Cohen-Or. CompoNet: Learning to generate the unseen by part synthesis and composition. ICCV'19
+	- **CompoNet**: N Schor, O Katzir, H Zhang, and D Cohen-Or. CompoNet: Learning to generate the unseen by part synthesis and composition. ICCV'19
 		- https://github.com/nschor/CompoNet
 		- Model:
 			- Part synthesis unit: VAE for each part separately;
 			- Part composition unit: compose the part;
-	- Jialei Huang, Guanqi Zhan, Qingnan Fan, Kaichun Mo, Lin Shao, Baoquan Chen, Leonidas J. Guibas, Hao Dong. Generative 3D Part Assembly via Dynamic Graph Learning. NeurIPS'20
+	- J Huang, G Zhan, Q Fan, K Mo, L Shao, B Chen, L Guibas, H Dong. Generative 3D Part Assembly via Dynamic Graph Learning. NeurIPS'20
 		- https://hyperplane-lab.github.io/Generative-3D-Part-Assembly/
 		- https://github.com/hyperplane-lab/Generative-3D-Part-Assembly
 		- Task: given part point cloud, predict assembly;
 		- GNN for relation reasoning, pooling for equivalent parts (4 legs)...
-- **Sagnet**: Zhijie Wu, Xiang Wang, Di Lin, Dani Lischinski, Daniel Cohen-Or, and Hui Huang. Sagnet: Structure-aware generative network for 3d-shape modeling. SIGGRAPH'19
+- **Sagnet**: Z Wu, X Wang, D Lin, D Lischinski, D Cohen-Or, and H Huang. Sagnet: Structure-aware generative network for 3d-shape modeling. SIGGRAPH'19
 	- https://github.com/zhijieW94/SAGNet
 	- Model:
 		- k voxel maps;
@@ -187,8 +187,8 @@
 	- Training:
 		- First phase: 2-way VAE for reconstruction loss;
 
-## Applications:
-- Siddhartha Chaudhuri and Vladlen Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
+## Applications
+- S Chaudhuri and V Koltun. Data-driven suggestions for creativity support in 3d modeling. ACM SIGGRAPH Asia'10
 	- Given a query simple shape, suggest creativity (interactive generative model)
 	- Fast match by signature;
 	- Search and suggest parts with low correspondence;
@@ -196,9 +196,9 @@
 	- R. Hu, W. Li, O. Van Kaick, A. Shamir, H. Zhang, and H. Huang. Learning to predict part mobility from a single static snapshot. TOG 2017
 	- R. Hu, Z. Yan, J. Zhang, O. van Kaick, A. Shamir, H. Zhang, and H. Huang. Predictive and generative neural networks for object functionality. CGF 2018
 - Physics:
-	- Yilun Du, Zhijian Liu, Hector Basevi, Aleš Leonardis, William T. Freeman, Joshua B. Tenenbaum, Jiajun Wu. Learning to Exploit Stability for 3D Scene Parsing. NIPS'18
+	- MIT. Learning to Exploit Stability for 3D Scene Parsing. NeurIPS'18
 
-## Procedural:
+## Procedural
 - **CSG**:
-	- CSG-Trees: James D Foley, Foley Dan Van, Andries Van Dam, Steven K Feiner, John F Hughes, J Hughes, and Edward Angel. Computer graphics: principles and practice. 1996
-- **Chart**: Heli Ben-Hamu, Haggai Maron, Itay Kezurer, Gal Avineri, and Yaron Lipman. Multi-chart generative surface modeling. TOG'18
+	- CSG-Trees: J Foley, F Van, A Dam, S Feiner, J Hughes, J Hughes, and E Angel. Computer graphics: principles and practice. 1996
+- **Chart**: H Ben-Hamu, H Maron, I Kezurer, G Avineri, and Y Lipman. Multi-chart generative surface modeling. TOG'18

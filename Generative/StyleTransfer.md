@@ -1,16 +1,5 @@
 # Style Transfer
 
-## Unclassified, New
-- Unsupervised Image-to-Image Translation Using Domain-Specific Variational Information Bound. NIPS'18
-- A Unified Feature Disentangler for Multi-Domain Image Translation and Manipulation. NIPS'18
-- Yoshua Bengio. Image-to-image translation for cross-domain disentanglement. NIPS'18
-- Unsupervised Learning of Artistic Styles with Archetypal Style Analysis. NIPS'18
-- Han Shu, Yunhe Wang, Xu Jia, Kai Han, Hanting Chen, Chunjing Xu, Qi Tian, Chang Xu. Co-Evolutionary Compression for Unpaired Image Translation. ICCV'19
-- Interactive Sketch & Fill: Multiclass Sketch-to-Image Translation. ICCV'19
-- Attribute-Driven Spontaneous Motion in Unpaired Image Translation. ICCV'19
-- Aggregation via Separation: Boosting Facial Landmark Detector With Semi-Supervised Style Translation. ICCV'19
-- Few-Shot Unsupervised Image-to-Image Translation. ICCV'19
-
 ## Loss
 - GAN:
 	- Y. Taigman, A. Polyak, and L. Wolf. Unsupervised cross-domain image generation. ICLR'17.
@@ -45,114 +34,20 @@
 		- produce 3k channels rather than 3;
 		- Hindsight loss for multiple choices: loss between the best and the ground-truth;\
 		<img src="/Generative/images/transfer/crn2.png" alt="drawing" width="400"/>
-	- Implement framework
-	```python
-	def forward(self, semantics):
-		x = semantics[0]
-		semantic = None
-		for i in range(modules_num):
-			if i > 0: semantic = semantics[i]
-			x = self.refinements_modules[i](x, semantic)
-		return x
-	# refinement module
-	def forward(self, x, semantic):
-		if self.first_module == False:
-			x = self.upsample(x) # nn.Upsample()
-			x = torch.cat([semantic, x], 1)
-		# [conv - lnorm - lrelu]x2 - conv
-		x = self.convmodule(x)
-		return x
-	# main loop
-	# image, label as input
-	gen_images_concat = net(label) # generate from semantic labels
-	gen_images = []
-	for i in range(k_diversed):
-		gen_images.append(gen_images_concat[:,i*3:(i+1)*3,:,:])
-	image_vgg19_layers = vgg19(image)
-	gen_images_vgg19_layers = []
-	for gen_image in gen_images:
-		gen_images_vgg19_layers.append(vgg19(gen_image))
-	mask_vgg19_layers = []
-	for i in range(-len(image_vgg19_layers), 0): # take as many pyramid layers from mask as needed for loss
-		mask_vgg19_layers.append(label[i])
-	loss = diverse_loss(gen_images_vgg19_layers, image_vgg19_layers, mask_vgg19_layers)
-	```
-
-- **Cycle-GAN**: Zhu, J.-Y., Park, T., Isola, P., and Efros, A. A. Unpaired image-to-image translation using cycle-consistent adversarial networks. CVPR'17
+- Cycle-GAN: [CVPR'17]
 	- https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
 	- **G**: X -> Y; discriminator: D_Y; **F**: Y -> X; discriminator: D_X;
 	- Loss design:
 		- Adversarial loss: E[logD_Y(y)] + E[log(1-D_Y(G(x)))]; Similar loss for D_X;
 		- Consistency loss: ||F(G(x))-x|| + ||G(F(y))-y|| with L1 norm
 		<img src="/Generative/images/transfer/cycle-gan.png" alt="drawing" width="400"/>
-	- Implementation design:
-	```python
-	class CycleGANModel(nn.Module):
-		def forward(self):
-			self.fake_B = self.netG_A(self.real_A)  # G_A(A)
-			self.rec_A = self.netG_B(self.fake_B)   # G_B(G_A(A))
-			self.fake_A = self.netG_B(self.real_B)  # G_B(B)
-			self.rec_B = self.netG_A(self.fake_A)   # G_A(G_B(B))
-		def backward_G(self):
-			self.loss_G_A = self.criterionGAN(self.netD_A(self.fake_B), True)
-			self.loss_G_B = self.criterionGAN(self.netD_B(self.fake_A), True)
-			self.loss_cycle_A = self.criterionCycle(self.rec_A, self.real_A) * lambda_A
-			self.loss_cycle_B = self.criterionCycle(self.rec_B, self.real_B) * lambda_B
-			self.loss_G = self.loss_G_A + self.loss_G_B + self.loss_cycle_A + self.loss_cycle_B + self.loss_idt_A + self.loss_idt_B
-			self.loss_G.backward()
-		def optimize_parameters(self):
-			self.forward() # forward F, G
-			# optimize G, netG_A, netG_B
-			self.optimizer_G.zero_grad()
-			self.backward_G.()
-			self.optimizer_G.step()
-			# DA, DB
-			self.optimizer_D.zero_grad()
-			self.backward_D_A()
-			self.backward_D_B()
-			self.optimizer_D.step()
-	```
-- **pix2pix**: Isola, P., Zhu, J.-Y., Zhou, T., and Efros, A. A. Image-to-image translation with conditional adversarial networks. CVPR'17
+- pix2pix: CVPR'17
 	- Insight: Conditional GAN + supervised transfer tranining;
 	- **Conditional GAN**: notice the original input is provided!\
 		<img src="/Generative/images/transfer/pix2pix3.png" alt="drawing" width="250"/>
 	- Loss design:
 		<img src="/Generative/images/transfer/pix2pix1.png" alt="drawing" width="250"/>
 		<img src="/Generative/images/transfer/pix2pix2.png" alt="drawing" width="330"/>
-	- Model:
-	```python
-	class Pix2pix(nn.Module):
-		def forward(self):
-			self.fake_B = self.netG(self.real_A)  # G(A)
-		def backward_D(self):
-			# conditional-GAN for D!
-			fake_AB = torch.cat((self.real_A, self.fake_B), 1)
-			pred_fake = self.netD(fake_AB.detach())
-			self.loss_D_fake = self.criterionGAN(pred_fake, False)
-			real_AB = torch.cat((self.real_A, self.real_B), 1)
-			pred_real = self.netD(real_AB)
-			self.loss_D_real = self.criterionGAN(pred_real, True)
-			self.loss_D = (self.loss_D_fake + self.loss_D_real) * 0.5
-			self.loss_D.backward()
-		def backward_G(self):
-			# First, G(A) should fake the discriminator
-			fake_AB = torch.cat((self.real_A, self.fake_B), 1)
-			pred_fake = self.netD(fake_AB)
-			self.loss_G_GAN = self.criterionGAN(pred_fake, True)
-			# Second, G(A) = B
-			self.loss_G_L1 = self.criterionL1(self.fake_B, self.real_B) * self.opt.lambda_L1
-			# combine loss and calculate gradients
-			self.loss_G = self.loss_G_GAN + self.loss_G_L1
-			self.loss_G.backward()
-		def optimize_parameters(self):
-			self.forward() # forward F, G
-			self.optimizer_G.zero_grad()
-			self.backward_G.()
-			self.optimizer_G.step()
-			self.optimizer_D.zero_grad()
-			self.backward_D()
-			self.optimizer_D.step()
-	```
 
 ## Image Optimization-based
 - Parametric:
