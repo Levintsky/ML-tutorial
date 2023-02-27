@@ -1,14 +1,13 @@
 # Data Science Summary
 
-## Summaries
-- https://segmentfault.com/a/1190000004411616
-- https://www.zhihu.com/question/23149768
-
-## Books
-- Statistics. Freedman, Pisani & Purves.
-
-## Classes
-- Stanford STATS 60: https://web.stanford.edu/class/stats60/
+## Basics
+- Summaries
+	- https://segmentfault.com/a/1190000004411616
+	- https://www.zhihu.com/question/23149768
+- Books
+	- Statistics. Freedman, Pisani & Purves.
+- Classes
+	- Stanford STATS 60: https://web.stanford.edu/class/stats60/
 
 ## Graphical Summaries
 - Histogram
@@ -49,15 +48,15 @@
 	- Most test statistics have the form t=Z/s, where Z and s are functions of the data.
 	- The **assumptions** underlying a t-test in its simplest form are that:
 		- X follows a **normal** distribution with mean mu and variance σ^2/n;
-		- s^2 follows a χ-square distribution with n−1 degrees of freedom. This assumption is met when the observations used for estimating s2 come from a normal distribution (and i.i.d for each group).
+		- s^2 follows a χ-square with n−1 dof;
 		- Z and s are independent.
 		- t = Z/s = (E[X]-μ) / (σ/√n)
 - Pearson's χ-squared test:
-	- Assumption: valid to perform when the test statistic is **chi-squared** distributed under the null hypothesis;\
-		<img src="/Basic-ML/images/stat/chi-squared-test.png" alt="drawing" width="400"/>
+	- Assumption: valid to perform when the test statistic is χ-squared distributed under the null hypothesis;
 
 ## Hypothesis Testing
-- Type I, II error
+- Type I error: false positive
+- Type II error: false negative
 - Testing of Normal distribution summary:
 <img src="/Basic-ML/images/stat/gaussian-test1.png" alt="drawing" width="600"/>
 <img src="/Basic-ML/images/stat/gaussian-test2.png" alt="drawing" width="600"/>

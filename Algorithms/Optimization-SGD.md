@@ -315,6 +315,9 @@
 
 ## 2nd-Order
 - Struggle to improve over first-order baselines for non-convex loss surfaces;
+- E.x[∇.θ logp(x|θ)] = 0
+- Fisher: E.x[∇.θ logp(x|θ) ∇.θ logp(x|θ)†]
+	- Fisher = I(θ) = -E.x[∇∇.θ logp(x|θ)]
 - Intuition for natural gradient:
 	- 2nd order: Left multiplying inverse of Fisher Information matrix
 	- Fisher Information Matrix:
@@ -340,7 +343,7 @@
 	- T George, C Laurent, X Bouthillier, N Ballas, P Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
 	- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix.
 		- Cholesky decomposition.
-	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NIPS'18
+	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NeurIPS'18
 	- Higher-order:
 		- Y Song, J Song, S Ermon. Accelerating Natural Gradient with Higher-Order Invariance. ICML'18
 			- https://ermongroup.github.io/blog/geo/
@@ -353,36 +356,36 @@
 	- R. Grosse and J. Martens. A Kronecker-factored approximate Fisher matrix for convolutional layers. ICML'16
 		- Follow-up on KFAC for convolutions
 	- Instability:
-		- Byrd, R., Hansen, S., Nocedal, J., and Singer, Y. A stochastic quasi-newton method for large-scale optimization. SIAM Journal on Optimization'16
+		- R Byrd, S Hansen, J Nocedal, and Y Singer. A stochastic quasi-newton method for large-scale optimization. SIAM Journal on Optimization'16
 	- Estimate the metric:
-		- Pascanu, Razvan and Bengio, Yoshua. Revisiting natural gradient for deep networks. ICLR'14
-		- **PRONG**: G. Desjardins, K. Simonyan, R. Pascanu, et.al. Natural neural networks. NIPS'15
+		- R Pascanu and Y Bengio. Revisiting natural gradient for deep networks. ICLR'14
+		- PRONG: DeepMind. Natural neural networks. NIPS'15
 			- Whitening each layer.
 
-## Noise
-- Gradient noise: Neelakantan, A., Vilnis, L., Le, Q. V., Sutskever, I., Kaiser, L., Kurach, K., & Martens, J. Adding Gradient Noise Improves Learning for Very Deep Networks. 2015
+## Gradient Noise
+- Google-Brain. Adding Gradient Noise Improves Learning for Very Deep Networks. 2015
 - Langevin Dynamics
-	- X. Cheng, N. Chatterji, P. Bartlett, and M. I. Jordan. Underdamped Langevin MCMC: A non-asymptotic analysis. COLT'18
+	- Berkeley. Underdamped Langevin MCMC: A non-asymptotic analysis. COLT'18
 		- Underdamped form of Langevin ~ Nesterov acceleration on simplex of probability measures
-	- X. Cheng, Yin, D., P. Bartlett, and M. I. Jordan. In H. Daumé III and A. Singh (Eds.), Stochastic gradient and Langevin processes. ICML'20
-	- W. Mou, Y.-A. Ma, M. Wainwright, P. Bartlett, and M. I. Jordan. High-order Langevin diffusion yields an accelerated MCMC algorithm. JMLR'21
-	- R. Calandra and S. Chiappa (Eds.), N. Chatterji, J. Diakonikolas, M. I. Jordan, and P. Bartlett. Langevin Monte Carlo without smoothness. AISTATS'20
-		- Smoothness isn't necessary;
-	- Quantitative W1 convergence of Langevin-like stochastic processes with non-convex potential state-dependent noise. X. Cheng, Yin, D., P. Bartlett, and M. I. Jordan. arxiv.org/abs/1907.03215, 2019.
-	- X. Cheng, N. Chatterji, Y. Abbasi-Yadkori, P. Bartlett, and M. I. Jordan. Sharp convergence rates for Langevin dynamics in the nonconvex setting. arxiv.org/abs/1805.01648, 2018.
-	- E. Mazumdar, A. Pacchiano, Y.-A. Ma, P. Bartlett, and M. I. Jordan. In H. Daumé III and A. Singh (Eds.), On Thompson sampling with Langevin algorithms. ICML'20
+	- Berkely. Sharp convergence rates for Langevin dynamics in the nonconvex setting. arxiv'18.
+	- Berkeley. Quantitative W1 convergence of Langevin-like stochastic processes with non-convex potential state-dependent noise. arxiv'19.
+	- Berkeley. Stochastic gradient and Langevin processes. ICML'20
+	- Berkeley. On Thompson sampling with Langevin algorithms. ICML'20
 		- Langevin based achieved logarithmic regret;
-		- Normal SGD won't converge;
+		- Normal SGD won't converge;	- Berkeley. High-order Langevin diffusion yields an accelerated MCMC algorithm. JMLR'21
+	- Berkeley. Langevin Monte Carlo without smoothness. AISTATS'20
+		- Smoothness isn't necessary;
 
 ## Gradient Noise/Langevin Dynamics
+- Optimization + Sampling; Check Sampoing.md for HMC.
 - Physics Background: Lagrange/Hamilton mechanics, check dynamic-systems;
 - R Neal. MCMC using Hamiltonian dynamics. Handbook of Markov Chain Monte Carlo. 2010
 	- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
 	- ηt ~ N(0, εt)
-- **HMC**: MCMC using Hamiltonian dynamics. Radford M. Neal 2012
+- HMC: R Neal. MCMC using Hamiltonian dynamics. 2012
 	- https://blog.csdn.net/qy20115549/article/details/54561643
 - **SGLD**: M Welling, Y W Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
-	- Insight: a new framework for learning from large scale datasets based on iterative learning from small mini-batches.
+	- Insight: prove minibatch works.
 	- Model prior p(x|θ), X = {xi}i=1..N, p(θ|X)∝p(θ)∏i=1..N p(xi|θ)
 	- Robins-Monroe (mini-batch):
 		- ∆θt = εt/2(∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt))
@@ -391,27 +394,28 @@
 	- True gradient: g(θ) = ∇logp(θt) + ∑i=1..N ∇logp(xi|θt)
 	- Deviation from minibatch gradient with finite variance V(θ):
 		- h(θ) = ∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt) - g(θ)
-	- Proof sketch: cut into subsequences s.t. each subseq has same total stepsize;
+	- Proof of convergence:
+		- cut into subseq with same total stepsize;
 		- t1, t2, ..., s.t. ∑t=ti..ti+1 εt ~ ε0, as t -> ∞
-		- Each subsequence has variance: ε0/2 g(θts)+O(ε0)
-		- So θt1, θt2 , ... will approach a sequence generated by Langevin dynamics with a fixed step size ε, converge to the posterior;
+		- Each subseq= has variance: ε0/2 g(θts)+O(ε0)
+		- So θt1, θt2 , ... ~ Langevin dynamics with a fixed step size ε, converge to the posterior;
 	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
 	- https://github.com/henripal/sgld
 	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
 - **SGHMC**: T Chen, E Fox, C Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - H Palacci, H Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
-- YP Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NIPS'18
+- Y Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NeurIPS'18
 	- Application: LDA;
-- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NIPS'18
+- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NeurIPS'18
 
 ## Parallel/Distributed
-- **Hogwild!**: Niu, F., Recht, B., Christopher, R., & Wright, S. J. . Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. 2011
-- **Downpour SGD**: used in DistBelief, at risk of Diverging;
+- Berkeley. Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. 2011
+- Downpour SGD: used in DistBelief, at risk of Diverging;
 - Tensorflow;
 - **EASGD** Elastic Averaging SGD: Zhang, S., Choromanska, A., & LeCun, Y. Deep learning with Elastic Averaging SGD. NIPS'15
 - R Anil, V Gupta, T Koren, and Y Singer. Memory-efficient adaptive optimization for large-scale learning. 2019
-- Frank Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
+- F Wood. Bayesian Distributed Stochastic Gradient Descent. NIPS'18
 
 ## SVGD
-- Qiang Liu, Dilin Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NIPS'16
+- Q Liu, D Wang. Stein variational gradient descent: A general purpose bayesian inference algorithm, NeurIPS'16
 	- https://github.com/DartML/Stein-Variational-Gradient-Descent

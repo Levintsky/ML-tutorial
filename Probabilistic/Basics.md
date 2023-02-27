@@ -57,8 +57,9 @@
 		- fp v.s. fn;
 		- ROC curve (receiver operating characteristic): true positive v.s. false positive:
 		- Measured by **AUC** (area under the curve): the larger the better;
-	- Precision recall: left ROC, right PR;
-		<img src="/Probabilistic/images/basics/roc.png" alt="drawing" width="400"/>
+	- Precision recall: ROC, PR;
+		- TP (y) v.s. FP (x), AUC the larger the better, |-
+		- Precision (y) v.s. Recall (x) curve, -|
 	- F-score (F1-score):
 		- F1 = 2/(1/P+1/R) = 2PR/R+P = 2Σyy^/(Σy+Σy^)
 	- Multi-arm bandit: UCB, Thompson Sampling;

@@ -78,7 +78,7 @@
 		- dpi/dτ=-∂H/∂qi, dqi/dτ=∂H/∂pi;
 	- Energy conservation: dH/dτ=0;
 	- Volume conservation (Liouville's Theorem): (q, p), let vector field V=(dq/dτ, dp/dτ) has 0 divergence;
-		- div(V)=∑(-∂^2H/∂qi∂pi+-∂^2H/∂pi∂qi)=0;
+		- div(V) = ∑(-∂^2H/∂qi∂pi + ∂^2H/∂pi∂qi)=0;
 	- H constant during sampling, need another gibbs sampling in phase space, sample new p with q fixed;
 	- In practice: numerical integration over time: Leapfrog algorithm:
 		- p(τ+ε/2)=p(τ)-ε/2 ∂E(q(τ))/∂qi

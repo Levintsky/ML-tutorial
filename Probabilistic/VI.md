@@ -311,16 +311,17 @@
 	- Not conjugate to Gaussian prior;
 	- Approx with simpler function;
 
-## Approximate Inference (PRML-Chap-10, Kevin-Murphy-Chap-21)
-- Local variational method, **conjugate function**:\
-	- For concave funtions, we could get **upper bound**:\
-		<img src="/Bayes/images/VI/local-vi-3.png" alt="drawing" width="400"/>
-	- Log(logistic) is concave, with upper bound:\
-		<img src="/Bayes/images/VI/local-vi-4.png" alt="drawing" width="400"/>
-	- Log(logistic) lower bound:\
-		<img src="/Bayes/images/VI/local-vi-5.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/VI/local-vi-6.png" alt="drawing" width="400"/>
-		<img src="/Bayes/images/VI/local-vi-7.png" alt="drawing" width="400"/>
+## Approximate Inference (PRML-10, K-Murphy-21)
+- Local variational method, conjugate function:
+	- For concave funtions, we could get upper bound:
+		- f(x) = min.λ {λx - g(λ)}
+		- g(λ) = min.x {λx - f(x)}
+	- Log(logistic) is concave, with upper bound:
+		- σ(x) ≤ exp(λx-g(λ))
+	- Log(logistic) lower bound:
+		- lnσ(x) = x/2 - ln[exp(x/2)+exp(-x/2)]
+		- λ(ξ) = -1/2ξ[σ(ξ) - 1/2]
+		- σ(x) ≥ σ(ξ)exp{(x-ξ)/2 - λ(ξ)(x^2-ξ^2)}
 
 ## Black-box/Stochastic VI
 - BBVI: R Ranganath, S Gerrish, D Blei. Black Box Variational Inference. AISTATS'14

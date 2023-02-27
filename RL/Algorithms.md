@@ -49,8 +49,9 @@
 
 ## Policy Gradient
 - Basic PG (from Sergey Levine CS-294):
-- Goal: J(θ) = E..τ~p(θ)[Σr(st, at)]; θ = argmax J(θ)
-	- Insight: increase the probability of high-reward trajectory;
+- Goal: J(θ) = E..τ~ π(τ;θ)[Σr(st, at)] = ∫π(τ;θ)r(τ)dτ
+	- θ = argmax J(θ)
+	- Insight: increase the probability of high-reward τ;
 - PG:
 	- ∇J(θ) = ∫ πlogπ(τ;θ)r(τ)dτ
 	- ∇J(θ) = E..τ~ p(θ)[∇logπ(τ;θ)r(τ)]
