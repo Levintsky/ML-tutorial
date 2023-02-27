@@ -225,11 +225,11 @@
 		- Z Wu, Y Xiong, S Yu, and D Lin. Unsupervised feature learning via non-parametric instance discrimination. CVPR'18
 			- https://github.com/zhirongw/lemniscate.pytorch
 			- Constrastive estimation;
-		- **CPC**: DeepMind. Representation Learning with Contrastive Predictive Coding. NIPS'18
+		- CPC: DeepMind. Representation Learning with Contrastive Predictive Coding. NIPS'18
 			- A query frame x_t at time t;
 			- Recent 8 frames: positive;
 			- Other uniformly sampled frames: negative;
-		- **AMDIM**: P Bachman, R D Hjelm, and W Buchwalter. Learning representations by maximizing mutual information. NIPS'19
+		- AMDIM: P Bachman, R D Hjelm, and W Buchwalter. Learning representations by maximizing mutual information. NIPS'19
 			- https://github.com/Philip-Bachman/amdim-public
 			- Maximize mutual-information I(aug1(x), aug2(x));
 			- Also between scales;

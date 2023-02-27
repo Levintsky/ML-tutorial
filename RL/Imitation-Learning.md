@@ -133,7 +133,7 @@
 		- θ: E.τ[∇.θ log(π(a|s;θ))Q(s,a)] - ∇.θH(π.θ)
 			- reward: Q(s,a) = E.τ[logD(s,a)]
 - J. Ho, J. K. Gupta, and S. Ermon. Model-free imitation learning with policy optimization. ICML'16.
-- InfoGAIL: Y Li, J Song, S Ermon. InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations. NIPS'17
+- InfoGAIL: Y Li, J Song, S Ermon. InfoGAIL: Interpretable Imitation Learning from Visual Demonstrations. NeurIPS'17
 	- Multimodal, assign each demonstration to each expert (fixed number)
 - N Baram, O Anschel, I Caspi, S Mannor. End-to-End Differentiable Adversarial Imitation Learning. ICML'17
 - J Fu, K Luo, S Levine. Learning Robust Rewards with Adversarial Inverse Reinforcement Learning. ICLR'18

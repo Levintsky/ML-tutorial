@@ -14,12 +14,20 @@
 - 3D:
 	- Points: (x, y, z, w);
 	- Planes: ax + by + cz + d = 0;
-	- Lines: (1-lambda)p + lambda q; L=pq-qp (Plucker coordinate);
+	- Lines: (1-λ)p + λ q; L=pq-qp (Plucker coordinate);
 	- Quadrics: x†Qx = 0
 - 2D-Transformation:\
-	<img src="/CV-3D/images/mvg/2d-transform.png" alt="drawing" width="400"/>
-- 2D-Transformation:\
-	<img src="/CV-3D/images/mvg/3d-transform.png" alt="drawing" width="400"/>
+	- Translation: [I|t]; 2-dof
+	- Rigit: [R|t]; 3
+	- similarity: [sR|t]; 4
+	- Affine: [A]2x3; 6
+	- Projective: [H]3x3; 8
+- 3D-Transformation:
+	- Translation: [I|t]; 3-dof
+	- Rigit: [R|t]; 6
+	- similarity: [sR|t]; 7
+	- Affine: [A]3x4; 12
+	- Projective: [H]4x4; 15
 - 3D rotation:
 	- Euler Angle: x, y, z rotation or x, y, x rotation; gimbal lock;
 		- Cross product in matrix form:\
@@ -37,7 +45,7 @@
 		- Distortion:
 			- xc = xc(1 + k1 r^2 + k2 r^4)
 			- yc = yc(1 + k1 r^2 + k2 r^4)
-	- **3D to 2D** (world-to-screen):
+	- 3D to 2D (world-to-screen):
 		- P = K[R|T]; x=PX=KEX;
 		- T = -Rc, with c as the camera center;
 		- R = [R-camx†; R-camy†; R-camz†], row vector as the
@@ -47,23 +55,23 @@
 	- Planar scene: homography: x1 = H x0
 
 ## Geometric intrinsic calibration (Rick Szeliski, Chap 6.3)
-- Calibration patterns: one 3D, or moving 2D\
-	<img src="/CV-3D/images/mvg/pattern.png" alt="drawing" width="400"/>
-- Vanishing points: from a pair of orthogonal, we can estimate focal length\
-	<img src="/CV-3D/images/mvg/vanish-1.png" alt="drawing" width="400"/>\
-	<img src="/CV-3D/images/mvg/vanish-2.png" alt="drawing" width="400"/>
+- Calibration patterns: one 3D, or moving 2D
+- Vanishing points: from a pair of orthogonal, we can estimate focal length
 
 ## Structure From Motion
 - Rick Szeliski, Chap 7
-	- Triangulation: determining a point's 3D position from a set of corresponding image locations and known camera positions is known as triangulation; Pj=Kj[Rj|tj], where tj=-Rjcj and cj is ith camera center;
-		<img src="/CV-3D/images/mvg/triangulate.png" alt="drawing" width="400"/>
+	- Triangulation: determining a point's (x,y, z) from multi-images with known camera pose;
+	- Pj=Kj[Rj|tj], where tj=-Rjcj and cj is ith camera center;
 	- Two-frame structure from motion:
-		- Calibrated: essential matrix (rank deficient b/c Et=0), chirality (a positive distance along the viewing rays emanating from the camera)\
-			<img src="/CV-3D/images/mvg/essential-1.png" alt="drawing" width="400"/>\
-			<img src="/CV-3D/images/mvg/essential-2.png" alt="drawing" width="400"/>\
-			<img src="/CV-3D/images/mvg/essential-3.png" alt="drawing" width="400"/>
-		- Projective (uncalibrated) reconstruction: Fundamental matrix\
-			<img src="/CV-3D/images/mvg/fundamental.png" alt="drawing" width="400"/>
+		- Calibrated: essential matrix (rank deficient b/c Et=0), chirality (a positive distance along the viewing rays emanating from the camera)
+		- t=c1-c0, p-c1, p-c0 co-plane;
+		- x1† E x0 = 0;
+		- E = [t]R
+		- E = U∑V†; (rank-2)
+			- ∑ = [1 0 0]
+			-     [0 1 0]
+			-     [0 0 0]
+		- Projective (uncalibrated) reconstruction: Fundamental matrix
 	- Factorization: M is 2M × 3 and the structure matrix S is 3 × N; SVD of rank 3;
 		<img src="/CV-3D/images/mvg/factor-1.png" alt="drawing" width="400"/>
 	- Bundle adjustment;
@@ -100,14 +108,12 @@
 
 ## Two Views
 - Epipolar Geometry, Essential matrix
-	<img src="/CV-3D/images/mvg/epipolar-constraint1.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/mvg/epipolar-constraint2.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/mvg/epipolar-constraint3.png" alt="drawing" width="600"/>
-
+	- x2† TR x1 = 0 (vectors coplane)
+	- E = TR
 - Estimate essential matrix: 8-point linear algorithm
-	<img src="/CV-3D/images/mvg/8point.png" alt="drawing" width="600"/>
-	<img src="/CV-3D/images/mvg/8point-2.png" alt="drawing" width="600"/>
-
+	- x2† E x1 = 0
+	- a = [x1x2, x1y2, x1z2, y1x2, y1y2, y1z2, z1x2, z1y2, z1z2]
+	- a† E = 0
 - 3D reconstruction
 - Computing F, Computing structure, Plane and homographies.
 

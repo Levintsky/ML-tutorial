@@ -6,8 +6,7 @@
 ## Unclassified
 - NIPS'19 oral:
 	- Multi-marginal Wasserstein GAN. NIPS'19
-- **Causal InfoGAN**: Thanard Kurutach, Aviv Tamar, Ge Yang, Stuart Russell, Pieter Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
-- Dong Wook Shu, Sung Woo Park, and Junseok Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
+- D W Shu, S W Park, and J Kwon. 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions. ICCV'19
 	- https://github.com/seowok/TreeGAN
 - Specifying Object Attributes and Relations in Interactive Scene Generation. ICCV'19
 - Counterfactual Critic Multi-Agent Training for Scene Graph Generation. ICCV'19
@@ -15,7 +14,7 @@
 - CompoNet: Learning to Generate the Unseen by Part Synthesis and Composition. ICCV'19
 - Boundless: Generative Adversarial Networks for Image Extension. ICCV'19
 - Others:
-	- M. Liu and O. Tuzel. Coupled generative adversarial networks. In NIPS, 2016
+	- M. Liu and O. Tuzel. Coupled generative adversarial networks. NeurIPS'16
 - GAN + AE (Reconstruction ability):
 	- **PixelGAN**: Alireza Makhzani, Brendan Frey. PixelGAN Autoencoders. 2017
 		- q(z|x) and p(z) adversarial loss (encoded latent)

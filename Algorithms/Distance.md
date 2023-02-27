@@ -21,11 +21,11 @@
 		- https://www.zhihu.com/question/288185961/answer/459888198
 
 ## Distribution Distance
-- Fisher Divergence: Johnson, O. Information theory and the central limit theorem, 2004.
-	- F(p,q)=Ex∥∇logp(x)−∇logq(x)∥^2,
+- Fisher Divergence: O Johnson. Information theory and the central limit theorem, 2004
+	- F(p,q) = Ex∥∇logp(x)−∇logq(x)∥^2,
 - Alpha divergence:
 	- Dα(p||q) = 4/(1-α^2)[1-∫p(x)^(1+α)/2 q(x)^(1-α)/2 dx]
-	- General, α -> 1, KL(p|q); α -> -1, KL(q|p); α=-, Hellinger;
+	- General, α -> 1, KL(p|q); α -> -1, KL(q|p); α=1/2, Hellinger;
 - Hellinger distance:
 	- D(p||q) = ∫(p(x)^.5 - q(x)^.5)^2 dx
 - Kernelized: KSD (kernelized stein discrepancy)
@@ -49,4 +49,4 @@
 	- S(p,q) = Σj λj∥E.x∼p[A.q ej(x)]∥2.
 - Goodness of fitting given {xi} from p and score function sq():
 	- Su(p,q) = 1/n(n-1) Σ.ij uq(xi,xj)
-- KSD: Q. Liu, J. Lee, and M. Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16
+- KSD: Q Liu, J Lee, and M Jordan. A kernelized stein discrepancy for goodness-of-fit tests. ICML'16

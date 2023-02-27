@@ -135,7 +135,6 @@
 			- Bits-back coding: info-theory view of variational inf;
 			- Decoder: rely on local window and z;
 			- Prior: IAF for more espressiveness;
-		- DVIB:
 - Latent:
 	- **VQ-VAE**: Neural Discrete Representation Learning. NIPS'17
 		- Quantize encoded e=E(x) to discrete codes in Kmeans style;
@@ -170,8 +169,9 @@
 			- Dual loss: L = Ep1(λ(x)) - Ep2(λ(x))
 				- s.t. Lip(λ(x))<=1
 			- Intuitively, λ(x): the cost at x, λ(x1)-λ(x2)<=|x1-x2|, cost diff <= moving cost;
-	- Info: InfoGAN OpenAI NIPS'16;
-		- Insight: maximize mutual-info of context c and G(z,c); (reformulated by restructing c by a NN)
+	- Info: InfoGAN OpenAI NeurIPS'16;
+		- Insight: maximize MI of context c and generated image G(z,c);
+			- reformulated by restructing c by a NN;
 		- min_G max_D V(D, G) - λLI(c, c')
 			- L(D) = LD-GAN
 			- L(G, Q) = LG-GAN - λLI(c, c')

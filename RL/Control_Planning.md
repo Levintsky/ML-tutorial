@@ -99,7 +99,7 @@
 - DeepMind. The Predictron: End-To-End Learning and Planning, ICML'17
 - **OptNet**: B Amos and Z Kolter. OptNet: Differentiable Optimization as a Layer in Neural Networks. ICML'17
 - G Farquhar, T Rocktäschel, M Igl, Sh Whiteson. TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning. ICLR'18
-- P Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
+- Causal-InfoGAN: T Kurutach, A Tamar, G Yang, S Russell, P Abbeel. Learning Plannable Representations with Causal InfoGAN. NIPS'18
 - Berkeley. Variational Inverse Control with Events: A General Framework for Data-Driven Reward Definition. NIPS'18
 - **MPC**: B Amos, I Rodriguez, J Sacks, B Boots, Z Kolter. Differentiable MPC for End-to-end Planning and Control. 2019
 	- https://locuslab.github.io/mpc.pytorch/

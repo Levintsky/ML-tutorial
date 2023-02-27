@@ -77,8 +77,6 @@
 	- Insight: condition everything on class c;
 	- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
 - **VIMCO**: A Mnih and D Rezende. Variational inference for monte carlo objectives. ICML'16
-- **DVIB**: A Alemi, I. Fischer, J V. Dillon, K Murphy. Deep Variational Information Bottleneck. ICLR'17
-	- The negative loss for connection with VAE; (Check Basic-ML/Info-Theory)
 
 ## Backbone
 - Recurrent encoder/decoder:
