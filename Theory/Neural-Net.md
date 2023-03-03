@@ -139,15 +139,15 @@
 	- D Soudry and Y Carmon. No bad local minima: Data independent training error guarantees for multilayer neural networks. 2016
 	- J. Pennington and Y. Bahri. Geometry of neural network loss surfaces via random matrix theory. ICML'16
 	- Q Nguyen and M Hein. The loss surface of deep and wide neural networks. ICML'17
-	- S. Mei, A. Montanari, and P.-M. Nguyen. A mean field view of the landscape of two-layer neural networks. PNAS'18
+	- S Mei, A Montanari, and P Nguyen. A mean field view of the landscape of two-layer neural networks. PNAS'18
 	- J Lan, R Liu, H Zhou, J Yosinski. LCA: Loss Change Allocation for Neural Network Training. NIPS'19
 		- Insight: module-wise training loss during iteration;
 		<img src="/DL/images/empirical/lca-1.png" alt="drawing" width="450"/>\
 		<img src="/DL/images/empirical/lca-2.png" alt="drawing" width="450"/>
 	- C Zhang, S Bengio, and Y Singer. Are all layers created equal? arxiv'19
 - Normalization:
-	- S Santurkar, D Tsipras, A Ilyas, A Madry. How Does Batch Normalization Help Optimization? NIPS'18
-	- Nils Bjorck, Carla P. Gomes, Bart Selman, Kilian Q. Weinberger. Understanding Batch Normalizations. NIPS'18
+	- S Santurkar, D Tsipras, A Ilyas, A Madry. How Does Batch Normalization Help Optimization? NeurIPS'18
+	- N Bjorck, C Gomes, B Selman, K Weinberger. Understanding Batch Normalizations. NeurIPS'18
 	- Y Xu, X Wang. Understanding Weight Normalized Deep Neural Networks with Rectified Linear Units. NIPS'18
 - P Hand. Phase Retrieval Under a Generative Prior. NIPS'18
 - A Zhu. NEON2: Finding Local Minima via First-Order Oracles. NIPS'18

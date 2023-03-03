@@ -78,6 +78,14 @@
 	- Learning Temporal Point Processes via Reinforcement Learning. NIPS'18
 	- Reinforcement Learning of Theorem Proving. NIPS'18
 
+## Efficiency
+- Gradient-free methods (e.g. NES, CMA, etc.)
+- Fully online methods (e.g. A3C)
+- Policy gradient methods (e.g. TRPO)
+- Replay buffer value estimation methods (Q-learning, DDPG, NAF, SAC, etc.)
+- model-based deep RL (e.g. PETS, guided policy search)
+- model-based "shallow" RL (e.g. PILCO)
+
 ## Poker/Chess
 - Chess
 	- Gammon: G Tesauro. Temporal difference learning and td-gammon. 1995.

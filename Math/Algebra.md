@@ -2,14 +2,40 @@
 
 ## Basics
 - Groups:
+	- 群:
+		- 置换群: S(A)
+		- 阶: |G|
+		- Abel: 群每个元素2阶; 素数阶群; 素数p^2阶群;
+		- 非Abel: 欧氏运动群; 最小6阶 (S3);
+		- 同态, 同构, 自同构Aut(G);
+	- 一般线性群GL(n), 特殊线性群SL(n);
 	- 子群, 陪集;
-	- 正规子群(商群需要), 中心化子;
+		- 右陪集Ag
+		- Lagrange: |G|/|H| = [G:H]
+		- 共轭: g^-1Ag = B, 共轭子群; 与a共轭的元素数量[G:C.G(a)]
+		- 正规化子N.G(M) g^-1Mg = M, 中心化子C.G(a), 中心元素;
+		- p质数, p^n阶群有非平凡中心元素;
 	- 循环群;
-	- Lagrange: |G|/|H| = [G:H]
-	- Euler: gcd(a,n)=1 ⇒ a^φ(n)≡1(mod n)
+		- 无限, 生成员 a, a^-1;
+		- 有限, 生成员 φ(n)个;
+		- 没有非平凡子群 ⇔ G素数阶循环群;
+	- 正规子群 商群 同态定理;
+		- ∀a∈G, aNa^-1 = N: 自共轭子群/正规子群;
+		- 左右陪集相等.
+		- 商群 G/N
+		- theo-1: f: G→G′, then G/ker(f) ~ Im(f)
+		- theo-2: N<|G, then 商群G/N ~ 中间群全体{M|N≤M≤G}
+		- theo-3: N<|G, H≤G, then (H⋂N)<|H, N<|NH≤G, and
+			- NH/N ~ H/(H⋂N)
+		- theo-4: N<|G, M<|G, N≤M, then G/M ~ (G/N)/(M/N)
+		- e.g. Z/nZ ~ Zn
+		- e.g. GL(n, C)/SL(n, C) ~ 复数乘法群;
+		- e.g. Klein 4元群, 与Z4不同构;
+	- Euler: n = p1^k1 p2^k2..., then
+		- φ(n) = p1^(k1-1)(p1-1) p2^(k2-1)(p2-1)
+		- gcd(a,n)=1 ⇒ a^φ(n)≡1(mod n)
 	- Fermat: p prime ⇒ a^p−1≡1(mod p)
-	- Wilson: (p —1)!≡-1(modulo p)
-	- 1st-homo: 对kernel 商群 同构于 同态映射后的群;
+	- Wilson: (p—1)!≡-1(mod p)
 - Symmetry Group (operation on sets):
 	- Isometry: 保距离
 		- Translation + O2

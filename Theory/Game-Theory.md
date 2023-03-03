@@ -42,22 +42,22 @@
 
 ## Stable Matching:
 - Gale and Shapely, College admissions and the stability of marriage, American Mathematical Monthly, 1962. (JSTOR)
-- Alvin Roth, A history of the application to matching residents and hospitals
-- Alvin Roth and Marilda Sotomayor, Two-Sided Matching: A Study in Game-Theoretic Modeling and Analysis, Cambridge University Press, 1990.
-- Dan Gusfield and Robert Irving, The Stable Marriage Problem: Structure and Algorithms, MIT Press, 1989
+- A Roth, A history of the application to matching residents and hospitals
+- A Roth and M Sotomayor, Two-Sided Matching: A Study in Game-Theoretic Modeling and Analysis, Cambridge University Press, 1990.
+- D Gusfield and R Irving, The Stable Marriage Problem: Structure and Algorithms, MIT Press, 1989
 
 ## Mechanism Design
-- Introduction to Mechanism Design (for Computer Scientists), by Noam Nisan, in Algorithmic Game Theory.
-- Algorithmic Mechanism Design (or here), by Noam Nisan and Amir Ronen, in Games and Economic Behavior, Volume 35(1-2), April 2001, Pages 166--196.
-- Designing the Perfect Auction, by Hal Varian, Communications of the ACM, 51 (2008), pp. 9-11.
-- Tutorial on Optimal Mechanism Design without Prior, by Jason Hartline
+- N Nisan. Introduction to Mechanism Design (for Computer Scientists), in Algorithmic Game Theory.
+- N Nisan and A Ronen, Algorithmic Mechanism Design (or here), in Games and Economic Behavior, Volume 35(1-2), April 2001, Pages 166--196.
+- H Varian. Designing the Perfect Auction, Communications of the ACM, 51 (2008), pp. 9-11.
+- J Hartline. Tutorial on Optimal Mechanism Design without Prior
 
 ## Auctions
-- Combinatorial Auctions by Liad Blumrosen and Noam Nisan, in Algorithmic Game Theory.
+- L Blumrosen and N Nisan. Combinatorial Auctions. in Algorithmic Game Theory.
 - A Course on Auction Theory, taught by Ron Lavi, Technion.
 - William Vickrey's 1961 paper on auctions: Counterspeculation, auctions, and competitive sealed tenders.
-- Noam Nisan and Ilya Segal, The communication requirements of efficient allocations and supporting pricesstar, Journal of Economic Theory Volume 129(1), July 2006, Pages 192-224.
-- D. Lehman, L. I. Oćallaghan Y. Shoham, Truth revelation in approximately efficient combinatorial auctions, J. ACM, 49(5) Pages: 577 - 602,  2002.
+- N Nisan and I Segal, The communication requirements of efficient allocations and supporting pricesstar, Journal of Economic Theory Volume 129(1), July 2006, Pages 192-224.
+- D Lehman, L Oćallaghan Y Shoham, Truth revelation in approximately efficient combinatorial auctions, J. ACM, 49(5) Pages: 577 - 602,  2002.
 - Article in Haaretz about the Bezeq Auction and interview with Moti Perry (Hebrew)
 
 ## Game Theory and Cryptography

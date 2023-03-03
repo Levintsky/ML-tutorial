@@ -76,6 +76,7 @@
 - Resources:
 	- Mordatch/Hamrick Tutorial (ICML'20)
 	- https://zhuanlan.zhihu.com/p/72642285
+	- Sergey Levine (294 lec-11,12)
 
 ## Basics
 - Learn model and plan (without policy)
@@ -86,15 +87,6 @@
 	- Imitate optimal control in a constrained optimization framework (e.g., GPS)
 	- Imitate optimal control via DAgger-like process (e.g., PLATO)
 	- Use model-free algorithm with a model (Dyna, etc.)
-- Efficiency:
-	- gradient-free methods (e.g. NES, CMA, etc.)
-	- fully online methods (e.g. A3C)
-	- policy gradient methods (e.g. TRPO)
-	- replay buffer value estimation methods (Q-learning, DDPG, NAF, SAC, etc.)
-	- model-based deep RL (e.g. PETS, guided policy search)
-	- model-based "shallow" RL (e.g. PILCO)
-- Known dynamics (294, lec-11)
-	- min cost, s.t. Dynamics
 - Linear case:
 	- LQR: linear transition, quadratic cost
 	- Solved with backward recursion (dynamic programming)
@@ -173,7 +165,7 @@
 		- Insight: approximate, few-step simulation of a reward- dense environment
 		- Problem setup: continuous state and action;
 		- RL: AC, on-policy; (IS not required)
-	- **STEVE**: J Buckman, D Hafner, G Tucker, E Brevdo, H Lee. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
+	- **STEVE**: Google-Brain. Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion. NIPS'18
 - Learn a model as context:
 	- **I2A**: DeepMind. Imagination-Augmented Agents for Deep Reinforcement Learning. NIPS'17
 		- Framework: two-streams
@@ -209,24 +201,26 @@
 - Gaussian-Process Model (non-parametric):
 	- C Rasmussen and M Kuss. Gaussian processes in reinforcement learning. NIPS'03
 	- J Kocijan, R Murray-Smith, C Rasmussen, and A Girard. Gaussian process model based predictive control. ACC'04
-	- Ko, D Klein, D Fox, and D Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
+	- J Ko, D Klein, D Fox, and D Haehnel. Gaussian processes and reinforcement learning for identification and control of an autonomous blimp. ICRA'07
 	- D. Nguyen-Tuong, J. Peters, and M. Seeger. Local Gaussian process regression for real time online model learning. NIPS'08
 	- A. Grancharova, J. Kocijan, and T. A. Johansen. Explicit stochastic predictive control of combustion plants based on Gaussian process models. Automatica'08
 	- M Deisenroth, C Rasmussen, D Fox. Learning to Control a Low-Cost Manipulator using Data-Efficient Reinforcement Learning. RSS'11
 		- Gaussian Process to learn the dynamics
-	- M. Deisenroth, D. Fox, and C. Rasmussen. Gaussian processes for data-efficient learning in robotics and control. PAMI'14
-	- S. Kamthe and M. P. Deisenroth. Data-efficient reinforcement learning with probabilistic model predictive control. AISTATS'18
+	- M Deisenroth, D Fox, and C Rasmussen. Gaussian processes for data-efficient learning in robotics and control. PAMI'14
+	- S Kamthe and M Deisenroth. Data-efficient reinforcement learning with probabilistic model predictive control. AISTATS'18
 - Bayesian Model:
-	- E. Hernandaz and Y. Arkun. Neural network modeling and an extended DMC algorithm to control nonlinear systems. ACC'90
-	- W. T. Miller, R. P. Hewes, F. H. Glanz, and L. G. Kraft. Real-time dynamic control of an industrial manipulator using a neural network-based learning controller. 1990
-	- L.-J. Lin. Reinforcement Learning for Robots Using Neural Networks. 1992
-	- A. Draeger, S. Engell, and H. Ranke. Model predictive control using neural networks. 1995
-- Local NN (time-varying) Model:
+	- E Hernandaz and Y Arkun. Neural network modeling and an extended DMC algorithm to control nonlinear systems. ACC'90
+	- W Miller, R Hewes, F Glanz, and L Kraft. Real-time dynamic control of an industrial manipulator using a neural network-based learning controller. 1990
+	- L Lin. Reinforcement Learning for Robots Using Neural Networks. 1992
+	- A Draeger, S Engell, and H Ranke. Model predictive control using neural networks. 1995
+- Local linear/NN (time-varying) Model:
 	- Guided policy search (model-based RL) for image-based robotic manipulation
 		- https://github.com/cbfinn/gps
-	- S. Levine, C. Finn, T. Darrell, and P. Abbeel. End-to-end training of deep visuomotor policies. JMLR'16
-	- C. Finn, X. Tan, Y. Duan, T. Darrell, S. Levine, and P. Abbeel. Deep spatial autoencoders for visuomotor learning. ICRA'16
-	- Y. Chebotar, K. Hausman, M. Zhang, G. Sukhatme, S. Schaal, and S. Levine. Combining model-based and model-free updates for trajectory-centric reinforcement learning. ICML'17
+		- Model: local linear time-varying p(ut|xt) ~ N(Ktxt + kt, Ct)
+		- Plan: min.p(τ)∈N(τ) E.p[l(τ)] s.t. KL(p(τ)|pˆ(τ)) ≤ ε;
+	- S Levine, C Finn, T Darrell, and P Abbeel. End-to-end training of deep visuomotor policies. JMLR'16
+	- C Finn, X Tan, Y Duan, T Darrell, S Levine, and P Abbeel. Deep spatial autoencoders for visuomotor learning. ICRA'16
+	- Y Chebotar, K Hausman, M Zhang, G Sukhatme, S Schaal, and S Levine. Combining model-based and model-free updates for trajectory-centric reinforcement learning. ICML'17
 - NN Model:
 	- I. Lenz, R. Knepper, and A. Saxena. DeepMPC: Learning deep latent features for model predictive control. RSS'15
 	- A. Punjani and P. Abbeel. Deep learning helicopter dynamics models. ICRA'15
@@ -234,8 +228,8 @@
 	- A. Baranes and P.-Y. Oudeyer. Active learning of inverse models with intrinsically motivated goal exploration in robots. 2016
 	- I. Mordatch, N. Mishra, C. Eppner, and P. Abbeel. Combining model-based policy search with online model learning for control of physical humanoids. ICRA'16
 	- S Depeweg, J Hernández-Lobato, F. Doshi-Velez, and S. Udluft. Learning and policy search in stochastic dynamical systems with Bayesian neural networks. 2016
-	- Y. Gal, R. McAllister, and C. Rasmussen. Improving PILCO with Bayesian neural network dynamics models. ICMLW'16
-	- P. Agrawal, A. V. Nair, P. Abbeel, J. Malik, and S. Levine. Learning to poke by poking: Experiential learning of intuitive physics. NIPS'16
+	- Y Gal, R McAllister, and C Rasmussen. Improving PILCO with Bayesian neural network dynamics models. ICMLW'16
+	- P Agrawal, A Nair, P Abbeel, J Malik, and S Levine. Learning to poke by poking: Experiential learning of intuitive physics. NeurIPS'16
 	- G Williams, N Wagener, B Goldfain, P Drews, J Rehg, B Boots, and E Theodorou. Information theoretic MPC for model-based reinforcement learning. ICRA'17
 		- Replan
 	- A Nagabandi, G Kahn, R Fearing, S Levine. Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning. ICLR'18

@@ -63,7 +63,7 @@
 	- A3C:
 		- All 64 genotypes are evaluated in parallel;
 		- Once the worker has finished T episodes, it chooses B other random genotypes and checks if any of those genotypes have returned a fitness of at least its own fitness
-- J Andreas, D Klein, S Levine, Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
+- J Andreas, D Klein, S Levine. Modular Multitask Reinforcement Learning with Policy Sketches. ICML'17
 - MATL: Wulfmeier et al. Mutual Alignment Transfer Learning. 2017.
 - Hausman et al, Learning an Embedding Space for Transferable Robot Skills. 2018.
 
@@ -74,7 +74,7 @@
 ## Domain Adaptation (DA)
 - Resources:
 	- https://github.com/AI-ON/Multitask-and-Transfer-Learning
-- S Daftry, J. A Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
+- S Daftry, J Bagnell, M Hebert. Learning Transferable Policies for Monocular Reactive MAV Control. 2016
 	- Task: AirDrone MAV flight, monocular reactive control
 	- Deep domain adaptation
 	- Dagger
@@ -137,7 +137,7 @@
 			- trained under an initial randomization distribution Pϕ(ξ) -> policy πθ,Pϕ.
 			- π deployed on both simulator and physical robot to collect τξ and τreal.
 			- Minimize: discrepancy(τξ, τreal)
-			- SimOpt needo to bp through non-differentiable simulator
+			- SimOpt need to bp through non-differentiable simulator
 		- **RCAN**: Google-Brain. Sim-to-Real via Sim-to-Sim: Data-efficient Robotic Grasping via Randomized-to-Canonical Adaptation Networks. 2019
 			- DA + DR for end-to-end RL tasks.
 			- GAN (cGAN) trained in sim: translate dom-rand image -> "canonical"
@@ -170,4 +170,4 @@
 	- Improve generalization: dropout, L2 regularization, data augmentation, environment stochasticity
 
 ## Misc
-- K Kansky, T Silver, D A. Mély, M Eldawy, M Lázaro-Gredilla, X Lou, N Dorfman, S Sidor, S Phoenix, D George. Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics. 2017
+- DeepMind. Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics. 2017

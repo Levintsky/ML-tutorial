@@ -333,16 +333,15 @@
 		- with training distribution, KL = -1/|S| Σ(x,y)∈S logp(y|x,θ), becomes standard loss;
 		- Fisher: F = E_p(x,y)[∇logp(x,y|θ)∇logp(x,y|θ)†] = E_Qx[E_p(y|x)[gg†]]
 		- Geometric interpretation: steepest descent with instrinsic information geometry;
-			- KL(P(θ+d)||P(θ)) = 1/2 d^TFd + O(d^3), locally symmetric;
+			- KL(P(θ+d)||P(θ)) = 1/2 d†Fd + O(d^3), locally symmetric;
 	- Legacy:
-		- S.-I. Amari. Natural gradient works efficiently in learning. Neural Computation, 10(2): 251–276, 1998.
-		- S.-i. Amari and A. Cichocki. Adaptive blind signal processing-neural network approaches. Proceedings of the IEEE, 86(10):2026–2048, 1998.
-		- S.-i. Amari and H. Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
-	- R Pascanu, Y Bengio. Revisiting Natural Gradient for Deep Networks. arXiv preprint arXiv:1301.3584 (2013).
-	- A Bernacchia, M Lengyel, G Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NIPS'18
-	- T George, C Laurent, X Bouthillier, N Ballas, P Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NIPS'18
-	- **FANG**: R. Grosse and R. Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix.
-		- Cholesky decomposition.
+		- S Amari. Natural gradient works efficiently in learning. NC'98
+		- S Amari and A Cichocki. Adaptive blind signal processing-neural network approaches. Proceedings of the IEEE, 86(10):2026–2048, 1998.
+		- S Amari and H Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
+	- R Pascanu, Y Bengio. Revisiting Natural Gradient for Deep Networks. ICLR'14
+	- FANG: R Grosse and R Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix. ICML'15
+		- Cholesky decomposition.	- A Bernacchia, M Lengyel, G Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NeurIPS'18
+	- T George, C Laurent, X Bouthillier, N Ballas, P Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NeurIPS'18
 	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NeurIPS'18
 	- Higher-order:
 		- Y Song, J Song, S Ermon. Accelerating Natural Gradient with Higher-Order Invariance. ICML'18
@@ -362,12 +361,43 @@
 		- PRONG: DeepMind. Natural neural networks. NIPS'15
 			- Whitening each layer.
 
-## Gradient Noise
+## Gradient Noise/Langevin Dynamics
+- Optimization + Sampling; Check Sampoing.md for HMC.
+- Physics Background: Lagrange/Hamilton mechanics, check dynamic-systems;
+- HMC: R Neal. MCMC using Hamiltonian dynamics. 2012
+	- https://blog.csdn.net/qy20115549/article/details/54561643
 - Google-Brain. Adding Gradient Noise Improves Learning for Very Deep Networks. 2015
+- HMC:
+	- R Neal. MCMC using Hamiltonian dynamics. Handbook of Markov Chain Monte Carlo. 2010
+		- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
+		- ηt ~ N(0, εt)
+	- SGHMC: T Chen, E Fox, C Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
 - Langevin Dynamics
+	- SGLD: M Welling, Y W Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
+		- Insight: prove minibatch works.
+		- Model prior p(x|θ), X = {xi}i=1..N, p(θ|X)∝p(θ)∏i=1..N p(xi|θ)
+		- Robins-Monroe (mini-batch):
+			- ∆θt = εt/2(∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt))
+		- Ensure convergence:
+			- ∑εt=∞, ∑εt^2<∞
+		- True gradient: g(θ) = ∇logp(θt) + ∑i=1..N ∇logp(xi|θt)
+		- Deviation from minibatch gradient with finite variance V(θ):
+			- h(θ) = ∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt) - g(θ)
+		- Proof of convergence:
+			- cut into subseq with same total stepsize;
+			- t1, t2, ..., s.t. ∑t=ti..ti+1 εt ~ ε0, as t -> ∞
+			- Each subseq= has variance: ε0/2 g(θts)+O(ε0)
+			- So θt1, θt2 , ... ~ Langevin dynamics with a fixed step size ε, converge to the posterior;
+		- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
+		- https://github.com/henripal/sgld
+		- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
 	- Berkeley. Underdamped Langevin MCMC: A non-asymptotic analysis. COLT'18
 		- Underdamped form of Langevin ~ Nesterov acceleration on simplex of probability measures
 	- Berkely. Sharp convergence rates for Langevin dynamics in the nonconvex setting. arxiv'18.
+	- H Palacci, H Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
+	- Y Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NeurIPS'18
+		- Application: LDA;
+	- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NeurIPS'18
 	- Berkeley. Quantitative W1 convergence of Langevin-like stochastic processes with non-convex potential state-dependent noise. arxiv'19.
 	- Berkeley. Stochastic gradient and Langevin processes. ICML'20
 	- Berkeley. On Thompson sampling with Langevin algorithms. ICML'20
@@ -375,38 +405,6 @@
 		- Normal SGD won't converge;	- Berkeley. High-order Langevin diffusion yields an accelerated MCMC algorithm. JMLR'21
 	- Berkeley. Langevin Monte Carlo without smoothness. AISTATS'20
 		- Smoothness isn't necessary;
-
-## Gradient Noise/Langevin Dynamics
-- Optimization + Sampling; Check Sampoing.md for HMC.
-- Physics Background: Lagrange/Hamilton mechanics, check dynamic-systems;
-- R Neal. MCMC using Hamiltonian dynamics. Handbook of Markov Chain Monte Carlo. 2010
-	- ∆θt = εt/2 (∇logp(θt) + ∑i=1..N ∇logp(xti|θt)) + ηt
-	- ηt ~ N(0, εt)
-- HMC: R Neal. MCMC using Hamiltonian dynamics. 2012
-	- https://blog.csdn.net/qy20115549/article/details/54561643
-- **SGLD**: M Welling, Y W Teh. Bayesian Learning via Stochastic Gradient Langevin Dynamics. ICML'11
-	- Insight: prove minibatch works.
-	- Model prior p(x|θ), X = {xi}i=1..N, p(θ|X)∝p(θ)∏i=1..N p(xi|θ)
-	- Robins-Monroe (mini-batch):
-		- ∆θt = εt/2(∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt))
-	- Ensure convergence:
-		- ∑εt=∞, ∑εt^2<∞
-	- True gradient: g(θ) = ∇logp(θt) + ∑i=1..N ∇logp(xi|θt)
-	- Deviation from minibatch gradient with finite variance V(θ):
-		- h(θ) = ∇logp(θt) + N/n∑i=1..n ∇logp(xti|θt) - g(θ)
-	- Proof of convergence:
-		- cut into subseq with same total stepsize;
-		- t1, t2, ..., s.t. ∑t=ti..ti+1 εt ~ ε0, as t -> ∞
-		- Each subseq= has variance: ε0/2 g(θts)+O(ε0)
-		- So θt1, θt2 , ... ~ Langevin dynamics with a fixed step size ε, converge to the posterior;
-	- Application: a mixture of Gaussians, logistic regression and ICA with natural gradients;
-	- https://github.com/henripal/sgld
-	- A very good resource: https://docs.google.com/presentation/d/1jDXcH7jcnr1SoWMaH6qZqgZJxvvoqvifs6xk65KEzN0/edit#slide=id.p
-- **SGHMC**: T Chen, E Fox, C Guestrin. Stochastic Gradient Hamiltonian Monte Carlo. ICML'14
-- H Palacci, H Hess. Scalable Natural Gradient Langevin Dynamics in Practice. ICML Workshop 2018
-- Y Hsieh, A Kavis, P Rolland. Mirrored Langevin Dynamics. NeurIPS'18
-	- Application: LDA;
-- N Brosse, A Durmus, E Moulines. The promises and pitfalls of Stochastic Gradient Langevin Dynamics. NeurIPS'18
 
 ## Parallel/Distributed
 - Berkeley. Hogwild!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent. 2011

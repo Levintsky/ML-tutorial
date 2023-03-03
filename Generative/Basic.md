@@ -17,8 +17,10 @@
 			- Inception-V3 -> real-im (μ1, Σ1), fake-im (μ2, Σ2)
 			- FID := |μ1-μ2|^2 + tr(Σ1+Σ2-2(Σ1^(.5)Σ2 Σ1^(.5))^.5)
 		- Y Wu, Y Burda, R Salakhutdinov, and R Grosse. On the quantitative analysis of decoder-based generative models. 2017.
+		- A Alemi, I Fischer. GILBO: One Metric to Measure Them All. NeurIPS'18
+			- GILBO := I(X;Z) - KL(p(z|x), e(z|x)) = E.p(x,z)[log[e(z|x)/p(z)]]
 	- Probability model:
-		- To model p(x)
+		- MLE: To model p(x)
 		- NLL/perplexity (VAE, flow);
 - Applications
 	- Music (1D);
@@ -231,8 +233,7 @@
 	- More high-level action in decoder: DRAW, sketch-RNN, Spiral ICML'18;
 - 1-D:
 	- B. Uria, I. Murray, S. Renals, C. Valentini-Botinhao, and J. Bridle. Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE. ICASSP'15
-	- **ByteNet**: DeepMind. Neural machine translation in linear time. 2016
-		<img src="/Generative/images/autor/bytenet.png" alt="drawing" width="550"/>
+	- ByteNet: DeepMind. Neural machine translation in linear time. 2016
 	- DeepMind. Efficient neural audio synthesis. 2018
 
 ## Design-- Normalizing Flow
@@ -245,7 +246,7 @@
 - Good resources:
 	- https://github.com/karpathy/pytorch-normalizing-flows
 	- https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html
-	- **Survey**: G Papamakarios, E Nalisnick, D Rezende, Si Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
+	- Survey: G Papamakarios, E Nalisnick, D Rezende, Si Lakshminarayanan. Normalizing Flows for Probabilistic Modeling and Inference. 2019
 	- Survey: I Kobyzev, S Prince, M Brubaker. Normalizing flows: An introduction and review of current methods. PAMI'20
 - Backbone: **Invertible** Op (required)
 	- Affine/location-scale:  (NICE, RealNVP, IAF, MAF;)
