@@ -73,10 +73,10 @@
 	- Fighting Boredom in Recommender Systems with Linear Reinforcement Learning. NIPS'18
 	- Horizon: Facebook. Horizon: Facebook's Open Source Applied Reinforcement Learning Platform. 2019
 - Misc
-	- Data center cooling using model-predictive control. NIPS'18 Tutorial
+	- Data center cooling using model-predictive control. NeurIPS'18 Tutorial
 - Unclassified
-	- Learning Temporal Point Processes via Reinforcement Learning. NIPS'18
-	- Reinforcement Learning of Theorem Proving. NIPS'18
+	- Learning Temporal Point Processes via Reinforcement Learning. NeurIPS'18
+	- Reinforcement Learning of Theorem Proving. NeurIPS'18
 
 ## Efficiency
 - Gradient-free methods (e.g. NES, CMA, etc.)
@@ -89,7 +89,7 @@
 ## Poker/Chess
 - Chess
 	- Gammon: G Tesauro. Temporal difference learning and td-gammon. 1995.
-	- Chess: M. Campbell, A. J. Hoane, and F. hsiung Hsu. Deep blue. Artificial intelligence, 2002.
+	- Chess: M Campbell, A Hoane, and F Hsu. Deep blue. AI, 2002.
 	- Go-Legacy:
 		- M. Enzenberger. The integration of a priori knowledge into a go playing neural network. URL: http://www.markus-enzenberger.de/neurogo.html, 1996.
 		- M. Enzenberger. an open-source framework for board games and go engine based on monte carlo tree search. 2010.

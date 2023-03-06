@@ -2,55 +2,17 @@
 
 ## Basics
 - Groups:
-	- 群:
-		- 置换群: S(A)
-		- 阶: |G|
-		- Abel: 群每个元素2阶; 素数阶群; 素数p^2阶群;
-		- 非Abel: 欧氏运动群; 最小6阶 (S3);
-		- 同态, 同构, 自同构Aut(G);
-	- 一般线性群GL(n), 特殊线性群SL(n);
-	- 子群, 陪集;
-		- 右陪集Ag
-		- Lagrange: |G|/|H| = [G:H]
-		- 共轭: g^-1Ag = B, 共轭子群; 与a共轭的元素数量[G:C.G(a)]
-		- 正规化子N.G(M) g^-1Mg = M, 中心化子C.G(a), 中心元素;
-		- p质数, p^n阶群有非平凡中心元素;
-	- 循环群;
-		- 无限, 生成员 a, a^-1;
-		- 有限, 生成员 φ(n)个;
-		- 没有非平凡子群 ⇔ G素数阶循环群;
-	- 正规子群 商群 同态定理;
-		- ∀a∈G, aNa^-1 = N: 自共轭子群/正规子群;
-		- 左右陪集相等.
-		- 商群 G/N
-		- theo-1: f: G→G′, then G/ker(f) ~ Im(f)
-		- theo-2: N<|G, then 商群G/N ~ 中间群全体{M|N≤M≤G}
-		- theo-3: N<|G, H≤G, then (H⋂N)<|H, N<|NH≤G, and
-			- NH/N ~ H/(H⋂N)
-		- theo-4: N<|G, M<|G, N≤M, then G/M ~ (G/N)/(M/N)
-		- e.g. Z/nZ ~ Zn
-		- e.g. GL(n, C)/SL(n, C) ~ 复数乘法群;
-		- e.g. Klein 4元群, 与Z4不同构;
-	- Euler: n = p1^k1 p2^k2..., then
-		- φ(n) = p1^(k1-1)(p1-1) p2^(k2-1)(p2-1)
-		- gcd(a,n)=1 ⇒ a^φ(n)≡1(mod n)
-	- Fermat: p prime ⇒ a^p−1≡1(mod p)
-	- Wilson: (p—1)!≡-1(mod p)
 - Symmetry Group (operation on sets):
 	- Isometry: 保距离
 		- Translation + O2
 	- Isometry of the plane:
 		- Translation + rotation + reflection;
 	- Finite groups: cyclic + dihedral group;
-		- orbit/轨道: [x]=Gx
 		- fixed point/不动点;
-		- stablizer: Gs = {g∈G|gs=g}
 		- Index/指数: [G:H] = |G/H|
 		- 所有离散子群: {0} or {Za} or {Za+Zb}
 		- point group/点群: 固定一点的群 ⊂ O2
 		- Crystallographic Restriction: 离散 H ⊂ O2, rotation can only be 1,2,3,4,6 order.
-	- |G| = |Gs| |Os|
-	- Operation on S equivalent to some permutation group in Sn: φ : G → Sn
 - Resources
 	- http://www.cmth.ph.ic.ac.uk/people/d.vvedensky/courses.html
 	- https://www.youtube.com/watch?v=0x7J6tfMu74&list=PLYL2pEY_heMImFBwAC--mKhmFZ10f7GlR
@@ -157,27 +119,6 @@
 		- Proposition: V内积空间. If S ∈ L(V) is an isometry, then |detS| = 1.
 
 ## 1. Things Familiar and Less Familiar (MIT 18.703)
-- Diffeomorphism/微分同胚: 同胚空间带微分结构, typically 可微流形;
-- Homeomorphism, topological isomorphism/同胚:
-	- f bijection/双射 (one-to-one and onto)
-	- f连续,
-	- 逆函数f^(-1)连续 (f is an open mapping).
-- Homotopy/同伦: 可连续形变为, 形变称为homotopy;
-	- 两连续函数间homotopy, 从拓扑空间X到拓扑空间Y 定义为连续函数 H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y s.t.
-		- H(x,0)=f(x)
-		- H(x,1)=g(x)
-- Homology/同调: a general way of associating a sequence of **algebraic objects** such as 阿贝尔群 or modules to other mathematical objects such as 拓扑空间;
-- A Few Preliminary Remarks
-- 集合
-- 映射
-	- Injection; (x1≠x2, y1≠y2)
-	- Surjection; (for any y, there is a x, s.t. f(x)=y)
-	- Bijection; (injection + surjection)
-	- Inverse mapping;
-- A(S) (所有S到自身1-1映射集合)
-- 整数
-- 归纳法
-- 复数
 - (AATA Chap-19) Lattices and Boolean Algebras
 	- Lattices
 		- def. 偏序 **poset**, **Partially Ordered Sets**. reflexive, antisymmetric, transitive.
@@ -191,114 +132,171 @@
 			- The greatest lower bound of a, b ∈ L is called the **meet** of a and b and is denoted by a ∧ b.
 		- Axiom 19.12 **Principle of Duality**. Any statement that is true for all lattices remains true when ≼ is replaced by ≽ and ∨ and ∧ are interchanged throughout the statement.
 
-## 2. Groups (MIT 18.703)
-- AATA-3 群
-	- 3.1 整数
-		- modn群
-		- 对称群: S (保对称性)
-		- 置换群: 
-		- A(S);
-	- 3.2 定义
-		- Def: 闭合性/结合律/单位元/逆元存在 (Closure, Associativity, unit, inverse)
-		- Some Simple Remarks
-			- 单位元/逆元唯一. 左右消去律成立;
-			- Cayley table (凯雷表), 
-			- inv(inv(a))=a
-			- inv(ab)=inv(b)inv(a)
-		- Finite group;
-		- Abelian: ab=ba;
-			- Nonabelian example: T_ab(r)=ar+b; (a group but nonabelian)
-			- f(x,y)=(-x,y) y翻转, g(x,y)=(-y,x) 逆时针 90-deg, fg≠gf
-		- Def. Semigroup/半群: Associative: (a.b).c=a.(b.c)
-			- e.g. 乘法
+## 集合论
+- 映射
+	- 单射: injective/one-to-one: 每个y 最多一个x, s.t. f(x)=y; or x1≠x2, y1≠y2
+	- 满射: surjective/onto: 每个y有x, s.t. f(x)=y
+	- 双射: bijection: 单射+满射
+- 等价关系:
+	- Def: 等价关系/Equivalence: 自反 Reflexity， 对称 Symmetry, 传递 Transitivity
+	- Def: 同态/homomorphism 映射后保计算关系. φ: G -> G' if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
+	- Def: 单同态/monomorphism φ: G ~ G' is 1-1.
+	- 同构/isomorphism: 单同态 + onto. G到自身isomorphism: 自同构.
+	- 微分同胚/Diffeomorphism: 同胚空间带微分结构, typically 可微流形;
+	- 同胚/Homeomorphism, topological isomorphism:
+		- f bijection/双射 (one-to-one and onto)
+		- f连续,
+		- 逆函数f^(-1)连续 (f is an open mapping).
+	- 同伦/Homotopy: 可连续形变为, 形变称为homotopy;
+		- 两连续函数间homotopy, 从拓扑空间X到拓扑空间Y 定义为连续函数 H: X x [0, 1] to Y from the product of the space X with the unit interval [0,1] to Y s.t.
+			- H(x,0)=f(x)
+			- H(x,1)=g(x)
+	- 同调/Homology: a general way of associating a sequence of **algebraic objects** such as 阿贝尔群 or modules to other mathematical objects such as 拓扑空间;
+- 集合
+- A(S) (所有S到自身1-1映射集合)
+- 整数, 复数
+- 归纳法
+
+## 群论/Groups
+- Euler: φ(n), (m, n)=1, m个数
+	- 设 n = p1^k1 p2^k2..., then φ(n) = p1^(k1-1)(p1-1) p2^(k2-1)(p2-1)
+	- Theo (Euler): gcd(a,n)=1 ⇒ a^φ(n)≡1(mod n)
+- Zn中元素个数: φ(n)
+- Fermat: p prime ⇒ a^(p−1)≡1(mod p)
+	- a^p ≡ a (mod p)
+- Wilson: (p—1)!≡-1(mod p)
+- 群:
+	- Def: 结合律 单位元 逆元;
+	- 置换群: S(A)
+	- 凯雷表/Cayley table;
+	- 阶/order: |G| 元素个数
+	- Abel:
+		- 群每个元素2阶;
+		- 素数阶群; (循环群. 同构于Zp)
+			- Proof: 包含a(非e)的子群只能是自身，a是生成员，循环群
+		- 素数p^2阶群;
+		- 循环群;
+	- 非Abel:
+		- 欧氏运动群;
+		- 最小6阶 (S3);
+		- T.ab(r)=ar+b;
+	- 同态/homomorphism, 同构/isomorphism, 自同构Aut(G);
+		- Aut(G): 所有automorphism的集合. 构成群, 是置换群的子群, Aut(G) ≤ SG.
+	- Def: 半群/Semigroup: 结合律: (a.b).c=a.(b.c)
+		- e.g. 乘法
+	- 一般线性群GL(n), 特殊线性群SL(n);
 		- e.g. 特殊线性群 GL(n, C): 可逆. SL(n, C): det(.)=1; Zn 整数加法群;
-	- 3.3 Subgroups/子群
-		- Nonempty subset H of a group G;
-- AATA-4 循环群
-	- 4.1 循环子群
-		- Def. 循环群 Cyclic subgroup: ⟨a⟩={ak :k∈Z}; (循环子群,包含a的最小群)
-		- **循环群都abelian**; 循环群的子群都循环, 生成员b=a^k
-			- 则阶数n/gcd(n,k)
+- 子群, 陪集;
+	- 右陪集/coset: Ag
+	- Def. 指数/index: 左陪集个数 [G:H]
+	- Lagrange: |G|/|H| = [G:H]
+		- Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;
+		- 元素的阶 o(a): 最小m, s.t. a^m=e; o(a)| |G|
+		- Theo: |G| = n, then a^n = e ∀ a ∈ G.
+	- 共轭/conjugacy:
+		- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax
+		- g^-1Ag = B, 共轭子群; 与a共轭的元素数量[G:C.G(a)]
+	- 正规化子N.G(M) g^-1Mg = M, 中心化子C.G(a), 中心元素;
+	- p质数, p^n阶群有非平凡中心元素;
+- 循环群 ⟨a⟩
+	- 无限, 生成员 a, a^-1;
+	- 有限, 生成员 φ(n)个;
+	- 没有非平凡子群 ⇔ G素数阶循环群;
+	- 性质: 循环群都Abelian; 子群都 ⟨a^k⟩, 阶数n/gcd(n,k);
+	- Theo: 无限阶循环群同构于Z.
+	- e.g.
 		- r(cosθ + i sinθ): r cis θ.
 		- T = {z ∈ C : |z| = 1}, C的子群, 生成员 cis(2π/n).
-- AATA-5 置换群
-	- 对称群: S, n!个元素
-	- 置换群: Sn的子群
-	- 对换
-	- 交错群 Alternating groups: A(n), Alt(n): 偶置换群;
-	- 5.2 Dihedral Groups/二面体群
-		- Dn;
-		- n边形所有刚体运动: order 2n;
-		- 包含: r^n=1 s^2=1, srs=r^-1
-		- The Motion Group of a Cube: 6x4=24 (某个面朝上4种x6个面)
+- 正规/normal子群 商群 同态定理;
+	- Def: ∀a∈G, aNa^-1 = N: 对G中所有元素共轭; 自共轭子群/正规子群;
+		- 左右陪集相等.
+	- 商群 G/N
+	- theo-1: f: G→G′, then ker(f)是正规子群, G/ker(f) ~ Im(f)
+	- theo-2: N<|G, then 商群G/N ~ 中间群全体{M|N≤M≤G}
+	- theo-3: N<|G, H≤G, then (H⋂N)<|H, N<|NH≤G, and NH/N ~ H/(H⋂N)
+	- theo-4: N<|G, M<|G, N≤M, then G/M ~ (G/N)/(M/N)
+	- e.g. Z/nZ ~ Zn
+	- e.g. GL(n, C)/SL(n, C) ~ 复数乘法群;
+	- e.g. Klein 4元群, 与Z4不同构;
+- 置换群/Permutation-Group;
+	- 对称群/Symmetry-group: |Sn| = n!;
+		- Sn生成元: (12), (13),..., (1n);
+	- 置换群: Sn的子群;
+	- 对换/transposition;
+	- 交错群/Alternating groups: An, [Sn:An]=2;
+		- An生成元: 全体长为3的轮换;
+		- 1. An的正规子群N 若包含某(i,j,k) 则N=An.
+			- 证明: (i,j,a) 由normal 必包含(i,j,k)
+		- 2. An的正规子群N 必包含3-cycle.
+			- i. σ=(a1,...,ar), σ^-1(a1,a2,a3)σ(a1,a2,a3)^-1=(a1,a3,ar)
+			- ii: σ=(a1,a2,a3)(a4,a5,a6), σ^-1(a1,a2,a4)σ(a1,a2,a4)^-1=(1,4,2,6,3)
+			- iii: ...
+		- n ≥ 5, An为单群;
+		- n ≥ 5, An为Sn唯一非平凡正规子群;
+	- 单群: 只有平凡正规子群的群;
+	- e.g. 二面体群/Dihedral Groups: Dn;
+		- 所有刚体运动: distance-preserving;
+		- n边形n-gon, order |2n|;
+			- 包含: r^n=1 s^2=1, srs=r^-1
+		- D3 ~ S3
+		- 立方体: 6x4=24 (某个面朝上4种x6个面)
 		- Theo: The group of rigid motions of a cube is S4.
-- AATA-6 Coset and Lagrange's Theorem
-	- 6.1 Coset/陪集
-		- 左操作
-		- G ⊂ H. gH 左陪集; Hg 右陪集;
-		- Def. 指数/index: 左陪集个数 [G:H]
-	- 6.2 Lagrange's Theorem
-		- Theo-6.10 Lagrange. |G|/|H| = [G:H]
-	- 6.3 Fermat’s and Euler’s Theorems
-		- Theo-6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
-		- Theo-6.18 Euler. gcd(a,n)=1. Then a^φ(n)≡1(mod n)
-		- Theo-6.19 Fermat’s Little Theorem. p prime, then a^p−1 ≡ 1 (mod p)
+- 群在集合上的作用:
+	- 理想的群样板: 置换群(置换表示) 矩阵群(线性表示);
+	- X: G-set;
+	- f: G→S(X) 每个同态: 置换表示; 单同态: 忠实表示;
+	- 轨道/orbit: x∈X, [x]=Gx
+		- Def. G-equivalent: x,y ∈ X, ∃g∈G s.t. gx = y. x ~ Gy or x ~ y.
+		- |O.x|或[x]: 轨道里元素数;
+	- Def. 不动点集/fixed point set Xg, x ∈ X s.t. gx = x.
+	- Class Equation: |X| = |X.G| + Σi=k.n |[xi]|
+		- X.G = {x∈X: gx=x, ∀g∈G}, 对所有g∈G的不动点子集;
+	- 对群X=G:
+		- 左正则表示/left regular representation: ρ: G → S(G), ρ(g)a = ga;
+		- 右正则表示: τ: G → S(G), τ(g)a = ag^-1;
+		- Class-Eqn: |G| = |Z(G)| + [G:C(x1)] + ... + [G:C(xk)]
+			- Z(G):C(G)中心化子; x1,...xk各个共轭类;
+	- 对陪集: G, H≤G,
+		- 左诱导表示: ∑={aH|a∈G}
+			- ρ.H: G → S(X), s.t. ρ.H(g)(aH) = gaH
+			- Ker(ρ.H) = ⋂aHa^-1, 所有共轭子群的交
+		- 右诱导表示: ∑={Ha|a∈G}
+			- τ.H: G → S(X), s.t. τ.H(g)(Ha) = Hag^-1, Ker(τ.H)同左诱导;
+		- 共轭表示: ∑={aAa^-1|a∈G}
+			- π.H: G → S(X), s.t. π(g)(aAa^-1) = gaA(ga)^-1
+			- Ker(π) = ⋂aN.G(A)a^-1, 所有正规化子共轭子群的交
+	- Theo-1 Cayley: 每个群同构于某个置换群; φ : G → Sn
+	- 固定子群/stablizer-subgroup/isotropy subgroup: a∈X, Ga = {g∈G|ga=g}
+		- Theo-2 轨道公式: |G| = |Ga| |[a]|
+		- Dn: 对某顶点固定子群2个;
+	- Theo-3 4n+2阶群 不是单群;
+	- 引理-2 有限群 p为|G|最小素因子, 若N≤G, [G:N]=p, 则N<|G.
+	- Theo-伯恩赛德引理/Burnside Counting/Polya: G在X上轨道数k:
+		- k = 1/|G| ∑.gi∈G |X.gi|
+		- 证明: ∑.g |X.g| = ∑.x |G.x| = k |G| 每个g不动点数之和,每个x轨道等价类之和.
+- 希洛夫/Sylow 定理
+	- Index: i.G(C(a)) = |G|/|C(a)|; C(a)陪集个数 = 与a共轭元素数;
+	- Theo-Cauchy. If p prime, p| |G|, G存在p阶元素/p阶子群.
+		- 证明: n=|G|=|Z(G)|+[G:C(x1)]+...+[G:C(xk)]
+		- i: p| |C(xi)|, C(xi)包含(归纳法)
+		- ii: (p, C(xi))=1, 则p|[G:C(xi)], p|Z(G).(归纳法)
+	- Sylow-p子群
+	- Lemma: P Sylow-p子群, 元素 p| o(x), if x^-1Px=P, then x ∈ P.
+	- p素数, p^r| |G|, N(n)为n阶子群个数, then
+		- Theo-Sylow-1st: 至少存在1个p^r阶子群. (归纳法)
+		- Theo-Sylow-2nd: 所有Sylow-p子群共轭, P1, P2, ∃g, s.t. gP1g^-1=P2
+		- Theo-Sylow-3rd: N(p^r)≡1(mod p)
+	- Theo: 群G有pq个元素, p, q素数且p > q. a ∈ G为p阶, 则子群⟨a⟩正规A <| G.
+	- Theo: 非Abel单群最小阶60 且60阶必同构于A5.
+
 - AATA-7 Cryptology
 	- RSA: n=pq, p q prime numbers; φ(n)=m=(p−1)(q−1), find E s.t. gcd(E,m)=1, find DE ≡ 1(mod m);
 		- E and n: known to everyone;
 		- B send A message x, send y=x^E mod n;
 		- A has D x=y^D mod n; D: private;
-- AATA-9 Isomorphism
-	- Def: isomorphic (G,·) and (H,◦) 若存在1-1, onto映射φ: G → H
-		- φ(a·b) = φ(a) ◦ φ(b)
-	- Theo-9.12 Cayley. Every group is isomorphic to a group of permutations.
-	- 9.2 direct product
-		- External direct product: (g,h) ∈ G × H
-		- (g1, h1)(g2, h2) = (g1 · g2, h1 ◦ h2)
-- Groups action 群在集合上操作
-	- 群到Sn的同态: 置换表示; 群到矩阵的表示: 线性表示;
-	- X is called **G-set**.
-	- Def. G-equivalent: x,y ∈ X, ∃g∈G s.t. gx = y. x ~ Gy or x ~ y.
-	- Def. G-轨道/orbit: x ∈ X. [x]=Gx. 元素变化只能在等价类的轨道内.
-	- Def. 不动点集/fixed point set Xg, x ∈ X s.t. gx = x. 
-	- Def. stabilizer/isotropy-subgroup: Gs = {g∈G|gs=g}.
 - Lagrange's Theorem
-	- def. 阶(order) 元素个数;
-	- def. 等价关系(Equivalence): 自反 Reflexity， 对称 Symmetry, 传递 Transitivity
-	- H ⊂ G, a ~ b if ab^(-1) ∈ H; then ~ is equivalence;
-		- a ~ b iff a ∈ Hb={hb|h in H}, Hb: 右陪集 right coset of H in G;
-		- 5条件等价: g1H=g2H; Hg1^(-1)=Hg2^(-1); g1H ⊂ g2H; g2 ∈ g1H; g^(−1)g2 ∈ H.
-		- Theo: 左陪集个数=右陪集个数. (证明:构造一一映射 φ(gH) = Hg^−1)
-	- a ~ b if ∃ x ∈ G, s.t. b = x^(-1)ax (conjugacy) 共轭
-	- [a] the class of a;
-	- Def. Congruence modulo n;
-	- Theo 2.4.1: ~ partisions S into equivalence classes;
-	- **Lagrange定理逆命题不正确: A4 12个元素，无6元素子群;**
-	- Theo-2.4.3: 素数阶群都Abel而且循环群. 同构于Zp
-		- Proof: 包含a(非e)的子群只能是自身，a是生成员，循环群
-	- Def: **order** o(a), least positive integer m, s.t. a^m=e
-	- e.g. Nonabelian群至少6阶, i.e., S3.
-	- Theo 2.4.4: If G is finite and a ∈ G, then o(a)| |G| 
-	- Theo 2.4.5: If G is a finite group of order n, then a^n = e ∀ a ∈ G.
-	- Theo 2.4.6: Zn forms a cyclic group under the addition [a] + [b] = [a + b].
 	- Theo 6.17 Let U(n) be the group of units in Zn. Then |U(n)| = φ(n).
-	- Def: The **Euler φ-function**, φ(n), is defined by φ(1) = 1 and, for n > 1, φ(n)=the number of positive integers m with 1 <= m < n such that(m,n)= 1.
-	- Theo 2.4.7: Un forms an abelian group, under the product [a][b] = [ab], of order φ(n), where φ(n) is the Euler φ-function.
-	- Theo-2.4.8 (Euler). If a is an integer relatively prime to n, then a^φ(n) = 1 mod n.
-	- Corollary (Fermat). If p is a prime and p not dividable by a, then a^(p-1) =1 mod p.
-		- For any integer b, b^p = b mod p.
 - 同态 Homomorphisms 正规子群 Normal Subgroups
-	- Def: homomorphism/同态 映射后保计算关系. φ: G -> G' if φ(ab) = φ(a)φ(b) ∀ a, b ∈ G.
-	- Def: monomorphism/单同态 φ: G ~ G' is 1-1.
-	- 单同态+ onto 同构/isomorphism. G到自身isomorphism: 自同构.
-	- 同构映射保持: 单位元, 逆元, 元素个数, abelian, cyclic, 子群;
-	- Theo: 无限阶循环群同构于Z.
-	- Theo: n阶循环群同构于Zn.
-	- Corollary: If G is a group of order p, where p is a prime number, then G is isomorphic to Zp.
-	- S3, Z6不同构, S3 nonabelian;
-	- If φ() is homomorphism of G into G', 保单位元和逆元
-	- Def: 象**image** of φ, φ(G)={φ(a)|a φ G}.
-	- Def: 核**kernel** Ker(φ)={a ∈ G|φ(a)=e'}, measures the lack of 1-1'ness.
 	- Corollary. If φ is a homomorphism of G into G', then φ 单同态 ⇔ Ker φ = (e).
 	- Def: 正规子群/normal subgroup. N ⊂ G, a^(-1)Na ∈ N ∀ a ∈ G. 对所有元素自共轭.
 		- e.g. Abel群的任何子群;
@@ -307,25 +305,8 @@
 			- The subgroup N is normal in G.
 			- ∀ g ∈ G, g N g^−1 ⊂ N.
 			- ∀ g ∈ G, g N g^−1 = N.
-	- Theo: 正规子群等价于任何左陪集也是右陪集.
-	- Lemma: 任何交错群An可由3-cycle产生;
-		- Proof: 一对对换可有3-cycle产生:
-			- (a,b)(a,b)=1;
-			- (a,b)(c,d)=(a,c,b)(a,c,d)
-			- (a,b)(a,c)=(a,c,b)
-	- **Lemma: N是An正规子群 n ≥ 3. 如果N包含3-cycle, 则N = An.**
-		- Proof: 假定包含(i,j,k) 由正规性
-			- [(i,j)(a,k)](i,j,a)^2[(i,j)(a,k)]^−1 =(i,j,k)
-			- 必包含(i,j,k), 由上一Lemma可生成整个An
-	- Lemma: For n ≥ 5, every nontrivial normal subgroup N of An contains a 3-cycle.
-	- **Theo: 5阶及以上交错群为单群。 The alternating group, An, is simple for n ≥ 5.**
 - 因子群/商群 Factor Groups (also Quotient group)
-	- Def. 中心化子 centralizer. for a ∈ G, C(a)={g ∈ G|ga=ag}; 是群;
-		- 群G的关于子群M的正规化子: N_G(M)
-	- Def. 中心 center Z(G)={z ∈ G|zx=xz ∀ x ∈ G}; 集大小反应交换程度;
 	- Theo: 与M共轭子集个数=[G:N_G(M)], i.e. G对中心化子M的陪集个数.
-	- Theo: p prime, G: p^n order, then G有不平凡center.
-	- Theo: p prime, p-order, p^2-order群一定Abel.
 	- let M = {[a]|a ∈ G}, where [a]={x ∈ G|xa^(-1) ∈ N}=Na.
 		- [a][b]=[ab]=[a'b']=[a'][b'], this product of classes does not depend on the particular representatives we use for the classes.
 	- Theo: 陪集构成群 If N <| G and G/N = {[a]|a ∈ G} = {Na|a ∈ G},
@@ -333,22 +314,9 @@
 	- Theo: If N <| G, then there is a homomorphism ψ of G onto G/N such that Ker(ψ), the kernel of ψ, is N.
 	- Theo: If G is a finite group and N <| G, then |G/N|=|G|/|N|.
 	- Theo 2.6.4: If G is a finite abelian group of order |G| and p is a prime that divides |G|, then G has an element of order p.
-	- e.g. G={T_a,b|a≠0, b real}, N={T_1,b|b real} <| G. T_a,b and T_a,0 are in the same left coset of N in G. Identifying T_a,b as T_a,0. G/N multiplication is like nonzero real numbers under multiplication.
 	- e.g. G={real, +}, Z={Z,+} <| G, G/Z as [0,1], a circle.
-- The Homomorphism Theorems
-	- Theo: 核构成正规子群. φ : G → H be a group homomorphism. Then the kernel of φ is a normal subgroup of G.
-	- Theo (First Homomorphism Theorem). 对核的商群同构于映射后的群. Let φ be a homomorphism of G onto G' with kernel K. Then G' ~ G/K, the isomorphism between these being effected by the map 
-		- ψ: G/K to G', defined by ψ(Ka) = φ(a).
-	- Theo (Correspondence Theorem). 映射后的群G'的子群H'的原像H是G的子群 若H'正规则原像正规. Let the map φ: G -> G' be a homomorphism of G onto G' with kernel K. If H' is a subgroup of G' and if
-		- H = {a ∈ G|φ(a) ∈ H'},
-		- then H is a subgroup of G, H ⊃ K and H/K ~ H'. Finally, if H' is subnormal G', then H is subnormal of G.
-	- Theo: (Second Homomorphism Theorem).H是G的子群,N是G的正规子群,则HN为子群,HnN为正规子群. Let H be a subgroup of a group G and N <| G. Then HN = {hn | h ∈ H, n ∈ N} is a subgroup of G, H n N is a normal subgroup of H, and H/(H n N) ~ (HN)/N.
-	- Theo 2.7.4: (Third Homomorphism Theorem). If the map φ: G ~ G' is a homomorphism of G onto G' with kernel K then, if N' <| G' and N = {a ∈ G |φ(a) ∈ N'}, we conclude that G/N ~ G'/N'. Equivalently, G/N ~ (G/K)/(N/K).
-	- Aut(G): 所有automorphism的集合. 构成群, 是置换群的子群, Aut(G) ≤ SG.
 - Cauchy's Theorem
 	- Extends Theo 2.6.4 to non-abelian group;
-	- Theo-2.8.2 (Cauchy). If p prime, p| |G|, then G contains an element of order p.
-	- Lemma 2.8.3: 群G有pq个元素, p, q素数且p > q. a ∈ G为p阶, 则子群< a >正规A <| G.
 	- Lemma 2.8.4. a ∈ G m阶, b ∈ G n阶, m, n互素且ab = ba, then c = ab mn阶.
 	- Theo 2.8.5. Let G be a group of order pq, where p, q are primes and p>q. If q is not dividable by p-1, then G must be cyclic.
 - Direct Products
@@ -359,25 +327,6 @@
 	- Lemma 2.9.2. Let G be a group, M, N normal subgroups of G such that M ∩ N = (e). Then, given m ∈ M and n ∈ N, mn=nm.
 	- Lemma 2.9.3. If G is the internal direct product of its normal subgroups N1, N2,... , Nn, then, for i≠j, Ni ∩ Nj = (e).
 	- Theo 2.9.4. Let G be a group with normal subgroups N1, N2,  ,Nn. Then the mapping ψ(a1, a2, ... , an) = a1a2 ... an is an isomorphism from N1 X N2 X ... X Nn (external direct product) onto G if and only if G is the internal direct product of N1, N2,... , Nn.
-- Finite Abelian Groups (Optional)
-	- **Theo 2.10.3 (Fundamental Theorem on Finite Abelian Groups). A finite abelian group is the direct product of cyclic groups.**
-- 希洛夫定理 Conjugacy and Sylow's Theorem (Optional)
-	- Def: b = x^(-1) a x, equivalence
-	- Def. **centralizer** of a ∈ G, is defined by C(a) = {x ∈ G |xa = ax}. 中心化子: 对某元素a可交换
-	- Lemma 2.11.1. For a ∈ G, C(a) is a subgroup of G.
-	- Def: 指数 **index** i_G(C(a)), the **number of right coset** (G finite group).
-	- Theo 2.11.2. Let G be a finite group and a ∈ G; then the number of distinct conjugates of a ∈ G equals the index of C(a) ∈ G.
-	- Def. p-群 **p-group** 所有元素 order p^n, p is a prime.
-	- Def. 希洛夫 p-子群. G群有p^n m个元素. p质数 与m互素. p^n阶子群: 希洛夫 p-子群
-	- **Theo 2.11.3 (The Class Equation)**. If G is a finite group, then
-		- |G| = ∑i_G(C(a)) = ∑|G|/|C(a)| where the sum runs over one a from each conjugacy class.
-	- Theo 2.11.4. G p-group, then Z(G), the center of G, is not trivial (i.e., there exists an element a ≠ e ∈ G s.t. ax= xa ∀ x ∈ G). 存在不平凡中心
-	- Theo 2.11.5. If G is a group of order p^2, where p is a prime, then G is abelian.
-	- Theo 2.11.6. G p-group, then G contains a normal subgroup of order p^n-1.
-	- **Theo 2.11.7 (First Sylow's Theorem)**. 对每个质数p. G的希洛夫p-子群|p^n|存在.
-	- Theo (Second Sylow Theorem). G的希洛夫p-子群彼此共轭. if P1 and P2 are two Sylow p-subgroups, there exists a g ∈ G such that g P1 g^(−1) = P2.
-	- **Theo (Third Sylow Theorem).** G的希洛夫p-子群个数 = 1 mod(p), divides |G|.
-	- Theo. 设P为G的某个希洛夫p-子群, 则G的希洛夫p-子群个数=[G:N_G(P)]
 - 矩阵群:
 	- GL: 所有可逆. SL: 行列式为1.
 	- 正交群: O(n)

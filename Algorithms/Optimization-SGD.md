@@ -292,7 +292,7 @@
 			- Compute gradient: gt;
 			- E[g^2]t = ρE[g^2]t-1 + (1-ρ)gt^2;
 			- Update: Δxt = -RMS(Δxt-1)/RMS(gt) gt
-			- E[Δx^2]t = ρE[Δx^2]t-1 + (1-ρ)Δxt^2^2;
+			- E[Δx^2]t = ρE[Δx^2]t-1 + (1-ρ)Δxt^2;
 			- Apply update: xt+1 = xt + Δxt
 	- **Rmsprop**:
 		- E[g^2]t = 0.9E[g^2]t-1 + 0.1 gt^2; average 2nd-order momentum
@@ -340,7 +340,8 @@
 		- S Amari and H Nagaoka. Methods of information geometry, volume 191. American Mathematical Soc., 2007.
 	- R Pascanu, Y Bengio. Revisiting Natural Gradient for Deep Networks. ICLR'14
 	- FANG: R Grosse and R Salakhudinov. Scaling up natural gradient by sparsely factorizing the inverse fisher matrix. ICML'15
-		- Cholesky decomposition.	- A Bernacchia, M Lengyel, G Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NeurIPS'18
+		- Cholesky decomposition.
+	- A Bernacchia, M Lengyel, G Hennequin. Exact natural gradient in deep linear networks and application to the nonlinear case. NeurIPS'18
 	- T George, C Laurent, X Bouthillier, N Ballas, P Vincent. Fast Approximate Natural Gradient Descent in a Kronecker Factored Eigenbasis. NeurIPS'18
 	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NeurIPS'18
 	- Higher-order:

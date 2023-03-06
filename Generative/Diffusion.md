@@ -96,6 +96,8 @@
 - **SAM**: P Foret, A Kleiner, H Mobahi, and B Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
 - **Analytic-DPM**: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
 - **Stable diffusion**: R Rombach, A Blattmann, D Lorenz, P Esser, B Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
+- **Imagen**: Google-Brain. Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding. NeurIPS'22
+- MidJourney: https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
 
 ## Condition/Guidance
 - Classifier:
