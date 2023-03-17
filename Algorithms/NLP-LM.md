@@ -26,10 +26,17 @@
 - Amazing/latest LLM:
 	- Google LaMDA: https://blog.google/technology/ai/lamda/
 	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
+		- 540B para, Pathways ML system; 118-layers, 48-head, 18,432 dim;
+		- SwiGLU activation;
 	- Google CoPilot;
 	- Google: Large Language Models Encode Clinical Knowledge
 	- OpenAI. Scaling laws for neural language models. arxiv'20
 	- DeepMind. Training compute-optimal large language models. arxiv'22
+- GLaM (Duet al., 2021)
+- Gopher (Rae et al., 2021)
+- Chinchilla (Hoffmann et al., 2022)
+- Megatron–Turing NLG (Smith et al., 2022)
+- and LaMDA (Thoppilan et al., 2022),
 
 ## Legacy
 - Unigram: p(w1,...,wn) = ∏P(wi)

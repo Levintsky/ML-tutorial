@@ -2,168 +2,122 @@
 
 ## Basics
 - Framework:
-	- x0 (original signal)
-	- Denoising: p() xT - ... - xt - xt-1 - x0
-		- Prob model: p(x0:T)=p(xT) prod p(xt-1|xt); i.e., denoising process;
-		- p(xt-1|x) = N(xt-1; μ(xt, t), Σ(xt, t))
-	- Adding noise: q() x0 - x1 - x2 - ... - xT as the approximate posterior q()
-		- Forward pass (diffusion process), q(x1:T|x0)=prod q(xt|xt-1);
-		- Model: q(xt|xt-1)=N(xt; √(1-β_t)xt-1, β_t)
-		- beta can be constant or learned by reparametrization trick;
-	- Goal: maximise p(x0;θ) = int p(x0:T) dx1:T
-		- ELBO: E(-log p(x0)) = Eq(-log p(x0:T)/q(x1:T|x0))
+	- x0: signal; xT ~ N(0, I)
+	- Prob model: Markov-Chain: xT → ... → xt → xt-1 → x0
+		- Denoising: p(x0:T)=p(xT)∏p(xt-1|xt)
+		- latent model: p(x0) = ∫p(x0:T;θ)dx1:T
+		- p(xt-1|xt) ~ N(μ(xt, t), Σ(xt, t))
+	- Approx: x0 → x1 → x2 → ... → xT 
+		- Forward/diffusion process: q(x1:T|x0)=∏q(xt|xt-1);
+		- q(xt|xt-1) ~ N(√(1-βt)xt-1, βt)
+		- β can be constant or learned by reparametrization trick;
+	- Goal: maximise p(x0;θ) = ∫p(x0:T) dx1:T
+		- VAE trick, z as x1:T
+		- ELBO: E[-logp(x0)] = Eq[-log p(x0:T)/q(x1:T|x0)]
 		- q(xt|x0) ~ N(xt; √(α't)x0, (1-α't)I), because of Gaussian additive!
 		- **Traceable p(xt-1|xt,x0)** given x0, xt
 		- Loss: KL(q(xt-1|xt,x0)|p(xt-1|xt))
-	- Training:
-		- Optimize any term of Lt-1=KL(q(xt-1|x0, xt) || p(xt-1|xt))
-	- Inference:
-		- Start from XT, xt-1=xt+Σt z, z ~ N(0, 1) Langevin dynamics;
-- DDPM: ignoring weight w in E[w|zt-z(x0,zt;θ)|]
-- Score-based:
+	- Training: optimize any term of Lt-1=KL(q(xt-1|x0, xt) || p(xt-1|xt))
+	- Inference: start from XT, xt-1=xt+Σt z, z ~ N(0, 1) Langevin dynamics;
+- Continuous time variance-preserving Markov process:
+	- z = {zλ | λ ∈ [λmin, λmax]};
+	- q(zλ|x) ~ N(αλx, σλ^2I), where αλ^2 = 1/(1+e−λ), σλ^2 =1−αλ^2;
+	- q(zλ|zλ′) ~ N((αλ/αλ′)zλ′, σλ′I), where λ<λ′, σ2′ =(1−eλ−λ′)σλ2
+	- Forward: decreaing λ;
+- Score-based: check math/DiffEqn.md
+	- Connetion denoising to estimating score ∇xlog(p(x)) with s(x; θ)
+	- Reverse-time SDE: dX = [μt - σt^2 ∂logp/∂x]dt + σt dBt
+	- Known score ∂logp/∂x, we can recover signal:
+		- xt - xt+Δt = [μt - σ^2 ∂logp/∂x]Δt + σ√Δt
+	- NCSN: perturb with different noise level, estimate s(x; θ) with one neural net;
+- Guidance:
+	- Classifier: ε̃θ(zλ,c) = εθ(zλ,c) − wσλ ∇zλ logpθ(c|zλ) ≈ −σλ ∇zλ[logp(zλ|c) + wlogpθ(c|zλ)],
+	- Classifier-free: ε̃θ(xt|c) = εθ(xt|∅) + w(εθ(xt|c) − εθ(xt|∅))
+- Continuous time (Connection with score-based):
 	- ∇x logp(x; θ)
 - Techniques:
-	- Alex Nichol and Prafulla Dhariwal. '21
-		- cosine-based variance schedule?
-	- Parametrization:
-		- β: learned or constant?
-		- Variance: learned?
+	- DDPM: ignoring weight w in E[w|zt-z(x0,zt;θ)|]
+	- Cascade:
+	- Parametrization of βt (forward variance):
+		- DDPM: linearly increase: β1=1e-4, βT=0.02
+		- Improved DDPM: cosine-based schedule;
+	- Parametrization of Σ(θ);
+		- DDPM: Σ(xt, t;θ) = σt^2 I;
+		- Improved DDPM: mixture with v:
+			- Σ(xt, t;θ) = exp[vlogβt + (1-v)logβt']
 	- Speedup:
-		- Nichol and Dhariwal'21: reduced to T/S steps;
-		- DDIM:
+		- Improved DDPM: reduced to S steps; (by [T/S] times)
+			- Sample every [T/S] steps;
+		- DDIM: sampling only S steps;
 - Tutorial:
 	- https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 
 ## Diffusion Model
 - J Sohl-Dickstein, E Weiss, N Maheswaranathan, and S Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
-	- Forward (adding noise): with diffusion kernel Tπ
-		- π(y) = ∫dy' Tπ(y|y';β)π(y')
-		- q(xt|xt−1)= Tπ(xt|xt−1; βt)
-	- Reverse trajectory: denoising;
-		- p(xT) = π(xT)
-		- p(x0···T) = p(xT)∏t=1..T p(xt−1|xt).
-	- Training loss: log likelihood
-		- L = ∫dx0 q(x0) logp(x0)
-		- L = ∫dx0 q(x0) log(∫dx1...T q(x1...T|x0) p(xT) ∏t=1..Tp(xt-1|xt)/q(xt|xt-1))
-		- L >= ∫dx0..T q(x0..T) log(p(xT) ∏t=1..Tp(xt-1|xt)/q(xt|xt-1)) (Jensen: φ(E(x))>=E(φ(x)) for concave functions log)
-		- L>=K, lower bound: L ≥ K = −Σt=2..T ∫dx0 dxt q(x0, xt) . KL(q(xt-1|xt,x0)||p(xt-1|xt)) + Hq(XT|X0) - Hq(X1|X0) - Hp(XT)
-			- KL, entropy has closed form;
-		- Training: maximize K, w.r.t. all Markov transitions p(xt-1|xt);
-	- Training a specific transition;
-		- p(x0), denoising posterior p'(x0) ∝ p(x0)r(x0);
-			- p'(y|xt) ∝ p(y|xt)r(y) = N(y; μ, Σ)r(y)
-			- p'(xt)=p(xt)r(xt)/Zt; Zt normalizing constant;
-			- E(y) ~ (y-μ)Σ^-1(y-μ)/2 + Er(y); (y very small perturbation, so Taylor Expansion)
-			- g=∂Er(y')/∂y'|y'=μ, E(y)=(y-μ+Σg)Σ^-1(y-μ+Σg)/2
-			- p(xt-1|xt) ~ N(xt-1; fμ(xt,t)+fΣ(xt,t) ∂logr(xt-1)/∂xt-1|xt-1=fμ(xt,t), fΣ(xt,t))
-		- **Perturbed model transition should obey equilibrium**: p'(xt) = ∫dxt+1 p'(xt|xt+1)p'(xt+1);
-		- r(x): hopefully multipied with a Gaussian/binomial in closed form;
+	- Insight: 1st to propose Markov Chain and piecewise KL loss;
 - DDPM: J Ho, A Jain, P Abbeel. Denoising Diffusion Probabilistic Models. NeurIPS'20
 	- https://github.com/hojonathanho/diffusion
-	- Forward:
-		- q(x1:T|x0):=∏q(xt|xt−1), q(xt|xt−1):= N(xt; √(1−βt)xt−1, βtI)
-	- Reverse:
-		- pθ(x0:T) := p(xT)∏pθ(xt−1|xt), pθ(xt−1|xt):=N(xt−1; μθ(xt, t), Σθ(xt, t))
-	- Loss:
-		- E(-logpθ(x0)) <= Eq(-logp(x0..T)/q(x1:T|x0)) = Eq(-logp(xT)-Σlog pθ(xt-1|xt)/q(xt|xt-1))
-	- Let αt:=1−βt and α't:=∏s=1..t αs
-		- q(xt|x0) = N(xt; √(α't)x0, (1−α't)I)
-		- q(xt−1|xt,x0) = N(xt−1;μ't(xt,x0),β'tI),
-			- with μt(xt,x0):=√(α't−1)βt/(1-α't)x0 + √(αt)(1−α't−1)/(1-α't)xt, 
-			- β't=(1−α't−1)βt/(1-α't)
-		- Loss for one-step: Lt−1 = Eq(|μ't(xt,x0)−μθ(xt,t)|^2/2σt2) + C
-			- Reparametrize: xt(x0, ε) = √(α't)x0 + √(1−α't)ε for ε∼N(0, I)
-	- Practice:
-		- Training: sgd
-	- High-quality result with Langevin dynamics;
+	- Denote αt:=1−βt and α't:=∏s=1..t αs
+	- q(xt|x0) ~ N(√(α't)x0, (1−α't)I)
+	- q(xt−1|xt,x0) ~ N(μ't(xt,x0),β'tI),
+		- with μt(xt,x0):=√(α't−1)βt/(1-α't)x0 + √(αt)(1−α't−1)/(1-α't)xt, 
+		- β't=(1−α't−1)βt/(1-α't)
+	- Loss for one-step: Lt−1 = Eq(|μ't(xt,x0)−μθ(xt,t)|^2/2σt2) + C
+		- Reparametrize: xt(x0, ε) = √(α't)x0 + √(1−α't)ε for ε∼N(0, I)
+	- High-quality inference result with Langevin dynamics;
 - Y Song and S Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
 - DDIM: J Song, C Meng, and S Ermon. Denoising diffusion implicit models. ICLR'21
-	- Extend DDPM to non-Markov case:
+	- Key insight: extend DDPM to non-Markov, given xt, sample x0 then xt-1;
+		- Neural net to estimate f(x0;θ)
 		- qσ(x1:T|x0) := qσ(xT|x0)∏qσ(xt−1|xt, x0)
-	- Inference process:
-		- qσ(xt−1|xt,x0)=N(√(αt−1)x0 + √(1−αt−σt^2)(xt-√(αt)x0)/√(1−αt), σt^2I)
+	- 待定系数法/Method of undetermined coefficients:
+		- Known: p(xt-1|x0), p(xt|x0), solve p(xt−1|xt,x0) that satisfies marginalized condition:
+			- ∫p(xt−1|xt,x0)p(xt|x0)dxt = p(xt-1|x0)
+		- qσ(xt−1|xt,x0) ~ N(a x0 + b(xt-√αt x0), σt^2I), with a, b, σt 3 unknowns;
+			- a = √(αt−1)
+			- b = √(1−αt−σt^2)/√(1−αt)
 		- Mean and variance carefully chosen, s.t. qσ(xt|x0) ~ N(√(αt)x0, (1-αt)I)
-		- **Forward**: Bayesian
+		- Forward: Non-Markov, b/c xt depends on both xt-1 and x0
 			- qσ(xt|xt-1, x0) = qσ(xt-1|xt,x0)qσ(xt|x0) / qσ(xt-1|x0)
-			- Non-Markov, b/c xt depends on both xt-1 and x0
-		- **Reverse**: estimate x0 first, then qσ(xt-1|xt,x0) with run inference estimated x0
+		- Reverse inference: x0 then qσ(xt-1|xt,x0)
 			- Estimate x0: fθ,t(xt) := (xt − √(1−αt)εθ,t(xt))/√(αt)
 			- p(xt-1|xt) = N(fθ,t(xt), σ^2I), if t=1;
 			- p(xt-1|xt) = qσ(xt-1|xt, fθ,t(xt)), otherwise;
-- A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
-	- upsampling;
+- Improved DDPM: A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
 	- https://github.com/openai/improved-diffusion
 - **SAM**: P Foret, A Kleiner, H Mobahi, and B Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
-- **Analytic-DPM**: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
 - **Stable diffusion**: R Rombach, A Blattmann, D Lorenz, P Esser, B Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
 - **Imagen**: Google-Brain. Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding. NeurIPS'22
 - MidJourney: https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
+- ControlNet: L Zhang, M Agrawala. Adding Conditional Control to Text-to-Image Diffusion Models. 
 
-## Condition/Guidance
-- Classifier:
-	- **ADMNet**: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
-		- Guided diffusion (Class-conditional):
-			- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
-			- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
-		- DDIM technique to get xT (non-Markov prediction);
-- Classifier-free (implicit):
-	- J Ho and T Salimans. Classifier-Free Diffusion Guidance. In NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications, 2021
-		- Guided diffusion (Class-free):
-		- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
-			- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
-		- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
-			- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
-		- Final equation:
-			- εθ(xt|c) = εθ(xt|∅) + s (εθ(xt|c) − εθ(xt|∅))
-- Text-based (Embedding):
-	- CLIP: given text c, image x, (f(x), g(c)) as guidance;
-	- GLIDE: OpenAI. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
-		- https://github.com/openai/glide-text2im.
-		- CLIP-guidance v.s. classifier-free guidance:
-		- µθ(xt|c) = µθ(xt|c) + sΣθ(xt|c)∇xt(f(xt)g(c))
-- **DALL-E-2**: OpenAI. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
-	- Image caption pair (x, y), embedding (zi, zt);
-		- CLIP: zi (ViT), zt (GPT-3), trained with SAM;
-	- Prior: P(zi|y), predict image embedding zi based on caption y;
-		- CLIP + DALL-E dataset
-		- Prior 1: AR with quantization; PCA + SAM?
-		- Prior 2: DDPM without ε;
-	- Decoder: P(x|y) = P(x,zi|y) = P(x|zi, y)P(zi|y), introduce the latent zi with prior;
-		- Decoder: zi(64x64) - 256x256 - 1024x1024
-		- Stage 1 (GLIDE): Gaussian blur;
-		- Stage 2 (upsampler): BSR degradation, unconditional ADMNet;
-
-## Score-based
-- Basics: denote p_data(x) as p'
-	- Score function ∇xlog(p'(x))
-- A. Hyvärinen. Estimation of non-normalized statistical models by score matching. JMLR'05
-	- Insight: learn parameters for a **unnormalized** p.d.f.
-	- Let p(x;θ)= q(x;θ)/Z(θ), x data; θ parameter; data x n-dimension;
-	- Z(θ) = ∫q(x; θ)dx normalizing factor;
-	- Score function: ψ(x; θ)=∇x logp(x; θ)
-	- Loss: J(θ) = 1/2 ∫p(x)|ψ(x;θ)−∇x logp(x)|^2dx
-		- Score matching: θ=argmin J(θ)
-	- Theo-1: Assume that the model score function ψ(x; θ) is differentiable, as well as some weak regularity conditions. Then loss can be formulated as:
-		- J(θ) = ∫p(x)Σi=1..n(∂iψi(x; θ)+ψi(x; θ)^2/2)dx + const
-		- constant does not depends on θ;
-		- ψi(x; θ) = ∂logq(x; θ)/∂xi; 1st-order gradient w.r.t. data
-		- ∂ψi(x; θ)/∂xi = ∂^2logq(x; θ)/∂xi^2; 2nd-order gradient w.r.t. data
-	- Proof: integral by part;
-- **Denoising score matching**: P Vincent. A Connection Between Score Matching and Denoising Autoencoders. NC'11
-	- Insight: circumvents tr(∇x sθ(x))
-	- Denote: q(x) data distribution, p(x;θ)= exp(-E(x;θ))/Z(θ)
-	- ESM (explicit): J(θ) = Eq(x) (1/2 |∂ψ(x; θ)-∂logq(x)/∂x|)
-	- ISM (implicit): J(θ) = Eq(x) (1/2 |ψ(x;θ)^2+Σi ∂ψi(x;θ)/∂xi|)
-	- DSM: qσ(x',x) = qσ(x'|x)q0(x), ∂logqσ(x')/∂x=1/σ^2(x-x')
-	- Add noise to the data qσ(x'|x) = N(x'|x, σ^2I), ∇x'logqσ(x'|x)=−(x'−x)/σ
-- Y. Song, S. Garg, J. Shi, and S. Ermon. Sliced score matching: A scalable approach to density and score estimation. UAI'19
+## Continuous Time
+- A Hyvärinen. Estimation of non-normalized statistical models by score matching. JMLR'05
+	- Insight: first paper on score matching;
+	- Denote: p.data as data distribution, q(x;θ) unnormalized, q′(x;θ) = q(x;θ)/Z(θ)
+		- s(x; θ) = ∂logq(x; θ)/∂x;
+	- Score matching Loss: J(θ) = 1/2 E.p(x)[∥s(x;θ) − ∇x logp(x)∥^2]
+	- Theo-1: Assume s(x; θ) is differentiable, with weak regularity cond. Then loss can be formulated as:
+		- J(θ) = E.q′(x)[E.p(x)[∂s(xi)/∂xi + si(xi)^2/2)]] + C
+		- Proof: integral by part;
+- Denoising score matching: P Vincent. A Connection Between Score Matching and Denoising Autoencoders. NC'11
+	- Insight: first paper on conditional score matching;
+		- assume data ~ q(x'|x), circumvents tr(∇x sθ(x))
+	- L(θ) = E.p(x0)p(xt|x0)[∥s(x;θ) - ∇x p(x|x0)∥^2]
+- Y Song, S Garg, J Shi, and S Ermon. Sliced score matching: A scalable approach to density and score estimation. UAI'19
 	- Insight: efficient with a random vector v, p(v)
-		- Ep(v) Ep(data) v∇xsθ(x)v + 1/2|sθ(x)|^2 
-- **NCSN/SMLD**: Y Song, S Ermon. Generative Modeling by Estimating Gradients of the Data Distribution. NIPS'19
-	- Insight: a neural network sθ(x) to approximate ∇xlog(pdata(x))
+		- Ep(v)[Ep(data)[v∇xsθ(x)v + 1/2|sθ(x)|^2]]
+- NCSN/SMLD: Y Song, S Ermon. Generative Modeling by Estimating Gradients of the Data Distribution. NeurIPS'19
+	- Insight: prove the equivalence of diffusion model and SDE;
 		- 1) perturbing the data using various levels of noise;
-		- 2) simultaneously estimating scores corresponding to all noise levels by training a single conditional score network
-	- Equivalent to: Ep'(x)[tr(∇xsθ(x)) + 2∥sθ(x)∥^2]
+		- 2) estimating scores with all noise levels by a single conditional score network;
+		- 3) SDE → p(xt|x0) is hard, p(xt|x0) → SDE;
+	- Define p(xt|x0) ~ N(αt'x0, βt'^2I), boundary condition: α0=1, α1=0, β0=0, β1=1;
+	- 待定系数法(DDIM): dx = fdt + gt dw
+		- Condition: ∫p(xt+Δt|xt,x0)p(xt|x0)dxt = p(xt+Δt|x0)
+		- ft = 1/αt (dαt/dt)
+		- gt^2 = 2αtβt d/dt(βt/αt)
+	- Equivalent to: E[p'(x)[tr(∇xsθ(x)) + 2∥sθ(x)∥^2]]
 	- Noise Conditional Score Network (NCSN): sθ(x, σ)
 		- θ=argmin_θ σi^2 Ep'(x)Epσi(x'|x) ∥sθ(x',σi)-∇x logpσi(x'|x)∥^2.
 - Y Song, J Sohl-Dickstein, D Kingma, A Kumar, S Ermon, B Poole. Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
@@ -186,6 +140,47 @@
 		- PC (stochastic):
 			- Predictor: xi = (2-√(1-β))xi+1 + βi+1 sθ(xi+1, i+1)) + √(βi+1)z
 			- Corrector: xi = xi + εi sθ(xi, i) + √(εi)z
+- N Chen, Y Zhang, H Zen, R Weiss, M Norouzi, and W Chan. WaveGrad: Estimating gradients for waveform generation. ICLR'21
+- D Kingma, T Salimans, B Poole, and J Ho. Variational diffusion models. arxiv'21
+
+## Condition/Guidance
+- Classifier:
+	- ADMNet: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
+		- Insight: increase IS score but decreased diversity;
+		- Guided diffusion (Class-conditional):
+			- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
+			- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
+		- Use ε̃θ(zλ,c) as score in place of εθ(zλ,c) ≈ −σλ∇zλ logp(zλ|c);
+			- ε̃θ(zλ,c) = εθ(zλ,c) − wσλ ∇zλ logpθ(c|zλ) ≈ −σλ ∇zλ[logp(zλ|c) + wlogpθ(c|zλ)],
+			- w controls guidance strength;
+		- DDIM technique to get xT (non-Markov prediction);
+- Classifier-free (implicit):
+	- J Ho and T Salimans. Classifier-Free Diffusion Guidance. NeurIPS'21 Workshop
+		- One-model for score εθ(xt) and εθ(xt|y), set y=∅;
+		- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
+			- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
+		- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
+			- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
+		- εθ(xt|c) = εθ(xt|∅) + w(εθ(xt|c) − εθ(xt|∅))
+- Text-based (Embedding):
+	- CLIP: given text c, image x, (f(x), g(c)) as guidance;
+	- GLIDE: OpenAI. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
+		- https://github.com/openai/glide-text2im.
+		- Insight: CLIP-guidance in classifier style: generate im xt s.t. f(xt) is close to g(c) 
+		- µθ(xt|c) = µθ(xt|c) + s Σθ(xt|c) ∇xt[f(xt)g(c)]
+- **DALL-E-2**: OpenAI. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
+	- Image caption pair (x, y), embedding (z.im, z.text);
+		- CLIP: z.im (ViT), z.text (GPT-3), trained with SAM;
+	- Prior: P(z.im|text)
+		- Predict image embedding z.im based on caption y;
+		- CLIP + DALL-E dataset;
+		- Prior 1: AR with quantization; PCA + SAM?
+		- Prior 2: DDPM without ε;
+	- Decoder: pretrained and fixed; to invert image encoder;
+		- P(x|y) = P(x,z.im|y) = P(x|z.im, y)P(z.im|y), 
+		- Decoder: zi(64x64) - 256x256 - 1024x1024
+		- Stage 1 (GLIDE): Gaussian blur;
+		- Stage 2 (upsampler): BSR degradation, unconditional ADMNet;
 
 ## Super-resolution
 - C Saharia, J Ho, W Chan, T Salimans, D Fleet, and M Norouzi. Image Super-Resolution via Iterative Refinement. 2021
@@ -194,5 +189,8 @@
 	- BSR noise;
 
 ## Video Generation
-- **ADMNet**: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
 - J Ho, C Saharia, W Chan, D Fleet, M Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
+
+## Analysis
+- Analytic-DPM: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
+- F Bao, C Li, J Sun, J Zhu, B Zhang. Estimating the Optimal Covariance with Imperfect Mean in Diffusion Probabilistic Models. ICML'22

@@ -217,9 +217,9 @@
 		- PixelCNN, NIPS'16; VPN (for video) DeepMind 16;
 		- **UNet**: PixelCNN++, ICLR'17;
 		- WaveNet (1D), 2016;
-	- Multiscale (Coarse2fine):
+	- Cascade/Multiscale:
 		- DeepMind. Parallel multiscale autoregressive density estimation. ICML'17.
-		- DeepMind, N. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
+		- DeepMind. Generating high fidelity images with subscale pixel networks and multidimensional upscaling. 2018
 			- Bit-by-bit;
 	- RNN:
 		- Theis, Lucas and Bethge, Matthias. Generative image modeling using spatial lstms. 2015
@@ -360,10 +360,10 @@
 - Music: Riffusion;
 
 ## Theory and Analysis
-- J. Xie, Y. Lu, S.-C. Zhu, and Y. Wu. A theory of generative convnet. ICML'16.
-- S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NIPS'18
-- H Husain, R Nock, R Williamson. A Primal-Dual link between GANs and Autoencoders. NIPS'19
-- Z Hu, Z Yang, R Salakhutdinov, X Liang, L Qin, H Dong, E Xing. Deep Generative Models with Learnable Knowledge Constraints. NIPS'18
+- J Xie, Y Lu, S Zhu, and Y Wu. A theory of generative convnet. ICML'16.
+- S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon. Bias and Generalization in Deep Generative Models: An Empirical Study. NeurIPS'18
+- H Husain, R Nock, R Williamson. A Primal-Dual link between GANs and Autoencoders. NeurIPS'19
+- Z Hu, Z Yang, R Salakhutdinov, X Liang, L Qin, H Dong, E Xing. Deep Generative Models with Learnable Knowledge Constraints. NeurIPS'18
 
 ## Backbone/Op
 - RNN/LSTM:

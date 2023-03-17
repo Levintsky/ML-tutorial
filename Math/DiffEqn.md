@@ -25,11 +25,26 @@
 - SDE:
 	- Resources:
 		- MIT: https://ocw.mit.edu/courses/mathematics/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/lecture-notes/
-	- Fokker-Planck equation (also Kolmogorov forward eqn, statistical mechanics):
-		- Describe probability p(x, t);
-		- dXt = μ(Xt, t)dt + σ(Xt, t) dWt
-		- μ() drift; D(Xt, t) = σ()^2 / 2, diffusion coefficient;
-		- ∂p(x, t)/∂t = -∂μ(x,t)p(x,t)/∂x + ∂^2 D(x,t)p(x,t) / ∂ x^2
+	- SDE for x: dXt = μt dt + σt dBt
+		- μ() drift; D(Xt, t) = σ(x, t)^2 / 2, diffusion coefficient;
+	- Ito's lemma: f(x,t)
+		- df = ∂f/∂t dt + ∂f/∂x dx + 1/2 ∂2f/∂x2 dx^2, Substitute:
+			- dX = μt dt + σt dBt
+			- dX^2 = μt^2 (dt)^2 + 2μtσt dtdBt + σt^2 dt (b/c dBt^2 -> dt)
+		- df = (∂f/∂t + μt ∂f/∂x + 1/2 ∂2f/∂x2 σt^2)dt + σt ∂f/∂x dBt 
+	- Fokker-Planck equation: p(x, t)
+		- Also Kolmogorov forward eqn, statistical mechanics
+		- ∂p/∂t = -∂[μ(x,t)p]/∂x + 1/2 ∂^2[σ^2 p]/ ∂x^2
+		- Prove: choose f(x) s.t. f(t1,x) = f(t2,x)=0, e.g. f(t,x)=(t-t1)(t-t2)g(x,t)
+			- Integral df with E.x[] and ∫dt on Ito's Lemma
+			- 0 = ∫dx∫dt f[-∂p/∂t - ∂p/∂x + ∂2/∂x2[1/2 σ^2 p]]
+			- since f is arbitrary picked, we have:
+			- ∂p/∂t = -∂p/∂x + ∂2/∂x2[1/2 σ^2 p]
+	- Reverse time Diffusion Eqn:
+		- p(xt+Δt|xt) ~ N(xt+μtΔt, 2σt^2Δt)
+		- Reverse from Bayes: p(xt|xt+Δt) ∝ N(.)p(xt)/p(xt+Δt)
+		- p(xt|xt+Δt) ~ N(xt+Δt -μtΔt +σt^2 ∂logp/∂x, 2σt^2Δt)
+		- Equivalent to SDE: dX = [μt - σt^2 ∂logp/∂x]dt + σt dBt
 	- Geometric Brownian motion:
 		- dSt = μSt dt + σSt dBt
 		- Black-Scholes Model; pricing model for options;
