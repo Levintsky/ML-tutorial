@@ -51,35 +51,42 @@
 	- Problem setup: given center, predict surrounding 5;
 - **Glove**. J. Pennington, R. Socher, and C. Manning. Glove: Global vectors for word representation. EMNLP'14.
 	- Explicitly word co-occurence;
-	- J = ∑i,j f(Xij)(wi wj' + bi + bj - logXij)^2
+	- J = ∑i,j f(Xij)(wi wj† + bi + bj - logXij)^2
 - C Allen, T Hospedales. Analogies Explained: Towards Understanding Word Embeddings. ICML'19 best paper honorable mention
 - Character-level:
-	- Build n-grams word **segment**: BPE;
 	- Ling, et al. 2015, Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation.
 		- biLSTM;
 	- Char-CNN: Kim, Y., Jernite, Y., Sontag, D., & Rush, A. M. Character-Aware Neural Language Models. AAAI'16
 		- char-CNN -> LSTM as word embedding
-	- R. Jozefowicz et. al. Exploring the Limits of Language Modeling (2016)
+	- Brain. Exploring the Limits of Language Modeling (2016)
 		- Char-CNN + LSTM
-	- **fastText**: P Bojanowski and E Grave and A Joulin and T Mikolov. Enriching Word Vectors with Subword Information. TACL'17
+- Subword:
+	- https://zhuanlan.zhihu.com/p/69414965
+	- Insight: 每次从词表选出两个subword组成新的subword:
+	- BPE: 每次选最高频pair组成新subword, 直到词表够大 或subword频率够低;
+		- Build n-grams word **segment**: BPE;
+		- **BPE (Byte-Pair Encoding)**: R Sennrich, B Haddow, and A Birch. Neural machine translation of rare words with subword units. ACL'16
+		- **BPE**: Radford '19
+		- FastBPE: https://github.com/glample/fastBPE
+	- WordPiece: BPE的变种; 基于概率而非最高词频生成下一subword;
+		- Likelihood变化: log(P(tz)/P(tx)P(ty)) 选最大的;
+		- M Schuster and K Nakajima. Japanese and korean voice search. ICASSP'12
+		- Google's neural machine translation system: Bridging the gap between human and machine translation. 16
+			- used by BERT;
+	- ULM: 类似wordPiece,
+		- T Kudo, J Richardson. **SentencePiece**: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing. EMNLP'18
+	- **fastText**: FAIR. Enriching Word Vectors with Subword Information. TACL'17
 		- n-grams within words;
-	- **BPE (Byte-Pair Encoding)**: Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with subword units. ACL'16
-	- **BPE**: Radford '19
-	- FastBPE: https://github.com/glample/fastBPE
 - Levy, O., Goldberg, Y., & Dagan, I. Improving Distributional Similarity with Lessons Learned from Word Embeddings. TACL'15
 	- Compare Glove/word2vec with traditional;
-- SOTA in practice:
-	- **WordPiece**: Yonghui Wu. Google's neural machine translation system: Bridging the gap between human and machine translation. 16
-		- used by BERT; similar to BPE;
-	- **BPE**: used in GPT-series; 
 
 ## Loss Functions
 - Softmax (skip-gram);
-	- p(wo|wi) = exp(v'o vi) / ∑o exp（v'o vi)
+	- p(wo|wi) = exp(vo†vi) / ∑o exp（vo†vi)
 	- Limitation: when V is very large, calculating denominator requires going through all the words for every single sample is impractical;
 - Hierarchical Softmax: F Morin, Y Bengio. Hierarchical Probabilistic Neural Network Language Model. AISTATS'05
 	- Encode in a tree structure;
-- **D-softmax**: Chen, W., Grangier, D., & Auli, M. Strategies for Training Large Vocabulary Neural Language Models. 2015
+- **D-softmax**: W Chen, D Grangier, M Auli. Strategies for Training Large Vocabulary Neural Language Models. 2015
 	- Sparse embedding matrix;
 - Cross Entropy;
 	- L(θ) = -logp(wo|wi)
@@ -87,15 +94,15 @@
 - Noise Contrastive Estimation (NCE): Gutmann and Hyvärinen, 2010
 	- Given wi, **discriminate real** wo with noise w1, w2, ... ~ Q(w)
 	- L(θ) = -log[p(w|wi)/p(w|wi+Nq(w'))] + ∑log[Nq(w)/p(w|wi)+Nq(w')]; (Bayes)
-		- Let p(w|wi) ~ exp(vo' vi)
+		- Let p(w|wi) ~ exp(vo†vi)
 	- **Self-Normalization**: Devlin. Fast and robust neural network joint models for statistical machine translation. ACL'14
 		- Regularization s.t. Z(c) = 1 then we don't need normalizer;
-	- **Infrequent Normalisation**: Andreas, J., & Klein, D. When and why are log-linear models self-normalizing? NACCL'15
+	- **Infrequent Normalisation**: J Andreas, D Klein. When and why are log-linear models self-normalizing? NACCL'15
 - Negative Sampling (NEG): simplified version of NCE
 	- Used in Google's word2vec;
 	- Binary sigmoid classifier:
-		- p(d=1|w, wi) = σ(vo' vi)
-		- p(d=0|w, wi) = 1 - σ(v' vi) = σ(-v' vi)
+		- p(d=1|w, wi) = σ(vo†vi)
+		- p(d=0|w, wi) = 1 - σ(v†vi) = σ(-v†vi)
 
 ## Common Techniques
 - Soft sliding window

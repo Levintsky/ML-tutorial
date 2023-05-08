@@ -26,12 +26,13 @@
 	- Very good explanation: https://vincentherrmann.github.io/blog/wasserstein/
 	- Alex Irpan's blog: https://www.alexirpan.com/2017/02/22/wasserstein-gan.html
 	- W-GAN is Earth-Mover-Distance, Kantorovich-Rubinstein duality
-		- To calculate primal EMD(p1, p2) = minπ ∫c(x,y) dπ(x,y), subject ∫π(x,y)dy=p1(x), ∫π(x,y)dx=p2(y)
+		- To calculate primal EMD(p1, p2) = minπ ∫c(x,y) dπ(x,y)
+			- s.t. ∫π(x,y)dy=p1(x), ∫π(x,y)dx=p2(y)
 		- With Lagrange dual, we have L=EMD + ∫λ(x)(∫π(x,y)dy-p1(x))dx + ∫λ(y)(∫π(x,y)dx-p2(y))dy
-		- Dual loss: L=∫λ(x)p1(x)dx - ∫λ(x)p2(x)dx = Ep1(λ(x)) - Ep2(λ(x)), s.t. Lip(λ(x))≤1
+		- Dual loss: L=∫λ(x)p1(x)dx - ∫λ(x)p2(x)dx = E.p1[λ(x)] - E.p2[λ(x)], s.t. Lip(λ(x))≤1
 		- Intuitively, Lagrange λ(x) is the cost at each position x, λ(x1)-λ(x2)≤|x1-x2|, cost diff ≤ moving cost;
-	- LD = E(D(x)) - E(D(G(z))
-	- LG = E(D(G(z)))
+	- LD = E[D(x)] - E[D(G(z)]
+	- LG = E[D(G(z))]
 	- WD = clip_value(-0.01, 0.01)
 - WGAN-GP: I Gulrajani, F Ahmed, M Arjovsky, V Dumoulin, and A Courville. Improved training of Wasserstein gans. NeurIPS'17
 	- Insight: force penalty w.r.t. input is 1 almost everywhere;
@@ -50,8 +51,22 @@
 	- LG = DAE(G(z))
 	- kt+1 = kt + λ(γDae(x)-Dae(G(z))
 - S Nowozin, B Cseke, and R Tomioka. f-GAN: Training generative neural samplers using variational divergence minimization. NeurIPS'16
+	- Build on generalized f-divergence: ∫q(x) f(p(x)/q(x))dx
 - DeepMind. The Cramer distance as a solution to biased Wasserstein gradients. arxiv'17
 - OpenAI. Improving GANs using optimal transport. ICLR'18.
+- The relativistic discriminator: a key element missing
+from standard GAN. ICLR'19
+	- When training Generator, the discriminator should also decrease prob of real image;
+
+## Feature Learning
+- J Donahue, P Krähenbühl, T Darrell. Adversarial Feature Learning. ICLR'17
+	- Learn to discriminate:
+		- Real: x, Enc(x)
+		- Fake: G(z), z
+- ALI: Adversarially Learned Inference.
+	- Similar idea;
+- Jianlin Su. O-GAN: Extremely Concise Approach for Auto-Encoding Generative Adversarial Networks. 2019
+	- https://github.com/bojone/o-gan
 
 ## Single shot
 - A Shocher, N Cohen, and M Irani. Zero-Shot Super-Resolution using Deep Internal Learning. CVPR'18
@@ -79,25 +94,32 @@
 	- **Truncated Norm** to sample z from: big trick
 	- IS: precision; FID: recall
 - X Wei, Z Liu, L Wang, and B Gong. Improving the improved training of Wasserstein GANs. ICLR'18
+	- Another regularization term;
 
 ## Analaysis
+- Regard GAN training as ODE and apply ODE analysis;
+- Stability:
+	- K Roth, A Lucchi, S Nowozin, T Hofmann. Stabilizing Training of Generative Adversarial Networks through Regularization.
+	- Nagarajan, V. and Z Kolter. Gradient descent GAN optimization is locally stable. 2017
+	- L Mescheder, S Nowozin, A Geiger. The Numerics of GANs. NeurIPS'17
+		- https://github.com/LMescheder/TheNumericsOfGANs
+		- Insight: a game theory perspective, Simultaneous Gradient Ascent;
+		- Consensus Optimization;
+	- L Mescheder, A Geiger, and S Nowozin. Which training methods for GANs do actually converge? ICML'18
+		- https://github.com/LMescheder/GAN_stability
+		- Simplified gradient penalty;
 - Metz, L., Poole, B., Pfau, D., and Sohl-Dickstein, J. Unrolled generative adversarial networks. 2016
 - S Arora and Y Zhang. Do gans actually learn the distribution? an empirical study. 2017
 - Arora, S., Ge, R., Liang, Y., Ma, T., and Zhang, Y. Generalization and equilibrium in generative adversarial nets (gans). 2017
-- Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., and Hochreiter, S. GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium. 2017
-- Nagarajan, V. and Z Kolter. Gradient descent GAN optimization is locally stable. 2017
+- TTUR. GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium. 2017
+	- Borrows idea from stochastic approximation with two time scales.
 - M Arjovsky and L Bottou. Towards Principled Methods for Training Generative Adversarial Networks. 2017
-- L Mescheder, S Nowozin, A Geiger. The Numerics of GANs. NIPS'17
-	- https://github.com/LMescheder/TheNumericsOfGANs
-	- Insight: a game theory perspective, Simultaneous Gradient Ascent;
-	- Consensus Optimization;
 - W Fedus, M Rosca, B Lakshminarayanan, A Dai, S Mohamed, and I Goodfellow. Many paths to equilibrium: GANs do not need to decrease a divergence at every step. ICLR'18
 	- View: a divergence between the training distribution and the model distribution obtains its minimum value at equilibrium
 	- This paper: too restrictive
 	- Conclusion 1: Both gradient penalties (GAN-GP and DRAGAN-NS) help when training non-saturating GANs, by making the models more robust to hyperparameters.
 	- The non-saturating GAN trained with gradient penalties produces better sample (IS)
 	- WGAN-GP models perform best on Color MNIST and CIFAR-10.
-- L Mescheder, A Geiger, and S Nowozin. Which training methods for GANs do actually converge? ICML'18.
 - A Odena, J Buckman, C Olsson, T Brown, C Olah, C Raffel, and I Goodfellow. Is generator conditioning causally related to GAN performance? ICML'18.
 	- Follow Pennington et al., 2017 to analyze Jacobian;
 	- Jacobian generally becomes ill-conditioned at the beginning of training: a good cluster in which the condition number stays the same or even gradually decreases, and a "bad cluster", in which the condition number continues to grow

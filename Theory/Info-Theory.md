@@ -71,6 +71,7 @@
 			- Reparametrization: p(z|x)dz = p(ε)dε
 		- JIB = 1/N Σn Eε[−logq(yn|f(xn, ε))] + βKL[p(Z|xn), q(Z)].
 - A Saxe, Y Bansal, J Dapello, M Advani, A Kolchinsky, B Tracey, D Cox. On the Information Bottleneck Theory of Deep Learning. ICLR'18
+- X B Peng, A Kanazawa, S Toyer, P Abbeel, S Levine. Variational Discriminator Bottleneck: Improving Imitation Learning, Inverse RL, and GANs by Constraining Information Flow. ICLR'19
 
 ## Mutual information
 - Application of MI:

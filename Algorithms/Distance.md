@@ -21,8 +21,10 @@
 		- https://www.zhihu.com/question/288185961/answer/459888198
 
 ## Distribution Distance
+- KL
+- JS := 1/2 KL(p|q) + 1/2 KL(q|p)
 - Fisher Divergence: O Johnson. Information theory and the central limit theorem, 2004
-	- F(p,q) = Ex∥∇logp(x)−∇logq(x)∥^2,
+	- F(p,q) = E.x[∥∇logp(x)−∇logq(x)∥^2]
 - Alpha divergence:
 	- Dα(p||q) = 4/(1-α^2)[1-∫p(x)^(1+α)/2 q(x)^(1-α)/2 dx]
 	- General, α -> 1, KL(p|q); α -> -1, KL(q|p); α=1/2, Hellinger;

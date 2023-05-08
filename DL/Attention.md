@@ -40,11 +40,17 @@
 			- B: learnable bias;
 		- x = [x; pos-enc]
 	- Relative linear position attention:
-		- Peter Shaw, Jakob Uszkoreit, Ashish Vaswani. Self-Attention with Relative Position Representations. NAACL'18
+		- Brain. Self-Attention with Relative Position Representations. NAACL'18
 	- Dependency syntax-based position:
-		- Xing Wang, Zhaopeng Tu, Longyue Wang, Shuming Shi. Self-Attention with Structural Position Representations. EMNLP'19
+		- X Wang, Z Tu, L Wang, S Shi. Self-Attention with Structural Position Representations. EMNLP'19
+	- Rotational: RoFormer
+		- https://www.kexue.fm/archives/8265
+		- 相对位置(m, n): f(q, m) f(k, n) = g(q, k, m-n)
 - Task token:
 	- Used in BERT and VIT;
+- Acceleration: O(n^2) -> O(n)
+	- Performer: Google. Rethinking Attention with Performers. ICLR'21
+	- Nyströmformer: A Nyström-Based Algorithm for Approximating Self-Attention. AAAI'21
 
 ## Attention Modules
 - Attention layers:
@@ -65,16 +71,16 @@
 - Position Encoding:
 	- Original in transformer:\
 		<img src="/NLP/images/pos-enc.png" alt="drawing" width="500"/>	
-	- Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, Yann N. Dauphin. Convolutional Sequence to Sequence Learning. 2017
+	- FAIR. Convolutional Sequence to Sequence Learning. 2017
 		- Learned Position Encoding;
-	- Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, L., Shazeer, N., Ku, A., and Tran, D. Image Transformer. ICML'18
+	- Brain. Image Transformer. ICML'18
 		- Fourier;
 	- X Chu, B Zhang, Z Tian, X Wei, and H Xia. Do we really need explicit position encodings for vision transformers? arxiv'21
 		- https://github.com/Meituan-AutoML/CPVT
 	- Relative position encoding (as in Swin):
 		- H Hu, J Gu, Z Zhang, J Dai, and Y Wei. Relation networks for object detection. CVPR'18
 		- H Hu, Z Zhang, Z Xie, and S Lin. Local relation networks for image recognition. ICCV'19
-		- C Raffel, N Shazeer, A Roberts, K Lee, S Narang, M Matena, Y Zhou, W Li, and P Liu. Exploring the limits of transfer learning with a unified text-to-text transformer. JMLR'20
+		- Brain. Exploring the limits of transfer learning with a unified text-to-text transformer. JMLR'20
 		- H Bao, L Dong, F Wei, W Wang, N Yang, X Liu, Y Wang, J Gao, S Piao, M Zhou, et al. Unilmv2: Pseudo-masked language models for unified language model pre-training. ICML'20
 
 ## Analysis

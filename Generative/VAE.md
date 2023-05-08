@@ -43,9 +43,8 @@
 ## VAE-Basics
 - A great codebase:
 	- https://github.com/wohlert/semi-supervised-pytorch/tree/master/examples/notebooks
-- **DLGM**: Rezende, Danilo J, Mohamed, Shakir, and Wierstra, Daan. Stochastic backpropagation and approximate inference in deep generative models. ICML'14
-	- Graphical model:\
-		<img src="/Generative/images/vae/vae-dlgm-1.png" alt="drawing" width="350"/>
+- **DLGM**: D Rezende, S Mohamed, and D Wierstra. Stochastic backpropagation and approximate inference in deep generative models. ICML'14
+	- Graphical model:
 	- Top-down generative process: from hL -> h1 -> v;
 		- ξl ~ N(ξl|0, I), l=1, ..., L
 		- hL = GL ξL
@@ -70,12 +69,12 @@
 		- Generative: p(x|y, z)
 		- Recognition: q(z,y|x) = q(y|x)q(z|x,y)
 	- Formulation:
-		- Known y: logp(x,y) >= Eq(z|x,y)[logpθ(x|y, z) + logpθ(y) + logp(z) − logqφ(z|x, y)] = −L(x, y);
-		- Unknown y: logp(x) >= Eq(y,z|x)[log pθ(x|y, z) + log pθ(y) + log p(z) − log qφ(y, z|x)]
+		- Known y: logp(x,y) ≥ Eq(z|x,y)[logpθ(x|y, z) + logpθ(y) + logp(z) − logqφ(z|x, y)] = −L(x, y);
+		- Unknown y: logp(x) ≥ Eq(y,z|x)[log pθ(x|y, z) + log pθ(y) + log p(z) − log qφ(y, z|x)]
 			- = Σy q(y|x)(-L(x,y)) + H(q(y|x))
 - **cVAE**: Sohn, K., Lee, H., Yan, X.: Learning structured output representation using deep conditional generative models. NIPS'15
 	- Insight: condition everything on class c;
-	- ELBO := E_q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
+	- ELBO := E.q(z|x,c)[logp(x|z, c)] - KL(q(z|x,c)|p(z|c))
 - **VIMCO**: A Mnih and D Rezende. Variational inference for monte carlo objectives. ICML'16
 
 ## Backbone
@@ -90,7 +89,7 @@
 	- Rezende, D., Danihelka, I., Gregor, K., Wierstra, D., et al. One-shot generalization in deep generative models. ICML'16
 	- Fabius, O. and van Amersfoort, J. R. Variational recurrent auto-encoders. ICLR'15
 	- **VRNN**: J Chung, K Kastner, L Dinh, K Goel, A Courville, and Y Bengio. A recurrent latent variable model for sequential data. NIPS'15
-	- Samuel R. Bowman, Luke Vilnis, Oriol Vinyals, Andrew M. Dai, Rafal Jozefowicz, Samy Bengio. Generating Sentences From a Continuous Spaces, ICLR'16
+	- S Bowman, L Vilnis, O Vinyals, A Dai, R Jozefowicz, S Bengio. Generating Sentences From a Continuous Spaces, ICLR'16
 	- Neural Variational Inference for Text Processing, ICML'16
 	- Language as a Latent Variable: Discrete Generative Models for Sentence Compression, EMNLP'16
 	- A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues, AAAI'17
@@ -105,16 +104,18 @@
 
 ## Latent code
 - Discrete
-	- **DVAE**: Discrete Variational Autoencoders with Relaxed Boltzmann Priors. NIPS'18
+	- VQ-VAE: A v d Oord, O Vinyals, K Kavukcuoglu. Neural Discrete Representation Learning. NeurIPS'17
+	- DVAE: Discrete Variational Autoencoders with Relaxed Boltzmann Priors. NIPS'18
 		- https://github.com/QuadrantAI/dvae
+	- VQ-VAE-2: A Razavi, A v d Oord, O Vinyals. Generating Diverse High-Fidelity Images with VQ-VAE-2. NeurIPS'19
 - Disentanglement:
 	- G. Desjardins, A. Courville, and Y. Bengio. Disentangling factors of variation via generative entangling. arxiv'12
 		- First paper on deep disentangled representation learning;
-	- S. Reed, K. Sohn, Y. Zhang, and H. Lee. Learning to disentangle factors of variation with manifold interaction. ICML'14
-	- Z. Zhu, P. Luo, X. Wang, and X. Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
-	- J. Yang, S. Reed, M.-H. Yang, and H.Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
+	- S Reed, K Sohn, Y Zhang, and H Lee. Learning to disentangle factors of variation with manifold interaction. ICML'14
+	- Z Zhu, P Luo, X Wang, and X Tang. Multi-view perceptron: a deep model for learning face identity and view representations. NIPS'14
+	- J Yang, S Reed, M Yang, and H Lee. Weakly-supervised disentangling with recurrent transformations for 3d view synthesis. NIPS'15
 	- R. Goroshin, M. Mathieu, and Y. LeCun. Learning to linearize under uncertainty. NIPS'15
-	- **β-VAE**: I Higgins, L Matthey, A Pal, C Burgess, X Glorot, M Botvinick, S Mohamed, A Lerchner. β-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
+	- β-VAE: I Higgins, L Matthey, A Pal, C Burgess, X Glorot, M Botvinick, S Mohamed, A Lerchner. β-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework. ICLR'17
 		- Better disentangle
 		- Measures disentanglement as the accuracy of a linear classifier that predicts the index of a fixed factor of variation
 		- max Ex[Eq(z|x)[logp(x|z)]], s.t. KL(q(z|x), p(z)) < ε
@@ -134,8 +135,15 @@
 			- Gaussian encoder: mean, log-variance
 			- Bernoulli decoder: 10 latent dimension\
 			<img src="/Generative/images/vae/vae-impossible.png" alt="drawing" width="500"/>
-	- **VITAE**: N Skafte, S Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
+	- VITAE: N Skafte, S Hauberg. Explicit Disentanglement of Appearance and Perspective in Generative Models. NIPS'19
 		- Insight: two latent codes zA, zP; then zP transform conanical view zA with a STN;
+
+## Analysis
+- IWVAE: Y Burda, R Grosse, R Salakhutdinov. Importance Weighted Autoencoders. ICLR'16
+- Carter, S. and Nielsen, M. Using Artificial Intelligence to Augment Human Intelligence. 2017
+- T Rainforth, A Kosiorek, T A Le, C Maddison, M Igl, F Wood, Y W Teh. Tighter Variational Bounds are Not Necessarily Better. ICML'18
+- **GAN-VAE**: Z Hu, Z Yang, R Salakhutdinov, E Xing. On Unifying Deep Generative Models. ICLR'18
+	- Understanding VAE and GAN with Wake-Sleep
 
 ## Unclassified
 - **DeepMind**:
@@ -162,8 +170,3 @@
 	- **PC-AAE**: M Zamorski, M Zieba, R Nowak, W Stokowiec, and T Trzciński. Adversarial autoencoders for generating 3d point clouds.
 		- Encoder: pointnet;
 		- Decoder: MLP + ReLU;
-
-## Analysis of VAE
-- Carter, S. and Nielsen, M. Using Artificial Intelligence to Augment Human Intelligence. 2017
-- **GAN-VAE**: Z Hu, Z Yang, R Salakhutdinov, E Xing. On Unifying Deep Generative Models. ICLR'18
-	- Understanding VAE and GAN with Wake-Sleep

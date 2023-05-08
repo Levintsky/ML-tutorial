@@ -34,7 +34,8 @@
 			<img src = '/Generative/images/flow/made.png' width = '500'>
 - VAE + Flow:
 	- OpenAI. Variational lossy autoencoder. ICLR'16
-	- **f-VAEs**: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
+	- f-VAEs: J Su, G Wu. f-VAEs: Improve VAEs with Conditional Flows. 2018
+		- Encoder as flow: q(z|x) invertible, can be conditioned on x;
 - Autoregressive Flow:
 	- Y Song, C Meng, and S Ermon. MintNet: Building invertible neural networks with masked convolutions. NIPS'19
 	- P Jaini, K Selby, and Y Yu. Sum-of-squares polynomial flow. ICML'19
@@ -47,6 +48,7 @@
 	- https://github.com/stevenygd/PointFlow
 	- Based on CNF (FFJORD)\
 		<img src = '/Generative/images/flow/pointflow.png' width = '600'>
+- Z Xiao, Q Yan, and Y Amit. Generative latent flow. arxiv'19
 - M Kumar, M Babaeizadeh, D Erhan, C Finn, S Levine, L Dinh, and D Kingma. Videoflow: A flow-based generative model for video. 2019
 
 ## Flow-based Graph Generation

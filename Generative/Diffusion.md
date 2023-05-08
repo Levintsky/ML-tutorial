@@ -36,21 +36,32 @@
 - Continuous time (Connection with score-based):
 	- ∇x logp(x; θ)
 - Techniques:
-	- DDPM: ignoring weight w in E[w|zt-z(x0,zt;θ)|]
+	- Key design for any extension methods:
+		- Efficient q(xt|x0);
+		- Efficient q(xt-1|xt, x0);
+	- Network design: U-Net;
+	- Loss/objective weighting: E[wt ∥ε-ε(xt;θ)∥^2]
+		- DDPM: ignore, wt ≡ 1;
+		- MLE: wt = β(t)/σt^2
 	- Cascade:
-	- Parametrization of βt (forward variance):
+	- Noise scheduling: βt (forward variance):
 		- DDPM: linearly increase: β1=1e-4, βT=0.02
 		- Improved DDPM: cosine-based schedule;
+		- Kingma NeurIPS'22: SNR;
+		- DPM: inference-time;
 	- Parametrization of Σ(θ);
 		- DDPM: Σ(xt, t;θ) = σt^2 I;
-		- Improved DDPM: mixture with v:
-			- Σ(xt, t;θ) = exp[vlogβt + (1-v)logβt']
+		- Improved DDPM: learned;
 	- Speedup:
 		- Improved DDPM: reduced to S steps; (by [T/S] times)
 			- Sample every [T/S] steps;
 		- DDIM: sampling only S steps;
 - Tutorial:
 	- https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+- Software:
+	- MidJourney: https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
+	- RunwayML;
+	- https://stability.ai/
 
 ## Diffusion Model
 - J Sohl-Dickstein, E Weiss, N Maheswaranathan, and S Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML'15
@@ -65,38 +76,24 @@
 	- Loss for one-step: Lt−1 = Eq(|μ't(xt,x0)−μθ(xt,t)|^2/2σt2) + C
 		- Reparametrize: xt(x0, ε) = √(α't)x0 + √(1−α't)ε for ε∼N(0, I)
 	- High-quality inference result with Langevin dynamics;
-- Y Song and S Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
 - DDIM: J Song, C Meng, and S Ermon. Denoising diffusion implicit models. ICLR'21
 	- Key insight: extend DDPM to non-Markov, given xt, sample x0 then xt-1;
-		- Neural net to estimate f(x0;θ)
-		- qσ(x1:T|x0) := qσ(xT|x0)∏qσ(xt−1|xt, x0)
 	- 待定系数法/Method of undetermined coefficients:
-		- Known: p(xt-1|x0), p(xt|x0), solve p(xt−1|xt,x0) that satisfies marginalized condition:
+		- 保持 p(xt|x0)与ddpm一致;
+		- 求解p(xt−1|xt,x0), s.t. 边缘分布保持:
 			- ∫p(xt−1|xt,x0)p(xt|x0)dxt = p(xt-1|x0)
-		- qσ(xt−1|xt,x0) ~ N(a x0 + b(xt-√αt x0), σt^2I), with a, b, σt 3 unknowns;
-			- a = √(αt−1)
-			- b = √(1−αt−σt^2)/√(1−αt)
-		- Mean and variance carefully chosen, s.t. qσ(xt|x0) ~ N(√(αt)x0, (1-αt)I)
-		- Forward: Non-Markov, b/c xt depends on both xt-1 and x0
-			- qσ(xt|xt-1, x0) = qσ(xt-1|xt,x0)qσ(xt|x0) / qσ(xt-1|x0)
-		- Reverse inference: x0 then qσ(xt-1|xt,x0)
-			- Estimate x0: fθ,t(xt) := (xt − √(1−αt)εθ,t(xt))/√(αt)
-			- p(xt-1|xt) = N(fθ,t(xt), σ^2I), if t=1;
-			- p(xt-1|xt) = qσ(xt-1|xt, fθ,t(xt)), otherwise;
-- Improved DDPM: A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
-	- https://github.com/openai/improved-diffusion
-- **SAM**: P Foret, A Kleiner, H Mobahi, and B Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. 2020
-- **Stable diffusion**: R Rombach, A Blattmann, D Lorenz, P Esser, B Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
-- **Imagen**: Google-Brain. Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding. NeurIPS'22
-- MidJourney: https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
-- ControlNet: L Zhang, M Agrawala. Adding Conditional Control to Text-to-Image Diffusion Models. 
+		- 2方程, 3未知数;
 
-## Continuous Time
+## Continuous Time, Score SDE/ODE
+- Denote: p.data as data 分布, p(x;θ) = exp[-f(x;θ)]/Z(θ)
+	- Score function定义 data := ∇x logp(x)
+	- Model: s(x; θ) = ∂logp(x; θ)/∂x = -∇x f(x;θ); Z(θ)是θ函数, ∇x Z(θ)=0;
+		- 神经网络 fit score: J(θ) = 1/2 E.p(x)[∥s(x;θ) − ∇x logp(x)∥^2]
+		- Equivalent to: E[p'(x)[tr(∇x sθ(x)) + 2∥sθ(x)∥^2]]
+	- Inference: Langevin dynamics;
+		- x.t+1 = x.t + ε/2 ∇x logp(xt) + √ε zt, zt ~ N(0, I)
 - A Hyvärinen. Estimation of non-normalized statistical models by score matching. JMLR'05
 	- Insight: first paper on score matching;
-	- Denote: p.data as data distribution, q(x;θ) unnormalized, q′(x;θ) = q(x;θ)/Z(θ)
-		- s(x; θ) = ∂logq(x; θ)/∂x;
-	- Score matching Loss: J(θ) = 1/2 E.p(x)[∥s(x;θ) − ∇x logp(x)∥^2]
 	- Theo-1: Assume s(x; θ) is differentiable, with weak regularity cond. Then loss can be formulated as:
 		- J(θ) = E.q′(x)[E.p(x)[∂s(xi)/∂xi + si(xi)^2/2)]] + C
 		- Proof: integral by part;
@@ -106,91 +103,228 @@
 	- L(θ) = E.p(x0)p(xt|x0)[∥s(x;θ) - ∇x p(x|x0)∥^2]
 - Y Song, S Garg, J Shi, and S Ermon. Sliced score matching: A scalable approach to density and score estimation. UAI'19
 	- Insight: efficient with a random vector v, p(v)
-		- Ep(v)[Ep(data)[v∇xsθ(x)v + 1/2|sθ(x)|^2]]
+		- Ep(v)[Ep(data)[v† ∇xsθ(x) v + 1/2|sθ(x)|^2]]
 - NCSN/SMLD: Y Song, S Ermon. Generative Modeling by Estimating Gradients of the Data Distribution. NeurIPS'19
 	- Insight: prove the equivalence of diffusion model and SDE;
-		- 1) perturbing the data using various levels of noise;
-		- 2) estimating scores with all noise levels by a single conditional score network;
-		- 3) SDE → p(xt|x0) is hard, p(xt|x0) → SDE;
+		- Training: s(x, σ;θ)
+		- Inference: annealed Langevin dynamics;
+	- Noise Conditional Score Network (NCSN): sθ(x, σ)
+		- θ=argmin_θ σi^2 Ep'(x)Epσi(x'|x) ∥sθ(x',σi)-∇x logpσi(x'|x)∥^2.
+- Y Song and S Ermon. Improved Techniques for Training Score-Based Generative Models. NeurIPS'20
+	- Tech 1: initial noise σ1 = max.i,j(|xi-xj|);
+	- Tech 2: geometric progression γ选择;
+	- Tech 3: sθ(x,σ) = sθ(x)/σ;
+	- Tech 4: inference: selecting T and ε;
+	- Tech 5: EMA θ′ ← mθ′ + (1 − m)θi;
+		- Inference time 用θ′;
+- Y Song, J Sohl-Dickstein, D Kingma, A Kumar, S Ermon, B Poole. Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
+	- Insight: unify SMLD and DDPM in a SDE framework, propose a stochastic solver (PC) and a deterministic (ODE);
 	- Define p(xt|x0) ~ N(αt'x0, βt'^2I), boundary condition: α0=1, α1=0, β0=0, β1=1;
-	- 待定系数法(DDIM): dx = fdt + gt dw
+	- 给定p(xt|x0)边缘分布, 求SDE: 待定系数法:
+		- dx = fdt + gt dw
 		- Condition: ∫p(xt+Δt|xt,x0)p(xt|x0)dxt = p(xt+Δt|x0)
 		- ft = 1/αt (dαt/dt)
 		- gt^2 = 2αtβt d/dt(βt/αt)
-	- Equivalent to: E[p'(x)[tr(∇xsθ(x)) + 2∥sθ(x)∥^2]]
-	- Noise Conditional Score Network (NCSN): sθ(x, σ)
-		- θ=argmin_θ σi^2 Ep'(x)Epσi(x'|x) ∥sθ(x',σi)-∇x logpσi(x'|x)∥^2.
-- Y Song, J Sohl-Dickstein, D Kingma, A Kumar, S Ermon, B Poole. Score-Based Generative Modeling through Stochastic Differential Equations. ICLR'21
-	- Insight: unify SMLD and DDPM in a SDE framework, propose a stochastic solver (PC) and a deterministic (ODE);
-	- SMLD:
-		- Probability: pσ(x'|x):=Np(x';x,σ^2I) perturbation kernel, pσ(x')=∫pdata(x)pσ(x'|x)dx, NCSN
-		- Loss: θ = argmin  Σi=1..N σi^2 E pdata(x)Epσi(x'|x) |sθ(x',σi) - ∇x' logpσi(x'|x)|^2
-		- Langevin MCMC: x^i_m = x^i_m-1 + εi sθ(x^i_m-1, σi) + √(2ε)z^i_m, m=1,2,...,M
-	- DDPM:
-		- Probability: p(xi|xi-1) ~ N(xi; √(1-βi)xi-1, βiI)
-		- Loss (ELBO): θ = argmin Σi=1..N (1-αi) E pdata(x)Epαi(x'|x) |sθ(x',i) - ∇x' logpαi(x'|x)^2
-		- Reverse MCMC: xi-1 = 1/√(1-β) (xi + βi sθ(xi, i)) + √(β)zi, i=N, N-1, ..., 1
 	- DDPM and SMLD as SDE:
 		- Forward: dx = f(x,t)dt + g(t) dw
-		- Reverse: dx = (f(x, t) - g(t)^2 ∇xlogpt(x))dt + g(t)dw
-		- SMLD as SDE: dx = √(d(σ(t)^2)/dt)dw; VE (variance-exploding SDE)
-		- DDPM as SDE: dx = -1/2 β(t)xdt + √(β(t))dw
-		- Proposed new VP-SDE (variance-preserving): dx = -1/2 β(t)xdt + √(β(t)(1-exp(-2∫0..t β(s)ds))dw
-	- Solver
-		- PC (stochastic):
-			- Predictor: xi = (2-√(1-β))xi+1 + βi+1 sθ(xi+1, i+1)) + √(βi+1)z
-			- Corrector: xi = xi + εi sθ(xi, i) + √(εi)z
-- N Chen, Y Zhang, H Zen, R Weiss, M Norouzi, and W Chan. WaveGrad: Estimating gradients for waveform generation. ICLR'21
-- D Kingma, T Salimans, B Poole, and J Ho. Variational diffusion models. arxiv'21
+		- Reverse: dx = [f(x, t) - g(t)^2 ∇xlogpt(x)]dt + g(t)dw
+		- SMLD as VE-SDE: dx = √(d(σ(t)^2)/dt)dw;
+		- DDPM as VP-SDE: dx = -1/2 β(t)xdt + √(β(t))dw
+		- Proposed new VP-SDE: dx = -1/2 β(t)xdt + √(β(t)(1-exp(-2∫0..t β(s)ds))dw
+	- 数值解 + Predictor/Corrector;
+		- Predictor: xi = (2-√(1-β))xi+1 + βi+1 sθ(xi+1, i+1)) + √(βi+1)z
+		- Corrector: xi = xi + εi sθ(xi, i) + √(εi)z
+- ODE:
+	- Poisson flow generative models. NeurIPS'22
+	- Interpretable ODE-style Generative Diffusion Model via Force Field Construction. 2023
+	- Meta-AI. Flow Matching for Generative Modeling. 2023
+- Fast ODE/SDE solver:
+	- Euler: Song '20, '21
+	- Heun solver: NVIDIA. Elucidating the design space of diffusion-based generative models. NeurIPS'22
+		- https://github.com/NVlabs/edm
+	- NVIDIA Caltech. Fast sampling of diffusion models via operator learning. NeurIPSW'22
+		- Insight: Li'20 FNO-PDE-solver;
+			- semi-linear ODE: 积分因子凑全微分ODE;
+		- DFNO: diffusion Fourier Neural Operator模拟solver;
+		- Temporal-conv block FFT, then iFFT;
+	- GaTech: Fast sampling of diffusion models with exponential integrator. ICLR'23
+		- https://qsh-zh.github.io/deis
 
-## Condition/Guidance
-- Classifier:
-	- ADMNet: P Dhariwal and A Nichol. Diffusion Models Beat GANs on Image Synthesis. 2021
-		- Insight: increase IS score but decreased diversity;
-		- Guided diffusion (Class-conditional):
-			- µθ(xt|y), Σθ(xt|y) with target class y predicted by a classifer log pφ(y|xt);
+## Techniques
+- Latent space:
+	- Esser et al., ImageBART: Bidirectional Context with Multinomial Diffusion for Autoregressive Image Synthesis, NeurIPS'21
+		- https://compvis.github.io/imagebart/
+		- Autoregressive + Diffusion;
+	- NVIDIA: Score-based generative modeling in latent space. NeurIPS'21
+		- https://nvlabs.github.io/LSGM
+		- Decompose KL into negative entropy and cross entropy;
+			- q(z0) non-Normal, can't analytical;
+	- Stable diffusion;
+- Variance/noise scheduling:
+	- Time fed in as spatial addition or adaptive group norm;
+	- Training time: (noise scheduling)
+		- D Kingma, T Salimans, B Poole, and J Ho. Variational diffusion models. arxiv'21
+			- Learned SNR(t) for noise scheduling;
+			- 理论上 KL()项 写成 SNR 形式;
+		- Improved DDPM: A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
+			- https://github.com/openai/improved-diffusion
+			- learn σt -> fewer steps;
+			- mixture with v:
+			- Σ(xt, t;θ) = exp[vlogβt + (1-v)logβt']
+		- On the Importance of Noise Scheduling for Diffusion Models, 2023.
+	- Inference time:
+		- Analytic-DPM: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
+		- Extended-Analytic-DPM: F Bao, C Li, J Sun, J Zhu, B Zhang. Estimating the Optimal Covariance with Imperfect Mean in Diffusion Probabilistic Models. ICML'22
+			- Allow different items on diagonal;
+		- Dpm-solver: A fast ode solver for diffusion probabilistic model sampling in around 10 steps.
+- Advanced reverse process:	More complicated than Gaussian;
+	- Gao et al., Learning energy-based models by diffusion recovery likelihood, ICLR'21
+		- Insight: EBM f(x;θ) 变为 f(x, t;θ)
+	- Xiao et al., Tackling the Generative Learning Trilemma with Denoising Diffusion GANs, ICLR'22
+		- GAN-style for D(q(xt-1|xt), p(xt-1|xt))
+		- Discriminator: time-dependent D(xt; t);
+		- Generator: x0 = G(xt, z, t), then sample xt-1 based on estimated x0;
+- Condition/Guidance:
+	- Choi et al., ILVR: Conditioning Method for Denoising Diffusion Probabilistic Models, ICCV'21
+		- https://github.com/jychoi118/ilvr_adm
+		- Unconditional proposal: xt -> xt-1
+		- Then condition refinement: 
+	- Classifier: log pφ(y|xt);
+		- ADMNet: OpenAI. Diffusion Models Beat GANs on Image Synthesis. 2021
+			- Insight: increase IS score but decreased diversity;
 			- µθ(xt|y) = µθ(xt|y) + s Σθ(xt|y)∇xt log pφ(y|xt)
-		- Use ε̃θ(zλ,c) as score in place of εθ(zλ,c) ≈ −σλ∇zλ logp(zλ|c);
-			- ε̃θ(zλ,c) = εθ(zλ,c) − wσλ ∇zλ logpθ(c|zλ) ≈ −σλ ∇zλ[logp(zλ|c) + wlogpθ(c|zλ)],
-			- w controls guidance strength;
-		- DDIM technique to get xT (non-Markov prediction);
-- Classifier-free (implicit):
-	- J Ho and T Salimans. Classifier-Free Diffusion Guidance. NeurIPS'21 Workshop
-		- One-model for score εθ(xt) and εθ(xt|y), set y=∅;
-		- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
-			- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
-		- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
-			- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
-		- εθ(xt|c) = εθ(xt|∅) + w(εθ(xt|c) − εθ(xt|∅))
-- Text-based (Embedding):
+			- Use ε̃θ(zλ,c) as score in place of εθ(zλ,c) ≈ −σλ∇zλ logp(zλ|c);
+				- ε̃θ(zλ,c) = εθ(zλ,c) − wσλ ∇zλ logpθ(c|zλ) ≈ −σλ ∇zλ[logp(zλ|c) + wlogpθ(c|zλ)],
+				- w controls guidance strength;
+		- SDG: Berkeley. More Control for Free! Image Synthesis with Semantic Diffusion Guidance. WACV'23
+			- https://xh-liu.github.io/sdg/
+			- Shifted mean: pθ(xt−1|xt)pφ(y|xt−1) ~ N(μ+Σg,Σ)
+			- g = ∇xt−1 log pφ(y|xt−1)
+	- Classifier-free (implicit):
+		- J Ho and T Salimans. Classifier-Free Diffusion Guidance. NeurIPS'21 Workshop
+			- One-model for score εθ(xt) and εθ(xt|y), set y=∅;
+			- class-conditional diffusion model θ(xt|y) is replaced with a null label ∅ with a fixed probability during training:
+				- εθ(xt|y) = εθ(xt|∅) + s(εθ(xt|y) − εθ(xt|∅))
+			- Implicit classifier: pi(y|xt)∝p(xt|y)/p(xt)
+				- ∇xtlog p(xt|y) ∝ ∇xt log p(xt|y) − ∇xt log p(xt) ∝ ε∗(xt|y)−ε∗(xt)
+			- εθ(xt|c) = εθ(xt|∅) + w(εθ(xt|c) − εθ(xt|∅))
+- Cascaded/multi-resolution:
+	- J Ho, C Saharia, W Chan, D Fleet, M Norouzi, and T Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
+	- GLIDE, 
+- Adding more noise: Mimicing inference time;
+	- GLIDE,
+- Fast/Acceleration
+	- E Luhman and T Luhman. Knowledge distillation in iterative generative models for improved sampling speed. 2021
+		- https://github.com/tcl9876/Denoising_Student
+	- Brain. On distillation of guided diffusion models. NIPSW'22
+		- Insight: 2 stages for classifier-free diffusion;
+		- Stage 1: student for both conditional and unconditional;
+		- Stage 2: distillation for fewer steps;
+	- Salimans & Ho, Progressive distillation for fast sampling of diffusion models, ICLR'22
+		- Smaller model and half-steps each distillation;
+		- Progressive: student becomes teacher next;
+- Discrete state diffusion:
+	- Max-Welling. Argmax Flows and Multinomial Diffusion: Learning Categorical Distributions, NeurIPS'21
+		- Argmax Flows:
+		- Multimodal diffusion: cat + transition-matrix;
+	- D3PMs: Google-Brain. Structured Denoising Diffusion Models in Discrete State-Spaces, NeurIPS'21
+		- q(xt|x0) = Cat(xt;p = x0 Qt'), with Qt' = Q1 Q2...Qt
+		- Marginal: q(xt−1|xt,x0) = q(xt|xt-1,x0)q(xt-1|x0)/q(xt|x0)
+		- Designing Qt to be:
+			- Uniform, absorbing, ...
+	- Chang Huiwen, MaskGIT: Masked Generative Image Transformer, CVPR'22
+		- https://masked-generative-image-transformer.github.io/
+		- Stage 1: Tokenizer;
+		- Stage 2: Mask scheduling;
+	- Google-Brain. Analog Bits: Generating Discrete Data using Diffusion Models with Self-Conditioning. ICLR'23
+		- https://masked-generative-image-transformer.github.io/
+		- Bit -> continuous (analog bits)
+		- Two techniques:
+			- Self-conditioning;
+			- Asymmetric time intervals;
+
+## Downstream Tasks
+- Edit:
+	- Sdedit: Image synthesis and editing with stochastic differential equations. ICLR'22
+		- https://github.com/ermongroup/SDEdit
+		- Add noise, start from t ∈ [0.3, 0.6]
+	- ControlNet: L Zhang, M Agrawala. Adding Conditional Control to Text-to-Image Diffusion Models. 2023
+	- Imagen editor: https://imagen.research.google/editor/
+- Text-to-image:
 	- CLIP: given text c, image x, (f(x), g(c)) as guidance;
 	- GLIDE: OpenAI. GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models. 2021
 		- https://github.com/openai/glide-text2im.
 		- Insight: CLIP-guidance in classifier style: generate im xt s.t. f(xt) is close to g(c) 
 		- µθ(xt|c) = µθ(xt|c) + s Σθ(xt|c) ∇xt[f(xt)g(c)]
-- **DALL-E-2**: OpenAI. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
-	- Image caption pair (x, y), embedding (z.im, z.text);
-		- CLIP: z.im (ViT), z.text (GPT-3), trained with SAM;
-	- Prior: P(z.im|text)
-		- Predict image embedding z.im based on caption y;
-		- CLIP + DALL-E dataset;
-		- Prior 1: AR with quantization; PCA + SAM?
-		- Prior 2: DDPM without ε;
-	- Decoder: pretrained and fixed; to invert image encoder;
-		- P(x|y) = P(x,z.im|y) = P(x|z.im, y)P(z.im|y), 
-		- Decoder: zi(64x64) - 256x256 - 1024x1024
-		- Stage 1 (GLIDE): Gaussian blur;
-		- Stage 2 (upsampler): BSR degradation, unconditional ADMNet;
+	- DALL-E-2: OpenAI. Hierarchical Text-Conditional Image Generation with CLIP Latents. 2022
+		- Image caption pair (x, y), embedding (z.im, z.text);
+			- CLIP: z.im (ViT), z.text (GPT-3), trained with SAM;
+		- Prior: P(z.im|text)
+			- Predict image embedding z.im based on caption y;
+			- CLIP + DALL-E dataset;
+			- Prior 1: AR with quantization; PCA + SAM?
+			- Prior 2: DDPM without ε;
+		- Decoder: pretrained and fixed; to invert image encoder;
+			- P(x|y) = P(x,z.im|y) = P(x|z.im, y)P(z.im|y), 
+			- Decoder: zi(64x64) - 256x256 - 1024x1024
+			- Stage 1 (GLIDE): Gaussian blur;
+			- Stage 2 (upsampler): BSR degradation, unconditional ADMNet;
+	- Stable diffusion: R Rombach, A Blattmann, D Lorenz, P Esser, B Ommer. High-Resolution Image Synthesis with Latent Diffusion Model. CVPR'22
+	- Imagen: Google-Brain. Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding. NeurIPS'22
+		- Cascaded + classifier-free guidance + dynamic thresholding + forzen LLM (T5-XXL)
+		- https://imagen.research.google
+- Super-resolution
+	- SR3. Google-Brain. Image Super-Resolution via Iterative Refinement. ICCV'21
+		- upsampling + Gaussian blur;
+	- K Zhang, J Liang, L V Gool, and R Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
+		- BSR noise;
+- Colorization:
+	- Saharia, Palette: Image-to-Image Diffusion Models, arXiv'21
+- Outpainting/panorama;
+- Video Generation
+	- https://github.com/showlab/Awesome-Video-Diffusion
+	- Yang et al., Diffusion Probabilistic Modeling for Video Generation, arXiv, 2022
+	- Brain. J. Video diffusion models. ICLRW'22
+		- https://video-diffusion.github.io/
+	- Brain. Imagen video: High definition video generation with diffusion models. 2022
+		- https://imagen.research.google/video/
+	- Harvey et al., Flexible Diffusion Modeling of Long Videos, NeurIPS'22
+	- FAIR. Make-A-Video: Text-to-Video Generation without Text-Video Data.
+	- Höppe et al., Diffusion Models for Video Prediction and Infilling, arXiv, 2022
+	- Voleti et al., MCVD: Masked Conditional Video Diffusion for Prediction, Generation, and Interpolation, arXiv, 2022
+	- NVIDIA: Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models. CVPR'23
+		- https://research.nvidia.com/labs/toronto-ai/VideoLDM/
+- AE, with latent code:
+	- Preechakul et al., Diffusion Autoencoders: Toward a Meaningful and Decodable Representation, CVPR'22
+- Audio/1D Generation
+	- NVIDIA: DiffWave: A Versatile Diffusion Model for Audio Synthesis. 2020
+	- Brain: Wavegrad: Estimating gradients for waveform generation. ICLR'21
+	- Grad-TTS: A diffusion probabilistic model for text-to-speech. 2021
+- Semantic Segmentation:
+	- Baranchuk et al., Label-Efficient Semantic Segmentation with Diffusion Models, ICLR'22
+		- https://github.com/yandex-research/ddpm-segmentation
+		- DDPM feature + MLP for sem-seg;
+	- A Generalist Framework for Panoptic Segmentation of Images and Videos: https://arxiv.org/abs/2210.06366
+- Inverse-problems: 
+	- Medical imaging: reconstruct from sparse signal;
+	- Song, Y., Shen, L., Xing, L., and Ermon, S. Solving inverse problems in medical imaging with score-based generative models. ICLR'22
+	- Diffusion posterior sampling for general noisy inverse problems. ICLR'23
+	- Pseudoinverse-guided diffusion models for inverse problems. ICLR'23
+- 3D:
+	- Zhou et al., 3D Shape Generation and Completion through Point-Voxel Diffusion, ICCV'21
+	- Luo and Hu, Diffusion Probabilistic Models for 3D Point Cloud Generation, CVPR'21
+	- DreamFusion: https://dreamfusion3d.github.io
+- Data for training:
+	- Synthetic Data from Diffusion Models Improves ImageNet Classification: https://arxiv.org/abs/2304.08466
 
-## Super-resolution
-- C Saharia, J Ho, W Chan, T Salimans, D Fleet, and M Norouzi. Image Super-Resolution via Iterative Refinement. 2021
-	- upsampling + Gaussian blur;
-- K Zhang, J Liang, L V Gool, and R Timofte. Designing a Practical Degradation Model for Deep Blind Image Super-Resolution. ICCV'21
-	- BSR noise;
-
-## Video Generation
-- J Ho, C Saharia, W Chan, D Fleet, M Norouzi, and Tim Salimans. Cascaded Diffusion Models for High Fidelity Image Generation. 2021
-
-## Analysis
-- Analytic-DPM: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
-- F Bao, C Li, J Sun, J Zhu, B Zhang. Estimating the Optimal Covariance with Imperfect Mean in Diffusion Probabilistic Models. ICML'22
+## Trendy
+- Control/conditional:
+	- Erasing Concepts from Diffusion Models
+- Scalable Diffusion Models with Transformers, Dec 2022
+	- https://www.wpeebles.com/DiT.html
+- simple diffusion: End-to-end diffusion for high resolution images, 2023.
+- NVIDIA. ediff-i: Text-to-image diffusion models with ensemble of expert denoisers. 2022
+- Genie: Higherorder denoising diffusion solvers. 2022
+- Kawar, B., Elad, M., Ermon, S., and Song, J. Denoising diffusion restoration models. 2022
+- Photorealistic text-to-image diffusion models with deep language understanding. 2022
+- A Bansal, E Borgnia, H Chu, J Li, H Kazemi, F Huang, M Goldblum, J Geiping, T Goldstein. Cold Diffusion: Inverting Arbitrary Image Transforms Without Noise. 

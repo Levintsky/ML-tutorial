@@ -96,13 +96,19 @@
 - Interactive:
 	- Jun-Yan Zhu, et. al. Generative Visual Manipulation on the Natural Image Manifold. ECCV'18
 		- Mapping on latent manifold;
-- Latent/Hierarchical
+- Discrete:
+	- VQ-VAE: L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
+		- AE-loss + Quantization loss + commitment loss;
+	- VQ-GAN: Taming Transformers for High-Resolution Image Synthesis. CVPR'21
+		- Replace VQ-VAE decoder loss with adversarial loss;
+		- Quantization: Kmeans, ... to make more stable;
+- Hierarchical:
 	- Can be 2-Stages, or trained together;
 	- First Stage (Quantization): widely used loss:
-		- L = |x-D(ek)|^2 + |sg[E(x)]-ek|^2 + β|E(x)-sg[ek]|^2
-		- VAE: VQ-VAE, VQ-VAE-2, DVAE;
+		- VAE: Q-VAE-2, DVAE;
 		- GAN: VQ-GAN;
-		- Hierarchical: Cascaded Diffusion. '21
+		- Diffusion: Cascaded Diffusion. '21
+			- DALL-E, Stable-diffusion;
 	- Second stage: Always AR likelihood
 		- VQ-VAE, VQ-VAE-2, VQ-GAN;
 	- Hierarchical:
@@ -125,7 +131,8 @@
 	- Conv/Deconv: VQ-VAE, VQ-VAE-2;
 	- Two-Stage/Hierarchical:
 		- VQ-VAE, VQ-VAE-2;
-		- NVAE: Arash Vahdat, Jan Kautz. A Deep Hierarchical Variational Autoencoder. NeurIPS'20
+		- NVAE: A Vahdat, J Kautz. A Deep Hierarchical Variational Autoencoder. NeurIPS'20
+			- Multiscale + BN + flow;
 	- Auto-regressive decoder: PixelVAE; VQ-VAE-1,2;
 		- PixelVAE: ICLR'17; Enc-Dec-PixelCNN;
 	- Hierarchical: LVAE (Ladder, NIPS'16), NVAE
@@ -141,7 +148,6 @@
 	- **VQ-VAE**: Neural Discrete Representation Learning. NIPS'17
 		- Quantize encoded e=E(x) to discrete codes in Kmeans style;
 		- x -> E(x) -> e -> z=ek -> D(e) -> x'
-		- AE-loss + Quantization loss + commitment loss;
 	- **VQ-VAE-2**: Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
 		- Stage 1: VQ-VAE pretraining;
 			- Hierarchical VAE: image (256) -> bottom (64) -> top (32)
@@ -207,7 +213,7 @@
 - Analysis:
 - Application in RL: GAIL; (disc score as reward)
 
-## Design-- Progressive/Auto-Regressive
+## Design- Progressive/Auto-Regressive
 - Legacy:
 	- NADE, AISTATS'11; RNADE, NIPS'13; MADE, ICML'15;
 - 2D: Masked Raster-Scan/zig-zag;
@@ -284,7 +290,7 @@
 				- MixLogCDF in coupling layer;
 			- Self-attention: Input - conv - **MHA** - gate instead of non-conv-non;
 	- Spline: cut into piecewise affine flow; connectivity at border required;
-		- Conor Durkan, Artur Bekasov, Iain Murray, and George Papamakarios. Neural spline flows. NeurIPS'19
+		- C Durkan, A Bekasov, I Murray, and G Papamakarios. Neural spline flows. NeurIPS'19
 	- Residual flow (Planar flow; Sylvester flow; Radial flow;)
 		- (+) guaranteed invertible if contrastive with Lip < 1;
 		- (-) no known efficient procedure Jacobian determinant;
@@ -350,8 +356,17 @@
 			- Forward: fast parallel;
 			- Backward: same as slow, autoregressive;
 	- **NAF**: C Huang, D Krueger, A Lacoste, and A Courville. Neural autoregressive flows. ICML'18
+- VAE+GAN: VAE reconstruction loss replaced with adversarial loss;
+	- IntroVAE: Introspective Variational Autoencoders for Photographic Image Synthesis. NeurIPS'18
 - VAE+Flow:
 	- f-VAE;
+	- Variational Inference with Normalizing Flows
+	- IAF: Improving Variational Inference with Inverse Autoregressive Flow
+	- Variational Lossy Autoencoder
+- GAN with Encoder:
+	- J Donahue, P Krähenbühl, T Darrell. Adversarial Feature Learning. ICLR'17
+	- ALI: V Dumoulin, IBelghazi, B Poole, O Mastropietro, A Lamb, M Arjovsky, A Courville. Adversarially Learned Inference.
+	- Jianlin Su. GAN-QP: A Novel GAN Framework without Gradient Vanishing and Lipschitz Constraint.
 
 ## Diffusion/Score-based
 - DDPM:
@@ -369,7 +384,9 @@
 - RNN/LSTM:
 	- VAE: DRAW, VRNN, TD-VAE;
 - Conv/Deconv:
-	- DCGAN;
+	- Discriminator:
+		- CNN : DCGAN; ...
+		- ResNet: PGGAN, SNGAN, SAGAN;
 	- VAE: PixelVAE;
 - Transformer:
 	- AR:
@@ -410,17 +427,28 @@
 
 ## Energy/Optimization-Based
 - Energy-based:
-	- J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
-	- Y Du and I Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
+	- Propose an energy function U(x;θ), s.t. real/fake data has low/high energy;
+		- q(x;θ) = exp(-U(x;θ)) / Z(θ)
+		- φ = argmin.φ E[U(x;θ)|x=G(z;φ),z~q(z)]
+	- D-step: train ∇, s.t. true/fake ~ low/high energy;
+		- θ = θ - ε(E.p(x)[∇.θ U(x)] - E.q(x;θ)[∇.θ U(x)])
+		- First term: E.p(x)[.] easy, just sample from real;
+		- Second term: E.q(;θ)[.] hard, Langevin can work (EBM);
+			- x.t+1 = xt - 1/2 ε∇.x(xt) + √εw, w ~ N(0; I)
+	- G-step: train φ, s.t. fake also low energy;	
+- EBGAN: J Zhao, M Mathieu, Y LeCun. Energy-based Generative Adversarial Network. 2016
+- Y Du and I Mordatch. Implicit generation and modeling with energy based models. NeurIPS'19
+	- Langevin to sample from q(x;θ);
+	- https://github.com/openai/ebm_code_release
+- R Kumar, S Ozair, A Goyal, A Courville, Y Bengio. ENGAN: Maximum Entropy Generators for Energy-Based Models. ICLR'19 reject
+	- EBGAN + entropy regularization;
+	- L - H.φ(x)
+	- https://github.com/ritheshkumar95/energy_based_generative_models
 - E Nijkamp, M Hill, S Zhu, Y Wu. Learning Non-Convergent Non-Persistent Short-Run MCMC Toward Energy-Based Model. NIPS'19
 
 ## Implicit
 - Only defines generating process, likelihood-free;
 - S Mohamed, B Lakshminarayanan. Learning in Implicit Generative Models. axriv'16
-
-## Combination
-- VAE + Flow:
-	- f-VAE, 
 
 ## Special
 - VAE
@@ -441,4 +469,4 @@
 - Carter et. al., Experiments in Handwriting with a Neural Network (2016)
 - C. Olah et. al. Feature Visualization, distill (2018)
 - E Vertes, M Sahani. Flexible and accurate inference and learning for deep generative models. NIPS'18
-- B Bailey, Matus J. Telgarsky. Size-Noise Tradeoffs in Generative Networks. NIPS'18
+- B Bailey, M Telgarsky. Size-Noise Tradeoffs in Generative Networks. NIPS'18

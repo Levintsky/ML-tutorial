@@ -33,6 +33,8 @@
 	- Rowan Zellers, Ari Holtzman, Elizabeth Clark, Lianhui Qin, Ali Farhadi, Yejin Choi. Evaluating Machines by their Real-World Language Use. 2020
 		- Benchmark: Giving helpful advice;
 		- http://rowanzellers.com/advice/
+- 中文:
+	- LCCC: (Large-scale Cleaned Chinese Conversation): 对话;
 
 ## Evaluation Metrics
 - Generation quality:
@@ -272,7 +274,7 @@
 		- Seo et al., 2019. Real-Time Open-Domain Question Answering with Dense-Sparse Phrase Index
 		- Lee et al., 2020. Learning Dense Representations of Phrases at Scale
 - A Fan, Yacine Jernite, Ethan Perez, David Grangier, Jason Weston, and Michael Auli. Eli5: Long form question answering. 2019
-- B McCann, N Keskar, C Xiong, and R Socher. The natural language decathlon: Multitask learning as question answering. 2018
+- decaNLP: B McCann, N Keskar, C Xiong, and R Socher. The natural language decathlon: Multitask learning as question answering. 2018
 - P Lewis, L Denoyer, and S Riedel. Unsupervised question answering by cloze translation. 2019
 - Knowledge-based/augmented:
 	- M Dunn, L Sagun, M Higgins, V Guney, V Cirik, and K Cho. Searchqa: A new q&a dataset augmented with context from a search engine. 2017

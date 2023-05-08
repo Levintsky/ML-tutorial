@@ -48,6 +48,10 @@
 	- Geometric Brownian motion:
 		- dSt = μSt dt + σSt dBt
 		- Black-Scholes Model; pricing model for options;
+- Trick (Fourier/Laplace):
+	- Transform ODE/PDE to frequency domain;
+	- Solve for solution;
+	- Inverse transform;
 
 ## ODE
 - Ding TongRen Chap 2: basic integral approach;

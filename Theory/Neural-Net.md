@@ -140,11 +140,14 @@
 	- J. Pennington and Y. Bahri. Geometry of neural network loss surfaces via random matrix theory. ICML'16
 	- Q Nguyen and M Hein. The loss surface of deep and wide neural networks. ICML'17
 	- S Mei, A Montanari, and P Nguyen. A mean field view of the landscape of two-layer neural networks. PNAS'18
-	- J Lan, R Liu, H Zhou, J Yosinski. LCA: Loss Change Allocation for Neural Network Training. NIPS'19
+	- J Lan, R Liu, H Zhou, J Yosinski. LCA: Loss Change Allocation for Neural Network Training. NeurIPS'19
 		- Insight: module-wise training loss during iteration;
 		<img src="/DL/images/empirical/lca-1.png" alt="drawing" width="450"/>\
 		<img src="/DL/images/empirical/lca-2.png" alt="drawing" width="450"/>
 	- C Zhang, S Bengio, and Y Singer. Are all layers created equal? arxiv'19
+	- SAM: P Foret, A Kleiner, H Mobahi, and B Neyshabur. Sharpness-Aware Minimization for Efficiently Improving Generalization. ICLR'21
+		- https://github.com/google-research/sam
+		- Insight: loss function: seeks parameters that lie in neighborhoods having uniformly low loss
 - Normalization:
 	- S Santurkar, D Tsipras, A Ilyas, A Madry. How Does Batch Normalization Help Optimization? NeurIPS'18
 	- N Bjorck, C Gomes, B Selman, K Weinberger. Understanding Batch Normalizations. NeurIPS'18
