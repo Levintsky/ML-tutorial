@@ -10,7 +10,7 @@
 - Benchmarks:
 	- T Berg. Parsing clothing in fashion photographs. CVPR'12
 	- R. Urtasun, and A. Yuille. Detect what you can: Detecting and representing objects using holistic models and body parts. CVPR'14
-	- M. Andriluka, L. Pishchulin, P. V. Gehler, and B. Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
+	- M Andriluka, L Pishchulin, P Gehler, and B Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
 	- COCO keypoint detection dataset.
 	- CMU Mocap: http://mocap.cs.cmu.edu/
 	- Human3.6M: http://vision.imar.ro/human3.6m/description.php
@@ -18,8 +18,8 @@
 	- Look into person: '17
 	- Posetrack: CVPR'18
 - Legacy:
-	- Y. Yang and D. Ramanan. Articulated pose estimation with flexible mixtures-of-parts. CVPR'11
-	- L. Pishchulin, M. Andriluka, P. V. Gehler, and B. Schiele. Poselet conditioned pictorial structures. CVPR'13
+	- Y Yang and D Ramanan. Articulated pose estimation with flexible mixtures-of-parts. CVPR'11
+	- L Pishchulin, M Andriluka, P Gehler, and B Schiele. Poselet conditioned pictorial structures. CVPR'13
 - OpenPose: realtime multi-person 2D pose estimation using Part Affinity Field. 2018
 	- https://github.com/CMU-Perceptual-Computing-Lab/openpose
 - **DensePose**: FAIR.

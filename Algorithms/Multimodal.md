@@ -64,7 +64,7 @@
 - Dual-encoder contrastive:
 	- **CLIP**: OpenAI. Learning Transferable Visual Models From Natural Language Supervision. 2021
 	- **ALIGN**: Google-Brain. ALIGN: Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision. ICML'21
-	- CoCa: Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, Yonghui Wu. CoCa: Contrastive Captioners are Image-Text Foundation Models.
+	- CoCa: J Yu, Z Wang, V Vasudevan, L Yeung, M Seyedhosseini, Y Wu. CoCa: Contrastive Captioners are Image-Text Foundation Models.
 	- **Florence**: MSR Florence: A New Foundation Model for Computer Vision.
 	- **MIL-NCE**: DeepMind. End-to-End Learning of Visual Representations from Uncurated Instructional Videos.
 		- https://www.di.ens.fr/willow/research/mil-nce/

@@ -88,6 +88,7 @@
 	- Progressive GAN; DDPM, ...
 - Two-stage/Latent-space;
 	- Discrete: VQ-VAE, VQ-VAE2 (VQ+AR); Stable-Diffusion;
+	- GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML'18
 - Conditional:
 	- semi-VAE, c-VAE, c-GAN;
 - Disentangled:
@@ -155,6 +156,7 @@
 			- Bottom: VQ-VAE on [e_bottom, U(e_top)] (64) <-> x (256)
 		- Stage 2: Pixel-SNAIL for AR prior;
 			- Hierarchical zig-zag AR;
+	- GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML'18
 
 ## GAN
 - Loss design:
@@ -244,7 +246,7 @@
 
 ## Design-- Normalizing Flow
 - Insight:
-	- GAN and VAE can't model p(x), because sum p(x|z)p(z) is hard!
+	- GAN and VAE can't model p(x), because ∑p(x|z)p(z) is hard!
 	 - Transformation of a probability density through a sequence of **invertible** mappings;
 	 	- zK = fK ◦ ... ◦ f2 ◦ f1(z0);
 	 	- lnqK(zK) = lnq0(z0) − Σk ln|det∂fk/zk-1|,
@@ -465,7 +467,6 @@
 
 ## Misc
 - P Esser, E Sutter, B Ommer. A Variational U-Net for Conditional Appearance and Shape Generation, CVPR '18
-- GLO: P. Bojanowski et al. Optimizing the latent state of generative networks, ICML'18
 - Carter et. al., Experiments in Handwriting with a Neural Network (2016)
 - C. Olah et. al. Feature Visualization, distill (2018)
 - E Vertes, M Sahani. Flexible and accurate inference and learning for deep generative models. NIPS'18

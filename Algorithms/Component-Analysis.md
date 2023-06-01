@@ -22,7 +22,7 @@
 	- Mutual information (MI) estimation:
 		- **Kernel-ICA**: F Bach, M Jordan. Kernel Independent Component Analysis. JMLR'02
 	- Entropy, negentropy estimation
-		- **Infomax-ICA**: AJ Bell, TJ Sejnowski. An information-maximization approach to blind separation and blind deconvolution. Neural computation'95
+		- **Infomax-ICA**: A Bell, T Sejnowski. An information-maximization approach to blind separation and blind deconvolution. Neural computation'95
 		- **RADICAL**: Erik. G. Learned-Miller, John W. Fisher III, ICA Using Spacings Estimates of Entropy. JMLR'03
 		- **FastICA**: A. Hyvärinen. Fast and Robust Fixed-Point Algorithms for Independent Component Analysis. TNN'99
 		- M Girolami, C Fyfe. Stochastic ICA contrast maximisation using OJA's nonlinear PCA algorithm. 1997

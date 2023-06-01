@@ -6,7 +6,7 @@
 	- Cityscapes: 5000 street view images;
 	- ADE20k:
 		- B Zhou, H Zhao, X Puig, S Fidler, A Barriuso and A Torralba. Scene Parsing through ADE20K Dataset. CVPR'17
-		- B Zhou, H Zhao, X Puig, T Xiao, Sanja Fidler, A Barriuso and A Torralba. Semantic Understanding of Scenes through ADE20K Dataset. IJCV
+		- B Zhou, H Zhao, X Puig, T Xiao, S Fidler, A Barriuso and A Torralba. Semantic Understanding of Scenes through ADE20K Dataset. IJCV
 		- http://groups.csail.mit.edu/vision/datasets/ADE20K/
 		- 25k images, 19.6 instances, 10.6 object classes each image;
 	- Mapillary Vistas;

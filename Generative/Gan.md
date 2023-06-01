@@ -92,7 +92,6 @@ from standard GAN. ICLR'19
 	- Moving average (Karras 2018)
 	- Orthogonal Initialization (Saxe 2014)
 	- **Truncated Norm** to sample z from: big trick
-	- IS: precision; FID: recall
 - X Wei, Z Liu, L Wang, and B Gong. Improving the improved training of Wasserstein GANs. ICLR'18
 	- Another regularization term;
 
@@ -133,10 +132,10 @@ from standard GAN. ICLR'19
 
 ## Applications with Adversarial Loss
 - Photo editting;
-	- A Brock, T Lim, J.M. Ritchie, and N Weston. Neural photo editing with introspective adversarial networks. ICLR 2017.
+	- A Brock, T Lim, J Ritchie, and N Weston. Neural photo editing with introspective adversarial networks. ICLR 2017.
 - Super-resolution:
-	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. In CVPR, 2017.
-	- C. K. Sønderby, J. Caballero, L. Theis, W. Shi, and F. Huszár. Amortised map inference for image super-resolution. In ICLR, 2017.
+	- C. Ledig, L. Theis, F. Huszar, J. Caballero, A. Aitken, A. Tejani, J. Totz, Z. Wang, and W. Shi. Photo-realistic single image super-resolution using a generative adversarial network. CVPR'17.
+	- C Sønderby, J Caballero, L Theis, W Shi, and F Huszár. Amortised map inference for image super-resolution. ICLR'17
 
 ## Misc
 - Louppe, G. and Cranmer, K. Adversarial variational optimization of non-differentiable simulators. arXiv preprint arXiv:1707.07113, 2017.

@@ -98,7 +98,7 @@
 		- Supervised learning from optimal control formulation:
 			- min 1/m∑j=1..m S(g(hWy+μ), cj) + R(W, μ, s, b)
 			- s.t. yk+1 = yk + δt σ(yk, θ)
-	- B Chang, L Meng, E Haber, F Tung, D Begert Multi-level residual networks from dynamical systems view. ICLR'18
+	- B Chang, L Meng, E Haber, F Tung, D Begert. Multi-level residual networks from dynamical systems view. ICLR'18
 		- Insight: multi-grid ODE; allow adding new layers if current time resolution not sufficient for modeling;
 - Noise/stability-inspired:
 	- EnResNet: B Wang, B Yuan, Z Shi, S Osher. ResNets Ensemble via the Feynman-Kac Formalism to Improve Natural and Robust Accuracies. NIPS'19

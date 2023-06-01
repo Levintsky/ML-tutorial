@@ -93,16 +93,16 @@
 			- Non-parametric softmax instance;
 		- Ishan Misra: https://youtu.be/gbziPIn9uDI
 			- Multi-view invariance, grouping;
-			- **PIRL**: Ishan Misra, Laurens van der Maaten. Self-Supervised Learning of Pretext-Invariant Representations. CVPR'20
+			- **PIRL**: I Misra, L v d Maaten. Self-Supervised Learning of Pretext-Invariant Representations. CVPR'20
 				- Invariant to pretext task;
-			- AVID-CMA: Pedro Morgado, Nuno Vasconcelos, Ishan Misra. Audio-Visual Instance Discrimination with Cross-Modal Agreement. arxiv'20
+			- AVID-CMA: P Morgado, N Vasconcelos, I Misra. Audio-Visual Instance Discrimination with Cross-Modal Agreement. arxiv'20
 				- Task: in same video, audio/video match in time?
 				- https://github.com/facebookresearch/AVID-CMA
-			- **SWAV**: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NeurIPS'20
+			- SWAV: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NeurIPS'20
 				- Task: same image, two augmentation zt, zs and their query codes qt, qs, loss as l(zt, qs) + l(zs, qt);
 				- https://github.com/facebookresearch/swav
 		- Carl Doersch: https://youtu.be/RWCc0nZOSBw
-			- **BYOL**: DeepMind. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
+			- BYOL: DeepMind. Bootstrap your own latent: A new approach to self-supervised Learning. 2020
 				- https://github.com/deepmind/deepmind-research/tree/master/byol
 				- step 1: no-negative;
 				- step 2: stop-gradient; (freeze target network)
@@ -115,17 +115,6 @@
 - **Tutorial**: ICML'21
 	- https://icml.cc/media/icml-2021/Slides/10843_QHaHBNU.pdf
 - https://lilianweng.github.io/posts/2021-05-31-contrastive/
-
-## NLP
-- Unsupervised Translation:
-	- A. Conneau et al. Word translation without parallel data, ICLR 2018
-		- https://github.com/facebookresearch/MUSE
-		- https://github.com/facebookresearch/fastText
-		- W = argmin||Wx-y||^2
-		- No pair data, so fool discrimitor for Wx and y
-		- Nearest neighbor for refinements
-		- Orthogonality
-	- G. Lample et al. Phrase-based and neural unsupervised machine translation, EMNLP'18
 
 ## Vision Specific
 - Goal: learn feature z from x, without label y;
@@ -169,17 +158,14 @@
 	- CIFAR: 94.9% with 250 labels, 88.6% with 40 (4 per class);
 
 ## Images Tasks
-- AutoEncoder:
-	- Google-Brain. Building high-level features using large scale unsupervised learning. ICML'12
-		- ICML'22 Test of time award
 - **Context** prediction:
 	- C. Doersch et al. Unsupervised Visual Representation Learning by Context Prediction, ICCV'15
 		- **Spatial relationship** for two image patches;
-	- D. Pathak, P. Krahenbuhl, J. Donahue, T. Darrell, and A. Efros. Context encoders: Feature learning by inpainting. CVPR'16
-	- Mehdi Noroozi, Paolo Favaro. Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV'16
-	- **Colorization**: R Zhang, P Isola, A Efros. Colorful Image Colorization, ECCV'16
+	- D Pathak, P Krahenbuhl, J Donahue, T Darrell, and A Efros. Context encoders: Feature learning by inpainting. CVPR'16
+	- M Noroozi, P Favaro. Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles. ECCV'16
+	- Colorization: R Zhang, P Isola, A Efros. Colorful Image Colorization, ECCV'16
 	- T Jakab, A Gupta, H Bilen, A Vedaldi. Unsupervised Learning of Object Landmarks through Conditional Image Generation. NIPS'18
-	- **BEiT**: H Bao, L Dong, S Piao, F Wei. BEiT: BERT Pre-Training of Image Transformers. ICLR'22
+	- BEiT: H Bao, L Dong, S Piao, F Wei. BEiT: BERT Pre-Training of Image Transformers. ICLR'22
 		- https://github.com/microsoft/unilm/tree/master/beit
 		- 224 x 224 image into 14 x 14 grid, each of size 16x16;
 		- Tokenized with dVAE rather than raw pixels; (stage I)
@@ -192,20 +178,20 @@
 		- ImageNet:
 			- BEIT-B: 83.2% (224x224), 84.6% (384x384)
 			- BEIT-L: 85.2% (224x224), 86.3% (384x384)
-	- **MAE**: FAIR. Masked Autoencoders Are Scalable Vision Learners. CVPR'22 Best Paper Nominee
+	- MAE: FAIR. Masked Autoencoders Are Scalable Vision Learners. CVPR'22 Best Paper Nominee
 		- https://github.com/facebookresearch/mae
 		- An important design of our MAE is to skip the mask token [M] in the encoder and apply it later in the lightweight decoder.
 - Pseudo-labels:
 	- Predict image rotation:
 		- S. Gidaris et al. Unsupervised Representation Learning by Predicting Image Rotations. ICLR'18
-	- Clustering:
-		- **Pseudo-label**: D Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
+	- Clustering/Pseudo-label:
+		- D Lee. Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks. ICMLW'13
 			- Layerwise denoised autoencoder with cross-entropy(x, x^)
 			- Equivalent to Entropy Regularization;
-		- M Caron, P Bojanowski, A Joulin, and Matthijs Douze. Deep clustering for unsupervised learning of visual features. ECCV'18
+		- M Caron, et. al. Deep clustering for unsupervised learning of visual features. ECCV'18
 			- Extract CNN and run K-means
 			- Train on cluster id;
-		- **SWAV**: M Caron, I Misra, J Mairal, P Goyal, P Bojanowski, A Joulin. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
+		- SWAV: M Caron, et. al. Unsupervised Learning of Visual Features by Contrasting Cluster Assignments. NIPS'20
 			- https://github.com/facebookresearch/swav
 			- Insight: prototypes C as a pseudo K-means;
 			- Given two augmented xt, xs, predict code qs from pt;
@@ -239,7 +225,7 @@
 			- Semi-supervised learning:
 				- Labeled: l(p(y|x), y)
 				- Unlabeled: consistency between augmented data: p(y|x), p(y|x')
-		- **MoCo**: FAIR. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
+		- MoCo: FAIR. Momentum Contrast for Unsupervised Visual Representation Learning. CVPR'20
 			- Contrastive learning; (1-positive + K-negative), InfoNCE applied with softmax-cross-entropy;
 			- Dictionary as a queue; (>> batch-size, no gradients, only learn query-encoder)
 			- Momentum update: slowly updating key encoder; θ-k = 0.999 θ-k + 0.001 θ-q;
@@ -249,7 +235,7 @@
 				- Linear protocol: 68% on ImageNet, similar to CMC, CPC and LocalAggr;
 				- PASCAL VOC Faster-RCNN end-to-end [AP: 74.4 -> 75.6];
 				- COCO end-to-end MaskRCNN [AP: 54.7 -> 55.4]
-		- **SimCLR**: Google-Brain. A Simple Framework for Contrastive Learning of Visual Representations. ICML'20
+		- SimCLR: Google-Brain. A Simple Framework for Contrastive Learning of Visual Representations. ICML'20
 			- https://github.com/ildoonet/pytorch-SimCLR
 			- Data augmentation: color distortion is critical;
 			- InfoNCE loss;
@@ -265,9 +251,9 @@
 			- Symmetrized loss: l(q1, k2) + l(q2, k1)
 		- Self-Supervised Pre-Training of Swin Transformers for 3D Medical Image Analysis. CVPR'22
 	- Non-Contrastive:
-		- **BYOL**: Bootstrap Your Own Latent A New Approach to Self-Supervised Learning. NIPS'20
+		- BYOL: Bootstrap Your Own Latent A New Approach to Self-Supervised Learning. NIPS'20
 			- No negative pairs, target network;
-		- **simsiam**: Xinlei Chen, Kaiming He. Exploring Simple Siamese Representation Learning. CVPR'21 best paper honorable mention
+		- simsiam: Meta. Exploring Simple Siamese Representation Learning. CVPR'21 best paper honorable mention
 			- Insight: minimize negative cosine similarity between positive pairs only;
 				- p: extra-MLP after z;
 				- d(p1, z2) = - (p1, z2) / |p1| |z2|
@@ -276,9 +262,9 @@
 				- (i) negative sample pairs,
 				- (ii) large batches,
 				- (iii) momentum encoders
-		- **Barlow Twins**: FAIR. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
+		- Barlow Twins: FAIR. Barlow Twins: Self-Supervised Learning via Redundancy Reduction. ICML'21
 			- Insight: feature correlation within a batch should be closed to identity;
-		- **DINO**: M Caron, H Touvron, I Misra, H Jegou, J Mairal, P Bojanowski, A Joulin. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
+		- DINO: M Caron, et. al. Emerging Properties in Self-Supervised Vision Transformers. ICCV'21
 			- https://github.com/facebookresearch/dino
 			- Insight: match output feature distribution by distillation: -p2logp1, p1 student, p2 teacher;
 				- p1: softmax(s_out)
@@ -289,23 +275,23 @@
 			- Student: to learn, with small image;
 			- SWAV mean C trick;
 			- DINO linear: 75.3% res-50, 77% vit, 80% vit-b;
-		- **MSN**: M Assran, M Caron, I Misra, P Bojanowski, F Bordes, P Vincent, A Joulin, M Rabbat, N Ballas. Masked Siamese Networks for Label-Efficient Learning.
+		- MSN: M Assran, et. al. Masked Siamese Networks for Label-Efficient Learning.
 			- DINO + mask;
 - Other prior:
 	- Symmetry:
-		- Andrea Vedaldi. Modelling and unsupervised learning of symmetric deformable object categories. NIPS'18
+		- A Vedaldi. Modelling and unsupervised learning of symmetric deformable object categories. NIPS'18
 
 ## Analysis
 - Visualization:
 	- F Bordes, R Balestriero, P Vincent. High Fidelity Visualization of What Your Self-Supervised Representation Knows About. 2021
-- Yuandong Tian, Lantao Yu, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning with Dual Deep Networks. arxiv
-- Yuandong Tian, Xinlei Chen, Surya Ganguli. Understanding Self-supervised Learning Dynamics without Contrastive Pairs. ICML'21 Outstanding Paper Award Honorable Mention
-- Li Jing, Pascal Vincent, Yann LeCun, Yuandong Tian. Understanding Dimensional Collapse in Contrastive Self-supervised Learning. ICLR'22
+- Y Tian, et. al. Understanding Self-supervised Learning with Dual Deep Networks. arxiv
+- Y Tian, et. al. Understanding Self-supervised Learning Dynamics without Contrastive Pairs. ICML'21 Outstanding Paper Award Honorable Mention
+- Y Tian. Understanding Dimensional Collapse in Contrastive Self-supervised Learning. ICLR'22
 - Deep Contrastive Learning is Provably (almost) Principal Component Analysis. arxiv'22
 
 ## Weakly Supervised
 - Classification:
-	- **URU**: D Mahajan, R Girshick, V Ramanathan, K He, M Paluri, Y Li, A Bharambe, L van der Maaten. Exploring the Limits of Weakly Supervised Pretraining. ECCV 2018
+	- URU: Meta. Exploring the Limits of Weakly Supervised Pretraining. ECCV 2018
 		- **IG-1B** dataset: Instagram
 		- Pretrain on a larger dataset (1.5 billion Instagram) + (1.5k, 8.5k, 17k hashtag classes);
 		- Preprocessing: image-deduplication, hash-tags clean up (SynNet);
@@ -324,16 +310,16 @@
 ## Videos
 - **Frame** prediction forward or backward
 	- D. Wei et al. Self-supervision using the arrow of time, CVPR 2018
-	- I. Misra, C. L. Zitnick, and M. Hebert. Shuffle and Learn: Unsupervised Learning using Temporal Order Verification. ECCV'16
+	- I Misra, et. al. Shuffle and Learn: Unsupervised Learning using Temporal Order Verification. ECCV'16
 		- Predict shuffle;
 	- Vondrick et al NIPS'16, CVPR'17
 	- E. Denton et al. Unsupervised learning of disentangled representations from video, NIPS'17
-	- **CMC**: Yonglong Tian, Dilip Krishnan, and Phillip Isola. Contrastive multiview coding. ICLR'20 rejected
+	- CMC: Y Tian, D Krishnan, and P Isola. Contrastive multiview coding. ICLR'20 rejected
 - Predict motion/flow/ego-motion/motion-mask:
 	- P. Agrawal, J. Carreira, and J. Malik. Learning to see by moving. ICCV'15
 	- D. Jayaraman and K. Grauman. Learning image representations tied to egomotion. ICCV'15
 	- Walker et al. ECCV'16
-	- D. Pathak, R. Girshick, P. Dollar, T. Darrell, and B. Hariharan. Learning features by watching objects move. CVPR'17
+	- D. Pathak, at al. Learning features by watching objects move. CVPR'17
 - **Tracking**:
 	- X. Wang and A. Gupta. Unsupervised learning of visual representations using videos. ICCV'15
 - **Coloring** videos
@@ -343,17 +329,20 @@
 	- R. Arandjelovic et al. Object that sound, ECCV 2018
 - R. Goroshin, J. Bruna, J. Tompson, D. Eigen, and Y. LeCun. Unsupervised learning of spatiotemporally coherent metrics. ICCV'15
 - Self-Supervised Video Representation Learning With Odd-One-Out Networks
-- Matthias Minderer, Chen Sun, Ruben Villegas, Forrester Cole, Kevin Murphy, Honglak Lee. Unsupervised learning of object structure and dynamics from videos. NIPS'19
+- Google. Unsupervised learning of object structure and dynamics from videos. NIPS'19
 
 ## 3D
-- Alexey Dosovitskiy. Unsupervised Learning of Shape and Pose with Differentiable Point Clouds. NIPS'18
+- A Dosovitskiy. Unsupervised Learning of Shape and Pose with Differentiable Point Clouds. NIPS'18
 
 ## Google Brain
 - F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19
 	- https://github.com/google-research/disentanglement_lib
 
 ## InfoNCE
-- **CPC**: Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation Learning with Contrastive Predictive Coding. NIPS'18
+- Info Noise-Contrastive Estimation:
+	- First introduced in CPC;
+	- Encoder + pos/neg pairs;
+- CPC: DeepMind. Representation Learning with Contrastive Predictive Coding. NIPS'18
 	- Insight: an encoder g_enc(x_t)=z_t, as well as c_t (info accumulated until t), given some {z_t+k, z_j1, z_j2, ...}, z_t+k as positive and others uniformly sampled as negative, do classification **InfoNCE**;
 	- Prediction\
 		<img src = '/Weak-Unsupervised/images/cpc2.png' width = '400'>
@@ -362,7 +351,7 @@
 	- Application in vision:
 		- ResNet-101: g-enc\
 			<img src = '/Weak-Unsupervised/images/cpc4.png' width = '500px'>
-- **GIM (Greedy-InfoMax)**: Sindy Löwe, Peter O’Connor, Bastiaan S. Veeling. Putting An End to End-to-End: Gradient-Isolated Learning of Representations. NIPS'19 Honorable Mention Outstanding New Directions Paper Award
+- GIM (Greedy-InfoMax): Putting An End to End-to-End: Gradient-Isolated Learning of Representations. NIPS'19 Honorable Mention Outstanding New Directions Paper Award
 	- https://github.com/loeweX/Greedy_InfoMax
 	- Key insight: layer-wise information preservation;
 	- Algorithm: Divide CNN by depth into M modules;

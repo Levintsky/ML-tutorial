@@ -41,9 +41,9 @@
 ## Legacy
 - D. MacKay, Information-based objective functions for active data selection. Neural Computation'92
 	- Expected informativeness
-- Y. Freund, H. Seung, E. Shamir, and N. Tishby. Selective sampling using the query by committee algorithm. ML'97
+- Y Freund, H Seung, E Shamir, and N Tishby. Selective sampling using the query by committee algorithm. ML'97
 	- A committee of classifiers;
-- S. Tong and D. Koller, Support vector machine active learning with applications to text classification. JMLR'02
+- S Tong and D Koller, Support vector machine active learning with applications to text classification. JMLR'02
 	- SVM;
 
 ## Measure Uncertainty
@@ -121,15 +121,15 @@
 		- 2. Human labels: obtaining input;
 		- 3. Propagate labels:
 - Scene classification:
-	- G.-J. Qi, X.-S. Hua, Y. Rui, J. Tang, and H.-J. Zhang, Two-dimensional active learning for image classification. CVPR'08
+	- G Qi, X Hua, Y Rui, J Tang, and H Zhang, Two-dimensional active learning for image classification. CVPR'08
 - Object/image categorization:
 	- A. Kapoor, K. Grauman, R. Urtasun, and T. Darrell, Active learning with gaussian processes for object categorization. ICCV'07
 	- P. Jain and A. Kapoor, Active learning for large multi-class problems. CVPR'09
 - Large scale image/video:
 	- R. Yan, J. Yang, and A. Hauptmann. Automatically labeling video data using multi-class active learning. ICCV'03
 	- B. Collins, J. Deng, K. Li, and L. Fei-Fei. Towards scalable dataset construction: An active learning approach. ECCV'08
-	- A. Fathi, M. F. Balcan, X. Ren, and J. M. Rehg. Combining self training and active learning for video segmentation. BMVC'11
-	- S. Vijayanarasimhan and K. Grauman. Active frame selection for label propagation in videos. ECCV'12
+	- A Fathi, M Balcan, X Ren, and J Rehg. Combining self training and active learning for video segmentation. BMVC'11
+	- S Vijayanarasimhan and K Grauman. Active frame selection for label propagation in videos. ECCV'12
 	- C. Vondrick, D. Patterson, and D. Ramanan, Efficiently scaling up crowdsourced video annotation. IJCV'13
 - Structured:
 	- B. Settles and M. Craven. An analysis of active learning strategies for sequence labeling tasks. EMNLP'08

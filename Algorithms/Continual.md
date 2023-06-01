@@ -22,10 +22,10 @@
 		- Architecture-based: each task uses different parameters;
 - Unsupervised CL:
 - CL in practice:
-	- T. Diethe et al. Continual Learning in Practise. Continual Learning Workshop at NeurIPS 2018.
-	- V. Lomonaco. Continual Learning for Production Systems: The new "Agile" in the Machine Learning Era. ContinualAI Publication, 2019.
+	- T Diethe et al. Continual Learning in Practise. Continual Learning Workshop at NeurIPS 2018.
+	- V Lomonaco. Continual Learning for Production Systems: The new "Agile" in the Machine Learning Era. ContinualAI Publication, 2019.
 	- D. Baylor et al. FX: A TensorFlow-Based Production-Scale Machine Learning Platform. KDD, 2017.
-	- A.Karpathy. Building the Software 2.0 Stack. Spark+AI Summit, 2018.
+	- A Karpathy. Building the Software 2.0 Stack. Spark+AI Summit, 2018.
 	- www.neurala.com
 	- https://gantry.io
 	- www.cogitai.com
@@ -56,28 +56,28 @@
 ## Continual Learning
 - Challenge: Forgetting
 	- Catastrophic Forgetting (McCloskey and Cohen, 1989)
-	- Robert M French. Catastrophic forgetting in connectionist networks. Trends in cognitive sciences, 3 (4):128–135, 1999.
-	- Robert M French and Nick Chater. Using noise to compute error surfaces in connectionist networks: a novel means of reducing catastrophic forgetting. Neural computation, 14(7):1755–1769, 2002.
+	- R French. Catastrophic forgetting in connectionist networks. Trends in cognitive sciences, 3 (4):128–135, 1999.
+	- R French and N Chater. Using noise to compute error surfaces in connectionist networks: a novel means of reducing catastrophic forgetting. NC'02
 - Neural:
 	- **hippocampus**: fast (one-shot) learning of episodic information, consolidated to the neocortex in sleep (or resting periods) via replay of neural activity patterns associated with the episode
 	- **neocortex**: slow learning of structured knowledge; efficient representation for generalization.
 - Task:
-	- Ian J Goodfellow, Mehdi Mirza, Da Xiao, Aaron Courville, and Yoshua Bengio. An empirical investigation of catastrophic forgeting in gradient-based neural networks. ICLR'14
+	- I Goodfellow, M Mirza, D Xiao, A Courville, and Y Bengio. An empirical investigation of catastrophic forgeting in gradient-based neural networks. ICLR'14
 	- NELL: Mitchell et al. Never-Ending Language Learner. AAAI'15
 		- http://rtw.ml.cmu.edu/rtw/
 		- T. Mitchell et al. Never-Ending Learning. Communications of the ACM, 2018.
 		- X. Chen et al. NEIL: Extracting Visual Knowledge from Web Data. ICCV, 2013.
 		- Z. Chen et al. Topic modeling using topics from many domains, lifelong learning and big data. ICML, 2014.
 		- P. Gupta et al. Neural topic modeling with continual lifelong learning. ICML'20
-- Milan Kieran, Joel Veness, Michael Bowling, James Kirkpatrick, Anna Koop, and Demis Hassabis. The forget me not process. NIPS'16
-- **VCL**: Cuong V. Nguyen, Yingzhen Li, Thang D. Bui, Richard E. Turner. Variational Continual Learning. ICLR'18
+- DeepMind. The forget me not process. NIPS'16
+- **VCL**: C Nguyen, Y Li, T Bui, R Turner. Variational Continual Learning. ICLR'18
 - Continual Unsupervised Learning
 
 ## 1. Data Focused/Replay/...
 - **Constrained Optimization**:
 	- GEM: Lopez-Paz and Ranzato (2017). Gradient episodic memory for Continual Learning. NeurIPS'17
 - Episodic (exact) vs Generative Replay: van de Ven et al (2020). Brain-inspired replay for continual learning with artificial neural networks
-- Friedemann Zenke, Ben Poole, Surya Ganguli. Continual Learning Through Synaptic Intelligence. ICML'17
+- F Zenke, B Poole, S Ganguli. Continual Learning Through Synaptic Intelligence. ICML'17
 	- Synaptic Intelligence (SI)
 - Meta-learning:
 	- Continual Meta-Learning
@@ -92,9 +92,9 @@
 
 ## 2. Model Focused
 - Assumes model parameter distribution over a prior;
-- **EWC**: James Kirkpatricka, Razvan Pascanua, Neil Rabinowitza, Joel Venessa, Guillaume Desjardinsa, Andrei A. Rusua, Kieran Milana, John Quana, Tiago Ramalhoa, Agnieszka Grabska-Barwinska, Demis Hassabisa, Claudia Clopathb, Dharshan Kumarana, and Raia Hadsell. Overcoming catastrophic forgetting in neural networks. PNAS'17
+- **EWC**: DeepMind. Overcoming catastrophic forgetting in neural networks. PNAS'17
 	- Elastic-weight consolidation: based on a diagonal Laplace approximation;
-- Hippolyt Ritter, Aleksandar Botev, David Barber. Online Structured Laplace Approximations For Overcoming Catastrophic Forgetting. NIPS'18
+- H Ritter, A Botev, D Barber. Online Structured Laplace Approximations For Overcoming Catastrophic Forgetting. NIPS'18
 	- Extend EWC to structured Laplace;
 - Hsu et al (2018). Re-evaluating continual learning scenarios: A categorization and case for strong baselines.
 	- Multi-head
@@ -107,8 +107,8 @@
 - Lee at al (2020) A Neural Dirichlet Process Mixture Model for Task-Free Continual Learning. ICLR2020
 
 ## Continual RL
-- Jorge Mendez, Shashank Shivkumar, Eric Eaton. Lifelong Inverse Reinforcement Learning. NIPS'18
-- Khimya Khetarpal, Matthew Riemer, Irina Rish, Doina Precup (2020). Towards Continual Reinforcement Learning: A Review and Perspectives.
+- J Mendez, S Shivkumar, E Eaton. Lifelong Inverse Reinforcement Learning. NIPS'18
+- K Khetarpal, M Riemer, I Rish, D Precup. Towards Continual Reinforcement Learning: A Review and Perspectives. 2020
 
 ## Unsupervised CL
 - CURL: D. Rao et al. Continual Unsupervised Representation Learning. NeurIPS 2019

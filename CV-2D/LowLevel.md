@@ -19,9 +19,9 @@
 	- FlowNetFusion: fusion of different flows
 	- Improvement over 1.0: smooth flow fields; preserve fine-motion detail; fast;
 	<img src="/CV/images/low-level/flownet2.png" alt="drawing" width="600"/>
-- **Pwc-Net**: D Sun, X Yang, M Liu, and J Kautz. Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume. CVPR'18
-- **MFF**: Z Ren, O Gallo, D Sun, M Yang, E Sudderth and J Kautz. A Fusion Approach for Multi-Frame Optical Flow Estimation. 2019
-- **SelFlow**: P Liu, M R. Lyu, I King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
+- Pwc-Net: D Sun, X Yang, M Liu, and J Kautz. Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume. CVPR'18
+- MFF: Z Ren, O Gallo, D Sun, M Yang, E Sudderth and J Kautz. A Fusion Approach for Multi-Frame Optical Flow Estimation. 2019
+- SelFlow: P Liu, M R. Lyu, I King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19
 	<img src="/CV/images/low-level/selflow1.png" alt="drawing" width="600"/>
 	<img src="/CV/images/low-level/selflow2.png" alt="drawing" width="500"/>
 
@@ -29,7 +29,7 @@
 - Input: two stereo pairs
 - Output: 3D motion (mostly from ego-car, dynamic objects)
 - Assume: all cameras calibrated with known intrinsics;
-- **ISF**: A. Behl, O. Jafari, S. Mustikovela, H. Alhaija, C. Rother and A. Geiger: Bounding Boxes, Segmentations and Object Coordinates: How Important is Recognition for 3D Scene Flow Estimation in Autonomous Driving Scenarios?. ICCV'17
+- ISF: A. Geiger: Bounding Boxes, Segmentations and Object Coordinates: How Important is Recognition for 3D Scene Flow Estimation in Autonomous Driving Scenarios?. ICCV'17
 - Z Ren, D Sun, J Kautz, and E Sudderth. Cascaded scene flow prediction using semantic segmentation. 3DV'17
 - DRISF: Uber-ATG. Deep Rigid Instance Scene Flow. ICCV'19
 	- Network design: three streams; then combined;

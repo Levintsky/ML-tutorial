@@ -42,8 +42,7 @@
 - Tensor parallel:
 	- Divide one tensor into multiple devices;
 	- **Megatron-LM**: Shoeybi et al. Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism. 19
-	- Narayanan et al. Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM. arxiv'21
-- D Narayanan, M Shoeybi, J Casper, P LeGresley, M Patwary, V Korthikanti, D Vainbrand, P Kashinkunti, J Bernauer, B Catanzaro, Am Phanishayee, M Zaharia. Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM.
+- DataBricks. Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM. arxiv'21
 	- All parallel together;
 
 ## Ensemble
@@ -68,7 +67,7 @@
 	- **SM3**: R Anil, V Gupta, T Koren, Y Singer. Memory-Efficient Adaptive Optimization.
 	- **ZeRO**: S Rajbhandari, J Rasley, O Ruwase, Y He. ZeRO: Memory Optimizations Toward Training Trillion Parameter Models
 
-# Platforms
+## Platforms
 
 ## Basics
 - Good resources:
@@ -119,8 +118,7 @@
 - A Coates, B Huval, T Wang, D Wu, B Catanzaro, A Ng. Deep Learning with COTS HPC, ICML'13
 	- data parallelism + model parallelism
 - How to model parallel?
-	- J K Kim, Q Ho, S Lee, X Zheng, W Dai, G Gibson, E Xing. STRADS: A Distributed Framework for Scheduled Model Parallel Machine Learning. EuroSys 2016.
-	- A Mirhoseini, H Pham, Q Le, B Steiner, R Larsen, Y Zhou, N Kumar, M Norouzi, S Bengio, J Dean. Device Placement Optimization with Reinforcement Learning. ICML'17
+	- J Kim, Q Ho, S Lee, X Zheng, W Dai, G Gibson, E Xing. STRADS: A Distributed Framework for Scheduled Model Parallel Machine Learning. EuroSys 2016.
 - Parameter server:
 	- T Chilimbi, Y Suzue, J Apacible, and K Kalyanaraman. Project Adam: Building an Efficient and Scalable Deep Learning Training System. OSDI'14.
 - Petuum:
@@ -129,7 +127,7 @@
 	- Poseidon: An Efficient Communication Architecture for Distributed Deep Learning on GPU Clusters. ATC 2017.
 
 ## Distributed
-- M Yu, Z Lin, K Narra, S Li, Y Li, N S Kim, A Schwing, M Annavaram, S Avestimehr. GradiVeQ: Vector Quantization for Bandwidth-Efficient Gradient Aggregation in Distributed CNN Training. NIPS'18
+- M Yu, Z Lin, K Narra, S Li, Y Li, N Kim, A Schwing, M Annavaram, S Avestimehr. GradiVeQ: Vector Quantization for Bandwidth-Efficient Gradient Aggregation in Distributed CNN Training. NIPS'18
 - J Wangni, J Wang, J Liu, T Zhang. Gradient Sparsification for Communication-Efficient Distributed Optimization. NIPS'18
 - cpSGD: Communication-efficient and differentially-private distributed SGD. NIPS'18
 - HOGWILD!-Gibbs can be PanAccurate. NIPS'18

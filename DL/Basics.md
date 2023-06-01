@@ -29,7 +29,13 @@
 		- Deep learning: I Goodfellow, Y Bengio, A Courville. 2016.
 
 ## Unclassified
-- Gamaleldin F. Elsayed, D Krishnan, H Mobahi, K Regan, S Bengio. Large Margin Deep Networks for Classification. NIPS'18
+- G Elsayed, D Krishnan, H Mobahi, K Regan, S Bengio. Large Margin Deep Networks for Classification. NIPS'18
+- Non-Euclidean: Hyperbolic-NN
+	- M Nickel, D Kiela. Poincaré Embeddings for Learning Hierarchical Representations. NeurIPS'17
+	- B Chamberlain, J Clough, M Deisenroth. Neural Embeddings of Graphs in Hyperbolic Space. 2017
+		- https://dawn.cs.stanford.edu/2018/03/19/hyperbolics/
+	- O Ganea, G Bécigneul, T Hofmann. Hyperbolic Neural Networks. NIPS'18
+		- https://youtu.be/MdPk3qD4Wig
 
 ## PRML (Chapter 5)
 - Feed-forward:

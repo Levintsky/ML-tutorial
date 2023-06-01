@@ -24,7 +24,7 @@
 	- Procedural reconstruction: NPR ECCV'18;
 
 ## Datasets
-- **ISIN**: C Lu, H Su, Y Li, Y Lu, L Yi, CK Tang, L Guibas. Beyond Holistic Object Recognition: Enriching Image Understanding with Part States. CVPR'18
+- ISIN: C Lu, H Su, Y Li, Y Lu, L Yi, CK Tang, L Guibas. Beyond Holistic Object Recognition: Enriching Image Understanding with Part States. CVPR'18
 	- Part state dataset from PASCAL VOC: 15 object categories, 104,965 parts, 856 states from 19,437 images;
 
 ## Parts
@@ -33,9 +33,9 @@
 	- Bezier Curve
 	- Graph Neural Network
 - SOTAs
-	- **LCNN**: Y Zhou, H Qi, Y Ma. L-CNN — End-to-End Wireframe Parsing. ICCV'19
+	- LCNN: Y Zhou, H Qi, Y Ma. L-CNN — End-to-End Wireframe Parsing. ICCV'19
 		- https://github.com/zhou13/lcnn
-	- **ht-lcnn**: Y Lin, and S Pintea, and J Gemert. Deep-Hough-Transform-Line-Priors. ECCV'20
+	- ht-lcnn: Y Lin, and S Pintea, and J Gemert. Deep-Hough-Transform-Line-Priors. ECCV'20
 		- https://github.com/yanconglin/Deep-Hough-Transform-Line-Priors
 	- N Xue, T Wu, S Bai, F Wang, G Xia, L Zhang, P Torr. Holistically-Attracted Wireframe Parsing. 
 	- ULSD: H Li, H Yu, W Yang, L Yu, S Scherer. ULSD: Unified Line Segment Detection across Pinhole, Fisheye, and Spherical Cameras. arxiv'20
@@ -54,7 +54,7 @@
 	- Latex: NeurIPS'18
 	- D. Ritchie series;
 - Predefined templates/energy:
-	- Gupta, A., Efros, A.A., Hebert, M.: Blocks world revisited: Image understanding using qualitative geometry and mechanics. ECCV'10
+	- A Gupta, A Efros, M Hebert: Blocks world revisited: Image understanding using qualitative geometry and mechanics. ECCV'10
 	- HouseCraft: ECCV'16
 - Procedural reconstruction:
 	- Muller, P., Zeng, G., Wonka, P., Van Gool, L.: Image-based procedural modeling of facades. TOG'07
@@ -64,7 +64,7 @@
 	- Chauve, A.L., Labatut, P., Pons, J.P.: Robust piecewise-planar 3d reconstruction and completion from large-scale unstructured point data. CVPR'10
 	- Jiang, H., Xiao, J.: A linear approach to matching cuboids in rgbd images. CVPR'13
 	- Xiao, J., Furukawa, Y. Reconstructing the world's museums. IJCV'14
-	- Wang, H., Zhang, W., Chen, Y., Chen, M., Yan, K.: Semantic de- composition and reconstruction of compound buildings with symmetric roofs from lidar data and aerial imagery. Remote Sensing'15
+	- Wang, H., Zhang, W., Chen, Y., Chen, M., Yan, K.: Semantic decomposition and reconstruction of compound buildings with symmetric roofs from lidar data and aerial imagery. Remote Sensing'15
 
 ## Supervision
 - cVAE: D Ritchie's;

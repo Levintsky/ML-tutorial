@@ -29,7 +29,7 @@
 	- Charades ECCV'16
 - **Cooking**: D Chen, W Dolan. Collecting Highly Parallel Data for Paraphrase Evaluation. ACL'11
 	- 2,089 videos; 85,550 English descriptions
-- **HMDB-51**: H. Kuehne, H. Jhuang, E. Garrote, T. Poggio, and T. Serre. HMDB: a large video database for human motion recognition. ICCV'11
+- **HMDB-51**: MIT. HMDB: a large video database for human motion recognition. ICCV'11
 	- 51 categories, 7,000 annotated
 - **UCF-101**: K. Soomro, A. R. Zamir, and M. Shah. Ucf101: A dataset of 101 human actions classes from videos in the wild. 2012
 	- 101 categories, 13k clips, 27 hours
@@ -47,8 +47,8 @@
 	- Dataset bias: gender
 	- Baseline: ConvNet + LSTM, Two-Stream, 3D ConvNets
 - **Slac**: H. Zhao, Z. Yan, H. Wang, L. Torresani, and A. Torralba. Slac: A sparsely labeled dataset for action classification and localization. 
-- **YouCook II**: L. Zhou, C. Xu, and J. J. Corso. Towards automatic learning of procedures from web instructional videos. AAAI'18
-- M. Monfort, A. Andonian, B. Zhou, K. Ramakrishnan, S.A. Bargal, Y. Yan, L. Brown, Q. Fan, D. Gutfreund, C. Vondrick, et al. Moments in time dataset: one million videos for event understanding. PAMI'19
+- **YouCook II**: L Zhou, C Xu, and J Corso. Towards automatic learning of procedures from web instructional videos. AAAI'18
+- Google. Moments in time dataset: one million videos for event understanding. PAMI'19
 
 ## Backbone
 - Legacy/Hand-Designed
@@ -85,11 +85,11 @@
 		- Correspondence Embedding layer:\
 			<img src="/CV-2D/images/video/cpnet-2.png" alt="drawing" width="400"/>
 - C3D:
-	- **ArtNet**: L Wang, W Li, W Li, and L Van Gool. Appearance-and-relation networks for video classification. CVPR'18
+	- ArtNet: L Wang, W Li, W Li, and L Van Gool. Appearance-and-relation networks for video classification. CVPR'18
 		- Insight: C3D w/o correspondence, then concat;
 		<img src="/CV-2D/images/video/artnet.png" alt="drawing" width="600"/>
 	- M Zolfaghari, K Singh, and T Brox. Eco: Efficient convolutional network for online video understanding. ECCV'18
-	- **S3D**: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV'18
+	- S3D: S. Xie, C. Sun, J. Huang, Z. Tu, and K. Murphy. Rethinking spatiotemporal feature learning for video understanding. ECCV'18
 		- I3D (inflate the 2D conv in Inception)
 		- Bottom-Heavy-I3D: 3D temporal-conv at bottom, 2D-Conv at top
 		- Top-Heavy-I3D: 2D-conv at bottom, 3D temporal-conv at top (faster, more accurate)
@@ -110,15 +110,15 @@
 		<img src="/CV-2D/images/video/csn2.png" alt="drawing" width="450"/>
 	- C Wu, R Girshick, K He, C Feichtenhofer, P Krähenbühl. A Multigrid Method for Efficiently Training Video Models. CVPR'20
 	- F Xiao, Y J Lee, K Grauman, J Malik, C Feichtenhofer. Audiovisual SlowFast Networks for Video Recognition. arxiv'20
-	- **X3D**: C Feichtenhofer. X3D: Expanding Architectures for Efficient Video Recognition. CVPR'20
+	- X3D: C Feichtenhofer. X3D: Expanding Architectures for Efficient Video Recognition. CVPR'20
 - MSRA:
 	- X Zhu, Y Wang, J Dai, L Yuan, and Y Wei. Flow-Guided Feature Aggregation for Video Object Detection. ICCV'17
 	- X Zhu, J Dai, L Yuan, and Y Wei. Towards High Performance Video Object Detection. CVPR'18 
 	- Z Zhang, Dazhi Cheng, X Zhu, S Lin, and J Dai. Integrated Object Detection and Tracking with Tracklet-Conditioned Detection. 2018
-- **P3D**: Z. Qiu, T. Yao, and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
-- **ARTNet**: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
+- P3D: Z. Qiu, T. Yao, and T. Mei. Learning spatio-temporal representation with pseudo-3d residual networks. ICCV 2017
+- ARTNet: H. Wang and C. Schmid. Action recognition with improved trajectories. CVPR 2018
 - K. Hara, H. Kataoka, and Y. Satoh. Can spatiotemporal 3d cnns retrace the history of 2d cnns and imagenet? CVPR 2018
-- **MFNet**: Y. Chen, Y. Kalantidis, J. Li, S. Yan, and J. Feng. Multi-fiber networks for video recognition. ECCV'18.
+- MFNet: Y. Chen, Y. Kalantidis, J. Li, S. Yan, and J. Feng. Multi-fiber networks for video recognition. ECCV'18.
 - R Gao, B Xiong, K Grauman. Im2Flow: Motion Hallucination from Static Images for Action Recognition. CVPR'18
 
 ## Multimodal
@@ -143,8 +143,7 @@
 - FAIR:
 	- M. Mathieu, C. Couprie, and Y. LeCun. Deep multi-scale video prediction beyond mean square error. ICLR 2016
 	- E. Denton and R. Fergus. Stochastic video generation with a learned prior. ICML'18
-- NVIDIA:
-	- **MoCoGAN**: S. Tulyakov, M.-Y. Liu, X. Yang, and J. Kautz. MoCoGAN: Decomposing motion and content for video generation.
+- MoCoGAN: S Tulyakov, M Liu, X Yang, and J Kautz. MoCoGAN: Decomposing motion and content for video generation.
 - CMU:
 	- J. Walker, C. Doersch, A. Gupta, and M. Hebert. An uncertain future: Forecasting from static images using variational autoencoders. ECCV 2016
 	- I. Misra, C. L. Zitnick, and M. Hebert. Shuffle and learn: unsupervised learning using temporal order verification. In ECCV, 2016

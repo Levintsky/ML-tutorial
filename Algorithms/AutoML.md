@@ -60,7 +60,7 @@
 			- Incomparable training code, search space, eval schemes;
 
 ## Summary
-- M Wistuba, A Rawat, Te Pedapati. A Survey on Neural Architecture Search. 2019
+- M Wistuba, A Rawat, T Pedapati. A Survey on Neural Architecture Search. 2019
 - Zhihu:
 	- https://zhuanlan.zhihu.com/p/71547478
 	- https://zhuanlan.zhihu.com/p/42924585
@@ -170,7 +170,7 @@
 		- https://github.com/D-X-Y/AutoDL-Projects
 - RL: REINFORCE, Q-learning
 	- REINFORCE
-		- [vanilla-NAS ICLR'17]: 400 GPUs, 3-4 days;
+		- vanilla-NAS ICLR'17: 400 GPUs, 3-4 days;
 		- [NasNet CVPR'18]
 		- [Swish-ICLR'18] Exhaustive search + RL;
 			- Discovery: swish op: f() = x σ(βx)
@@ -197,8 +197,8 @@
 			- Mutation
 			- Survivor Selection: remove old and low-perf;
 	- Legacy:
-		- K. Stanley and R. Miikkulainen. Evolving neural networks through augmenting topologies. Evolutionary Computation, 10(2):99–127, 2002. 2
-		- D. Floreano, P. Durr, and C. Mattiussi. Neuroevolution: from architectures to learning. Evolutionary Intelligence, 1(1):47–62, 2008
+		- K Stanley and R Miikkulainen. Evolving neural networks through augmenting topologies. Evolutionary Computation, 10(2):99–127, 2002. 2
+		- D Floreano, P Durr, and C Mattiussi. Neuroevolution: from architectures to learning. Evolutionary Intelligence, 1(1):47–62, 2008
 	- Real, E.; Large-scale evolution of image classifiers. ICML'17
 	- AmoebaNet: AAAI'19
 	- The Evolved Transformer: 2019	

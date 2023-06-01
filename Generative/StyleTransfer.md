@@ -36,7 +36,7 @@
 		<img src="/Generative/images/transfer/crn2.png" alt="drawing" width="400"/>
 - Cycle-GAN: [CVPR'17]
 	- https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
-	- **G**: X -> Y; discriminator: D_Y; **F**: Y -> X; discriminator: D_X;
+	- G: X -> Y; discriminator: D_Y; F: Y -> X; discriminator: D_X;
 	- Loss design:
 		- Adversarial loss: E[logD_Y(y)] + E[log(1-D_Y(G(x)))]; Similar loss for D_X;
 		- Consistency loss: ||F(G(x))-x|| + ||G(F(y))-y|| with L1 norm
@@ -54,12 +54,13 @@
 	- Content loss: intermediate layer square-loss (F1-F2)^2
 	- Style loss: 2nd order (G1-G2)^2
 		<img src="/Generative/images/transfer/neural-style1.png" alt="drawing" width="250"/>
-	- L. A. Gatys, A. S. Ecker, and M. Bethge, Texture Synthesis Using Convolutional Neural Networks. NIPS'15
-	- L. A. Gatys, A. S. Ecker, and M. Bethge, A neural algorithm of artistic style. 2015
-	- L. A. Gatys, A. S. Ecker, and M. Bethge, Image style transfer using convolutional neural networks, CVPR'16
+	- L Gatys, A Ecker, and M Bethge, Texture Synthesis Using Convolutional Neural Networks. NIPS'15
+	- L Gatys, A Ecker, and M Bethge, A neural algorithm of artistic style. 2015
+	- L Gatys, A Ecker, and M Bethge, Image style transfer using convolutional neural networks, CVPR'16
 	- G. Berger and R. Memisevic, Incorporating long-range consistency in cnn-based texture generation, ICLR'17
 	- A. Mahendran and A. Vedaldi, Understanding deep image representations by inverting them, CVPR'15
-	- A. Mordvintsev, C. Olah, and M. Tyka, “Inceptionism: Going deeper into neural networks,” 2015 [Online]. Available: https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
+	- A. Mordvintsev, C. Olah, and M. Tyka, Inceptionism: Going deeper into neural networks, 2015 [Online].
+		- https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
 	- Visualizing deep convolutional neural networks using natural pre-images, IJCV'16
 	- Y. Li, N. Wang, J. Liu, and X. Hou, Demystifying neural style transfer. IJCAI'17
 		- Theoretically, Gram is similar to minimize MMD (mean and variance matches)

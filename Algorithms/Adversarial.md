@@ -23,7 +23,7 @@
 	- https://adversarial-ml-tutorial.org/
 
 ## Unclassified
-- Ke Li, Tianhao Zhang, Jitendra Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
+- K Li, T Zhang, J Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
 
 ## Adversarial Learning
 - A Ilyas, S Santurkar, D Tsipras, L Engstrom, B Tran, A Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19
@@ -31,7 +31,7 @@
 	- Imagine binary classifcation: f(x) and y (+/-1)
 	- Insight: create a new dataset, manipulate x (originally cat), s.t., turns it into a dog with cat-looking with dog-robust-feature and labled it as a dog in the new dataset;
 - A Game Theoretic Approach to Class-wise Selective Rationalization. NIPS'19
-- Donahue, J., Krahenbuhl, P., and Darrell, T. Adversarial feature learning.
+- J Donahue, P Krahenbuhl, and T Darrell. Adversarial feature learning.
 
 ## Attack
 - B Biggio, B Nelson and P Laskov. Poisoning Attacks against Support Vector Machines. ICML'12
@@ -55,7 +55,7 @@
 - Y Dong, F Liao, T Pang, H Su, J Zhu, X Hu, J Li. Boosting Adversarial Attacks with Momentum. CVPR'18
 	- 2017 winner;
 - Eykholt. Robust Physical-World Attacks on Deep Learning Visual Classification. CVPR'18
-- **PGD**: A. Madry, A. Makelov, L. Schmidt, D. Tsipras, and A. Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
+- **PGD**: A Madry, A Makelov, L Schmidt, D Tsipras, and A Vladu. Towards deep learning models resistant to adversarial attacks. ICLR'18
 - Unrestricted (no Lp norm constraint):
 	- Y Song et al. Constructing unrestricted adversarial examples with generative models. 2018.
 	- C Xiao, J Zhu, B Li, W He, M Liu, and D Song. Spatially transformed adversarial examples. 2018

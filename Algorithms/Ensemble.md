@@ -123,13 +123,13 @@
 		<img src="/Basic-ML/images/ensemble/cart4.png" alt="drawing" width="550"/>
 
 ## Boosting
-- **AdaBoost**: Freund, Yoav; Schapire, Robert E. A decision-theoretic generalization of on-line learning and an application to boosting". 1997
+- **AdaBoost**: Y Freund, R Schapire. A decision-theoretic generalization of on-line learning and an application to boosting. 1997
 	- First paper on AdaBoost;
-- J. Friedman. Greedy function approximation: a gradient boosting machine. Annals of Statistics. 2001
-- J. Bennett and S. Lanning. The netflix prize. In Proceedings of the KDD Cup Workshop 2007
-- P. Li. Robust Logitboost and adaptive base class (ABC) Logitboost. UAI'10
+- J Friedman. Greedy function approximation: a gradient boosting machine. Annals of Statistics. 2001
+- J Bennett and S. Lanning. The netflix prize. In Proceedings of the KDD Cup Workshop 2007
+- P Li. Robust Logitboost and adaptive base class (ABC) Logitboost. UAI'10
 - **LambdaMART**: C. Burges. From ranknet to lambdarank to lambdamart: An overview. Learning'10
-- X. He, J. Pan, O. Jin, T. Xu, B. Liu, T. Xu, Y. Shi, A. Atallah, R. Herbrich, S. Bowers, and J. Q. n. Candela. Practical lessons from predicting clicks on ads at facebook. ADKDD'14
+- Meta. Practical lessons from predicting clicks on ads at facebook. ADKDD'14
 - **XG-Boost**: T Chen, C Guestrin. XGBoost: A Scalable Tree Boosting System, KDD'16
 	- https://github.com/dmlc/xgboost
 	- y = Σfk(x), f ∈ F(CART)

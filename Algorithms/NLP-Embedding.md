@@ -65,7 +65,7 @@
 	- Insight: 每次从词表选出两个subword组成新的subword:
 	- BPE: 每次选最高频pair组成新subword, 直到词表够大 或subword频率够低;
 		- Build n-grams word **segment**: BPE;
-		- **BPE (Byte-Pair Encoding)**: R Sennrich, B Haddow, and A Birch. Neural machine translation of rare words with subword units. ACL'16
+		- BPE (Byte-Pair Encoding): R Sennrich, B Haddow, and A Birch. Neural machine translation of rare words with subword units. ACL'16
 		- **BPE**: Radford '19
 		- FastBPE: https://github.com/glample/fastBPE
 	- WordPiece: BPE的变种; 基于概率而非最高词频生成下一subword;
@@ -86,7 +86,7 @@
 	- Limitation: when V is very large, calculating denominator requires going through all the words for every single sample is impractical;
 - Hierarchical Softmax: F Morin, Y Bengio. Hierarchical Probabilistic Neural Network Language Model. AISTATS'05
 	- Encode in a tree structure;
-- **D-softmax**: W Chen, D Grangier, M Auli. Strategies for Training Large Vocabulary Neural Language Models. 2015
+- D-softmax: W Chen, D Grangier, M Auli. Strategies for Training Large Vocabulary Neural Language Models. 2015
 	- Sparse embedding matrix;
 - Cross Entropy;
 	- L(θ) = -logp(wo|wi)
@@ -95,9 +95,9 @@
 	- Given wi, **discriminate real** wo with noise w1, w2, ... ~ Q(w)
 	- L(θ) = -log[p(w|wi)/p(w|wi+Nq(w'))] + ∑log[Nq(w)/p(w|wi)+Nq(w')]; (Bayes)
 		- Let p(w|wi) ~ exp(vo†vi)
-	- **Self-Normalization**: Devlin. Fast and robust neural network joint models for statistical machine translation. ACL'14
+	- Self-Normalization: Devlin. Fast and robust neural network joint models for statistical machine translation. ACL'14
 		- Regularization s.t. Z(c) = 1 then we don't need normalizer;
-	- **Infrequent Normalisation**: J Andreas, D Klein. When and why are log-linear models self-normalizing? NACCL'15
+	- Infrequent Normalisation: J Andreas, D Klein. When and why are log-linear models self-normalizing? NACCL'15
 - Negative Sampling (NEG): simplified version of NCE
 	- Used in Google's word2vec;
 	- Binary sigmoid classifier:
@@ -110,7 +110,7 @@
 - Learning phrases first; (Treat "New York" as one word)
 	- Could be based on unigram/bigram counts;
 
-## Cross-Modal
+## Cross-Modality
 - Unsupervised Cross-Modal Alignment of Speech and Text Embedding Spaces. NIPS'18
 
 ## Measure Distance

@@ -56,8 +56,13 @@
 		- Improved DDPM: reduced to S steps; (by [T/S] times)
 			- Sample every [T/S] steps;
 		- DDIM: sampling only S steps;
+- Resources:
+	- https://github.com/heejkoo/Awesome-Diffusion-Models
 - Tutorial:
 	- https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+	- A Survey on Graph Diffusion Models: Generative AI in Science for Molecule, Protein and Material. 2023
+	- A Comprehensive Survey on Knowledge Distillation of Diffusion Models. 2023
+	- Diffusion Models for Time Series Applications: A Survey. 2023
 - Software:
 	- MidJourney: https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F
 	- RunwayML;
@@ -149,6 +154,7 @@
 		- Temporal-conv block FFT, then iFFT;
 	- GaTech: Fast sampling of diffusion models with exponential integrator. ICLR'23
 		- https://qsh-zh.github.io/deis
+	- Dpm-solver: A fast ode solver for diffusion probabilistic model sampling in around 10 steps.
 
 ## Techniques
 - Latent space:
@@ -163,7 +169,7 @@
 - Variance/noise scheduling:
 	- Time fed in as spatial addition or adaptive group norm;
 	- Training time: (noise scheduling)
-		- D Kingma, T Salimans, B Poole, and J Ho. Variational diffusion models. arxiv'21
+		- D Kingma, T Salimans, B Poole, and J Ho. Variational diffusion models. NeurIPS'21
 			- Learned SNR(t) for noise scheduling;
 			- 理论上 KL()项 写成 SNR 形式;
 		- Improved DDPM: A Nichol and P Dhariwal. Improved Denoising Diffusion Probabilistic Models. ICML'21
@@ -176,7 +182,6 @@
 		- Analytic-DPM: F Bao, C Li, J Zhu, B Zhang. Analytic-DPM: an Analytic Estimate of the Optimal Reverse Variance in Diffusion Probabilistic Models. ICLR'22
 		- Extended-Analytic-DPM: F Bao, C Li, J Sun, J Zhu, B Zhang. Estimating the Optimal Covariance with Imperfect Mean in Diffusion Probabilistic Models. ICML'22
 			- Allow different items on diagonal;
-		- Dpm-solver: A fast ode solver for diffusion probabilistic model sampling in around 10 steps.
 - Advanced reverse process:	More complicated than Gaussian;
 	- Gao et al., Learning energy-based models by diffusion recovery likelihood, ICLR'21
 		- Insight: EBM f(x;θ) 变为 f(x, t;θ)
@@ -307,13 +312,21 @@
 	- A Generalist Framework for Panoptic Segmentation of Images and Videos: https://arxiv.org/abs/2210.06366
 - Inverse-problems: 
 	- Medical imaging: reconstruct from sparse signal;
-	- Song, Y., Shen, L., Xing, L., and Ermon, S. Solving inverse problems in medical imaging with score-based generative models. ICLR'22
+	- Y Song, Shen, L., Xing, L., and Ermon, S. Solving inverse problems in medical imaging with score-based generative models. ICLR'22
 	- Diffusion posterior sampling for general noisy inverse problems. ICLR'23
 	- Pseudoinverse-guided diffusion models for inverse problems. ICLR'23
 - 3D:
+	- Good resources:
+		- https://github.com/ashawkey/stable-dreamfusion
 	- Zhou et al., 3D Shape Generation and Completion through Point-Voxel Diffusion, ICCV'21
 	- Luo and Hu, Diffusion Probabilistic Models for 3D Point Cloud Generation, CVPR'21
-	- DreamFusion: https://dreamfusion3d.github.io
+	- Brain: DreamFusion: Text-to-3D using 2D Diffusion.
+		- https://dreamfusion3d.github.io
+	- NVIDIA: Magic3D: High-Resolution Text-to-3D Content Creation. CVPR'23
+	- DeepMind: Zero-1-to-3: Zero-shot One Image to 3D Object. 2023
+	- RealFusion: 360° Reconstruction of Any Object from a Single Image. CVPR'23
+	- Fantasia3D: Disentangling Geometry and Appearance for High-quality Text-to-3D Content Creation. 2023
+	- Make-It-3D: High-Fidelity 3D Creation from A Single Image with Diffusion Prior. 2023
 - Data for training:
 	- Synthetic Data from Diffusion Models Improves ImageNet Classification: https://arxiv.org/abs/2304.08466
 

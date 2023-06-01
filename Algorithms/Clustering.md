@@ -43,13 +43,13 @@
 - **IIC**: Invariant Information Clustering for Unsupervised Image Classification and Segmentation. ICCV'19
 
 ## DBSCAN
-- Ester, M., H. P. Kriegel, J. Sander, and X. Xu. A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. In: Proceedings of the 2nd International Conference on Knowledge Discovery and Data Mining, Portland, OR, AAAI'96
+- M Ester, H Kriegel, J Sander, and X Xu. A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. AAAI'96
 - Schubert, E., Sander, J., Ester, M., Kriegel, H. P., & Xu, X. DBSCAN revisited, revisited: why and how you should (still) use DBSCAN. TODS'17
 
 ## Information Theory
-- J. S. Bridle, A. J. Heading, and D. J. MacKay. Unsupervised classifiers, mutual information and 'phantom targets'. NIPS'92
-- D. Barber and F. V. Agakov. Kernelized infomax clustering. NIPS'05
-- A. Krause, P. Perona, and R. G. Gomes. Discriminative clustering by regularized information maximization. NIPS'10
+- J Bridle, A Heading, and D MacKay. Unsupervised classifiers, mutual information and 'phantom targets'. NIPS'92
+- D Barber and F Agakov. Kernelized infomax clustering. NIPS'05
+- A Krause, P Perona, and R Gomes. Discriminative clustering by regularized information maximization. NIPS'10
 
 ## Dirichlet process mixture models
 - Inifinite mixture models, non-parametric prior\

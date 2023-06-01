@@ -1,12 +1,15 @@
 # Language Modeling
 
 ## Basics
+- Resources:
+	- https://github.com/Hannibal046/Awesome-LLM
+	- https://github.com/KennethanCeyer/awesome-llm
 - Goal:
 	- Statistical/probabilistic model for a sequence of words in a sentence;
 	- Could be character-level;
 - Approach:
 	- Traditional: n-grams, p-LSI, LDA;
-	- RNN;
+	- CNN, RNN;
 	- Transformer: GPT, Bert, ...
 	- (Self)-Supervision/loss:
 		- Causal (predict next word/token/character): GPT-1,2,3;
@@ -24,6 +27,9 @@
 	- PennTreeBank
 	- WikiText-2, WikiText-3
 	- sharegpt.com
+- Metrics:
+	- Stanford-HELM: Holistic Evaluation of Language Models
+		- https://github.com/stanford-crfm/helm
 - Tricks:
 	- Deeper and wider;
 	- Larger token size;
@@ -33,19 +39,54 @@
 		- GPT: causal-Encoder, causal-decoder, shared para;
 		- UniLM: full-Encoder, causal-decoder, shared para;
 		- T5: full-encoder, causal-decoder, not-shared para;
+- Prompt-Engineering tricks:
+	- promptingguide.ai
+	- https://en.wikipedia.org/wiki/Prompt_engineering
+	- https://cloud.tencent.com/developer/beta/article/2234235
+	- https://github.com/dair-ai/Prompt-Engineering-Guide
+	- Prefix-tuning: prompt tuning; 
+	- Adaptor training;
+	- Few-shot prompts: demonstration, examples;
+	- CoT/Recursion: ask ChatGPT to provide step by step reasoning of why the decision is made;
+	- More context;
+		- Act as {x};
+		- System level boundary: tell the gpt what not to do; e.g.
+			- Avoid bad copy;
+			- Avoid inaccuracies;
+	- OpenAI-GPT-2.0-8B: Language Models are Unsupervised Multitask Learners. 2019
+		- QA without training;
+	- Google-CoT: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS'22
+		- Insight: few-shot CoT prompting;
+		- Model: PaLM 540B;
+		- Perf: GSM8K (math)
+	- Google-FLAN: Finetuned Language Models are Zero-Shot Learners. ICLR'22
+		- https://github.com/google-research/flan
+		- https://youtu.be/iq2kEGanDso
+		- Instruction-tuning: tune on B, C, D, ..., inf on task A; 10 task templates;
+		- Para: 137B, outperform 175B GPT-3 on 20/25 datasets;
+	- Google-Flan-T5/PaLM: Scaling Instruction-Finetuned Language Models. 2022
+		- Insight: Flan效果, 在data, model-size, task scale-up下表现; 有无CoT-data;
+		- Base model: T5, PaLM;
+		- Size:
+			- T5-EncDec: 80M, 250M, 780M, 3B, 11B;
+			- PaLM-Dec: 8B, 62B, 540B
+	- Google-Flan-2022-Collection: The Flan Collection: Designing Data and Methods for Effective Instruction Tuning. 2023
+	- Google-Emergent-Abilities: Emergent Abilities of Large Language Models. TMLR'22
+		- Emerge: 小规模没有 大规模有 量变引起质变;
+		- 8种涌现: arith, IPA
+- Infra: model-parallel;
+	- NVIDIA-Megatron;
+	- Megatron-Turing-NLG: DeepSpeed;
+	- Microsoft-ZeRO: ZeRO: Memory Optimizations Toward Training Trillion Parameter Models. SC'20
+		- Insight: model/data-parallel, zero-memory-redundancy, 高效;
+		- Para: 17B, 15 Petaflops (13B 以内不需要 model-para)
+- Model:
+	- MoE: Switch-Transformers: JMLR'22; GLAM: ICML'22
+	- MS-LoRA: ICLR'22
 - Amazing/latest LLM:
 	- Google-Transformers: Attention Is All You Need. NeurIPS'17
 	- OpenAI-GPT-1.0: Improving Language Understanding by Generative Pre-Training. 2018
-	- Google-BERT: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL'19
-		- Para: 4B;
-	- OpenAI-GPT-2.0: Language Models are Unsupervised Multitask Learners. 2019
-		- QA without training;
-		- Para: 8B;
-	- NVIDIA-Megatron: Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism. 2019
-		- https://github.com/NVIDIA/Megatron-LM
-		- Light model parallel on pytorch;
-		- Para: 8.3B, 3.9B;
-		- Perf: 19.8 perplexity WikiText103, LAMBADA 66.5%, RACE 90.9%;
+	- Google-BERT-4B: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL'19
 	- Google-T5: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer. JMLR'20
 		- https://ai.googleblog.com/2020/02/exploring-transfer-learning-with-t5.html
 		- https://github.com/google-research/text-to-text-transfer-transformer
@@ -61,72 +102,20 @@
 		- Google-mT5: mT5: A massively multilingual pre-trained text-to-text transformer
 			- 多语言版;
 		- Google-T-5.1.1: GLU Variants Improve Transformer
-	- Microsoft-ZeRO: ZeRO: Memory Optimizations Toward Training Trillion Parameter Models. SC'20
-		- Insight: model/data-parallel, zero-memory-redundancy, 高效;
-		- Para: 17B, 15 Petaflops (13B 以内不需要 model-para)
-	- OpenAI-Scaling-Law: Scaling Laws for Neural Language Models. 2020
-		- Big data: test loss 跟 model size, dataset size, compute 呈 power law;
-		- Network width, depth 影响小;
-	- OpenAI-GPT-3.0: Language models are few-shot learners. NeurIPS'20
+	- OpenAI-GPT-3.0-175B: Language models are few-shot learners. NeurIPS'20
 		- LM/Cloze/Completion: LAMBADA: 8%+ zero-shot;
 		- QA: +14.2% on T5-11B on TriviaQA;
 		- Translation: 1-shot +7 BLEU with SOTA;
-		- Para: 6.7B, 13B, 175B;
 	- AI21-Jurassic: Jurassic-1: Technical Details and Evaluation. 2021
 		- https://github.com/ai21labs/lm-evaluation
-	- Google-Switch-Transformers: Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity. JMLR'22
-		- https://huggingface.co/docs/transformers/model_doc/switch_transformers
-		- MoE: mixture-of-expert, more para (17.5B), same comp cost;
-		- Gating network + nx expert model 选择; (switch-FFN)
-		- Build on T5-Base, T5-Large;
-		- 实现: high-efficiency, distributed, sparse routing;
+		- 178B;
 	- Stanford-Foundation-Models: On the Opportunities and Risks of Foundation Models. 2021
-	- Google-FLAN: Finetuned Language Models are Zero-Shot Learners. ICLR'22
-		- https://github.com/google-research/flan
-		- https://youtu.be/iq2kEGanDso
-		- Instruction-tuning: tune on B, C, D, ..., inf on task A; 10 task templates;
-		- Para: 137B, outperform 175B GPT-3 on 20/25 datasets;
 	- HuggingFace-T0: Multitask Prompted Training Enables Zero-Shot Task Generalization. ICLR'22
 		- https://github.com/bigscience-workshop/promptsource/
 		- https://github.com/bigscience-workshop/t-zero
 		- LM -> pretrain on prompt-eng tasks -> eval on another task 比直接 LM -> task 好;
 		- Model: T5 + LM; Para: 11B;
 		- templates (类似FLAN);
-	- Google-GLAM: GLaM: Efficient Scaling of Language Models with Mixture-of-Experts. ICML'22
-		- Insight: 1.2T MoE, 7x larger than GPT-3 (130B);
-			- 32 MoE layer, only 97B para activated (8%), low power consumption compared to GPT-3;
-		- Dataset: 1.6T tokens;
-		- Strong 0/low-shot perf on 29 tasks;
-	- MS-LoRA: Low-Rank Adaptation of Large Language Models. ICLR'22
-		- https://github.com/microsoft/LoRA
-		- Insight: low-rank adaptation;
-		- Freeze pretrained weights, train low-rank decomposition, 10,000 times smaller;
-	- OpenAI-WebGPT: WebGPT: Improving the Factual Accuracy of Language Models through Web Browsing
-		- https://www.microsoft.com/en-us/bing/apis/bing-web-search-api
-		- Dataset/Eval: ELI5 long-form QA, 
-		- Extra dataset: Collect human feedback (demonstration, comparison);
-		- Data for model learning:
-			- BC (behavior cloning): supervised by demonstration, init from LLM;
-			- Reward Modeling (IRL): from demonstration, Elo-score;
-			- RL: against the reward model, PPO;
-			- Rejection sampling: select top-n (4/16/64) based on reward model;
-	- DeepMind-Retro: Improving language models by retrieving from trillions of tokens. ICML'22
-		- Data: 2T tokens;
-		- Model: retrieval-enhanced transformer; l(xi|xj< i, RET.D(Cv);θ)
-		- CCA: Chunked cross-attention;
-	- DeepMind-Gopher: Scaling Language Models: Methods, Analysis & Insights from Training Gopher. 2022
-		- https://zhuanlan.zhihu.com/p/605553041
-		- Data: MassiveText 10.5TB;
-		- Para: 280B;
-		- Perf: outperforms SOTA on 100/124 tasks;
-			- 62 from BIG-bench;
-			- 57 from MMLU;
-	- Google-COT: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS
-	- Google-LaMDA: LaMDA: Language Models for Dialog Applications'22
-		- https://blog.google/technology/ai/lamda/
-	- Google-Minerva: Solving Quantitative Reasoning Problems with Language Models. NeurIPS
-	- MS-NVIDIA: Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model. 2022
-	- OpenAI-InstructGPT: Training language models to follow instructions with human feedback. NeurIPS'22
 	- Google-PaLM: PaLM: Scaling Language Modeling with Pathways. 2022
 		- https://zhuanlan.zhihu.com/p/602060627
 		- Data: 780B token;
@@ -146,53 +135,156 @@
 			- Reasoning: CoT, sota;
 			- Coding: 
 			- Translation;
-	- DeepMind-Chinchilla: An empirical analysis of compute-optimal large language model training. NeurIPS'22
-		- Setup: given budget, predict L(N,D) = L(N.param, D.token);
-		- Final Model: 70B, 
-		- Conclusion: token/model size should scale at same speed;
-			- Different from Kaplan'20 with 10x budget, model x5.5, token x1.8;
-	- Meta-OPT: OPT: Open Pre-trained Transformer Language Models
-	- Google-UL2: Unifying Language Learning Paradigms.j
-	- Google-EmergentAbilities: Emergent Abilities of Large Language Models. TMLR
-	- Google-BIG-bench: Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models
-	- Microsoft-METALM: Language Models are General-Purpose Interfaces
-	- DeepMind-Sparrow: Improving alignment of dialogue agents via targeted human judgements
-	- Google-Flan-T5/PaLM: Scaling Instruction-Finetuned Language Models
-	- Tsinghua-GLM-130B: GLM-130B: An Open Bilingual Pre-trained Model
-	- Stanford-HELM: Holistic Evaluation of Language Models
-	- BigScience-BLOOM:	BLOOM: A 176B-Parameter Open-Access Multilingual Language Model
-	- Meta-Galactica: Galactica: A Large Language Model for Science
+	- Meta-OPT: OPT: Open Pre-trained Transformer Language Models. 2022
+		- https://github.com/facebookresearch/metaseq
+		- Data: Roberta + Pile + PushShift.io Reddit;
+		- Model: Decoder-only;
+		- Para: 125M, 175B;
+		- Training: 992x A100; (1/7 of GPT-3);
+		- Perf: 175B ~ GPT-3;
+	- Google-BIG-bench: Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models. TMLR'23
+		- https://github.com/google/BIG-bench
+		- Different SOTA perform similarly (benefit from sparsity);
+		- Emergent skills contain memory/knowledge, multisteps;
+		- Social bias can be improved by prompting;
+	- Tsinghua-GLM-130B: GLM-130B: An Open Bilingual Pre-trained Model. ICLR'23
+		- https://github.com/THUDM/GLM-130B
+		- Para: 130B;
+	- BigScience-BLOOM-176B: BLOOM: A 176B-Parameter Open-Access Multilingual Language Model
+		- https://huggingface.co/bigscience/bloom
 	- Meta-OPT-IML: OPT-IML: Scaling Language Model Instruction Meta Learning through the Lens of Generalization
-	- Google-Flan-2022-Collection: The Flan Collection: Designing Data and Methods for Effective Instruction Tuning. 2023
+		- https://github.com/facebookresearch/metaseq/raw/main/projects/OPT-IML/optimal_paper_v1.pdf
+		- https://zhuanlan.zhihu.com/p/595376597
 	- Meta-LLaMA: LLaMA: Open and Efficient Foundation Language Models. 2023
 		- https://ai.facebook.com/blog/large-language-model-llama-meta-ai/
 		- https://github.com/facebookresearch/llama
-	- Microsoft-Kosmos-1: Language Is Not All You Need: Aligning Perception with Language Models. 2023
-	- Google-PaLM-E: PaLM-E: An Embodied Multimodal Language Model
-	- OpenAI-GPT-4: GPT-4 Technical Report
-	- EleutherAI-Pythia: Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling
-	- Google: Bard;
-	- DeepMind. Training compute-optimal large language models. arxiv'22
-	- Stanford Alpaca:
-		- https://crfm.stanford.edu/2023/03/13/alpaca.html
-	- Alpaca-Lora: https://github.com/tloen/alpaca-lora
-		- Pretrained model: LLaMA-7B;
+		- Data: CommonCrawl, C4, github, wiki, stack-exchange, arxiv; 1.4T tokens;
+		- Para: 7B, 13B, 30B, 65B;
+		- Model design:
+			- Input normalization not output; RMSNorm [NeurIPS'19];
+			- SwiGLU instead of ReLU;
+			- RoPE: rotation pos instead of abs-enc [Su'21];
+			- AdamW optimizer;
+			- xformer accelration;
+		- Training: 2,048x A100, 21 days;
+		- Perf: 65B ~ PalM-540B;
+	- EleutherAI-Pythia: Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling. ICML'23
+	- Google-Bard;
 	- Baize: An Open-Source Chat Model with Parameter-Efficient Tuning on Self-Chat Data. 2023
 		- https://github.com/project-baize/baize/blob/main/README.md
 		- https://huggingface.co/spaces/project-baize/Baize-7B
 	- Anthropic: Claude;
 		- https://www.anthropic.com/index/introducing-claude
+	- Anthropic: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback. 2022
+		- RL + human-feedback
+	- CMU-Dromedary: Principle-Driven Self-Alignment of Language Models from Scratch with Minimal Human Supervision.
+- Scaling:
+	- OpenAI-Scaling-Law: Scaling Laws for Neural Language Models. 2020
+		- Big data: test loss 跟 model size, dataset size, compute 呈 power law;
+		- Network width, depth 影响小;
+	- DeepMind-Gopher: Scaling Language Models: Methods, Analysis & Insights from Training Gopher. 2022
+		- https://zhuanlan.zhihu.com/p/605553041
+		- Data: MassiveText 10.5TB;
+		- Para: 280B;
+		- Perf: outperforms SOTA on 100/124 tasks;
+			- 62 from BIG-bench;
+			- 57 from MMLU;
+	- DeepMind-Chinchilla: An empirical analysis of compute-optimal large language model training. NeurIPS'22
+		- Setup: given budget, predict L(N,D) = L(N.param, D.token);
+		- Final Model: 70B, training on 1.4T tokens;
+		- Conclusion: token/model size should scale at same speed;
+			- Different from Kaplan'20 with 10x budget, model x5.5, token x1.8;
+- Retrieval/External-knowledge:
+	- WebGPT;
+	- DeepMind-Retro: Improving language models by retrieving from trillions of tokens. ICML'22
+		- Data: 2T tokens;
+		- Model: retrieval-enhanced transformer; l(xi|xj< i, RET.D(Cv);θ)
+		- CCA: Chunked cross-attention;
+- Smaller:
+	- Stanford Alpaca:
+		- https://crfm.stanford.edu/2023/03/13/alpaca.html
+	- Stanford Alpaca-Lora: https://github.com/tloen/alpaca-lora
+		- Pretrained model: LLaMA-7B;
+	- Berkeley-Vicuna-13B: https://lmsys.org/blog/2023-03-30-vicuna/
+		- https://github.com/lm-sys/FastChat
+- RLHF (RL from Human feedback):
+	- Google-LaMDA: LaMDA: Language Models for Dialog Applications. 2022
+		- https://blog.google/technology/ai/lamda/
+		- Data-pretrain: 1.56T words (2.97B documents, 1.12B dialogs, 13.39B utterance);
+		- Para: 137B;
+		- Model-pretrain: decoder-only, predict the next word;
+		- Model-finetune: discriminator for quality, safety;
+			- Inference time: filter out low thr ones;
+			- LaMDA-Base to generate response;
+			- LaMDA-Research Phase to query external resource;
+		- Training: 1,024 TPU-v3, 57.7 days; 256K tokens per batch; Lingvo framework;
+		- Original metric: quality (sensibleness, specificity, interestingness);
+		- Two challenges: safety, factual:
+			- Safety: LaMDA classifier finetuned by crowdworker annotation;
+	- OpenAI-WebGPT: WebGPT: Improving the Factual Accuracy of Language Models through Web Browsing. 2022
+		- https://www.microsoft.com/en-us/bing/apis/bing-web-search-api
+		- Dataset/Eval: ELI5 long-form QA, 
+		- Extra dataset: Collect human feedback (demonstration, comparison);
+		- Data for model learning:
+			- BC (behavior cloning): supervised by demonstration, init from LLM;
+			- Reward Modeling (IRL): from demonstration, Elo-score;
+			- RL: against the reward model, PPO;
+			- Rejection sampling: select top-n (4/16/64) based on reward model;
+	- DeepMind-Sparrow: Improving alignment of dialogue agents via targeted human judgements. 2022
+		- Similar to LaMDA: User, Agent, Search Query, Search Result;
+		- Two reward models, both finetuned from Chinchilla 70B:
+			- Reward preference: rank the answer;
+			- Reward rule:
+			- Froze the first 64 layers, train upper 16 layers;
+		- Supervised fine-tuning (SFT): similar to LaMDA;
+		- RL: self-play;
+	- OpenAI-InstructGPT: Training language models to follow instructions with human feedback. NeurIPS'22
+		- Train a demonstration model (finetuned from GPT-3);
+		- Train a reward model from 40 contractors;
+		- RL (PPO) to 
+	- OpenAI-ChatGPT;
+	- LLAMA + RL: https://huggingface.co/blog/stackllama
+- Multimodal:
+	- Microsoft-MetaLM: Language Models are General-Purpose Interfaces
+		- Language Models are General-Purpose Interfaces
+		- Multi-foundation-model: NLP + vision + multilingual;
+		- Semi-causal: non-causal encoder, causal decoder;
+	- Microsoft-Kosmos-1: Language Is Not All You Need: Aligning Perception with Language Models. 2023
+		- https://github.com/microsoft/unilm
+		- Backbone: Magneto
+		- TorchScale
+	- Microsoft-UniLM : Foundation Transformers. 2022
+	- Google-PaLM-E: PaLM-E: An Embodied Multimodal Language Model
+	- OpenAI-GPT-4: GPT-4 Technical Report. 2023
+	- Miscrosoft-Visual-ChatGPT: Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models.
+- Reasoning:
+	- Google-Minerva: Solving Quantitative Reasoning Problems with Language Models. NeurIPS'22
+		- Problem setup: reasoning to solve math/tech problems;
+		- Data: 38.5B, 47.5% math web page; 47.5% arxiv; 5% NLP;
+		- Model-pretrain: PaLM;
+		- Model-finetune: Latex token;
+		- Techniques: CoT, low-shot prompt, ...
+		- Param: 8B, 62B, 540B;
+	- Meta-Galactica: Galactica: A Large Language Model for Science. 2022
+		- galactica.org
+		- Perf:
+			- MATH MMLU: 41.3%, 35.7% (outperform Chichilla)
+			- Latex formula: 68.2% (GPT-3 49%)
+			- PubMedQA: 77.6%
+	- PaLM-2;
 - 中文:
 	- 中文: CPM https://cpm.baai.ac.cn/
 		- https://github.com/TsinghuaAI/CPM-Generate
-		- GPT-2, 2.6-B 参数;
+		- GPT-2, 2.6B 参数;
 	- 创新工场: ZEN: Pre-training Chinese Text Encoder Enhanced by N-gram Representations.
 		- https://github.com/sinovation/ZEN
 	- 字节: AMBERT: A Pre-trained Language Model with Multi-Grained Tokenization. ACL'21
 	- 哈工大: Chinese-BERT-wwm
 		- https://github.com/ymcui/Chinese-BERT-wwm
 	- Baidu: 文心一言
+		- ERNIE 3.0 Titan: Exploring Larger-scale Knowledge Enhanced Pre-training for Language Understanding and Generation. 2021
 	- Alibaba: 通义千问
+	- ERNIE Titan: 260B
 - Downstream-Tasks:
 	- Program:
 		- Metric:
@@ -231,7 +323,9 @@
 	- Learned: BERT;
 - Segment Embedding:
 	- BERT;
-- BPE, fast-BPE: GPT-series;
+- BPE: GPT-series;
+- WordPiece;
+- SentencePiece;
 - 中文: 字or词?
 	- 字的好处:
 		- 1 参数更少，不容易过拟合；
@@ -239,43 +333,93 @@
 		- 3 没那么严重的稀疏性，基本上不会出现未登录词
 	- 词的好处:
 		- 1 序列变短，处理速度更快；
-		- 2 在文本生成任务上，能缓解Exposure Bias问题；
-		- 3 词义的不确定性更低，降低建模复杂度。
+		- 2 在文本生成任务上，能缓解Exposure Bias问题;
+		- 3 词义的不确定性更低，降低建模复杂度;
 	- 香侬科技: AMBERT: A Pre-trained Language Model with Multi-Grained Tokenization. 2019
 
 ## Backbone
-- CNN (1d): 
-	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
-	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
-- RNN:
-	- Mikolov, T.; Karafit, M.; Burget, L.; Cernock, J.; and Khudanpur, S. 2010. Recurrent neural network based language model. INTERSPEECH'10
-	- Mikolov, T.; Kombrink, S.; Burget, L.; ernock, J.; and Khudanpur, S. 2011. Extensions of recurrent neural network language model. ICASSP'11
-	- Sundermeyer, M.; Schluter, R.; and Ney, H. Lstm neural networks for language modeling. 2012
-	- ELMo
-	- Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. NAACL'18
-		- Deep ELMO;
+- Legacy:
+	- CNN (1d):
+		- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
+		- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
+	- RNN:
+		- T Mikolov. Recurrent neural network based language model. INTERSPEECH'10
+		- T Mikolov. Extensions of recurrent neural network language model. ICASSP'11
+		- Lstm neural networks for language modeling. 2012
+		- AI2-ELMo: https://allenai.org/allennlp/software/elmo
+		- Deep-ELMo: M Peters, M Neumann, M Iyyer, M Gardner, C Clark, K Lee, and L Zettlemoyer. Deep contextualized word representations. NAACL'18
 - Transformer:
-	- BERT: J. Devlin, et.al. ACL'19
-		- Embedding: WorldPiece;
-		- 12/24 layer (base/large)
-	- ALBERT: 12-layer 共享参数;
-	- Y. You. Accelerate BerT to 76 minutes. '19
-	- NVIDIA: Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism. 19
-		- Megatron: https://github.com/NVIDIA/Megatron-LM
-	- RoBerTa: FB reproducing BERT;
-	- C Wang, M Li, A J. Smola. Language Models with Transformers. 2019
-		- AutoML, add LSTM in;
-	- GPT: 12-layers; '18
-		- https://github.com/openai/finetune-transformer-lm
-	- GPT-2: 48-layers; '18
-	- GPT-3: 12/24/32/40/96-layers from small to B;
-		- https://github.com/openai/gpt-3
-		- 175B parameters;
-	- InstructGPT: Training language models to follow instructions with human feedback. NeurIPS'22
+	- Original: NIPS'17
+	- MoE:
+		- Google-Switch-Transformers: Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity. JMLR'22
+			- https://huggingface.co/docs/transformers/model_doc/switch_transformers
+			- MoE: mixture-of-expert, more para (17.5B), same comp cost;
+			- Gating network + nx expert model 选择; (switch-FFN)
+			- Build on T5-Base, T5-Large;
+			- 实现: high-efficiency, distributed, sparse routing;
+		- Google-GLAM: GLaM: Efficient Scaling of Language Models with Mixture-of-Experts. ICML'22
+			- Insight: 1.2T MoE, 7x larger than GPT-3 (130B);
+				- 32 MoE layer, only 97B para activated (8%), low power consumption compared to GPT-3;
+			- Dataset: 1.6T tokens;
+			- Strong 0/low-shot perf on 29 tasks;
+	- MS-LoRA: Low-Rank Adaptation of Large Language Models. ICLR'22
+		- https://github.com/microsoft/LoRA
+		- Insight: low-rank adaptation;
+		- Freeze pretrained weights, train low-rank decomposition, 10,000 times smaller;
+- Framework:
+	- Encoder Decoder:
+		- BERT: J. Devlin, et.al. ACL'19
+		- RoBerTa: FB reproducing BERT;
+		- T5, UniLM, PrefixLM, UL2-EncDec;
+	- Decoder-only: GPT-3, PaLM, OPT, and BLOOM;
+		- GPT: 12-layers; '18
+			- https://github.com/openai/finetune-transformer-lm
+		- GPT-2: 48-layers; '18
+		- GPT-3: 12/24/32/40/96-layers from small to B;
+			- https://github.com/openai/gpt-3
+			- 175B parameters;
+		- InstructGPT: Training language models to follow instructions with human feedback. NeurIPS'22
+		- PrefixLM;
+		- Google-LaMDA;
+		- Meta-OPT;
+		- SpanCorrupt;
+		- BLOOM: BigScience Large Open-science Open-access Multilingual Language Model
+		- Google-UL2-Dec. ICLR'23
+- Normalization:
+	- Pre-LN: x = x + mha(ln(x))
+		- CLIP;
+	- Post-LN: x = ln(x + mha(x))
+		- Original transformer, BERT;
 - Activation:
 	- T-5.1.1: GLU;
+- Other-tricks:
+	- Shared parameters:
+		- ALBERT: 12-layer 共享参数;
+	- Y. You. Accelerate BerT to 76 minutes. '19
+- Others:
+	- C Wang, M Li, A Smola. Language Models with Transformers. 2019
+		- AutoML, add LSTM in;
+	- GLM: bidirectional;
+		- Z Du, Y Qian, X Liu, M Ding, J Qiu, Z Yang, and J Tang. Glm: General language model pretraining with autoregressive blank infilling. ACL'22
+			- https://github.com/THUDM/GLM
 - LLM:
 	- Google PaLM: PaLM: Scaling Language Modeling with Pathways
+
+## Infrastructure
+- Model parallel:
+	- NVIDIA-Megatron: Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism. 2019
+		- https://github.com/NVIDIA/Megatron-LM
+		- Light model parallel on pytorch;
+		- Para: 3.9B, 8.3B;
+		- Perf: 19.8 perplexity WikiText103, LAMBADA 66.5%, RACE 90.9%;
+	- MS-NVIDIA-Megatron-Turing-NLG: Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model. 2022
+		- https://www.microsoft.com/en-us/research/blog/using-deepspeed-and-megatron-to-train-megatron-turing-nlg-530b-the-worlds-largest-and-most-powerful-generative-language-model/
+		- Para: 530B (largest public);
+		- Training: A100 + HDR InfiniBand; (e.g. NVIDIA Selene; MS Azure NDv4)
+			- Model parallel on 280 A100;
+- Microsoft-ZeRO: ZeRO: Memory Optimizations Toward Training Trillion Parameter Models. SC'20
+	- Insight: model/data-parallel, zero-memory-redundancy, 高效;
+	- Para: 17B, 15 Petaflops (13B 以内不需要 model-para)
 
 ## Tricks
 - More data:
@@ -300,7 +444,16 @@
 	- Student-forcing? very hard to converge
 		- Need teacher-forcing, Gumbel-softmax to warm up;
 
-## Supervision Design
+## Supervision/Loss Design
+- Three Paradigms:
+	- CausalLM;
+	- PrefixLM;
+	- Span corruption;
+	- Unified: Google-UL2, Mixture-of-Denoiser;
+		- Google-UL2: Unifying Language Learning Paradigms. ICLR'23
+			- https://github.com/google-research/google-research/tree/master/ul2
+			- MoD (Mixture of Denoiser); X, S, R-denoising; 混合去3种噪声;
+			- Perf: sota on 50 tasks;
 - Masking, MLM:
 	- ELMo, BERT, Roberta;
 	- (Joshi & Chen et al., 2020): SpanBERT: Improving Pre-training by Representing and Predicting Spans
@@ -332,6 +485,7 @@
 - Together with other/downstream tasks:
 	- R Collobert and J Weston. A unified architecture for natural language processing: Deep neural networks with multitask learning. ICML'08
 	- R Collobert, J Weston, L Bottou, M Karlen, K Kavukcuoglu, and P Kuksa. Natural language processing (almost) from scratch. JMLR'11
+	- MIP (Multi-task in pretraining): T5, ExT5, Tsinghua-GLM-130B;
 - Similarity/Embedding:
 	- BERT-flow: On the Sentence Embeddings from Pre-trained Language Models. EMNLP'20
 		- https://github.com/bohanli/BERT-flow

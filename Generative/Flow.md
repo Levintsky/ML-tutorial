@@ -43,11 +43,8 @@
 - Flow + GAN:
 	- DeepMind. Comparison of maximum likelihood and gan-based training of real nvps. 2017
 	- A Grover, M Dhar, and S Ermon. Flow-gan: Combining maximum likelihood and adversarial learning in generative models. AAAI'18
-- **PointFlow**: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
-	- https://www.guandaoyang.com/PointFlow/
-	- https://github.com/stevenygd/PointFlow
-	- Based on CNF (FFJORD)\
-		<img src = '/Generative/images/flow/pointflow.png' width = '600'>
+- PointFlow: G Yang, X Huang, Z Hao, M Liu, S Belongie, B Hariharan. PointFlow: 3D Point Cloud Generation with Continuous Normalizing Flows. ICCV'19
+	<img src = '/Generative/images/flow/pointflow.png' width = '600'>
 - Z Xiao, Q Yan, and Y Amit. Generative latent flow. arxiv'19
 - M Kumar, M Babaeizadeh, D Erhan, C Finn, S Levine, L Dinh, and D Kingma. Videoflow: A flow-based generative model for video. 2019
 

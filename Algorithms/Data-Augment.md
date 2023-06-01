@@ -35,19 +35,19 @@
 
 ## Data Augmentation
 - Legacy
-	- Bellegarda, J. R., de Souza, P. V., Nadas, A. J., Nahamoo, D., Picheny, M. A., and Bahl, L. R. Robust speaker adaptation using a piecewise linear acoustic mapping. ICASSP'92
+	- J Bellegarda. Robust speaker adaptation using a piecewise linear acoustic mapping. ICASSP'92
 - Mixup: interpolate between pairwise data/label;
 	- Insight: convex linear combination:
 		- x˜ = λxi + (1−λ)xj 
 		- y˜ = λyi + (1−λ)yj 
-	- **mixup**: Zhang, H., Cisse, M., Dauphin, Y. N., and Lopez-Paz, D. mixup: Beyond empirical risk minimization. ICLR'18
+	- **mixup**: H Zhang, M Cisse, Y Dauphin, and D Lopez-Paz. mixup: Beyond empirical risk minimization. ICLR'18
 		- https://github.com/facebookresearch/mixup-cifar10
-	- Guo, H., Mao, Y., and Zhang, R. Augmenting data with
+	- H Guo, Y Mao, and R Zhang. Augmenting data with
 	mixup for sentence classification: An empirical study. arxiv'19
 		- Two strategy proposed: Interpolate on word or sentence embedding;
 	- Guo, H., Mao, Y., and Zhang, R. Mixup as locally linear out-of-manifold regularization. AAAI'19
 		- H := argmin{LD(H) + LD′(H)}
-	- Verma, V., Lamb, A., Beckham, C., Najafi, A., Mitliagkas, I., Lopez-Paz, D., and Bengio, Y. Manifold mixup: Better representations by interpolating hidden states. ICLR'19
+	- V Verma et. al. Manifold mixup: Better representations by interpolating hidden states. ICLR'19
 		- Predict less confidently on interpolations of hidden representations.
 		- https://github.com/vikasverma1077/manifold_mixup
 		- 1. Select a random layer k (could be input);
@@ -60,10 +60,10 @@
 		- Insight: prove adversarial robustness and generalization;
 - Vision
 	- AlexNet;
-	- **cutout**: DeVries, T. and Taylor, G. W. Improved regularization of convolutional neural networks with cutout. arxiv'17
+	- **cutout**: T DeVries and G Taylor. Improved regularization of convolutional neural networks with cutout. arxiv'17
 		- useful on CIFAR-10 and not on ImageNet
 	- AutoAugment: CVPR'19
-	- Lopes, R. G., Yin, D., Poole, B., Gilmer, J., and Cubuk, E. D. Improving robustness without sacrificing accuracy with patch gaussian augmentation. arXiv'19
+	- Google. Improving robustness without sacrificing accuracy with patch gaussian augmentation. arXiv'19
 	- RandAugment: check autoML;
 	- R Gontijo-Lopes, S] Smullin, E Cubuk, E Dyer. Affinity and Diversity: Quantifying Mechanisms of Data Augmentation. 2020
 		- Define Affinity and Diversity:
@@ -76,4 +76,4 @@
 	- Baidu: Deep speech.
 	- SpecAugment: Google-Brain. 2019
 - Dataset Reduction
-	- Tongzhou Wang, Jun-Yan Zhu, Antonio Torralba, Alexei A. Efros. Dataset Distillation. ICLR'19 reject
+	- T Wang, J Zhu, A Torralba, A Efros. Dataset Distillation. ICLR'19 reject
