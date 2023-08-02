@@ -101,11 +101,11 @@
 		- Proposed approach: π-new(a,s) = (1-α)π(a;s) + απ'(a,s)
 		- Policy improvement:
 			- A(π';π,μ) = E..s~ρ(π,μ)[E..a~π'(a,s) [A(s,a;π)]], same state distribution and advantage, change policy as a ~ π'(a,s).
-			- Theory: J(π-new,μ)-J(π,μ) >= α/(1-γ)(Adv - 2αγε/(1-γ(1-α)))
+			- Theory: J(π-new,μ)-J(π,μ) ≥ α/(1-γ)(Adv - 2αγε/(1-γ(1-α)))
 	- **GPS**: S, Levine & Koltun. Guided policy search: deep RL with importance sampled policy gradient.  ICML'13. (unrelated to later discussion of guided policy search)
 	- **TRPO**: J Schulman, S Levine, P Moritz, M Jordan, P Abbeel. Trust region policy optimization. ICML'15
 		- Insight: proposed utility J=L(θ;θ-old) - C KL(θ-old;θ), with C chosen theoretically;
-			- J(θ) >= L(θ;θ-old) - CKL(.,.);
+			- J(θ) ≥ L(θ;θ-old) - CKL(.,.);
 		- **Trick-1**: make new expectation as old plus Advantage; J(π')=J(π)+E(Adv(s,a)), notice the expectation is under new policy π';
 			- J(θ')-J(θ) = E..τ~p(;θ') (Σt=0..∞ γ^t Adv(st, at;πθ))
 			- Let L(π-new) = J(π) + Σs,a[ρ(s;π)Σa π-new(a|s)A(s,a;π)]
@@ -114,9 +114,9 @@
 		- **Trick-2**: not able to get expectation under new policy? IS, Expectation under p[f(x)] versus Expecation under q(x) q[q/p f(x)]
 		- **Trick-3**: bound the difference between π'(s) and π(s) to make p(st;θ) and p(st;θ') closed, |π'(s)-π(s)| < ε easier to bound with KL-divergence;
 			- p(s;θ') = (1-ε)^t p(s;θ) + (1-ε)^t p(s;other); still takes the same action with θ';
-			- |p(s;θ')-p(s;θ)| <= 2εt; (Taylor Expansion)
+			- |p(s;θ')-p(s;θ)| ≤ 2εt; (Taylor Expansion)
 			- J(θ')-J(θ) Sample from old trajectory instead will result in at most Σ..t 2εtC loss, with constant C bounded by O(Trmax) or O(rmax/1-γ);
-		- **Trick-4**: First order approx for utility J(.), natural gradient for update;
+		- **Trick-4**: 1st-order approx for utility J(.), natural gradient for update;
 			- θ' = argmaxθ' Σt E..st~p(st;θ)[E..at~π(at|st;θ)[π(;θ')/π(;θ) γ^t A(st,at;πθ')]]; traj, policy all sampled from old, IS advantage for new;
 			- s.t. KL(π(at|st;θ')||π(at|st;θ')) < ε; constrained optimization;
 			- Utility approx: argmax ∇..θ A(θ)(θ'-θ), s.t. KL(π(θ'),π(θ)) < ε;
@@ -129,7 +129,7 @@
 		- Let rt(θ) = π(at|st;θ)/π(at|st;θ-old), so rt(θ-old)=1;
 		- Lcpi(θ) = E[π(at|st;θ)/π(at|st;θ-old)At]=E[rt(θ)At], IS-advantage;
 		- Lclip(θ) = E[min(rt(θ)At, clip(rt(θ),1-ε,1+ε)At)], clip IS in (1-ε,1+ε)
-	- **PPO-Penalty**: DeepMind. Emergence of Locomotion Behaviours in Rich Environments. NIPS'17
+	- **PPO-Penalty**: DeepMind. Emergence of Locomotion Behaviours in Rich Environments. NeurIPS'17
 		- Insight: adaptive KL-penalty;
 		- J(θ) = Σ At π(at|st,θ)/π-old - λ KL(π-old|π)
 		- Update value network V(;φ)
@@ -141,8 +141,8 @@
 ## Value + Policy, Actor-Critic
 - Goal: PG with variance reduction (adv)
 	- Actor: π(st|at;θ)
-	- Critic: Advantage A(s,a)=Q(s,a)-V(s)
-		- Value V can be supervised by V=E[Q]
+	- Critic: Advantage A(s,a) = Q(s,a)-V(s)
+		- Value V can be supervised by V = E[Q]
 	- Reduce variance of policy gradient: update with A(s,a)∇logπ
 - A general framework (for Implementation):
 	- Give nstate x, neural net for V(s), π(a|s), entropy H(π);
@@ -328,7 +328,7 @@
 		- PG: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(a;θ))
 		- ES: Var(∇f(θ)) ~ Var(R(a))Var(∇logp(θ';θ))
 	- Experiments: 3D humanoid walking in 10 minute, competitive on Atari;
-- Uber-AI. Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NIPS'18
+- Uber-AI. Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents. NeurIPS'18
 	- NES-based on **novelty**, not only evaluation score;
 	- b(π): domain-specific behavior characterization; (could be location for locomotion, ...)
 	- N(θ, A) = 1/λ Σ|b(π) - bi-knn|, find KNN in Action set A;

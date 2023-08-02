@@ -53,7 +53,7 @@
 - S Still and W Bialek. How many clusters? an information-theoretic perspective. NC'04
 - D Barber and F Agakov. The IM algorithm: a variational approach to information maximization. NIPS'04
 - N Slonim, G Atwal, G Tkacik, and W Bialek. Information-based clustering. PNAS'05
-- O Shamir, S Sabato, and N Tishby. Learning and generalization with the information bottleneck. Theoretical Computer Science'10
+- O Shamir, S Sabato, and N Tishby. Learning and generalization with the information bottleneck. ToCS'10
 - S Palmer, O Marre, M Berry, and W Bialek. Predictive information in a sensory population. PNAS'15
 - A Achille and S Soatto. Information dropout: Learning optimal representations through noisy computation. 2016.
 - A Alemi, B Poole, I Fischer, J Dillon, R Saurous, and K Murphy. An information-theoretic analysis of deep latent-variable models. 2017

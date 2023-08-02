@@ -22,7 +22,7 @@
 	- https://github.com/lucidrains/linear-attention-transformer
 	- Reduce O(T^2) cost:
 		- Efficient Attention: Attention with Linear Complexities. CoRR'18
-		- Sinong Wang, Belinda Z. Li, Madian Khabsa, Han Fang, Hao Ma. Linformer: Self-Attention with Linear Complexity. '20
+		- S Wang, B Li, M Khabsa, H Fang, H Ma. Linformer: Self-Attention with Linear Complexity. '20
 		- Reformer: The Efficient Transformer. ICLR'20
 - Position encoding:
 	- Important since set op shuffle-invariant;
@@ -87,8 +87,6 @@
 - Tao Y, Sun Q, Du Q, et al. Nonlocal Neural Networks, Nonlocal Diffusion and Nonlocal Modeling. NIPS'18
 	- Insight: non-local attention has damping effect (eigenvalue decreases during training);
 	- Change formulation to make up the damping;
-- **Scaling** study:
-	- J Kaplan, S McCandlish, T Henighan, T Brown, B Chess, R Child, S Gray, A Radford, J Wu, and D Amodei. Scaling laws for neural language models. '20
 
 ## Efficient Inference
 - P Michel, O Levy, Gm Neubig. Are Sixteen Heads Really Better than One?. NeurIPS'19
@@ -134,8 +132,7 @@
 
 ## Vision: Backbone
 - X Wang, R Girshick, A Gupta, and K He. Non-local neural networks. CVPR'18
-	- Task: video classification;
-	- CNN on each frame, then transformer to catch long-range dependency;
+	- CNN + Transformer
 - CNN+Transformer for aggregation/attention/...;
 	- Y Yuan and J Wang. Ocnet: Object context network for scene parsing. arxiv'18
 		- Task: semantic segmentation;
@@ -147,7 +144,7 @@
 		- SA for the weights;
 	- Y Cao, J Xu, S Lin, F Wei, and H Hu. Gcnet: Non-local networks meet squeeze-excitation networks and beyond. ICCVW'19
 		- https://github.com/xvjiarui/GCNet
-		- SENet like hard attention instead of soft-attention to save memory;
+		- SENet: hard instead of soft-attention to save memory;
 		- Traditional NL-Net: HW x HW; GCNet: HW x 1 x 1; learn to weight (excite);
 	- DANet: J Fu, J Liu, H Tian, Y Li, Y Bao, Z Fang, and H Lu. Dual attention network for scene segmentation. CVPR'19
 		- https://github.com/junfu1115/DANet/
@@ -155,11 +152,11 @@
 		- Two channels of SA, then fuse: Position Attention + channel Attention;
 	- M Yin, Z Yao, Y Cao, X Li, Z Zhang, S Lin, and H Hu. Disentangled non-local neural networks. ECCV'20
 		- Unary attention (SE-Net based) + binary attention (pairwise);
-	- **BoTNet**: A Srinivas, T Lin, N Parmar, J Shlens, P Abbeel, and A Vaswani. Bottleneck transformers for visual recognition. arxiv'21
+	- **BoTNet**: Google. Bottleneck transformers for visual recognition. arxiv'21
 	- T Xiao, M Singh, E Mintun, T Darrell, P Dollár, R Girshick. Early Convolutions Help Transformers See Better. NeurIPS'21
 - Pure attention & ViT series (no CNN):
-	- P Ramachandran, N Parmar, A Vaswani, I Bello, A Levskaya, and J Shlens. Stand-alone self-attention in vision models. NIPS'19
-	- I Bello, B Zoph, A Vaswani, J Shlens, and Q Le. Attention augmented convolutional networks, ICCV'19
+	- Google. Stand-alone self-attention in vision models. NIPS'19
+	- Google. Attention augmented convolutional networks, ICCV'19
 	- H Zhao, J Jia, and V Koltun. Exploring self-attention for image recognition. CVPR'20
 		- Compare two SA:
 			- Pairwise: yi = ∑α(xi, xj) β(xj), treat as set, permutation-invariant;
@@ -167,13 +164,13 @@
 	- **ViT**: A Dosovitskiy, et. al. An image is worth 16x16 words: Transformers for image recognition at scale. ICLR'21
 		- https://github.com/google-research/vision_transformer
 		- Requires Large training dataset pretraining;
-	- **DeiT**: H Touvron, M Cord, M Douze, F Massa, A Sablayrolles, and H Jegou. Training data-efficient image transformers & distillation through attention. ICML'21
+	- **DeiT**: Meta. Training data-efficient image transformers & distillation through attention. ICML'21
 		- Improved on ViT and train with one machine in 3 days;
 		- Token-based distillation, teacher-student network;
 			- Hard label distillation on class and token labels;
 	- ViT-FRCNN: J Beal, E Kim, E Tzeng, D H Park, A Zhai, and D Kislyuk. Toward transformer-based object detection. arxiv'20
 		- CNN/ViT-encoder - Reshape as feature map - RPN;
-	- S Zheng, J Lu, H Zhao, X Zhu, Z Luo, Y Wang, Y Fu, J Feng, T Xiang, P Torr, et al. Rethinking semantic segmentation from a sequence-to-sequence perspective with transformers. arxiv'20
+	- Google. Rethinking semantic segmentation from a sequence-to-sequence perspective with transformers. arxiv'20
 		- https://github.com/fudan-zvg/SETR
 		- ViT-backbone, then upsampling for finer-res like FPN;
 	- L Yuan, Y Chen, T Wang, W Yu, Y Shi, F Tay, J Feng, and S Yan. Tokens-to-token vit: Training vision transformers from scratch on imagenet. arxiv'21
@@ -185,7 +182,7 @@
 		- https://github.com/whai362/PVT
 - CNN-style attention:
 	- Cordonnier, J.-B., Loukas, A., and Jaggi, M. On the relationship between self-attention and convolutional layers. ICLR'20
-	- **Swin Transformer**: Z Liu, Y Lin, Y Cao, H Hu, Y Wei, Z Zhang, S Lin, B Guo. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV'21
+	- MSRA. Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV'21
 		- MARR prize winner; beats old SOTA a lot on all detection and segmentation tasks;
 		- Key insight:
 			- Shifted window: always linear to image size (ViT square), cyclic shift to speed up;
@@ -200,7 +197,7 @@
 		- https://github.com/msracver/Relation-Networks-for-Object-Detection
 		- Relative position encoding: log(dx/w), log(dy/h)
 	- J Gu, H Hu, L Wang, Y Wei, and J Dai. Learning region features for object detection. ECCV'18
-	- N Carion, F Massa, G Synnaeve, N Usunier, A Kirillov, and S Zagoruyko. End-to-End Object Detection with Transformers. ECCV'20
+	- Meta. End-to-End Object Detection with Transformers. ECCV'20
 		- https://github.com/facebookresearch/detr
 		- CNN ResNet-50 backbone 
 		- encoder (with modified position enc) 
@@ -212,8 +209,8 @@
 
 ## Performance
 - Pure attention (ImageNet):
-	- [P Ramachandran, NIPS'19]: 77%;
-	- [H Zhao, CVPR'20]: 77.1% patchwise;
+	- P Ramachandran, NIPS'19: 77%;
+	- H Zhao, CVPR'20: 77.1% patchwise;
 	- ViT: top-1 77.9%(ViT-B), 76.5%(ViT-L);
 	- DeiT: top-1 79.8%(DeiT-S), 83.1%(DeiT-B);
 	- Swin: top-1 81.3%(Swin-T), 84.5%(Swin-L), better than EffNet, RegNet, ViT, DeiT;
@@ -246,5 +243,4 @@
 ## Multimodal Attention
 - Arandjelovic, R. and Zisserman, A. Objects that sound. ECCV'18
 - DeepMind. Self-supervised multimodal versatile networks. NeurIPS'20
-- UNITER: Learning UNiversal
-Image-TExt Representations. ECCV'20
+- UNITER: Learning UNiversal Image-TExt Representations. ECCV'20

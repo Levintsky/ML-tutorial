@@ -9,16 +9,22 @@
 	- Layered motion;
 
 ## Optical Flow
-- **FlowNet**: A Dosovitskiy, P Fischer, E Ilg, P Hausser, C Hazırbas, V Golkov. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
+- Traditional:
+	- B Horn and B Schunck. Determining optical flow. AI'81
+	- M Black and P Anandan. A framework for the robust estimation of optical flow. ICCV'93
+	- T Brox, C Bregler, and J Malik. Large displacement optical flow. CVPR'09
+	- C Schmid. DeepFlow: Large displacement optical flow with deep matching. ICCV'13
+- FlowNet: A Dosovitskiy, et. al. FlowNet: Learning Optical Flow with Convolutional Networks. ICCV'15
 	- FlowNetS: stacks two images as input
 	- FlowNetC: convolute separately, combine with correlation layer
-- **FlowNet 2.0**: E Ilg, N Mayer, T Saikia, M Keuper, A Dosovitskiy, T Brox. FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks. CVPR'17
+- FlowNet 2.0: E Ilg, N Mayer, T Saikia, M Keuper, A Dosovitskiy, T Brox. FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks. CVPR'17
 	- FlowNetC: explicit correlation
 	- FlowNetS: a straightforward encoder-decoder architecture
 	- FlowNetSD: small displacement
 	- FlowNetFusion: fusion of different flows
 	- Improvement over 1.0: smooth flow fields; preserve fine-motion detail; fast;
 	<img src="/CV/images/low-level/flownet2.png" alt="drawing" width="600"/>
+- T Hui, X Tang, and C C Loy. Liteflownet: A lightweight convolutional neural network for optical flow estimation. CVPR'18
 - Pwc-Net: D Sun, X Yang, M Liu, and J Kautz. Pwc-net: Cnns for optical flow using pyramid, warping, and cost volume. CVPR'18
 - MFF: Z Ren, O Gallo, D Sun, M Yang, E Sudderth and J Kautz. A Fusion Approach for Multi-Frame Optical Flow Estimation. 2019
 - SelFlow: P Liu, M R. Lyu, I King, J Xu. Self-Supervised Learning of Optical Flow. CVPR'19

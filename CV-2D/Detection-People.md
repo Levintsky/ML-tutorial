@@ -11,6 +11,9 @@
 	- T Berg. Parsing clothing in fashion photographs. CVPR'12
 	- R. Urtasun, and A. Yuille. Detect what you can: Detecting and representing objects using holistic models and body parts. CVPR'14
 	- M Andriluka, L Pishchulin, P Gehler, and B Schiele. 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
+	- MPII-Pose: 2d human pose estimation: New benchmark and state of the art analysis. CVPR'14
+		- 25k images, 40k people
+		- 410 human activities
 	- COCO keypoint detection dataset.
 	- CMU Mocap: http://mocap.cs.cmu.edu/
 	- Human3.6M: http://vision.imar.ro/human3.6m/description.php

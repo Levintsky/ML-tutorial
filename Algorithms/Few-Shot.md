@@ -2,8 +2,8 @@
 
 ## Benchmarks
 - Omniglot:
-	- B. Lake, R. Salakhutdinov, J. Gross, and J. Tenenbaum. One shot learning of simple visual concepts. 2011
-	- B. M. Lake, R. R. Salakhutdinov, and J. Tenenbaum. Oneshot learning by inverting a compositional causal process. NIPS 2013
+	- B. Lake, et. al. One shot learning of simple visual concepts. 2011
+	- B. Lake, et. al. Oneshot learning by inverting a compositional causal process. NIPS 2013
 
 ## Metric Learning
 - J Snell, K Swersky, R Zemel. Prototypical Networks for Few-shot Learning. NeurIPS'17
@@ -11,10 +11,9 @@
 - SEN: A Novel Dissimilarity Measure for Prototypical Few Shot Learning Networks. ECCV'20
 
 ## Low-Shot (FAIR)
-- Feature halucination:
-	- B. Hariharan and R. Girshick. Low-shot visual recognition by shrinking and hallucinating features. ICCV 2017
-	- M. Douze, A. Szlam, B. Hariharan, and H. Jegou. Low-shot learning with large-scale diffusion. CVPR 2018
-	- Y.-X. Wang, R. Girshick, M. Hebert, and B. Hariharan. Lowshot learning from imaginary data. CVPR 2018
+- Meta. Low-shot visual recognition by shrinking and hallucinating features. ICCV'17
+- Meta. Low-shot learning with large-scale diffusion. CVPR 2018
+- Meta. Lowshot learning from imaginary data. CVPR 2018
 - Metric Learning:
 	- J. Snell, K. Swersky, and R. Zemel. Prototypical networks for few-shot learning. NIPS 2017
 

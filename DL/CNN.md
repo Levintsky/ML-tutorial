@@ -21,51 +21,41 @@
 	- Conneau, Schwenk, Lecun, Barrault. EACL 2017.
 
 ## Network/Backbone Design
-- **AlexNet**: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
-- **NIN**: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
+- AlexNet: A. Krizhevsky, I. Sutskever, and G. Hinton. ImageNet classification with deep convolutional neural networks. NIPS'12
+- NIN: M Lin, Q Chen, and S Yan (NIN): Network in network. Arxiv, 1312.4400, 2013.
 	- size-1 kernel, MLP in CNN;
-- **SPP**: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
-- **VGGNet**: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. ICLR'15
-- **GoogleNet**: C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke, and A. Rabinovich (GoogleNet): Going deeper with convolutions. CVPR'15
-	- Inception-V1
+- SPP: K. He, X. Zhang, S. Ren, and J. Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. ECCV'14
+- VGGNet: K. Simonyan and A. Zisserman. Very deep convolutional networks for large-scale image recognition. ICLR'15
+- Inception-V1: GoogleNet: Going deeper with convolutions. CVPR'15
 	- https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7
-- **Incpetion-V2**: S Ioffe, C Szegedy. Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML'15
-- **Inception-V3**: C Szegedy, V Vanhoucke, S Ioffe, J Shlens, Z Wojna. Rethinking the Inception Architecture for Computer Vision. CVPR'16
-- **ResNet**: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR'16
-	- downample: conv1x1 (stride=2) - BN
-	- Basic block:
-		- x -> Conv3x3 - BN - ReLU - Conv3x3 - BN -> out
-		- x = ReLU(x + out)
-	- Basic block (downsample):
-		- x -> Conv (stride=2) - BN - ReLU - conv - BN -> out
-		- x = ReLU(downsample(x) + out)
-	- Bottleneck block
-		- x -> Conv1x1 channel-large (BN, ReLU) - Conv3x3 channel-small (BN, ReLU) - Conv channel-large (BN) -> out
-		- x = ReLU(x + out)
-	- Bottleneck block (downsample)
-		- x -> Conv1x1 (stride=2, BN, ReLU) - Conv3x3 (BN, ReLU) - Conv1x1 (BN) -> out
-		- x = ReLU(downsample(x) + out)
-	- Make a layer (Res1, ..., Res4)
-		- Layer (downsample) - Layer - ...
+- Incpetion-V2: Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML'15
+- Inception-V3: Rethinking the Inception Architecture for Computer Vision. CVPR'16
+- ResNet: K He, X Zhang, S Ren, J Sun. Deep Residual Learning for Image Recognition. CVPR'16
+	- Basic block (optionally downsample):
+		- x -> Conv3x3-[stride] - BN-ReLU - Conv3x3 - BN -> out
+		- x = ReLU([down]x + out)
+	- Bottleneck block (optionally downsample):
+		- x -> Conv1x1-L-[stride] - BN-ReLU - Conv3x3-s - BN-ReLU - Conv-L - BN -> out
+		- x = ReLU([down]x + out)
 	- Final structure:
-		- **Initial Conv**: conv1 (stride=2, BN, ReLU) - Max-Pool -> 64 x 56 x 56
+		- Initial Conv: conv1-stride - BN-ReLU - Max-Pool -> 64 x 56 x 56
 		- Res1 (64) - Res2 (down 112 x 28 x 28) - Res3 (down 256 x 14 x 14, down) - Res4 (down 512 x 7 x 7)
 		- Average-pool (7x7) - fc1000
-- **Inception-V4**: C Szegedy, S Ioffe, V Vanhoucke, A Alemi. Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning; 2016
-- **ResNext**: S Xie, R Girshick, P Dollár, Z Tu, K He. Aggregated Residual Transformations for Deep Neural Networks. CVPR'17
+- Inception-V4: Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning. 2016
+- ResNext: Aggregated Residual Transformations for Deep Neural Networks. CVPR'17
 	- Insight: **Grouped-Convolution**
 	- i. same spatial size: same hyper-parameter;
 	- ii. down-sample by 2, width increase by 2; (each layer similar computation)
 	- Conv - Batch-Norm - ReLU;
 	- Short-cut: ReLU after adding shortcut;
-- **DenseNet**: G Huang, Z Liu, L v d Maaten, K Q. Weinberger. Densely Connected Convolutional Networks. CVPR'18
+- DenseNet**: Meta. Densely Connected Convolutional Networks. CVPR'18
 	- https://github.com/bamos/densenet.pytorch
 - K He, R Girshick, P Dollar. Rethinking ImageNet Pre-training. CVPR'19
 - J Wang, K Sun, T Cheng, B Jiang, C Deng, Y Zhao, D Liu, Y Mu, M Tan, X Wang, et al. Deep high-resolution representation learning for visual recognition. PAMI'20
 	- High-resolution, multi-branch, fuse;
-**EfficientNet**: M Tan, Quoc V. Le. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
+- EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
 	- Check Efficient-Inf for details;
-- **RegNet**: I Radosavovic, R Kosaraju, R Girshick, K He, P Dollar. Designing Network Design Spaces. CVPR'20
+- RegNet: Meta. Designing Network Design Spaces. CVPR'20
 	- Check AutoML for details;
 
 ## Performance

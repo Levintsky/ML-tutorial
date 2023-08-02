@@ -77,7 +77,7 @@
 	- Esteves, C., Allen-Blanchette, C., Makadia, A., and Daniilidis, K. Learning SO(3) equivariant representations with spherical CNNs. ECCV'18
 
 ## Activation
-- ReLU: Nair, V. and Hinton, G. E. Rectified linear units improve restricted boltzmann machines. ICML'10
+- ReLU: V Nair, and G Hinton. Rectified linear units improve restricted boltzmann machines. ICML'10
 	- xI(x>0)
 - Leaky-ReLU;
 - GeLU: D Hendrycks, K Gimpel. Gaussian Error Linear Units (GELUs). '16
@@ -97,7 +97,7 @@
 	- x = (x-μ) / √(σ^2+ε)
 	- y = γx + β
 	- Moving mean and variance for inference time;
-- **Layer-Norm**: J L Ba, J R Kiros, G E. Hinton. Layer Normalization. 2016
+- **Layer-Norm**: J Ba, J Kiros, G Hinton. Layer Normalization. 2016
 	- Insight: normalize dxHxW pixels within the same instance, no batch required;
 	- Same eqn as BN: x = (x-μ) / √(σ^2+ε)
 - **Weight-Norm**: T Salimans and D Kingma. Weight normalization: A simple reparameterization to accelerate training of deep neural networks. NIPS'16
@@ -153,20 +153,20 @@
 	- ∇θ Ez[f(z)] = Ez[f(z) ∇θlogp(z;θ)]
 - Variance reduction: control-variate baseline\
 	<img src="/DL/images/basics/var-reduce.png" alt="drawing" width="400"/>
-- **DARN**: K. Gregor, I. Danihelka, A. Mnih, C. Blundell, and D. Wierstra. Deep autoregressive networks. arxiv'13
+- DARN: DeepMind. Deep autoregressive networks. arxiv'13
 	- First-order Taylor, estimator biased for non-quadratic f:
 		<img src="/DL/images/basics/darn.png" alt="drawing" width="400"/>
-- **NVIL**: A. Mnih and K. Gregor. Neural variational inference and learning in belief networks. ICML'14
+- NVIL: A. Mnih and K. Gregor. Neural variational inference and learning in belief networks. ICML'14
 	- Baseline 1: moving average f-bar;
 	- Baseline 2: input dependent f(x);
 	- Variance normalization /Var(f);
 - Straight-Through (ST) estimator:
 	- **ST**: Y. Bengio, N. Leonard, and A. Courville. Estimating or propagating gradients through stochastic neurons for conditional computation. arxiv'13
 	- J. Chung, S. Ahn, and Y. Bengio. Hierarchical multiscale recurrent neural networks. arXiv'16
-	- J. T. Rolfe. Discrete Variational Autoencoders. ArXiv'16
-- **MuProp**: S. Gu, S. Levine, I. Sutskever, and A Mnih. MuProp: Unbiased Backpropagation for Stochastic Neural Networks. ICLR'16\
+	- J Rolfe. Discrete Variational Autoencoders. ArXiv'16
+- MuProp: S Gu, S Levine, I Sutskever, and A Mnih. MuProp: Unbiased Backpropagation for Stochastic Neural Networks. ICLR'16
 	<img src="/DL/images/basics/muprop.png" alt="drawing" width="400"/>
-- **VIMCO**: A. Mnih and D. J. Rezende. Variational inference for monte carlo objectives. arXiv'16
+- VIMCO: A Mnih and D Rezende. Variational inference for monte carlo objectives. arXiv'16
 	<img src="/DL/images/basics/vimco.png" alt="drawing" width="400"/>
 - Gumbel-Softmax:
 	- Basics: differentiable sample y s.t. y={v1, v2, ...} with prob {α1, α2, ...}
@@ -189,7 +189,7 @@
 		- then y as a weighted sum of {v1, v2} with prob f(x, τ)
 		- y is both differentiable w.r.t. {v1, v2, ...} and {α1, α2, ...}
 		- τ 0, sampling behavior is exact;
-	- C. J. Maddison, A Mnih, and Y W Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
+	- C Maddison, A Mnih, and Y W Teh. The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables. 2016
 		- Independently discover the same trick;
 	- E Jang, S Gu, B Poole. Categorical Reparameterization with Gumbel-Softmax. ICLR'17
 		- Main insight: Gumbel-max trick to make sampling differentiable; the argmax operation is still non-differentiable. When τ approaches 0, equivalent to Gumbel:\
@@ -207,18 +207,18 @@
 ## NTK
 - A Jacot, F Gabriel, C Hongler. Neural Tangent Kernel: Convergence and Generalization in Neural Networks. NIPS'18
 	- https://rajatvd.github.io/NTK/
-- Chizat, Lenaic, and F Bach. A note on lazy training in supervised differentiable programming. arXiv'18
+- L Chizat, and F Bach. A note on lazy training in supervised differentiable programming. arXiv'18
 - S Arora, et al. On exact computation with an infinitely wide neural net. arXiv'19
 - Y Li, et al. Enhanced Convolutional Neural Tangent Kernels. arxiv'19
-- M. Belkin, S. Ma, and S. Mandal. To understand deep learning we need to understand kernel learning. arXiv'18
+- M Belkin, S Ma, and S Mandal. To understand deep learning we need to understand kernel learning. arXiv'18
 
 ## Memory-Augmented NN
-- C. G. Atkeson and S. Schaal. Memory-based neural networks for robot learning. NC'95
+- C Atkeson and S Schaal. Memory-based neural networks for robot learning. NC'95
 - End-To-End Memory Networks
 
 ## Invert NN
 - Invertible/reversible:
-	- D. Maclaurin, D. K. Duvenaud, and R. P. Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
+	- D Maclaurin, D Duvenaud, and R Adams. Gradient-based hyperparameter optimization through reversible learning. ICML'15
 		- made use of the reversible nature of SGD to tune hyperparameters via GD;
 	- NICE: unit determinant Jacobian;
 		- y1 = x1;
@@ -235,7 +235,7 @@
 		- Insight: find weight w s.t. reconstruction error is minimized; also tried on shallow features such as SIFT, HOG, LBP;\
 			<img src = '/DL/images/dynamic-system/invert-cnn.png' width = '400'>
 		- Operator: conv + upsample, padding with 0 and keep the value of top-left in a 2 x 2;
-- Arora, S.; Liang, Y.; and Ma, T. Why are deep nets reversible: A simple theory, with implications for training. ICLR-Workshop'16
+- S Arora, Y Liang, and T Ma. Why are deep nets reversible: A simple theory, with implications for training. ICLR-Workshop'16
 - Gilbert, A. C.; Zhang, Y.; Lee, K.; Zhang, Y.; and Lee, H. Towards understanding the invertibility of convolutional neural networks. IJCAI'17
 	- Theoretical connection between compressive sensing and neural network;
 	- Model-based CS, MB-RIP; assume higher dimension observation and Gaussian kernel;
@@ -256,7 +256,7 @@
 	- GAN lab: https://poloclub.github.io/ganlab/
 
 ## Non-BP/Gradient-Free Training
-- S. Günther, L. Ruthotto, J.B. Schroder, E.C. Cyr, N.R. Gauger. Layer-Parallel Training of Deep Residual Neural Networks. 2019
+- S Günther, L Ruthotto, J Schroder, E Cyr, N Gauger. Layer-Parallel Training of Deep Residual Neural Networks. 2019
 	- Training layer-parallel rather than sequential, with inexact gradient info;
 - Capsule:
 	- S Sabour, N Frosst. Dynamic Routing Between Capsules. NIPS'17

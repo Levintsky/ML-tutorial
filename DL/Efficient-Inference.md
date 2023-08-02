@@ -71,8 +71,8 @@
 		- 6. Change V2 final layers:
 			- 1x1-conv-BN-swish - Avg-pool - 1x1-conv-swish - 1x1-conv (Linear)
 - MNas:
-	- **MnasNet**: Google. MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
-		- Built upon the MobileNetV2 structure by introducing lightweight attention modules based on squeeze and excitation into the bottleneck structure
+	- MnasNet: Platform-Aware Neural Architecture Search for Mobile. 2019
+		- MobileNetV2 + swish
 		- Steps:
 			- Generate a set of new proposals with at least delta reduction in latency compared to the previous step;
 			- Reuse the pre-trained model with randomly initializing missing weights as appropriate. Finetune each proposal for T steps;
@@ -81,19 +81,17 @@
 		- Activation: swish;
 	- B Chen, et. al. MnasFPN: Learning Latency-aware Pyramid Architecture for Object Detection on Mobile Devices. 2019
 - Efficient:
-	- **EfficientNet**: EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
+	- EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML'19
 		- Baseline (MNAS): mobile inverted bottleneck convolution (MBConv)
 		- Width scaling
 		- Depth scaling
 		- Resolution scaling
 		- Compound scaling
-		<img src="/CV-2D/images/efficientnet-baseline.jpg" alt="drawing" width="500"/>
-		<img src="/CV-2D/images/efficientnet-performance.jpg" alt="drawing" width="500"/>
-- **ShuffleNet**: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR'18
+- ShuffleNet: X. Zhang, X. Zhou, M. Lin, and J. Sun. ShuffleNet: An extremely efficient convolutional neural network for mobile devices. CVPR'18
 	- Traditional Bottleneck: ReLU[x + (conv1x1 BN-ReLU DWconv3x3 BN-ReLU conv1x1 BN)]
-	- ShuffleNet: ReLU[x + (**Gconv**1x1 BN-ReLU **Channel-Shuffle** DWconv3x3 BN-ReLU **Gconv**1x1 BN)]
-- **FBNet**:
+	- ShuffleNet: ReLU[x + (Gconv-1x1 BN-ReLU Channel-Shuffle DWconv3x3 BN-ReLU **Gconv**1x1 BN)]
+- FBNet:
 	- ChamNet: Towards Efficient Network Design through Platform-Aware Model Adaptation. 2018
-	- V1: B Wu, et. al. Kurt Keutzer. FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
-	- FBNetV2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
+	- FBNet-v1: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search. 2019
+	- FBNet-V2: Differentiable Neural Architecture Search for Spatial and Channel Dimensions
 		- https://github.com/facebookresearch/mobile-vision
