@@ -60,7 +60,7 @@
 	- Design a loss prediction module;
 		- Yoo & Kweon (2019) Learning Loss for Active Learning. CVPR'19
 - Adversarial Setup:
-	- Sinha et al. (2019). VAAL (Variational Adversarial Active Learning).
+	- Sinha et al. VAAL (Variational Adversarial Active Learning). 2019
 		- GAN-like D(.) to distinguish labeled and unlabeled;
 		- Selects unlabeled samples with low discriminator scores
 	- MAL (Minimax Active Learning; Ebrahimiet al. 2021) is an extension of VAAL.

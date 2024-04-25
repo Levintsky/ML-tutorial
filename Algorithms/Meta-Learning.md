@@ -55,6 +55,8 @@
 - DeepMind. Reinforcement Learning, Fast and Slow. Trends in Cognitive Sciences'19
 - MAML for RL: https://github.com/cbfinn/maml_rl
 - SNAIL: A Simple Neural Attentive Meta-Learner, Mishra et al'18
+- Berkeley Continuous adaptation via meta-learning in nonstationary and competitive environments. 2017
+- C Finn, T Yu, T Zhang, P Abbeel, and S Levine. One-shot visual imitation learning via meta-learning. 2017
 
 ## MAML, Bi-level Optimization
 - Intuition:
@@ -68,10 +70,8 @@
 	- Inner level: SGD
 		- φi := Alg(θ, Dtr) = θ - α∇θ L(θ, Dtr)
 	- Theory support: C Finn and S Levine. Meta-learning and universality: Deep representations and gradient descent can approximate any learning algorithm. 2017
-- M Al-Shedivat, T Bansal, Y Burda, I Sutskever, I Mordatch, and P Abbeel. Continuous adaptation via meta-learning in nonstationary and competitive environments. 2017
-- C Finn, T Yu, T Zhang, P Abbeel, and S Levine. One-shot visual imitation learning via meta-learning. 2017
 - Shared parameters **reduce overfitting**:
-	- N Mishra, M Rohaninejad, X Chen, and P Abbeel. A Simple Neural Attentive Meta-Learner. ICLR'18
+	- Berkeley. A Simple Neural Attentive Meta-Learner. ICLR'18
 	- Y Lee and S Choi. Meta-Learning with Adaptive Layerwise Metric and Subspace. ICLR'18
 	- T Munkhdalai, X Yuan, S Mehri, T Wang and A Trischler. Learning rapid-temporal adaptations. ICML'18
 - Shared parameters induce robust convergence:
@@ -95,7 +95,7 @@
 	- A Nichol, J Achiam and J Schulman. On First-Order Meta-Learning Algorithms. arixv'18
 	- S Flennerhag, P Moreno, N Lawrence and A Damianou. Transferring knowledge across learning processes. ICLR'19
 - C Finn, A Rajeswaran, S Kakade, and S Levine. Online meta-learning. ICML'19
-- **iMAML**: A Rajeswaran, C Finn, S Kakade, S Levine. Meta-Learning with Implicit Gradients. NIPS'19
+- **iMAML**: A Rajeswaran, C Finn, S Kakade, S Levine. Meta-Learning with Implicit Gradients. NeurIPS'19
 	- θ∗ = argmin.θ F(θ), where F(θ) = 1/M ∑Li(Alg.i(θ))
 		- Alg.i(θ) = argmin.φ Gi(φ′,θ) = Li(φ′) + λ/2 ∥φ′-φ∥^2
 	- Total and Partial Derivatives of the nested function:

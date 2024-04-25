@@ -146,7 +146,7 @@
 			- Decoder: rely on local window and z;
 			- Prior: IAF for more espressiveness;
 - Latent:
-	- **VQ-VAE**: Neural Discrete Representation Learning. NIPS'17
+	- **VQ-VAE**: Neural Discrete Representation Learning. NeurIPS'17
 		- Quantize encoded e=E(x) to discrete codes in Kmeans style;
 		- x -> E(x) -> e -> z=ek -> D(e) -> x'
 	- **VQ-VAE-2**: Generating Diverse High-Fidelity Images with VQ-VAE-2. 2019
@@ -174,10 +174,10 @@
 				- s.t. ∫π(x,y)dy=p1(x), ∫π(x,y)dx=p2(y)
 			- Lagrange: L=EMD - ∫λ1(x)(∫π(x,y)dy-p1(x))dx - ∫λ2(y)(∫π(x,y)dx-p2(y))dy
 				- L = ∫[c(x,y)-λ1(x)-λ2(y)]dπ(x,y) + Ep1(λ(x))+Ep2(λ(x))
-					- s.t. c(x,y)-λ1(x)-λ2(y) >= 0 (gap >= 0)
+					- s.t. c(x,y)-λ1(x)-λ2(y) ≥ 0 (gap ≥ 0)
 				- x=y: λ1(x)+λ2(y) = 0, since c(x,y)=0
 			- Dual loss: L = Ep1(λ(x)) - Ep2(λ(x))
-				- s.t. Lip(λ(x))<=1
+				- s.t. Lip(λ(x)) ≤ 1
 			- Intuitively, λ(x): the cost at x, λ(x1)-λ(x2)<=|x1-x2|, cost diff <= moving cost;
 	- Info: InfoGAN OpenAI NeurIPS'16;
 		- Insight: maximize MI of context c and generated image G(z,c);

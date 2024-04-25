@@ -69,21 +69,21 @@
 	- Trajectory + 3D Lidar OD + Tracking dataset
 	- 100K image frames, 80k lidar pc and 1000km trajectories for urban traffic;
 - ISPRS Multi-platform:
-	- F. Rottensteiner, G. Sohn, M. Gerke, and J. D. Wegner. Isprs test project on urban classification and 3d building reconstruction. 2013.
-	- J. Niemeyer, F. Rottensteiner, and U. Soergel. Contextual classification of lidar data and building object detection in urban areas. ISPRS'14
-	- F. Nex, M. Gerke, F. Remondino, H. Przybilla, M. Baumker, and A. Zurhorst. Isprs benchmark for multi-platform photogrammetry. ISPRS'15
+	- Isprs test project on urban classification and 3d building reconstruction. 2013.
+	- Contextual classification of lidar data and building object detection in urban areas. ISPRS'14
+	- Isprs benchmark for multi-platform photogrammetry. ISPRS'15
 - Synthetic:
 	- A Gaidon, Q Wang, Y Cabon, and E Vig. Virtual worlds as proxy for multi-object tracking analysis. CVPR'16
 	- G. Ros, L. Sellart, J. Materzynska, D. Vazquez, and A. Lopez. The SYNTHIA Dataset: A large collection of synthetic images for semantic segmentation of urban scenes. CVPR'16
 	- M. Wrenninge and J. Unger. Synscapes: A photorealistic synthetic dataset for street scene parsing.
 - TUM-DLR: T. Koch, P. d'Angelo, F. Kurz, F. Fraundorfer, P. Reinartz, and M. Korner. The tum-dlr multimodal earth observation evaluation benchmark. CVPRW'16
-- Oxford-RobotCar: W. Maddern, G. Pascoe, C. Linegar, and P. Newman. 1 year, 1000km: The oxford robotcar dataset. IJRR'16
+- Oxford-RobotCar: 1 year, 1000km: The oxford robotcar dataset. IJRR'16
 - nuTonomy. nuscenes: A multimodal dataset for autonomous driving. 2019
 
 ## Language
-- [Sean Segal] VQA: Universal Spatial Embeddings for Question Answering in Self-Driving;
+- Uber. VQA: Universal Spatial Embeddings for Question Answering in Self-Driving;
 	- Support how many; actions (turning?); interactions (blocked by another car?) map topology (3-way interaction);
-- S Segal, E Kee, W Luo, E Yumer, R Urtasun. ScenarioNet: Universal Spatial Embeddings for Semantic Search in Self-Driving.
+- Uber. ScenarioNet: Universal Spatial Embeddings for Semantic Search in Self-Driving.
 	- Input: language query? Output: Search
 	- Backbone: Pixor
 	- Embedding for log;

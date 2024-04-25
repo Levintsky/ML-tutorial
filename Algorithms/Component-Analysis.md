@@ -45,7 +45,7 @@
 	- Autoassociative neural network;
 	- Modeling nonlinear manifold;
 - **Deep Latent Model (ICA)**
-	- A Shocher, Ml Irani. Blind Super-Resolution Kernel Estimation using an Internal-GAN Sefi Bell-Kligler. NIPS'19
+	- A Shocher, Ml Irani. Blind Super-Resolution Kernel Estimation using an Internal-GAN Sefi Bell-Kligler. NeurIPS'19
 	- I Khemakhem, D Kingma, R Monti, A Hyvärinen. Variational Autoencoders and Nonlinear ICA: A Unifying Framework. AISTATS'20 submission.
 		- x d-dim, u m-dim both observed; z n-dim, n <= d latent;
 		- Parameters: θ = (f, T, λ); f: mixing? T sufficient statistics;

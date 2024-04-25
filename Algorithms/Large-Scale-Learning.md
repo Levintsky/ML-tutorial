@@ -125,8 +125,6 @@
 	- Managed Communication and Consistency for Fast Data-Parallel Iterative Analytics. SoCC 2015.
 	- GeePS: Scalable Deep Learning on Distributed GPUs with a GPU-Specialized Parameter Server. Eurosys 2016.
 	- Poseidon: An Efficient Communication Architecture for Distributed Deep Learning on GPU Clusters. ATC 2017.
-
-## Distributed
 - M Yu, Z Lin, K Narra, S Li, Y Li, N Kim, A Schwing, M Annavaram, S Avestimehr. GradiVeQ: Vector Quantization for Bandwidth-Efficient Gradient Aggregation in Distributed CNN Training. NIPS'18
 - J Wangni, J Wang, J Liu, T Zhang. Gradient Sparsification for Communication-Efficient Distributed Optimization. NIPS'18
 - cpSGD: Communication-efficient and differentially-private distributed SGD. NIPS'18

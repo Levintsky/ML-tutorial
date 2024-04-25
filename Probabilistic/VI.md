@@ -22,11 +22,11 @@
 		- bel(xs) ∝ ψs(xs) ∏t mt→s(xs)
 	- VI, ELBO:
 		- KL(q(z) | p(z|x)) = E(log q(z)) - E(log p(z,x)) + log p(x)
-		- logp(x) <= ELBO(q) = ⟨log p(z, x)⟩.q(z) - H(q)
+		- logp(x) ≤ ELBO(q) = ⟨log p(z, x)⟩.q(z) - H(q)
 			- logp(x) = log[∫p(x,z)dz]
 			- = log[∫p(x,z)q(z)/q(z)dz]
 			- = log[⟨logp(x,z)/q(z)⟩q(z)]
-			- >= ⟨log[p(x,z)/q(z)⟩q(z) (Jensen, swap E[.] and log)
+			- ≥ ⟨log[p(x,z)/q(z)⟩q(z) (Jensen, swap E[.] and log)
 		- Special case: mean field;
 			- Problem: known θ, infer z;
 			- logqj(xj) ~ E.-qj[logp(x)]; marginalize out other var xi with qi(.);

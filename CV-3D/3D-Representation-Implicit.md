@@ -29,8 +29,8 @@
 - **Surface-Finding**: S Frisken, R Perry, A Rockwood, and T Jones. Adaptively sampled distance fields: A general representation of shape for computer graphics. 2000
 
 ## Generalized Neural-SDF or indicator Function
-- Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. NeurIPS'19
-- S Peng, M Niemeyer, L Mescheder, M Pollefeys, and A Geiger. Convolutional occupancy networks. ECCV'20.
+- Y Lipman. Controlling neural level sets. NeurIPS'19
+- A Geiger. Convolutional occupancy networks. ECCV'20.
 - Backbone:
 	- 3D-Conv: OCCNet;
 	- Point-Cloud: DeepSdf [Facebook, CVPR'19]
@@ -48,7 +48,8 @@
 	- **SIF**: Union of Gaussian Ball [Kyle Genova. ICCV'19]
 		- https://github.com/google/ldif
 	- **DSIF**: Relaxed Gaussian assumption [Kyle Genova'19]
-	- Union of scaled axis-aligned anisotropic 3D Gaussians;	- **CvxNet**: Boyang Deng. CVPR'20
+	- Union of scaled axis-aligned anisotropic 3D Gaussians;
+	- **CvxNet**: Boyang Deng. CVPR'20
 		- https://cvxnet.github.io/
 		- https://github.com/tensorflow/graphics/tree/master/tensorflow_graphics/projects/cvxnet
 	- **GIRAFFE**: M Niemeyer, A Geiger. CVPR'21

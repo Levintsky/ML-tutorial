@@ -108,6 +108,5 @@
 - Juyeon Heo, Sunghwan Joo, Taesup Moon. Fooling Neural Network Interpretations via Adversarial Model Manipulation
 - Lukas Hoyer, Mauricio Munoz, Prateek Katiyar, Anna Khoreva, Volker Fischer. Grid Saliency for Context Explanations of Semantic Segmentation
 - Alessio Ansuini, Alessandro Laio, Jakob H Macke, Davide Zoccolan. Intrinsic dimension of data representations in deep neural networks
-- Ari Morcos, Haonan Yu, Michela Paganini, Yuandong Tian. One ticket to win them all: generalizing lottery ticket initializations across datasets and optimizers
 - Randall Balestriero, Romain Cosentino, Behnaam Aazhang, Richard Baraniuk. The Geometry of Deep Networks: Power Diagram Subdivision
 - Scott Gigante, Adam S Charles, Smita Krishnaswamy, Gal Mishne. Visualizing the PHATE of Neural Networks

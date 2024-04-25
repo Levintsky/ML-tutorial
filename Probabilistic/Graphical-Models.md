@@ -180,8 +180,8 @@
 	- P Krähenbühl, V Koltun. Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials. NIPS'12
 	- DeepLab;
 - Uncertainty measure:
-	- G. Papandreou and A. L. Yuille, Perturb-and-map random fields: Using discrete optimization to learn and sample from energy models. ICCV'11
-	- D. Tarlow, R. P. Adams, and R. S. Zemel. Randomized optimum models for structured prediction. AISTATS'12
+	- G. Papandreou and A Yuille, Perturb-and-map random fields: Using discrete optimization to learn and sample from energy models. ICCV'11
+	- D Tarlow, R Adams, and R Zemel. Randomized optimum models for structured prediction. AISTATS'12
 	- **MAP-perturbation**: S. Maji, T. Hazan, and T. Jaakkola. Active boundary annotation using random map perturbations. AAAI'14
 
 ## Exact Inference: Junction Tree

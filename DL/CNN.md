@@ -66,9 +66,9 @@
 		- 19-BN (143M/19.6B): 74.2%;
 	- Inception:
 		- V1 (Going-deeper) (66M/1.5B): 69.8%
+		- V2: 79.9%, top-5 95.0%;
 		- V3 (271M/5.7B): 77.3%;
-		- Inception-V4: 83.5%, top-5 96.9%;
-	- Inception-V2: 79.9%, top-5 95.0%;
+		- V4: 83.5%, top-5 96.9%;
 	- ResNet: 80.6%; (1st of ILSVRC'15)
 		- R-18 (12M/1.8B): 69.8%
 		- R-34 (21M/3.7B): 73.3%

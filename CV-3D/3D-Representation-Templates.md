@@ -22,7 +22,7 @@
 		- Insight: first CNN retrive a **prototype**, then CNN to deform
 		- https://deformnet-site.github.io/DeformNet-website/
 		- Input: single image; output: offset/deformation;
-	- ALIGNet: R Hanocka, N Fish, Z Wang, R Giryes, S Fleishman, and D Cohen-Or. ALIGNet: Partial-Shape agnostic alignment via unsupervised learning. TOG'18
+	- ALIGNet: D Cohen-Or. ALIGNet: Partial-Shape agnostic alignment via unsupervised learning. TOG'18
 		- https://github.com/ranahanocka/ALIGNet
 		- Input: source, **partial** target;
 		- Learn a masked-autoencoder;

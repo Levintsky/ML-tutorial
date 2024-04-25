@@ -38,7 +38,7 @@
 	- J Zhou, G Cui, S Hua, Z Zhang, C Yang, Z Liu, L Wang, C Li, M Sun. Graph neural networks: A review of methods and applications. '20
 
 ## Benchmarks
-- Hu, W., Fey, M., Zitnik, M., Dong, Y., Ren, H., Liu, B., Catasta, M., and Leskovec, J. Open graph benchmark: Datasets for machine learning on graphs. NIPS'20
+- Leskovec, J. Open graph benchmark: Datasets for machine learning on graphs. NIPS'20
 
 ## Graph Theory
 - Zhao, Y. Graph theory and additive combinatorics, 2019.
@@ -70,13 +70,13 @@
 	- vol(A): Σi∈A di
 - Laplacian:
 	- Unnormalized: L = D - A
-		- All eigenvalue >= 0; (symmetric and positive semi-definite)
-		- f'Lf = 1/2 Σ wij(fi-fj)^2
+		- All eigenvalue ≥ 0; (symmetric and positive semi-definite)
+		- f†Lf = 1/2 Σ wij(fi-fj)^2
 		- Smallest: (1, 1, 1, ...)
 	- Normalized:
 		- Symmetric: L_sym = D^(-1/2) L D^(-1/2)
 		- Skewed: L_sk = D^(-1) L
-		- f' L_sym f = 1/2 Σ wij(fi/√(di)-fj/√(dj))^2
+		- f† L_sym f = 1/2 Σ wij(fi/√(di)-fj/√(dj))^2
 - Algorithms:
 	- Unnormalized:
 		- Find k eigenvectors u1, u2, ..., uk of L:

@@ -29,7 +29,7 @@
 		- Text: SentencePiece (Kudo and Richardson, 2018), 32,000 subwords;
 		- Image: ViT - rasterize order;
 		- Discrete values (Atari actions): row-major serialization, [0, 1024)
-		- Continuous (Torque, ...): mu-law encoded to -1 ~ +1, discretized to 1024 bins:
+		- Continuous (Torque, ...): 𝜇-law encoded to -1 ~ +1, discretized to 1024 bins:
 			- 𝐹(𝑥) = sgn(𝑥) log(|𝑥|𝜇 + 1.0)/log(𝑀𝜇 + 1.0)
 	- Embedding:
 		- Text, disc/cont obs/action: LUT;

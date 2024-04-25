@@ -112,7 +112,7 @@
 		- Approach 1: optimize latent w, s.t.
 			- CLIP(G(w), text) close + regularization (close to original w and a face recognition)
 		- Approach 2: latent mapper
-			- w -> Mt(.) -> Δw
+			- w → Mt(.) → Δw
 			- G(w+Δw) a real image, s.t. CLIP(.,text), L2(w,w0), Lid(.) all satisfy;
 		- Approach 3: global direction;
 			- Align: 
@@ -121,7 +121,7 @@
 	- Stage 1: dVAE, 256x256-dVAE-32x32x8192 tokens; train φ and θ;
 	- Stage 2: concatenate 256 BPE-encoded text tokens with the 32 × 32 = 1024 image tokens, and train an autoregressive transformer pψ(y, z).
 	- x: image; y: caption; z: latent;
-	- ln pθ,ψ(x, y) >= Ez∼qφ(z|x) ln pθ(x|y,z)−βKL(qφ(y,z|x), pψ(y,z))
+	- ln pθ,ψ(x, y) ≥ Ez∼qφ(z|x) ln pθ(x|y,z)−βKL(qφ(y,z|x), pψ(y,z))
 		- Latent distribution qφ(z|x): 32x32 dVAE, K=8192 tokens, with Gumbel trick;
 		- Image distribution pθ(x|y,z): Log-laplace NLL loss;
 		- Text token joint distribution: pψ(y, z); 12-billion parameter sparse transformer
@@ -161,12 +161,12 @@
 	- F Liu, Y Liu, X Ren, X He, X Sun. Aligning Visual Regions and Textual Concepts for Semantic-Grounded Image Representations. NIPS'19
 - Misc
 	- **NeuralTalk**: A. Karpathy. https://github.com/karpathy/neuraltalk
-	- A. Karpathy and L. Fei-Fei. Deep visual-semantic alignments for generating image descriptions. CVPR 2015
-	- R. Krishna, K. Hata, F. Ren, L. Fei-Fei, and J. C. Niebles. Dense-Captioning events in videos. ICCV 2017
-	- G. Kulkarni, V. Premraj, S. Dhar, S. Li, Y. Choi, A. C. Berg, and T. L. Berg. Baby talk: Understanding and generating image descriptions. CVPR 2011
-	- J. Lu, J. Yang, D. Batra, and D. Parikh. Neural baby talk. CVPR 2018
-	- O Vinyals, A Toshev, S Bengio, D Erhan. **Show and Tell**: Lessons learned from the 2015 MSCOCO Image Captioning Challenge. 2015
-	- K. Xu, J. Ba, R. Kiros, K. Cho, A. C. Courville, R. Salakhutdinov, R. S. Zemel, and Y. Bengio. Show, attend and tell: Neural image caption generation with visual attention. In ICML, 2015.
+	- Stanford. Deep visual-semantic alignments for generating image descriptions. CVPR 2015
+	- Stanford. Dense-Captioning events in videos. ICCV 2017
+	- UNC. Baby talk: Understanding and generating image descriptions. CVPR 2011
+	- Virginia-Tech. Neural baby talk. CVPR 2018
+	- Google. **Show and Tell**: Lessons learned from the 2015 MSCOCO Image Captioning Challenge. 2015
+	- Y. Bengio. Show, attend and tell: Neural image caption generation with visual attention. In ICML, 2015.
 	- **NMN**: Jacob Andreas, Marcus Rohrbach, Trevor Darrell, and Dan Klein. Deep compositional question answering with neural module networks. CVPR'16.
 	- C. Wang, H. Yang, C. Bartz, and C. Meinel. Image captioning with deep bidirectional lstms. ACMMM'16
 		- Training: bidirectional;
@@ -189,7 +189,7 @@
 		- Vector produces all answers (VQA has an answer set);
 	- **MAC**: D Hudson, C Manning. Compositional Attention Networks for Machine Reasoning. ICLR'18
 		- MAC recurrent unit
-	- **MCB**: A Fukui, D H Park, D Yang, A Rohrbach, T Darrell, M Rohrbach. Multimodal Compact Bilinear Pooling for VQA. EMNLP'16
+	- **MCB**: Berkeley. Multimodal Compact Bilinear Pooling for VQA. EMNLP'16
 	- **SOA**: P Anderson, X He, C Buehler, D Teney, M Johnson, S Gould, L Zhang. Bottom-up and top-down attention for image captioning and visual question answering. CVPR'18
 		- Faster RCNN + ResNet-101
 	- **MUREL**. Remi Cadene, Hedi Ben-younes, Matthieu Cord, Nicolas Thome. MUREL: Multimodal Relational Reasoning for Visual Question Answering. 2019
@@ -205,11 +205,11 @@
 ## Visual Reasoning
 - NMN: J Andreas, M Rohrbach, T Darrell, D Klein. Neural Module Networks. CVPR'16
 	- Compositional reasoning;
-- J Johnson, J Hoffman, B Hariharan, L v d Maaten, L Fei-Fei, L Zitnick, R Girshick. Inferring and Executing Programs for Visual Reasoning. ICCV'17
+- Stanford. Inferring and Executing Programs for Visual Reasoning. ICCV'17
 	- Insight: program generator + execution engine; built on NMN; train by REINFORCE;
 	- Program generator: LSTM seq2seq, output predicted program z;
 	- Execution engine: input program z and image x, a=phi(x, z).
-- K Yi, J Wu, C Gan, A Torralba, P Kohli and J Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NIPS 2018
+- K Yi, J Wu, C Gan, A Torralba, P Kohli and J Tenenbaum. Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding, NeurIPS 2018
 	- An interpretable VQA model that disentangles language reasoning from visual understanding
 	- For visual understanding, first perform objects segmentation and then learn to obtain structural scene representation (with supervision) such as color, size, shape, position.
 	- For language reasoning, they learn to translate natural language question into a deterministic program such as filter_shape(scene, large) or count(scene). 

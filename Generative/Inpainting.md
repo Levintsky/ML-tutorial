@@ -55,7 +55,7 @@
 	- Insight: inpainting auto-encoder; loss: L2;
 	- Problem: fixed size (resolution), fixed mask; \
 	<img src="/Generative/images/inpaint/context-encoder.png" alt="drawing" width="400"/>
-- Emily Denton, Sam Gross, and Rob Fergus. Semi-supervised learning with context-conditional generative adversarial networks. arxiv'16 (ICLR'17 reject)
+- E Denton, S Gross, and R Fergus. Semi-supervised learning with context-conditional generative adversarial networks. arxiv'16 (ICLR'17 reject)
 	- Generalized from context encoder, with GAN loss; \
 	<img src="/Generative/images/inpaint/ssl-gan.png" alt="drawing" width="400"/>
 - Y Li, S Liu, J Yang, and M Yang. Generative Face Completion. CVPR'17
@@ -73,7 +73,7 @@
 		<img src="/Generative/images/inpaint/neural-inpaint-2.png" alt="drawing" width="400"/>
 	- Start from infilling mean color x0, iteratively optimize: \
 		<img src="/Generative/images/inpaint/neural-inpaint-3.png" alt="drawing" width="250"/>
-- Raymond A Yeh, Chen Chen, Teck Yian Lim, Alexander Schwing, Mark Hasegawa-Johnson, and Minh N Do. Semantic image inpainting with deep generative models. CVPR'17
+- R Yeh, C Chen, T Y Lim, A Schwing, M Hasegawa-Johnson, and M Do. Semantic image inpainting with deep generative models. CVPR'17
 	- https://github.com/moodoki/semantic_image_inpainting
 	- Key insight: manipulate z; \
 		<img src="/Generative/images/inpaint/semantic-inpaint.png" alt="drawing" width="400"/>
@@ -88,7 +88,7 @@
 	- Insight: prior comes from the network structure and net parameter initialization;
 	- Deep energy based, natural image should have low cost;
 	- Optimize image iteration by iteration;
-- Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas S Huang. Generative Image Inpainting with Contextual Attention. CVPR'18
+- J Yu, Z Lin, J Yang, X Shen, X Lu, and T Huang. Generative Image Inpainting with Contextual Attention. CVPR'18
 	- Key insight: Contextual attention; deep nearest neighbor;
 	- https://github.com/JiahuiYu/generative_inpainting \
 		<img src="/Generative/images/inpaint/gen-inpaint-1.png" alt="drawing" width="500"/>
@@ -116,7 +116,7 @@
 	<img src="/Generative/images/inpaint/hier-inpaint3.png" alt="drawing" width="500"/>
 - Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, and Jan Kautz. Context-aware synthesis and placement of object instances. NIPS'18
 	- https://github.com/NVlabs/Instance_Insertion
-- **SN-PatchGAN**: Yu, Z Lin, J Yang, X Shen, X Lu, T Huang. Free-Form Image Inpainting with Gated Convolution. ICCV'19
+- SN-PatchGAN: Yu, Z Lin, J Yang, X Shen, X Lu, T Huang. Free-Form Image Inpainting with Gated Convolution. ICCV'19
 	- http://jiahuiyu.com/deepfill2
 	- Input: sketches as guidance;
 	- Improve on partial-conv on soft-gated conv;\

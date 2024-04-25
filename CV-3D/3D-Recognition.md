@@ -24,7 +24,7 @@
 
 ## Point Clouds
 - Unclassified:
-	- Matheus Gadelha, Rui Wang, and Subhransu Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
+	- M Gadelha, R Wang, and S Maji. Multiresolution tree networks for 3d point cloud processing. ECCV'18
 		- VAE
 	- Y. Xu, T. Fan, M. Xu, L. Zeng, and Y. Qiao. SpiderCNN: Deep learning on point sets with parameterized convolutional filters. ECCV'18
 		- **SOA**
@@ -33,8 +33,8 @@
 		- Estimate sample density distribution;
 		- https://github.com/viscom-ulm/MCCNN
 	- J. Li, B. M. Chen, and G. H. Lee. SO-Net: Self-organizing network for point cloud analysis. CVPR'18
-	- Maxim Tatarchenko, Jaesik Park, Vladlen Koltun, and Qian-Yi Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
-	- Matan Atzmon, Haggai Maron, and Yaron Lipman. Point convolutional neural networks by extension operators. arxiv'18
+	- M Tatarchenko, J Park, V Koltun, and Q Zhou. Tangent convolutions for dense prediction in 3d. CVPR'18
+	- M Atzmon, H Maron, and Y Lipman. Point convolutional neural networks by extension operators. arxiv'18
 	- **Kd-network**: R. Klokov and V. Lempitsky. Escape from cells: Deep Kd-networks for the recognition of 3D point cloud models. ICCV'17
 		- Irregular grid;
 		- http://sites.skoltech.ru/compvision/kdnets/
@@ -61,8 +61,7 @@
 		<img src="/CV-3D/images/3d_input/splatnet3.png" alt="drawing" width="600"/>
 
 ## Unordered Set:
-- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17\
-	<img src="/CV-3D/images/3d_input/pointnet.png" alt="drawing" width="600"/>
+- **PointNet**: H Su, C Qi, K Mo, L Guibas. PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation, CVPR'17
 - **PointNet++**:  Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas. Deep Hierarchical Feature Learning on Point Sets in a Metric Space, NIPS'17
 	- Insight: FP-sampling + grouping + MLP + [FPN];
 	- **Classification mode**: [SA module x 3] + FC_layers;
@@ -87,7 +86,7 @@
 	```	
 	- With shape: (B, n, 3), (B, m, 3), (B, C1, n), (B, C2, m), returns (B, mlp[-1], n)
 		<img src="/CV-3D/images/3d_input/pointnet++.png" alt="drawing" width="600"/>
-- Manzil Zaheer, Satwik Kottur, Siamak Ravanbakhsh, Barnabas Poczos, Ruslan R Salakhutdinov, and Alexander J Smola. Deep sets. NIPS'17
+- A Smola. Deep sets. NIPS'17
 
 ## Attention, GNN, Kernel
 - Legacy:
@@ -166,7 +165,7 @@
 	- Gernot Riegler, Ali Osman Ulusoy, and Andreas Geiger. Octnet: Learning deep 3d representations at high resolutions. CVPR'17
 		- https://github.com/griegler/octnet
 	- **OGN**: M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree generating networks: Efficient convolutional architectures for high-resolution 3d outputs. ICCV'17
-	- P.-S. Wang, Y. Liu, Y.-X. Guo, C.-Y. Sun, and X. Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
+	- P Wang, Y Liu, Y Guo, C Sun, and X Tong. OCNN: Octree-based convolutional neural networks for 3D shape analysis. TOG 2017
 		- SOA classification;
 - Z. Wang and F. Lu. VoxSegNet: Volumetric CNNs for semantic part segmentation of 3D shapes. TVCG'19
 - Z. Wu, X. Wang, D. Lin, D. Lischinski, D. Cohen-Or, and H. Huang. Structure-aware generative network for 3d-shape modeling. TOG'19
@@ -195,7 +194,7 @@
 	- Multi-view pooling
 - S. Galliani and K. Schindler. Just look at the image: Viewpoint-specific surface normal prediction for improved multi-view reconstruction. CVPR'16
 - B Shi, S Bai, X Bai. DeepPano: Deep Panoramic Representation for 3-D Shape Recognition. SPL'15
-- **3D-R2N2**: Christopher B. Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, Silvio Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
+- **3D-R2N2**: S Savarese. 3D-R2N2: A Unified Approach for Single and Multi-view 3D Object Reconstruction. ECCV'16
 - **Surfacenet**: Ji, M., Gall, J., Zheng, H., Liu, Y., Fang, L. Surfacenet: An end-to-end 3d neural network for multiview stereopsis. ICCV'17
 - **LSM**: A. Kar, C. Häne, J. Malik. Learning a multi-view stereo machine. NIPS'17
 

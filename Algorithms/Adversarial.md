@@ -23,7 +23,7 @@
 	- https://adversarial-ml-tutorial.org/
 
 ## Unclassified
-- K Li, T Zhang, J Malik. Approximate Feature Collisions in Neural Nets. NIPS'19
+- K Li, T Zhang, J Malik. Approximate Feature Collisions in Neural Nets. NeurIPS'19
 
 ## Adversarial Learning
 - A Ilyas, S Santurkar, D Tsipras, L Engstrom, B Tran, A Madry. Adversarial Examples Are Not Bugs, They Are Features. NeurIPS'19

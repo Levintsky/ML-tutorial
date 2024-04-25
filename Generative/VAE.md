@@ -126,7 +126,7 @@
 		- Better disentanglement: majority vote classifier on a different feature vector which accounts for a corner case in the BetaVAE metric;
 	- AnnealedVAE: C P. Burgess, I Higgins, A Pal, L Matthey, N Watters, G Desjardins, A Lerchner. Understanding disentangling in β-VAE. ICLR'18\
 		<img src="/Generative/images/vae/beta-vae-understand.png" alt="drawing" width="450"/>
-	- **β-TCVAE**: T Chen, X Li, R Grosse, and D Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
+	- β-TCVAE: T Chen, X Li, R Grosse, and D Duvenaud. Isolating sources of disentanglement in variational autoencoders. NIPS'18
 		- https://github.com/rtqichen/beta-tcvae
 		- Mutual Information Gap (MIG)
 	- F Locatello, S Bauer, M Lucic, G Rätsch, S Gelly, B Schölkopf, O Bachem. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations. ICML'19 best paper

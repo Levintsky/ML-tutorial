@@ -30,7 +30,7 @@
 	- Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. **Triviaqa**: A large scale distantly supervised challenge dataset for reading comprehension. 2017
 	- Adam Trischler, Tong Wang, Xingdi Yuan, Justin Harris, Alessandro Sordoni, Philip Bachman, and Kaheer Suleman. **Newsqa**: A machine comprehension dataset. 2016
 - Advice:
-	- Rowan Zellers, Ari Holtzman, Elizabeth Clark, Lianhui Qin, Ali Farhadi, Yejin Choi. Evaluating Machines by their Real-World Language Use. 2020
+	- Y Choi. Evaluating Machines by their Real-World Language Use. 2020
 		- Benchmark: Giving helpful advice;
 		- http://rowanzellers.com/advice/
 - 中文:

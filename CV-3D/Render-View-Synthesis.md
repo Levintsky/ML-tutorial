@@ -54,7 +54,7 @@
 - Color
 	- Lambertian: (ideal matte, diffusely reflecting surface), same color regardless of observer's angle of view;
 	- Reflection, refraction:
-		- Douglas Enright, Stephen Marschner, Ronald Fedkiw. Animation and Rendering of Complex Water Surfaces. SIGGRAPH'02
+		- D Enright, S Marschner, R Fedkiw. Animation and Rendering of Complex Water Surfaces. SIGGRAPH'02
 		- Glossy Reflection: multiple reflection rays; polished surface;
 - Hierarchical (kd-tree):
 	- BVH (Bounding Volume Hierarchy);
@@ -193,7 +193,7 @@
 - Layered/Multiplane:
 	- Basics:
 		- Represent the 3d scene with a few different layers with depth d1, d2, d3, ...;
-	- C. L. Zitnick, S. B. Kang, M. Uyttendaele, S. Winder, and R. Szeliski. High-quality video view interpolation using a layered representation. TOG'04
+		- Microsoft. High-quality video view interpolation using a layered representation. TOG'04
 	- J Flynn, I Neulander, J Philbin, and N Snavely. Deepstereo: Learning to predict new views from the world's imagery. CVPR'16
 		- PSV: Plane sweep volume;
 		- Each image (selection tower as depth prediction): conv-relu -> per-pixel softmax;
@@ -222,8 +222,8 @@
 - NERF:
 	- **SRN**: V Sitzmann, M Zollhofer, and G Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. NeurIPS'19
 		- https://github.com/vsitzmann/scene-representation-networks
-		- Implicit function: Phi(R3) -> Rn;
-		- Neural render: Psi, ray-marching lstm;
+		- Implicit function: Φ(R3) -> Rn;
+		- Neural render: Ψ, ray-marching lstm;
 	- **NERF**: B Mildenhall, P Srinivasan, M Tancik, J Barron, R Ramamoorthi, and R Ng. NeRF: Representing scenes as neural radiance fields for view synthesis. ECCV'20
 		- Insight: overfit a function mlp(x,y,z,θ,φ) to explain the scene;
 		- Key techniques to improve novel view synthesis performance:
@@ -282,15 +282,12 @@
 - Fast rendering;
 	- P Hedman, P Srinivasan, B Mildenhall, J Barron, and P Debevec. Baking neural radiance fields for real-time view synthesis. ICCV'21
 		- https://youtu.be/5jKry8n5YO8
-	- S Garbin, M Kowalski, M Johnson,
-	J Shotton, and J Valentin. Fastnerf: High-fidelity neural rendering at 200fps. arxiv'21
+	- S Garbin, M Kowalski, M Johnson, J Shotton, and J Valentin. Fastnerf: High-fidelity neural rendering at 200fps. arxiv'21
 		- https://microsoft.github.io/FastNeRF/
 		- Cache instead of neural net: decompose to avoid 5-dim cache;
 			- position dependent;
 			- direction dependent;
-	- C Reiser, S Peng, Y Liao, and A
-	Geiger. Kilonerf: Speeding up neural radiance fields with
-	thousands of tiny mlps. arxiv'21
+	- C Reiser, S Peng, Y Liao, and A Geiger. Kilonerf: Speeding up neural radiance fields with thousands of tiny mlps. arxiv'21
 		- https://github.com/creiser/kilonerf
 		- Thousands of small MLP instead of a big MLP;
 	- Real-time rendering of NeRFs with PlenOctrees - Angjoo Kanazawa
